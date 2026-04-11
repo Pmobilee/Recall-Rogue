@@ -1,0 +1,4227 @@
+{
+  "timestamp": "2026-04-11T02:00:38.309Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "us_states",
+      "deckName": "US States",
+      "deckClass": "knowledge",
+      "totalFacts": 75,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 0,
+      "issuesByType": {},
+      "factResults": [
+        {
+          "factId": "us_states_maine_one_syllable",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which US state has the only one-syllable name?",
+          "correctAnswer": "Maine",
+          "distractors": [
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            },
+            {
+              "answer": "Georgia",
+              "source": "similar_difficulty",
+              "factId": "us_states_georgia_coca_cola"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_maine_one_syllable",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which US state has the only one-syllable name?",
+          "correctAnswer": "Maine",
+          "distractors": [
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            },
+            {
+              "answer": "Georgia",
+              "source": "similar_difficulty",
+              "factId": "us_states_georgia_coca_cola"
+            },
+            {
+              "answer": "Nevada",
+              "source": "similar_difficulty",
+              "factId": "us_states_nevada_gambling"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_maine_one_syllable",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which US state has the only one-syllable name?",
+          "correctAnswer": "Maine",
+          "distractors": [
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            },
+            {
+              "answer": "Georgia",
+              "source": "similar_difficulty",
+              "factId": "us_states_georgia_coca_cola"
+            },
+            {
+              "answer": "Nevada",
+              "source": "similar_difficulty",
+              "factId": "us_states_nevada_gambling"
+            },
+            {
+              "answer": "Alabama",
+              "source": "similar_difficulty",
+              "factId": "us_states_alabama_911"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_hampshire_wind_speed",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What wind speed in mph was recorded atop New Hampshire's Mount Washington in 1934?",
+          "correctAnswer": "231",
+          "distractors": [
+            {
+              "answer": "270",
+              "source": "numerical",
+              "factId": "_numerical_270"
+            },
+            {
+              "answer": "180",
+              "source": "numerical",
+              "factId": "_numerical_180"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_hampshire_wind_speed",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What wind speed in mph was recorded atop New Hampshire's Mount Washington in 1934?",
+          "correctAnswer": "231",
+          "distractors": [
+            {
+              "answer": "270",
+              "source": "numerical",
+              "factId": "_numerical_270"
+            },
+            {
+              "answer": "180",
+              "source": "numerical",
+              "factId": "_numerical_180"
+            },
+            {
+              "answer": "190",
+              "source": "numerical",
+              "factId": "_numerical_190"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_hampshire_wind_speed",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What wind speed in mph was recorded atop New Hampshire's Mount Washington in 1934?",
+          "correctAnswer": "231",
+          "distractors": [
+            {
+              "answer": "270",
+              "source": "numerical",
+              "factId": "_numerical_270"
+            },
+            {
+              "answer": "180",
+              "source": "numerical",
+              "factId": "_numerical_180"
+            },
+            {
+              "answer": "190",
+              "source": "numerical",
+              "factId": "_numerical_190"
+            },
+            {
+              "answer": "300",
+              "source": "numerical",
+              "factId": "_numerical_300"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_vermont_slavery",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Vermont become the first US territory to abolish slavery?",
+          "correctAnswer": "1777",
+          "distractors": [
+            {
+              "answer": "1834",
+              "source": "numerical",
+              "factId": "_numerical_1834"
+            },
+            {
+              "answer": "1729",
+              "source": "numerical",
+              "factId": "_numerical_1729"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_vermont_slavery",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Vermont become the first US territory to abolish slavery?",
+          "correctAnswer": "1777",
+          "distractors": [
+            {
+              "answer": "1834",
+              "source": "numerical",
+              "factId": "_numerical_1834"
+            },
+            {
+              "answer": "1729",
+              "source": "numerical",
+              "factId": "_numerical_1729"
+            },
+            {
+              "answer": "1789",
+              "source": "numerical",
+              "factId": "_numerical_1789"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_vermont_slavery",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Vermont become the first US territory to abolish slavery?",
+          "correctAnswer": "1777",
+          "distractors": [
+            {
+              "answer": "1834",
+              "source": "numerical",
+              "factId": "_numerical_1834"
+            },
+            {
+              "answer": "1729",
+              "source": "numerical",
+              "factId": "_numerical_1729"
+            },
+            {
+              "answer": "1789",
+              "source": "numerical",
+              "factId": "_numerical_1789"
+            },
+            {
+              "answer": "1756",
+              "source": "numerical",
+              "factId": "_numerical_1756"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_massachusetts_harvard",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was Harvard University founded, making it the oldest in the US?",
+          "correctAnswer": "1636",
+          "distractors": [
+            {
+              "answer": "1660",
+              "source": "numerical",
+              "factId": "_numerical_1660"
+            },
+            {
+              "answer": "1620",
+              "source": "numerical",
+              "factId": "_numerical_1620"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_massachusetts_harvard",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was Harvard University founded, making it the oldest in the US?",
+          "correctAnswer": "1636",
+          "distractors": [
+            {
+              "answer": "1660",
+              "source": "numerical",
+              "factId": "_numerical_1660"
+            },
+            {
+              "answer": "1620",
+              "source": "numerical",
+              "factId": "_numerical_1620"
+            },
+            {
+              "answer": "1690",
+              "source": "numerical",
+              "factId": "_numerical_1690"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_massachusetts_harvard",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was Harvard University founded, making it the oldest in the US?",
+          "correctAnswer": "1636",
+          "distractors": [
+            {
+              "answer": "1660",
+              "source": "numerical",
+              "factId": "_numerical_1660"
+            },
+            {
+              "answer": "1620",
+              "source": "numerical",
+              "factId": "_numerical_1620"
+            },
+            {
+              "answer": "1690",
+              "source": "numerical",
+              "factId": "_numerical_1690"
+            },
+            {
+              "answer": "1624",
+              "source": "numerical",
+              "factId": "_numerical_1624"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_massachusetts_capital",
+          "masteryLevel": 0,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital city of Massachusetts?",
+          "correctAnswer": "Boston",
+          "distractors": [
+            {
+              "answer": "Raleigh",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_carolina_capital"
+            },
+            {
+              "answer": "Santa Fe",
+              "source": "pool_fill",
+              "factId": "us_states_new_mexico_santa_fe"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_massachusetts_capital",
+          "masteryLevel": 2,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital city of Massachusetts?",
+          "correctAnswer": "Boston",
+          "distractors": [
+            {
+              "answer": "Raleigh",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_carolina_capital"
+            },
+            {
+              "answer": "Santa Fe",
+              "source": "pool_fill",
+              "factId": "us_states_new_mexico_santa_fe"
+            },
+            {
+              "answer": "Olympia",
+              "source": "pool_fill",
+              "factId": "us_states_washington_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_massachusetts_capital",
+          "masteryLevel": 4,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital city of Massachusetts?",
+          "correctAnswer": "Boston",
+          "distractors": [
+            {
+              "answer": "Raleigh",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_carolina_capital"
+            },
+            {
+              "answer": "Santa Fe",
+              "source": "pool_fill",
+              "factId": "us_states_new_mexico_santa_fe"
+            },
+            {
+              "answer": "Olympia",
+              "source": "pool_fill",
+              "factId": "us_states_washington_capital"
+            },
+            {
+              "answer": "Lansing",
+              "source": "pool_fill",
+              "factId": "us_states_michigan_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_rhode_island_smallest",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state is the smallest by total area?",
+          "correctAnswer": "Rhode Island",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            },
+            {
+              "answer": "New Hampshire",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_hampshire_primary"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_rhode_island_smallest",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state is the smallest by total area?",
+          "correctAnswer": "Rhode Island",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            },
+            {
+              "answer": "New Hampshire",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_hampshire_primary"
+            },
+            {
+              "answer": "Kentucky",
+              "source": "similar_difficulty",
+              "factId": "us_states_kentucky_bourbon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_rhode_island_smallest",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state is the smallest by total area?",
+          "correctAnswer": "Rhode Island",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            },
+            {
+              "answer": "New Hampshire",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_hampshire_primary"
+            },
+            {
+              "answer": "Kentucky",
+              "source": "similar_difficulty",
+              "factId": "us_states_kentucky_bourbon"
+            },
+            {
+              "answer": "Oklahoma",
+              "source": "similar_difficulty",
+              "factId": "us_states_oklahoma_trail_of_tears"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_connecticut_constitution",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Connecticut adopt the Fundamental Orders, considered the world's first written constitution?",
+          "correctAnswer": "1639",
+          "distractors": [
+            {
+              "answer": "1697",
+              "source": "numerical",
+              "factId": "_numerical_1697"
+            },
+            {
+              "answer": "1612",
+              "source": "numerical",
+              "factId": "_numerical_1612"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_connecticut_constitution",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Connecticut adopt the Fundamental Orders, considered the world's first written constitution?",
+          "correctAnswer": "1639",
+          "distractors": [
+            {
+              "answer": "1697",
+              "source": "numerical",
+              "factId": "_numerical_1697"
+            },
+            {
+              "answer": "1612",
+              "source": "numerical",
+              "factId": "_numerical_1612"
+            },
+            {
+              "answer": "1687",
+              "source": "numerical",
+              "factId": "_numerical_1687"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_connecticut_constitution",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Connecticut adopt the Fundamental Orders, considered the world's first written constitution?",
+          "correctAnswer": "1639",
+          "distractors": [
+            {
+              "answer": "1697",
+              "source": "numerical",
+              "factId": "_numerical_1697"
+            },
+            {
+              "answer": "1612",
+              "source": "numerical",
+              "factId": "_numerical_1612"
+            },
+            {
+              "answer": "1687",
+              "source": "numerical",
+              "factId": "_numerical_1687"
+            },
+            {
+              "answer": "1586",
+              "source": "numerical",
+              "factId": "_numerical_1586"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_york_capital",
+          "masteryLevel": 0,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of New York State — not New York City?",
+          "correctAnswer": "Albany",
+          "distractors": [
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Lansing",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_york_capital",
+          "masteryLevel": 2,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of New York State — not New York City?",
+          "correctAnswer": "Albany",
+          "distractors": [
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Lansing",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_capital"
+            },
+            {
+              "answer": "Olympia",
+              "source": "similar_difficulty",
+              "factId": "us_states_washington_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_york_capital",
+          "masteryLevel": 4,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of New York State — not New York City?",
+          "correctAnswer": "Albany",
+          "distractors": [
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Lansing",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_capital"
+            },
+            {
+              "answer": "Olympia",
+              "source": "similar_difficulty",
+              "factId": "us_states_washington_capital"
+            },
+            {
+              "answer": "Austin",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_york_statue_liberty",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "The Statue of Liberty stands in the harbor of which US state?",
+          "correctAnswer": "New York",
+          "distractors": [
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_york_statue_liberty",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "The Statue of Liberty stands in the harbor of which US state?",
+          "correctAnswer": "New York",
+          "distractors": [
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            },
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_york_statue_liberty",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "The Statue of Liberty stands in the harbor of which US state?",
+          "correctAnswer": "New York",
+          "distractors": [
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            },
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            },
+            {
+              "answer": "North Carolina",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_wright_brothers"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_jersey_density",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state has the highest population density of all 50 states?",
+          "correctAnswer": "New Jersey",
+          "distractors": [
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_kool_aid"
+            },
+            {
+              "answer": "Wisconsin",
+              "source": "similar_difficulty",
+              "factId": "us_states_wisconsin_cheese"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_jersey_density",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state has the highest population density of all 50 states?",
+          "correctAnswer": "New Jersey",
+          "distractors": [
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_kool_aid"
+            },
+            {
+              "answer": "Wisconsin",
+              "source": "similar_difficulty",
+              "factId": "us_states_wisconsin_cheese"
+            },
+            {
+              "answer": "New Hampshire",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_hampshire_primary"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_new_jersey_density",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state has the highest population density of all 50 states?",
+          "correctAnswer": "New Jersey",
+          "distractors": [
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_kool_aid"
+            },
+            {
+              "answer": "Wisconsin",
+              "source": "similar_difficulty",
+              "factId": "us_states_wisconsin_cheese"
+            },
+            {
+              "answer": "New Hampshire",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_hampshire_primary"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_jamestown"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_pennsylvania_declaration",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "In which US state was the Declaration of Independence signed in 1776?",
+          "correctAnswer": "Pennsylvania",
+          "distractors": [
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_statue_liberty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_pennsylvania_declaration",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "In which US state was the Declaration of Independence signed in 1776?",
+          "correctAnswer": "Pennsylvania",
+          "distractors": [
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_statue_liberty"
+            },
+            {
+              "answer": "Maryland",
+              "source": "similar_difficulty",
+              "factId": "us_states_maryland_star_spangled_banner"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_pennsylvania_declaration",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "In which US state was the Declaration of Independence signed in 1776?",
+          "correctAnswer": "Pennsylvania",
+          "distractors": [
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_statue_liberty"
+            },
+            {
+              "answer": "Maryland",
+              "source": "similar_difficulty",
+              "factId": "us_states_maryland_star_spangled_banner"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_kentucky_derby",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state is home to the horse racing event known as the Derby, traditionally held at Churchill Downs and considered the longest continuously running major sporting event in the country?",
+          "correctAnswer": "Kentucky",
+          "distractors": [
+            {
+              "answer": "Pennsylvania",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_declaration"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_jamestown"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_kentucky_derby",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state is home to the horse racing event known as the Derby, traditionally held at Churchill Downs and considered the longest continuously running major sporting event in the country?",
+          "correctAnswer": "Kentucky",
+          "distractors": [
+            {
+              "answer": "Pennsylvania",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_declaration"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_jamestown"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_smallest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_kentucky_derby",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state is home to the horse racing event known as the Derby, traditionally held at Churchill Downs and considered the longest continuously running major sporting event in the country?",
+          "correctAnswer": "Kentucky",
+          "distractors": [
+            {
+              "answer": "Pennsylvania",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_declaration"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_jamestown"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_smallest"
+            },
+            {
+              "answer": "North Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_dakota_least_visited"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_pennsylvania_capital",
+          "masteryLevel": 0,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Pennsylvania — not Philadelphia?",
+          "correctAnswer": "Harrisburg",
+          "distractors": [
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Tallahassee",
+              "source": "similar_difficulty",
+              "factId": "us_states_florida_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_pennsylvania_capital",
+          "masteryLevel": 2,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Pennsylvania — not Philadelphia?",
+          "correctAnswer": "Harrisburg",
+          "distractors": [
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Tallahassee",
+              "source": "similar_difficulty",
+              "factId": "us_states_florida_capital"
+            },
+            {
+              "answer": "Austin",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_pennsylvania_capital",
+          "masteryLevel": 4,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Pennsylvania — not Philadelphia?",
+          "correctAnswer": "Harrisburg",
+          "distractors": [
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Tallahassee",
+              "source": "similar_difficulty",
+              "factId": "us_states_florida_capital"
+            },
+            {
+              "answer": "Austin",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_capital"
+            },
+            {
+              "answer": "Raleigh",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_carolina_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_michigan_capital",
+          "masteryLevel": 0,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Michigan — not Detroit?",
+          "correctAnswer": "Lansing",
+          "distractors": [
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            },
+            {
+              "answer": "Olympia",
+              "source": "similar_difficulty",
+              "factId": "us_states_washington_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_michigan_capital",
+          "masteryLevel": 2,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Michigan — not Detroit?",
+          "correctAnswer": "Lansing",
+          "distractors": [
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            },
+            {
+              "answer": "Olympia",
+              "source": "similar_difficulty",
+              "factId": "us_states_washington_capital"
+            },
+            {
+              "answer": "Albany",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_michigan_capital",
+          "masteryLevel": 4,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Michigan — not Detroit?",
+          "correctAnswer": "Lansing",
+          "distractors": [
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            },
+            {
+              "answer": "Olympia",
+              "source": "similar_difficulty",
+              "factId": "us_states_washington_capital"
+            },
+            {
+              "answer": "Albany",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_capital"
+            },
+            {
+              "answer": "Raleigh",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_carolina_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_delaware_first_state",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Delaware become the first state to ratify the US Constitution?",
+          "correctAnswer": "1787",
+          "distractors": [
+            {
+              "answer": "1844",
+              "source": "numerical",
+              "factId": "_numerical_1844"
+            },
+            {
+              "answer": "1768",
+              "source": "numerical",
+              "factId": "_numerical_1768"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_delaware_first_state",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Delaware become the first state to ratify the US Constitution?",
+          "correctAnswer": "1787",
+          "distractors": [
+            {
+              "answer": "1844",
+              "source": "numerical",
+              "factId": "_numerical_1844"
+            },
+            {
+              "answer": "1768",
+              "source": "numerical",
+              "factId": "_numerical_1768"
+            },
+            {
+              "answer": "1805",
+              "source": "numerical",
+              "factId": "_numerical_1805"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_delaware_first_state",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Delaware become the first state to ratify the US Constitution?",
+          "correctAnswer": "1787",
+          "distractors": [
+            {
+              "answer": "1844",
+              "source": "numerical",
+              "factId": "_numerical_1844"
+            },
+            {
+              "answer": "1768",
+              "source": "numerical",
+              "factId": "_numerical_1768"
+            },
+            {
+              "answer": "1805",
+              "source": "numerical",
+              "factId": "_numerical_1805"
+            },
+            {
+              "answer": "1754",
+              "source": "numerical",
+              "factId": "_numerical_1754"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_delaware_corporations",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which tiny US state has more corporations incorporated than it has residents?",
+          "correctAnswer": "Delaware",
+          "distractors": [
+            {
+              "answer": "Oklahoma",
+              "source": "similar_difficulty",
+              "factId": "us_states_oklahoma_trail_of_tears"
+            },
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_delaware_corporations",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which tiny US state has more corporations incorporated than it has residents?",
+          "correctAnswer": "Delaware",
+          "distractors": [
+            {
+              "answer": "Oklahoma",
+              "source": "similar_difficulty",
+              "factId": "us_states_oklahoma_trail_of_tears"
+            },
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_delaware_corporations",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which tiny US state has more corporations incorporated than it has residents?",
+          "correctAnswer": "Delaware",
+          "distractors": [
+            {
+              "answer": "Oklahoma",
+              "source": "similar_difficulty",
+              "factId": "us_states_oklahoma_trail_of_tears"
+            },
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_long_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_west_virginia_civil_war",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state is the only one ever formed by seceding from a Confederate state?",
+          "correctAnswer": "West Virginia",
+          "distractors": [
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_long_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_west_virginia_civil_war",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state is the only one ever formed by seceding from a Confederate state?",
+          "correctAnswer": "West Virginia",
+          "distractors": [
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_long_name"
+            },
+            {
+              "answer": "New Jersey",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_jersey_density"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_west_virginia_civil_war",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state is the only one ever formed by seceding from a Confederate state?",
+          "correctAnswer": "West Virginia",
+          "distractors": [
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_long_name"
+            },
+            {
+              "answer": "New Jersey",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_jersey_density"
+            },
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_minnesota_mississippi_source",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Lake Itasca, the source of the mighty Mississippi River, is located in which state?",
+          "correctAnswer": "Minnesota",
+          "distractors": [
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_minnesota_mississippi_source",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Lake Itasca, the source of the mighty Mississippi River, is located in which state?",
+          "correctAnswer": "Minnesota",
+          "distractors": [
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_presidents"
+            },
+            {
+              "answer": "Wisconsin",
+              "source": "similar_difficulty",
+              "factId": "us_states_wisconsin_cheese"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_minnesota_mississippi_source",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Lake Itasca, the source of the mighty Mississippi River, is located in which state?",
+          "correctAnswer": "Minnesota",
+          "distractors": [
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_presidents"
+            },
+            {
+              "answer": "Wisconsin",
+              "source": "similar_difficulty",
+              "factId": "us_states_wisconsin_cheese"
+            },
+            {
+              "answer": "South Carolina",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_carolina_secession"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_vermont_capital_smallest",
+          "masteryLevel": 0,
+          "poolId": "state_capitals",
+          "renderedQuestion": "Which US state capital has the smallest population of any state capital?",
+          "correctAnswer": "Montpelier",
+          "distractors": [
+            {
+              "answer": "Austin",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_capital"
+            },
+            {
+              "answer": "Tallahassee",
+              "source": "similar_difficulty",
+              "factId": "us_states_florida_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_vermont_capital_smallest",
+          "masteryLevel": 2,
+          "poolId": "state_capitals",
+          "renderedQuestion": "Which US state capital has the smallest population of any state capital?",
+          "correctAnswer": "Montpelier",
+          "distractors": [
+            {
+              "answer": "Austin",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_capital"
+            },
+            {
+              "answer": "Tallahassee",
+              "source": "similar_difficulty",
+              "factId": "us_states_florida_capital"
+            },
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_vermont_capital_smallest",
+          "masteryLevel": 4,
+          "poolId": "state_capitals",
+          "renderedQuestion": "Which US state capital has the smallest population of any state capital?",
+          "correctAnswer": "Montpelier",
+          "distractors": [
+            {
+              "answer": "Austin",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_capital"
+            },
+            {
+              "answer": "Tallahassee",
+              "source": "similar_difficulty",
+              "factId": "us_states_florida_capital"
+            },
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Santa Fe",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_mexico_santa_fe"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_north_dakota_least_visited",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state is consistently ranked as the least visited by tourists?",
+          "correctAnswer": "North Dakota",
+          "distractors": [
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            },
+            {
+              "answer": "West Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_west_virginia_civil_war"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_north_dakota_least_visited",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state is consistently ranked as the least visited by tourists?",
+          "correctAnswer": "North Dakota",
+          "distractors": [
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            },
+            {
+              "answer": "West Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_west_virginia_civil_war"
+            },
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_north_dakota_least_visited",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state is consistently ranked as the least visited by tourists?",
+          "correctAnswer": "North Dakota",
+          "distractors": [
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            },
+            {
+              "answer": "West Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_west_virginia_civil_war"
+            },
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "Delaware",
+              "source": "similar_difficulty",
+              "factId": "us_states_delaware_corporations"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_rhode_island_long_name",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which tiny US state has the longest official name of any state?",
+          "correctAnswer": "Rhode Island",
+          "distractors": [
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_rhode_island_long_name",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which tiny US state has the longest official name of any state?",
+          "correctAnswer": "Rhode Island",
+          "distractors": [
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_presidents"
+            },
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_rhode_island_long_name",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which tiny US state has the longest official name of any state?",
+          "correctAnswer": "Rhode Island",
+          "distractors": [
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_presidents"
+            },
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            },
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_kool_aid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_missouri_gateway_arch",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "The Gateway Arch, the tallest monument in the United States, is in St. Louis in which state?",
+          "correctAnswer": "Missouri",
+          "distractors": [
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_missouri_gateway_arch",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "The Gateway Arch, the tallest monument in the United States, is in St. Louis in which state?",
+          "correctAnswer": "Missouri",
+          "distractors": [
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "Maryland",
+              "source": "similar_difficulty",
+              "factId": "us_states_maryland_star_spangled_banner"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_missouri_gateway_arch",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "The Gateway Arch, the tallest monument in the United States, is in St. Louis in which state?",
+          "correctAnswer": "Missouri",
+          "distractors": [
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "Maryland",
+              "source": "similar_difficulty",
+              "factId": "us_states_maryland_star_spangled_banner"
+            },
+            {
+              "answer": "Colorado",
+              "source": "similar_difficulty",
+              "factId": "us_states_colorado_centennial"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_tennessee_music",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state is home to both Nashville (country music) and Memphis (birthplace of rock and roll)?",
+          "correctAnswer": "Tennessee",
+          "distractors": [
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_tennessee_music",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state is home to both Nashville (country music) and Memphis (birthplace of rock and roll)?",
+          "correctAnswer": "Tennessee",
+          "distractors": [
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            },
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_tennessee_music",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state is home to both Nashville (country music) and Memphis (birthplace of rock and roll)?",
+          "correctAnswer": "Tennessee",
+          "distractors": [
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            },
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            },
+            {
+              "answer": "Colorado",
+              "source": "similar_difficulty",
+              "factId": "us_states_colorado_centennial"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_south_carolina_secession",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state was the first to secede from the Union, triggering the Civil War in 1860?",
+          "correctAnswer": "South Carolina",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_presidents"
+            },
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_kool_aid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_south_carolina_secession",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state was the first to secede from the Union, triggering the Civil War in 1860?",
+          "correctAnswer": "South Carolina",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_presidents"
+            },
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_kool_aid"
+            },
+            {
+              "answer": "North Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_dakota_least_visited"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_south_carolina_secession",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state was the first to secede from the Union, triggering the Civil War in 1860?",
+          "correctAnswer": "South Carolina",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_presidents"
+            },
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_kool_aid"
+            },
+            {
+              "answer": "North Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_dakota_least_visited"
+            },
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_skyscraper"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_louisiana_parishes",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which is the only US state that uses 'parishes' instead of 'counties' as its local government divisions?",
+          "correctAnswer": "Louisiana",
+          "distractors": [
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_unicameral"
+            },
+            {
+              "answer": "Pennsylvania",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_declaration"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_louisiana_parishes",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which is the only US state that uses 'parishes' instead of 'counties' as its local government divisions?",
+          "correctAnswer": "Louisiana",
+          "distractors": [
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_unicameral"
+            },
+            {
+              "answer": "Pennsylvania",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_declaration"
+            },
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_louisiana_parishes",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which is the only US state that uses 'parishes' instead of 'counties' as its local government divisions?",
+          "correctAnswer": "Louisiana",
+          "distractors": [
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_unicameral"
+            },
+            {
+              "answer": "Pennsylvania",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_declaration"
+            },
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            },
+            {
+              "answer": "Arkansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_arkansas_diamonds"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_kentucky_bourbon",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state produces approximately 95% of the world's bourbon whiskey?",
+          "correctAnswer": "Kentucky",
+          "distractors": [
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            },
+            {
+              "answer": "New Jersey",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_jersey_density"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_kentucky_bourbon",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state produces approximately 95% of the world's bourbon whiskey?",
+          "correctAnswer": "Kentucky",
+          "distractors": [
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            },
+            {
+              "answer": "New Jersey",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_jersey_density"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_statue_liberty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_kentucky_bourbon",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state produces approximately 95% of the world's bourbon whiskey?",
+          "correctAnswer": "Kentucky",
+          "distractors": [
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            },
+            {
+              "answer": "New Jersey",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_jersey_density"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_statue_liberty"
+            },
+            {
+              "answer": "Wisconsin",
+              "source": "similar_difficulty",
+              "factId": "us_states_wisconsin_cheese"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_georgia_coca_cola",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Coca-Cola was invented in 1886 in Atlanta, the capital of which US state?",
+          "correctAnswer": "Georgia",
+          "distractors": [
+            {
+              "answer": "Wyoming",
+              "source": "similar_difficulty",
+              "factId": "us_states_wyoming_yellowstone"
+            },
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_georgia_coca_cola",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Coca-Cola was invented in 1886 in Atlanta, the capital of which US state?",
+          "correctAnswer": "Georgia",
+          "distractors": [
+            {
+              "answer": "Wyoming",
+              "source": "similar_difficulty",
+              "factId": "us_states_wyoming_yellowstone"
+            },
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            },
+            {
+              "answer": "Utah",
+              "source": "similar_difficulty",
+              "factId": "us_states_utah_five_parks"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_georgia_coca_cola",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Coca-Cola was invented in 1886 in Atlanta, the capital of which US state?",
+          "correctAnswer": "Georgia",
+          "distractors": [
+            {
+              "answer": "Wyoming",
+              "source": "similar_difficulty",
+              "factId": "us_states_wyoming_yellowstone"
+            },
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            },
+            {
+              "answer": "Utah",
+              "source": "similar_difficulty",
+              "factId": "us_states_utah_five_parks"
+            },
+            {
+              "answer": "Florida",
+              "source": "similar_difficulty",
+              "factId": "us_states_florida_lightning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_illinois_capital",
+          "masteryLevel": 0,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Illinois — not the largest city?",
+          "correctAnswer": "Springfield",
+          "distractors": [
+            {
+              "answer": "Santa Fe",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_mexico_santa_fe"
+            },
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_illinois_capital",
+          "masteryLevel": 2,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Illinois — not the largest city?",
+          "correctAnswer": "Springfield",
+          "distractors": [
+            {
+              "answer": "Santa Fe",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_mexico_santa_fe"
+            },
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Harrisburg",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_illinois_capital",
+          "masteryLevel": 4,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Illinois — not the largest city?",
+          "correctAnswer": "Springfield",
+          "distractors": [
+            {
+              "answer": "Santa Fe",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_mexico_santa_fe"
+            },
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Harrisburg",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_capital"
+            },
+            {
+              "answer": "Lansing",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_florida_lightning",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state is known as the 'Lightning Capital of the US' and records more strikes than any other?",
+          "correctAnswer": "Florida",
+          "distractors": [
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            },
+            {
+              "answer": "Alaska",
+              "source": "similar_difficulty",
+              "factId": "us_states_alaska_coastline"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_florida_lightning",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state is known as the 'Lightning Capital of the US' and records more strikes than any other?",
+          "correctAnswer": "Florida",
+          "distractors": [
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            },
+            {
+              "answer": "Alaska",
+              "source": "similar_difficulty",
+              "factId": "us_states_alaska_coastline"
+            },
+            {
+              "answer": "Maine",
+              "source": "similar_difficulty",
+              "factId": "us_states_maine_one_syllable"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_florida_lightning",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state is known as the 'Lightning Capital of the US' and records more strikes than any other?",
+          "correctAnswer": "Florida",
+          "distractors": [
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            },
+            {
+              "answer": "Alaska",
+              "source": "similar_difficulty",
+              "factId": "us_states_alaska_coastline"
+            },
+            {
+              "answer": "Maine",
+              "source": "similar_difficulty",
+              "factId": "us_states_maine_one_syllable"
+            },
+            {
+              "answer": "Montana",
+              "source": "similar_difficulty",
+              "factId": "us_states_montana_big_sky"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_alabama_911",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state made the world's first 911 emergency call in 1968, creating the system used across the US?",
+          "correctAnswer": "Alabama",
+          "distractors": [
+            {
+              "answer": "Arizona",
+              "source": "similar_difficulty",
+              "factId": "us_states_arizona_last_contiguous"
+            },
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_alabama_911",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state made the world's first 911 emergency call in 1968, creating the system used across the US?",
+          "correctAnswer": "Alabama",
+          "distractors": [
+            {
+              "answer": "Arizona",
+              "source": "similar_difficulty",
+              "factId": "us_states_arizona_last_contiguous"
+            },
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            },
+            {
+              "answer": "Maine",
+              "source": "similar_difficulty",
+              "factId": "us_states_maine_one_syllable"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_alabama_911",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state made the world's first 911 emergency call in 1968, creating the system used across the US?",
+          "correctAnswer": "Alabama",
+          "distractors": [
+            {
+              "answer": "Arizona",
+              "source": "similar_difficulty",
+              "factId": "us_states_arizona_last_contiguous"
+            },
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            },
+            {
+              "answer": "Maine",
+              "source": "similar_difficulty",
+              "factId": "us_states_maine_one_syllable"
+            },
+            {
+              "answer": "Iowa",
+              "source": "similar_difficulty",
+              "factId": "us_states_iowa_caucus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_mississippi_blues",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "The fertile lowland region along a major Southern river is considered the birthplace of the blues — in which US state is this region located?",
+          "correctAnswer": "Mississippi",
+          "distractors": [
+            {
+              "answer": "Missouri",
+              "source": "similar_difficulty",
+              "factId": "us_states_missouri_gateway_arch"
+            },
+            {
+              "answer": "Maryland",
+              "source": "similar_difficulty",
+              "factId": "us_states_maryland_star_spangled_banner"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_mississippi_blues",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "The fertile lowland region along a major Southern river is considered the birthplace of the blues — in which US state is this region located?",
+          "correctAnswer": "Mississippi",
+          "distractors": [
+            {
+              "answer": "Missouri",
+              "source": "similar_difficulty",
+              "factId": "us_states_missouri_gateway_arch"
+            },
+            {
+              "answer": "Maryland",
+              "source": "similar_difficulty",
+              "factId": "us_states_maryland_star_spangled_banner"
+            },
+            {
+              "answer": "West Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_west_virginia_civil_war"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_mississippi_blues",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "The fertile lowland region along a major Southern river is considered the birthplace of the blues — in which US state is this region located?",
+          "correctAnswer": "Mississippi",
+          "distractors": [
+            {
+              "answer": "Missouri",
+              "source": "similar_difficulty",
+              "factId": "us_states_missouri_gateway_arch"
+            },
+            {
+              "answer": "Maryland",
+              "source": "similar_difficulty",
+              "factId": "us_states_maryland_star_spangled_banner"
+            },
+            {
+              "answer": "West Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_west_virginia_civil_war"
+            },
+            {
+              "answer": "South Carolina",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_carolina_secession"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_oregon_crater_lake",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state contains Crater Lake, the deepest lake in the United States at 1,949 feet?",
+          "correctAnswer": "Oregon",
+          "distractors": [
+            {
+              "answer": "Ohio",
+              "source": "similar_difficulty",
+              "factId": "us_states_ohio_wright_brothers"
+            },
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_oregon_crater_lake",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state contains Crater Lake, the deepest lake in the United States at 1,949 feet?",
+          "correctAnswer": "Oregon",
+          "distractors": [
+            {
+              "answer": "Ohio",
+              "source": "similar_difficulty",
+              "factId": "us_states_ohio_wright_brothers"
+            },
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            },
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_oregon_crater_lake",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state contains Crater Lake, the deepest lake in the United States at 1,949 feet?",
+          "correctAnswer": "Oregon",
+          "distractors": [
+            {
+              "answer": "Ohio",
+              "source": "similar_difficulty",
+              "factId": "us_states_ohio_wright_brothers"
+            },
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            },
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            },
+            {
+              "answer": "Arizona",
+              "source": "similar_difficulty",
+              "factId": "us_states_arizona_last_contiguous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_texas_capital",
+          "masteryLevel": 0,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Texas — NOT Houston, Dallas, or San Antonio?",
+          "correctAnswer": "Austin",
+          "distractors": [
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Montpelier",
+              "source": "similar_difficulty",
+              "factId": "us_states_vermont_capital_smallest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_texas_capital",
+          "masteryLevel": 2,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Texas — NOT Houston, Dallas, or San Antonio?",
+          "correctAnswer": "Austin",
+          "distractors": [
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Montpelier",
+              "source": "similar_difficulty",
+              "factId": "us_states_vermont_capital_smallest"
+            },
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_texas_capital",
+          "masteryLevel": 4,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Texas — NOT Houston, Dallas, or San Antonio?",
+          "correctAnswer": "Austin",
+          "distractors": [
+            {
+              "answer": "Sacramento",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_capital"
+            },
+            {
+              "answer": "Montpelier",
+              "source": "similar_difficulty",
+              "factId": "us_states_vermont_capital_smallest"
+            },
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            },
+            {
+              "answer": "Albany",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_oklahoma_trail_of_tears",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state was designated as 'Indian Territory' and was the endpoint of the Trail of Tears forced removal?",
+          "correctAnswer": "Oklahoma",
+          "distractors": [
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_unicameral"
+            },
+            {
+              "answer": "Wisconsin",
+              "source": "similar_difficulty",
+              "factId": "us_states_wisconsin_cheese"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_oklahoma_trail_of_tears",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state was designated as 'Indian Territory' and was the endpoint of the Trail of Tears forced removal?",
+          "correctAnswer": "Oklahoma",
+          "distractors": [
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_unicameral"
+            },
+            {
+              "answer": "Wisconsin",
+              "source": "similar_difficulty",
+              "factId": "us_states_wisconsin_cheese"
+            },
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_oklahoma_trail_of_tears",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state was designated as 'Indian Territory' and was the endpoint of the Trail of Tears forced removal?",
+          "correctAnswer": "Oklahoma",
+          "distractors": [
+            {
+              "answer": "Nebraska",
+              "source": "similar_difficulty",
+              "factId": "us_states_nebraska_unicameral"
+            },
+            {
+              "answer": "Wisconsin",
+              "source": "similar_difficulty",
+              "factId": "us_states_wisconsin_cheese"
+            },
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_smallest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_wyoming_yellowstone",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state contains the majority of Yellowstone, the first US national park?",
+          "correctAnswer": "Wyoming",
+          "distractors": [
+            {
+              "answer": "Alaska",
+              "source": "similar_difficulty",
+              "factId": "us_states_alaska_coastline"
+            },
+            {
+              "answer": "Utah",
+              "source": "similar_difficulty",
+              "factId": "us_states_utah_five_parks"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_wyoming_yellowstone",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state contains the majority of Yellowstone, the first US national park?",
+          "correctAnswer": "Wyoming",
+          "distractors": [
+            {
+              "answer": "Alaska",
+              "source": "similar_difficulty",
+              "factId": "us_states_alaska_coastline"
+            },
+            {
+              "answer": "Utah",
+              "source": "similar_difficulty",
+              "factId": "us_states_utah_five_parks"
+            },
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_wyoming_yellowstone",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state contains the majority of Yellowstone, the first US national park?",
+          "correctAnswer": "Wyoming",
+          "distractors": [
+            {
+              "answer": "Alaska",
+              "source": "similar_difficulty",
+              "factId": "us_states_alaska_coastline"
+            },
+            {
+              "answer": "Utah",
+              "source": "similar_difficulty",
+              "factId": "us_states_utah_five_parks"
+            },
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            },
+            {
+              "answer": "Florida",
+              "source": "similar_difficulty",
+              "factId": "us_states_florida_lightning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_nebraska_kool_aid",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Kool-Aid, the beloved powdered drink mix, was invented in which US state in 1927?",
+          "correctAnswer": "Nebraska",
+          "distractors": [
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "New Jersey",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_jersey_density"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_nebraska_kool_aid",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Kool-Aid, the beloved powdered drink mix, was invented in which US state in 1927?",
+          "correctAnswer": "Nebraska",
+          "distractors": [
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "New Jersey",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_jersey_density"
+            },
+            {
+              "answer": "Maryland",
+              "source": "similar_difficulty",
+              "factId": "us_states_maryland_star_spangled_banner"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_nebraska_kool_aid",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Kool-Aid, the beloved powdered drink mix, was invented in which US state in 1927?",
+          "correctAnswer": "Nebraska",
+          "distractors": [
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "New Jersey",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_jersey_density"
+            },
+            {
+              "answer": "Maryland",
+              "source": "similar_difficulty",
+              "factId": "us_states_maryland_star_spangled_banner"
+            },
+            {
+              "answer": "New Hampshire",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_hampshire_primary"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_wisconsin_cheese",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state produces more cheese than any other, earning the nickname 'America's Dairyland'?",
+          "correctAnswer": "Wisconsin",
+          "distractors": [
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            },
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_wisconsin_cheese",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state produces more cheese than any other, earning the nickname 'America's Dairyland'?",
+          "correctAnswer": "Wisconsin",
+          "distractors": [
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            },
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "New Hampshire",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_hampshire_primary"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_wisconsin_cheese",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which US state produces more cheese than any other, earning the nickname 'America's Dairyland'?",
+          "correctAnswer": "Wisconsin",
+          "distractors": [
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            },
+            {
+              "answer": "Minnesota",
+              "source": "similar_difficulty",
+              "factId": "us_states_minnesota_mississippi_source"
+            },
+            {
+              "answer": "New Hampshire",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_hampshire_primary"
+            },
+            {
+              "answer": "Pennsylvania",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_declaration"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_iowa_caucus",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state traditionally holds the first presidential primary caucuses in the nation?",
+          "correctAnswer": "Iowa",
+          "distractors": [
+            {
+              "answer": "Hawaii",
+              "source": "similar_difficulty",
+              "factId": "us_states_hawaii_no_snakes"
+            },
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_iowa_caucus",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state traditionally holds the first presidential primary caucuses in the nation?",
+          "correctAnswer": "Iowa",
+          "distractors": [
+            {
+              "answer": "Hawaii",
+              "source": "similar_difficulty",
+              "factId": "us_states_hawaii_no_snakes"
+            },
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_iowa_caucus",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state traditionally holds the first presidential primary caucuses in the nation?",
+          "correctAnswer": "Iowa",
+          "distractors": [
+            {
+              "answer": "Hawaii",
+              "source": "similar_difficulty",
+              "factId": "us_states_hawaii_no_snakes"
+            },
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Idaho",
+              "source": "similar_difficulty",
+              "factId": "us_states_idaho_potatoes"
+            },
+            {
+              "answer": "Ohio",
+              "source": "similar_difficulty",
+              "factId": "us_states_ohio_president_birthplace"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_south_dakota_mount_rushmore",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Mount Rushmore, featuring four presidents carved in granite, is located in which state?",
+          "correctAnswer": "South Dakota",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_smallest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_south_dakota_mount_rushmore",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Mount Rushmore, featuring four presidents carved in granite, is located in which state?",
+          "correctAnswer": "South Dakota",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_smallest"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_jamestown"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_south_dakota_mount_rushmore",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Mount Rushmore, featuring four presidents carved in granite, is located in which state?",
+          "correctAnswer": "South Dakota",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "us_states_tennessee_music"
+            },
+            {
+              "answer": "Rhode Island",
+              "source": "similar_difficulty",
+              "factId": "us_states_rhode_island_smallest"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "us_states_virginia_jamestown"
+            },
+            {
+              "answer": "Pennsylvania",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_declaration"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_nebraska_unicameral",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which is the only US state with a unicameral (single-chamber) legislature?",
+          "correctAnswer": "Nebraska",
+          "distractors": [
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            },
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_nebraska_unicameral",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which is the only US state with a unicameral (single-chamber) legislature?",
+          "correctAnswer": "Nebraska",
+          "distractors": [
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            },
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "North Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_dakota_least_visited"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_nebraska_unicameral",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which is the only US state with a unicameral (single-chamber) legislature?",
+          "correctAnswer": "Nebraska",
+          "distractors": [
+            {
+              "answer": "Mississippi",
+              "source": "similar_difficulty",
+              "factId": "us_states_mississippi_blues"
+            },
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "North Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_north_dakota_least_visited"
+            },
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_skyscraper"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_kansas_geographic_center",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "The geographic center of the contiguous 48 US states is located in which state, near the town of Lebanon?",
+          "correctAnswer": "Kansas",
+          "distractors": [
+            {
+              "answer": "Montana",
+              "source": "similar_difficulty",
+              "factId": "us_states_montana_big_sky"
+            },
+            {
+              "answer": "Arizona",
+              "source": "similar_difficulty",
+              "factId": "us_states_arizona_last_contiguous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_kansas_geographic_center",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "The geographic center of the contiguous 48 US states is located in which state, near the town of Lebanon?",
+          "correctAnswer": "Kansas",
+          "distractors": [
+            {
+              "answer": "Montana",
+              "source": "similar_difficulty",
+              "factId": "us_states_montana_big_sky"
+            },
+            {
+              "answer": "Arizona",
+              "source": "similar_difficulty",
+              "factId": "us_states_arizona_last_contiguous"
+            },
+            {
+              "answer": "Ohio",
+              "source": "similar_difficulty",
+              "factId": "us_states_ohio_president_birthplace"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_kansas_geographic_center",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "The geographic center of the contiguous 48 US states is located in which state, near the town of Lebanon?",
+          "correctAnswer": "Kansas",
+          "distractors": [
+            {
+              "answer": "Montana",
+              "source": "similar_difficulty",
+              "factId": "us_states_montana_big_sky"
+            },
+            {
+              "answer": "Arizona",
+              "source": "similar_difficulty",
+              "factId": "us_states_arizona_last_contiguous"
+            },
+            {
+              "answer": "Ohio",
+              "source": "similar_difficulty",
+              "factId": "us_states_ohio_president_birthplace"
+            },
+            {
+              "answer": "Wyoming",
+              "source": "similar_difficulty",
+              "factId": "us_states_wyoming_yellowstone"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_nevada_gambling",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state legalized gambling in 1931 and is home to Las Vegas?",
+          "correctAnswer": "Nevada",
+          "distractors": [
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Montana",
+              "source": "similar_difficulty",
+              "factId": "us_states_montana_big_sky"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_nevada_gambling",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state legalized gambling in 1931 and is home to Las Vegas?",
+          "correctAnswer": "Nevada",
+          "distractors": [
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Montana",
+              "source": "similar_difficulty",
+              "factId": "us_states_montana_big_sky"
+            },
+            {
+              "answer": "Georgia",
+              "source": "similar_difficulty",
+              "factId": "us_states_georgia_coca_cola"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_nevada_gambling",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state legalized gambling in 1931 and is home to Las Vegas?",
+          "correctAnswer": "Nevada",
+          "distractors": [
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Montana",
+              "source": "similar_difficulty",
+              "factId": "us_states_montana_big_sky"
+            },
+            {
+              "answer": "Georgia",
+              "source": "similar_difficulty",
+              "factId": "us_states_georgia_coca_cola"
+            },
+            {
+              "answer": "Utah",
+              "source": "similar_difficulty",
+              "factId": "us_states_utah_five_parks"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_colorado_centennial",
+          "masteryLevel": 0,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state is called the 'Centennial State' because it was admitted on the US centennial year?",
+          "correctAnswer": "Colorado",
+          "distractors": [
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_colorado_centennial",
+          "masteryLevel": 2,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state is called the 'Centennial State' because it was admitted on the US centennial year?",
+          "correctAnswer": "Colorado",
+          "distractors": [
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_colorado_centennial",
+          "masteryLevel": 4,
+          "poolId": "state_names_long",
+          "renderedQuestion": "Which state is called the 'Centennial State' because it was admitted on the US centennial year?",
+          "correctAnswer": "Colorado",
+          "distractors": [
+            {
+              "answer": "Michigan",
+              "source": "similar_difficulty",
+              "factId": "us_states_michigan_great_lakes"
+            },
+            {
+              "answer": "South Dakota",
+              "source": "similar_difficulty",
+              "factId": "us_states_south_dakota_mount_rushmore"
+            },
+            {
+              "answer": "California",
+              "source": "similar_difficulty",
+              "factId": "us_states_california_economy"
+            },
+            {
+              "answer": "Louisiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_louisiana_parishes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_utah_five_parks",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state has five national parks, more than any other state in the Mountain West?",
+          "correctAnswer": "Utah",
+          "distractors": [
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Texas",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_republic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_utah_five_parks",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state has five national parks, more than any other state in the Mountain West?",
+          "correctAnswer": "Utah",
+          "distractors": [
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Texas",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_republic"
+            },
+            {
+              "answer": "Hawaii",
+              "source": "similar_difficulty",
+              "factId": "us_states_hawaii_islands"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_utah_five_parks",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state has five national parks, more than any other state in the Mountain West?",
+          "correctAnswer": "Utah",
+          "distractors": [
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Texas",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_republic"
+            },
+            {
+              "answer": "Hawaii",
+              "source": "similar_difficulty",
+              "factId": "us_states_hawaii_islands"
+            },
+            {
+              "answer": "Ohio",
+              "source": "similar_difficulty",
+              "factId": "us_states_ohio_president_birthplace"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_washington_capital",
+          "masteryLevel": 0,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Washington state — not Seattle?",
+          "correctAnswer": "Olympia",
+          "distractors": [
+            {
+              "answer": "Albany",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_capital"
+            },
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_washington_capital",
+          "masteryLevel": 2,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Washington state — not Seattle?",
+          "correctAnswer": "Olympia",
+          "distractors": [
+            {
+              "answer": "Albany",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_capital"
+            },
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            },
+            {
+              "answer": "Montpelier",
+              "source": "similar_difficulty",
+              "factId": "us_states_vermont_capital_smallest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_washington_capital",
+          "masteryLevel": 4,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of Washington state — not Seattle?",
+          "correctAnswer": "Olympia",
+          "distractors": [
+            {
+              "answer": "Albany",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_capital"
+            },
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            },
+            {
+              "answer": "Montpelier",
+              "source": "similar_difficulty",
+              "factId": "us_states_vermont_capital_smallest"
+            },
+            {
+              "answer": "Harrisburg",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_alaska_largest",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Alaska is approximately how many times larger than the second-largest state, Texas?",
+          "correctAnswer": "2.5",
+          "distractors": [
+            {
+              "answer": "3.2",
+              "source": "numerical",
+              "factId": "_numerical_3.2"
+            },
+            {
+              "answer": "1.4",
+              "source": "numerical",
+              "factId": "_numerical_1.4"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_alaska_largest",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Alaska is approximately how many times larger than the second-largest state, Texas?",
+          "correctAnswer": "2.5",
+          "distractors": [
+            {
+              "answer": "3.2",
+              "source": "numerical",
+              "factId": "_numerical_3.2"
+            },
+            {
+              "answer": "1.4",
+              "source": "numerical",
+              "factId": "_numerical_1.4"
+            },
+            {
+              "answer": "3.3",
+              "source": "numerical",
+              "factId": "_numerical_3.3"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_alaska_largest",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Alaska is approximately how many times larger than the second-largest state, Texas?",
+          "correctAnswer": "2.5",
+          "distractors": [
+            {
+              "answer": "3.2",
+              "source": "numerical",
+              "factId": "_numerical_3.2"
+            },
+            {
+              "answer": "1.4",
+              "source": "numerical",
+              "factId": "_numerical_1.4"
+            },
+            {
+              "answer": "3.3",
+              "source": "numerical",
+              "factId": "_numerical_3.3"
+            },
+            {
+              "answer": "3.6",
+              "source": "numerical",
+              "factId": "_numerical_3.6"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_hawaii_islands",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which is the only US state made entirely of islands?",
+          "correctAnswer": "Hawaii",
+          "distractors": [
+            {
+              "answer": "Utah",
+              "source": "similar_difficulty",
+              "factId": "us_states_utah_five_parks"
+            },
+            {
+              "answer": "Texas",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_republic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_hawaii_islands",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which is the only US state made entirely of islands?",
+          "correctAnswer": "Hawaii",
+          "distractors": [
+            {
+              "answer": "Utah",
+              "source": "similar_difficulty",
+              "factId": "us_states_utah_five_parks"
+            },
+            {
+              "answer": "Texas",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_republic"
+            },
+            {
+              "answer": "Alaska",
+              "source": "similar_difficulty",
+              "factId": "us_states_alaska_purchased"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_hawaii_islands",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which is the only US state made entirely of islands?",
+          "correctAnswer": "Hawaii",
+          "distractors": [
+            {
+              "answer": "Utah",
+              "source": "similar_difficulty",
+              "factId": "us_states_utah_five_parks"
+            },
+            {
+              "answer": "Texas",
+              "source": "similar_difficulty",
+              "factId": "us_states_texas_republic"
+            },
+            {
+              "answer": "Alaska",
+              "source": "similar_difficulty",
+              "factId": "us_states_alaska_purchased"
+            },
+            {
+              "answer": "Wyoming",
+              "source": "similar_difficulty",
+              "factId": "us_states_wyoming_yellowstone"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_north_carolina_capital",
+          "masteryLevel": 0,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of North Carolina?",
+          "correctAnswer": "Raleigh",
+          "distractors": [
+            {
+              "answer": "Harrisburg",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_capital"
+            },
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_north_carolina_capital",
+          "masteryLevel": 2,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of North Carolina?",
+          "correctAnswer": "Raleigh",
+          "distractors": [
+            {
+              "answer": "Harrisburg",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_capital"
+            },
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            },
+            {
+              "answer": "Boston",
+              "source": "similar_difficulty",
+              "factId": "us_states_massachusetts_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_north_carolina_capital",
+          "masteryLevel": 4,
+          "poolId": "state_capitals",
+          "renderedQuestion": "What is the capital of North Carolina?",
+          "correctAnswer": "Raleigh",
+          "distractors": [
+            {
+              "answer": "Harrisburg",
+              "source": "similar_difficulty",
+              "factId": "us_states_pennsylvania_capital"
+            },
+            {
+              "answer": "Springfield",
+              "source": "similar_difficulty",
+              "factId": "us_states_illinois_capital"
+            },
+            {
+              "answer": "Boston",
+              "source": "similar_difficulty",
+              "factId": "us_states_massachusetts_capital"
+            },
+            {
+              "answer": "Albany",
+              "source": "similar_difficulty",
+              "factId": "us_states_new_york_capital"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_texas_independent_republic",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Texas join the US after being an independent republic?",
+          "correctAnswer": "1845",
+          "distractors": [
+            {
+              "answer": "1868",
+              "source": "numerical",
+              "factId": "_numerical_1868"
+            },
+            {
+              "answer": "1786",
+              "source": "numerical",
+              "factId": "_numerical_1786"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_texas_independent_republic",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Texas join the US after being an independent republic?",
+          "correctAnswer": "1845",
+          "distractors": [
+            {
+              "answer": "1868",
+              "source": "numerical",
+              "factId": "_numerical_1868"
+            },
+            {
+              "answer": "1786",
+              "source": "numerical",
+              "factId": "_numerical_1786"
+            },
+            {
+              "answer": "1893",
+              "source": "numerical",
+              "factId": "_numerical_1893"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_texas_independent_republic",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Texas join the US after being an independent republic?",
+          "correctAnswer": "1845",
+          "distractors": [
+            {
+              "answer": "1868",
+              "source": "numerical",
+              "factId": "_numerical_1868"
+            },
+            {
+              "answer": "1786",
+              "source": "numerical",
+              "factId": "_numerical_1786"
+            },
+            {
+              "answer": "1893",
+              "source": "numerical",
+              "factId": "_numerical_1893"
+            },
+            {
+              "answer": "1827",
+              "source": "numerical",
+              "factId": "_numerical_1827"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "us_states_alaska_coastline",
+          "masteryLevel": 0,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state has more coastline than all other US states combined?",
+          "correctAnswer": "Alaska",
+          "distractors": [
+            {
+              "answer": "Georgia",
+              "source": "similar_difficulty",
+              "factId": "us_states_georgia_coca_cola"
+            },
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "us_states_alaska_coastline",
+          "masteryLevel": 2,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state has more coastline than all other US states combined?",
+          "correctAnswer": "Alaska",
+          "distractors": [
+            {
+              "answer": "Georgia",
+              "source": "similar_difficulty",
+              "factId": "us_states_georgia_coca_cola"
+            },
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Alabama",
+              "source": "similar_difficulty",
+              "factId": "us_states_alabama_911"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "us_states_alaska_coastline",
+          "masteryLevel": 4,
+          "poolId": "state_names_short",
+          "renderedQuestion": "Which state has more coastline than all other US states combined?",
+          "correctAnswer": "Alaska",
+          "distractors": [
+            {
+              "answer": "Georgia",
+              "source": "similar_difficulty",
+              "factId": "us_states_georgia_coca_cola"
+            },
+            {
+              "answer": "Indiana",
+              "source": "similar_difficulty",
+              "factId": "us_states_indiana_indy500"
+            },
+            {
+              "answer": "Alabama",
+              "source": "similar_difficulty",
+              "factId": "us_states_alabama_911"
+            },
+            {
+              "answer": "Kansas",
+              "source": "similar_difficulty",
+              "factId": "us_states_kansas_geographic_center"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

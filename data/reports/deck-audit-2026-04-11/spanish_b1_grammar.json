@@ -1,0 +1,4517 @@
+{
+  "timestamp": "2026-04-11T02:00:35.821Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 46,
+  "decks": [
+    {
+      "deckId": "spanish_b1_grammar",
+      "deckName": "Spanish B1 Grammar",
+      "deckClass": "vocab",
+      "totalFacts": 175,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 46,
+      "issuesByType": {
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 37
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 3
+        },
+        "trivially_eliminatable": {
+          "fail": 0,
+          "warn": 3
+        },
+        "all_pool_fill": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "es-gram-b1-subj-ar-llegar-yo-0",
+          "masteryLevel": 0,
+          "poolId": "subj_ar_regular",
+          "renderedQuestion": "Espero que {___} pronto.\n(I hope you arrive soon.)",
+          "correctAnswer": "llegue",
+          "distractors": [
+            {
+              "answer": "llames",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-llamar-tu-0"
+            },
+            {
+              "answer": "trabaje",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-trabajar-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-ar-llegar-yo-0",
+          "masteryLevel": 2,
+          "poolId": "subj_ar_regular",
+          "renderedQuestion": "Espero que {___} pronto.\n(I hope you arrive soon.)",
+          "correctAnswer": "llegue",
+          "distractors": [
+            {
+              "answer": "llames",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-llamar-tu-0"
+            },
+            {
+              "answer": "trabaje",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-trabajar-el-0"
+            },
+            {
+              "answer": "hables",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-hablar-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-ar-llegar-yo-0",
+          "masteryLevel": 4,
+          "poolId": "subj_ar_regular",
+          "renderedQuestion": "Espero que {___} pronto.\n(I hope you arrive soon.)",
+          "correctAnswer": "llegue",
+          "distractors": [
+            {
+              "answer": "llames",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-llamar-tu-0"
+            },
+            {
+              "answer": "trabaje",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-trabajar-el-0"
+            },
+            {
+              "answer": "hables",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-hablar-tu-0"
+            },
+            {
+              "answer": "hablemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-hablar-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-ar-hablar-nosotros-0",
+          "masteryLevel": 0,
+          "poolId": "subj_ar_regular",
+          "renderedQuestion": "Es importante que {___} claramente.\n(It's important that we speak clearly.)",
+          "correctAnswer": "hablemos",
+          "distractors": [
+            {
+              "answer": "llegue",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-llegar-el-0"
+            },
+            {
+              "answer": "hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-hablar-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-ar-hablar-nosotros-0",
+          "masteryLevel": 2,
+          "poolId": "subj_ar_regular",
+          "renderedQuestion": "Es importante que {___} claramente.\n(It's important that we speak clearly.)",
+          "correctAnswer": "hablemos",
+          "distractors": [
+            {
+              "answer": "llegue",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-llegar-el-0"
+            },
+            {
+              "answer": "hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-hablar-ellos-0"
+            },
+            {
+              "answer": "trabaje",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-trabajar-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-ar-hablar-nosotros-0",
+          "masteryLevel": 4,
+          "poolId": "subj_ar_regular",
+          "renderedQuestion": "Es importante que {___} claramente.\n(It's important that we speak clearly.)",
+          "correctAnswer": "hablemos",
+          "distractors": [
+            {
+              "answer": "llegue",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-llegar-el-0"
+            },
+            {
+              "answer": "hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-hablar-ellos-0"
+            },
+            {
+              "answer": "trabaje",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-trabajar-el-0"
+            },
+            {
+              "answer": "trabajes",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ar-trabajar-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"trabaje\" and \"trabajes\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-subj-er-beber-tu-0",
+          "masteryLevel": 0,
+          "poolId": "subj_er_ir_regular",
+          "renderedQuestion": "No quiero que {___} tanto café.\n(I don't want you to drink so much coffee.)",
+          "correctAnswer": "bebas",
+          "distractors": [
+            {
+              "answer": "aprendas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-aprender-tu-0"
+            },
+            {
+              "answer": "escribas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ir-escribir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-er-beber-tu-0",
+          "masteryLevel": 2,
+          "poolId": "subj_er_ir_regular",
+          "renderedQuestion": "No quiero que {___} tanto café.\n(I don't want you to drink so much coffee.)",
+          "correctAnswer": "bebas",
+          "distractors": [
+            {
+              "answer": "aprendas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-aprender-tu-0"
+            },
+            {
+              "answer": "escribas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ir-escribir-tu-0"
+            },
+            {
+              "answer": "comas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-comer-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-er-beber-tu-0",
+          "masteryLevel": 4,
+          "poolId": "subj_er_ir_regular",
+          "renderedQuestion": "No quiero que {___} tanto café.\n(I don't want you to drink so much coffee.)",
+          "correctAnswer": "bebas",
+          "distractors": [
+            {
+              "answer": "aprendas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-aprender-tu-0"
+            },
+            {
+              "answer": "escribas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ir-escribir-tu-0"
+            },
+            {
+              "answer": "comas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-comer-tu-0"
+            },
+            {
+              "answer": "coma",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-comer-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-er-aprender-tu-0",
+          "masteryLevel": 0,
+          "poolId": "subj_er_ir_regular",
+          "renderedQuestion": "Espero que {___} mucho en este curso.\n(I hope you learn a lot in this course.)",
+          "correctAnswer": "aprendas",
+          "distractors": [
+            {
+              "answer": "viva",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ir-vivir-el-0"
+            },
+            {
+              "answer": "coma",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-comer-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-er-aprender-tu-0",
+          "masteryLevel": 2,
+          "poolId": "subj_er_ir_regular",
+          "renderedQuestion": "Espero que {___} mucho en este curso.\n(I hope you learn a lot in this course.)",
+          "correctAnswer": "aprendas",
+          "distractors": [
+            {
+              "answer": "viva",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ir-vivir-el-0"
+            },
+            {
+              "answer": "coma",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-comer-el-0"
+            },
+            {
+              "answer": "comas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-comer-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-er-aprender-tu-0",
+          "masteryLevel": 4,
+          "poolId": "subj_er_ir_regular",
+          "renderedQuestion": "Espero que {___} mucho en este curso.\n(I hope you learn a lot in this course.)",
+          "correctAnswer": "aprendas",
+          "distractors": [
+            {
+              "answer": "viva",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ir-vivir-el-0"
+            },
+            {
+              "answer": "coma",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-comer-el-0"
+            },
+            {
+              "answer": "comas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-er-comer-tu-0"
+            },
+            {
+              "answer": "escribas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-ir-escribir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-me-alegro-de-que-0",
+          "masteryLevel": 0,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} estés aquí.\n(I'm glad you're here.)",
+          "correctAnswer": "me alegro de que",
+          "distractors": [
+            {
+              "answer": "es posible que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-es-posible-que-0"
+            },
+            {
+              "answer": "espero que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-espero-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-me-alegro-de-que-0",
+          "masteryLevel": 2,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} estés aquí.\n(I'm glad you're here.)",
+          "correctAnswer": "me alegro de que",
+          "distractors": [
+            {
+              "answer": "es posible que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-es-posible-que-0"
+            },
+            {
+              "answer": "espero que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-espero-que-0"
+            },
+            {
+              "answer": "antes de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-antes-de-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-me-alegro-de-que-0",
+          "masteryLevel": 4,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} estés aquí.\n(I'm glad you're here.)",
+          "correctAnswer": "me alegro de que",
+          "distractors": [
+            {
+              "answer": "es posible que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-es-posible-que-0"
+            },
+            {
+              "answer": "espero que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-espero-que-0"
+            },
+            {
+              "answer": "antes de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-antes-de-que-0"
+            },
+            {
+              "answer": "es importante que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-es-importante-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-es-posible-que-0",
+          "masteryLevel": 0,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} llueva mañana.\n(It's possible that it will rain tomorrow.)",
+          "correctAnswer": "es posible que",
+          "distractors": [
+            {
+              "answer": "cuando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-cuando-0"
+            },
+            {
+              "answer": "me alegro de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-me-alegro-de-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-es-posible-que-0",
+          "masteryLevel": 2,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} llueva mañana.\n(It's possible that it will rain tomorrow.)",
+          "correctAnswer": "es posible que",
+          "distractors": [
+            {
+              "answer": "cuando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-cuando-0"
+            },
+            {
+              "answer": "me alegro de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-me-alegro-de-que-0"
+            },
+            {
+              "answer": "hasta que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-hasta-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-es-posible-que-0",
+          "masteryLevel": 4,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} llueva mañana.\n(It's possible that it will rain tomorrow.)",
+          "correctAnswer": "es posible que",
+          "distractors": [
+            {
+              "answer": "cuando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-cuando-0"
+            },
+            {
+              "answer": "me alegro de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-me-alegro-de-que-0"
+            },
+            {
+              "answer": "hasta que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-hasta-que-0"
+            },
+            {
+              "answer": "no creo que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-no-creo-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-no-creo-que-0",
+          "masteryLevel": 0,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} sea verdad.\n(I don't think it's true.)",
+          "correctAnswer": "no creo que",
+          "distractors": [
+            {
+              "answer": "para que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-para-que-0"
+            },
+            {
+              "answer": "es importante que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-es-importante-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-no-creo-que-0",
+          "masteryLevel": 2,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} sea verdad.\n(I don't think it's true.)",
+          "correctAnswer": "no creo que",
+          "distractors": [
+            {
+              "answer": "para que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-para-que-0"
+            },
+            {
+              "answer": "es importante que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-es-importante-que-0"
+            },
+            {
+              "answer": "antes de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-antes-de-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-no-creo-que-0",
+          "masteryLevel": 4,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} sea verdad.\n(I don't think it's true.)",
+          "correctAnswer": "no creo que",
+          "distractors": [
+            {
+              "answer": "para que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-para-que-0"
+            },
+            {
+              "answer": "es importante que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-es-importante-que-0"
+            },
+            {
+              "answer": "antes de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-antes-de-que-0"
+            },
+            {
+              "answer": "me alegro de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-me-alegro-de-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-cuando-0",
+          "masteryLevel": 0,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} llegues, llámame.\n(When you arrive, call me.)",
+          "correctAnswer": "cuando",
+          "distractors": [
+            {
+              "answer": "antes de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-antes-de-que-0"
+            },
+            {
+              "answer": "no creo que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-no-creo-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-cuando-0",
+          "masteryLevel": 2,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} llegues, llámame.\n(When you arrive, call me.)",
+          "correctAnswer": "cuando",
+          "distractors": [
+            {
+              "answer": "antes de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-antes-de-que-0"
+            },
+            {
+              "answer": "no creo que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-no-creo-que-0"
+            },
+            {
+              "answer": "hasta que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-hasta-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-trigger-cuando-0",
+          "masteryLevel": 4,
+          "poolId": "subj_trigger_phrases",
+          "renderedQuestion": "{___} llegues, llámame.\n(When you arrive, call me.)",
+          "correctAnswer": "cuando",
+          "distractors": [
+            {
+              "answer": "antes de que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-antes-de-que-0"
+            },
+            {
+              "answer": "no creo que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-no-creo-que-0"
+            },
+            {
+              "answer": "hasta que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-hasta-que-0"
+            },
+            {
+              "answer": "para que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-trigger-para-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-ser-tu-0",
+          "masteryLevel": 0,
+          "poolId": "subj_irregulars_ser_estar",
+          "renderedQuestion": "Espero que {___} feliz.\n(I hope you're happy.)",
+          "correctAnswer": "seas",
+          "distractors": [
+            {
+              "answer": "estén",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-estar-ellos-0"
+            },
+            {
+              "answer": "sea",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-ser-tu-0",
+          "masteryLevel": 2,
+          "poolId": "subj_irregulars_ser_estar",
+          "renderedQuestion": "Espero que {___} feliz.\n(I hope you're happy.)",
+          "correctAnswer": "seas",
+          "distractors": [
+            {
+              "answer": "estén",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-estar-ellos-0"
+            },
+            {
+              "answer": "sea",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-el-0"
+            },
+            {
+              "answer": "seamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-ser-tu-0",
+          "masteryLevel": 4,
+          "poolId": "subj_irregulars_ser_estar",
+          "renderedQuestion": "Espero que {___} feliz.\n(I hope you're happy.)",
+          "correctAnswer": "seas",
+          "distractors": [
+            {
+              "answer": "estén",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-estar-ellos-0"
+            },
+            {
+              "answer": "sea",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-el-0"
+            },
+            {
+              "answer": "seamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-nosotros-0"
+            },
+            {
+              "answer": "estemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-estar-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-estar-nosotros-0",
+          "masteryLevel": 0,
+          "poolId": "subj_irregulars_ser_estar",
+          "renderedQuestion": "Es necesario que {___} todos presentes.\n(It's necessary that we all be present.)",
+          "correctAnswer": "estemos",
+          "distractors": [
+            {
+              "answer": "seas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-tu-0"
+            },
+            {
+              "answer": "sea",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-estar-nosotros-0",
+          "masteryLevel": 2,
+          "poolId": "subj_irregulars_ser_estar",
+          "renderedQuestion": "Es necesario que {___} todos presentes.\n(It's necessary that we all be present.)",
+          "correctAnswer": "estemos",
+          "distractors": [
+            {
+              "answer": "seas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-tu-0"
+            },
+            {
+              "answer": "sea",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-el-0"
+            },
+            {
+              "answer": "estés",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-estar-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-estar-nosotros-0",
+          "masteryLevel": 4,
+          "poolId": "subj_irregulars_ser_estar",
+          "renderedQuestion": "Es necesario que {___} todos presentes.\n(It's necessary that we all be present.)",
+          "correctAnswer": "estemos",
+          "distractors": [
+            {
+              "answer": "seas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-tu-0"
+            },
+            {
+              "answer": "sea",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-el-0"
+            },
+            {
+              "answer": "estés",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-estar-tu-0"
+            },
+            {
+              "answer": "seamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ser-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-tener-tu-0",
+          "masteryLevel": 0,
+          "poolId": "subj_irregulars_tener_hacer",
+          "renderedQuestion": "Quiero que {___} cuidado.\n(I want you to be careful.)",
+          "correctAnswer": "tengas",
+          "distractors": [
+            {
+              "answer": "hagas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-hacer-tu-0"
+            },
+            {
+              "answer": "tenga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-tener-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tengas\" and \"tenga\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-tener-tu-0",
+          "masteryLevel": 2,
+          "poolId": "subj_irregulars_tener_hacer",
+          "renderedQuestion": "Quiero que {___} cuidado.\n(I want you to be careful.)",
+          "correctAnswer": "tengas",
+          "distractors": [
+            {
+              "answer": "hagas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-hacer-tu-0"
+            },
+            {
+              "answer": "tenga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-tener-el-0"
+            },
+            {
+              "answer": "haga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-hacer-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tengas\" and \"tenga\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-tener-tu-0",
+          "masteryLevel": 4,
+          "poolId": "subj_irregulars_tener_hacer",
+          "renderedQuestion": "Quiero que {___} cuidado.\n(I want you to be careful.)",
+          "correctAnswer": "tengas",
+          "distractors": [
+            {
+              "answer": "hagas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-hacer-tu-0"
+            },
+            {
+              "answer": "tenga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-tener-el-0"
+            },
+            {
+              "answer": "haga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-hacer-el-0"
+            },
+            {
+              "answer": "salgas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-salir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tengas\" and \"tenga\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-tener-el-0",
+          "masteryLevel": 0,
+          "poolId": "subj_irregulars_tener_hacer",
+          "renderedQuestion": "Es importante que {___} paciencia.\n(It's important that you have patience.)",
+          "correctAnswer": "tenga",
+          "distractors": [
+            {
+              "answer": "salgas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-salir-tu-0"
+            },
+            {
+              "answer": "digas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-decir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-tener-el-0",
+          "masteryLevel": 2,
+          "poolId": "subj_irregulars_tener_hacer",
+          "renderedQuestion": "Es importante que {___} paciencia.\n(It's important that you have patience.)",
+          "correctAnswer": "tenga",
+          "distractors": [
+            {
+              "answer": "salgas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-salir-tu-0"
+            },
+            {
+              "answer": "digas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-decir-tu-0"
+            },
+            {
+              "answer": "hagas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-hacer-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-tener-el-0",
+          "masteryLevel": 4,
+          "poolId": "subj_irregulars_tener_hacer",
+          "renderedQuestion": "Es importante que {___} paciencia.\n(It's important that you have patience.)",
+          "correctAnswer": "tenga",
+          "distractors": [
+            {
+              "answer": "salgas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-salir-tu-0"
+            },
+            {
+              "answer": "digas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-decir-tu-0"
+            },
+            {
+              "answer": "hagas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-hacer-tu-0"
+            },
+            {
+              "answer": "pongas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-poner-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-poder-tu-0",
+          "masteryLevel": 0,
+          "poolId": "subj_irregulars_ir_querer",
+          "renderedQuestion": "Espero que {___} ayudarme.\n(I hope you can help me.)",
+          "correctAnswer": "puedas",
+          "distractors": [
+            {
+              "answer": "vayan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-ellos-0"
+            },
+            {
+              "answer": "quieran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-querer-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-poder-tu-0",
+          "masteryLevel": 2,
+          "poolId": "subj_irregulars_ir_querer",
+          "renderedQuestion": "Espero que {___} ayudarme.\n(I hope you can help me.)",
+          "correctAnswer": "puedas",
+          "distractors": [
+            {
+              "answer": "vayan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-ellos-0"
+            },
+            {
+              "answer": "quieran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-querer-ellos-0"
+            },
+            {
+              "answer": "vayas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-poder-tu-0",
+          "masteryLevel": 4,
+          "poolId": "subj_irregulars_ir_querer",
+          "renderedQuestion": "Espero que {___} ayudarme.\n(I hope you can help me.)",
+          "correctAnswer": "puedas",
+          "distractors": [
+            {
+              "answer": "vayan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-ellos-0"
+            },
+            {
+              "answer": "quieran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-querer-ellos-0"
+            },
+            {
+              "answer": "vayas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-tu-0"
+            },
+            {
+              "answer": "pueda",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-poder-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"puedas\" and \"pueda\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-ir-ellos-0",
+          "masteryLevel": 0,
+          "poolId": "subj_irregulars_ir_querer",
+          "renderedQuestion": "Ojalá {___} a la fiesta.\n(I hope they go to the party.)",
+          "correctAnswer": "vayan",
+          "distractors": [
+            {
+              "answer": "quieran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-querer-ellos-0"
+            },
+            {
+              "answer": "vayas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-ir-ellos-0",
+          "masteryLevel": 2,
+          "poolId": "subj_irregulars_ir_querer",
+          "renderedQuestion": "Ojalá {___} a la fiesta.\n(I hope they go to the party.)",
+          "correctAnswer": "vayan",
+          "distractors": [
+            {
+              "answer": "quieran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-querer-ellos-0"
+            },
+            {
+              "answer": "vayas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-tu-0"
+            },
+            {
+              "answer": "pueda",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-poder-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-ir-ellos-0",
+          "masteryLevel": 4,
+          "poolId": "subj_irregulars_ir_querer",
+          "renderedQuestion": "Ojalá {___} a la fiesta.\n(I hope they go to the party.)",
+          "correctAnswer": "vayan",
+          "distractors": [
+            {
+              "answer": "quieran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-querer-ellos-0"
+            },
+            {
+              "answer": "vayas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-tu-0"
+            },
+            {
+              "answer": "pueda",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-poder-el-0"
+            },
+            {
+              "answer": "vengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-venir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-saber-tu-0",
+          "masteryLevel": 0,
+          "poolId": "subj_irregulars_ir_querer",
+          "renderedQuestion": "Espero que {___} la respuesta.\n(I hope you know the answer.)",
+          "correctAnswer": "sepas",
+          "distractors": [
+            {
+              "answer": "pueda",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-poder-el-0"
+            },
+            {
+              "answer": "vengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-venir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-saber-tu-0",
+          "masteryLevel": 2,
+          "poolId": "subj_irregulars_ir_querer",
+          "renderedQuestion": "Espero que {___} la respuesta.\n(I hope you know the answer.)",
+          "correctAnswer": "sepas",
+          "distractors": [
+            {
+              "answer": "pueda",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-poder-el-0"
+            },
+            {
+              "answer": "vengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-venir-tu-0"
+            },
+            {
+              "answer": "vayan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-subj-irr-saber-tu-0",
+          "masteryLevel": 4,
+          "poolId": "subj_irregulars_ir_querer",
+          "renderedQuestion": "Espero que {___} la respuesta.\n(I hope you know the answer.)",
+          "correctAnswer": "sepas",
+          "distractors": [
+            {
+              "answer": "pueda",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-poder-el-0"
+            },
+            {
+              "answer": "vengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-venir-tu-0"
+            },
+            {
+              "answer": "vayan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-ir-ellos-0"
+            },
+            {
+              "answer": "puedas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-subj-irr-poder-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"pueda\" and \"puedas\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-tu-escribir-0",
+          "masteryLevel": 0,
+          "poolId": "neg_imp_tu",
+          "renderedQuestion": "{___} con lápiz.\n(Don't write in pencil.)",
+          "correctAnswer": "no escribas",
+          "distractors": [
+            {
+              "answer": "no digas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-decir-0"
+            },
+            {
+              "answer": "no seas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-ser-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-tu-escribir-0",
+          "masteryLevel": 2,
+          "poolId": "neg_imp_tu",
+          "renderedQuestion": "{___} con lápiz.\n(Don't write in pencil.)",
+          "correctAnswer": "no escribas",
+          "distractors": [
+            {
+              "answer": "no digas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-decir-0"
+            },
+            {
+              "answer": "no seas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-ser-0"
+            },
+            {
+              "answer": "no hables",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-tu-escribir-0",
+          "masteryLevel": 4,
+          "poolId": "neg_imp_tu",
+          "renderedQuestion": "{___} con lápiz.\n(Don't write in pencil.)",
+          "correctAnswer": "no escribas",
+          "distractors": [
+            {
+              "answer": "no digas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-decir-0"
+            },
+            {
+              "answer": "no seas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-ser-0"
+            },
+            {
+              "answer": "no hables",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-hablar-0"
+            },
+            {
+              "answer": "no hagas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-hacer-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-tu-tener-0",
+          "masteryLevel": 0,
+          "poolId": "neg_imp_tu",
+          "renderedQuestion": "{___} miedo.\n(Don't be afraid.)",
+          "correctAnswer": "no tengas",
+          "distractors": [
+            {
+              "answer": "no vayas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-ir-0"
+            },
+            {
+              "answer": "no vengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-venir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"no tengas\" and \"no vengas\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-tu-tener-0",
+          "masteryLevel": 2,
+          "poolId": "neg_imp_tu",
+          "renderedQuestion": "{___} miedo.\n(Don't be afraid.)",
+          "correctAnswer": "no tengas",
+          "distractors": [
+            {
+              "answer": "no vayas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-ir-0"
+            },
+            {
+              "answer": "no vengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-venir-0"
+            },
+            {
+              "answer": "no salgas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-salir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"no tengas\" and \"no vengas\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-tu-tener-0",
+          "masteryLevel": 4,
+          "poolId": "neg_imp_tu",
+          "renderedQuestion": "{___} miedo.\n(Don't be afraid.)",
+          "correctAnswer": "no tengas",
+          "distractors": [
+            {
+              "answer": "no vayas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-ir-0"
+            },
+            {
+              "answer": "no vengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-venir-0"
+            },
+            {
+              "answer": "no salgas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-salir-0"
+            },
+            {
+              "answer": "no escribas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-escribir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"no tengas\" and \"no vengas\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-tu-ir-0",
+          "masteryLevel": 0,
+          "poolId": "neg_imp_tu",
+          "renderedQuestion": "{___} solo.\n(Don't go alone.)",
+          "correctAnswer": "no vayas",
+          "distractors": [
+            {
+              "answer": "no escribas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-escribir-0"
+            },
+            {
+              "answer": "no tengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-tener-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-tu-ir-0",
+          "masteryLevel": 2,
+          "poolId": "neg_imp_tu",
+          "renderedQuestion": "{___} solo.\n(Don't go alone.)",
+          "correctAnswer": "no vayas",
+          "distractors": [
+            {
+              "answer": "no escribas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-escribir-0"
+            },
+            {
+              "answer": "no tengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-tener-0"
+            },
+            {
+              "answer": "no digas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-decir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-tu-ir-0",
+          "masteryLevel": 4,
+          "poolId": "neg_imp_tu",
+          "renderedQuestion": "{___} solo.\n(Don't go alone.)",
+          "correctAnswer": "no vayas",
+          "distractors": [
+            {
+              "answer": "no escribas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-escribir-0"
+            },
+            {
+              "answer": "no tengas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-tener-0"
+            },
+            {
+              "answer": "no digas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-decir-0"
+            },
+            {
+              "answer": "no seas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-tu-ser-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-usted-preocupar-0",
+          "masteryLevel": 0,
+          "poolId": "neg_imp_formal",
+          "renderedQuestion": "{___}.\n(Don't worry.)",
+          "correctAnswer": "no se preocupe",
+          "distractors": [
+            {
+              "answer": "no hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-ustedes-hablar-0"
+            },
+            {
+              "answer": "no hable",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-usted-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"no hablen\" and \"no hable\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-usted-preocupar-0",
+          "masteryLevel": 2,
+          "poolId": "neg_imp_formal",
+          "renderedQuestion": "{___}.\n(Don't worry.)",
+          "correctAnswer": "no se preocupe",
+          "distractors": [
+            {
+              "answer": "no hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-ustedes-hablar-0"
+            },
+            {
+              "answer": "no hable",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-usted-hablar-0"
+            },
+            {
+              "answer": "no hablemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-nosotros-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"no hablen\" and \"no hable\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-usted-preocupar-0",
+          "masteryLevel": 4,
+          "poolId": "neg_imp_formal",
+          "renderedQuestion": "{___}.\n(Don't worry.)",
+          "correctAnswer": "no se preocupe",
+          "distractors": [
+            {
+              "answer": "no hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-ustedes-hablar-0"
+            },
+            {
+              "answer": "no hable",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-usted-hablar-0"
+            },
+            {
+              "answer": "no hablemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-nosotros-hablar-0"
+            },
+            {
+              "answer": "no salga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-formal-salir-usted-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"no hablen\" and \"no hable\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-imp-usted-tener-0",
+          "masteryLevel": 0,
+          "poolId": "imp_formal_affirm",
+          "renderedQuestion": "{___} cuidado.\n(Be careful.)",
+          "correctAnswer": "tenga",
+          "distractors": [
+            {
+              "answer": "haga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-hacer-0"
+            },
+            {
+              "answer": "ponga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-poner-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-usted-tener-0",
+          "masteryLevel": 2,
+          "poolId": "imp_formal_affirm",
+          "renderedQuestion": "{___} cuidado.\n(Be careful.)",
+          "correctAnswer": "tenga",
+          "distractors": [
+            {
+              "answer": "haga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-hacer-0"
+            },
+            {
+              "answer": "ponga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-poner-0"
+            },
+            {
+              "answer": "diga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-decir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-usted-tener-0",
+          "masteryLevel": 4,
+          "poolId": "imp_formal_affirm",
+          "renderedQuestion": "{___} cuidado.\n(Be careful.)",
+          "correctAnswer": "tenga",
+          "distractors": [
+            {
+              "answer": "haga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-hacer-0"
+            },
+            {
+              "answer": "ponga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-poner-0"
+            },
+            {
+              "answer": "diga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-decir-0"
+            },
+            {
+              "answer": "vaya",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-ir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-usted-hacer-0",
+          "masteryLevel": 0,
+          "poolId": "imp_formal_affirm",
+          "renderedQuestion": "{___} el favor de esperar.\n(Please wait.)",
+          "correctAnswer": "haga",
+          "distractors": [
+            {
+              "answer": "salga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-salir-0"
+            },
+            {
+              "answer": "ponga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-poner-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-usted-hacer-0",
+          "masteryLevel": 2,
+          "poolId": "imp_formal_affirm",
+          "renderedQuestion": "{___} el favor de esperar.\n(Please wait.)",
+          "correctAnswer": "haga",
+          "distractors": [
+            {
+              "answer": "salga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-salir-0"
+            },
+            {
+              "answer": "ponga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-poner-0"
+            },
+            {
+              "answer": "venga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-venir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-usted-hacer-0",
+          "masteryLevel": 4,
+          "poolId": "imp_formal_affirm",
+          "renderedQuestion": "{___} el favor de esperar.\n(Please wait.)",
+          "correctAnswer": "haga",
+          "distractors": [
+            {
+              "answer": "salga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-salir-0"
+            },
+            {
+              "answer": "ponga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-poner-0"
+            },
+            {
+              "answer": "venga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-venir-0"
+            },
+            {
+              "answer": "vaya",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-usted-ir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-ustedes-ir-0",
+          "masteryLevel": 0,
+          "poolId": "imp_formal_ustedes",
+          "renderedQuestion": "{___} directamente al aeropuerto.\n(Go directly to the airport.)",
+          "correctAnswer": "vayan",
+          "distractors": [
+            {
+              "answer": "hagan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-hacer-0"
+            },
+            {
+              "answer": "vengan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-venir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-ustedes-ir-0",
+          "masteryLevel": 2,
+          "poolId": "imp_formal_ustedes",
+          "renderedQuestion": "{___} directamente al aeropuerto.\n(Go directly to the airport.)",
+          "correctAnswer": "vayan",
+          "distractors": [
+            {
+              "answer": "hagan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-hacer-0"
+            },
+            {
+              "answer": "vengan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-venir-0"
+            },
+            {
+              "answer": "tengan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-tener-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"vengan\" and \"tengan\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-imp-ustedes-ir-0",
+          "masteryLevel": 4,
+          "poolId": "imp_formal_ustedes",
+          "renderedQuestion": "{___} directamente al aeropuerto.\n(Go directly to the airport.)",
+          "correctAnswer": "vayan",
+          "distractors": [
+            {
+              "answer": "hagan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-hacer-0"
+            },
+            {
+              "answer": "vengan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-venir-0"
+            },
+            {
+              "answer": "tengan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-tener-0"
+            },
+            {
+              "answer": "hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"vengan\" and \"tengan\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-imp-ustedes-tener-0",
+          "masteryLevel": 0,
+          "poolId": "imp_formal_ustedes",
+          "renderedQuestion": "{___} cuidado con el tráfico.\n(Be careful with traffic.)",
+          "correctAnswer": "tengan",
+          "distractors": [
+            {
+              "answer": "vengan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-venir-0"
+            },
+            {
+              "answer": "vayan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-ir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tengan\" and \"vengan\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-imp-ustedes-tener-0",
+          "masteryLevel": 2,
+          "poolId": "imp_formal_ustedes",
+          "renderedQuestion": "{___} cuidado con el tráfico.\n(Be careful with traffic.)",
+          "correctAnswer": "tengan",
+          "distractors": [
+            {
+              "answer": "vengan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-venir-0"
+            },
+            {
+              "answer": "vayan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-ir-0"
+            },
+            {
+              "answer": "hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tengan\" and \"vengan\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-imp-ustedes-tener-0",
+          "masteryLevel": 4,
+          "poolId": "imp_formal_ustedes",
+          "renderedQuestion": "{___} cuidado con el tráfico.\n(Be careful with traffic.)",
+          "correctAnswer": "tengan",
+          "distractors": [
+            {
+              "answer": "vengan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-venir-0"
+            },
+            {
+              "answer": "vayan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-ir-0"
+            },
+            {
+              "answer": "hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-hablar-0"
+            },
+            {
+              "answer": "hagan",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-ustedes-hacer-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tengan\" and \"vengan\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-imp-nosotros-hacer-0",
+          "masteryLevel": 0,
+          "poolId": "imp_nosotros",
+          "renderedQuestion": "{___} un descanso.\n(Let's take a break.)",
+          "correctAnswer": "hagamos",
+          "distractors": [
+            {
+              "answer": "seamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-ser-0"
+            },
+            {
+              "answer": "hablemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-nosotros-hacer-0",
+          "masteryLevel": 2,
+          "poolId": "imp_nosotros",
+          "renderedQuestion": "{___} un descanso.\n(Let's take a break.)",
+          "correctAnswer": "hagamos",
+          "distractors": [
+            {
+              "answer": "seamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-ser-0"
+            },
+            {
+              "answer": "hablemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-hablar-0"
+            },
+            {
+              "answer": "tengamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-tener-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-nosotros-hacer-0",
+          "masteryLevel": 4,
+          "poolId": "imp_nosotros",
+          "renderedQuestion": "{___} un descanso.\n(Let's take a break.)",
+          "correctAnswer": "hagamos",
+          "distractors": [
+            {
+              "answer": "seamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-ser-0"
+            },
+            {
+              "answer": "hablemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-hablar-0"
+            },
+            {
+              "answer": "tengamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-tener-0"
+            },
+            {
+              "answer": "comamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-comer-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-nosotros-tener-0",
+          "masteryLevel": 0,
+          "poolId": "imp_nosotros",
+          "renderedQuestion": "{___} paciencia.\n(Let's be patient.)",
+          "correctAnswer": "tengamos",
+          "distractors": [
+            {
+              "answer": "seamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-ser-0"
+            },
+            {
+              "answer": "hagamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-hacer-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-nosotros-tener-0",
+          "masteryLevel": 2,
+          "poolId": "imp_nosotros",
+          "renderedQuestion": "{___} paciencia.\n(Let's be patient.)",
+          "correctAnswer": "tengamos",
+          "distractors": [
+            {
+              "answer": "seamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-ser-0"
+            },
+            {
+              "answer": "hagamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-hacer-0"
+            },
+            {
+              "answer": "comamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-comer-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-imp-nosotros-tener-0",
+          "masteryLevel": 4,
+          "poolId": "imp_nosotros",
+          "renderedQuestion": "{___} paciencia.\n(Let's be patient.)",
+          "correctAnswer": "tengamos",
+          "distractors": [
+            {
+              "answer": "seamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-ser-0"
+            },
+            {
+              "answer": "hagamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-hacer-0"
+            },
+            {
+              "answer": "comamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-comer-0"
+            },
+            {
+              "answer": "hablemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-imp-nosotros-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-cond-reg-estudiar-yo-0",
+          "masteryLevel": 0,
+          "poolId": "conditional_regular",
+          "renderedQuestion": "{___} más si tuviera tiempo.\n(I would study more if I had time.)",
+          "correctAnswer": "estudiaría",
+          "distractors": [
+            {
+              "answer": "viviría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-vivir-yo-0"
+            },
+            {
+              "answer": "trabajarían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-trabajar-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-cond-reg-estudiar-yo-0",
+          "masteryLevel": 2,
+          "poolId": "conditional_regular",
+          "renderedQuestion": "{___} más si tuviera tiempo.\n(I would study more if I had time.)",
+          "correctAnswer": "estudiaría",
+          "distractors": [
+            {
+              "answer": "viviría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-vivir-yo-0"
+            },
+            {
+              "answer": "trabajarían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-trabajar-ellos-0"
+            },
+            {
+              "answer": "hablaría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-hablar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-cond-reg-estudiar-yo-0",
+          "masteryLevel": 4,
+          "poolId": "conditional_regular",
+          "renderedQuestion": "{___} más si tuviera tiempo.\n(I would study more if I had time.)",
+          "correctAnswer": "estudiaría",
+          "distractors": [
+            {
+              "answer": "viviría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-vivir-yo-0"
+            },
+            {
+              "answer": "trabajarían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-trabajar-ellos-0"
+            },
+            {
+              "answer": "hablaría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-hablar-yo-0"
+            },
+            {
+              "answer": "comería",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-comer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-cond-reg-hablar-yo-0",
+          "masteryLevel": 0,
+          "poolId": "conditional_regular",
+          "renderedQuestion": "{___} con ella, pero no tengo tiempo.\n(I would talk to her, but I don't have time.)",
+          "correctAnswer": "hablaría",
+          "distractors": [
+            {
+              "answer": "trabajarían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-trabajar-ellos-0"
+            },
+            {
+              "answer": "hablarías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-hablar-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"hablaría\" and \"hablarías\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-cond-reg-hablar-yo-0",
+          "masteryLevel": 2,
+          "poolId": "conditional_regular",
+          "renderedQuestion": "{___} con ella, pero no tengo tiempo.\n(I would talk to her, but I don't have time.)",
+          "correctAnswer": "hablaría",
+          "distractors": [
+            {
+              "answer": "trabajarían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-trabajar-ellos-0"
+            },
+            {
+              "answer": "hablarías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-hablar-tu-0"
+            },
+            {
+              "answer": "comería",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-comer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"hablaría\" and \"hablarías\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-cond-reg-hablar-yo-0",
+          "masteryLevel": 4,
+          "poolId": "conditional_regular",
+          "renderedQuestion": "{___} con ella, pero no tengo tiempo.\n(I would talk to her, but I don't have time.)",
+          "correctAnswer": "hablaría",
+          "distractors": [
+            {
+              "answer": "trabajarían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-trabajar-ellos-0"
+            },
+            {
+              "answer": "hablarías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-hablar-tu-0"
+            },
+            {
+              "answer": "comería",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-comer-yo-0"
+            },
+            {
+              "answer": "viviría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-reg-vivir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"hablaría\" and \"hablarías\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-cond-irr-tener-tu-0",
+          "masteryLevel": 0,
+          "poolId": "conditional_irregular",
+          "renderedQuestion": "¿{___} tiempo para ayudarme?\n(Would you have time to help me?)",
+          "correctAnswer": "tendrías",
+          "distractors": [
+            {
+              "answer": "podrías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-poder-tu-0"
+            },
+            {
+              "answer": "diría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-decir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-cond-irr-tener-tu-0",
+          "masteryLevel": 2,
+          "poolId": "conditional_irregular",
+          "renderedQuestion": "¿{___} tiempo para ayudarme?\n(Would you have time to help me?)",
+          "correctAnswer": "tendrías",
+          "distractors": [
+            {
+              "answer": "podrías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-poder-tu-0"
+            },
+            {
+              "answer": "diría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-decir-yo-0"
+            },
+            {
+              "answer": "harías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-hacer-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-cond-irr-tener-tu-0",
+          "masteryLevel": 4,
+          "poolId": "conditional_irregular",
+          "renderedQuestion": "¿{___} tiempo para ayudarme?\n(Would you have time to help me?)",
+          "correctAnswer": "tendrías",
+          "distractors": [
+            {
+              "answer": "podrías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-poder-tu-0"
+            },
+            {
+              "answer": "diría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-decir-yo-0"
+            },
+            {
+              "answer": "harías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-hacer-tu-0"
+            },
+            {
+              "answer": "vendrías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-venir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tendrías\" and \"vendrías\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-cond-irr-poder-tu-0",
+          "masteryLevel": 0,
+          "poolId": "conditional_irregular",
+          "renderedQuestion": "¿{___} hablar más despacio?\n(Could you speak more slowly?)",
+          "correctAnswer": "podrías",
+          "distractors": [
+            {
+              "answer": "podría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-poder-usted-0"
+            },
+            {
+              "answer": "diría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-decir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"podrías\" and \"podría\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-cond-irr-poder-tu-0",
+          "masteryLevel": 2,
+          "poolId": "conditional_irregular",
+          "renderedQuestion": "¿{___} hablar más despacio?\n(Could you speak more slowly?)",
+          "correctAnswer": "podrías",
+          "distractors": [
+            {
+              "answer": "podría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-poder-usted-0"
+            },
+            {
+              "answer": "diría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-decir-yo-0"
+            },
+            {
+              "answer": "harías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-hacer-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"podrías\" and \"podría\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-cond-irr-poder-tu-0",
+          "masteryLevel": 4,
+          "poolId": "conditional_irregular",
+          "renderedQuestion": "¿{___} hablar más despacio?\n(Could you speak more slowly?)",
+          "correctAnswer": "podrías",
+          "distractors": [
+            {
+              "answer": "podría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-poder-usted-0"
+            },
+            {
+              "answer": "diría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-decir-yo-0"
+            },
+            {
+              "answer": "harías",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-hacer-tu-0"
+            },
+            {
+              "answer": "haría",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-cond-irr-hacer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"podrías\" and \"podría\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-fut-reg-trabajar-tu-0",
+          "masteryLevel": 0,
+          "poolId": "future_regular",
+          "renderedQuestion": "Si consigues el trabajo, {___} mucho.\n(If you get the job, you'll work a lot.)",
+          "correctAnswer": "trabajarás",
+          "distractors": [
+            {
+              "answer": "iremos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-si-clause-2-0"
+            },
+            {
+              "answer": "hablaré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-hablar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-reg-trabajar-tu-0",
+          "masteryLevel": 2,
+          "poolId": "future_regular",
+          "renderedQuestion": "Si consigues el trabajo, {___} mucho.\n(If you get the job, you'll work a lot.)",
+          "correctAnswer": "trabajarás",
+          "distractors": [
+            {
+              "answer": "iremos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-si-clause-2-0"
+            },
+            {
+              "answer": "hablaré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-hablar-yo-0"
+            },
+            {
+              "answer": "aprobarás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-si-clause-1-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-reg-trabajar-tu-0",
+          "masteryLevel": 4,
+          "poolId": "future_regular",
+          "renderedQuestion": "Si consigues el trabajo, {___} mucho.\n(If you get the job, you'll work a lot.)",
+          "correctAnswer": "trabajarás",
+          "distractors": [
+            {
+              "answer": "iremos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-si-clause-2-0"
+            },
+            {
+              "answer": "hablaré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-hablar-yo-0"
+            },
+            {
+              "answer": "aprobarás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-si-clause-1-0"
+            },
+            {
+              "answer": "viviré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-vivir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-si-clause-1-0",
+          "masteryLevel": 0,
+          "poolId": "future_regular",
+          "renderedQuestion": "Si estudias, {___} el examen.\n(If you study, you will pass the exam.)",
+          "correctAnswer": "aprobarás",
+          "distractors": [
+            {
+              "answer": "hablaré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-hablar-yo-0"
+            },
+            {
+              "answer": "trabajarás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-trabajar-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-si-clause-1-0",
+          "masteryLevel": 2,
+          "poolId": "future_regular",
+          "renderedQuestion": "Si estudias, {___} el examen.\n(If you study, you will pass the exam.)",
+          "correctAnswer": "aprobarás",
+          "distractors": [
+            {
+              "answer": "hablaré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-hablar-yo-0"
+            },
+            {
+              "answer": "trabajarás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-trabajar-tu-0"
+            },
+            {
+              "answer": "iremos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-si-clause-2-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-si-clause-1-0",
+          "masteryLevel": 4,
+          "poolId": "future_regular",
+          "renderedQuestion": "Si estudias, {___} el examen.\n(If you study, you will pass the exam.)",
+          "correctAnswer": "aprobarás",
+          "distractors": [
+            {
+              "answer": "hablaré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-hablar-yo-0"
+            },
+            {
+              "answer": "trabajarás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-trabajar-tu-0"
+            },
+            {
+              "answer": "iremos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-si-clause-2-0"
+            },
+            {
+              "answer": "viviré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-reg-vivir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-irr-hacer-yo-0",
+          "masteryLevel": 0,
+          "poolId": "future_irregular",
+          "renderedQuestion": "{___} los deberes esta tarde.\n(I will do my homework this afternoon.)",
+          "correctAnswer": "haré",
+          "distractors": [
+            {
+              "answer": "podrás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-poder-tu-0"
+            },
+            {
+              "answer": "vendrás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-venir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-irr-hacer-yo-0",
+          "masteryLevel": 2,
+          "poolId": "future_irregular",
+          "renderedQuestion": "{___} los deberes esta tarde.\n(I will do my homework this afternoon.)",
+          "correctAnswer": "haré",
+          "distractors": [
+            {
+              "answer": "podrás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-poder-tu-0"
+            },
+            {
+              "answer": "vendrás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-venir-tu-0"
+            },
+            {
+              "answer": "tendré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-tener-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-irr-hacer-yo-0",
+          "masteryLevel": 4,
+          "poolId": "future_irregular",
+          "renderedQuestion": "{___} los deberes esta tarde.\n(I will do my homework this afternoon.)",
+          "correctAnswer": "haré",
+          "distractors": [
+            {
+              "answer": "podrás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-poder-tu-0"
+            },
+            {
+              "answer": "vendrás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-venir-tu-0"
+            },
+            {
+              "answer": "tendré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-tener-yo-0"
+            },
+            {
+              "answer": "harás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-hacer-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-irr-poder-tu-0",
+          "masteryLevel": 0,
+          "poolId": "future_irregular",
+          "renderedQuestion": "¿{___} venir mañana?\n(Will you be able to come tomorrow?)",
+          "correctAnswer": "podrás",
+          "distractors": [
+            {
+              "answer": "tendré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-tener-yo-0"
+            },
+            {
+              "answer": "haré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-hacer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-irr-poder-tu-0",
+          "masteryLevel": 2,
+          "poolId": "future_irregular",
+          "renderedQuestion": "¿{___} venir mañana?\n(Will you be able to come tomorrow?)",
+          "correctAnswer": "podrás",
+          "distractors": [
+            {
+              "answer": "tendré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-tener-yo-0"
+            },
+            {
+              "answer": "haré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-hacer-yo-0"
+            },
+            {
+              "answer": "diré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-decir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-fut-irr-poder-tu-0",
+          "masteryLevel": 4,
+          "poolId": "future_irregular",
+          "renderedQuestion": "¿{___} venir mañana?\n(Will you be able to come tomorrow?)",
+          "correctAnswer": "podrás",
+          "distractors": [
+            {
+              "answer": "tendré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-tener-yo-0"
+            },
+            {
+              "answer": "haré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-hacer-yo-0"
+            },
+            {
+              "answer": "diré",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-decir-yo-0"
+            },
+            {
+              "answer": "vendrás",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-fut-irr-venir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-plup-haber-seen-0",
+          "masteryLevel": 0,
+          "poolId": "haber_imperfect",
+          "renderedQuestion": "¿{___} visto esa película antes?\n(Had you seen that film before?)",
+          "correctAnswer": "habías",
+          "distractors": [
+            {
+              "answer": "había",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-plup-haber-yo-0"
+            },
+            {
+              "answer": "habían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-plup-haber-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"habías\" and \"había\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-plup-haber-seen-0",
+          "masteryLevel": 2,
+          "poolId": "haber_imperfect",
+          "renderedQuestion": "¿{___} visto esa película antes?\n(Had you seen that film before?)",
+          "correctAnswer": "habías",
+          "distractors": [
+            {
+              "answer": "había",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-plup-haber-yo-0"
+            },
+            {
+              "answer": "habían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-plup-haber-ellos-0"
+            },
+            {
+              "answer": "habíamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-plup-haber-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"habías\" and \"había\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-plup-haber-seen-0",
+          "masteryLevel": 4,
+          "poolId": "haber_imperfect",
+          "renderedQuestion": "¿{___} visto esa película antes?\n(Had you seen that film before?)",
+          "correctAnswer": "habías",
+          "distractors": [
+            {
+              "answer": "había",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-plup-haber-yo-0"
+            },
+            {
+              "answer": "habían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-plup-haber-ellos-0"
+            },
+            {
+              "answer": "habíamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-plup-haber-nosotros-0"
+            },
+            {
+              "answer": "habremos",
+              "source": "pool_fill",
+              "factId": "_synthetic_habremos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"habías\" and \"había\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-poner-0",
+          "masteryLevel": 0,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "He {___} las llaves en la mesa.\n(I have put the keys on the table.)",
+          "correctAnswer": "puesto",
+          "distractors": [
+            {
+              "answer": "rota",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-romper-adj-0"
+            },
+            {
+              "answer": "muerto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-morir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-poner-0",
+          "masteryLevel": 2,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "He {___} las llaves en la mesa.\n(I have put the keys on the table.)",
+          "correctAnswer": "puesto",
+          "distractors": [
+            {
+              "answer": "rota",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-romper-adj-0"
+            },
+            {
+              "answer": "muerto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-morir-0"
+            },
+            {
+              "answer": "escrito",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-escribir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-poner-0",
+          "masteryLevel": 4,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "He {___} las llaves en la mesa.\n(I have put the keys on the table.)",
+          "correctAnswer": "puesto",
+          "distractors": [
+            {
+              "answer": "rota",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-romper-adj-0"
+            },
+            {
+              "answer": "muerto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-morir-0"
+            },
+            {
+              "answer": "escrito",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-escribir-0"
+            },
+            {
+              "answer": "abierta",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-abrir-adj-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-abrir-adj-0",
+          "masteryLevel": 0,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "La puerta estaba {___}.\n(The door was open.)",
+          "correctAnswer": "abierta",
+          "distractors": [
+            {
+              "answer": "cubierto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-cubrir-0"
+            },
+            {
+              "answer": "hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-hacer-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-abrir-adj-0",
+          "masteryLevel": 2,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "La puerta estaba {___}.\n(The door was open.)",
+          "correctAnswer": "abierta",
+          "distractors": [
+            {
+              "answer": "cubierto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-cubrir-0"
+            },
+            {
+              "answer": "hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-hacer-0"
+            },
+            {
+              "answer": "vuelto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-volver-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-abrir-adj-0",
+          "masteryLevel": 4,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "La puerta estaba {___}.\n(The door was open.)",
+          "correctAnswer": "abierta",
+          "distractors": [
+            {
+              "answer": "cubierto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-cubrir-0"
+            },
+            {
+              "answer": "hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-hacer-0"
+            },
+            {
+              "answer": "vuelto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-volver-0"
+            },
+            {
+              "answer": "escrito",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-escribir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-hacer-0",
+          "masteryLevel": 0,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "¿Has {___} los deberes?\n(Have you done your homework?)",
+          "correctAnswer": "hecho",
+          "distractors": [
+            {
+              "answer": "muerto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-morir-0"
+            },
+            {
+              "answer": "puesto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-poner-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-hacer-0",
+          "masteryLevel": 2,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "¿Has {___} los deberes?\n(Have you done your homework?)",
+          "correctAnswer": "hecho",
+          "distractors": [
+            {
+              "answer": "muerto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-morir-0"
+            },
+            {
+              "answer": "puesto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-poner-0"
+            },
+            {
+              "answer": "vuelto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-volver-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-hacer-0",
+          "masteryLevel": 4,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "¿Has {___} los deberes?\n(Have you done your homework?)",
+          "correctAnswer": "hecho",
+          "distractors": [
+            {
+              "answer": "muerto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-morir-0"
+            },
+            {
+              "answer": "puesto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-poner-0"
+            },
+            {
+              "answer": "vuelto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-volver-0"
+            },
+            {
+              "answer": "roto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-romper-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-cubrir-0",
+          "masteryLevel": 0,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "La mesa está {___} de polvo.\n(The table is covered in dust.)",
+          "correctAnswer": "cubierto",
+          "distractors": [
+            {
+              "answer": "rota",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-romper-adj-0"
+            },
+            {
+              "answer": "puesto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-poner-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-cubrir-0",
+          "masteryLevel": 2,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "La mesa está {___} de polvo.\n(The table is covered in dust.)",
+          "correctAnswer": "cubierto",
+          "distractors": [
+            {
+              "answer": "rota",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-romper-adj-0"
+            },
+            {
+              "answer": "puesto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-poner-0"
+            },
+            {
+              "answer": "abierto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-abrir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-irr-pp-cubrir-0",
+          "masteryLevel": 4,
+          "poolId": "irregular_pp_b1",
+          "renderedQuestion": "La mesa está {___} de polvo.\n(The table is covered in dust.)",
+          "correctAnswer": "cubierto",
+          "distractors": [
+            {
+              "answer": "rota",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-romper-adj-0"
+            },
+            {
+              "answer": "puesto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-poner-0"
+            },
+            {
+              "answer": "abierto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-abrir-0"
+            },
+            {
+              "answer": "vuelto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-irr-pp-volver-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-se-lo-explicado-0",
+          "masteryLevel": 0,
+          "poolId": "double_obj_se_combo",
+          "renderedQuestion": "¿{___} has explicado?\n(Have you explained it to him/her?)",
+          "correctAnswer": "se lo",
+          "distractors": [
+            {
+              "answer": "se los",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-se-los-preste-0"
+            },
+            {
+              "answer": "se las",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-se-las-traje-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"se lo\" and \"se los\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-do-se-lo-explicado-0",
+          "masteryLevel": 2,
+          "poolId": "double_obj_se_combo",
+          "renderedQuestion": "¿{___} has explicado?\n(Have you explained it to him/her?)",
+          "correctAnswer": "se lo",
+          "distractors": [
+            {
+              "answer": "se los",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-se-los-preste-0"
+            },
+            {
+              "answer": "se las",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-se-las-traje-0"
+            },
+            {
+              "answer": "se la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-se-la-mande-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"se lo\" and \"se los\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-do-se-lo-explicado-0",
+          "masteryLevel": 4,
+          "poolId": "double_obj_se_combo",
+          "renderedQuestion": "¿{___} has explicado?\n(Have you explained it to him/her?)",
+          "correctAnswer": "se lo",
+          "distractors": [
+            {
+              "answer": "se los",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-se-los-preste-0"
+            },
+            {
+              "answer": "se las",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-se-las-traje-0"
+            },
+            {
+              "answer": "se la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-se-la-mande-0"
+            },
+            {
+              "answer": "te lo",
+              "source": "pool_fill",
+              "factId": "_synthetic_te lo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"se lo\" and \"se los\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-do-te-lo-juro-0",
+          "masteryLevel": 0,
+          "poolId": "double_obj_me_te_nos",
+          "renderedQuestion": "{___} juro.\n(I swear it to you.)",
+          "correctAnswer": "te lo",
+          "distractors": [
+            {
+              "answer": "me lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-me-lo-puedes-0"
+            },
+            {
+              "answer": "me la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-me-la-mando-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-te-lo-juro-0",
+          "masteryLevel": 2,
+          "poolId": "double_obj_me_te_nos",
+          "renderedQuestion": "{___} juro.\n(I swear it to you.)",
+          "correctAnswer": "te lo",
+          "distractors": [
+            {
+              "answer": "me lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-me-lo-puedes-0"
+            },
+            {
+              "answer": "me la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-me-la-mando-0"
+            },
+            {
+              "answer": "te la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-te-la-enviare-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-te-lo-juro-0",
+          "masteryLevel": 4,
+          "poolId": "double_obj_me_te_nos",
+          "renderedQuestion": "{___} juro.\n(I swear it to you.)",
+          "correctAnswer": "te lo",
+          "distractors": [
+            {
+              "answer": "me lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-me-lo-puedes-0"
+            },
+            {
+              "answer": "me la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-me-la-mando-0"
+            },
+            {
+              "answer": "te la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-te-la-enviare-0"
+            },
+            {
+              "answer": "nos lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-nos-lo-explico-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-me-lo-puedes-0",
+          "masteryLevel": 0,
+          "poolId": "double_obj_me_te_nos",
+          "renderedQuestion": "¿{___} puedes explicar?\n(Can you explain it to me?)",
+          "correctAnswer": "me lo",
+          "distractors": [
+            {
+              "answer": "te lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-te-lo-juro-0"
+            },
+            {
+              "answer": "me la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-me-la-mando-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-me-lo-puedes-0",
+          "masteryLevel": 2,
+          "poolId": "double_obj_me_te_nos",
+          "renderedQuestion": "¿{___} puedes explicar?\n(Can you explain it to me?)",
+          "correctAnswer": "me lo",
+          "distractors": [
+            {
+              "answer": "te lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-te-lo-juro-0"
+            },
+            {
+              "answer": "me la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-me-la-mando-0"
+            },
+            {
+              "answer": "te la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-te-la-enviare-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-me-lo-puedes-0",
+          "masteryLevel": 4,
+          "poolId": "double_obj_me_te_nos",
+          "renderedQuestion": "¿{___} puedes explicar?\n(Can you explain it to me?)",
+          "correctAnswer": "me lo",
+          "distractors": [
+            {
+              "answer": "te lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-te-lo-juro-0"
+            },
+            {
+              "answer": "me la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-me-la-mando-0"
+            },
+            {
+              "answer": "te la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-te-la-enviare-0"
+            },
+            {
+              "answer": "nos lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-nos-lo-explico-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-placement-infin-mandarselo-0",
+          "masteryLevel": 0,
+          "poolId": "pronoun_placement_full",
+          "renderedQuestion": "Necesito {___} hoy.\n(I need to send it to him/her today.)",
+          "correctAnswer": "mandárselo",
+          "distractors": [
+            {
+              "answer": "dártelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-infin-dartelo-0"
+            },
+            {
+              "answer": "dámelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-imp-damelo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-placement-infin-mandarselo-0",
+          "masteryLevel": 2,
+          "poolId": "pronoun_placement_full",
+          "renderedQuestion": "Necesito {___} hoy.\n(I need to send it to him/her today.)",
+          "correctAnswer": "mandárselo",
+          "distractors": [
+            {
+              "answer": "dártelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-infin-dartelo-0"
+            },
+            {
+              "answer": "dámelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-imp-damelo-0"
+            },
+            {
+              "answer": "diciéndomelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-gerund-diciendo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-placement-infin-mandarselo-0",
+          "masteryLevel": 4,
+          "poolId": "pronoun_placement_full",
+          "renderedQuestion": "Necesito {___} hoy.\n(I need to send it to him/her today.)",
+          "correctAnswer": "mandárselo",
+          "distractors": [
+            {
+              "answer": "dártelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-infin-dartelo-0"
+            },
+            {
+              "answer": "dámelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-imp-damelo-0"
+            },
+            {
+              "answer": "diciéndomelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-gerund-diciendo-0"
+            },
+            {
+              "answer": "déselo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-imp-deselo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-rel-donde-ciudad-0",
+          "masteryLevel": 0,
+          "poolId": "relative_pronouns",
+          "renderedQuestion": "La ciudad {___} vivo es Madrid.\n(The city where I live is Madrid.)",
+          "correctAnswer": "donde",
+          "distractors": [
+            {
+              "answer": "quien",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-quien-vi-0"
+            },
+            {
+              "answer": "lo que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-lo-que-verdad-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies place name answers but 3 options don't match: \"donde\", \"quien\", \"lo que\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-rel-donde-ciudad-0",
+          "masteryLevel": 2,
+          "poolId": "relative_pronouns",
+          "renderedQuestion": "La ciudad {___} vivo es Madrid.\n(The city where I live is Madrid.)",
+          "correctAnswer": "donde",
+          "distractors": [
+            {
+              "answer": "quien",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-quien-vi-0"
+            },
+            {
+              "answer": "lo que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-lo-que-verdad-0"
+            },
+            {
+              "answer": "que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-que-libro-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies place name answers but 4 options don't match: \"donde\", \"quien\", \"lo que\", \"que\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-rel-donde-ciudad-0",
+          "masteryLevel": 4,
+          "poolId": "relative_pronouns",
+          "renderedQuestion": "La ciudad {___} vivo es Madrid.\n(The city where I live is Madrid.)",
+          "correctAnswer": "donde",
+          "distractors": [
+            {
+              "answer": "quien",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-quien-vi-0"
+            },
+            {
+              "answer": "lo que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-lo-que-verdad-0"
+            },
+            {
+              "answer": "que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-que-libro-0"
+            },
+            {
+              "answer": "cuándo",
+              "source": "pool_fill",
+              "factId": "_synthetic_cuándo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies place name answers but 5 options don't match: \"donde\", \"quien\", \"lo que\", \"que\", \"cuándo\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-rel-lo-que-verdad-0",
+          "masteryLevel": 0,
+          "poolId": "relative_pronouns",
+          "renderedQuestion": "{___} dices es verdad.\n(What you say is true.)",
+          "correctAnswer": "lo que",
+          "distractors": [
+            {
+              "answer": "que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-que-persona-0"
+            },
+            {
+              "answer": "donde",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-donde-restaurante-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-rel-lo-que-verdad-0",
+          "masteryLevel": 2,
+          "poolId": "relative_pronouns",
+          "renderedQuestion": "{___} dices es verdad.\n(What you say is true.)",
+          "correctAnswer": "lo que",
+          "distractors": [
+            {
+              "answer": "que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-que-persona-0"
+            },
+            {
+              "answer": "donde",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-donde-restaurante-0"
+            },
+            {
+              "answer": "quien",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-quien-trabajo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-rel-lo-que-verdad-0",
+          "masteryLevel": 4,
+          "poolId": "relative_pronouns",
+          "renderedQuestion": "{___} dices es verdad.\n(What you say is true.)",
+          "correctAnswer": "lo que",
+          "distractors": [
+            {
+              "answer": "que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-que-persona-0"
+            },
+            {
+              "answer": "donde",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-donde-restaurante-0"
+            },
+            {
+              "answer": "quien",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-rel-quien-trabajo-0"
+            },
+            {
+              "answer": "cuando",
+              "source": "pool_fill",
+              "factId": "_synthetic_cuando"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-peri-acabar-de-yo-0",
+          "masteryLevel": 0,
+          "poolId": "periphrasis_forms",
+          "renderedQuestion": "{___} llegar a casa.\n(I've just arrived home.)",
+          "correctAnswer": "acabo de",
+          "distractors": [
+            {
+              "answer": "lleva",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-el-0"
+            },
+            {
+              "answer": "llevas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-cuanto-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"lleva\" and \"llevas\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-peri-acabar-de-yo-0",
+          "masteryLevel": 2,
+          "poolId": "periphrasis_forms",
+          "renderedQuestion": "{___} llegar a casa.\n(I've just arrived home.)",
+          "correctAnswer": "acabo de",
+          "distractors": [
+            {
+              "answer": "lleva",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-el-0"
+            },
+            {
+              "answer": "llevas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-cuanto-0"
+            },
+            {
+              "answer": "acabamos de",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-acabar-de-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"lleva\" and \"llevas\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-peri-acabar-de-yo-0",
+          "masteryLevel": 4,
+          "poolId": "periphrasis_forms",
+          "renderedQuestion": "{___} llegar a casa.\n(I've just arrived home.)",
+          "correctAnswer": "acabo de",
+          "distractors": [
+            {
+              "answer": "lleva",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-el-0"
+            },
+            {
+              "answer": "llevas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-cuanto-0"
+            },
+            {
+              "answer": "acabamos de",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-acabar-de-nosotros-0"
+            },
+            {
+              "answer": "volvió a",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-volver-a-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"lleva\" and \"llevas\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-peri-volver-a-el-0",
+          "masteryLevel": 0,
+          "poolId": "periphrasis_forms",
+          "renderedQuestion": "{___} llamar esta mañana.\n(He called again this morning.)",
+          "correctAnswer": "volvió a",
+          "distractors": [
+            {
+              "answer": "llevas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-cuanto-0"
+            },
+            {
+              "answer": "acaba de",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-acabar-de-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-peri-volver-a-el-0",
+          "masteryLevel": 2,
+          "poolId": "periphrasis_forms",
+          "renderedQuestion": "{___} llamar esta mañana.\n(He called again this morning.)",
+          "correctAnswer": "volvió a",
+          "distractors": [
+            {
+              "answer": "llevas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-cuanto-0"
+            },
+            {
+              "answer": "acaba de",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-acabar-de-el-0"
+            },
+            {
+              "answer": "sigo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-seguir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-peri-volver-a-el-0",
+          "masteryLevel": 4,
+          "poolId": "periphrasis_forms",
+          "renderedQuestion": "{___} llamar esta mañana.\n(He called again this morning.)",
+          "correctAnswer": "volvió a",
+          "distractors": [
+            {
+              "answer": "llevas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-cuanto-0"
+            },
+            {
+              "answer": "acaba de",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-acabar-de-el-0"
+            },
+            {
+              "answer": "sigo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-seguir-yo-0"
+            },
+            {
+              "answer": "lleva",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"llevas\" and \"lleva\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-peri-llevar-el-0",
+          "masteryLevel": 0,
+          "poolId": "periphrasis_forms",
+          "renderedQuestion": "{___} dos horas trabajando.\n(He's been working for two hours.)",
+          "correctAnswer": "lleva",
+          "distractors": [
+            {
+              "answer": "llevas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-cuanto-0"
+            },
+            {
+              "answer": "sigue",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-seguir-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"lleva\" and \"llevas\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-peri-llevar-el-0",
+          "masteryLevel": 2,
+          "poolId": "periphrasis_forms",
+          "renderedQuestion": "{___} dos horas trabajando.\n(He's been working for two hours.)",
+          "correctAnswer": "lleva",
+          "distractors": [
+            {
+              "answer": "llevas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-cuanto-0"
+            },
+            {
+              "answer": "sigue",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-seguir-el-0"
+            },
+            {
+              "answer": "acabo de",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-acabar-de-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"lleva\" and \"llevas\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-peri-llevar-el-0",
+          "masteryLevel": 4,
+          "poolId": "periphrasis_forms",
+          "renderedQuestion": "{___} dos horas trabajando.\n(He's been working for two hours.)",
+          "correctAnswer": "lleva",
+          "distractors": [
+            {
+              "answer": "llevas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-llevar-cuanto-0"
+            },
+            {
+              "answer": "sigue",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-seguir-el-0"
+            },
+            {
+              "answer": "acabo de",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-acabar-de-yo-0"
+            },
+            {
+              "answer": "vuelvo a",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-peri-volver-a-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"lleva\" and \"llevas\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-formal-hacer-ustedes-0",
+          "masteryLevel": 0,
+          "poolId": "neg_imp_formal",
+          "renderedQuestion": "{___} ruido, por favor.\n(Please don't make noise.)",
+          "correctAnswer": "no hagan",
+          "distractors": [
+            {
+              "answer": "no salga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-formal-salir-usted-0"
+            },
+            {
+              "answer": "no hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-ustedes-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-formal-hacer-ustedes-0",
+          "masteryLevel": 2,
+          "poolId": "neg_imp_formal",
+          "renderedQuestion": "{___} ruido, por favor.\n(Please don't make noise.)",
+          "correctAnswer": "no hagan",
+          "distractors": [
+            {
+              "answer": "no salga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-formal-salir-usted-0"
+            },
+            {
+              "answer": "no hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-ustedes-hablar-0"
+            },
+            {
+              "answer": "no hablemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-nosotros-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-neg-imp-formal-hacer-ustedes-0",
+          "masteryLevel": 4,
+          "poolId": "neg_imp_formal",
+          "renderedQuestion": "{___} ruido, por favor.\n(Please don't make noise.)",
+          "correctAnswer": "no hagan",
+          "distractors": [
+            {
+              "answer": "no salga",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-formal-salir-usted-0"
+            },
+            {
+              "answer": "no hablen",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-ustedes-hablar-0"
+            },
+            {
+              "answer": "no hablemos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-nosotros-hablar-0"
+            },
+            {
+              "answer": "no vaya",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-neg-imp-formal-ir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-si-type1-comer-0",
+          "masteryLevel": 0,
+          "poolId": "si_clause_patterns",
+          "renderedQuestion": "{___} comes bien, te sentirás mejor.\n(If you eat well, you'll feel better.)",
+          "correctAnswer": "si",
+          "distractors": [
+            {
+              "answer": "aunque + indicativo",
+              "source": "pool_fill",
+              "factId": "_synthetic_aunque + indicativo"
+            },
+            {
+              "answer": "cuando + subjuntivo",
+              "source": "pool_fill",
+              "factId": "_synthetic_cuando + subjuntivo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "trivially_eliminatable",
+              "detail": "Option \"si\" (len 2) is outlier vs avg 13.3"
+            },
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-si-type1-comer-0",
+          "masteryLevel": 2,
+          "poolId": "si_clause_patterns",
+          "renderedQuestion": "{___} comes bien, te sentirás mejor.\n(If you eat well, you'll feel better.)",
+          "correctAnswer": "si",
+          "distractors": [
+            {
+              "answer": "aunque + indicativo",
+              "source": "pool_fill",
+              "factId": "_synthetic_aunque + indicativo"
+            },
+            {
+              "answer": "cuando + subjuntivo",
+              "source": "pool_fill",
+              "factId": "_synthetic_cuando + subjuntivo"
+            },
+            {
+              "answer": "si llueve, iría",
+              "source": "pool_fill",
+              "factId": "_synthetic_si llueve, iría"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "trivially_eliminatable",
+              "detail": "Option \"si\" (len 2) is outlier vs avg 13.8"
+            },
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-si-type1-comer-0",
+          "masteryLevel": 4,
+          "poolId": "si_clause_patterns",
+          "renderedQuestion": "{___} comes bien, te sentirás mejor.\n(If you eat well, you'll feel better.)",
+          "correctAnswer": "si",
+          "distractors": [
+            {
+              "answer": "aunque + indicativo",
+              "source": "pool_fill",
+              "factId": "_synthetic_aunque + indicativo"
+            },
+            {
+              "answer": "cuando + subjuntivo",
+              "source": "pool_fill",
+              "factId": "_synthetic_cuando + subjuntivo"
+            },
+            {
+              "answer": "si llueve, iría",
+              "source": "pool_fill",
+              "factId": "_synthetic_si llueve, iría"
+            },
+            {
+              "answer": "si tienes tiempo, irás",
+              "source": "pool_fill",
+              "factId": "_synthetic_si tienes tiempo, irás"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "trivially_eliminatable",
+              "detail": "Option \"si\" (len 2) is outlier vs avg 15.4"
+            },
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-b1-do-placement-imp-digamelo-0",
+          "masteryLevel": 0,
+          "poolId": "pronoun_placement_full",
+          "renderedQuestion": "{___}.\n(Tell it to me.)",
+          "correctAnswer": "dígamelo",
+          "distractors": [
+            {
+              "answer": "explicártelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-infin-explicartelo-0"
+            },
+            {
+              "answer": "dámelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-imp-damelo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-placement-imp-digamelo-0",
+          "masteryLevel": 2,
+          "poolId": "pronoun_placement_full",
+          "renderedQuestion": "{___}.\n(Tell it to me.)",
+          "correctAnswer": "dígamelo",
+          "distractors": [
+            {
+              "answer": "explicártelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-infin-explicartelo-0"
+            },
+            {
+              "answer": "dámelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-imp-damelo-0"
+            },
+            {
+              "answer": "diciéndomelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-gerund-diciendo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-b1-do-placement-imp-digamelo-0",
+          "masteryLevel": 4,
+          "poolId": "pronoun_placement_full",
+          "renderedQuestion": "{___}.\n(Tell it to me.)",
+          "correctAnswer": "dígamelo",
+          "distractors": [
+            {
+              "answer": "explicártelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-infin-explicartelo-0"
+            },
+            {
+              "answer": "dámelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-imp-damelo-0"
+            },
+            {
+              "answer": "diciéndomelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-gerund-diciendo-0"
+            },
+            {
+              "answer": "explicándomelo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-b1-do-placement-gerund-explicando-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

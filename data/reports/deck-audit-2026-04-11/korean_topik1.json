@@ -1,0 +1,4372 @@
+{
+  "timestamp": "2026-04-11T02:00:58.525Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 1,
+  "totalWarns": 21,
+  "decks": [
+    {
+      "deckId": "korean_topik1",
+      "deckName": "Korean TOPIK 1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 1368,
+      "totalChecks": 150,
+      "failCount": 1,
+      "warnCount": 21,
+      "issuesByType": {
+        "question_too_long": {
+          "fail": 1,
+          "warn": 0
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 20
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "ko-nikl-4850",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '콧노래' mean?",
+          "correctAnswer": "humming",
+          "distractors": [
+            {
+              "answer": "Gyeongbokgung",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1827"
+            },
+            {
+              "answer": "admission",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1224"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-4850",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'humming' in Korean?",
+          "correctAnswer": "콧노래",
+          "distractors": [
+            {
+              "answer": "경복궁",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1827"
+            },
+            {
+              "answer": "입학",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1224"
+            },
+            {
+              "answer": "준비",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1350"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-4850",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "콧노래 — \"A song sung by making nasal sounds, with one's mouth shut.\". Part of speech: noun.",
+          "correctAnswer": "humming",
+          "distractors": [
+            {
+              "answer": "Gyeongbokgung",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1827"
+            },
+            {
+              "answer": "admission",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1224"
+            },
+            {
+              "answer": "preparation",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1350"
+            },
+            {
+              "answer": "high school student",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-102"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-827",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '속' mean?",
+          "correctAnswer": "inside",
+          "distractors": [
+            {
+              "answer": "skirt",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1472"
+            },
+            {
+              "answer": "December",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-919"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-827",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '속' mean?",
+          "correctAnswer": "inside",
+          "distractors": [
+            {
+              "answer": "skirt",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1472"
+            },
+            {
+              "answer": "December",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-919"
+            },
+            {
+              "answer": "pencil",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1048"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-827",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'inside' in Korean?",
+          "correctAnswer": "속",
+          "distractors": [
+            {
+              "answer": "치마",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1472"
+            },
+            {
+              "answer": "십이월",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-919"
+            },
+            {
+              "answer": "연필",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1048"
+            },
+            {
+              "answer": "등산",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-439"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-775",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '서류' mean?",
+          "correctAnswer": "document",
+          "distractors": [
+            {
+              "answer": "Tuesday",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1642"
+            },
+            {
+              "answer": "street",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-55"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-775",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '서류' mean?",
+          "correctAnswer": "document",
+          "distractors": [
+            {
+              "answer": "Tuesday",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1642"
+            },
+            {
+              "answer": "street",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-55"
+            },
+            {
+              "answer": "fan",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-788"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-775",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '서류' mean?",
+          "correctAnswer": "document",
+          "distractors": [
+            {
+              "answer": "Tuesday",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1642"
+            },
+            {
+              "answer": "street",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-55"
+            },
+            {
+              "answer": "fan",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-788"
+            },
+            {
+              "answer": "name",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1174"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1620",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '행복' mean?",
+          "correctAnswer": "happiness",
+          "distractors": [
+            {
+              "answer": "slightly, a little",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-985"
+            },
+            {
+              "answer": "travel",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1034"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1620",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'happiness' in Korean?",
+          "correctAnswer": "행복",
+          "distractors": [
+            {
+              "answer": "약간",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-985"
+            },
+            {
+              "answer": "여행",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1034"
+            },
+            {
+              "answer": "정문",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1307"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1620",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "행복 — blessing or good luck. Part of speech: noun. Also: A feeling of delight coming from enough satisfaction or enjoyment in life; or such a state",
+          "correctAnswer": "happiness",
+          "distractors": [
+            {
+              "answer": "slightly, a little",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-985"
+            },
+            {
+              "answer": "travel",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1034"
+            },
+            {
+              "answer": "front door, main gate",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1307"
+            },
+            {
+              "answer": "class, lesson",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-843"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-3331",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '새우' mean?",
+          "correctAnswer": "shrimp",
+          "distractors": [
+            {
+              "answer": "party, feast",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1250"
+            },
+            {
+              "answer": "stomachache",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-630"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-3331",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'shrimp' in Korean?",
+          "correctAnswer": "새우",
+          "distractors": [
+            {
+              "answer": "잔치",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1250"
+            },
+            {
+              "answer": "배탈",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-630"
+            },
+            {
+              "answer": "칠판",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1480"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-3331",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "새우 — A small crustacean with a bent back, long whiskers and many legs that lives in the water. Part of speech: noun.",
+          "correctAnswer": "shrimp",
+          "distractors": [
+            {
+              "answer": "party, feast",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1250"
+            },
+            {
+              "answer": "stomachache",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-630"
+            },
+            {
+              "answer": "blackboard",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1480"
+            },
+            {
+              "answer": "season",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-97"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-715",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '빨리' mean?",
+          "correctAnswer": "quickly",
+          "distractors": [
+            {
+              "answer": "exactly, absolutely",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-237"
+            },
+            {
+              "answer": "immediately, soon, just",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-593"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-715",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'quickly' in Korean?",
+          "correctAnswer": "빨리",
+          "distractors": [
+            {
+              "answer": "꼭",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-237"
+            },
+            {
+              "answer": "바로",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-593"
+            },
+            {
+              "answer": "곧",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-114"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-715",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '빨리'?",
+          "correctAnswer": "quickly",
+          "distractors": [
+            {
+              "answer": "exactly, absolutely",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-237"
+            },
+            {
+              "answer": "immediately, soon, just",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-593"
+            },
+            {
+              "answer": "soon",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-114"
+            },
+            {
+              "answer": "very, completely",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-954"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1184",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '이용' mean?",
+          "correctAnswer": "usage",
+          "distractors": [
+            {
+              "answer": "squid",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3962"
+            },
+            {
+              "answer": "public official",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-117"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1184",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'usage' in Korean?",
+          "correctAnswer": "이용",
+          "distractors": [
+            {
+              "answer": "오징어",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3962"
+            },
+            {
+              "answer": "공무원",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-117"
+            },
+            {
+              "answer": "사원",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-7186"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1184",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "이용 — The act of using something as occasion demands in a way that is helpful or beneficial to one.', \"The act of using someone or something as a means to satisfy one's own interests.\". Part of speech: noun.",
+          "correctAnswer": "usage",
+          "distractors": [
+            {
+              "answer": "squid",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3962"
+            },
+            {
+              "answer": "public official",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-117"
+            },
+            {
+              "answer": "temple, employee",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-7186"
+            },
+            {
+              "answer": "golf",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1889"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-576",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '미용실' mean?",
+          "correctAnswer": "beauty salon",
+          "distractors": [
+            {
+              "answer": "razor, shaving",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2743"
+            },
+            {
+              "answer": "cider",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-734"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-576",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '미용실' mean?",
+          "correctAnswer": "beauty salon",
+          "distractors": [
+            {
+              "answer": "razor, shaving",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2743"
+            },
+            {
+              "answer": "cider",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-734"
+            },
+            {
+              "answer": "major",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1284"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-576",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'beauty salon' in Korean?",
+          "correctAnswer": "미용실",
+          "distractors": [
+            {
+              "answer": "면도",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2743"
+            },
+            {
+              "answer": "사이다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-734"
+            },
+            {
+              "answer": "전공",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1284"
+            },
+            {
+              "answer": "눈사람",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2304"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1328",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '좋다' mean?",
+          "correctAnswer": "good",
+          "distractors": [
+            {
+              "answer": "different",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-340"
+            },
+            {
+              "answer": "severe, terrible",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-918"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1328",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'good' in Korean?",
+          "correctAnswer": "좋다",
+          "distractors": [
+            {
+              "answer": "다르다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-340"
+            },
+            {
+              "answer": "심하다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-918"
+            },
+            {
+              "answer": "많다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-489"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1328",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '좋다'?",
+          "correctAnswer": "good",
+          "distractors": [
+            {
+              "answer": "different",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-340"
+            },
+            {
+              "answer": "severe, terrible",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-918"
+            },
+            {
+              "answer": "many",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-489"
+            },
+            {
+              "answer": "hot",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-386"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1135",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '움직이다' mean?",
+          "correctAnswer": "move",
+          "distractors": [
+            {
+              "answer": "rise, open (the eyes)",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-464"
+            },
+            {
+              "answer": "be blocked, be clogged",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-481"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1135",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'move' in Korean?",
+          "correctAnswer": "움직이다",
+          "distractors": [
+            {
+              "answer": "뜨다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-464"
+            },
+            {
+              "answer": "막히다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-481"
+            },
+            {
+              "answer": "일어서다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1210"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1135",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "움직이다 — For a position or posture to change; to change a position or posture. Part of speech: verb. Also: To shift from a place to another.', \"For one's thought to change; to change one's thought.\", 'To work with a certain goal; to make someone or something work, For a certain fact or phenomenon to change; to change a certain fact or phenomenon, For a machine, factory, etc., to be run or operated; to run or operate a machine, factory, etc",
+          "correctAnswer": "move",
+          "distractors": [
+            {
+              "answer": "rise, open (the eyes)",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-464"
+            },
+            {
+              "answer": "be blocked, be clogged",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-481"
+            },
+            {
+              "answer": "get up, stand up",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1210"
+            },
+            {
+              "answer": "call, sing",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-668"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "FAIL",
+              "type": "question_too_long",
+              "detail": "Question length 441 > 400"
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-1142",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '월급' mean?",
+          "correctAnswer": "monthly salary",
+          "distractors": [
+            {
+              "answer": "relation",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-128"
+            },
+            {
+              "answer": "home page",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-5124"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1142",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'monthly salary' in Korean?",
+          "correctAnswer": "월급",
+          "distractors": [
+            {
+              "answer": "관계",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-128"
+            },
+            {
+              "answer": "홈페이지",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-5124"
+            },
+            {
+              "answer": "냉면",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-296"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1142",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "월급 — \"Money paid for one's labor on a monthly basis.\". Part of speech: noun.",
+          "correctAnswer": "monthly salary",
+          "distractors": [
+            {
+              "answer": "relation",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-128"
+            },
+            {
+              "answer": "home page",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-5124"
+            },
+            {
+              "answer": "cold noodle",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-296"
+            },
+            {
+              "answer": "answer",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-370"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-62",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '건강' mean?",
+          "correctAnswer": "health",
+          "distractors": [
+            {
+              "answer": "lunch",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1296"
+            },
+            {
+              "answer": "myself, own",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1240"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-62",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'health' in Korean?",
+          "correctAnswer": "건강",
+          "distractors": [
+            {
+              "answer": "점심",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1296"
+            },
+            {
+              "answer": "자신",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1240"
+            },
+            {
+              "answer": "할아버지",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1607"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-62",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '건강'?",
+          "correctAnswer": "health",
+          "distractors": [
+            {
+              "answer": "lunch",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1296"
+            },
+            {
+              "answer": "myself, own",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1240"
+            },
+            {
+              "answer": "grandfather",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1607"
+            },
+            {
+              "answer": "shorts",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-605"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1597",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '한국' mean?",
+          "correctAnswer": "Korea",
+          "distractors": [
+            {
+              "answer": "volleyball",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2962"
+            },
+            {
+              "answer": "last week",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1374"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"last week\" has 2 format features different from correct \"Korea\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-1597",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'Korea' in Korean?",
+          "correctAnswer": "한국",
+          "distractors": [
+            {
+              "answer": "배구",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2962"
+            },
+            {
+              "answer": "지난주",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1374"
+            },
+            {
+              "answer": "부엌",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-673"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1597",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '한국'?",
+          "correctAnswer": "Korea",
+          "distractors": [
+            {
+              "answer": "volleyball",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2962"
+            },
+            {
+              "answer": "last week",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1374"
+            },
+            {
+              "answer": "kitchen",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-673"
+            },
+            {
+              "answer": "fruit",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-126"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"last week\" has 2 format features different from correct \"Korea\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-4532",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '종일' mean?",
+          "correctAnswer": "all day",
+          "distractors": [
+            {
+              "answer": "today",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1074"
+            },
+            {
+              "answer": "Africa",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3721"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Africa\" has 2 format features different from correct \"all day\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-4532",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'all day' in Korean?",
+          "correctAnswer": "종일",
+          "distractors": [
+            {
+              "answer": "오늘",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1074"
+            },
+            {
+              "answer": "아프리카",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3721"
+            },
+            {
+              "answer": "늦잠",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2322"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-4532",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "종일 — time from morning till evening. Part of speech: noun.",
+          "correctAnswer": "all day",
+          "distractors": [
+            {
+              "answer": "today",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1074"
+            },
+            {
+              "answer": "Africa",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-3721"
+            },
+            {
+              "answer": "oversleeping",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2322"
+            },
+            {
+              "answer": "here and there",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1027"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Africa\" has 2 format features different from correct \"all day\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-1045",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '연세' mean?",
+          "correctAnswer": "age (honorific form)",
+          "distractors": [
+            {
+              "answer": "ice cream",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-952"
+            },
+            {
+              "answer": "fermented soybean paste",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-420"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1045",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'age (honorific form)' in Korean?",
+          "correctAnswer": "연세",
+          "distractors": [
+            {
+              "answer": "아이스크림",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-952"
+            },
+            {
+              "answer": "된장",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-420"
+            },
+            {
+              "answer": "등",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-438"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1045",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "연세 — \"(honorific) One's age. \". Part of speech: noun.",
+          "correctAnswer": "age (honorific form)",
+          "distractors": [
+            {
+              "answer": "ice cream",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-952"
+            },
+            {
+              "answer": "fermented soybean paste",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-420"
+            },
+            {
+              "answer": "etc, back",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-438"
+            },
+            {
+              "answer": "experience",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-91"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1509",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '키' mean?",
+          "correctAnswer": "key, height",
+          "distractors": [
+            {
+              "answer": "rose",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1270"
+            },
+            {
+              "answer": "size",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-735"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1509",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '키' mean?",
+          "correctAnswer": "key, height",
+          "distractors": [
+            {
+              "answer": "rose",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1270"
+            },
+            {
+              "answer": "size",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-735"
+            },
+            {
+              "answer": "travel agency",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1035"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1509",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '키' mean?",
+          "correctAnswer": "key, height",
+          "distractors": [
+            {
+              "answer": "rose",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1270"
+            },
+            {
+              "answer": "size",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-735"
+            },
+            {
+              "answer": "travel agency",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1035"
+            },
+            {
+              "answer": "grey",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1651"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-2507",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '동양' mean?",
+          "correctAnswer": "eastern, orient",
+          "distractors": [
+            {
+              "answer": "broadcast",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-620"
+            },
+            {
+              "answer": "animal",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-410"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-2507",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'eastern, orient' in Korean?",
+          "correctAnswer": "동양",
+          "distractors": [
+            {
+              "answer": "방송",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-620"
+            },
+            {
+              "answer": "동물",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-410"
+            },
+            {
+              "answer": "남편",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-280"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-2507",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '동양'?",
+          "correctAnswer": "eastern, orient",
+          "distractors": [
+            {
+              "answer": "broadcast",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-620"
+            },
+            {
+              "answer": "animal",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-410"
+            },
+            {
+              "answer": "husband",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-280"
+            },
+            {
+              "answer": "lie",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-60"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1027",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '여기저기' mean?",
+          "correctAnswer": "here and there",
+          "distractors": [
+            {
+              "answer": "meeting, gathering",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-536"
+            },
+            {
+              "answer": "reading",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4253"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1027",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'here and there' in Korean?",
+          "correctAnswer": "여기저기",
+          "distractors": [
+            {
+              "answer": "모임",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-536"
+            },
+            {
+              "answer": "읽기",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4253"
+            },
+            {
+              "answer": "옷",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1098"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1027",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "여기저기 — A variety of places or locations that are not clearly specified. Part of speech: noun.",
+          "correctAnswer": "here and there",
+          "distractors": [
+            {
+              "answer": "meeting, gathering",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-536"
+            },
+            {
+              "answer": "reading",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4253"
+            },
+            {
+              "answer": "dress, clothes",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1098"
+            },
+            {
+              "answer": "spring",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-662"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1358",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '중국집' mean?",
+          "correctAnswer": "Chinese restaurant",
+          "distractors": [
+            {
+              "answer": "rule",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-165"
+            },
+            {
+              "answer": "star",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-866"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"rule\" has 2 format features different from correct \"Chinese restaurant\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-1358",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '중국집' mean?",
+          "correctAnswer": "Chinese restaurant",
+          "distractors": [
+            {
+              "answer": "rule",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-165"
+            },
+            {
+              "answer": "star",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-866"
+            },
+            {
+              "answer": "conversation, dialogue",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-378"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"rule\" has 2 format features different from correct \"Chinese restaurant\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-1358",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'Chinese restaurant' in Korean?",
+          "correctAnswer": "중국집",
+          "distractors": [
+            {
+              "answer": "규칙",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-165"
+            },
+            {
+              "answer": "스타",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-866"
+            },
+            {
+              "answer": "대화",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-378"
+            },
+            {
+              "answer": "장갑",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1267"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-613",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '밝다' mean?",
+          "correctAnswer": "bright",
+          "distractors": [
+            {
+              "answer": "come out, appear",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-259"
+            },
+            {
+              "answer": "ask",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-563"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-613",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'bright' in Korean?",
+          "correctAnswer": "밝다",
+          "distractors": [
+            {
+              "answer": "나오다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-259"
+            },
+            {
+              "answer": "묻다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-563"
+            },
+            {
+              "answer": "내다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-288"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-613",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "밝다 — To become light after dark. Part of speech: verb. Also: To become morning after night",
+          "correctAnswer": "bright",
+          "distractors": [
+            {
+              "answer": "come out, appear",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-259"
+            },
+            {
+              "answer": "ask",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-563"
+            },
+            {
+              "answer": "pay, put out",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-288"
+            },
+            {
+              "answer": "cover",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2459"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1236",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '자르다' mean?",
+          "correctAnswer": "cut",
+          "distractors": [
+            {
+              "answer": "listen",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-432"
+            },
+            {
+              "answer": "chatter, make a noise",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-449"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1236",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'cut' in Korean?",
+          "correctAnswer": "자르다",
+          "distractors": [
+            {
+              "answer": "듣다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-432"
+            },
+            {
+              "answer": "떠들다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-449"
+            },
+            {
+              "answer": "걸다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-68"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1236",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '자르다'?",
+          "correctAnswer": "cut",
+          "distractors": [
+            {
+              "answer": "listen",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-432"
+            },
+            {
+              "answer": "chatter, make a noise",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-449"
+            },
+            {
+              "answer": "bet, call",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-68"
+            },
+            {
+              "answer": "gather, get together",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-535"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1035",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '여행사' mean?",
+          "correctAnswer": "travel agency",
+          "distractors": [
+            {
+              "answer": "if, should",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-486"
+            },
+            {
+              "answer": "fan",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-788"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1035",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'travel agency' in Korean?",
+          "correctAnswer": "여행사",
+          "distractors": [
+            {
+              "answer": "만일",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-486"
+            },
+            {
+              "answer": "선풍기",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-788"
+            },
+            {
+              "answer": "홍차",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1636"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1035",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "여행사 — A company that offers an array of services for travel, including transportation, accomodaton, tour guide, etc. Part of speech: noun.",
+          "correctAnswer": "travel agency",
+          "distractors": [
+            {
+              "answer": "if, should",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-486"
+            },
+            {
+              "answer": "fan",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-788"
+            },
+            {
+              "answer": "black tea",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1636"
+            },
+            {
+              "answer": "price",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1114",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '요금' mean?",
+          "correctAnswer": "fee",
+          "distractors": [
+            {
+              "answer": "grandmother",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1606"
+            },
+            {
+              "answer": "dry cleaners, laundromat",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-810"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1114",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '요금' mean?",
+          "correctAnswer": "fee",
+          "distractors": [
+            {
+              "answer": "grandmother",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1606"
+            },
+            {
+              "answer": "dry cleaners, laundromat",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-810"
+            },
+            {
+              "answer": "next year",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-287"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1114",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'fee' in Korean?",
+          "correctAnswer": "요금",
+          "distractors": [
+            {
+              "answer": "할머니",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1606"
+            },
+            {
+              "answer": "세탁소",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-810"
+            },
+            {
+              "answer": "내년",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-287"
+            },
+            {
+              "answer": "중식",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4581"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1006",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '어머님' mean?",
+          "correctAnswer": "mother",
+          "distractors": [
+            {
+              "answer": "river",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-45"
+            },
+            {
+              "answer": "airport",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-123"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1006",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '어머님' mean?",
+          "correctAnswer": "mother",
+          "distractors": [
+            {
+              "answer": "river",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-45"
+            },
+            {
+              "answer": "airport",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-123"
+            },
+            {
+              "answer": "red pepper",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1871"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1006",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '어머님' mean?",
+          "correctAnswer": "mother",
+          "distractors": [
+            {
+              "answer": "river",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-45"
+            },
+            {
+              "answer": "airport",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-123"
+            },
+            {
+              "answer": "red pepper",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1871"
+            },
+            {
+              "answer": "employee",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1650"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-444",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '딸기' mean?",
+          "correctAnswer": "strawberry",
+          "distractors": [
+            {
+              "answer": "slightly, a little",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-985"
+            },
+            {
+              "answer": "curry",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1486"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-444",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'strawberry' in Korean?",
+          "correctAnswer": "딸기",
+          "distractors": [
+            {
+              "answer": "약간",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-985"
+            },
+            {
+              "answer": "카레",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1486"
+            },
+            {
+              "answer": "정거장",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1302"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-444",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "딸기 — A perennial plant that stretches its stems on the ground and bears a red fruit with seeds stuck on the outside, or the fruit. Part of speech: noun.",
+          "correctAnswer": "strawberry",
+          "distractors": [
+            {
+              "answer": "slightly, a little",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-985"
+            },
+            {
+              "answer": "curry",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1486"
+            },
+            {
+              "answer": "station, depot",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1302"
+            },
+            {
+              "answer": "paper",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1327"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-5025",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '한국어' mean?",
+          "correctAnswer": "Korean language",
+          "distractors": [
+            {
+              "answer": "uncle, mister",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-953"
+            },
+            {
+              "answer": "before, previous",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1283"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-5025",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '한국어' mean?",
+          "correctAnswer": "Korean language",
+          "distractors": [
+            {
+              "answer": "uncle, mister",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-953"
+            },
+            {
+              "answer": "before, previous",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1283"
+            },
+            {
+              "answer": "location, position",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1146"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-5025",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'Korean language' in Korean?",
+          "correctAnswer": "한국어",
+          "distractors": [
+            {
+              "answer": "아저씨",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-953"
+            },
+            {
+              "answer": "전",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1283"
+            },
+            {
+              "answer": "위치",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1146"
+            },
+            {
+              "answer": "한강",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1596"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1226",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '잊다' mean?",
+          "correctAnswer": "forget",
+          "distractors": [
+            {
+              "answer": "rise, stand, occur",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1209"
+            },
+            {
+              "answer": "sell, be sold",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1551"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1226",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'forget' in Korean?",
+          "correctAnswer": "잊다",
+          "distractors": [
+            {
+              "answer": "일어나다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1209"
+            },
+            {
+              "answer": "팔리다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1551"
+            },
+            {
+              "answer": "서다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-771"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1226",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '잊다'?",
+          "correctAnswer": "forget",
+          "distractors": [
+            {
+              "answer": "rise, stand, occur",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1209"
+            },
+            {
+              "answer": "sell, be sold",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1551"
+            },
+            {
+              "answer": "stand",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-771"
+            },
+            {
+              "answer": "fix",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-111"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1511",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '킬로그램' mean?",
+          "correctAnswer": "kilogram",
+          "distractors": [
+            {
+              "answer": "post office",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1124"
+            },
+            {
+              "answer": "fish",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-766"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1511",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '킬로그램' mean?",
+          "correctAnswer": "kilogram",
+          "distractors": [
+            {
+              "answer": "post office",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1124"
+            },
+            {
+              "answer": "fish",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-766"
+            },
+            {
+              "answer": "inside",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-827"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1511",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '킬로그램' mean?",
+          "correctAnswer": "kilogram",
+          "distractors": [
+            {
+              "answer": "post office",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1124"
+            },
+            {
+              "answer": "fish",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-766"
+            },
+            {
+              "answer": "inside",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-827"
+            },
+            {
+              "answer": "egg",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-356"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1343",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '주위' mean?",
+          "correctAnswer": "around",
+          "distractors": [
+            {
+              "answer": "west, western",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-780"
+            },
+            {
+              "answer": "sofa",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-823"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1343",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '주위' mean?",
+          "correctAnswer": "around",
+          "distractors": [
+            {
+              "answer": "west, western",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-780"
+            },
+            {
+              "answer": "sofa",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-823"
+            },
+            {
+              "answer": "service",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-776"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1343",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '주위' mean?",
+          "correctAnswer": "around",
+          "distractors": [
+            {
+              "answer": "west, western",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-780"
+            },
+            {
+              "answer": "sofa",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-823"
+            },
+            {
+              "answer": "service",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-776"
+            },
+            {
+              "answer": "potato",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-42"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-725",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '사다' mean?",
+          "correctAnswer": "buy",
+          "distractors": [
+            {
+              "answer": "like",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1329"
+            },
+            {
+              "answer": "put",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-322"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-725",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'buy' in Korean?",
+          "correctAnswer": "사다",
+          "distractors": [
+            {
+              "answer": "좋아하다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1329"
+            },
+            {
+              "answer": "놓다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-322"
+            },
+            {
+              "answer": "갈아타다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-36"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-725",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "사다 — To get ownership of an item, right, etc., by paying for it. Part of speech: verb. Also: To recognize the value of a person or work, To pay someone to get help from him/her, To cause someone to develop certain feelings.', \"To pay for someone's food after you both ate together.\"",
+          "correctAnswer": "buy",
+          "distractors": [
+            {
+              "answer": "like",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1329"
+            },
+            {
+              "answer": "put",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-322"
+            },
+            {
+              "answer": "transfer",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-36"
+            },
+            {
+              "answer": "build, create",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1400"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1301",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '젓가락' mean?",
+          "correctAnswer": "chopsticks",
+          "distractors": [
+            {
+              "answer": "city",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-393"
+            },
+            {
+              "answer": "rainy season",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4340"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1301",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'chopsticks' in Korean?",
+          "correctAnswer": "젓가락",
+          "distractors": [
+            {
+              "answer": "도시",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-393"
+            },
+            {
+              "answer": "장마철",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4340"
+            },
+            {
+              "answer": "정보",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4453"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1301",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '젓가락'?",
+          "correctAnswer": "chopsticks",
+          "distractors": [
+            {
+              "answer": "city",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-393"
+            },
+            {
+              "answer": "rainy season",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4340"
+            },
+            {
+              "answer": "information",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4453"
+            },
+            {
+              "answer": "mirror",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-57"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-4196",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '인도' mean?",
+          "correctAnswer": "India",
+          "distractors": [
+            {
+              "answer": "program",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1571"
+            },
+            {
+              "answer": "class, lesson",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-843"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"class, lesson\" has 2 format features different from correct \"India\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-4196",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '인도' mean?",
+          "correctAnswer": "India",
+          "distractors": [
+            {
+              "answer": "program",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1571"
+            },
+            {
+              "answer": "class, lesson",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-843"
+            },
+            {
+              "answer": "alone",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1635"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"class, lesson\" has 2 format features different from correct \"India\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-4196",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '인도' mean?",
+          "correctAnswer": "India",
+          "distractors": [
+            {
+              "answer": "program",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1571"
+            },
+            {
+              "answer": "class, lesson",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-843"
+            },
+            {
+              "answer": "alone",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1635"
+            },
+            {
+              "answer": "ski resort",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-865"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"class, lesson\" has 2 format features different from correct \"India\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-58",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '거의' mean?",
+          "correctAnswer": "almost, nearly",
+          "distractors": [
+            {
+              "answer": "milk",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1123"
+            },
+            {
+              "answer": "Friday",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-196"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Friday\" has 2 format features different from correct \"almost, nearly\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-58",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'almost, nearly' in Korean?",
+          "correctAnswer": "거의",
+          "distractors": [
+            {
+              "answer": "우유",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1123"
+            },
+            {
+              "answer": "금요일",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-196"
+            },
+            {
+              "answer": "귤",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-166"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-58",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "거의 — little less than all. Part of speech: noun.",
+          "correctAnswer": "almost, nearly",
+          "distractors": [
+            {
+              "answer": "milk",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1123"
+            },
+            {
+              "answer": "Friday",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-196"
+            },
+            {
+              "answer": "mandarin orange",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-166"
+            },
+            {
+              "answer": "last month",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1372"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Friday\" has 2 format features different from correct \"almost, nearly\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-179",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '그렇다' mean?",
+          "correctAnswer": "Yes, that's it.",
+          "distractors": [
+            {
+              "answer": "hungry",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-112"
+            },
+            {
+              "answer": "sweet",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-357"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"hungry\" has 2 format features different from correct \"Yes, that's it.\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-179",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'Yes, that's it.' in Korean?",
+          "correctAnswer": "그렇다",
+          "distractors": [
+            {
+              "answer": "고프다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-112"
+            },
+            {
+              "answer": "달다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-357"
+            },
+            {
+              "answer": "어리다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1002"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-179",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "그렇다 — A state, appearance, characteristic, etc. being as such. Part of speech: adjective. Also: Not changed much, Not good, nor satisfactory",
+          "correctAnswer": "Yes, that's it.",
+          "distractors": [
+            {
+              "answer": "hungry",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-112"
+            },
+            {
+              "answer": "sweet",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-357"
+            },
+            {
+              "answer": "young",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1002"
+            },
+            {
+              "answer": "small",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1248"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"hungry\" has 2 format features different from correct \"Yes, that's it.\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-640",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '벌다' mean?",
+          "correctAnswer": "earn, make money",
+          "distractors": [
+            {
+              "answer": "meet",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-664"
+            },
+            {
+              "answer": "draw",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-183"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-640",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'earn, make money' in Korean?",
+          "correctAnswer": "벌다",
+          "distractors": [
+            {
+              "answer": "뵙다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-664"
+            },
+            {
+              "answer": "그리다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-183"
+            },
+            {
+              "answer": "씹다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-932"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-640",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "벌다 — To obtain or save money by doing some work.', \"To have free time or more money, as a result of one's choice to spare or not use time or money.\", 'To knowingly do something that deserves blame or complaint.', \"To borrow someone's land and cultivate it.\". Part of speech: verb.",
+          "correctAnswer": "earn, make money",
+          "distractors": [
+            {
+              "answer": "meet",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-664"
+            },
+            {
+              "answer": "draw",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-183"
+            },
+            {
+              "answer": "to chew",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-932"
+            },
+            {
+              "answer": "go down",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-289"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-4165",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '이메일' mean?",
+          "correctAnswer": "e-mail",
+          "distractors": [
+            {
+              "answer": "design",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-440"
+            },
+            {
+              "answer": "sentence",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2824"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-4165",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'e-mail' in Korean?",
+          "correctAnswer": "이메일",
+          "distractors": [
+            {
+              "answer": "디자인",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-440"
+            },
+            {
+              "answer": "문장",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2824"
+            },
+            {
+              "answer": "식사",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-895"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-4165",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '이메일'?",
+          "correctAnswer": "e-mail",
+          "distractors": [
+            {
+              "answer": "design",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-440"
+            },
+            {
+              "answer": "sentence",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2824"
+            },
+            {
+              "answer": "meal",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-895"
+            },
+            {
+              "answer": "table tennis",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1514"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1108",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '외국인' mean?",
+          "correctAnswer": "foreigner",
+          "distractors": [
+            {
+              "answer": "trash can",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1664"
+            },
+            {
+              "answer": "entrance",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1219"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1108",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '외국인' mean?",
+          "correctAnswer": "foreigner",
+          "distractors": [
+            {
+              "answer": "trash can",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1664"
+            },
+            {
+              "answer": "entrance",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1219"
+            },
+            {
+              "answer": "elder, senior",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-783"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1108",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '외국인' mean?",
+          "correctAnswer": "foreigner",
+          "distractors": [
+            {
+              "answer": "trash can",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1664"
+            },
+            {
+              "answer": "entrance",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1219"
+            },
+            {
+              "answer": "elder, senior",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-783"
+            },
+            {
+              "answer": "meaning",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1164"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1100",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '옷장' mean?",
+          "correctAnswer": "closet",
+          "distractors": [
+            {
+              "answer": "meeting, gathering",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-536"
+            },
+            {
+              "answer": "ski, skiing",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-864"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1100",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '옷장' mean?",
+          "correctAnswer": "closet",
+          "distractors": [
+            {
+              "answer": "meeting, gathering",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-536"
+            },
+            {
+              "answer": "ski, skiing",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-864"
+            },
+            {
+              "answer": "accident",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-722"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1100",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'closet' in Korean?",
+          "correctAnswer": "옷장",
+          "distractors": [
+            {
+              "answer": "모임",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-536"
+            },
+            {
+              "answer": "스키",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-864"
+            },
+            {
+              "answer": "사고",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-722"
+            },
+            {
+              "answer": "바지",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-597"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-701",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '비디오' mean?",
+          "correctAnswer": "video",
+          "distractors": [
+            {
+              "answer": "weekend",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1334"
+            },
+            {
+              "answer": "now",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1189"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-701",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'video' in Korean?",
+          "correctAnswer": "비디오",
+          "distractors": [
+            {
+              "answer": "주말",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1334"
+            },
+            {
+              "answer": "이제",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1189"
+            },
+            {
+              "answer": "지금",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1369"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-701",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '비디오'?",
+          "correctAnswer": "video",
+          "distractors": [
+            {
+              "answer": "weekend",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1334"
+            },
+            {
+              "answer": "now",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1189"
+            },
+            {
+              "answer": "South America",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-2208"
+            },
+            {
+              "answer": "rose",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1270"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"South America\" has 2 format features different from correct \"video\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-2215",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '내' mean?",
+          "correctAnswer": "of mine, my",
+          "distractors": [
+            {
+              "answer": "Germany",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-398"
+            },
+            {
+              "answer": "river",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-45"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Germany\" has 2 format features different from correct \"of mine, my\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-2215",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'of mine, my' in Korean?",
+          "correctAnswer": "내",
+          "distractors": [
+            {
+              "answer": "독일",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-398"
+            },
+            {
+              "answer": "강",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-45"
+            },
+            {
+              "answer": "가방",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-12"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-2215",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "내 — A bound noun used to indicate that something is within a certain range or scope. Part of speech: noun.",
+          "correctAnswer": "of mine, my",
+          "distractors": [
+            {
+              "answer": "Germany",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-398"
+            },
+            {
+              "answer": "river",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-45"
+            },
+            {
+              "answer": "bag",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-12"
+            },
+            {
+              "answer": "foreign country",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1106"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Germany\" has 2 format features different from correct \"of mine, my\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-399",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '돈' mean?",
+          "correctAnswer": "money",
+          "distractors": [
+            {
+              "answer": "bookshelf",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1427"
+            },
+            {
+              "answer": "maternal grandmother",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4006"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-399",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'money' in Korean?",
+          "correctAnswer": "돈",
+          "distractors": [
+            {
+              "answer": "책장",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1427"
+            },
+            {
+              "answer": "외할머니",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4006"
+            },
+            {
+              "answer": "유월",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1150"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-399",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '돈'?",
+          "correctAnswer": "money",
+          "distractors": [
+            {
+              "answer": "bookshelf",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1427"
+            },
+            {
+              "answer": "maternal grandmother",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4006"
+            },
+            {
+              "answer": "June",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1150"
+            },
+            {
+              "answer": "school",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1589"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-2442",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '대한민국' mean?",
+          "correctAnswer": "Republic of Korea",
+          "distractors": [
+            {
+              "answer": "every week",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-506"
+            },
+            {
+              "answer": "pot",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-294"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"pot\" has 2 format features different from correct \"Republic of Korea\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-2442",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'Republic of Korea' in Korean?",
+          "correctAnswer": "대한민국",
+          "distractors": [
+            {
+              "answer": "매주",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-506"
+            },
+            {
+              "answer": "냄비",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-294"
+            },
+            {
+              "answer": "킬로그램",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1511"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-2442",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '대한민국'?",
+          "correctAnswer": "Republic of Korea",
+          "distractors": [
+            {
+              "answer": "every week",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-506"
+            },
+            {
+              "answer": "pot",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-294"
+            },
+            {
+              "answer": "kilogram",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1511"
+            },
+            {
+              "answer": "air",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1902"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"pot\" has 2 format features different from correct \"Republic of Korea\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-641",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '벌써' mean?",
+          "correctAnswer": "already",
+          "distractors": [
+            {
+              "answer": "often",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1245"
+            },
+            {
+              "answer": "not really",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-648"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-641",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'already' in Korean?",
+          "correctAnswer": "벌써",
+          "distractors": [
+            {
+              "answer": "자주",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1245"
+            },
+            {
+              "answer": "별로",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-648"
+            },
+            {
+              "answer": "한번",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1599"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-641",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '벌써'?",
+          "correctAnswer": "already",
+          "distractors": [
+            {
+              "answer": "often",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1245"
+            },
+            {
+              "answer": "not really",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-648"
+            },
+            {
+              "answer": "once",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1599"
+            },
+            {
+              "answer": "but, however",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-173"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1190",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '이틀' mean?",
+          "correctAnswer": "two days",
+          "distractors": [
+            {
+              "answer": "mountain",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-741"
+            },
+            {
+              "answer": "program",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1571"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1190",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'two days' in Korean?",
+          "correctAnswer": "이틀",
+          "distractors": [
+            {
+              "answer": "산",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-741"
+            },
+            {
+              "answer": "프로그램",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1571"
+            },
+            {
+              "answer": "약",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-984"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1190",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '이틀'?",
+          "correctAnswer": "two days",
+          "distractors": [
+            {
+              "answer": "mountain",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-741"
+            },
+            {
+              "answer": "program",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1571"
+            },
+            {
+              "answer": "about, medicine",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-984"
+            },
+            {
+              "answer": "nationality",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-153"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1472",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '치마' mean?",
+          "correctAnswer": "skirt",
+          "distractors": [
+            {
+              "answer": "material, document",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4285"
+            },
+            {
+              "answer": "newspaper",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-901"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1472",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'skirt' in Korean?",
+          "correctAnswer": "치마",
+          "distractors": [
+            {
+              "answer": "자료",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4285"
+            },
+            {
+              "answer": "신문",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-901"
+            },
+            {
+              "answer": "비디오",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-701"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1472",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '치마'?",
+          "correctAnswer": "skirt",
+          "distractors": [
+            {
+              "answer": "material, document",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-4285"
+            },
+            {
+              "answer": "newspaper",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-901"
+            },
+            {
+              "answer": "video",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-701"
+            },
+            {
+              "answer": "medium, during",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1355"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-300",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '넘다' mean?",
+          "correctAnswer": "exceed, more than",
+          "distractors": [
+            {
+              "answer": "go to visit",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1421"
+            },
+            {
+              "answer": "take away",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-21"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-300",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '넘다' mean?",
+          "correctAnswer": "exceed, more than",
+          "distractors": [
+            {
+              "answer": "go to visit",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1421"
+            },
+            {
+              "answer": "take away",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-21"
+            },
+            {
+              "answer": "forget",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1226"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-300",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'exceed, more than' in Korean?",
+          "correctAnswer": "넘다",
+          "distractors": [
+            {
+              "answer": "찾아가다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1421"
+            },
+            {
+              "answer": "가져가다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-21"
+            },
+            {
+              "answer": "잊다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1226"
+            },
+            {
+              "answer": "올라오다",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1092"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1493",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '커피숍' mean?",
+          "correctAnswer": "coffee shop",
+          "distractors": [
+            {
+              "answer": "mom",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1021"
+            },
+            {
+              "answer": "after",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1655"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1493",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'coffee shop' in Korean?",
+          "correctAnswer": "커피숍",
+          "distractors": [
+            {
+              "answer": "엄마",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1021"
+            },
+            {
+              "answer": "후",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1655"
+            },
+            {
+              "answer": "직접",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1392"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1493",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "커피숍 — A shop designed for customers to talk or rest, usually while drinking coffee or tea. Part of speech: noun.",
+          "correctAnswer": "coffee shop",
+          "distractors": [
+            {
+              "answer": "mom",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1021"
+            },
+            {
+              "answer": "after",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1655"
+            },
+            {
+              "answer": "directly, direct",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1392"
+            },
+            {
+              "answer": "admission",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1224"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-533",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '모양' mean?",
+          "correctAnswer": "shape, form, style",
+          "distractors": [
+            {
+              "answer": "Hangul",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1598"
+            },
+            {
+              "answer": "paternal aunt",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-105"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Hangul\" has 2 format features different from correct \"shape, form, style\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-533",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'shape, form, style' in Korean?",
+          "correctAnswer": "모양",
+          "distractors": [
+            {
+              "answer": "한글",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1598"
+            },
+            {
+              "answer": "고모",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-105"
+            },
+            {
+              "answer": "이용",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1184"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-533",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '모양'?",
+          "correctAnswer": "shape, form, style",
+          "distractors": [
+            {
+              "answer": "Hangul",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1598"
+            },
+            {
+              "answer": "paternal aunt",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-105"
+            },
+            {
+              "answer": "usage",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1184"
+            },
+            {
+              "answer": "vacation",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-622"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Hangul\" has 2 format features different from correct \"shape, form, style\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-1019",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '얼마나' mean?",
+          "correctAnswer": "how much",
+          "distractors": [
+            {
+              "answer": "hard, enthusiastic",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1054"
+            },
+            {
+              "answer": "mainly",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1333"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-1019",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'how much' in Korean?",
+          "correctAnswer": "얼마나",
+          "distractors": [
+            {
+              "answer": "열심히",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1054"
+            },
+            {
+              "answer": "주로",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1333"
+            },
+            {
+              "answer": "그런데",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-177"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 4 options don't match: \"얼마나\", \"열심히\", \"주로\", \"그런데\""
+            }
+          ]
+        },
+        {
+          "factId": "ko-nikl-1019",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '얼마나'?",
+          "correctAnswer": "how much",
+          "distractors": [
+            {
+              "answer": "hard, enthusiastic",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1054"
+            },
+            {
+              "answer": "mainly",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1333"
+            },
+            {
+              "answer": "by the way, however",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-177"
+            },
+            {
+              "answer": "newly",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-756"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-272",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '남녀' mean?",
+          "correctAnswer": "men and women",
+          "distractors": [
+            {
+              "answer": "celebration",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1452"
+            },
+            {
+              "answer": "conference",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1653"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-272",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '남녀' mean?",
+          "correctAnswer": "men and women",
+          "distractors": [
+            {
+              "answer": "celebration",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1452"
+            },
+            {
+              "answer": "conference",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1653"
+            },
+            {
+              "answer": "shoes",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-147"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ko-nikl-272",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '남녀' mean?",
+          "correctAnswer": "men and women",
+          "distractors": [
+            {
+              "answer": "celebration",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1452"
+            },
+            {
+              "answer": "conference",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-1653"
+            },
+            {
+              "answer": "shoes",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-147"
+            },
+            {
+              "answer": "refrigerator",
+              "source": "similar_difficulty",
+              "factId": "ko-nikl-297"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

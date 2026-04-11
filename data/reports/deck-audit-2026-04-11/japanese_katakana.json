@@ -1,0 +1,4227 @@
+{
+  "timestamp": "2026-04-11T02:00:24.091Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "japanese_katakana",
+      "deckName": "Japanese Katakana",
+      "deckClass": "vocab",
+      "totalFacts": 208,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 0,
+      "issuesByType": {},
+      "factResults": [
+        {
+          "factId": "ja-katakana-e-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana エ represent?",
+          "correctAnswer": "e",
+          "distractors": [
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-forward"
+            },
+            {
+              "answer": "chi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-e-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana エ represent?",
+          "correctAnswer": "e",
+          "distractors": [
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-forward"
+            },
+            {
+              "answer": "chi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chi-forward"
+            },
+            {
+              "answer": "to",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-to-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-e-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana エ represent?",
+          "correctAnswer": "e",
+          "distractors": [
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-forward"
+            },
+            {
+              "answer": "chi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chi-forward"
+            },
+            {
+              "answer": "to",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-to-forward"
+            },
+            {
+              "answer": "ko",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-a-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'a'?",
+          "correctAnswer": "ア",
+          "distractors": [
+            {
+              "answer": "ノ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-reverse"
+            },
+            {
+              "answer": "エ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-e-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-a-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'a'?",
+          "correctAnswer": "ア",
+          "distractors": [
+            {
+              "answer": "ノ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-reverse"
+            },
+            {
+              "answer": "エ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-e-reverse"
+            },
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-a-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'a'?",
+          "correctAnswer": "ア",
+          "distractors": [
+            {
+              "answer": "ノ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-reverse"
+            },
+            {
+              "answer": "エ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-e-reverse"
+            },
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "セ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-se-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-i-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana イ represent?",
+          "correctAnswer": "i",
+          "distractors": [
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-i-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana イ represent?",
+          "correctAnswer": "i",
+          "distractors": [
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nu-forward"
+            },
+            {
+              "answer": "ta",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ta-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-i-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana イ represent?",
+          "correctAnswer": "i",
+          "distractors": [
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nu-forward"
+            },
+            {
+              "answer": "ta",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ta-forward"
+            },
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-a-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-i-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'i'?",
+          "correctAnswer": "イ",
+          "distractors": [
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "タ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ta-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-i-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'i'?",
+          "correctAnswer": "イ",
+          "distractors": [
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "タ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ta-reverse"
+            },
+            {
+              "answer": "テ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-te-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-i-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'i'?",
+          "correctAnswer": "イ",
+          "distractors": [
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "タ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ta-reverse"
+            },
+            {
+              "answer": "テ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-te-reverse"
+            },
+            {
+              "answer": "カ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ka-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-u-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ウ represent?",
+          "correctAnswer": "u",
+          "distractors": [
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-forward"
+            },
+            {
+              "answer": "o",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-o-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-u-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ウ represent?",
+          "correctAnswer": "u",
+          "distractors": [
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-forward"
+            },
+            {
+              "answer": "o",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-o-forward"
+            },
+            {
+              "answer": "ko",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-u-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ウ represent?",
+          "correctAnswer": "u",
+          "distractors": [
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-forward"
+            },
+            {
+              "answer": "o",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-o-forward"
+            },
+            {
+              "answer": "ko",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-forward"
+            },
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-u-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'u'?",
+          "correctAnswer": "ウ",
+          "distractors": [
+            {
+              "answer": "チ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chi-reverse"
+            },
+            {
+              "answer": "イ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-i-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-u-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'u'?",
+          "correctAnswer": "ウ",
+          "distractors": [
+            {
+              "answer": "チ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chi-reverse"
+            },
+            {
+              "answer": "イ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-i-reverse"
+            },
+            {
+              "answer": "ノ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-u-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'u'?",
+          "correctAnswer": "ウ",
+          "distractors": [
+            {
+              "answer": "チ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chi-reverse"
+            },
+            {
+              "answer": "イ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-i-reverse"
+            },
+            {
+              "answer": "ノ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-reverse"
+            },
+            {
+              "answer": "ネ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ne-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-so-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ソ represent?",
+          "correctAnswer": "so",
+          "distractors": [
+            {
+              "answer": "fu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-fu-forward"
+            },
+            {
+              "answer": "u",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-u-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-so-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ソ represent?",
+          "correctAnswer": "so",
+          "distractors": [
+            {
+              "answer": "fu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-fu-forward"
+            },
+            {
+              "answer": "u",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-u-forward"
+            },
+            {
+              "answer": "ke",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ke-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-so-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ソ represent?",
+          "correctAnswer": "so",
+          "distractors": [
+            {
+              "answer": "fu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-fu-forward"
+            },
+            {
+              "answer": "u",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-u-forward"
+            },
+            {
+              "answer": "ke",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ke-forward"
+            },
+            {
+              "answer": "hi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ke-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ケ represent?",
+          "correctAnswer": "ke",
+          "distractors": [
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-na-forward"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ma-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ke-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ケ represent?",
+          "correctAnswer": "ke",
+          "distractors": [
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-na-forward"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ma-forward"
+            },
+            {
+              "answer": "re",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-re-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ke-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ケ represent?",
+          "correctAnswer": "ke",
+          "distractors": [
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-na-forward"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ma-forward"
+            },
+            {
+              "answer": "re",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-re-forward"
+            },
+            {
+              "answer": "ki",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ki-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ne-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ne'?",
+          "correctAnswer": "ネ",
+          "distractors": [
+            {
+              "answer": "ソ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-so-reverse"
+            },
+            {
+              "answer": "カ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ka-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ne-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ne'?",
+          "correctAnswer": "ネ",
+          "distractors": [
+            {
+              "answer": "ソ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-so-reverse"
+            },
+            {
+              "answer": "カ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ka-reverse"
+            },
+            {
+              "answer": "ス",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ne-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ne'?",
+          "correctAnswer": "ネ",
+          "distractors": [
+            {
+              "answer": "ソ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-so-reverse"
+            },
+            {
+              "answer": "カ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ka-reverse"
+            },
+            {
+              "answer": "ス",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-reverse"
+            },
+            {
+              "answer": "ム",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-so-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'so'?",
+          "correctAnswer": "ソ",
+          "distractors": [
+            {
+              "answer": "ケ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ke-reverse"
+            },
+            {
+              "answer": "ヌ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-so-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'so'?",
+          "correctAnswer": "ソ",
+          "distractors": [
+            {
+              "answer": "ケ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ke-reverse"
+            },
+            {
+              "answer": "ヌ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nu-reverse"
+            },
+            {
+              "answer": "エ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-e-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-so-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'so'?",
+          "correctAnswer": "ソ",
+          "distractors": [
+            {
+              "answer": "ケ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ke-reverse"
+            },
+            {
+              "answer": "ヌ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nu-reverse"
+            },
+            {
+              "answer": "エ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-e-reverse"
+            },
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-su-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ス represent?",
+          "correctAnswer": "su",
+          "distractors": [
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-se-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-su-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ス represent?",
+          "correctAnswer": "su",
+          "distractors": [
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-se-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nu-forward"
+            },
+            {
+              "answer": "ki",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ki-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-su-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ス represent?",
+          "correctAnswer": "su",
+          "distractors": [
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-se-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nu-forward"
+            },
+            {
+              "answer": "ki",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ki-forward"
+            },
+            {
+              "answer": "hi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ki-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana キ represent?",
+          "correctAnswer": "ki",
+          "distractors": [
+            {
+              "answer": "ni",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ni-forward"
+            },
+            {
+              "answer": "i",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-i-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ki-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana キ represent?",
+          "correctAnswer": "ki",
+          "distractors": [
+            {
+              "answer": "ni",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ni-forward"
+            },
+            {
+              "answer": "i",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-i-forward"
+            },
+            {
+              "answer": "wo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-wo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ki-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana キ represent?",
+          "correctAnswer": "ki",
+          "distractors": [
+            {
+              "answer": "ni",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ni-forward"
+            },
+            {
+              "answer": "i",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-i-forward"
+            },
+            {
+              "answer": "wo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-wo-forward"
+            },
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-no-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-su-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'su'?",
+          "correctAnswer": "ス",
+          "distractors": [
+            {
+              "answer": "ホ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ho-reverse"
+            },
+            {
+              "answer": "キ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ki-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-su-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'su'?",
+          "correctAnswer": "ス",
+          "distractors": [
+            {
+              "answer": "ホ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ho-reverse"
+            },
+            {
+              "answer": "キ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ki-reverse"
+            },
+            {
+              "answer": "ン",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-n-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-su-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'su'?",
+          "correctAnswer": "ス",
+          "distractors": [
+            {
+              "answer": "ホ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ho-reverse"
+            },
+            {
+              "answer": "キ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ki-reverse"
+            },
+            {
+              "answer": "ン",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-n-reverse"
+            },
+            {
+              "answer": "ヒ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ta-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ta'?",
+          "correctAnswer": "タ",
+          "distractors": [
+            {
+              "answer": "テ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-te-reverse"
+            },
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ta-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ta'?",
+          "correctAnswer": "タ",
+          "distractors": [
+            {
+              "answer": "テ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-te-reverse"
+            },
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "ワ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-wa-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ta-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ta'?",
+          "correctAnswer": "タ",
+          "distractors": [
+            {
+              "answer": "テ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-te-reverse"
+            },
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "ワ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-wa-reverse"
+            },
+            {
+              "answer": "レ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-re-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-nu-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヌ represent?",
+          "correctAnswer": "nu",
+          "distractors": [
+            {
+              "answer": "tsu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-tsu-forward"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ne-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-nu-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヌ represent?",
+          "correctAnswer": "nu",
+          "distractors": [
+            {
+              "answer": "tsu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-tsu-forward"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ne-forward"
+            },
+            {
+              "answer": "ho",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ho-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-nu-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヌ represent?",
+          "correctAnswer": "nu",
+          "distractors": [
+            {
+              "answer": "tsu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-tsu-forward"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ne-forward"
+            },
+            {
+              "answer": "ho",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ho-forward"
+            },
+            {
+              "answer": "yo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-yo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-sa-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'sa'?",
+          "correctAnswer": "サ",
+          "distractors": [
+            {
+              "answer": "ス",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-reverse"
+            },
+            {
+              "answer": "ク",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-sa-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'sa'?",
+          "correctAnswer": "サ",
+          "distractors": [
+            {
+              "answer": "ス",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-reverse"
+            },
+            {
+              "answer": "ク",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-reverse"
+            },
+            {
+              "answer": "ヤ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ya-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-sa-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'sa'?",
+          "correctAnswer": "サ",
+          "distractors": [
+            {
+              "answer": "ス",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-reverse"
+            },
+            {
+              "answer": "ク",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-reverse"
+            },
+            {
+              "answer": "ヤ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ya-reverse"
+            },
+            {
+              "answer": "イ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-i-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-he-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヘ represent?",
+          "correctAnswer": "he",
+          "distractors": [
+            {
+              "answer": "yo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-yo-forward"
+            },
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-na-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-he-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヘ represent?",
+          "correctAnswer": "he",
+          "distractors": [
+            {
+              "answer": "yo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-yo-forward"
+            },
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-na-forward"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-me-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-he-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヘ represent?",
+          "correctAnswer": "he",
+          "distractors": [
+            {
+              "answer": "yo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-yo-forward"
+            },
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-na-forward"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-me-forward"
+            },
+            {
+              "answer": "ge",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ge-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ha-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ハ represent?",
+          "correctAnswer": "ha",
+          "distractors": [
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-na-forward"
+            },
+            {
+              "answer": "da",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-da-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ha-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ハ represent?",
+          "correctAnswer": "ha",
+          "distractors": [
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-na-forward"
+            },
+            {
+              "answer": "da",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-da-forward"
+            },
+            {
+              "answer": "so",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-so-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ha-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ハ represent?",
+          "correctAnswer": "ha",
+          "distractors": [
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-na-forward"
+            },
+            {
+              "answer": "da",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-da-forward"
+            },
+            {
+              "answer": "so",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-so-forward"
+            },
+            {
+              "answer": "he",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-he-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-wa-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'wa'?",
+          "correctAnswer": "ワ",
+          "distractors": [
+            {
+              "answer": "ド",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-reverse"
+            },
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-wa-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'wa'?",
+          "correctAnswer": "ワ",
+          "distractors": [
+            {
+              "answer": "ド",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-reverse"
+            },
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            },
+            {
+              "answer": "ピ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-wa-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'wa'?",
+          "correctAnswer": "ワ",
+          "distractors": [
+            {
+              "answer": "ド",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-reverse"
+            },
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            },
+            {
+              "answer": "ピ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-reverse"
+            },
+            {
+              "answer": "ス",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-mo-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'mo'?",
+          "correctAnswer": "モ",
+          "distractors": [
+            {
+              "answer": "ヅ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu2-reverse"
+            },
+            {
+              "answer": "チ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-mo-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'mo'?",
+          "correctAnswer": "モ",
+          "distractors": [
+            {
+              "answer": "ヅ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu2-reverse"
+            },
+            {
+              "answer": "チ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chi-reverse"
+            },
+            {
+              "answer": "パ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pa-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-mo-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'mo'?",
+          "correctAnswer": "モ",
+          "distractors": [
+            {
+              "answer": "ヅ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu2-reverse"
+            },
+            {
+              "answer": "チ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chi-reverse"
+            },
+            {
+              "answer": "パ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pa-reverse"
+            },
+            {
+              "answer": "ソ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-so-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ya-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヤ represent?",
+          "correctAnswer": "ya",
+          "distractors": [
+            {
+              "answer": "za",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-za-forward"
+            },
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ya-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヤ represent?",
+          "correctAnswer": "ya",
+          "distractors": [
+            {
+              "answer": "za",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-za-forward"
+            },
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-forward"
+            },
+            {
+              "answer": "po",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-po-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ya-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヤ represent?",
+          "correctAnswer": "ya",
+          "distractors": [
+            {
+              "answer": "za",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-za-forward"
+            },
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-su-forward"
+            },
+            {
+              "answer": "po",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-po-forward"
+            },
+            {
+              "answer": "gi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-wo-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヲ represent?",
+          "correctAnswer": "wo",
+          "distractors": [
+            {
+              "answer": "ho",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ho-forward"
+            },
+            {
+              "answer": "ge",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ge-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-wo-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヲ represent?",
+          "correctAnswer": "wo",
+          "distractors": [
+            {
+              "answer": "ho",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ho-forward"
+            },
+            {
+              "answer": "ge",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ge-forward"
+            },
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-wo-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヲ represent?",
+          "correctAnswer": "wo",
+          "distractors": [
+            {
+              "answer": "ho",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ho-forward"
+            },
+            {
+              "answer": "ge",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ge-forward"
+            },
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-forward"
+            },
+            {
+              "answer": "ra",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ra-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ya-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ya'?",
+          "correctAnswer": "ヤ",
+          "distractors": [
+            {
+              "answer": "ヲ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-wo-reverse"
+            },
+            {
+              "answer": "ズ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ya-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ya'?",
+          "correctAnswer": "ヤ",
+          "distractors": [
+            {
+              "answer": "ヲ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-wo-reverse"
+            },
+            {
+              "answer": "ズ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu-reverse"
+            },
+            {
+              "answer": "ボ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ya-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ya'?",
+          "correctAnswer": "ヤ",
+          "distractors": [
+            {
+              "answer": "ヲ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-wo-reverse"
+            },
+            {
+              "answer": "ズ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu-reverse"
+            },
+            {
+              "answer": "ボ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bo-reverse"
+            },
+            {
+              "answer": "ゴ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-go-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-wo-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'wo'?",
+          "correctAnswer": "ヲ",
+          "distractors": [
+            {
+              "answer": "ジ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji-reverse"
+            },
+            {
+              "answer": "ミ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-wo-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'wo'?",
+          "correctAnswer": "ヲ",
+          "distractors": [
+            {
+              "answer": "ジ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji-reverse"
+            },
+            {
+              "answer": "ミ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mi-reverse"
+            },
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-wo-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'wo'?",
+          "correctAnswer": "ヲ",
+          "distractors": [
+            {
+              "answer": "ジ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji-reverse"
+            },
+            {
+              "answer": "ミ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mi-reverse"
+            },
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "ソ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-so-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ro-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ロ represent?",
+          "correctAnswer": "ro",
+          "distractors": [
+            {
+              "answer": "hi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hi-forward"
+            },
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ro-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ロ represent?",
+          "correctAnswer": "ro",
+          "distractors": [
+            {
+              "answer": "hi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hi-forward"
+            },
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-forward"
+            },
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-se-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ro-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ロ represent?",
+          "correctAnswer": "ro",
+          "distractors": [
+            {
+              "answer": "hi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hi-forward"
+            },
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ku-forward"
+            },
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-se-forward"
+            },
+            {
+              "answer": "de",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-de-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-me-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'me'?",
+          "correctAnswer": "メ",
+          "distractors": [
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "ヘ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-he-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-me-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'me'?",
+          "correctAnswer": "メ",
+          "distractors": [
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "ヘ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-he-reverse"
+            },
+            {
+              "answer": "ジ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-me-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'me'?",
+          "correctAnswer": "メ",
+          "distractors": [
+            {
+              "answer": "コ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ko-reverse"
+            },
+            {
+              "answer": "ヘ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-he-reverse"
+            },
+            {
+              "answer": "ジ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji-reverse"
+            },
+            {
+              "answer": "ポ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-po-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ji-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ジ represent?",
+          "correctAnswer": "ji",
+          "distractors": [
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-forward"
+            },
+            {
+              "answer": "chu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ji-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ジ represent?",
+          "correctAnswer": "ji",
+          "distractors": [
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-forward"
+            },
+            {
+              "answer": "chu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chu-forward"
+            },
+            {
+              "answer": "he",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-he-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ji-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ジ represent?",
+          "correctAnswer": "ji",
+          "distractors": [
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-forward"
+            },
+            {
+              "answer": "chu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chu-forward"
+            },
+            {
+              "answer": "he",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-he-forward"
+            },
+            {
+              "answer": "wa",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-wa-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ga-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ガ represent?",
+          "correctAnswer": "ga",
+          "distractors": [
+            {
+              "answer": "yo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-yo-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ga-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ガ represent?",
+          "correctAnswer": "ga",
+          "distractors": [
+            {
+              "answer": "yo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-yo-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            },
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ga-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ガ represent?",
+          "correctAnswer": "ga",
+          "distractors": [
+            {
+              "answer": "yo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-yo-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            },
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myo-forward"
+            },
+            {
+              "answer": "mi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ba-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ba'?",
+          "correctAnswer": "バ",
+          "distractors": [
+            {
+              "answer": "ビャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-reverse"
+            },
+            {
+              "answer": "ニャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nya-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ba-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ba'?",
+          "correctAnswer": "バ",
+          "distractors": [
+            {
+              "answer": "ビャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-reverse"
+            },
+            {
+              "answer": "ニャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nya-reverse"
+            },
+            {
+              "answer": "リ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ri-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ba-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'ba'?",
+          "correctAnswer": "バ",
+          "distractors": [
+            {
+              "answer": "ビャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-reverse"
+            },
+            {
+              "answer": "ニャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nya-reverse"
+            },
+            {
+              "answer": "リ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ri-reverse"
+            },
+            {
+              "answer": "ビ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-zu2-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'zu' (alternate form ヅ)?",
+          "correctAnswer": "ヅ",
+          "distractors": [
+            {
+              "answer": "ゾ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zo-reverse"
+            },
+            {
+              "answer": "ビョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-byo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-zu2-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'zu' (alternate form ヅ)?",
+          "correctAnswer": "ヅ",
+          "distractors": [
+            {
+              "answer": "ゾ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zo-reverse"
+            },
+            {
+              "answer": "ビョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-byo-reverse"
+            },
+            {
+              "answer": "ザ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-za-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-zu2-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'zu' (alternate form ヅ)?",
+          "correctAnswer": "ヅ",
+          "distractors": [
+            {
+              "answer": "ゾ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zo-reverse"
+            },
+            {
+              "answer": "ビョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-byo-reverse"
+            },
+            {
+              "answer": "ザ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-za-reverse"
+            },
+            {
+              "answer": "ギ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-bi-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ビ represent?",
+          "correctAnswer": "bi",
+          "distractors": [
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ma-forward"
+            },
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-bi-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ビ represent?",
+          "correctAnswer": "bi",
+          "distractors": [
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ma-forward"
+            },
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-forward"
+            },
+            {
+              "answer": "nyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nyu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-bi-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ビ represent?",
+          "correctAnswer": "bi",
+          "distractors": [
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ma-forward"
+            },
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-forward"
+            },
+            {
+              "answer": "nyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nyu-forward"
+            },
+            {
+              "answer": "he",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-he-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-pu-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana プ represent?",
+          "correctAnswer": "pu",
+          "distractors": [
+            {
+              "answer": "pyo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pyo-forward"
+            },
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-pu-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana プ represent?",
+          "correctAnswer": "pu",
+          "distractors": [
+            {
+              "answer": "pyo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pyo-forward"
+            },
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-forward"
+            },
+            {
+              "answer": "ryu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ryu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-pu-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana プ represent?",
+          "correctAnswer": "pu",
+          "distractors": [
+            {
+              "answer": "pyo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pyo-forward"
+            },
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-forward"
+            },
+            {
+              "answer": "ryu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ryu-forward"
+            },
+            {
+              "answer": "ju",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ju-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-go-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'go'?",
+          "correctAnswer": "ゴ",
+          "distractors": [
+            {
+              "answer": "ミ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mi-reverse"
+            },
+            {
+              "answer": "ラ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ra-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-go-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'go'?",
+          "correctAnswer": "ゴ",
+          "distractors": [
+            {
+              "answer": "ミ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mi-reverse"
+            },
+            {
+              "answer": "ラ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ra-reverse"
+            },
+            {
+              "answer": "ハ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ha-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-go-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'go'?",
+          "correctAnswer": "ゴ",
+          "distractors": [
+            {
+              "answer": "ミ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mi-reverse"
+            },
+            {
+              "answer": "ラ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ra-reverse"
+            },
+            {
+              "answer": "ハ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ha-reverse"
+            },
+            {
+              "answer": "ホ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ho-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-zu-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'zu'?",
+          "correctAnswer": "ズ",
+          "distractors": [
+            {
+              "answer": "デ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-de-reverse"
+            },
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-zu-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'zu'?",
+          "correctAnswer": "ズ",
+          "distractors": [
+            {
+              "answer": "デ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-de-reverse"
+            },
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            },
+            {
+              "answer": "ギ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-zu-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'zu'?",
+          "correctAnswer": "ズ",
+          "distractors": [
+            {
+              "answer": "デ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-de-reverse"
+            },
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            },
+            {
+              "answer": "ギ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gi-reverse"
+            },
+            {
+              "answer": "リ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ri-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-pa-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana パ represent?",
+          "correctAnswer": "pa",
+          "distractors": [
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-pa-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana パ represent?",
+          "correctAnswer": "pa",
+          "distractors": [
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mo-forward"
+            },
+            {
+              "answer": "kyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-pa-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana パ represent?",
+          "correctAnswer": "pa",
+          "distractors": [
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mo-forward"
+            },
+            {
+              "answer": "kyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-forward"
+            },
+            {
+              "answer": "sho",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-sho-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-za-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ザ represent?",
+          "correctAnswer": "za",
+          "distractors": [
+            {
+              "answer": "hyo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hyo-forward"
+            },
+            {
+              "answer": "hyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hyu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-za-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ザ represent?",
+          "correctAnswer": "za",
+          "distractors": [
+            {
+              "answer": "hyo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hyo-forward"
+            },
+            {
+              "answer": "hyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hyu-forward"
+            },
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-za-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ザ represent?",
+          "correctAnswer": "za",
+          "distractors": [
+            {
+              "answer": "hyo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hyo-forward"
+            },
+            {
+              "answer": "hyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hyu-forward"
+            },
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myo-forward"
+            },
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-pa-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'pa'?",
+          "correctAnswer": "パ",
+          "distractors": [
+            {
+              "answer": "ド",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-reverse"
+            },
+            {
+              "answer": "ビャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-pa-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'pa'?",
+          "correctAnswer": "パ",
+          "distractors": [
+            {
+              "answer": "ド",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-reverse"
+            },
+            {
+              "answer": "ビャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-reverse"
+            },
+            {
+              "answer": "リ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ri-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-pa-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'pa'?",
+          "correctAnswer": "パ",
+          "distractors": [
+            {
+              "answer": "ド",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-reverse"
+            },
+            {
+              "answer": "ビャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-reverse"
+            },
+            {
+              "answer": "リ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ri-reverse"
+            },
+            {
+              "answer": "ム",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-do-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'do'?",
+          "correctAnswer": "ド",
+          "distractors": [
+            {
+              "answer": "ヒ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hi-reverse"
+            },
+            {
+              "answer": "ヒュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hyu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-do-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'do'?",
+          "correctAnswer": "ド",
+          "distractors": [
+            {
+              "answer": "ヒ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hi-reverse"
+            },
+            {
+              "answer": "ヒュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hyu-reverse"
+            },
+            {
+              "answer": "メ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-me-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-do-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana character represents 'do'?",
+          "correctAnswer": "ド",
+          "distractors": [
+            {
+              "answer": "ヒ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hi-reverse"
+            },
+            {
+              "answer": "ヒュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-hyu-reverse"
+            },
+            {
+              "answer": "メ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-me-reverse"
+            },
+            {
+              "answer": "ゲ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ge-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-bya-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ビャ represent?",
+          "correctAnswer": "bya",
+          "distractors": [
+            {
+              "answer": "de",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-de-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-bya-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ビャ represent?",
+          "correctAnswer": "bya",
+          "distractors": [
+            {
+              "answer": "de",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-de-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            },
+            {
+              "answer": "kyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-bya-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ビャ represent?",
+          "correctAnswer": "bya",
+          "distractors": [
+            {
+              "answer": "de",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-de-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            },
+            {
+              "answer": "kyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-forward"
+            },
+            {
+              "answer": "gyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-mya-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ミャ represent?",
+          "correctAnswer": "mya",
+          "distractors": [
+            {
+              "answer": "kyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-forward"
+            },
+            {
+              "answer": "jo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-jo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-mya-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ミャ represent?",
+          "correctAnswer": "mya",
+          "distractors": [
+            {
+              "answer": "kyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-forward"
+            },
+            {
+              "answer": "jo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-jo-forward"
+            },
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-mya-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ミャ represent?",
+          "correctAnswer": "mya",
+          "distractors": [
+            {
+              "answer": "kyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-forward"
+            },
+            {
+              "answer": "jo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-jo-forward"
+            },
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-bya-forward"
+            },
+            {
+              "answer": "ryo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ryo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-nya-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'nya'?",
+          "correctAnswer": "ニャ",
+          "distractors": [
+            {
+              "answer": "ビュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-byu-reverse"
+            },
+            {
+              "answer": "ショ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-sho-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-nya-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'nya'?",
+          "correctAnswer": "ニャ",
+          "distractors": [
+            {
+              "answer": "ビュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-byu-reverse"
+            },
+            {
+              "answer": "ショ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-sho-reverse"
+            },
+            {
+              "answer": "ミョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-nya-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'nya'?",
+          "correctAnswer": "ニャ",
+          "distractors": [
+            {
+              "answer": "ビュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-byu-reverse"
+            },
+            {
+              "answer": "ショ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-sho-reverse"
+            },
+            {
+              "answer": "ミョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myo-reverse"
+            },
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-sha-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'sha'?",
+          "correctAnswer": "シャ",
+          "distractors": [
+            {
+              "answer": "チュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chu-reverse"
+            },
+            {
+              "answer": "キュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-sha-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'sha'?",
+          "correctAnswer": "シャ",
+          "distractors": [
+            {
+              "answer": "チュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chu-reverse"
+            },
+            {
+              "answer": "キュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-reverse"
+            },
+            {
+              "answer": "ベ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-be-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-sha-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'sha'?",
+          "correctAnswer": "シャ",
+          "distractors": [
+            {
+              "answer": "チュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-chu-reverse"
+            },
+            {
+              "answer": "キュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyu-reverse"
+            },
+            {
+              "answer": "ベ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-be-reverse"
+            },
+            {
+              "answer": "ズ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-nyu-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ニュ represent?",
+          "correctAnswer": "nyu",
+          "distractors": [
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myo-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-nyu-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ニュ represent?",
+          "correctAnswer": "nyu",
+          "distractors": [
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myo-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            },
+            {
+              "answer": "gyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-nyu-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ニュ represent?",
+          "correctAnswer": "nyu",
+          "distractors": [
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myo-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            },
+            {
+              "answer": "gyu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyu-forward"
+            },
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-hyu-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヒュ represent?",
+          "correctAnswer": "hyu",
+          "distractors": [
+            {
+              "answer": "gya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gya-forward"
+            },
+            {
+              "answer": "zu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu2-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-hyu-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヒュ represent?",
+          "correctAnswer": "hyu",
+          "distractors": [
+            {
+              "answer": "gya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gya-forward"
+            },
+            {
+              "answer": "zu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu2-forward"
+            },
+            {
+              "answer": "go",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-go-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-hyu-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ヒュ represent?",
+          "correctAnswer": "hyu",
+          "distractors": [
+            {
+              "answer": "gya",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gya-forward"
+            },
+            {
+              "answer": "zu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-zu2-forward"
+            },
+            {
+              "answer": "go",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-go-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-hyu-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'hyu'?",
+          "correctAnswer": "ヒュ",
+          "distractors": [
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            },
+            {
+              "answer": "ニュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nyu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-hyu-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'hyu'?",
+          "correctAnswer": "ヒュ",
+          "distractors": [
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            },
+            {
+              "answer": "ニュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nyu-reverse"
+            },
+            {
+              "answer": "ミュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-hyu-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'hyu'?",
+          "correctAnswer": "ヒュ",
+          "distractors": [
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            },
+            {
+              "answer": "ニュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nyu-reverse"
+            },
+            {
+              "answer": "ミュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myu-reverse"
+            },
+            {
+              "answer": "ギョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-myu-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'myu'?",
+          "correctAnswer": "ミュ",
+          "distractors": [
+            {
+              "answer": "ショ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-sho-reverse"
+            },
+            {
+              "answer": "ゼ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ze-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-myu-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'myu'?",
+          "correctAnswer": "ミュ",
+          "distractors": [
+            {
+              "answer": "ショ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-sho-reverse"
+            },
+            {
+              "answer": "ゼ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ze-reverse"
+            },
+            {
+              "answer": "キョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-myu-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'myu'?",
+          "correctAnswer": "ミュ",
+          "distractors": [
+            {
+              "answer": "ショ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-sho-reverse"
+            },
+            {
+              "answer": "ゼ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ze-reverse"
+            },
+            {
+              "answer": "キョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-kyo-reverse"
+            },
+            {
+              "answer": "ピュ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pyu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-sho-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ショ represent?",
+          "correctAnswer": "sho",
+          "distractors": [
+            {
+              "answer": "gyo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyo-forward"
+            },
+            {
+              "answer": "myu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-sho-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ショ represent?",
+          "correctAnswer": "sho",
+          "distractors": [
+            {
+              "answer": "gyo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyo-forward"
+            },
+            {
+              "answer": "myu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myu-forward"
+            },
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-sho-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ショ represent?",
+          "correctAnswer": "sho",
+          "distractors": [
+            {
+              "answer": "gyo",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyo-forward"
+            },
+            {
+              "answer": "myu",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-myu-forward"
+            },
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-forward"
+            },
+            {
+              "answer": "gi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-myo-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ミョ represent?",
+          "correctAnswer": "myo",
+          "distractors": [
+            {
+              "answer": "da",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-da-forward"
+            },
+            {
+              "answer": "gi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-myo-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ミョ represent?",
+          "correctAnswer": "myo",
+          "distractors": [
+            {
+              "answer": "da",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-da-forward"
+            },
+            {
+              "answer": "gi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gi-forward"
+            },
+            {
+              "answer": "ge",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ge-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-myo-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the katakana ミョ represent?",
+          "correctAnswer": "myo",
+          "distractors": [
+            {
+              "answer": "da",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-da-forward"
+            },
+            {
+              "answer": "gi",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gi-forward"
+            },
+            {
+              "answer": "ge",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ge-forward"
+            },
+            {
+              "answer": "do",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-do-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-byo-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'byo'?",
+          "correctAnswer": "ビョ",
+          "distractors": [
+            {
+              "answer": "ギョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyo-reverse"
+            },
+            {
+              "answer": "ニョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nyo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-byo-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'byo'?",
+          "correctAnswer": "ビョ",
+          "distractors": [
+            {
+              "answer": "ギョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyo-reverse"
+            },
+            {
+              "answer": "ニョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nyo-reverse"
+            },
+            {
+              "answer": "ザ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-za-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-byo-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'byo'?",
+          "correctAnswer": "ビョ",
+          "distractors": [
+            {
+              "answer": "ギョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-gyo-reverse"
+            },
+            {
+              "answer": "ニョ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-nyo-reverse"
+            },
+            {
+              "answer": "ザ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-za-reverse"
+            },
+            {
+              "answer": "ミャ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-mya-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ryo-reverse",
+          "masteryLevel": 0,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'ryo'?",
+          "correctAnswer": "リョ",
+          "distractors": [
+            {
+              "answer": "ゴ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-go-reverse"
+            },
+            {
+              "answer": "ピ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ryo-reverse",
+          "masteryLevel": 2,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'ryo'?",
+          "correctAnswer": "リョ",
+          "distractors": [
+            {
+              "answer": "ゴ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-go-reverse"
+            },
+            {
+              "answer": "ピ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-reverse"
+            },
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-katakana-ryo-reverse",
+          "masteryLevel": 4,
+          "poolId": "katakana_characters",
+          "renderedQuestion": "Which katakana combination represents 'ryo'?",
+          "correctAnswer": "リョ",
+          "distractors": [
+            {
+              "answer": "ゴ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-go-reverse"
+            },
+            {
+              "answer": "ピ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-pi-reverse"
+            },
+            {
+              "answer": "ヂ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-ji2-reverse"
+            },
+            {
+              "answer": "ザ",
+              "source": "similar_difficulty",
+              "factId": "ja-katakana-za-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

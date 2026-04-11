@@ -1,0 +1,4330 @@
+{
+  "timestamp": "2026-04-11T02:00:07.116Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 15,
+  "decks": [
+    {
+      "deckId": "chinese_hsk3",
+      "deckName": "Chinese HSK 3 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 915,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 15,
+      "issuesByType": {
+        "chinese_sense_mismatch_runtime": {
+          "fail": 0,
+          "warn": 6
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 8
+        },
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "zh-hsk-1992",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '葡萄' mean?",
+          "correctAnswer": "grape",
+          "distractors": [
+            {
+              "answer": "media",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1397"
+            },
+            {
+              "answer": "stage",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1572"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1992",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '葡萄' mean?",
+          "correctAnswer": "grape",
+          "distractors": [
+            {
+              "answer": "media",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1397"
+            },
+            {
+              "answer": "stage",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1572"
+            },
+            {
+              "answer": "warm",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2036"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1992",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '葡萄' mean?",
+          "correctAnswer": "grape",
+          "distractors": [
+            {
+              "answer": "media",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1397"
+            },
+            {
+              "answer": "stage",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1572"
+            },
+            {
+              "answer": "warm",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2036"
+            },
+            {
+              "answer": "reader",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1892"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1377",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '产生' mean?",
+          "correctAnswer": "to arise",
+          "distractors": [
+            {
+              "answer": "to open up",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1738"
+            },
+            {
+              "answer": "civilized",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1769"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1377",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '产生'?",
+          "correctAnswer": "to arise",
+          "distractors": [
+            {
+              "answer": "kāi fàng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1738"
+            },
+            {
+              "answer": "wén míng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1769"
+            },
+            {
+              "answer": "zhuā",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1297"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1377",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '产生'?",
+          "correctAnswer": "to arise",
+          "distractors": [
+            {
+              "answer": "kāi fàng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1738"
+            },
+            {
+              "answer": "wén míng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1769"
+            },
+            {
+              "answer": "zhuā",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1297"
+            },
+            {
+              "answer": "shàng lái",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1763"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2046",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '志愿' mean?",
+          "correctAnswer": "aspiration",
+          "distractors": [
+            {
+              "answer": "wages; pay",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1661"
+            },
+            {
+              "answer": "humanity",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1350"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2046",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '志愿' mean?",
+          "correctAnswer": "aspiration",
+          "distractors": [
+            {
+              "answer": "wages; pay",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1661"
+            },
+            {
+              "answer": "humanity",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1350"
+            },
+            {
+              "answer": "degree; extent",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1456"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2046",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '志愿' mean?",
+          "correctAnswer": "aspiration",
+          "distractors": [
+            {
+              "answer": "wages; pay",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1661"
+            },
+            {
+              "answer": "humanity",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1350"
+            },
+            {
+              "answer": "degree; extent",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1456"
+            },
+            {
+              "answer": "skirt",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1953"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1914",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '南部' mean?",
+          "correctAnswer": "southern part",
+          "distractors": [
+            {
+              "answer": "daily",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1934"
+            },
+            {
+              "answer": "evidence",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1537"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1914",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'southern part' in Chinese?",
+          "correctAnswer": "南部",
+          "distractors": [
+            {
+              "answer": "日常",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1934"
+            },
+            {
+              "answer": "证据",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1537"
+            },
+            {
+              "answer": "帽子",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1803"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1914",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '南部'?",
+          "correctAnswer": "southern part",
+          "distractors": [
+            {
+              "answer": "daily",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1934"
+            },
+            {
+              "answer": "evidence",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1537"
+            },
+            {
+              "answer": "risk; hazard",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1518"
+            },
+            {
+              "answer": "nature",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1740"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1727",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '计算' mean?",
+          "correctAnswer": "to count",
+          "distractors": [
+            {
+              "answer": "to understand through experience",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1807"
+            },
+            {
+              "answer": "to implement",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1894"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1727",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '计算'?",
+          "correctAnswer": "to count",
+          "distractors": [
+            {
+              "answer": "tǐ huì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1807"
+            },
+            {
+              "answer": "shí xíng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1894"
+            },
+            {
+              "answer": "dǎ pò",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1762"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1727",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to count' in Chinese?",
+          "correctAnswer": "计算",
+          "distractors": [
+            {
+              "answer": "体会",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1807"
+            },
+            {
+              "answer": "实行",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1894"
+            },
+            {
+              "answer": "打破",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1762"
+            },
+            {
+              "answer": "公布",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1684"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1357",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '挂' mean?",
+          "correctAnswer": "to hang",
+          "distractors": [
+            {
+              "answer": "to stop",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1496"
+            },
+            {
+              "answer": "to divorce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1691"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1357",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to hang' in Chinese?",
+          "correctAnswer": "挂",
+          "distractors": [
+            {
+              "answer": "顿",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1496"
+            },
+            {
+              "answer": "离婚",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1691"
+            },
+            {
+              "answer": "反应",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1366"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1357",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '挂'?",
+          "correctAnswer": "to hang",
+          "distractors": [
+            {
+              "answer": "to stop",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1496"
+            },
+            {
+              "answer": "to divorce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1691"
+            },
+            {
+              "answer": "to react",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1366"
+            },
+            {
+              "answer": "to approve",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1928"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1823",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '属' mean?",
+          "correctAnswer": "to belong to",
+          "distractors": [
+            {
+              "answer": "to concentrate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1407"
+            },
+            {
+              "answer": "to design",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1291"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1823",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '属' mean?",
+          "correctAnswer": "to belong to",
+          "distractors": [
+            {
+              "answer": "to concentrate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1407"
+            },
+            {
+              "answer": "to design",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1291"
+            },
+            {
+              "answer": "to ask about",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2018"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1823",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '属' mean?",
+          "correctAnswer": "to belong to",
+          "distractors": [
+            {
+              "answer": "to concentrate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1407"
+            },
+            {
+              "answer": "to design",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1291"
+            },
+            {
+              "answer": "to ask about",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2018"
+            },
+            {
+              "answer": "to announce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1684"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1792",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '概念' mean?",
+          "correctAnswer": "concept",
+          "distractors": [
+            {
+              "answer": "the other party",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1378"
+            },
+            {
+              "answer": "development",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1308"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1792",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '概念' mean?",
+          "correctAnswer": "concept",
+          "distractors": [
+            {
+              "answer": "the other party",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1378"
+            },
+            {
+              "answer": "development",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1308"
+            },
+            {
+              "answer": "experiment",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1554"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1792",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '概念' mean?",
+          "correctAnswer": "concept",
+          "distractors": [
+            {
+              "answer": "the other party",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1378"
+            },
+            {
+              "answer": "development",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1308"
+            },
+            {
+              "answer": "experiment",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1554"
+            },
+            {
+              "answer": "ache",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1400"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1277",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '台' mean?",
+          "correctAnswer": "platform; stand",
+          "distractors": [
+            {
+              "answer": "close relatives",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1905"
+            },
+            {
+              "answer": "round",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1486"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-1277\" correctAnswer senses [platform, stand] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1277",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '台'?",
+          "correctAnswer": "platform; stand",
+          "distractors": [
+            {
+              "answer": "qīn rén",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1905"
+            },
+            {
+              "answer": "tuán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1486"
+            },
+            {
+              "answer": "jué duì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1286"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-1277\" correctAnswer senses [platform, stand] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1277",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '台'?",
+          "correctAnswer": "platform; stand",
+          "distractors": [
+            {
+              "answer": "qīn rén",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1905"
+            },
+            {
+              "answer": "tuán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1486"
+            },
+            {
+              "answer": "jué duì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1286"
+            },
+            {
+              "answer": "fáng zū",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2061"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-1277\" correctAnswer senses [platform, stand] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1674",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '瘦' mean?",
+          "correctAnswer": "thin",
+          "distractors": [
+            {
+              "answer": "total number",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1974"
+            },
+            {
+              "answer": "gold medal",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1958"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1674",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '瘦' mean?",
+          "correctAnswer": "thin",
+          "distractors": [
+            {
+              "answer": "total number",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1974"
+            },
+            {
+              "answer": "gold medal",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1958"
+            },
+            {
+              "answer": "victory",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1454"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1674",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '瘦' mean?",
+          "correctAnswer": "thin",
+          "distractors": [
+            {
+              "answer": "total number",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1974"
+            },
+            {
+              "answer": "gold medal",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1958"
+            },
+            {
+              "answer": "victory",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1454"
+            },
+            {
+              "answer": "world",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1205"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1812",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '安装' mean?",
+          "correctAnswer": "to install",
+          "distractors": [
+            {
+              "answer": "to take initiative",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1652"
+            },
+            {
+              "answer": "to select",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1221"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1812",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to install' in Chinese?",
+          "correctAnswer": "安装",
+          "distractors": [
+            {
+              "answer": "主动",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1652"
+            },
+            {
+              "answer": "选择",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1221"
+            },
+            {
+              "answer": "丰富",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1697"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1812",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '安装'?",
+          "correctAnswer": "to install",
+          "distractors": [
+            {
+              "answer": "to take initiative",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1652"
+            },
+            {
+              "answer": "to select",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1221"
+            },
+            {
+              "answer": "to enrich",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1697"
+            },
+            {
+              "answer": "to prevent",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1937"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1239",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '处理' mean?",
+          "correctAnswer": "to handle",
+          "distractors": [
+            {
+              "answer": "to improve",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1878"
+            },
+            {
+              "answer": "to embody",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1869"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1239",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '处理'?",
+          "correctAnswer": "to handle",
+          "distractors": [
+            {
+              "answer": "gǎi jìn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1878"
+            },
+            {
+              "answer": "tǐ xiàn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1869"
+            },
+            {
+              "answer": "guǎn lǐ",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1387"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1239",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to handle' in Chinese?",
+          "correctAnswer": "处理",
+          "distractors": [
+            {
+              "answer": "改进",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1878"
+            },
+            {
+              "answer": "体现",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1869"
+            },
+            {
+              "answer": "管理",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1387"
+            },
+            {
+              "answer": "团结",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1742"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1552",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '电子' mean?",
+          "correctAnswer": "electronic",
+          "distractors": [
+            {
+              "answer": "beautiful",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1469"
+            },
+            {
+              "answer": "local",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1493"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1552",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'electronic' in Chinese?",
+          "correctAnswer": "电子",
+          "distractors": [
+            {
+              "answer": "美好",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1469"
+            },
+            {
+              "answer": "当地",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1493"
+            },
+            {
+              "answer": "美",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1216"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1552",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '电子'?",
+          "correctAnswer": "electronic",
+          "distractors": [
+            {
+              "answer": "beautiful",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1469"
+            },
+            {
+              "answer": "local",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1493"
+            },
+            {
+              "answer": "unpeaceful",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1898"
+            },
+            {
+              "answer": "individual",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1258"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1927",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '东部' mean?",
+          "correctAnswer": "the east",
+          "distractors": [
+            {
+              "answer": "panda",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2009"
+            },
+            {
+              "answer": "fragrant",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1562"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1927",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '东部'?",
+          "correctAnswer": "the east",
+          "distractors": [
+            {
+              "answer": "xióng māo",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2009"
+            },
+            {
+              "answer": "xiāng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1562"
+            },
+            {
+              "answer": "shàng yī",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2016"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1927",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'the east' in Chinese?",
+          "correctAnswer": "东部",
+          "distractors": [
+            {
+              "answer": "熊猫",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2009"
+            },
+            {
+              "answer": "香",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1562"
+            },
+            {
+              "answer": "上衣",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2016"
+            },
+            {
+              "answer": "实验室",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1737"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2029",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '彩色' mean?",
+          "correctAnswer": "color",
+          "distractors": [
+            {
+              "answer": "United Nations",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1857"
+            },
+            {
+              "answer": "Put in",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1751"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"United Nations\" has 2 format features different from correct \"color\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-2029",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '彩色'?",
+          "correctAnswer": "color",
+          "distractors": [
+            {
+              "answer": "Lián hé guó",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1857"
+            },
+            {
+              "answer": "fàng dào",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1751"
+            },
+            {
+              "answer": "fēng xiǎn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1518"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Lián hé guó\" has 2 format features different from correct \"color\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-2029",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'color' in Chinese?",
+          "correctAnswer": "彩色",
+          "distractors": [
+            {
+              "answer": "联合国",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1857"
+            },
+            {
+              "answer": "放到",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1751"
+            },
+            {
+              "answer": "风险",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1518"
+            },
+            {
+              "answer": "力量",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1319"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1558",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '聪明' mean?",
+          "correctAnswer": "intelligent",
+          "distractors": [
+            {
+              "answer": "simple",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1283"
+            },
+            {
+              "answer": "sweet",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1653"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1558",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'intelligent' in Chinese?",
+          "correctAnswer": "聪明",
+          "distractors": [
+            {
+              "answer": "简单",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1283"
+            },
+            {
+              "answer": "甜",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1653"
+            },
+            {
+              "answer": "冬",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1942"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1558",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '聪明'?",
+          "correctAnswer": "intelligent",
+          "distractors": [
+            {
+              "answer": "simple",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1283"
+            },
+            {
+              "answer": "sweet",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1653"
+            },
+            {
+              "answer": "winter",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1942"
+            },
+            {
+              "answer": "literature",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1880"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1710",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '较' mean?",
+          "correctAnswer": "to compare",
+          "distractors": [
+            {
+              "answer": "to make",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1676"
+            },
+            {
+              "answer": "to persevere",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1287"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1710",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '较'?",
+          "correctAnswer": "to compare",
+          "distractors": [
+            {
+              "answer": "zào",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1676"
+            },
+            {
+              "answer": "jiān chí",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1287"
+            },
+            {
+              "answer": "zhuā",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1297"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1710",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to compare' in Chinese?",
+          "correctAnswer": "较",
+          "distractors": [
+            {
+              "answer": "造",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1676"
+            },
+            {
+              "answer": "坚持",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1287"
+            },
+            {
+              "answer": "抓",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1297"
+            },
+            {
+              "answer": "造成",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1321"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1214",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '总' mean?",
+          "correctAnswer": "general; overall",
+          "distractors": [
+            {
+              "answer": "as much as possible",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1622"
+            },
+            {
+              "answer": "individual",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1258"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1214",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '总'?",
+          "correctAnswer": "general; overall",
+          "distractors": [
+            {
+              "answer": "jǐn liàng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1622"
+            },
+            {
+              "answer": "gè rén",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1258"
+            },
+            {
+              "answer": "kè guān",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1952"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1214",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '总'?",
+          "correctAnswer": "general; overall",
+          "distractors": [
+            {
+              "answer": "jǐn liàng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1622"
+            },
+            {
+              "answer": "gè rén",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1258"
+            },
+            {
+              "answer": "kè guān",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1952"
+            },
+            {
+              "answer": "bù ān",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1898"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1492",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '不得不' mean?",
+          "correctAnswer": "have no choice",
+          "distractors": [
+            {
+              "answer": "character",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1866"
+            },
+            {
+              "answer": "pants",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1825"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1492",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '不得不'?",
+          "correctAnswer": "have no choice",
+          "distractors": [
+            {
+              "answer": "wén zì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1866"
+            },
+            {
+              "answer": "kù zi",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1825"
+            },
+            {
+              "answer": "fēng xiǎn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1518"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1492",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '不得不'?",
+          "correctAnswer": "have no choice",
+          "distractors": [
+            {
+              "answer": "wén zì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1866"
+            },
+            {
+              "answer": "kù zi",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1825"
+            },
+            {
+              "answer": "fēng xiǎn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1518"
+            },
+            {
+              "answer": "hòu nián",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2132"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1279",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '明显' mean?",
+          "correctAnswer": "clear",
+          "distractors": [
+            {
+              "answer": "happiness",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1325"
+            },
+            {
+              "answer": "shirt",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2074"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1279",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '明显' mean?",
+          "correctAnswer": "clear",
+          "distractors": [
+            {
+              "answer": "happiness",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1325"
+            },
+            {
+              "answer": "shirt",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2074"
+            },
+            {
+              "answer": "cash",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1574"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1279",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '明显' mean?",
+          "correctAnswer": "clear",
+          "distractors": [
+            {
+              "answer": "happiness",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1325"
+            },
+            {
+              "answer": "shirt",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2074"
+            },
+            {
+              "answer": "cash",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1574"
+            },
+            {
+              "answer": "hotel",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1962"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1434",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '经济' mean?",
+          "correctAnswer": "economy",
+          "distractors": [
+            {
+              "answer": "motive power",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1698"
+            },
+            {
+              "answer": "magazine",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1498"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1434",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '经济' mean?",
+          "correctAnswer": "economy",
+          "distractors": [
+            {
+              "answer": "motive power",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1698"
+            },
+            {
+              "answer": "magazine",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1498"
+            },
+            {
+              "answer": "neighbor",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1782"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1434",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '经济' mean?",
+          "correctAnswer": "economy",
+          "distractors": [
+            {
+              "answer": "motive power",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1698"
+            },
+            {
+              "answer": "magazine",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1498"
+            },
+            {
+              "answer": "neighbor",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1782"
+            },
+            {
+              "answer": "member",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1450"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1565",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '信任' mean?",
+          "correctAnswer": "to trust",
+          "distractors": [
+            {
+              "answer": "to scrape",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1843"
+            },
+            {
+              "answer": "to announce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1684"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1565",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '信任' mean?",
+          "correctAnswer": "to trust",
+          "distractors": [
+            {
+              "answer": "to scrape",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1843"
+            },
+            {
+              "answer": "to announce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1684"
+            },
+            {
+              "answer": "to watch TV",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2034"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1565",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '信任' mean?",
+          "correctAnswer": "to trust",
+          "distractors": [
+            {
+              "answer": "to scrape",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1843"
+            },
+            {
+              "answer": "to announce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1684"
+            },
+            {
+              "answer": "to watch TV",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2034"
+            },
+            {
+              "answer": "to start",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1749"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1340",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '部门' mean?",
+          "correctAnswer": "department",
+          "distractors": [
+            {
+              "answer": "guesthouse",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1924"
+            },
+            {
+              "answer": "talent",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1768"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1340",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'department' in Chinese?",
+          "correctAnswer": "部门",
+          "distractors": [
+            {
+              "answer": "宾馆",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1924"
+            },
+            {
+              "answer": "才能",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1768"
+            },
+            {
+              "answer": "哈哈",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1441"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1340",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '部门'?",
+          "correctAnswer": "department",
+          "distractors": [
+            {
+              "answer": "guesthouse",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1924"
+            },
+            {
+              "answer": "talent",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1768"
+            },
+            {
+              "answer": "ha ha; laughter",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1441"
+            },
+            {
+              "answer": "the Chinese nation",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1981"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"the Chinese nation\" has 2 format features different from correct \"department\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1595",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '仅仅' mean?",
+          "correctAnswer": "barely",
+          "distractors": [
+            {
+              "answer": "once",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1281"
+            },
+            {
+              "answer": "timely",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1623"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1595",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '仅仅'?",
+          "correctAnswer": "barely",
+          "distractors": [
+            {
+              "answer": "céng jīng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1281"
+            },
+            {
+              "answer": "jí shí",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1623"
+            },
+            {
+              "answer": "yǐ",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1211"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1595",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'barely' in Chinese?",
+          "correctAnswer": "仅仅",
+          "distractors": [
+            {
+              "answer": "曾经",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1281"
+            },
+            {
+              "answer": "及时",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1623"
+            },
+            {
+              "answer": "已",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1211"
+            },
+            {
+              "answer": "基本上",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1819"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1559",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '浪费' mean?",
+          "correctAnswer": "to waste",
+          "distractors": [
+            {
+              "answer": "to take a walk",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1982"
+            },
+            {
+              "answer": "to express",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1307"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1559",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to waste' in Chinese?",
+          "correctAnswer": "浪费",
+          "distractors": [
+            {
+              "answer": "散步",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1982"
+            },
+            {
+              "answer": "表示",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1307"
+            },
+            {
+              "answer": "否定",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1993"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1559",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '浪费'?",
+          "correctAnswer": "to waste",
+          "distractors": [
+            {
+              "answer": "to take a walk",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1982"
+            },
+            {
+              "answer": "to express",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1307"
+            },
+            {
+              "answer": "to negate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1993"
+            },
+            {
+              "answer": "to break; to smash",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1762"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1385",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '必要' mean?",
+          "correctAnswer": "necessary",
+          "distractors": [
+            {
+              "answer": "ha ha; laughter",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1441"
+            },
+            {
+              "answer": "world",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1205"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1385",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'necessary' in Chinese?",
+          "correctAnswer": "必要",
+          "distractors": [
+            {
+              "answer": "哈哈",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1441"
+            },
+            {
+              "answer": "世界",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1205"
+            },
+            {
+              "answer": "家乡",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1888"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1385",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '必要'?",
+          "correctAnswer": "necessary",
+          "distractors": [
+            {
+              "answer": "ha ha; laughter",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1441"
+            },
+            {
+              "answer": "world",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1205"
+            },
+            {
+              "answer": "hometown",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1888"
+            },
+            {
+              "answer": "document",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1426"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2001",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '可乐' mean?",
+          "correctAnswer": "cola",
+          "distractors": [
+            {
+              "answer": "gaiety",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1813"
+            },
+            {
+              "answer": "athlete",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1345"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2001",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'cola' in Chinese?",
+          "correctAnswer": "可乐",
+          "distractors": [
+            {
+              "answer": "欢乐",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1813"
+            },
+            {
+              "answer": "选手",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1345"
+            },
+            {
+              "answer": "功能",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1600"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2001",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '可乐'?",
+          "correctAnswer": "cola",
+          "distractors": [
+            {
+              "answer": "gaiety",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1813"
+            },
+            {
+              "answer": "athlete",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1345"
+            },
+            {
+              "answer": "function",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1600"
+            },
+            {
+              "answer": "media",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1397"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1578",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '领' mean?",
+          "correctAnswer": "neck",
+          "distractors": [
+            {
+              "answer": "suitcase",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2110"
+            },
+            {
+              "answer": "capital city",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1899"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1578",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '领' mean?",
+          "correctAnswer": "neck",
+          "distractors": [
+            {
+              "answer": "suitcase",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2110"
+            },
+            {
+              "answer": "capital city",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1899"
+            },
+            {
+              "answer": "sky",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1776"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1578",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '领' mean?",
+          "correctAnswer": "neck",
+          "distractors": [
+            {
+              "answer": "suitcase",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2110"
+            },
+            {
+              "answer": "capital city",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1899"
+            },
+            {
+              "answer": "sky",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1776"
+            },
+            {
+              "answer": "fragrant",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1562"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1547",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '升' mean?",
+          "correctAnswer": "to ascend",
+          "distractors": [
+            {
+              "answer": "to break; to smash",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1762"
+            },
+            {
+              "answer": "to push open",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2063"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1547",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '升'?",
+          "correctAnswer": "to ascend",
+          "distractors": [
+            {
+              "answer": "dǎ pò",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1762"
+            },
+            {
+              "answer": "tuī kāi",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2063"
+            },
+            {
+              "answer": "jù yǒu",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1527"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1547",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '升'?",
+          "correctAnswer": "to ascend",
+          "distractors": [
+            {
+              "answer": "dǎ pò",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1762"
+            },
+            {
+              "answer": "tuī kāi",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2063"
+            },
+            {
+              "answer": "jù yǒu",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1527"
+            },
+            {
+              "answer": "shēng zhǎng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1871"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1386",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '危险' mean?",
+          "correctAnswer": "danger",
+          "distractors": [
+            {
+              "answer": "sky",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1776"
+            },
+            {
+              "answer": "sports fan",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1862"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1386",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'danger' in Chinese?",
+          "correctAnswer": "危险",
+          "distractors": [
+            {
+              "answer": "天空",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1776"
+            },
+            {
+              "answer": "球迷",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1862"
+            },
+            {
+              "answer": "衬衣",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2074"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1386",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '危险'?",
+          "correctAnswer": "danger",
+          "distractors": [
+            {
+              "answer": "sky",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1776"
+            },
+            {
+              "answer": "sports fan",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1862"
+            },
+            {
+              "answer": "shirt",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2074"
+            },
+            {
+              "answer": "nature",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1326"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1953",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '裙子' mean?",
+          "correctAnswer": "skirt",
+          "distractors": [
+            {
+              "answer": "experience",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1352"
+            },
+            {
+              "answer": "termination",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1234"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1953",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '裙子'?",
+          "correctAnswer": "skirt",
+          "distractors": [
+            {
+              "answer": "jīng lì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1352"
+            },
+            {
+              "answer": "jié shù",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1234"
+            },
+            {
+              "answer": "zǎo yǐ",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1906"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1953",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '裙子'?",
+          "correctAnswer": "skirt",
+          "distractors": [
+            {
+              "answer": "jīng lì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1352"
+            },
+            {
+              "answer": "jié shù",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1234"
+            },
+            {
+              "answer": "zǎo yǐ",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1906"
+            },
+            {
+              "answer": "gōng fū",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2080"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1417",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '整' mean?",
+          "correctAnswer": "whole; entire",
+          "distractors": [
+            {
+              "answer": "foodstuff; food",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1607"
+            },
+            {
+              "answer": "email",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2070"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1417",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '整' mean?",
+          "correctAnswer": "whole; entire",
+          "distractors": [
+            {
+              "answer": "foodstuff; food",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1607"
+            },
+            {
+              "answer": "email",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2070"
+            },
+            {
+              "answer": "World Cup",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2039"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1417",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '整'?",
+          "correctAnswer": "whole; entire",
+          "distractors": [
+            {
+              "answer": "shí pǐn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1607"
+            },
+            {
+              "answer": "diàn zǐ yóu jiàn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2070"
+            },
+            {
+              "answer": "Shì jiè bēi",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2039"
+            },
+            {
+              "answer": "zhuàng tài",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1379"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1820",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '农民' mean?",
+          "correctAnswer": "peasant",
+          "distractors": [
+            {
+              "answer": "course",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1747"
+            },
+            {
+              "answer": "suffix for doers",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1235"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1820",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '农民' mean?",
+          "correctAnswer": "peasant",
+          "distractors": [
+            {
+              "answer": "course",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1747"
+            },
+            {
+              "answer": "suffix for doers",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1235"
+            },
+            {
+              "answer": "diplomacy",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1943"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1820",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '农民' mean?",
+          "correctAnswer": "peasant",
+          "distractors": [
+            {
+              "answer": "course",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1747"
+            },
+            {
+              "answer": "suffix for doers",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1235"
+            },
+            {
+              "answer": "diplomacy",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1943"
+            },
+            {
+              "answer": "great",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1524"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1517",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '意外' mean?",
+          "correctAnswer": "unexpected",
+          "distractors": [
+            {
+              "answer": "undertaking",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1423"
+            },
+            {
+              "answer": "to stipulate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1376"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1517",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '意外' mean?",
+          "correctAnswer": "unexpected",
+          "distractors": [
+            {
+              "answer": "undertaking",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1423"
+            },
+            {
+              "answer": "to stipulate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1376"
+            },
+            {
+              "answer": "to reinforce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1733"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1517",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '意外' mean?",
+          "correctAnswer": "unexpected",
+          "distractors": [
+            {
+              "answer": "undertaking",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1423"
+            },
+            {
+              "answer": "to stipulate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1376"
+            },
+            {
+              "answer": "to reinforce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1733"
+            },
+            {
+              "answer": "to beat",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1329"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1833",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '沙发' mean?",
+          "correctAnswer": "sofa",
+          "distractors": [
+            {
+              "answer": "furniture",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1870"
+            },
+            {
+              "answer": "light",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1925"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1833",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'sofa' in Chinese?",
+          "correctAnswer": "沙发",
+          "distractors": [
+            {
+              "answer": "家具",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1870"
+            },
+            {
+              "answer": "光明",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1925"
+            },
+            {
+              "answer": "上衣",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2016"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1833",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '沙发'?",
+          "correctAnswer": "sofa",
+          "distractors": [
+            {
+              "answer": "furniture",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1870"
+            },
+            {
+              "answer": "light",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1925"
+            },
+            {
+              "answer": "jacket",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2016"
+            },
+            {
+              "answer": "location",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1904"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2062",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '武术' mean?",
+          "correctAnswer": "martial arts",
+          "distractors": [
+            {
+              "answer": "suitcase",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2110"
+            },
+            {
+              "answer": "delegation",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2092"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-2062\" correctAnswer senses [martial arts] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-2062",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'martial arts' in Chinese?",
+          "correctAnswer": "武术",
+          "distractors": [
+            {
+              "answer": "行李箱",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2110"
+            },
+            {
+              "answer": "代表团",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2092"
+            },
+            {
+              "answer": "姑娘",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1463"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-2062\" correctAnswer senses [martial arts] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-2062",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "武术 (wǔ shù) — military skill or technique (in former times). Also: all kinds of martial art sports (some claiming spiritual development), self-defense, tradition of choreographed fights from opera and film (recent usage), also called kungfu 功夫",
+          "correctAnswer": "martial arts",
+          "distractors": [
+            {
+              "answer": "suitcase",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2110"
+            },
+            {
+              "answer": "delegation",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2092"
+            },
+            {
+              "answer": "girl",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1463"
+            },
+            {
+              "answer": "among the people",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2006"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "chinese_sense_mismatch_runtime",
+              "detail": "HSK fact \"zh-hsk-2062\" correctAnswer senses [martial arts] not found in explanation"
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-2056",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '铅笔' mean?",
+          "correctAnswer": "pencil",
+          "distractors": [
+            {
+              "answer": "media",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1397"
+            },
+            {
+              "answer": "experience",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1352"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2056",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '铅笔'?",
+          "correctAnswer": "pencil",
+          "distractors": [
+            {
+              "answer": "méi tǐ",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1397"
+            },
+            {
+              "answer": "jīng lì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1352"
+            },
+            {
+              "answer": "chéng jiù",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1745"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2056",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'pencil' in Chinese?",
+          "correctAnswer": "铅笔",
+          "distractors": [
+            {
+              "answer": "媒体",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1397"
+            },
+            {
+              "answer": "经历",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1352"
+            },
+            {
+              "answer": "成就",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1745"
+            },
+            {
+              "answer": "功夫",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1815"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1646",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '进步' mean?",
+          "correctAnswer": "progress",
+          "distractors": [
+            {
+              "answer": "American dollar",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1238"
+            },
+            {
+              "answer": "everyone present",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1971"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"American dollar\" has 2 format features different from correct \"progress\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1646",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '进步'?",
+          "correctAnswer": "progress",
+          "distractors": [
+            {
+              "answer": "Měi yuán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1238"
+            },
+            {
+              "answer": "quán chǎng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1971"
+            },
+            {
+              "answer": "yìn xiàng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1585"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Měi yuán\" has 2 format features different from correct \"progress\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1646",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '进步'?",
+          "correctAnswer": "progress",
+          "distractors": [
+            {
+              "answer": "Měi yuán",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1238"
+            },
+            {
+              "answer": "quán chǎng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1971"
+            },
+            {
+              "answer": "yìn xiàng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1585"
+            },
+            {
+              "answer": "wén huà",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1500"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Měi yuán\" has 2 format features different from correct \"progress\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1217",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '一切' mean?",
+          "correctAnswer": "everything",
+          "distractors": [
+            {
+              "answer": "itself",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1796"
+            },
+            {
+              "answer": "each other",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1658"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1217",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '一切'?",
+          "correctAnswer": "everything",
+          "distractors": [
+            {
+              "answer": "zì shēn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1796"
+            },
+            {
+              "answer": "xiāng hù",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1658"
+            },
+            {
+              "answer": "hù xiāng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1582"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1217",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '一切'?",
+          "correctAnswer": "everything",
+          "distractors": [
+            {
+              "answer": "zì shēn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1796"
+            },
+            {
+              "answer": "xiāng hù",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1658"
+            },
+            {
+              "answer": "hù xiāng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1582"
+            },
+            {
+              "answer": "fàng dào",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1751"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"fàng dào\" POS \"noun\" != correct \"pronoun\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1430",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '外面' mean?",
+          "correctAnswer": "outside",
+          "distractors": [
+            {
+              "answer": "below",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1458"
+            },
+            {
+              "answer": "from; by",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1218"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1430",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '外面' mean?",
+          "correctAnswer": "outside",
+          "distractors": [
+            {
+              "answer": "below",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1458"
+            },
+            {
+              "answer": "from; by",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1218"
+            },
+            {
+              "answer": "around",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1987"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1430",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '外面' mean?",
+          "correctAnswer": "outside",
+          "distractors": [
+            {
+              "answer": "below",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1458"
+            },
+            {
+              "answer": "from; by",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1218"
+            },
+            {
+              "answer": "around",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1987"
+            },
+            {
+              "answer": "inside",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1213"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2118",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '银牌' mean?",
+          "correctAnswer": "silver medal",
+          "distractors": [
+            {
+              "answer": "price",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1972"
+            },
+            {
+              "answer": "house",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1817"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2118",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '银牌'?",
+          "correctAnswer": "silver medal",
+          "distractors": [
+            {
+              "answer": "jià qian",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1972"
+            },
+            {
+              "answer": "fáng wū",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1817"
+            },
+            {
+              "answer": "wén zhāng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1564"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2118",
+          "masteryLevel": 4,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '银牌'?",
+          "correctAnswer": "silver medal",
+          "distractors": [
+            {
+              "answer": "jià qian",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1972"
+            },
+            {
+              "answer": "fáng wū",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1817"
+            },
+            {
+              "answer": "wén zhāng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1564"
+            },
+            {
+              "answer": "jué xīn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1861"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1912",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '总结' mean?",
+          "correctAnswer": "to sum up",
+          "distractors": [
+            {
+              "answer": "to beat",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1329"
+            },
+            {
+              "answer": "to question; to quiz",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1929"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1912",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to sum up' in Chinese?",
+          "correctAnswer": "总结",
+          "distractors": [
+            {
+              "answer": "赢",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1329"
+            },
+            {
+              "answer": "提问",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1929"
+            },
+            {
+              "answer": "收费",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1876"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1912",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '总结'?",
+          "correctAnswer": "to sum up",
+          "distractors": [
+            {
+              "answer": "to beat",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1329"
+            },
+            {
+              "answer": "to question; to quiz",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1929"
+            },
+            {
+              "answer": "to charge a fee",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1876"
+            },
+            {
+              "answer": "to write",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1939"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1431",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '效果' mean?",
+          "correctAnswer": "result",
+          "distractors": [
+            {
+              "answer": "marketplace",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1384"
+            },
+            {
+              "answer": "machine",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1681"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1431",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '效果' mean?",
+          "correctAnswer": "result",
+          "distractors": [
+            {
+              "answer": "marketplace",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1384"
+            },
+            {
+              "answer": "machine",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1681"
+            },
+            {
+              "answer": "TV station",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1845"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"TV station\" has 2 format features different from correct \"result\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-1431",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '效果' mean?",
+          "correctAnswer": "result",
+          "distractors": [
+            {
+              "answer": "marketplace",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1384"
+            },
+            {
+              "answer": "machine",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1681"
+            },
+            {
+              "answer": "TV station",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1845"
+            },
+            {
+              "answer": "simple",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1283"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"TV station\" has 2 format features different from correct \"result\""
+            }
+          ]
+        },
+        {
+          "factId": "zh-hsk-2051",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '景色' mean?",
+          "correctAnswer": "scenery",
+          "distractors": [
+            {
+              "answer": "citizen",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1714"
+            },
+            {
+              "answer": "clear",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1279"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2051",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '景色'?",
+          "correctAnswer": "scenery",
+          "distractors": [
+            {
+              "answer": "gōng mín",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1714"
+            },
+            {
+              "answer": "míng xiǎn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1279"
+            },
+            {
+              "answer": "dà shǐ guǎn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2085"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2051",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'scenery' in Chinese?",
+          "correctAnswer": "景色",
+          "distractors": [
+            {
+              "answer": "公民",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1714"
+            },
+            {
+              "answer": "明显",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1279"
+            },
+            {
+              "answer": "大使馆",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2085"
+            },
+            {
+              "answer": "海关",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2032"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1623",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '及时' mean?",
+          "correctAnswer": "timely",
+          "distractors": [
+            {
+              "answer": "almost; nearly",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1341"
+            },
+            {
+              "answer": "barely",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1356"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1623",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '及时'?",
+          "correctAnswer": "timely",
+          "distractors": [
+            {
+              "answer": "jī hū",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1341"
+            },
+            {
+              "answer": "jǐn",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1356"
+            },
+            {
+              "answer": "jìng",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1752"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1623",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'timely' in Chinese?",
+          "correctAnswer": "及时",
+          "distractors": [
+            {
+              "answer": "几乎",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1341"
+            },
+            {
+              "answer": "仅",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1356"
+            },
+            {
+              "answer": "静",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1752"
+            },
+            {
+              "answer": "只有",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1222"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1457",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '代' mean?",
+          "correctAnswer": "to substitute",
+          "distractors": [
+            {
+              "answer": "to make; to produce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1540"
+            },
+            {
+              "answer": "to conduct",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1687"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1457",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '代' mean?",
+          "correctAnswer": "to substitute",
+          "distractors": [
+            {
+              "answer": "to make; to produce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1540"
+            },
+            {
+              "answer": "to conduct",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1687"
+            },
+            {
+              "answer": "to persevere",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1287"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1457",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '代' mean?",
+          "correctAnswer": "to substitute",
+          "distractors": [
+            {
+              "answer": "to make; to produce",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1540"
+            },
+            {
+              "answer": "to conduct",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1687"
+            },
+            {
+              "answer": "to persevere",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1287"
+            },
+            {
+              "answer": "to seem",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1634"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1263",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '保持' mean?",
+          "correctAnswer": "to keep",
+          "distractors": [
+            {
+              "answer": "to treat",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1647"
+            },
+            {
+              "answer": "to accelerate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1835"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1263",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '保持' mean?",
+          "correctAnswer": "to keep",
+          "distractors": [
+            {
+              "answer": "to treat",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1647"
+            },
+            {
+              "answer": "to accelerate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1835"
+            },
+            {
+              "answer": "to go down",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1303"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1263",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '保持' mean?",
+          "correctAnswer": "to keep",
+          "distractors": [
+            {
+              "answer": "to treat",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1647"
+            },
+            {
+              "answer": "to accelerate",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1835"
+            },
+            {
+              "answer": "to go down",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1303"
+            },
+            {
+              "answer": "to lose",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1443"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1696",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '吵' mean?",
+          "correctAnswer": "to quarrel",
+          "distractors": [
+            {
+              "answer": "to hurry to a place",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1713"
+            },
+            {
+              "answer": "to transfer",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1465"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1696",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to quarrel' in Chinese?",
+          "correctAnswer": "吵",
+          "distractors": [
+            {
+              "answer": "赶到",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1713"
+            },
+            {
+              "answer": "调",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1465"
+            },
+            {
+              "answer": "等待",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1479"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1696",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to '吵'?",
+          "correctAnswer": "to quarrel",
+          "distractors": [
+            {
+              "answer": "to hurry to a place",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1713"
+            },
+            {
+              "answer": "to transfer",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1465"
+            },
+            {
+              "answer": "to wait",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1479"
+            },
+            {
+              "answer": "to be worth",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1349"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1746",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '厨房' mean?",
+          "correctAnswer": "kitchen",
+          "distractors": [
+            {
+              "answer": "sand",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2086"
+            },
+            {
+              "answer": "result",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1790"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1746",
+          "masteryLevel": 2,
+          "poolId": "reading_pinyin",
+          "renderedQuestion": "What is the pinyin reading of '厨房'?",
+          "correctAnswer": "kitchen",
+          "distractors": [
+            {
+              "answer": "shā zi",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2086"
+            },
+            {
+              "answer": "chéng guǒ",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1790"
+            },
+            {
+              "answer": "chéng shì",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1250"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reading_pinyin",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-1746",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'kitchen' in Chinese?",
+          "correctAnswer": "厨房",
+          "distractors": [
+            {
+              "answer": "沙子",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2086"
+            },
+            {
+              "answer": "成果",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1790"
+            },
+            {
+              "answer": "城市",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1250"
+            },
+            {
+              "answer": "员工",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1545"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2070",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '电子邮件' mean?",
+          "correctAnswer": "email",
+          "distractors": [
+            {
+              "answer": "ticket price",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2098"
+            },
+            {
+              "answer": "wages; pay",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1661"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2070",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '电子邮件' mean?",
+          "correctAnswer": "email",
+          "distractors": [
+            {
+              "answer": "ticket price",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2098"
+            },
+            {
+              "answer": "wages; pay",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1661"
+            },
+            {
+              "answer": "have no choice",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1492"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "zh-hsk-2070",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does '电子邮件' mean?",
+          "correctAnswer": "email",
+          "distractors": [
+            {
+              "answer": "ticket price",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-2098"
+            },
+            {
+              "answer": "wages; pay",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1661"
+            },
+            {
+              "answer": "have no choice",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1492"
+            },
+            {
+              "answer": "prominent",
+              "source": "similar_difficulty",
+              "factId": "zh-hsk-1850"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

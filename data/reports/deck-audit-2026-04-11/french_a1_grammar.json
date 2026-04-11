@@ -1,0 +1,4368 @@
+{
+  "timestamp": "2026-04-11T02:00:16.659Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 22,
+  "decks": [
+    {
+      "deckId": "french_a1_grammar",
+      "deckName": "French A1 Grammar",
+      "deckClass": "vocab",
+      "totalFacts": 194,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 22,
+      "issuesByType": {
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 10
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 12
+        }
+      },
+      "factResults": [
+        {
+          "factId": "fr-gram-a1-pres-aimer-tu-0",
+          "masteryLevel": 0,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "Qu'{___}-tu ?\n(What do you like?)",
+          "correctAnswer": "aimes",
+          "distractors": [
+            {
+              "answer": "habites",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-habiter-tu-0"
+            },
+            {
+              "answer": "Parlez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-parler-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-aimer-tu-0",
+          "masteryLevel": 2,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "Qu'{___}-tu ?\n(What do you like?)",
+          "correctAnswer": "aimes",
+          "distractors": [
+            {
+              "answer": "habites",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-habiter-tu-0"
+            },
+            {
+              "answer": "Parlez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-parler-vous-0"
+            },
+            {
+              "answer": "habite",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-habiter-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"habites\" and \"habite\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-pres-aimer-tu-0",
+          "masteryLevel": 4,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "Qu'{___}-tu ?\n(What do you like?)",
+          "correctAnswer": "aimes",
+          "distractors": [
+            {
+              "answer": "habites",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-habiter-tu-0"
+            },
+            {
+              "answer": "Parlez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-parler-vous-0"
+            },
+            {
+              "answer": "habite",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-habiter-je-0"
+            },
+            {
+              "answer": "aime",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"habites\" and \"habite\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-pres-aimer-nous-0",
+          "masteryLevel": 0,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "Nous {___} la musique française.\n(We love French music.)",
+          "correctAnswer": "aimons",
+          "distractors": [
+            {
+              "answer": "aime",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-il-0"
+            },
+            {
+              "answer": "travailles",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-travailler-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-aimer-nous-0",
+          "masteryLevel": 2,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "Nous {___} la musique française.\n(We love French music.)",
+          "correctAnswer": "aimons",
+          "distractors": [
+            {
+              "answer": "aime",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-il-0"
+            },
+            {
+              "answer": "travailles",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-travailler-tu-0"
+            },
+            {
+              "answer": "travaille",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-travailler-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"travailles\" and \"travaille\" are 90% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-pres-aimer-nous-0",
+          "masteryLevel": 4,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "Nous {___} la musique française.\n(We love French music.)",
+          "correctAnswer": "aimons",
+          "distractors": [
+            {
+              "answer": "aime",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-il-0"
+            },
+            {
+              "answer": "travailles",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-travailler-tu-0"
+            },
+            {
+              "answer": "travaille",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-travailler-il-0"
+            },
+            {
+              "answer": "étudie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-etudier-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"travailles\" and \"travaille\" are 90% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-pres-parler-tu-0",
+          "masteryLevel": 0,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "{___}-tu italien ?\n(Do you speak Italian?)",
+          "correctAnswer": "Parles",
+          "distractors": [
+            {
+              "answer": "aimons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-nous-0"
+            },
+            {
+              "answer": "étudie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-etudier-je-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-parler-tu-0",
+          "masteryLevel": 2,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "{___}-tu italien ?\n(Do you speak Italian?)",
+          "correctAnswer": "Parles",
+          "distractors": [
+            {
+              "answer": "aimons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-nous-0"
+            },
+            {
+              "answer": "étudie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-etudier-je-1"
+            },
+            {
+              "answer": "travaille",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-travailler-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-parler-tu-0",
+          "masteryLevel": 4,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "{___}-tu italien ?\n(Do you speak Italian?)",
+          "correctAnswer": "Parles",
+          "distractors": [
+            {
+              "answer": "aimons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-nous-0"
+            },
+            {
+              "answer": "étudie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-etudier-je-1"
+            },
+            {
+              "answer": "travaille",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-travailler-je-0"
+            },
+            {
+              "answer": "aime",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-travailler-ils-0",
+          "masteryLevel": 0,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "Ils {___} ensemble tous les jours.\n(They work together every day.)",
+          "correctAnswer": "travaillent",
+          "distractors": [
+            {
+              "answer": "habites",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-habiter-tu-0"
+            },
+            {
+              "answer": "aiment",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-travailler-ils-0",
+          "masteryLevel": 2,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "Ils {___} ensemble tous les jours.\n(They work together every day.)",
+          "correctAnswer": "travaillent",
+          "distractors": [
+            {
+              "answer": "habites",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-habiter-tu-0"
+            },
+            {
+              "answer": "aiment",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-ils-0"
+            },
+            {
+              "answer": "Parlez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-parler-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-travailler-ils-0",
+          "masteryLevel": 4,
+          "poolId": "present_er_forms",
+          "renderedQuestion": "Ils {___} ensemble tous les jours.\n(They work together every day.)",
+          "correctAnswer": "travaillent",
+          "distractors": [
+            {
+              "answer": "habites",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-habiter-tu-0"
+            },
+            {
+              "answer": "aiment",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-aimer-ils-0"
+            },
+            {
+              "answer": "Parlez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-parler-vous-0"
+            },
+            {
+              "answer": "parle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-parler-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Parlez\" and \"parle\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-etre-nous-0",
+          "masteryLevel": 0,
+          "poolId": "etre_forms",
+          "renderedQuestion": "Nous {___} lundi.\n(It's Monday.)",
+          "correctAnswer": "sommes",
+          "distractors": [
+            {
+              "answer": "est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-elle-0"
+            },
+            {
+              "answer": "sont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-etre-nous-0",
+          "masteryLevel": 2,
+          "poolId": "etre_forms",
+          "renderedQuestion": "Nous {___} lundi.\n(It's Monday.)",
+          "correctAnswer": "sommes",
+          "distractors": [
+            {
+              "answer": "est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-elle-0"
+            },
+            {
+              "answer": "sont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-ils-0"
+            },
+            {
+              "answer": "êtes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-etre-nous-0",
+          "masteryLevel": 4,
+          "poolId": "etre_forms",
+          "renderedQuestion": "Nous {___} lundi.\n(It's Monday.)",
+          "correctAnswer": "sommes",
+          "distractors": [
+            {
+              "answer": "est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-elle-0"
+            },
+            {
+              "answer": "sont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-ils-0"
+            },
+            {
+              "answer": "êtes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-vous-0"
+            },
+            {
+              "answer": "C'est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-ctx-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-etre-elle-0",
+          "masteryLevel": 0,
+          "poolId": "etre_forms",
+          "renderedQuestion": "Elle {___} heureuse.\n(She is happy.)",
+          "correctAnswer": "est",
+          "distractors": [
+            {
+              "answer": "suis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-je-0"
+            },
+            {
+              "answer": "C'est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-ctx-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-etre-elle-0",
+          "masteryLevel": 2,
+          "poolId": "etre_forms",
+          "renderedQuestion": "Elle {___} heureuse.\n(She is happy.)",
+          "correctAnswer": "est",
+          "distractors": [
+            {
+              "answer": "suis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-je-0"
+            },
+            {
+              "answer": "C'est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-ctx-01"
+            },
+            {
+              "answer": "sommes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-nous-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-etre-elle-0",
+          "masteryLevel": 4,
+          "poolId": "etre_forms",
+          "renderedQuestion": "Elle {___} heureuse.\n(She is happy.)",
+          "correctAnswer": "est",
+          "distractors": [
+            {
+              "answer": "suis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-je-0"
+            },
+            {
+              "answer": "C'est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-ctx-01"
+            },
+            {
+              "answer": "sommes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-nous-1"
+            },
+            {
+              "answer": "es",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-tu-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-etre-vous-1",
+          "masteryLevel": 0,
+          "poolId": "etre_forms",
+          "renderedQuestion": "Vous {___} français ?\n(Are you French?)",
+          "correctAnswer": "êtes",
+          "distractors": [
+            {
+              "answer": "sommes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-nous-1"
+            },
+            {
+              "answer": "sont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-elles-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-etre-vous-1",
+          "masteryLevel": 2,
+          "poolId": "etre_forms",
+          "renderedQuestion": "Vous {___} français ?\n(Are you French?)",
+          "correctAnswer": "êtes",
+          "distractors": [
+            {
+              "answer": "sommes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-nous-1"
+            },
+            {
+              "answer": "sont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-elles-0"
+            },
+            {
+              "answer": "suis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-je-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-etre-vous-1",
+          "masteryLevel": 4,
+          "poolId": "etre_forms",
+          "renderedQuestion": "Vous {___} français ?\n(Are you French?)",
+          "correctAnswer": "êtes",
+          "distractors": [
+            {
+              "answer": "sommes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-nous-1"
+            },
+            {
+              "answer": "sont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-elles-0"
+            },
+            {
+              "answer": "suis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-etre-je-2"
+            },
+            {
+              "answer": "C'est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-ctx-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-tu-0",
+          "masteryLevel": 0,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "Tu {___} raison.\n(You're right.)",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "ai",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ctx-08"
+            },
+            {
+              "answer": "ont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-tu-0",
+          "masteryLevel": 2,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "Tu {___} raison.\n(You're right.)",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "ai",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ctx-08"
+            },
+            {
+              "answer": "ont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ils-0"
+            },
+            {
+              "answer": "avez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-tu-0",
+          "masteryLevel": 4,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "Tu {___} raison.\n(You're right.)",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "ai",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ctx-08"
+            },
+            {
+              "answer": "ont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ils-0"
+            },
+            {
+              "answer": "avez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-vous-0"
+            },
+            {
+              "answer": "avons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-tu-1",
+          "masteryLevel": 0,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "Tu {___} faim ?\n(Are you hungry?)",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-elle-0"
+            },
+            {
+              "answer": "ont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-tu-1",
+          "masteryLevel": 2,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "Tu {___} faim ?\n(Are you hungry?)",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-elle-0"
+            },
+            {
+              "answer": "ont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ils-0"
+            },
+            {
+              "answer": "ai",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ctx-08"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-tu-1",
+          "masteryLevel": 4,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "Tu {___} faim ?\n(Are you hungry?)",
+          "correctAnswer": "as",
+          "distractors": [
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-elle-0"
+            },
+            {
+              "answer": "ont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ils-0"
+            },
+            {
+              "answer": "ai",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ctx-08"
+            },
+            {
+              "answer": "avons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-ils-0",
+          "masteryLevel": 0,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "Ils {___} deux enfants.\n(They have two children.)",
+          "correctAnswer": "ont",
+          "distractors": [
+            {
+              "answer": "ai",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-je-0"
+            },
+            {
+              "answer": "as",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-tu-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-ils-0",
+          "masteryLevel": 2,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "Ils {___} deux enfants.\n(They have two children.)",
+          "correctAnswer": "ont",
+          "distractors": [
+            {
+              "answer": "ai",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-je-0"
+            },
+            {
+              "answer": "as",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-tu-1"
+            },
+            {
+              "answer": "avons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-ils-0",
+          "masteryLevel": 4,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "Ils {___} deux enfants.\n(They have two children.)",
+          "correctAnswer": "ont",
+          "distractors": [
+            {
+              "answer": "ai",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-je-0"
+            },
+            {
+              "answer": "as",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-tu-1"
+            },
+            {
+              "answer": "avons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-nous-0"
+            },
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-elle-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-ctx-07",
+          "masteryLevel": 0,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "J'{___} besoin d'aide.\n(I need help.)",
+          "correctAnswer": "ai",
+          "distractors": [
+            {
+              "answer": "as",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ctx-05"
+            },
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-ctx-07",
+          "masteryLevel": 2,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "J'{___} besoin d'aide.\n(I need help.)",
+          "correctAnswer": "ai",
+          "distractors": [
+            {
+              "answer": "as",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ctx-05"
+            },
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-il-0"
+            },
+            {
+              "answer": "ont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-avoir-ctx-07",
+          "masteryLevel": 4,
+          "poolId": "avoir_forms",
+          "renderedQuestion": "J'{___} besoin d'aide.\n(I need help.)",
+          "correctAnswer": "ai",
+          "distractors": [
+            {
+              "answer": "as",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ctx-05"
+            },
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-il-0"
+            },
+            {
+              "answer": "ont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-ils-0"
+            },
+            {
+              "answer": "avez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-avoir-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-aller-stub-nous",
+          "masteryLevel": 0,
+          "poolId": "aller_forms",
+          "renderedQuestion": "Nous {___} au marché.\n(We go to the market.)",
+          "correctAnswer": "allons",
+          "distractors": [
+            {
+              "answer": "va",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-va-il-0"
+            },
+            {
+              "answer": "vais",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vais-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-aller-stub-nous",
+          "masteryLevel": 2,
+          "poolId": "aller_forms",
+          "renderedQuestion": "Nous {___} au marché.\n(We go to the market.)",
+          "correctAnswer": "allons",
+          "distractors": [
+            {
+              "answer": "va",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-va-il-0"
+            },
+            {
+              "answer": "vais",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vais-je-0"
+            },
+            {
+              "answer": "vas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vas-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-aller-stub-nous",
+          "masteryLevel": 4,
+          "poolId": "aller_forms",
+          "renderedQuestion": "Nous {___} au marché.\n(We go to the market.)",
+          "correctAnswer": "allons",
+          "distractors": [
+            {
+              "answer": "va",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-va-il-0"
+            },
+            {
+              "answer": "vais",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vais-je-0"
+            },
+            {
+              "answer": "vas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vas-tu-0"
+            },
+            {
+              "answer": "vont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-stub-ils"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-reflexif-ctx-02",
+          "masteryLevel": 0,
+          "poolId": "reflexive_forms",
+          "renderedQuestion": "Je {___} Edgar Degas.\n(My name is Edgar Degas.)",
+          "correctAnswer": "m'appelle",
+          "distractors": [
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-02"
+            },
+            {
+              "answer": "me réveiller",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-reflexif-ctx-02",
+          "masteryLevel": 2,
+          "poolId": "reflexive_forms",
+          "renderedQuestion": "Je {___} Edgar Degas.\n(My name is Edgar Degas.)",
+          "correctAnswer": "m'appelle",
+          "distractors": [
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-02"
+            },
+            {
+              "answer": "me réveiller",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-03"
+            },
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-reflexif-ctx-02",
+          "masteryLevel": 4,
+          "poolId": "reflexive_forms",
+          "renderedQuestion": "Je {___} Edgar Degas.\n(My name is Edgar Degas.)",
+          "correctAnswer": "m'appelle",
+          "distractors": [
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-02"
+            },
+            {
+              "answer": "me réveiller",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-03"
+            },
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-03"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-reflexif-ctx-03",
+          "masteryLevel": 0,
+          "poolId": "reflexive_forms",
+          "renderedQuestion": "Je dois {___} tôt.\n(I have to get up early.)",
+          "correctAnswer": "me réveiller",
+          "distractors": [
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-03"
+            },
+            {
+              "answer": "m'appelle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-reflexif-ctx-03",
+          "masteryLevel": 2,
+          "poolId": "reflexive_forms",
+          "renderedQuestion": "Je dois {___} tôt.\n(I have to get up early.)",
+          "correctAnswer": "me réveiller",
+          "distractors": [
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-03"
+            },
+            {
+              "answer": "m'appelle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-02"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-reflexif-ctx-03",
+          "masteryLevel": 4,
+          "poolId": "reflexive_forms",
+          "renderedQuestion": "Je dois {___} tôt.\n(I have to get up early.)",
+          "correctAnswer": "me réveiller",
+          "distractors": [
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-03"
+            },
+            {
+              "answer": "m'appelle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-02"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-01"
+            },
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pronom-tonique-01",
+          "masteryLevel": 0,
+          "poolId": "pronoms_toniques",
+          "renderedQuestion": "Bien. Et {___} ?\n(Fine. And you?)",
+          "correctAnswer": "toi",
+          "distractors": [
+            {
+              "answer": "moi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-moi-0"
+            },
+            {
+              "answer": "lui",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-lui-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pronom-tonique-01",
+          "masteryLevel": 2,
+          "poolId": "pronoms_toniques",
+          "renderedQuestion": "Bien. Et {___} ?\n(Fine. And you?)",
+          "correctAnswer": "toi",
+          "distractors": [
+            {
+              "answer": "moi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-moi-0"
+            },
+            {
+              "answer": "lui",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-lui-0"
+            },
+            {
+              "answer": "eux",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-eux-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pronom-tonique-01",
+          "masteryLevel": 4,
+          "poolId": "pronoms_toniques",
+          "renderedQuestion": "Bien. Et {___} ?\n(Fine. And you?)",
+          "correctAnswer": "toi",
+          "distractors": [
+            {
+              "answer": "moi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-moi-0"
+            },
+            {
+              "answer": "lui",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-lui-0"
+            },
+            {
+              "answer": "eux",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-eux-0"
+            },
+            {
+              "answer": "se",
+              "source": "pool_fill",
+              "factId": "_synthetic_se"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-reflex-stub-03",
+          "masteryLevel": 0,
+          "poolId": "reflexive_forms",
+          "renderedQuestion": "Elle {___} couche tôt.\n(She goes to bed early.)",
+          "correctAnswer": "se",
+          "distractors": [
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-02"
+            },
+            {
+              "answer": "me réveiller",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-reflex-stub-03",
+          "masteryLevel": 2,
+          "poolId": "reflexive_forms",
+          "renderedQuestion": "Elle {___} couche tôt.\n(She goes to bed early.)",
+          "correctAnswer": "se",
+          "distractors": [
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-02"
+            },
+            {
+              "answer": "me réveiller",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-03"
+            },
+            {
+              "answer": "m'appelle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-reflex-stub-03",
+          "masteryLevel": 4,
+          "poolId": "reflexive_forms",
+          "renderedQuestion": "Elle {___} couche tôt.\n(She goes to bed early.)",
+          "correctAnswer": "se",
+          "distractors": [
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-02"
+            },
+            {
+              "answer": "me réveiller",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-03"
+            },
+            {
+              "answer": "m'appelle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflexif-ctx-02"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-reflex-stub-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-dormir-je-0",
+          "masteryLevel": 0,
+          "poolId": "present_ir_forms",
+          "renderedQuestion": "Je {___} huit heures par nuit.\n(I sleep eight hours a night.)",
+          "correctAnswer": "dors",
+          "distractors": [
+            {
+              "answer": "partent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-partir-ils-0"
+            },
+            {
+              "answer": "dormez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-dormir-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-dormir-je-0",
+          "masteryLevel": 2,
+          "poolId": "present_ir_forms",
+          "renderedQuestion": "Je {___} huit heures par nuit.\n(I sleep eight hours a night.)",
+          "correctAnswer": "dors",
+          "distractors": [
+            {
+              "answer": "partent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-partir-ils-0"
+            },
+            {
+              "answer": "dormez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-dormir-vous-0"
+            },
+            {
+              "answer": "finis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-finir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-dormir-je-0",
+          "masteryLevel": 4,
+          "poolId": "present_ir_forms",
+          "renderedQuestion": "Je {___} huit heures par nuit.\n(I sleep eight hours a night.)",
+          "correctAnswer": "dors",
+          "distractors": [
+            {
+              "answer": "partent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-partir-ils-0"
+            },
+            {
+              "answer": "dormez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-dormir-vous-0"
+            },
+            {
+              "answer": "finis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-finir-tu-0"
+            },
+            {
+              "answer": "finissent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-finir-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-finir-nous-0",
+          "masteryLevel": 0,
+          "poolId": "present_ir_forms",
+          "renderedQuestion": "Nous {___} le travail ensemble.\n(We are finishing the work together.)",
+          "correctAnswer": "finissons",
+          "distractors": [
+            {
+              "answer": "choisissez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-choisir-vous-0"
+            },
+            {
+              "answer": "sors",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-sortir-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-finir-nous-0",
+          "masteryLevel": 2,
+          "poolId": "present_ir_forms",
+          "renderedQuestion": "Nous {___} le travail ensemble.\n(We are finishing the work together.)",
+          "correctAnswer": "finissons",
+          "distractors": [
+            {
+              "answer": "choisissez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-choisir-vous-0"
+            },
+            {
+              "answer": "sors",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-sortir-je-0"
+            },
+            {
+              "answer": "partent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-partir-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-finir-nous-0",
+          "masteryLevel": 4,
+          "poolId": "present_ir_forms",
+          "renderedQuestion": "Nous {___} le travail ensemble.\n(We are finishing the work together.)",
+          "correctAnswer": "finissons",
+          "distractors": [
+            {
+              "answer": "choisissez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-choisir-vous-0"
+            },
+            {
+              "answer": "sors",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-sortir-je-0"
+            },
+            {
+              "answer": "partent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-partir-ils-0"
+            },
+            {
+              "answer": "finissent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-finir-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-attendre-nous-0",
+          "masteryLevel": 0,
+          "poolId": "present_re_forms",
+          "renderedQuestion": "Nous {___} nos amis devant le cinéma.\n(We are waiting for our friends in front of the cinema.)",
+          "correctAnswer": "attendons",
+          "distractors": [
+            {
+              "answer": "comprend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-il-0"
+            },
+            {
+              "answer": "attends",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-attendre-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pres-attendre-nous-0",
+          "masteryLevel": 2,
+          "poolId": "present_re_forms",
+          "renderedQuestion": "Nous {___} nos amis devant le cinéma.\n(We are waiting for our friends in front of the cinema.)",
+          "correctAnswer": "attendons",
+          "distractors": [
+            {
+              "answer": "comprend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-il-0"
+            },
+            {
+              "answer": "attends",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-attendre-je-0"
+            },
+            {
+              "answer": "comprends",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"comprend\" and \"comprends\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-pres-attendre-nous-0",
+          "masteryLevel": 4,
+          "poolId": "present_re_forms",
+          "renderedQuestion": "Nous {___} nos amis devant le cinéma.\n(We are waiting for our friends in front of the cinema.)",
+          "correctAnswer": "attendons",
+          "distractors": [
+            {
+              "answer": "comprend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-il-0"
+            },
+            {
+              "answer": "attends",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-attendre-je-0"
+            },
+            {
+              "answer": "comprends",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-je-0"
+            },
+            {
+              "answer": "prennent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-prendre-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"comprend\" and \"comprends\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-pres-vendre-ils-0",
+          "masteryLevel": 0,
+          "poolId": "present_re_forms",
+          "renderedQuestion": "Ils {___} des légumes au marché.\n(They sell vegetables at the market.)",
+          "correctAnswer": "vendent",
+          "distractors": [
+            {
+              "answer": "comprends",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-je-1"
+            },
+            {
+              "answer": "comprend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"comprends\" and \"comprend\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-pres-vendre-ils-0",
+          "masteryLevel": 2,
+          "poolId": "present_re_forms",
+          "renderedQuestion": "Ils {___} des légumes au marché.\n(They sell vegetables at the market.)",
+          "correctAnswer": "vendent",
+          "distractors": [
+            {
+              "answer": "comprends",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-je-1"
+            },
+            {
+              "answer": "comprend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-il-0"
+            },
+            {
+              "answer": "entend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-entendre-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"comprends\" and \"comprend\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-pres-vendre-ils-0",
+          "masteryLevel": 4,
+          "poolId": "present_re_forms",
+          "renderedQuestion": "Ils {___} des légumes au marché.\n(They sell vegetables at the market.)",
+          "correctAnswer": "vendent",
+          "distractors": [
+            {
+              "answer": "comprends",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-je-1"
+            },
+            {
+              "answer": "comprend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-comprendre-il-0"
+            },
+            {
+              "answer": "entend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-entendre-il-0"
+            },
+            {
+              "answer": "prennent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pres-prendre-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"comprends\" and \"comprend\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-futur-proche-vont-ils-0",
+          "masteryLevel": 0,
+          "poolId": "futur_proche_forms",
+          "renderedQuestion": "Ils {___} partir demain.\n(They are going to leave tomorrow.)",
+          "correctAnswer": "vont",
+          "distractors": [
+            {
+              "answer": "vais",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-vais-je-2"
+            },
+            {
+              "answer": "allez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-allez-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-futur-proche-vont-ils-0",
+          "masteryLevel": 2,
+          "poolId": "futur_proche_forms",
+          "renderedQuestion": "Ils {___} partir demain.\n(They are going to leave tomorrow.)",
+          "correctAnswer": "vont",
+          "distractors": [
+            {
+              "answer": "vais",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-vais-je-2"
+            },
+            {
+              "answer": "allez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-allez-vous-0"
+            },
+            {
+              "answer": "va",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-va-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-futur-proche-vont-ils-0",
+          "masteryLevel": 4,
+          "poolId": "futur_proche_forms",
+          "renderedQuestion": "Ils {___} partir demain.\n(They are going to leave tomorrow.)",
+          "correctAnswer": "vont",
+          "distractors": [
+            {
+              "answer": "vais",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-vais-je-2"
+            },
+            {
+              "answer": "allez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-allez-vous-0"
+            },
+            {
+              "answer": "va",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-va-il-0"
+            },
+            {
+              "answer": "allons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-allons-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-futur-proche-vais-je-1",
+          "masteryLevel": 0,
+          "poolId": "futur_proche_forms",
+          "renderedQuestion": "Je {___} le faire maintenant.\n(I will do it right now.)",
+          "correctAnswer": "vais",
+          "distractors": [
+            {
+              "answer": "va",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-va-il-1"
+            },
+            {
+              "answer": "vont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-vont-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-futur-proche-vais-je-1",
+          "masteryLevel": 2,
+          "poolId": "futur_proche_forms",
+          "renderedQuestion": "Je {___} le faire maintenant.\n(I will do it right now.)",
+          "correctAnswer": "vais",
+          "distractors": [
+            {
+              "answer": "va",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-va-il-1"
+            },
+            {
+              "answer": "vont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-vont-ils-0"
+            },
+            {
+              "answer": "vas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-vas-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-futur-proche-vais-je-1",
+          "masteryLevel": 4,
+          "poolId": "futur_proche_forms",
+          "renderedQuestion": "Je {___} le faire maintenant.\n(I will do it right now.)",
+          "correctAnswer": "vais",
+          "distractors": [
+            {
+              "answer": "va",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-va-il-1"
+            },
+            {
+              "answer": "vont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-vont-ils-0"
+            },
+            {
+              "answer": "vas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-vas-tu-0"
+            },
+            {
+              "answer": "allez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-futur-proche-allez-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-passe-recent-vient-il-1",
+          "masteryLevel": 0,
+          "poolId": "passe_recent_forms",
+          "renderedQuestion": "Elle {___} de finir son travail.\n(She has just finished her work.)",
+          "correctAnswer": "vient",
+          "distractors": [
+            {
+              "answer": "viens",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-passe-recent-viens-je-1"
+            },
+            {
+              "answer": "venons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-passe-recent-venons-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-passe-recent-vient-il-1",
+          "masteryLevel": 2,
+          "poolId": "passe_recent_forms",
+          "renderedQuestion": "Elle {___} de finir son travail.\n(She has just finished her work.)",
+          "correctAnswer": "vient",
+          "distractors": [
+            {
+              "answer": "viens",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-passe-recent-viens-je-1"
+            },
+            {
+              "answer": "venons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-passe-recent-venons-nous-0"
+            },
+            {
+              "answer": "va finir",
+              "source": "pool_fill",
+              "factId": "_synthetic_va finir"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-passe-recent-vient-il-1",
+          "masteryLevel": 4,
+          "poolId": "passe_recent_forms",
+          "renderedQuestion": "Elle {___} de finir son travail.\n(She has just finished her work.)",
+          "correctAnswer": "vient",
+          "distractors": [
+            {
+              "answer": "viens",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-passe-recent-viens-je-1"
+            },
+            {
+              "answer": "venons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-passe-recent-venons-nous-0"
+            },
+            {
+              "answer": "va finir",
+              "source": "pool_fill",
+              "factId": "_synthetic_va finir"
+            },
+            {
+              "answer": "allons manger",
+              "source": "pool_fill",
+              "factId": "_synthetic_allons manger"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-il-y-a-affirmatif-0",
+          "masteryLevel": 0,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "{___} un chat dans le jardin.\n(There is a cat in the garden.)",
+          "correctAnswer": "il y a",
+          "distractors": [
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-il-y-a-affirmatif-0",
+          "masteryLevel": 2,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "{___} un chat dans le jardin.\n(There is a cat in the garden.)",
+          "correctAnswer": "il y a",
+          "distractors": [
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            },
+            {
+              "answer": "pas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-il-y-a-affirmatif-0",
+          "masteryLevel": 4,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "{___} un chat dans le jardin.\n(There is a cat in the garden.)",
+          "correctAnswer": "il y a",
+          "distractors": [
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            },
+            {
+              "answer": "pas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-3"
+            },
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-il-y-a-negatif-1",
+          "masteryLevel": 0,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Il {___} aucune solution.\n(There isn't any solution.)",
+          "correctAnswer": "n'y a",
+          "distractors": [
+            {
+              "answer": "pas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-1"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-il-y-a-negatif-1",
+          "masteryLevel": 2,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Il {___} aucune solution.\n(There isn't any solution.)",
+          "correctAnswer": "n'y a",
+          "distractors": [
+            {
+              "answer": "pas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-1"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-il-y-a-negatif-1",
+          "masteryLevel": 4,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Il {___} aucune solution.\n(There isn't any solution.)",
+          "correctAnswer": "n'y a",
+          "distractors": [
+            {
+              "answer": "pas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-1"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            },
+            {
+              "answer": "il y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-affirmatif-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-aller-present-va-il-0",
+          "masteryLevel": 0,
+          "poolId": "aller_forms",
+          "renderedQuestion": "{___} au parc.\n(Go to the park.)",
+          "correctAnswer": "va",
+          "distractors": [
+            {
+              "answer": "vais",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vais-je-0"
+            },
+            {
+              "answer": "vont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-stub-ils"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-aller-present-va-il-0",
+          "masteryLevel": 2,
+          "poolId": "aller_forms",
+          "renderedQuestion": "{___} au parc.\n(Go to the park.)",
+          "correctAnswer": "va",
+          "distractors": [
+            {
+              "answer": "vais",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vais-je-0"
+            },
+            {
+              "answer": "vont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-stub-ils"
+            },
+            {
+              "answer": "vas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vas-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-aller-present-va-il-0",
+          "masteryLevel": 4,
+          "poolId": "aller_forms",
+          "renderedQuestion": "{___} au parc.\n(Go to the park.)",
+          "correctAnswer": "va",
+          "distractors": [
+            {
+              "answer": "vais",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vais-je-0"
+            },
+            {
+              "answer": "vont",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-stub-ils"
+            },
+            {
+              "answer": "vas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-present-vas-tu-0"
+            },
+            {
+              "answer": "allons",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-aller-stub-nous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-quand-0",
+          "masteryLevel": 0,
+          "poolId": "mots_interrogatifs",
+          "renderedQuestion": "{___} reviendras-tu ?\n(When will you be back?)",
+          "correctAnswer": "Quand",
+          "distractors": [
+            {
+              "answer": "est-ce que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-estcequi-0"
+            },
+            {
+              "answer": "combien",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-combien-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"est-ce que\" has 2 format features different from correct \"Quand\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-quand-0",
+          "masteryLevel": 2,
+          "poolId": "mots_interrogatifs",
+          "renderedQuestion": "{___} reviendras-tu ?\n(When will you be back?)",
+          "correctAnswer": "Quand",
+          "distractors": [
+            {
+              "answer": "est-ce que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-estcequi-0"
+            },
+            {
+              "answer": "combien",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-combien-1"
+            },
+            {
+              "answer": "Pourquoi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pourquoi-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"est-ce que\" has 2 format features different from correct \"Quand\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-quand-0",
+          "masteryLevel": 4,
+          "poolId": "mots_interrogatifs",
+          "renderedQuestion": "{___} reviendras-tu ?\n(When will you be back?)",
+          "correctAnswer": "Quand",
+          "distractors": [
+            {
+              "answer": "est-ce que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-estcequi-0"
+            },
+            {
+              "answer": "combien",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-combien-1"
+            },
+            {
+              "answer": "Pourquoi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pourquoi-1"
+            },
+            {
+              "answer": "Quelle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-quel-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"est-ce que\" has 2 format features different from correct \"Quand\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-estcequi-0",
+          "masteryLevel": 0,
+          "poolId": "mots_interrogatifs",
+          "renderedQuestion": "{___} tu parles français ?\n(Do you speak French?)",
+          "correctAnswer": "est-ce que",
+          "distractors": [
+            {
+              "answer": "Combien",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-combien-0"
+            },
+            {
+              "answer": "quoi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-quoi-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Combien\" has 2 format features different from correct \"est-ce que\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-estcequi-0",
+          "masteryLevel": 2,
+          "poolId": "mots_interrogatifs",
+          "renderedQuestion": "{___} tu parles français ?\n(Do you speak French?)",
+          "correctAnswer": "est-ce que",
+          "distractors": [
+            {
+              "answer": "Combien",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-combien-0"
+            },
+            {
+              "answer": "quoi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-quoi-0"
+            },
+            {
+              "answer": "Quelle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-quel-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Combien\" has 2 format features different from correct \"est-ce que\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-estcequi-0",
+          "masteryLevel": 4,
+          "poolId": "mots_interrogatifs",
+          "renderedQuestion": "{___} tu parles français ?\n(Do you speak French?)",
+          "correctAnswer": "est-ce que",
+          "distractors": [
+            {
+              "answer": "Combien",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-combien-0"
+            },
+            {
+              "answer": "quoi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-quoi-0"
+            },
+            {
+              "answer": "Quelle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-quel-0"
+            },
+            {
+              "answer": "quand",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-quand-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Combien\" has 2 format features different from correct \"est-ce que\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-quel-0",
+          "masteryLevel": 0,
+          "poolId": "mots_interrogatifs",
+          "renderedQuestion": "{___} heure est-il ?\n(What time is it?)",
+          "correctAnswer": "Quelle",
+          "distractors": [
+            {
+              "answer": "Qui",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-qui-0"
+            },
+            {
+              "answer": "Que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-quel-0",
+          "masteryLevel": 2,
+          "poolId": "mots_interrogatifs",
+          "renderedQuestion": "{___} heure est-il ?\n(What time is it?)",
+          "correctAnswer": "Quelle",
+          "distractors": [
+            {
+              "answer": "Qui",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-qui-0"
+            },
+            {
+              "answer": "Que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-que-0"
+            },
+            {
+              "answer": "quoi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-quoi-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-quel-0",
+          "masteryLevel": 4,
+          "poolId": "mots_interrogatifs",
+          "renderedQuestion": "{___} heure est-il ?\n(What time is it?)",
+          "correctAnswer": "Quelle",
+          "distractors": [
+            {
+              "answer": "Qui",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-qui-0"
+            },
+            {
+              "answer": "Que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-que-0"
+            },
+            {
+              "answer": "quoi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-quoi-0"
+            },
+            {
+              "answer": "Combien",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-combien-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-neg-3",
+          "masteryLevel": 0,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Je ne suis {___}.\n(I don't follow.)",
+          "correctAnswer": "pas",
+          "distractors": [
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-0"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-neg-3",
+          "masteryLevel": 2,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Je ne suis {___}.\n(I don't follow.)",
+          "correctAnswer": "pas",
+          "distractors": [
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-0"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-neg-3",
+          "masteryLevel": 4,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Je ne suis {___}.\n(I don't follow.)",
+          "correctAnswer": "pas",
+          "distractors": [
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-0"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            },
+            {
+              "answer": "il y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-affirmatif-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-neg-5",
+          "masteryLevel": 0,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Je ne comprends {___} l'allemand.\n(I don't understand German.)",
+          "correctAnswer": "pas",
+          "distractors": [
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-1"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-neg-5",
+          "masteryLevel": 2,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Je ne comprends {___} l'allemand.\n(I don't understand German.)",
+          "correctAnswer": "pas",
+          "distractors": [
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-1"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            },
+            {
+              "answer": "il y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-affirmatif-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-neg-5",
+          "masteryLevel": 4,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Je ne comprends {___} l'allemand.\n(I don't understand German.)",
+          "correctAnswer": "pas",
+          "distractors": [
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-1"
+            },
+            {
+              "answer": "n'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-6"
+            },
+            {
+              "answer": "il y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-affirmatif-1"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-neg-6",
+          "masteryLevel": 0,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Elle {___}est pas là.\n(She is not here.)",
+          "correctAnswer": "n'",
+          "distractors": [
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-0"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-neg-6",
+          "masteryLevel": 2,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Elle {___}est pas là.\n(She is not here.)",
+          "correctAnswer": "n'",
+          "distractors": [
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-0"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            },
+            {
+              "answer": "il y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-affirmatif-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-neg-6",
+          "masteryLevel": 4,
+          "poolId": "negation_ne_pas",
+          "renderedQuestion": "Elle {___}est pas là.\n(She is not here.)",
+          "correctAnswer": "n'",
+          "distractors": [
+            {
+              "answer": "n'y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-negatif-0"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-neg-4"
+            },
+            {
+              "answer": "il y a",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-il-y-a-affirmatif-1"
+            },
+            {
+              "answer": "n'ai personne",
+              "source": "pool_fill",
+              "factId": "_synthetic_n'ai personne"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-sujet-elle-0",
+          "masteryLevel": 0,
+          "poolId": "pronoms_sujets",
+          "renderedQuestion": "{___} est professeure.\n(She is a teacher.)",
+          "correctAnswer": "Elle",
+          "distractors": [
+            {
+              "answer": "On",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-on-0"
+            },
+            {
+              "answer": "je",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-sujet-elle-0",
+          "masteryLevel": 2,
+          "poolId": "pronoms_sujets",
+          "renderedQuestion": "{___} est professeure.\n(She is a teacher.)",
+          "correctAnswer": "Elle",
+          "distractors": [
+            {
+              "answer": "On",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-on-0"
+            },
+            {
+              "answer": "je",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-je-0"
+            },
+            {
+              "answer": "Il",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-sujet-elle-0",
+          "masteryLevel": 4,
+          "poolId": "pronoms_sujets",
+          "renderedQuestion": "{___} est professeure.\n(She is a teacher.)",
+          "correctAnswer": "Elle",
+          "distractors": [
+            {
+              "answer": "On",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-on-0"
+            },
+            {
+              "answer": "je",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-je-0"
+            },
+            {
+              "answer": "Il",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-il-0"
+            },
+            {
+              "answer": "vous",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-sujet-vous-0",
+          "masteryLevel": 0,
+          "poolId": "pronoms_sujets",
+          "renderedQuestion": "Et {___} ?\n(How about you?)",
+          "correctAnswer": "vous",
+          "distractors": [
+            {
+              "answer": "Il",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-il-0"
+            },
+            {
+              "answer": "je",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-sujet-vous-0",
+          "masteryLevel": 2,
+          "poolId": "pronoms_sujets",
+          "renderedQuestion": "Et {___} ?\n(How about you?)",
+          "correctAnswer": "vous",
+          "distractors": [
+            {
+              "answer": "Il",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-il-0"
+            },
+            {
+              "answer": "je",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-je-0"
+            },
+            {
+              "answer": "Elle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-elle-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-sujet-vous-0",
+          "masteryLevel": 4,
+          "poolId": "pronoms_sujets",
+          "renderedQuestion": "Et {___} ?\n(How about you?)",
+          "correctAnswer": "vous",
+          "distractors": [
+            {
+              "answer": "Il",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-il-0"
+            },
+            {
+              "answer": "je",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-je-0"
+            },
+            {
+              "answer": "Elle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-elle-0"
+            },
+            {
+              "answer": "Nous",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-sujet-on-0",
+          "masteryLevel": 0,
+          "poolId": "pronoms_sujets",
+          "renderedQuestion": "{___} mange pour vivre.\n(We eat so we can live.)",
+          "correctAnswer": "On",
+          "distractors": [
+            {
+              "answer": "vous",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-vous-0"
+            },
+            {
+              "answer": "je",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-sujet-on-0",
+          "masteryLevel": 2,
+          "poolId": "pronoms_sujets",
+          "renderedQuestion": "{___} mange pour vivre.\n(We eat so we can live.)",
+          "correctAnswer": "On",
+          "distractors": [
+            {
+              "answer": "vous",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-vous-0"
+            },
+            {
+              "answer": "je",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-je-0"
+            },
+            {
+              "answer": "Ils",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-sujet-on-0",
+          "masteryLevel": 4,
+          "poolId": "pronoms_sujets",
+          "renderedQuestion": "{___} mange pour vivre.\n(We eat so we can live.)",
+          "correctAnswer": "On",
+          "distractors": [
+            {
+              "answer": "vous",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-vous-0"
+            },
+            {
+              "answer": "je",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-je-0"
+            },
+            {
+              "answer": "Ils",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-ils-0"
+            },
+            {
+              "answer": "Elle",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-sujet-elle-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-tonique-toi-chez-0",
+          "masteryLevel": 0,
+          "poolId": "pronoms_toniques",
+          "renderedQuestion": "Fais comme chez {___}.\n(Make yourself at home.)",
+          "correctAnswer": "toi",
+          "distractors": [
+            {
+              "answer": "Moi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pronom-tonique-02"
+            },
+            {
+              "answer": "eux",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-eux-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-tonique-toi-chez-0",
+          "masteryLevel": 2,
+          "poolId": "pronoms_toniques",
+          "renderedQuestion": "Fais comme chez {___}.\n(Make yourself at home.)",
+          "correctAnswer": "toi",
+          "distractors": [
+            {
+              "answer": "Moi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pronom-tonique-02"
+            },
+            {
+              "answer": "eux",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-eux-0"
+            },
+            {
+              "answer": "lui",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-lui-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-pro-tonique-toi-chez-0",
+          "masteryLevel": 4,
+          "poolId": "pronoms_toniques",
+          "renderedQuestion": "Fais comme chez {___}.\n(Make yourself at home.)",
+          "correctAnswer": "toi",
+          "distractors": [
+            {
+              "answer": "Moi",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pronom-tonique-02"
+            },
+            {
+              "answer": "eux",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-eux-0"
+            },
+            {
+              "answer": "lui",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-pro-tonique-lui-0"
+            },
+            {
+              "answer": "ça",
+              "source": "pool_fill",
+              "factId": "_synthetic_ça"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-sg-ton-0",
+          "masteryLevel": 0,
+          "poolId": "possessifs_sg",
+          "renderedQuestion": "C'est {___} tour.\n(It's your move.)",
+          "correctAnswer": "ton",
+          "distractors": [
+            {
+              "answer": "Mon",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-mon-gp-0"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ma-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-sg-ton-0",
+          "masteryLevel": 2,
+          "poolId": "possessifs_sg",
+          "renderedQuestion": "C'est {___} tour.\n(It's your move.)",
+          "correctAnswer": "ton",
+          "distractors": [
+            {
+              "answer": "Mon",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-mon-gp-0"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ma-0"
+            },
+            {
+              "answer": "son",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-son-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-sg-ton-0",
+          "masteryLevel": 4,
+          "poolId": "possessifs_sg",
+          "renderedQuestion": "C'est {___} tour.\n(It's your move.)",
+          "correctAnswer": "ton",
+          "distractors": [
+            {
+              "answer": "Mon",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-mon-gp-0"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ma-0"
+            },
+            {
+              "answer": "son",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-son-0"
+            },
+            {
+              "answer": "ses",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ses-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-sg-son-0",
+          "masteryLevel": 0,
+          "poolId": "possessifs_sg",
+          "renderedQuestion": "Il range {___} sac.\n(He puts away his bag.)",
+          "correctAnswer": "son",
+          "distractors": [
+            {
+              "answer": "ton",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ton-0"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ma-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-sg-son-0",
+          "masteryLevel": 2,
+          "poolId": "possessifs_sg",
+          "renderedQuestion": "Il range {___} sac.\n(He puts away his bag.)",
+          "correctAnswer": "son",
+          "distractors": [
+            {
+              "answer": "ton",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ton-0"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ma-0"
+            },
+            {
+              "answer": "ses",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ses-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-sg-son-0",
+          "masteryLevel": 4,
+          "poolId": "possessifs_sg",
+          "renderedQuestion": "Il range {___} sac.\n(He puts away his bag.)",
+          "correctAnswer": "son",
+          "distractors": [
+            {
+              "answer": "ton",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ton-0"
+            },
+            {
+              "answer": "ma",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ma-0"
+            },
+            {
+              "answer": "ses",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-ses-0"
+            },
+            {
+              "answer": "Mon",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-sg-mon-gp-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-pl-votre-0",
+          "masteryLevel": 0,
+          "poolId": "possessifs_pl",
+          "renderedQuestion": "J'aime {___} voiture.\n(I like your car.)",
+          "correctAnswer": "votre",
+          "distractors": [
+            {
+              "answer": "leur",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-leur-0"
+            },
+            {
+              "answer": "notre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-notre-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-pl-votre-0",
+          "masteryLevel": 2,
+          "poolId": "possessifs_pl",
+          "renderedQuestion": "J'aime {___} voiture.\n(I like your car.)",
+          "correctAnswer": "votre",
+          "distractors": [
+            {
+              "answer": "leur",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-leur-0"
+            },
+            {
+              "answer": "notre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-notre-0"
+            },
+            {
+              "answer": "nos",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-stub-nos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-pl-votre-0",
+          "masteryLevel": 4,
+          "poolId": "possessifs_pl",
+          "renderedQuestion": "J'aime {___} voiture.\n(I like your car.)",
+          "correctAnswer": "votre",
+          "distractors": [
+            {
+              "answer": "leur",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-leur-0"
+            },
+            {
+              "answer": "notre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-notre-0"
+            },
+            {
+              "answer": "nos",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-stub-nos"
+            },
+            {
+              "answer": "vos",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-stub-vos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-pl-leur-0",
+          "masteryLevel": 0,
+          "poolId": "possessifs_pl",
+          "renderedQuestion": "C'est {___} maison.\n(It is their house.)",
+          "correctAnswer": "leur",
+          "distractors": [
+            {
+              "answer": "vos",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-stub-vos"
+            },
+            {
+              "answer": "votre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-votre-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-pl-leur-0",
+          "masteryLevel": 2,
+          "poolId": "possessifs_pl",
+          "renderedQuestion": "C'est {___} maison.\n(It is their house.)",
+          "correctAnswer": "leur",
+          "distractors": [
+            {
+              "answer": "vos",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-stub-vos"
+            },
+            {
+              "answer": "votre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-votre-0"
+            },
+            {
+              "answer": "notre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-notre-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-poss-pl-leur-0",
+          "masteryLevel": 4,
+          "poolId": "possessifs_pl",
+          "renderedQuestion": "C'est {___} maison.\n(It is their house.)",
+          "correctAnswer": "leur",
+          "distractors": [
+            {
+              "answer": "vos",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-stub-vos"
+            },
+            {
+              "answer": "votre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-votre-0"
+            },
+            {
+              "answer": "notre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-notre-0"
+            },
+            {
+              "answer": "nos",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-poss-pl-stub-nos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-def-001",
+          "masteryLevel": 0,
+          "poolId": "articles_definis",
+          "renderedQuestion": "J'étudie {___} anglais chez moi.\n(I study English at home.)",
+          "correctAnswer": "l'",
+          "distractors": [
+            {
+              "answer": "les",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-def-005"
+            },
+            {
+              "answer": "le",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-def-003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-def-001",
+          "masteryLevel": 2,
+          "poolId": "articles_definis",
+          "renderedQuestion": "J'étudie {___} anglais chez moi.\n(I study English at home.)",
+          "correctAnswer": "l'",
+          "distractors": [
+            {
+              "answer": "les",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-def-005"
+            },
+            {
+              "answer": "le",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-def-003"
+            },
+            {
+              "answer": "la",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-def-004"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-def-001",
+          "masteryLevel": 4,
+          "poolId": "articles_definis",
+          "renderedQuestion": "J'étudie {___} anglais chez moi.\n(I study English at home.)",
+          "correctAnswer": "l'",
+          "distractors": [
+            {
+              "answer": "les",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-def-005"
+            },
+            {
+              "answer": "le",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-def-003"
+            },
+            {
+              "answer": "la",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-def-004"
+            },
+            {
+              "answer": "ton",
+              "source": "pool_fill",
+              "factId": "_synthetic_ton"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-indef-005",
+          "masteryLevel": 0,
+          "poolId": "articles_indefinis",
+          "renderedQuestion": "J'ai {___} chien.\n(I have a dog.)",
+          "correctAnswer": "un",
+          "distractors": [
+            {
+              "answer": "une",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-indef-003"
+            },
+            {
+              "answer": "du",
+              "source": "pool_fill",
+              "factId": "_synthetic_du"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-indef-005",
+          "masteryLevel": 2,
+          "poolId": "articles_indefinis",
+          "renderedQuestion": "J'ai {___} chien.\n(I have a dog.)",
+          "correctAnswer": "un",
+          "distractors": [
+            {
+              "answer": "une",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-indef-003"
+            },
+            {
+              "answer": "du",
+              "source": "pool_fill",
+              "factId": "_synthetic_du"
+            },
+            {
+              "answer": "la",
+              "source": "pool_fill",
+              "factId": "_synthetic_la"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-indef-005",
+          "masteryLevel": 4,
+          "poolId": "articles_indefinis",
+          "renderedQuestion": "J'ai {___} chien.\n(I have a dog.)",
+          "correctAnswer": "un",
+          "distractors": [
+            {
+              "answer": "une",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-indef-003"
+            },
+            {
+              "answer": "du",
+              "source": "pool_fill",
+              "factId": "_synthetic_du"
+            },
+            {
+              "answer": "la",
+              "source": "pool_fill",
+              "factId": "_synthetic_la"
+            },
+            {
+              "answer": "ma",
+              "source": "pool_fill",
+              "factId": "_synthetic_ma"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-part-002",
+          "masteryLevel": 0,
+          "poolId": "articles_partitifs",
+          "renderedQuestion": "Je veux {___} eau.\n(I want some water.)",
+          "correctAnswer": "de l'",
+          "distractors": [
+            {
+              "answer": "du",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-001"
+            },
+            {
+              "answer": "de la",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-part-002",
+          "masteryLevel": 2,
+          "poolId": "articles_partitifs",
+          "renderedQuestion": "Je veux {___} eau.\n(I want some water.)",
+          "correctAnswer": "de l'",
+          "distractors": [
+            {
+              "answer": "du",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-001"
+            },
+            {
+              "answer": "de la",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-003"
+            },
+            {
+              "answer": "des",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-stub-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-part-002",
+          "masteryLevel": 4,
+          "poolId": "articles_partitifs",
+          "renderedQuestion": "Je veux {___} eau.\n(I want some water.)",
+          "correctAnswer": "de l'",
+          "distractors": [
+            {
+              "answer": "du",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-001"
+            },
+            {
+              "answer": "de la",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-003"
+            },
+            {
+              "answer": "des",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-stub-01"
+            },
+            {
+              "answer": "ce",
+              "source": "pool_fill",
+              "factId": "_synthetic_ce"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-dem-001",
+          "masteryLevel": 0,
+          "poolId": "demonstratifs",
+          "renderedQuestion": "J'adore {___} publicité !\n(I love that commercial!)",
+          "correctAnswer": "cette",
+          "distractors": [
+            {
+              "answer": "ces",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-006"
+            },
+            {
+              "answer": "ce",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-004"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-dem-001",
+          "masteryLevel": 2,
+          "poolId": "demonstratifs",
+          "renderedQuestion": "J'adore {___} publicité !\n(I love that commercial!)",
+          "correctAnswer": "cette",
+          "distractors": [
+            {
+              "answer": "ces",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-006"
+            },
+            {
+              "answer": "ce",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-004"
+            },
+            {
+              "answer": "cet",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-005"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-dem-001",
+          "masteryLevel": 4,
+          "poolId": "demonstratifs",
+          "renderedQuestion": "J'adore {___} publicité !\n(I love that commercial!)",
+          "correctAnswer": "cette",
+          "distractors": [
+            {
+              "answer": "ces",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-006"
+            },
+            {
+              "answer": "ce",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-004"
+            },
+            {
+              "answer": "cet",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-005"
+            },
+            {
+              "answer": "mon",
+              "source": "pool_fill",
+              "factId": "_synthetic_mon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-dem-004",
+          "masteryLevel": 0,
+          "poolId": "demonstratifs",
+          "renderedQuestion": "Tu connais {___} garçon ?\n(Do you know that boy?)",
+          "correctAnswer": "ce",
+          "distractors": [
+            {
+              "answer": "cette",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-002"
+            },
+            {
+              "answer": "ces",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-dem-004",
+          "masteryLevel": 2,
+          "poolId": "demonstratifs",
+          "renderedQuestion": "Tu connais {___} garçon ?\n(Do you know that boy?)",
+          "correctAnswer": "ce",
+          "distractors": [
+            {
+              "answer": "cette",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-002"
+            },
+            {
+              "answer": "ces",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-003"
+            },
+            {
+              "answer": "cet",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-005"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-dem-004",
+          "masteryLevel": 4,
+          "poolId": "demonstratifs",
+          "renderedQuestion": "Tu connais {___} garçon ?\n(Do you know that boy?)",
+          "correctAnswer": "ce",
+          "distractors": [
+            {
+              "answer": "cette",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-002"
+            },
+            {
+              "answer": "ces",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-003"
+            },
+            {
+              "answer": "cet",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-dem-005"
+            },
+            {
+              "answer": "leur",
+              "source": "pool_fill",
+              "factId": "_synthetic_leur"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-part-stub-02",
+          "masteryLevel": 0,
+          "poolId": "articles_partitifs",
+          "renderedQuestion": "Il boit {___} café le matin.\n(He drinks [some] coffee in the morning.)",
+          "correctAnswer": "du",
+          "distractors": [
+            {
+              "answer": "des",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-stub-01"
+            },
+            {
+              "answer": "de la",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-part-stub-02",
+          "masteryLevel": 2,
+          "poolId": "articles_partitifs",
+          "renderedQuestion": "Il boit {___} café le matin.\n(He drinks [some] coffee in the morning.)",
+          "correctAnswer": "du",
+          "distractors": [
+            {
+              "answer": "des",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-stub-01"
+            },
+            {
+              "answer": "de la",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-003"
+            },
+            {
+              "answer": "de l'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-002"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-art-part-stub-02",
+          "masteryLevel": 4,
+          "poolId": "articles_partitifs",
+          "renderedQuestion": "Il boit {___} café le matin.\n(He drinks [some] coffee in the morning.)",
+          "correctAnswer": "du",
+          "distractors": [
+            {
+              "answer": "des",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-stub-01"
+            },
+            {
+              "answer": "de la",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-003"
+            },
+            {
+              "answer": "de l'",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-art-part-002"
+            },
+            {
+              "answer": "le",
+              "source": "pool_fill",
+              "factId": "_synthetic_le"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-prep-pour-01",
+          "masteryLevel": 0,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "Ce cadeau est {___} toi.\n(This gift is for you.)",
+          "correctAnswer": "pour",
+          "distractors": [
+            {
+              "answer": "en",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-en-01"
+            },
+            {
+              "answer": "dans",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-dans-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-prep-pour-01",
+          "masteryLevel": 2,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "Ce cadeau est {___} toi.\n(This gift is for you.)",
+          "correctAnswer": "pour",
+          "distractors": [
+            {
+              "answer": "en",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-en-01"
+            },
+            {
+              "answer": "dans",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-dans-01"
+            },
+            {
+              "answer": "derrière",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-derriere-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-prep-pour-01",
+          "masteryLevel": 4,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "Ce cadeau est {___} toi.\n(This gift is for you.)",
+          "correctAnswer": "pour",
+          "distractors": [
+            {
+              "answer": "en",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-en-01"
+            },
+            {
+              "answer": "dans",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-dans-01"
+            },
+            {
+              "answer": "derrière",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-derriere-01"
+            },
+            {
+              "answer": "à",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-a-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-cest-03",
+          "masteryLevel": 0,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "{___} enseignant.\n(He is a teacher. [describing profession without article])",
+          "correctAnswer": "Il est",
+          "distractors": [
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-avec-01"
+            },
+            {
+              "answer": "à",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-a-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"avec\" has 2 format features different from correct \"Il est\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-cest-03",
+          "masteryLevel": 2,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "{___} enseignant.\n(He is a teacher. [describing profession without article])",
+          "correctAnswer": "Il est",
+          "distractors": [
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-avec-01"
+            },
+            {
+              "answer": "à",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-a-02"
+            },
+            {
+              "answer": "chez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-chez-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"avec\" has 2 format features different from correct \"Il est\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-cest-03",
+          "masteryLevel": 4,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "{___} enseignant.\n(He is a teacher. [describing profession without article])",
+          "correctAnswer": "Il est",
+          "distractors": [
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-avec-01"
+            },
+            {
+              "answer": "à",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-a-02"
+            },
+            {
+              "answer": "chez",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-chez-01"
+            },
+            {
+              "answer": "c'est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"avec\" has 2 format features different from correct \"Il est\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-prep-sur-01",
+          "masteryLevel": 0,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "Posez-le {___} la table.\n(Lay it on the table.)",
+          "correctAnswer": "sur",
+          "distractors": [
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-avec-01"
+            },
+            {
+              "answer": "en",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-en-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-prep-sur-01",
+          "masteryLevel": 2,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "Posez-le {___} la table.\n(Lay it on the table.)",
+          "correctAnswer": "sur",
+          "distractors": [
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-avec-01"
+            },
+            {
+              "answer": "en",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-en-01"
+            },
+            {
+              "answer": "Il est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Il est\" has 2 format features different from correct \"sur\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-prep-sur-01",
+          "masteryLevel": 4,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "Posez-le {___} la table.\n(Lay it on the table.)",
+          "correctAnswer": "sur",
+          "distractors": [
+            {
+              "answer": "avec",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-avec-01"
+            },
+            {
+              "answer": "en",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-en-01"
+            },
+            {
+              "answer": "Il est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-03"
+            },
+            {
+              "answer": "à",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-a-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Il est\" has 2 format features different from correct \"sur\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-a1-prep-avec-01",
+          "masteryLevel": 0,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "Je viens {___} mes amis.\n(I'm coming with my friends.)",
+          "correctAnswer": "avec",
+          "distractors": [
+            {
+              "answer": "c'est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-02"
+            },
+            {
+              "answer": "dans",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-dans-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-prep-avec-01",
+          "masteryLevel": 2,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "Je viens {___} mes amis.\n(I'm coming with my friends.)",
+          "correctAnswer": "avec",
+          "distractors": [
+            {
+              "answer": "c'est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-02"
+            },
+            {
+              "answer": "dans",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-dans-01"
+            },
+            {
+              "answer": "sur",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-sur-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-a1-prep-avec-01",
+          "masteryLevel": 4,
+          "poolId": "prepositions_lieu",
+          "renderedQuestion": "Je viens {___} mes amis.\n(I'm coming with my friends.)",
+          "correctAnswer": "avec",
+          "distractors": [
+            {
+              "answer": "c'est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-02"
+            },
+            {
+              "answer": "dans",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-dans-01"
+            },
+            {
+              "answer": "sur",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-prep-sur-01"
+            },
+            {
+              "answer": "Il est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-a1-cest-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Il est\" has 2 format features different from correct \"avec\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

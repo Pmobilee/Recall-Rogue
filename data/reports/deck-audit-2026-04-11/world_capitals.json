@@ -1,0 +1,4312 @@
+{
+  "timestamp": "2026-04-11T02:00:38.692Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 153,
+  "totalFails": 0,
+  "totalWarns": 6,
+  "decks": [
+    {
+      "deckId": "world_capitals",
+      "deckName": "World Capitals",
+      "deckClass": "knowledge",
+      "totalFacts": 168,
+      "totalChecks": 153,
+      "failCount": 0,
+      "warnCount": 6,
+      "issuesByType": {
+        "empty_chain_themes_runtime": {
+          "fail": 0,
+          "warn": 1
+        },
+        "mega_pool_runtime_warning": {
+          "fail": 0,
+          "warn": 2
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_deck_chain_themes",
+          "masteryLevel": -1,
+          "poolId": "_deck",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "empty_chain_themes_runtime",
+              "detail": "Knowledge deck \"world_capitals\" has neither chainThemes nor subDecks — Study Temple mode will fall through to a default grouping."
+            }
+          ]
+        },
+        {
+          "factId": "_mega_pool_capital_names_short",
+          "masteryLevel": -1,
+          "poolId": "capital_names_short",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "mega_pool_runtime_warning",
+              "detail": "Pool \"capital_names_short\" has 118 factIds (>100) — consider splitting by sub-topic"
+            }
+          ]
+        },
+        {
+          "factId": "_mega_pool_country_names_caps_short",
+          "masteryLevel": -1,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "mega_pool_runtime_warning",
+              "detail": "Pool \"country_names_caps_short\" has 118 factIds (>100) — consider splitting by sub-topic"
+            }
+          ]
+        },
+        {
+          "factId": "capital_de",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Germany?",
+          "correctAnswer": "Berlin",
+          "distractors": [
+            {
+              "answer": "Kyiv",
+              "source": "similar_difficulty",
+              "factId": "capital_ua"
+            },
+            {
+              "answer": "Hanoi",
+              "source": "similar_difficulty",
+              "factId": "capital_vn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_de",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Germany?",
+          "correctAnswer": "Berlin",
+          "distractors": [
+            {
+              "answer": "Kyiv",
+              "source": "similar_difficulty",
+              "factId": "capital_ua"
+            },
+            {
+              "answer": "Hanoi",
+              "source": "similar_difficulty",
+              "factId": "capital_vn"
+            },
+            {
+              "answer": "Havana",
+              "source": "similar_difficulty",
+              "factId": "capital_cu"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_de",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Germany?",
+          "correctAnswer": "Berlin",
+          "distractors": [
+            {
+              "answer": "Kyiv",
+              "source": "similar_difficulty",
+              "factId": "capital_ua"
+            },
+            {
+              "answer": "Hanoi",
+              "source": "similar_difficulty",
+              "factId": "capital_vn"
+            },
+            {
+              "answer": "Havana",
+              "source": "similar_difficulty",
+              "factId": "capital_cu"
+            },
+            {
+              "answer": "Rome",
+              "source": "similar_difficulty",
+              "factId": "capital_it"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_es",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Spain?",
+          "correctAnswer": "Madrid",
+          "distractors": [
+            {
+              "answer": "Manila",
+              "source": "similar_difficulty",
+              "factId": "capital_ph"
+            },
+            {
+              "answer": "Berlin",
+              "source": "similar_difficulty",
+              "factId": "capital_de"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_es",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Spain?",
+          "correctAnswer": "Madrid",
+          "distractors": [
+            {
+              "answer": "Manila",
+              "source": "similar_difficulty",
+              "factId": "capital_ph"
+            },
+            {
+              "answer": "Berlin",
+              "source": "similar_difficulty",
+              "factId": "capital_de"
+            },
+            {
+              "answer": "Nairobi",
+              "source": "similar_difficulty",
+              "factId": "capital_ke"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_es",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Spain?",
+          "correctAnswer": "Madrid",
+          "distractors": [
+            {
+              "answer": "Manila",
+              "source": "similar_difficulty",
+              "factId": "capital_ph"
+            },
+            {
+              "answer": "Berlin",
+              "source": "similar_difficulty",
+              "factId": "capital_de"
+            },
+            {
+              "answer": "Nairobi",
+              "source": "similar_difficulty",
+              "factId": "capital_ke"
+            },
+            {
+              "answer": "Rome",
+              "source": "similar_difficulty",
+              "factId": "capital_it"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_cz",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Czechia?",
+          "correctAnswer": "Prague",
+          "distractors": [
+            {
+              "answer": "Minsk",
+              "source": "similar_difficulty",
+              "factId": "capital_by"
+            },
+            {
+              "answer": "Sarajevo",
+              "source": "similar_difficulty",
+              "factId": "capital_ba"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_cz",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Czechia?",
+          "correctAnswer": "Prague",
+          "distractors": [
+            {
+              "answer": "Minsk",
+              "source": "similar_difficulty",
+              "factId": "capital_by"
+            },
+            {
+              "answer": "Sarajevo",
+              "source": "similar_difficulty",
+              "factId": "capital_ba"
+            },
+            {
+              "answer": "Dodoma",
+              "source": "similar_difficulty",
+              "factId": "capital_tz"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_cz",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Czechia?",
+          "correctAnswer": "Prague",
+          "distractors": [
+            {
+              "answer": "Minsk",
+              "source": "similar_difficulty",
+              "factId": "capital_by"
+            },
+            {
+              "answer": "Sarajevo",
+              "source": "similar_difficulty",
+              "factId": "capital_ba"
+            },
+            {
+              "answer": "Dodoma",
+              "source": "similar_difficulty",
+              "factId": "capital_tz"
+            },
+            {
+              "answer": "Warsaw",
+              "source": "similar_difficulty",
+              "factId": "capital_pl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_hu",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Hungary?",
+          "correctAnswer": "Budapest",
+          "distractors": [
+            {
+              "answer": "Tirana",
+              "source": "similar_difficulty",
+              "factId": "capital_al"
+            },
+            {
+              "answer": "Juba",
+              "source": "similar_difficulty",
+              "factId": "capital_ss"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_hu",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Hungary?",
+          "correctAnswer": "Budapest",
+          "distractors": [
+            {
+              "answer": "Tirana",
+              "source": "similar_difficulty",
+              "factId": "capital_al"
+            },
+            {
+              "answer": "Juba",
+              "source": "similar_difficulty",
+              "factId": "capital_ss"
+            },
+            {
+              "answer": "London",
+              "source": "similar_difficulty",
+              "factId": "capital_gb"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_hu",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Hungary?",
+          "correctAnswer": "Budapest",
+          "distractors": [
+            {
+              "answer": "Tirana",
+              "source": "similar_difficulty",
+              "factId": "capital_al"
+            },
+            {
+              "answer": "Juba",
+              "source": "similar_difficulty",
+              "factId": "capital_ss"
+            },
+            {
+              "answer": "London",
+              "source": "similar_difficulty",
+              "factId": "capital_gb"
+            },
+            {
+              "answer": "Yaoundé",
+              "source": "similar_difficulty",
+              "factId": "capital_cm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_se",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Sweden?",
+          "correctAnswer": "Stockholm",
+          "distractors": [
+            {
+              "answer": "Mexico City",
+              "source": "similar_difficulty",
+              "factId": "capital_mx"
+            },
+            {
+              "answer": "Addis Ababa",
+              "source": "similar_difficulty",
+              "factId": "capital_et"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_se",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Sweden?",
+          "correctAnswer": "Stockholm",
+          "distractors": [
+            {
+              "answer": "Mexico City",
+              "source": "similar_difficulty",
+              "factId": "capital_mx"
+            },
+            {
+              "answer": "Addis Ababa",
+              "source": "similar_difficulty",
+              "factId": "capital_et"
+            },
+            {
+              "answer": "Islamabad",
+              "source": "similar_difficulty",
+              "factId": "capital_pk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_se",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Sweden?",
+          "correctAnswer": "Stockholm",
+          "distractors": [
+            {
+              "answer": "Mexico City",
+              "source": "similar_difficulty",
+              "factId": "capital_mx"
+            },
+            {
+              "answer": "Addis Ababa",
+              "source": "similar_difficulty",
+              "factId": "capital_et"
+            },
+            {
+              "answer": "Islamabad",
+              "source": "similar_difficulty",
+              "factId": "capital_pk"
+            },
+            {
+              "answer": "Reykjavik",
+              "source": "similar_difficulty",
+              "factId": "capital_is"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_lu",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which small European grand duchy, sandwiched between Belgium, France, and Germany, has a capital that shares its name with the country?",
+          "correctAnswer": "Luxembourg City",
+          "distractors": [
+            {
+              "answer": "Libreville",
+              "source": "similar_difficulty",
+              "factId": "capital_ga"
+            },
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_lu",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which small European grand duchy, sandwiched between Belgium, France, and Germany, has a capital that shares its name with the country?",
+          "correctAnswer": "Luxembourg City",
+          "distractors": [
+            {
+              "answer": "Libreville",
+              "source": "similar_difficulty",
+              "factId": "capital_ga"
+            },
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Guatemala City",
+              "source": "similar_difficulty",
+              "factId": "capital_gt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_lu",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which small European grand duchy, sandwiched between Belgium, France, and Germany, has a capital that shares its name with the country?",
+          "correctAnswer": "Luxembourg City",
+          "distractors": [
+            {
+              "answer": "Libreville",
+              "source": "similar_difficulty",
+              "factId": "capital_ga"
+            },
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Guatemala City",
+              "source": "similar_difficulty",
+              "factId": "capital_gt"
+            },
+            {
+              "answer": "Mogadishu",
+              "source": "similar_difficulty",
+              "factId": "capital_so"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_is",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Iceland?",
+          "correctAnswer": "Reykjavik",
+          "distractors": [
+            {
+              "answer": "Abu Dhabi",
+              "source": "similar_difficulty",
+              "factId": "capital_ae"
+            },
+            {
+              "answer": "San Salvador",
+              "source": "similar_difficulty",
+              "factId": "capital_sv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_is",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Iceland?",
+          "correctAnswer": "Reykjavik",
+          "distractors": [
+            {
+              "answer": "Abu Dhabi",
+              "source": "similar_difficulty",
+              "factId": "capital_ae"
+            },
+            {
+              "answer": "San Salvador",
+              "source": "similar_difficulty",
+              "factId": "capital_sv"
+            },
+            {
+              "answer": "Ljubljana",
+              "source": "similar_difficulty",
+              "factId": "capital_si"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_is",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Iceland?",
+          "correctAnswer": "Reykjavik",
+          "distractors": [
+            {
+              "answer": "Abu Dhabi",
+              "source": "similar_difficulty",
+              "factId": "capital_ae"
+            },
+            {
+              "answer": "San Salvador",
+              "source": "similar_difficulty",
+              "factId": "capital_sv"
+            },
+            {
+              "answer": "Ljubljana",
+              "source": "similar_difficulty",
+              "factId": "capital_si"
+            },
+            {
+              "answer": "Guatemala City",
+              "source": "similar_difficulty",
+              "factId": "capital_gt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_by",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Belarus?",
+          "correctAnswer": "Minsk",
+          "distractors": [
+            {
+              "answer": "Kigali",
+              "source": "similar_difficulty",
+              "factId": "capital_rw"
+            },
+            {
+              "answer": "Brasília",
+              "source": "similar_difficulty",
+              "factId": "capital_br"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_by",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Belarus?",
+          "correctAnswer": "Minsk",
+          "distractors": [
+            {
+              "answer": "Kigali",
+              "source": "similar_difficulty",
+              "factId": "capital_rw"
+            },
+            {
+              "answer": "Brasília",
+              "source": "similar_difficulty",
+              "factId": "capital_br"
+            },
+            {
+              "answer": "Yerevan",
+              "source": "similar_difficulty",
+              "factId": "capital_am"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_by",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Belarus?",
+          "correctAnswer": "Minsk",
+          "distractors": [
+            {
+              "answer": "Kigali",
+              "source": "similar_difficulty",
+              "factId": "capital_rw"
+            },
+            {
+              "answer": "Brasília",
+              "source": "similar_difficulty",
+              "factId": "capital_br"
+            },
+            {
+              "answer": "Yerevan",
+              "source": "similar_difficulty",
+              "factId": "capital_am"
+            },
+            {
+              "answer": "Baku",
+              "source": "similar_difficulty",
+              "factId": "capital_az"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_md",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Moldova?",
+          "correctAnswer": "Chisinau",
+          "distractors": [
+            {
+              "answer": "Quito",
+              "source": "similar_difficulty",
+              "factId": "capital_ec"
+            },
+            {
+              "answer": "Sucre",
+              "source": "similar_difficulty",
+              "factId": "capital_bo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_md",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Moldova?",
+          "correctAnswer": "Chisinau",
+          "distractors": [
+            {
+              "answer": "Quito",
+              "source": "similar_difficulty",
+              "factId": "capital_ec"
+            },
+            {
+              "answer": "Sucre",
+              "source": "similar_difficulty",
+              "factId": "capital_bo"
+            },
+            {
+              "answer": "Minsk",
+              "source": "similar_difficulty",
+              "factId": "capital_by"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_md",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Moldova?",
+          "correctAnswer": "Chisinau",
+          "distractors": [
+            {
+              "answer": "Quito",
+              "source": "similar_difficulty",
+              "factId": "capital_ec"
+            },
+            {
+              "answer": "Sucre",
+              "source": "similar_difficulty",
+              "factId": "capital_bo"
+            },
+            {
+              "answer": "Minsk",
+              "source": "similar_difficulty",
+              "factId": "capital_by"
+            },
+            {
+              "answer": "Kampala",
+              "source": "similar_difficulty",
+              "factId": "capital_ug"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_me",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Montenegro?",
+          "correctAnswer": "Podgorica",
+          "distractors": [
+            {
+              "answer": "Luxembourg City",
+              "source": "similar_difficulty",
+              "factId": "capital_lu"
+            },
+            {
+              "answer": "Mogadishu",
+              "source": "similar_difficulty",
+              "factId": "capital_so"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_me",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Montenegro?",
+          "correctAnswer": "Podgorica",
+          "distractors": [
+            {
+              "answer": "Luxembourg City",
+              "source": "similar_difficulty",
+              "factId": "capital_lu"
+            },
+            {
+              "answer": "Mogadishu",
+              "source": "similar_difficulty",
+              "factId": "capital_so"
+            },
+            {
+              "answer": "Port Vila",
+              "source": "similar_difficulty",
+              "factId": "capital_vu"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_me",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Montenegro?",
+          "correctAnswer": "Podgorica",
+          "distractors": [
+            {
+              "answer": "Luxembourg City",
+              "source": "similar_difficulty",
+              "factId": "capital_lu"
+            },
+            {
+              "answer": "Mogadishu",
+              "source": "similar_difficulty",
+              "factId": "capital_so"
+            },
+            {
+              "answer": "Port Vila",
+              "source": "similar_difficulty",
+              "factId": "capital_vu"
+            },
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_xk",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Kosovo?",
+          "correctAnswer": "Pristina",
+          "distractors": [
+            {
+              "answer": "Kampala",
+              "source": "similar_difficulty",
+              "factId": "capital_ug"
+            },
+            {
+              "answer": "Belmopan",
+              "source": "similar_difficulty",
+              "factId": "capital_bz"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_xk",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Kosovo?",
+          "correctAnswer": "Pristina",
+          "distractors": [
+            {
+              "answer": "Kampala",
+              "source": "similar_difficulty",
+              "factId": "capital_ug"
+            },
+            {
+              "answer": "Belmopan",
+              "source": "similar_difficulty",
+              "factId": "capital_bz"
+            },
+            {
+              "answer": "Freetown",
+              "source": "similar_difficulty",
+              "factId": "capital_sl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_xk",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Kosovo?",
+          "correctAnswer": "Pristina",
+          "distractors": [
+            {
+              "answer": "Kampala",
+              "source": "similar_difficulty",
+              "factId": "capital_ug"
+            },
+            {
+              "answer": "Belmopan",
+              "source": "similar_difficulty",
+              "factId": "capital_bz"
+            },
+            {
+              "answer": "Freetown",
+              "source": "similar_difficulty",
+              "factId": "capital_sl"
+            },
+            {
+              "answer": "Belgrade",
+              "source": "similar_difficulty",
+              "factId": "capital_rs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_kr",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of South Korea?",
+          "correctAnswer": "Seoul",
+          "distractors": [
+            {
+              "answer": "Pretoria",
+              "source": "similar_difficulty",
+              "factId": "capital_za"
+            },
+            {
+              "answer": "Rome",
+              "source": "similar_difficulty",
+              "factId": "capital_it"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_kr",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of South Korea?",
+          "correctAnswer": "Seoul",
+          "distractors": [
+            {
+              "answer": "Pretoria",
+              "source": "similar_difficulty",
+              "factId": "capital_za"
+            },
+            {
+              "answer": "Rome",
+              "source": "similar_difficulty",
+              "factId": "capital_it"
+            },
+            {
+              "answer": "Vienna",
+              "source": "similar_difficulty",
+              "factId": "capital_at"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_kr",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of South Korea?",
+          "correctAnswer": "Seoul",
+          "distractors": [
+            {
+              "answer": "Pretoria",
+              "source": "similar_difficulty",
+              "factId": "capital_za"
+            },
+            {
+              "answer": "Rome",
+              "source": "similar_difficulty",
+              "factId": "capital_it"
+            },
+            {
+              "answer": "Vienna",
+              "source": "similar_difficulty",
+              "factId": "capital_at"
+            },
+            {
+              "answer": "Tokyo",
+              "source": "similar_difficulty",
+              "factId": "capital_jp"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_il",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Israel?",
+          "correctAnswer": "Jerusalem",
+          "distractors": [
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_il",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Israel?",
+          "correctAnswer": "Jerusalem",
+          "distractors": [
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "Vientiane",
+              "source": "similar_difficulty",
+              "factId": "capital_la"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_il",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Israel?",
+          "correctAnswer": "Jerusalem",
+          "distractors": [
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "Vientiane",
+              "source": "similar_difficulty",
+              "factId": "capital_la"
+            },
+            {
+              "answer": "Addis Ababa",
+              "source": "similar_difficulty",
+              "factId": "capital_et"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_mn",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Mongolia?",
+          "correctAnswer": "Ulaanbaatar",
+          "distractors": [
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Sri Jayawardenepura Kotte",
+              "source": "similar_difficulty",
+              "factId": "capital_lk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_mn",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Mongolia?",
+          "correctAnswer": "Ulaanbaatar",
+          "distractors": [
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Sri Jayawardenepura Kotte",
+              "source": "similar_difficulty",
+              "factId": "capital_lk"
+            },
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_mn",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Mongolia?",
+          "correctAnswer": "Ulaanbaatar",
+          "distractors": [
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Sri Jayawardenepura Kotte",
+              "source": "similar_difficulty",
+              "factId": "capital_lk"
+            },
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            },
+            {
+              "answer": "Libreville",
+              "source": "similar_difficulty",
+              "factId": "capital_ga"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_in",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of India?",
+          "correctAnswer": "New Delhi",
+          "distractors": [
+            {
+              "answer": "Buenos Aires",
+              "source": "similar_difficulty",
+              "factId": "capital_ar"
+            },
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_in",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of India?",
+          "correctAnswer": "New Delhi",
+          "distractors": [
+            {
+              "answer": "Buenos Aires",
+              "source": "similar_difficulty",
+              "factId": "capital_ar"
+            },
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_in",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of India?",
+          "correctAnswer": "New Delhi",
+          "distractors": [
+            {
+              "answer": "Buenos Aires",
+              "source": "similar_difficulty",
+              "factId": "capital_ar"
+            },
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Bucharest",
+              "source": "similar_difficulty",
+              "factId": "capital_ro"
+            },
+            {
+              "answer": "Wellington",
+              "source": "similar_difficulty",
+              "factId": "capital_nz"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_qa",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Qatar?",
+          "correctAnswer": "Doha",
+          "distractors": [
+            {
+              "answer": "Kinshasa",
+              "source": "similar_difficulty",
+              "factId": "capital_cd"
+            },
+            {
+              "answer": "Cairo",
+              "source": "similar_difficulty",
+              "factId": "capital_eg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_qa",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Qatar?",
+          "correctAnswer": "Doha",
+          "distractors": [
+            {
+              "answer": "Kinshasa",
+              "source": "similar_difficulty",
+              "factId": "capital_cd"
+            },
+            {
+              "answer": "Cairo",
+              "source": "similar_difficulty",
+              "factId": "capital_eg"
+            },
+            {
+              "answer": "Pretoria",
+              "source": "similar_difficulty",
+              "factId": "capital_za"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_qa",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Qatar?",
+          "correctAnswer": "Doha",
+          "distractors": [
+            {
+              "answer": "Kinshasa",
+              "source": "similar_difficulty",
+              "factId": "capital_cd"
+            },
+            {
+              "answer": "Cairo",
+              "source": "similar_difficulty",
+              "factId": "capital_eg"
+            },
+            {
+              "answer": "Pretoria",
+              "source": "similar_difficulty",
+              "factId": "capital_za"
+            },
+            {
+              "answer": "Nairobi",
+              "source": "similar_difficulty",
+              "factId": "capital_ke"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_bd",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Bangladesh?",
+          "correctAnswer": "Dhaka",
+          "distractors": [
+            {
+              "answer": "Monrovia",
+              "source": "similar_difficulty",
+              "factId": "capital_lr"
+            },
+            {
+              "answer": "Tokyo",
+              "source": "similar_difficulty",
+              "factId": "capital_jp"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_bd",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Bangladesh?",
+          "correctAnswer": "Dhaka",
+          "distractors": [
+            {
+              "answer": "Monrovia",
+              "source": "similar_difficulty",
+              "factId": "capital_lr"
+            },
+            {
+              "answer": "Tokyo",
+              "source": "similar_difficulty",
+              "factId": "capital_jp"
+            },
+            {
+              "answer": "Sucre",
+              "source": "similar_difficulty",
+              "factId": "capital_bo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_bd",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Bangladesh?",
+          "correctAnswer": "Dhaka",
+          "distractors": [
+            {
+              "answer": "Monrovia",
+              "source": "similar_difficulty",
+              "factId": "capital_lr"
+            },
+            {
+              "answer": "Tokyo",
+              "source": "similar_difficulty",
+              "factId": "capital_jp"
+            },
+            {
+              "answer": "Sucre",
+              "source": "similar_difficulty",
+              "factId": "capital_bo"
+            },
+            {
+              "answer": "Tirana",
+              "source": "similar_difficulty",
+              "factId": "capital_al"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_ps",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Palestine?",
+          "correctAnswer": "Ramallah",
+          "distractors": [
+            {
+              "answer": "Yerevan",
+              "source": "similar_difficulty",
+              "factId": "capital_am"
+            },
+            {
+              "answer": "Belgrade",
+              "source": "similar_difficulty",
+              "factId": "capital_rs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_ps",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Palestine?",
+          "correctAnswer": "Ramallah",
+          "distractors": [
+            {
+              "answer": "Yerevan",
+              "source": "similar_difficulty",
+              "factId": "capital_am"
+            },
+            {
+              "answer": "Belgrade",
+              "source": "similar_difficulty",
+              "factId": "capital_rs"
+            },
+            {
+              "answer": "Gaborone",
+              "source": "similar_difficulty",
+              "factId": "capital_bw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_ps",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Palestine?",
+          "correctAnswer": "Ramallah",
+          "distractors": [
+            {
+              "answer": "Yerevan",
+              "source": "similar_difficulty",
+              "factId": "capital_am"
+            },
+            {
+              "answer": "Belgrade",
+              "source": "similar_difficulty",
+              "factId": "capital_rs"
+            },
+            {
+              "answer": "Gaborone",
+              "source": "similar_difficulty",
+              "factId": "capital_bw"
+            },
+            {
+              "answer": "Freetown",
+              "source": "similar_difficulty",
+              "factId": "capital_sl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_lk",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Sri Lanka?",
+          "correctAnswer": "Sri Jayawardenepura Kotte",
+          "distractors": [
+            {
+              "answer": "Djibouti City",
+              "source": "similar_difficulty",
+              "factId": "capital_dj"
+            },
+            {
+              "answer": "Paramaribo",
+              "source": "similar_difficulty",
+              "factId": "capital_sr"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 25 vs avg distractor 11.5 — ratio 2.17×"
+            }
+          ]
+        },
+        {
+          "factId": "capital_lk",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Sri Lanka?",
+          "correctAnswer": "Sri Jayawardenepura Kotte",
+          "distractors": [
+            {
+              "answer": "Djibouti City",
+              "source": "similar_difficulty",
+              "factId": "capital_dj"
+            },
+            {
+              "answer": "Paramaribo",
+              "source": "similar_difficulty",
+              "factId": "capital_sr"
+            },
+            {
+              "answer": "Brazzaville",
+              "source": "similar_difficulty",
+              "factId": "capital_cg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 25 vs avg distractor 11.3 — ratio 2.21×"
+            }
+          ]
+        },
+        {
+          "factId": "capital_lk",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Sri Lanka?",
+          "correctAnswer": "Sri Jayawardenepura Kotte",
+          "distractors": [
+            {
+              "answer": "Djibouti City",
+              "source": "similar_difficulty",
+              "factId": "capital_dj"
+            },
+            {
+              "answer": "Paramaribo",
+              "source": "similar_difficulty",
+              "factId": "capital_sr"
+            },
+            {
+              "answer": "Brazzaville",
+              "source": "similar_difficulty",
+              "factId": "capital_cg"
+            },
+            {
+              "answer": "San Salvador",
+              "source": "similar_difficulty",
+              "factId": "capital_sv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 25 vs avg distractor 11.5 — ratio 2.17×"
+            }
+          ]
+        },
+        {
+          "factId": "capital_am",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Armenia?",
+          "correctAnswer": "Yerevan",
+          "distractors": [
+            {
+              "answer": "Pristina",
+              "source": "similar_difficulty",
+              "factId": "capital_xk"
+            },
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_am",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Armenia?",
+          "correctAnswer": "Yerevan",
+          "distractors": [
+            {
+              "answer": "Pristina",
+              "source": "similar_difficulty",
+              "factId": "capital_xk"
+            },
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            },
+            {
+              "answer": "Tripoli",
+              "source": "similar_difficulty",
+              "factId": "capital_ly"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_am",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Armenia?",
+          "correctAnswer": "Yerevan",
+          "distractors": [
+            {
+              "answer": "Pristina",
+              "source": "similar_difficulty",
+              "factId": "capital_xk"
+            },
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            },
+            {
+              "answer": "Tripoli",
+              "source": "similar_difficulty",
+              "factId": "capital_ly"
+            },
+            {
+              "answer": "Amman",
+              "source": "similar_difficulty",
+              "factId": "capital_jo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_bn",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Brunei?",
+          "correctAnswer": "Bandar Seri Begawan",
+          "distractors": [
+            {
+              "answer": "Yamoussoukro",
+              "source": "similar_difficulty",
+              "factId": "capital_ci"
+            },
+            {
+              "answer": "Porto-Novo",
+              "source": "similar_difficulty",
+              "factId": "capital_bj"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_bn",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Brunei?",
+          "correctAnswer": "Bandar Seri Begawan",
+          "distractors": [
+            {
+              "answer": "Yamoussoukro",
+              "source": "similar_difficulty",
+              "factId": "capital_ci"
+            },
+            {
+              "answer": "Porto-Novo",
+              "source": "similar_difficulty",
+              "factId": "capital_bj"
+            },
+            {
+              "answer": "Djibouti City",
+              "source": "similar_difficulty",
+              "factId": "capital_dj"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_bn",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Brunei?",
+          "correctAnswer": "Bandar Seri Begawan",
+          "distractors": [
+            {
+              "answer": "Yamoussoukro",
+              "source": "similar_difficulty",
+              "factId": "capital_ci"
+            },
+            {
+              "answer": "Porto-Novo",
+              "source": "similar_difficulty",
+              "factId": "capital_bj"
+            },
+            {
+              "answer": "Djibouti City",
+              "source": "similar_difficulty",
+              "factId": "capital_dj"
+            },
+            {
+              "answer": "Sri Jayawardenepura Kotte",
+              "source": "similar_difficulty",
+              "factId": "capital_lk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_eg",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Egypt?",
+          "correctAnswer": "Cairo",
+          "distractors": [
+            {
+              "answer": "Budapest",
+              "source": "similar_difficulty",
+              "factId": "capital_hu"
+            },
+            {
+              "answer": "Ankara",
+              "source": "similar_difficulty",
+              "factId": "capital_tr"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_eg",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Egypt?",
+          "correctAnswer": "Cairo",
+          "distractors": [
+            {
+              "answer": "Budapest",
+              "source": "similar_difficulty",
+              "factId": "capital_hu"
+            },
+            {
+              "answer": "Ankara",
+              "source": "similar_difficulty",
+              "factId": "capital_tr"
+            },
+            {
+              "answer": "Beijing",
+              "source": "similar_difficulty",
+              "factId": "capital_cn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_eg",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Egypt?",
+          "correctAnswer": "Cairo",
+          "distractors": [
+            {
+              "answer": "Budapest",
+              "source": "similar_difficulty",
+              "factId": "capital_hu"
+            },
+            {
+              "answer": "Ankara",
+              "source": "similar_difficulty",
+              "factId": "capital_tr"
+            },
+            {
+              "answer": "Beijing",
+              "source": "similar_difficulty",
+              "factId": "capital_cn"
+            },
+            {
+              "answer": "Nairobi",
+              "source": "similar_difficulty",
+              "factId": "capital_ke"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_cm",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Cameroon?",
+          "correctAnswer": "Yaoundé",
+          "distractors": [
+            {
+              "answer": "Sucre",
+              "source": "similar_difficulty",
+              "factId": "capital_bo"
+            },
+            {
+              "answer": "Tirana",
+              "source": "similar_difficulty",
+              "factId": "capital_al"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_cm",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Cameroon?",
+          "correctAnswer": "Yaoundé",
+          "distractors": [
+            {
+              "answer": "Sucre",
+              "source": "similar_difficulty",
+              "factId": "capital_bo"
+            },
+            {
+              "answer": "Tirana",
+              "source": "similar_difficulty",
+              "factId": "capital_al"
+            },
+            {
+              "answer": "Kigali",
+              "source": "similar_difficulty",
+              "factId": "capital_rw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_cm",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Cameroon?",
+          "correctAnswer": "Yaoundé",
+          "distractors": [
+            {
+              "answer": "Sucre",
+              "source": "similar_difficulty",
+              "factId": "capital_bo"
+            },
+            {
+              "answer": "Tirana",
+              "source": "similar_difficulty",
+              "factId": "capital_al"
+            },
+            {
+              "answer": "Kigali",
+              "source": "similar_difficulty",
+              "factId": "capital_rw"
+            },
+            {
+              "answer": "Algiers",
+              "source": "similar_difficulty",
+              "factId": "capital_dz"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_ug",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Uganda?",
+          "correctAnswer": "Kampala",
+          "distractors": [
+            {
+              "answer": "Amman",
+              "source": "similar_difficulty",
+              "factId": "capital_jo"
+            },
+            {
+              "answer": "Belgrade",
+              "source": "similar_difficulty",
+              "factId": "capital_rs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_ug",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Uganda?",
+          "correctAnswer": "Kampala",
+          "distractors": [
+            {
+              "answer": "Amman",
+              "source": "similar_difficulty",
+              "factId": "capital_jo"
+            },
+            {
+              "answer": "Belgrade",
+              "source": "similar_difficulty",
+              "factId": "capital_rs"
+            },
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_ug",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Uganda?",
+          "correctAnswer": "Kampala",
+          "distractors": [
+            {
+              "answer": "Amman",
+              "source": "similar_difficulty",
+              "factId": "capital_jo"
+            },
+            {
+              "answer": "Belgrade",
+              "source": "similar_difficulty",
+              "factId": "capital_rs"
+            },
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            },
+            {
+              "answer": "Abuja",
+              "source": "similar_difficulty",
+              "factId": "capital_ng"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_ng",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Nigeria?",
+          "correctAnswer": "Abuja",
+          "distractors": [
+            {
+              "answer": "Berlin",
+              "source": "similar_difficulty",
+              "factId": "capital_de"
+            },
+            {
+              "answer": "Bogotá",
+              "source": "similar_difficulty",
+              "factId": "capital_co"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_ng",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Nigeria?",
+          "correctAnswer": "Abuja",
+          "distractors": [
+            {
+              "answer": "Berlin",
+              "source": "similar_difficulty",
+              "factId": "capital_de"
+            },
+            {
+              "answer": "Bogotá",
+              "source": "similar_difficulty",
+              "factId": "capital_co"
+            },
+            {
+              "answer": "Tunis",
+              "source": "similar_difficulty",
+              "factId": "capital_tn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_ng",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Nigeria?",
+          "correctAnswer": "Abuja",
+          "distractors": [
+            {
+              "answer": "Berlin",
+              "source": "similar_difficulty",
+              "factId": "capital_de"
+            },
+            {
+              "answer": "Bogotá",
+              "source": "similar_difficulty",
+              "factId": "capital_co"
+            },
+            {
+              "answer": "Tunis",
+              "source": "similar_difficulty",
+              "factId": "capital_tn"
+            },
+            {
+              "answer": "Kampala",
+              "source": "similar_difficulty",
+              "factId": "capital_ug"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_bj",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Benin?",
+          "correctAnswer": "Porto-Novo",
+          "distractors": [
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            },
+            {
+              "answer": "Georgetown",
+              "source": "similar_difficulty",
+              "factId": "capital_gy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_bj",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Benin?",
+          "correctAnswer": "Porto-Novo",
+          "distractors": [
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            },
+            {
+              "answer": "Georgetown",
+              "source": "similar_difficulty",
+              "factId": "capital_gy"
+            },
+            {
+              "answer": "Ulaanbaatar",
+              "source": "similar_difficulty",
+              "factId": "capital_mn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_bj",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Benin?",
+          "correctAnswer": "Porto-Novo",
+          "distractors": [
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            },
+            {
+              "answer": "Georgetown",
+              "source": "similar_difficulty",
+              "factId": "capital_gy"
+            },
+            {
+              "answer": "Ulaanbaatar",
+              "source": "similar_difficulty",
+              "factId": "capital_mn"
+            },
+            {
+              "answer": "Tegucigalpa",
+              "source": "similar_difficulty",
+              "factId": "capital_hn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_er",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Eritrea?",
+          "correctAnswer": "Asmara",
+          "distractors": [
+            {
+              "answer": "Vilnius",
+              "source": "similar_difficulty",
+              "factId": "capital_lt"
+            },
+            {
+              "answer": "Sana'a",
+              "source": "similar_difficulty",
+              "factId": "capital_ye"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_er",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Eritrea?",
+          "correctAnswer": "Asmara",
+          "distractors": [
+            {
+              "answer": "Vilnius",
+              "source": "similar_difficulty",
+              "factId": "capital_lt"
+            },
+            {
+              "answer": "Sana'a",
+              "source": "similar_difficulty",
+              "factId": "capital_ye"
+            },
+            {
+              "answer": "Baku",
+              "source": "similar_difficulty",
+              "factId": "capital_az"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_er",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Eritrea?",
+          "correctAnswer": "Asmara",
+          "distractors": [
+            {
+              "answer": "Vilnius",
+              "source": "similar_difficulty",
+              "factId": "capital_lt"
+            },
+            {
+              "answer": "Sana'a",
+              "source": "similar_difficulty",
+              "factId": "capital_ye"
+            },
+            {
+              "answer": "Baku",
+              "source": "similar_difficulty",
+              "factId": "capital_az"
+            },
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_ne",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Niger?",
+          "correctAnswer": "Niamey",
+          "distractors": [
+            {
+              "answer": "Kigali",
+              "source": "similar_difficulty",
+              "factId": "capital_rw"
+            },
+            {
+              "answer": "Lomé",
+              "source": "similar_difficulty",
+              "factId": "capital_tg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_ne",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Niger?",
+          "correctAnswer": "Niamey",
+          "distractors": [
+            {
+              "answer": "Kigali",
+              "source": "similar_difficulty",
+              "factId": "capital_rw"
+            },
+            {
+              "answer": "Lomé",
+              "source": "similar_difficulty",
+              "factId": "capital_tg"
+            },
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_ne",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Niger?",
+          "correctAnswer": "Niamey",
+          "distractors": [
+            {
+              "answer": "Kigali",
+              "source": "similar_difficulty",
+              "factId": "capital_rw"
+            },
+            {
+              "answer": "Lomé",
+              "source": "similar_difficulty",
+              "factId": "capital_tg"
+            },
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            },
+            {
+              "answer": "Asmara",
+              "source": "similar_difficulty",
+              "factId": "capital_er"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_gq",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Equatorial Guinea?",
+          "correctAnswer": "Malabo",
+          "distractors": [
+            {
+              "answer": "Thimphu",
+              "source": "similar_difficulty",
+              "factId": "capital_bt"
+            },
+            {
+              "answer": "Ashgabat",
+              "source": "similar_difficulty",
+              "factId": "capital_tm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_gq",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Equatorial Guinea?",
+          "correctAnswer": "Malabo",
+          "distractors": [
+            {
+              "answer": "Thimphu",
+              "source": "similar_difficulty",
+              "factId": "capital_bt"
+            },
+            {
+              "answer": "Ashgabat",
+              "source": "similar_difficulty",
+              "factId": "capital_tm"
+            },
+            {
+              "answer": "Bangui",
+              "source": "similar_difficulty",
+              "factId": "capital_cf"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_gq",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Equatorial Guinea?",
+          "correctAnswer": "Malabo",
+          "distractors": [
+            {
+              "answer": "Thimphu",
+              "source": "similar_difficulty",
+              "factId": "capital_bt"
+            },
+            {
+              "answer": "Ashgabat",
+              "source": "similar_difficulty",
+              "factId": "capital_tm"
+            },
+            {
+              "answer": "Bangui",
+              "source": "similar_difficulty",
+              "factId": "capital_cf"
+            },
+            {
+              "answer": "Banjul",
+              "source": "similar_difficulty",
+              "factId": "capital_gm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_ga",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Gabon?",
+          "correctAnswer": "Libreville",
+          "distractors": [
+            {
+              "answer": "Tegucigalpa",
+              "source": "similar_difficulty",
+              "factId": "capital_hn"
+            },
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_ga",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Gabon?",
+          "correctAnswer": "Libreville",
+          "distractors": [
+            {
+              "answer": "Tegucigalpa",
+              "source": "similar_difficulty",
+              "factId": "capital_hn"
+            },
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            },
+            {
+              "answer": "Jerusalem",
+              "source": "similar_difficulty",
+              "factId": "capital_il"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_ga",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Gabon?",
+          "correctAnswer": "Libreville",
+          "distractors": [
+            {
+              "answer": "Tegucigalpa",
+              "source": "similar_difficulty",
+              "factId": "capital_hn"
+            },
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            },
+            {
+              "answer": "Jerusalem",
+              "source": "similar_difficulty",
+              "factId": "capital_il"
+            },
+            {
+              "answer": "Antananarivo",
+              "source": "similar_difficulty",
+              "factId": "capital_mg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_et",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Ethiopia?",
+          "correctAnswer": "Addis Ababa",
+          "distractors": [
+            {
+              "answer": "Bratislava",
+              "source": "similar_difficulty",
+              "factId": "capital_sk"
+            },
+            {
+              "answer": "Phnom Penh",
+              "source": "similar_difficulty",
+              "factId": "capital_kh"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_et",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Ethiopia?",
+          "correctAnswer": "Addis Ababa",
+          "distractors": [
+            {
+              "answer": "Bratislava",
+              "source": "similar_difficulty",
+              "factId": "capital_sk"
+            },
+            {
+              "answer": "Phnom Penh",
+              "source": "similar_difficulty",
+              "factId": "capital_kh"
+            },
+            {
+              "answer": "Mexico City",
+              "source": "similar_difficulty",
+              "factId": "capital_mx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_et",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Ethiopia?",
+          "correctAnswer": "Addis Ababa",
+          "distractors": [
+            {
+              "answer": "Bratislava",
+              "source": "similar_difficulty",
+              "factId": "capital_sk"
+            },
+            {
+              "answer": "Phnom Penh",
+              "source": "similar_difficulty",
+              "factId": "capital_kh"
+            },
+            {
+              "answer": "Mexico City",
+              "source": "similar_difficulty",
+              "factId": "capital_mx"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_mx",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which North American country, bordering the United States to the north, has a capital that shares its name with the country?",
+          "correctAnswer": "Mexico City",
+          "distractors": [
+            {
+              "answer": "Panama City",
+              "source": "similar_difficulty",
+              "factId": "capital_pa"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_mx",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which North American country, bordering the United States to the north, has a capital that shares its name with the country?",
+          "correctAnswer": "Mexico City",
+          "distractors": [
+            {
+              "answer": "Panama City",
+              "source": "similar_difficulty",
+              "factId": "capital_pa"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            },
+            {
+              "answer": "Copenhagen",
+              "source": "similar_difficulty",
+              "factId": "capital_dk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_mx",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which North American country, bordering the United States to the north, has a capital that shares its name with the country?",
+          "correctAnswer": "Mexico City",
+          "distractors": [
+            {
+              "answer": "Panama City",
+              "source": "similar_difficulty",
+              "factId": "capital_pa"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            },
+            {
+              "answer": "Copenhagen",
+              "source": "similar_difficulty",
+              "factId": "capital_dk"
+            },
+            {
+              "answer": "Pyongyang",
+              "source": "similar_difficulty",
+              "factId": "capital_kp"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_cu",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Cuba?",
+          "correctAnswer": "Havana",
+          "distractors": [
+            {
+              "answer": "Beirut",
+              "source": "similar_difficulty",
+              "factId": "capital_lb"
+            },
+            {
+              "answer": "Santiago",
+              "source": "similar_difficulty",
+              "factId": "capital_cl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_cu",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Cuba?",
+          "correctAnswer": "Havana",
+          "distractors": [
+            {
+              "answer": "Beirut",
+              "source": "similar_difficulty",
+              "factId": "capital_lb"
+            },
+            {
+              "answer": "Santiago",
+              "source": "similar_difficulty",
+              "factId": "capital_cl"
+            },
+            {
+              "answer": "Dhaka",
+              "source": "similar_difficulty",
+              "factId": "capital_bd"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_cu",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Cuba?",
+          "correctAnswer": "Havana",
+          "distractors": [
+            {
+              "answer": "Beirut",
+              "source": "similar_difficulty",
+              "factId": "capital_lb"
+            },
+            {
+              "answer": "Santiago",
+              "source": "similar_difficulty",
+              "factId": "capital_cl"
+            },
+            {
+              "answer": "Dhaka",
+              "source": "similar_difficulty",
+              "factId": "capital_bd"
+            },
+            {
+              "answer": "Hanoi",
+              "source": "similar_difficulty",
+              "factId": "capital_vn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_cr",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Costa Rica?",
+          "correctAnswer": "San José",
+          "distractors": [
+            {
+              "answer": "Tehran",
+              "source": "similar_difficulty",
+              "factId": "capital_ir"
+            },
+            {
+              "answer": "Juba",
+              "source": "similar_difficulty",
+              "factId": "capital_ss"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_cr",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Costa Rica?",
+          "correctAnswer": "San José",
+          "distractors": [
+            {
+              "answer": "Tehran",
+              "source": "similar_difficulty",
+              "factId": "capital_ir"
+            },
+            {
+              "answer": "Juba",
+              "source": "similar_difficulty",
+              "factId": "capital_ss"
+            },
+            {
+              "answer": "Ottawa",
+              "source": "similar_difficulty",
+              "factId": "capital_ca"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_cr",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Costa Rica?",
+          "correctAnswer": "San José",
+          "distractors": [
+            {
+              "answer": "Tehran",
+              "source": "similar_difficulty",
+              "factId": "capital_ir"
+            },
+            {
+              "answer": "Juba",
+              "source": "similar_difficulty",
+              "factId": "capital_ss"
+            },
+            {
+              "answer": "Ottawa",
+              "source": "similar_difficulty",
+              "factId": "capital_ca"
+            },
+            {
+              "answer": "Sucre",
+              "source": "similar_difficulty",
+              "factId": "capital_bo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_gt",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which Central American country, the most populous in the region, has a capital that shares its name with the country?",
+          "correctAnswer": "Guatemala City",
+          "distractors": [
+            {
+              "answer": "Port Moresby",
+              "source": "similar_difficulty",
+              "factId": "capital_pg"
+            },
+            {
+              "answer": "Port-au-Prince",
+              "source": "similar_difficulty",
+              "factId": "capital_ht"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_gt",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which Central American country, the most populous in the region, has a capital that shares its name with the country?",
+          "correctAnswer": "Guatemala City",
+          "distractors": [
+            {
+              "answer": "Port Moresby",
+              "source": "similar_difficulty",
+              "factId": "capital_pg"
+            },
+            {
+              "answer": "Port-au-Prince",
+              "source": "similar_difficulty",
+              "factId": "capital_ht"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_gt",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "Which Central American country, the most populous in the region, has a capital that shares its name with the country?",
+          "correctAnswer": "Guatemala City",
+          "distractors": [
+            {
+              "answer": "Port Moresby",
+              "source": "similar_difficulty",
+              "factId": "capital_pg"
+            },
+            {
+              "answer": "Port-au-Prince",
+              "source": "similar_difficulty",
+              "factId": "capital_ht"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            },
+            {
+              "answer": "Addis Ababa",
+              "source": "similar_difficulty",
+              "factId": "capital_et"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_ni",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Nicaragua?",
+          "correctAnswer": "Managua",
+          "distractors": [
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            },
+            {
+              "answer": "Minsk",
+              "source": "similar_difficulty",
+              "factId": "capital_by"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_ni",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Nicaragua?",
+          "correctAnswer": "Managua",
+          "distractors": [
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            },
+            {
+              "answer": "Minsk",
+              "source": "similar_difficulty",
+              "factId": "capital_by"
+            },
+            {
+              "answer": "Sana'a",
+              "source": "similar_difficulty",
+              "factId": "capital_ye"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_ni",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Nicaragua?",
+          "correctAnswer": "Managua",
+          "distractors": [
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            },
+            {
+              "answer": "Minsk",
+              "source": "similar_difficulty",
+              "factId": "capital_by"
+            },
+            {
+              "answer": "Sana'a",
+              "source": "similar_difficulty",
+              "factId": "capital_ye"
+            },
+            {
+              "answer": "Astana",
+              "source": "similar_difficulty",
+              "factId": "capital_kz"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_hn",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Honduras?",
+          "correctAnswer": "Tegucigalpa",
+          "distractors": [
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "San Salvador",
+              "source": "similar_difficulty",
+              "factId": "capital_sv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_hn",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Honduras?",
+          "correctAnswer": "Tegucigalpa",
+          "distractors": [
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "San Salvador",
+              "source": "similar_difficulty",
+              "factId": "capital_sv"
+            },
+            {
+              "answer": "Addis Ababa",
+              "source": "similar_difficulty",
+              "factId": "capital_et"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_hn",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Honduras?",
+          "correctAnswer": "Tegucigalpa",
+          "distractors": [
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "San Salvador",
+              "source": "similar_difficulty",
+              "factId": "capital_sv"
+            },
+            {
+              "answer": "Addis Ababa",
+              "source": "similar_difficulty",
+              "factId": "capital_et"
+            },
+            {
+              "answer": "Ulaanbaatar",
+              "source": "similar_difficulty",
+              "factId": "capital_mn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_bz",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Belize?",
+          "correctAnswer": "Belmopan",
+          "distractors": [
+            {
+              "answer": "Dili",
+              "source": "similar_difficulty",
+              "factId": "capital_tl"
+            },
+            {
+              "answer": "Pristina",
+              "source": "similar_difficulty",
+              "factId": "capital_xk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_bz",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Belize?",
+          "correctAnswer": "Belmopan",
+          "distractors": [
+            {
+              "answer": "Dili",
+              "source": "similar_difficulty",
+              "factId": "capital_tl"
+            },
+            {
+              "answer": "Pristina",
+              "source": "similar_difficulty",
+              "factId": "capital_xk"
+            },
+            {
+              "answer": "Dushanbe",
+              "source": "similar_difficulty",
+              "factId": "capital_tj"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_bz",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Belize?",
+          "correctAnswer": "Belmopan",
+          "distractors": [
+            {
+              "answer": "Dili",
+              "source": "similar_difficulty",
+              "factId": "capital_tl"
+            },
+            {
+              "answer": "Pristina",
+              "source": "similar_difficulty",
+              "factId": "capital_xk"
+            },
+            {
+              "answer": "Dushanbe",
+              "source": "similar_difficulty",
+              "factId": "capital_tj"
+            },
+            {
+              "answer": "Luanda",
+              "source": "similar_difficulty",
+              "factId": "capital_ao"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_br",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Brazil?",
+          "correctAnswer": "Brasília",
+          "distractors": [
+            {
+              "answer": "Lusaka",
+              "source": "similar_difficulty",
+              "factId": "capital_zm"
+            },
+            {
+              "answer": "Maputo",
+              "source": "similar_difficulty",
+              "factId": "capital_mz"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_br",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Brazil?",
+          "correctAnswer": "Brasília",
+          "distractors": [
+            {
+              "answer": "Lusaka",
+              "source": "similar_difficulty",
+              "factId": "capital_zm"
+            },
+            {
+              "answer": "Maputo",
+              "source": "similar_difficulty",
+              "factId": "capital_mz"
+            },
+            {
+              "answer": "Luanda",
+              "source": "similar_difficulty",
+              "factId": "capital_ao"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_br",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Brazil?",
+          "correctAnswer": "Brasília",
+          "distractors": [
+            {
+              "answer": "Lusaka",
+              "source": "similar_difficulty",
+              "factId": "capital_zm"
+            },
+            {
+              "answer": "Maputo",
+              "source": "similar_difficulty",
+              "factId": "capital_mz"
+            },
+            {
+              "answer": "Luanda",
+              "source": "similar_difficulty",
+              "factId": "capital_ao"
+            },
+            {
+              "answer": "Juba",
+              "source": "similar_difficulty",
+              "factId": "capital_ss"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_ar",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Argentina?",
+          "correctAnswer": "Buenos Aires",
+          "distractors": [
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_ar",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Argentina?",
+          "correctAnswer": "Buenos Aires",
+          "distractors": [
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            },
+            {
+              "answer": "Kuwait City",
+              "source": "similar_difficulty",
+              "factId": "capital_kw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_ar",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Argentina?",
+          "correctAnswer": "Buenos Aires",
+          "distractors": [
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            },
+            {
+              "answer": "Kuwait City",
+              "source": "similar_difficulty",
+              "factId": "capital_kw"
+            },
+            {
+              "answer": "Montevideo",
+              "source": "similar_difficulty",
+              "factId": "capital_uy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_co",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Colombia?",
+          "correctAnswer": "Bogotá",
+          "distractors": [
+            {
+              "answer": "Kabul",
+              "source": "similar_difficulty",
+              "factId": "capital_af"
+            },
+            {
+              "answer": "Budapest",
+              "source": "similar_difficulty",
+              "factId": "capital_hu"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_co",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Colombia?",
+          "correctAnswer": "Bogotá",
+          "distractors": [
+            {
+              "answer": "Kabul",
+              "source": "similar_difficulty",
+              "factId": "capital_af"
+            },
+            {
+              "answer": "Budapest",
+              "source": "similar_difficulty",
+              "factId": "capital_hu"
+            },
+            {
+              "answer": "Rome",
+              "source": "similar_difficulty",
+              "factId": "capital_it"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_co",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Colombia?",
+          "correctAnswer": "Bogotá",
+          "distractors": [
+            {
+              "answer": "Kabul",
+              "source": "similar_difficulty",
+              "factId": "capital_af"
+            },
+            {
+              "answer": "Budapest",
+              "source": "similar_difficulty",
+              "factId": "capital_hu"
+            },
+            {
+              "answer": "Rome",
+              "source": "similar_difficulty",
+              "factId": "capital_it"
+            },
+            {
+              "answer": "Caracas",
+              "source": "similar_difficulty",
+              "factId": "capital_ve"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_bo",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Bolivia?",
+          "correctAnswer": "Sucre",
+          "distractors": [
+            {
+              "answer": "Thimphu",
+              "source": "similar_difficulty",
+              "factId": "capital_bt"
+            },
+            {
+              "answer": "Vilnius",
+              "source": "similar_difficulty",
+              "factId": "capital_lt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_bo",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Bolivia?",
+          "correctAnswer": "Sucre",
+          "distractors": [
+            {
+              "answer": "Thimphu",
+              "source": "similar_difficulty",
+              "factId": "capital_bt"
+            },
+            {
+              "answer": "Vilnius",
+              "source": "similar_difficulty",
+              "factId": "capital_lt"
+            },
+            {
+              "answer": "Windhoek",
+              "source": "similar_difficulty",
+              "factId": "capital_na"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_bo",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Bolivia?",
+          "correctAnswer": "Sucre",
+          "distractors": [
+            {
+              "answer": "Thimphu",
+              "source": "similar_difficulty",
+              "factId": "capital_bt"
+            },
+            {
+              "answer": "Vilnius",
+              "source": "similar_difficulty",
+              "factId": "capital_lt"
+            },
+            {
+              "answer": "Windhoek",
+              "source": "similar_difficulty",
+              "factId": "capital_na"
+            },
+            {
+              "answer": "Yerevan",
+              "source": "similar_difficulty",
+              "factId": "capital_am"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_gy",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Guyana?",
+          "correctAnswer": "Georgetown",
+          "distractors": [
+            {
+              "answer": "Reykjavik",
+              "source": "similar_difficulty",
+              "factId": "capital_is"
+            },
+            {
+              "answer": "Tegucigalpa",
+              "source": "similar_difficulty",
+              "factId": "capital_hn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_gy",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Guyana?",
+          "correctAnswer": "Georgetown",
+          "distractors": [
+            {
+              "answer": "Reykjavik",
+              "source": "similar_difficulty",
+              "factId": "capital_is"
+            },
+            {
+              "answer": "Tegucigalpa",
+              "source": "similar_difficulty",
+              "factId": "capital_hn"
+            },
+            {
+              "answer": "Sri Jayawardenepura Kotte",
+              "source": "similar_difficulty",
+              "factId": "capital_lk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_gy",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Guyana?",
+          "correctAnswer": "Georgetown",
+          "distractors": [
+            {
+              "answer": "Reykjavik",
+              "source": "similar_difficulty",
+              "factId": "capital_is"
+            },
+            {
+              "answer": "Tegucigalpa",
+              "source": "similar_difficulty",
+              "factId": "capital_hn"
+            },
+            {
+              "answer": "Sri Jayawardenepura Kotte",
+              "source": "similar_difficulty",
+              "factId": "capital_lk"
+            },
+            {
+              "answer": "Panama City",
+              "source": "similar_difficulty",
+              "factId": "capital_pa"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_uy",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Uruguay?",
+          "correctAnswer": "Montevideo",
+          "distractors": [
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "Phnom Penh",
+              "source": "similar_difficulty",
+              "factId": "capital_kh"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_uy",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Uruguay?",
+          "correctAnswer": "Montevideo",
+          "distractors": [
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "Phnom Penh",
+              "source": "similar_difficulty",
+              "factId": "capital_kh"
+            },
+            {
+              "answer": "Port Moresby",
+              "source": "similar_difficulty",
+              "factId": "capital_pg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_uy",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Uruguay?",
+          "correctAnswer": "Montevideo",
+          "distractors": [
+            {
+              "answer": "Santo Domingo",
+              "source": "similar_difficulty",
+              "factId": "capital_do"
+            },
+            {
+              "answer": "Phnom Penh",
+              "source": "similar_difficulty",
+              "factId": "capital_kh"
+            },
+            {
+              "answer": "Port Moresby",
+              "source": "similar_difficulty",
+              "factId": "capital_pg"
+            },
+            {
+              "answer": "New Delhi",
+              "source": "similar_difficulty",
+              "factId": "capital_in"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_au",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Australia?",
+          "correctAnswer": "Canberra",
+          "distractors": [
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            },
+            {
+              "answer": "Helsinki",
+              "source": "similar_difficulty",
+              "factId": "capital_fi"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_au",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Australia?",
+          "correctAnswer": "Canberra",
+          "distractors": [
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            },
+            {
+              "answer": "Helsinki",
+              "source": "similar_difficulty",
+              "factId": "capital_fi"
+            },
+            {
+              "answer": "Tallinn",
+              "source": "similar_difficulty",
+              "factId": "capital_ee"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_au",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Australia?",
+          "correctAnswer": "Canberra",
+          "distractors": [
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            },
+            {
+              "answer": "Helsinki",
+              "source": "similar_difficulty",
+              "factId": "capital_fi"
+            },
+            {
+              "answer": "Tallinn",
+              "source": "similar_difficulty",
+              "factId": "capital_ee"
+            },
+            {
+              "answer": "Abuja",
+              "source": "similar_difficulty",
+              "factId": "capital_ng"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_nz",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of New Zealand?",
+          "correctAnswer": "Wellington",
+          "distractors": [
+            {
+              "answer": "Phnom Penh",
+              "source": "similar_difficulty",
+              "factId": "capital_kh"
+            },
+            {
+              "answer": "Luxembourg City",
+              "source": "similar_difficulty",
+              "factId": "capital_lu"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_nz",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of New Zealand?",
+          "correctAnswer": "Wellington",
+          "distractors": [
+            {
+              "answer": "Phnom Penh",
+              "source": "similar_difficulty",
+              "factId": "capital_kh"
+            },
+            {
+              "answer": "Luxembourg City",
+              "source": "similar_difficulty",
+              "factId": "capital_lu"
+            },
+            {
+              "answer": "Bratislava",
+              "source": "similar_difficulty",
+              "factId": "capital_sk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_nz",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of New Zealand?",
+          "correctAnswer": "Wellington",
+          "distractors": [
+            {
+              "answer": "Phnom Penh",
+              "source": "similar_difficulty",
+              "factId": "capital_kh"
+            },
+            {
+              "answer": "Luxembourg City",
+              "source": "similar_difficulty",
+              "factId": "capital_lu"
+            },
+            {
+              "answer": "Bratislava",
+              "source": "similar_difficulty",
+              "factId": "capital_sk"
+            },
+            {
+              "answer": "Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "capital_nl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_pg",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Papua New Guinea?",
+          "correctAnswer": "Port Moresby",
+          "distractors": [
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Vientiane",
+              "source": "similar_difficulty",
+              "factId": "capital_la"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_pg",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Papua New Guinea?",
+          "correctAnswer": "Port Moresby",
+          "distractors": [
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Vientiane",
+              "source": "similar_difficulty",
+              "factId": "capital_la"
+            },
+            {
+              "answer": "Libreville",
+              "source": "similar_difficulty",
+              "factId": "capital_ga"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_pg",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Papua New Guinea?",
+          "correctAnswer": "Port Moresby",
+          "distractors": [
+            {
+              "answer": "Kuala Lumpur",
+              "source": "similar_difficulty",
+              "factId": "capital_my"
+            },
+            {
+              "answer": "Vientiane",
+              "source": "similar_difficulty",
+              "factId": "capital_la"
+            },
+            {
+              "answer": "Libreville",
+              "source": "similar_difficulty",
+              "factId": "capital_ga"
+            },
+            {
+              "answer": "Ljubljana",
+              "source": "similar_difficulty",
+              "factId": "capital_si"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_fj",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Fiji?",
+          "correctAnswer": "Suva",
+          "distractors": [
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            },
+            {
+              "answer": "Riga",
+              "source": "similar_difficulty",
+              "factId": "capital_lv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_fj",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Fiji?",
+          "correctAnswer": "Suva",
+          "distractors": [
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            },
+            {
+              "answer": "Riga",
+              "source": "similar_difficulty",
+              "factId": "capital_lv"
+            },
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_fj",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Fiji?",
+          "correctAnswer": "Suva",
+          "distractors": [
+            {
+              "answer": "Maseru",
+              "source": "similar_difficulty",
+              "factId": "capital_ls"
+            },
+            {
+              "answer": "Riga",
+              "source": "similar_difficulty",
+              "factId": "capital_lv"
+            },
+            {
+              "answer": "Kingston",
+              "source": "similar_difficulty",
+              "factId": "capital_jm"
+            },
+            {
+              "answer": "Harare",
+              "source": "similar_difficulty",
+              "factId": "capital_zw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_sb",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Solomon Islands?",
+          "correctAnswer": "Honiara",
+          "distractors": [
+            {
+              "answer": "Managua",
+              "source": "similar_difficulty",
+              "factId": "capital_ni"
+            },
+            {
+              "answer": "Thimphu",
+              "source": "similar_difficulty",
+              "factId": "capital_bt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_sb",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Solomon Islands?",
+          "correctAnswer": "Honiara",
+          "distractors": [
+            {
+              "answer": "Managua",
+              "source": "similar_difficulty",
+              "factId": "capital_ni"
+            },
+            {
+              "answer": "Thimphu",
+              "source": "similar_difficulty",
+              "factId": "capital_bt"
+            },
+            {
+              "answer": "Dodoma",
+              "source": "similar_difficulty",
+              "factId": "capital_tz"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_sb",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_short",
+          "renderedQuestion": "What is the capital of Solomon Islands?",
+          "correctAnswer": "Honiara",
+          "distractors": [
+            {
+              "answer": "Managua",
+              "source": "similar_difficulty",
+              "factId": "capital_ni"
+            },
+            {
+              "answer": "Thimphu",
+              "source": "similar_difficulty",
+              "factId": "capital_bt"
+            },
+            {
+              "answer": "Dodoma",
+              "source": "similar_difficulty",
+              "factId": "capital_tz"
+            },
+            {
+              "answer": "Lomé",
+              "source": "similar_difficulty",
+              "factId": "capital_tg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "capital_vu",
+          "masteryLevel": 0,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Vanuatu?",
+          "correctAnswer": "Port Vila",
+          "distractors": [
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            },
+            {
+              "answer": "Ljubljana",
+              "source": "similar_difficulty",
+              "factId": "capital_si"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "capital_vu",
+          "masteryLevel": 2,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Vanuatu?",
+          "correctAnswer": "Port Vila",
+          "distractors": [
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            },
+            {
+              "answer": "Ljubljana",
+              "source": "similar_difficulty",
+              "factId": "capital_si"
+            },
+            {
+              "answer": "Porto-Novo",
+              "source": "similar_difficulty",
+              "factId": "capital_bj"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "capital_vu",
+          "masteryLevel": 4,
+          "poolId": "country_names_caps_long",
+          "renderedQuestion": "What is the capital of Vanuatu?",
+          "correctAnswer": "Port Vila",
+          "distractors": [
+            {
+              "answer": "Naypyidaw",
+              "source": "similar_difficulty",
+              "factId": "capital_mm"
+            },
+            {
+              "answer": "Ljubljana",
+              "source": "similar_difficulty",
+              "factId": "capital_si"
+            },
+            {
+              "answer": "Porto-Novo",
+              "source": "similar_difficulty",
+              "factId": "capital_bj"
+            },
+            {
+              "answer": "Mogadishu",
+              "source": "similar_difficulty",
+              "factId": "capital_so"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

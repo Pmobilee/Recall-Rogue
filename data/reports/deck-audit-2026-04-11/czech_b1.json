@@ -1,0 +1,4336 @@
+{
+  "timestamp": "2026-04-11T02:00:11.203Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 16,
+  "decks": [
+    {
+      "deckId": "czech_b1",
+      "deckName": "Czech B1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 976,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 16,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 11
+        },
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 3
+        },
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 2
+        }
+      },
+      "factResults": [
+        {
+          "factId": "cs-freq-1916",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'líbit' mean?",
+          "correctAnswer": "to please, to like",
+          "distractors": [
+            {
+              "answer": "to prevent",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1401"
+            },
+            {
+              "answer": "to protect",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1340"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1916",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'líbit' mean?",
+          "correctAnswer": "to please, to like",
+          "distractors": [
+            {
+              "answer": "to prevent",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1401"
+            },
+            {
+              "answer": "to protect",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1340"
+            },
+            {
+              "answer": "to think",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1120"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1916",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'líbit' mean?",
+          "correctAnswer": "to please, to like",
+          "distractors": [
+            {
+              "answer": "to prevent",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1401"
+            },
+            {
+              "answer": "to protect",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1340"
+            },
+            {
+              "answer": "to think",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1120"
+            },
+            {
+              "answer": "to be fed up",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1498"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1447",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'průzkum' mean?",
+          "correctAnswer": "survey",
+          "distractors": [
+            {
+              "answer": "shopping center",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1660"
+            },
+            {
+              "answer": "technology",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1387"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1447",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'survey' in Czech?",
+          "correctAnswer": "průzkum",
+          "distractors": [
+            {
+              "answer": "obchodní centrum",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1660"
+            },
+            {
+              "answer": "technika",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1387"
+            },
+            {
+              "answer": "fotbal",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1696"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1447",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'průzkum'?",
+          "correctAnswer": "survey",
+          "distractors": [
+            {
+              "answer": "shopping center",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1660"
+            },
+            {
+              "answer": "technology",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1387"
+            },
+            {
+              "answer": "football, soccer",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1696"
+            },
+            {
+              "answer": "bathhouse",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1253"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1997",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'stáří' mean?",
+          "correctAnswer": "age",
+          "distractors": [
+            {
+              "answer": "elk, moose",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1352"
+            },
+            {
+              "answer": "achievement",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1417"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1997",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'age' in Czech?",
+          "correctAnswer": "stáří",
+          "distractors": [
+            {
+              "answer": "los",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1352"
+            },
+            {
+              "answer": "dosažení",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1417"
+            },
+            {
+              "answer": "zdravý",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1056"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1997",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'stáří'?",
+          "correctAnswer": "age",
+          "distractors": [
+            {
+              "answer": "elk, moose",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1352"
+            },
+            {
+              "answer": "achievement",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1417"
+            },
+            {
+              "answer": "healthy",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1056"
+            },
+            {
+              "answer": "fun",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1963"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1795",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'normální rozdělení' mean?",
+          "correctAnswer": "normal distribution",
+          "distractors": [
+            {
+              "answer": "foreign minister",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1703"
+            },
+            {
+              "answer": "doctor, physician",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1732"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1795",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'normální rozdělení' mean?",
+          "correctAnswer": "normal distribution",
+          "distractors": [
+            {
+              "answer": "foreign minister",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1703"
+            },
+            {
+              "answer": "doctor, physician",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1732"
+            },
+            {
+              "answer": "New Testament",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1554"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1795",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'normální rozdělení' mean?",
+          "correctAnswer": "normal distribution",
+          "distractors": [
+            {
+              "answer": "foreign minister",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1703"
+            },
+            {
+              "answer": "doctor, physician",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1732"
+            },
+            {
+              "answer": "New Testament",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1554"
+            },
+            {
+              "answer": "tit",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1999"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1789",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'inteligentní' mean?",
+          "correctAnswer": "intelligent",
+          "distractors": [
+            {
+              "answer": "reconstruction",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1610"
+            },
+            {
+              "answer": "Christmas",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1303"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1789",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'inteligentní' mean?",
+          "correctAnswer": "intelligent",
+          "distractors": [
+            {
+              "answer": "reconstruction",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1610"
+            },
+            {
+              "answer": "Christmas",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1303"
+            },
+            {
+              "answer": "are",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1933"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1789",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'intelligent' in Czech?",
+          "correctAnswer": "inteligentní",
+          "distractors": [
+            {
+              "answer": "rekonstrukce",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1610"
+            },
+            {
+              "answer": "Vánoce",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1303"
+            },
+            {
+              "answer": "ar",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1933"
+            },
+            {
+              "answer": "pokles",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1149"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1290",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'přirozeně' mean?",
+          "correctAnswer": "naturally",
+          "distractors": [
+            {
+              "answer": "substantially",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1556"
+            },
+            {
+              "answer": "perfectly",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1235"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1290",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'přirozeně' mean?",
+          "correctAnswer": "naturally",
+          "distractors": [
+            {
+              "answer": "substantially",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1556"
+            },
+            {
+              "answer": "perfectly",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1235"
+            },
+            {
+              "answer": "strongly",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1178"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1290",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'přirozeně' mean?",
+          "correctAnswer": "naturally",
+          "distractors": [
+            {
+              "answer": "substantially",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1556"
+            },
+            {
+              "answer": "perfectly",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1235"
+            },
+            {
+              "answer": "strongly",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1178"
+            },
+            {
+              "answer": "afterwards, then",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1888"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1477",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'způsob života' mean?",
+          "correctAnswer": "way of life",
+          "distractors": [
+            {
+              "answer": "mom, mum",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1111"
+            },
+            {
+              "answer": "match",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1219"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1477",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'way of life' in Czech?",
+          "correctAnswer": "způsob života",
+          "distractors": [
+            {
+              "answer": "mami",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1111"
+            },
+            {
+              "answer": "zápase",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1219"
+            },
+            {
+              "answer": "rozhraní",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1670"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1477",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'způsob života'?",
+          "correctAnswer": "way of life",
+          "distractors": [
+            {
+              "answer": "mom, mum",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1111"
+            },
+            {
+              "answer": "match",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1219"
+            },
+            {
+              "answer": "interface",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1670"
+            },
+            {
+              "answer": "important",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1239"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1260",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nebezpečný' mean?",
+          "correctAnswer": "dangerous",
+          "distractors": [
+            {
+              "answer": "special",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1016"
+            },
+            {
+              "answer": "governmental",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1523"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1260",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nebezpečný' mean?",
+          "correctAnswer": "dangerous",
+          "distractors": [
+            {
+              "answer": "special",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1016"
+            },
+            {
+              "answer": "governmental",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1523"
+            },
+            {
+              "answer": "original, authentic",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1758"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1260",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nebezpečný' mean?",
+          "correctAnswer": "dangerous",
+          "distractors": [
+            {
+              "answer": "special",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1016"
+            },
+            {
+              "answer": "governmental",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1523"
+            },
+            {
+              "answer": "original, authentic",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1758"
+            },
+            {
+              "answer": "official",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1140"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1783",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'cizí' mean?",
+          "correctAnswer": "foreign, strange",
+          "distractors": [
+            {
+              "answer": "place of birth",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1597"
+            },
+            {
+              "answer": "Slovakia",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1180"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Slovakia\" has 2 format features different from correct \"foreign, strange\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1783",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'foreign, strange' in Czech?",
+          "correctAnswer": "cizí",
+          "distractors": [
+            {
+              "answer": "místo narození",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1597"
+            },
+            {
+              "answer": "Slovensko",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1180"
+            },
+            {
+              "answer": "opozice",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1364"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1783",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'cizí'?",
+          "correctAnswer": "foreign, strange",
+          "distractors": [
+            {
+              "answer": "place of birth",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1597"
+            },
+            {
+              "answer": "Slovakia",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1180"
+            },
+            {
+              "answer": "opposition",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1364"
+            },
+            {
+              "answer": "agriculture",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1476"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Slovakia\" has 2 format features different from correct \"foreign, strange\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1694",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'finanční krize' mean?",
+          "correctAnswer": "financial crisis",
+          "distractors": [
+            {
+              "answer": "tournament",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1390"
+            },
+            {
+              "answer": "groceries",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1558"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1694",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'finanční krize' mean?",
+          "correctAnswer": "financial crisis",
+          "distractors": [
+            {
+              "answer": "tournament",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1390"
+            },
+            {
+              "answer": "groceries",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1558"
+            },
+            {
+              "answer": "contemporary",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1513"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1694",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'finanční krize' mean?",
+          "correctAnswer": "financial crisis",
+          "distractors": [
+            {
+              "answer": "tournament",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1390"
+            },
+            {
+              "answer": "groceries",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1558"
+            },
+            {
+              "answer": "contemporary",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1513"
+            },
+            {
+              "answer": "end in itself",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1534"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1626",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'televizní' mean?",
+          "correctAnswer": "television, TV",
+          "distractors": [
+            {
+              "answer": "priority",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1162"
+            },
+            {
+              "answer": "concrete",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1106"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"priority\" has 2 format features different from correct \"television, TV\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1626",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'television, TV' in Czech?",
+          "correctAnswer": "televizní",
+          "distractors": [
+            {
+              "answer": "přednost",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1162"
+            },
+            {
+              "answer": "konkrétní",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1106"
+            },
+            {
+              "answer": "jindy",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1885"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1626",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'televizní'?",
+          "correctAnswer": "television, TV",
+          "distractors": [
+            {
+              "answer": "priority",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1162"
+            },
+            {
+              "answer": "concrete",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1106"
+            },
+            {
+              "answer": "at other times",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1885"
+            },
+            {
+              "answer": "Big Dipper",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1392"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"priority\" has 2 format features different from correct \"television, TV\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1563",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'skutečnost' mean?",
+          "correctAnswer": "reality, fact",
+          "distractors": [
+            {
+              "answer": "business",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1148"
+            },
+            {
+              "answer": "Czech Republic",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1581"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1563",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'skutečnost' mean?",
+          "correctAnswer": "reality, fact",
+          "distractors": [
+            {
+              "answer": "business",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1148"
+            },
+            {
+              "answer": "Czech Republic",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1581"
+            },
+            {
+              "answer": "past tense",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1356"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1563",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'skutečnost' mean?",
+          "correctAnswer": "reality, fact",
+          "distractors": [
+            {
+              "answer": "business",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1148"
+            },
+            {
+              "answer": "Czech Republic",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1581"
+            },
+            {
+              "answer": "past tense",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1356"
+            },
+            {
+              "answer": "shortage",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1132"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1484",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'domácí vězení' mean?",
+          "correctAnswer": "house arrest",
+          "distractors": [
+            {
+              "answer": "challenge",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1315"
+            },
+            {
+              "answer": "time machine",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1515"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1484",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'house arrest' in Czech?",
+          "correctAnswer": "domácí vězení",
+          "distractors": [
+            {
+              "answer": "výzva",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1315"
+            },
+            {
+              "answer": "stroj času",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1515"
+            },
+            {
+              "answer": "česko-slovenský",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1536"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1484",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'domácí vězení'?",
+          "correctAnswer": "house arrest",
+          "distractors": [
+            {
+              "answer": "challenge",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1315"
+            },
+            {
+              "answer": "time machine",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1515"
+            },
+            {
+              "answer": "Czecho-Slovak",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1536"
+            },
+            {
+              "answer": "command, order",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1609"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Czecho-Slovak\" has 2 format features different from correct \"house arrest\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1187",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'spát' mean?",
+          "correctAnswer": "to sleep",
+          "distractors": [
+            {
+              "answer": "to leave alone",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1583"
+            },
+            {
+              "answer": "to prevent",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1401"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1187",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to sleep' in Czech?",
+          "correctAnswer": "spát",
+          "distractors": [
+            {
+              "answer": "dát pokoj",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1583"
+            },
+            {
+              "answer": "zabránit",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1401"
+            },
+            {
+              "answer": "stop",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1457"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1187",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'spát'?",
+          "correctAnswer": "to sleep",
+          "distractors": [
+            {
+              "answer": "to leave alone",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1583"
+            },
+            {
+              "answer": "to prevent",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1401"
+            },
+            {
+              "answer": "hitchhiking",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1457"
+            },
+            {
+              "answer": "to be kidding",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1540"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1998",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'suchý' mean?",
+          "correctAnswer": "dry",
+          "distractors": [
+            {
+              "answer": "chairman",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1163"
+            },
+            {
+              "answer": "in time",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1037"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1998",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'dry' in Czech?",
+          "correctAnswer": "suchý",
+          "distractors": [
+            {
+              "answer": "předseda",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1163"
+            },
+            {
+              "answer": "včas",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1037"
+            },
+            {
+              "answer": "schránka",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1992"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1998",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'suchý'?",
+          "correctAnswer": "dry",
+          "distractors": [
+            {
+              "answer": "chairman",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1163"
+            },
+            {
+              "answer": "in time",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1037"
+            },
+            {
+              "answer": "box",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1992"
+            },
+            {
+              "answer": "accident",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1134"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1150",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'politika' mean?",
+          "correctAnswer": "politics",
+          "distractors": [
+            {
+              "answer": "teacher",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1032"
+            },
+            {
+              "answer": "healthy",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1056"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1150",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'politics' in Czech?",
+          "correctAnswer": "politika",
+          "distractors": [
+            {
+              "answer": "učitel",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1032"
+            },
+            {
+              "answer": "zdravý",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1056"
+            },
+            {
+              "answer": "jižní",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1648"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1150",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'politika'?",
+          "correctAnswer": "politics",
+          "distractors": [
+            {
+              "answer": "teacher",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1032"
+            },
+            {
+              "answer": "healthy",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1056"
+            },
+            {
+              "answer": "south, southern",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1648"
+            },
+            {
+              "answer": "time machine",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1515"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1346",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'komise' mean?",
+          "correctAnswer": "commission",
+          "distractors": [
+            {
+              "answer": "tradition",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1300"
+            },
+            {
+              "answer": "television, TV",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1626"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"television, TV\" has 2 format features different from correct \"commission\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1346",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'komise' mean?",
+          "correctAnswer": "commission",
+          "distractors": [
+            {
+              "answer": "tradition",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1300"
+            },
+            {
+              "answer": "television, TV",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1626"
+            },
+            {
+              "answer": "dinner, supper",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1635"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"television, TV\" has 2 format features different from correct \"commission\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1346",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'komise' mean?",
+          "correctAnswer": "commission",
+          "distractors": [
+            {
+              "answer": "tradition",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1300"
+            },
+            {
+              "answer": "television, TV",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1626"
+            },
+            {
+              "answer": "dinner, supper",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1635"
+            },
+            {
+              "answer": "winter sport",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1528"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"television, TV\" has 2 format features different from correct \"commission\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1230",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'dát přednost' mean?",
+          "correctAnswer": "to prefer",
+          "distractors": [
+            {
+              "answer": "to listen",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1280"
+            },
+            {
+              "answer": "to sleep",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1187"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1230",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to prefer' in Czech?",
+          "correctAnswer": "dát přednost",
+          "distractors": [
+            {
+              "answer": "poslouchat",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1280"
+            },
+            {
+              "answer": "spát",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1187"
+            },
+            {
+              "answer": "týkající",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1844"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1230",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'dát přednost'?",
+          "correctAnswer": "to prefer",
+          "distractors": [
+            {
+              "answer": "to listen",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1280"
+            },
+            {
+              "answer": "to sleep",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1187"
+            },
+            {
+              "answer": "concerning, regarding",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1844"
+            },
+            {
+              "answer": "to throw",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1812"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1195",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'střední mozek' mean?",
+          "correctAnswer": "midbrain",
+          "distractors": [
+            {
+              "answer": "spring, vernal",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1589"
+            },
+            {
+              "answer": "trousers",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1102"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1195",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'midbrain' in Czech?",
+          "correctAnswer": "střední mozek",
+          "distractors": [
+            {
+              "answer": "jarní",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1589"
+            },
+            {
+              "answer": "kalhoty",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1102"
+            },
+            {
+              "answer": "dan",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1925"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1195",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'střední mozek'?",
+          "correctAnswer": "midbrain",
+          "distractors": [
+            {
+              "answer": "spring, vernal",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1589"
+            },
+            {
+              "answer": "trousers",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1102"
+            },
+            {
+              "answer": "dan",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1925"
+            },
+            {
+              "answer": "groceries",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1558"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1987",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'řádek' mean?",
+          "correctAnswer": "row",
+          "distractors": [
+            {
+              "answer": "contribution",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1508"
+            },
+            {
+              "answer": "arm",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1977"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1987",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'row' in Czech?",
+          "correctAnswer": "řádek",
+          "distractors": [
+            {
+              "answer": "příspěvek",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1508"
+            },
+            {
+              "answer": "paže",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1977"
+            },
+            {
+              "answer": "ticho",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1628"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1987",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'řádek'?",
+          "correctAnswer": "row",
+          "distractors": [
+            {
+              "answer": "contribution",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1508"
+            },
+            {
+              "answer": "arm",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1977"
+            },
+            {
+              "answer": "quiet, silence",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1628"
+            },
+            {
+              "answer": "suspicion",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1277"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1968",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'mezera' mean?",
+          "correctAnswer": "gap",
+          "distractors": [
+            {
+              "answer": "combination",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1424"
+            },
+            {
+              "answer": "increase",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1127"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1968",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'gap' in Czech?",
+          "correctAnswer": "mezera",
+          "distractors": [
+            {
+              "answer": "kombinace",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1424"
+            },
+            {
+              "answer": "nárůst",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1127"
+            },
+            {
+              "answer": "vlevo",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1467"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1968",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'mezera'?",
+          "correctAnswer": "gap",
+          "distractors": [
+            {
+              "answer": "combination",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1424"
+            },
+            {
+              "answer": "increase",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1127"
+            },
+            {
+              "answer": "on the left",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1467"
+            },
+            {
+              "answer": "diary, journal",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1585"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1425",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'konkurence' mean?",
+          "correctAnswer": "competition",
+          "distractors": [
+            {
+              "answer": "playground",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1339"
+            },
+            {
+              "answer": "in time",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1037"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1425",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'competition' in Czech?",
+          "correctAnswer": "konkurence",
+          "distractors": [
+            {
+              "answer": "hřiště",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1339"
+            },
+            {
+              "answer": "včas",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1037"
+            },
+            {
+              "answer": "domácí vězení",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1484"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1425",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'konkurence'?",
+          "correctAnswer": "competition",
+          "distractors": [
+            {
+              "answer": "playground",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1339"
+            },
+            {
+              "answer": "in time",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1037"
+            },
+            {
+              "answer": "house arrest",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1484"
+            },
+            {
+              "answer": "last year",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1254"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1022",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'strašně' mean?",
+          "correctAnswer": "awfully",
+          "distractors": [
+            {
+              "answer": "first",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1600"
+            },
+            {
+              "answer": "apparently",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1367"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1022",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'strašně' mean?",
+          "correctAnswer": "awfully",
+          "distractors": [
+            {
+              "answer": "first",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1600"
+            },
+            {
+              "answer": "apparently",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1367"
+            },
+            {
+              "answer": "regularly",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1285"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1022",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'strašně' mean?",
+          "correctAnswer": "awfully",
+          "distractors": [
+            {
+              "answer": "first",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1600"
+            },
+            {
+              "answer": "apparently",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1367"
+            },
+            {
+              "answer": "regularly",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1285"
+            },
+            {
+              "answer": "heavily",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1029"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1377",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'přechod' mean?",
+          "correctAnswer": "transition",
+          "distractors": [
+            {
+              "answer": "past tense",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1356"
+            },
+            {
+              "answer": "dam",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1954"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1377",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'přechod' mean?",
+          "correctAnswer": "transition",
+          "distractors": [
+            {
+              "answer": "past tense",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1356"
+            },
+            {
+              "answer": "dam",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1954"
+            },
+            {
+              "answer": "suspicion",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1277"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1377",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'přechod' mean?",
+          "correctAnswer": "transition",
+          "distractors": [
+            {
+              "answer": "past tense",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1356"
+            },
+            {
+              "answer": "dam",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1954"
+            },
+            {
+              "answer": "suspicion",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1277"
+            },
+            {
+              "answer": "bus",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1781"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1071",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'budova' mean?",
+          "correctAnswer": "building",
+          "distractors": [
+            {
+              "answer": "smaller",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1115"
+            },
+            {
+              "answer": "information",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1421"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1071",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'budova' mean?",
+          "correctAnswer": "building",
+          "distractors": [
+            {
+              "answer": "smaller",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1115"
+            },
+            {
+              "answer": "information",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1421"
+            },
+            {
+              "answer": "football, soccer",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1696"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1071",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'budova' mean?",
+          "correctAnswer": "building",
+          "distractors": [
+            {
+              "answer": "smaller",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1115"
+            },
+            {
+              "answer": "information",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1421"
+            },
+            {
+              "answer": "football, soccer",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1696"
+            },
+            {
+              "answer": "description",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1440"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1335",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'funkční' mean?",
+          "correctAnswer": "functional",
+          "distractors": [
+            {
+              "answer": "negative",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1133"
+            },
+            {
+              "answer": "original, authentic",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1758"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1335",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'functional' in Czech?",
+          "correctAnswer": "funkční",
+          "distractors": [
+            {
+              "answer": "negativní",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1133"
+            },
+            {
+              "answer": "originální",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1758"
+            },
+            {
+              "answer": "historický",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1337"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1335",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'functional' in Czech?",
+          "correctAnswer": "funkční",
+          "distractors": [
+            {
+              "answer": "negativní",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1133"
+            },
+            {
+              "answer": "originální",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1758"
+            },
+            {
+              "answer": "historický",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1337"
+            },
+            {
+              "answer": "územní",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1465"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1504",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'prachy' mean?",
+          "correctAnswer": "dough, money",
+          "distractors": [
+            {
+              "answer": "mobile phone",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1704"
+            },
+            {
+              "answer": "foreign minister",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1703"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1504",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'dough, money' in Czech?",
+          "correctAnswer": "prachy",
+          "distractors": [
+            {
+              "answer": "mobil",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1704"
+            },
+            {
+              "answer": "ministr zahraničí",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1703"
+            },
+            {
+              "answer": "životní styl",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1324"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1504",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'prachy'?",
+          "correctAnswer": "dough, money",
+          "distractors": [
+            {
+              "answer": "mobile phone",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1704"
+            },
+            {
+              "answer": "foreign minister",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1703"
+            },
+            {
+              "answer": "lifestyle",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1324"
+            },
+            {
+              "answer": "selection",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1311"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1384",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'role' mean?",
+          "correctAnswer": "role, part",
+          "distractors": [
+            {
+              "answer": "division, part",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1586"
+            },
+            {
+              "answer": "pig",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1980"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1384",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'role, part' in Czech?",
+          "correctAnswer": "role",
+          "distractors": [
+            {
+              "answer": "díl",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1586"
+            },
+            {
+              "answer": "prase",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1980"
+            },
+            {
+              "answer": "nijak",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1262"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1384",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'role'?",
+          "correctAnswer": "role, part",
+          "distractors": [
+            {
+              "answer": "division, part",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1586"
+            },
+            {
+              "answer": "pig",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1980"
+            },
+            {
+              "answer": "in no way",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1262"
+            },
+            {
+              "answer": "handshake",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1276"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1962",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'květen' mean?",
+          "correctAnswer": "May",
+          "distractors": [
+            {
+              "answer": "speech",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1859"
+            },
+            {
+              "answer": "institution",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1422"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1962",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'May' in Czech?",
+          "correctAnswer": "květen",
+          "distractors": [
+            {
+              "answer": "projev",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1859"
+            },
+            {
+              "answer": "instituce",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1422"
+            },
+            {
+              "answer": "rudý",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1985"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1962",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'květen'?",
+          "correctAnswer": "May",
+          "distractors": [
+            {
+              "answer": "speech",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1859"
+            },
+            {
+              "answer": "institution",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1422"
+            },
+            {
+              "answer": "red",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1985"
+            },
+            {
+              "answer": "porn, porno",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1441"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"porn, porno\" has 2 format features different from correct \"May\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1110",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'listu' mean?",
+          "correctAnswer": "leaf",
+          "distractors": [
+            {
+              "answer": "national holiday",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1716"
+            },
+            {
+              "answer": "cap",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1938"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1110",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'listu' mean?",
+          "correctAnswer": "leaf",
+          "distractors": [
+            {
+              "answer": "national holiday",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1716"
+            },
+            {
+              "answer": "cap",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1938"
+            },
+            {
+              "answer": "financial crisis",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1694"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1110",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'leaf' in Czech?",
+          "correctAnswer": "listu",
+          "distractors": [
+            {
+              "answer": "státní svátek",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1716"
+            },
+            {
+              "answer": "čapka",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1938"
+            },
+            {
+              "answer": "finanční krize",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1694"
+            },
+            {
+              "answer": "beran",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1935"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1528",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'zimní sport' mean?",
+          "correctAnswer": "winter sport",
+          "distractors": [
+            {
+              "answer": "on foot",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1710"
+            },
+            {
+              "answer": "section, department",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1803"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1528",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'winter sport' in Czech?",
+          "correctAnswer": "zimní sport",
+          "distractors": [
+            {
+              "answer": "pěšky",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1710"
+            },
+            {
+              "answer": "sekce",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1803"
+            },
+            {
+              "answer": "národ",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1598"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1528",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'zimní sport'?",
+          "correctAnswer": "winter sport",
+          "distractors": [
+            {
+              "answer": "on foot",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1710"
+            },
+            {
+              "answer": "section, department",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1803"
+            },
+            {
+              "answer": "people, nation",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1598"
+            },
+            {
+              "answer": "politics",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1150"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1372",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'pozadí' mean?",
+          "correctAnswer": "background",
+          "distractors": [
+            {
+              "answer": "health insurance",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1724"
+            },
+            {
+              "answer": "arm",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1977"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1372",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'pozadí' mean?",
+          "correctAnswer": "background",
+          "distractors": [
+            {
+              "answer": "health insurance",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1724"
+            },
+            {
+              "answer": "arm",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1977"
+            },
+            {
+              "answer": "box",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1992"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1372",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'pozadí' mean?",
+          "correctAnswer": "background",
+          "distractors": [
+            {
+              "answer": "health insurance",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1724"
+            },
+            {
+              "answer": "arm",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1977"
+            },
+            {
+              "answer": "box",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1992"
+            },
+            {
+              "answer": "newspaper",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1264"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1828",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vozidlo' mean?",
+          "correctAnswer": "vehicle",
+          "distractors": [
+            {
+              "answer": "division, part",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1586"
+            },
+            {
+              "answer": "holy, sacred",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1517"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1828",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'vehicle' in Czech?",
+          "correctAnswer": "vozidlo",
+          "distractors": [
+            {
+              "answer": "díl",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1586"
+            },
+            {
+              "answer": "svatý",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1517"
+            },
+            {
+              "answer": "místo narození",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1597"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1828",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'vehicle' in Czech?",
+          "correctAnswer": "vozidlo",
+          "distractors": [
+            {
+              "answer": "díl",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1586"
+            },
+            {
+              "answer": "svatý",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1517"
+            },
+            {
+              "answer": "místo narození",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1597"
+            },
+            {
+              "answer": "smysl života",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1678"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1956",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'jednička' mean?",
+          "correctAnswer": "one",
+          "distractors": [
+            {
+              "answer": "ten",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1943"
+            },
+            {
+              "answer": "two",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1944"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1956",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'one' in Czech?",
+          "correctAnswer": "jednička",
+          "distractors": [
+            {
+              "answer": "desítka",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1943"
+            },
+            {
+              "answer": "dvojka",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1944"
+            },
+            {
+              "answer": "hřiště",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1339"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"hřiště\" POS \"noun\" != correct \"number\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1956",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'jednička'?",
+          "correctAnswer": "one",
+          "distractors": [
+            {
+              "answer": "ten",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1943"
+            },
+            {
+              "answer": "two",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1944"
+            },
+            {
+              "answer": "playground",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1339"
+            },
+            {
+              "answer": "cop",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1979"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"playground\" POS \"noun\" != correct \"number\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1197",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'světových' mean?",
+          "correctAnswer": "world",
+          "distractors": [
+            {
+              "answer": "in any case",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1423"
+            },
+            {
+              "answer": "business",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1148"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1197",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'world' in Czech?",
+          "correctAnswer": "světových",
+          "distractors": [
+            {
+              "answer": "každopádně",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1423"
+            },
+            {
+              "answer": "podnikání",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1148"
+            },
+            {
+              "answer": "třikrát",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1805"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1197",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "světových — genitive/locative plural of světový.",
+          "correctAnswer": "world",
+          "distractors": [
+            {
+              "answer": "in any case",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1423"
+            },
+            {
+              "answer": "business",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1148"
+            },
+            {
+              "answer": "three times",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1805"
+            },
+            {
+              "answer": "third party",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1464"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1666",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'průzkum trhu' mean?",
+          "correctAnswer": "market research",
+          "distractors": [
+            {
+              "answer": "bet",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1989"
+            },
+            {
+              "answer": "declaration",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1470"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1666",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'market research' in Czech?",
+          "correctAnswer": "průzkum trhu",
+          "distractors": [
+            {
+              "answer": "sázka",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1989"
+            },
+            {
+              "answer": "vyhlášení",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1470"
+            },
+            {
+              "answer": "smysl života",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1678"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1666",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'průzkum trhu'?",
+          "correctAnswer": "market research",
+          "distractors": [
+            {
+              "answer": "bet",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1989"
+            },
+            {
+              "answer": "declaration",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1470"
+            },
+            {
+              "answer": "meaning of life",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1678"
+            },
+            {
+              "answer": "pretty as a picture",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1788"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1878",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vyměnit' mean?",
+          "correctAnswer": "to exchange, to replace",
+          "distractors": [
+            {
+              "answer": "to pay attention",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1689"
+            },
+            {
+              "answer": "advertising",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1451"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1878",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vyměnit' mean?",
+          "correctAnswer": "to exchange, to replace",
+          "distractors": [
+            {
+              "answer": "to pay attention",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1689"
+            },
+            {
+              "answer": "advertising",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1451"
+            },
+            {
+              "answer": "to replace",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1904"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"to replace\" is a substring of \"to exchange, to replace\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1878",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vyměnit' mean?",
+          "correctAnswer": "to exchange, to replace",
+          "distractors": [
+            {
+              "answer": "to pay attention",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1689"
+            },
+            {
+              "answer": "advertising",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1451"
+            },
+            {
+              "answer": "to replace",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1904"
+            },
+            {
+              "answer": "to explain",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1399"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"to replace\" is a substring of \"to exchange, to replace\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1493",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'kamarádka' mean?",
+          "correctAnswer": "female friend",
+          "distractors": [
+            {
+              "answer": "database",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1081"
+            },
+            {
+              "answer": "central bank",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1480"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1493",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'female friend' in Czech?",
+          "correctAnswer": "kamarádka",
+          "distractors": [
+            {
+              "answer": "databáze",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1081"
+            },
+            {
+              "answer": "centrální banka",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1480"
+            },
+            {
+              "answer": "televizní",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1626"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1493",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'kamarádka'?",
+          "correctAnswer": "female friend",
+          "distractors": [
+            {
+              "answer": "database",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1081"
+            },
+            {
+              "answer": "central bank",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1480"
+            },
+            {
+              "answer": "television, TV",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1626"
+            },
+            {
+              "answer": "education",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1316"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1691",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'divadlo' mean?",
+          "correctAnswer": "theater, theatre",
+          "distractors": [
+            {
+              "answer": "conference",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1347"
+            },
+            {
+              "answer": "headache",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1070"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1691",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'divadlo' mean?",
+          "correctAnswer": "theater, theatre",
+          "distractors": [
+            {
+              "answer": "conference",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1347"
+            },
+            {
+              "answer": "headache",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1070"
+            },
+            {
+              "answer": "population",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1371"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1691",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'divadlo' mean?",
+          "correctAnswer": "theater, theatre",
+          "distractors": [
+            {
+              "answer": "theatrical, theatre",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1784"
+            },
+            {
+              "answer": "conference",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1347"
+            },
+            {
+              "answer": "headache",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1070"
+            },
+            {
+              "answer": "population",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1371"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"theatrical, theatre\" POS \"adjective\" != correct \"noun\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1215",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vztah' mean?",
+          "correctAnswer": "relation",
+          "distractors": [
+            {
+              "answer": "personality",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1435"
+            },
+            {
+              "answer": "American",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1064"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1215",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'relation' in Czech?",
+          "correctAnswer": "vztah",
+          "distractors": [
+            {
+              "answer": "osobnost",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1435"
+            },
+            {
+              "answer": "americký",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1064"
+            },
+            {
+              "answer": "volné dílo",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1771"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1215",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'vztah'?",
+          "correctAnswer": "relation",
+          "distractors": [
+            {
+              "answer": "personality",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1435"
+            },
+            {
+              "answer": "American",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1064"
+            },
+            {
+              "answer": "public domain work",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1771"
+            },
+            {
+              "answer": "current, up-to-date",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1779"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1835",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'kdykoli' mean?",
+          "correctAnswer": "whenever, any time",
+          "distractors": [
+            {
+              "answer": "from here",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1756"
+            },
+            {
+              "answer": "police station",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1605"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1835",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'whenever, any time' in Czech?",
+          "correctAnswer": "kdykoli",
+          "distractors": [
+            {
+              "answer": "odtud",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1756"
+            },
+            {
+              "answer": "policejní stanice",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1605"
+            },
+            {
+              "answer": "podezření",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1277"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1835",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'kdykoli'?",
+          "correctAnswer": "whenever, any time",
+          "distractors": [
+            {
+              "answer": "from here",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1756"
+            },
+            {
+              "answer": "police station",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1605"
+            },
+            {
+              "answer": "suspicion",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1277"
+            },
+            {
+              "answer": "ministry",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1815"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1511",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'růst jako z vody' mean?",
+          "correctAnswer": "to grow fast",
+          "distractors": [
+            {
+              "answer": "to please, to like",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1916"
+            },
+            {
+              "answer": "to react",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1170"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1511",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to grow fast' in Czech?",
+          "correctAnswer": "růst jako z vody",
+          "distractors": [
+            {
+              "answer": "líbit",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1916"
+            },
+            {
+              "answer": "reagovat",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1170"
+            },
+            {
+              "answer": "dovolit",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1786"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1511",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'růst jako z vody'?",
+          "correctAnswer": "to grow fast",
+          "distractors": [
+            {
+              "answer": "to please, to like",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1916"
+            },
+            {
+              "answer": "to react",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1170"
+            },
+            {
+              "answer": "to allow, to permit",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1786"
+            },
+            {
+              "answer": "to be kidding",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1540"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1404",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'zážitek' mean?",
+          "correctAnswer": "experience",
+          "distractors": [
+            {
+              "answer": "die",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1959"
+            },
+            {
+              "answer": "selection",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1311"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1404",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'experience' in Czech?",
+          "correctAnswer": "zážitek",
+          "distractors": [
+            {
+              "answer": "kostka",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1959"
+            },
+            {
+              "answer": "výběr",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1311"
+            },
+            {
+              "answer": "analýza",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1065"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1404",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'zážitek'?",
+          "correctAnswer": "experience",
+          "distractors": [
+            {
+              "answer": "die",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1959"
+            },
+            {
+              "answer": "selection",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1311"
+            },
+            {
+              "answer": "analysis",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1065"
+            },
+            {
+              "answer": "generation",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1336"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1013",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'slyšet' mean?",
+          "correctAnswer": "to hear",
+          "distractors": [
+            {
+              "answer": "to withdraw",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1455"
+            },
+            {
+              "answer": "to cancel, to abolish",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1848"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1013",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to hear' in Czech?",
+          "correctAnswer": "slyšet",
+          "distractors": [
+            {
+              "answer": "stáhnout",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1455"
+            },
+            {
+              "answer": "zrušit",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1848"
+            },
+            {
+              "answer": "sehnat",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1673"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1013",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to hear' in Czech?",
+          "correctAnswer": "slyšet",
+          "distractors": [
+            {
+              "answer": "stáhnout",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1455"
+            },
+            {
+              "answer": "zrušit",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1848"
+            },
+            {
+              "answer": "sehnat",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1673"
+            },
+            {
+              "answer": "zvýšit",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1849"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1075",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'čase' mean?",
+          "correctAnswer": "time",
+          "distractors": [
+            {
+              "answer": "version",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1039"
+            },
+            {
+              "answer": "all the time",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1488"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1075",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'čase' mean?",
+          "correctAnswer": "time",
+          "distractors": [
+            {
+              "answer": "version",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1039"
+            },
+            {
+              "answer": "all the time",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1488"
+            },
+            {
+              "answer": "step, pace",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1349"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1075",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'čase' mean?",
+          "correctAnswer": "time",
+          "distractors": [
+            {
+              "answer": "version",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1039"
+            },
+            {
+              "answer": "all the time",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1488"
+            },
+            {
+              "answer": "step, pace",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1349"
+            },
+            {
+              "answer": "foreign, strange",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1783"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1350",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'léky' mean?",
+          "correctAnswer": "medication",
+          "distractors": [
+            {
+              "answer": "bathhouse",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1253"
+            },
+            {
+              "answer": "time machine",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1515"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1350",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'léky' mean?",
+          "correctAnswer": "medication",
+          "distractors": [
+            {
+              "answer": "bathhouse",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1253"
+            },
+            {
+              "answer": "time machine",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1515"
+            },
+            {
+              "answer": "operating system",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1709"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1350",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'léky' mean?",
+          "correctAnswer": "medication",
+          "distractors": [
+            {
+              "answer": "bathhouse",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1253"
+            },
+            {
+              "answer": "time machine",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1515"
+            },
+            {
+              "answer": "operating system",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1709"
+            },
+            {
+              "answer": "bus",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1781"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1915",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'poslat' mean?",
+          "correctAnswer": "to send",
+          "distractors": [
+            {
+              "answer": "to misunderstand",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1718"
+            },
+            {
+              "answer": "to sing",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1059"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1915",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'poslat' mean?",
+          "correctAnswer": "to send",
+          "distractors": [
+            {
+              "answer": "to misunderstand",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1718"
+            },
+            {
+              "answer": "to sing",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1059"
+            },
+            {
+              "answer": "to reach",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1090"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1915",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'poslat' mean?",
+          "correctAnswer": "to send",
+          "distractors": [
+            {
+              "answer": "to misunderstand",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1718"
+            },
+            {
+              "answer": "to sing",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1059"
+            },
+            {
+              "answer": "to reach",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1090"
+            },
+            {
+              "answer": "to cooperate",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1514"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1855",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'navzájem' mean?",
+          "correctAnswer": "mutually, each other",
+          "distractors": [
+            {
+              "answer": "necessarily",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1432"
+            },
+            {
+              "answer": "low",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1972"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1855",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'navzájem' mean?",
+          "correctAnswer": "mutually, each other",
+          "distractors": [
+            {
+              "answer": "necessarily",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1432"
+            },
+            {
+              "answer": "low",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1972"
+            },
+            {
+              "answer": "historically",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1490"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1855",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'mutually, each other' in Czech?",
+          "correctAnswer": "navzájem",
+          "distractors": [
+            {
+              "answer": "nutně",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1432"
+            },
+            {
+              "answer": "nízko",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1972"
+            },
+            {
+              "answer": "historicky",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1490"
+            },
+            {
+              "answer": "patrně",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1367"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1422",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'instituce' mean?",
+          "correctAnswer": "institution",
+          "distractors": [
+            {
+              "answer": "soldier",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1043"
+            },
+            {
+              "answer": "American football",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1725"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"American football\" has 2 format features different from correct \"institution\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1422",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'institution' in Czech?",
+          "correctAnswer": "instituce",
+          "distractors": [
+            {
+              "answer": "voják",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1043"
+            },
+            {
+              "answer": "americký fotbal",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1725"
+            },
+            {
+              "answer": "hezký jako obrázek",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1788"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1422",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'instituce'?",
+          "correctAnswer": "institution",
+          "distractors": [
+            {
+              "answer": "soldier",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1043"
+            },
+            {
+              "answer": "American football",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1725"
+            },
+            {
+              "answer": "pretty as a picture",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1788"
+            },
+            {
+              "answer": "in practice",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1445"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"American football\" has 2 format features different from correct \"institution\""
+            }
+          ]
+        },
+        {
+          "factId": "cs-freq-1124",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nákup' mean?",
+          "correctAnswer": "shopping",
+          "distractors": [
+            {
+              "answer": "skill, ability",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1615"
+            },
+            {
+              "answer": "municipality, village",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1837"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1124",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'shopping' in Czech?",
+          "correctAnswer": "nákup",
+          "distractors": [
+            {
+              "answer": "schopnost",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1615"
+            },
+            {
+              "answer": "obec",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1837"
+            },
+            {
+              "answer": "majetek",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1814"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "cs-freq-1124",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'shopping' in Czech?",
+          "correctAnswer": "nákup",
+          "distractors": [
+            {
+              "answer": "schopnost",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1615"
+            },
+            {
+              "answer": "obec",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1837"
+            },
+            {
+              "answer": "majetek",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1814"
+            },
+            {
+              "answer": "finanční krize",
+              "source": "similar_difficulty",
+              "factId": "cs-freq-1694"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

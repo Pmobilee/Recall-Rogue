@@ -1,0 +1,4296 @@
+{
+  "timestamp": "2026-04-11T02:00:37.105Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 10,
+  "decks": [
+    {
+      "deckId": "spanish_c1",
+      "deckName": "Spanish C1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 1500,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 10,
+      "issuesByType": {
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 8
+        },
+        "trivially_eliminatable": {
+          "fail": 0,
+          "warn": 2
+        }
+      },
+      "factResults": [
+        {
+          "factId": "es-cefr-3998",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"aquel\" mean?",
+          "correctAnswer": "alternative spelling of aquél",
+          "distractors": [
+            {
+              "answer": "ours",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3989"
+            },
+            {
+              "answer": "mine; of mine",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4056"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3998",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"aquel\" mean?",
+          "correctAnswer": "alternative spelling of aquél",
+          "distractors": [
+            {
+              "answer": "ours",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3989"
+            },
+            {
+              "answer": "mine; of mine",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4056"
+            },
+            {
+              "answer": "yours",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4356"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3998",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"aquel\" mean?",
+          "correctAnswer": "alternative spelling of aquél",
+          "distractors": [
+            {
+              "answer": "ours",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3989"
+            },
+            {
+              "answer": "mine; of mine",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4056"
+            },
+            {
+              "answer": "yours",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4356"
+            },
+            {
+              "answer": "someone",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3991"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3981",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"no\" mean?",
+          "correctAnswer": "no",
+          "distractors": [
+            {
+              "answer": "online",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4234"
+            },
+            {
+              "answer": "come in!",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5137"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3981",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"no\" mean?",
+          "correctAnswer": "no",
+          "distractors": [
+            {
+              "answer": "online",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4234"
+            },
+            {
+              "answer": "come in!",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5137"
+            },
+            {
+              "answer": "below, under",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4473"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3981",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"no\" mean?",
+          "correctAnswer": "no",
+          "distractors": [
+            {
+              "answer": "online",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4234"
+            },
+            {
+              "answer": "come in!",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5137"
+            },
+            {
+              "answer": "below, under",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4473"
+            },
+            {
+              "answer": "as",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4901"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4108",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"mas\" mean?",
+          "correctAnswer": "but",
+          "distractors": [
+            {
+              "answer": "agreement",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4469"
+            },
+            {
+              "answer": "though, although",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3993"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4108",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"mas\" mean?",
+          "correctAnswer": "but",
+          "distractors": [
+            {
+              "answer": "agreement",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4469"
+            },
+            {
+              "answer": "though, although",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3993"
+            },
+            {
+              "answer": "according to",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4214"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4108",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"mas\" mean?",
+          "correctAnswer": "but",
+          "distractors": [
+            {
+              "answer": "agreement",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4469"
+            },
+            {
+              "answer": "though, although",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3993"
+            },
+            {
+              "answer": "according to",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4214"
+            },
+            {
+              "answer": "but rather",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4002"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3995",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"durante\" mean?",
+          "correctAnswer": "during, in, over",
+          "distractors": [
+            {
+              "answer": "without",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3985"
+            },
+            {
+              "answer": "with",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3982"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3995",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'during, in, over' in Spanish?",
+          "correctAnswer": "durante",
+          "distractors": [
+            {
+              "answer": "sin",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3985"
+            },
+            {
+              "answer": "detonante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4930"
+            },
+            {
+              "answer": "mediante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4035"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3995",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'during, in, over' in Spanish?",
+          "correctAnswer": "durante",
+          "distractors": [
+            {
+              "answer": "sin",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3985"
+            },
+            {
+              "answer": "detonante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4930"
+            },
+            {
+              "answer": "mediante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4035"
+            },
+            {
+              "answer": "tras",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4005"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4002",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"sino\" mean?",
+          "correctAnswer": "but rather",
+          "distractors": [
+            {
+              "answer": "according to",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4214"
+            },
+            {
+              "answer": "because",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3987"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4002",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"sino\" mean?",
+          "correctAnswer": "but rather",
+          "distractors": [
+            {
+              "answer": "according to",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4214"
+            },
+            {
+              "answer": "because",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3987"
+            },
+            {
+              "answer": "agreement",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4469"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4002",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"sino\" mean?",
+          "correctAnswer": "but rather",
+          "distractors": [
+            {
+              "answer": "according to",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4214"
+            },
+            {
+              "answer": "because",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3987"
+            },
+            {
+              "answer": "agreement",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4469"
+            },
+            {
+              "answer": "though, although",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3993"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4291",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"un\" mean?",
+          "correctAnswer": "an; a",
+          "distractors": [
+            {
+              "answer": "except",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4189"
+            },
+            {
+              "answer": "yours",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4356"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"except\" POS \"preposition\" != correct \"article\""
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-4291",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"un\" mean?",
+          "correctAnswer": "an; a",
+          "distractors": [
+            {
+              "answer": "except",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4189"
+            },
+            {
+              "answer": "yours",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4356"
+            },
+            {
+              "answer": "without",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3985"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"except\" POS \"preposition\" != correct \"article\""
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-4291",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"un\" mean?",
+          "correctAnswer": "an; a",
+          "distractors": [
+            {
+              "answer": "except",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4189"
+            },
+            {
+              "answer": "yours",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4356"
+            },
+            {
+              "answer": "without",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3985"
+            },
+            {
+              "answer": "agreement",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4469"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"except\" POS \"preposition\" != correct \"article\""
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-4298",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"canasto\" mean?",
+          "correctAnswer": "basket",
+          "distractors": [
+            {
+              "answer": "suffering",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4289"
+            },
+            {
+              "answer": "adjustment, fine-tuning",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4863"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4298",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"canasto\" mean?",
+          "correctAnswer": "basket",
+          "distractors": [
+            {
+              "answer": "suffering",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4289"
+            },
+            {
+              "answer": "adjustment, fine-tuning",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4863"
+            },
+            {
+              "answer": "croquette",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4338"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4298",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"canasto\" mean?",
+          "correctAnswer": "basket",
+          "distractors": [
+            {
+              "answer": "suffering",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4289"
+            },
+            {
+              "answer": "adjustment, fine-tuning",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4863"
+            },
+            {
+              "answer": "croquette",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4338"
+            },
+            {
+              "answer": "celebration",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4969"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4970",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"festival\" mean?",
+          "correctAnswer": "festival",
+          "distractors": [
+            {
+              "answer": "swallow",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4511"
+            },
+            {
+              "answer": "sensibility",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4089"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4970",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'festival' in Spanish?",
+          "correctAnswer": "festival",
+          "distractors": [
+            {
+              "answer": "zoo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4440"
+            },
+            {
+              "answer": "ballena",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5255"
+            },
+            {
+              "answer": "cerro",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4250"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4970",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'festival' in Spanish?",
+          "correctAnswer": "festival",
+          "distractors": [
+            {
+              "answer": "zoo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4440"
+            },
+            {
+              "answer": "ballena",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5255"
+            },
+            {
+              "answer": "cerro",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4250"
+            },
+            {
+              "answer": "atraco",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5240"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5072",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"redistribución\" mean?",
+          "correctAnswer": "redistribution",
+          "distractors": [
+            {
+              "answer": "makeup",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4536"
+            },
+            {
+              "answer": "feminine singular of kinésico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5001"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5072",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"redistribución\" mean?",
+          "correctAnswer": "redistribution",
+          "distractors": [
+            {
+              "answer": "makeup",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4536"
+            },
+            {
+              "answer": "feminine singular of kinésico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5001"
+            },
+            {
+              "answer": "reconstruction",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5071"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5072",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"redistribución\" mean?",
+          "correctAnswer": "redistribution",
+          "distractors": [
+            {
+              "answer": "makeup",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4536"
+            },
+            {
+              "answer": "feminine singular of kinésico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5001"
+            },
+            {
+              "answer": "reconstruction",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5071"
+            },
+            {
+              "answer": "hole",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4753"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4005",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_other",
+          "renderedQuestion": "What does \"tras\" mean?",
+          "correctAnswer": "after, following",
+          "distractors": [
+            {
+              "answer": "elk",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4011"
+            },
+            {
+              "answer": "with",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3982"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4005",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'after, following' in Spanish?",
+          "correctAnswer": "tras",
+          "distractors": [
+            {
+              "answer": "sin",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3985"
+            },
+            {
+              "answer": "detonante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4930"
+            },
+            {
+              "answer": "mediante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4035"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4005",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'after, following' in Spanish?",
+          "correctAnswer": "tras",
+          "distractors": [
+            {
+              "answer": "sin",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3985"
+            },
+            {
+              "answer": "detonante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4930"
+            },
+            {
+              "answer": "mediante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4035"
+            },
+            {
+              "answer": "hipótesis",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4265"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"hipótesis\" POS \"noun\" != correct \"preposition\""
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-4080",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"vos\" mean?",
+          "correctAnswer": "you",
+          "distractors": [
+            {
+              "answer": "second person formal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4006"
+            },
+            {
+              "answer": "who",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3999"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4080",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'you' in Spanish?",
+          "correctAnswer": "vos",
+          "distractors": [
+            {
+              "answer": "donde",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3990"
+            },
+            {
+              "answer": "ello",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4010"
+            },
+            {
+              "answer": "detonante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4930"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"detonante\" POS \"preposition\" != correct \"pronoun\""
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-4080",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'you' in Spanish?",
+          "correctAnswer": "vos",
+          "distractors": [
+            {
+              "answer": "donde",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3990"
+            },
+            {
+              "answer": "ello",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4010"
+            },
+            {
+              "answer": "detonante",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4930"
+            },
+            {
+              "answer": "alegar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5165"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"detonante\" POS \"preposition\" != correct \"pronoun\""
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-4026",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"error\" mean?",
+          "correctAnswer": "error",
+          "distractors": [
+            {
+              "answer": "metal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4123"
+            },
+            {
+              "answer": "violation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4851"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4026",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"error\" mean?",
+          "correctAnswer": "error",
+          "distractors": [
+            {
+              "answer": "metal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4123"
+            },
+            {
+              "answer": "violation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4851"
+            },
+            {
+              "answer": "genome",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4979"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4026",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"error\" mean?",
+          "correctAnswer": "error",
+          "distractors": [
+            {
+              "answer": "metal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4123"
+            },
+            {
+              "answer": "violation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4851"
+            },
+            {
+              "answer": "genome",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4979"
+            },
+            {
+              "answer": "bubble",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4045"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4614",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"ensayo\" mean?",
+          "correctAnswer": "essay; paper",
+          "distractors": [
+            {
+              "answer": "phobia",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4974"
+            },
+            {
+              "answer": "transit",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5110"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4614",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"ensayo\" mean?",
+          "correctAnswer": "essay; paper",
+          "distractors": [
+            {
+              "answer": "phobia",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4974"
+            },
+            {
+              "answer": "transit",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5110"
+            },
+            {
+              "answer": "winger",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4336"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4614",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"ensayo\" mean?",
+          "correctAnswer": "essay; paper",
+          "distractors": [
+            {
+              "answer": "phobia",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4974"
+            },
+            {
+              "answer": "transit",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5110"
+            },
+            {
+              "answer": "winger",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4336"
+            },
+            {
+              "answer": "tamer",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5471"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3994",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"social\" mean?",
+          "correctAnswer": "social",
+          "distractors": [
+            {
+              "answer": "ambiguous",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5185"
+            },
+            {
+              "answer": "adjacent",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5145"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3994",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"social\" mean?",
+          "correctAnswer": "social",
+          "distractors": [
+            {
+              "answer": "ambiguous",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5185"
+            },
+            {
+              "answer": "adjacent",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5145"
+            },
+            {
+              "answer": "criminal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5424"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-3994",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"social\" mean?",
+          "correctAnswer": "social",
+          "distractors": [
+            {
+              "answer": "ambiguous",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5185"
+            },
+            {
+              "answer": "adjacent",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5145"
+            },
+            {
+              "answer": "criminal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5424"
+            },
+            {
+              "answer": "natural",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4007"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4282",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"presidencial\" mean?",
+          "correctAnswer": "presidential",
+          "distractors": [
+            {
+              "answer": "foxglove",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4081"
+            },
+            {
+              "answer": "pure, clear, clean",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4796"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4282",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"presidencial\" mean?",
+          "correctAnswer": "presidential",
+          "distractors": [
+            {
+              "answer": "foxglove",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4081"
+            },
+            {
+              "answer": "pure, clear, clean",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4796"
+            },
+            {
+              "answer": "crescent",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4228"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4282",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"presidencial\" mean?",
+          "correctAnswer": "presidential",
+          "distractors": [
+            {
+              "answer": "foxglove",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4081"
+            },
+            {
+              "answer": "pure, clear, clean",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4796"
+            },
+            {
+              "answer": "crescent",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4228"
+            },
+            {
+              "answer": "mediocre",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5017"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4465",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"cera\" mean?",
+          "correctAnswer": "wax",
+          "distractors": [
+            {
+              "answer": "vice",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4664"
+            },
+            {
+              "answer": "ego",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4725"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4465",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'wax' in Spanish?",
+          "correctAnswer": "cera",
+          "distractors": [
+            {
+              "answer": "copal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4910"
+            },
+            {
+              "answer": "granada",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4190"
+            },
+            {
+              "answer": "inquietud",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4345"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4465",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'wax' in Spanish?",
+          "correctAnswer": "cera",
+          "distractors": [
+            {
+              "answer": "copal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4910"
+            },
+            {
+              "answer": "granada",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4190"
+            },
+            {
+              "answer": "inquietud",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4345"
+            },
+            {
+              "answer": "autopsia",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5245"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4261",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"derivado\" mean?",
+          "correctAnswer": "derivative",
+          "distractors": [
+            {
+              "answer": "cooperation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4227"
+            },
+            {
+              "answer": "innocence",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4193"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4261",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"derivado\" mean?",
+          "correctAnswer": "derivative",
+          "distractors": [
+            {
+              "answer": "cooperation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4227"
+            },
+            {
+              "answer": "innocence",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4193"
+            },
+            {
+              "answer": "framework, structure",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4949"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4261",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"derivado\" mean?",
+          "correctAnswer": "derivative",
+          "distractors": [
+            {
+              "answer": "cooperation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4227"
+            },
+            {
+              "answer": "innocence",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4193"
+            },
+            {
+              "answer": "framework, structure",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4949"
+            },
+            {
+              "answer": "feminine singular of bombo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4394"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4543",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"obrero\" mean?",
+          "correctAnswer": "worker",
+          "distractors": [
+            {
+              "answer": "infection",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4628"
+            },
+            {
+              "answer": "desire; thirst",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4389"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4543",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"obrero\" mean?",
+          "correctAnswer": "worker",
+          "distractors": [
+            {
+              "answer": "infection",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4628"
+            },
+            {
+              "answer": "desire; thirst",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4389"
+            },
+            {
+              "answer": "wasp",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5249"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4543",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"obrero\" mean?",
+          "correctAnswer": "worker",
+          "distractors": [
+            {
+              "answer": "infection",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4628"
+            },
+            {
+              "answer": "desire; thirst",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4389"
+            },
+            {
+              "answer": "wasp",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5249"
+            },
+            {
+              "answer": "sentence, punishment",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4105"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5199",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"antifaz\" mean?",
+          "correctAnswer": "domino mask, eyemask",
+          "distractors": [
+            {
+              "answer": "necktie",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4138"
+            },
+            {
+              "answer": "storage",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5175"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5199",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"antifaz\" mean?",
+          "correctAnswer": "domino mask, eyemask",
+          "distractors": [
+            {
+              "answer": "necktie",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4138"
+            },
+            {
+              "answer": "storage",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5175"
+            },
+            {
+              "answer": "sympathy",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4570"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5199",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"antifaz\" mean?",
+          "correctAnswer": "domino mask, eyemask",
+          "distractors": [
+            {
+              "answer": "necktie",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4138"
+            },
+            {
+              "answer": "storage",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5175"
+            },
+            {
+              "answer": "sympathy",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4570"
+            },
+            {
+              "answer": "compendium",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5356"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5037",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"oleada\" mean?",
+          "correctAnswer": "wave, surge",
+          "distractors": [
+            {
+              "answer": "hunter",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5315"
+            },
+            {
+              "answer": "seal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4412"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5037",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"oleada\" mean?",
+          "correctAnswer": "wave, surge",
+          "distractors": [
+            {
+              "answer": "hunter",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5315"
+            },
+            {
+              "answer": "seal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4412"
+            },
+            {
+              "answer": "hurricane",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4517"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5037",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"oleada\" mean?",
+          "correctAnswer": "wave, surge",
+          "distractors": [
+            {
+              "answer": "hunter",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5315"
+            },
+            {
+              "answer": "seal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4412"
+            },
+            {
+              "answer": "hurricane",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4517"
+            },
+            {
+              "answer": "paintbrush",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4810"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5193",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"ano\" mean?",
+          "correctAnswer": "anus",
+          "distractors": [
+            {
+              "answer": "lull",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4883"
+            },
+            {
+              "answer": "burrow, den, sett, warren",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4777"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5193",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"ano\" mean?",
+          "correctAnswer": "anus",
+          "distractors": [
+            {
+              "answer": "lull",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4883"
+            },
+            {
+              "answer": "burrow, den, sett, warren",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4777"
+            },
+            {
+              "answer": "topology",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5105"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5193",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"ano\" mean?",
+          "correctAnswer": "anus",
+          "distractors": [
+            {
+              "answer": "lull",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4883"
+            },
+            {
+              "answer": "burrow, den, sett, warren",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4777"
+            },
+            {
+              "answer": "topology",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5105"
+            },
+            {
+              "answer": "adjustment, arrangement",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4876"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4792",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"narrador\" mean?",
+          "correctAnswer": "narrator",
+          "distractors": [
+            {
+              "answer": "tattler, telltale",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4708"
+            },
+            {
+              "answer": "elbow",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4252"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4792",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"narrador\" mean?",
+          "correctAnswer": "narrator",
+          "distractors": [
+            {
+              "answer": "tattler, telltale",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4708"
+            },
+            {
+              "answer": "elbow",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4252"
+            },
+            {
+              "answer": "compensation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4602"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4792",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"narrador\" mean?",
+          "correctAnswer": "narrator",
+          "distractors": [
+            {
+              "answer": "tattler, telltale",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4708"
+            },
+            {
+              "answer": "elbow",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4252"
+            },
+            {
+              "answer": "compensation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4602"
+            },
+            {
+              "answer": "abandonment",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4441"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4672",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"alcaldesa\" mean?",
+          "correctAnswer": "female equivalent of alcalde",
+          "distractors": [
+            {
+              "answer": "slavery",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4492"
+            },
+            {
+              "answer": "disuse",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5455"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4672",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"alcaldesa\" mean?",
+          "correctAnswer": "female equivalent of alcalde",
+          "distractors": [
+            {
+              "answer": "slavery",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4492"
+            },
+            {
+              "answer": "disuse",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5455"
+            },
+            {
+              "answer": "status",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4736"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4672",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"alcaldesa\" mean?",
+          "correctAnswer": "female equivalent of alcalde",
+          "distractors": [
+            {
+              "answer": "slavery",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4492"
+            },
+            {
+              "answer": "disuse",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5455"
+            },
+            {
+              "answer": "status",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4736"
+            },
+            {
+              "answer": "seal, sigil",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4238"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4774",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"liebre\" mean?",
+          "correctAnswer": "hare, jackrabbit",
+          "distractors": [
+            {
+              "answer": "schooling",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4372"
+            },
+            {
+              "answer": "narrator",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4792"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4774",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"liebre\" mean?",
+          "correctAnswer": "hare, jackrabbit",
+          "distractors": [
+            {
+              "answer": "schooling",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4372"
+            },
+            {
+              "answer": "narrator",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4792"
+            },
+            {
+              "answer": "lesion; injury",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4115"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4774",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"liebre\" mean?",
+          "correctAnswer": "hare, jackrabbit",
+          "distractors": [
+            {
+              "answer": "schooling",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4372"
+            },
+            {
+              "answer": "narrator",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4792"
+            },
+            {
+              "answer": "lesion; injury",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4115"
+            },
+            {
+              "answer": "central",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4695"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4919",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"cumplimentar\" mean?",
+          "correctAnswer": "to congratulate",
+          "distractors": [
+            {
+              "answer": "to long for, to yearn",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5192"
+            },
+            {
+              "answer": "to fertilize",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4442"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4919",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"cumplimentar\" mean?",
+          "correctAnswer": "to congratulate",
+          "distractors": [
+            {
+              "answer": "to long for, to yearn",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5192"
+            },
+            {
+              "answer": "to fertilize",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4442"
+            },
+            {
+              "answer": "to join; to merge",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5243"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4919",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"cumplimentar\" mean?",
+          "correctAnswer": "to congratulate",
+          "distractors": [
+            {
+              "answer": "to long for, to yearn",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5192"
+            },
+            {
+              "answer": "to fertilize",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4442"
+            },
+            {
+              "answer": "to join; to merge",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5243"
+            },
+            {
+              "answer": "to annex",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5189"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4025",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"civil\" mean?",
+          "correctAnswer": "civil",
+          "distractors": [
+            {
+              "answer": "Arabic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5225"
+            },
+            {
+              "answer": "level",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4323"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4025",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'civil' in Spanish?",
+          "correctAnswer": "civil",
+          "distractors": [
+            {
+              "answer": "judicial",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4195"
+            },
+            {
+              "answer": "liberal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4075"
+            },
+            {
+              "answer": "vital",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4335"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4025",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'civil' in Spanish?",
+          "correctAnswer": "civil",
+          "distractors": [
+            {
+              "answer": "judicial",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4195"
+            },
+            {
+              "answer": "liberal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4075"
+            },
+            {
+              "answer": "vital",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4335"
+            },
+            {
+              "answer": "bruto",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4065"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4319",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"mortal\" mean?",
+          "correctAnswer": "deadly",
+          "distractors": [
+            {
+              "answer": "systematic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4572"
+            },
+            {
+              "answer": "embryonic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4149"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4319",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"mortal\" mean?",
+          "correctAnswer": "deadly",
+          "distractors": [
+            {
+              "answer": "systematic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4572"
+            },
+            {
+              "answer": "embryonic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4149"
+            },
+            {
+              "answer": "Ibero-American",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4373"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4319",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"mortal\" mean?",
+          "correctAnswer": "deadly",
+          "distractors": [
+            {
+              "answer": "systematic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4572"
+            },
+            {
+              "answer": "embryonic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4149"
+            },
+            {
+              "answer": "Ibero-American",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4373"
+            },
+            {
+              "answer": "social",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3994"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5140",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"adiestrar\" mean?",
+          "correctAnswer": "to train",
+          "distractors": [
+            {
+              "answer": "to grab or take hold of",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4671"
+            },
+            {
+              "answer": "to undo, to unmake",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5443"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5140",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to train' in Spanish?",
+          "correctAnswer": "adiestrar",
+          "distractors": [
+            {
+              "answer": "desistir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5445"
+            },
+            {
+              "answer": "difuminar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5460"
+            },
+            {
+              "answer": "agrupar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4390"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5140",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to train' in Spanish?",
+          "correctAnswer": "adiestrar",
+          "distractors": [
+            {
+              "answer": "desistir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5445"
+            },
+            {
+              "answer": "difuminar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5460"
+            },
+            {
+              "answer": "agrupar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4390"
+            },
+            {
+              "answer": "tragar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4290"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4624",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"humillar\" mean?",
+          "correctAnswer": "to humiliate",
+          "distractors": [
+            {
+              "answer": "to arrange hierarchically",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4767"
+            },
+            {
+              "answer": "to star in",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4819"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4624",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"humillar\" mean?",
+          "correctAnswer": "to humiliate",
+          "distractors": [
+            {
+              "answer": "to arrange hierarchically",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4767"
+            },
+            {
+              "answer": "to star in",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4819"
+            },
+            {
+              "answer": "to report",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5077"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4624",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"humillar\" mean?",
+          "correctAnswer": "to humiliate",
+          "distractors": [
+            {
+              "answer": "to arrange hierarchically",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4767"
+            },
+            {
+              "answer": "to star in",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4819"
+            },
+            {
+              "answer": "to report",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5077"
+            },
+            {
+              "answer": "to look at",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4012"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4206",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"insólito\" mean?",
+          "correctAnswer": "unusual, weird, strange",
+          "distractors": [
+            {
+              "answer": "storm",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4578"
+            },
+            {
+              "answer": "miraculous",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4784"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4206",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"insólito\" mean?",
+          "correctAnswer": "unusual, weird, strange",
+          "distractors": [
+            {
+              "answer": "storm",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4578"
+            },
+            {
+              "answer": "miraculous",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4784"
+            },
+            {
+              "answer": "admirable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5141"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4206",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"insólito\" mean?",
+          "correctAnswer": "unusual, weird, strange",
+          "distractors": [
+            {
+              "answer": "storm",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4578"
+            },
+            {
+              "answer": "miraculous",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4784"
+            },
+            {
+              "answer": "admirable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5141"
+            },
+            {
+              "answer": "androgyne",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5188"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4829",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"remiendo\" mean?",
+          "correctAnswer": "patch",
+          "distractors": [
+            {
+              "answer": "party pooper",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5152"
+            },
+            {
+              "answer": "praise, commendation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4406"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4829",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"remiendo\" mean?",
+          "correctAnswer": "patch",
+          "distractors": [
+            {
+              "answer": "party pooper",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5152"
+            },
+            {
+              "answer": "praise, commendation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4406"
+            },
+            {
+              "answer": "vein",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4586"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4829",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"remiendo\" mean?",
+          "correctAnswer": "patch",
+          "distractors": [
+            {
+              "answer": "party pooper",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5152"
+            },
+            {
+              "answer": "praise, commendation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4406"
+            },
+            {
+              "answer": "vein",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4586"
+            },
+            {
+              "answer": "hair, head of hair",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5282"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4823",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"quique\" mean?",
+          "correctAnswer": "grison, lesser grison",
+          "distractors": [
+            {
+              "answer": "hummingbird",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5350"
+            },
+            {
+              "answer": "hurricane",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4517"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4823",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"quique\" mean?",
+          "correctAnswer": "grison, lesser grison",
+          "distractors": [
+            {
+              "answer": "hummingbird",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5350"
+            },
+            {
+              "answer": "hurricane",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4517"
+            },
+            {
+              "answer": "disposal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4100"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4823",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"quique\" mean?",
+          "correctAnswer": "grison, lesser grison",
+          "distractors": [
+            {
+              "answer": "hummingbird",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5350"
+            },
+            {
+              "answer": "hurricane",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4517"
+            },
+            {
+              "answer": "disposal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4100"
+            },
+            {
+              "answer": "urine",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5038"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5411",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"césped\" mean?",
+          "correctAnswer": "lawn",
+          "distractors": [
+            {
+              "answer": "adaptation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4388"
+            },
+            {
+              "answer": "wire",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4447"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5411",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"césped\" mean?",
+          "correctAnswer": "lawn",
+          "distractors": [
+            {
+              "answer": "adaptation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4388"
+            },
+            {
+              "answer": "wire",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4447"
+            },
+            {
+              "answer": "mason, bricklayer",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5160"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5411",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_nouns",
+          "renderedQuestion": "What does \"césped\" mean?",
+          "correctAnswer": "lawn",
+          "distractors": [
+            {
+              "answer": "adaptation",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4388"
+            },
+            {
+              "answer": "wire",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4447"
+            },
+            {
+              "answer": "mason, bricklayer",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5160"
+            },
+            {
+              "answer": "crack",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4649"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4135",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"sexual\" mean?",
+          "correctAnswer": "sexual",
+          "distractors": [
+            {
+              "answer": "plentiful, abundant",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4386"
+            },
+            {
+              "answer": "thinking",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5046"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4135",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'sexual' in Spanish?",
+          "correctAnswer": "sexual",
+          "distractors": [
+            {
+              "answer": "expresivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4410"
+            },
+            {
+              "answer": "global",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4980"
+            },
+            {
+              "answer": "compulsivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5360"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4135",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'sexual' in Spanish?",
+          "correctAnswer": "sexual",
+          "distractors": [
+            {
+              "answer": "expresivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4410"
+            },
+            {
+              "answer": "global",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4980"
+            },
+            {
+              "answer": "compulsivo",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5360"
+            },
+            {
+              "answer": "hospitalario",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4515"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4579",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"terrestre\" mean?",
+          "correctAnswer": "terrestrial",
+          "distractors": [
+            {
+              "answer": "habitual",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4014"
+            },
+            {
+              "answer": "external",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4182"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4579",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"terrestre\" mean?",
+          "correctAnswer": "terrestrial",
+          "distractors": [
+            {
+              "answer": "habitual",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4014"
+            },
+            {
+              "answer": "external",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4182"
+            },
+            {
+              "answer": "biographic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5271"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4579",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"terrestre\" mean?",
+          "correctAnswer": "terrestrial",
+          "distractors": [
+            {
+              "answer": "habitual",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4014"
+            },
+            {
+              "answer": "external",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4182"
+            },
+            {
+              "answer": "biographic",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5271"
+            },
+            {
+              "answer": "hospital",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4515"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4352",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"sospechar\" mean?",
+          "correctAnswer": "to suspect",
+          "distractors": [
+            {
+              "answer": "to be accustomed to doing something",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4001"
+            },
+            {
+              "answer": "to fertilize",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4442"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4352",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"sospechar\" mean?",
+          "correctAnswer": "to suspect",
+          "distractors": [
+            {
+              "answer": "to be accustomed to doing something",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4001"
+            },
+            {
+              "answer": "to fertilize",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4442"
+            },
+            {
+              "answer": "to reheat, rewarm",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5068"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4352",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"sospechar\" mean?",
+          "correctAnswer": "to suspect",
+          "distractors": [
+            {
+              "answer": "to be accustomed to doing something",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4001"
+            },
+            {
+              "answer": "to fertilize",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4442"
+            },
+            {
+              "answer": "to reheat, rewarm",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5068"
+            },
+            {
+              "answer": "to crown",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4300"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5276",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"bucear\" mean?",
+          "correctAnswer": "to dive",
+          "distractors": [
+            {
+              "answer": "to star in",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4819"
+            },
+            {
+              "answer": "to have influence or affect on",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4374"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5276",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"bucear\" mean?",
+          "correctAnswer": "to dive",
+          "distractors": [
+            {
+              "answer": "to star in",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4819"
+            },
+            {
+              "answer": "to have influence or affect on",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4374"
+            },
+            {
+              "answer": "to cause",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4078"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5276",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"bucear\" mean?",
+          "correctAnswer": "to dive",
+          "distractors": [
+            {
+              "answer": "to star in",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4819"
+            },
+            {
+              "answer": "to have influence or affect on",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4374"
+            },
+            {
+              "answer": "to cause",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4078"
+            },
+            {
+              "answer": "to hide, to conceal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4544"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4515",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"hospitalario\" mean?",
+          "correctAnswer": "hospital",
+          "distractors": [
+            {
+              "answer": "profligate, dissolute",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5117"
+            },
+            {
+              "answer": "unexpected",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4191"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4515",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'hospital' in Spanish?",
+          "correctAnswer": "hospitalario",
+          "distractors": [
+            {
+              "answer": "islámico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4220"
+            },
+            {
+              "answer": "explícito",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4965"
+            },
+            {
+              "answer": "benigno",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4690"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4515",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'hospital' in Spanish?",
+          "correctAnswer": "hospitalario",
+          "distractors": [
+            {
+              "answer": "islámico",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4220"
+            },
+            {
+              "answer": "explícito",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4965"
+            },
+            {
+              "answer": "benigno",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4690"
+            },
+            {
+              "answer": "liberal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4075"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4317",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"masculino\" mean?",
+          "correctAnswer": "masculine, male",
+          "distractors": [
+            {
+              "answer": "xenophobe",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4853"
+            },
+            {
+              "answer": "terrestrial",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4579"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4317",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"masculino\" mean?",
+          "correctAnswer": "masculine, male",
+          "distractors": [
+            {
+              "answer": "xenophobe",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4853"
+            },
+            {
+              "answer": "terrestrial",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4579"
+            },
+            {
+              "answer": "social",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3994"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4317",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"masculino\" mean?",
+          "correctAnswer": "masculine, male",
+          "distractors": [
+            {
+              "answer": "xenophobe",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4853"
+            },
+            {
+              "answer": "terrestrial",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4579"
+            },
+            {
+              "answer": "social",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3994"
+            },
+            {
+              "answer": "teetotal",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5129"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4488",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"enfatizar\" mean?",
+          "correctAnswer": "to emphasize",
+          "distractors": [
+            {
+              "answer": "to persist",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5047"
+            },
+            {
+              "answer": "to train, school",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5184"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4488",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"enfatizar\" mean?",
+          "correctAnswer": "to emphasize",
+          "distractors": [
+            {
+              "answer": "to persist",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5047"
+            },
+            {
+              "answer": "to train, school",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5184"
+            },
+            {
+              "answer": "to catalogue",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5313"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4488",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"enfatizar\" mean?",
+          "correctAnswer": "to emphasize",
+          "distractors": [
+            {
+              "answer": "to persist",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5047"
+            },
+            {
+              "answer": "to train, school",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5184"
+            },
+            {
+              "answer": "to catalogue",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5313"
+            },
+            {
+              "answer": "to float",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4264"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4470",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"contraer\" mean?",
+          "correctAnswer": "to contract, to get",
+          "distractors": [
+            {
+              "answer": "to disembark",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4718"
+            },
+            {
+              "answer": "to channel",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5295"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4470",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to contract, to get' in Spanish?",
+          "correctAnswer": "contraer",
+          "distractors": [
+            {
+              "answer": "desposar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4720"
+            },
+            {
+              "answer": "proseguir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5060"
+            },
+            {
+              "answer": "barajar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4460"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4470",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to contract, to get' in Spanish?",
+          "correctAnswer": "contraer",
+          "distractors": [
+            {
+              "answer": "desposar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4720"
+            },
+            {
+              "answer": "proseguir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5060"
+            },
+            {
+              "answer": "barajar",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4460"
+            },
+            {
+              "answer": "recurrir",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4285"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4784",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"milagroso\" mean?",
+          "correctAnswer": "miraculous",
+          "distractors": [
+            {
+              "answer": "mental",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4116"
+            },
+            {
+              "answer": "incalculable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4521"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4784",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"milagroso\" mean?",
+          "correctAnswer": "miraculous",
+          "distractors": [
+            {
+              "answer": "mental",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4116"
+            },
+            {
+              "answer": "incalculable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4521"
+            },
+            {
+              "answer": "institutional",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4760"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4784",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"milagroso\" mean?",
+          "correctAnswer": "miraculous",
+          "distractors": [
+            {
+              "answer": "mental",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4116"
+            },
+            {
+              "answer": "incalculable",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4521"
+            },
+            {
+              "answer": "institutional",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4760"
+            },
+            {
+              "answer": "county",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5364"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5132",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"aceituno\" mean?",
+          "correctAnswer": "olive tree",
+          "distractors": [
+            {
+              "answer": "utilitarian",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4585"
+            },
+            {
+              "answer": "instinctive",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4416"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5132",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"aceituno\" mean?",
+          "correctAnswer": "olive tree",
+          "distractors": [
+            {
+              "answer": "utilitarian",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4585"
+            },
+            {
+              "answer": "instinctive",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4416"
+            },
+            {
+              "answer": "soulless",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5429"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5132",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adjectives",
+          "renderedQuestion": "What does \"aceituno\" mean?",
+          "correctAnswer": "olive tree",
+          "distractors": [
+            {
+              "answer": "utilitarian",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4585"
+            },
+            {
+              "answer": "instinctive",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4416"
+            },
+            {
+              "answer": "soulless",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5429"
+            },
+            {
+              "answer": "hospital",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4515"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5449",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"desperdiciar\" mean?",
+          "correctAnswer": "to waste",
+          "distractors": [
+            {
+              "answer": "to boil",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5278"
+            },
+            {
+              "answer": "to ponder, consider",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5051"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5449",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"desperdiciar\" mean?",
+          "correctAnswer": "to waste",
+          "distractors": [
+            {
+              "answer": "to boil",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5278"
+            },
+            {
+              "answer": "to ponder, consider",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5051"
+            },
+            {
+              "answer": "to snore",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4432"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5449",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"desperdiciar\" mean?",
+          "correctAnswer": "to waste",
+          "distractors": [
+            {
+              "answer": "to boil",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5278"
+            },
+            {
+              "answer": "to ponder, consider",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5051"
+            },
+            {
+              "answer": "to snore",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4432"
+            },
+            {
+              "answer": "to separate, to divide",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4246"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4287",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"rezar\" mean?",
+          "correctAnswer": "to pray",
+          "distractors": [
+            {
+              "answer": "to entertain, distract",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4483"
+            },
+            {
+              "answer": "to mobilize",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4272"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4287",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"rezar\" mean?",
+          "correctAnswer": "to pray",
+          "distractors": [
+            {
+              "answer": "to entertain, distract",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4483"
+            },
+            {
+              "answer": "to mobilize",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4272"
+            },
+            {
+              "answer": "to covet",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5344"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4287",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"rezar\" mean?",
+          "correctAnswer": "to pray",
+          "distractors": [
+            {
+              "answer": "to entertain, distract",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4483"
+            },
+            {
+              "answer": "to mobilize",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4272"
+            },
+            {
+              "answer": "to covet",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5344"
+            },
+            {
+              "answer": "to chase away, drive away",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5157"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4347",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"labrar\" mean?",
+          "correctAnswer": "to work",
+          "distractors": [
+            {
+              "answer": "to overflow",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4926"
+            },
+            {
+              "answer": "to crop",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4197"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4347",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"labrar\" mean?",
+          "correctAnswer": "to work",
+          "distractors": [
+            {
+              "answer": "to overflow",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4926"
+            },
+            {
+              "answer": "to crop",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4197"
+            },
+            {
+              "answer": "to be accustomed to doing something",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4001"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4347",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_verbs",
+          "renderedQuestion": "What does \"labrar\" mean?",
+          "correctAnswer": "to work",
+          "distractors": [
+            {
+              "answer": "to overflow",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4926"
+            },
+            {
+              "answer": "to crop",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4197"
+            },
+            {
+              "answer": "to be accustomed to doing something",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4001"
+            },
+            {
+              "answer": "to predict, vaticinate",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5113"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4234",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"online\" mean?",
+          "correctAnswer": "online",
+          "distractors": [
+            {
+              "answer": "come in!",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5137"
+            },
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3981"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4234",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"online\" mean?",
+          "correctAnswer": "online",
+          "distractors": [
+            {
+              "answer": "come in!",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5137"
+            },
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3981"
+            },
+            {
+              "answer": "day before yesterday",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5196"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-4234",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"online\" mean?",
+          "correctAnswer": "online",
+          "distractors": [
+            {
+              "answer": "come in!",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5137"
+            },
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-3981"
+            },
+            {
+              "answer": "day before yesterday",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5196"
+            },
+            {
+              "answer": "so, then; in that case",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5061"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "trivially_eliminatable",
+              "detail": "Option \"no\" (len 2) is outlier vs avg 11.6"
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-5195",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"antaño\" mean?",
+          "correctAnswer": "the distant past",
+          "distractors": [
+            {
+              "answer": "as",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4901"
+            },
+            {
+              "answer": "so, then; in that case",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5061"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "trivially_eliminatable",
+              "detail": "Option \"as\" (len 2) is outlier vs avg 13.3"
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-5195",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'the distant past' in Spanish?",
+          "correctAnswer": "antaño",
+          "distractors": [
+            {
+              "answer": "global",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4980"
+            },
+            {
+              "answer": "alcance",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4090"
+            },
+            {
+              "answer": "continuidad",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4255"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"global\" POS \"adjective\" != correct \"adverb\""
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-5195",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'the distant past' in Spanish?",
+          "correctAnswer": "antaño",
+          "distractors": [
+            {
+              "answer": "global",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4980"
+            },
+            {
+              "answer": "alcance",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4090"
+            },
+            {
+              "answer": "continuidad",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4255"
+            },
+            {
+              "answer": "sexual",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4135"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"global\" POS \"adjective\" != correct \"adverb\""
+            }
+          ]
+        },
+        {
+          "factId": "es-cefr-5137",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"adentro\" mean?",
+          "correctAnswer": "come in!",
+          "distractors": [
+            {
+              "answer": "day before yesterday",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5196"
+            },
+            {
+              "answer": "below, under",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4473"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5137",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"adentro\" mean?",
+          "correctAnswer": "come in!",
+          "distractors": [
+            {
+              "answer": "day before yesterday",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5196"
+            },
+            {
+              "answer": "below, under",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4473"
+            },
+            {
+              "answer": "online",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4234"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5137",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"adentro\" mean?",
+          "correctAnswer": "come in!",
+          "distractors": [
+            {
+              "answer": "day before yesterday",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5196"
+            },
+            {
+              "answer": "below, under",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4473"
+            },
+            {
+              "answer": "online",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4234"
+            },
+            {
+              "answer": "including, even",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4989"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5196",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"anteayer\" mean?",
+          "correctAnswer": "day before yesterday",
+          "distractors": [
+            {
+              "answer": "so, then; in that case",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5061"
+            },
+            {
+              "answer": "including, even",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4989"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5196",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"anteayer\" mean?",
+          "correctAnswer": "day before yesterday",
+          "distractors": [
+            {
+              "answer": "so, then; in that case",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5061"
+            },
+            {
+              "answer": "including, even",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4989"
+            },
+            {
+              "answer": "online",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4234"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-cefr-5196",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_adverbs",
+          "renderedQuestion": "What does \"anteayer\" mean?",
+          "correctAnswer": "day before yesterday",
+          "distractors": [
+            {
+              "answer": "so, then; in that case",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5061"
+            },
+            {
+              "answer": "including, even",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4989"
+            },
+            {
+              "answer": "online",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-4234"
+            },
+            {
+              "answer": "come in!",
+              "source": "similar_difficulty",
+              "factId": "es-cefr-5137"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4336 @@
+{
+  "timestamp": "2026-04-11T02:00:33.391Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 16,
+  "decks": [
+    {
+      "deckId": "solar_system",
+      "deckName": "Solar System",
+      "deckClass": "knowledge",
+      "totalFacts": 76,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 16,
+      "issuesByType": {
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 7
+        },
+        "numeric_distractor_out_of_domain": {
+          "fail": 0,
+          "warn": 3
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 6
+        }
+      },
+      "factResults": [
+        {
+          "factId": "solar_system_jupiter_largest",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "What is the largest planet in the solar system?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_ring_system"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_red_iron_oxide"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_largest",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "What is the largest planet in the solar system?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_ring_system"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_red_iron_oxide"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_morning_star"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_largest",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "What is the largest planet in the solar system?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_ring_system"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_red_iron_oxide"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_morning_star"
+            },
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_third_from_sun"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_great_red_spot",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has a centuries-old storm called the Great Red Spot?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_strongest_winds"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_floats_in_water"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_great_red_spot",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has a centuries-old storm called the Great Red Spot?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_strongest_winds"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_floats_in_water"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_olympus_mons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_great_red_spot",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has a centuries-old storm called the Great Red Spot?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_strongest_winds"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_floats_in_water"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_olympus_mons"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_dwarf_planet_2006"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mercury_smallest",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is the smallest in our solar system?",
+          "correctAnswer": "Mercury",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_fits_all_planets"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_blue_green_methane"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mercury_smallest",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is the smallest in our solar system?",
+          "correctAnswer": "Mercury",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_fits_all_planets"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_blue_green_methane"
+            },
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_farthest_planet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mercury_smallest",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is the smallest in our solar system?",
+          "correctAnswer": "Mercury",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_fits_all_planets"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_blue_green_methane"
+            },
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_farthest_planet"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_not_hottest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_moon_count",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "As of 2026, how many known moons does Jupiter have?",
+          "correctAnswer": "101",
+          "distractors": [
+            {
+              "answer": "120",
+              "source": "numerical",
+              "factId": "_numerical_120"
+            },
+            {
+              "answer": "50",
+              "source": "numerical",
+              "factId": "_numerical_50"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_moon_count",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "As of 2026, how many known moons does Jupiter have?",
+          "correctAnswer": "101",
+          "distractors": [
+            {
+              "answer": "120",
+              "source": "numerical",
+              "factId": "_numerical_120"
+            },
+            {
+              "answer": "50",
+              "source": "numerical",
+              "factId": "_numerical_50"
+            },
+            {
+              "answer": "70",
+              "source": "numerical",
+              "factId": "_numerical_70"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_moon_count",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "As of 2026, how many known moons does Jupiter have?",
+          "correctAnswer": "101",
+          "distractors": [
+            {
+              "answer": "120",
+              "source": "numerical",
+              "factId": "_numerical_120"
+            },
+            {
+              "answer": "50",
+              "source": "numerical",
+              "factId": "_numerical_50"
+            },
+            {
+              "answer": "70",
+              "source": "numerical",
+              "factId": "_numerical_70"
+            },
+            {
+              "answer": "130",
+              "source": "numerical",
+              "factId": "_numerical_130"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mercury_most_cratered",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is the most heavily cratered due to having no atmosphere?",
+          "correctAnswer": "Mercury",
+          "distractors": [
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_not_named_god"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_rings_composition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mercury_most_cratered",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is the most heavily cratered due to having no atmosphere?",
+          "correctAnswer": "Mercury",
+          "distractors": [
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_not_named_god"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_rings_composition"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mercury_most_cratered",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is the most heavily cratered due to having no atmosphere?",
+          "correctAnswer": "Mercury",
+          "distractors": [
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_not_named_god"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_rings_composition"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_galilean_moons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_ancient_water",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet shows dry riverbeds and other evidence of ancient liquid water?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_mathematical_prediction"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_tilted"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_ancient_water",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet shows dry riverbeds and other evidence of ancient liquid water?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_mathematical_prediction"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_tilted"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_most_cratered"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_ancient_water",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet shows dry riverbeds and other evidence of ancient liquid water?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_mathematical_prediction"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_tilted"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_most_cratered"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_morning_star"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_saturn_most_moons",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet holds the record for most confirmed moons with 285?",
+          "correctAnswer": "Saturn",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_asteroid_belt_location"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_valles_marineris"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_saturn_most_moons",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet holds the record for most confirmed moons with 285?",
+          "correctAnswer": "Saturn",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_asteroid_belt_location"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_valles_marineris"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_closest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_saturn_most_moons",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet holds the record for most confirmed moons with 285?",
+          "correctAnswer": "Saturn",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_asteroid_belt_location"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_valles_marineris"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_closest"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_venus_hottest",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has the highest average surface temperature at 464°C?",
+          "correctAnswer": "Venus",
+          "distractors": [
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_not_named_god"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_tombaugh_regio"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_venus_hottest",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has the highest average surface temperature at 464°C?",
+          "correctAnswer": "Venus",
+          "distractors": [
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_not_named_god"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_tombaugh_regio"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_two_moons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_venus_hottest",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has the highest average surface temperature at 464°C?",
+          "correctAnswer": "Venus",
+          "distractors": [
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_not_named_god"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_tombaugh_regio"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_two_moons"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_closest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_has_rings",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet was the first discovered to have rings besides Saturn?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_not_hottest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_has_rings",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet was the first discovered to have rings besides Saturn?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_not_hottest"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_jupiter_has_rings",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet was the first discovered to have rings besides Saturn?",
+          "correctAnswer": "Jupiter",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_not_hottest"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_two_moons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_strongest_winds",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has the strongest winds in the solar system, reaching 2,100 km/h?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_telescope_discovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_strongest_winds",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has the strongest winds in the solar system, reaching 2,100 km/h?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_telescope_discovery"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_two_moons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_strongest_winds",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has the strongest winds in the solar system, reaching 2,100 km/h?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_telescope_discovery"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_two_moons"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_galilean_moons"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_valles_marineris",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is home to Valles Marineris, the largest canyon in the solar system?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_tilted"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_valles_marineris",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is home to Valles Marineris, the largest canyon in the solar system?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_tilted"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_has_rings"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_valles_marineris",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is home to Valles Marineris, the largest canyon in the solar system?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_tilted"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_has_rings"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_saturn_titan_atmosphere",
+          "masteryLevel": 0,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon of Saturn is larger than the planet Mercury?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_saturn_titan_atmosphere",
+          "masteryLevel": 2,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon of Saturn is larger than the planet Mercury?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_no_craters"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_saturn_titan_atmosphere",
+          "masteryLevel": 4,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon of Saturn is larger than the planet Mercury?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_no_craters"
+            },
+            {
+              "answer": "Deimos",
+              "source": "pool_fill",
+              "factId": "_synthetic_Deimos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_saturn_rings_composition",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has rings made mostly of ice and rock particles?",
+          "correctAnswer": "Saturn",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_strongest_winds"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_hottest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_saturn_rings_composition",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has rings made mostly of ice and rock particles?",
+          "correctAnswer": "Saturn",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_strongest_winds"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_hottest"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_tombaugh_regio"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_saturn_rings_composition",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has rings made mostly of ice and rock particles?",
+          "correctAnswer": "Saturn",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_strongest_winds"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_hottest"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_tombaugh_regio"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_telescope_discovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_uranus_telescope_discovery",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet was the first ever discovered using a telescope, in 1781?",
+          "correctAnswer": "Uranus",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_mathematical_prediction"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_uranus_telescope_discovery",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet was the first ever discovered using a telescope, in 1781?",
+          "correctAnswer": "Uranus",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_mathematical_prediction"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_hottest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_uranus_telescope_discovery",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet was the first ever discovered using a telescope, in 1781?",
+          "correctAnswer": "Uranus",
+          "distractors": [
+            {
+              "answer": "Neptune",
+              "source": "similar_difficulty",
+              "factId": "solar_system_neptune_mathematical_prediction"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_hottest"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_red_iron_oxide"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_triton_retrograde",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has a major moon, Triton, that orbits in the opposite direction to the planet's rotation?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_not_hottest"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_triton_retrograde",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has a major moon, Triton, that orbits in the opposite direction to the planet's rotation?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_not_hottest"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_floats_in_water"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_triton_retrograde",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has a major moon, Triton, that orbits in the opposite direction to the planet's rotation?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_not_hottest"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_floats_in_water"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_ancient_water"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_two_moons",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has exactly two moons, named Phobos and Deimos?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_ring_system"
+            },
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_not_named_god"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_two_moons",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has exactly two moons, named Phobos and Deimos?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_ring_system"
+            },
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_not_named_god"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_two_moons",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has exactly two moons, named Phobos and Deimos?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_ring_system"
+            },
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_not_named_god"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_fits_all_planets"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_earth_liquid_water",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is the only one with confirmed liquid water on its surface?",
+          "correctAnswer": "Earth",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_largest"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_ring_system"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_earth_liquid_water",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is the only one with confirmed liquid water on its surface?",
+          "correctAnswer": "Earth",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_largest"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_ring_system"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_blue_green_methane"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_earth_liquid_water",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is the only one with confirmed liquid water on its surface?",
+          "correctAnswer": "Earth",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_largest"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_ring_system"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_blue_green_methane"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_closest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_earth_third_from_sun",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is third from the Sun, between Venus and Mars?",
+          "correctAnswer": "Earth",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_asteroid_belt_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_earth_third_from_sun",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is third from the Sun, between Venus and Mars?",
+          "correctAnswer": "Earth",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_asteroid_belt_location"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_rings_composition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_earth_third_from_sun",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet is third from the Sun, between Venus and Mars?",
+          "correctAnswer": "Earth",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_asteroid_belt_location"
+            },
+            {
+              "answer": "Saturn",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_rings_composition"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_closest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_olympus_mons",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has Olympus Mons, the tallest volcano in the solar system?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_largest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_olympus_mons",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has Olympus Mons, the tallest volcano in the solar system?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_largest"
+            },
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_third_from_sun"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_mars_olympus_mons",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet has Olympus Mons, the tallest volcano in the solar system?",
+          "correctAnswer": "Mars",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_largest"
+            },
+            {
+              "answer": "Earth",
+              "source": "similar_difficulty",
+              "factId": "solar_system_earth_third_from_sun"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_most_cratered"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_voyager2_ice_giants",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which is the only spacecraft to have visited both Uranus and Neptune?",
+          "correctAnswer": "Voyager 2",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_fastest_launch"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_saturn_orbit_years"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_voyager2_ice_giants",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which is the only spacecraft to have visited both Uranus and Neptune?",
+          "correctAnswer": "Voyager 2",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_fastest_launch"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_saturn_orbit_years"
+            },
+            {
+              "answer": "Kuiper Belt",
+              "source": "similar_difficulty",
+              "factId": "solar_system_kuiper_belt_pluto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_voyager2_ice_giants",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which is the only spacecraft to have visited both Uranus and Neptune?",
+          "correctAnswer": "Voyager 2",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_fastest_launch"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_saturn_orbit_years"
+            },
+            {
+              "answer": "Kuiper Belt",
+              "source": "similar_difficulty",
+              "factId": "solar_system_kuiper_belt_pluto"
+            },
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_nuclear_powered"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_voyager2_grand_tour",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which mission visited all four outer planets: Jupiter, Saturn, Uranus, and Neptune?",
+          "correctAnswer": "Voyager 2",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_organic_molecules"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_voyager2_grand_tour",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which mission visited all four outer planets: Jupiter, Saturn, Uranus, and Neptune?",
+          "correctAnswer": "Voyager 2",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_organic_molecules"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_titan_landing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_voyager2_grand_tour",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which mission visited all four outer planets: Jupiter, Saturn, Uranus, and Neptune?",
+          "correctAnswer": "Voyager 2",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_organic_molecules"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_titan_landing"
+            },
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager1_interstellar"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Voyager 2\" and \"Voyager 1\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_voyager1_interstellar",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which spacecraft launched in 1977 is still sending data from interstellar space?",
+          "correctAnswer": "Voyager 1",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_organic_molecules"
+            },
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_voyager1_interstellar",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which spacecraft launched in 1977 is still sending data from interstellar space?",
+          "correctAnswer": "Voyager 1",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_organic_molecules"
+            },
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            },
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_grand_tour"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Voyager 1\" and \"Voyager 2\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_voyager1_interstellar",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which spacecraft launched in 1977 is still sending data from interstellar space?",
+          "correctAnswer": "Voyager 1",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_organic_molecules"
+            },
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            },
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_grand_tour"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_saturn_orbit_years"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Voyager 1\" and \"Voyager 2\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_new_horizons_fastest_launch",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which spacecraft holds the record for the fastest launch speed from Earth?",
+          "correctAnswer": "New Horizons",
+          "distractors": [
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            },
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_ice_giants"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_new_horizons_fastest_launch",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which spacecraft holds the record for the fastest launch speed from Earth?",
+          "correctAnswer": "New Horizons",
+          "distractors": [
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            },
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_ice_giants"
+            },
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_nuclear_powered"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_new_horizons_fastest_launch",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which spacecraft holds the record for the fastest launch speed from Earth?",
+          "correctAnswer": "New Horizons",
+          "distractors": [
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            },
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_ice_giants"
+            },
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_nuclear_powered"
+            },
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pioneer10_asteroid_belt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_cassini_titan_landing",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which mission landed a probe on Titan — the first landing in the outer solar system?",
+          "correctAnswer": "Cassini-Huygens",
+          "distractors": [
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_grand_tour"
+            },
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager1_interstellar"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Voyager 2\" and \"Voyager 1\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_cassini_titan_landing",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which mission landed a probe on Titan — the first landing in the outer solar system?",
+          "correctAnswer": "Cassini-Huygens",
+          "distractors": [
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_grand_tour"
+            },
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager1_interstellar"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Voyager 2\" and \"Voyager 1\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_cassini_titan_landing",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which mission landed a probe on Titan — the first landing in the outer solar system?",
+          "correctAnswer": "Cassini-Huygens",
+          "distractors": [
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_grand_tour"
+            },
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager1_interstellar"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            },
+            {
+              "answer": "Kuiper Belt",
+              "source": "similar_difficulty",
+              "factId": "solar_system_kuiper_belt_pluto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Voyager 2\" and \"Voyager 1\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_cassini_enceladus_geysers",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which mission discovered water geysers erupting from Enceladus?",
+          "correctAnswer": "Cassini-Huygens",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_fastest_launch"
+            },
+            {
+              "answer": "Kuiper Belt",
+              "source": "similar_difficulty",
+              "factId": "solar_system_kuiper_belt_pluto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_cassini_enceladus_geysers",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which mission discovered water geysers erupting from Enceladus?",
+          "correctAnswer": "Cassini-Huygens",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_fastest_launch"
+            },
+            {
+              "answer": "Kuiper Belt",
+              "source": "similar_difficulty",
+              "factId": "solar_system_kuiper_belt_pluto"
+            },
+            {
+              "answer": "MESSENGER",
+              "source": "similar_difficulty",
+              "factId": "solar_system_messenger_mercury_orbit"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_cassini_enceladus_geysers",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which mission discovered water geysers erupting from Enceladus?",
+          "correctAnswer": "Cassini-Huygens",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_fastest_launch"
+            },
+            {
+              "answer": "Kuiper Belt",
+              "source": "similar_difficulty",
+              "factId": "solar_system_kuiper_belt_pluto"
+            },
+            {
+              "answer": "MESSENGER",
+              "source": "similar_difficulty",
+              "factId": "solar_system_messenger_mercury_orbit"
+            },
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pioneer10_asteroid_belt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_curiosity_organic_molecules",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which Mars rover discovered organic molecules on the Martian surface?",
+          "correctAnswer": "Curiosity",
+          "distractors": [
+            {
+              "answer": "Medium-sized (G-type)",
+              "source": "similar_difficulty",
+              "factId": "solar_system_sun_medium_star"
+            },
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager1_interstellar"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_curiosity_organic_molecules",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which Mars rover discovered organic molecules on the Martian surface?",
+          "correctAnswer": "Curiosity",
+          "distractors": [
+            {
+              "answer": "Medium-sized (G-type)",
+              "source": "similar_difficulty",
+              "factId": "solar_system_sun_medium_star"
+            },
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager1_interstellar"
+            },
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_curiosity_organic_molecules",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which Mars rover discovered organic molecules on the Martian surface?",
+          "correctAnswer": "Curiosity",
+          "distractors": [
+            {
+              "answer": "Medium-sized (G-type)",
+              "source": "similar_difficulty",
+              "factId": "solar_system_sun_medium_star"
+            },
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager1_interstellar"
+            },
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            },
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_ice_giants"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Voyager 1\" and \"Voyager 2\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_pioneer10_asteroid_belt",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which spacecraft was the first to travel through the asteroid belt and fly past Jupiter?",
+          "correctAnswer": "Pioneer 10",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            },
+            {
+              "answer": "Kuiper Belt",
+              "source": "similar_difficulty",
+              "factId": "solar_system_kuiper_belt_pluto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_pioneer10_asteroid_belt",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which spacecraft was the first to travel through the asteroid belt and fly past Jupiter?",
+          "correctAnswer": "Pioneer 10",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            },
+            {
+              "answer": "Kuiper Belt",
+              "source": "similar_difficulty",
+              "factId": "solar_system_kuiper_belt_pluto"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_enceladus_geysers"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_pioneer10_asteroid_belt",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "Which spacecraft was the first to travel through the asteroid belt and fly past Jupiter?",
+          "correctAnswer": "Pioneer 10",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            },
+            {
+              "answer": "Kuiper Belt",
+              "source": "similar_difficulty",
+              "factId": "solar_system_kuiper_belt_pluto"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_enceladus_geysers"
+            },
+            {
+              "answer": "Medium-sized (G-type)",
+              "source": "similar_difficulty",
+              "factId": "solar_system_sun_medium_star"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_eight_planets",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many planets are in our solar system?",
+          "correctAnswer": "8",
+          "distractors": [
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "2",
+              "source": "numerical",
+              "factId": "_numerical_2"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_eight_planets",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many planets are in our solar system?",
+          "correctAnswer": "8",
+          "distractors": [
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "2",
+              "source": "numerical",
+              "factId": "_numerical_2"
+            },
+            {
+              "answer": "7",
+              "source": "numerical",
+              "factId": "_numerical_7"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_eight_planets",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many planets are in our solar system?",
+          "correctAnswer": "8",
+          "distractors": [
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "2",
+              "source": "numerical",
+              "factId": "_numerical_2"
+            },
+            {
+              "answer": "7",
+              "source": "numerical",
+              "factId": "_numerical_7"
+            },
+            {
+              "answer": "24",
+              "source": "numerical",
+              "factId": "_numerical_24"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_age_4_6_billion",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many billion years old is the solar system (to one decimal place)?",
+          "correctAnswer": "4.6",
+          "distractors": [
+            {
+              "answer": "5.7",
+              "source": "numerical",
+              "factId": "_numerical_5.7"
+            },
+            {
+              "answer": "2.9",
+              "source": "numerical",
+              "factId": "_numerical_2.9"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_age_4_6_billion",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many billion years old is the solar system (to one decimal place)?",
+          "correctAnswer": "4.6",
+          "distractors": [
+            {
+              "answer": "5.7",
+              "source": "numerical",
+              "factId": "_numerical_5.7"
+            },
+            {
+              "answer": "2.9",
+              "source": "numerical",
+              "factId": "_numerical_2.9"
+            },
+            {
+              "answer": "6.0",
+              "source": "numerical",
+              "factId": "_numerical_6.0"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_age_4_6_billion",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many billion years old is the solar system (to one decimal place)?",
+          "correctAnswer": "4.6",
+          "distractors": [
+            {
+              "answer": "5.7",
+              "source": "numerical",
+              "factId": "_numerical_5.7"
+            },
+            {
+              "answer": "2.9",
+              "source": "numerical",
+              "factId": "_numerical_2.9"
+            },
+            {
+              "answer": "6.0",
+              "source": "numerical",
+              "factId": "_numerical_6.0"
+            },
+            {
+              "answer": "3.7",
+              "source": "numerical",
+              "factId": "_numerical_3.7"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_sun_mass_percentage",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What percentage of the solar system total mass does the Sun contain (to 2 decimal places)?",
+          "correctAnswer": "99.86",
+          "distractors": [
+            {
+              "answer": "138.52",
+              "source": "numerical",
+              "factId": "_numerical_138.52"
+            },
+            {
+              "answer": "58.07",
+              "source": "numerical",
+              "factId": "_numerical_58.07"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "numeric_distractor_out_of_domain",
+              "detail": "Percentage question has distractor 138.52 > 100%"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_sun_mass_percentage",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What percentage of the solar system total mass does the Sun contain (to 2 decimal places)?",
+          "correctAnswer": "99.86",
+          "distractors": [
+            {
+              "answer": "138.52",
+              "source": "numerical",
+              "factId": "_numerical_138.52"
+            },
+            {
+              "answer": "58.07",
+              "source": "numerical",
+              "factId": "_numerical_58.07"
+            },
+            {
+              "answer": "120.24",
+              "source": "numerical",
+              "factId": "_numerical_120.24"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "numeric_distractor_out_of_domain",
+              "detail": "Percentage question has distractor 138.52 > 100%"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_sun_mass_percentage",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What percentage of the solar system total mass does the Sun contain (to 2 decimal places)?",
+          "correctAnswer": "99.86",
+          "distractors": [
+            {
+              "answer": "138.52",
+              "source": "numerical",
+              "factId": "_numerical_138.52"
+            },
+            {
+              "answer": "58.07",
+              "source": "numerical",
+              "factId": "_numerical_58.07"
+            },
+            {
+              "answer": "120.24",
+              "source": "numerical",
+              "factId": "_numerical_120.24"
+            },
+            {
+              "answer": "68.87",
+              "source": "numerical",
+              "factId": "_numerical_68.87"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "numeric_distractor_out_of_domain",
+              "detail": "Percentage question has distractor 138.52 > 100%"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_light_travel_time_sun_earth",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many minutes (to 1 decimal place) does light take to travel from the Sun to Earth?",
+          "correctAnswer": "8.3",
+          "distractors": [
+            {
+              "answer": "12.1",
+              "source": "numerical",
+              "factId": "_numerical_12.1"
+            },
+            {
+              "answer": "5.7",
+              "source": "numerical",
+              "factId": "_numerical_5.7"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_light_travel_time_sun_earth",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many minutes (to 1 decimal place) does light take to travel from the Sun to Earth?",
+          "correctAnswer": "8.3",
+          "distractors": [
+            {
+              "answer": "12.1",
+              "source": "numerical",
+              "factId": "_numerical_12.1"
+            },
+            {
+              "answer": "5.7",
+              "source": "numerical",
+              "factId": "_numerical_5.7"
+            },
+            {
+              "answer": "12.2",
+              "source": "numerical",
+              "factId": "_numerical_12.2"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_light_travel_time_sun_earth",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many minutes (to 1 decimal place) does light take to travel from the Sun to Earth?",
+          "correctAnswer": "8.3",
+          "distractors": [
+            {
+              "answer": "12.1",
+              "source": "numerical",
+              "factId": "_numerical_12.1"
+            },
+            {
+              "answer": "5.7",
+              "source": "numerical",
+              "factId": "_numerical_5.7"
+            },
+            {
+              "answer": "12.2",
+              "source": "numerical",
+              "factId": "_numerical_12.2"
+            },
+            {
+              "answer": "4.4",
+              "source": "numerical",
+              "factId": "_numerical_4.4"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_sun_medium_star",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "What size category does our Sun belong to among stars?",
+          "correctAnswer": "Medium-sized (G-type)",
+          "distractors": [
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pioneer10_asteroid_belt"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_sun_medium_star",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "What size category does our Sun belong to among stars?",
+          "correctAnswer": "Medium-sized (G-type)",
+          "distractors": [
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pioneer10_asteroid_belt"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            },
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_sun_medium_star",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "What size category does our Sun belong to among stars?",
+          "correctAnswer": "Medium-sized (G-type)",
+          "distractors": [
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pioneer10_asteroid_belt"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_pluto_flyby"
+            },
+            {
+              "answer": "Prograde direction",
+              "source": "similar_difficulty",
+              "factId": "solar_system_prograde_orbits"
+            },
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_nuclear_powered"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_prograde_orbits",
+          "masteryLevel": 0,
+          "poolId": "mission_names",
+          "renderedQuestion": "In which plane do all 8 planets orbit the Sun?",
+          "correctAnswer": "Prograde direction",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_fastest_launch"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_saturn_orbit_years"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_prograde_orbits",
+          "masteryLevel": 2,
+          "poolId": "mission_names",
+          "renderedQuestion": "In which plane do all 8 planets orbit the Sun?",
+          "correctAnswer": "Prograde direction",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_fastest_launch"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_saturn_orbit_years"
+            },
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_nuclear_powered"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_prograde_orbits",
+          "masteryLevel": 4,
+          "poolId": "mission_names",
+          "renderedQuestion": "In which plane do all 8 planets orbit the Sun?",
+          "correctAnswer": "Prograde direction",
+          "distractors": [
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "solar_system_new_horizons_fastest_launch"
+            },
+            {
+              "answer": "Cassini-Huygens",
+              "source": "similar_difficulty",
+              "factId": "solar_system_cassini_saturn_orbit_years"
+            },
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "solar_system_curiosity_nuclear_powered"
+            },
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "solar_system_voyager2_grand_tour"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_moon_theia",
+          "masteryLevel": 0,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which moon formed from debris after a Mars-sized object called Theia struck Earth?",
+          "correctAnswer": "The Moon",
+          "distractors": [
+            {
+              "answer": "Enceladus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_enceladus_geysers"
+            },
+            {
+              "answer": "Ganymede",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ganymede_magnetic_field"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_moon_theia",
+          "masteryLevel": 2,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which moon formed from debris after a Mars-sized object called Theia struck Earth?",
+          "correctAnswer": "The Moon",
+          "distractors": [
+            {
+              "answer": "Enceladus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_enceladus_geysers"
+            },
+            {
+              "answer": "Ganymede",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ganymede_magnetic_field"
+            },
+            {
+              "answer": "Ariel",
+              "source": "pool_fill",
+              "factId": "_synthetic_Ariel"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_moon_theia",
+          "masteryLevel": 4,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which moon formed from debris after a Mars-sized object called Theia struck Earth?",
+          "correctAnswer": "The Moon",
+          "distractors": [
+            {
+              "answer": "Enceladus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_enceladus_geysers"
+            },
+            {
+              "answer": "Ganymede",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ganymede_magnetic_field"
+            },
+            {
+              "answer": "Ariel",
+              "source": "pool_fill",
+              "factId": "_synthetic_Ariel"
+            },
+            {
+              "answer": "Rhea",
+              "source": "pool_fill",
+              "factId": "_synthetic_Rhea"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_enceladus_geysers",
+          "masteryLevel": 0,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which moon shoots water geysers from its south pole into space?",
+          "correctAnswer": "Enceladus",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_theia"
+            },
+            {
+              "answer": "Ganymede",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ganymede_magnetic_field"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_enceladus_geysers",
+          "masteryLevel": 2,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which moon shoots water geysers from its south pole into space?",
+          "correctAnswer": "Enceladus",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_theia"
+            },
+            {
+              "answer": "Ganymede",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ganymede_magnetic_field"
+            },
+            {
+              "answer": "Mimas",
+              "source": "pool_fill",
+              "factId": "_synthetic_Mimas"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_enceladus_geysers",
+          "masteryLevel": 4,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which moon shoots water geysers from its south pole into space?",
+          "correctAnswer": "Enceladus",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_theia"
+            },
+            {
+              "answer": "Ganymede",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ganymede_magnetic_field"
+            },
+            {
+              "answer": "Mimas",
+              "source": "pool_fill",
+              "factId": "_synthetic_Mimas"
+            },
+            {
+              "answer": "Callisto",
+              "source": "pool_fill",
+              "factId": "_synthetic_Callisto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_io_most_volcanic",
+          "masteryLevel": 0,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon is the most volcanically active body in the solar system?",
+          "correctAnswer": "Io",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_titan_atmosphere"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 2 vs avg distractor 5.5 — ratio 0.36×"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_io_most_volcanic",
+          "masteryLevel": 2,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon is the most volcanically active body in the solar system?",
+          "correctAnswer": "Io",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_titan_atmosphere"
+            },
+            {
+              "answer": "Triton",
+              "source": "pool_fill",
+              "factId": "solar_system_triton_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 2 vs avg distractor 5.7 — ratio 0.35×"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_io_most_volcanic",
+          "masteryLevel": 4,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon is the most volcanically active body in the solar system?",
+          "correctAnswer": "Io",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_titan_atmosphere"
+            },
+            {
+              "answer": "Triton",
+              "source": "pool_fill",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Rhea",
+              "source": "pool_fill",
+              "factId": "_synthetic_Rhea"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 2 vs avg distractor 5.3 — ratio 0.38×"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_triton_retrograde",
+          "masteryLevel": 0,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which large moon orbits its planet in the opposite direction to the planet's rotation?",
+          "correctAnswer": "Triton",
+          "distractors": [
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_titan_atmosphere"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_no_craters"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_triton_retrograde",
+          "masteryLevel": 2,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which large moon orbits its planet in the opposite direction to the planet's rotation?",
+          "correctAnswer": "Triton",
+          "distractors": [
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_titan_atmosphere"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_no_craters"
+            },
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_subsurface_ocean"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_triton_retrograde",
+          "masteryLevel": 4,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which large moon orbits its planet in the opposite direction to the planet's rotation?",
+          "correctAnswer": "Triton",
+          "distractors": [
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_titan_atmosphere"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_no_craters"
+            },
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_subsurface_ocean"
+            },
+            {
+              "answer": "Oberon",
+              "source": "pool_fill",
+              "factId": "_synthetic_Oberon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_io_no_craters",
+          "masteryLevel": 0,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon has no impact craters because its surface is constantly reshaped?",
+          "correctAnswer": "Io",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_titan_atmosphere"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 2 vs avg distractor 5.5 — ratio 0.36×"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_io_no_craters",
+          "masteryLevel": 2,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon has no impact craters because its surface is constantly reshaped?",
+          "correctAnswer": "Io",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_titan_atmosphere"
+            },
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 2 vs avg distractor 5.7 — ratio 0.35×"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_io_no_craters",
+          "masteryLevel": 4,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon has no impact craters because its surface is constantly reshaped?",
+          "correctAnswer": "Io",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_titan_atmosphere"
+            },
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Charon",
+              "source": "pool_fill",
+              "factId": "_synthetic_Charon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 2 vs avg distractor 5.8 — ratio 0.35×"
+            }
+          ]
+        },
+        {
+          "factId": "solar_system_titan_methane_lakes",
+          "masteryLevel": 0,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon has lakes and rivers of liquid methane on its surface?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_titan_methane_lakes",
+          "masteryLevel": 2,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon has lakes and rivers of liquid methane on its surface?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_titan_methane_lakes",
+          "masteryLevel": 4,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon has lakes and rivers of liquid methane on its surface?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_smooth_surface"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            },
+            {
+              "answer": "Phobos",
+              "source": "pool_fill",
+              "factId": "_synthetic_Phobos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_europa_smooth_surface",
+          "masteryLevel": 0,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which Jupiter moon has one of the smoothest surfaces in the solar system, covered in cracked ice?",
+          "correctAnswer": "Europa",
+          "distractors": [
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_titan_atmosphere"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_europa_smooth_surface",
+          "masteryLevel": 2,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which Jupiter moon has one of the smoothest surfaces in the solar system, covered in cracked ice?",
+          "correctAnswer": "Europa",
+          "distractors": [
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_titan_atmosphere"
+            },
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_europa_smooth_surface",
+          "masteryLevel": 4,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which Jupiter moon has one of the smoothest surfaces in the solar system, covered in cracked ice?",
+          "correctAnswer": "Europa",
+          "distractors": [
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_saturn_titan_atmosphere"
+            },
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Callisto",
+              "source": "pool_fill",
+              "factId": "_synthetic_Callisto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_europa_more_water",
+          "masteryLevel": 0,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon contains more liquid water than all of Earth's oceans combined?",
+          "correctAnswer": "Europa",
+          "distractors": [
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_titan_atmosphere"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_europa_more_water",
+          "masteryLevel": 2,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon contains more liquid water than all of Earth's oceans combined?",
+          "correctAnswer": "Europa",
+          "distractors": [
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_titan_atmosphere"
+            },
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_europa_more_water",
+          "masteryLevel": 4,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon contains more liquid water than all of Earth's oceans combined?",
+          "correctAnswer": "Europa",
+          "distractors": [
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            },
+            {
+              "answer": "Titan",
+              "source": "similar_difficulty",
+              "factId": "solar_system_titan_atmosphere"
+            },
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Umbriel",
+              "source": "pool_fill",
+              "factId": "_synthetic_Umbriel"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_ganymede_largest_moon",
+          "masteryLevel": 0,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which is the largest moon in the solar system, bigger even than Mercury?",
+          "correctAnswer": "Ganymede",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_fifth_largest"
+            },
+            {
+              "answer": "Enceladus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_enceladus_geysers"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_ganymede_largest_moon",
+          "masteryLevel": 2,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which is the largest moon in the solar system, bigger even than Mercury?",
+          "correctAnswer": "Ganymede",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_fifth_largest"
+            },
+            {
+              "answer": "Enceladus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_enceladus_geysers"
+            },
+            {
+              "answer": "Titania",
+              "source": "pool_fill",
+              "factId": "_synthetic_Titania"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_ganymede_largest_moon",
+          "masteryLevel": 4,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which is the largest moon in the solar system, bigger even than Mercury?",
+          "correctAnswer": "Ganymede",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_fifth_largest"
+            },
+            {
+              "answer": "Enceladus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_enceladus_geysers"
+            },
+            {
+              "answer": "Titania",
+              "source": "pool_fill",
+              "factId": "_synthetic_Titania"
+            },
+            {
+              "answer": "Tethys",
+              "source": "pool_fill",
+              "factId": "_synthetic_Tethys"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_ganymede_magnetic_field",
+          "masteryLevel": 0,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which is the only moon in the solar system known to have its own magnetic field?",
+          "correctAnswer": "Ganymede",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_fifth_largest"
+            },
+            {
+              "answer": "Enceladus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_enceladus_geysers"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_ganymede_magnetic_field",
+          "masteryLevel": 2,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which is the only moon in the solar system known to have its own magnetic field?",
+          "correctAnswer": "Ganymede",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_fifth_largest"
+            },
+            {
+              "answer": "Enceladus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_enceladus_geysers"
+            },
+            {
+              "answer": "Mimas",
+              "source": "pool_fill",
+              "factId": "_synthetic_Mimas"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_ganymede_magnetic_field",
+          "masteryLevel": 4,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which is the only moon in the solar system known to have its own magnetic field?",
+          "correctAnswer": "Ganymede",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_fifth_largest"
+            },
+            {
+              "answer": "Enceladus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_enceladus_geysers"
+            },
+            {
+              "answer": "Mimas",
+              "source": "pool_fill",
+              "factId": "_synthetic_Mimas"
+            },
+            {
+              "answer": "Ariel",
+              "source": "pool_fill",
+              "factId": "_synthetic_Ariel"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_titan_atmosphere",
+          "masteryLevel": 0,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which is the only moon in the solar system with a thick atmosphere?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_subsurface_ocean"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_titan_atmosphere",
+          "masteryLevel": 2,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which is the only moon in the solar system with a thick atmosphere?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_subsurface_ocean"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            },
+            {
+              "answer": "Triton",
+              "source": "pool_fill",
+              "factId": "solar_system_triton_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_titan_atmosphere",
+          "masteryLevel": 4,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which is the only moon in the solar system with a thick atmosphere?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_subsurface_ocean"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_most_volcanic"
+            },
+            {
+              "answer": "Triton",
+              "source": "pool_fill",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Oberon",
+              "source": "pool_fill",
+              "factId": "_synthetic_Oberon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_titan_huygens_probe",
+          "masteryLevel": 0,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon received the Huygens probe in 2005, the most distant landing ever at that time?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_subsurface_ocean"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_titan_huygens_probe",
+          "masteryLevel": 2,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon received the Huygens probe in 2005, the most distant landing ever at that time?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_subsurface_ocean"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_no_craters"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_titan_huygens_probe",
+          "masteryLevel": 4,
+          "poolId": "moon_names",
+          "renderedQuestion": "Which moon received the Huygens probe in 2005, the most distant landing ever at that time?",
+          "correctAnswer": "Titan",
+          "distractors": [
+            {
+              "answer": "Triton",
+              "source": "similar_difficulty",
+              "factId": "solar_system_triton_retrograde"
+            },
+            {
+              "answer": "Europa",
+              "source": "similar_difficulty",
+              "factId": "solar_system_europa_subsurface_ocean"
+            },
+            {
+              "answer": "Io",
+              "source": "similar_difficulty",
+              "factId": "solar_system_io_no_craters"
+            },
+            {
+              "answer": "Phobos",
+              "source": "pool_fill",
+              "factId": "_synthetic_Phobos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_enceladus_brightest",
+          "masteryLevel": 0,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which tiny moon is one of the most reflective objects in the solar system due to its ice surface?",
+          "correctAnswer": "Enceladus",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_fifth_largest"
+            },
+            {
+              "answer": "Ganymede",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ganymede_magnetic_field"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_enceladus_brightest",
+          "masteryLevel": 2,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which tiny moon is one of the most reflective objects in the solar system due to its ice surface?",
+          "correctAnswer": "Enceladus",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_fifth_largest"
+            },
+            {
+              "answer": "Ganymede",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ganymede_magnetic_field"
+            },
+            {
+              "answer": "Dione",
+              "source": "pool_fill",
+              "factId": "_synthetic_Dione"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_enceladus_brightest",
+          "masteryLevel": 4,
+          "poolId": "moon_names_outer",
+          "renderedQuestion": "Which tiny moon is one of the most reflective objects in the solar system due to its ice surface?",
+          "correctAnswer": "Enceladus",
+          "distractors": [
+            {
+              "answer": "The Moon",
+              "source": "similar_difficulty",
+              "factId": "solar_system_moon_fifth_largest"
+            },
+            {
+              "answer": "Ganymede",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ganymede_magnetic_field"
+            },
+            {
+              "answer": "Dione",
+              "source": "pool_fill",
+              "factId": "_synthetic_Dione"
+            },
+            {
+              "answer": "Ariel",
+              "source": "pool_fill",
+              "factId": "_synthetic_Ariel"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_mathematical_prediction",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet's existence was predicted by Le Verrier's calculations before it was observed?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_day_longer_than_year"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_mathematical_prediction",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet's existence was predicted by Le Verrier's calculations before it was observed?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_day_longer_than_year"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_ancient_water"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_mathematical_prediction",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which planet's existence was predicted by Le Verrier's calculations before it was observed?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_day_longer_than_year"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_ancient_water"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_most_cratered"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_farthest_planet",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which is the farthest planet from the Sun in our solar system?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_smallest"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_asteroid_belt_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_farthest_planet",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which is the farthest planet from the Sun in our solar system?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_smallest"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_asteroid_belt_location"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_dwarf_planet_2006"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_neptune_farthest_planet",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which is the farthest planet from the Sun in our solar system?",
+          "correctAnswer": "Neptune",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_smallest"
+            },
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_asteroid_belt_location"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_dwarf_planet_2006"
+            },
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_pluto_tombaugh_regio",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which dwarf planet has a heart-shaped nitrogen ice region called Tombaugh Regio?",
+          "correctAnswer": "Pluto",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_hottest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_pluto_tombaugh_regio",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which dwarf planet has a heart-shaped nitrogen ice region called Tombaugh Regio?",
+          "correctAnswer": "Pluto",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_hottest"
+            },
+            {
+              "answer": "Ceres",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ceres_dual_classification"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_pluto_tombaugh_regio",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which dwarf planet has a heart-shaped nitrogen ice region called Tombaugh Regio?",
+          "correctAnswer": "Pluto",
+          "distractors": [
+            {
+              "answer": "Uranus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_uranus_ice_giant"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_hottest"
+            },
+            {
+              "answer": "Ceres",
+              "source": "similar_difficulty",
+              "factId": "solar_system_ceres_dual_classification"
+            },
+            {
+              "answer": "Mars",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mars_red_iron_oxide"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_ceres_dual_classification",
+          "masteryLevel": 0,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which body is both the largest object in the asteroid belt and a dwarf planet?",
+          "correctAnswer": "Ceres",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_galilean_moons"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_ceres_dual_classification",
+          "masteryLevel": 2,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which body is both the largest object in the asteroid belt and a dwarf planet?",
+          "correctAnswer": "Ceres",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_galilean_moons"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_most_cratered"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "solar_system_ceres_dual_classification",
+          "masteryLevel": 4,
+          "poolId": "planet_names",
+          "renderedQuestion": "Which body is both the largest object in the asteroid belt and a dwarf planet?",
+          "correctAnswer": "Ceres",
+          "distractors": [
+            {
+              "answer": "Jupiter",
+              "source": "similar_difficulty",
+              "factId": "solar_system_jupiter_galilean_moons"
+            },
+            {
+              "answer": "Venus",
+              "source": "similar_difficulty",
+              "factId": "solar_system_venus_retrograde"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "solar_system_mercury_most_cratered"
+            },
+            {
+              "answer": "Pluto",
+              "source": "similar_difficulty",
+              "factId": "solar_system_pluto_smaller_than_moon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

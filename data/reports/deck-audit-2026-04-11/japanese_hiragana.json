@@ -1,0 +1,4227 @@
+{
+  "timestamp": "2026-04-11T02:00:23.666Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "japanese_hiragana",
+      "deckName": "Japanese Hiragana",
+      "deckClass": "vocab",
+      "totalFacts": 208,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 0,
+      "issuesByType": {},
+      "factResults": [
+        {
+          "factId": "ja-hiragana-e-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana え represent?",
+          "correctAnswer": "e",
+          "distractors": [
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ku-forward"
+            },
+            {
+              "answer": "ko",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ko-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-e-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana え represent?",
+          "correctAnswer": "e",
+          "distractors": [
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ku-forward"
+            },
+            {
+              "answer": "ko",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ko-forward"
+            },
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-a-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-e-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana え represent?",
+          "correctAnswer": "e",
+          "distractors": [
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ku-forward"
+            },
+            {
+              "answer": "ko",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ko-forward"
+            },
+            {
+              "answer": "a",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-a-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-e-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'e'?",
+          "correctAnswer": "え",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-na-reverse"
+            },
+            {
+              "answer": "そ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-so-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-e-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'e'?",
+          "correctAnswer": "え",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-na-reverse"
+            },
+            {
+              "answer": "そ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-so-reverse"
+            },
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ka-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-e-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'e'?",
+          "correctAnswer": "え",
+          "distractors": [
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-na-reverse"
+            },
+            {
+              "answer": "そ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-so-reverse"
+            },
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ka-reverse"
+            },
+            {
+              "answer": "け",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ke-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-o-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana お represent?",
+          "correctAnswer": "o",
+          "distractors": [
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-su-forward"
+            },
+            {
+              "answer": "ta",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-o-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana お represent?",
+          "correctAnswer": "o",
+          "distractors": [
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-su-forward"
+            },
+            {
+              "answer": "ta",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-forward"
+            },
+            {
+              "answer": "ko",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ko-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-o-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana お represent?",
+          "correctAnswer": "o",
+          "distractors": [
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-su-forward"
+            },
+            {
+              "answer": "ta",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-forward"
+            },
+            {
+              "answer": "ko",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ko-forward"
+            },
+            {
+              "answer": "chi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-chi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-i-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'i'?",
+          "correctAnswer": "い",
+          "distractors": [
+            {
+              "answer": "つ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-tsu-reverse"
+            },
+            {
+              "answer": "え",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-e-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-i-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'i'?",
+          "correctAnswer": "い",
+          "distractors": [
+            {
+              "answer": "つ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-tsu-reverse"
+            },
+            {
+              "answer": "え",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-e-reverse"
+            },
+            {
+              "answer": "あ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-a-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-i-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'i'?",
+          "correctAnswer": "い",
+          "distractors": [
+            {
+              "answer": "つ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-tsu-reverse"
+            },
+            {
+              "answer": "え",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-e-reverse"
+            },
+            {
+              "answer": "あ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-a-reverse"
+            },
+            {
+              "answer": "か",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ka-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-u-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana う represent?",
+          "correctAnswer": "u",
+          "distractors": [
+            {
+              "answer": "ni",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-u-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana う represent?",
+          "correctAnswer": "u",
+          "distractors": [
+            {
+              "answer": "ni",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-forward"
+            },
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-no-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-u-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana う represent?",
+          "correctAnswer": "u",
+          "distractors": [
+            {
+              "answer": "ni",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-forward"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-forward"
+            },
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-no-forward"
+            },
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-u-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'u'?",
+          "correctAnswer": "う",
+          "distractors": [
+            {
+              "answer": "ぬ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-reverse"
+            },
+            {
+              "answer": "せ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-u-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'u'?",
+          "correctAnswer": "う",
+          "distractors": [
+            {
+              "answer": "ぬ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-reverse"
+            },
+            {
+              "answer": "せ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-reverse"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-na-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-u-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'u'?",
+          "correctAnswer": "う",
+          "distractors": [
+            {
+              "answer": "ぬ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nu-reverse"
+            },
+            {
+              "answer": "せ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-reverse"
+            },
+            {
+              "answer": "な",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-na-reverse"
+            },
+            {
+              "answer": "ね",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ne-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ne-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ね represent?",
+          "correctAnswer": "ne",
+          "distractors": [
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-su-forward"
+            },
+            {
+              "answer": "fu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-fu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ne-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ね represent?",
+          "correctAnswer": "ne",
+          "distractors": [
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-su-forward"
+            },
+            {
+              "answer": "fu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-fu-forward"
+            },
+            {
+              "answer": "ya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ne-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ね represent?",
+          "correctAnswer": "ne",
+          "distractors": [
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-su-forward"
+            },
+            {
+              "answer": "fu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-fu-forward"
+            },
+            {
+              "answer": "ya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-forward"
+            },
+            {
+              "answer": "ko",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ko-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ka-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana か represent?",
+          "correctAnswer": "ka",
+          "distractors": [
+            {
+              "answer": "ha",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ha-forward"
+            },
+            {
+              "answer": "u",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-u-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ka-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana か represent?",
+          "correctAnswer": "ka",
+          "distractors": [
+            {
+              "answer": "ha",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ha-forward"
+            },
+            {
+              "answer": "u",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-u-forward"
+            },
+            {
+              "answer": "e",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-e-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ka-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana か represent?",
+          "correctAnswer": "ka",
+          "distractors": [
+            {
+              "answer": "ha",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ha-forward"
+            },
+            {
+              "answer": "u",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-u-forward"
+            },
+            {
+              "answer": "e",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-e-forward"
+            },
+            {
+              "answer": "ru",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ru-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ke-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ke'?",
+          "correctAnswer": "け",
+          "distractors": [
+            {
+              "answer": "に",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-reverse"
+            },
+            {
+              "answer": "を",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ke-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ke'?",
+          "correctAnswer": "け",
+          "distractors": [
+            {
+              "answer": "に",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-reverse"
+            },
+            {
+              "answer": "を",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wo-reverse"
+            },
+            {
+              "answer": "わ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wa-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ke-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ke'?",
+          "correctAnswer": "け",
+          "distractors": [
+            {
+              "answer": "に",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-reverse"
+            },
+            {
+              "answer": "を",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wo-reverse"
+            },
+            {
+              "answer": "わ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wa-reverse"
+            },
+            {
+              "answer": "ん",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-n-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-tsu-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'tsu'?",
+          "correctAnswer": "つ",
+          "distractors": [
+            {
+              "answer": "や",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-reverse"
+            },
+            {
+              "answer": "み",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-tsu-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'tsu'?",
+          "correctAnswer": "つ",
+          "distractors": [
+            {
+              "answer": "や",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-reverse"
+            },
+            {
+              "answer": "み",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mi-reverse"
+            },
+            {
+              "answer": "え",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-e-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-tsu-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'tsu'?",
+          "correctAnswer": "つ",
+          "distractors": [
+            {
+              "answer": "や",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-reverse"
+            },
+            {
+              "answer": "み",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mi-reverse"
+            },
+            {
+              "answer": "え",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-e-reverse"
+            },
+            {
+              "answer": "け",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ke-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-su-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana す represent?",
+          "correctAnswer": "su",
+          "distractors": [
+            {
+              "answer": "ki",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ki-forward"
+            },
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-su-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana す represent?",
+          "correctAnswer": "su",
+          "distractors": [
+            {
+              "answer": "ki",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ki-forward"
+            },
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-su-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana す represent?",
+          "correctAnswer": "su",
+          "distractors": [
+            {
+              "answer": "ki",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ki-forward"
+            },
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mo-forward"
+            },
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-no-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana の represent?",
+          "correctAnswer": "no",
+          "distractors": [
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ne-forward"
+            },
+            {
+              "answer": "mu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-no-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana の represent?",
+          "correctAnswer": "no",
+          "distractors": [
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ne-forward"
+            },
+            {
+              "answer": "mu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mu-forward"
+            },
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-no-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana の represent?",
+          "correctAnswer": "no",
+          "distractors": [
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ne-forward"
+            },
+            {
+              "answer": "mu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mu-forward"
+            },
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            },
+            {
+              "answer": "su",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-su-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-te-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'te'?",
+          "correctAnswer": "て",
+          "distractors": [
+            {
+              "answer": "お",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-o-reverse"
+            },
+            {
+              "answer": "ら",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ra-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-te-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'te'?",
+          "correctAnswer": "て",
+          "distractors": [
+            {
+              "answer": "お",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-o-reverse"
+            },
+            {
+              "answer": "ら",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ra-reverse"
+            },
+            {
+              "answer": "ん",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-n-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-te-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'te'?",
+          "correctAnswer": "て",
+          "distractors": [
+            {
+              "answer": "お",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-o-reverse"
+            },
+            {
+              "answer": "ら",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ra-reverse"
+            },
+            {
+              "answer": "ん",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-n-reverse"
+            },
+            {
+              "answer": "む",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ko-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ko'?",
+          "correctAnswer": "こ",
+          "distractors": [
+            {
+              "answer": "を",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wo-reverse"
+            },
+            {
+              "answer": "た",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ko-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ko'?",
+          "correctAnswer": "こ",
+          "distractors": [
+            {
+              "answer": "を",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wo-reverse"
+            },
+            {
+              "answer": "た",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-reverse"
+            },
+            {
+              "answer": "む",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ko-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ko'?",
+          "correctAnswer": "こ",
+          "distractors": [
+            {
+              "answer": "を",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wo-reverse"
+            },
+            {
+              "answer": "た",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-reverse"
+            },
+            {
+              "answer": "む",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mu-reverse"
+            },
+            {
+              "answer": "へ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-he-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-chi-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ち represent?",
+          "correctAnswer": "chi",
+          "distractors": [
+            {
+              "answer": "ya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-forward"
+            },
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-chi-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ち represent?",
+          "correctAnswer": "chi",
+          "distractors": [
+            {
+              "answer": "ya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-forward"
+            },
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ne-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-chi-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ち represent?",
+          "correctAnswer": "chi",
+          "distractors": [
+            {
+              "answer": "ya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-forward"
+            },
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            },
+            {
+              "answer": "ne",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ne-forward"
+            },
+            {
+              "answer": "ro",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ro-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-chi-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'chi'?",
+          "correctAnswer": "ち",
+          "distractors": [
+            {
+              "answer": "ほ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ho-reverse"
+            },
+            {
+              "answer": "こ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ko-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-chi-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'chi'?",
+          "correctAnswer": "ち",
+          "distractors": [
+            {
+              "answer": "ほ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ho-reverse"
+            },
+            {
+              "answer": "こ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ko-reverse"
+            },
+            {
+              "answer": "り",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ri-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-chi-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'chi'?",
+          "correctAnswer": "ち",
+          "distractors": [
+            {
+              "answer": "ほ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ho-reverse"
+            },
+            {
+              "answer": "こ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ko-reverse"
+            },
+            {
+              "answer": "り",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ri-reverse"
+            },
+            {
+              "answer": "と",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-to-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-mi-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana み represent?",
+          "correctAnswer": "mi",
+          "distractors": [
+            {
+              "answer": "fu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-fu-forward"
+            },
+            {
+              "answer": "go",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-go-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-mi-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana み represent?",
+          "correctAnswer": "mi",
+          "distractors": [
+            {
+              "answer": "fu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-fu-forward"
+            },
+            {
+              "answer": "go",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-go-forward"
+            },
+            {
+              "answer": "wa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wa-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-mi-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana み represent?",
+          "correctAnswer": "mi",
+          "distractors": [
+            {
+              "answer": "fu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-fu-forward"
+            },
+            {
+              "answer": "go",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-go-forward"
+            },
+            {
+              "answer": "wa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wa-forward"
+            },
+            {
+              "answer": "na",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-na-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ha-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana は represent?",
+          "correctAnswer": "ha",
+          "distractors": [
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ha-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana は represent?",
+          "correctAnswer": "ha",
+          "distractors": [
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mo-forward"
+            },
+            {
+              "answer": "n",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-n-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ha-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana は represent?",
+          "correctAnswer": "ha",
+          "distractors": [
+            {
+              "answer": "sa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mo-forward"
+            },
+            {
+              "answer": "n",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-n-forward"
+            },
+            {
+              "answer": "tsu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-tsu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-mo-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'mo'?",
+          "correctAnswer": "も",
+          "distractors": [
+            {
+              "answer": "ぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zo-reverse"
+            },
+            {
+              "answer": "き",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ki-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-mo-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'mo'?",
+          "correctAnswer": "も",
+          "distractors": [
+            {
+              "answer": "ぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zo-reverse"
+            },
+            {
+              "answer": "き",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ki-reverse"
+            },
+            {
+              "answer": "だ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-da-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-mo-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'mo'?",
+          "correctAnswer": "も",
+          "distractors": [
+            {
+              "answer": "ぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zo-reverse"
+            },
+            {
+              "answer": "き",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ki-reverse"
+            },
+            {
+              "answer": "だ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-da-reverse"
+            },
+            {
+              "answer": "に",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ni-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-he-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'he'?",
+          "correctAnswer": "へ",
+          "distractors": [
+            {
+              "answer": "の",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-no-reverse"
+            },
+            {
+              "answer": "ば",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ba-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-he-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'he'?",
+          "correctAnswer": "へ",
+          "distractors": [
+            {
+              "answer": "の",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-no-reverse"
+            },
+            {
+              "answer": "ば",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ba-reverse"
+            },
+            {
+              "answer": "だ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-da-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-he-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'he'?",
+          "correctAnswer": "へ",
+          "distractors": [
+            {
+              "answer": "の",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-no-reverse"
+            },
+            {
+              "answer": "ば",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ba-reverse"
+            },
+            {
+              "answer": "だ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-da-reverse"
+            },
+            {
+              "answer": "さ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sa-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-re-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana れ represent?",
+          "correctAnswer": "re",
+          "distractors": [
+            {
+              "answer": "ka",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ka-forward"
+            },
+            {
+              "answer": "ze",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ze-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-re-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana れ represent?",
+          "correctAnswer": "re",
+          "distractors": [
+            {
+              "answer": "ka",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ka-forward"
+            },
+            {
+              "answer": "ze",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ze-forward"
+            },
+            {
+              "answer": "mi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-re-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana れ represent?",
+          "correctAnswer": "re",
+          "distractors": [
+            {
+              "answer": "ka",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ka-forward"
+            },
+            {
+              "answer": "ze",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ze-forward"
+            },
+            {
+              "answer": "mi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mi-forward"
+            },
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-te-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-wo-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana を represent?",
+          "correctAnswer": "wo",
+          "distractors": [
+            {
+              "answer": "bi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bi-forward"
+            },
+            {
+              "answer": "mi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-wo-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana を represent?",
+          "correctAnswer": "wo",
+          "distractors": [
+            {
+              "answer": "bi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bi-forward"
+            },
+            {
+              "answer": "mi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mi-forward"
+            },
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-no-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-wo-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana を represent?",
+          "correctAnswer": "wo",
+          "distractors": [
+            {
+              "answer": "bi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bi-forward"
+            },
+            {
+              "answer": "mi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mi-forward"
+            },
+            {
+              "answer": "no",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-no-forward"
+            },
+            {
+              "answer": "se",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-se-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ho-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ho'?",
+          "correctAnswer": "ほ",
+          "distractors": [
+            {
+              "answer": "で",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-de-reverse"
+            },
+            {
+              "answer": "ば",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ba-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ho-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ho'?",
+          "correctAnswer": "ほ",
+          "distractors": [
+            {
+              "answer": "で",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-de-reverse"
+            },
+            {
+              "answer": "ば",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ba-reverse"
+            },
+            {
+              "answer": "ぜ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ze-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ho-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ho'?",
+          "correctAnswer": "ほ",
+          "distractors": [
+            {
+              "answer": "で",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-de-reverse"
+            },
+            {
+              "answer": "ば",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ba-reverse"
+            },
+            {
+              "answer": "ぜ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ze-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-wo-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'wo'?",
+          "correctAnswer": "を",
+          "distractors": [
+            {
+              "answer": "ぴ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pi-reverse"
+            },
+            {
+              "answer": "た",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-wo-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'wo'?",
+          "correctAnswer": "を",
+          "distractors": [
+            {
+              "answer": "ぴ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pi-reverse"
+            },
+            {
+              "answer": "た",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-reverse"
+            },
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-wo-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'wo'?",
+          "correctAnswer": "を",
+          "distractors": [
+            {
+              "answer": "ぴ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pi-reverse"
+            },
+            {
+              "answer": "た",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-reverse"
+            },
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shi-reverse"
+            },
+            {
+              "answer": "ゆ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-yu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-n-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ん represent?",
+          "correctAnswer": "n",
+          "distractors": [
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ku-forward"
+            },
+            {
+              "answer": "ro",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ro-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-n-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ん represent?",
+          "correctAnswer": "n",
+          "distractors": [
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ku-forward"
+            },
+            {
+              "answer": "ro",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ro-forward"
+            },
+            {
+              "answer": "ji",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-n-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ん represent?",
+          "correctAnswer": "n",
+          "distractors": [
+            {
+              "answer": "ku",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ku-forward"
+            },
+            {
+              "answer": "ro",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ro-forward"
+            },
+            {
+              "answer": "ji",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji-forward"
+            },
+            {
+              "answer": "ga",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ga-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-me-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'me'?",
+          "correctAnswer": "め",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shi-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-me-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'me'?",
+          "correctAnswer": "め",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shi-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            },
+            {
+              "answer": "た",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-me-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'me'?",
+          "correctAnswer": "め",
+          "distractors": [
+            {
+              "answer": "し",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shi-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            },
+            {
+              "answer": "た",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ta-reverse"
+            },
+            {
+              "answer": "り",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ri-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ga-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana が represent?",
+          "correctAnswer": "ga",
+          "distractors": [
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bya-forward"
+            },
+            {
+              "answer": "hyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hyo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ga-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana が represent?",
+          "correctAnswer": "ga",
+          "distractors": [
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bya-forward"
+            },
+            {
+              "answer": "hyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hyo-forward"
+            },
+            {
+              "answer": "pa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ga-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana が represent?",
+          "correctAnswer": "ga",
+          "distractors": [
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bya-forward"
+            },
+            {
+              "answer": "hyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hyo-forward"
+            },
+            {
+              "answer": "pa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-forward"
+            },
+            {
+              "answer": "sho",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sho-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ba-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ば represent?",
+          "correctAnswer": "ba",
+          "distractors": [
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pi-forward"
+            },
+            {
+              "answer": "rya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-rya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ba-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ば represent?",
+          "correctAnswer": "ba",
+          "distractors": [
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pi-forward"
+            },
+            {
+              "answer": "rya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-rya-forward"
+            },
+            {
+              "answer": "gyu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-gyu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ba-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ば represent?",
+          "correctAnswer": "ba",
+          "distractors": [
+            {
+              "answer": "pi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pi-forward"
+            },
+            {
+              "answer": "rya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-rya-forward"
+            },
+            {
+              "answer": "gyu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-gyu-forward"
+            },
+            {
+              "answer": "ho",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ho-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-zo-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'zo'?",
+          "correctAnswer": "ぞ",
+          "distractors": [
+            {
+              "answer": "ひ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hi-reverse"
+            },
+            {
+              "answer": "ぢ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji2-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-zo-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'zo'?",
+          "correctAnswer": "ぞ",
+          "distractors": [
+            {
+              "answer": "ひ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hi-reverse"
+            },
+            {
+              "answer": "ぢ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji2-reverse"
+            },
+            {
+              "answer": "め",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-me-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-zo-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'zo'?",
+          "correctAnswer": "ぞ",
+          "distractors": [
+            {
+              "answer": "ひ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hi-reverse"
+            },
+            {
+              "answer": "ぢ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji2-reverse"
+            },
+            {
+              "answer": "め",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-me-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ba-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ba'?",
+          "correctAnswer": "ば",
+          "distractors": [
+            {
+              "answer": "よ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-yo-reverse"
+            },
+            {
+              "answer": "め",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-me-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ba-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ba'?",
+          "correctAnswer": "ば",
+          "distractors": [
+            {
+              "answer": "よ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-yo-reverse"
+            },
+            {
+              "answer": "め",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-me-reverse"
+            },
+            {
+              "answer": "しょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sho-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ba-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'ba'?",
+          "correctAnswer": "ば",
+          "distractors": [
+            {
+              "answer": "よ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-yo-reverse"
+            },
+            {
+              "answer": "め",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-me-reverse"
+            },
+            {
+              "answer": "しょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sho-reverse"
+            },
+            {
+              "answer": "ぴゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pya-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-go-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ご represent?",
+          "correctAnswer": "go",
+          "distractors": [
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nya-forward"
+            },
+            {
+              "answer": "re",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-re-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-go-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ご represent?",
+          "correctAnswer": "go",
+          "distractors": [
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nya-forward"
+            },
+            {
+              "answer": "re",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-re-forward"
+            },
+            {
+              "answer": "kya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-kya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-go-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ご represent?",
+          "correctAnswer": "go",
+          "distractors": [
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nya-forward"
+            },
+            {
+              "answer": "re",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-re-forward"
+            },
+            {
+              "answer": "kya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-kya-forward"
+            },
+            {
+              "answer": "zo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-de-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana で represent?",
+          "correctAnswer": "de",
+          "distractors": [
+            {
+              "answer": "da",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-da-forward"
+            },
+            {
+              "answer": "pa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-de-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana で represent?",
+          "correctAnswer": "de",
+          "distractors": [
+            {
+              "answer": "da",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-da-forward"
+            },
+            {
+              "answer": "pa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-forward"
+            },
+            {
+              "answer": "yo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-yo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-de-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana で represent?",
+          "correctAnswer": "de",
+          "distractors": [
+            {
+              "answer": "da",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-da-forward"
+            },
+            {
+              "answer": "pa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-forward"
+            },
+            {
+              "answer": "yo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-yo-forward"
+            },
+            {
+              "answer": "ryo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ryo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-pu-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'pu'?",
+          "correctAnswer": "ぷ",
+          "distractors": [
+            {
+              "answer": "にょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyo-reverse"
+            },
+            {
+              "answer": "しゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sha-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-pu-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'pu'?",
+          "correctAnswer": "ぷ",
+          "distractors": [
+            {
+              "answer": "にょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyo-reverse"
+            },
+            {
+              "answer": "しゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sha-reverse"
+            },
+            {
+              "answer": "ひ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hi-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-pu-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'pu'?",
+          "correctAnswer": "ぷ",
+          "distractors": [
+            {
+              "answer": "にょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyo-reverse"
+            },
+            {
+              "answer": "しゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sha-reverse"
+            },
+            {
+              "answer": "ひ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hi-reverse"
+            },
+            {
+              "answer": "ろ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ro-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-da-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'da'?",
+          "correctAnswer": "だ",
+          "distractors": [
+            {
+              "answer": "め",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-me-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-da-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'da'?",
+          "correctAnswer": "だ",
+          "distractors": [
+            {
+              "answer": "め",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-me-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            },
+            {
+              "answer": "ぶ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-da-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'da'?",
+          "correctAnswer": "だ",
+          "distractors": [
+            {
+              "answer": "め",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-me-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            },
+            {
+              "answer": "ぶ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bu-reverse"
+            },
+            {
+              "answer": "ぴゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pya-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-gu-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぐ represent?",
+          "correctAnswer": "gu",
+          "distractors": [
+            {
+              "answer": "nyu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyu-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-gu-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぐ represent?",
+          "correctAnswer": "gu",
+          "distractors": [
+            {
+              "answer": "nyu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyu-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mo-forward"
+            },
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-gu-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぐ represent?",
+          "correctAnswer": "gu",
+          "distractors": [
+            {
+              "answer": "nyu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyu-forward"
+            },
+            {
+              "answer": "mo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-mo-forward"
+            },
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nya-forward"
+            },
+            {
+              "answer": "pyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pyo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-do-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ど represent?",
+          "correctAnswer": "do",
+          "distractors": [
+            {
+              "answer": "wa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wa-forward"
+            },
+            {
+              "answer": "byo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-byo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-do-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ど represent?",
+          "correctAnswer": "do",
+          "distractors": [
+            {
+              "answer": "wa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wa-forward"
+            },
+            {
+              "answer": "byo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-byo-forward"
+            },
+            {
+              "answer": "de",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-de-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-do-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ど represent?",
+          "correctAnswer": "do",
+          "distractors": [
+            {
+              "answer": "wa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-wa-forward"
+            },
+            {
+              "answer": "byo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-byo-forward"
+            },
+            {
+              "answer": "de",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-de-forward"
+            },
+            {
+              "answer": "bya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bya-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-za-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'za'?",
+          "correctAnswer": "ざ",
+          "distractors": [
+            {
+              "answer": "ま",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ma-reverse"
+            },
+            {
+              "answer": "げ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ge-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-za-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'za'?",
+          "correctAnswer": "ざ",
+          "distractors": [
+            {
+              "answer": "ま",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ma-reverse"
+            },
+            {
+              "answer": "げ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ge-reverse"
+            },
+            {
+              "answer": "ぐ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-gu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-za-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'za'?",
+          "correctAnswer": "ざ",
+          "distractors": [
+            {
+              "answer": "ま",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ma-reverse"
+            },
+            {
+              "answer": "げ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ge-reverse"
+            },
+            {
+              "answer": "ぐ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-gu-reverse"
+            },
+            {
+              "answer": "しゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sha-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-bu-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'bu'?",
+          "correctAnswer": "ぶ",
+          "distractors": [
+            {
+              "answer": "じょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-jo-reverse"
+            },
+            {
+              "answer": "にゅ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-bu-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'bu'?",
+          "correctAnswer": "ぶ",
+          "distractors": [
+            {
+              "answer": "じょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-jo-reverse"
+            },
+            {
+              "answer": "にゅ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyu-reverse"
+            },
+            {
+              "answer": "や",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-bu-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana character represents 'bu'?",
+          "correctAnswer": "ぶ",
+          "distractors": [
+            {
+              "answer": "じょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-jo-reverse"
+            },
+            {
+              "answer": "にゅ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyu-reverse"
+            },
+            {
+              "answer": "や",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ya-reverse"
+            },
+            {
+              "answer": "り",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ri-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-gya-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぎゃ represent?",
+          "correctAnswer": "gya",
+          "distractors": [
+            {
+              "answer": "pa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-forward"
+            },
+            {
+              "answer": "hyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hyo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-gya-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぎゃ represent?",
+          "correctAnswer": "gya",
+          "distractors": [
+            {
+              "answer": "pa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-forward"
+            },
+            {
+              "answer": "hyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hyo-forward"
+            },
+            {
+              "answer": "myu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-myu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-gya-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぎゃ represent?",
+          "correctAnswer": "gya",
+          "distractors": [
+            {
+              "answer": "pa",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-forward"
+            },
+            {
+              "answer": "hyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hyo-forward"
+            },
+            {
+              "answer": "myu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-myu-forward"
+            },
+            {
+              "answer": "ji",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ja-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana じゃ represent?",
+          "correctAnswer": "ja",
+          "distractors": [
+            {
+              "answer": "ji",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji2-forward"
+            },
+            {
+              "answer": "gu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-gu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ja-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana じゃ represent?",
+          "correctAnswer": "ja",
+          "distractors": [
+            {
+              "answer": "ji",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji2-forward"
+            },
+            {
+              "answer": "gu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-gu-forward"
+            },
+            {
+              "answer": "nyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ja-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana じゃ represent?",
+          "correctAnswer": "ja",
+          "distractors": [
+            {
+              "answer": "ji",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji2-forward"
+            },
+            {
+              "answer": "gu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-gu-forward"
+            },
+            {
+              "answer": "nyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyo-forward"
+            },
+            {
+              "answer": "zu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zu2-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-mya-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'mya'?",
+          "correctAnswer": "みゃ",
+          "distractors": [
+            {
+              "answer": "づ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zu2-reverse"
+            },
+            {
+              "answer": "ぷ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-mya-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'mya'?",
+          "correctAnswer": "みゃ",
+          "distractors": [
+            {
+              "answer": "づ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zu2-reverse"
+            },
+            {
+              "answer": "ぷ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pu-reverse"
+            },
+            {
+              "answer": "で",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-de-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-mya-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'mya'?",
+          "correctAnswer": "みゃ",
+          "distractors": [
+            {
+              "answer": "づ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zu2-reverse"
+            },
+            {
+              "answer": "ぷ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pu-reverse"
+            },
+            {
+              "answer": "で",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-de-reverse"
+            },
+            {
+              "answer": "が",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ga-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-cha-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'cha'?",
+          "correctAnswer": "ちゃ",
+          "distractors": [
+            {
+              "answer": "げ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ge-reverse"
+            },
+            {
+              "answer": "しゅ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-cha-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'cha'?",
+          "correctAnswer": "ちゃ",
+          "distractors": [
+            {
+              "answer": "げ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ge-reverse"
+            },
+            {
+              "answer": "しゅ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shu-reverse"
+            },
+            {
+              "answer": "で",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-de-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-cha-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'cha'?",
+          "correctAnswer": "ちゃ",
+          "distractors": [
+            {
+              "answer": "げ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ge-reverse"
+            },
+            {
+              "answer": "しゅ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-shu-reverse"
+            },
+            {
+              "answer": "で",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-de-reverse"
+            },
+            {
+              "answer": "ば",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ba-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-shu-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana しゅ represent?",
+          "correctAnswer": "shu",
+          "distractors": [
+            {
+              "answer": "ji",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji2-forward"
+            },
+            {
+              "answer": "ryo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ryo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-shu-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana しゅ represent?",
+          "correctAnswer": "shu",
+          "distractors": [
+            {
+              "answer": "ji",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji2-forward"
+            },
+            {
+              "answer": "ryo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ryo-forward"
+            },
+            {
+              "answer": "gi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-gi-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-shu-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana しゅ represent?",
+          "correctAnswer": "shu",
+          "distractors": [
+            {
+              "answer": "ji",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ji2-forward"
+            },
+            {
+              "answer": "ryo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ryo-forward"
+            },
+            {
+              "answer": "gi",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-gi-forward"
+            },
+            {
+              "answer": "go",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-go-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-pyu-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぴゅ represent?",
+          "correctAnswer": "pyu",
+          "distractors": [
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-myo-forward"
+            },
+            {
+              "answer": "nyu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-pyu-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぴゅ represent?",
+          "correctAnswer": "pyu",
+          "distractors": [
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-myo-forward"
+            },
+            {
+              "answer": "nyu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyu-forward"
+            },
+            {
+              "answer": "po",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-po-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-pyu-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぴゅ represent?",
+          "correctAnswer": "pyu",
+          "distractors": [
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-myo-forward"
+            },
+            {
+              "answer": "nyu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nyu-forward"
+            },
+            {
+              "answer": "po",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-po-forward"
+            },
+            {
+              "answer": "chu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-chu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-chu-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'chu'?",
+          "correctAnswer": "ちゅ",
+          "distractors": [
+            {
+              "answer": "ちょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-cho-reverse"
+            },
+            {
+              "answer": "ぜ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ze-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-chu-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'chu'?",
+          "correctAnswer": "ちゅ",
+          "distractors": [
+            {
+              "answer": "ちょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-cho-reverse"
+            },
+            {
+              "answer": "ぜ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ze-reverse"
+            },
+            {
+              "answer": "ぱ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-chu-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'chu'?",
+          "correctAnswer": "ちゅ",
+          "distractors": [
+            {
+              "answer": "ちょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-cho-reverse"
+            },
+            {
+              "answer": "ぜ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ze-reverse"
+            },
+            {
+              "answer": "ぱ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-pa-reverse"
+            },
+            {
+              "answer": "りゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-rya-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-kyu-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'kyu'?",
+          "correctAnswer": "きゅ",
+          "distractors": [
+            {
+              "answer": "ぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zo-reverse"
+            },
+            {
+              "answer": "ひゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hya-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-kyu-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'kyu'?",
+          "correctAnswer": "きゅ",
+          "distractors": [
+            {
+              "answer": "ぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zo-reverse"
+            },
+            {
+              "answer": "ひゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hya-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-kyu-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'kyu'?",
+          "correctAnswer": "きゅ",
+          "distractors": [
+            {
+              "answer": "ぞ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zo-reverse"
+            },
+            {
+              "answer": "ひゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-hya-reverse"
+            },
+            {
+              "answer": "べ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-reverse"
+            },
+            {
+              "answer": "しょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sho-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-hyo-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ひょ represent?",
+          "correctAnswer": "hyo",
+          "distractors": [
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nya-forward"
+            },
+            {
+              "answer": "kyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-kyo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-hyo-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ひょ represent?",
+          "correctAnswer": "hyo",
+          "distractors": [
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nya-forward"
+            },
+            {
+              "answer": "kyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-kyo-forward"
+            },
+            {
+              "answer": "be",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-hyo-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ひょ represent?",
+          "correctAnswer": "hyo",
+          "distractors": [
+            {
+              "answer": "nya",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-nya-forward"
+            },
+            {
+              "answer": "kyo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-kyo-forward"
+            },
+            {
+              "answer": "be",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-forward"
+            },
+            {
+              "answer": "chu",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-chu-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-gyo-forward",
+          "masteryLevel": 0,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぎょ represent?",
+          "correctAnswer": "gyo",
+          "distractors": [
+            {
+              "answer": "ja",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ja-forward"
+            },
+            {
+              "answer": "be",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-gyo-forward",
+          "masteryLevel": 2,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぎょ represent?",
+          "correctAnswer": "gyo",
+          "distractors": [
+            {
+              "answer": "ja",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ja-forward"
+            },
+            {
+              "answer": "be",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-forward"
+            },
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-myo-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-gyo-forward",
+          "masteryLevel": 4,
+          "poolId": "english_meanings_forward",
+          "renderedQuestion": "What sound does the hiragana ぎょ represent?",
+          "correctAnswer": "gyo",
+          "distractors": [
+            {
+              "answer": "ja",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ja-forward"
+            },
+            {
+              "answer": "be",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-be-forward"
+            },
+            {
+              "answer": "myo",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-myo-forward"
+            },
+            {
+              "answer": "ju",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ju-forward"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "sound_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ryo-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'ryo'?",
+          "correctAnswer": "りょ",
+          "distractors": [
+            {
+              "answer": "しゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sha-reverse"
+            },
+            {
+              "answer": "ぼ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ryo-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'ryo'?",
+          "correctAnswer": "りょ",
+          "distractors": [
+            {
+              "answer": "しゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sha-reverse"
+            },
+            {
+              "answer": "ぼ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bo-reverse"
+            },
+            {
+              "answer": "びょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-byo-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-ryo-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'ryo'?",
+          "correctAnswer": "りょ",
+          "distractors": [
+            {
+              "answer": "しゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-sha-reverse"
+            },
+            {
+              "answer": "ぼ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-bo-reverse"
+            },
+            {
+              "answer": "びょ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-byo-reverse"
+            },
+            {
+              "answer": "ば",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-ba-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-cho-reverse",
+          "masteryLevel": 0,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'cho'?",
+          "correctAnswer": "ちょ",
+          "distractors": [
+            {
+              "answer": "りゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-rya-reverse"
+            },
+            {
+              "answer": "ちゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-cha-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-cho-reverse",
+          "masteryLevel": 2,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'cho'?",
+          "correctAnswer": "ちょ",
+          "distractors": [
+            {
+              "answer": "りゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-rya-reverse"
+            },
+            {
+              "answer": "ちゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-cha-reverse"
+            },
+            {
+              "answer": "びゅ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-byu-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "ja-hiragana-cho-reverse",
+          "masteryLevel": 4,
+          "poolId": "hiragana_characters",
+          "renderedQuestion": "Which hiragana combination represents 'cho'?",
+          "correctAnswer": "ちょ",
+          "distractors": [
+            {
+              "answer": "りゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-rya-reverse"
+            },
+            {
+              "answer": "ちゃ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-cha-reverse"
+            },
+            {
+              "answer": "びゅ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-byu-reverse"
+            },
+            {
+              "answer": "づ",
+              "source": "similar_difficulty",
+              "factId": "ja-hiragana-zu2-reverse"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "char_identify",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

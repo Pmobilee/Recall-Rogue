@@ -1,0 +1,4308 @@
+{
+  "timestamp": "2026-04-11T02:00:19.852Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 12,
+  "decks": [
+    {
+      "deckId": "french_b2_grammar",
+      "deckName": "French B2 Grammar",
+      "deckClass": "vocab",
+      "totalFacts": 397,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 12,
+      "issuesByType": {
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 6
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 6
+        }
+      },
+      "factResults": [
+        {
+          "factId": "fr-gram-b2-subj-passe-connaitre-ils-0",
+          "masteryLevel": 0,
+          "poolId": "subjonctif_passe_avoir",
+          "renderedQuestion": "C'est remarquable qu'ils {___} autant de succès en si peu de temps.\n(It's remarkable that they experienced such great success in so little time.)",
+          "correctAnswer": "aient connu",
+          "distractors": [
+            {
+              "answer": "ayons vu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-voir-nous-0"
+            },
+            {
+              "answer": "ait pris",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-prendre-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subj-passe-connaitre-ils-0",
+          "masteryLevel": 2,
+          "poolId": "subjonctif_passe_avoir",
+          "renderedQuestion": "C'est remarquable qu'ils {___} autant de succès en si peu de temps.\n(It's remarkable that they experienced such great success in so little time.)",
+          "correctAnswer": "aient connu",
+          "distractors": [
+            {
+              "answer": "ayons vu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-voir-nous-0"
+            },
+            {
+              "answer": "ait pris",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-prendre-il-0"
+            },
+            {
+              "answer": "ayons voulu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-vouloir-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subj-passe-connaitre-ils-0",
+          "masteryLevel": 4,
+          "poolId": "subjonctif_passe_avoir",
+          "renderedQuestion": "C'est remarquable qu'ils {___} autant de succès en si peu de temps.\n(It's remarkable that they experienced such great success in so little time.)",
+          "correctAnswer": "aient connu",
+          "distractors": [
+            {
+              "answer": "ayons vu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-voir-nous-0"
+            },
+            {
+              "answer": "ait pris",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-prendre-il-0"
+            },
+            {
+              "answer": "ayons voulu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-vouloir-nous-0"
+            },
+            {
+              "answer": "aies compris",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-comprendre-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subj-passe-rester-elle-0",
+          "masteryLevel": 0,
+          "poolId": "subjonctif_passe_etre",
+          "renderedQuestion": "C'est bizarre qu'elle {___} chez elle toute la journée sans appeler.\n(It's strange that she stayed home all day without calling.)",
+          "correctAnswer": "soit restée",
+          "distractors": [
+            {
+              "answer": "soient sortis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-sortir-ils-0"
+            },
+            {
+              "answer": "soyez partis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-partir-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subj-passe-rester-elle-0",
+          "masteryLevel": 2,
+          "poolId": "subjonctif_passe_etre",
+          "renderedQuestion": "C'est bizarre qu'elle {___} chez elle toute la journée sans appeler.\n(It's strange that she stayed home all day without calling.)",
+          "correctAnswer": "soit restée",
+          "distractors": [
+            {
+              "answer": "soient sortis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-sortir-ils-0"
+            },
+            {
+              "answer": "soyez partis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-partir-vous-0"
+            },
+            {
+              "answer": "soit venue",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-venir-elle-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subj-passe-rester-elle-0",
+          "masteryLevel": 4,
+          "poolId": "subjonctif_passe_etre",
+          "renderedQuestion": "C'est bizarre qu'elle {___} chez elle toute la journée sans appeler.\n(It's strange that she stayed home all day without calling.)",
+          "correctAnswer": "soit restée",
+          "distractors": [
+            {
+              "answer": "soient sortis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-sortir-ils-0"
+            },
+            {
+              "answer": "soyez partis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-partir-vous-0"
+            },
+            {
+              "answer": "soit venue",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-venir-elle-0"
+            },
+            {
+              "answer": "soient arrivés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-arriver-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subj-passe-habiller-elle-0",
+          "masteryLevel": 0,
+          "poolId": "subjonctif_passe_pronominal",
+          "renderedQuestion": "Sa mère s'étonne qu'elle {___} aussi vite ce matin.\n(Her mother is amazed that she got dressed so quickly this morning.)",
+          "correctAnswer": "se soit habillée",
+          "distractors": [
+            {
+              "answer": "se soit endormie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-endormir-elle-0"
+            },
+            {
+              "answer": "se soit trompé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-tromper-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subj-passe-habiller-elle-0",
+          "masteryLevel": 2,
+          "poolId": "subjonctif_passe_pronominal",
+          "renderedQuestion": "Sa mère s'étonne qu'elle {___} aussi vite ce matin.\n(Her mother is amazed that she got dressed so quickly this morning.)",
+          "correctAnswer": "se soit habillée",
+          "distractors": [
+            {
+              "answer": "se soit endormie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-endormir-elle-0"
+            },
+            {
+              "answer": "se soit trompé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-tromper-il-0"
+            },
+            {
+              "answer": "nous soyons bien amusés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-amuser-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subj-passe-habiller-elle-0",
+          "masteryLevel": 4,
+          "poolId": "subjonctif_passe_pronominal",
+          "renderedQuestion": "Sa mère s'étonne qu'elle {___} aussi vite ce matin.\n(Her mother is amazed that she got dressed so quickly this morning.)",
+          "correctAnswer": "se soit habillée",
+          "distractors": [
+            {
+              "answer": "se soit endormie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-endormir-elle-0"
+            },
+            {
+              "answer": "se soit trompé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-tromper-il-0"
+            },
+            {
+              "answer": "nous soyons bien amusés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-amuser-nous-0"
+            },
+            {
+              "answer": "se soient retrouvés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subj-passe-retrouver-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-concord-013",
+          "masteryLevel": 0,
+          "poolId": "concordance_subj_present_passe",
+          "renderedQuestion": "Bien qu'il {___} fatigué, il continue à travailler.\n(Although he is tired, he keeps working.)\nContext: He is tired right now, at this moment.",
+          "correctAnswer": "subjonctif présent",
+          "distractors": [
+            {
+              "answer": "subjonctif passé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-006"
+            },
+            {
+              "answer": "qu'il soit arrivé avant 9h (passé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-004"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-concord-013",
+          "masteryLevel": 2,
+          "poolId": "concordance_subj_present_passe",
+          "renderedQuestion": "Bien qu'il {___} fatigué, il continue à travailler.\n(Although he is tired, he keeps working.)\nContext: He is tired right now, at this moment.",
+          "correctAnswer": "subjonctif présent",
+          "distractors": [
+            {
+              "answer": "subjonctif passé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-006"
+            },
+            {
+              "answer": "qu'il soit arrivé avant 9h (passé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-004"
+            },
+            {
+              "answer": "qu'il vienne demain (présent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-concord-013",
+          "masteryLevel": 4,
+          "poolId": "concordance_subj_present_passe",
+          "renderedQuestion": "Bien qu'il {___} fatigué, il continue à travailler.\n(Although he is tired, he keeps working.)\nContext: He is tired right now, at this moment.",
+          "correctAnswer": "subjonctif présent",
+          "distractors": [
+            {
+              "answer": "subjonctif passé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-006"
+            },
+            {
+              "answer": "qu'il soit arrivé avant 9h (passé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-004"
+            },
+            {
+              "answer": "qu'il vienne demain (présent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-003"
+            },
+            {
+              "answer": "qu'elle parte maintenant (présent)",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-007"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-concord-012",
+          "masteryLevel": 0,
+          "poolId": "concordance_subj_present_passe",
+          "renderedQuestion": "Il est dommage qu'elle {___} sans nous prévenir.\n(It's a shame she left without warning us.)\nContext: She has already left.",
+          "correctAnswer": "subjonctif passé",
+          "distractors": [
+            {
+              "answer": "subjonctif imparfait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-028"
+            },
+            {
+              "answer": "subjonctif présent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-011"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-concord-012",
+          "masteryLevel": 2,
+          "poolId": "concordance_subj_present_passe",
+          "renderedQuestion": "Il est dommage qu'elle {___} sans nous prévenir.\n(It's a shame she left without warning us.)\nContext: She has already left.",
+          "correctAnswer": "subjonctif passé",
+          "distractors": [
+            {
+              "answer": "subjonctif imparfait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-028"
+            },
+            {
+              "answer": "subjonctif présent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-011"
+            },
+            {
+              "answer": "qu'il vienne demain (présent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-concord-012",
+          "masteryLevel": 4,
+          "poolId": "concordance_subj_present_passe",
+          "renderedQuestion": "Il est dommage qu'elle {___} sans nous prévenir.\n(It's a shame she left without warning us.)\nContext: She has already left.",
+          "correctAnswer": "subjonctif passé",
+          "distractors": [
+            {
+              "answer": "subjonctif imparfait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-028"
+            },
+            {
+              "answer": "subjonctif présent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-011"
+            },
+            {
+              "answer": "qu'il vienne demain (présent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-003"
+            },
+            {
+              "answer": "qu'il ait fait ses devoirs (passé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-010"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-concord-022",
+          "masteryLevel": 0,
+          "poolId": "subjonctif_imparfait_recognition",
+          "renderedQuestion": "Identify the literary subjonctif imparfait form of pouvoir (3rd person singular) found in classical French prose.\nModern equivalent: puisse",
+          "correctAnswer": "pût",
+          "distractors": [
+            {
+              "answer": "fît",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-020"
+            },
+            {
+              "answer": "fût",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-024"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-concord-022",
+          "masteryLevel": 2,
+          "poolId": "subjonctif_imparfait_recognition",
+          "renderedQuestion": "Identify the literary subjonctif imparfait form of pouvoir (3rd person singular) found in classical French prose.\nModern equivalent: puisse",
+          "correctAnswer": "pût",
+          "distractors": [
+            {
+              "answer": "fît",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-020"
+            },
+            {
+              "answer": "fût",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-024"
+            },
+            {
+              "answer": "eût",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-017"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-concord-022",
+          "masteryLevel": 4,
+          "poolId": "subjonctif_imparfait_recognition",
+          "renderedQuestion": "Identify the literary subjonctif imparfait form of pouvoir (3rd person singular) found in classical French prose.\nModern equivalent: puisse",
+          "correctAnswer": "pût",
+          "distractors": [
+            {
+              "answer": "fît",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-020"
+            },
+            {
+              "answer": "fût",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-024"
+            },
+            {
+              "answer": "eût",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-017"
+            },
+            {
+              "answer": "voulût",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-concord-023"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-cond-passe-finir-tu-0",
+          "masteryLevel": 0,
+          "poolId": "conditionnel_passe_avoir",
+          "renderedQuestion": "Avec plus de temps, {___} ce projet à l'heure.\n(With more time, you would have finished this project on time.)",
+          "correctAnswer": "tu aurais fini",
+          "distractors": [
+            {
+              "answer": "j'aurais échoué",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-echouer-je-0"
+            },
+            {
+              "answer": "aurait déclaré",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-hedging-president-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-cond-passe-finir-tu-0",
+          "masteryLevel": 2,
+          "poolId": "conditionnel_passe_avoir",
+          "renderedQuestion": "Avec plus de temps, {___} ce projet à l'heure.\n(With more time, you would have finished this project on time.)",
+          "correctAnswer": "tu aurais fini",
+          "distractors": [
+            {
+              "answer": "j'aurais échoué",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-echouer-je-0"
+            },
+            {
+              "answer": "aurait déclaré",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-hedging-president-0"
+            },
+            {
+              "answer": "nous aurions dit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-dire-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-cond-passe-finir-tu-0",
+          "masteryLevel": 4,
+          "poolId": "conditionnel_passe_avoir",
+          "renderedQuestion": "Avec plus de temps, {___} ce projet à l'heure.\n(With more time, you would have finished this project on time.)",
+          "correctAnswer": "tu aurais fini",
+          "distractors": [
+            {
+              "answer": "j'aurais échoué",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-echouer-je-0"
+            },
+            {
+              "answer": "aurait déclaré",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-hedging-president-0"
+            },
+            {
+              "answer": "nous aurions dit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-dire-nous-0"
+            },
+            {
+              "answer": "il aurait pris",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-prendre-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-cond-passe-aller-je-0",
+          "masteryLevel": 0,
+          "poolId": "conditionnel_passe_etre",
+          "renderedQuestion": "Si j'avais eu le temps, {___} au marché ce matin.\n(If I had had time, I would have gone to the market this morning.)",
+          "correctAnswer": "je serais allé",
+          "distractors": [
+            {
+              "answer": "elle serait retournée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-retourner-elle-0"
+            },
+            {
+              "answer": "il se serait souvenu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-souvenir-il-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-cond-passe-aller-je-0",
+          "masteryLevel": 2,
+          "poolId": "conditionnel_passe_etre",
+          "renderedQuestion": "Si j'avais eu le temps, {___} au marché ce matin.\n(If I had had time, I would have gone to the market this morning.)",
+          "correctAnswer": "je serais allé",
+          "distractors": [
+            {
+              "answer": "elle serait retournée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-retourner-elle-0"
+            },
+            {
+              "answer": "il se serait souvenu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-souvenir-il-0"
+            },
+            {
+              "answer": "elle se serait habillée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-habiller-elle-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-cond-passe-aller-je-0",
+          "masteryLevel": 4,
+          "poolId": "conditionnel_passe_etre",
+          "renderedQuestion": "Si j'avais eu le temps, {___} au marché ce matin.\n(If I had had time, I would have gone to the market this morning.)",
+          "correctAnswer": "je serais allé",
+          "distractors": [
+            {
+              "answer": "elle serait retournée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-retourner-elle-0"
+            },
+            {
+              "answer": "il se serait souvenu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-souvenir-il-0"
+            },
+            {
+              "answer": "elle se serait habillée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-habiller-elle-0"
+            },
+            {
+              "answer": "elle serait venue",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-venir-elle-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-cond-passe-devoir-tu-0",
+          "masteryLevel": 0,
+          "poolId": "conditionnel_passe_modaux",
+          "renderedQuestion": "{___} te présenter avant de commencer.\n(You should have introduced yourself before starting.)",
+          "correctAnswer": "tu aurais dû",
+          "distractors": [
+            {
+              "answer": "tu aurais pu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-pouvoir-tu-0"
+            },
+            {
+              "answer": "elle aurait préféré",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-preferer-elle-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tu aurais dû\" and \"tu aurais pu\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-cond-passe-devoir-tu-0",
+          "masteryLevel": 2,
+          "poolId": "conditionnel_passe_modaux",
+          "renderedQuestion": "{___} te présenter avant de commencer.\n(You should have introduced yourself before starting.)",
+          "correctAnswer": "tu aurais dû",
+          "distractors": [
+            {
+              "answer": "tu aurais pu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-pouvoir-tu-0"
+            },
+            {
+              "answer": "elle aurait préféré",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-preferer-elle-0"
+            },
+            {
+              "answer": "il aurait fallu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-falloir-investir-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tu aurais dû\" and \"tu aurais pu\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-cond-passe-devoir-tu-0",
+          "masteryLevel": 4,
+          "poolId": "conditionnel_passe_modaux",
+          "renderedQuestion": "{___} te présenter avant de commencer.\n(You should have introduced yourself before starting.)",
+          "correctAnswer": "tu aurais dû",
+          "distractors": [
+            {
+              "answer": "tu aurais pu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-pouvoir-tu-0"
+            },
+            {
+              "answer": "elle aurait préféré",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-preferer-elle-0"
+            },
+            {
+              "answer": "il aurait fallu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-falloir-investir-0"
+            },
+            {
+              "answer": "vous auriez dû",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-cond-passe-devoir-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"tu aurais dû\" and \"tu aurais pu\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-si-t3-009",
+          "masteryLevel": 0,
+          "poolId": "si_plus_que_parfait",
+          "renderedQuestion": "Elle {___} la vérité si tu le lui avais demandé.\n(She would have told the truth if you had asked her.)",
+          "correctAnswer": "aurait dit",
+          "distractors": [
+            {
+              "answer": "auraient pu éviter",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-030"
+            },
+            {
+              "answer": "aurait gagné",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-006"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-si-t3-009",
+          "masteryLevel": 2,
+          "poolId": "si_plus_que_parfait",
+          "renderedQuestion": "Elle {___} la vérité si tu le lui avais demandé.\n(She would have told the truth if you had asked her.)",
+          "correctAnswer": "aurait dit",
+          "distractors": [
+            {
+              "answer": "auraient pu éviter",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-030"
+            },
+            {
+              "answer": "aurait gagné",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-006"
+            },
+            {
+              "answer": "aurait dû partir",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-024"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-si-t3-009",
+          "masteryLevel": 4,
+          "poolId": "si_plus_que_parfait",
+          "renderedQuestion": "Elle {___} la vérité si tu le lui avais demandé.\n(She would have told the truth if you had asked her.)",
+          "correctAnswer": "aurait dit",
+          "distractors": [
+            {
+              "answer": "auraient pu éviter",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-030"
+            },
+            {
+              "answer": "aurait gagné",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-006"
+            },
+            {
+              "answer": "aurait dû partir",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-024"
+            },
+            {
+              "answer": "n'aurions pas dépensé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-010"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-si-t3-030",
+          "masteryLevel": 0,
+          "poolId": "si_plus_que_parfait",
+          "renderedQuestion": "S'ils avaient écouté les conseils, ils {___} cette catastrophe.\n(If they had listened to the advice, they would have been able to avoid this disaster.)",
+          "correctAnswer": "auraient pu éviter",
+          "distractors": [
+            {
+              "answer": "aurait vécu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-029"
+            },
+            {
+              "answer": "aurais vu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-011"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-si-t3-030",
+          "masteryLevel": 2,
+          "poolId": "si_plus_que_parfait",
+          "renderedQuestion": "S'ils avaient écouté les conseils, ils {___} cette catastrophe.\n(If they had listened to the advice, they would have been able to avoid this disaster.)",
+          "correctAnswer": "auraient pu éviter",
+          "distractors": [
+            {
+              "answer": "aurait vécu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-029"
+            },
+            {
+              "answer": "aurais vu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-011"
+            },
+            {
+              "answer": "aurait dit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-009"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-si-t3-030",
+          "masteryLevel": 4,
+          "poolId": "si_plus_que_parfait",
+          "renderedQuestion": "S'ils avaient écouté les conseils, ils {___} cette catastrophe.\n(If they had listened to the advice, they would have been able to avoid this disaster.)",
+          "correctAnswer": "auraient pu éviter",
+          "distractors": [
+            {
+              "answer": "aurait vécu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-029"
+            },
+            {
+              "answer": "aurais vu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-011"
+            },
+            {
+              "answer": "aurait dit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-009"
+            },
+            {
+              "answer": "aurions évité",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-005"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-si-t3-019",
+          "masteryLevel": 0,
+          "poolId": "mixed_conditionals",
+          "renderedQuestion": "S'il avait pris soin de sa santé, il {___} aujourd'hui.\n(If he had taken care of his health, he would feel better today.)",
+          "correctAnswer": "se sentirait mieux",
+          "distractors": [
+            {
+              "answer": "saurait cuisiner",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-028"
+            },
+            {
+              "answer": "habiterait encore là-bas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-023"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-si-t3-019",
+          "masteryLevel": 2,
+          "poolId": "mixed_conditionals",
+          "renderedQuestion": "S'il avait pris soin de sa santé, il {___} aujourd'hui.\n(If he had taken care of his health, he would feel better today.)",
+          "correctAnswer": "se sentirait mieux",
+          "distractors": [
+            {
+              "answer": "saurait cuisiner",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-028"
+            },
+            {
+              "answer": "habiterait encore là-bas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-023"
+            },
+            {
+              "answer": "parlerais mieux français",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-018"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-si-t3-019",
+          "masteryLevel": 4,
+          "poolId": "mixed_conditionals",
+          "renderedQuestion": "S'il avait pris soin de sa santé, il {___} aujourd'hui.\n(If he had taken care of his health, he would feel better today.)",
+          "correctAnswer": "se sentirait mieux",
+          "distractors": [
+            {
+              "answer": "saurait cuisiner",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-028"
+            },
+            {
+              "answer": "habiterait encore là-bas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-023"
+            },
+            {
+              "answer": "parlerais mieux français",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-018"
+            },
+            {
+              "answer": "serais déjà à Paris",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-si-t3-017"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-002",
+          "masteryLevel": 0,
+          "poolId": "discours_rapporte_present_imparfait",
+          "renderedQuestion": "Direct: « Je suis fatigué. » → Rapporté: Il a dit qu'il {___}.\n(He said that he was tired.)",
+          "correctAnswer": "était fatigué",
+          "distractors": [
+            {
+              "answer": "ne savait pas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-005"
+            },
+            {
+              "answer": "habitait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-006"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-002",
+          "masteryLevel": 2,
+          "poolId": "discours_rapporte_present_imparfait",
+          "renderedQuestion": "Direct: « Je suis fatigué. » → Rapporté: Il a dit qu'il {___}.\n(He said that he was tired.)",
+          "correctAnswer": "était fatigué",
+          "distractors": [
+            {
+              "answer": "ne savait pas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-005"
+            },
+            {
+              "answer": "habitait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-006"
+            },
+            {
+              "answer": "travaillait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-001"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-002",
+          "masteryLevel": 4,
+          "poolId": "discours_rapporte_present_imparfait",
+          "renderedQuestion": "Direct: « Je suis fatigué. » → Rapporté: Il a dit qu'il {___}.\n(He said that he was tired.)",
+          "correctAnswer": "était fatigué",
+          "distractors": [
+            {
+              "answer": "ne savait pas",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-005"
+            },
+            {
+              "answer": "habitait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-006"
+            },
+            {
+              "answer": "travaillait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-001"
+            },
+            {
+              "answer": "préférait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-004"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-013",
+          "masteryLevel": 0,
+          "poolId": "discours_rapporte_present_imparfait",
+          "renderedQuestion": "Direct: « Ne pars pas ! » → Rapporté: Elle lui a demandé {___}.\n(She asked him not to leave.)",
+          "correctAnswer": "de ne pas partir",
+          "distractors": [
+            {
+              "answer": "travaillait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-001"
+            },
+            {
+              "answer": "était fatigué",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-002"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-013",
+          "masteryLevel": 2,
+          "poolId": "discours_rapporte_present_imparfait",
+          "renderedQuestion": "Direct: « Ne pars pas ! » → Rapporté: Elle lui a demandé {___}.\n(She asked him not to leave.)",
+          "correctAnswer": "de ne pas partir",
+          "distractors": [
+            {
+              "answer": "travaillait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-001"
+            },
+            {
+              "answer": "était fatigué",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-002"
+            },
+            {
+              "answer": "préférait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-004"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-013",
+          "masteryLevel": 4,
+          "poolId": "discours_rapporte_present_imparfait",
+          "renderedQuestion": "Direct: « Ne pars pas ! » → Rapporté: Elle lui a demandé {___}.\n(She asked him not to leave.)",
+          "correctAnswer": "de ne pas partir",
+          "distractors": [
+            {
+              "answer": "travaillait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-001"
+            },
+            {
+              "answer": "était fatigué",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-002"
+            },
+            {
+              "answer": "préférait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-004"
+            },
+            {
+              "answer": "de se taire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-012"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-022",
+          "masteryLevel": 0,
+          "poolId": "discours_rapporte_pc_pqp",
+          "renderedQuestion": "Direct: « J'ai pris le mauvais train. » → Rapporté: Il a reconnu qu'il {___} le mauvais train.\n(He admitted that he had taken the wrong train.)",
+          "correctAnswer": "avait pris",
+          "distractors": [
+            {
+              "answer": "avait fait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-023"
+            },
+            {
+              "answer": "avait fini",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-014"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-022",
+          "masteryLevel": 2,
+          "poolId": "discours_rapporte_pc_pqp",
+          "renderedQuestion": "Direct: « J'ai pris le mauvais train. » → Rapporté: Il a reconnu qu'il {___} le mauvais train.\n(He admitted that he had taken the wrong train.)",
+          "correctAnswer": "avait pris",
+          "distractors": [
+            {
+              "answer": "avait fait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-023"
+            },
+            {
+              "answer": "avait fini",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-014"
+            },
+            {
+              "answer": "était parti",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-020"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-022",
+          "masteryLevel": 4,
+          "poolId": "discours_rapporte_pc_pqp",
+          "renderedQuestion": "Direct: « J'ai pris le mauvais train. » → Rapporté: Il a reconnu qu'il {___} le mauvais train.\n(He admitted that he had taken the wrong train.)",
+          "correctAnswer": "avait pris",
+          "distractors": [
+            {
+              "answer": "avait fait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-023"
+            },
+            {
+              "answer": "avait fini",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-014"
+            },
+            {
+              "answer": "était parti",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-020"
+            },
+            {
+              "answer": "avait oublié",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-016"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-031",
+          "masteryLevel": 0,
+          "poolId": "discours_rapporte_futur_cond",
+          "renderedQuestion": "Direct: « Je partirai en voyage la semaine prochaine. » → Rapporté: Elle a annoncé qu'elle {___} en voyage la semaine suivante.\n(She announced that she would travel the following week.)",
+          "correctAnswer": "partirait",
+          "distractors": [
+            {
+              "answer": "viendrait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-024"
+            },
+            {
+              "answer": "téléphonerait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-025"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-031",
+          "masteryLevel": 2,
+          "poolId": "discours_rapporte_futur_cond",
+          "renderedQuestion": "Direct: « Je partirai en voyage la semaine prochaine. » → Rapporté: Elle a annoncé qu'elle {___} en voyage la semaine suivante.\n(She announced that she would travel the following week.)",
+          "correctAnswer": "partirait",
+          "distractors": [
+            {
+              "answer": "viendrait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-024"
+            },
+            {
+              "answer": "téléphonerait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-025"
+            },
+            {
+              "answer": "ferait beau",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-026"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-031",
+          "masteryLevel": 4,
+          "poolId": "discours_rapporte_futur_cond",
+          "renderedQuestion": "Direct: « Je partirai en voyage la semaine prochaine. » → Rapporté: Elle a annoncé qu'elle {___} en voyage la semaine suivante.\n(She announced that she would travel the following week.)",
+          "correctAnswer": "partirait",
+          "distractors": [
+            {
+              "answer": "viendrait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-024"
+            },
+            {
+              "answer": "téléphonerait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-025"
+            },
+            {
+              "answer": "ferait beau",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-026"
+            },
+            {
+              "answer": "pourrait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-032"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-028",
+          "masteryLevel": 0,
+          "poolId": "discours_rapporte_futur_cond",
+          "renderedQuestion": "Direct: « J'aurai fini avant le soir. » → Rapporté: Il a assuré qu'il {___} avant le soir.\n(He assured that he would have finished before the evening.)",
+          "correctAnswer": "aurait fini",
+          "distractors": [
+            {
+              "answer": "viendrait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-024"
+            },
+            {
+              "answer": "partirait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-031"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-028",
+          "masteryLevel": 2,
+          "poolId": "discours_rapporte_futur_cond",
+          "renderedQuestion": "Direct: « J'aurai fini avant le soir. » → Rapporté: Il a assuré qu'il {___} avant le soir.\n(He assured that he would have finished before the evening.)",
+          "correctAnswer": "aurait fini",
+          "distractors": [
+            {
+              "answer": "viendrait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-024"
+            },
+            {
+              "answer": "partirait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-031"
+            },
+            {
+              "answer": "pourrait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-032"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-028",
+          "masteryLevel": 4,
+          "poolId": "discours_rapporte_futur_cond",
+          "renderedQuestion": "Direct: « J'aurai fini avant le soir. » → Rapporté: Il a assuré qu'il {___} avant le soir.\n(He assured that he would have finished before the evening.)",
+          "correctAnswer": "aurait fini",
+          "distractors": [
+            {
+              "answer": "viendrait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-024"
+            },
+            {
+              "answer": "partirait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-031"
+            },
+            {
+              "answer": "pourrait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-032"
+            },
+            {
+              "answer": "aurait réparé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-029"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-034",
+          "masteryLevel": 0,
+          "poolId": "discours_rapporte_temps_markers",
+          "renderedQuestion": "Direct: « Hier, j'ai vu Marie. » → Dans le discours rapporté au passé, hier devient {___}.\n(In reported speech with a past reporting verb, 'yesterday' becomes _____.)",
+          "correctAnswer": "la veille",
+          "distractors": [
+            {
+              "answer": "ce matin-là",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-039"
+            },
+            {
+              "answer": "à ce moment-là",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-036"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-034",
+          "masteryLevel": 2,
+          "poolId": "discours_rapporte_temps_markers",
+          "renderedQuestion": "Direct: « Hier, j'ai vu Marie. » → Dans le discours rapporté au passé, hier devient {___}.\n(In reported speech with a past reporting verb, 'yesterday' becomes _____.)",
+          "correctAnswer": "la veille",
+          "distractors": [
+            {
+              "answer": "ce matin-là",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-039"
+            },
+            {
+              "answer": "à ce moment-là",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-036"
+            },
+            {
+              "answer": "ce jour-là",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-033"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-disc-passe-034",
+          "masteryLevel": 4,
+          "poolId": "discours_rapporte_temps_markers",
+          "renderedQuestion": "Direct: « Hier, j'ai vu Marie. » → Dans le discours rapporté au passé, hier devient {___}.\n(In reported speech with a past reporting verb, 'yesterday' becomes _____.)",
+          "correctAnswer": "la veille",
+          "distractors": [
+            {
+              "answer": "ce matin-là",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-039"
+            },
+            {
+              "answer": "à ce moment-là",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-036"
+            },
+            {
+              "answer": "ce jour-là",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-033"
+            },
+            {
+              "answer": "le lendemain",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-disc-passe-035"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-passif-01",
+          "masteryLevel": 0,
+          "poolId": "passif_avec_se",
+          "renderedQuestion": "Les crayons {___} par douzaines.\n(Pencils are sold by the dozen.)",
+          "correctAnswer": "se vendent",
+          "distractors": [
+            {
+              "answer": "se vend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-11"
+            },
+            {
+              "answer": "se disent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-07"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"se vend\" is a substring of \"se vendent\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-passif-01",
+          "masteryLevel": 2,
+          "poolId": "passif_avec_se",
+          "renderedQuestion": "Les crayons {___} par douzaines.\n(Pencils are sold by the dozen.)",
+          "correctAnswer": "se vendent",
+          "distractors": [
+            {
+              "answer": "se vend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-11"
+            },
+            {
+              "answer": "se disent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-07"
+            },
+            {
+              "answer": "se mange",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"se vend\" is a substring of \"se vendent\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-passif-01",
+          "masteryLevel": 4,
+          "poolId": "passif_avec_se",
+          "renderedQuestion": "Les crayons {___} par douzaines.\n(Pencils are sold by the dozen.)",
+          "correctAnswer": "se vendent",
+          "distractors": [
+            {
+              "answer": "se vend",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-11"
+            },
+            {
+              "answer": "se disent",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-07"
+            },
+            {
+              "answer": "se mange",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-03"
+            },
+            {
+              "answer": "se voit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-08"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"se vend\" is a substring of \"se vendent\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-passif-17",
+          "masteryLevel": 0,
+          "poolId": "passif_temps_composes",
+          "renderedQuestion": "Le chien {___} par toute la famille.\n(The dog was raised by the whole family.)",
+          "correctAnswer": "a été élevé",
+          "distractors": [
+            {
+              "answer": "seront publiés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-20"
+            },
+            {
+              "answer": "ai été grondé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-18"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-passif-17",
+          "masteryLevel": 2,
+          "poolId": "passif_temps_composes",
+          "renderedQuestion": "Le chien {___} par toute la famille.\n(The dog was raised by the whole family.)",
+          "correctAnswer": "a été élevé",
+          "distractors": [
+            {
+              "answer": "seront publiés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-20"
+            },
+            {
+              "answer": "ai été grondé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-18"
+            },
+            {
+              "answer": "aurait été annulée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-16"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-passif-17",
+          "masteryLevel": 4,
+          "poolId": "passif_temps_composes",
+          "renderedQuestion": "Le chien {___} par toute la famille.\n(The dog was raised by the whole family.)",
+          "correctAnswer": "a été élevé",
+          "distractors": [
+            {
+              "answer": "seront publiés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-20"
+            },
+            {
+              "answer": "ai été grondé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-18"
+            },
+            {
+              "answer": "aurait été annulée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-16"
+            },
+            {
+              "answer": "sera signé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-15"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-passif-16",
+          "masteryLevel": 0,
+          "poolId": "passif_temps_composes",
+          "renderedQuestion": "Sans la tempête, la réunion n'{___} pas.\n(Without the storm, the meeting would not have been cancelled.)",
+          "correctAnswer": "aurait été annulée",
+          "distractors": [
+            {
+              "answer": "sera signé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-15"
+            },
+            {
+              "answer": "a été réparée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-13"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-passif-16",
+          "masteryLevel": 2,
+          "poolId": "passif_temps_composes",
+          "renderedQuestion": "Sans la tempête, la réunion n'{___} pas.\n(Without the storm, the meeting would not have been cancelled.)",
+          "correctAnswer": "aurait été annulée",
+          "distractors": [
+            {
+              "answer": "sera signé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-15"
+            },
+            {
+              "answer": "a été réparée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-13"
+            },
+            {
+              "answer": "avait été approuvé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-14"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-passif-16",
+          "masteryLevel": 4,
+          "poolId": "passif_temps_composes",
+          "renderedQuestion": "Sans la tempête, la réunion n'{___} pas.\n(Without the storm, the meeting would not have been cancelled.)",
+          "correctAnswer": "aurait été annulée",
+          "distractors": [
+            {
+              "answer": "sera signé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-15"
+            },
+            {
+              "answer": "a été réparée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-13"
+            },
+            {
+              "answer": "avait été approuvé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-14"
+            },
+            {
+              "answer": "seront publiés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-passif-20"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-caus-01",
+          "masteryLevel": 0,
+          "poolId": "causatif_faire_laisser",
+          "renderedQuestion": "J'ai {___} ma bicyclette avant le voyage.\n(I had my bicycle repaired before the trip.)",
+          "correctAnswer": "fait réparer",
+          "distractors": [
+            {
+              "answer": "fait venir",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-02"
+            },
+            {
+              "answer": "fait attendre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-12"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-caus-01",
+          "masteryLevel": 2,
+          "poolId": "causatif_faire_laisser",
+          "renderedQuestion": "J'ai {___} ma bicyclette avant le voyage.\n(I had my bicycle repaired before the trip.)",
+          "correctAnswer": "fait réparer",
+          "distractors": [
+            {
+              "answer": "fait venir",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-02"
+            },
+            {
+              "answer": "fait attendre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-12"
+            },
+            {
+              "answer": "laisser faire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-10"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-caus-01",
+          "masteryLevel": 4,
+          "poolId": "causatif_faire_laisser",
+          "renderedQuestion": "J'ai {___} ma bicyclette avant le voyage.\n(I had my bicycle repaired before the trip.)",
+          "correctAnswer": "fait réparer",
+          "distractors": [
+            {
+              "answer": "fait venir",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-02"
+            },
+            {
+              "answer": "fait attendre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-12"
+            },
+            {
+              "answer": "laisser faire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-10"
+            },
+            {
+              "answer": "laissé tomber",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-caus-08"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-031",
+          "masteryLevel": 0,
+          "poolId": "accord_pp_avoir_cod_prepose",
+          "renderedQuestion": "Combien de livres as-tu {___} ce mois-ci ?\n(How many books did you buy this month?)",
+          "correctAnswer": "achetés",
+          "distractors": [
+            {
+              "answer": "vus",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-007"
+            },
+            {
+              "answer": "écrite",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-002"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 3 options don't match: \"achetés\", \"vus\", \"écrite\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-031",
+          "masteryLevel": 2,
+          "poolId": "accord_pp_avoir_cod_prepose",
+          "renderedQuestion": "Combien de livres as-tu {___} ce mois-ci ?\n(How many books did you buy this month?)",
+          "correctAnswer": "achetés",
+          "distractors": [
+            {
+              "answer": "vus",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-007"
+            },
+            {
+              "answer": "écrite",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-002"
+            },
+            {
+              "answer": "vues",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-004"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 4 options don't match: \"achetés\", \"vus\", \"écrite\", \"vues\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-031",
+          "masteryLevel": 4,
+          "poolId": "accord_pp_avoir_cod_prepose",
+          "renderedQuestion": "Combien de livres as-tu {___} ce mois-ci ?\n(How many books did you buy this month?)",
+          "correctAnswer": "achetés",
+          "distractors": [
+            {
+              "answer": "vus",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-007"
+            },
+            {
+              "answer": "écrite",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-002"
+            },
+            {
+              "answer": "vues",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-004"
+            },
+            {
+              "answer": "envoyé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-013"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 5 options don't match: \"achetés\", \"vus\", \"écrite\", \"vues\", \"envoyé\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-038",
+          "masteryLevel": 0,
+          "poolId": "accord_pp_avoir_cod_prepose",
+          "renderedQuestion": "Je tiendrai les promesses que j'ai {___}.\n(I will keep the promises I made.)",
+          "correctAnswer": "promises",
+          "distractors": [
+            {
+              "answer": "écrite",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-002"
+            },
+            {
+              "answer": "mangé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-009"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-038",
+          "masteryLevel": 2,
+          "poolId": "accord_pp_avoir_cod_prepose",
+          "renderedQuestion": "Je tiendrai les promesses que j'ai {___}.\n(I will keep the promises I made.)",
+          "correctAnswer": "promises",
+          "distractors": [
+            {
+              "answer": "écrite",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-002"
+            },
+            {
+              "answer": "mangé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-009"
+            },
+            {
+              "answer": "vue",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-008"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-038",
+          "masteryLevel": 4,
+          "poolId": "accord_pp_avoir_cod_prepose",
+          "renderedQuestion": "Je tiendrai les promesses que j'ai {___}.\n(I will keep the promises I made.)",
+          "correctAnswer": "promises",
+          "distractors": [
+            {
+              "answer": "écrite",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-002"
+            },
+            {
+              "answer": "mangé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-009"
+            },
+            {
+              "answer": "vue",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-008"
+            },
+            {
+              "answer": "faite",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-033"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-030",
+          "masteryLevel": 0,
+          "poolId": "accord_pp_pronominal_complet",
+          "renderedQuestion": "Marie est {___} hier soir avec ses valises.\n(Marie arrived last night with her suitcases.)",
+          "correctAnswer": "arrivée",
+          "distractors": [
+            {
+              "answer": "couchés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-017"
+            },
+            {
+              "answer": "brossé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-034"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-030",
+          "masteryLevel": 2,
+          "poolId": "accord_pp_pronominal_complet",
+          "renderedQuestion": "Marie est {___} hier soir avec ses valises.\n(Marie arrived last night with her suitcases.)",
+          "correctAnswer": "arrivée",
+          "distractors": [
+            {
+              "answer": "couchés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-017"
+            },
+            {
+              "answer": "brossé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-034"
+            },
+            {
+              "answer": "rencontrés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-040"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-030",
+          "masteryLevel": 4,
+          "poolId": "accord_pp_pronominal_complet",
+          "renderedQuestion": "Marie est {___} hier soir avec ses valises.\n(Marie arrived last night with her suitcases.)",
+          "correctAnswer": "arrivée",
+          "distractors": [
+            {
+              "answer": "couchés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-017"
+            },
+            {
+              "answer": "brossé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-034"
+            },
+            {
+              "answer": "rencontrés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-040"
+            },
+            {
+              "answer": "téléphoné",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-035"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-025",
+          "masteryLevel": 0,
+          "poolId": "accord_pp_pronominal_complet",
+          "renderedQuestion": "Elle s'est {___} sans prévenir personne.\n(She was absent without warning anyone.)",
+          "correctAnswer": "absentée",
+          "distractors": [
+            {
+              "answer": "méfiée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-026"
+            },
+            {
+              "answer": "rencontrés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-040"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-025",
+          "masteryLevel": 2,
+          "poolId": "accord_pp_pronominal_complet",
+          "renderedQuestion": "Elle s'est {___} sans prévenir personne.\n(She was absent without warning anyone.)",
+          "correctAnswer": "absentée",
+          "distractors": [
+            {
+              "answer": "méfiée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-026"
+            },
+            {
+              "answer": "rencontrés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-040"
+            },
+            {
+              "answer": "arrivés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-028"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-accord-pp-025",
+          "masteryLevel": 4,
+          "poolId": "accord_pp_pronominal_complet",
+          "renderedQuestion": "Elle s'est {___} sans prévenir personne.\n(She was absent without warning anyone.)",
+          "correctAnswer": "absentée",
+          "distractors": [
+            {
+              "answer": "méfiée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-026"
+            },
+            {
+              "answer": "rencontrés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-040"
+            },
+            {
+              "answer": "arrivés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-028"
+            },
+            {
+              "answer": "souvenue",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-accord-pp-023"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-concession-12",
+          "masteryLevel": 0,
+          "poolId": "connecteurs_concession",
+          "renderedQuestion": "Elle a {___} répéter ses explications, personne ne comprenait.\n(No matter how many times she repeated her explanations, no one understood.)",
+          "correctAnswer": "avoir beau",
+          "distractors": [
+            {
+              "answer": "certes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-05"
+            },
+            {
+              "answer": "bien que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 3 options don't match: \"avoir beau\", \"certes\", \"bien que\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-conn-concession-12",
+          "masteryLevel": 2,
+          "poolId": "connecteurs_concession",
+          "renderedQuestion": "Elle a {___} répéter ses explications, personne ne comprenait.\n(No matter how many times she repeated her explanations, no one understood.)",
+          "correctAnswer": "avoir beau",
+          "distractors": [
+            {
+              "answer": "certes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-05"
+            },
+            {
+              "answer": "bien que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-01"
+            },
+            {
+              "answer": "néanmoins",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-06"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 4 options don't match: \"avoir beau\", \"certes\", \"bien que\", \"néanmoins\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-conn-concession-12",
+          "masteryLevel": 4,
+          "poolId": "connecteurs_concession",
+          "renderedQuestion": "Elle a {___} répéter ses explications, personne ne comprenait.\n(No matter how many times she repeated her explanations, no one understood.)",
+          "correctAnswer": "avoir beau",
+          "distractors": [
+            {
+              "answer": "certes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-05"
+            },
+            {
+              "answer": "bien que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-01"
+            },
+            {
+              "answer": "néanmoins",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-06"
+            },
+            {
+              "answer": "quoique",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-11"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 5 options don't match: \"avoir beau\", \"certes\", \"bien que\", \"néanmoins\", \"quoique\""
+            }
+          ]
+        },
+        {
+          "factId": "fr-gram-b2-conn-concession-03",
+          "masteryLevel": 0,
+          "poolId": "connecteurs_concession",
+          "renderedQuestion": "Je suis sorti {___} la pluie.\n(In spite of the rain, I went out.)",
+          "correctAnswer": "malgré",
+          "distractors": [
+            {
+              "answer": "toutefois",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-07"
+            },
+            {
+              "answer": "néanmoins",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-06"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-concession-03",
+          "masteryLevel": 2,
+          "poolId": "connecteurs_concession",
+          "renderedQuestion": "Je suis sorti {___} la pluie.\n(In spite of the rain, I went out.)",
+          "correctAnswer": "malgré",
+          "distractors": [
+            {
+              "answer": "toutefois",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-07"
+            },
+            {
+              "answer": "néanmoins",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-06"
+            },
+            {
+              "answer": "bien que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-concession-03",
+          "masteryLevel": 4,
+          "poolId": "connecteurs_concession",
+          "renderedQuestion": "Je suis sorti {___} la pluie.\n(In spite of the rain, I went out.)",
+          "correctAnswer": "malgré",
+          "distractors": [
+            {
+              "answer": "toutefois",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-07"
+            },
+            {
+              "answer": "néanmoins",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-06"
+            },
+            {
+              "answer": "bien que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-01"
+            },
+            {
+              "answer": "quoique",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-concession-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-opposition-07",
+          "masteryLevel": 0,
+          "poolId": "connecteurs_opposition",
+          "renderedQuestion": "Les prix augmentent {___} les salaires restent stables.\n(Prices rise while wages remain stable.)",
+          "correctAnswer": "tandis que",
+          "distractors": [
+            {
+              "answer": "à l'inverse",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-08"
+            },
+            {
+              "answer": "par contre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-04"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-opposition-07",
+          "masteryLevel": 2,
+          "poolId": "connecteurs_opposition",
+          "renderedQuestion": "Les prix augmentent {___} les salaires restent stables.\n(Prices rise while wages remain stable.)",
+          "correctAnswer": "tandis que",
+          "distractors": [
+            {
+              "answer": "à l'inverse",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-08"
+            },
+            {
+              "answer": "par contre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-04"
+            },
+            {
+              "answer": "au contraire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-05"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-opposition-07",
+          "masteryLevel": 4,
+          "poolId": "connecteurs_opposition",
+          "renderedQuestion": "Les prix augmentent {___} les salaires restent stables.\n(Prices rise while wages remain stable.)",
+          "correctAnswer": "tandis que",
+          "distractors": [
+            {
+              "answer": "à l'inverse",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-08"
+            },
+            {
+              "answer": "par contre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-04"
+            },
+            {
+              "answer": "au contraire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-05"
+            },
+            {
+              "answer": "en revanche",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-opposition-10",
+          "masteryLevel": 0,
+          "poolId": "connecteurs_opposition",
+          "renderedQuestion": "Le premier trimestre a été décevant ; {___}, le second trimestre affiche des résultats très encourageants.\n(The first quarter was disappointing; on the other hand, the second quarter shows very encouraging results.)",
+          "correctAnswer": "en revanche",
+          "distractors": [
+            {
+              "answer": "alors que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-09"
+            },
+            {
+              "answer": "contrairement à",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-06"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-opposition-10",
+          "masteryLevel": 2,
+          "poolId": "connecteurs_opposition",
+          "renderedQuestion": "Le premier trimestre a été décevant ; {___}, le second trimestre affiche des résultats très encourageants.\n(The first quarter was disappointing; on the other hand, the second quarter shows very encouraging results.)",
+          "correctAnswer": "en revanche",
+          "distractors": [
+            {
+              "answer": "alors que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-09"
+            },
+            {
+              "answer": "contrairement à",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-06"
+            },
+            {
+              "answer": "à l'inverse",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-08"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-opposition-10",
+          "masteryLevel": 4,
+          "poolId": "connecteurs_opposition",
+          "renderedQuestion": "Le premier trimestre a été décevant ; {___}, le second trimestre affiche des résultats très encourageants.\n(The first quarter was disappointing; on the other hand, the second quarter shows very encouraging results.)",
+          "correctAnswer": "en revanche",
+          "distractors": [
+            {
+              "answer": "alors que",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-09"
+            },
+            {
+              "answer": "contrairement à",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-06"
+            },
+            {
+              "answer": "à l'inverse",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-08"
+            },
+            {
+              "answer": "par contre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-opposition-04"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-reformulation-03",
+          "masteryLevel": 0,
+          "poolId": "connecteurs_reformulation",
+          "renderedQuestion": "Le budget a été intégralement dépensé ; {___}, il ne reste plus rien pour les imprévus.\n(The budget has been completely spent; in other words, nothing remains for unexpected costs.)",
+          "correctAnswer": "en d'autres termes",
+          "distractors": [
+            {
+              "answer": "c'est-à-dire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-02"
+            },
+            {
+              "answer": "soit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-05"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-reformulation-03",
+          "masteryLevel": 2,
+          "poolId": "connecteurs_reformulation",
+          "renderedQuestion": "Le budget a été intégralement dépensé ; {___}, il ne reste plus rien pour les imprévus.\n(The budget has been completely spent; in other words, nothing remains for unexpected costs.)",
+          "correctAnswer": "en d'autres termes",
+          "distractors": [
+            {
+              "answer": "c'est-à-dire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-02"
+            },
+            {
+              "answer": "soit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-05"
+            },
+            {
+              "answer": "pour ainsi dire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-08"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-reformulation-03",
+          "masteryLevel": 4,
+          "poolId": "connecteurs_reformulation",
+          "renderedQuestion": "Le budget a été intégralement dépensé ; {___}, il ne reste plus rien pour les imprévus.\n(The budget has been completely spent; in other words, nothing remains for unexpected costs.)",
+          "correctAnswer": "en d'autres termes",
+          "distractors": [
+            {
+              "answer": "c'est-à-dire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-02"
+            },
+            {
+              "answer": "soit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-05"
+            },
+            {
+              "answer": "pour ainsi dire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-08"
+            },
+            {
+              "answer": "en clair",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-07"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-reformulation-08",
+          "masteryLevel": 0,
+          "poolId": "connecteurs_reformulation",
+          "renderedQuestion": "Il n'a {___} rien mangé depuis deux jours.\n(He has eaten next to nothing, so to speak, for two days.)",
+          "correctAnswer": "pour ainsi dire",
+          "distractors": [
+            {
+              "answer": "en somme",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-04"
+            },
+            {
+              "answer": "c'est-à-dire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-reformulation-08",
+          "masteryLevel": 2,
+          "poolId": "connecteurs_reformulation",
+          "renderedQuestion": "Il n'a {___} rien mangé depuis deux jours.\n(He has eaten next to nothing, so to speak, for two days.)",
+          "correctAnswer": "pour ainsi dire",
+          "distractors": [
+            {
+              "answer": "en somme",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-04"
+            },
+            {
+              "answer": "c'est-à-dire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-02"
+            },
+            {
+              "answer": "autrement",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-06"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-reformulation-08",
+          "masteryLevel": 4,
+          "poolId": "connecteurs_reformulation",
+          "renderedQuestion": "Il n'a {___} rien mangé depuis deux jours.\n(He has eaten next to nothing, so to speak, for two days.)",
+          "correctAnswer": "pour ainsi dire",
+          "distractors": [
+            {
+              "answer": "en somme",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-04"
+            },
+            {
+              "answer": "c'est-à-dire",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-02"
+            },
+            {
+              "answer": "autrement",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-06"
+            },
+            {
+              "answer": "en d'autres termes",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-reformulation-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-addition-01",
+          "masteryLevel": 0,
+          "poolId": "connecteurs_addition",
+          "renderedQuestion": "Ce produit est moins cher que les autres ; {___}, il est de meilleure qualité.\n(This product is cheaper than the others; furthermore, it is of better quality.)",
+          "correctAnswer": "de plus",
+          "distractors": [
+            {
+              "answer": "qui plus est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-04"
+            },
+            {
+              "answer": "par ailleurs",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-addition-01",
+          "masteryLevel": 2,
+          "poolId": "connecteurs_addition",
+          "renderedQuestion": "Ce produit est moins cher que les autres ; {___}, il est de meilleure qualité.\n(This product is cheaper than the others; furthermore, it is of better quality.)",
+          "correctAnswer": "de plus",
+          "distractors": [
+            {
+              "answer": "qui plus est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-04"
+            },
+            {
+              "answer": "par ailleurs",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-03"
+            },
+            {
+              "answer": "en outre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-addition-01",
+          "masteryLevel": 4,
+          "poolId": "connecteurs_addition",
+          "renderedQuestion": "Ce produit est moins cher que les autres ; {___}, il est de meilleure qualité.\n(This product is cheaper than the others; furthermore, it is of better quality.)",
+          "correctAnswer": "de plus",
+          "distractors": [
+            {
+              "answer": "qui plus est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-04"
+            },
+            {
+              "answer": "par ailleurs",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-03"
+            },
+            {
+              "answer": "en outre",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-02"
+            },
+            {
+              "answer": "de surcroît",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-06"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-addition-02",
+          "masteryLevel": 0,
+          "poolId": "connecteurs_addition",
+          "renderedQuestion": "Ce médicament est efficace ; {___}, il présente peu d'effets secondaires.\n(This medication is effective; furthermore, it has few side effects.)",
+          "correctAnswer": "en outre",
+          "distractors": [
+            {
+              "answer": "par ailleurs",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-03"
+            },
+            {
+              "answer": "de plus",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-01"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-addition-02",
+          "masteryLevel": 2,
+          "poolId": "connecteurs_addition",
+          "renderedQuestion": "Ce médicament est efficace ; {___}, il présente peu d'effets secondaires.\n(This medication is effective; furthermore, it has few side effects.)",
+          "correctAnswer": "en outre",
+          "distractors": [
+            {
+              "answer": "par ailleurs",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-03"
+            },
+            {
+              "answer": "de plus",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-01"
+            },
+            {
+              "answer": "de surcroît",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-06"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-conn-addition-02",
+          "masteryLevel": 4,
+          "poolId": "connecteurs_addition",
+          "renderedQuestion": "Ce médicament est efficace ; {___}, il présente peu d'effets secondaires.\n(This medication is effective; furthermore, it has few side effects.)",
+          "correctAnswer": "en outre",
+          "distractors": [
+            {
+              "answer": "par ailleurs",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-03"
+            },
+            {
+              "answer": "de plus",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-01"
+            },
+            {
+              "answer": "de surcroît",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-06"
+            },
+            {
+              "answer": "qui plus est",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-conn-addition-04"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-nom-12",
+          "masteryLevel": 0,
+          "poolId": "nominalisation_verbe_nom",
+          "renderedQuestion": "Le verbe « écrire » donne quel nom qui désigne l'activité d'écrire ?\n(The verb 'to write' gives what noun referring to the activity of writing?)",
+          "correctAnswer": "l'écriture",
+          "distractors": [
+            {
+              "answer": "la naissance",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-09"
+            },
+            {
+              "answer": "la connaissance",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-14"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-nom-12",
+          "masteryLevel": 2,
+          "poolId": "nominalisation_verbe_nom",
+          "renderedQuestion": "Le verbe « écrire » donne quel nom qui désigne l'activité d'écrire ?\n(The verb 'to write' gives what noun referring to the activity of writing?)",
+          "correctAnswer": "l'écriture",
+          "distractors": [
+            {
+              "answer": "la naissance",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-09"
+            },
+            {
+              "answer": "la connaissance",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-14"
+            },
+            {
+              "answer": "la création",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-06"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-nom-12",
+          "masteryLevel": 4,
+          "poolId": "nominalisation_verbe_nom",
+          "renderedQuestion": "Le verbe « écrire » donne quel nom qui désigne l'activité d'écrire ?\n(The verb 'to write' gives what noun referring to the activity of writing?)",
+          "correctAnswer": "l'écriture",
+          "distractors": [
+            {
+              "answer": "la naissance",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-09"
+            },
+            {
+              "answer": "la connaissance",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-14"
+            },
+            {
+              "answer": "la création",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-06"
+            },
+            {
+              "answer": "le vote",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-11"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-nom-08",
+          "masteryLevel": 0,
+          "poolId": "nominalisation_verbe_nom",
+          "renderedQuestion": "Le verbe « mourir » donne quel nom ?\n(The verb 'to die' gives what noun?)",
+          "correctAnswer": "la mort",
+          "distractors": [
+            {
+              "answer": "la démolition",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-05"
+            },
+            {
+              "answer": "la connaissance",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-14"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-nom-08",
+          "masteryLevel": 2,
+          "poolId": "nominalisation_verbe_nom",
+          "renderedQuestion": "Le verbe « mourir » donne quel nom ?\n(The verb 'to die' gives what noun?)",
+          "correctAnswer": "la mort",
+          "distractors": [
+            {
+              "answer": "la démolition",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-05"
+            },
+            {
+              "answer": "la connaissance",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-14"
+            },
+            {
+              "answer": "la réduction",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-17"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-nom-08",
+          "masteryLevel": 4,
+          "poolId": "nominalisation_verbe_nom",
+          "renderedQuestion": "Le verbe « mourir » donne quel nom ?\n(The verb 'to die' gives what noun?)",
+          "correctAnswer": "la mort",
+          "distractors": [
+            {
+              "answer": "la démolition",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-05"
+            },
+            {
+              "answer": "la connaissance",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-14"
+            },
+            {
+              "answer": "la réduction",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-17"
+            },
+            {
+              "answer": "la création",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-nom-06"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-08",
+          "masteryLevel": 0,
+          "poolId": "mise_en_relief_cest_qui_que",
+          "renderedQuestion": "Mettez en relief l'objet « lui » dans : Nous avons vu lui.\n(Cleft the object 'him' in: We saw him.)",
+          "correctAnswer": "C'est lui que nous avons vu.",
+          "distractors": [
+            {
+              "answer": "C'est moi qui ai raison.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-05"
+            },
+            {
+              "answer": "C'est là que réside le problème.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-04"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-08",
+          "masteryLevel": 2,
+          "poolId": "mise_en_relief_cest_qui_que",
+          "renderedQuestion": "Mettez en relief l'objet « lui » dans : Nous avons vu lui.\n(Cleft the object 'him' in: We saw him.)",
+          "correctAnswer": "C'est lui que nous avons vu.",
+          "distractors": [
+            {
+              "answer": "C'est moi qui ai raison.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-05"
+            },
+            {
+              "answer": "C'est là que réside le problème.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-04"
+            },
+            {
+              "answer": "Pour ce qui est de l'économie, la situation reste fragile.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-10"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-08",
+          "masteryLevel": 4,
+          "poolId": "mise_en_relief_cest_qui_que",
+          "renderedQuestion": "Mettez en relief l'objet « lui » dans : Nous avons vu lui.\n(Cleft the object 'him' in: We saw him.)",
+          "correctAnswer": "C'est lui que nous avons vu.",
+          "distractors": [
+            {
+              "answer": "C'est moi qui ai raison.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-05"
+            },
+            {
+              "answer": "C'est là que réside le problème.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-04"
+            },
+            {
+              "answer": "Pour ce qui est de l'économie, la situation reste fragile.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-10"
+            },
+            {
+              "answer": "C'est le printemps que je préfère.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-02"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-10",
+          "masteryLevel": 0,
+          "poolId": "mise_en_relief_cest_qui_que",
+          "renderedQuestion": "Quelle construction formelle introduit un thème dans : {___}, la situation économique reste fragile ?\n(Which formal construction introduces a topic in: ___, the economic situation remains fragile?)",
+          "correctAnswer": "Pour ce qui est de l'économie, la situation reste fragile.",
+          "distractors": [
+            {
+              "answer": "C'est là que réside le problème.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-04"
+            },
+            {
+              "answer": "C'est lui que nous avons vu.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-08"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-10",
+          "masteryLevel": 2,
+          "poolId": "mise_en_relief_cest_qui_que",
+          "renderedQuestion": "Quelle construction formelle introduit un thème dans : {___}, la situation économique reste fragile ?\n(Which formal construction introduces a topic in: ___, the economic situation remains fragile?)",
+          "correctAnswer": "Pour ce qui est de l'économie, la situation reste fragile.",
+          "distractors": [
+            {
+              "answer": "C'est là que réside le problème.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-04"
+            },
+            {
+              "answer": "C'est lui que nous avons vu.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-08"
+            },
+            {
+              "answer": "C'est moi qui ai raison.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-05"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-10",
+          "masteryLevel": 4,
+          "poolId": "mise_en_relief_cest_qui_que",
+          "renderedQuestion": "Quelle construction formelle introduit un thème dans : {___}, la situation économique reste fragile ?\n(Which formal construction introduces a topic in: ___, the economic situation remains fragile?)",
+          "correctAnswer": "Pour ce qui est de l'économie, la situation reste fragile.",
+          "distractors": [
+            {
+              "answer": "C'est là que réside le problème.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-04"
+            },
+            {
+              "answer": "C'est lui que nous avons vu.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-08"
+            },
+            {
+              "answer": "C'est moi qui ai raison.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-05"
+            },
+            {
+              "answer": "C'est toi que j'aimerai toujours.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-03"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-17",
+          "masteryLevel": 0,
+          "poolId": "mise_en_relief_ce_qui_cest",
+          "renderedQuestion": "Construisez une phrase pseudo-clivée mettant en valeur « la politique » comme centre d'intérêt.\n(Build a pseudo-cleft sentence highlighting 'politics' as the subject of interest.)",
+          "correctAnswer": "Ce qui l'intéresse, c'est la politique.",
+          "distractors": [
+            {
+              "answer": "Ce dont elle rêve, c'est un voyage au Japon.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-16"
+            },
+            {
+              "answer": "Ce qui m'énerve, c'est le bruit.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-14"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-17",
+          "masteryLevel": 2,
+          "poolId": "mise_en_relief_ce_qui_cest",
+          "renderedQuestion": "Construisez une phrase pseudo-clivée mettant en valeur « la politique » comme centre d'intérêt.\n(Build a pseudo-cleft sentence highlighting 'politics' as the subject of interest.)",
+          "correctAnswer": "Ce qui l'intéresse, c'est la politique.",
+          "distractors": [
+            {
+              "answer": "Ce dont elle rêve, c'est un voyage au Japon.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-16"
+            },
+            {
+              "answer": "Ce qui m'énerve, c'est le bruit.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-14"
+            },
+            {
+              "answer": "Ce dont j'ai besoin, c'est du temps.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-13"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-17",
+          "masteryLevel": 4,
+          "poolId": "mise_en_relief_ce_qui_cest",
+          "renderedQuestion": "Construisez une phrase pseudo-clivée mettant en valeur « la politique » comme centre d'intérêt.\n(Build a pseudo-cleft sentence highlighting 'politics' as the subject of interest.)",
+          "correctAnswer": "Ce qui l'intéresse, c'est la politique.",
+          "distractors": [
+            {
+              "answer": "Ce dont elle rêve, c'est un voyage au Japon.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-16"
+            },
+            {
+              "answer": "Ce qui m'énerve, c'est le bruit.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-14"
+            },
+            {
+              "answer": "Ce dont j'ai besoin, c'est du temps.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-13"
+            },
+            {
+              "answer": "Ce qui me plaît, c'est la musique.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-11"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-13",
+          "masteryLevel": 0,
+          "poolId": "mise_en_relief_ce_qui_cest",
+          "renderedQuestion": "Construisez une phrase pseudo-clivée mettant en valeur « du temps » avec avoir besoin de.\n(Build a pseudo-cleft sentence highlighting 'time' with 'avoir besoin de'.)",
+          "correctAnswer": "Ce dont j'ai besoin, c'est du temps.",
+          "distractors": [
+            {
+              "answer": "Ce dont elle rêve, c'est un voyage au Japon.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-16"
+            },
+            {
+              "answer": "Ce qui m'énerve, c'est le bruit.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-14"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-13",
+          "masteryLevel": 2,
+          "poolId": "mise_en_relief_ce_qui_cest",
+          "renderedQuestion": "Construisez une phrase pseudo-clivée mettant en valeur « du temps » avec avoir besoin de.\n(Build a pseudo-cleft sentence highlighting 'time' with 'avoir besoin de'.)",
+          "correctAnswer": "Ce dont j'ai besoin, c'est du temps.",
+          "distractors": [
+            {
+              "answer": "Ce dont elle rêve, c'est un voyage au Japon.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-16"
+            },
+            {
+              "answer": "Ce qui m'énerve, c'est le bruit.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-14"
+            },
+            {
+              "answer": "Ce que j'aime, c'est voyager.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-15"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-relief-13",
+          "masteryLevel": 4,
+          "poolId": "mise_en_relief_ce_qui_cest",
+          "renderedQuestion": "Construisez une phrase pseudo-clivée mettant en valeur « du temps » avec avoir besoin de.\n(Build a pseudo-cleft sentence highlighting 'time' with 'avoir besoin de'.)",
+          "correctAnswer": "Ce dont j'ai besoin, c'est du temps.",
+          "distractors": [
+            {
+              "answer": "Ce dont elle rêve, c'est un voyage au Japon.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-16"
+            },
+            {
+              "answer": "Ce qui m'énerve, c'est le bruit.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-14"
+            },
+            {
+              "answer": "Ce que j'aime, c'est voyager.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-15"
+            },
+            {
+              "answer": "Ce qui me plaît, c'est la musique.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-relief-11"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-reparer-je-0",
+          "masteryLevel": 0,
+          "poolId": "futur_anterieur_avoir",
+          "renderedQuestion": "J'{___} votre montre d'ici demain.\n(I will have repaired your watch by tomorrow.)",
+          "correctAnswer": "aurai réparé",
+          "distractors": [
+            {
+              "answer": "aurai terminé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-terminer-je-0"
+            },
+            {
+              "answer": "auront compris",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-comprendre-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-reparer-je-0",
+          "masteryLevel": 2,
+          "poolId": "futur_anterieur_avoir",
+          "renderedQuestion": "J'{___} votre montre d'ici demain.\n(I will have repaired your watch by tomorrow.)",
+          "correctAnswer": "aurai réparé",
+          "distractors": [
+            {
+              "answer": "aurai terminé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-terminer-je-0"
+            },
+            {
+              "answer": "auront compris",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-comprendre-ils-0"
+            },
+            {
+              "answer": "aurons dit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-dire-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-reparer-je-0",
+          "masteryLevel": 4,
+          "poolId": "futur_anterieur_avoir",
+          "renderedQuestion": "J'{___} votre montre d'ici demain.\n(I will have repaired your watch by tomorrow.)",
+          "correctAnswer": "aurai réparé",
+          "distractors": [
+            {
+              "answer": "aurai terminé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-terminer-je-0"
+            },
+            {
+              "answer": "auront compris",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-comprendre-ils-0"
+            },
+            {
+              "answer": "aurons dit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-dire-nous-0"
+            },
+            {
+              "answer": "auras lu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-lire-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-oublier-il-spec-0",
+          "masteryLevel": 0,
+          "poolId": "futur_anterieur_avoir",
+          "renderedQuestion": "Il n'est pas encore là ? Il {___} notre rendez-vous.\n(He's not here yet? He must have forgotten our appointment.)",
+          "correctAnswer": "aura oublié",
+          "distractors": [
+            {
+              "answer": "aura vu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-voir-elle-0"
+            },
+            {
+              "answer": "aurai réparé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-reparer-je-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-oublier-il-spec-0",
+          "masteryLevel": 2,
+          "poolId": "futur_anterieur_avoir",
+          "renderedQuestion": "Il n'est pas encore là ? Il {___} notre rendez-vous.\n(He's not here yet? He must have forgotten our appointment.)",
+          "correctAnswer": "aura oublié",
+          "distractors": [
+            {
+              "answer": "aura vu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-voir-elle-0"
+            },
+            {
+              "answer": "aurai réparé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-reparer-je-0"
+            },
+            {
+              "answer": "aurez fait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-faire-vous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-oublier-il-spec-0",
+          "masteryLevel": 4,
+          "poolId": "futur_anterieur_avoir",
+          "renderedQuestion": "Il n'est pas encore là ? Il {___} notre rendez-vous.\n(He's not here yet? He must have forgotten our appointment.)",
+          "correctAnswer": "aura oublié",
+          "distractors": [
+            {
+              "answer": "aura vu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-voir-elle-0"
+            },
+            {
+              "answer": "aurai réparé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-reparer-je-0"
+            },
+            {
+              "answer": "aurez fait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-faire-vous-0"
+            },
+            {
+              "answer": "aurons dit",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-dire-nous-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-arriver-elle-0",
+          "masteryLevel": 0,
+          "poolId": "futur_anterieur_etre",
+          "renderedQuestion": "Dès qu'elle {___} à Paris, elle nous appellera.\n(As soon as she has arrived in Paris, she will call us.)",
+          "correctAnswer": "sera arrivée",
+          "distractors": [
+            {
+              "answer": "se seront couchés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-coucher-ils-pron-0"
+            },
+            {
+              "answer": "se sera endormie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-endormir-elle-pron-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-arriver-elle-0",
+          "masteryLevel": 2,
+          "poolId": "futur_anterieur_etre",
+          "renderedQuestion": "Dès qu'elle {___} à Paris, elle nous appellera.\n(As soon as she has arrived in Paris, she will call us.)",
+          "correctAnswer": "sera arrivée",
+          "distractors": [
+            {
+              "answer": "se seront couchés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-coucher-ils-pron-0"
+            },
+            {
+              "answer": "se sera endormie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-endormir-elle-pron-0"
+            },
+            {
+              "answer": "seras rentré",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-rentrer-tu-etre-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-arriver-elle-0",
+          "masteryLevel": 4,
+          "poolId": "futur_anterieur_etre",
+          "renderedQuestion": "Dès qu'elle {___} à Paris, elle nous appellera.\n(As soon as she has arrived in Paris, she will call us.)",
+          "correctAnswer": "sera arrivée",
+          "distractors": [
+            {
+              "answer": "se seront couchés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-coucher-ils-pron-0"
+            },
+            {
+              "answer": "se sera endormie",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-endormir-elle-pron-0"
+            },
+            {
+              "answer": "seras rentré",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-rentrer-tu-etre-0"
+            },
+            {
+              "answer": "seras allé",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-aller-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-sortir-ils-etre-0",
+          "masteryLevel": 0,
+          "poolId": "futur_anterieur_etre",
+          "renderedQuestion": "Lorsque les élèves {___}, le professeur rangera la salle.\n(Once the students have left, the teacher will tidy the classroom.)",
+          "correctAnswer": "seront sortis",
+          "distractors": [
+            {
+              "answer": "serai parti",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-partir-je-0"
+            },
+            {
+              "answer": "seront tombés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-tomber-ils-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-sortir-ils-etre-0",
+          "masteryLevel": 2,
+          "poolId": "futur_anterieur_etre",
+          "renderedQuestion": "Lorsque les élèves {___}, le professeur rangera la salle.\n(Once the students have left, the teacher will tidy the classroom.)",
+          "correctAnswer": "seront sortis",
+          "distractors": [
+            {
+              "answer": "serai parti",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-partir-je-0"
+            },
+            {
+              "answer": "seront tombés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-tomber-ils-0"
+            },
+            {
+              "answer": "sera arrivée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-arriver-elle-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-fut-ant-sortir-ils-etre-0",
+          "masteryLevel": 4,
+          "poolId": "futur_anterieur_etre",
+          "renderedQuestion": "Lorsque les élèves {___}, le professeur rangera la salle.\n(Once the students have left, the teacher will tidy the classroom.)",
+          "correctAnswer": "seront sortis",
+          "distractors": [
+            {
+              "answer": "serai parti",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-partir-je-0"
+            },
+            {
+              "answer": "seront tombés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-tomber-ils-0"
+            },
+            {
+              "answer": "sera arrivée",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-arriver-elle-0"
+            },
+            {
+              "answer": "se seront couchés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-fut-ant-coucher-ils-pron-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-003",
+          "masteryLevel": 0,
+          "poolId": "subordonnees_subj_avancees",
+          "renderedQuestion": "Ils sont partis en courant {___}.\n(They ran off for fear that it might be too late.)",
+          "correctAnswer": "de crainte qu'il ne soit trop tard",
+          "distractors": [
+            {
+              "answer": "avant qu'elle ne parte en vacances",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-013"
+            },
+            {
+              "answer": "pourvu qu'il fasse beau",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-006"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-003",
+          "masteryLevel": 2,
+          "poolId": "subordonnees_subj_avancees",
+          "renderedQuestion": "Ils sont partis en courant {___}.\n(They ran off for fear that it might be too late.)",
+          "correctAnswer": "de crainte qu'il ne soit trop tard",
+          "distractors": [
+            {
+              "answer": "avant qu'elle ne parte en vacances",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-013"
+            },
+            {
+              "answer": "pourvu qu'il fasse beau",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-006"
+            },
+            {
+              "answer": "avant qu'il ne soit trop tard",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-012"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-003",
+          "masteryLevel": 4,
+          "poolId": "subordonnees_subj_avancees",
+          "renderedQuestion": "Ils sont partis en courant {___}.\n(They ran off for fear that it might be too late.)",
+          "correctAnswer": "de crainte qu'il ne soit trop tard",
+          "distractors": [
+            {
+              "answer": "avant qu'elle ne parte en vacances",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-013"
+            },
+            {
+              "answer": "pourvu qu'il fasse beau",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-006"
+            },
+            {
+              "answer": "avant qu'il ne soit trop tard",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-012"
+            },
+            {
+              "answer": "en attendant qu'il arrive",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-010"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-031",
+          "masteryLevel": 0,
+          "poolId": "subordonnees_subj_avancees",
+          "renderedQuestion": "{___}, nous pourrons partir vendredi.\n(Assuming everything goes well, we will be able to leave on Friday.)",
+          "correctAnswer": "à supposer que tout se passe bien",
+          "distractors": [
+            {
+              "answer": "Pourvu qu'il vienne !",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-007"
+            },
+            {
+              "answer": "avant qu'elle ne parte en vacances",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-013"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-031",
+          "masteryLevel": 2,
+          "poolId": "subordonnees_subj_avancees",
+          "renderedQuestion": "{___}, nous pourrons partir vendredi.\n(Assuming everything goes well, we will be able to leave on Friday.)",
+          "correctAnswer": "à supposer que tout se passe bien",
+          "distractors": [
+            {
+              "answer": "Pourvu qu'il vienne !",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-007"
+            },
+            {
+              "answer": "avant qu'elle ne parte en vacances",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-013"
+            },
+            {
+              "answer": "pourvu qu'il fasse beau",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-006"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-031",
+          "masteryLevel": 4,
+          "poolId": "subordonnees_subj_avancees",
+          "renderedQuestion": "{___}, nous pourrons partir vendredi.\n(Assuming everything goes well, we will be able to leave on Friday.)",
+          "correctAnswer": "à supposer que tout se passe bien",
+          "distractors": [
+            {
+              "answer": "Pourvu qu'il vienne !",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-007"
+            },
+            {
+              "answer": "avant qu'elle ne parte en vacances",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-013"
+            },
+            {
+              "answer": "pourvu qu'il fasse beau",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-006"
+            },
+            {
+              "answer": "pourvu que les participants soient motivés",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-032"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-015",
+          "masteryLevel": 0,
+          "poolId": "opinion_negative_subj",
+          "renderedQuestion": "Personnellement, {___} de partir maintenant.\n(Personally, I don't think that leaving now is a good idea.)",
+          "correctAnswer": "je ne pense pas que ce soit une bonne idée",
+          "distractors": [
+            {
+              "answer": "je ne dis pas que ce soit impossible",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-020"
+            },
+            {
+              "answer": "je ne trouve pas que ce film soit si intéressant",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-021"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-015",
+          "masteryLevel": 2,
+          "poolId": "opinion_negative_subj",
+          "renderedQuestion": "Personnellement, {___} de partir maintenant.\n(Personally, I don't think that leaving now is a good idea.)",
+          "correctAnswer": "je ne pense pas que ce soit une bonne idée",
+          "distractors": [
+            {
+              "answer": "je ne dis pas que ce soit impossible",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-020"
+            },
+            {
+              "answer": "je ne trouve pas que ce film soit si intéressant",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-021"
+            },
+            {
+              "answer": "je ne crois pas qu'il puisse réussir",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-016"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-015",
+          "masteryLevel": 4,
+          "poolId": "opinion_negative_subj",
+          "renderedQuestion": "Personnellement, {___} de partir maintenant.\n(Personally, I don't think that leaving now is a good idea.)",
+          "correctAnswer": "je ne pense pas que ce soit une bonne idée",
+          "distractors": [
+            {
+              "answer": "je ne dis pas que ce soit impossible",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-020"
+            },
+            {
+              "answer": "je ne trouve pas que ce film soit si intéressant",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-021"
+            },
+            {
+              "answer": "je ne crois pas qu'il puisse réussir",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-016"
+            },
+            {
+              "answer": "je ne pense pas qu'il soit prêt",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-014"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-020",
+          "masteryLevel": 0,
+          "poolId": "opinion_negative_subj",
+          "renderedQuestion": "{___}, mais ça va prendre beaucoup de temps.\n(I'm not saying it's impossible, but it will take a lot of time.)",
+          "correctAnswer": "je ne dis pas que ce soit impossible",
+          "distractors": [
+            {
+              "answer": "je ne crois pas qu'elle ait raison",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-017"
+            },
+            {
+              "answer": "je ne suis pas sûr(e) que ce soit la meilleure solution",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-019"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-020",
+          "masteryLevel": 2,
+          "poolId": "opinion_negative_subj",
+          "renderedQuestion": "{___}, mais ça va prendre beaucoup de temps.\n(I'm not saying it's impossible, but it will take a lot of time.)",
+          "correctAnswer": "je ne dis pas que ce soit impossible",
+          "distractors": [
+            {
+              "answer": "je ne crois pas qu'elle ait raison",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-017"
+            },
+            {
+              "answer": "je ne suis pas sûr(e) que ce soit la meilleure solution",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-019"
+            },
+            {
+              "answer": "je ne suis pas sûr(e) qu'il vienne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-018"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-020",
+          "masteryLevel": 4,
+          "poolId": "opinion_negative_subj",
+          "renderedQuestion": "{___}, mais ça va prendre beaucoup de temps.\n(I'm not saying it's impossible, but it will take a lot of time.)",
+          "correctAnswer": "je ne dis pas que ce soit impossible",
+          "distractors": [
+            {
+              "answer": "je ne crois pas qu'elle ait raison",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-017"
+            },
+            {
+              "answer": "je ne suis pas sûr(e) que ce soit la meilleure solution",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-019"
+            },
+            {
+              "answer": "je ne suis pas sûr(e) qu'il vienne",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-018"
+            },
+            {
+              "answer": "je ne trouve pas que ce film soit si intéressant",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-021"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-022",
+          "masteryLevel": 0,
+          "poolId": "hypothese_attenuee",
+          "renderedQuestion": "Prends ton parapluie {___}.\n(Take your umbrella in case it rains.)",
+          "correctAnswer": "au cas où il pleuvrait",
+          "distractors": [
+            {
+              "answer": "si jamais vous avez besoin d'aide",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-028"
+            },
+            {
+              "answer": "si jamais tu changes d'avis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-026"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-022",
+          "masteryLevel": 2,
+          "poolId": "hypothese_attenuee",
+          "renderedQuestion": "Prends ton parapluie {___}.\n(Take your umbrella in case it rains.)",
+          "correctAnswer": "au cas où il pleuvrait",
+          "distractors": [
+            {
+              "answer": "si jamais vous avez besoin d'aide",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-028"
+            },
+            {
+              "answer": "si jamais tu changes d'avis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-026"
+            },
+            {
+              "answer": "comme si elle n'avait rien entendu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-030"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-022",
+          "masteryLevel": 4,
+          "poolId": "hypothese_attenuee",
+          "renderedQuestion": "Prends ton parapluie {___}.\n(Take your umbrella in case it rains.)",
+          "correctAnswer": "au cas où il pleuvrait",
+          "distractors": [
+            {
+              "answer": "si jamais vous avez besoin d'aide",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-028"
+            },
+            {
+              "answer": "si jamais tu changes d'avis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-026"
+            },
+            {
+              "answer": "comme si elle n'avait rien entendu",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-030"
+            },
+            {
+              "answer": "Il fait comme s'il ne savait pas.",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-029"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-029",
+          "masteryLevel": 0,
+          "poolId": "hypothese_attenuee",
+          "renderedQuestion": "{___}\n(He acts as if he didn't know.)",
+          "correctAnswer": "Il fait comme s'il ne savait pas.",
+          "distractors": [
+            {
+              "answer": "si jamais tu changes d'avis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-026"
+            },
+            {
+              "answer": "si jamais il revenait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-027"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-029",
+          "masteryLevel": 2,
+          "poolId": "hypothese_attenuee",
+          "renderedQuestion": "{___}\n(He acts as if he didn't know.)",
+          "correctAnswer": "Il fait comme s'il ne savait pas.",
+          "distractors": [
+            {
+              "answer": "si jamais tu changes d'avis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-026"
+            },
+            {
+              "answer": "si jamais il revenait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-027"
+            },
+            {
+              "answer": "au cas où l'avion aurait du retard",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-034"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "fr-gram-b2-subord-029",
+          "masteryLevel": 4,
+          "poolId": "hypothese_attenuee",
+          "renderedQuestion": "{___}\n(He acts as if he didn't know.)",
+          "correctAnswer": "Il fait comme s'il ne savait pas.",
+          "distractors": [
+            {
+              "answer": "si jamais tu changes d'avis",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-026"
+            },
+            {
+              "answer": "si jamais il revenait",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-027"
+            },
+            {
+              "answer": "au cas où l'avion aurait du retard",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-034"
+            },
+            {
+              "answer": "au cas où il y aurait un problème",
+              "source": "similar_difficulty",
+              "factId": "fr-gram-b2-subord-024"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

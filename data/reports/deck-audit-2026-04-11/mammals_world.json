@@ -1,0 +1,4656 @@
+{
+  "timestamp": "2026-04-11T02:00:29.519Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 153,
+  "totalFails": 0,
+  "totalWarns": 55,
+  "decks": [
+    {
+      "deckId": "mammals_world",
+      "deckName": "Mammals of the World",
+      "deckClass": "knowledge",
+      "totalFacts": 170,
+      "totalChecks": 153,
+      "failCount": 0,
+      "warnCount": 55,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 45
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 4
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 2
+        },
+        "all_pool_fill": {
+          "fail": 0,
+          "warn": 4
+        }
+      },
+      "factResults": [
+        {
+          "factId": "mamm_0_wolf_howl",
+          "masteryLevel": 0,
+          "poolId": "stats_medium",
+          "renderedQuestion": "Over what area can a gray wolf howl be heard under optimal conditions?",
+          "correctAnswer": "Up to 130 km2",
+          "distractors": [
+            {
+              "answer": "Embryonic diapause",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_kangaroo_diapause"
+            },
+            {
+              "answer": "At least 93%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_tiger_range"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_wolf_howl",
+          "masteryLevel": 2,
+          "poolId": "stats_medium",
+          "renderedQuestion": "Over what area can a gray wolf howl be heard under optimal conditions?",
+          "correctAnswer": "Up to 130 km2",
+          "distractors": [
+            {
+              "answer": "Embryonic diapause",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_kangaroo_diapause"
+            },
+            {
+              "answer": "At least 93%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_tiger_range"
+            },
+            {
+              "answer": "~20 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_lion_rest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"~20 hours\" has 2 format features different from correct \"Up to 130 km2\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_0_wolf_howl",
+          "masteryLevel": 4,
+          "poolId": "stats_medium",
+          "renderedQuestion": "Over what area can a gray wolf howl be heard under optimal conditions?",
+          "correctAnswer": "Up to 130 km2",
+          "distractors": [
+            {
+              "answer": "Embryonic diapause",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_kangaroo_diapause"
+            },
+            {
+              "answer": "At least 93%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_tiger_range"
+            },
+            {
+              "answer": "~20 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_lion_rest"
+            },
+            {
+              "answer": "Up to 7 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_humpback_song"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"~20 hours\" has 2 format features different from correct \"Up to 130 km2\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_0_giraffe_tongue",
+          "masteryLevel": 0,
+          "poolId": "stats_short",
+          "renderedQuestion": "How long is a giraffe tongue?",
+          "correctAnswer": "~45 cm",
+          "distractors": [
+            {
+              "answer": "5-10 cm",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_polarbear_fat"
+            },
+            {
+              "answer": "40,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_platypus_electro"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"40,000\" has 4 format features different from correct \"~45 cm\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_0_giraffe_tongue",
+          "masteryLevel": 2,
+          "poolId": "stats_short",
+          "renderedQuestion": "How long is a giraffe tongue?",
+          "correctAnswer": "~45 cm",
+          "distractors": [
+            {
+              "answer": "5-10 cm",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_polarbear_fat"
+            },
+            {
+              "answer": "40,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_platypus_electro"
+            },
+            {
+              "answer": "Koala",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_fingerprints"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"40,000\" has 4 format features different from correct \"~45 cm\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_0_giraffe_tongue",
+          "masteryLevel": 4,
+          "poolId": "stats_short",
+          "renderedQuestion": "How long is a giraffe tongue?",
+          "correctAnswer": "~45 cm",
+          "distractors": [
+            {
+              "answer": "5-10 cm",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_polarbear_fat"
+            },
+            {
+              "answer": "40,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_platypus_electro"
+            },
+            {
+              "answer": "Koala",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_fingerprints"
+            },
+            {
+              "answer": "1.23%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_chimp_dna"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"40,000\" has 4 format features different from correct \"~45 cm\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_0_chimp_tooluse",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Jane Goodall first observe chimpanzees using tools at Gombe Stream, Tanzania?",
+          "correctAnswer": "1960",
+          "distractors": [
+            {
+              "answer": "1977",
+              "source": "numerical",
+              "factId": "_numerical_1977"
+            },
+            {
+              "answer": "1949",
+              "source": "numerical",
+              "factId": "_numerical_1949"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_chimp_tooluse",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Jane Goodall first observe chimpanzees using tools at Gombe Stream, Tanzania?",
+          "correctAnswer": "1960",
+          "distractors": [
+            {
+              "answer": "1977",
+              "source": "numerical",
+              "factId": "_numerical_1977"
+            },
+            {
+              "answer": "1949",
+              "source": "numerical",
+              "factId": "_numerical_1949"
+            },
+            {
+              "answer": "1987",
+              "source": "numerical",
+              "factId": "_numerical_1987"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_chimp_tooluse",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Jane Goodall first observe chimpanzees using tools at Gombe Stream, Tanzania?",
+          "correctAnswer": "1960",
+          "distractors": [
+            {
+              "answer": "1977",
+              "source": "numerical",
+              "factId": "_numerical_1977"
+            },
+            {
+              "answer": "1949",
+              "source": "numerical",
+              "factId": "_numerical_1949"
+            },
+            {
+              "answer": "1987",
+              "source": "numerical",
+              "factId": "_numerical_1987"
+            },
+            {
+              "answer": "1939",
+              "source": "numerical",
+              "factId": "_numerical_1939"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_hippo_rank",
+          "masteryLevel": 0,
+          "poolId": "name_long",
+          "renderedQuestion": "The hippopotamus is the third-largest land mammal. Which two animals rank above it?",
+          "correctAnswer": "Elephants and rhinos",
+          "distractors": [
+            {
+              "answer": "Cuvier beaked whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_deepestdive"
+            },
+            {
+              "answer": "Howler monkey (Alouatta)",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_loudest_land"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_hippo_rank",
+          "masteryLevel": 2,
+          "poolId": "name_long",
+          "renderedQuestion": "The hippopotamus is the third-largest land mammal. Which two animals rank above it?",
+          "correctAnswer": "Elephants and rhinos",
+          "distractors": [
+            {
+              "answer": "Cuvier beaked whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_deepestdive"
+            },
+            {
+              "answer": "Howler monkey (Alouatta)",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_loudest_land"
+            },
+            {
+              "answer": "Critically Endangered",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_gorilla_iucn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_hippo_rank",
+          "masteryLevel": 4,
+          "poolId": "name_long",
+          "renderedQuestion": "The hippopotamus is the third-largest land mammal. Which two animals rank above it?",
+          "correctAnswer": "Elephants and rhinos",
+          "distractors": [
+            {
+              "answer": "Cuvier beaked whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_deepestdive"
+            },
+            {
+              "answer": "Howler monkey (Alouatta)",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_loudest_land"
+            },
+            {
+              "answer": "Critically Endangered",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_gorilla_iucn"
+            },
+            {
+              "answer": "Southern elephant seal",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_heaviestseal"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_dolphin_whistle",
+          "masteryLevel": 0,
+          "poolId": "term",
+          "renderedQuestion": "What is the function of a dolphin signature whistle?",
+          "correctAnswer": "It acts as a unique name identifier for each individual",
+          "distractors": [
+            {
+              "answer": "High vulnerability to disease due to low genetic diversity",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_cheetah_genetics"
+            },
+            {
+              "answer": "American Sign Language",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koko_language"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_dolphin_whistle",
+          "masteryLevel": 2,
+          "poolId": "term",
+          "renderedQuestion": "What is the function of a dolphin signature whistle?",
+          "correctAnswer": "It acts as a unique name identifier for each individual",
+          "distractors": [
+            {
+              "answer": "High vulnerability to disease due to low genetic diversity",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_cheetah_genetics"
+            },
+            {
+              "answer": "American Sign Language",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koko_language"
+            },
+            {
+              "answer": "Liver enzymes detoxify eucalyptus phenolics and terpenes",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_diet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_dolphin_whistle",
+          "masteryLevel": 4,
+          "poolId": "term",
+          "renderedQuestion": "What is the function of a dolphin signature whistle?",
+          "correctAnswer": "It acts as a unique name identifier for each individual",
+          "distractors": [
+            {
+              "answer": "High vulnerability to disease due to low genetic diversity",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_cheetah_genetics"
+            },
+            {
+              "answer": "American Sign Language",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koko_language"
+            },
+            {
+              "answer": "Liver enzymes detoxify eucalyptus phenolics and terpenes",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_diet"
+            },
+            {
+              "answer": "Highest jaw compression per bone volume among carnivores",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_wolverine"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_panda_diet",
+          "masteryLevel": 0,
+          "poolId": "name_short",
+          "renderedQuestion": "Despite being classified in order Carnivora, what makes up approximately 99% of a giant panda diet?",
+          "correctAnswer": "Bamboo",
+          "distractors": [
+            {
+              "answer": "Chimpanzees",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_dolphin_eq"
+            },
+            {
+              "answer": "Cube-shaped",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_wombat_poop"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_panda_diet",
+          "masteryLevel": 2,
+          "poolId": "name_short",
+          "renderedQuestion": "Despite being classified in order Carnivora, what makes up approximately 99% of a giant panda diet?",
+          "correctAnswer": "Bamboo",
+          "distractors": [
+            {
+              "answer": "Chimpanzees",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_dolphin_eq"
+            },
+            {
+              "answer": "Cube-shaped",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_wombat_poop"
+            },
+            {
+              "answer": "Etruscan shrew",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_smallestmammal"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_panda_diet",
+          "masteryLevel": 4,
+          "poolId": "name_short",
+          "renderedQuestion": "Despite being classified in order Carnivora, what makes up approximately 99% of a giant panda diet?",
+          "correctAnswer": "Bamboo",
+          "distractors": [
+            {
+              "answer": "Chimpanzees",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_dolphin_eq"
+            },
+            {
+              "answer": "Cube-shaped",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_wombat_poop"
+            },
+            {
+              "answer": "Etruscan shrew",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_smallestmammal"
+            },
+            {
+              "answer": "Bowhead whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_longestlived"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 6 vs avg distractor 12.3 — ratio 0.49×"
+            }
+          ]
+        },
+        {
+          "factId": "mamm_0_kangaroo_diapause",
+          "masteryLevel": 0,
+          "poolId": "stats_medium",
+          "renderedQuestion": "What is the term for the red kangaroo ability to pause the development of a new embryo until the current joey leaves the pouch?",
+          "correctAnswer": "Embryonic diapause",
+          "distractors": [
+            {
+              "answer": "At least 93%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_tiger_range"
+            },
+            {
+              "answer": "Up to 5.7 m",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_giraffe_height"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_kangaroo_diapause",
+          "masteryLevel": 2,
+          "poolId": "stats_medium",
+          "renderedQuestion": "What is the term for the red kangaroo ability to pause the development of a new embryo until the current joey leaves the pouch?",
+          "correctAnswer": "Embryonic diapause",
+          "distractors": [
+            {
+              "answer": "At least 93%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_tiger_range"
+            },
+            {
+              "answer": "Up to 5.7 m",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_giraffe_height"
+            },
+            {
+              "answer": "Under 3 seconds",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_cheetah_accel"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_0_kangaroo_diapause",
+          "masteryLevel": 4,
+          "poolId": "stats_medium",
+          "renderedQuestion": "What is the term for the red kangaroo ability to pause the development of a new embryo until the current joey leaves the pouch?",
+          "correctAnswer": "Embryonic diapause",
+          "distractors": [
+            {
+              "answer": "At least 93%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_tiger_range"
+            },
+            {
+              "answer": "Up to 5.7 m",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_giraffe_height"
+            },
+            {
+              "answer": "Under 3 seconds",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_cheetah_accel"
+            },
+            {
+              "answer": "~20 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_lion_rest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"~20 hours\" has 2 format features different from correct \"Embryonic diapause\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_1_rec_wombat_poop",
+          "masteryLevel": 0,
+          "poolId": "name_short",
+          "renderedQuestion": "Wombats are the only animals known to produce droppings in which unusually shaped form?",
+          "correctAnswer": "Cube-shaped",
+          "distractors": [
+            {
+              "answer": "Chiroptera (bats)",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_onlyflier"
+            },
+            {
+              "answer": "Neocortex",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_neocortex"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_wombat_poop",
+          "masteryLevel": 2,
+          "poolId": "name_short",
+          "renderedQuestion": "Wombats are the only animals known to produce droppings in which unusually shaped form?",
+          "correctAnswer": "Cube-shaped",
+          "distractors": [
+            {
+              "answer": "Chiroptera (bats)",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_onlyflier"
+            },
+            {
+              "answer": "Neocortex",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_neocortex"
+            },
+            {
+              "answer": "Virginia opossum",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_northam_marsupial"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_wombat_poop",
+          "masteryLevel": 4,
+          "poolId": "name_short",
+          "renderedQuestion": "Wombats are the only animals known to produce droppings in which unusually shaped form?",
+          "correctAnswer": "Cube-shaped",
+          "distractors": [
+            {
+              "answer": "Chiroptera (bats)",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_onlyflier"
+            },
+            {
+              "answer": "Neocortex",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_neocortex"
+            },
+            {
+              "answer": "Virginia opossum",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_northam_marsupial"
+            },
+            {
+              "answer": "Bumblebee bat",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_smallestbat"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_shrew_metabolism",
+          "masteryLevel": 0,
+          "poolId": "stats_long",
+          "renderedQuestion": "How much must the Etruscan shrew eat daily relative to its body weight to survive?",
+          "correctAnswer": "1.5-2x its own body weight",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "74-63 million years ago",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_primates_origin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_shrew_metabolism",
+          "masteryLevel": 2,
+          "poolId": "stats_long",
+          "renderedQuestion": "How much must the Etruscan shrew eat daily relative to its body weight to survive?",
+          "correctAnswer": "1.5-2x its own body weight",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "74-63 million years ago",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_primates_origin"
+            },
+            {
+              "answer": "Over 140,000 mature individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_bluewhale_population"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_shrew_metabolism",
+          "masteryLevel": 4,
+          "poolId": "stats_long",
+          "renderedQuestion": "How much must the Etruscan shrew eat daily relative to its body weight to survive?",
+          "correctAnswer": "1.5-2x its own body weight",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "74-63 million years ago",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_primates_origin"
+            },
+            {
+              "answer": "Over 140,000 mature individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_bluewhale_population"
+            },
+            {
+              "answer": "Up to 100 individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_capybara_social"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_wolverine",
+          "masteryLevel": 0,
+          "poolId": "term",
+          "renderedQuestion": "Among carnivores, what jaw strength record does the wolverine hold relative to its body size?",
+          "correctAnswer": "Highest jaw compression per bone volume among carnivores",
+          "distractors": [
+            {
+              "answer": "High-molecular-mass hyaluronan and enhanced DNA repair",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakedmolerat_cancer"
+            },
+            {
+              "answer": "Liver enzymes detoxify eucalyptus phenolics and terpenes",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_diet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_wolverine",
+          "masteryLevel": 2,
+          "poolId": "term",
+          "renderedQuestion": "Among carnivores, what jaw strength record does the wolverine hold relative to its body size?",
+          "correctAnswer": "Highest jaw compression per bone volume among carnivores",
+          "distractors": [
+            {
+              "answer": "High-molecular-mass hyaluronan and enhanced DNA repair",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakedmolerat_cancer"
+            },
+            {
+              "answer": "Liver enzymes detoxify eucalyptus phenolics and terpenes",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_diet"
+            },
+            {
+              "answer": "Endangered, with fewer than 2,000 mature individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_grevy_zebra"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_wolverine",
+          "masteryLevel": 4,
+          "poolId": "term",
+          "renderedQuestion": "Among carnivores, what jaw strength record does the wolverine hold relative to its body size?",
+          "correctAnswer": "Highest jaw compression per bone volume among carnivores",
+          "distractors": [
+            {
+              "answer": "High-molecular-mass hyaluronan and enhanced DNA repair",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakedmolerat_cancer"
+            },
+            {
+              "answer": "Liver enzymes detoxify eucalyptus phenolics and terpenes",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_diet"
+            },
+            {
+              "answer": "Endangered, with fewer than 2,000 mature individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_grevy_zebra"
+            },
+            {
+              "answer": "Heart rate halves and breathing becomes barely detectable",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_opossum_thanatosis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_heaviestseal",
+          "masteryLevel": 0,
+          "poolId": "name_long",
+          "renderedQuestion": "which animal species holds the record as the heaviest, with males weighing up to 4,000 kg?",
+          "correctAnswer": "Southern elephant seal",
+          "distractors": [
+            {
+              "answer": "Elephants and rhinos",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_hippo_rank"
+            },
+            {
+              "answer": "Cuvier beaked whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_longestdive"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_heaviestseal",
+          "masteryLevel": 2,
+          "poolId": "name_long",
+          "renderedQuestion": "which animal species holds the record as the heaviest, with males weighing up to 4,000 kg?",
+          "correctAnswer": "Southern elephant seal",
+          "distractors": [
+            {
+              "answer": "Elephants and rhinos",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_hippo_rank"
+            },
+            {
+              "answer": "Cuvier beaked whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_longestdive"
+            },
+            {
+              "answer": "Howler monkey (Alouatta)",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_loudest_land"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_heaviestseal",
+          "masteryLevel": 4,
+          "poolId": "name_long",
+          "renderedQuestion": "which animal species holds the record as the heaviest, with males weighing up to 4,000 kg?",
+          "correctAnswer": "Southern elephant seal",
+          "distractors": [
+            {
+              "answer": "Elephants and rhinos",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_hippo_rank"
+            },
+            {
+              "answer": "Cuvier beaked whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_longestdive"
+            },
+            {
+              "answer": "Howler monkey (Alouatta)",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_loudest_land"
+            },
+            {
+              "answer": "Critically Endangered",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_gorilla_iucn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_platypus_electro",
+          "masteryLevel": 0,
+          "poolId": "stats_short",
+          "renderedQuestion": "How many electroreceptors does a platypus bill contain, enabling it to detect prey with eyes closed?",
+          "correctAnswer": "40,000",
+          "distractors": [
+            {
+              "answer": "236 dB",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_spermwhale_sound"
+            },
+            {
+              "answer": "2 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_elephant_sleep"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"236 dB\" has 3 format features different from correct \"40,000\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_1_rec_platypus_electro",
+          "masteryLevel": 2,
+          "poolId": "stats_short",
+          "renderedQuestion": "How many electroreceptors does a platypus bill contain, enabling it to detect prey with eyes closed?",
+          "correctAnswer": "40,000",
+          "distractors": [
+            {
+              "answer": "236 dB",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_spermwhale_sound"
+            },
+            {
+              "answer": "2 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_elephant_sleep"
+            },
+            {
+              "answer": "~45 cm",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_giraffe_tongue"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"236 dB\" has 3 format features different from correct \"40,000\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_1_rec_platypus_electro",
+          "masteryLevel": 4,
+          "poolId": "stats_short",
+          "renderedQuestion": "How many electroreceptors does a platypus bill contain, enabling it to detect prey with eyes closed?",
+          "correctAnswer": "40,000",
+          "distractors": [
+            {
+              "answer": "236 dB",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_spermwhale_sound"
+            },
+            {
+              "answer": "2 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_elephant_sleep"
+            },
+            {
+              "answer": "~45 cm",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_giraffe_tongue"
+            },
+            {
+              "answer": "500 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_plainszebra_migration"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"236 dB\" has 3 format features different from correct \"40,000\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_1_rec_humpback_song",
+          "masteryLevel": 0,
+          "poolId": "stats_medium",
+          "renderedQuestion": "How long can a humpback whale song last in Hawaiian populations?",
+          "correctAnswer": "Up to 7 hours",
+          "distractors": [
+            {
+              "answer": "~20 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_sleep"
+            },
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 3 format features different from correct \"Up to 7 hours\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_1_rec_humpback_song",
+          "masteryLevel": 2,
+          "poolId": "stats_medium",
+          "renderedQuestion": "How long can a humpback whale song last in Hawaiian populations?",
+          "correctAnswer": "Up to 7 hours",
+          "distractors": [
+            {
+              "answer": "~20 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_sleep"
+            },
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            },
+            {
+              "answer": "Five pairs",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_monotreme_sex_chrom"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 3 format features different from correct \"Up to 7 hours\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_1_rec_humpback_song",
+          "masteryLevel": 4,
+          "poolId": "stats_medium",
+          "renderedQuestion": "How long can a humpback whale song last in Hawaiian populations?",
+          "correctAnswer": "Up to 7 hours",
+          "distractors": [
+            {
+              "answer": "~20 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koala_sleep"
+            },
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            },
+            {
+              "answer": "Five pairs",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_monotreme_sex_chrom"
+            },
+            {
+              "answer": "Embryonic diapause",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_kangaroo_diapause"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 2 options don't match: \"Five pairs\", \"Embryonic diapause\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 3 format features different from correct \"Up to 7 hours\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_1_rec_bluewhale_population",
+          "masteryLevel": 0,
+          "poolId": "stats_long",
+          "renderedQuestion": "Blue whale populations were devastated by commercial whaling. What was the population in 1926 compared to today estimated at 10,000-25,000?",
+          "correctAnswer": "Over 140,000 mature individuals",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_bluewhale_population",
+          "masteryLevel": 2,
+          "poolId": "stats_long",
+          "renderedQuestion": "Blue whale populations were devastated by commercial whaling. What was the population in 1926 compared to today estimated at 10,000-25,000?",
+          "correctAnswer": "Over 140,000 mature individuals",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "1.5-2x its own body weight",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_shrew_metabolism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_bluewhale_population",
+          "masteryLevel": 4,
+          "poolId": "stats_long",
+          "renderedQuestion": "Blue whale populations were devastated by commercial whaling. What was the population in 1926 compared to today estimated at 10,000-25,000?",
+          "correctAnswer": "Over 140,000 mature individuals",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "1.5-2x its own body weight",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_shrew_metabolism"
+            },
+            {
+              "answer": "August 12, 1883, in Amsterdam",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_quagga_last"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_tasdevil_bite",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The Tasmanian devil has the highest relative bite force of any living mammalian carnivore. What is its bite force quotient?",
+          "correctAnswer": "181",
+          "distractors": [
+            {
+              "answer": "210",
+              "source": "numerical",
+              "factId": "_numerical_210"
+            },
+            {
+              "answer": "110",
+              "source": "numerical",
+              "factId": "_numerical_110"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_tasdevil_bite",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The Tasmanian devil has the highest relative bite force of any living mammalian carnivore. What is its bite force quotient?",
+          "correctAnswer": "181",
+          "distractors": [
+            {
+              "answer": "210",
+              "source": "numerical",
+              "factId": "_numerical_210"
+            },
+            {
+              "answer": "110",
+              "source": "numerical",
+              "factId": "_numerical_110"
+            },
+            {
+              "answer": "260",
+              "source": "numerical",
+              "factId": "_numerical_260"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_tasdevil_bite",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The Tasmanian devil has the highest relative bite force of any living mammalian carnivore. What is its bite force quotient?",
+          "correctAnswer": "181",
+          "distractors": [
+            {
+              "answer": "210",
+              "source": "numerical",
+              "factId": "_numerical_210"
+            },
+            {
+              "answer": "110",
+              "source": "numerical",
+              "factId": "_numerical_110"
+            },
+            {
+              "answer": "260",
+              "source": "numerical",
+              "factId": "_numerical_260"
+            },
+            {
+              "answer": "120",
+              "source": "numerical",
+              "factId": "_numerical_120"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_opossum_teeth",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The Virginia opossum has more teeth than any other North American land mammal. How many does it have?",
+          "correctAnswer": "50",
+          "distractors": [
+            {
+              "answer": "58",
+              "source": "numerical",
+              "factId": "_numerical_58"
+            },
+            {
+              "answer": "36",
+              "source": "numerical",
+              "factId": "_numerical_36"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_opossum_teeth",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The Virginia opossum has more teeth than any other North American land mammal. How many does it have?",
+          "correctAnswer": "50",
+          "distractors": [
+            {
+              "answer": "58",
+              "source": "numerical",
+              "factId": "_numerical_58"
+            },
+            {
+              "answer": "36",
+              "source": "numerical",
+              "factId": "_numerical_36"
+            },
+            {
+              "answer": "68",
+              "source": "numerical",
+              "factId": "_numerical_68"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_opossum_teeth",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The Virginia opossum has more teeth than any other North American land mammal. How many does it have?",
+          "correctAnswer": "50",
+          "distractors": [
+            {
+              "answer": "58",
+              "source": "numerical",
+              "factId": "_numerical_58"
+            },
+            {
+              "answer": "36",
+              "source": "numerical",
+              "factId": "_numerical_36"
+            },
+            {
+              "answer": "68",
+              "source": "numerical",
+              "factId": "_numerical_68"
+            },
+            {
+              "answer": "69",
+              "source": "numerical",
+              "factId": "_numerical_69"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_1_rec_eleph_tusk",
+          "masteryLevel": 0,
+          "poolId": "stats_short",
+          "renderedQuestion": "What is the length of the longest recorded elephant tusk?",
+          "correctAnswer": "3.51 m",
+          "distractors": [
+            {
+              "answer": "96%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_blackrhino_decline"
+            },
+            {
+              "answer": "40,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_platypus_electro"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"96%\" has 2 format features different from correct \"3.51 m\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_1_rec_eleph_tusk",
+          "masteryLevel": 2,
+          "poolId": "stats_short",
+          "renderedQuestion": "What is the length of the longest recorded elephant tusk?",
+          "correctAnswer": "3.51 m",
+          "distractors": [
+            {
+              "answer": "96%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_blackrhino_decline"
+            },
+            {
+              "answer": "40,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_platypus_electro"
+            },
+            {
+              "answer": "80-90%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_grizzly_diet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"96%\" has 2 format features different from correct \"3.51 m\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_1_rec_eleph_tusk",
+          "masteryLevel": 4,
+          "poolId": "stats_short",
+          "renderedQuestion": "What is the length of the longest recorded elephant tusk?",
+          "correctAnswer": "3.51 m",
+          "distractors": [
+            {
+              "answer": "96%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_blackrhino_decline"
+            },
+            {
+              "answer": "40,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_platypus_electro"
+            },
+            {
+              "answer": "80-90%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_grizzly_diet"
+            },
+            {
+              "answer": "1.23%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_chimp_dna"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"96%\" has 2 format features different from correct \"3.51 m\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_neocortex",
+          "masteryLevel": 0,
+          "poolId": "name_short",
+          "renderedQuestion": "Which brain region is found in mammals but not in reptiles or birds, associated with higher cognitive functions?",
+          "correctAnswer": "Neocortex",
+          "distractors": [
+            {
+              "answer": "Pakicetus",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_cetacea_origin"
+            },
+            {
+              "answer": "Bowhead whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_longestlived"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_neocortex",
+          "masteryLevel": 2,
+          "poolId": "name_short",
+          "renderedQuestion": "Which brain region is found in mammals but not in reptiles or birds, associated with higher cognitive functions?",
+          "correctAnswer": "Neocortex",
+          "distractors": [
+            {
+              "answer": "Pakicetus",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_cetacea_origin"
+            },
+            {
+              "answer": "Bowhead whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_longestlived"
+            },
+            {
+              "answer": "Central Iran",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_cheetah_range"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_neocortex",
+          "masteryLevel": 4,
+          "poolId": "name_short",
+          "renderedQuestion": "Which brain region is found in mammals but not in reptiles or birds, associated with higher cognitive functions?",
+          "correctAnswer": "Neocortex",
+          "distractors": [
+            {
+              "answer": "Pakicetus",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_cetacea_origin"
+            },
+            {
+              "answer": "Bowhead whale",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_longestlived"
+            },
+            {
+              "answer": "Central Iran",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_cheetah_range"
+            },
+            {
+              "answer": "About one-third",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_bowhead_mouth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_opossum_thanatosis",
+          "masteryLevel": 0,
+          "poolId": "term",
+          "renderedQuestion": "The Virginia opossum playing dead (thanatosis) is involuntary. What happens to its physiology during this state?",
+          "correctAnswer": "Heart rate halves and breathing becomes barely detectable",
+          "distractors": [
+            {
+              "answer": "Its body temperature matches its surrounding environment",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakedmolerat_ecto"
+            },
+            {
+              "answer": "Three middle ear bones (malleus, incus, stapes)",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_ear"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_opossum_thanatosis",
+          "masteryLevel": 2,
+          "poolId": "term",
+          "renderedQuestion": "The Virginia opossum playing dead (thanatosis) is involuntary. What happens to its physiology during this state?",
+          "correctAnswer": "Heart rate halves and breathing becomes barely detectable",
+          "distractors": [
+            {
+              "answer": "Its body temperature matches its surrounding environment",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakedmolerat_ecto"
+            },
+            {
+              "answer": "Three middle ear bones (malleus, incus, stapes)",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_ear"
+            },
+            {
+              "answer": "Great apes (chimpanzees, gorillas, orangutans)",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_greatapes_selfrecog"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_opossum_thanatosis",
+          "masteryLevel": 4,
+          "poolId": "term",
+          "renderedQuestion": "The Virginia opossum playing dead (thanatosis) is involuntary. What happens to its physiology during this state?",
+          "correctAnswer": "Heart rate halves and breathing becomes barely detectable",
+          "distractors": [
+            {
+              "answer": "Its body temperature matches its surrounding environment",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakedmolerat_ecto"
+            },
+            {
+              "answer": "Three middle ear bones (malleus, incus, stapes)",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_ear"
+            },
+            {
+              "answer": "Great apes (chimpanzees, gorillas, orangutans)",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_greatapes_selfrecog"
+            },
+            {
+              "answer": "A harpoon head manufactured between 1879 and 1885",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_bowhead_evidence"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_mammal_species",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many mammal species are recognized, according to a 2018 Journal of Mammalogy study?",
+          "correctAnswer": "6495",
+          "distractors": [
+            {
+              "answer": "8500",
+              "source": "numerical",
+              "factId": "_numerical_8500"
+            },
+            {
+              "answer": "4500",
+              "source": "numerical",
+              "factId": "_numerical_4500"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_mammal_species",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many mammal species are recognized, according to a 2018 Journal of Mammalogy study?",
+          "correctAnswer": "6495",
+          "distractors": [
+            {
+              "answer": "8500",
+              "source": "numerical",
+              "factId": "_numerical_8500"
+            },
+            {
+              "answer": "4500",
+              "source": "numerical",
+              "factId": "_numerical_4500"
+            },
+            {
+              "answer": "9500",
+              "source": "numerical",
+              "factId": "_numerical_9500"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_mammal_species",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many mammal species are recognized, according to a 2018 Journal of Mammalogy study?",
+          "correctAnswer": "6495",
+          "distractors": [
+            {
+              "answer": "8500",
+              "source": "numerical",
+              "factId": "_numerical_8500"
+            },
+            {
+              "answer": "4500",
+              "source": "numerical",
+              "factId": "_numerical_4500"
+            },
+            {
+              "answer": "9500",
+              "source": "numerical",
+              "factId": "_numerical_9500"
+            },
+            {
+              "answer": "3900",
+              "source": "numerical",
+              "factId": "_numerical_3900"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_monotreme_count",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many living monotreme species exist today?",
+          "correctAnswer": "5",
+          "distractors": [
+            {
+              "answer": "11",
+              "source": "numerical",
+              "factId": "_numerical_11"
+            },
+            {
+              "answer": "13",
+              "source": "numerical",
+              "factId": "_numerical_13"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_monotreme_count",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many living monotreme species exist today?",
+          "correctAnswer": "5",
+          "distractors": [
+            {
+              "answer": "11",
+              "source": "numerical",
+              "factId": "_numerical_11"
+            },
+            {
+              "answer": "13",
+              "source": "numerical",
+              "factId": "_numerical_13"
+            },
+            {
+              "answer": "1",
+              "source": "numerical",
+              "factId": "_numerical_1"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_monotreme_count",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many living monotreme species exist today?",
+          "correctAnswer": "5",
+          "distractors": [
+            {
+              "answer": "11",
+              "source": "numerical",
+              "factId": "_numerical_11"
+            },
+            {
+              "answer": "13",
+              "source": "numerical",
+              "factId": "_numerical_13"
+            },
+            {
+              "answer": "1",
+              "source": "numerical",
+              "factId": "_numerical_1"
+            },
+            {
+              "answer": "15",
+              "source": "numerical",
+              "factId": "_numerical_15"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_monotreme_sex_chrom",
+          "masteryLevel": 0,
+          "poolId": "stats_medium",
+          "renderedQuestion": "Unlike other mammals that have one pair of sex chromosomes, how many pairs do monotremes have?",
+          "correctAnswer": "Five pairs",
+          "distractors": [
+            {
+              "answer": "6-11 individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_vaquita_pop"
+            },
+            {
+              "answer": "14-16 years",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_echidna_lifespan"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"6-11 individuals\" has 2 format features different from correct \"Five pairs\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_monotreme_sex_chrom",
+          "masteryLevel": 2,
+          "poolId": "stats_medium",
+          "renderedQuestion": "Unlike other mammals that have one pair of sex chromosomes, how many pairs do monotremes have?",
+          "correctAnswer": "Five pairs",
+          "distractors": [
+            {
+              "answer": "6-11 individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_vaquita_pop"
+            },
+            {
+              "answer": "14-16 years",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_echidna_lifespan"
+            },
+            {
+              "answer": "42,108 (about 28%)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_iucn_scale"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"6-11 individuals\" has 2 format features different from correct \"Five pairs\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_monotreme_sex_chrom",
+          "masteryLevel": 4,
+          "poolId": "stats_medium",
+          "renderedQuestion": "Unlike other mammals that have one pair of sex chromosomes, how many pairs do monotremes have?",
+          "correctAnswer": "Five pairs",
+          "distractors": [
+            {
+              "answer": "6-11 individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_vaquita_pop"
+            },
+            {
+              "answer": "14-16 years",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_echidna_lifespan"
+            },
+            {
+              "answer": "42,108 (about 28%)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_iucn_scale"
+            },
+            {
+              "answer": "Up to 7 hours",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_humpback_song"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"6-11 individuals\" has 2 format features different from correct \"Five pairs\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_capybara_social",
+          "masteryLevel": 0,
+          "poolId": "stats_long",
+          "renderedQuestion": "Capybara groups can swell to enormous size during the dry season. What is the maximum group size?",
+          "correctAnswer": "Up to 100 individuals",
+          "distractors": [
+            {
+              "answer": "1,000-2,000 individuals",
+              "source": "pool_fill",
+              "factId": "mamm_4_cons_sea_otter_recovery"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_capybara_social",
+          "masteryLevel": 2,
+          "poolId": "stats_long",
+          "renderedQuestion": "Capybara groups can swell to enormous size during the dry season. What is the maximum group size?",
+          "correctAnswer": "Up to 100 individuals",
+          "distractors": [
+            {
+              "answer": "1,000-2,000 individuals",
+              "source": "pool_fill",
+              "factId": "mamm_4_cons_sea_otter_recovery"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_capybara_social",
+          "masteryLevel": 4,
+          "poolId": "stats_long",
+          "renderedQuestion": "Capybara groups can swell to enormous size during the dry season. What is the maximum group size?",
+          "correctAnswer": "Up to 100 individuals",
+          "distractors": [
+            {
+              "answer": "1,000-2,000 individuals",
+              "source": "pool_fill",
+              "factId": "mamm_4_cons_sea_otter_recovery"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "1.5-2x its own body weight",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_shrew_metabolism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_primates_origin",
+          "masteryLevel": 0,
+          "poolId": "stats_long",
+          "renderedQuestion": "Approximately when did primates first evolve?",
+          "correctAnswer": "74-63 million years ago",
+          "distractors": [
+            {
+              "answer": "~125-160 million years ago",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_marsupial_split"
+            },
+            {
+              "answer": "~55 million years ago",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_hippo_cetacean_split"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_primates_origin",
+          "masteryLevel": 2,
+          "poolId": "stats_long",
+          "renderedQuestion": "Approximately when did primates first evolve?",
+          "correctAnswer": "74-63 million years ago",
+          "distractors": [
+            {
+              "answer": "~125-160 million years ago",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_marsupial_split"
+            },
+            {
+              "answer": "~55 million years ago",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_hippo_cetacean_split"
+            },
+            {
+              "answer": "1.5-2x its own body weight",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_shrew_metabolism"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_primates_origin",
+          "masteryLevel": 4,
+          "poolId": "stats_long",
+          "renderedQuestion": "Approximately when did primates first evolve?",
+          "correctAnswer": "74-63 million years ago",
+          "distractors": [
+            {
+              "answer": "~125-160 million years ago",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_marsupial_split"
+            },
+            {
+              "answer": "~55 million years ago",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_hippo_cetacean_split"
+            },
+            {
+              "answer": "1.5-2x its own body weight",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_shrew_metabolism"
+            },
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_rodent_dominant",
+          "masteryLevel": 0,
+          "poolId": "stats_short",
+          "renderedQuestion": "Rodents are the most species-rich mammal order. Approximately what percentage of all mammal species are rodents?",
+          "correctAnswer": "~40%",
+          "distractors": [
+            {
+              "answer": "66 kg",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_capybara_size"
+            },
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"66 kg\" has 3 format features different from correct \"~40%\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_rodent_dominant",
+          "masteryLevel": 2,
+          "poolId": "stats_short",
+          "renderedQuestion": "Rodents are the most species-rich mammal order. Approximately what percentage of all mammal species are rodents?",
+          "correctAnswer": "~40%",
+          "distractors": [
+            {
+              "answer": "66 kg",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_capybara_size"
+            },
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            },
+            {
+              "answer": "~20%",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_batspecies"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"66 kg\" has 3 format features different from correct \"~40%\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_rodent_dominant",
+          "masteryLevel": 4,
+          "poolId": "stats_short",
+          "renderedQuestion": "Rodents are the most species-rich mammal order. Approximately what percentage of all mammal species are rodents?",
+          "correctAnswer": "~40%",
+          "distractors": [
+            {
+              "answer": "66 kg",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_capybara_size"
+            },
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            },
+            {
+              "answer": "~20%",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_batspecies"
+            },
+            {
+              "answer": "~107,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_seaotter_recovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"66 kg\" has 3 format features different from correct \"~40%\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_cetacea_origin",
+          "masteryLevel": 0,
+          "poolId": "name_short",
+          "renderedQuestion": "What is the name of the early cetacean ancestor, a wolf-sized land mammal from Pakistan, that shows whales descended from land animals?",
+          "correctAnswer": "Pakicetus",
+          "distractors": [
+            {
+              "answer": "Central Iran",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_cheetah_range"
+            },
+            {
+              "answer": "Plains zebra",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_quagga_subspecies"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_cetacea_origin",
+          "masteryLevel": 2,
+          "poolId": "name_short",
+          "renderedQuestion": "What is the name of the early cetacean ancestor, a wolf-sized land mammal from Pakistan, that shows whales descended from land animals?",
+          "correctAnswer": "Pakicetus",
+          "distractors": [
+            {
+              "answer": "Central Iran",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_cheetah_range"
+            },
+            {
+              "answer": "Plains zebra",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_quagga_subspecies"
+            },
+            {
+              "answer": "Hair or fur",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_hair"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_cetacea_origin",
+          "masteryLevel": 4,
+          "poolId": "name_short",
+          "renderedQuestion": "What is the name of the early cetacean ancestor, a wolf-sized land mammal from Pakistan, that shows whales descended from land animals?",
+          "correctAnswer": "Pakicetus",
+          "distractors": [
+            {
+              "answer": "Central Iran",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_cheetah_range"
+            },
+            {
+              "answer": "Plains zebra",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_quagga_subspecies"
+            },
+            {
+              "answer": "Hair or fur",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_hair"
+            },
+            {
+              "answer": "Virginia opossum",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_northam_marsupial"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_capybara_aquatic",
+          "masteryLevel": 0,
+          "poolId": "stats_medium",
+          "renderedQuestion": "How long can a capybara hold its breath underwater?",
+          "correctAnswer": "Up to 5 minutes",
+          "distractors": [
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            },
+            {
+              "answer": "Embryonic diapause",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_kangaroo_diapause"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 3 format features different from correct \"Up to 5 minutes\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_capybara_aquatic",
+          "masteryLevel": 2,
+          "poolId": "stats_medium",
+          "renderedQuestion": "How long can a capybara hold its breath underwater?",
+          "correctAnswer": "Up to 5 minutes",
+          "distractors": [
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            },
+            {
+              "answer": "Embryonic diapause",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_kangaroo_diapause"
+            },
+            {
+              "answer": "At least 93%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_tiger_range"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 3 format features different from correct \"Up to 5 minutes\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_capybara_aquatic",
+          "masteryLevel": 4,
+          "poolId": "stats_medium",
+          "renderedQuestion": "How long can a capybara hold its breath underwater?",
+          "correctAnswer": "Up to 5 minutes",
+          "distractors": [
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            },
+            {
+              "answer": "Embryonic diapause",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_kangaroo_diapause"
+            },
+            {
+              "answer": "At least 93%",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_tiger_range"
+            },
+            {
+              "answer": "Five pairs",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_monotreme_sex_chrom"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 2 options don't match: \"Embryonic diapause\", \"Five pairs\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 3 format features different from correct \"Up to 5 minutes\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_2_tax_opossum_rabies",
+          "masteryLevel": 0,
+          "poolId": "term",
+          "renderedQuestion": "Why are Virginia opossums naturally resistant to rabies?",
+          "correctAnswer": "Their low body temperature prevents rabies from reproducing",
+          "distractors": [
+            {
+              "answer": "American Sign Language",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koko_language"
+            },
+            {
+              "answer": "Its body temperature matches its surrounding environment",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakedmolerat_ecto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_opossum_rabies",
+          "masteryLevel": 2,
+          "poolId": "term",
+          "renderedQuestion": "Why are Virginia opossums naturally resistant to rabies?",
+          "correctAnswer": "Their low body temperature prevents rabies from reproducing",
+          "distractors": [
+            {
+              "answer": "American Sign Language",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koko_language"
+            },
+            {
+              "answer": "Its body temperature matches its surrounding environment",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakedmolerat_ecto"
+            },
+            {
+              "answer": "Whales and dolphins (cetaceans)",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_hippo_relatives"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_opossum_rabies",
+          "masteryLevel": 4,
+          "poolId": "term",
+          "renderedQuestion": "Why are Virginia opossums naturally resistant to rabies?",
+          "correctAnswer": "Their low body temperature prevents rabies from reproducing",
+          "distractors": [
+            {
+              "answer": "American Sign Language",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_koko_language"
+            },
+            {
+              "answer": "Its body temperature matches its surrounding environment",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakedmolerat_ecto"
+            },
+            {
+              "answer": "Whales and dolphins (cetaceans)",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_hippo_relatives"
+            },
+            {
+              "answer": "It acts as a unique name identifier for each individual",
+              "source": "similar_difficulty",
+              "factId": "mamm_0_dolphin_whistle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_greatapes_selfrecog",
+          "masteryLevel": 0,
+          "poolId": "term",
+          "renderedQuestion": "Which group of primates is considered most intelligent, defined by passing the mirror self-recognition test, using tools, and demonstrating cultural learning?",
+          "correctAnswer": "Great apes (chimpanzees, gorillas, orangutans)",
+          "distractors": [
+            {
+              "answer": "Dirt does not fall into the pouch when digging",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_wombat_pouch"
+            },
+            {
+              "answer": "Devil Facial Tumour Disease (DFTD)",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_tasmanian_dftd"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_greatapes_selfrecog",
+          "masteryLevel": 2,
+          "poolId": "term",
+          "renderedQuestion": "Which group of primates is considered most intelligent, defined by passing the mirror self-recognition test, using tools, and demonstrating cultural learning?",
+          "correctAnswer": "Great apes (chimpanzees, gorillas, orangutans)",
+          "distractors": [
+            {
+              "answer": "Dirt does not fall into the pouch when digging",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_wombat_pouch"
+            },
+            {
+              "answer": "Devil Facial Tumour Disease (DFTD)",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_tasmanian_dftd"
+            },
+            {
+              "answer": "Heart rate halves and breathing becomes barely detectable",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_opossum_thanatosis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_2_tax_greatapes_selfrecog",
+          "masteryLevel": 4,
+          "poolId": "term",
+          "renderedQuestion": "Which group of primates is considered most intelligent, defined by passing the mirror self-recognition test, using tools, and demonstrating cultural learning?",
+          "correctAnswer": "Great apes (chimpanzees, gorillas, orangutans)",
+          "distractors": [
+            {
+              "answer": "Dirt does not fall into the pouch when digging",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_wombat_pouch"
+            },
+            {
+              "answer": "Devil Facial Tumour Disease (DFTD)",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_tasmanian_dftd"
+            },
+            {
+              "answer": "Heart rate halves and breathing becomes barely detectable",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_opossum_thanatosis"
+            },
+            {
+              "answer": "Only the queen reproduces; all others are sterile workers",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_nakemolerat_eusocial"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_chimp_tooltype",
+          "masteryLevel": 0,
+          "poolId": "behavior_descriptions_long",
+          "renderedQuestion": "What type of tool use by chimpanzees did Jane Goodall observe at Gombe Stream in 1960?",
+          "correctAnswer": "Stripping leaves from twigs to fish termites from mounds",
+          "distractors": [
+            {
+              "answer": "They drop rocks onto the fences to short-circuit them",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_elephant_tool"
+            },
+            {
+              "answer": "Dig water holes to access underground water",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_eleph_water"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_chimp_tooltype",
+          "masteryLevel": 2,
+          "poolId": "behavior_descriptions_long",
+          "renderedQuestion": "What type of tool use by chimpanzees did Jane Goodall observe at Gombe Stream in 1960?",
+          "correctAnswer": "Stripping leaves from twigs to fish termites from mounds",
+          "distractors": [
+            {
+              "answer": "They drop rocks onto the fences to short-circuit them",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_elephant_tool"
+            },
+            {
+              "answer": "Dig water holes to access underground water",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_eleph_water"
+            },
+            {
+              "answer": "Fruit when available; also leaves, bark, and invertebrates",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_gorilla_diet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_chimp_tooltype",
+          "masteryLevel": 4,
+          "poolId": "behavior_descriptions_long",
+          "renderedQuestion": "What type of tool use by chimpanzees did Jane Goodall observe at Gombe Stream in 1960?",
+          "correctAnswer": "Stripping leaves from twigs to fish termites from mounds",
+          "distractors": [
+            {
+              "answer": "They drop rocks onto the fences to short-circuit them",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_elephant_tool"
+            },
+            {
+              "answer": "Dig water holes to access underground water",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_eleph_water"
+            },
+            {
+              "answer": "Fruit when available; also leaves, bark, and invertebrates",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_gorilla_diet"
+            },
+            {
+              "answer": "Pull two rope ends simultaneously to obtain a food reward",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_elephant_coop"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_chimp_cultural",
+          "masteryLevel": 0,
+          "poolId": "behavior_descriptions_short",
+          "renderedQuestion": "Chimpanzee tool-use techniques being transmitted across generations represents which important concept in animal behavior?",
+          "correctAnswer": "Cultural transmission",
+          "distractors": [
+            {
+              "answer": "Trophic cascade (or ecology of fear)",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolves_yellowstone"
+            },
+            {
+              "answer": "Swarm intelligence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wildebeest_swarm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_chimp_cultural",
+          "masteryLevel": 2,
+          "poolId": "behavior_descriptions_short",
+          "renderedQuestion": "Chimpanzee tool-use techniques being transmitted across generations represents which important concept in animal behavior?",
+          "correctAnswer": "Cultural transmission",
+          "distractors": [
+            {
+              "answer": "Trophic cascade (or ecology of fear)",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolves_yellowstone"
+            },
+            {
+              "answer": "Swarm intelligence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wildebeest_swarm"
+            },
+            {
+              "answer": "Cultural evolution in animal song",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_humpback_shared"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_chimp_cultural",
+          "masteryLevel": 4,
+          "poolId": "behavior_descriptions_short",
+          "renderedQuestion": "Chimpanzee tool-use techniques being transmitted across generations represents which important concept in animal behavior?",
+          "correctAnswer": "Cultural transmission",
+          "distractors": [
+            {
+              "answer": "Trophic cascade (or ecology of fear)",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolves_yellowstone"
+            },
+            {
+              "answer": "Swarm intelligence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wildebeest_swarm"
+            },
+            {
+              "answer": "Cultural evolution in animal song",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_humpback_shared"
+            },
+            {
+              "answer": "They freeze in place",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_elephant_infrasound_freeze"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_seaotter_tool",
+          "masteryLevel": 0,
+          "poolId": "behavior_descriptions_long",
+          "renderedQuestion": "How do sea otters use rocks as tools to obtain food?",
+          "correctAnswer": "Place a rock on their chest and pound shellfish against it",
+          "distractors": [
+            {
+              "answer": "Subunits, units, subphrases, phrases, themes",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_humpback_structure"
+            },
+            {
+              "answer": "Dig water holes to access underground water",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_eleph_water"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_seaotter_tool",
+          "masteryLevel": 2,
+          "poolId": "behavior_descriptions_long",
+          "renderedQuestion": "How do sea otters use rocks as tools to obtain food?",
+          "correctAnswer": "Place a rock on their chest and pound shellfish against it",
+          "distractors": [
+            {
+              "answer": "Subunits, units, subphrases, phrases, themes",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_humpback_structure"
+            },
+            {
+              "answer": "Dig water holes to access underground water",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_eleph_water"
+            },
+            {
+              "answer": "Investigate bones, stand vigil, cover bodies with branches",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_elephant_mourning"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_seaotter_tool",
+          "masteryLevel": 4,
+          "poolId": "behavior_descriptions_long",
+          "renderedQuestion": "How do sea otters use rocks as tools to obtain food?",
+          "correctAnswer": "Place a rock on their chest and pound shellfish against it",
+          "distractors": [
+            {
+              "answer": "Subunits, units, subphrases, phrases, themes",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_humpback_structure"
+            },
+            {
+              "answer": "Dig water holes to access underground water",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_eleph_water"
+            },
+            {
+              "answer": "Investigate bones, stand vigil, cover bodies with branches",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_elephant_mourning"
+            },
+            {
+              "answer": "Mothers teach the behavior specifically to daughters",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_dolphin_cultural"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_seaotter_keystone",
+          "masteryLevel": 0,
+          "poolId": "name_short",
+          "renderedQuestion": "Sea otters are a keystone species because they control which prey population, preventing destruction of kelp forests?",
+          "correctAnswer": "Sea urchins",
+          "distractors": [
+            {
+              "answer": "Hair or fur",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_hair"
+            },
+            {
+              "answer": "Plains zebra",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_quagga_subspecies"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_seaotter_keystone",
+          "masteryLevel": 2,
+          "poolId": "name_short",
+          "renderedQuestion": "Sea otters are a keystone species because they control which prey population, preventing destruction of kelp forests?",
+          "correctAnswer": "Sea urchins",
+          "distractors": [
+            {
+              "answer": "Hair or fur",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_hair"
+            },
+            {
+              "answer": "Plains zebra",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_quagga_subspecies"
+            },
+            {
+              "answer": "Malaysia",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_sumatranrhino"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_seaotter_keystone",
+          "masteryLevel": 4,
+          "poolId": "name_short",
+          "renderedQuestion": "Sea otters are a keystone species because they control which prey population, preventing destruction of kelp forests?",
+          "correctAnswer": "Sea urchins",
+          "distractors": [
+            {
+              "answer": "Hair or fur",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_hair"
+            },
+            {
+              "answer": "Plains zebra",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_quagga_subspecies"
+            },
+            {
+              "answer": "Malaysia",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_sumatranrhino"
+            },
+            {
+              "answer": "Central Iran",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_cheetah_range"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_gorilla_groups",
+          "masteryLevel": 0,
+          "poolId": "behavior_descriptions_short",
+          "renderedQuestion": "Western gorilla groups are led by a silverback. What typically happens to adult females in terms of group membership?",
+          "correctAnswer": "Females transfer between groups",
+          "distractors": [
+            {
+              "answer": "Cultural evolution in animal song",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_humpback_shared"
+            },
+            {
+              "answer": "Swarm intelligence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wildebeest_swarm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_gorilla_groups",
+          "masteryLevel": 2,
+          "poolId": "behavior_descriptions_short",
+          "renderedQuestion": "Western gorilla groups are led by a silverback. What typically happens to adult females in terms of group membership?",
+          "correctAnswer": "Females transfer between groups",
+          "distractors": [
+            {
+              "answer": "Cultural evolution in animal song",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_humpback_shared"
+            },
+            {
+              "answer": "Swarm intelligence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wildebeest_swarm"
+            },
+            {
+              "answer": "Trophic cascade (or ecology of fear)",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolves_yellowstone"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_gorilla_groups",
+          "masteryLevel": 4,
+          "poolId": "behavior_descriptions_short",
+          "renderedQuestion": "Western gorilla groups are led by a silverback. What typically happens to adult females in terms of group membership?",
+          "correctAnswer": "Females transfer between groups",
+          "distractors": [
+            {
+              "answer": "Cultural evolution in animal song",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_humpback_shared"
+            },
+            {
+              "answer": "Swarm intelligence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wildebeest_swarm"
+            },
+            {
+              "answer": "Trophic cascade (or ecology of fear)",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolves_yellowstone"
+            },
+            {
+              "answer": "Females (related lionesses)",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_lion_pride"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_meerkat_sentinel",
+          "masteryLevel": 0,
+          "poolId": "behavior_descriptions_long",
+          "renderedQuestion": "Meerkats have a sentinel system where designated individuals watch for threats. What makes their alarm calls particularly sophisticated?",
+          "correctAnswer": "Different calls for aerial vs. terrestrial predators",
+          "distractors": [
+            {
+              "answer": "Mothers teach the behavior specifically to daughters",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_dolphin_cultural"
+            },
+            {
+              "answer": "Females form matriarchal pods; males are mostly solitary",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_spermwhale_social"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_meerkat_sentinel",
+          "masteryLevel": 2,
+          "poolId": "behavior_descriptions_long",
+          "renderedQuestion": "Meerkats have a sentinel system where designated individuals watch for threats. What makes their alarm calls particularly sophisticated?",
+          "correctAnswer": "Different calls for aerial vs. terrestrial predators",
+          "distractors": [
+            {
+              "answer": "Mothers teach the behavior specifically to daughters",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_dolphin_cultural"
+            },
+            {
+              "answer": "Females form matriarchal pods; males are mostly solitary",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_spermwhale_social"
+            },
+            {
+              "answer": "To protect their rostrum from abrasion in the sandy seafloor",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_dolphin_sponge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_meerkat_sentinel",
+          "masteryLevel": 4,
+          "poolId": "behavior_descriptions_long",
+          "renderedQuestion": "Meerkats have a sentinel system where designated individuals watch for threats. What makes their alarm calls particularly sophisticated?",
+          "correctAnswer": "Different calls for aerial vs. terrestrial predators",
+          "distractors": [
+            {
+              "answer": "Mothers teach the behavior specifically to daughters",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_dolphin_cultural"
+            },
+            {
+              "answer": "Females form matriarchal pods; males are mostly solitary",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_spermwhale_social"
+            },
+            {
+              "answer": "To protect their rostrum from abrasion in the sandy seafloor",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_dolphin_sponge"
+            },
+            {
+              "answer": "They drop rocks onto the fences to short-circuit them",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_elephant_tool"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_tiger_solitary",
+          "masteryLevel": 0,
+          "poolId": "stats_long",
+          "renderedQuestion": "Tigers are mostly solitary and territorial. Which parent raises tiger cubs, and for how long?",
+          "correctAnswer": "Females raise cubs alone for ~2 years",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_tiger_solitary",
+          "masteryLevel": 2,
+          "poolId": "stats_long",
+          "renderedQuestion": "Tigers are mostly solitary and territorial. Which parent raises tiger cubs, and for how long?",
+          "correctAnswer": "Females raise cubs alone for ~2 years",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "~334 species; ~70% in Australia",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_marsupial_species"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_tiger_solitary",
+          "masteryLevel": 4,
+          "poolId": "stats_long",
+          "renderedQuestion": "Tigers are mostly solitary and territorial. Which parent raises tiger cubs, and for how long?",
+          "correctAnswer": "Females raise cubs alone for ~2 years",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "~334 species; ~70% in Australia",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_marsupial_species"
+            },
+            {
+              "answer": "~90 species: 75 toothed whales and 15 baleen whales",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_cetacea_species"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_3_beh_wolf_dispersal",
+          "masteryLevel": 0,
+          "poolId": "stats_medium",
+          "renderedQuestion": "How long do gray wolf offspring typically remain with their family pack before dispersing?",
+          "correctAnswer": "10-54 months",
+          "distractors": [
+            {
+              "answer": "22 months",
+              "source": "pool_fill",
+              "factId": "mamm_0_elephant_gestation"
+            },
+            {
+              "answer": "5-7 months",
+              "source": "pool_fill",
+              "factId": "mamm_0_grizzly_hibernate"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "mamm_3_beh_wolf_dispersal",
+          "masteryLevel": 2,
+          "poolId": "stats_medium",
+          "renderedQuestion": "How long do gray wolf offspring typically remain with their family pack before dispersing?",
+          "correctAnswer": "10-54 months",
+          "distractors": [
+            {
+              "answer": "22 months",
+              "source": "pool_fill",
+              "factId": "mamm_0_elephant_gestation"
+            },
+            {
+              "answer": "5-7 months",
+              "source": "pool_fill",
+              "factId": "mamm_0_grizzly_hibernate"
+            },
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 2 format features different from correct \"10-54 months\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_3_beh_wolf_dispersal",
+          "masteryLevel": 4,
+          "poolId": "stats_medium",
+          "renderedQuestion": "How long do gray wolf offspring typically remain with their family pack before dispersing?",
+          "correctAnswer": "10-54 months",
+          "distractors": [
+            {
+              "answer": "22 months",
+              "source": "pool_fill",
+              "factId": "mamm_0_elephant_gestation"
+            },
+            {
+              "answer": "5-7 months",
+              "source": "pool_fill",
+              "factId": "mamm_0_grizzly_hibernate"
+            },
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            },
+            {
+              "answer": "Five pairs",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_monotreme_sex_chrom"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 2 format features different from correct \"10-54 months\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_3_beh_koko_iq",
+          "masteryLevel": 0,
+          "poolId": "stats_short",
+          "renderedQuestion": "Koko the gorilla scored in what IQ range on various tests during her life?",
+          "correctAnswer": "70-90",
+          "distractors": [
+            {
+              "answer": "59 days",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_protection"
+            },
+            {
+              "answer": "~107,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_seaotter_recovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"59 days\" has 2 format features different from correct \"70-90\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_3_beh_koko_iq",
+          "masteryLevel": 2,
+          "poolId": "stats_short",
+          "renderedQuestion": "Koko the gorilla scored in what IQ range on various tests during her life?",
+          "correctAnswer": "70-90",
+          "distractors": [
+            {
+              "answer": "59 days",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_protection"
+            },
+            {
+              "answer": "~107,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_seaotter_recovery"
+            },
+            {
+              "answer": "~40%",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_rodent_dominant"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"59 days\" has 2 format features different from correct \"70-90\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_3_beh_koko_iq",
+          "masteryLevel": 4,
+          "poolId": "stats_short",
+          "renderedQuestion": "Koko the gorilla scored in what IQ range on various tests during her life?",
+          "correctAnswer": "70-90",
+          "distractors": [
+            {
+              "answer": "59 days",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_protection"
+            },
+            {
+              "answer": "~107,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_seaotter_recovery"
+            },
+            {
+              "answer": "~40%",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_rodent_dominant"
+            },
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"59 days\" has 2 format features different from correct \"70-90\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_iucn_categories",
+          "masteryLevel": 0,
+          "poolId": "name_long",
+          "renderedQuestion": "On the IUCN Red List, what does the classification CR stand for?",
+          "correctAnswer": "Critically Endangered",
+          "distractors": [
+            {
+              "answer": "Cuvier beaked whale",
+              "source": "pool_fill",
+              "factId": "mamm_1_rec_deepestdive"
+            },
+            {
+              "answer": "Howler monkey (Alouatta)",
+              "source": "pool_fill",
+              "factId": "mamm_1_rec_loudest_land"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_iucn_categories",
+          "masteryLevel": 2,
+          "poolId": "name_long",
+          "renderedQuestion": "On the IUCN Red List, what does the classification CR stand for?",
+          "correctAnswer": "Critically Endangered",
+          "distractors": [
+            {
+              "answer": "Cuvier beaked whale",
+              "source": "pool_fill",
+              "factId": "mamm_1_rec_deepestdive"
+            },
+            {
+              "answer": "Howler monkey (Alouatta)",
+              "source": "pool_fill",
+              "factId": "mamm_1_rec_loudest_land"
+            },
+            {
+              "answer": "Southern elephant seal",
+              "source": "pool_fill",
+              "factId": "mamm_1_rec_heaviestseal"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_iucn_categories",
+          "masteryLevel": 4,
+          "poolId": "name_long",
+          "renderedQuestion": "On the IUCN Red List, what does the classification CR stand for?",
+          "correctAnswer": "Critically Endangered",
+          "distractors": [
+            {
+              "answer": "Cuvier beaked whale",
+              "source": "pool_fill",
+              "factId": "mamm_1_rec_deepestdive"
+            },
+            {
+              "answer": "Howler monkey (Alouatta)",
+              "source": "pool_fill",
+              "factId": "mamm_1_rec_loudest_land"
+            },
+            {
+              "answer": "Southern elephant seal",
+              "source": "pool_fill",
+              "factId": "mamm_1_rec_heaviestseal"
+            },
+            {
+              "answer": "Elephants and rhinos",
+              "source": "pool_fill",
+              "factId": "mamm_0_hippo_rank"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_iucn_ew",
+          "masteryLevel": 0,
+          "poolId": "conservation_terms",
+          "renderedQuestion": "What does the IUCN category EW (Extinct in the Wild) mean?",
+          "correctAnswer": "Survives only in captivity or outside its native range",
+          "distractors": [
+            {
+              "answer": "Drowning in illegal gillnets targeting totoaba fish",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_vaquita_cause"
+            },
+            {
+              "answer": "Elk avoided valley floors and thickets due to predation fear",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_yellowstone_elk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_iucn_ew",
+          "masteryLevel": 2,
+          "poolId": "conservation_terms",
+          "renderedQuestion": "What does the IUCN category EW (Extinct in the Wild) mean?",
+          "correctAnswer": "Survives only in captivity or outside its native range",
+          "distractors": [
+            {
+              "answer": "Drowning in illegal gillnets targeting totoaba fish",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_vaquita_cause"
+            },
+            {
+              "answer": "Elk avoided valley floors and thickets due to predation fear",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_yellowstone_elk"
+            },
+            {
+              "answer": "Bounty hunting (government-sponsored killing rewards)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_cause"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_iucn_ew",
+          "masteryLevel": 4,
+          "poolId": "conservation_terms",
+          "renderedQuestion": "What does the IUCN category EW (Extinct in the Wild) mean?",
+          "correctAnswer": "Survives only in captivity or outside its native range",
+          "distractors": [
+            {
+              "answer": "Drowning in illegal gillnets targeting totoaba fish",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_vaquita_cause"
+            },
+            {
+              "answer": "Elk avoided valley floors and thickets due to predation fear",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_yellowstone_elk"
+            },
+            {
+              "answer": "Bounty hunting (government-sponsored killing rewards)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_cause"
+            },
+            {
+              "answer": "They have shorter vocal folds that do not produce a roar",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_snow_leopard_roar"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_ivory_poaching",
+          "masteryLevel": 0,
+          "poolId": "stats_medium",
+          "renderedQuestion": "At the peak of ivory poaching in the 1980s, approximately how many elephants were killed annually?",
+          "correctAnswer": "~75,000 per year",
+          "distractors": [
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            },
+            {
+              "answer": "Five pairs",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_monotreme_sex_chrom"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 3 format features different from correct \"~75,000 per year\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_ivory_poaching",
+          "masteryLevel": 2,
+          "poolId": "stats_medium",
+          "renderedQuestion": "At the peak of ivory poaching in the 1980s, approximately how many elephants were killed annually?",
+          "correctAnswer": "~75,000 per year",
+          "distractors": [
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            },
+            {
+              "answer": "Five pairs",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_monotreme_sex_chrom"
+            },
+            {
+              "answer": "170,000-300,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_chimp_pop"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 3 format features different from correct \"~75,000 per year\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_ivory_poaching",
+          "masteryLevel": 4,
+          "poolId": "stats_medium",
+          "renderedQuestion": "At the peak of ivory poaching in the 1980s, approximately how many elephants were killed annually?",
+          "correctAnswer": "~75,000 per year",
+          "distractors": [
+            {
+              "answer": "22,000-31,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_polar_bear_pop"
+            },
+            {
+              "answer": "Five pairs",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_monotreme_sex_chrom"
+            },
+            {
+              "answer": "170,000-300,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_chimp_pop"
+            },
+            {
+              "answer": "September 7, 1936",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_last"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"22,000-31,000\" has 3 format features different from correct \"~75,000 per year\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_thylacine_protection",
+          "masteryLevel": 0,
+          "poolId": "stats_short",
+          "renderedQuestion": "How many days before the last thylacine died was legal protection finally granted to the species?",
+          "correctAnswer": "59 days",
+          "distractors": [
+            {
+              "answer": "Over 80%",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_tasmanian_dftd_spread"
+            },
+            {
+              "answer": "70-90",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_koko_iq"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Over 80%\" has 2 format features different from correct \"59 days\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_thylacine_protection",
+          "masteryLevel": 2,
+          "poolId": "stats_short",
+          "renderedQuestion": "How many days before the last thylacine died was legal protection finally granted to the species?",
+          "correctAnswer": "59 days",
+          "distractors": [
+            {
+              "answer": "Over 80%",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_tasmanian_dftd_spread"
+            },
+            {
+              "answer": "70-90",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_koko_iq"
+            },
+            {
+              "answer": "None",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_javanrhino_captive"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Over 80%\" has 2 format features different from correct \"59 days\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_thylacine_protection",
+          "masteryLevel": 4,
+          "poolId": "stats_short",
+          "renderedQuestion": "How many days before the last thylacine died was legal protection finally granted to the species?",
+          "correctAnswer": "59 days",
+          "distractors": [
+            {
+              "answer": "Over 80%",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_tasmanian_dftd_spread"
+            },
+            {
+              "answer": "70-90",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_koko_iq"
+            },
+            {
+              "answer": "None",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_javanrhino_captive"
+            },
+            {
+              "answer": "~40%",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_rodent_dominant"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Over 80%\" has 2 format features different from correct \"59 days\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_amur_leopard",
+          "masteryLevel": 0,
+          "poolId": "stats_long",
+          "renderedQuestion": "Approximately how many Amur leopards remain in the wild — making it one of the rarest big cats?",
+          "correctAnswer": "~128-130 sub-adult and adult individuals",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_amur_leopard",
+          "masteryLevel": 2,
+          "poolId": "stats_long",
+          "renderedQuestion": "Approximately how many Amur leopards remain in the wild — making it one of the rarest big cats?",
+          "correctAnswer": "~128-130 sub-adult and adult individuals",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "Up to 100 individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_capybara_social"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_amur_leopard",
+          "masteryLevel": 4,
+          "poolId": "stats_long",
+          "renderedQuestion": "Approximately how many Amur leopards remain in the wild — making it one of the rarest big cats?",
+          "correctAnswer": "~128-130 sub-adult and adult individuals",
+          "distractors": [
+            {
+              "answer": "~10x longer than expected",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_nakedmolerat_age"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "Up to 100 individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_capybara_social"
+            },
+            {
+              "answer": "Over 140,000 mature individuals",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_bluewhale_population"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_quagga_subspecies",
+          "masteryLevel": 0,
+          "poolId": "name_short",
+          "renderedQuestion": "A 2005 genetic study confirmed the quagga was not a separate species but rather a subspecies of which living animal?",
+          "correctAnswer": "Plains zebra",
+          "distractors": [
+            {
+              "answer": "Virginia opossum",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_northam_marsupial"
+            },
+            {
+              "answer": "Hair or fur",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_hair"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_quagga_subspecies",
+          "masteryLevel": 2,
+          "poolId": "name_short",
+          "renderedQuestion": "A 2005 genetic study confirmed the quagga was not a separate species but rather a subspecies of which living animal?",
+          "correctAnswer": "Plains zebra",
+          "distractors": [
+            {
+              "answer": "Virginia opossum",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_northam_marsupial"
+            },
+            {
+              "answer": "Hair or fur",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_hair"
+            },
+            {
+              "answer": "Sea urchins",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_seaotter_keystone"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_quagga_subspecies",
+          "masteryLevel": 4,
+          "poolId": "name_short",
+          "renderedQuestion": "A 2005 genetic study confirmed the quagga was not a separate species but rather a subspecies of which living animal?",
+          "correctAnswer": "Plains zebra",
+          "distractors": [
+            {
+              "answer": "Virginia opossum",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_northam_marsupial"
+            },
+            {
+              "answer": "Hair or fur",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_mammal_hair"
+            },
+            {
+              "answer": "Sea urchins",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_seaotter_keystone"
+            },
+            {
+              "answer": "Central Iran",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_cheetah_range"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_humpback_now",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "After whaling bans, humpback whale populations have recovered. What is the current worldwide population estimate?",
+          "correctAnswer": "135000",
+          "distractors": [
+            {
+              "answer": "202,000",
+              "source": "numerical",
+              "factId": "_numerical_202,000"
+            },
+            {
+              "answer": "103,000",
+              "source": "numerical",
+              "factId": "_numerical_103,000"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_humpback_now",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "After whaling bans, humpback whale populations have recovered. What is the current worldwide population estimate?",
+          "correctAnswer": "135000",
+          "distractors": [
+            {
+              "answer": "202,000",
+              "source": "numerical",
+              "factId": "_numerical_202,000"
+            },
+            {
+              "answer": "103,000",
+              "source": "numerical",
+              "factId": "_numerical_103,000"
+            },
+            {
+              "answer": "166,000",
+              "source": "numerical",
+              "factId": "_numerical_166,000"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_humpback_now",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "After whaling bans, humpback whale populations have recovered. What is the current worldwide population estimate?",
+          "correctAnswer": "135000",
+          "distractors": [
+            {
+              "answer": "202,000",
+              "source": "numerical",
+              "factId": "_numerical_202,000"
+            },
+            {
+              "answer": "103,000",
+              "source": "numerical",
+              "factId": "_numerical_103,000"
+            },
+            {
+              "answer": "166,000",
+              "source": "numerical",
+              "factId": "_numerical_166,000"
+            },
+            {
+              "answer": "93,000",
+              "source": "numerical",
+              "factId": "_numerical_93,000"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_arabian_oryx",
+          "masteryLevel": 0,
+          "poolId": "conservation_terms",
+          "renderedQuestion": "The Arabian oryx became the first animal to revert from which IUCN status back to Vulnerable in 2011?",
+          "correctAnswer": "Extinct in the Wild",
+          "distractors": [
+            {
+              "answer": "Ujung Kulon National Park, western Java, Indonesia",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_javanrhino"
+            },
+            {
+              "answer": "Survives only in captivity or outside its native range",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_iucn_ew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 19 vs avg distractor 52.0 — ratio 0.37×"
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_arabian_oryx",
+          "masteryLevel": 2,
+          "poolId": "conservation_terms",
+          "renderedQuestion": "The Arabian oryx became the first animal to revert from which IUCN status back to Vulnerable in 2011?",
+          "correctAnswer": "Extinct in the Wild",
+          "distractors": [
+            {
+              "answer": "Ujung Kulon National Park, western Java, Indonesia",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_javanrhino"
+            },
+            {
+              "answer": "Survives only in captivity or outside its native range",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_iucn_ew"
+            },
+            {
+              "answer": "Elk avoided valley floors and thickets due to predation fear",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_yellowstone_elk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 19 vs avg distractor 54.7 — ratio 0.35×"
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_arabian_oryx",
+          "masteryLevel": 4,
+          "poolId": "conservation_terms",
+          "renderedQuestion": "The Arabian oryx became the first animal to revert from which IUCN status back to Vulnerable in 2011?",
+          "correctAnswer": "Extinct in the Wild",
+          "distractors": [
+            {
+              "answer": "Ujung Kulon National Park, western Java, Indonesia",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_javanrhino"
+            },
+            {
+              "answer": "Survives only in captivity or outside its native range",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_iucn_ew"
+            },
+            {
+              "answer": "Elk avoided valley floors and thickets due to predation fear",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_yellowstone_elk"
+            },
+            {
+              "answer": "Bounty hunting (government-sponsored killing rewards)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_cause"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 19 vs avg distractor 54.3 — ratio 0.35×"
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_javanrhino_captive",
+          "masteryLevel": 0,
+          "poolId": "stats_short",
+          "renderedQuestion": "How many Javan rhinoceroses are held in captivity?",
+          "correctAnswer": "None",
+          "distractors": [
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            },
+            {
+              "answer": "70-90",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_koko_iq"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"~25 km\" has 3 format features different from correct \"None\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_javanrhino_captive",
+          "masteryLevel": 2,
+          "poolId": "stats_short",
+          "renderedQuestion": "How many Javan rhinoceroses are held in captivity?",
+          "correctAnswer": "None",
+          "distractors": [
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            },
+            {
+              "answer": "70-90",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_koko_iq"
+            },
+            {
+              "answer": "59 days",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_protection"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"~25 km\" has 3 format features different from correct \"None\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_javanrhino_captive",
+          "masteryLevel": 4,
+          "poolId": "stats_short",
+          "renderedQuestion": "How many Javan rhinoceroses are held in captivity?",
+          "correctAnswer": "None",
+          "distractors": [
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            },
+            {
+              "answer": "70-90",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_koko_iq"
+            },
+            {
+              "answer": "59 days",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_protection"
+            },
+            {
+              "answer": "~91 kg",
+              "source": "similar_difficulty",
+              "factId": "mamm_1_rec_redkang_size"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"~25 km\" has 3 format features different from correct \"None\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_sea_otter_recovery",
+          "masteryLevel": 0,
+          "poolId": "stats_long",
+          "renderedQuestion": "Sea otter populations were nearly wiped out by the fur trade. What was their estimated minimum population before recovery?",
+          "correctAnswer": "1,000-2,000 individuals",
+          "distractors": [
+            {
+              "answer": "Up to 100 individuals",
+              "source": "pool_fill",
+              "factId": "mamm_2_tax_capybara_social"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_sea_otter_recovery",
+          "masteryLevel": 2,
+          "poolId": "stats_long",
+          "renderedQuestion": "Sea otter populations were nearly wiped out by the fur trade. What was their estimated minimum population before recovery?",
+          "correctAnswer": "1,000-2,000 individuals",
+          "distractors": [
+            {
+              "answer": "Up to 100 individuals",
+              "source": "pool_fill",
+              "factId": "mamm_2_tax_capybara_social"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "66 wolves (from Canada Mackenzie Valley)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_yellowstone_wolves"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_sea_otter_recovery",
+          "masteryLevel": 4,
+          "poolId": "stats_long",
+          "renderedQuestion": "Sea otter populations were nearly wiped out by the fur trade. What was their estimated minimum population before recovery?",
+          "correctAnswer": "1,000-2,000 individuals",
+          "distractors": [
+            {
+              "answer": "Up to 100 individuals",
+              "source": "pool_fill",
+              "factId": "mamm_2_tax_capybara_social"
+            },
+            {
+              "answer": "19% die by same-species violence",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_meerkat_violence"
+            },
+            {
+              "answer": "66 wolves (from Canada Mackenzie Valley)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_yellowstone_wolves"
+            },
+            {
+              "answer": "~10,500 square miles (about 3x the size of Yellowstone)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_panda_park"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"~10,500 square miles (about 3x the size \" has 2 format features different from correct \"1,000-2,000 individuals\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_humpback_recovery",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Humpback whale populations were severely depleted by commercial whaling. What was the estimated population in the 1960s before bans?",
+          "correctAnswer": "5000",
+          "distractors": [
+            {
+              "answer": "6400",
+              "source": "numerical",
+              "factId": "_numerical_6400"
+            },
+            {
+              "answer": "4100",
+              "source": "numerical",
+              "factId": "_numerical_4100"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_humpback_recovery",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Humpback whale populations were severely depleted by commercial whaling. What was the estimated population in the 1960s before bans?",
+          "correctAnswer": "5000",
+          "distractors": [
+            {
+              "answer": "6400",
+              "source": "numerical",
+              "factId": "_numerical_6400"
+            },
+            {
+              "answer": "4100",
+              "source": "numerical",
+              "factId": "_numerical_4100"
+            },
+            {
+              "answer": "6100",
+              "source": "numerical",
+              "factId": "_numerical_6100"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_humpback_recovery",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Humpback whale populations were severely depleted by commercial whaling. What was the estimated population in the 1960s before bans?",
+          "correctAnswer": "5000",
+          "distractors": [
+            {
+              "answer": "6400",
+              "source": "numerical",
+              "factId": "_numerical_6400"
+            },
+            {
+              "answer": "4100",
+              "source": "numerical",
+              "factId": "_numerical_4100"
+            },
+            {
+              "answer": "6100",
+              "source": "numerical",
+              "factId": "_numerical_6100"
+            },
+            {
+              "answer": "3200",
+              "source": "numerical",
+              "factId": "_numerical_3200"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "mamm_4_cons_tasmanian_dftd_spread",
+          "masteryLevel": 0,
+          "poolId": "stats_short",
+          "renderedQuestion": "By approximately what percentage did Devil Facial Tumour Disease reduce the Tasmanian devil population since the mid-1990s?",
+          "correctAnswer": "Over 80%",
+          "distractors": [
+            {
+              "answer": "59 days",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_protection"
+            },
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"59 days\" has 2 format features different from correct \"Over 80%\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_tasmanian_dftd_spread",
+          "masteryLevel": 2,
+          "poolId": "stats_short",
+          "renderedQuestion": "By approximately what percentage did Devil Facial Tumour Disease reduce the Tasmanian devil population since the mid-1990s?",
+          "correctAnswer": "Over 80%",
+          "distractors": [
+            {
+              "answer": "59 days",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_protection"
+            },
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            },
+            {
+              "answer": "~107,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_seaotter_recovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"59 days\" has 2 format features different from correct \"Over 80%\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_tasmanian_dftd_spread",
+          "masteryLevel": 4,
+          "poolId": "stats_short",
+          "renderedQuestion": "By approximately what percentage did Devil Facial Tumour Disease reduce the Tasmanian devil population since the mid-1990s?",
+          "correctAnswer": "Over 80%",
+          "distractors": [
+            {
+              "answer": "59 days",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_protection"
+            },
+            {
+              "answer": "~25 km",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_daily"
+            },
+            {
+              "answer": "~107,000",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_seaotter_recovery"
+            },
+            {
+              "answer": "70-90",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_koko_iq"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"59 days\" has 2 format features different from correct \"Over 80%\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_polar_bear_pop",
+          "masteryLevel": 0,
+          "poolId": "stats_medium",
+          "renderedQuestion": "What is the estimated global polar bear population?",
+          "correctAnswer": "22,000-31,000",
+          "distractors": [
+            {
+              "answer": "42,108 (about 28%)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_iucn_scale"
+            },
+            {
+              "answer": "10-54 months",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_dispersal"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"10-54 months\" has 2 format features different from correct \"22,000-31,000\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_polar_bear_pop",
+          "masteryLevel": 2,
+          "poolId": "stats_medium",
+          "renderedQuestion": "What is the estimated global polar bear population?",
+          "correctAnswer": "22,000-31,000",
+          "distractors": [
+            {
+              "answer": "42,108 (about 28%)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_iucn_scale"
+            },
+            {
+              "answer": "10-54 months",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_dispersal"
+            },
+            {
+              "answer": "Up to 5 minutes",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_capybara_aquatic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"10-54 months\" has 2 format features different from correct \"22,000-31,000\""
+            }
+          ]
+        },
+        {
+          "factId": "mamm_4_cons_polar_bear_pop",
+          "masteryLevel": 4,
+          "poolId": "stats_medium",
+          "renderedQuestion": "What is the estimated global polar bear population?",
+          "correctAnswer": "22,000-31,000",
+          "distractors": [
+            {
+              "answer": "42,108 (about 28%)",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_iucn_scale"
+            },
+            {
+              "answer": "10-54 months",
+              "source": "similar_difficulty",
+              "factId": "mamm_3_beh_wolf_dispersal"
+            },
+            {
+              "answer": "Up to 5 minutes",
+              "source": "similar_difficulty",
+              "factId": "mamm_2_tax_capybara_aquatic"
+            },
+            {
+              "answer": "September 7, 1936",
+              "source": "similar_difficulty",
+              "factId": "mamm_4_cons_thylacine_last"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"10-54 months\" has 2 format features different from correct \"22,000-31,000\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

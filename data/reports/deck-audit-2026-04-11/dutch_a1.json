@@ -1,0 +1,4300 @@
+{
+  "timestamp": "2026-04-11T02:00:12.650Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 11,
+  "decks": [
+    {
+      "deckId": "dutch_a1",
+      "deckName": "Dutch A1 Vocabulary",
+      "deckClass": "vocab",
+      "totalFacts": 161,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 11,
+      "issuesByType": {
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 3
+        },
+        "pos_mismatch": {
+          "fail": 0,
+          "warn": 8
+        }
+      },
+      "factResults": [
+        {
+          "factId": "nl-cefr-121",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'strand' mean?",
+          "correctAnswer": "beach, strand",
+          "distractors": [
+            {
+              "answer": "train",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-124"
+            },
+            {
+              "answer": "school",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-111"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-121",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'beach, strand' in Dutch?",
+          "correctAnswer": "strand",
+          "distractors": [
+            {
+              "answer": "trein",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-124"
+            },
+            {
+              "answer": "school",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-111"
+            },
+            {
+              "answer": "mens",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-80"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-121",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'beach, strand' in Dutch?",
+          "correctAnswer": "strand",
+          "distractors": [
+            {
+              "answer": "trein",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-124"
+            },
+            {
+              "answer": "school",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-111"
+            },
+            {
+              "answer": "mens",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-80"
+            },
+            {
+              "answer": "boot",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-15"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-37",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'geld' mean?",
+          "correctAnswer": "money",
+          "distractors": [
+            {
+              "answer": "soft",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "friend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-137"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-37",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'money' in Dutch?",
+          "correctAnswer": "geld",
+          "distractors": [
+            {
+              "answer": "zacht",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "vriend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-137"
+            },
+            {
+              "answer": "keer",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-55"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-37",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'geld'?",
+          "correctAnswer": "money",
+          "distractors": [
+            {
+              "answer": "soft",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "friend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-137"
+            },
+            {
+              "answer": "time",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-55"
+            },
+            {
+              "answer": "name",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-91"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-25",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'denken' mean?",
+          "correctAnswer": "to think",
+          "distractors": [
+            {
+              "answer": "to read",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-74"
+            },
+            {
+              "answer": "to want, desire",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-147"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-25",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to think' in Dutch?",
+          "correctAnswer": "denken",
+          "distractors": [
+            {
+              "answer": "lezen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-74"
+            },
+            {
+              "answer": "willen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-147"
+            },
+            {
+              "answer": "kunnen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-66"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-25",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'denken'?",
+          "correctAnswer": "to think",
+          "distractors": [
+            {
+              "answer": "to read",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-74"
+            },
+            {
+              "answer": "to want, desire",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-147"
+            },
+            {
+              "answer": "to be able to, can",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-66"
+            },
+            {
+              "answer": "to drink",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-28"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-139",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vroeg' mean?",
+          "correctAnswer": "early",
+          "distractors": [
+            {
+              "answer": "together",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-110"
+            },
+            {
+              "answer": "always",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-3"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-139",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'early' in Dutch?",
+          "correctAnswer": "vroeg",
+          "distractors": [
+            {
+              "answer": "samen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-110"
+            },
+            {
+              "answer": "altijd",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-3"
+            },
+            {
+              "answer": "graag",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-40"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-139",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'vroeg'?",
+          "correctAnswer": "early",
+          "distractors": [
+            {
+              "answer": "together",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-110"
+            },
+            {
+              "answer": "always",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-3"
+            },
+            {
+              "answer": "gladly, willingly",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-40"
+            },
+            {
+              "answer": "backwards, back",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-122"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-13",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'blij' mean?",
+          "correctAnswer": "happy",
+          "distractors": [
+            {
+              "answer": "Mrs., madam",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-82"
+            },
+            {
+              "answer": "family",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-32"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Mrs., madam\" has 2 format features different from correct \"happy\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-13",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'happy' in Dutch?",
+          "correctAnswer": "blij",
+          "distractors": [
+            {
+              "answer": "mevrouw",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-82"
+            },
+            {
+              "answer": "familie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-32"
+            },
+            {
+              "answer": "beet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-8"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-13",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'happy' in Dutch?",
+          "correctAnswer": "blij",
+          "distractors": [
+            {
+              "answer": "mevrouw",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-82"
+            },
+            {
+              "answer": "familie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-32"
+            },
+            {
+              "answer": "beet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-8"
+            },
+            {
+              "answer": "nieuw",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-93"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-61",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'klein' mean?",
+          "correctAnswer": "small, little",
+          "distractors": [
+            {
+              "answer": "boat",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-15"
+            },
+            {
+              "answer": "cloth",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-60"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-61",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'klein' mean?",
+          "correctAnswer": "small, little",
+          "distractors": [
+            {
+              "answer": "boat",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-15"
+            },
+            {
+              "answer": "cloth",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-60"
+            },
+            {
+              "answer": "stick",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-120"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-61",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'small, little' in Dutch?",
+          "correctAnswer": "klein",
+          "distractors": [
+            {
+              "answer": "boot",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-15"
+            },
+            {
+              "answer": "kleed",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-60"
+            },
+            {
+              "answer": "stok",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-120"
+            },
+            {
+              "answer": "moeder",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-133",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vinden' mean?",
+          "correctAnswer": "to find",
+          "distractors": [
+            {
+              "answer": "to know",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-56"
+            },
+            {
+              "answer": "to sit",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-156"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-133",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to find' in Dutch?",
+          "correctAnswer": "vinden",
+          "distractors": [
+            {
+              "answer": "kennen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-56"
+            },
+            {
+              "answer": "zitten",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-156"
+            },
+            {
+              "answer": "betalen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-11"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-133",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'vinden'?",
+          "correctAnswer": "to find",
+          "distractors": [
+            {
+              "answer": "to know",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-56"
+            },
+            {
+              "answer": "to sit",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-156"
+            },
+            {
+              "answer": "to pay",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-11"
+            },
+            {
+              "answer": "to grab, to take",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-104"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-103",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'ouder' mean?",
+          "correctAnswer": "parent",
+          "distractors": [
+            {
+              "answer": "mother",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            },
+            {
+              "answer": "must, to have to",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-86"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-103",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'parent' in Dutch?",
+          "correctAnswer": "ouder",
+          "distractors": [
+            {
+              "answer": "moeder",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            },
+            {
+              "answer": "moeten",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-86"
+            },
+            {
+              "answer": "rood",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-109"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-103",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'parent' in Dutch?",
+          "correctAnswer": "ouder",
+          "distractors": [
+            {
+              "answer": "moeder",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            },
+            {
+              "answer": "moeten",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-86"
+            },
+            {
+              "answer": "rood",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-109"
+            },
+            {
+              "answer": "mens",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-80"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-19",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'buschauffeur' mean?",
+          "correctAnswer": "bus driver",
+          "distractors": [
+            {
+              "answer": "child, kid",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-59"
+            },
+            {
+              "answer": "hair",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-42"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-19",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'bus driver' in Dutch?",
+          "correctAnswer": "buschauffeur",
+          "distractors": [
+            {
+              "answer": "kind",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-59"
+            },
+            {
+              "answer": "haar",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-42"
+            },
+            {
+              "answer": "naam",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-91"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-19",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'bus driver' in Dutch?",
+          "correctAnswer": "buschauffeur",
+          "distractors": [
+            {
+              "answer": "kind",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-59"
+            },
+            {
+              "answer": "haar",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-42"
+            },
+            {
+              "answer": "naam",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-91"
+            },
+            {
+              "answer": "les",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-72"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-116",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'snel' mean?",
+          "correctAnswer": "fast, quick",
+          "distractors": [
+            {
+              "answer": "how",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            },
+            {
+              "answer": "now",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-98"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-116",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'fast, quick' in Dutch?",
+          "correctAnswer": "snel",
+          "distractors": [
+            {
+              "answer": "hoe",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            },
+            {
+              "answer": "nu",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-98"
+            },
+            {
+              "answer": "vaak",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-126"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-116",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'snel'?",
+          "correctAnswer": "fast, quick",
+          "distractors": [
+            {
+              "answer": "how",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            },
+            {
+              "answer": "now",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-98"
+            },
+            {
+              "answer": "often",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-126"
+            },
+            {
+              "answer": "together",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-110"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-14",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'boek' mean?",
+          "correctAnswer": "book",
+          "distractors": [
+            {
+              "answer": "whole, complete",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-44"
+            },
+            {
+              "answer": "vacation, holiday",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-128"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-14",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'book' in Dutch?",
+          "correctAnswer": "boek",
+          "distractors": [
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-44"
+            },
+            {
+              "answer": "vakantie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-128"
+            },
+            {
+              "answer": "man",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-78"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-14",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'book' in Dutch?",
+          "correctAnswer": "boek",
+          "distractors": [
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-44"
+            },
+            {
+              "answer": "vakantie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-128"
+            },
+            {
+              "answer": "man",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-78"
+            },
+            {
+              "answer": "broer",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-17"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-86",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'moeten' mean?",
+          "correctAnswer": "must, to have to",
+          "distractors": [
+            {
+              "answer": "brother",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-17"
+            },
+            {
+              "answer": "kitchen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-57"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-86",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'must, to have to' in Dutch?",
+          "correctAnswer": "moeten",
+          "distractors": [
+            {
+              "answer": "broer",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-17"
+            },
+            {
+              "answer": "keuken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-57"
+            },
+            {
+              "answer": "kamer",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-54"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-86",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "moeten — to be necessary, to be required. Also: to have to, must, should, be meant to, be supposed to, to have to go, to need to go, must go, to need to go to the toilet",
+          "correctAnswer": "must, to have to",
+          "distractors": [
+            {
+              "answer": "brother",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-17"
+            },
+            {
+              "answer": "kitchen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-57"
+            },
+            {
+              "answer": "room",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-54"
+            },
+            {
+              "answer": "mine",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-83"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "definition_match",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-50",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'houden' mean?",
+          "correctAnswer": "to keep, to hold",
+          "distractors": [
+            {
+              "answer": "to speak",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-118"
+            },
+            {
+              "answer": "to pay",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-11"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-50",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'houden' mean?",
+          "correctAnswer": "to keep, to hold",
+          "distractors": [
+            {
+              "answer": "to speak",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-118"
+            },
+            {
+              "answer": "to pay",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-11"
+            },
+            {
+              "answer": "to have",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-43"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-50",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to keep, to hold' in Dutch?",
+          "correctAnswer": "houden",
+          "distractors": [
+            {
+              "answer": "spreken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-118"
+            },
+            {
+              "answer": "betalen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-11"
+            },
+            {
+              "answer": "hebben",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-43"
+            },
+            {
+              "answer": "slapen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-115"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-98",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nu' mean?",
+          "correctAnswer": "now",
+          "distractors": [
+            {
+              "answer": "still, yet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-95"
+            },
+            {
+              "answer": "perhaps, maybe",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-84"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-98",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'now' in Dutch?",
+          "correctAnswer": "nu",
+          "distractors": [
+            {
+              "answer": "nog",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-95"
+            },
+            {
+              "answer": "misschien",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-84"
+            },
+            {
+              "answer": "laat",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-67"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-98",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'nu'?",
+          "correctAnswer": "now",
+          "distractors": [
+            {
+              "answer": "still, yet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-95"
+            },
+            {
+              "answer": "perhaps, maybe",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-84"
+            },
+            {
+              "answer": "late",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-67"
+            },
+            {
+              "answer": "friendly, nice",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-128",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vakantie' mean?",
+          "correctAnswer": "vacation, holiday",
+          "distractors": [
+            {
+              "answer": "new",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-93"
+            },
+            {
+              "answer": "food",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-31"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-128",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'vacation, holiday' in Dutch?",
+          "correctAnswer": "vakantie",
+          "distractors": [
+            {
+              "answer": "nieuw",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-93"
+            },
+            {
+              "answer": "eten",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-31"
+            },
+            {
+              "answer": "mijn",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-83"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-128",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'vakantie'?",
+          "correctAnswer": "vacation, holiday",
+          "distractors": [
+            {
+              "answer": "new",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-93"
+            },
+            {
+              "answer": "food",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-31"
+            },
+            {
+              "answer": "mine",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-83"
+            },
+            {
+              "answer": "stick",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-120"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-104",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'pakken' mean?",
+          "correctAnswer": "to grab, to take",
+          "distractors": [
+            {
+              "answer": "to make",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-77"
+            },
+            {
+              "answer": "to follow",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-135"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-104",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to grab, to take' in Dutch?",
+          "correctAnswer": "pakken",
+          "distractors": [
+            {
+              "answer": "maken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-77"
+            },
+            {
+              "answer": "volgen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-135"
+            },
+            {
+              "answer": "rennen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-107"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-104",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to grab, to take' in Dutch?",
+          "correctAnswer": "pakken",
+          "distractors": [
+            {
+              "answer": "maken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-77"
+            },
+            {
+              "answer": "volgen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-135"
+            },
+            {
+              "answer": "rennen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-107"
+            },
+            {
+              "answer": "slapen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-115"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-92",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'niet' mean?",
+          "correctAnswer": "not, no",
+          "distractors": [
+            {
+              "answer": "often",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-126"
+            },
+            {
+              "answer": "early",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-139"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-92",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'niet' mean?",
+          "correctAnswer": "not, no",
+          "distractors": [
+            {
+              "answer": "often",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-126"
+            },
+            {
+              "answer": "early",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-139"
+            },
+            {
+              "answer": "sometimes",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-117"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-92",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'niet' mean?",
+          "correctAnswer": "not, no",
+          "distractors": [
+            {
+              "answer": "often",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-126"
+            },
+            {
+              "answer": "early",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-139"
+            },
+            {
+              "answer": "sometimes",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-117"
+            },
+            {
+              "answer": "tomorrow",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-89"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-74",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'lezen' mean?",
+          "correctAnswer": "to read",
+          "distractors": [
+            {
+              "answer": "to say, tell",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-152"
+            },
+            {
+              "answer": "to work, labour",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-145"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-74",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'lezen' mean?",
+          "correctAnswer": "to read",
+          "distractors": [
+            {
+              "answer": "to say, tell",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-152"
+            },
+            {
+              "answer": "to work, labour",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-145"
+            },
+            {
+              "answer": "to hear",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-49"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-74",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to read' in Dutch?",
+          "correctAnswer": "lezen",
+          "distractors": [
+            {
+              "answer": "zeggen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-152"
+            },
+            {
+              "answer": "werken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-145"
+            },
+            {
+              "answer": "horen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-49"
+            },
+            {
+              "answer": "spreken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-118"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-159",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'zomer' mean?",
+          "correctAnswer": "summer",
+          "distractors": [
+            {
+              "answer": "bite",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-8"
+            },
+            {
+              "answer": "mine",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-83"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-159",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'summer' in Dutch?",
+          "correctAnswer": "zomer",
+          "distractors": [
+            {
+              "answer": "beet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-8"
+            },
+            {
+              "answer": "mijn",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-83"
+            },
+            {
+              "answer": "geld",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-37"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-159",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'summer' in Dutch?",
+          "correctAnswer": "zomer",
+          "distractors": [
+            {
+              "answer": "beet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-8"
+            },
+            {
+              "answer": "mijn",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-83"
+            },
+            {
+              "answer": "geld",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-37"
+            },
+            {
+              "answer": "fles",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-35"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-111",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'school' mean?",
+          "correctAnswer": "school",
+          "distractors": [
+            {
+              "answer": "small, little",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-61"
+            },
+            {
+              "answer": "sad",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-130"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-111",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'school' in Dutch?",
+          "correctAnswer": "school",
+          "distractors": [
+            {
+              "answer": "klein",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-61"
+            },
+            {
+              "answer": "verdrietig",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-130"
+            },
+            {
+              "answer": "alleen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-111",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'school'?",
+          "correctAnswer": "school",
+          "distractors": [
+            {
+              "answer": "small, little",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-61"
+            },
+            {
+              "answer": "sad",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-130"
+            },
+            {
+              "answer": "alone",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-2"
+            },
+            {
+              "answer": "bus, can, tin",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-18"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-45",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'helpen' mean?",
+          "correctAnswer": "to help",
+          "distractors": [
+            {
+              "answer": "to look, to watch",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-58"
+            },
+            {
+              "answer": "to thank",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-22"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-45",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'helpen' mean?",
+          "correctAnswer": "to help",
+          "distractors": [
+            {
+              "answer": "to look, to watch",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-58"
+            },
+            {
+              "answer": "to thank",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-22"
+            },
+            {
+              "answer": "to sleep",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-115"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-45",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'helpen' mean?",
+          "correctAnswer": "to help",
+          "distractors": [
+            {
+              "answer": "to look, to watch",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-58"
+            },
+            {
+              "answer": "to thank",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-22"
+            },
+            {
+              "answer": "to sleep",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-115"
+            },
+            {
+              "answer": "to come",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-141",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'week' mean?",
+          "correctAnswer": "week",
+          "distractors": [
+            {
+              "answer": "parent",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-103"
+            },
+            {
+              "answer": "cloth",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-60"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-141",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'week' mean?",
+          "correctAnswer": "week",
+          "distractors": [
+            {
+              "answer": "parent",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-103"
+            },
+            {
+              "answer": "cloth",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-60"
+            },
+            {
+              "answer": "train",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-124"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-141",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'week' mean?",
+          "correctAnswer": "week",
+          "distractors": [
+            {
+              "answer": "parent",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-103"
+            },
+            {
+              "answer": "cloth",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-60"
+            },
+            {
+              "answer": "train",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-124"
+            },
+            {
+              "answer": "soft",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-15",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'boot' mean?",
+          "correctAnswer": "boat",
+          "distractors": [
+            {
+              "answer": "human",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-80"
+            },
+            {
+              "answer": "tasty, nice",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-71"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-15",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'boat' in Dutch?",
+          "correctAnswer": "boot",
+          "distractors": [
+            {
+              "answer": "mens",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-80"
+            },
+            {
+              "answer": "lekker",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-71"
+            },
+            {
+              "answer": "slaapkamer",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-114"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-15",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'boat' in Dutch?",
+          "correctAnswer": "boot",
+          "distractors": [
+            {
+              "answer": "mens",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-80"
+            },
+            {
+              "answer": "lekker",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-71"
+            },
+            {
+              "answer": "slaapkamer",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-114"
+            },
+            {
+              "answer": "kind",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-59"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-9",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'begrijpen' mean?",
+          "correctAnswer": "to understand",
+          "distractors": [
+            {
+              "answer": "to run",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-107"
+            },
+            {
+              "answer": "to help",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-45"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-9",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to understand' in Dutch?",
+          "correctAnswer": "begrijpen",
+          "distractors": [
+            {
+              "answer": "rennen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-107"
+            },
+            {
+              "answer": "helpen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-45"
+            },
+            {
+              "answer": "zitten",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-156"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-9",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'begrijpen'?",
+          "correctAnswer": "to understand",
+          "distractors": [
+            {
+              "answer": "to run",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-107"
+            },
+            {
+              "answer": "to help",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-45"
+            },
+            {
+              "answer": "to sit",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-156"
+            },
+            {
+              "answer": "to look, to watch",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-58"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-105",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'praten' mean?",
+          "correctAnswer": "to talk",
+          "distractors": [
+            {
+              "answer": "to know",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-56"
+            },
+            {
+              "answer": "to do",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-27"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-105",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to talk' in Dutch?",
+          "correctAnswer": "praten",
+          "distractors": [
+            {
+              "answer": "kennen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-56"
+            },
+            {
+              "answer": "doen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-27"
+            },
+            {
+              "answer": "zien",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-153"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-105",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to talk' in Dutch?",
+          "correctAnswer": "praten",
+          "distractors": [
+            {
+              "answer": "kennen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-56"
+            },
+            {
+              "answer": "doen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-27"
+            },
+            {
+              "answer": "zien",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-153"
+            },
+            {
+              "answer": "willen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-147"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-93",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nieuw' mean?",
+          "correctAnswer": "new",
+          "distractors": [
+            {
+              "answer": "sad",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-130"
+            },
+            {
+              "answer": "friend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-137"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-93",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nieuw' mean?",
+          "correctAnswer": "new",
+          "distractors": [
+            {
+              "answer": "sad",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-130"
+            },
+            {
+              "answer": "friend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-137"
+            },
+            {
+              "answer": "time",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-55"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-93",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nieuw' mean?",
+          "correctAnswer": "new",
+          "distractors": [
+            {
+              "answer": "sad",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-130"
+            },
+            {
+              "answer": "friend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-137"
+            },
+            {
+              "answer": "time",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-55"
+            },
+            {
+              "answer": "nice, pleasant",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-34"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-28",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'drinken' mean?",
+          "correctAnswer": "to drink",
+          "distractors": [
+            {
+              "answer": "to walk, to run",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-76"
+            },
+            {
+              "answer": "to help",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-45"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-28",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to drink' in Dutch?",
+          "correctAnswer": "drinken",
+          "distractors": [
+            {
+              "answer": "lopen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-76"
+            },
+            {
+              "answer": "helpen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-45"
+            },
+            {
+              "answer": "vertrekken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-132"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-28",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'drinken'?",
+          "correctAnswer": "to drink",
+          "distractors": [
+            {
+              "answer": "to walk, to run",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-76"
+            },
+            {
+              "answer": "to help",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-45"
+            },
+            {
+              "answer": "to depart, to leave",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-132"
+            },
+            {
+              "answer": "to work, labour",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-145"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-142",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'weer' mean?",
+          "correctAnswer": "weather, again",
+          "distractors": [
+            {
+              "answer": "mother",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            },
+            {
+              "answer": "soft",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-142",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'weer' mean?",
+          "correctAnswer": "weather, again",
+          "distractors": [
+            {
+              "answer": "mother",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            },
+            {
+              "answer": "soft",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "cloth",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-60"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-142",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'weather, again' in Dutch?",
+          "correctAnswer": "weer",
+          "distractors": [
+            {
+              "answer": "moeder",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            },
+            {
+              "answer": "zacht",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "kleed",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-60"
+            },
+            {
+              "answer": "mijn",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-83"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-46",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'heten' mean?",
+          "correctAnswer": "to be named",
+          "distractors": [
+            {
+              "answer": "to drink",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-28"
+            },
+            {
+              "answer": "to lie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-75"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-46",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'heten' mean?",
+          "correctAnswer": "to be named",
+          "distractors": [
+            {
+              "answer": "to drink",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-28"
+            },
+            {
+              "answer": "to lie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-75"
+            },
+            {
+              "answer": "scared, afraid",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-6"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-46",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'heten' mean?",
+          "correctAnswer": "to be named",
+          "distractors": [
+            {
+              "answer": "to drink",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-28"
+            },
+            {
+              "answer": "to lie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-75"
+            },
+            {
+              "answer": "scared, afraid",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-6"
+            },
+            {
+              "answer": "to dance",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-23"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-100",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'oog' mean?",
+          "correctAnswer": "eye",
+          "distractors": [
+            {
+              "answer": "friend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-137"
+            },
+            {
+              "answer": "week",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-141"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-100",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'eye' in Dutch?",
+          "correctAnswer": "oog",
+          "distractors": [
+            {
+              "answer": "vriend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-137"
+            },
+            {
+              "answer": "week",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-141"
+            },
+            {
+              "answer": "beet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-8"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-100",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'eye' in Dutch?",
+          "correctAnswer": "oog",
+          "distractors": [
+            {
+              "answer": "vriend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-137"
+            },
+            {
+              "answer": "week",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-141"
+            },
+            {
+              "answer": "beet",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-8"
+            },
+            {
+              "answer": "mevrouw",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-82"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-160",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'zullen' mean?",
+          "correctAnswer": "will, shall",
+          "distractors": [
+            {
+              "answer": "kitchen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-57"
+            },
+            {
+              "answer": "money",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-37"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-160",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'zullen' mean?",
+          "correctAnswer": "will, shall",
+          "distractors": [
+            {
+              "answer": "kitchen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-57"
+            },
+            {
+              "answer": "money",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-37"
+            },
+            {
+              "answer": "bite",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-8"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-160",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'zullen' mean?",
+          "correctAnswer": "will, shall",
+          "distractors": [
+            {
+              "answer": "kitchen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-57"
+            },
+            {
+              "answer": "money",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-37"
+            },
+            {
+              "answer": "bite",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-8"
+            },
+            {
+              "answer": "family",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-32"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-136",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vragen' mean?",
+          "correctAnswer": "to ask",
+          "distractors": [
+            {
+              "answer": "to find",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-133"
+            },
+            {
+              "answer": "to walk, to run",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-76"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-136",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to ask' in Dutch?",
+          "correctAnswer": "vragen",
+          "distractors": [
+            {
+              "answer": "vinden",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-133"
+            },
+            {
+              "answer": "lopen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-76"
+            },
+            {
+              "answer": "hebben",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-43"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-136",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'vragen'?",
+          "correctAnswer": "to ask",
+          "distractors": [
+            {
+              "answer": "to find",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-133"
+            },
+            {
+              "answer": "to walk, to run",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-76"
+            },
+            {
+              "answer": "to have",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-43"
+            },
+            {
+              "answer": "to depart, to leave",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-132"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-4",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'ander' mean?",
+          "correctAnswer": "other",
+          "distractors": [
+            {
+              "answer": "much",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-129"
+            },
+            {
+              "answer": "to come",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"to come\" POS \"verb\" != correct \"determiner\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-4",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'other' in Dutch?",
+          "correctAnswer": "ander",
+          "distractors": [
+            {
+              "answer": "veel",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-129"
+            },
+            {
+              "answer": "komen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            },
+            {
+              "answer": "hoe",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"komen\" POS \"verb\" != correct \"determiner\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-4",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'ander'?",
+          "correctAnswer": "other",
+          "distractors": [
+            {
+              "answer": "much",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-129"
+            },
+            {
+              "answer": "to come",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            },
+            {
+              "answer": "how",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            },
+            {
+              "answer": "eye",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-100"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"to come\" POS \"verb\" != correct \"determiner\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-124",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'trein' mean?",
+          "correctAnswer": "train",
+          "distractors": [
+            {
+              "answer": "name",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-91"
+            },
+            {
+              "answer": "coffee",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-62"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-124",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'train' in Dutch?",
+          "correctAnswer": "trein",
+          "distractors": [
+            {
+              "answer": "naam",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-91"
+            },
+            {
+              "answer": "koffie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-62"
+            },
+            {
+              "answer": "ouder",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-103"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-124",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'train' in Dutch?",
+          "correctAnswer": "trein",
+          "distractors": [
+            {
+              "answer": "naam",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-91"
+            },
+            {
+              "answer": "koffie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-62"
+            },
+            {
+              "answer": "ouder",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-103"
+            },
+            {
+              "answer": "buschauffeur",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-19"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-29",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'en' mean?",
+          "correctAnswer": "and",
+          "distractors": [
+            {
+              "answer": "so, like this",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-157"
+            },
+            {
+              "answer": "Mrs., madam",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-82"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"Mrs., madam\" POS \"noun\" != correct \"conjunction\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Mrs., madam\" has 2 format features different from correct \"and\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-29",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'and' in Dutch?",
+          "correctAnswer": "en",
+          "distractors": [
+            {
+              "answer": "zo",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-157"
+            },
+            {
+              "answer": "mevrouw",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-82"
+            },
+            {
+              "answer": "moeder",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"mevrouw\" POS \"noun\" != correct \"conjunction\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-29",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'en'?",
+          "correctAnswer": "and",
+          "distractors": [
+            {
+              "answer": "so, like this",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-157"
+            },
+            {
+              "answer": "Mrs., madam",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-82"
+            },
+            {
+              "answer": "mother",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            },
+            {
+              "answer": "letter",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-16"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"Mrs., madam\" POS \"noun\" != correct \"conjunction\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Mrs., madam\" has 2 format features different from correct \"and\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-83",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'mijn' mean?",
+          "correctAnswer": "mine",
+          "distractors": [
+            {
+              "answer": "food",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-31"
+            },
+            {
+              "answer": "coffee",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-62"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-83",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'mine' in Dutch?",
+          "correctAnswer": "mijn",
+          "distractors": [
+            {
+              "answer": "eten",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-31"
+            },
+            {
+              "answer": "koffie",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-62"
+            },
+            {
+              "answer": "school",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-111"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-83",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'mijn'?",
+          "correctAnswer": "mine",
+          "distractors": [
+            {
+              "answer": "food",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-31"
+            },
+            {
+              "answer": "coffee",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-62"
+            },
+            {
+              "answer": "school",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-111"
+            },
+            {
+              "answer": "work, labor",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-144"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-101",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'ook' mean?",
+          "correctAnswer": "also, too",
+          "distractors": [
+            {
+              "answer": "often",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-126"
+            },
+            {
+              "answer": "early",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-139"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-101",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'also, too' in Dutch?",
+          "correctAnswer": "ook",
+          "distractors": [
+            {
+              "answer": "vaak",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-126"
+            },
+            {
+              "answer": "vroeg",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-139"
+            },
+            {
+              "answer": "morgen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-89"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-101",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'also, too' in Dutch?",
+          "correctAnswer": "ook",
+          "distractors": [
+            {
+              "answer": "vaak",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-126"
+            },
+            {
+              "answer": "vroeg",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-139"
+            },
+            {
+              "answer": "morgen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-89"
+            },
+            {
+              "answer": "soms",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-117"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-11",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'betalen' mean?",
+          "correctAnswer": "to pay",
+          "distractors": [
+            {
+              "answer": "to make",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-77"
+            },
+            {
+              "answer": "to come",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-11",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to pay' in Dutch?",
+          "correctAnswer": "betalen",
+          "distractors": [
+            {
+              "answer": "maken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-77"
+            },
+            {
+              "answer": "komen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            },
+            {
+              "answer": "willen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-147"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-11",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to pay' in Dutch?",
+          "correctAnswer": "betalen",
+          "distractors": [
+            {
+              "answer": "maken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-77"
+            },
+            {
+              "answer": "komen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-63"
+            },
+            {
+              "answer": "willen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-147"
+            },
+            {
+              "answer": "zitten",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-156"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-161",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'zus' mean?",
+          "correctAnswer": "sister",
+          "distractors": [
+            {
+              "answer": "female friend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-138"
+            },
+            {
+              "answer": "food",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-31"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-161",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'zus' mean?",
+          "correctAnswer": "sister",
+          "distractors": [
+            {
+              "answer": "female friend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-138"
+            },
+            {
+              "answer": "food",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-31"
+            },
+            {
+              "answer": "mine",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-83"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-161",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'zus' mean?",
+          "correctAnswer": "sister",
+          "distractors": [
+            {
+              "answer": "female friend",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-138"
+            },
+            {
+              "answer": "food",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-31"
+            },
+            {
+              "answer": "mine",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-83"
+            },
+            {
+              "answer": "shop, store",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-148"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-113",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'schrijven' mean?",
+          "correctAnswer": "to write",
+          "distractors": [
+            {
+              "answer": "to search",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-158"
+            },
+            {
+              "answer": "to sleep",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-115"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-113",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to write' in Dutch?",
+          "correctAnswer": "schrijven",
+          "distractors": [
+            {
+              "answer": "zoeken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-158"
+            },
+            {
+              "answer": "slapen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-115"
+            },
+            {
+              "answer": "kunnen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-66"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-113",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'schrijven'?",
+          "correctAnswer": "to write",
+          "distractors": [
+            {
+              "answer": "to search",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-158"
+            },
+            {
+              "answer": "to sleep",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-115"
+            },
+            {
+              "answer": "to be able to, can",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-66"
+            },
+            {
+              "answer": "to bark",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-12"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-131",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vertellen' mean?",
+          "correctAnswer": "to tell",
+          "distractors": [
+            {
+              "answer": "to be able to, can",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-66"
+            },
+            {
+              "answer": "to read",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-74"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-131",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to tell' in Dutch?",
+          "correctAnswer": "vertellen",
+          "distractors": [
+            {
+              "answer": "kunnen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-66"
+            },
+            {
+              "answer": "lezen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-74"
+            },
+            {
+              "answer": "zeggen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-152"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-131",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'vertellen'?",
+          "correctAnswer": "to tell",
+          "distractors": [
+            {
+              "answer": "to be able to, can",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-66"
+            },
+            {
+              "answer": "to read",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-74"
+            },
+            {
+              "answer": "to say, tell",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-152"
+            },
+            {
+              "answer": "to speak",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-118"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-143",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'wel' mean?",
+          "correctAnswer": "well, indeed",
+          "distractors": [
+            {
+              "answer": "long",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-69"
+            },
+            {
+              "answer": "sometimes",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-117"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-143",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'wel' mean?",
+          "correctAnswer": "well, indeed",
+          "distractors": [
+            {
+              "answer": "long",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-69"
+            },
+            {
+              "answer": "sometimes",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-117"
+            },
+            {
+              "answer": "late",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-67"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-143",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'well, indeed' in Dutch?",
+          "correctAnswer": "wel",
+          "distractors": [
+            {
+              "answer": "lang",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-69"
+            },
+            {
+              "answer": "soms",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-117"
+            },
+            {
+              "answer": "laat",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-67"
+            },
+            {
+              "answer": "vroeg",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-139"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-30",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'erg' mean?",
+          "correctAnswer": "very, really",
+          "distractors": [
+            {
+              "answer": "together",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-110"
+            },
+            {
+              "answer": "never",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-96"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-30",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'very, really' in Dutch?",
+          "correctAnswer": "erg",
+          "distractors": [
+            {
+              "answer": "samen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-110"
+            },
+            {
+              "answer": "nooit",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-96"
+            },
+            {
+              "answer": "laat",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-67"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-30",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'erg'?",
+          "correctAnswer": "very, really",
+          "distractors": [
+            {
+              "answer": "together",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-110"
+            },
+            {
+              "answer": "never",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-96"
+            },
+            {
+              "answer": "late",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-67"
+            },
+            {
+              "answer": "early",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-139"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-90",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'muziek' mean?",
+          "correctAnswer": "music",
+          "distractors": [
+            {
+              "answer": "beautiful, pretty",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-88"
+            },
+            {
+              "answer": "normal, usual",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-97"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-90",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'music' in Dutch?",
+          "correctAnswer": "muziek",
+          "distractors": [
+            {
+              "answer": "mooi",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-88"
+            },
+            {
+              "answer": "normaal",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-97"
+            },
+            {
+              "answer": "erg",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-30"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"erg\" POS \"adverb\" != correct \"adjective\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-90",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'muziek'?",
+          "correctAnswer": "music",
+          "distractors": [
+            {
+              "answer": "beautiful, pretty",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-88"
+            },
+            {
+              "answer": "normal, usual",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-97"
+            },
+            {
+              "answer": "very, really",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-30"
+            },
+            {
+              "answer": "to say, tell",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-152"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "pos_mismatch",
+              "detail": "Distractor \"very, really\" POS \"adverb\" != correct \"adjective\""
+            }
+          ]
+        },
+        {
+          "factId": "nl-cefr-60",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'kleed' mean?",
+          "correctAnswer": "cloth",
+          "distractors": [
+            {
+              "answer": "student, pupil",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-70"
+            },
+            {
+              "answer": "soft",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-60",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'kleed' mean?",
+          "correctAnswer": "cloth",
+          "distractors": [
+            {
+              "answer": "student, pupil",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-70"
+            },
+            {
+              "answer": "soft",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "summer",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-159"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-60",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'cloth' in Dutch?",
+          "correctAnswer": "kleed",
+          "distractors": [
+            {
+              "answer": "leerling",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-70"
+            },
+            {
+              "answer": "zacht",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-151"
+            },
+            {
+              "answer": "zomer",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-159"
+            },
+            {
+              "answer": "moeder",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-85"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-96",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'nooit' mean?",
+          "correctAnswer": "never",
+          "distractors": [
+            {
+              "answer": "always",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-3"
+            },
+            {
+              "answer": "long",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-69"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-96",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'never' in Dutch?",
+          "correctAnswer": "nooit",
+          "distractors": [
+            {
+              "answer": "altijd",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-3"
+            },
+            {
+              "answer": "lang",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-69"
+            },
+            {
+              "answer": "misschien",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-84"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-96",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "Which word is closest in meaning to 'nooit'?",
+          "correctAnswer": "never",
+          "distractors": [
+            {
+              "answer": "always",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-3"
+            },
+            {
+              "answer": "long",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-69"
+            },
+            {
+              "answer": "perhaps, maybe",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-84"
+            },
+            {
+              "answer": "fast, quick",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-116"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "synonym_pick",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-120",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'stok' mean?",
+          "correctAnswer": "stick",
+          "distractors": [
+            {
+              "answer": "whole, complete",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-44"
+            },
+            {
+              "answer": "at home",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-123"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-120",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'stick' in Dutch?",
+          "correctAnswer": "stok",
+          "distractors": [
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-44"
+            },
+            {
+              "answer": "thuis",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-123"
+            },
+            {
+              "answer": "probleem",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-106"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-120",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'stick' in Dutch?",
+          "correctAnswer": "stok",
+          "distractors": [
+            {
+              "answer": "heel",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-44"
+            },
+            {
+              "answer": "thuis",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-123"
+            },
+            {
+              "answer": "probleem",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-106"
+            },
+            {
+              "answer": "kamer",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-54"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-126",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'vaak' mean?",
+          "correctAnswer": "often",
+          "distractors": [
+            {
+              "answer": "how",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            },
+            {
+              "answer": "perhaps, maybe",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-84"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-126",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'often' in Dutch?",
+          "correctAnswer": "vaak",
+          "distractors": [
+            {
+              "answer": "hoe",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            },
+            {
+              "answer": "misschien",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-84"
+            },
+            {
+              "answer": "nooit",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-96"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-126",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'often' in Dutch?",
+          "correctAnswer": "vaak",
+          "distractors": [
+            {
+              "answer": "hoe",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-47"
+            },
+            {
+              "answer": "misschien",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-84"
+            },
+            {
+              "answer": "nooit",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-96"
+            },
+            {
+              "answer": "soms",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-117"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-150",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'worden' mean?",
+          "correctAnswer": "to become",
+          "distractors": [
+            {
+              "answer": "to work, labour",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-145"
+            },
+            {
+              "answer": "to bark",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-12"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-150",
+          "masteryLevel": 2,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to become' in Dutch?",
+          "correctAnswer": "worden",
+          "distractors": [
+            {
+              "answer": "werken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-145"
+            },
+            {
+              "answer": "blaffen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-12"
+            },
+            {
+              "answer": "kopen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-64"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-150",
+          "masteryLevel": 4,
+          "poolId": "target_language_words",
+          "renderedQuestion": "How do you say 'to become' in Dutch?",
+          "correctAnswer": "worden",
+          "distractors": [
+            {
+              "answer": "werken",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-145"
+            },
+            {
+              "answer": "blaffen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-12"
+            },
+            {
+              "answer": "kopen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-64"
+            },
+            {
+              "answer": "dansen",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-23"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "reverse",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-42",
+          "masteryLevel": 0,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'haar' mean?",
+          "correctAnswer": "hair",
+          "distractors": [
+            {
+              "answer": "sad",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-130"
+            },
+            {
+              "answer": "train",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-124"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-42",
+          "masteryLevel": 2,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'haar' mean?",
+          "correctAnswer": "hair",
+          "distractors": [
+            {
+              "answer": "sad",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-130"
+            },
+            {
+              "answer": "train",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-124"
+            },
+            {
+              "answer": "girl",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-79"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nl-cefr-42",
+          "masteryLevel": 4,
+          "poolId": "english_meanings",
+          "renderedQuestion": "What does 'haar' mean?",
+          "correctAnswer": "hair",
+          "distractors": [
+            {
+              "answer": "sad",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-130"
+            },
+            {
+              "answer": "train",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-124"
+            },
+            {
+              "answer": "girl",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-79"
+            },
+            {
+              "answer": "day",
+              "source": "similar_difficulty",
+              "factId": "nl-cefr-20"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "forward",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

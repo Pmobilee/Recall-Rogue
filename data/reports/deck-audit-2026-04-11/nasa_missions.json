@@ -1,0 +1,4376 @@
+{
+  "timestamp": "2026-04-11T02:00:31.034Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 151,
+  "totalFails": 0,
+  "totalWarns": 20,
+  "decks": [
+    {
+      "deckId": "nasa_missions",
+      "deckName": "NASA Missions",
+      "deckClass": "knowledge",
+      "totalFacts": 84,
+      "totalChecks": 151,
+      "failCount": 0,
+      "warnCount": 20,
+      "issuesByType": {
+        "min_pool_facts": {
+          "fail": 0,
+          "warn": 1
+        },
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 14
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 2
+        },
+        "all_pool_fill": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_pool_bracket_numbers",
+          "masteryLevel": -1,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "(pool-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_pool_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "min_pool_facts",
+              "detail": "Pool \"bracket_numbers\" has only 1 real factIds (min: 5)"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_apollo_program",
+          "masteryLevel": 0,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's program that successfully landed humans on the Moon between 1969 and 1972?",
+          "correctAnswer": "Apollo",
+          "distractors": [
+            {
+              "answer": "Space Shuttle",
+              "source": "similar_difficulty",
+              "factId": "nasa_space_shuttle_program"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_program",
+          "masteryLevel": 2,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's program that successfully landed humans on the Moon between 1969 and 1972?",
+          "correctAnswer": "Apollo",
+          "distractors": [
+            {
+              "answer": "Space Shuttle",
+              "source": "similar_difficulty",
+              "factId": "nasa_space_shuttle_program"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_program",
+          "masteryLevel": 4,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's program that successfully landed humans on the Moon between 1969 and 1972?",
+          "correctAnswer": "Apollo",
+          "distractors": [
+            {
+              "answer": "Space Shuttle",
+              "source": "similar_difficulty",
+              "factId": "nasa_space_shuttle_program"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            },
+            {
+              "answer": "Artemis",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_friendship_7_john_glenn",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "What was the name of John Glenn's spaceflight on February 20, 1962, making him the first American to orbit Earth?",
+          "correctAnswer": "Friendship 7",
+          "distractors": [
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager1_most_distant"
+            },
+            {
+              "answer": "Huygens",
+              "source": "similar_difficulty",
+              "factId": "nasa_huygens_titan"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_friendship_7_john_glenn",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "What was the name of John Glenn's spaceflight on February 20, 1962, making him the first American to orbit Earth?",
+          "correctAnswer": "Friendship 7",
+          "distractors": [
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager1_most_distant"
+            },
+            {
+              "answer": "Huygens",
+              "source": "similar_difficulty",
+              "factId": "nasa_huygens_titan"
+            },
+            {
+              "answer": "Freedom 7",
+              "source": "similar_difficulty",
+              "factId": "nasa_freedom_7_alan_shepard"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_friendship_7_john_glenn",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "What was the name of John Glenn's spaceflight on February 20, 1962, making him the first American to orbit Earth?",
+          "correctAnswer": "Friendship 7",
+          "distractors": [
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager1_most_distant"
+            },
+            {
+              "answer": "Huygens",
+              "source": "similar_difficulty",
+              "factId": "nasa_huygens_titan"
+            },
+            {
+              "answer": "Freedom 7",
+              "source": "similar_difficulty",
+              "factId": "nasa_freedom_7_alan_shepard"
+            },
+            {
+              "answer": "Apollo 17",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_17_last_moon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_gemini_program",
+          "masteryLevel": 0,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's two-person crewed spaceflight program (1961-1966) that tested spacewalks and docking techniques?",
+          "correctAnswer": "Gemini",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Skylab",
+              "source": "similar_difficulty",
+              "factId": "nasa_skylab_space_station"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_gemini_program",
+          "masteryLevel": 2,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's two-person crewed spaceflight program (1961-1966) that tested spacewalks and docking techniques?",
+          "correctAnswer": "Gemini",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Skylab",
+              "source": "similar_difficulty",
+              "factId": "nasa_skylab_space_station"
+            },
+            {
+              "answer": "Space Shuttle",
+              "source": "similar_difficulty",
+              "factId": "nasa_space_shuttle_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_gemini_program",
+          "masteryLevel": 4,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's two-person crewed spaceflight program (1961-1966) that tested spacewalks and docking techniques?",
+          "correctAnswer": "Gemini",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Skylab",
+              "source": "similar_difficulty",
+              "factId": "nasa_skylab_space_station"
+            },
+            {
+              "answer": "Space Shuttle",
+              "source": "similar_difficulty",
+              "factId": "nasa_space_shuttle_program"
+            },
+            {
+              "answer": "Artemis",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_1_fire",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission ended in a tragic cabin fire on January 27, 1967, killing astronauts Gus Grissom, Ed White, and Roger Chaffee?",
+          "correctAnswer": "Apollo 1",
+          "distractors": [
+            {
+              "answer": "Kepler",
+              "source": "similar_difficulty",
+              "factId": "nasa_kepler_transit_method"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_arrokoth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_1_fire",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission ended in a tragic cabin fire on January 27, 1967, killing astronauts Gus Grissom, Ed White, and Roger Chaffee?",
+          "correctAnswer": "Apollo 1",
+          "distractors": [
+            {
+              "answer": "Kepler",
+              "source": "similar_difficulty",
+              "factId": "nasa_kepler_transit_method"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_arrokoth"
+            },
+            {
+              "answer": "Gemini 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_8_docking_neil_armstrong"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_1_fire",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission ended in a tragic cabin fire on January 27, 1967, killing astronauts Gus Grissom, Ed White, and Roger Chaffee?",
+          "correctAnswer": "Apollo 1",
+          "distractors": [
+            {
+              "answer": "Kepler",
+              "source": "similar_difficulty",
+              "factId": "nasa_kepler_transit_method"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_arrokoth"
+            },
+            {
+              "answer": "Gemini 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_8_docking_neil_armstrong"
+            },
+            {
+              "answer": "Huygens",
+              "source": "similar_difficulty",
+              "factId": "nasa_huygens_titan"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_gemini_8_docking_neil_armstrong",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission, commanded by Neil Armstrong on March 16, 1966, achieved the first crewed orbital docking in history?",
+          "correctAnswer": "Gemini 8",
+          "distractors": [
+            {
+              "answer": "Galileo",
+              "source": "similar_difficulty",
+              "factId": "nasa_galileo_jupiter"
+            },
+            {
+              "answer": "Huygens",
+              "source": "similar_difficulty",
+              "factId": "nasa_huygens_titan"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_gemini_8_docking_neil_armstrong",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission, commanded by Neil Armstrong on March 16, 1966, achieved the first crewed orbital docking in history?",
+          "correctAnswer": "Gemini 8",
+          "distractors": [
+            {
+              "answer": "Galileo",
+              "source": "similar_difficulty",
+              "factId": "nasa_galileo_jupiter"
+            },
+            {
+              "answer": "Huygens",
+              "source": "similar_difficulty",
+              "factId": "nasa_huygens_titan"
+            },
+            {
+              "answer": "Apollo 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_1_fire"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_gemini_8_docking_neil_armstrong",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission, commanded by Neil Armstrong on March 16, 1966, achieved the first crewed orbital docking in history?",
+          "correctAnswer": "Gemini 8",
+          "distractors": [
+            {
+              "answer": "Galileo",
+              "source": "similar_difficulty",
+              "factId": "nasa_galileo_jupiter"
+            },
+            {
+              "answer": "Huygens",
+              "source": "similar_difficulty",
+              "factId": "nasa_huygens_titan"
+            },
+            {
+              "answer": "Apollo 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_1_fire"
+            },
+            {
+              "answer": "STS-61",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_61_hubble_repair"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_11_moon_landing",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission carried the first humans to walk on the Moon in July 1969?",
+          "correctAnswer": "Apollo 11",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "nasa_curiosity_rover"
+            },
+            {
+              "answer": "Apollo 13",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_13_crisis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Apollo 11\" and \"Apollo 13\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_apollo_11_moon_landing",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission carried the first humans to walk on the Moon in July 1969?",
+          "correctAnswer": "Apollo 11",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "nasa_curiosity_rover"
+            },
+            {
+              "answer": "Apollo 13",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_13_crisis"
+            },
+            {
+              "answer": "Friendship 7",
+              "source": "similar_difficulty",
+              "factId": "nasa_friendship_7_john_glenn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Apollo 11\" and \"Apollo 13\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_apollo_11_moon_landing",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission carried the first humans to walk on the Moon in July 1969?",
+          "correctAnswer": "Apollo 11",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "nasa_curiosity_rover"
+            },
+            {
+              "answer": "Apollo 13",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_13_crisis"
+            },
+            {
+              "answer": "Friendship 7",
+              "source": "similar_difficulty",
+              "factId": "nasa_friendship_7_john_glenn"
+            },
+            {
+              "answer": "Apollo 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_8_lunar_orbit"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Apollo 11\" and \"Apollo 13\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_apollo_13_crisis",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission experienced an oxygen tank explosion in April 1970, forcing astronauts to use the Lunar Module as a lifeboat?",
+          "correctAnswer": "Apollo 13",
+          "distractors": [
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager1_most_distant"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_pluto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_13_crisis",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission experienced an oxygen tank explosion in April 1970, forcing astronauts to use the Lunar Module as a lifeboat?",
+          "correctAnswer": "Apollo 13",
+          "distractors": [
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager1_most_distant"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_pluto"
+            },
+            {
+              "answer": "Cassini",
+              "source": "similar_difficulty",
+              "factId": "nasa_cassini_saturn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_13_crisis",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission experienced an oxygen tank explosion in April 1970, forcing astronauts to use the Lunar Module as a lifeboat?",
+          "correctAnswer": "Apollo 13",
+          "distractors": [
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager1_most_distant"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_pluto"
+            },
+            {
+              "answer": "Cassini",
+              "source": "similar_difficulty",
+              "factId": "nasa_cassini_saturn"
+            },
+            {
+              "answer": "Freedom 7",
+              "source": "similar_difficulty",
+              "factId": "nasa_freedom_7_alan_shepard"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_17_last_moon",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which was the last crewed mission to land on the Moon in December 1972, with Gene Cernan being the final person to walk on the lunar surface?",
+          "correctAnswer": "Apollo 17",
+          "distractors": [
+            {
+              "answer": "Galileo",
+              "source": "similar_difficulty",
+              "factId": "nasa_galileo_jupiter"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_pluto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo_17_last_moon",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which was the last crewed mission to land on the Moon in December 1972, with Gene Cernan being the final person to walk on the lunar surface?",
+          "correctAnswer": "Apollo 17",
+          "distractors": [
+            {
+              "answer": "Galileo",
+              "source": "similar_difficulty",
+              "factId": "nasa_galileo_jupiter"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_pluto"
+            },
+            {
+              "answer": "Apollo 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_1_fire"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Apollo 17\" and \"Apollo 1\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_apollo_17_last_moon",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which was the last crewed mission to land on the Moon in December 1972, with Gene Cernan being the final person to walk on the lunar surface?",
+          "correctAnswer": "Apollo 17",
+          "distractors": [
+            {
+              "answer": "Galileo",
+              "source": "similar_difficulty",
+              "factId": "nasa_galileo_jupiter"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_pluto"
+            },
+            {
+              "answer": "Apollo 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_1_fire"
+            },
+            {
+              "answer": "Apollo 15",
+              "source": "similar_difficulty",
+              "factId": "nasa_lunar_roving_vehicle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Apollo 17\" and \"Apollo 1\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_sts_1_columbia_first_shuttle",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA Space Shuttle mission, launched on April 12, 1981, was the first orbital test flight of the reusable spacecraft?",
+          "correctAnswer": "STS-1",
+          "distractors": [
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager1_most_distant"
+            },
+            {
+              "answer": "Apollo 15",
+              "source": "similar_difficulty",
+              "factId": "nasa_lunar_roving_vehicle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_sts_1_columbia_first_shuttle",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA Space Shuttle mission, launched on April 12, 1981, was the first orbital test flight of the reusable spacecraft?",
+          "correctAnswer": "STS-1",
+          "distractors": [
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager1_most_distant"
+            },
+            {
+              "answer": "Apollo 15",
+              "source": "similar_difficulty",
+              "factId": "nasa_lunar_roving_vehicle"
+            },
+            {
+              "answer": "Spirit",
+              "source": "similar_difficulty",
+              "factId": "nasa_spirit_rover"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_sts_1_columbia_first_shuttle",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA Space Shuttle mission, launched on April 12, 1981, was the first orbital test flight of the reusable spacecraft?",
+          "correctAnswer": "STS-1",
+          "distractors": [
+            {
+              "answer": "Voyager 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager1_most_distant"
+            },
+            {
+              "answer": "Apollo 15",
+              "source": "similar_difficulty",
+              "factId": "nasa_lunar_roving_vehicle"
+            },
+            {
+              "answer": "Spirit",
+              "source": "similar_difficulty",
+              "factId": "nasa_spirit_rover"
+            },
+            {
+              "answer": "STS-61",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_61_hubble_repair"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"STS-1\" and \"STS-61\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_lunar_roving_vehicle",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission first used a Lunar Roving Vehicle (electric moon buggy) to explore the lunar surface?",
+          "correctAnswer": "Apollo 15",
+          "distractors": [
+            {
+              "answer": "Viking 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_viking1_mars"
+            },
+            {
+              "answer": "Opportunity",
+              "source": "similar_difficulty",
+              "factId": "nasa_opportunity_dust_storm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_lunar_roving_vehicle",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission first used a Lunar Roving Vehicle (electric moon buggy) to explore the lunar surface?",
+          "correctAnswer": "Apollo 15",
+          "distractors": [
+            {
+              "answer": "Viking 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_viking1_mars"
+            },
+            {
+              "answer": "Opportunity",
+              "source": "similar_difficulty",
+              "factId": "nasa_opportunity_dust_storm"
+            },
+            {
+              "answer": "Artemis 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_1_uncrewed"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_lunar_roving_vehicle",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission first used a Lunar Roving Vehicle (electric moon buggy) to explore the lunar surface?",
+          "correctAnswer": "Apollo 15",
+          "distractors": [
+            {
+              "answer": "Viking 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_viking1_mars"
+            },
+            {
+              "answer": "Opportunity",
+              "source": "similar_difficulty",
+              "factId": "nasa_opportunity_dust_storm"
+            },
+            {
+              "answer": "Artemis 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_1_uncrewed"
+            },
+            {
+              "answer": "Spirit",
+              "source": "similar_difficulty",
+              "factId": "nasa_spirit_rover"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_moonwalkers_total",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many humans have walked on the Moon throughout all of NASA's Apollo missions?",
+          "correctAnswer": "12",
+          "distractors": [
+            {
+              "answer": "36",
+              "source": "numerical",
+              "factId": "_numerical_36"
+            },
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_moonwalkers_total",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many humans have walked on the Moon throughout all of NASA's Apollo missions?",
+          "correctAnswer": "12",
+          "distractors": [
+            {
+              "answer": "36",
+              "source": "numerical",
+              "factId": "_numerical_36"
+            },
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "14",
+              "source": "numerical",
+              "factId": "_numerical_14"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_moonwalkers_total",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many humans have walked on the Moon throughout all of NASA's Apollo missions?",
+          "correctAnswer": "12",
+          "distractors": [
+            {
+              "answer": "36",
+              "source": "numerical",
+              "factId": "_numerical_36"
+            },
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            },
+            {
+              "answer": "14",
+              "source": "numerical",
+              "factId": "_numerical_14"
+            },
+            {
+              "answer": "15",
+              "source": "numerical",
+              "factId": "_numerical_15"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_space_shuttle_program",
+          "masteryLevel": 0,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's reusable spacecraft system that conducted 135 orbital missions from 1981 to 2011?",
+          "correctAnswer": "Space Shuttle",
+          "distractors": [
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 13 vs avg distractor 6.0 — ratio 2.17×"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_space_shuttle_program",
+          "masteryLevel": 2,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's reusable spacecraft system that conducted 135 orbital missions from 1981 to 2011?",
+          "correctAnswer": "Space Shuttle",
+          "distractors": [
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 13 vs avg distractor 6.3 — ratio 2.05×"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_space_shuttle_program",
+          "masteryLevel": 4,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's reusable spacecraft system that conducted 135 orbital missions from 1981 to 2011?",
+          "correctAnswer": "Space Shuttle",
+          "distractors": [
+            {
+              "answer": "Apollo",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Artemis",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_challenger_disaster",
+          "masteryLevel": 0,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which Space Shuttle broke apart 73 seconds after launch on January 28, 1986, killing all seven astronauts aboard due to an O-ring failure?",
+          "correctAnswer": "Challenger",
+          "distractors": [
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            },
+            {
+              "answer": "Eagle",
+              "source": "similar_difficulty",
+              "factId": "nasa_eagle_lunar_module"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_challenger_disaster",
+          "masteryLevel": 2,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which Space Shuttle broke apart 73 seconds after launch on January 28, 1986, killing all seven astronauts aboard due to an O-ring failure?",
+          "correctAnswer": "Challenger",
+          "distractors": [
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            },
+            {
+              "answer": "Eagle",
+              "source": "similar_difficulty",
+              "factId": "nasa_eagle_lunar_module"
+            },
+            {
+              "answer": "Columbia",
+              "source": "similar_difficulty",
+              "factId": "nasa_columbia_disaster_2003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_challenger_disaster",
+          "masteryLevel": 4,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which Space Shuttle broke apart 73 seconds after launch on January 28, 1986, killing all seven astronauts aboard due to an O-ring failure?",
+          "correctAnswer": "Challenger",
+          "distractors": [
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            },
+            {
+              "answer": "Eagle",
+              "source": "similar_difficulty",
+              "factId": "nasa_eagle_lunar_module"
+            },
+            {
+              "answer": "Columbia",
+              "source": "similar_difficulty",
+              "factId": "nasa_columbia_disaster_2003"
+            },
+            {
+              "answer": "Discovery",
+              "source": "pool_fill",
+              "factId": "nasa_discovery_shuttle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_columbia_disaster_2003",
+          "masteryLevel": 0,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which Space Shuttle broke apart during reentry on February 1, 2003, killing all seven astronauts due to damage from a foam strike?",
+          "correctAnswer": "Columbia",
+          "distractors": [
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            },
+            {
+              "answer": "Discovery",
+              "source": "similar_difficulty",
+              "factId": "nasa_discovery_shuttle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_columbia_disaster_2003",
+          "masteryLevel": 2,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which Space Shuttle broke apart during reentry on February 1, 2003, killing all seven astronauts due to damage from a foam strike?",
+          "correctAnswer": "Columbia",
+          "distractors": [
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            },
+            {
+              "answer": "Discovery",
+              "source": "similar_difficulty",
+              "factId": "nasa_discovery_shuttle"
+            },
+            {
+              "answer": "Eagle",
+              "source": "similar_difficulty",
+              "factId": "nasa_eagle_lunar_module"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_columbia_disaster_2003",
+          "masteryLevel": 4,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which Space Shuttle broke apart during reentry on February 1, 2003, killing all seven astronauts due to damage from a foam strike?",
+          "correctAnswer": "Columbia",
+          "distractors": [
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            },
+            {
+              "answer": "Discovery",
+              "source": "similar_difficulty",
+              "factId": "nasa_discovery_shuttle"
+            },
+            {
+              "answer": "Eagle",
+              "source": "similar_difficulty",
+              "factId": "nasa_eagle_lunar_module"
+            },
+            {
+              "answer": "Challenger",
+              "source": "similar_difficulty",
+              "factId": "nasa_challenger_disaster"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_skylab_space_station",
+          "masteryLevel": 0,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's first space station, which operated from 1973 to 1979?",
+          "correctAnswer": "Skylab",
+          "distractors": [
+            {
+              "answer": "Artemis",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_skylab_space_station",
+          "masteryLevel": 2,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's first space station, which operated from 1973 to 1979?",
+          "correctAnswer": "Skylab",
+          "distractors": [
+            {
+              "answer": "Artemis",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            },
+            {
+              "answer": "Apollo",
+              "source": "pool_fill",
+              "factId": "nasa_apollo_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_skylab_space_station",
+          "masteryLevel": 4,
+          "poolId": "program_names",
+          "renderedQuestion": "What was the name of NASA's first space station, which operated from 1973 to 1979?",
+          "correctAnswer": "Skylab",
+          "distractors": [
+            {
+              "answer": "Artemis",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            },
+            {
+              "answer": "Apollo",
+              "source": "pool_fill",
+              "factId": "nasa_apollo_program"
+            },
+            {
+              "answer": "Mercury",
+              "source": "pool_fill",
+              "factId": "nasa_mercury_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_skylab_fell_australia",
+          "masteryLevel": 0,
+          "poolId": "program_names",
+          "renderedQuestion": "Which space station reentered Earth's atmosphere over Australia on July 11, 1979, leading Australia to jokingly fine NASA for littering?",
+          "correctAnswer": "Skylab",
+          "distractors": [
+            {
+              "answer": "Artemis",
+              "source": "pool_fill",
+              "factId": "nasa_artemis_program"
+            },
+            {
+              "answer": "Mercury",
+              "source": "pool_fill",
+              "factId": "nasa_mercury_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_skylab_fell_australia",
+          "masteryLevel": 2,
+          "poolId": "program_names",
+          "renderedQuestion": "Which space station reentered Earth's atmosphere over Australia on July 11, 1979, leading Australia to jokingly fine NASA for littering?",
+          "correctAnswer": "Skylab",
+          "distractors": [
+            {
+              "answer": "Artemis",
+              "source": "pool_fill",
+              "factId": "nasa_artemis_program"
+            },
+            {
+              "answer": "Mercury",
+              "source": "pool_fill",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Space Shuttle",
+              "source": "pool_fill",
+              "factId": "nasa_space_shuttle_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_skylab_fell_australia",
+          "masteryLevel": 4,
+          "poolId": "program_names",
+          "renderedQuestion": "Which space station reentered Earth's atmosphere over Australia on July 11, 1979, leading Australia to jokingly fine NASA for littering?",
+          "correctAnswer": "Skylab",
+          "distractors": [
+            {
+              "answer": "Artemis",
+              "source": "pool_fill",
+              "factId": "nasa_artemis_program"
+            },
+            {
+              "answer": "Mercury",
+              "source": "pool_fill",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Space Shuttle",
+              "source": "pool_fill",
+              "factId": "nasa_space_shuttle_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "pool_fill",
+              "factId": "nasa_gemini_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_iss_continuous_habitation",
+          "masteryLevel": 0,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "What is the name of the orbiting laboratory where astronauts from multiple nations have lived continuously since November 2, 2000?",
+          "correctAnswer": "International Space Station",
+          "distractors": [
+            {
+              "answer": "Voyager program",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager_golden_record"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_overview"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_iss_continuous_habitation",
+          "masteryLevel": 2,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "What is the name of the orbiting laboratory where astronauts from multiple nations have lived continuously since November 2, 2000?",
+          "correctAnswer": "International Space Station",
+          "distractors": [
+            {
+              "answer": "Voyager program",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager_golden_record"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_overview"
+            },
+            {
+              "answer": "Hubble Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_hubble_mirror_repair"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_iss_continuous_habitation",
+          "masteryLevel": 4,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "What is the name of the orbiting laboratory where astronauts from multiple nations have lived continuously since November 2, 2000?",
+          "correctAnswer": "International Space Station",
+          "distractors": [
+            {
+              "answer": "Voyager program",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager_golden_record"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_overview"
+            },
+            {
+              "answer": "Hubble Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_hubble_mirror_repair"
+            },
+            {
+              "answer": "Spitzer Space Telescope",
+              "source": "pool_fill",
+              "factId": "nasa_spitzer_trappist"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_iss_partner_agencies",
+          "masteryLevel": 0,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which space this mission was built through an unprecedented collaboration between NASA, Roscosmos, ESA, JAXA, and CSA — five different space agencies?",
+          "correctAnswer": "International Space Station",
+          "distractors": [
+            {
+              "answer": "Voyager program",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager_golden_record"
+            },
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_iss_partner_agencies",
+          "masteryLevel": 2,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which space this mission was built through an unprecedented collaboration between NASA, Roscosmos, ESA, JAXA, and CSA — five different space agencies?",
+          "correctAnswer": "International Space Station",
+          "distractors": [
+            {
+              "answer": "Voyager program",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager_golden_record"
+            },
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "Chandra X-ray Observatory",
+              "source": "similar_difficulty",
+              "factId": "nasa_chandra_xray"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_iss_partner_agencies",
+          "masteryLevel": 4,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which space this mission was built through an unprecedented collaboration between NASA, Roscosmos, ESA, JAXA, and CSA — five different space agencies?",
+          "correctAnswer": "International Space Station",
+          "distractors": [
+            {
+              "answer": "Voyager program",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager_golden_record"
+            },
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "Chandra X-ray Observatory",
+              "source": "similar_difficulty",
+              "factId": "nasa_chandra_xray"
+            },
+            {
+              "answer": "Nancy Grace Roman Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_roman_overview"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_artemis_program",
+          "masteryLevel": 0,
+          "poolId": "program_names",
+          "renderedQuestion": "What is the name of NASA's program to return humans to the Moon and eventually send them to Mars?",
+          "correctAnswer": "Artemis",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_artemis_program",
+          "masteryLevel": 2,
+          "poolId": "program_names",
+          "renderedQuestion": "What is the name of NASA's program to return humans to the Moon and eventually send them to Mars?",
+          "correctAnswer": "Artemis",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            },
+            {
+              "answer": "Skylab",
+              "source": "similar_difficulty",
+              "factId": "nasa_skylab_space_station"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_artemis_program",
+          "masteryLevel": 4,
+          "poolId": "program_names",
+          "renderedQuestion": "What is the name of NASA's program to return humans to the Moon and eventually send them to Mars?",
+          "correctAnswer": "Artemis",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "nasa_mercury_program"
+            },
+            {
+              "answer": "Gemini",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_program"
+            },
+            {
+              "answer": "Skylab",
+              "source": "similar_difficulty",
+              "factId": "nasa_skylab_space_station"
+            },
+            {
+              "answer": "Space Shuttle",
+              "source": "similar_difficulty",
+              "factId": "nasa_space_shuttle_program"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_cassini_saturn",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft orbited Saturn for 13 years and deliberately plunged into Saturn's atmosphere at the end of its mission?",
+          "correctAnswer": "Cassini",
+          "distractors": [
+            {
+              "answer": "Kepler",
+              "source": "similar_difficulty",
+              "factId": "nasa_kepler_exoplanets"
+            },
+            {
+              "answer": "Artemis 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_1_uncrewed"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_cassini_saturn",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft orbited Saturn for 13 years and deliberately plunged into Saturn's atmosphere at the end of its mission?",
+          "correctAnswer": "Cassini",
+          "distractors": [
+            {
+              "answer": "Kepler",
+              "source": "similar_difficulty",
+              "factId": "nasa_kepler_exoplanets"
+            },
+            {
+              "answer": "Artemis 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_1_uncrewed"
+            },
+            {
+              "answer": "OSIRIS-REx",
+              "source": "similar_difficulty",
+              "factId": "nasa_osiris_rex_sample"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_cassini_saturn",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft orbited Saturn for 13 years and deliberately plunged into Saturn's atmosphere at the end of its mission?",
+          "correctAnswer": "Cassini",
+          "distractors": [
+            {
+              "answer": "Kepler",
+              "source": "similar_difficulty",
+              "factId": "nasa_kepler_exoplanets"
+            },
+            {
+              "answer": "Artemis 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_artemis_1_uncrewed"
+            },
+            {
+              "answer": "OSIRIS-REx",
+              "source": "similar_difficulty",
+              "factId": "nasa_osiris_rex_sample"
+            },
+            {
+              "answer": "Opportunity",
+              "source": "similar_difficulty",
+              "factId": "nasa_opportunity_dust_storm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager_golden_record",
+          "masteryLevel": 0,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which NASA this mission carries a gold-plated record with greetings in 55 languages and sounds from Earth?",
+          "correctAnswer": "Voyager program",
+          "distractors": [
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_partner_agencies"
+            },
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager_golden_record",
+          "masteryLevel": 2,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which NASA this mission carries a gold-plated record with greetings in 55 languages and sounds from Earth?",
+          "correctAnswer": "Voyager program",
+          "distractors": [
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_partner_agencies"
+            },
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_overview"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager_golden_record",
+          "masteryLevel": 4,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which NASA this mission carries a gold-plated record with greetings in 55 languages and sounds from Earth?",
+          "correctAnswer": "Voyager program",
+          "distractors": [
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_partner_agencies"
+            },
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_overview"
+            },
+            {
+              "answer": "Hubble Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_hubble_mirror_repair"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager1_interstellar",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft was the first human-made object to enter interstellar space?",
+          "correctAnswer": "Voyager 1",
+          "distractors": [
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "Viking 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_viking1_mars"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager1_interstellar",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft was the first human-made object to enter interstellar space?",
+          "correctAnswer": "Voyager 1",
+          "distractors": [
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "Viking 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_viking1_mars"
+            },
+            {
+              "answer": "Cassini",
+              "source": "similar_difficulty",
+              "factId": "nasa_cassini_saturn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager1_interstellar",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft was the first human-made object to enter interstellar space?",
+          "correctAnswer": "Voyager 1",
+          "distractors": [
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "Viking 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_viking1_mars"
+            },
+            {
+              "answer": "Cassini",
+              "source": "similar_difficulty",
+              "factId": "nasa_cassini_saturn"
+            },
+            {
+              "answer": "STS-61",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_61_hubble_repair"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"STS-1\" and \"STS-61\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_galileo_jupiter",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft was the first to orbit Jupiter?",
+          "correctAnswer": "Galileo",
+          "distractors": [
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_arrokoth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_galileo_jupiter",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft was the first to orbit Jupiter?",
+          "correctAnswer": "Galileo",
+          "distractors": [
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_arrokoth"
+            },
+            {
+              "answer": "OSIRIS-REx",
+              "source": "similar_difficulty",
+              "factId": "nasa_osiris_rex_sample"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_galileo_jupiter",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft was the first to orbit Jupiter?",
+          "correctAnswer": "Galileo",
+          "distractors": [
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_arrokoth"
+            },
+            {
+              "answer": "OSIRIS-REx",
+              "source": "similar_difficulty",
+              "factId": "nasa_osiris_rex_sample"
+            },
+            {
+              "answer": "Voyager 2",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager2_four_giants"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager2_interstellar",
+          "masteryLevel": 0,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year did Voyager 2 cross the heliopause and enter interstellar space?",
+          "correctAnswer": "2018",
+          "distractors": [
+            {
+              "answer": "1994",
+              "source": "numerical",
+              "factId": "_numerical_1994"
+            },
+            {
+              "answer": "2000",
+              "source": "numerical",
+              "factId": "_numerical_2000"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager2_interstellar",
+          "masteryLevel": 2,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year did Voyager 2 cross the heliopause and enter interstellar space?",
+          "correctAnswer": "2018",
+          "distractors": [
+            {
+              "answer": "1994",
+              "source": "numerical",
+              "factId": "_numerical_1994"
+            },
+            {
+              "answer": "2000",
+              "source": "numerical",
+              "factId": "_numerical_2000"
+            },
+            {
+              "answer": "1990",
+              "source": "numerical",
+              "factId": "_numerical_1990"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager2_interstellar",
+          "masteryLevel": 4,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year did Voyager 2 cross the heliopause and enter interstellar space?",
+          "correctAnswer": "2018",
+          "distractors": [
+            {
+              "answer": "1994",
+              "source": "numerical",
+              "factId": "_numerical_1994"
+            },
+            {
+              "answer": "2000",
+              "source": "numerical",
+              "factId": "_numerical_2000"
+            },
+            {
+              "answer": "1990",
+              "source": "numerical",
+              "factId": "_numerical_1990"
+            },
+            {
+              "answer": "2004",
+              "source": "numerical",
+              "factId": "_numerical_2004"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_cassini_enceladus",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission discovered water-ice geysers erupting from Saturn's moon Enceladus, suggesting a subsurface ocean?",
+          "correctAnswer": "Cassini",
+          "distractors": [
+            {
+              "answer": "Juno",
+              "source": "similar_difficulty",
+              "factId": "nasa_juno_jupiter"
+            },
+            {
+              "answer": "Gemini 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_8_docking_neil_armstrong"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_cassini_enceladus",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission discovered water-ice geysers erupting from Saturn's moon Enceladus, suggesting a subsurface ocean?",
+          "correctAnswer": "Cassini",
+          "distractors": [
+            {
+              "answer": "Juno",
+              "source": "similar_difficulty",
+              "factId": "nasa_juno_jupiter"
+            },
+            {
+              "answer": "Gemini 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_8_docking_neil_armstrong"
+            },
+            {
+              "answer": "Opportunity",
+              "source": "similar_difficulty",
+              "factId": "nasa_opportunity_dust_storm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_cassini_enceladus",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which NASA mission discovered water-ice geysers erupting from Saturn's moon Enceladus, suggesting a subsurface ocean?",
+          "correctAnswer": "Cassini",
+          "distractors": [
+            {
+              "answer": "Juno",
+              "source": "similar_difficulty",
+              "factId": "nasa_juno_jupiter"
+            },
+            {
+              "answer": "Gemini 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_8_docking_neil_armstrong"
+            },
+            {
+              "answer": "Opportunity",
+              "source": "similar_difficulty",
+              "factId": "nasa_opportunity_dust_storm"
+            },
+            {
+              "answer": "Apollo 17",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_17_last_moon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_opportunity_rover",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which Mars rover operated for nearly 15 years (2004-2019) and traveled 28 miles, setting the distance record for rovers?",
+          "correctAnswer": "Opportunity",
+          "distractors": [
+            {
+              "answer": "Apollo 13",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_13_crisis"
+            },
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_opportunity_rover",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which Mars rover operated for nearly 15 years (2004-2019) and traveled 28 miles, setting the distance record for rovers?",
+          "correctAnswer": "Opportunity",
+          "distractors": [
+            {
+              "answer": "Apollo 13",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_13_crisis"
+            },
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "nasa_pioneer_plaque"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_opportunity_rover",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which Mars rover operated for nearly 15 years (2004-2019) and traveled 28 miles, setting the distance record for rovers?",
+          "correctAnswer": "Opportunity",
+          "distractors": [
+            {
+              "answer": "Apollo 13",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_13_crisis"
+            },
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "nasa_pioneer_plaque"
+            },
+            {
+              "answer": "Apollo 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_1_fire"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Apollo 13\" and \"Apollo 1\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_newhorizons_arrokoth",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft, after visiting Pluto, flew past Arrokoth, the most distant object ever explored up close?",
+          "correctAnswer": "New Horizons",
+          "distractors": [
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "nasa_pioneer_plaque"
+            },
+            {
+              "answer": "Apollo 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_1_fire"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_newhorizons_arrokoth",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft, after visiting Pluto, flew past Arrokoth, the most distant object ever explored up close?",
+          "correctAnswer": "New Horizons",
+          "distractors": [
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "nasa_pioneer_plaque"
+            },
+            {
+              "answer": "Apollo 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_1_fire"
+            },
+            {
+              "answer": "Juno",
+              "source": "similar_difficulty",
+              "factId": "nasa_juno_jupiter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_newhorizons_arrokoth",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft, after visiting Pluto, flew past Arrokoth, the most distant object ever explored up close?",
+          "correctAnswer": "New Horizons",
+          "distractors": [
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "nasa_pioneer_plaque"
+            },
+            {
+              "answer": "Apollo 1",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_1_fire"
+            },
+            {
+              "answer": "Juno",
+              "source": "similar_difficulty",
+              "factId": "nasa_juno_jupiter"
+            },
+            {
+              "answer": "Apollo 15",
+              "source": "similar_difficulty",
+              "factId": "nasa_lunar_roving_vehicle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Apollo 1\" and \"Apollo 15\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_spirit_rover",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which Mars rover landed on January 3, 2004, and operated for six years, far exceeding its planned 90-day mission?",
+          "correctAnswer": "Spirit",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "nasa_curiosity_rover"
+            },
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_spirit_rover",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which Mars rover landed on January 3, 2004, and operated for six years, far exceeding its planned 90-day mission?",
+          "correctAnswer": "Spirit",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "nasa_curiosity_rover"
+            },
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "TESS",
+              "source": "similar_difficulty",
+              "factId": "nasa_tess_overview"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_spirit_rover",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which Mars rover landed on January 3, 2004, and operated for six years, far exceeding its planned 90-day mission?",
+          "correctAnswer": "Spirit",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "nasa_curiosity_rover"
+            },
+            {
+              "answer": "STS-1",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_1_columbia_first_shuttle"
+            },
+            {
+              "answer": "TESS",
+              "source": "similar_difficulty",
+              "factId": "nasa_tess_overview"
+            },
+            {
+              "answer": "STS-61",
+              "source": "similar_difficulty",
+              "factId": "nasa_sts_61_hubble_repair"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"STS-1\" and \"STS-61\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_sojourner_rover",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft was the first successful Mars rover, landing as part of the Mars Pathfinder mission in 1997?",
+          "correctAnswer": "Sojourner",
+          "distractors": [
+            {
+              "answer": "Gemini 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_8_docking_neil_armstrong"
+            },
+            {
+              "answer": "Gemini 4",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_4_ed_white_eva"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Gemini 8\" and \"Gemini 4\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_sojourner_rover",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft was the first successful Mars rover, landing as part of the Mars Pathfinder mission in 1997?",
+          "correctAnswer": "Sojourner",
+          "distractors": [
+            {
+              "answer": "Gemini 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_8_docking_neil_armstrong"
+            },
+            {
+              "answer": "Gemini 4",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_4_ed_white_eva"
+            },
+            {
+              "answer": "Kepler",
+              "source": "similar_difficulty",
+              "factId": "nasa_kepler_exoplanets"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Gemini 8\" and \"Gemini 4\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_sojourner_rover",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which spacecraft was the first successful Mars rover, landing as part of the Mars Pathfinder mission in 1997?",
+          "correctAnswer": "Sojourner",
+          "distractors": [
+            {
+              "answer": "Gemini 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_8_docking_neil_armstrong"
+            },
+            {
+              "answer": "Gemini 4",
+              "source": "similar_difficulty",
+              "factId": "nasa_gemini_4_ed_white_eva"
+            },
+            {
+              "answer": "Kepler",
+              "source": "similar_difficulty",
+              "factId": "nasa_kepler_exoplanets"
+            },
+            {
+              "answer": "Apollo 8",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_8_lunar_orbit"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Gemini 8\" and \"Gemini 4\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_perseverance_rover",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which Mars rover, landing in February 2021, is searching for signs of ancient microbial life and carries the Ingenuity helicopter?",
+          "correctAnswer": "Perseverance",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "nasa_curiosity_rover"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_pluto"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_perseverance_rover",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which Mars rover, landing in February 2021, is searching for signs of ancient microbial life and carries the Ingenuity helicopter?",
+          "correctAnswer": "Perseverance",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "nasa_curiosity_rover"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_pluto"
+            },
+            {
+              "answer": "Apollo 11",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_11_moon_landing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_perseverance_rover",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which Mars rover, landing in February 2021, is searching for signs of ancient microbial life and carries the Ingenuity helicopter?",
+          "correctAnswer": "Perseverance",
+          "distractors": [
+            {
+              "answer": "Curiosity",
+              "source": "similar_difficulty",
+              "factId": "nasa_curiosity_rover"
+            },
+            {
+              "answer": "New Horizons",
+              "source": "similar_difficulty",
+              "factId": "nasa_newhorizons_pluto"
+            },
+            {
+              "answer": "Apollo 11",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_11_moon_landing"
+            },
+            {
+              "answer": "Apollo 13",
+              "source": "similar_difficulty",
+              "factId": "nasa_apollo_13_crisis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Apollo 11\" and \"Apollo 13\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "nasa_ingenuity_helicopter",
+          "masteryLevel": 0,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which helicopter made the first powered, controlled flight on another planet on April 19, 2021?",
+          "correctAnswer": "Ingenuity",
+          "distractors": [
+            {
+              "answer": "Discovery",
+              "source": "similar_difficulty",
+              "factId": "nasa_discovery_shuttle"
+            },
+            {
+              "answer": "Challenger",
+              "source": "similar_difficulty",
+              "factId": "nasa_challenger_disaster"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_ingenuity_helicopter",
+          "masteryLevel": 2,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which helicopter made the first powered, controlled flight on another planet on April 19, 2021?",
+          "correctAnswer": "Ingenuity",
+          "distractors": [
+            {
+              "answer": "Discovery",
+              "source": "similar_difficulty",
+              "factId": "nasa_discovery_shuttle"
+            },
+            {
+              "answer": "Challenger",
+              "source": "similar_difficulty",
+              "factId": "nasa_challenger_disaster"
+            },
+            {
+              "answer": "Columbia",
+              "source": "similar_difficulty",
+              "factId": "nasa_columbia_disaster_2003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_ingenuity_helicopter",
+          "masteryLevel": 4,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which helicopter made the first powered, controlled flight on another planet on April 19, 2021?",
+          "correctAnswer": "Ingenuity",
+          "distractors": [
+            {
+              "answer": "Discovery",
+              "source": "similar_difficulty",
+              "factId": "nasa_discovery_shuttle"
+            },
+            {
+              "answer": "Challenger",
+              "source": "similar_difficulty",
+              "factId": "nasa_challenger_disaster"
+            },
+            {
+              "answer": "Columbia",
+              "source": "similar_difficulty",
+              "factId": "nasa_columbia_disaster_2003"
+            },
+            {
+              "answer": "Eagle",
+              "source": "similar_difficulty",
+              "factId": "nasa_eagle_lunar_module"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_europa_clipper",
+          "masteryLevel": 0,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which NASA spacecraft, launched in October 2024, will study Jupiter's moon this mission for habitability and will arrive around 2030?",
+          "correctAnswer": "Europa Clipper",
+          "distractors": [
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_lagrange_point"
+            },
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_partner_agencies"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_europa_clipper",
+          "masteryLevel": 2,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which NASA spacecraft, launched in October 2024, will study Jupiter's moon this mission for habitability and will arrive around 2030?",
+          "correctAnswer": "Europa Clipper",
+          "distractors": [
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_lagrange_point"
+            },
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_partner_agencies"
+            },
+            {
+              "answer": "Mars Reconnaissance Orbiter",
+              "source": "similar_difficulty",
+              "factId": "nasa_mro_mars"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_europa_clipper",
+          "masteryLevel": 4,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which NASA spacecraft, launched in October 2024, will study Jupiter's moon this mission for habitability and will arrive around 2030?",
+          "correctAnswer": "Europa Clipper",
+          "distractors": [
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_lagrange_point"
+            },
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_partner_agencies"
+            },
+            {
+              "answer": "Mars Reconnaissance Orbiter",
+              "source": "similar_difficulty",
+              "factId": "nasa_mro_mars"
+            },
+            {
+              "answer": "Hubble Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_hubble_deep_field"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_parker_sun",
+          "masteryLevel": 0,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which spacecraft is the closest human-made object to the Sun, having touched the Sun's corona in 2021?",
+          "correctAnswer": "Parker Solar Probe",
+          "distractors": [
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_partner_agencies"
+            },
+            {
+              "answer": "Spitzer Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_spitzer_trappist"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_parker_sun",
+          "masteryLevel": 2,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which spacecraft is the closest human-made object to the Sun, having touched the Sun's corona in 2021?",
+          "correctAnswer": "Parker Solar Probe",
+          "distractors": [
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_partner_agencies"
+            },
+            {
+              "answer": "Spitzer Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_spitzer_trappist"
+            },
+            {
+              "answer": "Hubble Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_hubble_deep_field"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_parker_sun",
+          "masteryLevel": 4,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which spacecraft is the closest human-made object to the Sun, having touched the Sun's corona in 2021?",
+          "correctAnswer": "Parker Solar Probe",
+          "distractors": [
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_partner_agencies"
+            },
+            {
+              "answer": "Spitzer Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_spitzer_trappist"
+            },
+            {
+              "answer": "Hubble Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_hubble_deep_field"
+            },
+            {
+              "answer": "Chandra X-ray Observatory",
+              "source": "similar_difficulty",
+              "factId": "nasa_chandra_xray"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_hubble_mirror_repair",
+          "masteryLevel": 0,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which space this optical instrument, launched in 1990, was famously repaired in orbit after its main mirror was found to be flawed?",
+          "correctAnswer": "Hubble Space Telescope",
+          "distractors": [
+            {
+              "answer": "Voyager program",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager_golden_record"
+            },
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_continuous_habitation"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_hubble_mirror_repair",
+          "masteryLevel": 2,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which space this optical instrument, launched in 1990, was famously repaired in orbit after its main mirror was found to be flawed?",
+          "correctAnswer": "Hubble Space Telescope",
+          "distractors": [
+            {
+              "answer": "Voyager program",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager_golden_record"
+            },
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_continuous_habitation"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_overview"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_hubble_mirror_repair",
+          "masteryLevel": 4,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which space this optical instrument, launched in 1990, was famously repaired in orbit after its main mirror was found to be flawed?",
+          "correctAnswer": "Hubble Space Telescope",
+          "distractors": [
+            {
+              "answer": "Voyager program",
+              "source": "similar_difficulty",
+              "factId": "nasa_voyager_golden_record"
+            },
+            {
+              "answer": "International Space Station",
+              "source": "similar_difficulty",
+              "factId": "nasa_iss_continuous_habitation"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_overview"
+            },
+            {
+              "answer": "Dawn spacecraft",
+              "source": "pool_fill",
+              "factId": "nasa_dawn_asteroids"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_chandra_xray",
+          "masteryLevel": 0,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which NASA flagship X-ray telescope, launched in 1999, studies black holes, supernovae, and dark matter?",
+          "correctAnswer": "Chandra X-ray Observatory",
+          "distractors": [
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "Dawn spacecraft",
+              "source": "similar_difficulty",
+              "factId": "nasa_dawn_asteroids"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_chandra_xray",
+          "masteryLevel": 2,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which NASA flagship X-ray telescope, launched in 1999, studies black holes, supernovae, and dark matter?",
+          "correctAnswer": "Chandra X-ray Observatory",
+          "distractors": [
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "Dawn spacecraft",
+              "source": "similar_difficulty",
+              "factId": "nasa_dawn_asteroids"
+            },
+            {
+              "answer": "Nancy Grace Roman Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_roman_overview"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_chandra_xray",
+          "masteryLevel": 4,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which NASA flagship X-ray telescope, launched in 1999, studies black holes, supernovae, and dark matter?",
+          "correctAnswer": "Chandra X-ray Observatory",
+          "distractors": [
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "Dawn spacecraft",
+              "source": "similar_difficulty",
+              "factId": "nasa_dawn_asteroids"
+            },
+            {
+              "answer": "Nancy Grace Roman Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_roman_overview"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_lagrange_point"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_hubble_launch_year",
+          "masteryLevel": 0,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year was the Hubble Space Telescope launched aboard Space Shuttle Discovery?",
+          "correctAnswer": "1990",
+          "distractors": [
+            {
+              "answer": "2005",
+              "source": "numerical",
+              "factId": "_numerical_2005"
+            },
+            {
+              "answer": "1985",
+              "source": "numerical",
+              "factId": "_numerical_1985"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_hubble_launch_year",
+          "masteryLevel": 2,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year was the Hubble Space Telescope launched aboard Space Shuttle Discovery?",
+          "correctAnswer": "1990",
+          "distractors": [
+            {
+              "answer": "2005",
+              "source": "numerical",
+              "factId": "_numerical_2005"
+            },
+            {
+              "answer": "1985",
+              "source": "numerical",
+              "factId": "_numerical_1985"
+            },
+            {
+              "answer": "2003",
+              "source": "numerical",
+              "factId": "_numerical_2003"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_hubble_launch_year",
+          "masteryLevel": 4,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year was the Hubble Space Telescope launched aboard Space Shuttle Discovery?",
+          "correctAnswer": "1990",
+          "distractors": [
+            {
+              "answer": "2005",
+              "source": "numerical",
+              "factId": "_numerical_2005"
+            },
+            {
+              "answer": "1985",
+              "source": "numerical",
+              "factId": "_numerical_1985"
+            },
+            {
+              "answer": "2003",
+              "source": "numerical",
+              "factId": "_numerical_2003"
+            },
+            {
+              "answer": "1963",
+              "source": "numerical",
+              "factId": "_numerical_1963"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_spitzer_trappist",
+          "masteryLevel": 0,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which space this optical instrument confirmed 7 Earth-sized planets orbiting TRAPPIST-1, the most planets ever found around a single star?",
+          "correctAnswer": "Spitzer Space Telescope",
+          "distractors": [
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_lagrange_point"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_spitzer_trappist",
+          "masteryLevel": 2,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which space this optical instrument confirmed 7 Earth-sized planets orbiting TRAPPIST-1, the most planets ever found around a single star?",
+          "correctAnswer": "Spitzer Space Telescope",
+          "distractors": [
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_lagrange_point"
+            },
+            {
+              "answer": "Chandra X-ray Observatory",
+              "source": "similar_difficulty",
+              "factId": "nasa_chandra_xray"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_spitzer_trappist",
+          "masteryLevel": 4,
+          "poolId": "mission_names_long",
+          "renderedQuestion": "Which space this optical instrument confirmed 7 Earth-sized planets orbiting TRAPPIST-1, the most planets ever found around a single star?",
+          "correctAnswer": "Spitzer Space Telescope",
+          "distractors": [
+            {
+              "answer": "Parker Solar Probe",
+              "source": "similar_difficulty",
+              "factId": "nasa_parker_sun"
+            },
+            {
+              "answer": "James Webb Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_jwst_lagrange_point"
+            },
+            {
+              "answer": "Chandra X-ray Observatory",
+              "source": "similar_difficulty",
+              "factId": "nasa_chandra_xray"
+            },
+            {
+              "answer": "Nancy Grace Roman Space Telescope",
+              "source": "similar_difficulty",
+              "factId": "nasa_roman_overview"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_kepler_exoplanets",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which space observatory discovered over 2,600 confirmed exoplanets, more than any other observatory?",
+          "correctAnswer": "Kepler",
+          "distractors": [
+            {
+              "answer": "TESS",
+              "source": "similar_difficulty",
+              "factId": "nasa_tess_overview"
+            },
+            {
+              "answer": "Perseverance",
+              "source": "similar_difficulty",
+              "factId": "nasa_perseverance_rover"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_kepler_exoplanets",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which space observatory discovered over 2,600 confirmed exoplanets, more than any other observatory?",
+          "correctAnswer": "Kepler",
+          "distractors": [
+            {
+              "answer": "TESS",
+              "source": "similar_difficulty",
+              "factId": "nasa_tess_overview"
+            },
+            {
+              "answer": "Perseverance",
+              "source": "similar_difficulty",
+              "factId": "nasa_perseverance_rover"
+            },
+            {
+              "answer": "Galileo",
+              "source": "similar_difficulty",
+              "factId": "nasa_galileo_jupiter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_kepler_exoplanets",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which space observatory discovered over 2,600 confirmed exoplanets, more than any other observatory?",
+          "correctAnswer": "Kepler",
+          "distractors": [
+            {
+              "answer": "TESS",
+              "source": "similar_difficulty",
+              "factId": "nasa_tess_overview"
+            },
+            {
+              "answer": "Perseverance",
+              "source": "similar_difficulty",
+              "factId": "nasa_perseverance_rover"
+            },
+            {
+              "answer": "Galileo",
+              "source": "similar_difficulty",
+              "factId": "nasa_galileo_jupiter"
+            },
+            {
+              "answer": "Pioneer 10",
+              "source": "similar_difficulty",
+              "factId": "nasa_pioneer_plaque"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_kepler_transit_method",
+          "masteryLevel": 0,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which telescope found exoplanets by detecting tiny dips in starlight when planets cross in front of their host stars?",
+          "correctAnswer": "Kepler",
+          "distractors": [
+            {
+              "answer": "Cassini",
+              "source": "similar_difficulty",
+              "factId": "nasa_cassini_saturn"
+            },
+            {
+              "answer": "MESSENGER",
+              "source": "similar_difficulty",
+              "factId": "nasa_messenger_mercury"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_kepler_transit_method",
+          "masteryLevel": 2,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which telescope found exoplanets by detecting tiny dips in starlight when planets cross in front of their host stars?",
+          "correctAnswer": "Kepler",
+          "distractors": [
+            {
+              "answer": "Cassini",
+              "source": "similar_difficulty",
+              "factId": "nasa_cassini_saturn"
+            },
+            {
+              "answer": "MESSENGER",
+              "source": "similar_difficulty",
+              "factId": "nasa_messenger_mercury"
+            },
+            {
+              "answer": "Huygens",
+              "source": "similar_difficulty",
+              "factId": "nasa_huygens_titan"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_kepler_transit_method",
+          "masteryLevel": 4,
+          "poolId": "mission_names_short",
+          "renderedQuestion": "Which telescope found exoplanets by detecting tiny dips in starlight when planets cross in front of their host stars?",
+          "correctAnswer": "Kepler",
+          "distractors": [
+            {
+              "answer": "Cassini",
+              "source": "similar_difficulty",
+              "factId": "nasa_cassini_saturn"
+            },
+            {
+              "answer": "MESSENGER",
+              "source": "similar_difficulty",
+              "factId": "nasa_messenger_mercury"
+            },
+            {
+              "answer": "Huygens",
+              "source": "similar_difficulty",
+              "factId": "nasa_huygens_titan"
+            },
+            {
+              "answer": "Opportunity",
+              "source": "similar_difficulty",
+              "factId": "nasa_opportunity_dust_storm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_armstrong_first_moonwalk",
+          "masteryLevel": 0,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the first person to walk on the Moon?",
+          "correctAnswer": "Neil Armstrong",
+          "distractors": [
+            {
+              "answer": "Jim Lovell",
+              "source": "similar_difficulty",
+              "factId": "nasa_lovell_apollo_13_commander"
+            },
+            {
+              "answer": "Buzz Aldrin",
+              "source": "similar_difficulty",
+              "factId": "nasa_aldrin_second_moonwalk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_armstrong_first_moonwalk",
+          "masteryLevel": 2,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the first person to walk on the Moon?",
+          "correctAnswer": "Neil Armstrong",
+          "distractors": [
+            {
+              "answer": "Jim Lovell",
+              "source": "similar_difficulty",
+              "factId": "nasa_lovell_apollo_13_commander"
+            },
+            {
+              "answer": "Buzz Aldrin",
+              "source": "similar_difficulty",
+              "factId": "nasa_aldrin_second_moonwalk"
+            },
+            {
+              "answer": "Sally Ride",
+              "source": "similar_difficulty",
+              "factId": "nasa_ride_first_american_woman_space"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_armstrong_first_moonwalk",
+          "masteryLevel": 4,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the first person to walk on the Moon?",
+          "correctAnswer": "Neil Armstrong",
+          "distractors": [
+            {
+              "answer": "Jim Lovell",
+              "source": "similar_difficulty",
+              "factId": "nasa_lovell_apollo_13_commander"
+            },
+            {
+              "answer": "Buzz Aldrin",
+              "source": "similar_difficulty",
+              "factId": "nasa_aldrin_second_moonwalk"
+            },
+            {
+              "answer": "Sally Ride",
+              "source": "similar_difficulty",
+              "factId": "nasa_ride_first_american_woman_space"
+            },
+            {
+              "answer": "Alan Shepard",
+              "source": "similar_difficulty",
+              "factId": "nasa_shepard_first_american_space"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_lovell_apollo_13_commander",
+          "masteryLevel": 0,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the Commander of Apollo 13, the famous mission with the words 'Houston, we've had a problem'?",
+          "correctAnswer": "Jim Lovell",
+          "distractors": [
+            {
+              "answer": "Ed White",
+              "source": "similar_difficulty",
+              "factId": "nasa_white_first_american_spacewalk"
+            },
+            {
+              "answer": "Buzz Aldrin",
+              "source": "similar_difficulty",
+              "factId": "nasa_aldrin_second_moonwalk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_lovell_apollo_13_commander",
+          "masteryLevel": 2,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the Commander of Apollo 13, the famous mission with the words 'Houston, we've had a problem'?",
+          "correctAnswer": "Jim Lovell",
+          "distractors": [
+            {
+              "answer": "Ed White",
+              "source": "similar_difficulty",
+              "factId": "nasa_white_first_american_spacewalk"
+            },
+            {
+              "answer": "Buzz Aldrin",
+              "source": "similar_difficulty",
+              "factId": "nasa_aldrin_second_moonwalk"
+            },
+            {
+              "answer": "Alan Shepard",
+              "source": "similar_difficulty",
+              "factId": "nasa_shepard_first_american_space"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_lovell_apollo_13_commander",
+          "masteryLevel": 4,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the Commander of Apollo 13, the famous mission with the words 'Houston, we've had a problem'?",
+          "correctAnswer": "Jim Lovell",
+          "distractors": [
+            {
+              "answer": "Ed White",
+              "source": "similar_difficulty",
+              "factId": "nasa_white_first_american_spacewalk"
+            },
+            {
+              "answer": "Buzz Aldrin",
+              "source": "similar_difficulty",
+              "factId": "nasa_aldrin_second_moonwalk"
+            },
+            {
+              "answer": "Alan Shepard",
+              "source": "similar_difficulty",
+              "factId": "nasa_shepard_first_american_space"
+            },
+            {
+              "answer": "Chris Hadfield",
+              "source": "similar_difficulty",
+              "factId": "nasa_hadfield_space_oddity_iss"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_shepard_first_american_space",
+          "masteryLevel": 0,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the first American in space on May 5, 1961?",
+          "correctAnswer": "Alan Shepard",
+          "distractors": [
+            {
+              "answer": "Chris Hadfield",
+              "source": "similar_difficulty",
+              "factId": "nasa_hadfield_space_oddity_iss"
+            },
+            {
+              "answer": "Frank Borman",
+              "source": "similar_difficulty",
+              "factId": "nasa_borman_apollo_8_earthrise"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_shepard_first_american_space",
+          "masteryLevel": 2,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the first American in space on May 5, 1961?",
+          "correctAnswer": "Alan Shepard",
+          "distractors": [
+            {
+              "answer": "Chris Hadfield",
+              "source": "similar_difficulty",
+              "factId": "nasa_hadfield_space_oddity_iss"
+            },
+            {
+              "answer": "Frank Borman",
+              "source": "similar_difficulty",
+              "factId": "nasa_borman_apollo_8_earthrise"
+            },
+            {
+              "answer": "John Glenn",
+              "source": "similar_difficulty",
+              "factId": "nasa_glenn_first_american_orbit"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_shepard_first_american_space",
+          "masteryLevel": 4,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the first American in space on May 5, 1961?",
+          "correctAnswer": "Alan Shepard",
+          "distractors": [
+            {
+              "answer": "Chris Hadfield",
+              "source": "similar_difficulty",
+              "factId": "nasa_hadfield_space_oddity_iss"
+            },
+            {
+              "answer": "Frank Borman",
+              "source": "similar_difficulty",
+              "factId": "nasa_borman_apollo_8_earthrise"
+            },
+            {
+              "answer": "John Glenn",
+              "source": "similar_difficulty",
+              "factId": "nasa_glenn_first_american_orbit"
+            },
+            {
+              "answer": "Buzz Aldrin",
+              "source": "similar_difficulty",
+              "factId": "nasa_aldrin_second_moonwalk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_hadfield_space_oddity_iss",
+          "masteryLevel": 0,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Which Canadian astronaut famously performed David Bowie's 'Space Oddity' aboard the ISS in 2013?",
+          "correctAnswer": "Chris Hadfield",
+          "distractors": [
+            {
+              "answer": "Gene Cernan",
+              "source": "similar_difficulty",
+              "factId": "nasa_cernan_last_moonwalk"
+            },
+            {
+              "answer": "Mae Jemison",
+              "source": "similar_difficulty",
+              "factId": "nasa_jemison_first_black_woman_space"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_hadfield_space_oddity_iss",
+          "masteryLevel": 2,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Which Canadian astronaut famously performed David Bowie's 'Space Oddity' aboard the ISS in 2013?",
+          "correctAnswer": "Chris Hadfield",
+          "distractors": [
+            {
+              "answer": "Gene Cernan",
+              "source": "similar_difficulty",
+              "factId": "nasa_cernan_last_moonwalk"
+            },
+            {
+              "answer": "Mae Jemison",
+              "source": "similar_difficulty",
+              "factId": "nasa_jemison_first_black_woman_space"
+            },
+            {
+              "answer": "Frank Borman",
+              "source": "similar_difficulty",
+              "factId": "nasa_borman_apollo_8_earthrise"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_hadfield_space_oddity_iss",
+          "masteryLevel": 4,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Which Canadian astronaut famously performed David Bowie's 'Space Oddity' aboard the ISS in 2013?",
+          "correctAnswer": "Chris Hadfield",
+          "distractors": [
+            {
+              "answer": "Gene Cernan",
+              "source": "similar_difficulty",
+              "factId": "nasa_cernan_last_moonwalk"
+            },
+            {
+              "answer": "Mae Jemison",
+              "source": "similar_difficulty",
+              "factId": "nasa_jemison_first_black_woman_space"
+            },
+            {
+              "answer": "Frank Borman",
+              "source": "similar_difficulty",
+              "factId": "nasa_borman_apollo_8_earthrise"
+            },
+            {
+              "answer": "Alan Shepard",
+              "source": "similar_difficulty",
+              "factId": "nasa_shepard_first_american_space"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_borman_apollo_8_earthrise",
+          "masteryLevel": 0,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the Commander of Apollo 8, the first crewed mission to orbit the Moon in December 1968?",
+          "correctAnswer": "Frank Borman",
+          "distractors": [
+            {
+              "answer": "Alan Shepard",
+              "source": "similar_difficulty",
+              "factId": "nasa_shepard_first_american_space"
+            },
+            {
+              "answer": "Chris Hadfield",
+              "source": "similar_difficulty",
+              "factId": "nasa_hadfield_space_oddity_iss"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_borman_apollo_8_earthrise",
+          "masteryLevel": 2,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the Commander of Apollo 8, the first crewed mission to orbit the Moon in December 1968?",
+          "correctAnswer": "Frank Borman",
+          "distractors": [
+            {
+              "answer": "Alan Shepard",
+              "source": "similar_difficulty",
+              "factId": "nasa_shepard_first_american_space"
+            },
+            {
+              "answer": "Chris Hadfield",
+              "source": "similar_difficulty",
+              "factId": "nasa_hadfield_space_oddity_iss"
+            },
+            {
+              "answer": "Ed White",
+              "source": "similar_difficulty",
+              "factId": "nasa_white_first_american_spacewalk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_borman_apollo_8_earthrise",
+          "masteryLevel": 4,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who was the Commander of Apollo 8, the first crewed mission to orbit the Moon in December 1968?",
+          "correctAnswer": "Frank Borman",
+          "distractors": [
+            {
+              "answer": "Alan Shepard",
+              "source": "similar_difficulty",
+              "factId": "nasa_shepard_first_american_space"
+            },
+            {
+              "answer": "Chris Hadfield",
+              "source": "similar_difficulty",
+              "factId": "nasa_hadfield_space_oddity_iss"
+            },
+            {
+              "answer": "Ed White",
+              "source": "similar_difficulty",
+              "factId": "nasa_white_first_american_spacewalk"
+            },
+            {
+              "answer": "Jim Lovell",
+              "source": "similar_difficulty",
+              "factId": "nasa_lovell_apollo_13_commander"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_koch_meir_first_all_female_spacewalk",
+          "masteryLevel": 0,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who conducted the first all-female spacewalk on October 18, 2019?",
+          "correctAnswer": "Christina Koch",
+          "distractors": [
+            {
+              "answer": "Mae Jemison",
+              "source": "similar_difficulty",
+              "factId": "nasa_jemison_first_black_woman_space"
+            },
+            {
+              "answer": "Ed White",
+              "source": "similar_difficulty",
+              "factId": "nasa_white_first_american_spacewalk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_koch_meir_first_all_female_spacewalk",
+          "masteryLevel": 2,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who conducted the first all-female spacewalk on October 18, 2019?",
+          "correctAnswer": "Christina Koch",
+          "distractors": [
+            {
+              "answer": "Mae Jemison",
+              "source": "similar_difficulty",
+              "factId": "nasa_jemison_first_black_woman_space"
+            },
+            {
+              "answer": "Ed White",
+              "source": "similar_difficulty",
+              "factId": "nasa_white_first_american_spacewalk"
+            },
+            {
+              "answer": "Frank Borman",
+              "source": "similar_difficulty",
+              "factId": "nasa_borman_apollo_8_earthrise"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_koch_meir_first_all_female_spacewalk",
+          "masteryLevel": 4,
+          "poolId": "astronaut_names",
+          "renderedQuestion": "Who conducted the first all-female spacewalk on October 18, 2019?",
+          "correctAnswer": "Christina Koch",
+          "distractors": [
+            {
+              "answer": "Mae Jemison",
+              "source": "similar_difficulty",
+              "factId": "nasa_jemison_first_black_woman_space"
+            },
+            {
+              "answer": "Ed White",
+              "source": "similar_difficulty",
+              "factId": "nasa_white_first_american_spacewalk"
+            },
+            {
+              "answer": "Frank Borman",
+              "source": "similar_difficulty",
+              "factId": "nasa_borman_apollo_8_earthrise"
+            },
+            {
+              "answer": "Peggy Whitson",
+              "source": "similar_difficulty",
+              "factId": "nasa_whitson_most_cumulative_space_time"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_eagle_lunar_module",
+          "masteryLevel": 0,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "What was the name of Apollo 11's lunar module that landed on the Moon?",
+          "correctAnswer": "Eagle",
+          "distractors": [
+            {
+              "answer": "Discovery",
+              "source": "similar_difficulty",
+              "factId": "nasa_discovery_shuttle"
+            },
+            {
+              "answer": "Challenger",
+              "source": "similar_difficulty",
+              "factId": "nasa_challenger_disaster"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_eagle_lunar_module",
+          "masteryLevel": 2,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "What was the name of Apollo 11's lunar module that landed on the Moon?",
+          "correctAnswer": "Eagle",
+          "distractors": [
+            {
+              "answer": "Discovery",
+              "source": "similar_difficulty",
+              "factId": "nasa_discovery_shuttle"
+            },
+            {
+              "answer": "Challenger",
+              "source": "similar_difficulty",
+              "factId": "nasa_challenger_disaster"
+            },
+            {
+              "answer": "Columbia",
+              "source": "similar_difficulty",
+              "factId": "nasa_columbia_disaster_2003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_eagle_lunar_module",
+          "masteryLevel": 4,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "What was the name of Apollo 11's lunar module that landed on the Moon?",
+          "correctAnswer": "Eagle",
+          "distractors": [
+            {
+              "answer": "Discovery",
+              "source": "similar_difficulty",
+              "factId": "nasa_discovery_shuttle"
+            },
+            {
+              "answer": "Challenger",
+              "source": "similar_difficulty",
+              "factId": "nasa_challenger_disaster"
+            },
+            {
+              "answer": "Columbia",
+              "source": "similar_difficulty",
+              "factId": "nasa_columbia_disaster_2003"
+            },
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_discovery_shuttle",
+          "masteryLevel": 0,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which Space Shuttle flew the most missions (39 flights) and deployed the Hubble Space Telescope?",
+          "correctAnswer": "Discovery",
+          "distractors": [
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            },
+            {
+              "answer": "Columbia",
+              "source": "similar_difficulty",
+              "factId": "nasa_columbia_disaster_2003"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_discovery_shuttle",
+          "masteryLevel": 2,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which Space Shuttle flew the most missions (39 flights) and deployed the Hubble Space Telescope?",
+          "correctAnswer": "Discovery",
+          "distractors": [
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            },
+            {
+              "answer": "Columbia",
+              "source": "similar_difficulty",
+              "factId": "nasa_columbia_disaster_2003"
+            },
+            {
+              "answer": "Eagle",
+              "source": "similar_difficulty",
+              "factId": "nasa_eagle_lunar_module"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_discovery_shuttle",
+          "masteryLevel": 4,
+          "poolId": "spacecraft_names",
+          "renderedQuestion": "Which Space Shuttle flew the most missions (39 flights) and deployed the Hubble Space Telescope?",
+          "correctAnswer": "Discovery",
+          "distractors": [
+            {
+              "answer": "Ingenuity",
+              "source": "similar_difficulty",
+              "factId": "nasa_ingenuity_helicopter"
+            },
+            {
+              "answer": "Columbia",
+              "source": "similar_difficulty",
+              "factId": "nasa_columbia_disaster_2003"
+            },
+            {
+              "answer": "Eagle",
+              "source": "similar_difficulty",
+              "factId": "nasa_eagle_lunar_module"
+            },
+            {
+              "answer": "Challenger",
+              "source": "pool_fill",
+              "factId": "nasa_challenger_disaster"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo11_year",
+          "masteryLevel": 0,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year did Apollo 11 land the first humans on the Moon?",
+          "correctAnswer": "1969",
+          "distractors": [
+            {
+              "answer": "1982",
+              "source": "numerical",
+              "factId": "_numerical_1982"
+            },
+            {
+              "answer": "1952",
+              "source": "numerical",
+              "factId": "_numerical_1952"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo11_year",
+          "masteryLevel": 2,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year did Apollo 11 land the first humans on the Moon?",
+          "correctAnswer": "1969",
+          "distractors": [
+            {
+              "answer": "1982",
+              "source": "numerical",
+              "factId": "_numerical_1982"
+            },
+            {
+              "answer": "1952",
+              "source": "numerical",
+              "factId": "_numerical_1952"
+            },
+            {
+              "answer": "1947",
+              "source": "numerical",
+              "factId": "_numerical_1947"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_apollo11_year",
+          "masteryLevel": 4,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year did Apollo 11 land the first humans on the Moon?",
+          "correctAnswer": "1969",
+          "distractors": [
+            {
+              "answer": "1982",
+              "source": "numerical",
+              "factId": "_numerical_1982"
+            },
+            {
+              "answer": "1952",
+              "source": "numerical",
+              "factId": "_numerical_1952"
+            },
+            {
+              "answer": "1947",
+              "source": "numerical",
+              "factId": "_numerical_1947"
+            },
+            {
+              "answer": "1977",
+              "source": "numerical",
+              "factId": "_numerical_1977"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager1_launch_year",
+          "masteryLevel": 0,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year was Voyager 1 launched on its grand tour of the outer solar system?",
+          "correctAnswer": "1977",
+          "distractors": [
+            {
+              "answer": "1993",
+              "source": "numerical",
+              "factId": "_numerical_1993"
+            },
+            {
+              "answer": "1968",
+              "source": "numerical",
+              "factId": "_numerical_1968"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager1_launch_year",
+          "masteryLevel": 2,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year was Voyager 1 launched on its grand tour of the outer solar system?",
+          "correctAnswer": "1977",
+          "distractors": [
+            {
+              "answer": "1993",
+              "source": "numerical",
+              "factId": "_numerical_1993"
+            },
+            {
+              "answer": "1968",
+              "source": "numerical",
+              "factId": "_numerical_1968"
+            },
+            {
+              "answer": "2004",
+              "source": "numerical",
+              "factId": "_numerical_2004"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_voyager1_launch_year",
+          "masteryLevel": 4,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year was Voyager 1 launched on its grand tour of the outer solar system?",
+          "correctAnswer": "1977",
+          "distractors": [
+            {
+              "answer": "1993",
+              "source": "numerical",
+              "factId": "_numerical_1993"
+            },
+            {
+              "answer": "1968",
+              "source": "numerical",
+              "factId": "_numerical_1968"
+            },
+            {
+              "answer": "2004",
+              "source": "numerical",
+              "factId": "_numerical_2004"
+            },
+            {
+              "answer": "1957",
+              "source": "numerical",
+              "factId": "_numerical_1957"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "nasa_jwst_launch_year",
+          "masteryLevel": 0,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year was the James Webb Space Telescope launched on Christmas Day?",
+          "correctAnswer": "2021",
+          "distractors": [
+            {
+              "answer": "2003",
+              "source": "numerical",
+              "factId": "_numerical_2003"
+            },
+            {
+              "answer": "2002",
+              "source": "numerical",
+              "factId": "_numerical_2002"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "nasa_jwst_launch_year",
+          "masteryLevel": 2,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year was the James Webb Space Telescope launched on Christmas Day?",
+          "correctAnswer": "2021",
+          "distractors": [
+            {
+              "answer": "2003",
+              "source": "numerical",
+              "factId": "_numerical_2003"
+            },
+            {
+              "answer": "2002",
+              "source": "numerical",
+              "factId": "_numerical_2002"
+            },
+            {
+              "answer": "1995",
+              "source": "numerical",
+              "factId": "_numerical_1995"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "nasa_jwst_launch_year",
+          "masteryLevel": 4,
+          "poolId": "launch_years",
+          "renderedQuestion": "In what year was the James Webb Space Telescope launched on Christmas Day?",
+          "correctAnswer": "2021",
+          "distractors": [
+            {
+              "answer": "2003",
+              "source": "numerical",
+              "factId": "_numerical_2003"
+            },
+            {
+              "answer": "2002",
+              "source": "numerical",
+              "factId": "_numerical_2002"
+            },
+            {
+              "answer": "1995",
+              "source": "numerical",
+              "factId": "_numerical_1995"
+            },
+            {
+              "answer": "2011",
+              "source": "numerical",
+              "factId": "_numerical_2011"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

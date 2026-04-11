@@ -1,0 +1,4316 @@
+{
+  "timestamp": "2026-04-11T02:00:37.945Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 151,
+  "totalFails": 0,
+  "totalWarns": 10,
+  "decks": [
+    {
+      "deckId": "us_presidents",
+      "deckName": "US Presidents",
+      "deckClass": "knowledge",
+      "totalFacts": 126,
+      "totalChecks": 151,
+      "failCount": 0,
+      "warnCount": 10,
+      "issuesByType": {
+        "mega_pool_runtime_warning": {
+          "fail": 0,
+          "warn": 1
+        },
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 5
+        },
+        "all_pool_fill": {
+          "fail": 0,
+          "warn": 3
+        },
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "_mega_pool_president_names",
+          "masteryLevel": -1,
+          "poolId": "president_names",
+          "renderedQuestion": "(deck-level check)",
+          "correctAnswer": "",
+          "distractors": [],
+          "isNumerical": false,
+          "templateId": "_deck_check",
+          "requestedCount": 0,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "mega_pool_runtime_warning",
+              "detail": "Pool \"president_names\" has 104 factIds (>100) — consider splitting by sub-topic"
+            }
+          ]
+        },
+        {
+          "factId": "pres_washington_two_terms",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president voluntarily stepped down after serving two full terms, setting a precedent that lasted until Franklin D. Roosevelt broke it?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_gettysburg"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_tear_down"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_two_terms",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president voluntarily stepped down after serving two full terms, setting a precedent that lasted until Franklin D. Roosevelt broke it?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_gettysburg"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_tear_down"
+            },
+            {
+              "answer": "George H.W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_ghwbush_soviet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_two_terms",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president voluntarily stepped down after serving two full terms, setting a precedent that lasted until Franklin D. Roosevelt broke it?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_gettysburg"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_tear_down"
+            },
+            {
+              "answer": "George H.W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_ghwbush_soviet"
+            },
+            {
+              "answer": "Warren G. Harding",
+              "source": "similar_difficulty",
+              "factId": "pres_harding_teapot"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_adams_white_house",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was the first to live in the White House, moving in during November 1800?",
+          "correctAnswer": "John Adams",
+          "distractors": [
+            {
+              "answer": "Chester Arthur",
+              "source": "similar_difficulty",
+              "factId": "pres_arthur_civil_service"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_valley_forge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_adams_white_house",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was the first to live in the White House, moving in during November 1800?",
+          "correctAnswer": "John Adams",
+          "distractors": [
+            {
+              "answer": "Chester Arthur",
+              "source": "similar_difficulty",
+              "factId": "pres_arthur_civil_service"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_valley_forge"
+            },
+            {
+              "answer": "Herbert Hoover",
+              "source": "similar_difficulty",
+              "factId": "pres_hoover_depression"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_adams_white_house",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was the first to live in the White House, moving in during November 1800?",
+          "correctAnswer": "John Adams",
+          "distractors": [
+            {
+              "answer": "Chester Arthur",
+              "source": "similar_difficulty",
+              "factId": "pres_arthur_civil_service"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_valley_forge"
+            },
+            {
+              "answer": "Herbert Hoover",
+              "source": "similar_difficulty",
+              "factId": "pres_hoover_depression"
+            },
+            {
+              "answer": "Lyndon B. Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_lbj_great_society"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_valley_forge",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which Continental Army general led his troops through the brutal winter at Valley Forge from 1777-1778, despite freezing temperatures and food shortages?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Andrew Jackson",
+              "source": "similar_difficulty",
+              "factId": "pres_jackson_bank"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_troosevelt_bullmoose"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_valley_forge",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which Continental Army general led his troops through the brutal winter at Valley Forge from 1777-1778, despite freezing temperatures and food shortages?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Andrew Jackson",
+              "source": "similar_difficulty",
+              "factId": "pres_jackson_bank"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_troosevelt_bullmoose"
+            },
+            {
+              "answer": "Donald Trump",
+              "source": "similar_difficulty",
+              "factId": "pres_trump_impeachments"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_washington_valley_forge",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which Continental Army general led his troops through the brutal winter at Valley Forge from 1777-1778, despite freezing temperatures and food shortages?",
+          "correctAnswer": "George Washington",
+          "distractors": [
+            {
+              "answer": "Andrew Jackson",
+              "source": "similar_difficulty",
+              "factId": "pres_jackson_bank"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_troosevelt_bullmoose"
+            },
+            {
+              "answer": "Donald Trump",
+              "source": "similar_difficulty",
+              "factId": "pres_trump_impeachments"
+            },
+            {
+              "answer": "Gerald Ford",
+              "source": "similar_difficulty",
+              "factId": "pres_ford_pardon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_jqadams_son_of",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was the son of a previous president — the first such case in US history?",
+          "correctAnswer": "John Quincy Adams",
+          "distractors": [
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_died_july4"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_balanced_budget"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_jqadams_son_of",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was the son of a previous president — the first such case in US history?",
+          "correctAnswer": "John Quincy Adams",
+          "distractors": [
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_died_july4"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_balanced_budget"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_youngest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_jqadams_son_of",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was the son of a previous president — the first such case in US history?",
+          "correctAnswer": "John Quincy Adams",
+          "distractors": [
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_died_july4"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_balanced_budget"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_youngest"
+            },
+            {
+              "answer": "Gerald Ford",
+              "source": "similar_difficulty",
+              "factId": "pres_ford_pardons_nixon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_harrison_wh_shortest",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president served the shortest term in US history — just 31 days — after refusing to wear a coat at his inauguration in freezing weather?",
+          "correctAnswer": "William Henry Harrison",
+          "distractors": [
+            {
+              "answer": "Dwight D. Eisenhower",
+              "source": "similar_difficulty",
+              "factId": "pres_eisenhower_interstate"
+            },
+            {
+              "answer": "Ulysses S. Grant",
+              "source": "similar_difficulty",
+              "factId": "pres_grant_general"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_harrison_wh_shortest",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president served the shortest term in US history — just 31 days — after refusing to wear a coat at his inauguration in freezing weather?",
+          "correctAnswer": "William Henry Harrison",
+          "distractors": [
+            {
+              "answer": "Dwight D. Eisenhower",
+              "source": "similar_difficulty",
+              "factId": "pres_eisenhower_interstate"
+            },
+            {
+              "answer": "Ulysses S. Grant",
+              "source": "similar_difficulty",
+              "factId": "pres_grant_general"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_first_black"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_harrison_wh_shortest",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president served the shortest term in US history — just 31 days — after refusing to wear a coat at his inauguration in freezing weather?",
+          "correctAnswer": "William Henry Harrison",
+          "distractors": [
+            {
+              "answer": "Dwight D. Eisenhower",
+              "source": "similar_difficulty",
+              "factId": "pres_eisenhower_interstate"
+            },
+            {
+              "answer": "Ulysses S. Grant",
+              "source": "similar_difficulty",
+              "factId": "pres_grant_general"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_first_black"
+            },
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_assassination"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_polk_manifest_destiny",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president added more territory to the United States than any other except Jefferson — including California, Texas, and the entire Southwest?",
+          "correctAnswer": "James K. Polk",
+          "distractors": [
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_constitution"
+            },
+            {
+              "answer": "Franklin Pierce",
+              "source": "similar_difficulty",
+              "factId": "pres_pierce_tragedy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_polk_manifest_destiny",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president added more territory to the United States than any other except Jefferson — including California, Texas, and the entire Southwest?",
+          "correctAnswer": "James K. Polk",
+          "distractors": [
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_constitution"
+            },
+            {
+              "answer": "Franklin Pierce",
+              "source": "similar_difficulty",
+              "factId": "pres_pierce_tragedy"
+            },
+            {
+              "answer": "Grover Cleveland",
+              "source": "similar_difficulty",
+              "factId": "pres_cleveland_nonconsecutive"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_polk_manifest_destiny",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president added more territory to the United States than any other except Jefferson — including California, Texas, and the entire Southwest?",
+          "correctAnswer": "James K. Polk",
+          "distractors": [
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_constitution"
+            },
+            {
+              "answer": "Franklin Pierce",
+              "source": "similar_difficulty",
+              "factId": "pres_pierce_tragedy"
+            },
+            {
+              "answer": "Grover Cleveland",
+              "source": "similar_difficulty",
+              "factId": "pres_cleveland_nonconsecutive"
+            },
+            {
+              "answer": "Gerald Ford",
+              "source": "similar_difficulty",
+              "factId": "pres_ford_never_elected"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_fillmore_last_whig",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was the last member of the Whig Party ever to hold the office — effectively the president who killed his own party?",
+          "correctAnswer": "Millard Fillmore",
+          "distractors": [
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league_nations"
+            },
+            {
+              "answer": "Jimmy Carter",
+              "source": "similar_difficulty",
+              "factId": "pres_carter_camp_david"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_fillmore_last_whig",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was the last member of the Whig Party ever to hold the office — effectively the president who killed his own party?",
+          "correctAnswer": "Millard Fillmore",
+          "distractors": [
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league_nations"
+            },
+            {
+              "answer": "Jimmy Carter",
+              "source": "similar_difficulty",
+              "factId": "pres_carter_camp_david"
+            },
+            {
+              "answer": "James K. Polk",
+              "source": "similar_difficulty",
+              "factId": "pres_polk_manifest_destiny"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_fillmore_last_whig",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was the last member of the Whig Party ever to hold the office — effectively the president who killed his own party?",
+          "correctAnswer": "Millard Fillmore",
+          "distractors": [
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league_nations"
+            },
+            {
+              "answer": "Jimmy Carter",
+              "source": "similar_difficulty",
+              "factId": "pres_carter_camp_david"
+            },
+            {
+              "answer": "James K. Polk",
+              "source": "similar_difficulty",
+              "factId": "pres_polk_manifest_destiny"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_youngest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_taylor_died_ice_cream",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president died after eating too many cherries and iced milk at a July 4th celebration — just 16 months into his term?",
+          "correctAnswer": "Zachary Taylor",
+          "distractors": [
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_shortest"
+            },
+            {
+              "answer": "Lyndon B. Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_lbj_vietnam"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_taylor_died_ice_cream",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president died after eating too many cherries and iced milk at a July 4th celebration — just 16 months into his term?",
+          "correctAnswer": "Zachary Taylor",
+          "distractors": [
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_shortest"
+            },
+            {
+              "answer": "Lyndon B. Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_lbj_vietnam"
+            },
+            {
+              "answer": "James Buchanan",
+              "source": "similar_difficulty",
+              "factId": "pres_buchanan_bachelor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_taylor_died_ice_cream",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president died after eating too many cherries and iced milk at a July 4th celebration — just 16 months into his term?",
+          "correctAnswer": "Zachary Taylor",
+          "distractors": [
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_shortest"
+            },
+            {
+              "answer": "Lyndon B. Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_lbj_vietnam"
+            },
+            {
+              "answer": "James Buchanan",
+              "source": "similar_difficulty",
+              "factId": "pres_buchanan_bachelor"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_valley_forge"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_taft_weight",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was famously the heaviest in US history, reportedly once becoming stuck in the White House bathtub?",
+          "correctAnswer": "William Howard Taft",
+          "distractors": [
+            {
+              "answer": "Joe Biden",
+              "source": "similar_difficulty",
+              "factId": "pres_biden_infrastructure"
+            },
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league_nations"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_taft_weight",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was famously the heaviest in US history, reportedly once becoming stuck in the White House bathtub?",
+          "correctAnswer": "William Howard Taft",
+          "distractors": [
+            {
+              "answer": "Joe Biden",
+              "source": "similar_difficulty",
+              "factId": "pres_biden_infrastructure"
+            },
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league_nations"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_survived_assassination"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_taft_weight",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was famously the heaviest in US history, reportedly once becoming stuck in the White House bathtub?",
+          "correctAnswer": "William Howard Taft",
+          "distractors": [
+            {
+              "answer": "Joe Biden",
+              "source": "similar_difficulty",
+              "factId": "pres_biden_infrastructure"
+            },
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league_nations"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_survived_assassination"
+            },
+            {
+              "answer": "John Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_adams_j_oneterm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_garfield_assassination",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was shot by a disappointed office-seeker named Charles Guiteau, dying 79 days after the attack?",
+          "correctAnswer": "James A. Garfield",
+          "distractors": [
+            {
+              "answer": "William Howard Taft",
+              "source": "similar_difficulty",
+              "factId": "pres_taft_weight"
+            },
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_opened_china"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_garfield_assassination",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was shot by a disappointed office-seeker named Charles Guiteau, dying 79 days after the attack?",
+          "correctAnswer": "James A. Garfield",
+          "distractors": [
+            {
+              "answer": "William Howard Taft",
+              "source": "similar_difficulty",
+              "factId": "pres_taft_weight"
+            },
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_opened_china"
+            },
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_garfield_assassination",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was shot by a disappointed office-seeker named Charles Guiteau, dying 79 days after the attack?",
+          "correctAnswer": "James A. Garfield",
+          "distractors": [
+            {
+              "answer": "William Howard Taft",
+              "source": "similar_difficulty",
+              "factId": "pres_taft_weight"
+            },
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_opened_china"
+            },
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_impeachment"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_arthur_reform",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president, once the corrupt 'boss' of New York customs house patronage, surprised everyone by championing the Pendleton Civil Service Reform Act?",
+          "correctAnswer": "Chester A. Arthur",
+          "distractors": [
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_impeachment"
+            },
+            {
+              "answer": "Andrew Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_ajohnson_impeached"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_arthur_reform",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president, once the corrupt 'boss' of New York customs house patronage, surprised everyone by championing the Pendleton Civil Service Reform Act?",
+          "correctAnswer": "Chester A. Arthur",
+          "distractors": [
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_impeachment"
+            },
+            {
+              "answer": "Andrew Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_ajohnson_impeached"
+            },
+            {
+              "answer": "William Henry Harrison",
+              "source": "similar_difficulty",
+              "factId": "pres_harrison_wh_shortest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_arthur_reform",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president, once the corrupt 'boss' of New York customs house patronage, surprised everyone by championing the Pendleton Civil Service Reform Act?",
+          "correctAnswer": "Chester A. Arthur",
+          "distractors": [
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_impeachment"
+            },
+            {
+              "answer": "Andrew Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_ajohnson_impeached"
+            },
+            {
+              "answer": "William Henry Harrison",
+              "source": "similar_difficulty",
+              "factId": "pres_harrison_wh_shortest"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_self_taught"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_coolidge_silent",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president, nicknamed 'Silent Cal,' reportedly responded to a dinner guest who bet she could get him to say more than two words with just: 'You lose'?",
+          "correctAnswer": "Calvin Coolidge",
+          "distractors": [
+            {
+              "answer": "John Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_adams_white_house"
+            },
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_assassination"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_coolidge_silent",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president, nicknamed 'Silent Cal,' reportedly responded to a dinner guest who bet she could get him to say more than two words with just: 'You lose'?",
+          "correctAnswer": "Calvin Coolidge",
+          "distractors": [
+            {
+              "answer": "John Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_adams_white_house"
+            },
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_assassination"
+            },
+            {
+              "answer": "Ulysses S. Grant",
+              "source": "similar_difficulty",
+              "factId": "pres_grant_scandal"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_coolidge_silent",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president, nicknamed 'Silent Cal,' reportedly responded to a dinner guest who bet she could get him to say more than two words with just: 'You lose'?",
+          "correctAnswer": "Calvin Coolidge",
+          "distractors": [
+            {
+              "answer": "John Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_adams_white_house"
+            },
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_assassination"
+            },
+            {
+              "answer": "Ulysses S. Grant",
+              "source": "similar_difficulty",
+              "factId": "pres_grant_scandal"
+            },
+            {
+              "answer": "Gerald Ford",
+              "source": "similar_difficulty",
+              "factId": "pres_ford_pardons_nixon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_fdr_pearl_harbor",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president led America into World War II after the surprise Japanese attack on Pearl Harbor on December 7, 1941?",
+          "correctAnswer": "Franklin D. Roosevelt",
+          "distractors": [
+            {
+              "answer": "Grover Cleveland",
+              "source": "similar_difficulty",
+              "factId": "pres_cleveland_nonconsecutive"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_balanced_budget"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_fdr_pearl_harbor",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president led America into World War II after the surprise Japanese attack on Pearl Harbor on December 7, 1941?",
+          "correctAnswer": "Franklin D. Roosevelt",
+          "distractors": [
+            {
+              "answer": "Grover Cleveland",
+              "source": "similar_difficulty",
+              "factId": "pres_cleveland_nonconsecutive"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_balanced_budget"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_recession"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_fdr_pearl_harbor",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president led America into World War II after the surprise Japanese attack on Pearl Harbor on December 7, 1941?",
+          "correctAnswer": "Franklin D. Roosevelt",
+          "distractors": [
+            {
+              "answer": "Grover Cleveland",
+              "source": "similar_difficulty",
+              "factId": "pres_cleveland_nonconsecutive"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_balanced_budget"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_recession"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_end_cold_war"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_truman_atomic",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president made the decision to drop atomic bombs on Hiroshima and Nagasaki in 1945 — a decision he said he never lost sleep over?",
+          "correctAnswer": "Harry S. Truman",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_watergate"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_impeachment"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_truman_atomic",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president made the decision to drop atomic bombs on Hiroshima and Nagasaki in 1945 — a decision he said he never lost sleep over?",
+          "correctAnswer": "Harry S. Truman",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_watergate"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_impeachment"
+            },
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_declaration"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_truman_atomic",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president made the decision to drop atomic bombs on Hiroshima and Nagasaki in 1945 — a decision he said he never lost sleep over?",
+          "correctAnswer": "Harry S. Truman",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_watergate"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_impeachment"
+            },
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_declaration"
+            },
+            {
+              "answer": "William Howard Taft",
+              "source": "similar_difficulty",
+              "factId": "pres_taft_weight"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_nixon_china",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president, known as a fierce anti-communist, surprisingly opened diplomatic relations with Communist China in 1972?",
+          "correctAnswer": "Richard Nixon",
+          "distractors": [
+            {
+              "answer": "George H.W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_ghwbush_soviet"
+            },
+            {
+              "answer": "James A. Garfield",
+              "source": "similar_difficulty",
+              "factId": "pres_garfield_assassination"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_nixon_china",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president, known as a fierce anti-communist, surprisingly opened diplomatic relations with Communist China in 1972?",
+          "correctAnswer": "Richard Nixon",
+          "distractors": [
+            {
+              "answer": "George H.W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_ghwbush_soviet"
+            },
+            {
+              "answer": "James A. Garfield",
+              "source": "similar_difficulty",
+              "factId": "pres_garfield_assassination"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_panama_canal"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_nixon_china",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president, known as a fierce anti-communist, surprisingly opened diplomatic relations with Communist China in 1972?",
+          "correctAnswer": "Richard Nixon",
+          "distractors": [
+            {
+              "answer": "George H.W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_ghwbush_soviet"
+            },
+            {
+              "answer": "James A. Garfield",
+              "source": "similar_difficulty",
+              "factId": "pres_garfield_assassination"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_panama_canal"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_gettysburg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_jfk_moon_speech",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president declared 'We choose to go to the Moon' in a 1962 speech at Rice University, launching the Apollo space program?",
+          "correctAnswer": "John F. Kennedy",
+          "distractors": [
+            {
+              "answer": "Gerald Ford",
+              "source": "similar_difficulty",
+              "factId": "pres_ford_never_elected"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_bin_laden"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_jfk_moon_speech",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president declared 'We choose to go to the Moon' in a 1962 speech at Rice University, launching the Apollo space program?",
+          "correctAnswer": "John F. Kennedy",
+          "distractors": [
+            {
+              "answer": "Gerald Ford",
+              "source": "similar_difficulty",
+              "factId": "pres_ford_never_elected"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_bin_laden"
+            },
+            {
+              "answer": "William Howard Taft",
+              "source": "similar_difficulty",
+              "factId": "pres_taft_chief_justice"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_jfk_moon_speech",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president declared 'We choose to go to the Moon' in a 1962 speech at Rice University, launching the Apollo space program?",
+          "correctAnswer": "John F. Kennedy",
+          "distractors": [
+            {
+              "answer": "Gerald Ford",
+              "source": "similar_difficulty",
+              "factId": "pres_ford_never_elected"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_bin_laden"
+            },
+            {
+              "answer": "William Howard Taft",
+              "source": "similar_difficulty",
+              "factId": "pres_taft_chief_justice"
+            },
+            {
+              "answer": "Herbert Hoover",
+              "source": "similar_difficulty",
+              "factId": "pres_hoover_depression"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_lbj_vietnam",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president dramatically escalated U.S. involvement in the Vietnam War, deploying hundreds of thousands of troops but ultimately deciding not to seek reelection in 1968?",
+          "correctAnswer": "Lyndon B. Johnson",
+          "distractors": [
+            {
+              "answer": "Joe Biden",
+              "source": "similar_difficulty",
+              "factId": "pres_biden_infrastructure"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_two_terms"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_lbj_vietnam",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president dramatically escalated U.S. involvement in the Vietnam War, deploying hundreds of thousands of troops but ultimately deciding not to seek reelection in 1968?",
+          "correctAnswer": "Lyndon B. Johnson",
+          "distractors": [
+            {
+              "answer": "Joe Biden",
+              "source": "similar_difficulty",
+              "factId": "pres_biden_infrastructure"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_two_terms"
+            },
+            {
+              "answer": "Calvin Coolidge",
+              "source": "similar_difficulty",
+              "factId": "pres_coolidge_silent_cal"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_lbj_vietnam",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president dramatically escalated U.S. involvement in the Vietnam War, deploying hundreds of thousands of troops but ultimately deciding not to seek reelection in 1968?",
+          "correctAnswer": "Lyndon B. Johnson",
+          "distractors": [
+            {
+              "answer": "Joe Biden",
+              "source": "similar_difficulty",
+              "factId": "pres_biden_infrastructure"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_two_terms"
+            },
+            {
+              "answer": "Calvin Coolidge",
+              "source": "similar_difficulty",
+              "factId": "pres_coolidge_silent_cal"
+            },
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_constitution"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_ford_never_elected",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was never elected as either president or vice president, but was appointed vice president and then inherited the presidency?",
+          "correctAnswer": "Gerald Ford",
+          "distractors": [
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_cuban_missile"
+            },
+            {
+              "answer": "Martin Van Buren",
+              "source": "similar_difficulty",
+              "factId": "pres_vanburenborn_us"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_ford_never_elected",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was never elected as either president or vice president, but was appointed vice president and then inherited the presidency?",
+          "correctAnswer": "Gerald Ford",
+          "distractors": [
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_cuban_missile"
+            },
+            {
+              "answer": "Martin Van Buren",
+              "source": "similar_difficulty",
+              "factId": "pres_vanburenborn_us"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_survived_assassination"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_ford_never_elected",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was never elected as either president or vice president, but was appointed vice president and then inherited the presidency?",
+          "correctAnswer": "Gerald Ford",
+          "distractors": [
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_cuban_missile"
+            },
+            {
+              "answer": "Martin Van Buren",
+              "source": "similar_difficulty",
+              "factId": "pres_vanburenborn_us"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_survived_assassination"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_noparty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_reagan_actor",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was a Hollywood actor before entering politics, appearing in over 50 films?",
+          "correctAnswer": "Ronald Reagan",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_resignation"
+            },
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_reagan_actor",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was a Hollywood actor before entering politics, appearing in over 50 films?",
+          "correctAnswer": "Ronald Reagan",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_resignation"
+            },
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_gettysburg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_reagan_actor",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was a Hollywood actor before entering politics, appearing in over 50 films?",
+          "correctAnswer": "Ronald Reagan",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_resignation"
+            },
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_gettysburg"
+            },
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_first_catholic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_obama_bin_laden",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president ordered the Navy SEAL raid that killed Osama bin Laden in Abbottabad, Pakistan, on May 2, 2011?",
+          "correctAnswer": "Barack Obama",
+          "distractors": [
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_shortest"
+            },
+            {
+              "answer": "Franklin D. Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_fdr_fireside_chats"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_obama_bin_laden",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president ordered the Navy SEAL raid that killed Osama bin Laden in Abbottabad, Pakistan, on May 2, 2011?",
+          "correctAnswer": "Barack Obama",
+          "distractors": [
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_shortest"
+            },
+            {
+              "answer": "Franklin D. Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_fdr_fireside_chats"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_impeachment"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_obama_bin_laden",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president ordered the Navy SEAL raid that killed Osama bin Laden in Abbottabad, Pakistan, on May 2, 2011?",
+          "correctAnswer": "Barack Obama",
+          "distractors": [
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_shortest"
+            },
+            {
+              "answer": "Franklin D. Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_fdr_fireside_chats"
+            },
+            {
+              "answer": "Bill Clinton",
+              "source": "similar_difficulty",
+              "factId": "pres_clinton_impeachment"
+            },
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_died_july4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_clinton_impeachment",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was impeached by the House in 1998 but acquitted by the Senate and finished his term?",
+          "correctAnswer": "Bill Clinton",
+          "distractors": [
+            {
+              "answer": "William Henry Harrison",
+              "source": "similar_difficulty",
+              "factId": "pres_harrison_wh_shortest"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_national_parks"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_clinton_impeachment",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was impeached by the House in 1998 but acquitted by the Senate and finished his term?",
+          "correctAnswer": "Bill Clinton",
+          "distractors": [
+            {
+              "answer": "William Henry Harrison",
+              "source": "similar_difficulty",
+              "factId": "pres_harrison_wh_shortest"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_national_parks"
+            },
+            {
+              "answer": "George W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_gwbush_9_11_response"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_clinton_impeachment",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was impeached by the House in 1998 but acquitted by the Senate and finished his term?",
+          "correctAnswer": "Bill Clinton",
+          "distractors": [
+            {
+              "answer": "William Henry Harrison",
+              "source": "similar_difficulty",
+              "factId": "pres_harrison_wh_shortest"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_national_parks"
+            },
+            {
+              "answer": "George W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_gwbush_9_11_response"
+            },
+            {
+              "answer": "Grover Cleveland",
+              "source": "similar_difficulty",
+              "factId": "pres_cleveland_nonconsecutive"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_gwbush_911",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was in office during the September 11, 2001 terrorist attacks and launched the War on Terror?",
+          "correctAnswer": "George W. Bush",
+          "distractors": [
+            {
+              "answer": "George H.W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_ghwbush_soviet"
+            },
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_declaration"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"George W. Bush\" and \"George H.W. Bush\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "pres_gwbush_911",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was in office during the September 11, 2001 terrorist attacks and launched the War on Terror?",
+          "correctAnswer": "George W. Bush",
+          "distractors": [
+            {
+              "answer": "George H.W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_ghwbush_soviet"
+            },
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_declaration"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_two_terms"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"George W. Bush\" and \"George H.W. Bush\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "pres_gwbush_911",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was in office during the September 11, 2001 terrorist attacks and launched the War on Terror?",
+          "correctAnswer": "George W. Bush",
+          "distractors": [
+            {
+              "answer": "George H.W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_ghwbush_soviet"
+            },
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_declaration"
+            },
+            {
+              "answer": "George Washington",
+              "source": "similar_difficulty",
+              "factId": "pres_washington_two_terms"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_tallest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"George W. Bush\" and \"George H.W. Bush\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "pres_party_lincoln",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "What political party did Abraham Lincoln belong to?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_lincoln",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "What political party did Abraham Lincoln belong to?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "pool_fill",
+              "factId": "pres_party_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_lincoln",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "What political party did Abraham Lincoln belong to?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "pool_fill",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "National Union",
+              "source": "pool_fill",
+              "factId": "pres_party_johnson_andrew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_first",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "What party did John Adams belong to — making him the FIRST president to represent a political party?",
+          "correctAnswer": "Federalist Party",
+          "distractors": [
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_first",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "What party did John Adams belong to — making him the FIRST president to represent a political party?",
+          "correctAnswer": "Federalist Party",
+          "distractors": [
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_first",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "What party did John Adams belong to — making him the FIRST president to represent a political party?",
+          "correctAnswer": "Federalist Party",
+          "distractors": [
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_tr_bullmoose",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "Theodore Roosevelt served as president as a member of which party — BEFORE he split off and ran against his own successor?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_tr_bullmoose",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "Theodore Roosevelt served as president as a member of which party — BEFORE he split off and ran against his own successor?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_tr_bullmoose",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "Theodore Roosevelt served as president as a member of which party — BEFORE he split off and ran against his own successor?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_whig_presidents",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "William Henry Harrison, John Tyler, Zachary Taylor, and Millard Fillmore all belonged to which now-defunct party?",
+          "correctAnswer": "Whig Party",
+          "distractors": [
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_whig_presidents",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "William Henry Harrison, John Tyler, Zachary Taylor, and Millard Fillmore all belonged to which now-defunct party?",
+          "correctAnswer": "Whig Party",
+          "distractors": [
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_whig_presidents",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "William Henry Harrison, John Tyler, Zachary Taylor, and Millard Fillmore all belonged to which now-defunct party?",
+          "correctAnswer": "Whig Party",
+          "distractors": [
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_virginia_dynasty",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "Jefferson, Madison, Monroe, and John Quincy Adams all belonged to which party — the dominant force in the 'Era of Good Feelings'?",
+          "correctAnswer": "Democratic-Republican",
+          "distractors": [
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_virginia_dynasty",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "Jefferson, Madison, Monroe, and John Quincy Adams all belonged to which party — the dominant force in the 'Era of Good Feelings'?",
+          "correctAnswer": "Democratic-Republican",
+          "distractors": [
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_virginia_dynasty",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "Jefferson, Madison, Monroe, and John Quincy Adams all belonged to which party — the dominant force in the 'Era of Good Feelings'?",
+          "correctAnswer": "Democratic-Republican",
+          "distractors": [
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "National Union",
+              "source": "similar_difficulty",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_johnson_andrew",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "Andrew Johnson was technically elected VP under which unusual wartime party banner — formed specifically to attract this leader Democrats?",
+          "correctAnswer": "National Union",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_johnson_andrew",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "Andrew Johnson was technically elected VP under which unusual wartime party banner — formed specifically to attract this leader Democrats?",
+          "correctAnswer": "National Union",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_johnson_andrew",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "Andrew Johnson was technically elected VP under which unusual wartime party banner — formed specifically to attract this leader Democrats?",
+          "correctAnswer": "National Union",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Republican Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_tr_bullmoose"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "similar_difficulty",
+              "factId": "pres_party_virginia_dynasty"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "similar_difficulty",
+              "factId": "pres_party_whig_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_party_reagan",
+          "masteryLevel": 0,
+          "poolId": "party_names",
+          "renderedQuestion": "Ronald Reagan — who spent most of his career as a Democrat — switched to and won the presidency as a member of which party?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "pool_fill",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "pool_fill",
+              "factId": "pres_party_whig_presidents"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "pres_party_reagan",
+          "masteryLevel": 2,
+          "poolId": "party_names",
+          "renderedQuestion": "Ronald Reagan — who spent most of his career as a Democrat — switched to and won the presidency as a member of which party?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "pool_fill",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "pool_fill",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "National Union",
+              "source": "pool_fill",
+              "factId": "pres_party_johnson_andrew"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "pres_party_reagan",
+          "masteryLevel": 4,
+          "poolId": "party_names",
+          "renderedQuestion": "Ronald Reagan — who spent most of his career as a Democrat — switched to and won the presidency as a member of which party?",
+          "correctAnswer": "Republican Party",
+          "distractors": [
+            {
+              "answer": "Federalist Party",
+              "source": "pool_fill",
+              "factId": "pres_party_first"
+            },
+            {
+              "answer": "Whig Party",
+              "source": "pool_fill",
+              "factId": "pres_party_whig_presidents"
+            },
+            {
+              "answer": "National Union",
+              "source": "pool_fill",
+              "factId": "pres_party_johnson_andrew"
+            },
+            {
+              "answer": "Democratic-Republican",
+              "source": "pool_fill",
+              "factId": "pres_party_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            }
+          ]
+        },
+        {
+          "factId": "pres_state_most_presidents",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "Which state has produced more US presidents than any other — earning it the informal title 'Mother of Presidents'?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_most_presidents",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "Which state has produced more US presidents than any other — earning it the informal title 'Mother of Presidents'?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_most_presidents",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "Which state has produced more US presidents than any other — earning it the informal title 'Mother of Presidents'?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "pres_state_lincoln"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_lincoln",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "Abraham Lincoln is known as the president from which state — where he practiced law and launched his political career?",
+          "correctAnswer": "Illinois",
+          "distractors": [
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_lincoln",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "Abraham Lincoln is known as the president from which state — where he practiced law and launched his political career?",
+          "correctAnswer": "Illinois",
+          "distractors": [
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_lincoln",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "Abraham Lincoln is known as the president from which state — where he practiced law and launched his political career?",
+          "correctAnswer": "Illinois",
+          "distractors": [
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            },
+            {
+              "answer": "Massachusetts",
+              "source": "similar_difficulty",
+              "factId": "pres_state_massachusetts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_ohio_record",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "Seven presidents — Grant, Hayes, Garfield, Harrison, McKinley, Taft, and Harding — all came from which state, earning it the nickname 'Mother of Presidents'?",
+          "correctAnswer": "Ohio (8 presidents)",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_most_presidents"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 19 vs avg distractor 8.0 — ratio 2.38×"
+            }
+          ]
+        },
+        {
+          "factId": "pres_state_ohio_record",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "Seven presidents — Grant, Hayes, Garfield, Harrison, McKinley, Taft, and Harding — all came from which state, earning it the nickname 'Mother of Presidents'?",
+          "correctAnswer": "Ohio (8 presidents)",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_most_presidents"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Massachusetts",
+              "source": "similar_difficulty",
+              "factId": "pres_state_massachusetts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_ohio_record",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "Seven presidents — Grant, Hayes, Garfield, Harrison, McKinley, Taft, and Harding — all came from which state, earning it the nickname 'Mother of Presidents'?",
+          "correctAnswer": "Ohio (8 presidents)",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_most_presidents"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Massachusetts",
+              "source": "similar_difficulty",
+              "factId": "pres_state_massachusetts"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_virginia_dynasty",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "The first five presidents included four from the same state — Washington, Jefferson, Madison, and Monroe. What was this dominance nicknamed, and which state did it refer to?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_virginia_dynasty",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "The first five presidents included four from the same state — Washington, Jefferson, Madison, and Monroe. What was this dominance nicknamed, and which state did it refer to?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_virginia_dynasty",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "The first five presidents included four from the same state — Washington, Jefferson, Madison, and Monroe. What was this dominance nicknamed, and which state did it refer to?",
+          "correctAnswer": "Virginia",
+          "distractors": [
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            },
+            {
+              "answer": "Massachusetts",
+              "source": "similar_difficulty",
+              "factId": "pres_state_massachusetts"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_massachusetts",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "John Adams, John Quincy Adams, JFK, and George H.W. Bush — four presidents spanning 200 years — all called which state home?",
+          "correctAnswer": "Massachusetts",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_most_presidents"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_massachusetts",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "John Adams, John Quincy Adams, JFK, and George H.W. Bush — four presidents spanning 200 years — all called which state home?",
+          "correctAnswer": "Massachusetts",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_most_presidents"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "pres_state_lincoln"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_massachusetts",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "John Adams, John Quincy Adams, JFK, and George H.W. Bush — four presidents spanning 200 years — all called which state home?",
+          "correctAnswer": "Massachusetts",
+          "distractors": [
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_most_presidents"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "pres_state_lincoln"
+            },
+            {
+              "answer": "Tennessee",
+              "source": "similar_difficulty",
+              "factId": "pres_state_tennessee"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_tennessee",
+          "masteryLevel": 0,
+          "poolId": "home_states",
+          "renderedQuestion": "Andrew Jackson, James K. Polk, and Andrew Johnson all represented which Southern state — giving it three presidents in 40 years?",
+          "correctAnswer": "Tennessee",
+          "distractors": [
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "pres_state_lincoln"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_tennessee",
+          "masteryLevel": 2,
+          "poolId": "home_states",
+          "renderedQuestion": "Andrew Jackson, James K. Polk, and Andrew Johnson all represented which Southern state — giving it three presidents in 40 years?",
+          "correctAnswer": "Tennessee",
+          "distractors": [
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "pres_state_lincoln"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_state_tennessee",
+          "masteryLevel": 4,
+          "poolId": "home_states",
+          "renderedQuestion": "Andrew Jackson, James K. Polk, and Andrew Johnson all represented which Southern state — giving it three presidents in 40 years?",
+          "correctAnswer": "Tennessee",
+          "distractors": [
+            {
+              "answer": "Illinois",
+              "source": "similar_difficulty",
+              "factId": "pres_state_lincoln"
+            },
+            {
+              "answer": "Virginia",
+              "source": "similar_difficulty",
+              "factId": "pres_state_virginia_dynasty"
+            },
+            {
+              "answer": "New York",
+              "source": "similar_difficulty",
+              "factId": "pres_state_new_york"
+            },
+            {
+              "answer": "Ohio (8 presidents)",
+              "source": "similar_difficulty",
+              "factId": "pres_state_ohio_record"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_lincoln_assassination",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was shot by John Wilkes Booth at Ford's Theatre on April 14, 1865, and died the following morning?",
+          "correctAnswer": "Abraham Lincoln",
+          "distractors": [
+            {
+              "answer": "Dwight D. Eisenhower",
+              "source": "similar_difficulty",
+              "factId": "pres_eisenhower_interstate"
+            },
+            {
+              "answer": "Herbert Hoover",
+              "source": "similar_difficulty",
+              "factId": "pres_hoover_great_depression"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_lincoln_assassination",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was shot by John Wilkes Booth at Ford's Theatre on April 14, 1865, and died the following morning?",
+          "correctAnswer": "Abraham Lincoln",
+          "distractors": [
+            {
+              "answer": "Dwight D. Eisenhower",
+              "source": "similar_difficulty",
+              "factId": "pres_eisenhower_interstate"
+            },
+            {
+              "answer": "Herbert Hoover",
+              "source": "similar_difficulty",
+              "factId": "pres_hoover_great_depression"
+            },
+            {
+              "answer": "William Henry Harrison",
+              "source": "similar_difficulty",
+              "factId": "pres_harrison_wh_shortest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_lincoln_assassination",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was shot by John Wilkes Booth at Ford's Theatre on April 14, 1865, and died the following morning?",
+          "correctAnswer": "Abraham Lincoln",
+          "distractors": [
+            {
+              "answer": "Dwight D. Eisenhower",
+              "source": "similar_difficulty",
+              "factId": "pres_eisenhower_interstate"
+            },
+            {
+              "answer": "Herbert Hoover",
+              "source": "similar_difficulty",
+              "factId": "pres_hoover_great_depression"
+            },
+            {
+              "answer": "William Henry Harrison",
+              "source": "similar_difficulty",
+              "factId": "pres_harrison_wh_shortest"
+            },
+            {
+              "answer": "George H.W. Bush",
+              "source": "similar_difficulty",
+              "factId": "pres_ghwbush_soviet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_fdr_fireside_chats",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president pioneered the use of radio 'fireside chats' to communicate directly with Americans, a revolutionary approach to presidential communication?",
+          "correctAnswer": "Franklin D. Roosevelt",
+          "distractors": [
+            {
+              "answer": "Franklin Pierce",
+              "source": "similar_difficulty",
+              "factId": "pres_pierce_tragedy"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_end_cold_war"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_fdr_fireside_chats",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president pioneered the use of radio 'fireside chats' to communicate directly with Americans, a revolutionary approach to presidential communication?",
+          "correctAnswer": "Franklin D. Roosevelt",
+          "distractors": [
+            {
+              "answer": "Franklin Pierce",
+              "source": "similar_difficulty",
+              "factId": "pres_pierce_tragedy"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_end_cold_war"
+            },
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_constitution"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_fdr_fireside_chats",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president pioneered the use of radio 'fireside chats' to communicate directly with Americans, a revolutionary approach to presidential communication?",
+          "correctAnswer": "Franklin D. Roosevelt",
+          "distractors": [
+            {
+              "answer": "Franklin Pierce",
+              "source": "similar_difficulty",
+              "factId": "pres_pierce_tragedy"
+            },
+            {
+              "answer": "Ronald Reagan",
+              "source": "similar_difficulty",
+              "factId": "pres_reagan_end_cold_war"
+            },
+            {
+              "answer": "James Madison",
+              "source": "similar_difficulty",
+              "factId": "pres_madison_constitution"
+            },
+            {
+              "answer": "William Howard Taft",
+              "source": "similar_difficulty",
+              "factId": "pres_taft_chief_justice"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_teddy_youngest",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president became the youngest person ever to assume the presidency at age 42 after McKinley's assassination?",
+          "correctAnswer": "Theodore Roosevelt",
+          "distractors": [
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            },
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_youngest_elected"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_teddy_youngest",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president became the youngest person ever to assume the presidency at age 42 after McKinley's assassination?",
+          "correctAnswer": "Theodore Roosevelt",
+          "distractors": [
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            },
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_youngest_elected"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_gettysburg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_teddy_youngest",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president became the youngest person ever to assume the presidency at age 42 after McKinley's assassination?",
+          "correctAnswer": "Theodore Roosevelt",
+          "distractors": [
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            },
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_youngest_elected"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_gettysburg"
+            },
+            {
+              "answer": "Donald Trump",
+              "source": "similar_difficulty",
+              "factId": "pres_trump_impeachments"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_jefferson_declaration",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which founding father was the principal author of the Declaration of Independence, written when he was just 33 years old?",
+          "correctAnswer": "Thomas Jefferson",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_china"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_aca"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_jefferson_declaration",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which founding father was the principal author of the Declaration of Independence, written when he was just 33 years old?",
+          "correctAnswer": "Thomas Jefferson",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_china"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_aca"
+            },
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_jefferson_declaration",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which founding father was the principal author of the Declaration of Independence, written when he was just 33 years old?",
+          "correctAnswer": "Thomas Jefferson",
+          "distractors": [
+            {
+              "answer": "Richard Nixon",
+              "source": "similar_difficulty",
+              "factId": "pres_nixon_china"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_aca"
+            },
+            {
+              "answer": "John Quincy Adams",
+              "source": "similar_difficulty",
+              "factId": "pres_jqadams_son_of"
+            },
+            {
+              "answer": "Abraham Lincoln",
+              "source": "similar_difficulty",
+              "factId": "pres_lincoln_union"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_clinton_balanced_budget",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president presided over the first balanced federal budget in decades, achieving a surplus in 1998?",
+          "correctAnswer": "Bill Clinton",
+          "distractors": [
+            {
+              "answer": "Harry S. Truman",
+              "source": "similar_difficulty",
+              "factId": "pres_truman_buck"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_recession"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_clinton_balanced_budget",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president presided over the first balanced federal budget in decades, achieving a surplus in 1998?",
+          "correctAnswer": "Bill Clinton",
+          "distractors": [
+            {
+              "answer": "Harry S. Truman",
+              "source": "similar_difficulty",
+              "factId": "pres_truman_buck"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_recession"
+            },
+            {
+              "answer": "Millard Fillmore",
+              "source": "similar_difficulty",
+              "factId": "pres_fillmore_last_whig"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_clinton_balanced_budget",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president presided over the first balanced federal budget in decades, achieving a surplus in 1998?",
+          "correctAnswer": "Bill Clinton",
+          "distractors": [
+            {
+              "answer": "Harry S. Truman",
+              "source": "similar_difficulty",
+              "factId": "pres_truman_buck"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_recession"
+            },
+            {
+              "answer": "Millard Fillmore",
+              "source": "similar_difficulty",
+              "factId": "pres_fillmore_last_whig"
+            },
+            {
+              "answer": "John F. Kennedy",
+              "source": "similar_difficulty",
+              "factId": "pres_jfk_youngest_elected"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_reagan_survived_assassination",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president survived an assassination attempt by John Hinckley Jr. in 1981 and joked with surgeons 'I hope you're all Republicans'?",
+          "correctAnswer": "Ronald Reagan",
+          "distractors": [
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league_nations"
+            },
+            {
+              "answer": "Lyndon B. Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_lbj_vietnam"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_reagan_survived_assassination",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president survived an assassination attempt by John Hinckley Jr. in 1981 and joked with surgeons 'I hope you're all Republicans'?",
+          "correctAnswer": "Ronald Reagan",
+          "distractors": [
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league_nations"
+            },
+            {
+              "answer": "Lyndon B. Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_lbj_vietnam"
+            },
+            {
+              "answer": "Dwight D. Eisenhower",
+              "source": "similar_difficulty",
+              "factId": "pres_eisenhower_farewell"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_reagan_survived_assassination",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president survived an assassination attempt by John Hinckley Jr. in 1981 and joked with surgeons 'I hope you're all Republicans'?",
+          "correctAnswer": "Ronald Reagan",
+          "distractors": [
+            {
+              "answer": "Woodrow Wilson",
+              "source": "similar_difficulty",
+              "factId": "pres_wilson_league_nations"
+            },
+            {
+              "answer": "Lyndon B. Johnson",
+              "source": "similar_difficulty",
+              "factId": "pres_lbj_vietnam"
+            },
+            {
+              "answer": "Dwight D. Eisenhower",
+              "source": "similar_difficulty",
+              "factId": "pres_eisenhower_farewell"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_teddy_youngest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_coolidge_silent_cal",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was nicknamed 'Silent Cal' for his quiet demeanor, and famously won a bet when someone challenged him to speak more than two words?",
+          "correctAnswer": "Calvin Coolidge",
+          "distractors": [
+            {
+              "answer": "Andrew Jackson",
+              "source": "similar_difficulty",
+              "factId": "pres_jackson_duel"
+            },
+            {
+              "answer": "Millard Fillmore",
+              "source": "similar_difficulty",
+              "factId": "pres_fillmore_last_whig"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_coolidge_silent_cal",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was nicknamed 'Silent Cal' for his quiet demeanor, and famously won a bet when someone challenged him to speak more than two words?",
+          "correctAnswer": "Calvin Coolidge",
+          "distractors": [
+            {
+              "answer": "Andrew Jackson",
+              "source": "similar_difficulty",
+              "factId": "pres_jackson_duel"
+            },
+            {
+              "answer": "Millard Fillmore",
+              "source": "similar_difficulty",
+              "factId": "pres_fillmore_last_whig"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_recession"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_coolidge_silent_cal",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president was nicknamed 'Silent Cal' for his quiet demeanor, and famously won a bet when someone challenged him to speak more than two words?",
+          "correctAnswer": "Calvin Coolidge",
+          "distractors": [
+            {
+              "answer": "Andrew Jackson",
+              "source": "similar_difficulty",
+              "factId": "pres_jackson_duel"
+            },
+            {
+              "answer": "Millard Fillmore",
+              "source": "similar_difficulty",
+              "factId": "pres_fillmore_last_whig"
+            },
+            {
+              "answer": "Barack Obama",
+              "source": "similar_difficulty",
+              "factId": "pres_obama_recession"
+            },
+            {
+              "answer": "Theodore Roosevelt",
+              "source": "similar_difficulty",
+              "factId": "pres_troosevelt_bullmoose"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_arthur_civil_service",
+          "masteryLevel": 0,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president surprised everyone by championing civil service reform despite being a product of the corrupt spoils system?",
+          "correctAnswer": "Chester Arthur",
+          "distractors": [
+            {
+              "answer": "Jimmy Carter",
+              "source": "similar_difficulty",
+              "factId": "pres_carter_camp_david"
+            },
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_died_july4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_arthur_civil_service",
+          "masteryLevel": 2,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president surprised everyone by championing civil service reform despite being a product of the corrupt spoils system?",
+          "correctAnswer": "Chester Arthur",
+          "distractors": [
+            {
+              "answer": "Jimmy Carter",
+              "source": "similar_difficulty",
+              "factId": "pres_carter_camp_david"
+            },
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_died_july4"
+            },
+            {
+              "answer": "Chester A. Arthur",
+              "source": "similar_difficulty",
+              "factId": "pres_arthur_reform"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Chester Arthur\" and \"Chester A. Arthur\" are 82% similar"
+            }
+          ]
+        },
+        {
+          "factId": "pres_arthur_civil_service",
+          "masteryLevel": 4,
+          "poolId": "president_names",
+          "renderedQuestion": "Which president surprised everyone by championing civil service reform despite being a product of the corrupt spoils system?",
+          "correctAnswer": "Chester Arthur",
+          "distractors": [
+            {
+              "answer": "Jimmy Carter",
+              "source": "similar_difficulty",
+              "factId": "pres_carter_camp_david"
+            },
+            {
+              "answer": "Thomas Jefferson",
+              "source": "similar_difficulty",
+              "factId": "pres_jefferson_died_july4"
+            },
+            {
+              "answer": "Chester A. Arthur",
+              "source": "similar_difficulty",
+              "factId": "pres_arthur_reform"
+            },
+            {
+              "answer": "Gerald Ford",
+              "source": "similar_difficulty",
+              "factId": "pres_ford_never_elected"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Chester Arthur\" and \"Chester A. Arthur\" are 82% similar"
+            }
+          ]
+        },
+        {
+          "factId": "pres_inaug_washington",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was George Washington first inaugurated as president?",
+          "correctAnswer": "1789",
+          "distractors": [
+            {
+              "answer": "1816",
+              "source": "numerical",
+              "factId": "_numerical_1816"
+            },
+            {
+              "answer": "1762",
+              "source": "numerical",
+              "factId": "_numerical_1762"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_washington",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was George Washington first inaugurated as president?",
+          "correctAnswer": "1789",
+          "distractors": [
+            {
+              "answer": "1816",
+              "source": "numerical",
+              "factId": "_numerical_1816"
+            },
+            {
+              "answer": "1762",
+              "source": "numerical",
+              "factId": "_numerical_1762"
+            },
+            {
+              "answer": "1829",
+              "source": "numerical",
+              "factId": "_numerical_1829"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_washington",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was George Washington first inaugurated as president?",
+          "correctAnswer": "1789",
+          "distractors": [
+            {
+              "answer": "1816",
+              "source": "numerical",
+              "factId": "_numerical_1816"
+            },
+            {
+              "answer": "1762",
+              "source": "numerical",
+              "factId": "_numerical_1762"
+            },
+            {
+              "answer": "1829",
+              "source": "numerical",
+              "factId": "_numerical_1829"
+            },
+            {
+              "answer": "1758",
+              "source": "numerical",
+              "factId": "_numerical_1758"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_lincoln",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Abraham Lincoln inaugurated, just weeks before the American Civil War began?",
+          "correctAnswer": "1861",
+          "distractors": [
+            {
+              "answer": "1877",
+              "source": "numerical",
+              "factId": "_numerical_1877"
+            },
+            {
+              "answer": "1836",
+              "source": "numerical",
+              "factId": "_numerical_1836"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_lincoln",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Abraham Lincoln inaugurated, just weeks before the American Civil War began?",
+          "correctAnswer": "1861",
+          "distractors": [
+            {
+              "answer": "1877",
+              "source": "numerical",
+              "factId": "_numerical_1877"
+            },
+            {
+              "answer": "1836",
+              "source": "numerical",
+              "factId": "_numerical_1836"
+            },
+            {
+              "answer": "1920",
+              "source": "numerical",
+              "factId": "_numerical_1920"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_lincoln",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Abraham Lincoln inaugurated, just weeks before the American Civil War began?",
+          "correctAnswer": "1861",
+          "distractors": [
+            {
+              "answer": "1877",
+              "source": "numerical",
+              "factId": "_numerical_1877"
+            },
+            {
+              "answer": "1836",
+              "source": "numerical",
+              "factId": "_numerical_1836"
+            },
+            {
+              "answer": "1920",
+              "source": "numerical",
+              "factId": "_numerical_1920"
+            },
+            {
+              "answer": "1806",
+              "source": "numerical",
+              "factId": "_numerical_1806"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_troosevelt",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year did Theodore Roosevelt become president after William McKinley's assassination?",
+          "correctAnswer": "1901",
+          "distractors": [
+            {
+              "answer": "1940",
+              "source": "numerical",
+              "factId": "_numerical_1940"
+            },
+            {
+              "answer": "1873",
+              "source": "numerical",
+              "factId": "_numerical_1873"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_troosevelt",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year did Theodore Roosevelt become president after William McKinley's assassination?",
+          "correctAnswer": "1901",
+          "distractors": [
+            {
+              "answer": "1940",
+              "source": "numerical",
+              "factId": "_numerical_1940"
+            },
+            {
+              "answer": "1873",
+              "source": "numerical",
+              "factId": "_numerical_1873"
+            },
+            {
+              "answer": "1927",
+              "source": "numerical",
+              "factId": "_numerical_1927"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_troosevelt",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year did Theodore Roosevelt become president after William McKinley's assassination?",
+          "correctAnswer": "1901",
+          "distractors": [
+            {
+              "answer": "1940",
+              "source": "numerical",
+              "factId": "_numerical_1940"
+            },
+            {
+              "answer": "1873",
+              "source": "numerical",
+              "factId": "_numerical_1873"
+            },
+            {
+              "answer": "1927",
+              "source": "numerical",
+              "factId": "_numerical_1927"
+            },
+            {
+              "answer": "1856",
+              "source": "numerical",
+              "factId": "_numerical_1856"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jfk",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year did John F. Kennedy deliver his famous 'Ask not what your country can do for you' inaugural address?",
+          "correctAnswer": "1961",
+          "distractors": [
+            {
+              "answer": "1980",
+              "source": "numerical",
+              "factId": "_numerical_1980"
+            },
+            {
+              "answer": "1933",
+              "source": "numerical",
+              "factId": "_numerical_1933"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jfk",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year did John F. Kennedy deliver his famous 'Ask not what your country can do for you' inaugural address?",
+          "correctAnswer": "1961",
+          "distractors": [
+            {
+              "answer": "1980",
+              "source": "numerical",
+              "factId": "_numerical_1980"
+            },
+            {
+              "answer": "1933",
+              "source": "numerical",
+              "factId": "_numerical_1933"
+            },
+            {
+              "answer": "1956",
+              "source": "numerical",
+              "factId": "_numerical_1956"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jfk",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year did John F. Kennedy deliver his famous 'Ask not what your country can do for you' inaugural address?",
+          "correctAnswer": "1961",
+          "distractors": [
+            {
+              "answer": "1980",
+              "source": "numerical",
+              "factId": "_numerical_1980"
+            },
+            {
+              "answer": "1933",
+              "source": "numerical",
+              "factId": "_numerical_1933"
+            },
+            {
+              "answer": "1956",
+              "source": "numerical",
+              "factId": "_numerical_1956"
+            },
+            {
+              "answer": "1985",
+              "source": "numerical",
+              "factId": "_numerical_1985"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jefferson",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Thomas Jefferson inaugurated after the first peaceful transfer of power between political rivals?",
+          "correctAnswer": "1801",
+          "distractors": [
+            {
+              "answer": "1840",
+              "source": "numerical",
+              "factId": "_numerical_1840"
+            },
+            {
+              "answer": "1746",
+              "source": "numerical",
+              "factId": "_numerical_1746"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jefferson",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Thomas Jefferson inaugurated after the first peaceful transfer of power between political rivals?",
+          "correctAnswer": "1801",
+          "distractors": [
+            {
+              "answer": "1840",
+              "source": "numerical",
+              "factId": "_numerical_1840"
+            },
+            {
+              "answer": "1746",
+              "source": "numerical",
+              "factId": "_numerical_1746"
+            },
+            {
+              "answer": "1842",
+              "source": "numerical",
+              "factId": "_numerical_1842"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_jefferson",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Thomas Jefferson inaugurated after the first peaceful transfer of power between political rivals?",
+          "correctAnswer": "1801",
+          "distractors": [
+            {
+              "answer": "1840",
+              "source": "numerical",
+              "factId": "_numerical_1840"
+            },
+            {
+              "answer": "1746",
+              "source": "numerical",
+              "factId": "_numerical_1746"
+            },
+            {
+              "answer": "1842",
+              "source": "numerical",
+              "factId": "_numerical_1842"
+            },
+            {
+              "answer": "1760",
+              "source": "numerical",
+              "factId": "_numerical_1760"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_obama",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Barack Obama inaugurated as the first African American president?",
+          "correctAnswer": "2009",
+          "distractors": [
+            {
+              "answer": "2000",
+              "source": "numerical",
+              "factId": "_numerical_2000"
+            },
+            {
+              "answer": "1998",
+              "source": "numerical",
+              "factId": "_numerical_1998"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_obama",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Barack Obama inaugurated as the first African American president?",
+          "correctAnswer": "2009",
+          "distractors": [
+            {
+              "answer": "2000",
+              "source": "numerical",
+              "factId": "_numerical_2000"
+            },
+            {
+              "answer": "1998",
+              "source": "numerical",
+              "factId": "_numerical_1998"
+            },
+            {
+              "answer": "2003",
+              "source": "numerical",
+              "factId": "_numerical_2003"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_obama",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Barack Obama inaugurated as the first African American president?",
+          "correctAnswer": "2009",
+          "distractors": [
+            {
+              "answer": "2000",
+              "source": "numerical",
+              "factId": "_numerical_2000"
+            },
+            {
+              "answer": "1998",
+              "source": "numerical",
+              "factId": "_numerical_1998"
+            },
+            {
+              "answer": "2003",
+              "source": "numerical",
+              "factId": "_numerical_2003"
+            },
+            {
+              "answer": "2017",
+              "source": "numerical",
+              "factId": "_numerical_2017"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_reagan",
+          "masteryLevel": 0,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Ronald Reagan inaugurated, beginning the 'Reagan Revolution'?",
+          "correctAnswer": "1981",
+          "distractors": [
+            {
+              "answer": "1992",
+              "source": "numerical",
+              "factId": "_numerical_1992"
+            },
+            {
+              "answer": "1973",
+              "source": "numerical",
+              "factId": "_numerical_1973"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_reagan",
+          "masteryLevel": 2,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Ronald Reagan inaugurated, beginning the 'Reagan Revolution'?",
+          "correctAnswer": "1981",
+          "distractors": [
+            {
+              "answer": "1992",
+              "source": "numerical",
+              "factId": "_numerical_1992"
+            },
+            {
+              "answer": "1973",
+              "source": "numerical",
+              "factId": "_numerical_1973"
+            },
+            {
+              "answer": "1997",
+              "source": "numerical",
+              "factId": "_numerical_1997"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "pres_inaug_reagan",
+          "masteryLevel": 4,
+          "poolId": "inauguration_years",
+          "renderedQuestion": "In what year was Ronald Reagan inaugurated, beginning the 'Reagan Revolution'?",
+          "correctAnswer": "1981",
+          "distractors": [
+            {
+              "answer": "1992",
+              "source": "numerical",
+              "factId": "_numerical_1992"
+            },
+            {
+              "answer": "1973",
+              "source": "numerical",
+              "factId": "_numerical_1973"
+            },
+            {
+              "answer": "1997",
+              "source": "numerical",
+              "factId": "_numerical_1997"
+            },
+            {
+              "answer": "1969",
+              "source": "numerical",
+              "factId": "_numerical_1969"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

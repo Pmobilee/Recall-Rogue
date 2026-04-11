@@ -1,0 +1,4227 @@
+{
+  "timestamp": "2026-04-11T02:00:32.017Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 0,
+  "decks": [
+    {
+      "deckId": "periodic_table",
+      "deckName": "Periodic Table of Elements",
+      "deckClass": "knowledge",
+      "totalFacts": 90,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 0,
+      "issuesByType": {},
+      "factResults": [
+        {
+          "factId": "periodic_table_hydrogen_lightest",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element makes up 75% of all normal matter in the universe?",
+          "correctAnswer": "Hydrogen",
+          "distractors": [
+            {
+              "answer": "Neon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_neon_signs_color"
+            },
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_hydrogen_lightest",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element makes up 75% of all normal matter in the universe?",
+          "correctAnswer": "Hydrogen",
+          "distractors": [
+            {
+              "answer": "Neon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_neon_signs_color"
+            },
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            },
+            {
+              "answer": "Carbon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_allotropes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_hydrogen_lightest",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element makes up 75% of all normal matter in the universe?",
+          "correctAnswer": "Hydrogen",
+          "distractors": [
+            {
+              "answer": "Neon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_neon_signs_color"
+            },
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            },
+            {
+              "answer": "Carbon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_allotropes"
+            },
+            {
+              "answer": "Calcium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_calcium_body"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_hydrogen_atomic_number",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Hydrogen?",
+          "correctAnswer": "1",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "8",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_oxygen_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_hydrogen_atomic_number",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Hydrogen?",
+          "correctAnswer": "1",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "8",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_oxygen_atomic_number"
+            },
+            {
+              "answer": "90",
+              "source": "pool_fill",
+              "factId": "periodic_table_thorium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_hydrogen_atomic_number",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Hydrogen?",
+          "correctAnswer": "1",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "8",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_oxygen_atomic_number"
+            },
+            {
+              "answer": "90",
+              "source": "pool_fill",
+              "factId": "periodic_table_thorium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "pool_fill",
+              "factId": "periodic_table_uranium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_carbon_allotropes",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element forms both the hardest natural mineral and a soft lubricant?",
+          "correctAnswer": "Carbon",
+          "distractors": [
+            {
+              "answer": "Calcium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_calcium_body"
+            },
+            {
+              "answer": "Aurum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gold_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_carbon_allotropes",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element forms both the hardest natural mineral and a soft lubricant?",
+          "correctAnswer": "Carbon",
+          "distractors": [
+            {
+              "answer": "Calcium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_calcium_body"
+            },
+            {
+              "answer": "Aurum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gold_symbol"
+            },
+            {
+              "answer": "Arsenic",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_arsenic_poison_kings"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_carbon_allotropes",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element forms both the hardest natural mineral and a soft lubricant?",
+          "correctAnswer": "Carbon",
+          "distractors": [
+            {
+              "answer": "Calcium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_calcium_body"
+            },
+            {
+              "answer": "Aurum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gold_symbol"
+            },
+            {
+              "answer": "Arsenic",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_arsenic_poison_kings"
+            },
+            {
+              "answer": "Chromium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_ruby_emerald"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_sulfur_brimstone",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which yellow element is called 'brimstone' in the Bible?",
+          "correctAnswer": "Sulfur",
+          "distractors": [
+            {
+              "answer": "Stannum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tin_symbol"
+            },
+            {
+              "answer": "Nitrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_nitrogen_atmosphere"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_sulfur_brimstone",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which yellow element is called 'brimstone' in the Bible?",
+          "correctAnswer": "Sulfur",
+          "distractors": [
+            {
+              "answer": "Stannum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tin_symbol"
+            },
+            {
+              "answer": "Nitrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_nitrogen_atmosphere"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_sulfur_brimstone",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which yellow element is called 'brimstone' in the Bible?",
+          "correctAnswer": "Sulfur",
+          "distractors": [
+            {
+              "answer": "Stannum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tin_symbol"
+            },
+            {
+              "answer": "Nitrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_nitrogen_atmosphere"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            },
+            {
+              "answer": "Boron",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_boron_mohs_hardness"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_nitrogen_atmosphere",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which gas makes up 78% of Earth's atmosphere?",
+          "correctAnswer": "Nitrogen",
+          "distractors": [
+            {
+              "answer": "Hydrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_hydrogen_lightest"
+            },
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_nitrogen_atmosphere",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which gas makes up 78% of Earth's atmosphere?",
+          "correctAnswer": "Nitrogen",
+          "distractors": [
+            {
+              "answer": "Hydrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_hydrogen_lightest"
+            },
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            },
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_catalytic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_nitrogen_atmosphere",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which gas makes up 78% of Earth's atmosphere?",
+          "correctAnswer": "Nitrogen",
+          "distractors": [
+            {
+              "answer": "Hydrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_hydrogen_lightest"
+            },
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            },
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_catalytic"
+            },
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_oxygen_crust",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is most abundant in Earth's rocky crust?",
+          "correctAnswer": "Oxygen",
+          "distractors": [
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_catalytic"
+            },
+            {
+              "answer": "Hydrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_hydrogen_lightest"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_oxygen_crust",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is most abundant in Earth's rocky crust?",
+          "correctAnswer": "Oxygen",
+          "distractors": [
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_catalytic"
+            },
+            {
+              "answer": "Hydrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_hydrogen_lightest"
+            },
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_oxygen_crust",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is most abundant in Earth's rocky crust?",
+          "correctAnswer": "Oxygen",
+          "distractors": [
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_catalytic"
+            },
+            {
+              "answer": "Hydrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_hydrogen_lightest"
+            },
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            },
+            {
+              "answer": "Iron",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_earth_core"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_iridium_dinosaurs",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which rare element's global layer in rock marks the asteroid that killed the dinosaurs?",
+          "correctAnswer": "Iridium",
+          "distractors": [
+            {
+              "answer": "Cobalt",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_cobalt_goblin_name"
+            },
+            {
+              "answer": "Osmium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_osmium_density"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_iridium_dinosaurs",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which rare element's global layer in rock marks the asteroid that killed the dinosaurs?",
+          "correctAnswer": "Iridium",
+          "distractors": [
+            {
+              "answer": "Cobalt",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_cobalt_goblin_name"
+            },
+            {
+              "answer": "Osmium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_osmium_density"
+            },
+            {
+              "answer": "Helium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_helium_sun_discovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_iridium_dinosaurs",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which rare element's global layer in rock marks the asteroid that killed the dinosaurs?",
+          "correctAnswer": "Iridium",
+          "distractors": [
+            {
+              "answer": "Cobalt",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_cobalt_goblin_name"
+            },
+            {
+              "answer": "Osmium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_osmium_density"
+            },
+            {
+              "answer": "Helium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_helium_sun_discovery"
+            },
+            {
+              "answer": "Boron",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_boron_mohs_hardness"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_plutonium_fat_man",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element powered both the Fat Man atomic bomb and the Voyager space probes?",
+          "correctAnswer": "Plutonium",
+          "distractors": [
+            {
+              "answer": "Curium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_curium_glows_dark"
+            },
+            {
+              "answer": "Krypton",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_krypton_meter_definition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_plutonium_fat_man",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element powered both the Fat Man atomic bomb and the Voyager space probes?",
+          "correctAnswer": "Plutonium",
+          "distractors": [
+            {
+              "answer": "Curium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_curium_glows_dark"
+            },
+            {
+              "answer": "Krypton",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_krypton_meter_definition"
+            },
+            {
+              "answer": "Phosphorus",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_phosphorus_discovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_plutonium_fat_man",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element powered both the Fat Man atomic bomb and the Voyager space probes?",
+          "correctAnswer": "Plutonium",
+          "distractors": [
+            {
+              "answer": "Curium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_curium_glows_dark"
+            },
+            {
+              "answer": "Krypton",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_krypton_meter_definition"
+            },
+            {
+              "answer": "Phosphorus",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_phosphorus_discovery"
+            },
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_fluorine_symbol",
+          "masteryLevel": 0,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for Fluorine?",
+          "correctAnswer": "F",
+          "distractors": [
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            },
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_fluorine_symbol",
+          "masteryLevel": 2,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for Fluorine?",
+          "correctAnswer": "F",
+          "distractors": [
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            },
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Na",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_symbol_na"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_fluorine_symbol",
+          "masteryLevel": 4,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for Fluorine?",
+          "correctAnswer": "F",
+          "distractors": [
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            },
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Na",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_symbol_na"
+            },
+            {
+              "answer": "Fe",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_symbol_ferrum"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_phosphorus_discovery",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was first discovered by boiling urine?",
+          "correctAnswer": "Phosphorus",
+          "distractors": [
+            {
+              "answer": "Helium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_helium_boiling_lowest"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_phosphorus_discovery",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was first discovered by boiling urine?",
+          "correctAnswer": "Phosphorus",
+          "distractors": [
+            {
+              "answer": "Helium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_helium_boiling_lowest"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            },
+            {
+              "answer": "Wolfram",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tungsten_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_phosphorus_discovery",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was first discovered by boiling urine?",
+          "correctAnswer": "Phosphorus",
+          "distractors": [
+            {
+              "answer": "Helium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_helium_boiling_lowest"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            },
+            {
+              "answer": "Wolfram",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tungsten_symbol"
+            },
+            {
+              "answer": "Silver",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silver_conductivity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_tungsten_symbol",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Tungsten's symbol W comes from its German name. What is that name?",
+          "correctAnswer": "Wolfram",
+          "distractors": [
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_tungsten_symbol",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Tungsten's symbol W comes from its German name. What is that name?",
+          "correctAnswer": "Wolfram",
+          "distractors": [
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            },
+            {
+              "answer": "Americium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_americium_smoke_detectors"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_tungsten_symbol",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Tungsten's symbol W comes from its German name. What is that name?",
+          "correctAnswer": "Wolfram",
+          "distractors": [
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            },
+            {
+              "answer": "Americium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_americium_smoke_detectors"
+            },
+            {
+              "answer": "Rhodium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_rhodium_expensive"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_chlorine_symbol",
+          "masteryLevel": 0,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for Chlorine?",
+          "correctAnswer": "Cl",
+          "distractors": [
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            },
+            {
+              "answer": "Cu",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_chlorine_symbol",
+          "masteryLevel": 2,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for Chlorine?",
+          "correctAnswer": "Cl",
+          "distractors": [
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            },
+            {
+              "answer": "Cu",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            },
+            {
+              "answer": "F",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_fluorine_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_chlorine_symbol",
+          "masteryLevel": 4,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for Chlorine?",
+          "correctAnswer": "Cl",
+          "distractors": [
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            },
+            {
+              "answer": "Cu",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            },
+            {
+              "answer": "F",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_fluorine_symbol"
+            },
+            {
+              "answer": "Na",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_symbol_na"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_chlorine_category",
+          "masteryLevel": 0,
+          "poolId": "element_categories",
+          "renderedQuestion": "What element category does Chlorine belong to?",
+          "correctAnswer": "Reactive nonmetal",
+          "distractors": [
+            {
+              "answer": "Transition metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_transition"
+            },
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_chlorine_category",
+          "masteryLevel": 2,
+          "poolId": "element_categories",
+          "renderedQuestion": "What element category does Chlorine belong to?",
+          "correctAnswer": "Reactive nonmetal",
+          "distractors": [
+            {
+              "answer": "Transition metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_transition"
+            },
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_metalloid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_chlorine_category",
+          "masteryLevel": 4,
+          "poolId": "element_categories",
+          "renderedQuestion": "What element category does Chlorine belong to?",
+          "correctAnswer": "Reactive nonmetal",
+          "distractors": [
+            {
+              "answer": "Transition metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_transition"
+            },
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_metalloid"
+            },
+            {
+              "answer": "Noble gas",
+              "source": "pool_fill",
+              "factId": "periodic_table_noble_gas_category"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_silicon_most_abundant_semiconductor",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is the basis of almost all modern computer chips?",
+          "correctAnswer": "Silicon",
+          "distractors": [
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            },
+            {
+              "answer": "Copper",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_statue_of_liberty"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_silicon_most_abundant_semiconductor",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is the basis of almost all modern computer chips?",
+          "correctAnswer": "Silicon",
+          "distractors": [
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            },
+            {
+              "answer": "Copper",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_statue_of_liberty"
+            },
+            {
+              "answer": "Bismuth",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bismuth_rainbow_crystals"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_silicon_most_abundant_semiconductor",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is the basis of almost all modern computer chips?",
+          "correctAnswer": "Silicon",
+          "distractors": [
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            },
+            {
+              "answer": "Copper",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_statue_of_liberty"
+            },
+            {
+              "answer": "Bismuth",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bismuth_rainbow_crystals"
+            },
+            {
+              "answer": "Boron",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_boron_mohs_hardness"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_magnesium_burns_white",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which alkaline earth metal burns with a brilliant white flame used in flares and fireworks?",
+          "correctAnswer": "Magnesium",
+          "distractors": [
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            },
+            {
+              "answer": "Chromium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_ruby_emerald"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_magnesium_burns_white",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which alkaline earth metal burns with a brilliant white flame used in flares and fireworks?",
+          "correctAnswer": "Magnesium",
+          "distractors": [
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            },
+            {
+              "answer": "Chromium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_ruby_emerald"
+            },
+            {
+              "answer": "Silver",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silver_conductivity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_magnesium_burns_white",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which alkaline earth metal burns with a brilliant white flame used in flares and fireworks?",
+          "correctAnswer": "Magnesium",
+          "distractors": [
+            {
+              "answer": "Lithium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lithium_lightest_solid"
+            },
+            {
+              "answer": "Chromium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_ruby_emerald"
+            },
+            {
+              "answer": "Silver",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silver_conductivity"
+            },
+            {
+              "answer": "Iridium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iridium_dinosaurs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_selenium_named",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is named after Selene, the Greek goddess of the Moon?",
+          "correctAnswer": "Selenium",
+          "distractors": [
+            {
+              "answer": "Stannum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tin_symbol"
+            },
+            {
+              "answer": "Vanadium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_vanadium_goddess_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_selenium_named",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is named after Selene, the Greek goddess of the Moon?",
+          "correctAnswer": "Selenium",
+          "distractors": [
+            {
+              "answer": "Stannum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tin_symbol"
+            },
+            {
+              "answer": "Vanadium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_vanadium_goddess_name"
+            },
+            {
+              "answer": "Phosphorus",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_phosphorus_discovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_selenium_named",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is named after Selene, the Greek goddess of the Moon?",
+          "correctAnswer": "Selenium",
+          "distractors": [
+            {
+              "answer": "Stannum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tin_symbol"
+            },
+            {
+              "answer": "Vanadium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_vanadium_goddess_name"
+            },
+            {
+              "answer": "Phosphorus",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_phosphorus_discovery"
+            },
+            {
+              "answer": "Radon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radon_lung_cancer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_technetium_artificial",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was the first to be artificially produced, in 1937?",
+          "correctAnswer": "Technetium",
+          "distractors": [
+            {
+              "answer": "Bromine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bromine_liquid"
+            },
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_technetium_artificial",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was the first to be artificially produced, in 1937?",
+          "correctAnswer": "Technetium",
+          "distractors": [
+            {
+              "answer": "Bromine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bromine_liquid"
+            },
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            },
+            {
+              "answer": "Krypton",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_krypton_meter_definition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_technetium_artificial",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was the first to be artificially produced, in 1937?",
+          "correctAnswer": "Technetium",
+          "distractors": [
+            {
+              "answer": "Bromine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bromine_liquid"
+            },
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            },
+            {
+              "answer": "Krypton",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_krypton_meter_definition"
+            },
+            {
+              "answer": "Chromium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_ruby_emerald"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_carbon_atomic_number",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Carbon?",
+          "correctAnswer": "6",
+          "distractors": [
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_carbon_atomic_number",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Carbon?",
+          "correctAnswer": "6",
+          "distractors": [
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            },
+            {
+              "answer": "8",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_oxygen_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_carbon_atomic_number",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Carbon?",
+          "correctAnswer": "6",
+          "distractors": [
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            },
+            {
+              "answer": "8",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_oxygen_atomic_number"
+            },
+            {
+              "answer": "82",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lead_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_oxygen_atomic_number",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Oxygen?",
+          "correctAnswer": "8",
+          "distractors": [
+            {
+              "answer": "1",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_hydrogen_atomic_number"
+            },
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_oxygen_atomic_number",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Oxygen?",
+          "correctAnswer": "8",
+          "distractors": [
+            {
+              "answer": "1",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_hydrogen_atomic_number"
+            },
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "39",
+              "source": "pool_fill",
+              "factId": "periodic_table_rubidium_atomic_clock"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_oxygen_atomic_number",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Oxygen?",
+          "correctAnswer": "8",
+          "distractors": [
+            {
+              "answer": "1",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_hydrogen_atomic_number"
+            },
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "39",
+              "source": "pool_fill",
+              "factId": "periodic_table_rubidium_atomic_clock"
+            },
+            {
+              "answer": "24",
+              "source": "pool_fill",
+              "factId": "periodic_table_chromium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_radon_lung_cancer",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which radioactive noble gas is the second leading cause of lung cancer?",
+          "correctAnswer": "Radon",
+          "distractors": [
+            {
+              "answer": "Manganese",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_manganese_cave_paintings"
+            },
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_radon_lung_cancer",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which radioactive noble gas is the second leading cause of lung cancer?",
+          "correctAnswer": "Radon",
+          "distractors": [
+            {
+              "answer": "Manganese",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_manganese_cave_paintings"
+            },
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            },
+            {
+              "answer": "Stannum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tin_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_radon_lung_cancer",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which radioactive noble gas is the second leading cause of lung cancer?",
+          "correctAnswer": "Radon",
+          "distractors": [
+            {
+              "answer": "Manganese",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_manganese_cave_paintings"
+            },
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            },
+            {
+              "answer": "Stannum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tin_symbol"
+            },
+            {
+              "answer": "Technetium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_technetium_artificial"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_helium_sun_discovery",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was discovered in the Sun before being found on Earth?",
+          "correctAnswer": "Helium",
+          "distractors": [
+            {
+              "answer": "Technetium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_technetium_artificial"
+            },
+            {
+              "answer": "Xenon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_xenon_first_noble_compound"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_helium_sun_discovery",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was discovered in the Sun before being found on Earth?",
+          "correctAnswer": "Helium",
+          "distractors": [
+            {
+              "answer": "Technetium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_technetium_artificial"
+            },
+            {
+              "answer": "Xenon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_xenon_first_noble_compound"
+            },
+            {
+              "answer": "Carbon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_allotropes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_helium_sun_discovery",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was discovered in the Sun before being found on Earth?",
+          "correctAnswer": "Helium",
+          "distractors": [
+            {
+              "answer": "Technetium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_technetium_artificial"
+            },
+            {
+              "answer": "Xenon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_xenon_first_noble_compound"
+            },
+            {
+              "answer": "Carbon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_allotropes"
+            },
+            {
+              "answer": "Boron",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_boron_mohs_hardness"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_argon_atmosphere",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which noble gas makes up nearly 1% of Earth's atmosphere?",
+          "correctAnswer": "Argon",
+          "distractors": [
+            {
+              "answer": "Helium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_helium_sun_discovery"
+            },
+            {
+              "answer": "Aluminium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_aluminium_napoleon_gold"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_argon_atmosphere",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which noble gas makes up nearly 1% of Earth's atmosphere?",
+          "correctAnswer": "Argon",
+          "distractors": [
+            {
+              "answer": "Helium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_helium_sun_discovery"
+            },
+            {
+              "answer": "Aluminium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_aluminium_napoleon_gold"
+            },
+            {
+              "answer": "Osmium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_osmium_density"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_argon_atmosphere",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which noble gas makes up nearly 1% of Earth's atmosphere?",
+          "correctAnswer": "Argon",
+          "distractors": [
+            {
+              "answer": "Helium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_helium_sun_discovery"
+            },
+            {
+              "answer": "Aluminium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_aluminium_napoleon_gold"
+            },
+            {
+              "answer": "Osmium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_osmium_density"
+            },
+            {
+              "answer": "Argentum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silver_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_polonium_marie_curie",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element did Marie Curie name after her native country Poland?",
+          "correctAnswer": "Polonium",
+          "distractors": [
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            },
+            {
+              "answer": "Bromine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bromine_liquid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_polonium_marie_curie",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element did Marie Curie name after her native country Poland?",
+          "correctAnswer": "Polonium",
+          "distractors": [
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            },
+            {
+              "answer": "Bromine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bromine_liquid"
+            },
+            {
+              "answer": "Barium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_barium_xray"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_polonium_marie_curie",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element did Marie Curie name after her native country Poland?",
+          "correctAnswer": "Polonium",
+          "distractors": [
+            {
+              "answer": "Iodine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iodine_thyroid"
+            },
+            {
+              "answer": "Bromine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bromine_liquid"
+            },
+            {
+              "answer": "Barium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_barium_xray"
+            },
+            {
+              "answer": "Oxygen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_oxygen_crust"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_tellurium_garlic_breath",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which rare metalloid causes garlic-like breath when even tiny amounts are absorbed by the skin?",
+          "correctAnswer": "Tellurium",
+          "distractors": [
+            {
+              "answer": "Iridium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iridium_dinosaurs"
+            },
+            {
+              "answer": "Americium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_americium_smoke_detectors"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_tellurium_garlic_breath",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which rare metalloid causes garlic-like breath when even tiny amounts are absorbed by the skin?",
+          "correctAnswer": "Tellurium",
+          "distractors": [
+            {
+              "answer": "Iridium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iridium_dinosaurs"
+            },
+            {
+              "answer": "Americium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_americium_smoke_detectors"
+            },
+            {
+              "answer": "Rhodium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_rhodium_expensive"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_tellurium_garlic_breath",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which rare metalloid causes garlic-like breath when even tiny amounts are absorbed by the skin?",
+          "correctAnswer": "Tellurium",
+          "distractors": [
+            {
+              "answer": "Iridium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iridium_dinosaurs"
+            },
+            {
+              "answer": "Americium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_americium_smoke_detectors"
+            },
+            {
+              "answer": "Rhodium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_rhodium_expensive"
+            },
+            {
+              "answer": "Fluorine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_fluorine_reactive"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_francium_rarity",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which naturally occurring element has only ~30 grams present in all of Earth's crust?",
+          "correctAnswer": "Francium",
+          "distractors": [
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_francium_rarity",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which naturally occurring element has only ~30 grams present in all of Earth's crust?",
+          "correctAnswer": "Francium",
+          "distractors": [
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            },
+            {
+              "answer": "Radon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radon_lung_cancer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_francium_rarity",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which naturally occurring element has only ~30 grams present in all of Earth's crust?",
+          "correctAnswer": "Francium",
+          "distractors": [
+            {
+              "answer": "Gallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_gallium_melts_hand"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            },
+            {
+              "answer": "Radon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radon_lung_cancer"
+            },
+            {
+              "answer": "Neodymium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_neodymium_strongest_magnets"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_titanium_strength_weight",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which metal is as strong as steel but 45% lighter?",
+          "correctAnswer": "Titanium",
+          "distractors": [
+            {
+              "answer": "Sulfur",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sulfur_brimstone"
+            },
+            {
+              "answer": "Cobalt",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_cobalt_goblin_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_titanium_strength_weight",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which metal is as strong as steel but 45% lighter?",
+          "correctAnswer": "Titanium",
+          "distractors": [
+            {
+              "answer": "Sulfur",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sulfur_brimstone"
+            },
+            {
+              "answer": "Cobalt",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_cobalt_goblin_name"
+            },
+            {
+              "answer": "Zinc",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_zinc_galvanization"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_titanium_strength_weight",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which metal is as strong as steel but 45% lighter?",
+          "correctAnswer": "Titanium",
+          "distractors": [
+            {
+              "answer": "Sulfur",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sulfur_brimstone"
+            },
+            {
+              "answer": "Cobalt",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_cobalt_goblin_name"
+            },
+            {
+              "answer": "Zinc",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_zinc_galvanization"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_sodium_symbol_na",
+          "masteryLevel": 0,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for sodium?",
+          "correctAnswer": "Na",
+          "distractors": [
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            },
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_sodium_symbol_na",
+          "masteryLevel": 2,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for sodium?",
+          "correctAnswer": "Na",
+          "distractors": [
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            },
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Fe",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_symbol_ferrum"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_sodium_symbol_na",
+          "masteryLevel": 4,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for sodium?",
+          "correctAnswer": "Na",
+          "distractors": [
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            },
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Fe",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_symbol_ferrum"
+            },
+            {
+              "answer": "Pb",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lead_symbol_plumbing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_caesium_melting_point",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what temperature in °C does caesium melt (low enough to melt in your hand)?",
+          "correctAnswer": "28",
+          "distractors": [
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_caesium_melting_point",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what temperature in °C does caesium melt (low enough to melt in your hand)?",
+          "correctAnswer": "28",
+          "distractors": [
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            },
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_caesium_melting_point",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what temperature in °C does caesium melt (low enough to melt in your hand)?",
+          "correctAnswer": "28",
+          "distractors": [
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            },
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            },
+            {
+              "answer": "39",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_rubidium_atomic_clock"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_calcium_body",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which alkaline earth metal is the most abundant metal in the human body?",
+          "correctAnswer": "Calcium",
+          "distractors": [
+            {
+              "answer": "Polonium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_polonium_marie_curie"
+            },
+            {
+              "answer": "Magnesium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_magnesium_burns_white"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_calcium_body",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which alkaline earth metal is the most abundant metal in the human body?",
+          "correctAnswer": "Calcium",
+          "distractors": [
+            {
+              "answer": "Polonium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_polonium_marie_curie"
+            },
+            {
+              "answer": "Magnesium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_magnesium_burns_white"
+            },
+            {
+              "answer": "Nitrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_nitrogen_atmosphere"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_calcium_body",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which alkaline earth metal is the most abundant metal in the human body?",
+          "correctAnswer": "Calcium",
+          "distractors": [
+            {
+              "answer": "Polonium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_polonium_marie_curie"
+            },
+            {
+              "answer": "Magnesium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_magnesium_burns_white"
+            },
+            {
+              "answer": "Nitrogen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_nitrogen_atmosphere"
+            },
+            {
+              "answer": "Iron",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_earth_core"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_nickel_devils_copper",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was originally called \"Kupfernickel\" — devil's copper — by German miners who were frustrated that the ore looked like copper but yielded none?",
+          "correctAnswer": "Nickel",
+          "distractors": [
+            {
+              "answer": "Arsenic",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_arsenic_poison_kings"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_nickel_devils_copper",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was originally called \"Kupfernickel\" — devil's copper — by German miners who were frustrated that the ore looked like copper but yielded none?",
+          "correctAnswer": "Nickel",
+          "distractors": [
+            {
+              "answer": "Arsenic",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_arsenic_poison_kings"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            },
+            {
+              "answer": "Iridium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iridium_dinosaurs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_nickel_devils_copper",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was originally called \"Kupfernickel\" — devil's copper — by German miners who were frustrated that the ore looked like copper but yielded none?",
+          "correctAnswer": "Nickel",
+          "distractors": [
+            {
+              "answer": "Arsenic",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_arsenic_poison_kings"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            },
+            {
+              "answer": "Iridium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iridium_dinosaurs"
+            },
+            {
+              "answer": "Stannum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tin_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_americium_smoke_detectors",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which synthetic radioactive element is found in virtually every household smoke detector?",
+          "correctAnswer": "Americium",
+          "distractors": [
+            {
+              "answer": "Sulfur",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sulfur_brimstone"
+            },
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_conquistadors"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_americium_smoke_detectors",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which synthetic radioactive element is found in virtually every household smoke detector?",
+          "correctAnswer": "Americium",
+          "distractors": [
+            {
+              "answer": "Sulfur",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sulfur_brimstone"
+            },
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_conquistadors"
+            },
+            {
+              "answer": "Thallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thallium_poisoners_poison"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_americium_smoke_detectors",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which synthetic radioactive element is found in virtually every household smoke detector?",
+          "correctAnswer": "Americium",
+          "distractors": [
+            {
+              "answer": "Sulfur",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sulfur_brimstone"
+            },
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_conquistadors"
+            },
+            {
+              "answer": "Thallium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thallium_poisoners_poison"
+            },
+            {
+              "answer": "Helium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_helium_sun_discovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_barium_xray",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which alkaline earth metal is swallowed as a 'meal' to X-ray the digestive tract?",
+          "correctAnswer": "Barium",
+          "distractors": [
+            {
+              "answer": "Titanium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_titanium_strength_weight"
+            },
+            {
+              "answer": "Nickel",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_nickel_devils_copper"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_barium_xray",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which alkaline earth metal is swallowed as a 'meal' to X-ray the digestive tract?",
+          "correctAnswer": "Barium",
+          "distractors": [
+            {
+              "answer": "Titanium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_titanium_strength_weight"
+            },
+            {
+              "answer": "Nickel",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_nickel_devils_copper"
+            },
+            {
+              "answer": "Vanadium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_vanadium_goddess_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_barium_xray",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which alkaline earth metal is swallowed as a 'meal' to X-ray the digestive tract?",
+          "correctAnswer": "Barium",
+          "distractors": [
+            {
+              "answer": "Titanium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_titanium_strength_weight"
+            },
+            {
+              "answer": "Nickel",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_nickel_devils_copper"
+            },
+            {
+              "answer": "Vanadium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_vanadium_goddess_name"
+            },
+            {
+              "answer": "Curium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_curium_glows_dark"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_mercury_symbol",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Mercury's symbol Hg comes from the Greek-Latin word meaning what?",
+          "correctAnswer": "Hydrargyrum",
+          "distractors": [
+            {
+              "answer": "Radon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radon_lung_cancer"
+            },
+            {
+              "answer": "Tellurium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tellurium_garlic_breath"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_mercury_symbol",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Mercury's symbol Hg comes from the Greek-Latin word meaning what?",
+          "correctAnswer": "Hydrargyrum",
+          "distractors": [
+            {
+              "answer": "Radon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radon_lung_cancer"
+            },
+            {
+              "answer": "Tellurium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tellurium_garlic_breath"
+            },
+            {
+              "answer": "Neodymium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_neodymium_strongest_magnets"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_mercury_symbol",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Mercury's symbol Hg comes from the Greek-Latin word meaning what?",
+          "correctAnswer": "Hydrargyrum",
+          "distractors": [
+            {
+              "answer": "Radon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radon_lung_cancer"
+            },
+            {
+              "answer": "Tellurium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_tellurium_garlic_breath"
+            },
+            {
+              "answer": "Neodymium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_neodymium_strongest_magnets"
+            },
+            {
+              "answer": "Francium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_francium_rarity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_tantalum_electronics",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element, named after a mythological king, is inside nearly every smartphone as tiny capacitors?",
+          "correctAnswer": "Tantalum",
+          "distractors": [
+            {
+              "answer": "Radon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radon_lung_cancer"
+            },
+            {
+              "answer": "Chromium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_ruby_emerald"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_tantalum_electronics",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element, named after a mythological king, is inside nearly every smartphone as tiny capacitors?",
+          "correctAnswer": "Tantalum",
+          "distractors": [
+            {
+              "answer": "Radon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radon_lung_cancer"
+            },
+            {
+              "answer": "Chromium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_ruby_emerald"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_tantalum_electronics",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element, named after a mythological king, is inside nearly every smartphone as tiny capacitors?",
+          "correctAnswer": "Tantalum",
+          "distractors": [
+            {
+              "answer": "Radon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radon_lung_cancer"
+            },
+            {
+              "answer": "Chromium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_ruby_emerald"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            },
+            {
+              "answer": "Magnesium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_magnesium_burns_white"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_rubidium_atomic_clock",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what temperature in °C does rubidium melt (low enough to melt in a warm room)?",
+          "correctAnswer": "39",
+          "distractors": [
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            },
+            {
+              "answer": "28",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_caesium_melting_point"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_rubidium_atomic_clock",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what temperature in °C does rubidium melt (low enough to melt in a warm room)?",
+          "correctAnswer": "39",
+          "distractors": [
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            },
+            {
+              "answer": "28",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_caesium_melting_point"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_rubidium_atomic_clock",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "At what temperature in °C does rubidium melt (low enough to melt in a warm room)?",
+          "correctAnswer": "39",
+          "distractors": [
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            },
+            {
+              "answer": "28",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_caesium_melting_point"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            },
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_noble_gas_category",
+          "masteryLevel": 0,
+          "poolId": "element_categories",
+          "renderedQuestion": "What element category includes helium, neon, argon, krypton, xenon, and radon?",
+          "correctAnswer": "Noble gas",
+          "distractors": [
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Transition metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_transition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_noble_gas_category",
+          "masteryLevel": 2,
+          "poolId": "element_categories",
+          "renderedQuestion": "What element category includes helium, neon, argon, krypton, xenon, and radon?",
+          "correctAnswer": "Noble gas",
+          "distractors": [
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Transition metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_transition"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "pool_fill",
+              "factId": "periodic_table_silicon_metalloid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_noble_gas_category",
+          "masteryLevel": 4,
+          "poolId": "element_categories",
+          "renderedQuestion": "What element category includes helium, neon, argon, krypton, xenon, and radon?",
+          "correctAnswer": "Noble gas",
+          "distractors": [
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Transition metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_transition"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "pool_fill",
+              "factId": "periodic_table_silicon_metalloid"
+            },
+            {
+              "answer": "Reactive nonmetal",
+              "source": "pool_fill",
+              "factId": "periodic_table_chlorine_category"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_scandium_predicted_mendeleev",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was predicted by Mendeleev as 'eka-boron' before its discovery?",
+          "correctAnswer": "Scandium",
+          "distractors": [
+            {
+              "answer": "Krypton",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_krypton_meter_definition"
+            },
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_conquistadors"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_scandium_predicted_mendeleev",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was predicted by Mendeleev as 'eka-boron' before its discovery?",
+          "correctAnswer": "Scandium",
+          "distractors": [
+            {
+              "answer": "Krypton",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_krypton_meter_definition"
+            },
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_conquistadors"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_scandium_predicted_mendeleev",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was predicted by Mendeleev as 'eka-boron' before its discovery?",
+          "correctAnswer": "Scandium",
+          "distractors": [
+            {
+              "answer": "Krypton",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_krypton_meter_definition"
+            },
+            {
+              "answer": "Platinum",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_platinum_conquistadors"
+            },
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            },
+            {
+              "answer": "Iridium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iridium_dinosaurs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_thallium_poisoners_poison",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which toxic post-transition metal was called 'the poisoner's poison' because it is tasteless, odorless, and water-soluble?",
+          "correctAnswer": "Thallium",
+          "distractors": [
+            {
+              "answer": "Bismuth",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bismuth_rainbow_crystals"
+            },
+            {
+              "answer": "Phosphorus",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_phosphorus_discovery"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_thallium_poisoners_poison",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which toxic post-transition metal was called 'the poisoner's poison' because it is tasteless, odorless, and water-soluble?",
+          "correctAnswer": "Thallium",
+          "distractors": [
+            {
+              "answer": "Bismuth",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bismuth_rainbow_crystals"
+            },
+            {
+              "answer": "Phosphorus",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_phosphorus_discovery"
+            },
+            {
+              "answer": "Bromine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bromine_liquid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_thallium_poisoners_poison",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which toxic post-transition metal was called 'the poisoner's poison' because it is tasteless, odorless, and water-soluble?",
+          "correctAnswer": "Thallium",
+          "distractors": [
+            {
+              "answer": "Bismuth",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bismuth_rainbow_crystals"
+            },
+            {
+              "answer": "Phosphorus",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_phosphorus_discovery"
+            },
+            {
+              "answer": "Bromine",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_bromine_liquid"
+            },
+            {
+              "answer": "Radium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_radium_girls"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_iron_symbol_ferrum",
+          "masteryLevel": 0,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for iron, derived from the Latin word 'ferrum'?",
+          "correctAnswer": "Fe",
+          "distractors": [
+            {
+              "answer": "Cu",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            },
+            {
+              "answer": "Na",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_symbol_na"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_iron_symbol_ferrum",
+          "masteryLevel": 2,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for iron, derived from the Latin word 'ferrum'?",
+          "correctAnswer": "Fe",
+          "distractors": [
+            {
+              "answer": "Cu",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            },
+            {
+              "answer": "Na",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_symbol_na"
+            },
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_iron_symbol_ferrum",
+          "masteryLevel": 4,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for iron, derived from the Latin word 'ferrum'?",
+          "correctAnswer": "Fe",
+          "distractors": [
+            {
+              "answer": "Cu",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            },
+            {
+              "answer": "Na",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_symbol_na"
+            },
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_zinc_galvanization",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is used to coat steel in galvanization to prevent rust?",
+          "correctAnswer": "Zinc",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_zinc_galvanization",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is used to coat steel in galvanization to prevent rust?",
+          "correctAnswer": "Zinc",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            },
+            {
+              "answer": "Plutonium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_plutonium_fat_man"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_zinc_galvanization",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element is used to coat steel in galvanization to prevent rust?",
+          "correctAnswer": "Zinc",
+          "distractors": [
+            {
+              "answer": "Mercury",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_mercury_mad_hatter"
+            },
+            {
+              "answer": "Silicon",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_most_abundant_semiconductor"
+            },
+            {
+              "answer": "Plutonium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_plutonium_fat_man"
+            },
+            {
+              "answer": "Oxygen",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_oxygen_crust"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_chromium_atomic_number",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of chromium?",
+          "correctAnswer": "24",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "28",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_caesium_melting_point"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_chromium_atomic_number",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of chromium?",
+          "correctAnswer": "24",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "28",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_caesium_melting_point"
+            },
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_chromium_atomic_number",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of chromium?",
+          "correctAnswer": "24",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "28",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_caesium_melting_point"
+            },
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            },
+            {
+              "answer": "39",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_rubidium_atomic_clock"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_rhenium_last_discovered",
+          "masteryLevel": 0,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was the last stable element to be discovered, found in 1925?",
+          "correctAnswer": "Rhenium",
+          "distractors": [
+            {
+              "answer": "Indium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_indium_touchscreens"
+            },
+            {
+              "answer": "Scandium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_scandium_predicted_mendeleev"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_rhenium_last_discovered",
+          "masteryLevel": 2,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was the last stable element to be discovered, found in 1925?",
+          "correctAnswer": "Rhenium",
+          "distractors": [
+            {
+              "answer": "Indium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_indium_touchscreens"
+            },
+            {
+              "answer": "Scandium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_scandium_predicted_mendeleev"
+            },
+            {
+              "answer": "Cobalt",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_cobalt_goblin_name"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_rhenium_last_discovered",
+          "masteryLevel": 4,
+          "poolId": "element_names",
+          "renderedQuestion": "Which element was the last stable element to be discovered, found in 1925?",
+          "correctAnswer": "Rhenium",
+          "distractors": [
+            {
+              "answer": "Indium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_indium_touchscreens"
+            },
+            {
+              "answer": "Scandium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_scandium_predicted_mendeleev"
+            },
+            {
+              "answer": "Cobalt",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_cobalt_goblin_name"
+            },
+            {
+              "answer": "Rhodium",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_rhodium_expensive"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_lead_symbol_plumbing",
+          "masteryLevel": 0,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for Lead, derived from the Latin word that also gives us 'plumbing'?",
+          "correctAnswer": "Pb",
+          "distractors": [
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Cu",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_lead_symbol_plumbing",
+          "masteryLevel": 2,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for Lead, derived from the Latin word that also gives us 'plumbing'?",
+          "correctAnswer": "Pb",
+          "distractors": [
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Cu",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            },
+            {
+              "answer": "F",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_fluorine_symbol"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_lead_symbol_plumbing",
+          "masteryLevel": 4,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the chemical symbol for Lead, derived from the Latin word that also gives us 'plumbing'?",
+          "correctAnswer": "Pb",
+          "distractors": [
+            {
+              "answer": "Cl",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Cu",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            },
+            {
+              "answer": "F",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_fluorine_symbol"
+            },
+            {
+              "answer": "K",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_potassium_symbol_k"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_antimony_symbol_stibium",
+          "masteryLevel": 0,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the unusual chemical symbol for Antimony, derived from the Latin 'stibium'?",
+          "correctAnswer": "Sb",
+          "distractors": [
+            {
+              "answer": "Cl",
+              "source": "pool_fill",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Na",
+              "source": "pool_fill",
+              "factId": "periodic_table_sodium_symbol_na"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_antimony_symbol_stibium",
+          "masteryLevel": 2,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the unusual chemical symbol for Antimony, derived from the Latin 'stibium'?",
+          "correctAnswer": "Sb",
+          "distractors": [
+            {
+              "answer": "Cl",
+              "source": "pool_fill",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Na",
+              "source": "pool_fill",
+              "factId": "periodic_table_sodium_symbol_na"
+            },
+            {
+              "answer": "Cu",
+              "source": "pool_fill",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_antimony_symbol_stibium",
+          "masteryLevel": 4,
+          "poolId": "element_symbols",
+          "renderedQuestion": "What is the unusual chemical symbol for Antimony, derived from the Latin 'stibium'?",
+          "correctAnswer": "Sb",
+          "distractors": [
+            {
+              "answer": "Cl",
+              "source": "pool_fill",
+              "factId": "periodic_table_chlorine_symbol"
+            },
+            {
+              "answer": "Na",
+              "source": "pool_fill",
+              "factId": "periodic_table_sodium_symbol_na"
+            },
+            {
+              "answer": "Cu",
+              "source": "pool_fill",
+              "factId": "periodic_table_copper_symbol_cuprum"
+            },
+            {
+              "answer": "Pb",
+              "source": "pool_fill",
+              "factId": "periodic_table_lead_symbol_plumbing"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_uranium_atomic_number",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Uranium, the heaviest naturally occurring element?",
+          "correctAnswer": "92",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "82",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lead_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_uranium_atomic_number",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Uranium, the heaviest naturally occurring element?",
+          "correctAnswer": "92",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "82",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lead_atomic_number"
+            },
+            {
+              "answer": "39",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_rubidium_atomic_clock"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_uranium_atomic_number",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Uranium, the heaviest naturally occurring element?",
+          "correctAnswer": "92",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "82",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lead_atomic_number"
+            },
+            {
+              "answer": "39",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_rubidium_atomic_clock"
+            },
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_thorium_atomic_number",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Thorium, the element named after the Norse god of thunder?",
+          "correctAnswer": "90",
+          "distractors": [
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            },
+            {
+              "answer": "82",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lead_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_thorium_atomic_number",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Thorium, the element named after the Norse god of thunder?",
+          "correctAnswer": "90",
+          "distractors": [
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            },
+            {
+              "answer": "82",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lead_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_thorium_atomic_number",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Thorium, the element named after the Norse god of thunder?",
+          "correctAnswer": "90",
+          "distractors": [
+            {
+              "answer": "24",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chromium_atomic_number"
+            },
+            {
+              "answer": "82",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_lead_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            },
+            {
+              "answer": "28",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_caesium_melting_point"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_lead_atomic_number",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Lead, the dense metal whose Latin name gave us the word 'plumbing'?",
+          "correctAnswer": "82",
+          "distractors": [
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_lead_atomic_number",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Lead, the dense metal whose Latin name gave us the word 'plumbing'?",
+          "correctAnswer": "82",
+          "distractors": [
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            },
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_lead_atomic_number",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "What is the atomic number of Lead, the dense metal whose Latin name gave us the word 'plumbing'?",
+          "correctAnswer": "82",
+          "distractors": [
+            {
+              "answer": "90",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_thorium_atomic_number"
+            },
+            {
+              "answer": "92",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_uranium_atomic_number"
+            },
+            {
+              "answer": "6",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_carbon_atomic_number"
+            },
+            {
+              "answer": "28",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_caesium_melting_point"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_sodium_alkali",
+          "masteryLevel": 0,
+          "poolId": "element_categories",
+          "renderedQuestion": "Sodium, potassium, and lithium all belong to which element category?",
+          "correctAnswer": "Alkali metal",
+          "distractors": [
+            {
+              "answer": "Reactive nonmetal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_category"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_metalloid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_sodium_alkali",
+          "masteryLevel": 2,
+          "poolId": "element_categories",
+          "renderedQuestion": "Sodium, potassium, and lithium all belong to which element category?",
+          "correctAnswer": "Alkali metal",
+          "distractors": [
+            {
+              "answer": "Reactive nonmetal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_category"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_metalloid"
+            },
+            {
+              "answer": "Noble gas",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_noble_gas_category"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_sodium_alkali",
+          "masteryLevel": 4,
+          "poolId": "element_categories",
+          "renderedQuestion": "Sodium, potassium, and lithium all belong to which element category?",
+          "correctAnswer": "Alkali metal",
+          "distractors": [
+            {
+              "answer": "Reactive nonmetal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_category"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_metalloid"
+            },
+            {
+              "answer": "Noble gas",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_noble_gas_category"
+            },
+            {
+              "answer": "Transition metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_transition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_iron_transition",
+          "masteryLevel": 0,
+          "poolId": "element_categories",
+          "renderedQuestion": "Iron, copper, gold, and silver all belong to which element category?",
+          "correctAnswer": "Transition metal",
+          "distractors": [
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_metalloid"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_iron_transition",
+          "masteryLevel": 2,
+          "poolId": "element_categories",
+          "renderedQuestion": "Iron, copper, gold, and silver all belong to which element category?",
+          "correctAnswer": "Transition metal",
+          "distractors": [
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_metalloid"
+            },
+            {
+              "answer": "Noble gas",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_noble_gas_category"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_iron_transition",
+          "masteryLevel": 4,
+          "poolId": "element_categories",
+          "renderedQuestion": "Iron, copper, gold, and silver all belong to which element category?",
+          "correctAnswer": "Transition metal",
+          "distractors": [
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Metalloid",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_silicon_metalloid"
+            },
+            {
+              "answer": "Noble gas",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_noble_gas_category"
+            },
+            {
+              "answer": "Reactive nonmetal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_category"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_silicon_metalloid",
+          "masteryLevel": 0,
+          "poolId": "element_categories",
+          "renderedQuestion": "Silicon and germanium are examples of which element category — elements with properties between metals and nonmetals?",
+          "correctAnswer": "Metalloid",
+          "distractors": [
+            {
+              "answer": "Reactive nonmetal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_category"
+            },
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_silicon_metalloid",
+          "masteryLevel": 2,
+          "poolId": "element_categories",
+          "renderedQuestion": "Silicon and germanium are examples of which element category — elements with properties between metals and nonmetals?",
+          "correctAnswer": "Metalloid",
+          "distractors": [
+            {
+              "answer": "Reactive nonmetal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_category"
+            },
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Transition metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_transition"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "periodic_table_silicon_metalloid",
+          "masteryLevel": 4,
+          "poolId": "element_categories",
+          "renderedQuestion": "Silicon and germanium are examples of which element category — elements with properties between metals and nonmetals?",
+          "correctAnswer": "Metalloid",
+          "distractors": [
+            {
+              "answer": "Reactive nonmetal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_chlorine_category"
+            },
+            {
+              "answer": "Alkali metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_sodium_alkali"
+            },
+            {
+              "answer": "Transition metal",
+              "source": "similar_difficulty",
+              "factId": "periodic_table_iron_transition"
+            },
+            {
+              "answer": "Noble gas",
+              "source": "pool_fill",
+              "factId": "periodic_table_noble_gas_category"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

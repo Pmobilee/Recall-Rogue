@@ -1,0 +1,5608 @@
+{
+  "timestamp": "2026-04-11T02:00:12.206Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 183,
+  "totalFails": 0,
+  "totalWarns": 79,
+  "decks": [
+    {
+      "deckId": "dinosaurs",
+      "deckName": "Dinosaurs & Paleontology",
+      "deckClass": "knowledge",
+      "totalFacts": 187,
+      "totalChecks": 183,
+      "failCount": 0,
+      "warnCount": 79,
+      "issuesByType": {
+        "all_pool_fill": {
+          "fail": 0,
+          "warn": 36
+        },
+        "fallback_distractors_used": {
+          "fail": 0,
+          "warn": 36
+        },
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 3
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 2
+        },
+        "distractor_format_inconsistency": {
+          "fail": 0,
+          "warn": 2
+        }
+      },
+      "factResults": [
+        {
+          "factId": "dino_trex_identity",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur is famous for its enormous jaws, tiny arms, and banana-sized teeth?",
+          "correctAnswer": "Tyrannosaurus",
+          "distractors": [
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_brachiosaurus_identity"
+            },
+            {
+              "answer": "Mosasaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_mosasaurus_apex_cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_trex_identity",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur is famous for its enormous jaws, tiny arms, and banana-sized teeth?",
+          "correctAnswer": "Tyrannosaurus",
+          "distractors": [
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_brachiosaurus_identity"
+            },
+            {
+              "answer": "Mosasaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_mosasaurus_apex_cretaceous"
+            },
+            {
+              "answer": "Triceratops",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_triceratops_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_trex_identity",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur is famous for its enormous jaws, tiny arms, and banana-sized teeth?",
+          "correctAnswer": "Tyrannosaurus",
+          "distractors": [
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_brachiosaurus_identity"
+            },
+            {
+              "answer": "Mosasaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_mosasaurus_apex_cretaceous"
+            },
+            {
+              "answer": "Triceratops",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_triceratops_identity"
+            },
+            {
+              "answer": "Pteranodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_pteranodon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_velociraptor_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Velociraptor live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_velociraptor_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Velociraptor live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_velociraptor_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Velociraptor live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_trex_length",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many meters long was Tyrannosaurus rex?",
+          "correctAnswer": "12",
+          "distractors": [
+            {
+              "answer": "21",
+              "source": "numerical",
+              "factId": "_numerical_21"
+            },
+            {
+              "answer": "5",
+              "source": "numerical",
+              "factId": "_numerical_5"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_trex_length",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many meters long was Tyrannosaurus rex?",
+          "correctAnswer": "12",
+          "distractors": [
+            {
+              "answer": "21",
+              "source": "numerical",
+              "factId": "_numerical_21"
+            },
+            {
+              "answer": "5",
+              "source": "numerical",
+              "factId": "_numerical_5"
+            },
+            {
+              "answer": "28",
+              "source": "numerical",
+              "factId": "_numerical_28"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_trex_length",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many meters long was Tyrannosaurus rex?",
+          "correctAnswer": "12",
+          "distractors": [
+            {
+              "answer": "21",
+              "source": "numerical",
+              "factId": "_numerical_21"
+            },
+            {
+              "answer": "5",
+              "source": "numerical",
+              "factId": "_numerical_5"
+            },
+            {
+              "answer": "28",
+              "source": "numerical",
+              "factId": "_numerical_28"
+            },
+            {
+              "answer": "33",
+              "source": "numerical",
+              "factId": "_numerical_33"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_trex_specimen",
+          "masteryLevel": 0,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "What is the name of the famous T. rex specimen on display at the Field Museum in Chicago?",
+          "correctAnswer": "Sue",
+          "distractors": [
+            {
+              "answer": "China",
+              "source": "similar_difficulty",
+              "factId": "dino_feathered_liaoning"
+            },
+            {
+              "answer": "Fish",
+              "source": "similar_difficulty",
+              "factId": "dino_spinosaurus_diet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_trex_specimen",
+          "masteryLevel": 2,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "What is the name of the famous T. rex specimen on display at the Field Museum in Chicago?",
+          "correctAnswer": "Sue",
+          "distractors": [
+            {
+              "answer": "China",
+              "source": "similar_difficulty",
+              "factId": "dino_feathered_liaoning"
+            },
+            {
+              "answer": "Fish",
+              "source": "similar_difficulty",
+              "factId": "dino_spinosaurus_diet"
+            },
+            {
+              "answer": "145–66",
+              "source": "similar_difficulty",
+              "factId": "dino_cretaceous_dates"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_trex_specimen",
+          "masteryLevel": 4,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "What is the name of the famous T. rex specimen on display at the Field Museum in Chicago?",
+          "correctAnswer": "Sue",
+          "distractors": [
+            {
+              "answer": "China",
+              "source": "similar_difficulty",
+              "factId": "dino_feathered_liaoning"
+            },
+            {
+              "answer": "Fish",
+              "source": "similar_difficulty",
+              "factId": "dino_spinosaurus_diet"
+            },
+            {
+              "answer": "145–66",
+              "source": "similar_difficulty",
+              "factId": "dino_cretaceous_dates"
+            },
+            {
+              "answer": "Teeth",
+              "source": "similar_difficulty",
+              "factId": "dino_archaeopteryx_teeth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_carnotaurus_identity",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which Argentinian theropod had bull-like horns above its eyes and even tinier arms than T. rex?",
+          "correctAnswer": "Carnotaurus",
+          "distractors": [
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_brachiosaurus_identity"
+            },
+            {
+              "answer": "Therizinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_carnotaurus_identity",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which Argentinian theropod had bull-like horns above its eyes and even tinier arms than T. rex?",
+          "correctAnswer": "Carnotaurus",
+          "distractors": [
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_brachiosaurus_identity"
+            },
+            {
+              "answer": "Therizinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_identity"
+            },
+            {
+              "answer": "Archaeopteryx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_archaeopteryx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_carnotaurus_identity",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which Argentinian theropod had bull-like horns above its eyes and even tinier arms than T. rex?",
+          "correctAnswer": "Carnotaurus",
+          "distractors": [
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_brachiosaurus_identity"
+            },
+            {
+              "answer": "Therizinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_identity"
+            },
+            {
+              "answer": "Archaeopteryx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_archaeopteryx"
+            },
+            {
+              "answer": "Velociraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_velociraptor_size_misconception"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_allosaurus_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Allosaurus live?",
+          "correctAnswer": "Late Jurassic",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_allosaurus_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Allosaurus live?",
+          "correctAnswer": "Late Jurassic",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Cretaceous"
+            },
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_allosaurus_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Allosaurus live?",
+          "correctAnswer": "Late Jurassic",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Cretaceous"
+            },
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_baryonyx_length",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many meters long was Baryonyx?",
+          "correctAnswer": "10",
+          "distractors": [
+            {
+              "answer": "20",
+              "source": "numerical",
+              "factId": "_numerical_20"
+            },
+            {
+              "answer": "18",
+              "source": "numerical",
+              "factId": "_numerical_18"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_baryonyx_length",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many meters long was Baryonyx?",
+          "correctAnswer": "10",
+          "distractors": [
+            {
+              "answer": "20",
+              "source": "numerical",
+              "factId": "_numerical_20"
+            },
+            {
+              "answer": "18",
+              "source": "numerical",
+              "factId": "_numerical_18"
+            },
+            {
+              "answer": "13",
+              "source": "numerical",
+              "factId": "_numerical_13"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_baryonyx_length",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many meters long was Baryonyx?",
+          "correctAnswer": "10",
+          "distractors": [
+            {
+              "answer": "20",
+              "source": "numerical",
+              "factId": "_numerical_20"
+            },
+            {
+              "answer": "18",
+              "source": "numerical",
+              "factId": "_numerical_18"
+            },
+            {
+              "answer": "13",
+              "source": "numerical",
+              "factId": "_numerical_13"
+            },
+            {
+              "answer": "2",
+              "source": "numerical",
+              "factId": "_numerical_2"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_coelophysis_identity",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which slender early dinosaur from the Late Triassic has its name meaning 'hollow form', from its hollow bones?",
+          "correctAnswer": "Coelophysis",
+          "distractors": [
+            {
+              "answer": "Ankylosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_ankylosaurus_armor"
+            },
+            {
+              "answer": "Oviraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_coelophysis_identity",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which slender early dinosaur from the Late Triassic has its name meaning 'hollow form', from its hollow bones?",
+          "correctAnswer": "Coelophysis",
+          "distractors": [
+            {
+              "answer": "Ankylosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_ankylosaurus_armor"
+            },
+            {
+              "answer": "Oviraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_identity"
+            },
+            {
+              "answer": "Diplodocus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_diplodocus_tail"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_coelophysis_identity",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which slender early dinosaur from the Late Triassic has its name meaning 'hollow form', from its hollow bones?",
+          "correctAnswer": "Coelophysis",
+          "distractors": [
+            {
+              "answer": "Ankylosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_ankylosaurus_armor"
+            },
+            {
+              "answer": "Oviraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_identity"
+            },
+            {
+              "answer": "Diplodocus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_diplodocus_tail"
+            },
+            {
+              "answer": "Edmontosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_edmontosaurus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_therizinosaurus_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Therizinosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_therizinosaurus_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Therizinosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_therizinosaurus_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Therizinosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_carcharodontosaurus_length",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many meters long was Carcharodontosaurus?",
+          "correctAnswer": "12.5",
+          "distractors": [
+            {
+              "answer": "18.1",
+              "source": "numerical",
+              "factId": "_numerical_18.1"
+            },
+            {
+              "answer": "9.1",
+              "source": "numerical",
+              "factId": "_numerical_9.1"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_carcharodontosaurus_length",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many meters long was Carcharodontosaurus?",
+          "correctAnswer": "12.5",
+          "distractors": [
+            {
+              "answer": "18.1",
+              "source": "numerical",
+              "factId": "_numerical_18.1"
+            },
+            {
+              "answer": "9.1",
+              "source": "numerical",
+              "factId": "_numerical_9.1"
+            },
+            {
+              "answer": "18.7",
+              "source": "numerical",
+              "factId": "_numerical_18.7"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_carcharodontosaurus_length",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many meters long was Carcharodontosaurus?",
+          "correctAnswer": "12.5",
+          "distractors": [
+            {
+              "answer": "18.1",
+              "source": "numerical",
+              "factId": "_numerical_18.1"
+            },
+            {
+              "answer": "9.1",
+              "source": "numerical",
+              "factId": "_numerical_9.1"
+            },
+            {
+              "answer": "18.7",
+              "source": "numerical",
+              "factId": "_numerical_18.7"
+            },
+            {
+              "answer": "9.7",
+              "source": "numerical",
+              "factId": "_numerical_9.7"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_carcharodontosaurus_identity",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which North African theropod's name means 'shark-toothed lizard', after the serrated blade-like teeth similar to a great white shark?",
+          "correctAnswer": "Carcharodontosaurus",
+          "distractors": [
+            {
+              "answer": "Therizinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_identity"
+            },
+            {
+              "answer": "Eoraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_img_eoraptor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_carcharodontosaurus_identity",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which North African theropod's name means 'shark-toothed lizard', after the serrated blade-like teeth similar to a great white shark?",
+          "correctAnswer": "Carcharodontosaurus",
+          "distractors": [
+            {
+              "answer": "Therizinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_identity"
+            },
+            {
+              "answer": "Eoraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_img_eoraptor"
+            },
+            {
+              "answer": "Baryonyx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_baryonyx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_carcharodontosaurus_identity",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which North African theropod's name means 'shark-toothed lizard', after the serrated blade-like teeth similar to a great white shark?",
+          "correctAnswer": "Carcharodontosaurus",
+          "distractors": [
+            {
+              "answer": "Therizinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_identity"
+            },
+            {
+              "answer": "Eoraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_img_eoraptor"
+            },
+            {
+              "answer": "Baryonyx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_baryonyx"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_dilophosaurus_misconception"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_carcharodontosaurus_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Carcharodontosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_carcharodontosaurus_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Carcharodontosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_carcharodontosaurus_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Carcharodontosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_therizinosaurus_diet",
+          "masteryLevel": 0,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "Despite being a theropod in the same group as T. rex, what was Therizinosaurus's diet?",
+          "correctAnswer": "Herbivore",
+          "distractors": [
+            {
+              "answer": "Pangaea",
+              "source": "similar_difficulty",
+              "factId": "dino_triassic_pangaea"
+            },
+            {
+              "answer": "Giraffe",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_giraffe_height"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_therizinosaurus_diet",
+          "masteryLevel": 2,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "Despite being a theropod in the same group as T. rex, what was Therizinosaurus's diet?",
+          "correctAnswer": "Herbivore",
+          "distractors": [
+            {
+              "answer": "Pangaea",
+              "source": "similar_difficulty",
+              "factId": "dino_triassic_pangaea"
+            },
+            {
+              "answer": "Giraffe",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_giraffe_height"
+            },
+            {
+              "answer": "201–145",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_dates"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_therizinosaurus_diet",
+          "masteryLevel": 4,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "Despite being a theropod in the same group as T. rex, what was Therizinosaurus's diet?",
+          "correctAnswer": "Herbivore",
+          "distractors": [
+            {
+              "answer": "Pangaea",
+              "source": "similar_difficulty",
+              "factId": "dino_triassic_pangaea"
+            },
+            {
+              "answer": "Giraffe",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_giraffe_height"
+            },
+            {
+              "answer": "201–145",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_dates"
+            },
+            {
+              "answer": "Monitor lizard",
+              "source": "similar_difficulty",
+              "factId": "dino_mosasaurus_not_dinosaur"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_oviraptor_discoverer",
+          "masteryLevel": 0,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Which American paleontologist-explorer led the expedition that first discovered Oviraptor in Mongolia in 1923?",
+          "correctAnswer": "Roy Chapman Andrews",
+          "distractors": [
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_sea_shells"
+            },
+            {
+              "answer": "Paul Sereno",
+              "source": "similar_difficulty",
+              "factId": "dino_eoraptor_sereno"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_oviraptor_discoverer",
+          "masteryLevel": 2,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Which American paleontologist-explorer led the expedition that first discovered Oviraptor in Mongolia in 1923?",
+          "correctAnswer": "Roy Chapman Andrews",
+          "distractors": [
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_sea_shells"
+            },
+            {
+              "answer": "Paul Sereno",
+              "source": "similar_difficulty",
+              "factId": "dino_eoraptor_sereno"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_oviraptor_discoverer",
+          "masteryLevel": 4,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Which American paleontologist-explorer led the expedition that first discovered Oviraptor in Mongolia in 1923?",
+          "correctAnswer": "Roy Chapman Andrews",
+          "distractors": [
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_sea_shells"
+            },
+            {
+              "answer": "Paul Sereno",
+              "source": "similar_difficulty",
+              "factId": "dino_eoraptor_sereno"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_brachiosaurus_identity",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which sauropod had front legs longer than its hind legs, giving it a giraffe-like posture?",
+          "correctAnswer": "Brachiosaurus",
+          "distractors": [
+            {
+              "answer": "Plesiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_plesiosaurus_loch_ness"
+            },
+            {
+              "answer": "Carnotaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_carnotaurus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_brachiosaurus_identity",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which sauropod had front legs longer than its hind legs, giving it a giraffe-like posture?",
+          "correctAnswer": "Brachiosaurus",
+          "distractors": [
+            {
+              "answer": "Plesiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_plesiosaurus_loch_ness"
+            },
+            {
+              "answer": "Carnotaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_carnotaurus_identity"
+            },
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_parasaurolophus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_brachiosaurus_identity",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which sauropod had front legs longer than its hind legs, giving it a giraffe-like posture?",
+          "correctAnswer": "Brachiosaurus",
+          "distractors": [
+            {
+              "answer": "Plesiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_plesiosaurus_loch_ness"
+            },
+            {
+              "answer": "Carnotaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_carnotaurus_identity"
+            },
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_parasaurolophus"
+            },
+            {
+              "answer": "Diplodocus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_diplodocus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_argentinosaurus_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Argentinosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_argentinosaurus_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Argentinosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_argentinosaurus_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Argentinosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_diplodocus_length",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many metres long was Diplodocus?",
+          "correctAnswer": "26",
+          "distractors": [
+            {
+              "answer": "36",
+              "source": "numerical",
+              "factId": "_numerical_36"
+            },
+            {
+              "answer": "16",
+              "source": "numerical",
+              "factId": "_numerical_16"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_diplodocus_length",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many metres long was Diplodocus?",
+          "correctAnswer": "26",
+          "distractors": [
+            {
+              "answer": "36",
+              "source": "numerical",
+              "factId": "_numerical_36"
+            },
+            {
+              "answer": "16",
+              "source": "numerical",
+              "factId": "_numerical_16"
+            },
+            {
+              "answer": "29",
+              "source": "numerical",
+              "factId": "_numerical_29"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_diplodocus_length",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many metres long was Diplodocus?",
+          "correctAnswer": "26",
+          "distractors": [
+            {
+              "answer": "36",
+              "source": "numerical",
+              "factId": "_numerical_36"
+            },
+            {
+              "answer": "16",
+              "source": "numerical",
+              "factId": "_numerical_16"
+            },
+            {
+              "answer": "29",
+              "source": "numerical",
+              "factId": "_numerical_29"
+            },
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_apatosaurus_brontosaurus",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur was originally described as 'Brontosaurus', a name dismissed as invalid in 1903 but officially reinstated as a separate valid genus in 2015?",
+          "correctAnswer": "Apatosaurus",
+          "distractors": [
+            {
+              "answer": "Baryonyx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_baryonyx"
+            },
+            {
+              "answer": "Giganotosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_giganotosaurus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_apatosaurus_brontosaurus",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur was originally described as 'Brontosaurus', a name dismissed as invalid in 1903 but officially reinstated as a separate valid genus in 2015?",
+          "correctAnswer": "Apatosaurus",
+          "distractors": [
+            {
+              "answer": "Baryonyx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_baryonyx"
+            },
+            {
+              "answer": "Giganotosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_giganotosaurus_identity"
+            },
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_parasaurolophus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_apatosaurus_brontosaurus",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur was originally described as 'Brontosaurus', a name dismissed as invalid in 1903 but officially reinstated as a separate valid genus in 2015?",
+          "correctAnswer": "Apatosaurus",
+          "distractors": [
+            {
+              "answer": "Baryonyx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_baryonyx"
+            },
+            {
+              "answer": "Giganotosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_giganotosaurus_identity"
+            },
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_parasaurolophus"
+            },
+            {
+              "answer": "Gallimimus",
+              "source": "similar_difficulty",
+              "factId": "dino_gallimimus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_brachiosaurus_mass",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many tonnes did Brachiosaurus weigh?",
+          "correctAnswer": "56",
+          "distractors": [
+            {
+              "answer": "67",
+              "source": "numerical",
+              "factId": "_numerical_67"
+            },
+            {
+              "answer": "41",
+              "source": "numerical",
+              "factId": "_numerical_41"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_brachiosaurus_mass",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many tonnes did Brachiosaurus weigh?",
+          "correctAnswer": "56",
+          "distractors": [
+            {
+              "answer": "67",
+              "source": "numerical",
+              "factId": "_numerical_67"
+            },
+            {
+              "answer": "41",
+              "source": "numerical",
+              "factId": "_numerical_41"
+            },
+            {
+              "answer": "68",
+              "source": "numerical",
+              "factId": "_numerical_68"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_brachiosaurus_mass",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many tonnes did Brachiosaurus weigh?",
+          "correctAnswer": "56",
+          "distractors": [
+            {
+              "answer": "67",
+              "source": "numerical",
+              "factId": "_numerical_67"
+            },
+            {
+              "answer": "41",
+              "source": "numerical",
+              "factId": "_numerical_41"
+            },
+            {
+              "answer": "68",
+              "source": "numerical",
+              "factId": "_numerical_68"
+            },
+            {
+              "answer": "40",
+              "source": "numerical",
+              "factId": "_numerical_40"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_argentinosaurus_identity",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which titanosaur from Patagonia is considered one of the largest land animals ever, estimated at up to 70–80 tonnes?",
+          "correctAnswer": "Argentinosaurus",
+          "distractors": [
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_parasaurolophus_identity"
+            },
+            {
+              "answer": "Archaeopteryx",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_first_birds"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_argentinosaurus_identity",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which titanosaur from Patagonia is considered one of the largest land animals ever, estimated at up to 70–80 tonnes?",
+          "correctAnswer": "Argentinosaurus",
+          "distractors": [
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_parasaurolophus_identity"
+            },
+            {
+              "answer": "Archaeopteryx",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_first_birds"
+            },
+            {
+              "answer": "Giganotosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_giganotosaurus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_argentinosaurus_identity",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which titanosaur from Patagonia is considered one of the largest land animals ever, estimated at up to 70–80 tonnes?",
+          "correctAnswer": "Argentinosaurus",
+          "distractors": [
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_parasaurolophus_identity"
+            },
+            {
+              "answer": "Archaeopteryx",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_first_birds"
+            },
+            {
+              "answer": "Giganotosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_giganotosaurus_identity"
+            },
+            {
+              "answer": "Therizinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_triceratops_identity",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which ceratopsian dinosaur had three facial horns and a large bony frill, and was a contemporary of Tyrannosaurus rex?",
+          "correctAnswer": "Triceratops",
+          "distractors": [
+            {
+              "answer": "Gallimimus",
+              "source": "similar_difficulty",
+              "factId": "dino_gallimimus_identity"
+            },
+            {
+              "answer": "Allosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_allosaurus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_triceratops_identity",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which ceratopsian dinosaur had three facial horns and a large bony frill, and was a contemporary of Tyrannosaurus rex?",
+          "correctAnswer": "Triceratops",
+          "distractors": [
+            {
+              "answer": "Gallimimus",
+              "source": "similar_difficulty",
+              "factId": "dino_gallimimus_identity"
+            },
+            {
+              "answer": "Allosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_allosaurus_identity"
+            },
+            {
+              "answer": "Ichthyosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_dolphin_shape"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_triceratops_identity",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which ceratopsian dinosaur had three facial horns and a large bony frill, and was a contemporary of Tyrannosaurus rex?",
+          "correctAnswer": "Triceratops",
+          "distractors": [
+            {
+              "answer": "Gallimimus",
+              "source": "similar_difficulty",
+              "factId": "dino_gallimimus_identity"
+            },
+            {
+              "answer": "Allosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_allosaurus_identity"
+            },
+            {
+              "answer": "Ichthyosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_dolphin_shape"
+            },
+            {
+              "answer": "Velociraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_velociraptor_size_misconception"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_triceratops_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Triceratops live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_triceratops_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Triceratops live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_triceratops_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Triceratops live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_triceratops_length",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many metres long was Triceratops?",
+          "correctAnswer": "9",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "numerical",
+              "factId": "_numerical_6"
+            },
+            {
+              "answer": "7",
+              "source": "numerical",
+              "factId": "_numerical_7"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_triceratops_length",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many metres long was Triceratops?",
+          "correctAnswer": "9",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "numerical",
+              "factId": "_numerical_6"
+            },
+            {
+              "answer": "7",
+              "source": "numerical",
+              "factId": "_numerical_7"
+            },
+            {
+              "answer": "1",
+              "source": "numerical",
+              "factId": "_numerical_1"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_triceratops_length",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many metres long was Triceratops?",
+          "correctAnswer": "9",
+          "distractors": [
+            {
+              "answer": "6",
+              "source": "numerical",
+              "factId": "_numerical_6"
+            },
+            {
+              "answer": "7",
+              "source": "numerical",
+              "factId": "_numerical_7"
+            },
+            {
+              "answer": "1",
+              "source": "numerical",
+              "factId": "_numerical_1"
+            },
+            {
+              "answer": "15",
+              "source": "numerical",
+              "factId": "_numerical_15"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_triceratops_combat",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which horned dinosaur has fossil evidence showing combat scars inflicted by Tyrannosaurus rex?",
+          "correctAnswer": "Triceratops",
+          "distractors": [
+            {
+              "answer": "Stegosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_stegosaurus"
+            },
+            {
+              "answer": "Pteranodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_pteranodon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_triceratops_combat",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which horned dinosaur has fossil evidence showing combat scars inflicted by Tyrannosaurus rex?",
+          "correctAnswer": "Triceratops",
+          "distractors": [
+            {
+              "answer": "Stegosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_stegosaurus"
+            },
+            {
+              "answer": "Pteranodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_pteranodon"
+            },
+            {
+              "answer": "Maiasaura",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_maiasaura_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_triceratops_combat",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which horned dinosaur has fossil evidence showing combat scars inflicted by Tyrannosaurus rex?",
+          "correctAnswer": "Triceratops",
+          "distractors": [
+            {
+              "answer": "Stegosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_stegosaurus"
+            },
+            {
+              "answer": "Pteranodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_pteranodon"
+            },
+            {
+              "answer": "Maiasaura",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_maiasaura_identity"
+            },
+            {
+              "answer": "Apatosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_apatosaurus_brontosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_styracosaurus_identity",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which ceratopsian had a single large nose horn and a spectacular frill edged with multiple long radiating spikes?",
+          "correctAnswer": "Styracosaurus",
+          "distractors": [
+            {
+              "answer": "Carnotaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_carnotaurus"
+            },
+            {
+              "answer": "Protoceratops",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_protoceratops_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_styracosaurus_identity",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which ceratopsian had a single large nose horn and a spectacular frill edged with multiple long radiating spikes?",
+          "correctAnswer": "Styracosaurus",
+          "distractors": [
+            {
+              "answer": "Carnotaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_carnotaurus"
+            },
+            {
+              "answer": "Protoceratops",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_protoceratops_identity"
+            },
+            {
+              "answer": "Archaeopteryx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_archaeopteryx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_styracosaurus_identity",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which ceratopsian had a single large nose horn and a spectacular frill edged with multiple long radiating spikes?",
+          "correctAnswer": "Styracosaurus",
+          "distractors": [
+            {
+              "answer": "Carnotaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_carnotaurus"
+            },
+            {
+              "answer": "Protoceratops",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_protoceratops_identity"
+            },
+            {
+              "answer": "Archaeopteryx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_archaeopteryx"
+            },
+            {
+              "answer": "Pachycephalosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_pachycephalosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_styracosaurus_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Styracosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_styracosaurus_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Styracosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_styracosaurus_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Styracosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_protoceratops_griffin",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which ceratopsian dinosaur is thought to have inspired ancient Scythian griffin legends, as nomads found its beaked skulls in gold-bearing Gobi rocks?",
+          "correctAnswer": "Protoceratops",
+          "distractors": [
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_parasaurolophus_locomotion"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_dilophosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_protoceratops_griffin",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which ceratopsian dinosaur is thought to have inspired ancient Scythian griffin legends, as nomads found its beaked skulls in gold-bearing Gobi rocks?",
+          "correctAnswer": "Protoceratops",
+          "distractors": [
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_parasaurolophus_locomotion"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_dilophosaurus"
+            },
+            {
+              "answer": "Styracosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_styracosaurus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_protoceratops_griffin",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which ceratopsian dinosaur is thought to have inspired ancient Scythian griffin legends, as nomads found its beaked skulls in gold-bearing Gobi rocks?",
+          "correctAnswer": "Protoceratops",
+          "distractors": [
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_parasaurolophus_locomotion"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_dilophosaurus"
+            },
+            {
+              "answer": "Styracosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_styracosaurus_identity"
+            },
+            {
+              "answer": "Baryonyx",
+              "source": "similar_difficulty",
+              "factId": "dino_baryonyx_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_stegosaurus_plates",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many back plates did Stegosaurus have in total?",
+          "correctAnswer": "17",
+          "distractors": [
+            {
+              "answer": "23",
+              "source": "numerical",
+              "factId": "_numerical_23"
+            },
+            {
+              "answer": "13",
+              "source": "numerical",
+              "factId": "_numerical_13"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_stegosaurus_plates",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many back plates did Stegosaurus have in total?",
+          "correctAnswer": "17",
+          "distractors": [
+            {
+              "answer": "23",
+              "source": "numerical",
+              "factId": "_numerical_23"
+            },
+            {
+              "answer": "13",
+              "source": "numerical",
+              "factId": "_numerical_13"
+            },
+            {
+              "answer": "12",
+              "source": "numerical",
+              "factId": "_numerical_12"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_stegosaurus_plates",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many back plates did Stegosaurus have in total?",
+          "correctAnswer": "17",
+          "distractors": [
+            {
+              "answer": "23",
+              "source": "numerical",
+              "factId": "_numerical_23"
+            },
+            {
+              "answer": "13",
+              "source": "numerical",
+              "factId": "_numerical_13"
+            },
+            {
+              "answer": "12",
+              "source": "numerical",
+              "factId": "_numerical_12"
+            },
+            {
+              "answer": "22",
+              "source": "numerical",
+              "factId": "_numerical_22"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_ankylosaurus_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Ankylosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_ankylosaurus_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Ankylosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_ankylosaurus_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Ankylosaurus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_identity",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which duck-billed dinosaur had a long curved hollow crest that functioned as a resonating chamber to produce low-frequency calls?",
+          "correctAnswer": "Parasaurolophus",
+          "distractors": [
+            {
+              "answer": "Iguanodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_iguanodon"
+            },
+            {
+              "answer": "Coelophysis",
+              "source": "similar_difficulty",
+              "factId": "dino_coelophysis_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_identity",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which duck-billed dinosaur had a long curved hollow crest that functioned as a resonating chamber to produce low-frequency calls?",
+          "correctAnswer": "Parasaurolophus",
+          "distractors": [
+            {
+              "answer": "Iguanodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_iguanodon"
+            },
+            {
+              "answer": "Coelophysis",
+              "source": "similar_difficulty",
+              "factId": "dino_coelophysis_identity"
+            },
+            {
+              "answer": "Apatosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_apatosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_identity",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which duck-billed dinosaur had a long curved hollow crest that functioned as a resonating chamber to produce low-frequency calls?",
+          "correctAnswer": "Parasaurolophus",
+          "distractors": [
+            {
+              "answer": "Iguanodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_iguanodon"
+            },
+            {
+              "answer": "Coelophysis",
+              "source": "similar_difficulty",
+              "factId": "dino_coelophysis_identity"
+            },
+            {
+              "answer": "Apatosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_apatosaurus"
+            },
+            {
+              "answer": "Archaeopteryx",
+              "source": "similar_difficulty",
+              "factId": "dino_img_archaeopteryx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Parasaurolophus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Parasaurolophus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Parasaurolophus live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_crest_length",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many metres long could the hollow head crest of Parasaurolophus grow?",
+          "correctAnswer": "1.8",
+          "distractors": [
+            {
+              "answer": "2.5",
+              "source": "numerical",
+              "factId": "_numerical_2.5"
+            },
+            {
+              "answer": "1.0",
+              "source": "numerical",
+              "factId": "_numerical_1.0"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_crest_length",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many metres long could the hollow head crest of Parasaurolophus grow?",
+          "correctAnswer": "1.8",
+          "distractors": [
+            {
+              "answer": "2.5",
+              "source": "numerical",
+              "factId": "_numerical_2.5"
+            },
+            {
+              "answer": "1.0",
+              "source": "numerical",
+              "factId": "_numerical_1.0"
+            },
+            {
+              "answer": "2.4",
+              "source": "numerical",
+              "factId": "_numerical_2.4"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_crest_length",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "How many metres long could the hollow head crest of Parasaurolophus grow?",
+          "correctAnswer": "1.8",
+          "distractors": [
+            {
+              "answer": "2.5",
+              "source": "numerical",
+              "factId": "_numerical_2.5"
+            },
+            {
+              "answer": "1.0",
+              "source": "numerical",
+              "factId": "_numerical_1.0"
+            },
+            {
+              "answer": "2.4",
+              "source": "numerical",
+              "factId": "_numerical_2.4"
+            },
+            {
+              "answer": "1.2",
+              "source": "numerical",
+              "factId": "_numerical_1.2"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_locomotion",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which crested hadrosaur could walk on either two or four legs depending on speed and terrain?",
+          "correctAnswer": "Parasaurolophus",
+          "distractors": [
+            {
+              "answer": "Eoraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_img_eoraptor"
+            },
+            {
+              "answer": "Spinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_spinosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_locomotion",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which crested hadrosaur could walk on either two or four legs depending on speed and terrain?",
+          "correctAnswer": "Parasaurolophus",
+          "distractors": [
+            {
+              "answer": "Eoraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_img_eoraptor"
+            },
+            {
+              "answer": "Spinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_spinosaurus"
+            },
+            {
+              "answer": "Gallimimus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_gallimimus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_parasaurolophus_locomotion",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which crested hadrosaur could walk on either two or four legs depending on speed and terrain?",
+          "correctAnswer": "Parasaurolophus",
+          "distractors": [
+            {
+              "answer": "Eoraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_img_eoraptor"
+            },
+            {
+              "answer": "Spinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_spinosaurus"
+            },
+            {
+              "answer": "Gallimimus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_gallimimus"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_dilophosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_maiasaura_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Maiasaura live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_maiasaura_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Maiasaura live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_maiasaura_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "In which geological period did Maiasaura live?",
+          "correctAnswer": "Late Cretaceous",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Triassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_herb_edmontosaurus_length",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many metres long was Edmontosaurus?",
+          "correctAnswer": "13",
+          "distractors": [
+            {
+              "answer": "17",
+              "source": "numerical",
+              "factId": "_numerical_17"
+            },
+            {
+              "answer": "9",
+              "source": "numerical",
+              "factId": "_numerical_9"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_edmontosaurus_length",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many metres long was Edmontosaurus?",
+          "correctAnswer": "13",
+          "distractors": [
+            {
+              "answer": "17",
+              "source": "numerical",
+              "factId": "_numerical_17"
+            },
+            {
+              "answer": "9",
+              "source": "numerical",
+              "factId": "_numerical_9"
+            },
+            {
+              "answer": "10",
+              "source": "numerical",
+              "factId": "_numerical_10"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_edmontosaurus_length",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Approximately how many metres long was Edmontosaurus?",
+          "correctAnswer": "13",
+          "distractors": [
+            {
+              "answer": "17",
+              "source": "numerical",
+              "factId": "_numerical_17"
+            },
+            {
+              "answer": "9",
+              "source": "numerical",
+              "factId": "_numerical_9"
+            },
+            {
+              "answer": "10",
+              "source": "numerical",
+              "factId": "_numerical_10"
+            },
+            {
+              "answer": "15",
+              "source": "numerical",
+              "factId": "_numerical_15"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_maiasaura_space",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur is the only one to have had its remains sent to the International Space Station?",
+          "correctAnswer": "Maiasaura",
+          "distractors": [
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_dilophosaurus_identity"
+            },
+            {
+              "answer": "Edmontosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_edmontosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_maiasaura_space",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur is the only one to have had its remains sent to the International Space Station?",
+          "correctAnswer": "Maiasaura",
+          "distractors": [
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_dilophosaurus_identity"
+            },
+            {
+              "answer": "Edmontosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_edmontosaurus"
+            },
+            {
+              "answer": "Oviraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_herb_maiasaura_space",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur is the only one to have had its remains sent to the International Space Station?",
+          "correctAnswer": "Maiasaura",
+          "distractors": [
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_dilophosaurus_identity"
+            },
+            {
+              "answer": "Edmontosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_edmontosaurus"
+            },
+            {
+              "answer": "Oviraptor",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_identity"
+            },
+            {
+              "answer": "Carcharodontosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_carcharodontosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_pteranodon_not_dinosaur",
+          "masteryLevel": 0,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "Pteranodon was a flying reptile — what group does it belong to?",
+          "correctAnswer": "Pterosaur",
+          "distractors": [
+            {
+              "answer": "Giraffe",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_giraffe_height"
+            },
+            {
+              "answer": "Live young",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_live_birth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_pteranodon_not_dinosaur",
+          "masteryLevel": 2,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "Pteranodon was a flying reptile — what group does it belong to?",
+          "correctAnswer": "Pterosaur",
+          "distractors": [
+            {
+              "answer": "Giraffe",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_giraffe_height"
+            },
+            {
+              "answer": "Live young",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_live_birth"
+            },
+            {
+              "answer": "Pangaea",
+              "source": "similar_difficulty",
+              "factId": "dino_triassic_pangaea"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_pteranodon_not_dinosaur",
+          "masteryLevel": 4,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "Pteranodon was a flying reptile — what group does it belong to?",
+          "correctAnswer": "Pterosaur",
+          "distractors": [
+            {
+              "answer": "Giraffe",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_giraffe_height"
+            },
+            {
+              "answer": "Live young",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_live_birth"
+            },
+            {
+              "answer": "Pangaea",
+              "source": "similar_difficulty",
+              "factId": "dino_triassic_pangaea"
+            },
+            {
+              "answer": "Monitor lizard",
+              "source": "similar_difficulty",
+              "factId": "dino_mosasaurus_not_dinosaur"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_pteranodon_wingspan",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Pteranodon had a wingspan of approximately how many meters?",
+          "correctAnswer": "6.5",
+          "distractors": [
+            {
+              "answer": "8.3",
+              "source": "numerical",
+              "factId": "_numerical_8.3"
+            },
+            {
+              "answer": "4.9",
+              "source": "numerical",
+              "factId": "_numerical_4.9"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_pteranodon_wingspan",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Pteranodon had a wingspan of approximately how many meters?",
+          "correctAnswer": "6.5",
+          "distractors": [
+            {
+              "answer": "8.3",
+              "source": "numerical",
+              "factId": "_numerical_8.3"
+            },
+            {
+              "answer": "4.9",
+              "source": "numerical",
+              "factId": "_numerical_4.9"
+            },
+            {
+              "answer": "8.6",
+              "source": "numerical",
+              "factId": "_numerical_8.6"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_pteranodon_wingspan",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "Pteranodon had a wingspan of approximately how many meters?",
+          "correctAnswer": "6.5",
+          "distractors": [
+            {
+              "answer": "8.3",
+              "source": "numerical",
+              "factId": "_numerical_8.3"
+            },
+            {
+              "answer": "4.9",
+              "source": "numerical",
+              "factId": "_numerical_4.9"
+            },
+            {
+              "answer": "8.6",
+              "source": "numerical",
+              "factId": "_numerical_8.6"
+            },
+            {
+              "answer": "8.8",
+              "source": "numerical",
+              "factId": "_numerical_8.8"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_ichthyosaurus_dolphin_shape",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dolphin-shaped marine reptile evolved a streamlined body through convergent evolution — looking like a fish but being a reptile?",
+          "correctAnswer": "Ichthyosaurus",
+          "distractors": [
+            {
+              "answer": "Iguanodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_iguanodon"
+            },
+            {
+              "answer": "Spinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_spinosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_ichthyosaurus_dolphin_shape",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dolphin-shaped marine reptile evolved a streamlined body through convergent evolution — looking like a fish but being a reptile?",
+          "correctAnswer": "Ichthyosaurus",
+          "distractors": [
+            {
+              "answer": "Iguanodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_iguanodon"
+            },
+            {
+              "answer": "Spinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_spinosaurus"
+            },
+            {
+              "answer": "Giganotosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_giganotosaurus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_ichthyosaurus_dolphin_shape",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dolphin-shaped marine reptile evolved a streamlined body through convergent evolution — looking like a fish but being a reptile?",
+          "correctAnswer": "Ichthyosaurus",
+          "distractors": [
+            {
+              "answer": "Iguanodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_iguanodon"
+            },
+            {
+              "answer": "Spinosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_spinosaurus"
+            },
+            {
+              "answer": "Giganotosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_giganotosaurus_identity"
+            },
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_brachiosaurus_nostrils"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_quetzalcoatlus_largest_flyer",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which pterosaur holds the record as the largest flying animal ever known, with a wingspan of about 10.5 meters?",
+          "correctAnswer": "Quetzalcoatlus",
+          "distractors": [
+            {
+              "answer": "Quetzalcoatl",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_name_origin"
+            },
+            {
+              "answer": "Ankylosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_ankylosaurus_armor"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Quetzalcoatlus\" and \"Quetzalcoatl\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "dino_quetzalcoatlus_largest_flyer",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which pterosaur holds the record as the largest flying animal ever known, with a wingspan of about 10.5 meters?",
+          "correctAnswer": "Quetzalcoatlus",
+          "distractors": [
+            {
+              "answer": "Quetzalcoatl",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_name_origin"
+            },
+            {
+              "answer": "Ankylosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_ankylosaurus_armor"
+            },
+            {
+              "answer": "Ceratosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_ceratosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Quetzalcoatlus\" and \"Quetzalcoatl\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "dino_quetzalcoatlus_largest_flyer",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which pterosaur holds the record as the largest flying animal ever known, with a wingspan of about 10.5 meters?",
+          "correctAnswer": "Quetzalcoatlus",
+          "distractors": [
+            {
+              "answer": "Quetzalcoatl",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_name_origin"
+            },
+            {
+              "answer": "Ankylosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_ankylosaurus_armor"
+            },
+            {
+              "answer": "Ceratosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_ceratosaurus"
+            },
+            {
+              "answer": "Yucatan Peninsula",
+              "source": "similar_difficulty",
+              "factId": "dino_kpg_chicxulub_location"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"Quetzalcoatlus\" and \"Quetzalcoatl\" are 86% similar"
+            }
+          ]
+        },
+        {
+          "factId": "dino_dimorphodon_two_teeth",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which Early Jurassic pterosaur is named for having two distinct types of teeth — unusual among pterosaurs?",
+          "correctAnswer": "Dimorphodon",
+          "distractors": [
+            {
+              "answer": "Quetzalcoatlus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_quetzalcoatlus"
+            },
+            {
+              "answer": "Corythosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_corythosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_dimorphodon_two_teeth",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which Early Jurassic pterosaur is named for having two distinct types of teeth — unusual among pterosaurs?",
+          "correctAnswer": "Dimorphodon",
+          "distractors": [
+            {
+              "answer": "Quetzalcoatlus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_quetzalcoatlus"
+            },
+            {
+              "answer": "Corythosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_corythosaurus"
+            },
+            {
+              "answer": "Protoceratops",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_protoceratops_griffin"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_dimorphodon_two_teeth",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which Early Jurassic pterosaur is named for having two distinct types of teeth — unusual among pterosaurs?",
+          "correctAnswer": "Dimorphodon",
+          "distractors": [
+            {
+              "answer": "Quetzalcoatlus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_quetzalcoatlus"
+            },
+            {
+              "answer": "Corythosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_corythosaurus"
+            },
+            {
+              "answer": "Protoceratops",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_protoceratops_griffin"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_dilophosaurus_misconception"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_quetzalcoatlus_giraffe_height",
+          "masteryLevel": 0,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "When standing on the ground, Quetzalcoatlus was roughly the same height as which modern animal?",
+          "correctAnswer": "Giraffe",
+          "distractors": [
+            {
+              "answer": "201–145",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_dates"
+            },
+            {
+              "answer": "Monitor lizard",
+              "source": "similar_difficulty",
+              "factId": "dino_mosasaurus_not_dinosaur"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_quetzalcoatlus_giraffe_height",
+          "masteryLevel": 2,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "When standing on the ground, Quetzalcoatlus was roughly the same height as which modern animal?",
+          "correctAnswer": "Giraffe",
+          "distractors": [
+            {
+              "answer": "201–145",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_dates"
+            },
+            {
+              "answer": "Monitor lizard",
+              "source": "similar_difficulty",
+              "factId": "dino_mosasaurus_not_dinosaur"
+            },
+            {
+              "answer": "Herbivore",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_diet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_quetzalcoatlus_giraffe_height",
+          "masteryLevel": 4,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "When standing on the ground, Quetzalcoatlus was roughly the same height as which modern animal?",
+          "correctAnswer": "Giraffe",
+          "distractors": [
+            {
+              "answer": "201–145",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_dates"
+            },
+            {
+              "answer": "Monitor lizard",
+              "source": "similar_difficulty",
+              "factId": "dino_mosasaurus_not_dinosaur"
+            },
+            {
+              "answer": "Herbivore",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_diet"
+            },
+            {
+              "answer": "Pangaea",
+              "source": "similar_difficulty",
+              "factId": "dino_triassic_pangaea"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_dimorphodon_mary_anning",
+          "masteryLevel": 0,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "The Dimorphodon pterosaur fossil was discovered on the Jurassic Coast of Dorset by which pioneering fossil hunter?",
+          "correctAnswer": "Mary Anning",
+          "distractors": [
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Paul Sereno",
+              "source": "similar_difficulty",
+              "factId": "dino_eoraptor_sereno"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_dimorphodon_mary_anning",
+          "masteryLevel": 2,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "The Dimorphodon pterosaur fossil was discovered on the Jurassic Coast of Dorset by which pioneering fossil hunter?",
+          "correctAnswer": "Mary Anning",
+          "distractors": [
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Paul Sereno",
+              "source": "similar_difficulty",
+              "factId": "dino_eoraptor_sereno"
+            },
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_dimorphodon_mary_anning",
+          "masteryLevel": 4,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "The Dimorphodon pterosaur fossil was discovered on the Jurassic Coast of Dorset by which pioneering fossil hunter?",
+          "correctAnswer": "Mary Anning",
+          "distractors": [
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Paul Sereno",
+              "source": "similar_difficulty",
+              "factId": "dino_eoraptor_sereno"
+            },
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            },
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_discoverer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_ichthyosaurus_mary_anning_found",
+          "masteryLevel": 0,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Who found the first complete Ichthyosaurus skeleton near Lyme Regis, England, around 1811 at approximately age 12?",
+          "correctAnswer": "Mary Anning",
+          "distractors": [
+            {
+              "answer": "Richard Owen",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_dinosauria"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_ichthyosaurus_mary_anning_found",
+          "masteryLevel": 2,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Who found the first complete Ichthyosaurus skeleton near Lyme Regis, England, around 1811 at approximately age 12?",
+          "correctAnswer": "Mary Anning",
+          "distractors": [
+            {
+              "answer": "Richard Owen",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_dinosauria"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_ichthyosaurus_mary_anning_found",
+          "masteryLevel": 4,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Who found the first complete Ichthyosaurus skeleton near Lyme Regis, England, around 1811 at approximately age 12?",
+          "correctAnswer": "Mary Anning",
+          "distractors": [
+            {
+              "answer": "Richard Owen",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_dinosauria"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            },
+            {
+              "answer": "Paul Sereno",
+              "source": "pool_fill",
+              "factId": "dino_eoraptor_sereno"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_plesiosaurus_loch_ness",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which long-necked marine reptile with four paddle-like flippers is often cited as the inspiration for the Loch Ness Monster myth?",
+          "correctAnswer": "Plesiosaurus",
+          "distractors": [
+            {
+              "answer": "Ichthyosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_dolphin_shape"
+            },
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_brachiosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_plesiosaurus_loch_ness",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which long-necked marine reptile with four paddle-like flippers is often cited as the inspiration for the Loch Ness Monster myth?",
+          "correctAnswer": "Plesiosaurus",
+          "distractors": [
+            {
+              "answer": "Ichthyosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_dolphin_shape"
+            },
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_brachiosaurus"
+            },
+            {
+              "answer": "Triceratops",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_triceratops_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_plesiosaurus_loch_ness",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which long-necked marine reptile with four paddle-like flippers is often cited as the inspiration for the Loch Ness Monster myth?",
+          "correctAnswer": "Plesiosaurus",
+          "distractors": [
+            {
+              "answer": "Ichthyosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_dolphin_shape"
+            },
+            {
+              "answer": "Brachiosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_brachiosaurus"
+            },
+            {
+              "answer": "Triceratops",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_triceratops_identity"
+            },
+            {
+              "answer": "Iguanodon",
+              "source": "similar_difficulty",
+              "factId": "dino_img_iguanodon"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_plesiosaurus_mary_anning_1823",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Mary Anning discover the first complete Plesiosaurus fossil at Lyme Regis?",
+          "correctAnswer": "1823",
+          "distractors": [
+            {
+              "answer": "1867",
+              "source": "numerical",
+              "factId": "_numerical_1867"
+            },
+            {
+              "answer": "1785",
+              "source": "numerical",
+              "factId": "_numerical_1785"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_plesiosaurus_mary_anning_1823",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Mary Anning discover the first complete Plesiosaurus fossil at Lyme Regis?",
+          "correctAnswer": "1823",
+          "distractors": [
+            {
+              "answer": "1867",
+              "source": "numerical",
+              "factId": "_numerical_1867"
+            },
+            {
+              "answer": "1785",
+              "source": "numerical",
+              "factId": "_numerical_1785"
+            },
+            {
+              "answer": "1868",
+              "source": "numerical",
+              "factId": "_numerical_1868"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_plesiosaurus_mary_anning_1823",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year did Mary Anning discover the first complete Plesiosaurus fossil at Lyme Regis?",
+          "correctAnswer": "1823",
+          "distractors": [
+            {
+              "answer": "1867",
+              "source": "numerical",
+              "factId": "_numerical_1867"
+            },
+            {
+              "answer": "1785",
+              "source": "numerical",
+              "factId": "_numerical_1785"
+            },
+            {
+              "answer": "1868",
+              "source": "numerical",
+              "factId": "_numerical_1868"
+            },
+            {
+              "answer": "1773",
+              "source": "numerical",
+              "factId": "_numerical_1773"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_plesiosaurus_neck_myth",
+          "masteryLevel": 0,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "True or false: Plesiosaurus could raise its long neck high above the water surface like a swan.",
+          "correctAnswer": "False",
+          "distractors": [
+            {
+              "answer": "China",
+              "source": "similar_difficulty",
+              "factId": "dino_feathered_liaoning"
+            },
+            {
+              "answer": "Teeth",
+              "source": "similar_difficulty",
+              "factId": "dino_archaeopteryx_teeth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_plesiosaurus_neck_myth",
+          "masteryLevel": 2,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "True or false: Plesiosaurus could raise its long neck high above the water surface like a swan.",
+          "correctAnswer": "False",
+          "distractors": [
+            {
+              "answer": "China",
+              "source": "similar_difficulty",
+              "factId": "dino_feathered_liaoning"
+            },
+            {
+              "answer": "Teeth",
+              "source": "similar_difficulty",
+              "factId": "dino_archaeopteryx_teeth"
+            },
+            {
+              "answer": "Fish",
+              "source": "similar_difficulty",
+              "factId": "dino_spinosaurus_diet"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_plesiosaurus_neck_myth",
+          "masteryLevel": 4,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "True or false: Plesiosaurus could raise its long neck high above the water surface like a swan.",
+          "correctAnswer": "False",
+          "distractors": [
+            {
+              "answer": "China",
+              "source": "similar_difficulty",
+              "factId": "dino_feathered_liaoning"
+            },
+            {
+              "answer": "Teeth",
+              "source": "similar_difficulty",
+              "factId": "dino_archaeopteryx_teeth"
+            },
+            {
+              "answer": "Fish",
+              "source": "similar_difficulty",
+              "factId": "dino_spinosaurus_diet"
+            },
+            {
+              "answer": "Sue",
+              "source": "similar_difficulty",
+              "factId": "dino_trex_specimen"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_archaeopteryx_teeth",
+          "masteryLevel": 0,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "Although Archaeopteryx had feathered wings like a bird, it still possessed which distinctly un-bird-like feature?",
+          "correctAnswer": "Teeth",
+          "distractors": [
+            {
+              "answer": "Fish",
+              "source": "similar_difficulty",
+              "factId": "dino_spinosaurus_diet"
+            },
+            {
+              "answer": "False",
+              "source": "similar_difficulty",
+              "factId": "dino_plesiosaurus_neck_myth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_archaeopteryx_teeth",
+          "masteryLevel": 2,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "Although Archaeopteryx had feathered wings like a bird, it still possessed which distinctly un-bird-like feature?",
+          "correctAnswer": "Teeth",
+          "distractors": [
+            {
+              "answer": "Fish",
+              "source": "similar_difficulty",
+              "factId": "dino_spinosaurus_diet"
+            },
+            {
+              "answer": "False",
+              "source": "similar_difficulty",
+              "factId": "dino_plesiosaurus_neck_myth"
+            },
+            {
+              "answer": "Sue",
+              "source": "similar_difficulty",
+              "factId": "dino_trex_specimen"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_archaeopteryx_teeth",
+          "masteryLevel": 4,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "Although Archaeopteryx had feathered wings like a bird, it still possessed which distinctly un-bird-like feature?",
+          "correctAnswer": "Teeth",
+          "distractors": [
+            {
+              "answer": "Fish",
+              "source": "similar_difficulty",
+              "factId": "dino_spinosaurus_diet"
+            },
+            {
+              "answer": "False",
+              "source": "similar_difficulty",
+              "factId": "dino_plesiosaurus_neck_myth"
+            },
+            {
+              "answer": "Sue",
+              "source": "similar_difficulty",
+              "factId": "dino_trex_specimen"
+            },
+            {
+              "answer": "145–66",
+              "source": "similar_difficulty",
+              "factId": "dino_cretaceous_dates"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_eoraptor_sereno",
+          "masteryLevel": 0,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Eoraptor was discovered in 1991 in Argentina's Ischigualasto Formation by which American paleontologist?",
+          "correctAnswer": "Paul Sereno",
+          "distractors": [
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_discoverer"
+            },
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_sea_shells"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_eoraptor_sereno",
+          "masteryLevel": 2,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Eoraptor was discovered in 1991 in Argentina's Ischigualasto Formation by which American paleontologist?",
+          "correctAnswer": "Paul Sereno",
+          "distractors": [
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_discoverer"
+            },
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_sea_shells"
+            },
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_eoraptor_sereno",
+          "masteryLevel": 4,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Eoraptor was discovered in 1991 in Argentina's Ischigualasto Formation by which American paleontologist?",
+          "correctAnswer": "Paul Sereno",
+          "distractors": [
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_discoverer"
+            },
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_sea_shells"
+            },
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_eoraptor_period",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "Eoraptor, one of the earliest known dinosaurs, lived during which geological period approximately 231 million years ago?",
+          "correctAnswer": "Late Triassic",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_eoraptor_period",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "Eoraptor, one of the earliest known dinosaurs, lived during which geological period approximately 231 million years ago?",
+          "correctAnswer": "Late Triassic",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_eoraptor_period",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "Eoraptor, one of the earliest known dinosaurs, lived during which geological period approximately 231 million years ago?",
+          "correctAnswer": "Late Triassic",
+          "distractors": [
+            {
+              "answer": "Early Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Jurassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_triassic_dates",
+          "masteryLevel": 0,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "The Triassic period lasted from approximately how many million years ago to how many million years ago?",
+          "correctAnswer": "252–201",
+          "distractors": [
+            {
+              "answer": "Herbivore",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_diet"
+            },
+            {
+              "answer": "201–145",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_dates"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_triassic_dates",
+          "masteryLevel": 2,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "The Triassic period lasted from approximately how many million years ago to how many million years ago?",
+          "correctAnswer": "252–201",
+          "distractors": [
+            {
+              "answer": "Herbivore",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_diet"
+            },
+            {
+              "answer": "201–145",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_dates"
+            },
+            {
+              "answer": "Live young",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_live_birth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 2 options don't match: \"Herbivore\", \"Live young\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Live young\" has 2 format features different from correct \"252–201\""
+            }
+          ]
+        },
+        {
+          "factId": "dino_triassic_dates",
+          "masteryLevel": 4,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "The Triassic period lasted from approximately how many million years ago to how many million years ago?",
+          "correctAnswer": "252–201",
+          "distractors": [
+            {
+              "answer": "Herbivore",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_diet"
+            },
+            {
+              "answer": "201–145",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_dates"
+            },
+            {
+              "answer": "Live young",
+              "source": "similar_difficulty",
+              "factId": "dino_ichthyosaurus_live_birth"
+            },
+            {
+              "answer": "Giraffe",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_giraffe_height"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies quantity answers but 3 options don't match: \"Herbivore\", \"Live young\", \"Giraffe\""
+            },
+            {
+              "severity": "WARN",
+              "type": "distractor_format_inconsistency",
+              "detail": "Distractor \"Live young\" has 2 format features different from correct \"252–201\""
+            }
+          ]
+        },
+        {
+          "factId": "dino_kpg_species_lost",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The K-Pg extinction event 66 million years ago wiped out approximately what percentage of all species on Earth?",
+          "correctAnswer": "75",
+          "distractors": [
+            {
+              "answer": "96",
+              "source": "numerical",
+              "factId": "_numerical_96"
+            },
+            {
+              "answer": "56",
+              "source": "numerical",
+              "factId": "_numerical_56"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_kpg_species_lost",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The K-Pg extinction event 66 million years ago wiped out approximately what percentage of all species on Earth?",
+          "correctAnswer": "75",
+          "distractors": [
+            {
+              "answer": "96",
+              "source": "numerical",
+              "factId": "_numerical_96"
+            },
+            {
+              "answer": "56",
+              "source": "numerical",
+              "factId": "_numerical_56"
+            },
+            {
+              "answer": "95",
+              "source": "numerical",
+              "factId": "_numerical_95"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_kpg_species_lost",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "The K-Pg extinction event 66 million years ago wiped out approximately what percentage of all species on Earth?",
+          "correctAnswer": "75",
+          "distractors": [
+            {
+              "answer": "96",
+              "source": "numerical",
+              "factId": "_numerical_96"
+            },
+            {
+              "answer": "56",
+              "source": "numerical",
+              "factId": "_numerical_56"
+            },
+            {
+              "answer": "95",
+              "source": "numerical",
+              "factId": "_numerical_95"
+            },
+            {
+              "answer": "55",
+              "source": "numerical",
+              "factId": "_numerical_55"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_triassic_pangaea",
+          "masteryLevel": 0,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "During the Triassic period, all continents were joined in which single supercontinent?",
+          "correctAnswer": "Pangaea",
+          "distractors": [
+            {
+              "answer": "Herbivore",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_diet"
+            },
+            {
+              "answer": "Pterosaur",
+              "source": "similar_difficulty",
+              "factId": "dino_pteranodon_not_dinosaur"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_triassic_pangaea",
+          "masteryLevel": 2,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "During the Triassic period, all continents were joined in which single supercontinent?",
+          "correctAnswer": "Pangaea",
+          "distractors": [
+            {
+              "answer": "Herbivore",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_diet"
+            },
+            {
+              "answer": "Pterosaur",
+              "source": "similar_difficulty",
+              "factId": "dino_pteranodon_not_dinosaur"
+            },
+            {
+              "answer": "Giraffe",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_giraffe_height"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_triassic_pangaea",
+          "masteryLevel": 4,
+          "poolId": "misc_concepts_long",
+          "renderedQuestion": "During the Triassic period, all continents were joined in which single supercontinent?",
+          "correctAnswer": "Pangaea",
+          "distractors": [
+            {
+              "answer": "Herbivore",
+              "source": "similar_difficulty",
+              "factId": "dino_therizinosaurus_diet"
+            },
+            {
+              "answer": "Pterosaur",
+              "source": "similar_difficulty",
+              "factId": "dino_pteranodon_not_dinosaur"
+            },
+            {
+              "answer": "Giraffe",
+              "source": "similar_difficulty",
+              "factId": "dino_quetzalcoatlus_giraffe_height"
+            },
+            {
+              "answer": "201–145",
+              "source": "similar_difficulty",
+              "factId": "dino_jurassic_dates"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_jurassic_first_birds",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "During the Late Jurassic (~150 mya), which famous transitional fossil marks the evolution of birds from theropod dinosaurs?",
+          "correctAnswer": "Archaeopteryx",
+          "distractors": [
+            {
+              "answer": "Pachycephalosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_pachycephalosaurus_identity"
+            },
+            {
+              "answer": "Apatosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_apatosaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_jurassic_first_birds",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "During the Late Jurassic (~150 mya), which famous transitional fossil marks the evolution of birds from theropod dinosaurs?",
+          "correctAnswer": "Archaeopteryx",
+          "distractors": [
+            {
+              "answer": "Pachycephalosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_pachycephalosaurus_identity"
+            },
+            {
+              "answer": "Apatosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_apatosaurus"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_dilophosaurus_misconception"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_jurassic_first_birds",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "During the Late Jurassic (~150 mya), which famous transitional fossil marks the evolution of birds from theropod dinosaurs?",
+          "correctAnswer": "Archaeopteryx",
+          "distractors": [
+            {
+              "answer": "Pachycephalosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_pachycephalosaurus_identity"
+            },
+            {
+              "answer": "Apatosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_apatosaurus"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_dilophosaurus_misconception"
+            },
+            {
+              "answer": "Carnotaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_carnotaurus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_feathered_liaoning",
+          "masteryLevel": 0,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "Where were the feathered dinosaur fossils discovered in the 1990s that revolutionized our understanding of dinosaur evolution?",
+          "correctAnswer": "China",
+          "distractors": [
+            {
+              "answer": "145–66",
+              "source": "similar_difficulty",
+              "factId": "dino_cretaceous_dates"
+            },
+            {
+              "answer": "Teeth",
+              "source": "similar_difficulty",
+              "factId": "dino_archaeopteryx_teeth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_feathered_liaoning",
+          "masteryLevel": 2,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "Where were the feathered dinosaur fossils discovered in the 1990s that revolutionized our understanding of dinosaur evolution?",
+          "correctAnswer": "China",
+          "distractors": [
+            {
+              "answer": "145–66",
+              "source": "similar_difficulty",
+              "factId": "dino_cretaceous_dates"
+            },
+            {
+              "answer": "Teeth",
+              "source": "similar_difficulty",
+              "factId": "dino_archaeopteryx_teeth"
+            },
+            {
+              "answer": "False",
+              "source": "similar_difficulty",
+              "factId": "dino_plesiosaurus_neck_myth"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_feathered_liaoning",
+          "masteryLevel": 4,
+          "poolId": "misc_concepts_short",
+          "renderedQuestion": "Where were the feathered dinosaur fossils discovered in the 1990s that revolutionized our understanding of dinosaur evolution?",
+          "correctAnswer": "China",
+          "distractors": [
+            {
+              "answer": "145–66",
+              "source": "similar_difficulty",
+              "factId": "dino_cretaceous_dates"
+            },
+            {
+              "answer": "Teeth",
+              "source": "similar_difficulty",
+              "factId": "dino_archaeopteryx_teeth"
+            },
+            {
+              "answer": "False",
+              "source": "similar_difficulty",
+              "factId": "dino_plesiosaurus_neck_myth"
+            },
+            {
+              "answer": "Sue",
+              "source": "similar_difficulty",
+              "factId": "dino_trex_specimen"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_first_named_megalosaurus",
+          "masteryLevel": 0,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur was the first to be formally named in science, described by William Buckland in 1824?",
+          "correctAnswer": "Megalosaurus",
+          "distractors": [
+            {
+              "answer": "Edmontosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_edmontosaurus_identity"
+            },
+            {
+              "answer": "Compsognathus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_compsognathus"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_first_named_megalosaurus",
+          "masteryLevel": 2,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur was the first to be formally named in science, described by William Buckland in 1824?",
+          "correctAnswer": "Megalosaurus",
+          "distractors": [
+            {
+              "answer": "Edmontosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_edmontosaurus_identity"
+            },
+            {
+              "answer": "Compsognathus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_compsognathus"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_dilophosaurus_misconception"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_first_named_megalosaurus",
+          "masteryLevel": 4,
+          "poolId": "dinosaur_names",
+          "renderedQuestion": "Which dinosaur was the first to be formally named in science, described by William Buckland in 1824?",
+          "correctAnswer": "Megalosaurus",
+          "distractors": [
+            {
+              "answer": "Edmontosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_edmontosaurus_identity"
+            },
+            {
+              "answer": "Compsognathus",
+              "source": "similar_difficulty",
+              "factId": "dino_img_compsognathus"
+            },
+            {
+              "answer": "Dilophosaurus",
+              "source": "similar_difficulty",
+              "factId": "dino_dilophosaurus_misconception"
+            },
+            {
+              "answer": "Parasaurolophus",
+              "source": "similar_difficulty",
+              "factId": "dino_herb_parasaurolophus_identity"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_richard_owen_dinosauria",
+          "masteryLevel": 0,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Which British scientist coined the term 'Dinosauria' in 1842, meaning 'terrible lizards'?",
+          "correctAnswer": "Richard Owen",
+          "distractors": [
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            },
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_lyme_regis"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_richard_owen_dinosauria",
+          "masteryLevel": 2,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Which British scientist coined the term 'Dinosauria' in 1842, meaning 'terrible lizards'?",
+          "correctAnswer": "Richard Owen",
+          "distractors": [
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            },
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_lyme_regis"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_richard_owen_dinosauria",
+          "masteryLevel": 4,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Which British scientist coined the term 'Dinosauria' in 1842, meaning 'terrible lizards'?",
+          "correctAnswer": "Richard Owen",
+          "distractors": [
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "similar_difficulty",
+              "factId": "dino_bone_wars_rivals"
+            },
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_lyme_regis"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "pool_fill",
+              "factId": "dino_oviraptor_discoverer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_bone_wars_rivals",
+          "masteryLevel": 0,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "The 'Bone Wars' (1877–1892) were a fierce rivalry between Edward Drinker Cope and which other American paleontologist?",
+          "correctAnswer": "Othniel Charles Marsh",
+          "distractors": [
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_sea_shells"
+            },
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_discoverer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_bone_wars_rivals",
+          "masteryLevel": 2,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "The 'Bone Wars' (1877–1892) were a fierce rivalry between Edward Drinker Cope and which other American paleontologist?",
+          "correctAnswer": "Othniel Charles Marsh",
+          "distractors": [
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_sea_shells"
+            },
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_discoverer"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_bone_wars_rivals",
+          "masteryLevel": 4,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "The 'Bone Wars' (1877–1892) were a fierce rivalry between Edward Drinker Cope and which other American paleontologist?",
+          "correctAnswer": "Othniel Charles Marsh",
+          "distractors": [
+            {
+              "answer": "Mary Anning",
+              "source": "similar_difficulty",
+              "factId": "dino_mary_anning_sea_shells"
+            },
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "similar_difficulty",
+              "factId": "dino_oviraptor_discoverer"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Paul Sereno",
+              "source": "similar_difficulty",
+              "factId": "dino_eoraptor_sereno"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_mary_anning_lyme_regis",
+          "masteryLevel": 0,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Which pioneering 19th-century fossil hunter from Lyme Regis discovered the first Ichthyosaurus, first Plesiosaurus, and first pterosaur outside Germany?",
+          "correctAnswer": "Mary Anning",
+          "distractors": [
+            {
+              "answer": "Richard Owen",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_dinosauria"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "pool_fill",
+              "factId": "dino_richard_owen_nhm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_mary_anning_lyme_regis",
+          "masteryLevel": 2,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Which pioneering 19th-century fossil hunter from Lyme Regis discovered the first Ichthyosaurus, first Plesiosaurus, and first pterosaur outside Germany?",
+          "correctAnswer": "Mary Anning",
+          "distractors": [
+            {
+              "answer": "Richard Owen",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_dinosauria"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "pool_fill",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "pool_fill",
+              "factId": "dino_oviraptor_discoverer"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_mary_anning_lyme_regis",
+          "masteryLevel": 4,
+          "poolId": "paleontologist_names",
+          "renderedQuestion": "Which pioneering 19th-century fossil hunter from Lyme Regis discovered the first Ichthyosaurus, first Plesiosaurus, and first pterosaur outside Germany?",
+          "correctAnswer": "Mary Anning",
+          "distractors": [
+            {
+              "answer": "Richard Owen",
+              "source": "similar_difficulty",
+              "factId": "dino_richard_owen_dinosauria"
+            },
+            {
+              "answer": "Natural History Museum",
+              "source": "pool_fill",
+              "factId": "dino_richard_owen_nhm"
+            },
+            {
+              "answer": "Roy Chapman Andrews",
+              "source": "pool_fill",
+              "factId": "dino_oviraptor_discoverer"
+            },
+            {
+              "answer": "Othniel Charles Marsh",
+              "source": "pool_fill",
+              "factId": "dino_bone_wars_rivals"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_velociraptor_feather_proof",
+          "masteryLevel": 0,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was physical proof discovered that Velociraptor had feathers — in the form of quill knobs on its arm bones?",
+          "correctAnswer": "2007",
+          "distractors": [
+            {
+              "answer": "2018",
+              "source": "numerical",
+              "factId": "_numerical_2018"
+            },
+            {
+              "answer": "1990",
+              "source": "numerical",
+              "factId": "_numerical_1990"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "dino_velociraptor_feather_proof",
+          "masteryLevel": 2,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was physical proof discovered that Velociraptor had feathers — in the form of quill knobs on its arm bones?",
+          "correctAnswer": "2007",
+          "distractors": [
+            {
+              "answer": "2018",
+              "source": "numerical",
+              "factId": "_numerical_2018"
+            },
+            {
+              "answer": "1990",
+              "source": "numerical",
+              "factId": "_numerical_1990"
+            },
+            {
+              "answer": "1991",
+              "source": "numerical",
+              "factId": "_numerical_1991"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "dino_velociraptor_feather_proof",
+          "masteryLevel": 4,
+          "poolId": "bracket_numbers",
+          "renderedQuestion": "In what year was physical proof discovered that Velociraptor had feathers — in the form of quill knobs on its arm bones?",
+          "correctAnswer": "2007",
+          "distractors": [
+            {
+              "answer": "2018",
+              "source": "numerical",
+              "factId": "_numerical_2018"
+            },
+            {
+              "answer": "1990",
+              "source": "numerical",
+              "factId": "_numerical_1990"
+            },
+            {
+              "answer": "1991",
+              "source": "numerical",
+              "factId": "_numerical_1991"
+            },
+            {
+              "answer": "1977",
+              "source": "numerical",
+              "factId": "_numerical_1977"
+            }
+          ],
+          "isNumerical": true,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "dino_pangaea_breakup",
+          "masteryLevel": 0,
+          "poolId": "geological_periods",
+          "renderedQuestion": "Pangaea, the supercontinent that existed during the Triassic, began breaking apart during which geological period approximately 175 million years ago?",
+          "correctAnswer": "Early Jurassic",
+          "distractors": [
+            {
+              "answer": "Late Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Triassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 2 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_pangaea_breakup",
+          "masteryLevel": 2,
+          "poolId": "geological_periods",
+          "renderedQuestion": "Pangaea, the supercontinent that existed during the Triassic, began breaking apart during which geological period approximately 175 million years ago?",
+          "correctAnswer": "Early Jurassic",
+          "distractors": [
+            {
+              "answer": "Late Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Triassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 3 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        },
+        {
+          "factId": "dino_pangaea_breakup",
+          "masteryLevel": 4,
+          "poolId": "geological_periods",
+          "renderedQuestion": "Pangaea, the supercontinent that existed during the Triassic, began breaking apart during which geological period approximately 175 million years ago?",
+          "correctAnswer": "Early Jurassic",
+          "distractors": [
+            {
+              "answer": "Late Triassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Triassic"
+            },
+            {
+              "answer": "Late Jurassic",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Jurassic"
+            },
+            {
+              "answer": "Early Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Early Cretaceous"
+            },
+            {
+              "answer": "Late Cretaceous",
+              "source": "pool_fill",
+              "factId": "_fallback_Late Cretaceous"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "all_pool_fill",
+              "detail": "All 4 distractors are pool_fill — no confusion/difficulty signals"
+            },
+            {
+              "severity": "WARN",
+              "type": "fallback_distractors_used",
+              "detail": "Some distractors came from pre-generated fallback list (pool too small)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

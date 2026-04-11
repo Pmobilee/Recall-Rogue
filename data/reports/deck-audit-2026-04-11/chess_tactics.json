@@ -1,0 +1,4238 @@
+{
+  "timestamp": "2026-04-11T02:00:05.641Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 1,
+  "decks": [
+    {
+      "deckId": "chess_tactics",
+      "deckName": "Chess Tactics",
+      "deckClass": "knowledge",
+      "totalFacts": 298,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 1,
+      "issuesByType": {
+        "length_mismatch": {
+          "fail": 0,
+          "warn": 1
+        }
+      },
+      "factResults": [
+        {
+          "factId": "chess_tac_4172G",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#4172G]",
+          "correctAnswer": "Ne3+",
+          "distractors": [
+            {
+              "answer": "Nf4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4wNYG"
+            },
+            {
+              "answer": "Nd4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_1e6wv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_4172G",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#4172G]",
+          "correctAnswer": "Ne3+",
+          "distractors": [
+            {
+              "answer": "Nf4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4wNYG"
+            },
+            {
+              "answer": "Nd4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_1e6wv"
+            },
+            {
+              "answer": "Qxf5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8qy4q"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_4172G",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#4172G]",
+          "correctAnswer": "Ne3+",
+          "distractors": [
+            {
+              "answer": "Nf4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4wNYG"
+            },
+            {
+              "answer": "Nd4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_1e6wv"
+            },
+            {
+              "answer": "Qxf5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8qy4q"
+            },
+            {
+              "answer": "Qa4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G73jX"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_L44W0",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#L44W0]",
+          "correctAnswer": "Qxf2+",
+          "distractors": [
+            {
+              "answer": "Nd4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_1e6wv"
+            },
+            {
+              "answer": "g5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_HwgTD"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_L44W0",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#L44W0]",
+          "correctAnswer": "Qxf2+",
+          "distractors": [
+            {
+              "answer": "Nd4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_1e6wv"
+            },
+            {
+              "answer": "g5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_HwgTD"
+            },
+            {
+              "answer": "Qa4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G73jX"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_L44W0",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#L44W0]",
+          "correctAnswer": "Qxf2+",
+          "distractors": [
+            {
+              "answer": "Nd4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_1e6wv"
+            },
+            {
+              "answer": "g5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_HwgTD"
+            },
+            {
+              "answer": "Qa4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G73jX"
+            },
+            {
+              "answer": "Ne2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GGG6T"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_8N0wt",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "White to move. [#8N0wt]",
+          "correctAnswer": "Qb5",
+          "distractors": [
+            {
+              "answer": "Rxh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G3OWW"
+            },
+            {
+              "answer": "exf6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BLrYl"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_8N0wt",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "White to move. [#8N0wt]",
+          "correctAnswer": "Qb5",
+          "distractors": [
+            {
+              "answer": "Rxh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G3OWW"
+            },
+            {
+              "answer": "exf6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BLrYl"
+            },
+            {
+              "answer": "Ra8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_D335K"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_8N0wt",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "White to move. [#8N0wt]",
+          "correctAnswer": "Qb5",
+          "distractors": [
+            {
+              "answer": "Rxh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G3OWW"
+            },
+            {
+              "answer": "exf6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BLrYl"
+            },
+            {
+              "answer": "Ra8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_D335K"
+            },
+            {
+              "answer": "Qe5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BM1Vj"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_G3OWW",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#G3OWW]",
+          "correctAnswer": "Rxh2+",
+          "distractors": [
+            {
+              "answer": "Qxb2",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3Ikgw"
+            },
+            {
+              "answer": "Ra8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_D335K"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_G3OWW",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#G3OWW]",
+          "correctAnswer": "Rxh2+",
+          "distractors": [
+            {
+              "answer": "Qxb2",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3Ikgw"
+            },
+            {
+              "answer": "Ra8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_D335K"
+            },
+            {
+              "answer": "Nf4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_ETonX"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_G3OWW",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#G3OWW]",
+          "correctAnswer": "Rxh2+",
+          "distractors": [
+            {
+              "answer": "Qxb2",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3Ikgw"
+            },
+            {
+              "answer": "Ra8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_D335K"
+            },
+            {
+              "answer": "Nf4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_ETonX"
+            },
+            {
+              "answer": "Nc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4PHGG"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_FPQnq",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#FPQnq]",
+          "correctAnswer": "Nb4+",
+          "distractors": [
+            {
+              "answer": "Rxh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G3OWW"
+            },
+            {
+              "answer": "Qc6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9r4zT"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_FPQnq",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#FPQnq]",
+          "correctAnswer": "Nb4+",
+          "distractors": [
+            {
+              "answer": "Rxh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G3OWW"
+            },
+            {
+              "answer": "Qc6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9r4zT"
+            },
+            {
+              "answer": "Nc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4PHGG"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_FPQnq",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_knight_forks",
+          "renderedQuestion": "Black to move. [#FPQnq]",
+          "correctAnswer": "Nb4+",
+          "distractors": [
+            {
+              "answer": "Rxh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G3OWW"
+            },
+            {
+              "answer": "Qc6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9r4zT"
+            },
+            {
+              "answer": "Nc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4PHGG"
+            },
+            {
+              "answer": "Nf4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_ETonX"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Ir4hX",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#Ir4hX]",
+          "correctAnswer": "Rb8+",
+          "distractors": [
+            {
+              "answer": "Rf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IKq0B"
+            },
+            {
+              "answer": "Rc8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3DJYw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Ir4hX",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#Ir4hX]",
+          "correctAnswer": "Rb8+",
+          "distractors": [
+            {
+              "answer": "Rf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IKq0B"
+            },
+            {
+              "answer": "Rc8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3DJYw"
+            },
+            {
+              "answer": "Bh3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_D3pDj"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Ir4hX",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#Ir4hX]",
+          "correctAnswer": "Rb8+",
+          "distractors": [
+            {
+              "answer": "Rf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IKq0B"
+            },
+            {
+              "answer": "Rc8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3DJYw"
+            },
+            {
+              "answer": "Bh3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_D3pDj"
+            },
+            {
+              "answer": "Ng4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JzzM4"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_4wPk3",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#4wPk3]",
+          "correctAnswer": "Bd4+",
+          "distractors": [
+            {
+              "answer": "Bxe5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_79E1y"
+            },
+            {
+              "answer": "Rg7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GaT6e"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_4wPk3",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#4wPk3]",
+          "correctAnswer": "Bd4+",
+          "distractors": [
+            {
+              "answer": "Bxe5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_79E1y"
+            },
+            {
+              "answer": "Rg7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GaT6e"
+            },
+            {
+              "answer": "Bxf6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BAkZ8"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_4wPk3",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#4wPk3]",
+          "correctAnswer": "Bd4+",
+          "distractors": [
+            {
+              "answer": "Bxe5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_79E1y"
+            },
+            {
+              "answer": "Rg7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GaT6e"
+            },
+            {
+              "answer": "Bxf6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BAkZ8"
+            },
+            {
+              "answer": "Bxh5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Ew1Gx"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9g9eZ",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#9g9eZ]",
+          "correctAnswer": "c2+",
+          "distractors": [
+            {
+              "answer": "Rh6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BEtAg"
+            },
+            {
+              "answer": "Rxe8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_ENbwf"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9g9eZ",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#9g9eZ]",
+          "correctAnswer": "c2+",
+          "distractors": [
+            {
+              "answer": "Rh6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BEtAg"
+            },
+            {
+              "answer": "Rxe8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_ENbwf"
+            },
+            {
+              "answer": "Bxe5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_79E1y"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9g9eZ",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#9g9eZ]",
+          "correctAnswer": "c2+",
+          "distractors": [
+            {
+              "answer": "Rh6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BEtAg"
+            },
+            {
+              "answer": "Rxe8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_ENbwf"
+            },
+            {
+              "answer": "Bxe5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_79E1y"
+            },
+            {
+              "answer": "Rxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5Ci9S"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_5Ci9S",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#5Ci9S]",
+          "correctAnswer": "Rxf2+",
+          "distractors": [
+            {
+              "answer": "Rxb8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_60oim"
+            },
+            {
+              "answer": "Bxf6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BAkZ8"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_5Ci9S",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#5Ci9S]",
+          "correctAnswer": "Rxf2+",
+          "distractors": [
+            {
+              "answer": "Rxb8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_60oim"
+            },
+            {
+              "answer": "Bxf6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BAkZ8"
+            },
+            {
+              "answer": "Qxg5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KHBjs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_5Ci9S",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#5Ci9S]",
+          "correctAnswer": "Rxf2+",
+          "distractors": [
+            {
+              "answer": "Rxb8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_60oim"
+            },
+            {
+              "answer": "Bxf6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BAkZ8"
+            },
+            {
+              "answer": "Qxg5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KHBjs"
+            },
+            {
+              "answer": "Qb5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GW4qb"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_B8oTW",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#B8oTW]",
+          "correctAnswer": "Rg5",
+          "distractors": [
+            {
+              "answer": "Rxb8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_60oim"
+            },
+            {
+              "answer": "Rxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5Ci9S"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_B8oTW",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#B8oTW]",
+          "correctAnswer": "Rg5",
+          "distractors": [
+            {
+              "answer": "Rxb8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_60oim"
+            },
+            {
+              "answer": "Rxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5Ci9S"
+            },
+            {
+              "answer": "Qb5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GW4qb"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_B8oTW",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_pins_skewers",
+          "renderedQuestion": "Black to move. [#B8oTW]",
+          "correctAnswer": "Rg5",
+          "distractors": [
+            {
+              "answer": "Rxb8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_60oim"
+            },
+            {
+              "answer": "Rxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5Ci9S"
+            },
+            {
+              "answer": "Qb5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GW4qb"
+            },
+            {
+              "answer": "Qe7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GQz15"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_8wDbz",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "White to move. [#8wDbz]",
+          "correctAnswer": "Qxe5",
+          "distractors": [
+            {
+              "answer": "Bh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BupoH"
+            },
+            {
+              "answer": "Rg7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4FyZ1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_8wDbz",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "White to move. [#8wDbz]",
+          "correctAnswer": "Qxe5",
+          "distractors": [
+            {
+              "answer": "Bh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BupoH"
+            },
+            {
+              "answer": "Rg7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4FyZ1"
+            },
+            {
+              "answer": "Bxd3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_0NbGX"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_8wDbz",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "White to move. [#8wDbz]",
+          "correctAnswer": "Qxe5",
+          "distractors": [
+            {
+              "answer": "Bh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BupoH"
+            },
+            {
+              "answer": "Rg7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4FyZ1"
+            },
+            {
+              "answer": "Bxd3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_0NbGX"
+            },
+            {
+              "answer": "Bh7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_H8XqN"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_02z15",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "Black to move. [#02z15]",
+          "correctAnswer": "Bxf3+",
+          "distractors": [
+            {
+              "answer": "Rxg3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GeoEm"
+            },
+            {
+              "answer": "Qxc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FZOYk"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_02z15",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "Black to move. [#02z15]",
+          "correctAnswer": "Bxf3+",
+          "distractors": [
+            {
+              "answer": "Rxg3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GeoEm"
+            },
+            {
+              "answer": "Qxc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FZOYk"
+            },
+            {
+              "answer": "Bh7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_H8XqN"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_02z15",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "Black to move. [#02z15]",
+          "correctAnswer": "Bxf3+",
+          "distractors": [
+            {
+              "answer": "Rxg3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_GeoEm"
+            },
+            {
+              "answer": "Qxc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FZOYk"
+            },
+            {
+              "answer": "Bh7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_H8XqN"
+            },
+            {
+              "answer": "Ng5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BUC87"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_CoY4X",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "Black to move. [#CoY4X]",
+          "correctAnswer": "Bxg2",
+          "distractors": [
+            {
+              "answer": "Bxe4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2Hyew"
+            },
+            {
+              "answer": "Kxd7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IOzZN"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_CoY4X",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "Black to move. [#CoY4X]",
+          "correctAnswer": "Bxg2",
+          "distractors": [
+            {
+              "answer": "Bxe4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2Hyew"
+            },
+            {
+              "answer": "Kxd7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IOzZN"
+            },
+            {
+              "answer": "Bxf3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_02z15"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_CoY4X",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "Black to move. [#CoY4X]",
+          "correctAnswer": "Bxg2",
+          "distractors": [
+            {
+              "answer": "Bxe4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2Hyew"
+            },
+            {
+              "answer": "Kxd7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IOzZN"
+            },
+            {
+              "answer": "Bxf3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_02z15"
+            },
+            {
+              "answer": "Rh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EjRWD"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_D4CXS",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "White to move. [#D4CXS]",
+          "correctAnswer": "Rxb7",
+          "distractors": [
+            {
+              "answer": "Bc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BYdnw"
+            },
+            {
+              "answer": "Re2",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E4SeJ"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_D4CXS",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "White to move. [#D4CXS]",
+          "correctAnswer": "Rxb7",
+          "distractors": [
+            {
+              "answer": "Bc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BYdnw"
+            },
+            {
+              "answer": "Re2",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E4SeJ"
+            },
+            {
+              "answer": "Bxg2",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_CoY4X"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_D4CXS",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "White to move. [#D4CXS]",
+          "correctAnswer": "Rxb7",
+          "distractors": [
+            {
+              "answer": "Bc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BYdnw"
+            },
+            {
+              "answer": "Re2",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E4SeJ"
+            },
+            {
+              "answer": "Bxg2",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_CoY4X"
+            },
+            {
+              "answer": "Rh2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EjRWD"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_HlFXN",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "White to move. [#HlFXN]",
+          "correctAnswer": "Ng3+",
+          "distractors": [
+            {
+              "answer": "Bxe4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2Hyew"
+            },
+            {
+              "answer": "Bc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BYdnw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_HlFXN",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "White to move. [#HlFXN]",
+          "correctAnswer": "Ng3+",
+          "distractors": [
+            {
+              "answer": "Bxe4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2Hyew"
+            },
+            {
+              "answer": "Bc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BYdnw"
+            },
+            {
+              "answer": "Rxb7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_D4CXS"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_HlFXN",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_discovered_attacks",
+          "renderedQuestion": "White to move. [#HlFXN]",
+          "correctAnswer": "Ng3+",
+          "distractors": [
+            {
+              "answer": "Bxe4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2Hyew"
+            },
+            {
+              "answer": "Bc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BYdnw"
+            },
+            {
+              "answer": "Rxb7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_D4CXS"
+            },
+            {
+              "answer": "Bxf6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4sLYZ"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_FY9JC",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#FY9JC]",
+          "correctAnswer": "Qh7#",
+          "distractors": [
+            {
+              "answer": "Rc1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQdaO"
+            },
+            {
+              "answer": "f6#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9jIvZ"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_FY9JC",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#FY9JC]",
+          "correctAnswer": "Qh7#",
+          "distractors": [
+            {
+              "answer": "Rc1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQdaO"
+            },
+            {
+              "answer": "f6#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9jIvZ"
+            },
+            {
+              "answer": "Qh3#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IXQli"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_FY9JC",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#FY9JC]",
+          "correctAnswer": "Qh7#",
+          "distractors": [
+            {
+              "answer": "Rc1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQdaO"
+            },
+            {
+              "answer": "f6#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9jIvZ"
+            },
+            {
+              "answer": "Qh3#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IXQli"
+            },
+            {
+              "answer": "Ng3#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BajJ6"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_7K4UZ",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#7K4UZ]",
+          "correctAnswer": "R1f3#",
+          "distractors": [
+            {
+              "answer": "Qa1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KDUxg"
+            },
+            {
+              "answer": "Qxg7#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KWzOn"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_7K4UZ",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#7K4UZ]",
+          "correctAnswer": "R1f3#",
+          "distractors": [
+            {
+              "answer": "Qa1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KDUxg"
+            },
+            {
+              "answer": "Qxg7#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KWzOn"
+            },
+            {
+              "answer": "Qh5#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2SMbh"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_7K4UZ",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#7K4UZ]",
+          "correctAnswer": "R1f3#",
+          "distractors": [
+            {
+              "answer": "Qa1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KDUxg"
+            },
+            {
+              "answer": "Qxg7#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KWzOn"
+            },
+            {
+              "answer": "Qh5#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2SMbh"
+            },
+            {
+              "answer": "Qd3#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DiLmy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_CyNIi",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#CyNIi]",
+          "correctAnswer": "Bxb6#",
+          "distractors": [
+            {
+              "answer": "Rh1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KVtRM"
+            },
+            {
+              "answer": "Qh8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Ij6Zq"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_CyNIi",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#CyNIi]",
+          "correctAnswer": "Bxb6#",
+          "distractors": [
+            {
+              "answer": "Rh1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KVtRM"
+            },
+            {
+              "answer": "Qh8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Ij6Zq"
+            },
+            {
+              "answer": "Nxe6#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Jpi9P"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_CyNIi",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#CyNIi]",
+          "correctAnswer": "Bxb6#",
+          "distractors": [
+            {
+              "answer": "Rh1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KVtRM"
+            },
+            {
+              "answer": "Qh8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Ij6Zq"
+            },
+            {
+              "answer": "Nxe6#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Jpi9P"
+            },
+            {
+              "answer": "Qa1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KDUxg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_HLohD",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#HLohD]",
+          "correctAnswer": "Qc6#",
+          "distractors": [
+            {
+              "answer": "Rh1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KVtRM"
+            },
+            {
+              "answer": "Nh8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5IPMB"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_HLohD",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#HLohD]",
+          "correctAnswer": "Qc6#",
+          "distractors": [
+            {
+              "answer": "Rh1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KVtRM"
+            },
+            {
+              "answer": "Nh8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5IPMB"
+            },
+            {
+              "answer": "Qe8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EUmjI"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_HLohD",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "White to move. [#HLohD]",
+          "correctAnswer": "Qc6#",
+          "distractors": [
+            {
+              "answer": "Rh1#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KVtRM"
+            },
+            {
+              "answer": "Nh8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5IPMB"
+            },
+            {
+              "answer": "Qe8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EUmjI"
+            },
+            {
+              "answer": "Rh4#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3Cg8k"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_DpOeP",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "Black to move. [#DpOeP]",
+          "correctAnswer": "Qg3#",
+          "distractors": [
+            {
+              "answer": "Ne7#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_7oh7l"
+            },
+            {
+              "answer": "Qb5#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_CQK2V"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_DpOeP",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "Black to move. [#DpOeP]",
+          "correctAnswer": "Qg3#",
+          "distractors": [
+            {
+              "answer": "Ne7#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_7oh7l"
+            },
+            {
+              "answer": "Qb5#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_CQK2V"
+            },
+            {
+              "answer": "Qe8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EUmjI"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_DpOeP",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_one",
+          "renderedQuestion": "Black to move. [#DpOeP]",
+          "correctAnswer": "Qg3#",
+          "distractors": [
+            {
+              "answer": "Ne7#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_7oh7l"
+            },
+            {
+              "answer": "Qb5#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_CQK2V"
+            },
+            {
+              "answer": "Qe8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EUmjI"
+            },
+            {
+              "answer": "Rh4#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3Cg8k"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_GNAed",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "White to move. [#GNAed]",
+          "correctAnswer": "Ng6+",
+          "distractors": [
+            {
+              "answer": "Re6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_AeY7B"
+            },
+            {
+              "answer": "Qxc2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4TT4S"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_GNAed",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "White to move. [#GNAed]",
+          "correctAnswer": "Ng6+",
+          "distractors": [
+            {
+              "answer": "Re6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_AeY7B"
+            },
+            {
+              "answer": "Qxc2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4TT4S"
+            },
+            {
+              "answer": "Qxf7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9nFGW"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_GNAed",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "White to move. [#GNAed]",
+          "correctAnswer": "Ng6+",
+          "distractors": [
+            {
+              "answer": "Re6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_AeY7B"
+            },
+            {
+              "answer": "Qxc2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4TT4S"
+            },
+            {
+              "answer": "Qxf7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9nFGW"
+            },
+            {
+              "answer": "Qf5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E9mZj"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9nFGW",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "White to move. [#9nFGW]",
+          "correctAnswer": "Qxf7+",
+          "distractors": [
+            {
+              "answer": "Nxf7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_55b68"
+            },
+            {
+              "answer": "f7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E7ItS"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9nFGW",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "White to move. [#9nFGW]",
+          "correctAnswer": "Qxf7+",
+          "distractors": [
+            {
+              "answer": "Nxf7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_55b68"
+            },
+            {
+              "answer": "f7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E7ItS"
+            },
+            {
+              "answer": "Rf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E7bok"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9nFGW",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "White to move. [#9nFGW]",
+          "correctAnswer": "Qxf7+",
+          "distractors": [
+            {
+              "answer": "Nxf7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_55b68"
+            },
+            {
+              "answer": "f7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E7ItS"
+            },
+            {
+              "answer": "Rf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E7bok"
+            },
+            {
+              "answer": "Rd8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Fg2xC"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_40sWZ",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "Black to move. [#40sWZ]",
+          "correctAnswer": "Rxh2+",
+          "distractors": [
+            {
+              "answer": "Qf5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E9mZj"
+            },
+            {
+              "answer": "Qh5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BlXAT"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_40sWZ",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "Black to move. [#40sWZ]",
+          "correctAnswer": "Rxh2+",
+          "distractors": [
+            {
+              "answer": "Qf5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E9mZj"
+            },
+            {
+              "answer": "Qh5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BlXAT"
+            },
+            {
+              "answer": "Bh3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5hdGh"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_40sWZ",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "Black to move. [#40sWZ]",
+          "correctAnswer": "Rxh2+",
+          "distractors": [
+            {
+              "answer": "Qf5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_E9mZj"
+            },
+            {
+              "answer": "Qh5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BlXAT"
+            },
+            {
+              "answer": "Bh3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5hdGh"
+            },
+            {
+              "answer": "Qxf7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9nFGW"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_8CnaN",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "Black to move. [#8CnaN]",
+          "correctAnswer": "Qxc1+",
+          "distractors": [
+            {
+              "answer": "Rxg2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FKXPU"
+            },
+            {
+              "answer": "Qg3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Iulix"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_8CnaN",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "Black to move. [#8CnaN]",
+          "correctAnswer": "Qxc1+",
+          "distractors": [
+            {
+              "answer": "Rxg2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FKXPU"
+            },
+            {
+              "answer": "Qg3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Iulix"
+            },
+            {
+              "answer": "Re2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2q47A"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_8CnaN",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "Black to move. [#8CnaN]",
+          "correctAnswer": "Qxc1+",
+          "distractors": [
+            {
+              "answer": "Rxg2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FKXPU"
+            },
+            {
+              "answer": "Qg3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Iulix"
+            },
+            {
+              "answer": "Re2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2q47A"
+            },
+            {
+              "answer": "Qxd8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_0TQuw"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Iulix",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "Black to move. [#Iulix]",
+          "correctAnswer": "Qg3+",
+          "distractors": [
+            {
+              "answer": "Qxd8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_0TQuw"
+            },
+            {
+              "answer": "Qh5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4dWjg"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Iulix",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "Black to move. [#Iulix]",
+          "correctAnswer": "Qg3+",
+          "distractors": [
+            {
+              "answer": "Qxd8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_0TQuw"
+            },
+            {
+              "answer": "Qh5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4dWjg"
+            },
+            {
+              "answer": "g4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G6HCU"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Iulix",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_mate_in_two",
+          "renderedQuestion": "Black to move. [#Iulix]",
+          "correctAnswer": "Qg3+",
+          "distractors": [
+            {
+              "answer": "Qxd8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_0TQuw"
+            },
+            {
+              "answer": "Qh5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_4dWjg"
+            },
+            {
+              "answer": "g4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_G6HCU"
+            },
+            {
+              "answer": "Rg4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Jp2VL"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_EDBMa",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "Black to move. [#EDBMa]",
+          "correctAnswer": "Nxf3+",
+          "distractors": [
+            {
+              "answer": "Qxa3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQTKx"
+            },
+            {
+              "answer": "Rxg5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IEwUQ"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_EDBMa",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "Black to move. [#EDBMa]",
+          "correctAnswer": "Nxf3+",
+          "distractors": [
+            {
+              "answer": "Qxa3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQTKx"
+            },
+            {
+              "answer": "Rxg5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IEwUQ"
+            },
+            {
+              "answer": "c6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_CfqGH"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_EDBMa",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "Black to move. [#EDBMa]",
+          "correctAnswer": "Nxf3+",
+          "distractors": [
+            {
+              "answer": "Qxa3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQTKx"
+            },
+            {
+              "answer": "Rxg5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IEwUQ"
+            },
+            {
+              "answer": "c6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_CfqGH"
+            },
+            {
+              "answer": "Nxe6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5J0z7"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_5J0z7",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "White to move. [#5J0z7]",
+          "correctAnswer": "Nxe6+",
+          "distractors": [
+            {
+              "answer": "Rxf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_AxWg8"
+            },
+            {
+              "answer": "Nxf3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EDBMa"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_5J0z7",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "White to move. [#5J0z7]",
+          "correctAnswer": "Nxe6+",
+          "distractors": [
+            {
+              "answer": "Rxf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_AxWg8"
+            },
+            {
+              "answer": "Nxf3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EDBMa"
+            },
+            {
+              "answer": "Rxh3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_B85Ha"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_5J0z7",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "White to move. [#5J0z7]",
+          "correctAnswer": "Nxe6+",
+          "distractors": [
+            {
+              "answer": "Rxf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_AxWg8"
+            },
+            {
+              "answer": "Nxf3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EDBMa"
+            },
+            {
+              "answer": "Rxh3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_B85Ha"
+            },
+            {
+              "answer": "Nd4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_HFcQO"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_E0HGl",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "Black to move. [#E0HGl]",
+          "correctAnswer": "Rxf2",
+          "distractors": [
+            {
+              "answer": "Rxg5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IEwUQ"
+            },
+            {
+              "answer": "Bxe5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IS7WF"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_E0HGl",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "Black to move. [#E0HGl]",
+          "correctAnswer": "Rxf2",
+          "distractors": [
+            {
+              "answer": "Rxg5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IEwUQ"
+            },
+            {
+              "answer": "Bxe5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IS7WF"
+            },
+            {
+              "answer": "Bxg4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_F08ru"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_E0HGl",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "Black to move. [#E0HGl]",
+          "correctAnswer": "Rxf2",
+          "distractors": [
+            {
+              "answer": "Rxg5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IEwUQ"
+            },
+            {
+              "answer": "Bxe5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IS7WF"
+            },
+            {
+              "answer": "Bxg4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_F08ru"
+            },
+            {
+              "answer": "Rxh3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_B85Ha"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_IRUJG",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "Black to move. [#IRUJG]",
+          "correctAnswer": "Rxg2+",
+          "distractors": [
+            {
+              "answer": "Nxg4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Egi4K"
+            },
+            {
+              "answer": "Re8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BwSoF"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_IRUJG",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "Black to move. [#IRUJG]",
+          "correctAnswer": "Rxg2+",
+          "distractors": [
+            {
+              "answer": "Nxg4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Egi4K"
+            },
+            {
+              "answer": "Re8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BwSoF"
+            },
+            {
+              "answer": "a5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6trmM"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_IRUJG",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "Black to move. [#IRUJG]",
+          "correctAnswer": "Rxg2+",
+          "distractors": [
+            {
+              "answer": "Nxg4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Egi4K"
+            },
+            {
+              "answer": "Re8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BwSoF"
+            },
+            {
+              "answer": "a5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6trmM"
+            },
+            {
+              "answer": "Rxe7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Ky7Xo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_K65Ft",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "White to move. [#K65Ft]",
+          "correctAnswer": "Rd8+",
+          "distractors": [
+            {
+              "answer": "Rxg3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3g7hK"
+            },
+            {
+              "answer": "a5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6trmM"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_K65Ft",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "White to move. [#K65Ft]",
+          "correctAnswer": "Rd8+",
+          "distractors": [
+            {
+              "answer": "Rxg3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3g7hK"
+            },
+            {
+              "answer": "a5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6trmM"
+            },
+            {
+              "answer": "Re8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BwSoF"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_K65Ft",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_sacrificial_combinations",
+          "renderedQuestion": "White to move. [#K65Ft]",
+          "correctAnswer": "Rd8+",
+          "distractors": [
+            {
+              "answer": "Rxg3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3g7hK"
+            },
+            {
+              "answer": "a5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6trmM"
+            },
+            {
+              "answer": "Re8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BwSoF"
+            },
+            {
+              "answer": "Rxe7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Ky7Xo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_CcowP",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "White to move. [#CcowP]",
+          "correctAnswer": "Qe8+",
+          "distractors": [
+            {
+              "answer": "Ng4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6YWoB"
+            },
+            {
+              "answer": "Re1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_AOyE0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_CcowP",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "White to move. [#CcowP]",
+          "correctAnswer": "Qe8+",
+          "distractors": [
+            {
+              "answer": "Ng4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6YWoB"
+            },
+            {
+              "answer": "Re1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_AOyE0"
+            },
+            {
+              "answer": "Qc6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BoOUt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_CcowP",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "White to move. [#CcowP]",
+          "correctAnswer": "Qe8+",
+          "distractors": [
+            {
+              "answer": "Ng4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6YWoB"
+            },
+            {
+              "answer": "Re1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_AOyE0"
+            },
+            {
+              "answer": "Qc6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BoOUt"
+            },
+            {
+              "answer": "Rc5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5kCOs"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_6GaTt",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "White to move. [#6GaTt]",
+          "correctAnswer": "h4+",
+          "distractors": [
+            {
+              "answer": "Bb1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQefd"
+            },
+            {
+              "answer": "Qe7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6G9KK"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_6GaTt",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "White to move. [#6GaTt]",
+          "correctAnswer": "h4+",
+          "distractors": [
+            {
+              "answer": "Bb1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQefd"
+            },
+            {
+              "answer": "Qe7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6G9KK"
+            },
+            {
+              "answer": "Be7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JMpJb"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_6GaTt",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "White to move. [#6GaTt]",
+          "correctAnswer": "h4+",
+          "distractors": [
+            {
+              "answer": "Bb1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQefd"
+            },
+            {
+              "answer": "Qe7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6G9KK"
+            },
+            {
+              "answer": "Be7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JMpJb"
+            },
+            {
+              "answer": "Rc6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_7VUHJ"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_EQefd",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "White to move. [#EQefd]",
+          "correctAnswer": "Bb1+",
+          "distractors": [
+            {
+              "answer": "Rb3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5kL9b"
+            },
+            {
+              "answer": "Rxd1",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_H4dkF"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_EQefd",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "White to move. [#EQefd]",
+          "correctAnswer": "Bb1+",
+          "distractors": [
+            {
+              "answer": "Rb3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5kL9b"
+            },
+            {
+              "answer": "Rxd1",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_H4dkF"
+            },
+            {
+              "answer": "d6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DZZke"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_EQefd",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "White to move. [#EQefd]",
+          "correctAnswer": "Bb1+",
+          "distractors": [
+            {
+              "answer": "Rb3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5kL9b"
+            },
+            {
+              "answer": "Rxd1",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_H4dkF"
+            },
+            {
+              "answer": "d6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DZZke"
+            },
+            {
+              "answer": "Kg6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9sV0z"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_KLoUG",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "Black to move. [#KLoUG]",
+          "correctAnswer": "Kf3",
+          "distractors": [
+            {
+              "answer": "g4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DkqJO"
+            },
+            {
+              "answer": "Bb1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQefd"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_KLoUG",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "Black to move. [#KLoUG]",
+          "correctAnswer": "Kf3",
+          "distractors": [
+            {
+              "answer": "g4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DkqJO"
+            },
+            {
+              "answer": "Bb1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQefd"
+            },
+            {
+              "answer": "Rc3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_83jli"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_KLoUG",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "Black to move. [#KLoUG]",
+          "correctAnswer": "Kf3",
+          "distractors": [
+            {
+              "answer": "g4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DkqJO"
+            },
+            {
+              "answer": "Bb1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQefd"
+            },
+            {
+              "answer": "Rc3+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_83jli"
+            },
+            {
+              "answer": "Rg1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_1UWoA"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_GqSEm",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "Black to move. [#GqSEm]",
+          "correctAnswer": "Kf5",
+          "distractors": [
+            {
+              "answer": "h4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8sXEi"
+            },
+            {
+              "answer": "Kf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KLoUG"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_GqSEm",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "Black to move. [#GqSEm]",
+          "correctAnswer": "Kf5",
+          "distractors": [
+            {
+              "answer": "h4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8sXEi"
+            },
+            {
+              "answer": "Kf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KLoUG"
+            },
+            {
+              "answer": "Bg6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DtROv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_GqSEm",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_deflection_decoy",
+          "renderedQuestion": "Black to move. [#GqSEm]",
+          "correctAnswer": "Kf5",
+          "distractors": [
+            {
+              "answer": "h4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8sXEi"
+            },
+            {
+              "answer": "Kf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KLoUG"
+            },
+            {
+              "answer": "Bg6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DtROv"
+            },
+            {
+              "answer": "Kg6",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9sV0z"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_5aV5m",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "White to move. [#5aV5m]",
+          "correctAnswer": "Kxg4",
+          "distractors": [
+            {
+              "answer": "Rxe7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Jk4dM"
+            },
+            {
+              "answer": "Kxh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JWXP7"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_5aV5m",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "White to move. [#5aV5m]",
+          "correctAnswer": "Kxg4",
+          "distractors": [
+            {
+              "answer": "Rxe7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Jk4dM"
+            },
+            {
+              "answer": "Kxh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JWXP7"
+            },
+            {
+              "answer": "Kxc4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KyUCc"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_5aV5m",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "White to move. [#5aV5m]",
+          "correctAnswer": "Kxg4",
+          "distractors": [
+            {
+              "answer": "Rxe7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Jk4dM"
+            },
+            {
+              "answer": "Kxh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JWXP7"
+            },
+            {
+              "answer": "Kxc4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_KyUCc"
+            },
+            {
+              "answer": "Nxb4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FA5nI"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_3SLU2",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "White to move. [#3SLU2]",
+          "correctAnswer": "Bxa7",
+          "distractors": [
+            {
+              "answer": "Kxh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JWXP7"
+            },
+            {
+              "answer": "Qxd3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_29f4b"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_3SLU2",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "White to move. [#3SLU2]",
+          "correctAnswer": "Bxa7",
+          "distractors": [
+            {
+              "answer": "Kxh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JWXP7"
+            },
+            {
+              "answer": "Qxd3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_29f4b"
+            },
+            {
+              "answer": "Kxd5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3tlpZ"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_3SLU2",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "White to move. [#3SLU2]",
+          "correctAnswer": "Bxa7",
+          "distractors": [
+            {
+              "answer": "Kxh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JWXP7"
+            },
+            {
+              "answer": "Qxd3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_29f4b"
+            },
+            {
+              "answer": "Kxd5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3tlpZ"
+            },
+            {
+              "answer": "Qxd4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BrHHV"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_JaTxZ",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "White to move. [#JaTxZ]",
+          "correctAnswer": "Kxf3",
+          "distractors": [
+            {
+              "answer": "Qxd4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BrHHV"
+            },
+            {
+              "answer": "Bxa7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3SLU2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_JaTxZ",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "White to move. [#JaTxZ]",
+          "correctAnswer": "Kxf3",
+          "distractors": [
+            {
+              "answer": "Qxd4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BrHHV"
+            },
+            {
+              "answer": "Bxa7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3SLU2"
+            },
+            {
+              "answer": "Qxc4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JYZcy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_JaTxZ",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "White to move. [#JaTxZ]",
+          "correctAnswer": "Kxf3",
+          "distractors": [
+            {
+              "answer": "Qxd4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BrHHV"
+            },
+            {
+              "answer": "Bxa7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_3SLU2"
+            },
+            {
+              "answer": "Qxc4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JYZcy"
+            },
+            {
+              "answer": "Nxc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JMUy8"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_JMUy8",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "Black to move. [#JMUy8]",
+          "correctAnswer": "Nxc4+",
+          "distractors": [
+            {
+              "answer": "Rxf4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_I6XQc"
+            },
+            {
+              "answer": "Kxf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JaTxZ"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_JMUy8",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "Black to move. [#JMUy8]",
+          "correctAnswer": "Nxc4+",
+          "distractors": [
+            {
+              "answer": "Rxf4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_I6XQc"
+            },
+            {
+              "answer": "Kxf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JaTxZ"
+            },
+            {
+              "answer": "Nxd4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6Wxf5"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_JMUy8",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "Black to move. [#JMUy8]",
+          "correctAnswer": "Nxc4+",
+          "distractors": [
+            {
+              "answer": "Rxf4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_I6XQc"
+            },
+            {
+              "answer": "Kxf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JaTxZ"
+            },
+            {
+              "answer": "Nxd4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6Wxf5"
+            },
+            {
+              "answer": "Kxa4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IZxyC"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_IM2Ze",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "Black to move. [#IM2Ze]",
+          "correctAnswer": "g5",
+          "distractors": [
+            {
+              "answer": "Qxf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_37lsz"
+            },
+            {
+              "answer": "Nxc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JMUy8"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "length_mismatch",
+              "detail": "Correct length 2 vs avg distractor 4.5 — ratio 0.44×"
+            }
+          ]
+        },
+        {
+          "factId": "chess_tac_IM2Ze",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "Black to move. [#IM2Ze]",
+          "correctAnswer": "g5",
+          "distractors": [
+            {
+              "answer": "Qxf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_37lsz"
+            },
+            {
+              "answer": "Nxc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JMUy8"
+            },
+            {
+              "answer": "c4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_54xrd"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_IM2Ze",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_trapped_pieces",
+          "renderedQuestion": "Black to move. [#IM2Ze]",
+          "correctAnswer": "g5",
+          "distractors": [
+            {
+              "answer": "Qxf3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_37lsz"
+            },
+            {
+              "answer": "Nxc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_JMUy8"
+            },
+            {
+              "answer": "c4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_54xrd"
+            },
+            {
+              "answer": "Nxd4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6Wxf5"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_GhUEy",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#GhUEy]",
+          "correctAnswer": "g5+",
+          "distractors": [
+            {
+              "answer": "Bxe3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5wvgv"
+            },
+            {
+              "answer": "c7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IDyIe"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_GhUEy",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#GhUEy]",
+          "correctAnswer": "g5+",
+          "distractors": [
+            {
+              "answer": "Bxe3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5wvgv"
+            },
+            {
+              "answer": "c7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IDyIe"
+            },
+            {
+              "answer": "Rxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_7L9qm"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_GhUEy",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#GhUEy]",
+          "correctAnswer": "g5+",
+          "distractors": [
+            {
+              "answer": "Bxe3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5wvgv"
+            },
+            {
+              "answer": "c7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IDyIe"
+            },
+            {
+              "answer": "Rxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_7L9qm"
+            },
+            {
+              "answer": "Kxh2",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9it1r"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_0AhiZ",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "White to move. [#0AhiZ]",
+          "correctAnswer": "Kxh5",
+          "distractors": [
+            {
+              "answer": "Rxf5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BjibH"
+            },
+            {
+              "answer": "Rf1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Dr7Sv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_0AhiZ",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "White to move. [#0AhiZ]",
+          "correctAnswer": "Kxh5",
+          "distractors": [
+            {
+              "answer": "Rxf5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BjibH"
+            },
+            {
+              "answer": "Rf1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Dr7Sv"
+            },
+            {
+              "answer": "Kf7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2yfZ6"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_0AhiZ",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "White to move. [#0AhiZ]",
+          "correctAnswer": "Kxh5",
+          "distractors": [
+            {
+              "answer": "Rxf5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_BjibH"
+            },
+            {
+              "answer": "Rf1+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Dr7Sv"
+            },
+            {
+              "answer": "Kf7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2yfZ6"
+            },
+            {
+              "answer": "Kc8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9X3fC"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9X3fC",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#9X3fC]",
+          "correctAnswer": "Kc8",
+          "distractors": [
+            {
+              "answer": "c7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IDyIe"
+            },
+            {
+              "answer": "Kxh5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_0AhiZ"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9X3fC",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#9X3fC]",
+          "correctAnswer": "Kc8",
+          "distractors": [
+            {
+              "answer": "c7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IDyIe"
+            },
+            {
+              "answer": "Kxh5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_0AhiZ"
+            },
+            {
+              "answer": "Rc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2OZq9"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9X3fC",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#9X3fC]",
+          "correctAnswer": "Kc8",
+          "distractors": [
+            {
+              "answer": "c7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_IDyIe"
+            },
+            {
+              "answer": "Kxh5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_0AhiZ"
+            },
+            {
+              "answer": "Rc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2OZq9"
+            },
+            {
+              "answer": "Bxe3",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5wvgv"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9pf9S",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#9pf9S]",
+          "correctAnswer": "h4",
+          "distractors": [
+            {
+              "answer": "Kc8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9X3fC"
+            },
+            {
+              "answer": "Qxg4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_ArIb6"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9pf9S",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#9pf9S]",
+          "correctAnswer": "h4",
+          "distractors": [
+            {
+              "answer": "Kc8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9X3fC"
+            },
+            {
+              "answer": "Qxg4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_ArIb6"
+            },
+            {
+              "answer": "Qh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_29JHB"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9pf9S",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#9pf9S]",
+          "correctAnswer": "h4",
+          "distractors": [
+            {
+              "answer": "Kc8",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9X3fC"
+            },
+            {
+              "answer": "Qxg4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_ArIb6"
+            },
+            {
+              "answer": "Qh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_29JHB"
+            },
+            {
+              "answer": "Rc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_2OZq9"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9c153",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#9c153]",
+          "correctAnswer": "Qa8",
+          "distractors": [
+            {
+              "answer": "Qh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_29JHB"
+            },
+            {
+              "answer": "Kc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FE9kt"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9c153",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#9c153]",
+          "correctAnswer": "Qa8",
+          "distractors": [
+            {
+              "answer": "Qh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_29JHB"
+            },
+            {
+              "answer": "Kc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FE9kt"
+            },
+            {
+              "answer": "Bxe4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DkTO2"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_9c153",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_endgame_technique",
+          "renderedQuestion": "Black to move. [#9c153]",
+          "correctAnswer": "Qa8",
+          "distractors": [
+            {
+              "answer": "Qh7",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_29JHB"
+            },
+            {
+              "answer": "Kc5",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FE9kt"
+            },
+            {
+              "answer": "Bxe4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_DkTO2"
+            },
+            {
+              "answer": "h4",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9pf9S"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Bn5Jj",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "White to move. [#Bn5Jj]",
+          "correctAnswer": "Qxf7+",
+          "distractors": [
+            {
+              "answer": "Ra8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5HJ3v"
+            },
+            {
+              "answer": "Rh7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9qU8M"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Bn5Jj",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "White to move. [#Bn5Jj]",
+          "correctAnswer": "Qxf7+",
+          "distractors": [
+            {
+              "answer": "Ra8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5HJ3v"
+            },
+            {
+              "answer": "Rh7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9qU8M"
+            },
+            {
+              "answer": "Qxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_H1sAJ"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Bn5Jj",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "White to move. [#Bn5Jj]",
+          "correctAnswer": "Qxf7+",
+          "distractors": [
+            {
+              "answer": "Ra8#",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5HJ3v"
+            },
+            {
+              "answer": "Rh7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9qU8M"
+            },
+            {
+              "answer": "Qxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_H1sAJ"
+            },
+            {
+              "answer": "Bd6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5d6Ej"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_H1sAJ",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "Black to move. [#H1sAJ]",
+          "correctAnswer": "Qxf2+",
+          "distractors": [
+            {
+              "answer": "Ne7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Dso2s"
+            },
+            {
+              "answer": "Bc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Ig45T"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_H1sAJ",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "Black to move. [#H1sAJ]",
+          "correctAnswer": "Qxf2+",
+          "distractors": [
+            {
+              "answer": "Ne7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Dso2s"
+            },
+            {
+              "answer": "Bc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Ig45T"
+            },
+            {
+              "answer": "Qc2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_APUXo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_H1sAJ",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "Black to move. [#H1sAJ]",
+          "correctAnswer": "Qxf2+",
+          "distractors": [
+            {
+              "answer": "Ne7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Dso2s"
+            },
+            {
+              "answer": "Bc4+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_Ig45T"
+            },
+            {
+              "answer": "Qc2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_APUXo"
+            },
+            {
+              "answer": "Bd6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_5d6Ej"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_FLKMn",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "Black to move. [#FLKMn]",
+          "correctAnswer": "Qxe3+",
+          "distractors": [
+            {
+              "answer": "Qxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6PGJh"
+            },
+            {
+              "answer": "Qxf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FGnt0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_FLKMn",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "Black to move. [#FLKMn]",
+          "correctAnswer": "Qxe3+",
+          "distractors": [
+            {
+              "answer": "Qxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6PGJh"
+            },
+            {
+              "answer": "Qxf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FGnt0"
+            },
+            {
+              "answer": "Rh7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9qU8M"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_FLKMn",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "Black to move. [#FLKMn]",
+          "correctAnswer": "Qxe3+",
+          "distractors": [
+            {
+              "answer": "Qxf2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_6PGJh"
+            },
+            {
+              "answer": "Qxf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FGnt0"
+            },
+            {
+              "answer": "Rh7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_9qU8M"
+            },
+            {
+              "answer": "Qc2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_APUXo"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_6PbM6",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "Black to move. [#6PbM6]",
+          "correctAnswer": "Rd1+",
+          "distractors": [
+            {
+              "answer": "Qxg2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_HovyX"
+            },
+            {
+              "answer": "Qxf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FGnt0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_6PbM6",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "Black to move. [#6PbM6]",
+          "correctAnswer": "Rd1+",
+          "distractors": [
+            {
+              "answer": "Qxg2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_HovyX"
+            },
+            {
+              "answer": "Qxf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FGnt0"
+            },
+            {
+              "answer": "g5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8eMEq"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_6PbM6",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "Black to move. [#6PbM6]",
+          "correctAnswer": "Rd1+",
+          "distractors": [
+            {
+              "answer": "Qxg2+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_HovyX"
+            },
+            {
+              "answer": "Qxf8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FGnt0"
+            },
+            {
+              "answer": "g5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8eMEq"
+            },
+            {
+              "answer": "Qxe6+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_14AUi"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Ilsjc",
+          "masteryLevel": 0,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "White to move. [#Ilsjc]",
+          "correctAnswer": "Qxe5+",
+          "distractors": [
+            {
+              "answer": "Qe8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8Y9qK"
+            },
+            {
+              "answer": "g5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8eMEq"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Ilsjc",
+          "masteryLevel": 2,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "White to move. [#Ilsjc]",
+          "correctAnswer": "Qxe5+",
+          "distractors": [
+            {
+              "answer": "Qe8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8Y9qK"
+            },
+            {
+              "answer": "g5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8eMEq"
+            },
+            {
+              "answer": "Rxb7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQq5I"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "chess_tac_Ilsjc",
+          "masteryLevel": 4,
+          "poolId": "chess_moves_back_rank_mating_nets",
+          "renderedQuestion": "White to move. [#Ilsjc]",
+          "correctAnswer": "Qxe5+",
+          "distractors": [
+            {
+              "answer": "Qe8+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8Y9qK"
+            },
+            {
+              "answer": "g5+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_8eMEq"
+            },
+            {
+              "answer": "Rxb7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_EQq5I"
+            },
+            {
+              "answer": "Qxh7+",
+              "source": "similar_difficulty",
+              "factId": "chess_tac_FScfL"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4344 @@
+{
+  "timestamp": "2026-04-11T02:00:35.038Z",
+  "mode": "stratified:50",
+  "masteryLevels": [
+    0,
+    2,
+    4
+  ],
+  "deckCount": 1,
+  "totalChecks": 150,
+  "totalFails": 0,
+  "totalWarns": 18,
+  "decks": [
+    {
+      "deckId": "spanish_a2_grammar",
+      "deckName": "Spanish A2 Grammar",
+      "deckClass": "vocab",
+      "totalFacts": 177,
+      "totalChecks": 150,
+      "failCount": 0,
+      "warnCount": 18,
+      "issuesByType": {
+        "near_duplicate_options": {
+          "fail": 0,
+          "warn": 15
+        },
+        "question_type_mismatch": {
+          "fail": 0,
+          "warn": 3
+        }
+      },
+      "factResults": [
+        {
+          "factId": "es-gram-a2-por-causa-0",
+          "masteryLevel": 0,
+          "poolId": "por_para_choice",
+          "renderedQuestion": "Lo hago {___} ti — quiero ayudarte.\n(I do it for you — I want to help you. [on your behalf])",
+          "correctAnswer": "por",
+          "distractors": [
+            {
+              "answer": "para",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-para-finalidad-0"
+            },
+            {
+              "answer": "voy a llamar",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-por-causa-0",
+          "masteryLevel": 2,
+          "poolId": "por_para_choice",
+          "renderedQuestion": "Lo hago {___} ti — quiero ayudarte.\n(I do it for you — I want to help you. [on your behalf])",
+          "correctAnswer": "por",
+          "distractors": [
+            {
+              "answer": "para",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-para-finalidad-0"
+            },
+            {
+              "answer": "voy a llamar",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-yo-0"
+            },
+            {
+              "answer": "vamos a comer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-vamos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-por-causa-0",
+          "masteryLevel": 4,
+          "poolId": "por_para_choice",
+          "renderedQuestion": "Lo hago {___} ti — quiero ayudarte.\n(I do it for you — I want to help you. [on your behalf])",
+          "correctAnswer": "por",
+          "distractors": [
+            {
+              "answer": "para",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-para-finalidad-0"
+            },
+            {
+              "answer": "voy a llamar",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-yo-0"
+            },
+            {
+              "answer": "vamos a comer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-vamos-0"
+            },
+            {
+              "answer": "va a llover",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-ir-a-yo-0",
+          "masteryLevel": 0,
+          "poolId": "por_para_choice",
+          "renderedQuestion": "{___} mañana.\n(I'm going to call you tomorrow.)",
+          "correctAnswer": "voy a llamar",
+          "distractors": [
+            {
+              "answer": "para",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-para-finalidad-0"
+            },
+            {
+              "answer": "vamos a comer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-vamos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-ir-a-yo-0",
+          "masteryLevel": 2,
+          "poolId": "por_para_choice",
+          "renderedQuestion": "{___} mañana.\n(I'm going to call you tomorrow.)",
+          "correctAnswer": "voy a llamar",
+          "distractors": [
+            {
+              "answer": "para",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-para-finalidad-0"
+            },
+            {
+              "answer": "vamos a comer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-vamos-0"
+            },
+            {
+              "answer": "por eso",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-por-razon-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-ir-a-yo-0",
+          "masteryLevel": 4,
+          "poolId": "por_para_choice",
+          "renderedQuestion": "{___} mañana.\n(I'm going to call you tomorrow.)",
+          "correctAnswer": "voy a llamar",
+          "distractors": [
+            {
+              "answer": "para",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-para-finalidad-0"
+            },
+            {
+              "answer": "vamos a comer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-vamos-0"
+            },
+            {
+              "answer": "por eso",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-por-razon-0"
+            },
+            {
+              "answer": "por",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-por-gracias-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-ir-a-el-0",
+          "masteryLevel": 0,
+          "poolId": "por_para_choice",
+          "renderedQuestion": "Mira esas nubes — {___}.\n(Look at those clouds — it's going to rain.)",
+          "correctAnswer": "va a llover",
+          "distractors": [
+            {
+              "answer": "por",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-por-gracias-0"
+            },
+            {
+              "answer": "para",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-para-destino-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-ir-a-el-0",
+          "masteryLevel": 2,
+          "poolId": "por_para_choice",
+          "renderedQuestion": "Mira esas nubes — {___}.\n(Look at those clouds — it's going to rain.)",
+          "correctAnswer": "va a llover",
+          "distractors": [
+            {
+              "answer": "por",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-por-gracias-0"
+            },
+            {
+              "answer": "para",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-para-destino-0"
+            },
+            {
+              "answer": "voy a llamar",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-ir-a-el-0",
+          "masteryLevel": 4,
+          "poolId": "por_para_choice",
+          "renderedQuestion": "Mira esas nubes — {___}.\n(Look at those clouds — it's going to rain.)",
+          "correctAnswer": "va a llover",
+          "distractors": [
+            {
+              "answer": "por",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-por-gracias-0"
+            },
+            {
+              "answer": "para",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-para-destino-0"
+            },
+            {
+              "answer": "voy a llamar",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-ir-a-yo-0"
+            },
+            {
+              "answer": "por eso",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-por-razon-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-muy-adj-0",
+          "masteryLevel": 0,
+          "poolId": "muy_mucho_forms",
+          "renderedQuestion": "Este libro es {___} interesante.\n(This book is very interesting.)",
+          "correctAnswer": "muy",
+          "distractors": [
+            {
+              "answer": "mucho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-mucho-noun-masc-0"
+            },
+            {
+              "answer": "mucha",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-mucha-noun-fem-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-muy-adj-0",
+          "masteryLevel": 2,
+          "poolId": "muy_mucho_forms",
+          "renderedQuestion": "Este libro es {___} interesante.\n(This book is very interesting.)",
+          "correctAnswer": "muy",
+          "distractors": [
+            {
+              "answer": "mucho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-mucho-noun-masc-0"
+            },
+            {
+              "answer": "mucha",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-mucha-noun-fem-0"
+            },
+            {
+              "answer": "bastante",
+              "source": "pool_fill",
+              "factId": "_synthetic_bastante"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-muy-adj-0",
+          "masteryLevel": 4,
+          "poolId": "muy_mucho_forms",
+          "renderedQuestion": "Este libro es {___} interesante.\n(This book is very interesting.)",
+          "correctAnswer": "muy",
+          "distractors": [
+            {
+              "answer": "mucho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-mucho-noun-masc-0"
+            },
+            {
+              "answer": "mucha",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-mucha-noun-fem-0"
+            },
+            {
+              "answer": "bastante",
+              "source": "pool_fill",
+              "factId": "_synthetic_bastante"
+            },
+            {
+              "answer": "tanta",
+              "source": "pool_fill",
+              "factId": "_synthetic_tanta"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-mucho-adverb-0",
+          "masteryLevel": 0,
+          "poolId": "muy_mucho_forms",
+          "renderedQuestion": "Mi jefe trabaja {___}.\n(My boss works a lot.)",
+          "correctAnswer": "mucho",
+          "distractors": [
+            {
+              "answer": "mucha",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-mucha-noun-fem-0"
+            },
+            {
+              "answer": "muy",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-muy-adv-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-mucho-adverb-0",
+          "masteryLevel": 2,
+          "poolId": "muy_mucho_forms",
+          "renderedQuestion": "Mi jefe trabaja {___}.\n(My boss works a lot.)",
+          "correctAnswer": "mucho",
+          "distractors": [
+            {
+              "answer": "mucha",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-mucha-noun-fem-0"
+            },
+            {
+              "answer": "muy",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-muy-adv-0"
+            },
+            {
+              "answer": "bastantes",
+              "source": "pool_fill",
+              "factId": "_synthetic_bastantes"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-mucho-adverb-0",
+          "masteryLevel": 4,
+          "poolId": "muy_mucho_forms",
+          "renderedQuestion": "Mi jefe trabaja {___}.\n(My boss works a lot.)",
+          "correctAnswer": "mucho",
+          "distractors": [
+            {
+              "answer": "mucha",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-mucha-noun-fem-0"
+            },
+            {
+              "answer": "muy",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-muy-adv-0"
+            },
+            {
+              "answer": "bastantes",
+              "source": "pool_fill",
+              "factId": "_synthetic_bastantes"
+            },
+            {
+              "answer": "bastante",
+              "source": "pool_fill",
+              "factId": "_synthetic_bastante"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"bastantes\" and \"bastante\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-time-ayer-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_time_expressions",
+          "renderedQuestion": "{___} fui al parque con mi familia.\n(Yesterday I went to the park with my family.)",
+          "correctAnswer": "ayer",
+          "distractors": [
+            {
+              "answer": "antes",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-antes-0"
+            },
+            {
+              "answer": "el año pasado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-anio-pasado-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-time-ayer-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_time_expressions",
+          "renderedQuestion": "{___} fui al parque con mi familia.\n(Yesterday I went to the park with my family.)",
+          "correctAnswer": "ayer",
+          "distractors": [
+            {
+              "answer": "antes",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-antes-0"
+            },
+            {
+              "answer": "el año pasado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-anio-pasado-0"
+            },
+            {
+              "answer": "anteayer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-anteayer-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-time-ayer-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_time_expressions",
+          "renderedQuestion": "{___} fui al parque con mi familia.\n(Yesterday I went to the park with my family.)",
+          "correctAnswer": "ayer",
+          "distractors": [
+            {
+              "answer": "antes",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-antes-0"
+            },
+            {
+              "answer": "el año pasado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-anio-pasado-0"
+            },
+            {
+              "answer": "anteayer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-anteayer-0"
+            },
+            {
+              "answer": "la semana pasada",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-semana-pasada-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-time-anteayer-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_time_expressions",
+          "renderedQuestion": "{___} llegó María de su viaje.\n(The day before yesterday María arrived from her trip.)",
+          "correctAnswer": "anteayer",
+          "distractors": [
+            {
+              "answer": "la semana pasada",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-semana-pasada-0"
+            },
+            {
+              "answer": "hace dos años",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-hace-dos-anios-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-time-anteayer-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_time_expressions",
+          "renderedQuestion": "{___} llegó María de su viaje.\n(The day before yesterday María arrived from her trip.)",
+          "correctAnswer": "anteayer",
+          "distractors": [
+            {
+              "answer": "la semana pasada",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-semana-pasada-0"
+            },
+            {
+              "answer": "hace dos años",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-hace-dos-anios-0"
+            },
+            {
+              "answer": "ayer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-ayer-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-time-anteayer-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_time_expressions",
+          "renderedQuestion": "{___} llegó María de su viaje.\n(The day before yesterday María arrived from her trip.)",
+          "correctAnswer": "anteayer",
+          "distractors": [
+            {
+              "answer": "la semana pasada",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-semana-pasada-0"
+            },
+            {
+              "answer": "hace dos años",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-hace-dos-anios-0"
+            },
+            {
+              "answer": "ayer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-ayer-0"
+            },
+            {
+              "answer": "el año pasado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-anio-pasado-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-perf-vivir-alguna-0",
+          "masteryLevel": 0,
+          "poolId": "haber_forms",
+          "renderedQuestion": "¿{___} alguna vez en el extranjero?\n(Have you ever lived abroad?)",
+          "correctAnswer": "has vivido",
+          "distractors": [
+            {
+              "answer": "has hablado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hablar-tu-0"
+            },
+            {
+              "answer": "he comido",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-comer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-perf-vivir-alguna-0",
+          "masteryLevel": 2,
+          "poolId": "haber_forms",
+          "renderedQuestion": "¿{___} alguna vez en el extranjero?\n(Have you ever lived abroad?)",
+          "correctAnswer": "has vivido",
+          "distractors": [
+            {
+              "answer": "has hablado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hablar-tu-0"
+            },
+            {
+              "answer": "he comido",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-comer-yo-0"
+            },
+            {
+              "answer": "todavía no",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-todavia-no-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-perf-vivir-alguna-0",
+          "masteryLevel": 4,
+          "poolId": "haber_forms",
+          "renderedQuestion": "¿{___} alguna vez en el extranjero?\n(Have you ever lived abroad?)",
+          "correctAnswer": "has vivido",
+          "distractors": [
+            {
+              "answer": "has hablado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hablar-tu-0"
+            },
+            {
+              "answer": "he comido",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-comer-yo-0"
+            },
+            {
+              "answer": "todavía no",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-todavia-no-0"
+            },
+            {
+              "answer": "he hablado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hablar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"has hablado\" and \"he hablado\" are 82% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-perf-hablar-tu-0",
+          "masteryLevel": 0,
+          "poolId": "haber_forms",
+          "renderedQuestion": "¿{___} alguna vez con una persona famosa?\n(Have you ever spoken with a famous person?)",
+          "correctAnswer": "has hablado",
+          "distractors": [
+            {
+              "answer": "he comido",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-comer-yo-0"
+            },
+            {
+              "answer": "he hablado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hablar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"has hablado\" and \"he hablado\" are 82% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-perf-hablar-tu-0",
+          "masteryLevel": 2,
+          "poolId": "haber_forms",
+          "renderedQuestion": "¿{___} alguna vez con una persona famosa?\n(Have you ever spoken with a famous person?)",
+          "correctAnswer": "has hablado",
+          "distractors": [
+            {
+              "answer": "he comido",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-comer-yo-0"
+            },
+            {
+              "answer": "he hablado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hablar-yo-0"
+            },
+            {
+              "answer": "has vivido",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-vivir-alguna-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"has hablado\" and \"he hablado\" are 82% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-perf-hablar-tu-0",
+          "masteryLevel": 4,
+          "poolId": "haber_forms",
+          "renderedQuestion": "¿{___} alguna vez con una persona famosa?\n(Have you ever spoken with a famous person?)",
+          "correctAnswer": "has hablado",
+          "distractors": [
+            {
+              "answer": "he comido",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-comer-yo-0"
+            },
+            {
+              "answer": "he hablado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hablar-yo-0"
+            },
+            {
+              "answer": "has vivido",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-vivir-alguna-0"
+            },
+            {
+              "answer": "todavía no",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-todavia-no-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"has hablado\" and \"he hablado\" are 82% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-imp-antes-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_time_expressions",
+          "renderedQuestion": "{___} vivía en una ciudad pequeña.\n(Before, I used to live in a small town.)",
+          "correctAnswer": "antes",
+          "distractors": [
+            {
+              "answer": "ayer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-ayer-0"
+            },
+            {
+              "answer": "la semana pasada",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-semana-pasada-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-antes-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_time_expressions",
+          "renderedQuestion": "{___} vivía en una ciudad pequeña.\n(Before, I used to live in a small town.)",
+          "correctAnswer": "antes",
+          "distractors": [
+            {
+              "answer": "ayer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-ayer-0"
+            },
+            {
+              "answer": "la semana pasada",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-semana-pasada-0"
+            },
+            {
+              "answer": "anteayer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-anteayer-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-antes-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_time_expressions",
+          "renderedQuestion": "{___} vivía en una ciudad pequeña.\n(Before, I used to live in a small town.)",
+          "correctAnswer": "antes",
+          "distractors": [
+            {
+              "answer": "ayer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-ayer-0"
+            },
+            {
+              "answer": "la semana pasada",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-semana-pasada-0"
+            },
+            {
+              "answer": "anteayer",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-anteayer-0"
+            },
+            {
+              "answer": "el año pasado",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-time-anio-pasado-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-cuando-era-0",
+          "masteryLevel": 0,
+          "poolId": "imperfect_ser",
+          "renderedQuestion": "Cuando {___} pequeño, jugaba mucho al fútbol.\n(When I was young, I used to play football a lot.)",
+          "correctAnswer": "era",
+          "distractors": [
+            {
+              "answer": "eran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-ellos-0"
+            },
+            {
+              "answer": "eras",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-cuando-era-0",
+          "masteryLevel": 2,
+          "poolId": "imperfect_ser",
+          "renderedQuestion": "Cuando {___} pequeño, jugaba mucho al fútbol.\n(When I was young, I used to play football a lot.)",
+          "correctAnswer": "era",
+          "distractors": [
+            {
+              "answer": "eran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-ellos-0"
+            },
+            {
+              "answer": "eras",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-tu-0"
+            },
+            {
+              "answer": "éramos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-cuando-era-0",
+          "masteryLevel": 4,
+          "poolId": "imperfect_ser",
+          "renderedQuestion": "Cuando {___} pequeño, jugaba mucho al fútbol.\n(When I was young, I used to play football a lot.)",
+          "correctAnswer": "era",
+          "distractors": [
+            {
+              "answer": "eran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-ellos-0"
+            },
+            {
+              "answer": "eras",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-tu-0"
+            },
+            {
+              "answer": "éramos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-nosotros-0"
+            },
+            {
+              "answer": "somos",
+              "source": "pool_fill",
+              "factId": "_synthetic_somos"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hacer-tu-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_tener_hacer",
+          "renderedQuestion": "¿Qué {___} ayer por la tarde?\n(What did you do yesterday afternoon?)",
+          "correctAnswer": "hiciste",
+          "distractors": [
+            {
+              "answer": "tuviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-tener-tu-0"
+            },
+            {
+              "answer": "hizo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hacer-tu-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_tener_hacer",
+          "renderedQuestion": "¿Qué {___} ayer por la tarde?\n(What did you do yesterday afternoon?)",
+          "correctAnswer": "hiciste",
+          "distractors": [
+            {
+              "answer": "tuviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-tener-tu-0"
+            },
+            {
+              "answer": "hizo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-el-0"
+            },
+            {
+              "answer": "tuve",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-tener-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hacer-tu-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_tener_hacer",
+          "renderedQuestion": "¿Qué {___} ayer por la tarde?\n(What did you do yesterday afternoon?)",
+          "correctAnswer": "hiciste",
+          "distractors": [
+            {
+              "answer": "tuviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-tener-tu-0"
+            },
+            {
+              "answer": "hizo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-el-0"
+            },
+            {
+              "answer": "tuve",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-tener-yo-0"
+            },
+            {
+              "answer": "hicimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hacer-el-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_tener_hacer",
+          "renderedQuestion": "Ayer {___} mucho frío en la ciudad.\n(Yesterday it was very cold in the city.)",
+          "correctAnswer": "hizo",
+          "distractors": [
+            {
+              "answer": "hice",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-yo-0"
+            },
+            {
+              "answer": "hiciste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hacer-el-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_tener_hacer",
+          "renderedQuestion": "Ayer {___} mucho frío en la ciudad.\n(Yesterday it was very cold in the city.)",
+          "correctAnswer": "hizo",
+          "distractors": [
+            {
+              "answer": "hice",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-yo-0"
+            },
+            {
+              "answer": "hiciste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-tu-0"
+            },
+            {
+              "answer": "hicimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hacer-el-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_tener_hacer",
+          "renderedQuestion": "Ayer {___} mucho frío en la ciudad.\n(Yesterday it was very cold in the city.)",
+          "correctAnswer": "hizo",
+          "distractors": [
+            {
+              "answer": "hice",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-yo-0"
+            },
+            {
+              "answer": "hiciste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-tu-0"
+            },
+            {
+              "answer": "hicimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hacer-nosotros-0"
+            },
+            {
+              "answer": "tuviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-tener-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-decir-el-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_decir_ver_dar",
+          "renderedQuestion": "Él {___} que sí.\n(He said yes.)",
+          "correctAnswer": "dijo",
+          "distractors": [
+            {
+              "answer": "dijimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-decir-nosotros-0"
+            },
+            {
+              "answer": "di",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-dar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-decir-el-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_decir_ver_dar",
+          "renderedQuestion": "Él {___} que sí.\n(He said yes.)",
+          "correctAnswer": "dijo",
+          "distractors": [
+            {
+              "answer": "dijimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-decir-nosotros-0"
+            },
+            {
+              "answer": "di",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-dar-yo-0"
+            },
+            {
+              "answer": "vimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ver-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-decir-el-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_decir_ver_dar",
+          "renderedQuestion": "Él {___} que sí.\n(He said yes.)",
+          "correctAnswer": "dijo",
+          "distractors": [
+            {
+              "answer": "dijimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-decir-nosotros-0"
+            },
+            {
+              "answer": "di",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-dar-yo-0"
+            },
+            {
+              "answer": "vimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ver-nosotros-0"
+            },
+            {
+              "answer": "dije",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-decir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-dar-el-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_decir_ver_dar",
+          "renderedQuestion": "Él me {___} un regalo de cumpleaños.\n(He gave me a birthday present.)",
+          "correctAnswer": "dio",
+          "distractors": [
+            {
+              "answer": "dije",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-decir-yo-0"
+            },
+            {
+              "answer": "viste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ver-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-dar-el-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_decir_ver_dar",
+          "renderedQuestion": "Él me {___} un regalo de cumpleaños.\n(He gave me a birthday present.)",
+          "correctAnswer": "dio",
+          "distractors": [
+            {
+              "answer": "dije",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-decir-yo-0"
+            },
+            {
+              "answer": "viste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ver-tu-0"
+            },
+            {
+              "answer": "vimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ver-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-dar-el-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_decir_ver_dar",
+          "renderedQuestion": "Él me {___} un regalo de cumpleaños.\n(He gave me a birthday present.)",
+          "correctAnswer": "dio",
+          "distractors": [
+            {
+              "answer": "dije",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-decir-yo-0"
+            },
+            {
+              "answer": "viste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ver-tu-0"
+            },
+            {
+              "answer": "vimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ver-nosotros-0"
+            },
+            {
+              "answer": "vi",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ver-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-poder-yo-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_poder_poner_venir",
+          "renderedQuestion": "Anoche no {___} dormir por el ruido.\n(Last night I couldn't sleep because of the noise.)",
+          "correctAnswer": "pude",
+          "distractors": [
+            {
+              "answer": "puse",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-poner-yo-0"
+            },
+            {
+              "answer": "vine",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-venir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-poder-yo-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_poder_poner_venir",
+          "renderedQuestion": "Anoche no {___} dormir por el ruido.\n(Last night I couldn't sleep because of the noise.)",
+          "correctAnswer": "pude",
+          "distractors": [
+            {
+              "answer": "puse",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-poner-yo-0"
+            },
+            {
+              "answer": "vine",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-venir-yo-0"
+            },
+            {
+              "answer": "vinimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-venir-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-poder-yo-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_poder_poner_venir",
+          "renderedQuestion": "Anoche no {___} dormir por el ruido.\n(Last night I couldn't sleep because of the noise.)",
+          "correctAnswer": "pude",
+          "distractors": [
+            {
+              "answer": "puse",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-poner-yo-0"
+            },
+            {
+              "answer": "vine",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-venir-yo-0"
+            },
+            {
+              "answer": "vinimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-venir-nosotros-0"
+            },
+            {
+              "answer": "viniste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-venir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-estar-yo-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_estar",
+          "renderedQuestion": "El fin de semana {___} en casa todo el día.\n(On the weekend I was at home all day.)",
+          "correctAnswer": "estuve",
+          "distractors": [
+            {
+              "answer": "estuvimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-estar-nosotros-0"
+            },
+            {
+              "answer": "estuviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-estar-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-estar-yo-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_estar",
+          "renderedQuestion": "El fin de semana {___} en casa todo el día.\n(On the weekend I was at home all day.)",
+          "correctAnswer": "estuve",
+          "distractors": [
+            {
+              "answer": "estuvimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-estar-nosotros-0"
+            },
+            {
+              "answer": "estuviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-estar-tu-0"
+            },
+            {
+              "answer": "estuvieron",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-estar-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-estar-yo-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_estar",
+          "renderedQuestion": "El fin de semana {___} en casa todo el día.\n(On the weekend I was at home all day.)",
+          "correctAnswer": "estuve",
+          "distractors": [
+            {
+              "answer": "estuvimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-estar-nosotros-0"
+            },
+            {
+              "answer": "estuviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-estar-tu-0"
+            },
+            {
+              "answer": "estuvieron",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-estar-ellos-0"
+            },
+            {
+              "answer": "estuvo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-estar-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"estuve\" and \"estuvo\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-prog-hablar-yo-0",
+          "masteryLevel": 0,
+          "poolId": "gerund_forms",
+          "renderedQuestion": "Estoy {___} con mi jefe ahora.\n(I am talking with my boss right now.)",
+          "correctAnswer": "hablando",
+          "distractors": [
+            {
+              "answer": "durmiendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-dormir-stem-0"
+            },
+            {
+              "answer": "comiendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-comer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-prog-hablar-yo-0",
+          "masteryLevel": 2,
+          "poolId": "gerund_forms",
+          "renderedQuestion": "Estoy {___} con mi jefe ahora.\n(I am talking with my boss right now.)",
+          "correctAnswer": "hablando",
+          "distractors": [
+            {
+              "answer": "durmiendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-dormir-stem-0"
+            },
+            {
+              "answer": "comiendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-comer-yo-0"
+            },
+            {
+              "answer": "está hablando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-estar-form-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"está hablando\" is a substring of \"hablando\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-prog-hablar-yo-0",
+          "masteryLevel": 4,
+          "poolId": "gerund_forms",
+          "renderedQuestion": "Estoy {___} con mi jefe ahora.\n(I am talking with my boss right now.)",
+          "correctAnswer": "hablando",
+          "distractors": [
+            {
+              "answer": "durmiendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-dormir-stem-0"
+            },
+            {
+              "answer": "comiendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-comer-yo-0"
+            },
+            {
+              "answer": "está hablando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-estar-form-0"
+            },
+            {
+              "answer": "pidiendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-pedir-stem-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"está hablando\" is a substring of \"hablando\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-reflex-levantarse-el-0",
+          "masteryLevel": 0,
+          "poolId": "reflexive_conjugations",
+          "renderedQuestion": "Mi hermano siempre {___} tarde.\n(My brother always gets up late.)",
+          "correctAnswer": "se levanta",
+          "distractors": [
+            {
+              "answer": "me siento",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-sentirse-yo-0"
+            },
+            {
+              "answer": "me levanto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-reflex-levantarse-el-0",
+          "masteryLevel": 2,
+          "poolId": "reflexive_conjugations",
+          "renderedQuestion": "Mi hermano siempre {___} tarde.\n(My brother always gets up late.)",
+          "correctAnswer": "se levanta",
+          "distractors": [
+            {
+              "answer": "me siento",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-sentirse-yo-0"
+            },
+            {
+              "answer": "me levanto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-yo-0"
+            },
+            {
+              "answer": "te sientes",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-sentirse-como-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-reflex-levantarse-el-0",
+          "masteryLevel": 4,
+          "poolId": "reflexive_conjugations",
+          "renderedQuestion": "Mi hermano siempre {___} tarde.\n(My brother always gets up late.)",
+          "correctAnswer": "se levanta",
+          "distractors": [
+            {
+              "answer": "me siento",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-sentirse-yo-0"
+            },
+            {
+              "answer": "me levanto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-yo-0"
+            },
+            {
+              "answer": "te sientes",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-sentirse-como-0"
+            },
+            {
+              "answer": "me divierto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-divertirse-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-reflex-acostarse-yo-0",
+          "masteryLevel": 0,
+          "poolId": "reflexive_conjugations",
+          "renderedQuestion": "Normalmente {___} a las once de la noche.\n(I usually go to bed at eleven at night.)",
+          "correctAnswer": "me acuesto",
+          "distractors": [
+            {
+              "answer": "me ducho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-ducharse-yo-0"
+            },
+            {
+              "answer": "me levanto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-reflex-acostarse-yo-0",
+          "masteryLevel": 2,
+          "poolId": "reflexive_conjugations",
+          "renderedQuestion": "Normalmente {___} a las once de la noche.\n(I usually go to bed at eleven at night.)",
+          "correctAnswer": "me acuesto",
+          "distractors": [
+            {
+              "answer": "me ducho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-ducharse-yo-0"
+            },
+            {
+              "answer": "me levanto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-yo-0"
+            },
+            {
+              "answer": "te sientes",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-sentirse-como-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-reflex-acostarse-yo-0",
+          "masteryLevel": 4,
+          "poolId": "reflexive_conjugations",
+          "renderedQuestion": "Normalmente {___} a las once de la noche.\n(I usually go to bed at eleven at night.)",
+          "correctAnswer": "me acuesto",
+          "distractors": [
+            {
+              "answer": "me ducho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-ducharse-yo-0"
+            },
+            {
+              "answer": "me levanto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-yo-0"
+            },
+            {
+              "answer": "te sientes",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-sentirse-como-0"
+            },
+            {
+              "answer": "se levanta",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-impers-se-venden-0",
+          "masteryLevel": 0,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "En esa tienda {___} coches de segunda mano.\n(In that store used cars are sold.)",
+          "correctAnswer": "se venden",
+          "distractors": [
+            {
+              "answer": "se come",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-come-0"
+            },
+            {
+              "answer": "habla",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-reg-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-impers-se-venden-0",
+          "masteryLevel": 2,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "En esa tienda {___} coches de segunda mano.\n(In that store used cars are sold.)",
+          "correctAnswer": "se venden",
+          "distractors": [
+            {
+              "answer": "se come",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-come-0"
+            },
+            {
+              "answer": "habla",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-reg-hablar-0"
+            },
+            {
+              "answer": "ven",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-ven-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-impers-se-venden-0",
+          "masteryLevel": 4,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "En esa tienda {___} coches de segunda mano.\n(In that store used cars are sold.)",
+          "correctAnswer": "se venden",
+          "distractors": [
+            {
+              "answer": "se come",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-come-0"
+            },
+            {
+              "answer": "habla",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-reg-hablar-0"
+            },
+            {
+              "answer": "ven",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-ven-0"
+            },
+            {
+              "answer": "se vende",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-vende-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"se venden\" and \"se vende\" are 89% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-impers-se-come-0",
+          "masteryLevel": 0,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "En este restaurante {___} muy bien.\n(In this restaurant you eat very well.)",
+          "correctAnswer": "se come",
+          "distractors": [
+            {
+              "answer": "escribe",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-reg-escribir-0"
+            },
+            {
+              "answer": "ten",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-ten-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-impers-se-come-0",
+          "masteryLevel": 2,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "En este restaurante {___} muy bien.\n(In this restaurant you eat very well.)",
+          "correctAnswer": "se come",
+          "distractors": [
+            {
+              "answer": "escribe",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-reg-escribir-0"
+            },
+            {
+              "answer": "ten",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-ten-0"
+            },
+            {
+              "answer": "sal",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-sal-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-impers-se-come-0",
+          "masteryLevel": 4,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "En este restaurante {___} muy bien.\n(In this restaurant you eat very well.)",
+          "correctAnswer": "se come",
+          "distractors": [
+            {
+              "answer": "escribe",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-reg-escribir-0"
+            },
+            {
+              "answer": "ten",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-ten-0"
+            },
+            {
+              "answer": "sal",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-sal-0"
+            },
+            {
+              "answer": "pon",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-pon-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-comp-tan-como-1",
+          "masteryLevel": 0,
+          "poolId": "comparative_words",
+          "renderedQuestion": "Este examen no es {___} parece.\n(This exam is not as difficult as it seems.)",
+          "correctAnswer": "tan difícil como",
+          "distractors": [
+            {
+              "answer": "más alto que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-0"
+            },
+            {
+              "answer": "el más inteligente",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mas-adj-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-comp-tan-como-1",
+          "masteryLevel": 2,
+          "poolId": "comparative_words",
+          "renderedQuestion": "Este examen no es {___} parece.\n(This exam is not as difficult as it seems.)",
+          "correctAnswer": "tan difícil como",
+          "distractors": [
+            {
+              "answer": "más alto que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-0"
+            },
+            {
+              "answer": "el más inteligente",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mas-adj-0"
+            },
+            {
+              "answer": "más inteligente que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-comp-tan-como-1",
+          "masteryLevel": 4,
+          "poolId": "comparative_words",
+          "renderedQuestion": "Este examen no es {___} parece.\n(This exam is not as difficult as it seems.)",
+          "correctAnswer": "tan difícil como",
+          "distractors": [
+            {
+              "answer": "más alto que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-0"
+            },
+            {
+              "answer": "el más inteligente",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mas-adj-0"
+            },
+            {
+              "answer": "más inteligente que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-1"
+            },
+            {
+              "answer": "menos caro que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-menos-que-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-comp-mas-que-1",
+          "masteryLevel": 0,
+          "poolId": "comparative_words",
+          "renderedQuestion": "María es {___} su hermano.\n(María is smarter than her brother.)",
+          "correctAnswer": "más inteligente que",
+          "distractors": [
+            {
+              "answer": "más alto que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-0"
+            },
+            {
+              "answer": "tan difícil como",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-tan-como-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-comp-mas-que-1",
+          "masteryLevel": 2,
+          "poolId": "comparative_words",
+          "renderedQuestion": "María es {___} su hermano.\n(María is smarter than her brother.)",
+          "correctAnswer": "más inteligente que",
+          "distractors": [
+            {
+              "answer": "más alto que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-0"
+            },
+            {
+              "answer": "tan difícil como",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-tan-como-1"
+            },
+            {
+              "answer": "el más inteligente",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mas-adj-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-comp-mas-que-1",
+          "masteryLevel": 4,
+          "poolId": "comparative_words",
+          "renderedQuestion": "María es {___} su hermano.\n(María is smarter than her brother.)",
+          "correctAnswer": "más inteligente que",
+          "distractors": [
+            {
+              "answer": "más alto que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-0"
+            },
+            {
+              "answer": "tan difícil como",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-tan-como-1"
+            },
+            {
+              "answer": "el más inteligente",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mas-adj-0"
+            },
+            {
+              "answer": "más rápido que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-rápido-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-ser-nosotros-0",
+          "masteryLevel": 0,
+          "poolId": "imperfect_ser",
+          "renderedQuestion": "{___} muy buenos amigos en la escuela.\n(We were very good friends in school.)",
+          "correctAnswer": "éramos",
+          "distractors": [
+            {
+              "answer": "era",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-yo-0"
+            },
+            {
+              "answer": "eran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-ser-nosotros-0",
+          "masteryLevel": 2,
+          "poolId": "imperfect_ser",
+          "renderedQuestion": "{___} muy buenos amigos en la escuela.\n(We were very good friends in school.)",
+          "correctAnswer": "éramos",
+          "distractors": [
+            {
+              "answer": "era",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-yo-0"
+            },
+            {
+              "answer": "eran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-ellos-0"
+            },
+            {
+              "answer": "eras",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-ser-nosotros-0",
+          "masteryLevel": 4,
+          "poolId": "imperfect_ser",
+          "renderedQuestion": "{___} muy buenos amigos en la escuela.\n(We were very good friends in school.)",
+          "correctAnswer": "éramos",
+          "distractors": [
+            {
+              "answer": "era",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-yo-0"
+            },
+            {
+              "answer": "eran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-ellos-0"
+            },
+            {
+              "answer": "eras",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-tu-0"
+            },
+            {
+              "answer": "fuiste",
+              "source": "pool_fill",
+              "factId": "_synthetic_fuiste"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-imp-contrast-1",
+          "masteryLevel": 0,
+          "poolId": "imperfect_ser",
+          "renderedQuestion": "{___} tarde cuando llegué.\n(It was late when I arrived.)",
+          "correctAnswer": "era",
+          "distractors": [
+            {
+              "answer": "éramos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-nosotros-0"
+            },
+            {
+              "answer": "eran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-imp-contrast-1",
+          "masteryLevel": 2,
+          "poolId": "imperfect_ser",
+          "renderedQuestion": "{___} tarde cuando llegué.\n(It was late when I arrived.)",
+          "correctAnswer": "era",
+          "distractors": [
+            {
+              "answer": "éramos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-nosotros-0"
+            },
+            {
+              "answer": "eran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-ellos-0"
+            },
+            {
+              "answer": "eras",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-imp-contrast-1",
+          "masteryLevel": 4,
+          "poolId": "imperfect_ser",
+          "renderedQuestion": "{___} tarde cuando llegué.\n(It was late when I arrived.)",
+          "correctAnswer": "era",
+          "distractors": [
+            {
+              "answer": "éramos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-nosotros-0"
+            },
+            {
+              "answer": "eran",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-ellos-0"
+            },
+            {
+              "answer": "eras",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ser-tu-0"
+            },
+            {
+              "answer": "eres",
+              "source": "pool_fill",
+              "factId": "_synthetic_eres"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hablar-nosotros-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_ar",
+          "renderedQuestion": "Ayer {___} del problema en la reunión.\n(Yesterday we talked about the problem in the meeting.)",
+          "correctAnswer": "hablamos",
+          "distractors": [
+            {
+              "answer": "empecé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-empezar-yo-0"
+            },
+            {
+              "answer": "llegó",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-llegar-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hablar-nosotros-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_ar",
+          "renderedQuestion": "Ayer {___} del problema en la reunión.\n(Yesterday we talked about the problem in the meeting.)",
+          "correctAnswer": "hablamos",
+          "distractors": [
+            {
+              "answer": "empecé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-empezar-yo-0"
+            },
+            {
+              "answer": "llegó",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-llegar-el-0"
+            },
+            {
+              "answer": "llamé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-llamar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hablar-nosotros-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_ar",
+          "renderedQuestion": "Ayer {___} del problema en la reunión.\n(Yesterday we talked about the problem in the meeting.)",
+          "correctAnswer": "hablamos",
+          "distractors": [
+            {
+              "answer": "empecé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-empezar-yo-0"
+            },
+            {
+              "answer": "llegó",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-llegar-el-0"
+            },
+            {
+              "answer": "llamé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-llamar-yo-0"
+            },
+            {
+              "answer": "llegué",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-llegar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hablar-el-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_ar",
+          "renderedQuestion": "Mi profesor {___} muy rápido en la clase.\n(My teacher spoke very fast in class.)",
+          "correctAnswer": "habló",
+          "distractors": [
+            {
+              "answer": "llegó",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-llegar-el-0"
+            },
+            {
+              "answer": "compró",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-comprar-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hablar-el-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_ar",
+          "renderedQuestion": "Mi profesor {___} muy rápido en la clase.\n(My teacher spoke very fast in class.)",
+          "correctAnswer": "habló",
+          "distractors": [
+            {
+              "answer": "llegó",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-llegar-el-0"
+            },
+            {
+              "answer": "compró",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-comprar-el-0"
+            },
+            {
+              "answer": "empecé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-empezar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-hablar-el-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_ar",
+          "renderedQuestion": "Mi profesor {___} muy rápido en la clase.\n(My teacher spoke very fast in class.)",
+          "correctAnswer": "habló",
+          "distractors": [
+            {
+              "answer": "llegó",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-llegar-el-0"
+            },
+            {
+              "answer": "compró",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-comprar-el-0"
+            },
+            {
+              "answer": "empecé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-empezar-yo-0"
+            },
+            {
+              "answer": "hablaste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-hablar-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-beber-yo-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_er_ir",
+          "renderedQuestion": "{___} agua durante todo el día.\n(I drank water throughout the whole day.)",
+          "correctAnswer": "bebí",
+          "distractors": [
+            {
+              "answer": "escribí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-escribir-yo-0"
+            },
+            {
+              "answer": "leí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-leer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-beber-yo-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_er_ir",
+          "renderedQuestion": "{___} agua durante todo el día.\n(I drank water throughout the whole day.)",
+          "correctAnswer": "bebí",
+          "distractors": [
+            {
+              "answer": "escribí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-escribir-yo-0"
+            },
+            {
+              "answer": "leí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-leer-yo-0"
+            },
+            {
+              "answer": "salí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-salir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-beber-yo-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_er_ir",
+          "renderedQuestion": "{___} agua durante todo el día.\n(I drank water throughout the whole day.)",
+          "correctAnswer": "bebí",
+          "distractors": [
+            {
+              "answer": "escribí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-escribir-yo-0"
+            },
+            {
+              "answer": "leí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-leer-yo-0"
+            },
+            {
+              "answer": "salí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-salir-yo-0"
+            },
+            {
+              "answer": "viví",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-vivir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-comer-yo-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_er_ir",
+          "renderedQuestion": "Anoche {___} demasiado en la cena.\n(Last night I ate too much at dinner.)",
+          "correctAnswer": "comí",
+          "distractors": [
+            {
+              "answer": "viviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-vivir-tu-0"
+            },
+            {
+              "answer": "escribí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-escribir-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-comer-yo-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_er_ir",
+          "renderedQuestion": "Anoche {___} demasiado en la cena.\n(Last night I ate too much at dinner.)",
+          "correctAnswer": "comí",
+          "distractors": [
+            {
+              "answer": "viviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-vivir-tu-0"
+            },
+            {
+              "answer": "escribí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-escribir-yo-0"
+            },
+            {
+              "answer": "bebí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-beber-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-comer-yo-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_er_ir",
+          "renderedQuestion": "Anoche {___} demasiado en la cena.\n(Last night I ate too much at dinner.)",
+          "correctAnswer": "comí",
+          "distractors": [
+            {
+              "answer": "viviste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-vivir-tu-0"
+            },
+            {
+              "answer": "escribí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-escribir-yo-0"
+            },
+            {
+              "answer": "bebí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-beber-yo-0"
+            },
+            {
+              "answer": "leí",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-leer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-ir-el-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_ser_ir",
+          "renderedQuestion": "Ayer {___} un día muy bueno.\n(Yesterday was a very good day.)",
+          "correctAnswer": "fue",
+          "distractors": [
+            {
+              "answer": "fuiste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ir-tu-0"
+            },
+            {
+              "answer": "fueron",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ir-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-ir-el-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_ser_ir",
+          "renderedQuestion": "Ayer {___} un día muy bueno.\n(Yesterday was a very good day.)",
+          "correctAnswer": "fue",
+          "distractors": [
+            {
+              "answer": "fuiste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ir-tu-0"
+            },
+            {
+              "answer": "fueron",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ir-ellos-0"
+            },
+            {
+              "answer": "fui",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ir-ser-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-ir-el-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_ser_ir",
+          "renderedQuestion": "Ayer {___} un día muy bueno.\n(Yesterday was a very good day.)",
+          "correctAnswer": "fue",
+          "distractors": [
+            {
+              "answer": "fuiste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ir-tu-0"
+            },
+            {
+              "answer": "fueron",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ir-ellos-0"
+            },
+            {
+              "answer": "fui",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ir-ser-yo-0"
+            },
+            {
+              "answer": "fuimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-ir-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-saber-el-0",
+          "masteryLevel": 0,
+          "poolId": "preterite_querer_saber",
+          "renderedQuestion": "Cuando {___} la noticia, se puso triste.\n(When he found out the news, he became sad.)",
+          "correctAnswer": "supo",
+          "distractors": [
+            {
+              "answer": "quiso",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-querer-el-0"
+            },
+            {
+              "answer": "quise",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-querer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-saber-el-0",
+          "masteryLevel": 2,
+          "poolId": "preterite_querer_saber",
+          "renderedQuestion": "Cuando {___} la noticia, se puso triste.\n(When he found out the news, he became sad.)",
+          "correctAnswer": "supo",
+          "distractors": [
+            {
+              "answer": "quiso",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-querer-el-0"
+            },
+            {
+              "answer": "quise",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-querer-yo-0"
+            },
+            {
+              "answer": "supimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-saber-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-saber-el-0",
+          "masteryLevel": 4,
+          "poolId": "preterite_querer_saber",
+          "renderedQuestion": "Cuando {___} la noticia, se puso triste.\n(When he found out the news, he became sad.)",
+          "correctAnswer": "supo",
+          "distractors": [
+            {
+              "answer": "quiso",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-querer-el-0"
+            },
+            {
+              "answer": "quise",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-querer-yo-0"
+            },
+            {
+              "answer": "supimos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-saber-nosotros-0"
+            },
+            {
+              "answer": "supe",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-saber-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-hablar-ellos-0",
+          "masteryLevel": 0,
+          "poolId": "imperfect_ar",
+          "renderedQuestion": "Los estudiantes {___} cuando entré a la clase.\n(The students were talking when I entered the classroom.)",
+          "correctAnswer": "hablaban",
+          "distractors": [
+            {
+              "answer": "trabajaba",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-trabajar-yo-0"
+            },
+            {
+              "answer": "hablábamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-hablar-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-hablar-ellos-0",
+          "masteryLevel": 2,
+          "poolId": "imperfect_ar",
+          "renderedQuestion": "Los estudiantes {___} cuando entré a la clase.\n(The students were talking when I entered the classroom.)",
+          "correctAnswer": "hablaban",
+          "distractors": [
+            {
+              "answer": "trabajaba",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-trabajar-yo-0"
+            },
+            {
+              "answer": "hablábamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-hablar-nosotros-0"
+            },
+            {
+              "answer": "hablaba",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-hablar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"hablaban\" and \"hablaba\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-imp-hablar-ellos-0",
+          "masteryLevel": 4,
+          "poolId": "imperfect_ar",
+          "renderedQuestion": "Los estudiantes {___} cuando entré a la clase.\n(The students were talking when I entered the classroom.)",
+          "correctAnswer": "hablaban",
+          "distractors": [
+            {
+              "answer": "trabajaba",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-trabajar-yo-0"
+            },
+            {
+              "answer": "hablábamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-hablar-nosotros-0"
+            },
+            {
+              "answer": "hablaba",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-hablar-yo-0"
+            },
+            {
+              "answer": "hablabas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-hablar-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"hablaban\" and \"hablaba\" are 88% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-imp-vivir-yo-0",
+          "masteryLevel": 0,
+          "poolId": "imperfect_er_ir",
+          "renderedQuestion": "Cuando {___} en París, iba mucho al museo.\n(When I was living in Paris, I went to the museum a lot.)",
+          "correctAnswer": "vivía",
+          "distractors": [
+            {
+              "answer": "comían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-comer-ellos-0"
+            },
+            {
+              "answer": "dormía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-imp-contrast-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-vivir-yo-0",
+          "masteryLevel": 2,
+          "poolId": "imperfect_er_ir",
+          "renderedQuestion": "Cuando {___} en París, iba mucho al museo.\n(When I was living in Paris, I went to the museum a lot.)",
+          "correctAnswer": "vivía",
+          "distractors": [
+            {
+              "answer": "comían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-comer-ellos-0"
+            },
+            {
+              "answer": "dormía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-imp-contrast-0"
+            },
+            {
+              "answer": "bebía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-beber-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-vivir-yo-0",
+          "masteryLevel": 4,
+          "poolId": "imperfect_er_ir",
+          "renderedQuestion": "Cuando {___} en París, iba mucho al museo.\n(When I was living in Paris, I went to the museum a lot.)",
+          "correctAnswer": "vivía",
+          "distractors": [
+            {
+              "answer": "comían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-comer-ellos-0"
+            },
+            {
+              "answer": "dormía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-pret-imp-contrast-0"
+            },
+            {
+              "answer": "bebía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-beber-yo-0"
+            },
+            {
+              "answer": "comía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-comer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"comían\" and \"comía\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-imp-ir-ellos-0",
+          "masteryLevel": 0,
+          "poolId": "imperfect_ir",
+          "renderedQuestion": "Mis abuelos {___} al mercado cada semana.\n(My grandparents used to go to the market every week.)",
+          "correctAnswer": "iban",
+          "distractors": [
+            {
+              "answer": "iba",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ir-yo-0"
+            },
+            {
+              "answer": "ibas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ir-tu-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-ir-ellos-0",
+          "masteryLevel": 2,
+          "poolId": "imperfect_ir",
+          "renderedQuestion": "Mis abuelos {___} al mercado cada semana.\n(My grandparents used to go to the market every week.)",
+          "correctAnswer": "iban",
+          "distractors": [
+            {
+              "answer": "iba",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ir-yo-0"
+            },
+            {
+              "answer": "ibas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ir-tu-0"
+            },
+            {
+              "answer": "íbamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ir-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-ir-ellos-0",
+          "masteryLevel": 4,
+          "poolId": "imperfect_ir",
+          "renderedQuestion": "Mis abuelos {___} al mercado cada semana.\n(My grandparents used to go to the market every week.)",
+          "correctAnswer": "iban",
+          "distractors": [
+            {
+              "answer": "iba",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ir-yo-0"
+            },
+            {
+              "answer": "ibas",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ir-tu-0"
+            },
+            {
+              "answer": "íbamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ir-nosotros-0"
+            },
+            {
+              "answer": "voy",
+              "source": "pool_fill",
+              "factId": "_synthetic_voy"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-ver-tu-0",
+          "masteryLevel": 0,
+          "poolId": "imperfect_ver",
+          "renderedQuestion": "¿Cuándo {___} a tus amigos normalmente?\n(When did you normally see your friends?)",
+          "correctAnswer": "veías",
+          "distractors": [
+            {
+              "answer": "veía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ver-yo-0"
+            },
+            {
+              "answer": "veíamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ver-nosotros-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies year/date answers but 3 options don't match: \"veías\", \"veía\", \"veíamos\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-imp-ver-tu-0",
+          "masteryLevel": 2,
+          "poolId": "imperfect_ver",
+          "renderedQuestion": "¿Cuándo {___} a tus amigos normalmente?\n(When did you normally see your friends?)",
+          "correctAnswer": "veías",
+          "distractors": [
+            {
+              "answer": "veía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ver-yo-0"
+            },
+            {
+              "answer": "veíamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ver-nosotros-0"
+            },
+            {
+              "answer": "veían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ver-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies year/date answers but 4 options don't match: \"veías\", \"veía\", \"veíamos\", \"veían\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-imp-ver-tu-0",
+          "masteryLevel": 4,
+          "poolId": "imperfect_ver",
+          "renderedQuestion": "¿Cuándo {___} a tus amigos normalmente?\n(When did you normally see your friends?)",
+          "correctAnswer": "veías",
+          "distractors": [
+            {
+              "answer": "veía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ver-yo-0"
+            },
+            {
+              "answer": "veíamos",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ver-nosotros-0"
+            },
+            {
+              "answer": "veían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-ver-ellos-0"
+            },
+            {
+              "answer": "vería",
+              "source": "pool_fill",
+              "factId": "_synthetic_vería"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "question_type_mismatch",
+              "detail": "Question implies year/date answers but 5 options don't match: \"veías\", \"veía\", \"veíamos\", \"veían\", \"vería\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-pret-imp-contrast-0",
+          "masteryLevel": 0,
+          "poolId": "imperfect_er_ir",
+          "renderedQuestion": "Cuando llegué a casa, él {___}.\n(When I arrived home, he was sleeping.)",
+          "correctAnswer": "dormía",
+          "distractors": [
+            {
+              "answer": "vivía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-vivir-yo-0"
+            },
+            {
+              "answer": "bebía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-beber-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-imp-contrast-0",
+          "masteryLevel": 2,
+          "poolId": "imperfect_er_ir",
+          "renderedQuestion": "Cuando llegué a casa, él {___}.\n(When I arrived home, he was sleeping.)",
+          "correctAnswer": "dormía",
+          "distractors": [
+            {
+              "answer": "vivía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-vivir-yo-0"
+            },
+            {
+              "answer": "bebía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-beber-yo-0"
+            },
+            {
+              "answer": "comían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-comer-ellos-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-pret-imp-contrast-0",
+          "masteryLevel": 4,
+          "poolId": "imperfect_er_ir",
+          "renderedQuestion": "Cuando llegué a casa, él {___}.\n(When I arrived home, he was sleeping.)",
+          "correctAnswer": "dormía",
+          "distractors": [
+            {
+              "answer": "vivía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-vivir-yo-0"
+            },
+            {
+              "answer": "bebía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-beber-yo-0"
+            },
+            {
+              "answer": "comían",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-comer-ellos-0"
+            },
+            {
+              "answer": "comía",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-comer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Options \"comían\" and \"comía\" are 83% similar"
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-perf-ver-yo-0",
+          "masteryLevel": 0,
+          "poolId": "past_participles_irregular",
+          "renderedQuestion": "¿{___} alguna vez esa película?\n(Have you ever seen that film?)",
+          "correctAnswer": "he visto",
+          "distractors": [
+            {
+              "answer": "dicho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-dicho-0"
+            },
+            {
+              "answer": "hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-hecho-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-perf-ver-yo-0",
+          "masteryLevel": 2,
+          "poolId": "past_participles_irregular",
+          "renderedQuestion": "¿{___} alguna vez esa película?\n(Have you ever seen that film?)",
+          "correctAnswer": "he visto",
+          "distractors": [
+            {
+              "answer": "dicho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-dicho-0"
+            },
+            {
+              "answer": "hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-hecho-0"
+            },
+            {
+              "answer": "escrito",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-escrito-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-perf-ver-yo-0",
+          "masteryLevel": 4,
+          "poolId": "past_participles_irregular",
+          "renderedQuestion": "¿{___} alguna vez esa película?\n(Have you ever seen that film?)",
+          "correctAnswer": "he visto",
+          "distractors": [
+            {
+              "answer": "dicho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-dicho-0"
+            },
+            {
+              "answer": "hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-hecho-0"
+            },
+            {
+              "answer": "escrito",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-escrito-0"
+            },
+            {
+              "answer": "he hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hacer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-perf-pp-vuelto-0",
+          "masteryLevel": 0,
+          "poolId": "past_participles_irregular",
+          "renderedQuestion": "¿Ha {___} ya de su viaje?\n(Has he/she returned from his/her trip already?)",
+          "correctAnswer": "vuelto",
+          "distractors": [
+            {
+              "answer": "he visto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-ver-yo-0"
+            },
+            {
+              "answer": "hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-hecho-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-perf-pp-vuelto-0",
+          "masteryLevel": 2,
+          "poolId": "past_participles_irregular",
+          "renderedQuestion": "¿Ha {___} ya de su viaje?\n(Has he/she returned from his/her trip already?)",
+          "correctAnswer": "vuelto",
+          "distractors": [
+            {
+              "answer": "he visto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-ver-yo-0"
+            },
+            {
+              "answer": "hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-hecho-0"
+            },
+            {
+              "answer": "he hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hacer-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-perf-pp-vuelto-0",
+          "masteryLevel": 4,
+          "poolId": "past_participles_irregular",
+          "renderedQuestion": "¿Ha {___} ya de su viaje?\n(Has he/she returned from his/her trip already?)",
+          "correctAnswer": "vuelto",
+          "distractors": [
+            {
+              "answer": "he visto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-ver-yo-0"
+            },
+            {
+              "answer": "hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-hecho-0"
+            },
+            {
+              "answer": "he hecho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-hacer-yo-0"
+            },
+            {
+              "answer": "dicho",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-perf-pp-dicho-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-prog-pedir-stem-0",
+          "masteryLevel": 0,
+          "poolId": "gerund_forms",
+          "renderedQuestion": "Están {___} demasiado dinero.\n(They are asking for too much money.)",
+          "correctAnswer": "pidiendo",
+          "distractors": [
+            {
+              "answer": "leyendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-leer-stem-0"
+            },
+            {
+              "answer": "hablando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-hablar-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-prog-pedir-stem-0",
+          "masteryLevel": 2,
+          "poolId": "gerund_forms",
+          "renderedQuestion": "Están {___} demasiado dinero.\n(They are asking for too much money.)",
+          "correctAnswer": "pidiendo",
+          "distractors": [
+            {
+              "answer": "leyendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-leer-stem-0"
+            },
+            {
+              "answer": "hablando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-hablar-yo-0"
+            },
+            {
+              "answer": "está hablando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-estar-form-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"está hablando\" is a substring of \"hablando\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-prog-pedir-stem-0",
+          "masteryLevel": 4,
+          "poolId": "gerund_forms",
+          "renderedQuestion": "Están {___} demasiado dinero.\n(They are asking for too much money.)",
+          "correctAnswer": "pidiendo",
+          "distractors": [
+            {
+              "answer": "leyendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-leer-stem-0"
+            },
+            {
+              "answer": "hablando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-hablar-yo-0"
+            },
+            {
+              "answer": "está hablando",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-estar-form-0"
+            },
+            {
+              "answer": "durmiendo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-prog-dormir-stem-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": [
+            {
+              "severity": "WARN",
+              "type": "near_duplicate_options",
+              "detail": "Option \"está hablando\" is a substring of \"hablando\""
+            }
+          ]
+        },
+        {
+          "factId": "es-gram-a2-do-la-0",
+          "masteryLevel": 0,
+          "poolId": "do_pronouns",
+          "renderedQuestion": "¿Conoces a María? Sí, {___} conozco.\n(Do you know María? Yes, I know her.)",
+          "correctAnswer": "la",
+          "distractors": [
+            {
+              "answer": "verlo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-attach-lo-0"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-me-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-do-la-0",
+          "masteryLevel": 2,
+          "poolId": "do_pronouns",
+          "renderedQuestion": "¿Conoces a María? Sí, {___} conozco.\n(Do you know María? Yes, I know her.)",
+          "correctAnswer": "la",
+          "distractors": [
+            {
+              "answer": "verlo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-attach-lo-0"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-me-0"
+            },
+            {
+              "answer": "lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-lo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-do-la-0",
+          "masteryLevel": 4,
+          "poolId": "do_pronouns",
+          "renderedQuestion": "¿Conoces a María? Sí, {___} conozco.\n(Do you know María? Yes, I know her.)",
+          "correctAnswer": "la",
+          "distractors": [
+            {
+              "answer": "verlo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-attach-lo-0"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-me-0"
+            },
+            {
+              "answer": "lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-lo-0"
+            },
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-te-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-do-attach-lo-0",
+          "masteryLevel": 0,
+          "poolId": "do_pronouns",
+          "renderedQuestion": "Quiero {___} antes de comprarlo.\n(I want to see it before buying it.)",
+          "correctAnswer": "verlo",
+          "distractors": [
+            {
+              "answer": "las",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-las-0"
+            },
+            {
+              "answer": "lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-lo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-do-attach-lo-0",
+          "masteryLevel": 2,
+          "poolId": "do_pronouns",
+          "renderedQuestion": "Quiero {___} antes de comprarlo.\n(I want to see it before buying it.)",
+          "correctAnswer": "verlo",
+          "distractors": [
+            {
+              "answer": "las",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-las-0"
+            },
+            {
+              "answer": "lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-lo-0"
+            },
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-te-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-do-attach-lo-0",
+          "masteryLevel": 4,
+          "poolId": "do_pronouns",
+          "renderedQuestion": "Quiero {___} antes de comprarlo.\n(I want to see it before buying it.)",
+          "correctAnswer": "verlo",
+          "distractors": [
+            {
+              "answer": "las",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-las-0"
+            },
+            {
+              "answer": "lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-lo-0"
+            },
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-te-0"
+            },
+            {
+              "answer": "la",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-do-la-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-io-les-0",
+          "masteryLevel": 0,
+          "poolId": "io_pronouns",
+          "renderedQuestion": "{___} dije la verdad a mis padres.\n(I told my parents the truth.)",
+          "correctAnswer": "les",
+          "distractors": [
+            {
+              "answer": "se lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-se-lo-0"
+            },
+            {
+              "answer": "le",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-le-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-io-les-0",
+          "masteryLevel": 2,
+          "poolId": "io_pronouns",
+          "renderedQuestion": "{___} dije la verdad a mis padres.\n(I told my parents the truth.)",
+          "correctAnswer": "les",
+          "distractors": [
+            {
+              "answer": "se lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-se-lo-0"
+            },
+            {
+              "answer": "le",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-le-0"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-me-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-io-les-0",
+          "masteryLevel": 4,
+          "poolId": "io_pronouns",
+          "renderedQuestion": "{___} dije la verdad a mis padres.\n(I told my parents the truth.)",
+          "correctAnswer": "les",
+          "distractors": [
+            {
+              "answer": "se lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-se-lo-0"
+            },
+            {
+              "answer": "le",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-le-0"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-me-0"
+            },
+            {
+              "answer": "te",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-te-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-io-te-0",
+          "masteryLevel": 0,
+          "poolId": "io_pronouns",
+          "renderedQuestion": "{___} mandé un mensaje esta mañana.\n(I sent you a message this morning.)",
+          "correctAnswer": "te",
+          "distractors": [
+            {
+              "answer": "le",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-le-0"
+            },
+            {
+              "answer": "les",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-les-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-io-te-0",
+          "masteryLevel": 2,
+          "poolId": "io_pronouns",
+          "renderedQuestion": "{___} mandé un mensaje esta mañana.\n(I sent you a message this morning.)",
+          "correctAnswer": "te",
+          "distractors": [
+            {
+              "answer": "le",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-le-0"
+            },
+            {
+              "answer": "les",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-les-0"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-me-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-io-te-0",
+          "masteryLevel": 4,
+          "poolId": "io_pronouns",
+          "renderedQuestion": "{___} mandé un mensaje esta mañana.\n(I sent you a message this morning.)",
+          "correctAnswer": "te",
+          "distractors": [
+            {
+              "answer": "le",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-le-0"
+            },
+            {
+              "answer": "les",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-les-0"
+            },
+            {
+              "answer": "me",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-me-0"
+            },
+            {
+              "answer": "se lo",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-io-se-lo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-reflex-sentirse-como-0",
+          "masteryLevel": 0,
+          "poolId": "reflexive_conjugations",
+          "renderedQuestion": "¿Cómo {___} hoy?\n(How do you feel today?)",
+          "correctAnswer": "te sientes",
+          "distractors": [
+            {
+              "answer": "se levanta",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-el-0"
+            },
+            {
+              "answer": "me levanto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-reflex-sentirse-como-0",
+          "masteryLevel": 2,
+          "poolId": "reflexive_conjugations",
+          "renderedQuestion": "¿Cómo {___} hoy?\n(How do you feel today?)",
+          "correctAnswer": "te sientes",
+          "distractors": [
+            {
+              "answer": "se levanta",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-el-0"
+            },
+            {
+              "answer": "me levanto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-yo-0"
+            },
+            {
+              "answer": "se viste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-vestirse-el-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-reflex-sentirse-como-0",
+          "masteryLevel": 4,
+          "poolId": "reflexive_conjugations",
+          "renderedQuestion": "¿Cómo {___} hoy?\n(How do you feel today?)",
+          "correctAnswer": "te sientes",
+          "distractors": [
+            {
+              "answer": "se levanta",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-el-0"
+            },
+            {
+              "answer": "me levanto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-levantarse-yo-0"
+            },
+            {
+              "answer": "se viste",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-vestirse-el-0"
+            },
+            {
+              "answer": "me divierto",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-reflex-divertirse-yo-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-comp-irr-menor-0",
+          "masteryLevel": 0,
+          "poolId": "comparative_irregular",
+          "renderedQuestion": "Ana es {___} que su hermano.\n(Ana is younger than her brother.)",
+          "correctAnswer": "menor",
+          "distractors": [
+            {
+              "answer": "mayor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mayor-0"
+            },
+            {
+              "answer": "el mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mejor-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-comp-irr-menor-0",
+          "masteryLevel": 2,
+          "poolId": "comparative_irregular",
+          "renderedQuestion": "Ana es {___} que su hermano.\n(Ana is younger than her brother.)",
+          "correctAnswer": "menor",
+          "distractors": [
+            {
+              "answer": "mayor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mayor-0"
+            },
+            {
+              "answer": "el mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mejor-0"
+            },
+            {
+              "answer": "mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mejor-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-comp-irr-menor-0",
+          "masteryLevel": 4,
+          "poolId": "comparative_irregular",
+          "renderedQuestion": "Ana es {___} que su hermano.\n(Ana is younger than her brother.)",
+          "correctAnswer": "menor",
+          "distractors": [
+            {
+              "answer": "mayor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mayor-0"
+            },
+            {
+              "answer": "el mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mejor-0"
+            },
+            {
+              "answer": "mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mejor-0"
+            },
+            {
+              "answer": "peor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-peor-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-sup-mas-adj-0",
+          "masteryLevel": 0,
+          "poolId": "comparative_words",
+          "renderedQuestion": "Carlos es {___} de la clase.\n(Carlos is the most intelligent in the class.)",
+          "correctAnswer": "el más inteligente",
+          "distractors": [
+            {
+              "answer": "más rápido que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-rápido-0"
+            },
+            {
+              "answer": "más inteligente que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-sup-mas-adj-0",
+          "masteryLevel": 2,
+          "poolId": "comparative_words",
+          "renderedQuestion": "Carlos es {___} de la clase.\n(Carlos is the most intelligent in the class.)",
+          "correctAnswer": "el más inteligente",
+          "distractors": [
+            {
+              "answer": "más rápido que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-rápido-0"
+            },
+            {
+              "answer": "más inteligente que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-1"
+            },
+            {
+              "answer": "tan difícil como",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-tan-como-1"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-sup-mas-adj-0",
+          "masteryLevel": 4,
+          "poolId": "comparative_words",
+          "renderedQuestion": "Carlos es {___} de la clase.\n(Carlos is the most intelligent in the class.)",
+          "correctAnswer": "el más inteligente",
+          "distractors": [
+            {
+              "answer": "más rápido que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-rápido-0"
+            },
+            {
+              "answer": "más inteligente que",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-mas-que-1"
+            },
+            {
+              "answer": "tan difícil como",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-tan-como-1"
+            },
+            {
+              "answer": "tan inteligente como",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-tan-como-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-sup-peor-0",
+          "masteryLevel": 0,
+          "poolId": "comparative_irregular",
+          "renderedQuestion": "Fue {___} día de mi vida.\n(It was the worst day of my life.)",
+          "correctAnswer": "el peor",
+          "distractors": [
+            {
+              "answer": "mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mejor-0"
+            },
+            {
+              "answer": "el mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mejor-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-sup-peor-0",
+          "masteryLevel": 2,
+          "poolId": "comparative_irregular",
+          "renderedQuestion": "Fue {___} día de mi vida.\n(It was the worst day of my life.)",
+          "correctAnswer": "el peor",
+          "distractors": [
+            {
+              "answer": "mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mejor-0"
+            },
+            {
+              "answer": "el mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mejor-0"
+            },
+            {
+              "answer": "mayor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mayor-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-sup-peor-0",
+          "masteryLevel": 4,
+          "poolId": "comparative_irregular",
+          "renderedQuestion": "Fue {___} día de mi vida.\n(It was the worst day of my life.)",
+          "correctAnswer": "el peor",
+          "distractors": [
+            {
+              "answer": "mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mejor-0"
+            },
+            {
+              "answer": "el mejor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-sup-mejor-0"
+            },
+            {
+              "answer": "mayor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-mayor-0"
+            },
+            {
+              "answer": "peor",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-comp-irr-peor-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-irr-ven-0",
+          "masteryLevel": 0,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "{___} aquí, por favor.\n(Come here, please.)",
+          "correctAnswer": "ven",
+          "distractors": [
+            {
+              "answer": "se vende",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-vende-0"
+            },
+            {
+              "answer": "di",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-di-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-irr-ven-0",
+          "masteryLevel": 2,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "{___} aquí, por favor.\n(Come here, please.)",
+          "correctAnswer": "ven",
+          "distractors": [
+            {
+              "answer": "se vende",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-vende-0"
+            },
+            {
+              "answer": "di",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-di-0"
+            },
+            {
+              "answer": "sal",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-sal-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-irr-ven-0",
+          "masteryLevel": 4,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "{___} aquí, por favor.\n(Come here, please.)",
+          "correctAnswer": "ven",
+          "distractors": [
+            {
+              "answer": "se vende",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-vende-0"
+            },
+            {
+              "answer": "di",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-di-0"
+            },
+            {
+              "answer": "sal",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-sal-0"
+            },
+            {
+              "answer": "pon",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-pon-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-irr-ve-0",
+          "masteryLevel": 0,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "{___} al mercado y compra pan.\n(Go to the market and buy some bread.)",
+          "correctAnswer": "ve",
+          "distractors": [
+            {
+              "answer": "sé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-se-0"
+            },
+            {
+              "answer": "se venden",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-venden-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 2,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-irr-ve-0",
+          "masteryLevel": 2,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "{___} al mercado y compra pan.\n(Go to the market and buy some bread.)",
+          "correctAnswer": "ve",
+          "distractors": [
+            {
+              "answer": "sé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-se-0"
+            },
+            {
+              "answer": "se venden",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-venden-0"
+            },
+            {
+              "answer": "sal",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-sal-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 3,
+          "issues": []
+        },
+        {
+          "factId": "es-gram-a2-imp-irr-ve-0",
+          "masteryLevel": 4,
+          "poolId": "imperative_tu",
+          "renderedQuestion": "{___} al mercado y compra pan.\n(Go to the market and buy some bread.)",
+          "correctAnswer": "ve",
+          "distractors": [
+            {
+              "answer": "sé",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-se-0"
+            },
+            {
+              "answer": "se venden",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-impers-se-venden-0"
+            },
+            {
+              "answer": "sal",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-irr-sal-0"
+            },
+            {
+              "answer": "habla",
+              "source": "similar_difficulty",
+              "factId": "es-gram-a2-imp-reg-hablar-0"
+            }
+          ],
+          "isNumerical": false,
+          "templateId": "_fallback",
+          "requestedCount": 4,
+          "issues": []
+        }
+      ]
+    }
+  ]
+}
