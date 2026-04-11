@@ -164,6 +164,27 @@ Lobby creation and join are asynchronous (Steamworks callback-based). JS must:
 | `src/ui/components/TriviaRoundScreen.svelte` | DONE: Trivia Night 3-phase UI (not wired) |
 | `src/services/seededRng.ts` | Seed sharing (reuse as-is) |
 
+## Lobby Browser Phases (Plan: splendid-watching-unicorn)
+
+> **Status:** Phases 1–6 DONE, Phases 7–8 IN PROGRESS (ui-agent running in parallel), Phases 9–12 documented.
+> **Web backend:** Fastify in-memory registry (`mpLobbyRegistry.ts`) — fast, restartable, V1 correct. SQLite persistence deferred.
+> **Deferred follow-ups:** Persistent lobby storage, real Steam friends graph integration, server-side anti-cheat on password-join.
+
+| Phase | Scope | Status |
+|-------|-------|--------|
+| **1** | Rust: `steam_request_lobby_list` + `steam_get_lobby_member_count` in `steam.rs` | DONE |
+| **2** | `multiplayerTypes.ts`: `LobbyVisibility`, `LobbyBrowserEntry`, `LobbyListFilter`, `MODE_MIN_PLAYERS` | DONE |
+| **3** | `steamNetworkingService.ts`: TS wrappers (`requestSteamLobbyList`, `getLobbyMemberCount`) | DONE |
+| **4** | Fastify: `mpLobbyRegistry.ts` + REST routes (`mpLobby.ts`) + WS upgrade (`mpLobbyWs.ts`) | DONE |
+| **5** | `multiplayerTransport.ts`: WebSocket URL fix (`VITE_MP_WS_URL`) + `joinToken` support | DONE |
+| **6** | `multiplayerLobbyService.ts`: `LobbyBackend` abstraction, 3 backends, new public API | DONE |
+| **7** | UI: `LobbyBrowserScreen.svelte` + privacy toggle + max-players selector in `MultiplayerLobby.svelte` | IN PROGRESS (ui-agent) |
+| **8** | Dev: BroadcastChannel `localStorage` fake directory (broadcastBackend) | IN PROGRESS (ui-agent) |
+| **9** | Docs same-commit | DONE (this file) |
+| **10** | Tests: lobby service, mpLobbyRegistry, REST routes, steamBackend mock | PENDING |
+| **11** | Docker visual verify: BroadcastChannel + Web path scenarios | PENDING |
+| **12** | Manual Steam LAN verify (two Steam accounts) | PENDING (user-run) |
+
 ## Changelog
 
 - 2026-04-07: AR created. Phase 1 implementation started. Steam P2P + Race Mode.

@@ -111,6 +111,8 @@ function makeLobby(playerIds: string[]): LobbyState {
     maxPlayers: 4,
     isRanked: false,
     status: 'in_game',
+    visibility: 'public',
+    hasPassword: false,
   };
 }
 

@@ -18,6 +18,7 @@ Parse the user's message for a subcommand:
 | `next` | Show prioritized next steps |
 | `test` | Test multiplayer with 2 Steam accounts on LAN |
 | `wire <mode>` | Wire a specific mode (duel, coop, trivia) into gameplay |
+| `browse` | Guide lobby-browser implementation (Phase 1–8 of splendid-watching-unicorn plan) |
 
 ## Current Implementation Status
 
@@ -25,7 +26,7 @@ Parse the user's message for a subcommand:
 
 | Layer | Files | Status |
 |-------|-------|--------|
-| **Rust/Tauri** | `src-tauri/src/steam.rs` (+10 networking commands) | DONE |
+| **Rust/Tauri** | `src-tauri/src/steam.rs` (+12 networking commands, +2 lobby browser) | DONE |
 | **Steam P2P Bridge** | `src/services/steamNetworkingService.ts` | DONE |
 | **Transport** | `src/services/multiplayerTransport.ts` (WS + P2P + Local) | DONE |
 | **Types** | `src/data/multiplayerTypes.ts` | DONE |
@@ -44,6 +45,19 @@ Parse the user's message for a subcommand:
 | **Trivia UI** | `src/ui/components/TriviaRoundScreen.svelte` | DONE (not wired) |
 | **Gameplay Wiring** | gameFlowController + runManager + CardApp | DONE (Race Mode) |
 
+### Lobby Browser (Phase 1 complete — Plan: splendid-watching-unicorn)
+
+| Phase | Scope | Status |
+|-------|-------|--------|
+| **Phase 1** | Rust: `steam_request_lobby_list` + `steam_get_lobby_member_count` | DONE |
+| **Phase 2** | `multiplayerTypes.ts`: `LobbyVisibility`, `LobbyBrowserEntry`, `LobbyListFilter` | DONE (orchestrator) |
+| **Phase 3** | `steamNetworkingService.ts`: TS wrappers for Phase 1 commands | DONE |
+| **Phase 4** | Fastify `mpLobbyRegistry` + REST routes + WS upgrade | DONE |
+| **Phase 5** | `multiplayerTransport.ts`: WebSocket URL fix + joinToken support | DONE |
+| **Phase 6** | `multiplayerLobbyService.ts`: `LobbyBackend` abstraction + 3 backends | DONE |
+| **Phase 7** | UI: `LobbyBrowserScreen.svelte` + privacy toggle + max-players selector | IN PROGRESS (ui-agent) |
+| **Phase 8** | Dev: BroadcastChannel fake `localStorage` directory for two-tab testing | IN PROGRESS (ui-agent) |
+
 ### Race Mode Flow (End-to-End)
 Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared seed → play with live opponent HUD → run end → race finish broadcast
 
@@ -51,6 +65,9 @@ Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared
 
 | Priority | Task | Complexity |
 |----------|------|-----------|
+| **HIGH** | Complete Phase 7 UI: confirm `LobbyBrowserScreen.svelte` + privacy toggle land (ui-agent) | Medium |
+| **HIGH** | Phase 10: Tests for lobby service, mpLobbyRegistry, REST routes, steamBackend mock | Medium |
+| **HIGH** | Phase 11: Docker visual verify — BroadcastChannel + Web path scenarios | Medium |
 | **HIGH** | Test with 2 Steam accounts on LAN (verify P2P) | Low |
 | **HIGH** | Wire RaceResultsScreen into run end flow | Low |
 | **HIGH** | Wire Duel mode (shared enemy, simultaneous turns) into gameplay | Medium |
@@ -66,6 +83,7 @@ Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared
 - **AR Spec:** `docs/roadmap/AR-MULTIPLAYER.md`
 - **Mechanics Doc:** `docs/mechanics/multiplayer.md`
 - **Master Plan:** `~/.claude-pmobilee/plans/proud-fluttering-sketch.md`
+- **Lobby Browser Plan:** `~/.claude-muldamion/plans/splendid-watching-unicorn.md`
 - **Co-op Scaling:** HP 1.6x, Block 1.5x, Cap 1.5x for 2P (Monster Hunter sublinear)
 - **Scoring:** `(floor×100) + (combo×50) + (correct×10) - (wrong×5) + (perfect×200)`
 
@@ -88,6 +106,13 @@ Guide the user through testing with 2 Steam accounts:
 3. Both launch, one creates lobby, other joins via code
 4. Verify P2P message round-trip via console logs
 5. Start Race Mode, verify shared seed produces same encounters
+
+## Subcommand: `browse`
+Guide the lobby browser feature (splendid-watching-unicorn plan):
+1. Read the plan at `~/.claude-muldamion/plans/splendid-watching-unicorn.md`
+2. Check the Phase table above for current status
+3. Identify the next PENDING phase and its scope
+4. Delegate to the appropriate agent per `.claude/rules/agent-routing.md`
 
 ## Critical Invariants
 

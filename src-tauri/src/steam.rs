@@ -292,6 +292,55 @@ pub fn steam_get_lobby_data(
     }
 }
 
+/// Request a list of public Steam lobbies matching the current app.
+///
+/// This is asynchronous via Steam callback — the actual lobby IDs arrive later via
+/// `LobbyMatchList_t`. The pattern mirrors `steam_create_lobby`: we kick off the request,
+/// print results inside the closure, and return immediately. The JS layer polls
+/// `steam_run_callbacks` to drive completion and then calls `steam_get_lobby_list_result`
+/// to retrieve the IDs.
+///
+/// In V1, filtering is client-side — all public lobbies come back and the TS wrapper
+/// filters by mode / fullness. A dedicated `steam_add_lobby_list_filter` command can
+/// be added later if crate API supports it.
+///
+/// # Returns
+/// `""` always — result is async. Caller polls steam_run_callbacks + steam_get_lobby_list_result.
+#[tauri::command]
+pub fn steam_request_lobby_list(state: State<SteamState>) -> Result<String, String> {
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(client) = lock.as_ref() {
+        client.matchmaking().request_lobby_list(|result| match result {
+            Ok(lobbies) => println!("[Steam] Lobby list returned: {} lobbies", lobbies.len()),
+            Err(e) => eprintln!("[Steam] Lobby list request failed: {:?}", e),
+        });
+        println!("[Steam] Lobby list request initiated");
+    }
+    Ok(String::new())
+}
+
+/// Get the number of current members in a Steam lobby by ID.
+///
+/// Synchronous read — used by the lobby browser to show "2/4" without joining. Returns 0
+/// if Steam is unavailable or the lobby is unknown.
+///
+/// # Parameters
+/// - `lobby_id`: The lobby's 64-bit Steam ID as a decimal string
+#[tauri::command]
+pub fn steam_get_lobby_member_count(
+    state: State<SteamState>,
+    lobby_id: String,
+) -> Result<u32, String> {
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(client) = lock.as_ref() {
+        let id = parse_lobby_id(&lobby_id)?;
+        let count = client.matchmaking().lobby_member_count(id) as u32;
+        Ok(count)
+    } else {
+        Ok(0)
+    }
+}
+
 // ── P2P Networking — ISteamNetworkingMessages ─────────────────────────────────
 
 /// Send a P2P message to a peer using Steam Networking Messages (ISteamNetworkingMessages).

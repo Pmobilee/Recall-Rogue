@@ -25,6 +25,14 @@ import {
   startMessagePollLoop,
 } from './steamNetworkingService';
 
+// ── WebSocket URL Configuration ───────────────────────────────────────────────
+
+/**
+ * Default WebSocket URL for the Fastify MP lobby registry.
+ * Overridden in production via VITE_MP_WS_URL env var.
+ */
+const DEFAULT_MP_WS_URL = 'ws://localhost:3000/mp/ws';
+
 // ── Message Types ─────────────────────────────────────────────────────────────
 
 export type MultiplayerMessageType =
@@ -85,26 +93,44 @@ export interface MultiplayerMessage {
 
 export type TransportState = 'disconnected' | 'connecting' | 'connected' | 'error';
 
+// ── Connect Options ───────────────────────────────────────────────────────────
+
+/**
+ * Optional parameters for transport.connect().
+ * Used by WebSocketTransport to build the Fastify WS URL with lobby metadata.
+ * Other transports accept but ignore these options (interface compatibility).
+ */
+export interface ConnectOpts {
+  /** Lobby ID to include as a query param on the WS upgrade URL (web path only). */
+  lobbyId?: string;
+  /** Short-lived join token returned by POST /mp/lobbies/:id/join (web path only). */
+  joinToken?: string;
+}
+
 // ── Transport Interface ───────────────────────────────────────────────────────
 
 export interface MultiplayerTransport {
   /**
    * Connect to a peer or server.
    *
-   * For WebSocketTransport, `target` is the WebSocket URL and `localId` is the
-   * player's ID that will be appended as a query parameter.
+   * For WebSocketTransport, `target` is the lobby ID (used as the `lobbyId`
+   * query param) and `localId` is the player's ID. `opts.joinToken` is appended
+   * as the `token` query param for the Fastify WS upgrade authentication.
+   * The base URL is read from `import.meta.env.VITE_MP_WS_URL` (falls back to
+   * `ws://localhost:3000/mp/ws`).
    *
    * For SteamP2PTransport, `target` is the remote player's 64-bit Steam ID
-   * (as string) and `localId` is the local player's Steam ID.
+   * (as string) and `localId` is the local player's Steam ID. `opts` is ignored.
    *
    * For LocalMultiplayerTransport, `target` is ignored (no network target
    * exists) and `localId` identifies this player's side (e.g. 'player1').
+   * `opts` is ignored.
    *
    * For BroadcastChannelTransport, `target` is the lobby ID or lobby code
    * (used as the BroadcastChannel name) and `localId` is this tab's unique
-   * player ID.
+   * player ID. `opts` is ignored.
    */
-  connect(target: string, localId: string): void;
+  connect(target: string, localId: string, opts?: ConnectOpts): void;
 
   /** Send a typed multiplayer message. No-op if not connected. */
   send(type: MultiplayerMessageType, payload: Record<string, unknown>): void;
@@ -154,7 +180,13 @@ function emitToListeners(map: ListenerMap, type: string, msg: MultiplayerMessage
 
 /**
  * WebSocket-based transport for web/mobile multiplayer.
- * Messages are routed through the Fastify game server.
+ * Messages are routed through the Fastify MP lobby registry server.
+ *
+ * connect(lobbyId, localId, opts?):
+ *   Reads the base URL from `import.meta.env.VITE_MP_WS_URL` (fallback:
+ *   `ws://localhost:3000/mp/ws`). Builds the final URL as:
+ *     `${base}?lobbyId=${lobbyId}&playerId=${localId}&token=${joinToken}`
+ *   The `token` param is the short-lived join token from POST /mp/lobbies/:id/join.
  *
  * Reconnect uses exponential backoff capped at 5 attempts.
  */
@@ -167,13 +199,37 @@ export class WebSocketTransport implements MultiplayerTransport {
   private readonly maxReconnectAttempts = 5;
   private readonly baseReconnectDelayMs = 1000;
 
-  /** @param url WebSocket server URL (e.g. wss://game.example.com/mp) */
-  connect(url: string, localId: string): void {
+  /**
+   * Connect to the Fastify MP WebSocket endpoint.
+   *
+   * @param lobbyId - The lobby to join (used as the `lobbyId` query param).
+   *                  For legacy callers passing a full URL, that URL is used
+   *                  as-is for backwards compatibility.
+   * @param localId - This player's ID (used as the `playerId` query param).
+   * @param opts    - Optional join token and lobby ID override.
+   */
+  connect(lobbyId: string, localId: string, opts?: ConnectOpts): void {
     // Avoid double-connecting
     if (this.ws?.readyState === WebSocket.OPEN) return;
     this.localId = localId;
     this.state = 'connecting';
-    this.openSocket(url, localId);
+
+    // Build the full WS URL from the env-configured base URL + query params.
+    // VITE_MP_WS_URL is set by the build environment; in dev it falls back to
+    // DEFAULT_MP_WS_URL so developers can run the Fastify server locally without
+    // any env setup.
+    const base =
+      (typeof import.meta !== 'undefined' && import.meta.env?.VITE_MP_WS_URL) ||
+      DEFAULT_MP_WS_URL;
+
+    // Use opts.lobbyId if provided (joinLobbyById path), otherwise use the
+    // target argument (createLobby / joinLobby paths pass the lobbyId directly).
+    const resolvedLobbyId = opts?.lobbyId ?? lobbyId;
+    const params = new URLSearchParams({ lobbyId: resolvedLobbyId, playerId: localId });
+    if (opts?.joinToken) params.set('token', opts.joinToken);
+
+    const fullUrl = `${base}?${params.toString()}`;
+    this.openSocket(fullUrl, localId);
   }
 
   send(type: MultiplayerMessageType, payload: Record<string, unknown>): void {
@@ -211,7 +267,7 @@ export class WebSocketTransport implements MultiplayerTransport {
 
   private openSocket(url: string, localId: string): void {
     try {
-      this.ws = new WebSocket(`${url}?playerId=${encodeURIComponent(localId)}`);
+      this.ws = new WebSocket(url);
 
       this.ws.onopen = () => {
         this.state = 'connected';
@@ -255,11 +311,13 @@ export class WebSocketTransport implements MultiplayerTransport {
  * Messages travel directly peer-to-peer via Valve's relay network (no game server
  * required for data; lobby server still used for matchmaking/metadata).
  *
- * connect(peerId, localId):
+ * connect(peerId, localId, opts?):
  *   1. Stores the remote peer's Steam ID
  *   2. Calls acceptP2PSession(peerId) to allow incoming messages from them
  *   3. Starts the poll loop (16 ms / ~60 Hz) to pump Steam callbacks and drain
  *      the P2P message queue
+ *   opts is accepted for interface compatibility but ignored — Steam P2P has no
+ *   join tokens or Fastify WS URLs.
  *
  * The poll loop's onMessage callback parses each raw SteamP2PMessage as a
  * MultiplayerMessage (JSON) and routes it to registered listeners by type.
@@ -277,8 +335,9 @@ export class SteamP2PTransport implements MultiplayerTransport {
   /**
    * @param peerId  Remote player's 64-bit Steam ID as a string
    * @param localId Local player's 64-bit Steam ID as a string
+   * @param opts    Accepted for interface compatibility — ignored by Steam P2P
    */
-  connect(peerId: string, localId: string): void {
+  connect(peerId: string, localId: string, _opts?: ConnectOpts): void {
     if (this.state === 'connected') return;
     this.peerId = peerId;
     this.localId = localId;
@@ -402,9 +461,9 @@ export class LocalMultiplayerTransport implements MultiplayerTransport {
   /**
    * Mark this transport as connected. The `target` argument is unused for
    * local transport (there is no network target), but is kept for interface
-   * compatibility.
+   * compatibility. `opts` is also ignored.
    */
-  connect(target: string, localId: string): void {
+  connect(target: string, localId: string, _opts?: ConnectOpts): void {
     this.localId = localId;
     this.state = 'connected'; // Instantly connected — no networking
   }
@@ -509,6 +568,9 @@ const BC_PACKET_LOSS_RATE = 0.02;
  * dropped with 2% probability to mimic Steam relay conditions. Inbound messages
  * receive an additional 5–20 ms of receive-side jitter. This makes two-tab
  * testing representative of real peer-to-peer network behaviour.
+ *
+ * opts is accepted for interface compatibility but ignored — BroadcastChannel
+ * has no join tokens or Fastify WS URLs.
  */
 export class BroadcastChannelTransport implements MultiplayerTransport {
   private state: TransportState = 'disconnected';
@@ -520,8 +582,9 @@ export class BroadcastChannelTransport implements MultiplayerTransport {
    * Open a BroadcastChannel named `rr-mp:<target>`.
    * @param target Lobby ID (host) or lobby code (joiner) — both sides must use the same value
    * @param localId Unique ID for this tab's player — used to filter self-echo
+   * @param opts   Accepted for interface compatibility — ignored
    */
-  connect(target: string, localId: string): void {
+  connect(target: string, localId: string, _opts?: ConnectOpts): void {
     this.localId = localId;
     const channelName = `rr-mp:${target}`;
     this.channel = new BroadcastChannel(channelName);

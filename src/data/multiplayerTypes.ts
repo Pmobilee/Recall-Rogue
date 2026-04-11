@@ -14,6 +14,15 @@ export type MultiplayerMode =
   | 'coop'           // Cooperative vs shared enemy
   | 'trivia_night';  // Pure quiz party mode
 
+/**
+ * Lobby visibility — how a lobby shows up in the public browser.
+ * - 'public' → appears in the browser, anyone can join.
+ * - 'password' → appears in the browser with a 🔒 badge; join requires the password.
+ * - 'friends_only' → not listed in the public browser. On Steam uses SteamLobbyType::FriendsOnly;
+ *                    on web / broadcast degrades to code-only (reachable only via invite code).
+ */
+export type LobbyVisibility = 'public' | 'password' | 'friends_only';
+
 /** Deck selection strategy for the lobby */
 export type DeckSelectionMode =
   | 'host_picks'     // Host chooses deck for all
@@ -72,6 +81,44 @@ export interface LobbyState {
   lobbyCode?: string;           // 6-char join code
   seed?: number;                // Shared run seed (set when game starts)
   status: 'waiting' | 'ready' | 'starting' | 'in_game';
+  /**
+   * Visibility in the public browser. Default 'public'.
+   * Always co-updated with `hasPassword` via `setVisibility()` — never mutate directly.
+   */
+  visibility: LobbyVisibility;
+  /**
+   * Derived UI flag: true when `visibility === 'password'`. Always co-set with `visibility`.
+   * Kept as a denormalized field so UI templates can read a plain boolean.
+   */
+  hasPassword: boolean;
+}
+
+/**
+ * One row in the lobby browser. Built by a backend's `listPublicLobbies` implementation
+ * from the authoritative lobby state and presented to `LobbyBrowserScreen.svelte`.
+ * `friends_only` lobbies are filtered out on the web/broadcast paths (no friends graph);
+ * on Steam the friends filter is enforced by Steam Matchmaking itself.
+ */
+export interface LobbyBrowserEntry {
+  lobbyId: string;
+  hostName: string;
+  mode: MultiplayerMode;
+  currentPlayers: number;
+  maxPlayers: number;
+  visibility: LobbyVisibility;
+  /** Optional fairness rating from `fairnessService` (0-100). */
+  fairnessRating?: number;
+  /** Epoch ms of lobby creation — drives the "new" pulse on recently-created tiles. */
+  createdAt: number;
+  /** Which backend served this entry. Shown as a badge in the browser header. */
+  source: 'steam' | 'web' | 'broadcast';
+}
+
+/** Filter for listing public lobbies. */
+export interface LobbyListFilter {
+  mode?: MultiplayerMode;
+  /** 'open' excludes full lobbies; 'any' includes them. */
+  fullness?: 'any' | 'open';
 }
 
 /** Race mode progress snapshot (sent at ~0.5 Hz) */
@@ -161,13 +208,22 @@ export const DEFAULT_HOUSE_RULES: HouseRules = {
   },
 };
 
-/** Max players per mode */
+/** Max players per mode — acts as the cap for the host's max-players selector. */
 export const MODE_MAX_PLAYERS: Record<MultiplayerMode, number> = {
   race: 4,
   same_cards: 2,
   duel: 2,
   coop: 2,
   trivia_night: 8,
+};
+
+/** Min players per mode — the floor for the host's max-players selector. */
+export const MODE_MIN_PLAYERS: Record<MultiplayerMode, number> = {
+  race: 2,
+  same_cards: 2,
+  duel: 2,
+  coop: 2,
+  trivia_night: 2,
 };
 
 /** Mode display names */

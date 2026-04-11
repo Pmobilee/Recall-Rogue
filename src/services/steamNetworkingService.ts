@@ -9,16 +9,18 @@
  * Networking calls. This module communicates with it via Tauri IPC (`invoke`).
  *
  * Tauri command → function mapping:
- *   steam_create_lobby      → createSteamLobby
- *   steam_join_lobby        → joinSteamLobby
- *   steam_leave_lobby       → leaveSteamLobby
- *   steam_get_lobby_members → getLobbyMembers
- *   steam_set_lobby_data    → setLobbyData
- *   steam_get_lobby_data    → getLobbyData
- *   steam_send_p2p_message  → sendP2PMessage
- *   steam_read_p2p_messages → readP2PMessages
- *   steam_accept_p2p_session → acceptP2PSession
- *   steam_run_callbacks     → runSteamCallbacks
+ *   steam_create_lobby        → createSteamLobby
+ *   steam_join_lobby          → joinSteamLobby
+ *   steam_leave_lobby         → leaveSteamLobby
+ *   steam_get_lobby_members   → getLobbyMembers
+ *   steam_request_lobby_list  → requestSteamLobbyList
+ *   steam_get_lobby_member_count → getLobbyMemberCount
+ *   steam_set_lobby_data      → setLobbyData
+ *   steam_get_lobby_data      → getLobbyData
+ *   steam_send_p2p_message    → sendP2PMessage
+ *   steam_read_p2p_messages   → readP2PMessages
+ *   steam_accept_p2p_session  → acceptP2PSession
+ *   steam_run_callbacks       → runSteamCallbacks
  */
 
 import { hasSteam } from './platformService';
@@ -109,6 +111,39 @@ export async function getLobbyMembers(lobbyId: string): Promise<SteamLobbyMember
   return (await tauriInvoke<SteamLobbyMember[]>('steam_get_lobby_members', {
     lobby_id: lobbyId,
   })) ?? [];
+}
+
+/**
+ * Request a list of public Steam lobbies for this app (async via Steam callback).
+ *
+ * This is a fire-and-forget kick. The actual lobby IDs arrive later; callers must
+ * poll `runSteamCallbacks` after invoking this, then query individual lobbies via
+ * `getLobbyData` to build browser entries.
+ *
+ * For V1 the Rust side does the request and prints the count to the console. Future
+ * enhancement: add `steam_get_lobby_list_result` that reads a cached `Vec<String>`
+ * back into JS so the browser doesn't re-request on every poll.
+ *
+ * Returns `false` on non-Steam platforms (browser/mobile) — caller should fall back
+ * to the web or broadcast backend.
+ */
+export async function requestSteamLobbyList(): Promise<boolean> {
+  if (!hasSteam) return false;
+  const result = await tauriInvoke<string>('steam_request_lobby_list');
+  return result !== null;
+}
+
+/**
+ * Get the current member count of a Steam lobby by ID (synchronous).
+ *
+ * Used by the lobby browser to show "2/4" without joining. Returns 0 on non-Steam
+ * platforms or if the lobby is unknown.
+ *
+ * @param lobbyId - 64-bit Steam ID as a decimal string
+ */
+export async function getLobbyMemberCount(lobbyId: string): Promise<number> {
+  if (!hasSteam) return 0;
+  return (await tauriInvoke<number>('steam_get_lobby_member_count', { lobby_id: lobbyId })) ?? 0;
 }
 
 // ── Lobby Metadata ────────────────────────────────────────────────────────────

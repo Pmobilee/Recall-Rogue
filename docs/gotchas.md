@@ -1,5 +1,41 @@
 
 
+### 2026-04-11 — Commit-attribution detector (prototype) — cross-session bundling
+
+**Symptom:** When multiple agents stage files concurrently, whichever agent
+runs `git commit` first captures the ENTIRE index under its own message —
+bundling in-flight work from other agents under an attribution that doesn't
+match. Observed at least 4 times on 2026-04-11:
+- `06097f1c7` titled "docs(index)" actually bundled 434 lines of Zod schema
+- `2adf8585d` titled "card description audit" bundled HSK sense-mismatch fixes
+- `de1379f61` titled "fix(registry)" bundled DeckDetailModal skipped-facts badge
+- `0b51b46e5` — wiring-check content staged by one agent, committed by another
+
+This is distinct from the flake-under-load problem (fixed by the multi-agent
+soft-warn policy). Attribution bundling is a layer-3 problem — the commits
+land correctly but the git history is lies.
+
+**Prototype fix:** `scripts/lint/check-commit-attribution.sh` compares staged
+file mtimes. If the spread exceeds the threshold (default 600 seconds / 10
+min), it emits a warning listing the outliers and suggests `git restore
+--staged` for other agents' files. **It never blocks** — it's a warning-only
+prototype until the false-positive rate is measured. Wired into
+`hooks/pre-commit` as the last step.
+
+**How to calibrate:** after a week of running, sample the warning output and
+see (a) how many warnings were legitimate cross-session bundles vs slow
+single-agent work, (b) whether the 10-minute threshold is too tight/loose.
+Promote to blocking (`exit 1`) only after false-positive rate is < 10%.
+
+**Harder fix** (not shipped): session-tagged file markers — a PostToolUse hook
+that writes the current agent session ID into `.claude/staged-by.json` after
+every Edit/Write, then the pre-commit hook reads the marker and flags any
+mixed-session commits. More reliable but requires harness-level coordination.
+
+**Files:** `scripts/lint/check-commit-attribution.sh`, `hooks/pre-commit:71-76`
+
+---
+
 ### 2026-04-11 — Intent preview block decay ordering (Issue 11)
 
 **Symptom:** Player has 15 block, enemy intent badge shows "15 damage". Player ends their turn expecting the block to fully absorb it. But they take 3 HP anyway.

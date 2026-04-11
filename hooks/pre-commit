@@ -67,3 +67,10 @@ if [ -n "$STAGED_DECKS" ]; then
     echo "Quiz audit passed."
   fi
 fi
+
+# --- Commit attribution detector (prototype, non-blocking) ---
+# Warns if staged files span a wide mtime window, suggesting cross-session
+# bundling from concurrent agents. Always exits 0. See gotchas 2026-04-11.
+if [ -x "$REPO_ROOT/scripts/lint/check-commit-attribution.sh" ]; then
+  "$REPO_ROOT/scripts/lint/check-commit-attribution.sh" >&2 || true
+fi

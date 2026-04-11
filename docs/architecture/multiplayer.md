@@ -246,3 +246,108 @@ Both client (`multiplayerLobbyService.ts:465`) and server (`mpLobbyRegistry.ts`)
 ABCDEFGHJKLMNPQRSTUVWXYZ23456789
 ```
 No I, O, 0, or 1 (visual confusion). Codes are 6 characters, uppercase only.
+
+---
+
+## Phase 5 — WebSocket Transport URL Construction (2026-04-11)
+
+**Source file:** `src/services/multiplayerTransport.ts`
+
+### `ConnectOpts` interface
+
+A new optional third parameter on `MultiplayerTransport.connect()`:
+
+```typescript
+interface ConnectOpts {
+  lobbyId?: string;     // Lobby ID to include in the WS upgrade query params
+  joinToken?: string;   // Short-lived token from POST /mp/lobbies/:id/join
+}
+```
+
+All four transports accept `opts` for interface compatibility. Only `WebSocketTransport` uses it.
+
+### `WebSocketTransport.connect` URL building
+
+The transport no longer uses `target` as a raw WS URL. Instead:
+
+1. Reads the base URL from `import.meta.env.VITE_MP_WS_URL` (fallback: `ws://localhost:3000/mp/ws` via the `DEFAULT_MP_WS_URL` module-level const).
+2. Appends `?lobbyId=<resolvedLobbyId>&playerId=<localId>&token=<joinToken>` to form the full WS upgrade URL.
+3. `resolvedLobbyId` prefers `opts.lobbyId` over `target` so callers using the `joinLobbyById` path can supply the canonical backend ID.
+
+### Environment variables (`.env.example`)
+
+```
+VITE_MP_WS_URL=ws://localhost:3000/mp/ws    # WebSocket URL for WS upgrade
+VITE_MP_API_URL=http://localhost:3000        # REST base URL for webBackend
+```
+
+---
+
+## Phase 6/8 — Unified LobbyBackend abstraction (2026-04-11)
+
+**Source file:** `src/services/multiplayerLobbyService.ts`
+
+### New public API surface
+
+| Export | Signature | Description |
+|--------|-----------|-------------|
+| `createLobby` | `async (playerId, displayName, mode, opts?)` | Host creates a lobby via the active backend. Now async. `opts.password` is SHA-256 hashed client-side. |
+| `joinLobby` | `async (lobbyCode, playerId, displayName, password?)` | Join by invite code. Now async; hashes password and resolves code via backend. |
+| `joinLobbyById` | `async (lobbyId, playerId, displayName, password?)` | Join directly by backend lobby ID (used by the browser screen). |
+| `setVisibility` | `(visibility: LobbyVisibility)` | Host-only. Co-updates `visibility` and `hasPassword` atomically. |
+| `setPassword` | `async (password: string \| null)` | Host-only. Hashes plaintext, stores in `_passwordHash`. Clears if null. |
+| `setMaxPlayers` | `(n: number)` | Host-only. Clamped to `[MODE_MIN_PLAYERS[mode], MODE_MAX_PLAYERS[mode]]`. |
+| `listPublicLobbies` | `async (filter?)` | Delegates to active backend. Returns `LobbyBrowserEntry[]`. |
+
+### `LobbyBackend` interface
+
+```typescript
+interface LobbyBackend {
+  createLobby(opts: CreateLobbyBackendOpts): Promise<{ lobbyId, lobbyCode, joinToken? }>;
+  resolveByCode(code: string): Promise<string | null>;
+  joinLobbyById(lobbyId, playerId, displayName, passwordHash?): Promise<JoinLobbyResult>;
+  listPublicLobbies(filter?): Promise<LobbyBrowserEntry[]>;
+}
+```
+
+`pickBackend()` selects: `steamBackend` → `broadcastBackend` → `webBackend` (priority order).
+
+### Password handling
+
+- Client hashes plaintext with SHA-256 (`crypto.subtle.digest`) before any backend call.
+- Hash stored in module-level `_passwordHash` (never in `LobbyState` — not serialized over the wire).
+- Backend receives only the hash. Fastify uses `timingSafeEqual`; Steam stores it in lobby metadata.
+- `_passwordHash` cleared in `leaveLobby()`.
+
+### `broadcastBackend` — localStorage fake directory (Phase 8)
+
+- `localStorage['rr-mp:directory']` — JSON array of `LobbyBrowserEntry`.
+- Host heartbeat: `setInterval(() => upsertBroadcastEntry(...), 5000)`. Interval stored in `_broadcastHeartbeat`; cleared in `leaveLobby()`.
+- Read-side pruning: entries with `createdAt < Date.now() - 30_000` dropped on every read.
+- Write-side dedup: `upsertBroadcastEntry` removes existing entry with the same `lobbyId` before inserting.
+- `resolveByCode` returns `null` — broadcast mode uses the lobbyCode directly as the `BroadcastChannel` channel name.
+- `friends_only` lobbies excluded from `listPublicLobbies` (no friends graph in localStorage).
+
+### Backend Selection Logic
+
+`pickBackend()` uses a priority cascade. The conditions are checked in order — the first matching condition wins:
+
+| Priority | Condition | Backend selected | Notes |
+|----------|-----------|-----------------|-------|
+| 1 | `hasSteam === true` | `steamBackend` | Tauri + Steam build; uses Steamworks matchmaking + P2P |
+| 2 | `isBroadcastMode()` — URL has `?mp` param | `broadcastBackend` | Dev two-tab mode; uses `localStorage` fake directory |
+| 3 | (default) | `webBackend` | Web / mobile / CI; uses Fastify REST + WebSocket |
+
+`hasSteam` is the existing Steam availability check from `steamService.ts`. `isBroadcastMode()` checks `new URLSearchParams(window.location.search).has('mp')`.
+
+### Lobby Visibility — Tri-State
+
+`LobbyVisibility` is `'public' | 'password' | 'friends_only'`. Behavior per state:
+
+| Visibility | Steam behavior | Web/Broadcast behavior |
+|------------|---------------|------------------------|
+| `public` | `SteamLobbyType::Public`; appears in `steam_request_lobby_list` results | `GET /mp/lobbies` returns the entry; no icon |
+| `password` | `SteamLobbyType::Public` + `password_hash` in lobby metadata; appears in list with 🔒 icon | Listed by `GET /mp/lobbies`; join validates hash; 🔒 icon |
+| `friends_only` | `SteamLobbyType::FriendsOnly`; Steam handles native friends-graph filter | **Excluded from browser list** — no friends graph on web/broadcast; code-join only; tooltip explains |
+
+**Degradation note:** `friends_only` on web degrades to "hidden from the lobby browser" (effectively code-join only). Steam friends can still receive a direct invite link. The lobby creation UI disables the Friends Only option on non-Steam builds with a tooltip: "Steam only — invite friends via code instead."

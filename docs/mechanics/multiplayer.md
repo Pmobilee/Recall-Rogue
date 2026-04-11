@@ -691,3 +691,39 @@ Both forms pass the lint. The fallback to `Math.random()` in the non-run context
 **Pre-existing violations:** ~168 bare calls exist in the codebase (gradual migration target). The lint runs as soft-warn in the pre-commit hook until the count reaches zero.
 
 **Allowlist governance:** The allowlist in `no-bare-math-random.mjs` is printed on every run so code reviewers can audit what is granted. Cosmetic systems (particles, visual FX, hub ambience, boot animation) are explicitly allowlisted because they affect only visuals, never shared game state.
+
+---
+
+## Lobby Browser (Phase 7 — 2026-04-11)
+
+### Player-Facing UX Flow
+
+From the Multiplayer Hub, click **Browse Lobbies** to see a live list of open public games. The browser refreshes every 5 seconds while mounted.
+
+**Browse screen elements:**
+- Header: "Browse Lobbies" + back button (escape hatch) + refresh button + transport badge (Steam / Web / Dev).
+- Filter bar: mode filter (All / Race / Duel / Co-op / Trivia Night), fullness filter (Available / All).
+- Lobby grid: each tile shows host name, mode icon + label, `currentPlayers / maxPlayers`, visibility icon (🔒 for password-protected, 👥 for friends-only), fairness rating if present, and a ✨ "new" pulse for lobbies created within the last 15 seconds.
+- Empty state: "No lobbies available — be the first!" with a "Create Lobby" shortcut button.
+
+**Joining a password-protected lobby:** Clicking a 🔒 lobby opens a password modal. The entered password is SHA-256 hashed client-side before being sent. If the hash does not match the stored hash, the server returns a 403 and the modal shakes.
+
+**Friends-only lobbies:** On Steam, these do not appear in the browser list (Steam handles the friends-graph filter natively). On web builds, friends-only lobbies are code-join only and are not visible to non-friends. Steam friends can still receive a direct lobby invite.
+
+### Hosting Options
+
+When creating a lobby, the host configures:
+
+**Visibility (tri-state toggle):**
+- **Public** — Listed in the browser, open to all. No icon.
+- **Password** — Listed in the browser with a 🔒 icon. Joiners must enter the correct password.
+- **Friends Only** — Hidden from the browser. Steam friends can still join via invite. On non-Steam builds, this option is disabled with a tooltip ("Steam only — invite friends via code instead").
+
+**Max players (mode-specific pill selector):**
+- Race Mode: 2, 3, or 4 (capped at `MODE_MAX_PLAYERS['race'] = 4`).
+- Trivia Night: 2 through 8 (capped at `MODE_MAX_PLAYERS['trivia_night'] = 8`).
+- Duel / Co-op: always 2 (fixed — selector disabled with a tooltip).
+
+The selector is floored at `MODE_MIN_PLAYERS[mode]` (always 2) and capped at `MODE_MAX_PLAYERS[mode]`. Non-host players see the settings as read-only badges.
+
+**Password UX:** When "Password" is selected, a password input appears with a show/hide eye toggle. The host's plaintext password is never sent over the network — only the SHA-256 hash reaches the backend.
