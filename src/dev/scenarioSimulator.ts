@@ -532,6 +532,14 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'deckSelectionHub',
   },
 
+  // === Trivia Round (solo party mode — wired in BATCH-ULTRA T7 fix) ===
+  // Renders TriviaRoundScreen.svelte in waiting phase so the component renders
+  // without needing an active multiplayer lobby. Real game flow populates via
+  // triviaNightService. See issue-1775873221654-07-004.
+  'trivia-round': {
+    screen: 'triviaRound',
+  },
+
   // Mystery event by ID examples
   'mystery-tutors-office': {
     screen: 'mysteryEvent',
@@ -648,10 +656,14 @@ async function bootstrapRun(config: ScenarioConfig): Promise<boolean> {
   await wait(100);
 
   const domain = (config.domain ?? 'general_knowledge') as any;
+  // Pass ascension level from config so encounterBridge picks up correct modifiers
+  // when startEncounterForRoom() is called — without this, TurnState is initialized
+  // at A0 difficulty even if the scenario badge shows a higher level (issue-1744332000000-08-001)
   const run = createRunState(domain, domain, {
     selectedArchetype: 'balanced',
     starterDeckSize: 15,
     startingAp: 3,
+    ascensionLevel: config.ascension ?? 0,
   });
 
   // Apply config overrides to run
