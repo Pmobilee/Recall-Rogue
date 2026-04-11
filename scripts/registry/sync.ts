@@ -8,7 +8,8 @@
  *   - decks table via json_glob source mode (reads data/decks/*.json, skips _wip/)
  *   - Deck-specific audit date fields: lastStructuralVerify, lastQuizAudit, lastLLMPlaytest, lastTriviaBridge
  *   - inProgress lock field for parallel-agent coordination
- *   - Non-deck JSON files (e.g. manifest.json) skipped by structural check: no 'id' field + has 'decks' array
+ *   - Non-deck JSON files (e.g. manifest.json) skipped by structural check
+ *   - Test-only stub decks (test_*.json) skipped by filename prefix
  */
 
 import fs from 'fs';
@@ -238,6 +239,12 @@ async function extractFromMapping(mapping: SourceMapping): Promise<ExtractedElem
       // Skip non-deck JSON files (e.g. manifest.json) — structural check: no 'id' field + has 'decks' array
       if (!('id' in data) && Array.isArray(data['decks'])) {
         console.log(`  [skip] ${path.basename(filePath)} — not a deck file (has 'decks' array, no 'id')`);
+        continue;
+      }
+
+      // Skip test-only stub decks (e.g. test_world_capitals.json) — not production content
+      if (path.basename(filePath).startsWith('test_')) {
+        console.log(`  [skip] ${path.basename(filePath)} — test stub deck`);
         continue;
       }
 

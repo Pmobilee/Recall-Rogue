@@ -17,6 +17,14 @@ export interface CuratedDeck {
   synonymGroups: SynonymGroup[];
   questionTemplates: QuestionTemplate[];
   difficultyTiers: DifficultyTier[];
+  /**
+   * Runtime metadata only — NOT persisted to curated.db or the Zod schema.
+   * Set by curatedDeckStore.ts during initialization to the number of fact rows
+   * that failed Zod schema validation and were skipped. Zero for healthy data.
+   * Nonzero count indicates a content pipeline bug — surface this to players
+   * via the deck-info panel so they know the deck is smaller than expected.
+   */
+  skippedFactCount?: number;
 }
 
 export interface DeckFact {

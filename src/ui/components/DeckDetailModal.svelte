@@ -97,6 +97,13 @@
     return getTagFactIds(deck.id, Array.from(selectedTags)).length;
   });
 
+  /**
+   * Number of facts that failed Zod schema validation during deck load.
+   * Nonzero only when the deck has a content pipeline bug. Sourced from
+   * DeckRegistryEntry.skippedFactCount (set by curatedDeckStore.ts).
+   */
+  const skippedFactCount = $derived(deck.skippedFactCount ?? 0);
+
   function toggleTag(tag: string) {
     const next = new Set(selectedTags);
     if (next.has(tag)) {
@@ -157,6 +164,30 @@
         <!-- Deck name + description -->
         <div class="deck-name">{deck.name}</div>
         <div class="deck-description">{deck.description}</div>
+
+        <!-- Skipped-facts warning badge — shown only when skippedFactCount > 0.
+             Runtime-only: indicates a content pipeline bug where some fact rows
+             failed Zod schema validation. The deck still works but is smaller
+             than expected. -->
+        {#if skippedFactCount > 0}
+          <div
+            class="skipped-warning"
+            role="alert"
+            aria-label="{skippedFactCount} fact{skippedFactCount !== 1 ? 's' : ''} skipped due to validation errors"
+            data-testid="deck-skipped-warning"
+          >
+            <span class="skipped-icon" aria-hidden="true">&#9888;</span>
+            <span class="skipped-text">
+              {skippedFactCount} fact{skippedFactCount !== 1 ? 's' : ''} skipped (malformed)
+            </span>
+            <div class="skipped-tooltip" role="tooltip">
+              This deck had {skippedFactCount} {skippedFactCount !== 1 ? 'entries' : 'entry'} that
+              failed schema validation and {skippedFactCount !== 1 ? 'are' : 'is'} not playable.
+              The rest of the deck works normally.
+              Check the browser console for details.
+            </div>
+          </div>
+        {/if}
 
         <!-- Overall Progress Section -->
         <div class="progress-section">
@@ -431,7 +462,62 @@
     color: #64748b;
     line-height: 1.4;
     margin-top: calc(6px * var(--layout-scale, 1));
-    margin-bottom: calc(16px * var(--layout-scale, 1));
+    margin-bottom: calc(10px * var(--layout-scale, 1));
+  }
+
+  /* Skipped-facts warning badge — only rendered when skippedFactCount > 0 */
+  .skipped-warning {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(5px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    margin-bottom: calc(12px * var(--layout-scale, 1));
+    cursor: default;
+    /* Tooltip shows on hover — container must be non-overflow-hidden */
+    overflow: visible;
+  }
+
+  .skipped-warning:hover .skipped-tooltip {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .skipped-icon {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #f59e0b;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .skipped-text {
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 600;
+    color: #fbbf24;
+    white-space: nowrap;
+  }
+
+  /* Tooltip — hidden by default, revealed on hover */
+  .skipped-tooltip {
+    position: absolute;
+    top: calc(100% + 6px * var(--layout-scale, 1));
+    left: 0;
+    z-index: 10;
+    width: calc(280px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: #1e293b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #cbd5e1;
+    line-height: 1.5;
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
   }
 
   /* Progress section */

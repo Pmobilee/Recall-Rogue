@@ -36,6 +36,14 @@ export interface DeckRegistryEntry {
     gradientTo: string;
     icon: string;
   };
+  /**
+   * Runtime metadata only — NOT persisted to curated.db.
+   * Number of fact rows that failed Zod schema validation during deck load.
+   * Zero for healthy data. Nonzero count is surfaced in the deck-info panel
+   * so players know some facts were skipped due to a content pipeline bug.
+   * Set by curatedDeckStore.ts when registering the deck via registerDeck().
+   */
+  skippedFactCount?: number;
 }
 
 /** Central registry of all curated decks. Initially empty — populated as decks are built. */

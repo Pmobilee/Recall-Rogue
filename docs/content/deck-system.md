@@ -42,6 +42,8 @@ Curated decks are distinct from the trivia `facts.db` SQLite database. They are 
 
 **Key constraint:** `distractors: z.array(z.string())` — numeric arrays fail validation. This is the fifa regression test. See `src/data/curatedDeckSchema.test.ts` for the explicit regression test case.
 
+**UI surface (2026-04-11):** Per-deck skip counts are now forwarded through the registry to the Study Temple deck-info panel. When a deck has `skippedFactCount > 0`, `DeckDetailModal.svelte` renders a yellow warning badge below the deck description reading "{N} facts skipped (malformed)". Hovering shows a tooltip: "This deck had N entries that failed schema validation and are not playable. The rest of the deck works normally. Check the browser console for details." Hidden completely when `skippedFactCount === 0` (normal case). Data flow: `skippedFactsByDeck` (Map in `initializeCuratedDecks`) → `loadDeck(deck, skippedFactCount)` → `DeckRegistryEntry.skippedFactCount` → `DeckDetailModal` prop → badge render.
+
 
 ## Deck Types
 

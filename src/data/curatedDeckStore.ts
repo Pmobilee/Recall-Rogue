@@ -12,6 +12,10 @@
  * skipped (null-filtered) and counted — see the load summary log at the end of
  * initializeCuratedDecks(). This closes the class of silent-decode bugs including
  * the "fifa numeric distractors" incident.
+ *
+ * Skip count surfacing: per-deck skipped fact counts are stored on CuratedDeck
+ * (skippedFactCount) and forwarded to DeckRegistryEntry so the Study Temple
+ * deck-info panel can show a warning badge to players importing broken decks.
  */
 
 import type { CuratedDeck, DeckFact, AnswerTypePool, SynonymGroup } from './curatedDeckTypes';
@@ -217,14 +221,25 @@ function deriveArtPlaceholder(
 /**
  * Load a CuratedDeck into the store, register it in the deck registry,
  * and register its fact IDs in the fact index.
+ *
+ * @param deck - The assembled deck to register.
+ * @param skippedFactCount - Number of fact rows that failed Zod validation for
+ *   this deck during loading. Defaults to 0. Stored on the deck and forwarded
+ *   to the registry entry so the UI can surface a warning badge to players.
  */
-function loadDeck(deck: CuratedDeck): void {
-  loadedDecks.set(deck.id, deck);
+function loadDeck(deck: CuratedDeck, skippedFactCount = 0): void {
+  // Attach runtime skip metadata before storing — allows callers to read it
+  // via getCuratedDeck() if needed.
+  const deckWithMeta: CuratedDeck = skippedFactCount > 0
+    ? { ...deck, skippedFactCount }
+    : deck;
+
+  loadedDecks.set(deckWithMeta.id, deckWithMeta);
 
   // Build sub-deck fact mappings if the deck JSON contains sub-deck info.
   // Sub-decks are detected by examining the registry entry's subDecks array
   // when present in the deck JSON itself (non-standard extension).
-  const deckWithSubDecks = deck as CuratedDeck & {
+  const deckWithSubDecks = deckWithMeta as CuratedDeck & {
     subDecks?: Array<{ id: string; name: string; factIds: string[] }>;
   };
 
@@ -245,22 +260,24 @@ function loadDeck(deck: CuratedDeck): void {
   }));
 
   const registryEntry: DeckRegistryEntry = {
-    id: deck.id,
-    name: deck.name,
-    description: deck.description,
-    domain: deck.domain as CanonicalFactDomain | 'vocabulary',
-    subDomain: deck.subDomain,
-    factCount: deck.facts.length,
+    id: deckWithMeta.id,
+    name: deckWithMeta.name,
+    description: deckWithMeta.description,
+    domain: deckWithMeta.domain as CanonicalFactDomain | 'vocabulary',
+    subDomain: deckWithMeta.subDomain,
+    factCount: deckWithMeta.facts.length,
     subDecks: registrySubDecks,
     tier: 1,
     status: 'available',
-    artPlaceholder: deriveArtPlaceholder(deck.domain, deck.id),
+    artPlaceholder: deriveArtPlaceholder(deckWithMeta.domain, deckWithMeta.id),
+    // Forward skip count so the Study Temple deck-info panel can warn players.
+    skippedFactCount: skippedFactCount > 0 ? skippedFactCount : undefined,
   };
   registerDeck(registryEntry);
 
   // Build tag index from facts that carry examTags.
   const tagIndex: Record<string, string[]> = {};
-  for (const fact of deck.facts) {
+  for (const fact of deckWithMeta.facts) {
     if (fact.examTags && fact.examTags.length > 0) {
       for (const tag of fact.examTags) {
         if (!tagIndex[tag]) tagIndex[tag] = [];
@@ -271,8 +288,8 @@ function loadDeck(deck: CuratedDeck): void {
   const allTags = Object.keys(tagIndex).sort();
 
   // Register fact IDs in the fact index.
-  registerDeckFacts(deck.id, {
-    allFacts: deck.facts.map(f => f.id),
+  registerDeckFacts(deckWithMeta.id, {
+    allFacts: deckWithMeta.facts.map(f => f.id),
     subDecks: Object.keys(subDecksRecord).length > 0 ? subDecksRecord : undefined,
     tagIndex: allTags.length > 0 ? tagIndex : undefined,
     allTags: allTags.length > 0 ? allTags : undefined,
@@ -394,6 +411,7 @@ function rowToSynonymGroup(row: Record<string, unknown>, deckId: string): Synony
  *
  * Schema validation: malformed rows are skipped (null-filtered) rather than
  * crashing the whole deck load. The final log reports how many rows were skipped.
+ * Per-deck skip counts are forwarded to the registry so the UI can warn players.
  */
 let _initCalled = false;
 export async function initializeCuratedDecks(): Promise<void> {
@@ -447,10 +465,12 @@ export async function initializeCuratedDecks(): Promise<void> {
     const poolRows = queryAll('SELECT * FROM answer_type_pools');
     const synonymRows = queryAll('SELECT * FROM synonym_groups');
 
-    // Track skipped rows for the final summary log.
+    // Track skipped rows for the final summary log (global + per-deck for facts).
     let skippedFacts = 0;
     let skippedPools = 0;
     let skippedSynonyms = 0;
+    // Per-deck skip counts for fact rows — forwarded to registry for UI warning badges.
+    const skippedFactsByDeck = new Map<string, number>();
 
     // Group by deck_id, filtering out null (schema-invalid) rows.
     const factsByDeck = new Map<string, DeckFact[]>();
@@ -459,6 +479,7 @@ export async function initializeCuratedDecks(): Promise<void> {
       const fact = rowToDeckFact(row, deckId);
       if (fact === null) {
         skippedFacts++;
+        skippedFactsByDeck.set(deckId, (skippedFactsByDeck.get(deckId) ?? 0) + 1);
         continue;
       }
       if (!factsByDeck.has(deckId)) factsByDeck.set(deckId, []);
@@ -510,7 +531,9 @@ export async function initializeCuratedDecks(): Promise<void> {
           continue;
         }
 
-        loadDeck(deck);
+        // Pass per-deck skip count so it reaches the registry and the UI.
+        const deckSkippedFacts = skippedFactsByDeck.get(deckId) ?? 0;
+        loadDeck(deck, deckSkippedFacts);
         loaded++;
         totalFacts += deck.facts.length;
       } catch (err) {
