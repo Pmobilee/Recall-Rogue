@@ -9,20 +9,7 @@
   import { getLanguageConfig } from '../../types/vocabulary'
   import { getChessElo, getEloLabel } from '../../services/chessEloService';
   import { playerSave } from '../stores/playerData';
-
-  /** Human-readable display labels for known exam tags. */
-  const TAG_DISPLAY: Record<string, string> = {
-    USMLE_Step1: 'USMLE Step 1',
-    USMLE_Step2: 'USMLE Step 2',
-    NBME_Shelf: 'NBME Shelf',
-    COMLEX: 'COMLEX',
-    PLAB: 'PLAB (UK)',
-    AMC: 'AMC (AU)',
-    MCAT: 'MCAT',
-    high_yield: 'High Yield',
-    clinical_correlation: 'Clinical',
-    image_identification: 'Visual ID',
-  };
+  import { formatExamTag } from '../utils/examTagDisplay';
 
   interface Props {
     deck: DeckRegistryEntry;
@@ -289,7 +276,7 @@
                   type="button"
                   aria-pressed={selectedTags.has(tag)}
                 >
-                  {TAG_DISPLAY[tag] ?? tag}
+                  {formatExamTag(tag)}
                   <span class="tag-count">({getTagCount(tag)})</span>
                 </button>
               {/each}

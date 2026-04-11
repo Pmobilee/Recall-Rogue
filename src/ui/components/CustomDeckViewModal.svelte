@@ -1,24 +1,11 @@
 <script lang="ts">
   import type { CustomDeck } from '../../data/studyPreset';
   import { getCuratedDeckFacts } from '../../data/curatedDeckStore';
+  import { formatExamTag } from '../utils/examTagDisplay';
   import { getAllDecks, getDeckById } from '../../data/deckRegistry';
   import { getDeckProgress, getSubDeckProgress } from '../../services/deckProgressService';
   import { getDeckTags, getTagFactIds } from '../../data/deckFactIndex';
   import { untrack } from 'svelte';
-
-  /** Human-readable display labels for known exam tags. */
-  const TAG_DISPLAY: Record<string, string> = {
-    USMLE_Step1: 'USMLE Step 1',
-    USMLE_Step2: 'USMLE Step 2',
-    NBME_Shelf: 'NBME Shelf',
-    COMLEX: 'COMLEX',
-    PLAB: 'PLAB (UK)',
-    AMC: 'AMC (AU)',
-    MCAT: 'MCAT',
-    high_yield: 'High Yield',
-    clinical_correlation: 'Clinical',
-    image_identification: 'Visual ID',
-  };
 
   interface Props {
     /** The custom deck to display and edit. */
@@ -272,7 +259,7 @@
                         <div class="tag-chips">
                           {#each getDeckTags(item.deckId) as tag (tag)}
                             <span class="tag-chip">
-                              {TAG_DISPLAY[tag] ?? tag}
+                              {formatExamTag(tag)}
                               <span class="tag-count">({getTagFactIds(item.deckId, [tag]).length})</span>
                             </span>
                           {/each}
