@@ -1,12 +1,12 @@
-# Social & Monetization Services
+# Social Services
 
-> **Purpose:** Multiplayer, duels, guilds, trading, classroom, challenges, leaderboards, IAP, subscriptions, referrals, sharing, and social hub.
-> **Last verified:** 2026-03-31
-> **Source files:** socialService.ts, duelService.ts, guildService.ts, tradingService.ts, classroomService.ts, challengeService.ts, coopService.ts, leaderboardFetch.ts, iapService.ts, subscriptionService.ts, monetizationService.ts, badgeService.ts, mentorService.ts, referralService.ts, feedbackService.ts, shareCardService.ts, runShareService.ts, scoreSubmissionQueue.ts, wsClient.ts
+> **Purpose:** Multiplayer, duels, guilds, trading, classroom, challenges, leaderboards, referrals, sharing, and social hub.
+> **Last verified:** 2026-04-11
+> **Source files:** socialService.ts, duelService.ts, guildService.ts, tradingService.ts, classroomService.ts, challengeService.ts, coopService.ts, leaderboardFetch.ts, badgeService.ts, mentorService.ts, referralService.ts, feedbackService.ts, shareCardService.ts, runShareService.ts, scoreSubmissionQueue.ts, wsClient.ts
 
 ## Overview
 
-Social services are mostly thin REST wrappers around the Fastify backend using `authedFetch`. Real-time co-op uses `wsClient` (WebSocket). Most social features are Phase 22+ and may be partially implemented. Monetization follows a free-to-play model with subscriptions (Rogue Pass, Expedition Patron) and a Steam base-game purchase.
+Social services are mostly thin REST wrappers around the Fastify backend using `authedFetch`. Real-time co-op uses `wsClient` (WebSocket). Most social features are Phase 22+ and may be partially implemented. Recall Rogue is a Steam base-game purchase — the entire IAP/subscription/monetization subsystem was removed 2026-04-11 (pre-launch, no real customers).
 
 ---
 
@@ -90,33 +90,6 @@ Social services are mostly thin REST wrappers around the Fastify backend using `
 | **Purpose** | Reusable leaderboard fetch utilities — abort timeout, 6-hour localStorage cache, cache read/write |
 | **Key exports** | `withAbortTimeout`, `readCachedLeaderboardRows`, `writeCachedLeaderboardRows` |
 | **Key dependencies** | None |
-
-## iapService
-
-| | |
-|---|---|
-| **File** | src/services/iapService.ts |
-| **Purpose** | In-App Purchase wrapper for Capacitor Purchases / RevenueCat; gracefully degrades in browser/dev |
-| **Key exports** | `initialize`, `purchaseProduct`, `restorePurchases`, `getOfferings`, `PurchaseResult` (interface) |
-| **Key dependencies** | iapCatalog |
-
-## subscriptionService
-
-| | |
-|---|---|
-| **File** | src/services/subscriptionService.ts |
-| **Purpose** | Subscription status checks — `isSubscriber`, `getSubscriptionTier`, `hasArcanePass`, `purchaseSubscription` |
-| **Key exports** | `isSubscriber`, `getSubscriptionTier`, `hasArcanePass`, `purchaseSubscription` |
-| **Key dependencies** | iapService |
-
-## monetizationService
-
-| | |
-|---|---|
-| **File** | src/services/monetizationService.ts |
-| **Purpose** | Subscription purchase flow with save mutation — grants subscription duration, marks products purchased |
-| **Key exports** | `purchaseSubscription`, `purchaseAdFree`, `purchaseSeasonPass`, `MonetizationPurchaseResult` (interface) |
-| **Key dependencies** | iapService, playerData store |
 
 ## scoreSubmissionQueue
 

@@ -35,7 +35,7 @@ import { getCardTier } from './tierDerivation';
 import { playCardAudio } from './cardAudioManager';
 import { MECHANIC_BY_ID, type PlayMode } from '../data/mechanics';
 import { analyticsService } from './analyticsService';
-import { isSubscriber } from './subscriptionService';
+
 import {
   applyAscensionEnemyTemplateAdjustments,
   getAscensionModifiers,
@@ -743,9 +743,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
       }
     } else {
       // Legacy path: standard 2-domain builder
-      const subscriberCategoryFilters = save && isSubscriber(save)
-        ? (save.subscriberCategoryFilters ?? undefined)
-        : undefined;
+      const subscriberCategoryFilters = undefined;
       activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
         probeRunNumber: run.primaryDomainRunNumber,
         probeDomain: run.primaryDomain,

@@ -3605,3 +3605,34 @@ NOTE: Phase 2 only covered src/data/ files. Additional com.terragacha.* string l
 src/services/monetizationService.ts (lines 13-20), src/services/subscriptionService.ts (lines 10, 50, 55, 60),
 src/services/analyticsService.ts (line 771 — trackRoguePassViewed call), and
 tests/unit/monetizationService.test.ts. These are Phase 3 cleanup targets.
+
+### 2026-04-11 — Terra Gacha IAP subsystem fully removed (Phase 3)
+
+Deleted: monetizationService.ts, subscriptionService.ts, iapService.ts, iapCatalog.ts,
+tests/unit/monetizationService.test.ts. Removed referralCode/referredBy/referralRewardsEarned
+save fields (dead after ReferralModal deletion in Wave A). Also removed hasPioneerPack,
+pioneerPackDismissed, purchasedProducts, adsRemoved, subscription, seasonPassProgress, and
+installDate fields — all exclusively consumed by the now-deleted services.
+
+Replaced isSubscriber() call site in encounterBridge.ts (legacy 2-domain path, line 746) with
+constant `undefined` for subscriberCategoryFilters. The subscriber gate was the only thing
+preventing category filters from being applied on the legacy path; collapsing to undefined is
+the correct pre-rename state.
+
+Wave B-1 (25c4eaa57) cleared UI-side consumers first: DomainSelection subscription gate ripped,
+CosmeticStoreModal deleted, SocialScreen ArcanePass button removed.
+
+The entire Terra Gacha monetization infrastructure is now gone: IAP catalog, subscription service,
+monetization flow, Season Pass UI, Referral UI, Sign in with Apple, Rogue Pass modal, Pioneer Pack
+modal, A/B experiment framework, and all associated analytics event types.
+
+Save-schema field `subscriberCategoryFilters` is still named for the old tier system but the
+feature (filter favorite categories) is legitimate and active. Renaming is queued as a Red-zone
+follow-up requiring a dedicated save-migration pass — do NOT touch without user approval.
+
+saveService.ts migration block and createNewPlayer defaults for purchasedProducts and adsRemoved
+were also removed (they were initializing fields that no runtime code reads anymore).
+
+Assumption baked in: pre-launch, no real customers, no save migrations needed.
+If Recall Rogue ever shipped under the Terra Gacha brand (which the user's direction explicitly
+denies), receipt validation for old purchases will fail.

@@ -2,7 +2,7 @@
 
 > **Purpose:** Lookup table mapping every service name to its domain sub-doc.
 > **Last verified:** 2026-04-11
-> **Source files:** All `src/services/*.ts` (149 files, excluding test files) + `src/services/math/*.ts` (7 files)
+> **Source files:** All `src/services/*.ts` (145 files, excluding test files) + `src/services/math/*.ts` (7 files)
 
 | Service | File | Sub-doc |
 |---------|------|---------|
@@ -74,7 +74,6 @@
 | guildService | src/services/guildService.ts | [social.md](social.md) |
 | hapticService | src/services/hapticService.ts | [platform.md](platform.md) |
 | hubState | src/services/hubState.ts | [run.md](run.md) |
-| iapService | src/services/iapService.ts | [social.md](social.md) |
 | inRunFactTracker | src/services/inRunFactTracker.ts | [learning.md](learning.md) |
 | inputService | src/services/inputService.ts | [platform.md](platform.md) |
 | japaneseTokenizer | src/services/japaneseTokenizer.ts | [quiz.md](quiz.md) |
@@ -93,7 +92,6 @@
 | masteryChallengeService | src/services/masteryChallengeService.ts | [run-competitive.md](run-competitive.md) |
 | masteryScalingService | src/services/masteryScalingService.ts | [learning.md](learning.md) |
 | mentorService | src/services/mentorService.ts | [social.md](social.md) |
-| monetizationService | src/services/monetizationService.ts | [social.md](social.md) |
 | multiplayerGameService | src/services/multiplayerGameService.ts | [social.md](social.md) |
 | multiplayerLobbyService | src/services/multiplayerLobbyService.ts | [social.md](social.md) |
 | multiplayerTransport | src/services/multiplayerTransport.ts | [platform.md](platform.md) |
@@ -145,7 +143,6 @@
 | storageBackend | src/services/storageBackend.ts | [persistence.md](persistence.md) |
 | studyPresetService | src/services/studyPresetService.ts | [deck.md](deck.md) |
 | studyScore | src/services/studyScore.ts | [learning.md](learning.md) |
-| subscriptionService | src/services/subscriptionService.ts | [social.md](social.md) |
 | surgeSystem | src/services/surgeSystem.ts | [combat.md](combat.md) |
 | synonymService | src/services/synonymService.ts | [quiz.md](quiz.md) |
 | syncDurabilityService | src/services/syncDurabilityService.ts | [persistence.md](persistence.md) |

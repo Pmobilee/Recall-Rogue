@@ -321,12 +321,6 @@ export function load(): PlayerSave | null {
     if (parsedAny['lastRegenAt'] === undefined) {
       parsedAny['lastRegenAt'] = Date.now()
     }
-    if (!Array.isArray(parsedAny['purchasedProducts'])) {
-      parsedAny['purchasedProducts'] = []
-    }
-    if (typeof parsedAny['adsRemoved'] !== 'boolean') {
-      parsedAny['adsRemoved'] = false
-    }
     if (!parsedAny['subscriberCategoryFilters'] || typeof parsedAny['subscriberCategoryFilters'] !== 'object') {
       parsedAny['subscriberCategoryFilters'] = {}
     }
@@ -609,8 +603,6 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     gracePeriodUsedAt: 0,
     weeklyChallenge: undefined,
     consumables: {},
-    purchasedProducts: [],
-    adsRemoved: false,
     subscriberCategoryFilters: {},
     studyPresets: [],
     categoryFilters: {},

@@ -537,20 +537,6 @@ export interface PlayerSave {
   tankBank?: number
   /** Fractional tank credit from mastery bonuses */
   tankCredit?: number
-  /** Unix timestamp of account creation (for Pioneer Pack 7-day window) */
-  installDate?: number
-  /** Whether player has purchased the Pioneer Pack */
-  hasPioneerPack?: boolean
-  /** Whether Pioneer Pack modal was dismissed */
-  pioneerPackDismissed?: boolean
-  /** List of IAP product IDs the player has purchased */
-  purchasedProducts?: string[]
-  /** True when one-time ad-removal has been purchased. */
-  adsRemoved?: boolean
-  /** Active subscription record */
-  subscription?: { type: string; expiresAt: string; source: 'apple' | 'google' | 'web' }
-  /** Season pass progress */
-  seasonPassProgress?: { seasonId: string; points: number; claimedFree: number[]; claimedPremium: number[]; hasPremium: boolean }
   /** Arcane Pass subscriber sub-category filters (domainId -> enabled subcategory labels). */
   subscriberCategoryFilters?: Record<string, string[]>
   /** Dust spent this calendar week (resets Monday 00:00 UTC) */
@@ -587,12 +573,6 @@ export interface PlayerSave {
   pendingDuels?: DuelRecord[]
   /** Artifact card instances in the player's social inventory. */
   inventoryArtifacts?: ArtifactCard[]
-  /** Unique referral code this player can share with friends. */
-  referralCode?: string
-  /** Referral code used when this player registered, if any. */
-  referredBy?: string
-  /** Total number of referral reward grants this player has received. */
-  referralRewardsEarned?: number
 
   // Phase 48: Prestige & Endgame
   /** Current prestige level (0 = never prestiged). Permanent, never resets. */

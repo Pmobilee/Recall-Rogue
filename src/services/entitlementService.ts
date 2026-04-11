@@ -5,10 +5,8 @@
  *   - Steam (desktop):  Base game includes all knowledge domains. Language DLCs
  *                       unlock language-acquisition content. Anki imports and
  *                       community packs are always free.
- *   - Mobile:           F2P tier includes BASE_DOMAINS. Scholar Pass subscription
- *                       ($4.99/mo) unlocks all domains. Gating is enforced here;
- *                       the mobile IAP/subscription check is delegated to
- *                       `subscriptionService` (future integration point).
+ *   - Mobile:           F2P tier includes BASE_DOMAINS only (no subscription tier —
+ *                       subscriptionService removed 2026-04-11 pre-launch).
  *   - Web:              Free tier only — BASE_DOMAINS accessible.
  *
  * Domain IDs match `CanonicalFactDomain` from `src/data/card-types.ts` and the
@@ -89,8 +87,7 @@ export interface PlayerEntitlements {
  * Resolution order:
  *  1. Desktop (Steam):  all knowledge domains unlocked in base game.
  *                       Language domain requires ownership of a language DLC.
- *  2. Mobile:           check subscription status (TODO: wire subscriptionService).
- *                       BASE_DOMAINS always accessible.
+ *  2. Mobile:           BASE_DOMAINS always accessible (no subscription tier).
  *  3. Web:              BASE_DOMAINS only.
  */
 export async function hasDomainAccess(domain: CanonicalFactDomain): Promise<boolean> {
@@ -111,8 +108,7 @@ export async function hasDomainAccess(domain: CanonicalFactDomain): Promise<bool
   // ── Mobile ────────────────────────────────────────────────────────────────
   if (platform === 'mobile') {
     if (BASE_DOMAINS.includes(domain)) return true;
-    // TODO: return subscriptionService.isActive() when integrated
-    return false;
+    return false; // No subscription tier — BASE_DOMAINS are the full mobile offering
   }
 
   // ── Web (free tier) ───────────────────────────────────────────────────────
