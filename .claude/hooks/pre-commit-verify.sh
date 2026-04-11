@@ -195,12 +195,15 @@ if [ -n "$STAGED_DECKS" ]; then
   fi
 fi
 
-# Docker visual verify: block if observable source files are staged.
-# Per .claude/rules/testing.md → "Docker Visual Verification — MANDATORY".
-# This is the enforcement that used to live only in prose.
+# Docker visual verify: block ONLY if genuinely visual files are staged.
+# Per .claude/rules/testing.md → "Visual Verify — Scoped": run only when the
+# change could actually be seen by the player. User rule (2026-04-11):
+# "We don't ALWAYS need visual verifications, ONLY when something is
+# visually changed." src/services/** is intentionally NOT in this list
+# because most service edits are backend-only logic.
 # Escape hatch: RR_SKIP_DOCKER_VERIFY=1 to bypass (loud warning).
 STAGED_OBSERVABLE=$(git diff --cached --name-only --diff-filter=AM \
-  | grep -E '^(src/game/|src/services/|src/ui/|src/CardApp\.svelte|data/decks/.*\.json)' || true)
+  | grep -E '^(src/game/|src/ui/|src/CardApp\.svelte|src/assets/|public/data/|data/decks/.*\.json)' || true)
 if [ -n "$STAGED_OBSERVABLE" ]; then
   if [ "${RR_SKIP_DOCKER_VERIFY:-0}" = "1" ]; then
     echo "" >&2

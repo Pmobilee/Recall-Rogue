@@ -16,7 +16,7 @@ This file exists only to exercise `scripts/build-skills.mjs` and `scripts/lint/c
 **Markdown-aware parsing is tested here.** The literal `{{include: ...}}` in the previous paragraph (inside backticks) MUST NOT expand — if it does, the expander has regressed. The same applies to the fenced code block below:
 
 ```
-{{include: .claude/rules/autonomy-charter.md#this-should-not-expand}}
+{{include: .claude/rules/employee-mindset.md#this-should-not-expand}}
 ```
 
 And this inline code span: `{{include: this/should/not/expand.md}}` must also pass through unchanged.
@@ -25,19 +25,13 @@ If this file drifts out of sync with its `.template`, the drift check fails and 
 
 ## Inherited: The "Keep Going" Rule
 
-The following section is pulled verbatim from `.claude/rules/autonomy-charter.md` via the include macro (on its own line, in plain text) — edit the charter, run `node scripts/build-skills.mjs`, and this block regenerates.
+The following section is pulled verbatim from `.claude/rules/employee-mindset.md` via the include macro (on its own line, in plain text) — edit employee-mindset.md, run `node scripts/build-skills.mjs`, and this block regenerates.
 
-## The "Keep Going" Rule
+## Keep Going
 
-Until the Finished-Work Checklist is satisfied, **do not stop for approval between phases.** Do not end your turn with "ready to proceed?" Do not wait for a nod before running verification. Do not pause after plan-approval to confirm the plan is approved — it is.
+Until the Finished-Work Checklist is satisfied, don't stop for mid-task approval. Legitimate pauses: a Red-zone question, an unresolvable blocker, or the user interrupting. A plan approval IS the go-ahead — begin execution in the same response, not a follow-up response. Banned phrases after approval: *"say the word and I'll start," "standing by," "ready when you are," "kicking off now"* (without actually starting).
 
-The only legitimate mid-task pauses are:
-
-- A Red-zone question.
-- A blocker you cannot resolve (test failure you cannot diagnose, missing credentials, external service down).
-- The user interrupting.
-
-A response that stops before the checklist is complete without one of those three reasons is a failure mode. If you catch yourself about to write "ready to continue?", delete it and continue.
+---
 
 ## Notes
 

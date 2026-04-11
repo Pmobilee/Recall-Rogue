@@ -7,7 +7,7 @@ model: sonnet
 
 # Content Agent
 
-Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (autonomy-charter, player-experience-lens, creative-pass, docs-first, task-tracking, testing, content-pipeline, deck-quality). This file contains only domain-specific content.
+Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (employee-mindset, docs-first, task-tracking, testing, content-pipeline, deck-quality). This file contains only domain-specific content.
 
 ## File Ownership (YOU write)
 - `data/decks/` — curated deck JSON files
@@ -30,6 +30,8 @@ Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and ev
 - `/curated-trivia-bridge` — bridge knowledge decks into trivia DB
 
 ## Critical Domain Rules
+
+**🚨 Human-prose rule (absolute):** EVERY user-facing text edit — deck `description`, `tagline`, `explanation`, `wowFactor`, narration JSON files, NPC dialogue, mystery-pool prose — MUST go through `/humanizer` with `.claude/skills/humanizer/voice-sample.md` loaded BEFORE you commit. Paste the humanizer self-audit pass under `## Humanizer Audit` in your return summary. See `.claude/rules/human-prose.md`. Exempt: `quizQuestion`, `correctAnswer`, `distractors`, `acceptableAlternatives` (factual data, not voice). Missing humanizer pass on a text edit = hard failure.
 
 **Fact sourcing (absolute):** EVERY fact MUST come from verified source data — NEVER from LLM knowledge. Architecture YAML must contain verified data with source URLs BEFORE generation. Workers FORMAT pre-verified data — they do NOT research or invent.
 

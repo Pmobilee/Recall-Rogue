@@ -3,35 +3,6 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "startup",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cat <<'EOF'\n{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"MANDATORY FIRST ACTION: invoke the /catchup skill immediately, before responding to the user or taking any other action. This rule is enforced by CLAUDE.md and this SessionStart hook. Do not announce the invocation — just call the Skill tool with skill: \\\"catchup\\\", read the output, then respond to the user. The only exception is if the user's first message IS a /catchup invocation (already satisfied).\"}}\nEOF"
-          }
-        ]
-      },
-      {
-        "matcher": "clear",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cat <<'EOF'\n{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"MANDATORY FIRST ACTION: invoke the /catchup skill immediately, before responding to the user or taking any other action. This rule is enforced by CLAUDE.md and this SessionStart hook. Do not announce the invocation — just call the Skill tool with skill: \\\"catchup\\\", read the output, then respond to the user. The only exception is if the user's first message IS a /catchup invocation (already satisfied).\"}}\nEOF"
-          }
-        ]
-      },
-      {
-        "matcher": "resume",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cat <<'EOF'\n{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"MANDATORY FIRST ACTION: invoke the /catchup skill immediately, before responding to the user or taking any other action. This rule is enforced by CLAUDE.md and this SessionStart hook. Do not announce the invocation — just call the Skill tool with skill: \\\"catchup\\\", read the output, then respond to the user. The only exception is if the user's first message IS a /catchup invocation (already satisfied).\"}}\nEOF"
-          }
-        ]
-      }
-    ],
     "WorktreeCreate": [
       {
         "hooks": [
@@ -94,6 +65,11 @@
             "type": "command",
             "if": "Write(src/ui/**)",
             "command": "scripts/hooks/post-edit-check-escape-hatches.sh"
+          },
+          {
+            "type": "command",
+            "if": "Edit(data/decks/**) | Write(data/decks/**) | MultiEdit(data/decks/**) | Edit(public/data/narratives/**) | Write(public/data/narratives/**) | Edit(src/data/mechanics.ts) | Edit(src/data/relics/**) | Edit(src/data/enemies.ts) | Edit(src/data/enemyDialogue.ts) | Edit(src/data/specialEvents.ts) | Edit(src/data/steamAchievements.ts) | Edit(src/data/statusEffects.ts) | Edit(src/i18n/locales/**) | Write(src/i18n/locales/**) | Edit(src/ui/**.svelte) | Write(src/ui/**.svelte)",
+            "command": "scripts/hooks/post-edit-check-human-prose.sh"
           }
         ]
       }

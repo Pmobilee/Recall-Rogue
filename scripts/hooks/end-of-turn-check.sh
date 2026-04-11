@@ -2,14 +2,14 @@
 # End-of-turn check for Recall Rogue orchestrator.
 #
 # Registered as a Stop hook in .claude/settings.json. Warns (non-blocking)
-# when the latest assistant message:
-#   - is long enough to be a real deliverable (>= 10 lines), AND
-#   - touched code (mentions src/, data/, tests/, scripts/, docs/), AND
-#   - does NOT contain a '## What's Next' block.
+# when the latest assistant message is a substantial deliverable that is
+# missing its '## What's Next' block.
 #
-# This is the forcing function for `.claude/rules/agent-mindset.md` →
-# `## What's Next` forcing function. It ships non-blocking (exit 0) while
-# we tune it. Once behavior stabilizes, promote to blocking with `exit 2`.
+# Per .claude/rules/employee-mindset.md → "What's Next Forcing Function",
+# trivial tasks (mechanical edits, ≤5 files, self-evident success) are
+# explicitly exempt. The threshold below (40 lines) is set so short
+# mechanical-change responses never trigger this warning — the check only
+# fires on genuinely substantial responses.
 #
 # IMPORTANT: exit code 2 is the blocking code for Claude Code hooks, not 1.
 # This script deliberately uses exit 0 so it never interrupts the session.
@@ -45,8 +45,9 @@ fi
 
 line_count="$(printf '%s\n' "$last_assistant_text" | wc -l | tr -d ' ')"
 
-# Short responses are trivial — no What's Next required.
-if [ "${line_count:-0}" -lt 10 ]; then
+# Short/mechanical responses are trivial — no What's Next required.
+# Threshold 40 matches the "trivial task" carve-out in employee-mindset.md.
+if [ "${line_count:-0}" -lt 40 ]; then
   exit 0
 fi
 
@@ -62,11 +63,11 @@ fi
 
 # Warn on stderr (Claude Code surfaces this in the session) but do not block.
 cat >&2 <<'WARN'
-[end-of-turn-check] Warning: response touched code but has no `## What's Next`
-block. Per .claude/rules/agent-mindset.md this is an incomplete deliverable.
-Add a 3–5 item prioritized list, or the single-line `✅ Done. No further work
-recommended. Rationale: …` closer.
-This check is non-blocking for now; it will start blocking once tuned.
+[end-of-turn-check] Warning: substantial response touched code but has no
+`## What's Next` block. Per .claude/rules/employee-mindset.md, non-trivial
+deliverables end with a 3–5 item prioritized list, or the single-line
+`✅ Done. Rationale: …` closer. Trivial/mechanical tasks are exempt.
+This check is non-blocking.
 WARN
 
 exit 0

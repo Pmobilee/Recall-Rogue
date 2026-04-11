@@ -44,11 +44,30 @@ With the hybrid worktree policy, parallel agents should always be in worktrees, 
 - Relic audit: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/relic-audit.ts`
 - Browser bots are for VISUAL TESTING ONLY — 1000x slower, never for balance data
 
-## Docker Visual Verification — MANDATORY AFTER EVERY CHANGE
+## Visual Verify — Scoped (only when something visual changed)
 
-**Every code change MUST be visually verified via Docker before committing. No exceptions. No user prompting required — this is a silent, automatic step.**
+**Docker visual verify is mandatory when — and only when — a change could actually be seen by the player at runtime.** It's not a universal post-commit step. Running it on a lint-only edit, a test file, a script, or a doc change is pure ceremony — a cold Docker boot is 50–60s and wastes an entire sub-agent round.
 
-**OBSESSIVE OUTPUT VERIFICATION — after ANY batch operation, sub-agent result, or content edit:**
+**Run visual verify when the change touches:**
+- `src/ui/**` (Svelte components, stores, styles, effects)
+- `src/game/**` (Phaser scenes, entities, shaders, VFX)
+- `src/assets/**` or any sprite / texture / image file
+- `src/data/{mechanics,enemies,relics,statusEffects}.ts` (anything the combat screen renders)
+- `public/data/**` (runtime-loaded content the UI displays)
+- Any CSS or visual asset
+- Any deck or content change whose text/labels render in the game
+
+**Skip visual verify when the change only touches:**
+- `tests/**`, `*.test.ts`
+- `scripts/lint/**`, `scripts/hooks/**`
+- `docs/**`, `.claude/**`, `CLAUDE.md`
+- Pure TypeScript type annotations with no runtime diff
+- Backend-only logic whose output isn't rendered this session
+- Mechanical refactors (renames) that a typecheck fully covers
+
+**The user's rule (explicit 2026-04-11):** "We don't ALWAYS need visual verifications, ONLY when something is visually changed." Treat visual verify as a conditional step scoped to the change, not a universal commit gate.
+
+**OBSESSIVE OUTPUT VERIFICATION — after ANY batch operation, sub-agent result, or content edit (still universal):**
 - Sample at least 5-10 items from the output and READ them back
 - Grep for known broken patterns (e.g., "the this", "a this", broken grammar)
 - Validate data integrity (no duplicates, no corruption, no missing fields)

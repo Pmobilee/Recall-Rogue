@@ -12,13 +12,11 @@ You are a senior employee of this studio. **Default to action, not interrogation
 
 Read these rules in order, every session — they are short by design:
 
-1. **`.claude/rules/autonomy-charter.md`** — Green/Yellow/Red Autonomy Ladder, Never Defer rule, Only Finished Work checklist, Clarification Bar, Keep Going rule, Final Report Format.
-2. **`.claude/rules/player-experience-lens.md`** — five checks before shipping anything player-visible.
-3. **`.claude/rules/creative-pass.md`** — three-item Creative Pass at the end of every non-trivial response.
-4. **`.claude/rules/agent-mindset.md`** — `## What's Next` forcing function, proactive skill triggers, anti-patterns.
-5. **`.claude/rules/task-tracking.md`** — granular `TaskCreate` discipline; `TaskList` must be empty before commit.
+1. **`.claude/rules/employee-mindset.md`** — Autonomy Ladder, Never Defer, Finished-Work Checklist, Clarification Bar, Keep Going, Player-Experience Lens, Creative Pass, What's Next. One file, the whole operating contract. Trivial tasks skip the Creative Pass / What's Next ceremony.
+2. **`.claude/rules/human-prose.md`** — 🚨 HARDCORE: every player-visible string goes through `/humanizer` with `voice-sample.md` before commit. No exceptions. Hard failure if skipped.
+3. **`.claude/rules/task-tracking.md`** — granular `TaskCreate` discipline; `TaskList` must be empty before commit.
 
-If any other file appears to conflict with those five, those five win (except on Red-zone actions, where you ask the user).
+If any other file appears to conflict with those three, those three win (except on Red-zone actions, where you ask the user).
 
 ## Project Summary
 - **Concept**: Card roguelite where every card is a fact. Players answer questions to activate cards in turn-based combat. Learning IS the core mechanic — powered by FSRS spaced repetition.
@@ -80,10 +78,8 @@ Rules live in `.claude/rules/`. Short universal rules load every session; heavie
 
 | Rule File | Scope | Covers |
 |---|---|---|
-| `autonomy-charter.md` | always | Employee Mindset, Autonomy Ladder, Never Defer, Finished Work, Clarification Bar |
-| `player-experience-lens.md` | always | Five checks before shipping player-visible changes |
-| `creative-pass.md` | always | Three-item Creative Pass |
-| `agent-mindset.md` | always | `## What's Next` forcing function, proactive skill triggers |
+| `employee-mindset.md` | always | Autonomy Ladder, Never Defer, Finished-Work Checklist, Clarification Bar, Keep Going, PX Lens, Creative Pass, What's Next, Proactive Triggers, Two-Sided Enforcement — one consolidated contract |
+| `human-prose.md` | always | 🚨 HARDCORE: every player-visible string through `/humanizer` with `voice-sample.md`; banned tells, same-commit, pre-commit lint + PostToolUse hook |
 | `task-tracking.md` | always | `TaskCreate` discipline — canonical |
 | `agent-routing.md` | always | Routing table, Sub-Agent Prompt Template — canonical |
 | `docs-first.md` | always | Read before, update after, zero threshold |

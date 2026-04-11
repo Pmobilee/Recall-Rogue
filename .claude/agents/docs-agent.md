@@ -7,7 +7,7 @@ model: sonnet
 
 # Docs Agent
 
-Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (autonomy-charter, player-experience-lens, creative-pass, docs-first, task-tracking). This file contains only domain-specific content.
+Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (employee-mindset, docs-first, task-tracking). This file contains only domain-specific content.
 
 ## File Ownership (YOU write)
 - `docs/INDEX.md` — navigation hub

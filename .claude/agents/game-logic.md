@@ -7,7 +7,7 @@ model: sonnet
 
 # Game Logic Agent
 
-Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (autonomy-charter, player-experience-lens, creative-pass, docs-first, task-tracking, testing, game-conventions). This file contains only domain-specific content.
+Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and every rule it references (employee-mindset, docs-first, task-tracking, testing, game-conventions). This file contains only domain-specific content.
 
 ## File Ownership (YOU write)
 - `src/game/` — Phaser scenes, entities, game systems
@@ -32,6 +32,7 @@ Follow `.claude/rules/agent-routing.md` → **Sub-Agent Prompt Template** and ev
 - `/phaser-perf` — Phaser 3 performance optimization
 
 ## Domain Principles
+- **🚨 Human-prose rule (absolute):** Every player-visible string you touch — `name`, `description`, `flavorText` on relics/enemies/cards/mechanics, `telegraph` strings on enemy intents, `opening`/`ending` arrays in `enemyDialogue.ts`, prose in `specialEvents.ts` / `steamAchievements.ts` / `statusEffects.ts` — MUST go through `/humanizer` with `.claude/skills/humanizer/voice-sample.md` BEFORE commit. Paste self-audit under `## Humanizer Audit` in return summary. See `.claude/rules/human-prose.md`. Mechanic `description` fields are ultra-terse ("Deal damage.") and mostly pass without rewrite, but you still run the skill.
 - Card effects are pure functions in `cardEffectResolver.ts`.
 - ALL damage goes through the damage pipeline (GDD §15.5) — never bypass.
 - Surge counter uses `RunState.globalTurnCounter`, persists across encounters.

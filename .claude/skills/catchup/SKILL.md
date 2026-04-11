@@ -1,74 +1,43 @@
 ---
 name: catchup
-description: Quick session context recovery — shows recent git activity, active tasks, memory entries, and project health. Use at the start of any conversation to get oriented fast.
+description: Quick session context recovery — git log, working tree, memory. Use at the start of any conversation to get oriented fast. Runs in <5s by default.
 ---
 
 # Session Catchup
 
-When invoked, perform these steps to give the user (and yourself) a quick picture of where things stand:
+Fast orientation, not a full audit. Keep it under 5 seconds unless the user asks otherwise.
 
-## 1. Recent Activity
-Run `git log --oneline -15` to see the last 15 commits. Summarize what areas were touched.
+## Default (fast mode, <5s)
 
-## 2. Working Tree Status
-Run `git status` to check for uncommitted changes or untracked files.
-
-## 3. Project Health
 Run these in parallel:
-- `npm run typecheck` — are there type errors?
-- `npm run build` — does the build succeed?
-Report pass/fail for each (don't dump full output unless there are errors).
+1. `git log --oneline -10` — recent commits
+2. `git status --short` — uncommitted state (use `--short`, never `-uall`)
+3. Read the last 5 entries in `MEMORY.md` (auto-memory index, already in context on most sessions)
 
-## 4. Memory Context
-Read the last 5 entries in MEMORY.md to recall recent feedback, project decisions, or user preferences.
+If `.claude/pending-next-steps.json` exists, read it and mention the count in the summary. **Do NOT auto-create tasks from it** — just tell the user "N pending items from last session, want to pick them up?" and wait. That file is a hint, not a work queue.
 
-## 4b. Multi-Agent Hygiene Check
+## Summary (always)
 
-If `.claude/commit-attribution-log.jsonl` exists, run a quick grep to count
-cross-session bundling warnings in the last 24 hours. Surface the number so
-the orchestrator immediately knows the concurrency state of the repo — a
-high count means other agents are actively editing and the safe scope is
-narrow; zero means the tree is probably cohesive.
+Produce a 3–6 line summary:
+- What was worked on recently (git log)
+- Clean or dirty tree
+- Pending-items count if any
+- Suggested focus if obvious from context
 
-```bash
-# Skip silently if the log or jq is absent (graceful degradation).
-if [ -f .claude/commit-attribution-log.jsonl ] && command -v jq >/dev/null 2>&1; then
-  CUTOFF=$(( $(date +%s) - 86400 ))
-  WARNED=$(jq -c "select(.ts >= $CUTOFF) | select(.warned == true)" \
-    .claude/commit-attribution-log.jsonl 2>/dev/null | wc -l | tr -d ' ')
-  TOTAL=$(jq -c "select(.ts >= $CUTOFF)" \
-    .claude/commit-attribution-log.jsonl 2>/dev/null | wc -l | tr -d ' ')
-  if [ "${WARNED:-0}" -gt 0 ]; then
-    echo "⚠️  Multi-agent hygiene: $WARNED / $TOTAL commits in the last 24h fired attribution warnings."
-    echo "   Other agents are actively working. Prefer cold-zone edits and stage explicitly by path."
-  fi
-fi
-```
+Keep it brief. The goal is orientation, not a build report.
 
-Report the count in the summary (step 6) if nonzero. If the log is missing
-entirely, skip this step silently — it either means the commit-attribution
-detector hasn't been wired up yet, or no commits have run through it yet.
+## Health mode — ONLY when explicitly asked
 
-## 5. Pending Next Steps (from previous session)
+If the user says "catchup health" / "full catchup" / "is the build okay" or similar, additionally run:
+- `npm run typecheck`
+- `npm run build`
+- Grep `.claude/commit-attribution-log.jsonl` for multi-agent warnings in last 24h (skip silently if jq/log absent)
 
-Check for `.claude/pending-next-steps.json`. If the file exists, it was written by the `persist-whats-next.sh` Stop hook at the end of the previous session and contains the last `## What's Next` items, parsed into `{subject, description}` entries.
+Do NOT run these in default mode. They take 30–90s each and are almost never relevant to the user's first question.
 
-**Consume-and-clear protocol (atomic):**
+## What NOT to do
 
-1. Read the file into memory (single `Read` call).
-2. For each entry in `items`, call `TaskCreate` with the `subject` and `description` fields.
-3. Delete the file: `rm .claude/pending-next-steps.json` via `Bash`.
-4. In the summary (step 6 below), note how many pending items were carried over and explicitly ask the user whether to start on item #1, or continue with whatever they asked for.
-
-**Important ordering:** read all items into memory BEFORE deleting the file. If `TaskCreate` fails partway through, the file is still intact on disk and the user can retry.
-
-**If the file is missing or empty:** skip this step silently — the previous session either ended with Form B (`✅ Done`) or was a short research-only turn that produced nothing to carry forward.
-
-## 6. Summary
-Produce a concise 5-10 line summary:
-- What was worked on recently (from git log)
-- Current state (clean/dirty, any errors)
-- Any relevant memory context
-- Suggested focus for this session (if obvious from context)
-
-Keep it brief. The goal is orientation in 30 seconds, not a full audit.
+- Don't run typecheck or build in default mode
+- Don't auto-create tasks from pending-next-steps.json
+- Don't write a long audit report — the user wants to start working, not read a summary
+- Don't stamp registries, run deck verification, or touch any state
