@@ -29,6 +29,31 @@ function getManager(): any {
 }
 
 /**
+ * Trigger the Continue button from the DOM accessibility overlay.
+ *
+ * Emits 'sceneComplete' directly on the active RewardRoomScene, bypassing the
+ * "Leave items behind?" confirmation. This is intentional for keyboard/a11y:
+ * keyboard users who Tab to the DOM overlay have already made the decision to
+ * proceed; the confirmation dialog is a mouse-path UX guard, not a gate.
+ *
+ * Called by the DOM `<button>` overlay in CardApp.svelte when the user presses
+ * Enter/Space or clicks the a11y overlay. See BATCH-ULTRA T11 issue-1744337400013-11-014.
+ */
+export function triggerRewardRoomContinue(): void {
+  const mgr = getManager();
+  if (!mgr) {
+    console.warn('[RewardRoomBridge] triggerRewardRoomContinue: no CardGameManager found');
+    return;
+  }
+  const scene = mgr.getRewardRoomScene();
+  if (!scene || !scene.scene.isActive()) {
+    console.warn('[RewardRoomBridge] triggerRewardRoomContinue: no active RewardRoomScene');
+    return;
+  }
+  scene.events.emit('sceneComplete');
+}
+
+/**
  * Wait for the RewardRoomScene to become active, polling up to maxWaitMs.
  * Returns the active scene, or null on timeout.
  */

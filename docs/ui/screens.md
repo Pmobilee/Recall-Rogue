@@ -1,7 +1,7 @@
 # Screen Flow & State Machine
 
 > **Purpose:** Complete list of all Screen values, routing logic, transition rules, and component mappings.
-> **Last verified:** 2026-04-07
+> **Last verified:** 2026-04-11
 > **Source files:** `src/ui/stores/gameState.ts`, `src/CardApp.svelte`, `src/services/screenController.ts`
 
 ---
@@ -48,6 +48,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `studyTemple` | Study Temple screen for dedicated flashcard study |
 | `runPreview` | Pre-run chain distribution preview — shows topic assignments across 3 chains before expedition begins |
 | `proceduralStudy` | Procedural math practice session — one question at a time with FSRS grading; bypasses combat run entirely |
+| `triviaRound` | Solo Trivia Night screen — `TriviaRoundScreen.svelte` rendered in `waiting` phase; wired in BATCH-ULTRA T7 fix (issue-1775873221654-07-004). Real-game flow populated via `triviaNightService`; scenario preset `trivia-round` for testing |
 
 ---
 
@@ -85,7 +86,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `dungeonMap` | `DungeonMap` | Only if `activeRunState.floor.actMap` exists |
 | `combat` | `CardCombatOverlay` | Phaser container also shown; `ParallaxTransition` for enter/exit |
 | `cardReward` | `CardRewardScreen` | |
-| `rewardRoom` | *(Phaser scene)* | `RewardRoomScene` handles rendering; `RewardCardDetail` as DOM overlay |
+| `rewardRoom` | *(Phaser scene)* | `RewardRoomScene` handles rendering; `RewardCardDetail` as DOM overlay. **A11y (BATCH-ULTRA T11):** `CardApp.svelte` also renders a transparent DOM `<button data-testid='btn-reward-room-continue'>` absolutely positioned over the Phaser Continue button, enabling Tab-focus and screen reader access. Click calls `triggerRewardRoomContinue()` from `rewardRoomBridge.ts`. |
 | `shopRoom` | `ShopRoomOverlay` | |
 | `restRoom` | `RestRoomOverlay` | |
 | `restStudy` | `StudyQuizOverlay` | |
@@ -108,6 +109,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `settings` | `SettingsPanel` | |
 | `studyTemple` | `StudyTempleScreen` | |
 | `proceduralStudy` | `ProceduralStudyScreen` | Props: `deckId`, `subDeckId?`, `onBack`; `onBack` returns to `studyTemple` |
+| `triviaRound` | `TriviaRoundScreen` | Wired BATCH-ULTRA T7. Props: `gameState`, `localPlayerId`, `currentQuestion`, `lastRoundResult`, `onAnswer`, `onPlayAgain`, `onReturnToLobby`, `onReturnToHub`. Initial mock state: `phase: 'waiting'`. Use `trivia-round` scenario preset for testing. |
 | `runPreview` | `RunPreviewScreen` | Shows chain distribution; `onShuffle` calls `reshuffleChainDistribution()`; `onBeginExpedition` calls `confirmChainDistribution()` |
 | `relicSanctum` | `RelicCollectionScreen` | |
 
