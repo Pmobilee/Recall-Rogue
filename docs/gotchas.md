@@ -2663,7 +2663,7 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 
 **Fix (shipped 2026-04-11):** `scripts/quiz-audit-engine.ts` now errors loudly with exit code 1 when `--stamp-registry` is passed. Commit `1bc813c9f`.
 
-**Proper fix shipped 2026-04-11:** `scripts/quiz-audit-engine.ts` now supports `--stamp-registry` natively for single-deck audits (requires `--deck`). The loud-error guard is removed; the engine stamps `lastQuizAudit` via `scripts/registry/updater.ts` when the audit passes with 0 failures. See commit for hash once committed.
+**Proper fix shipped 2026-04-11:** `scripts/quiz-audit-engine.ts` now supports `--stamp-registry` natively for single-deck audits (requires `--deck`). The loud-error guard is removed; the engine stamps `lastQuizAudit` via `scripts/registry/updater.ts` when the audit passes with 0 failures. Commit `75448b204`.
 
 ### 2026-04-11 — Steam lobby metadata is public; password hashes are UX gates only
 
