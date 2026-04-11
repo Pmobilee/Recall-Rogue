@@ -38,6 +38,52 @@
           {
             "type": "command",
             "command": "scripts/hooks/end-of-turn-check.sh"
+          },
+          {
+            "type": "command",
+            "command": "scripts/hooks/persist-whats-next.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Edit(data/decks/**)",
+            "command": "scripts/hooks/post-edit-verify-decks.sh"
+          },
+          {
+            "type": "command",
+            "if": "Write(data/decks/**)",
+            "command": "scripts/hooks/post-edit-verify-decks.sh"
+          },
+          {
+            "type": "command",
+            "if": "MultiEdit(data/decks/**)",
+            "command": "scripts/hooks/post-edit-verify-decks.sh"
+          },
+          {
+            "type": "command",
+            "if": "Edit(src/services/runSaveService.ts)",
+            "command": "scripts/hooks/post-edit-check-rehydration.sh"
+          },
+          {
+            "type": "command",
+            "if": "Write(src/services/runSaveService.ts)",
+            "command": "scripts/hooks/post-edit-check-rehydration.sh"
+          },
+          {
+            "type": "command",
+            "if": "Edit(src/ui/**)",
+            "command": "scripts/hooks/post-edit-check-escape-hatches.sh"
+          },
+          {
+            "type": "command",
+            "if": "Write(src/ui/**)",
+            "command": "scripts/hooks/post-edit-check-escape-hatches.sh"
           }
         ]
       }

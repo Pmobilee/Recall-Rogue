@@ -22,7 +22,22 @@ Report pass/fail for each (don't dump full output unless there are errors).
 ## 4. Memory Context
 Read the last 5 entries in MEMORY.md to recall recent feedback, project decisions, or user preferences.
 
-## 5. Summary
+## 5. Pending Next Steps (from previous session)
+
+Check for `.claude/pending-next-steps.json`. If the file exists, it was written by the `persist-whats-next.sh` Stop hook at the end of the previous session and contains the last `## What's Next` items, parsed into `{subject, description}` entries.
+
+**Consume-and-clear protocol (atomic):**
+
+1. Read the file into memory (single `Read` call).
+2. For each entry in `items`, call `TaskCreate` with the `subject` and `description` fields.
+3. Delete the file: `rm .claude/pending-next-steps.json` via `Bash`.
+4. In the summary (step 6 below), note how many pending items were carried over and explicitly ask the user whether to start on item #1, or continue with whatever they asked for.
+
+**Important ordering:** read all items into memory BEFORE deleting the file. If `TaskCreate` fails partway through, the file is still intact on disk and the user can retry.
+
+**If the file is missing or empty:** skip this step silently — the previous session either ended with Form B (`✅ Done`) or was a short research-only turn that produced nothing to carry forward.
+
+## 6. Summary
 Produce a concise 5-10 line summary:
 - What was worked on recently (from git log)
 - Current state (clean/dirty, any errors)

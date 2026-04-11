@@ -157,6 +157,10 @@ data/balance-reports/runs/
 # Local multi-worker git worktrees (must never be committed)
 .claude/worktrees/
 
+# Runtime file written by scripts/hooks/persist-whats-next.sh and consumed by
+# the catchup skill on the next session's first turn. Per-machine ephemeral.
+.claude/pending-next-steps.json
+
 # Tauri desktop build artifacts (Rust compilation output — large, auto-generated)
 src-tauri/target/
 

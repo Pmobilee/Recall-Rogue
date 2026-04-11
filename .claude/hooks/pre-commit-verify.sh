@@ -52,6 +52,20 @@ if [ -n "$STAGED_UI" ]; then
   fi
 fi
 
+# Skill drift check: block if SKILL.md has drifted from SKILL.md.template.
+# Per .claude/rules/agent-mindset.md → Two-sided enforcement and
+# docs/roadmap/active/autonomy-overhaul-followups.md Item 4.
+STAGED_SKILLS=$(git diff --cached --name-only --diff-filter=AM | grep -E '^\.claude/skills/.*/SKILL\.md(\.template)?$' || true)
+if [ -n "$STAGED_SKILLS" ]; then
+  if [ -f "scripts/lint/check-skill-drift.mjs" ]; then
+    echo "Checking skill template drift..." >&2
+    if ! node scripts/lint/check-skill-drift.mjs 2>&1 >&2; then
+      echo "BLOCKED: SKILL.md drift detected. Edit the .template and run 'npm run build:skills'." >&2
+      exit 2
+    fi
+  fi
+fi
+
 # Deck verification: block if deck JSON files are staged and fail verification
 STAGED_DECKS=$(git diff --cached --name-only --diff-filter=AM | grep '^data/decks/.*\.json$' || true)
 if [ -n "$STAGED_DECKS" ]; then

@@ -53,6 +53,34 @@ When the conversation context matches any row below, proactively suggest or invo
 | Deploy to Steam | `/steam-deploy` |
 | Performance drop / render issue | `/phaser-perf` |
 
+## Two-Sided Enforcement — Design Heuristic
+
+**Every structural rule in `.claude/` should be enforced at TWO layers, not one:**
+
+1. **Preventative (author-time):** a template, lint, type check, or drift detector that refuses to let bad content enter the repo in the first place.
+2. **Reactive (runtime):** a hook that observes the outcome and either blocks it or feeds the failure back into the orchestrator's next turn as context.
+
+Single-layer enforcement drifts over time. A rule that lives only in prose drifts because people forget to read it. A hook without a lint drifts because the underlying code it guards can mutate and the hook goes stale. A lint without a hook drifts because people bypass it in emergencies and forget to re-enable.
+
+**When adding any new rule, ask both questions:**
+- What prevents this rule from being violated at author time? (lint, template expansion, type system, test)
+- What catches a violation at runtime if the author check fails? (hook with `additionalContext` injection, pre-commit block, visual verify)
+
+If you can only answer one side, the rule is fragile. Plan the other side at the same time you plan the rule itself.
+
+**Current two-sided examples:**
+
+| Rule | Preventative | Reactive |
+|---|---|---|
+| Docs stay in sync with templates | `scripts/lint/check-skill-drift.mjs` + `scripts/build-skills.mjs` | pre-commit hook blocks drift |
+| Deck quality | `scripts/verify-all-decks.mjs` on author side | `scripts/hooks/post-edit-verify-decks.sh` PostToolUse |
+| Save-file Set/Map rehydration | `scripts/lint/check-set-map-rehydration.mjs` | `scripts/hooks/post-edit-check-rehydration.sh` PostToolUse |
+| UI softlock prevention | `scripts/lint/check-escape-hatches.mjs` | `scripts/hooks/post-edit-check-escape-hatches.sh` PostToolUse |
+| No hardcoded px | lint-hardcoded-px.mjs (pre-commit warning) | *Missing runtime hook — future work* |
+| Docker visual verify | *Missing author-time check* | `.claude/hooks/pre-commit-verify.sh` runs Docker verify |
+
+Rules marked "Missing ..." are single-sided and therefore drift-prone. Adding the missing side is always a Green-zone follow-up.
+
 ## Anti-Patterns — Do Not Do These
 
 These are failures even if the code compiles:

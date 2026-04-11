@@ -115,12 +115,15 @@ If the user rejects the proposal: ask what specifically they dislike, understand
 
 > **Anti-patterns:** *Entity Names Without Data* (building a skeleton, not the real thing), *Silent Incompleteness* (shipping 80% without mentioning the missing 20%).
 
-1. Mark tasks `in_progress` one at a time. Mark `completed` as you finish.
-2. Delegate via `.claude/rules/agent-routing.md`. Use the canonical Sub-Agent Prompt Template from that file. Never spawn a generic worker.
-3. After each sub-agent: verify against ground truth (`git status` + `git diff` + sample read-back). Never trust a summary blindly.
-4. Commit after each task that passes verification. Granular commits make rollback surgical.
-5. Visual inspect after every sub-agent batch if UI/visual changed.
-6. **Scope creep guard:** if you discover the task is significantly bigger than planned, stop and tell the user. Give options: expand scope, split into follow-ups, or descope.
+**Phase 4 → Phase 5 is seamless. Plan approval is the trigger to start implementing in the same response.** See `.claude/rules/autonomy-charter.md` → *Post-Plan-Approval Execution Trigger* for the hard rule, banned phrases, and self-check. Never end a response on plan approval without at least one concrete execution tool call.
+
+1. **Immediately after approval:** create all TaskCreate items for the plan, mark the first `in_progress`, and spawn the first sub-agent or make the first file edit — all in the same response that acknowledged approval.
+2. Mark tasks `in_progress` one at a time. Mark `completed` as you finish.
+3. Delegate via `.claude/rules/agent-routing.md`. Use the canonical Sub-Agent Prompt Template from that file. Never spawn a generic worker.
+4. After each sub-agent: verify against ground truth (`git status` + `git diff` + sample read-back). Never trust a summary blindly.
+5. Commit after each task that passes verification. Granular commits make rollback surgical.
+6. Visual inspect after every sub-agent batch if UI/visual changed.
+7. **Scope creep guard:** if you discover the task is significantly bigger than planned, stop and tell the user. Give options: expand scope, split into follow-ups, or descope.
 
 **GATE:** all plan tasks `completed`, all acceptance criteria met.
 

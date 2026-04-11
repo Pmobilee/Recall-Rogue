@@ -122,6 +122,32 @@ The only legitimate mid-task pauses are:
 
 A response that stops before the checklist is complete without one of those three reasons is a failure mode. If you catch yourself about to write "ready to continue?", delete it and continue.
 
+## Post-Plan-Approval Execution Trigger — HARD RULE
+
+**The moment `ExitPlanMode` returns an approval, you are already in Phase 5 (Implement). There is no pause, no summary-and-wait, no "standing by" response between plan approval and execution. In the SAME response that acknowledges approval, you immediately:**
+
+1. Create the `TaskCreate` tasks covering every phase of the approved plan.
+2. Mark the first task `in_progress`.
+3. Spawn the first sub-agent or make the first file edit.
+4. Keep going until the Finished-Work Checklist is satisfied for the entire plan OR a legitimate mid-task pause (Red-zone / blocker / user interrupt) fires.
+
+**Banned phrases after plan approval — NEVER write these:**
+
+- "Say the word and I'll start"
+- "Let me know if you want me to proceed"
+- "Standing by to kick off"
+- "Ready to begin when you are"
+- "I'll wait for your go-ahead"
+- "Should I start Phase 1?"
+- "Kicking off Phase 1 now" *(by itself, with nothing after it — if you say it, you must actually do it in the same response)*
+- Any variant where the response acknowledges approval and then ends without having started execution
+
+A plan approval IS the go-ahead. A response that receives approval and does not begin execution in the same turn is a Clarification-Bar violation and a Keep-Going violation simultaneously. It is a hard failure.
+
+**Exception:** if the approved plan has a genuine Red-zone action at its very first step (e.g. "drop the database", "force-push main"), you may pause for that specific Red-zone confirmation — but you must have already completed every non-Red step up to it in the same response.
+
+**Self-check before sending any post-approval response:** Does this response contain at least one `Agent`, `Edit`, `Write`, or `Bash` tool call actually executing the plan? If the answer is no, delete the response and start over with execution.
+
 ## The Final Report Format
 
 Every non-trivial deliverable's final report includes these sections in this order:

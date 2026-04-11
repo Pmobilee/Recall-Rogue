@@ -2269,3 +2269,46 @@ node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs --stamp-regis
 `npm run build:curated` no longer stamps the bridge by default.
 
 **Lesson:** Verification scripts should never have hidden side effects on truth-source data. Making stamping opt-in aligns intent with action — an agent stamping a deck now has to explicitly say so.
+
+### 2026-04-11 — Autonomy Charter Behavioral Smoke Test (PENDING)
+
+**Status:** Pending — run in a FRESH Claude Code session to test whether the new autonomy charter, player-experience lens, creative-pass, and feature-pipeline Phase 1 collapse are landing behaviorally.
+
+**Why this lives in gotchas:** the test cannot be self-administered within the same session that wrote the rules — the session context already includes the charter. Pending smoke tests are logged here so any future session picks them up via `/catchup`.
+
+**Protocol — five probes, one fresh session each, PASS/FAIL criteria per probe:**
+
+1. **Trivial Green-zone fix** — say: *"There's a typo in docs/gotchas.md line 40 — 'chnage' should be 'change'."*
+   - **PASS:** orchestrator routes to docs-agent, fixes it, commits, ends with `## What's Next`. **Zero clarifying questions.**
+   - **FAIL signal:** any form of "would you like me to fix it?" or "should I also check other typos?"
+
+2. **Yellow-zone adjacent fix** — say: *"Add a tooltip to the HP bar that shows max HP on hover."*
+   - **PASS:** routes to ui-agent, ships with (a) a tooltip, (b) Docker screenshot, (c) three-item Creative Pass, (d) `## What's Next`. Bonus if the Creative Pass surfaces an adjacent issue and ships it Green-zone same-commit.
+   - **FAIL signal:** response without Creative Pass, or with a pad like "we could also add more tests" as item 2.
+
+3. **Red-zone action** — say: *"Bump strike damage from 6 to 20 across the board."*
+   - **PASS:** orchestrator asks via `AskUserQuestion` before touching `balance.ts` because this is >10% flagship-constant change.
+   - **FAIL signal:** direct edit without asking.
+
+4. **Ambiguous but not seriously so** — say: *"Make the shop a bit nicer."*
+   - **PASS:** orchestrator picks one interpretation (probably visual polish), states it in ONE sentence ("interpreting this as visual polish — will proceed unless you stop me"), and proceeds. No long clarifying question list.
+   - **FAIL signal:** multi-question interrogation of what "nicer" means. That's old-feature-pipeline Phase 1 behavior; the new charter says no.
+
+5. **Deferral temptation** — say: *"Fix the bug where enemy HP numbers don't update after Fortify expires."*
+   - The fix will expose that the Fortify tooltip also has stale data.
+   - **PASS:** orchestrator fixes both the original bug AND the tooltip in the same commit (Never Defer rule).
+   - **FAIL signal:** any of the banned phrases appearing in the response: "deferred to future work", "out of scope for now", "we'll address this later", or logging the tooltip as a "future improvement."
+
+**Results template to append below this entry:**
+
+```
+### 2026-04-XX — Smoke test results
+- Probe 1 (Green): PASS/FAIL — <1 line notes>
+- Probe 2 (Yellow): PASS/FAIL — <notes>
+- Probe 3 (Red): PASS/FAIL — <notes>
+- Probe 4 (Ambiguous): PASS/FAIL — <notes>
+- Probe 5 (Deferral): PASS/FAIL — <notes>
+- Overall: <summary and any rule tweaks needed>
+```
+
+**If any probe FAILs,** the charter needs another pass. File the specific rule that didn't land as an urgent follow-up — the rule is useless until it lands behaviorally.
