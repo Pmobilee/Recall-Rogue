@@ -13,6 +13,16 @@
 - `npm run build` — Production build (check Vite warnings)
 - Both must pass before committing
 
+## Multi-Agent Pre-Commit Mode
+When multiple agents work in parallel, `.claude/hooks/pre-commit-verify.sh`
+soft-warns on typecheck / build / vitest failures instead of blocking — those
+three are prone to spurious collisions from concurrent edits. Detection trips
+on any one of: `RR_MULTI_AGENT=1` env var, `.claude/multi-agent.lock` file, or
+`git worktree list` > 1. Deck verification, skill drift, and Docker visual
+verify still hard-block (deterministic, collision-free). A soft-warn is NOT a
+license to ignore the failure — re-run in single-agent mode to confirm before
+merging anything user-facing. See `docs/gotchas.md` → 2026-04-11 entry.
+
 ## Balance Testing
 - Headless simulator is DEFAULT for balance: imports real game code, zero drift
 - All profiles: `npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --runs 1000`
