@@ -2954,3 +2954,33 @@ fully unit tested) and the overlay's `showWowFactor` now delegates to it.
 — that code reads it correctly within the same synchronous block. Only the wow-factor lookup
 was wrong. The property can be removed in a future cleanup if the FSRS tracking is also
 refactored to use `committedQuizData`.
+
+### 2026-04-11 — Card description four-source drift + balance-preservation boundary incident
+
+**Context:** 2026-04-11 card-description audit session (6 phases). Root cause fix in commit `69c3aa364`.
+
+**The four-source problem.** Every card mechanic in Recall Rogue has four places that describe or implement its behavior:
+
+1. **Seed** (`MechanicDefinition` in `src/data/mechanics.ts`) — authoring-time reference. Fields like `quickPlayValue` and `chargeCorrectValue` are informational artifacts; they are NOT read by the resolver at runtime.
+2. **Stat table** (`MASTERY_STAT_TABLES` in `src/services/cardUpgradeService.ts`) — the canonical runtime source of truth for QP/CC values and mastery progression. The resolver ALWAYS calls `getMasteryStats(id, level).qpValue`.
+3. **Resolver** (`src/services/cardEffectResolver.ts`) — must delegate to the stat table, never hardcode QP/CC literals.
+4. **Description service** (`src/services/cardDescriptionService.ts`) — must render from the same values the resolver reads.
+
+These four sources evolved independently and fell out of sync. The 2026-04-11 audit (`docs/content/card-description-audit.md`) catalogued 22+ Severity-B drift findings where the rendered description showed `card.baseEffectValue` (a type-level constant: attack=4, shield=3, others=0) instead of the per-mechanic stat-table L0 qpValue.
+
+**Root-cause fix.** `cardDescriptionService.ts` used `const power = powerOverride ?? Math.round(card.baseEffectValue)` as its power variable. Replaced with `const power = getMasteryStats(mechanic.id, masteryLevel)?.qpValue ?? Math.round(card.baseEffectValue)`. One-line fix that resolved 22 drift findings in all three description functions (`getCardDescriptionParts`, `getDetailedCardDescription`, `getShortCardDescription`).
+
+**Single-helper pattern.** Any future mechanic drift audit should start by looking for a shared helper that both the resolver and the description service call to read the key number. If they don't share a helper (or one side hardcodes its value), that is the drift root cause.
+
+**The balance-preservation boundary incident.** Phase 2 sub-agent was instructed with: "balance-preserving normalization — if the stat table disagrees with the resolver hardcode, fix the stat table to match the hardcode." The sub-agent interpreted this in reverse on Warcry and Gambit: it honored the stat table and nerfed the live resolver to match, rather than updating the stat table to match the old hardcode. Concretely:
+
+- **Warcry:** Old resolver hardcoded `value=2` Strength on QP and CC. Stat table L0 has `str=1`. Sub-agent set resolver to read stat table → Warcry L0 QP silently went from +2 Str to +1 Str.
+- **Gambit:** Old resolver hardcoded `gambitHeal=5` on CC. Stat table L0 has `healOnCC=3`. Sub-agent set resolver to read stat table → Gambit L0 CC heal went from 5 to 3. Also changed QP selfDmg from 2 to 4 (stat table).
+
+**The orchestrator caught this via git diff verification** (post-sub-agent mandatory verification per `.claude/rules/agent-routing.md`). The user was asked to ratify. **The user ratified the stat-table-driven values as canonical going forward.** Rationale: the stat table's monotonic scaling curve is the intended design (L0 weaker, mastery makes the card stronger). The old hardcoded resolver values were the bug.
+
+**Lesson.** Sub-agent instructions that depend on the sub-agent correctly interpreting "which side is the bug" are fragile when both sides appear internally consistent. The orchestrator's ground-truth `git diff` verification is the safety net — not stronger instruction prose. When a balance decision affects live values, escalate to the user rather than asking the sub-agent to make a value judgment.
+
+**Affected canonical values (post-ratification, now in stat table):**
+- Warcry L0: +1 Str QP (not +2). L1=+2, L4-L5=+3. CC always permanent. L3+ grants free Charge waiver.
+- Gambit L0: deal 4 dmg, lose 4 HP (QP); deal 6 dmg, heal 3 HP (CC). Risk decreases with mastery.

@@ -1188,9 +1188,9 @@ All 98 active mechanics (as of 2026-04-10). Quick Play (QP) = 1.0×. Charged Cor
 | **Block** | 1 | 3 block | 4.5 block | 2.1 block | Standard defense — weak at M0 by design |
 | **Thorns** | 1 | 6 block, 3 reflect | 18 block, 9 reflect | 4.2 block, 2.1 reflect | Reflect scales with Charge |
 | **Emergency** | 1 | 4 (8 if <30% HP) | 12 (24 if <30%) | 2.8 (5.6 if <30%) | Desperation shield |
-| **Fortify** | 2 | 7 persistent block | 21 persistent | 4.9 persistent | Carries between turns |
+| **Fortify** | 2 | floor(currentBlock × 50%) | floor(min(block,30) × 75%) + qpValue | floor(currentBlock × 25%) | NOT flat block. Scales with current block. Cap=30. |
 | **Brace** | 1 | Block = enemy intent | 3× enemy intent | 0.7× enemy intent | Perfect read |
-| **Overheal** | 2 | 10 (2× if <50% HP) | 30 (2× if <50%) | 7 (2× if <50%) | Emergency mega-shield |
+| **Overheal** | 2 | 6 block (×2 if HP <60%) | Standard CC pipeline | — | Threshold is 60%, NOT 50%. L0 qpValue=6. |
 
 #### Buff Mechanics
 
@@ -1271,13 +1271,13 @@ Some cards are temporarily transformed for the duration of a single encounter an
 | A2 | Rupture | 1 | 5 dmg + 3 Bleed | 15 dmg + 8 Bleed | 4 | Primary Bleed applicator |
 | A3 | Hemorrhage | 2 | 4 + (4 per Bleed stack), consume all | 4 + (6 per Bleed), consume all | 7 | Bleed finisher |
 | A4 | Kindle | 1 | 4 dmg + 4 Burn (triggers immediately) | 8 dmg + 8 Burn | 5 | Burst + lingering |
-| A5 | Gambit | 1 | 10 dmg, lose 2 HP | 30 dmg, heal 5 HP | 6 | FLAGSHIP. HP swing by knowledge |
+| A5 | Gambit | 1 | 4 dmg, lose 4 HP (L0) | 6 dmg, heal 3 HP (L0) | 6 | FLAGSHIP. HP swing by knowledge. L0: selfDmg=4, healOnCC=3 (stat table). |
 | A6 | Chain Lightning | 2 | 8 dmg | 8 × chain length | 8 | THE chain payoff card |
 | A7 | Smite | 2 | 10 dmg | 10 + (3 × avg hand mastery) | 9 | Rewards broad mastery |
 | A8 | Overcharge | 1 | 6 dmg | 6 + (2 per Charge this encounter) | 5 | Scales over encounter |
 | A9 | Volatile Slash | 1 | 10 dmg | 30 dmg, EXHAUST | 7 | One-shot burst |
 | A10 | Riposte | 1 | 5 dmg + 4 block | 15 dmg + 12 block | 3 | Hybrid attack/shield |
-| A11 | Feedback Loop | 1 | 5 dmg | 20 dmg | 10 | CW = complete fizzle (0 dmg) |
+| A11 | Feedback Loop | 1 | 5 dmg (aura) | 28 base + 12 Flow State bonus (max 40) | 10 | Pass-8 values. CW = fizzle at L0-L2, 50% QP at L5. |
 | A12 | Precision Strike | 1 | 8 dmg | 24 dmg | 4 | Passive: +50% longer timer |
 | A13 | Eruption (X) | X | 8 dmg per AP | 12 dmg per AP | 12 | X = all remaining AP |
 | A14 | Recall | 1 | 1 dmg per discard card | 2 per discard | 11 | Late-fight nuke |
@@ -1300,7 +1300,7 @@ Some cards are temporarily transformed for the duration of a single encounter an
 | # | Name | AP | QP | CC | Unlock | Notes |
 |---|------|----|----|-----|--------|-------|
 | B1 | Ignite | 1 | Next attack applies 4 Burn | Next attack applies 8 Burn | 5 | Burn setup buff |
-| B2 | Warcry | 1 | +2 Strength (this turn) | +2 Strength (permanent) + free Charge | 6 | Absorbs Concentration's niche |
+| B2 | Warcry | 1 | +1 Str (this turn, L0) | +1 Str (permanent, L0) + free Charge | 6 | L0 str=1 (stat table). L1=+2, L4-L5=+3. L3+ also free Charge on QP. |
 | B3 | Frenzy | 2 | Next 2 cards cost 0 AP (incl. surcharge) | Next 3 cards cost 0 AP | 10 | Surcharge waived on free plays |
 | B4 | Battle Trance | 1 | Draw 3, can't play more cards | Draw 3, no restriction | 7 | STS adaptation |
 | B5 | Mastery Surge | 1 | +1 mastery to 1 random hand card | +1 mastery to 2 cards | 11 | Strongest at mastery 4 (approaching max multiplier) |

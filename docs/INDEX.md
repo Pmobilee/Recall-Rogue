@@ -157,7 +157,7 @@
 
 | Doc | Summary |
 |-----|---------|
-| [gotchas](gotchas.md) | Append-only mistake log: Playwright pitfalls, visual regression incidents, Phaser canvas gotchas, deck quality bugs, mastery system wiring issues, and lessons learned. Last entry: 2026-04-10 Blanket registry stamps hid runtime warnings. |
+| [gotchas](gotchas.md) | Append-only mistake log: Playwright pitfalls, visual regression incidents, Phaser canvas gotchas, deck quality bugs, mastery system wiring issues, and lessons learned. Last entry: 2026-04-11 Card description four-source drift + balance-preservation boundary incident. |
 | [SECURITY](SECURITY.md) | Security considerations, CSP, input sanitization, and credential rules |
 
 ---
