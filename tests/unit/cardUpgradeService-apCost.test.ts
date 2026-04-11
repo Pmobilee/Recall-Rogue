@@ -99,7 +99,14 @@ describe('getEffectiveApCost applies mastery AP reductions', () => {
   it('apCost is monotonically non-increasing with mastery level', () => {
     const violations: string[] = [];
 
+    // BATCH-ULTRA Cluster G (6f5d33725): Foresight deliberately gates its AP cost upward from
+    // mastery L0 (0 AP, onboarding-friendly) to mastery L1+ (1 AP, restores decision tension).
+    // This is the ONE intentional exception to the non-increasing invariant. Any other card
+    // that raises its cost with mastery is a bug — the loop below still enforces it.
+    const INTENTIONAL_COST_GATE_MECHANICS = new Set(['foresight']);
+
     for (const [id, table] of Object.entries(MASTERY_STAT_TABLES)) {
+      if (INTENTIONAL_COST_GATE_MECHANICS.has(id)) continue;
       const mechanic = MECHANIC_DEFINITIONS.find(m => m.id === id);
       if (!mechanic) continue; // table entry for a mechanic not in MECHANIC_DEFINITIONS — skip
 

@@ -18,9 +18,9 @@ describe('ascension modifiers', () => {
     expect(getAscensionModifiers(8).enemyDamageMultiplier).toBe(1.20)
     // A9: +10% HP step
     expect(getAscensionModifiers(9).enemyHpMultiplier).toBe(1.10)
-    // A15: +15% HP step, A17: +30% damage step
+    // A15: +15% HP step, A17: +25% damage step (softened from 1.30 in 9705fd066 — BATCH-ULTRA Cluster E)
     expect(getAscensionModifiers(15).enemyHpMultiplier).toBe(1.15)
-    expect(getAscensionModifiers(17).enemyDamageMultiplier).toBe(1.30)
+    expect(getAscensionModifiers(17).enemyDamageMultiplier).toBe(1.25)
     // shieldCardMultiplier is always 1.0 (removed — wasn't fun)
     expect(getAscensionModifiers(4).shieldCardMultiplier).toBe(1.0)
     expect(getAscensionModifiers(4).timerBasePenaltySeconds).toBe(1)
@@ -107,11 +107,13 @@ describe('ascension modifiers', () => {
   })
 
   it('strengthened challenge values at key thresholds', () => {
+    // BATCH-ULTRA Cluster E (9705fd066): bossHpMultiplier 1.50→1.10 + wrongAnswerSelfDamage 5→3
+    // to close the asc15→asc20 cliff. experienced@asc20 survival now ~15% vs prior 2%.
     expect(getAscensionModifiers(9).enemyRegenPerTurn).toBe(3)
     expect(getAscensionModifiers(8).enemyRegenPerTurn).toBe(0)
     expect(getAscensionModifiers(13).playerMaxHpOverride).toBe(75)
-    expect(getAscensionModifiers(15).bossHpMultiplier).toBe(1.50)
-    expect(getAscensionModifiers(17).wrongAnswerSelfDamage).toBe(5)
+    expect(getAscensionModifiers(15).bossHpMultiplier).toBe(1.10)
+    expect(getAscensionModifiers(17).wrongAnswerSelfDamage).toBe(3)
   })
 
   it('reduced buff values (delayed to high ascension levels)', () => {
