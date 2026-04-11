@@ -22,12 +22,14 @@ Detection signals (any one trips multi-agent mode):
 - Skill template drift (`check-skill-drift.mjs`)
 - Docker visual verification
 
-**Mirror-drift gotcha:** The git hook has TWO copies — `hooks/pre-commit` (the
-checked-in source of truth) and `.git/hooks/pre-commit` (the live copy git
-actually runs). Before this fix, the live copy had silently gained a quiz
-audit section that was never backported to the mirror. On clone, run
-`cp hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`
-to resync. No automated sync yet — worth a future hook-install script.
+**Mirror-drift gotcha (RESOLVED same session):** The git hook previously had
+TWO copies — `hooks/pre-commit` (the checked-in source of truth) and
+`.git/hooks/pre-commit` (the live copy git actually runs). The live copy had
+silently gained a quiz audit section that was never backported to the mirror.
+Fixed by switching this repo to `core.hooksPath = hooks` so git invokes the
+checked-in file directly — there is now only ONE pre-commit file. New clones
+should run `npm run hooks:install` (or `./scripts/install-git-hooks.sh`) once
+after cloning. The `.git/hooks/pre-commit` copy is obsolete.
 
 **If you see a WARN:** re-run the commit in single-agent mode (no other Claude
 agents running, no worktrees) to confirm it's not a real regression. The
