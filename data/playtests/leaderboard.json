@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-11T16:40:00.000Z",
+  "updatedAt": "2026-04-11T17:15:00.000Z",
   "totalPlaythroughs": 17,
-  "totalIssues": 131,
+  "totalIssues": 132,
   "batches": [
     {
       "id": "BATCH-2026-04-11-ULTRA",
@@ -968,7 +968,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 29,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/ap_world_history/quiz_01.jpg",
@@ -985,7 +985,9 @@
         "Load deck ap_world_history",
         "Draw questions about Song Dynasty, Ho Chi Minh, European Union, Grameen Bank, Rwanda, Korean Wave, WWI Gallipoli, Qing tributary system"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "closingCommit": "33fb02e15",
+      "resolvedAt": "2026-04-11T17:15:00.000Z"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247402-06-011",
@@ -1002,7 +1004,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 30,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "What was the 'Rape of this' and why is it significant in the AP World History exam's coverage of WWII?",
@@ -1018,7 +1020,9 @@
         "Load deck ap_world_history",
         "Draw question about Nanjing Massacre"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "closingCommit": "33fb02e15",
+      "resolvedAt": "2026-04-11T17:15:00.000Z"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247403-06-012",
@@ -3113,8 +3117,8 @@
         "Test 'card without strike tag gets no barbed_edge bonus' fails"
       ],
       "clusterBoost": false,
-      "closingCommit": "auto-passing",
-      "resolvedAt": "2026-04-11T14:55:00.000Z"
+      "closingCommit": "6c0d2169c",
+      "resolvedAt": "2026-04-11T17:15:00.000Z"
     },
     {
       "canonicalId": "07-mode-coverage-issue-1775873221654-07-005",
@@ -4395,12 +4399,14 @@
       "title": "wowFactorService.ts DeckFact cast errors introduced by 766223a3a parallel session",
       "description": "3 TypeScript errors at lines 63/77/85: DeckFact → Record<string, unknown> cast incompatibility. Not introduced by this session, traced to parallel Claude session commit 766223a3a (Phase 7 multiplayer lobby browser). Soft-warn hook lets it through but real fix still needed.",
       "source": "typecheck",
-      "status": "open",
+      "status": "closed",
       "score": 3,
       "affectedTracks": [
         "parallel-session-regression"
       ],
-      "firstSeen": "2026-04-11T16:40:00.000Z"
+      "firstSeen": "2026-04-11T16:40:00.000Z",
+      "closingCommit": "dea268845",
+      "resolvedAt": "2026-04-11T17:15:00.000Z"
     },
     {
       "canonicalId": "wave-b-incomplete-1",
@@ -4409,14 +4415,31 @@
       "title": "RewardRoomScene.showRelicDetail() missing listeners for relicDetailAccept/relicDetailLeave bridge events",
       "description": "Commit 716715747 added DOM overlay buttons + bridge exports, but the Phaser scene does not subscribe to the emitted events. DOM buttons fire silent no-ops until listeners added. Part of Cluster F completion.",
       "source": "ground-truth grep",
-      "status": "open",
+      "status": "closed",
       "score": 5,
       "affectedTracks": [
         "wave-b-followup"
       ],
-      "firstSeen": "2026-04-11T16:40:00.000Z"
+      "firstSeen": "2026-04-11T16:40:00.000Z",
+      "closingCommit": "b61ad5cde",
+      "resolvedAt": "2026-04-11T17:15:00.000Z"
+    },
+    {
+      "canonicalId": "parallel-session-regression-002",
+      "category": "test_regression",
+      "severity": "high",
+      "title": "22 test failures + 7 typecheck errors from parallel session exhaust→forget rename (727c4b8c6)",
+      "description": "Parallel Claude session \"727c4b8c6 docs: rename exhaust mechanic to forget\" was labeled as docs but touched type definitions. 22 tests now reference fields/functions that were renamed without updating dependents (CardRunState.exhaustPile, resolveExhaustEffects in relicEffectResolver). Not introduced by BATCH-ULTRA work, traced to parallel session. Soft-warn hook lets it through locally but CI will block.",
+      "source": "final verification gate",
+      "status": "open",
+      "score": 5,
+      "affectedTracks": [
+        "parallel-session-regression"
+      ],
+      "firstSeen": "2026-04-11T17:15:00.000Z",
+      "suggestedFix": "Finish the exhaust→forget rename: grep the full repo for \"exhaust\" (case-insensitive) in src/ and tests/, update each to forget, commit."
     }
   ],
-  "openCount": 109,
-  "resolvedCount": 22
+  "openCount": 106,
+  "resolvedCount": 26
 }
