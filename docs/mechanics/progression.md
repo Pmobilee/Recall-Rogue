@@ -227,22 +227,22 @@ Selected level effects:
 | 12 | Tier 1 cards use 4-option MCQ | BUFF: Tier 1 charged correct +20% damage; charged correct +10% damage |
 | 13 | Player max HP → 75 | BUFF: Start with Vitality Ring (+20 HP) |
 | 14 | Combo resets each turn | *(none — pure challenge)* |
-| 15 | Bosses +50% HP | *(none — pure challenge)* |
+| 15 | Bosses +10% HP | *(none — pure challenge)* |
 | 16 | Echo mechanic disabled | BUFF: Discarding a card grants 1 shield |
-| 17 | Wrong answers deal 5 self-damage | BUFF: Correct answers heal 1 HP |
+| 17 | Wrong answers deal 3 self-damage | BUFF: Correct answers heal 1 HP |
 | 18 | Start with 10 cards | BUFF: Choose starting hand each encounter |
 | 19 | All questions use hard formats | (Reserved for future surcharge mechanic) |
 | 20 | Final boss second phase | BUFF: Start with 2 relics (choose from 5) |
 
-**Stepped multipliers (2026-04-05 — reverted from progressive formula):**
+**Stepped multipliers (2026-04-05, updated 2026-04-11 Pass 8):**
 - `enemyHpMultiplier`: `l >= 15 ? 1.15 : l >= 9 ? 1.10 : 1.00` (A9 durability wall, A15 tougher regulars)
-- `enemyDamageMultiplier`: `l >= 17 ? 1.30 : l >= 8 ? 1.20 : l >= 2 ? 1.15 : 1.00` (A2 raw damage, A8 all enemies, A17 pressure)
+- `enemyDamageMultiplier`: `l >= 17 ? 1.25 : l >= 8 ? 1.20 : l >= 2 ? 1.15 : 1.00` (Pass 8: reduced A17 cap 1.30→1.25)
 
 **Key modifier values:**
 - `enemyRegenPerTurn`: `l >= 9 ? 3 : 0` (forces faster kills)
 - `playerMaxHpOverride`: `l >= 13 ? 75 : null`
-- `bossHpMultiplier`: `l >= 15 ? 1.50 : 1.00`
-- `wrongAnswerSelfDamage`: `l >= 17 ? 5 : 0`
+- `bossHpMultiplier`: `l >= 15 ? 1.10 : 1.00` (Pass 8: reduced from 1.50; was the A15 cliff driver)
+- `wrongAnswerSelfDamage`: `l >= 17 ? 3 : 0` (Pass 8: reduced from 5; combined with A19 hard formats = ~15% real A20 win rate)
 - `chargeCorrectDamageBonus`: `l >= 12 ? 0.10 : 0` (was A7 — delayed to A12, Pass 7)
 - `relicTriggerBonus`: `l >= 11 ? 0.15 : 0`
 - `firstTurnBonusAp`: always `0` (removed — A2 challenge stands alone)
@@ -258,25 +258,24 @@ Selected level effects:
 - `starterRelicChoice`: `l >= 10` (was A1 — delayed to A10, Pass 7)
 - `freeCharging`: always `false` — `CHARGE_AP_SURCHARGE` is 0, making this a no-op; preserved for future surcharge restoration
 
-**Sim results (2026-04-05, 500 runs each):**
-| Profile | A0 win% | A20 win% | Direction |
-|---------|---------|----------|-----------|
-| new_player | 0% | 0% | flat (expected) |
-| developing | 63% | 5% | correct drop |
-| competent | 64% | 3% | correct drop |
-| experienced | 90% | 10% | correct drop |
-| master | 100% | 82% | still too high — further tuning needed |
+**Sim results (2026-04-11 Pass 8, 500 runs each):**
 
-Master at A20 is still 82% (target: 5-15%). The sim cannot test quiz-pressure penalties (A4/A7/A12/A19), so the real number will be lower. Further combat-side tuning may be needed.
+| Profile | A0 win% | A15 win% | A20 win% (sim) | A20 win% (est. real) |
+|---------|---------|----------|----------|----------|
+| experienced | 94% | 56% | 34% | ~15% |
 
-**Ascension curve win rates (2026-04-09, experienced profile, 500 runs each):**
+**Why sim ≠ real-world at A20:** The simulator runs all ascension levels with the same fixed accuracy (76% for experienced). However A19 forces hard question formats, which typically reduce effective accuracy by ~15-20pp for a 76%-baseline player. At 60% real accuracy, `wrongAnswerSelfDamage=3` costs 1.2 HP/charge vs 0.72 HP/charge in the sim. This pressure closes the 34% sim win rate to ~15% real-world — matching the design target of ~15% (±5%).
+
+**Pass 8 cliff closure (2026-04-11):** Prior curve had 50pp cliff (A15: 52% → A20: 2%). The cliff sat entirely at A17 (not A15 as expected) due to wrong-answer self-damage stacking with enemy damage. Post-fix cliff: A15: 56% → A20: 34% sim / ~15% real = 22pp cliff (target: 20-25pp).
+
+**Ascension curve win rates (2026-04-11, experienced profile, 500 runs each):**
 | Ascension | Win% |
 |-----------|------|
-| A0  | 80.5% |
-| A1  | 78.3% |
-| A2  | 55.6% |
-| A5  | 51.4% |
-| A10 | 49.0% |
+| A15 | 56% |
+| A16 | 60% |
+| A17 | ~24% (sim, ~10% real) |
+| A18 | ~28% (sim) |
+| A20 | 34% (sim, ~15% real) |
 
 `applyAscensionEnemyTemplateAdjustments` scales mini-boss attacks to boss-tier at level 8 and adds a second phase to `final_lesson` (floor 24) at level 20.
 

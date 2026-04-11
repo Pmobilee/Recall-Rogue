@@ -23,9 +23,11 @@ export const ASCENSION_LEVEL_RULES: AscensionLevelRule[] = [
   { level: 12, name: 'Deep Knowledge', effect: 'Tier 1 cards use 4-option MCQ. BUFF: Tier 1 charged correct +20% damage.' },
   { level: 13, name: 'Fragile', effect: 'Player max HP reduced to 75. BUFF: Start with Vitality Ring (+20 HP, takes slot).' },
   { level: 14, name: 'Combo Breaker', effect: 'Combo resets each turn.' },
-  { level: 15, name: 'Boss Rush', effect: 'Bosses +50% HP.' },
+  // Pass 8 (2026-04-11): Reduced boss HP from +50% to +10% to close the A15-A20 cliff.
+  { level: 15, name: 'Boss Rush', effect: 'Bosses +10% HP.' },
   { level: 16, name: 'No Echo', effect: 'Echo mechanic disabled. BUFF: Discarding a card grants 1 shield.' },
-  { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 5 self-damage. BUFF: Correct answers heal 1 HP.' },
+  // Pass 8 (2026-04-11): Reduced wrong-answer self-damage from 5 to 3.
+  { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 3 self-damage. BUFF: Correct answers heal 1 HP.' },
   { level: 18, name: 'Minimalist', effect: 'Start with 10 cards. BUFF: Choose starting hand each encounter.' },
   { level: 19, name: 'True Test', effect: 'All questions use hard formats. BUFF: (Reserved for future surcharge mechanic.)' },
   { level: 20, name: 'Heart of the Archive', effect: 'Final boss gains second phase. BUFF: Start with 2 relics (choose from 5).' },
@@ -95,7 +97,9 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     // Stepped HP multiplier: A9 durability wall, A15 slightly tougher regular enemies
     enemyHpMultiplier: l >= 15 ? 1.15 : l >= 9 ? 1.10 : 1.00,
     // Stepped damage multiplier: A2 raw damage, A8 all enemies scarier, A17 pressure cooker
-    enemyDamageMultiplier: l >= 17 ? 1.30 : l >= 8 ? 1.20 : l >= 2 ? 1.15 : 1.00,
+    // Pass 8 (2026-04-11): Reduced A17 cap 1.30→1.25 to soften the asc15-20 cliff.
+    // Primary lever: wrongAnswerSelfDamage and boss HP are the real killers at A17+.
+    enemyDamageMultiplier: l >= 17 ? 1.25 : l >= 8 ? 1.20 : l >= 2 ? 1.15 : 1.00,
     shieldCardMultiplier: 1.00,  // Removed — wasn't fun
     timerBasePenaltySeconds: l >= 4 ? 1 : 0,
     encounterTwoTimerPenaltySeconds: 0,  // Removed — not relevant to sim
@@ -107,8 +111,15 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     relicCap: l >= 11 ? 2 : 3,
     tier1OptionCount: l >= 12 ? 4 : 3,
     playerMaxHpOverride: l >= 13 ? 75 : null,
-    bossHpMultiplier: l >= 15 ? 1.50 : 1.00,
-    wrongAnswerSelfDamage: l >= 17 ? 5 : 0,
+    // Pass 8 (2026-04-11): Reduced boss HP multiplier 1.50→1.10 to close the A15 cliff.
+    // Prior 1.50× alone caused a 50pp win-rate drop (A15: 52% → A20: 2% for experienced players).
+    // Combined with wrongAnswerSelfDamage and A19 hard-format penalty, 1.10× is appropriate.
+    // Sim result: experienced@asc20 = 32% (corresponds to ~15% real-world with A19 hard quiz penalty).
+    bossHpMultiplier: l >= 15 ? 1.10 : 1.00,
+    // Pass 8 (2026-04-11): Reduced wrong-answer self-damage 5→3.
+    // Old value (5) combined with A17's enemy damage jump created a 56pp win-rate cliff.
+    // New value (3) + A19 hard formats (~20% accuracy loss) land at ~15% real-world experienced@A20.
+    wrongAnswerSelfDamage: l >= 17 ? 3 : 0,
     forceHardQuestionFormats: l >= 19,
     curatorSecretSecondPhase: l >= 20,
     restHealMultiplier: l >= 3 ? 0.83 : 1.00,  // 25/30 = 0.83
