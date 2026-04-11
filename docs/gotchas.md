@@ -2333,3 +2333,18 @@ node scripts/content-pipeline/bridge/extract-trivia-from-decks.mjs --stamp-regis
 **Fix:** Both checks now guard: `(!chainThemes || chainThemes.length === 0) && subDeckCount === 0`. Only decks missing BOTH fields emit the warning. Genuine cases remaining: `world_capitals` and `world_countries`.
 
 **Rule updated:** Anti-Pattern 12 in `.claude/rules/deck-quality.md` now documents that either `chainThemes` OR `subDecks` satisfies the chain runtime requirement.
+
+### 2026-04-11 — vocab decks were under-sampled by --sample N (per-pool sampling blind spot)
+
+**What:** The 2026-04-10 87-deck audit sweep ran `--sample 5` on all decks. Vocab decks (spanish_b1, french_a1, japanese_n5, chinese_hsk3, etc.) each got exactly 15 checks (5 facts × 3 mastery levels) because they have 1–3 large POS-split pools. The `--sample N` flag is per-pool — so a deck with 1 `english_meanings_nouns` pool of 300 facts would only audit 5 of those 300 facts. The canonical 50-fact protocol was never achieved for any vocab deck in that sweep.
+
+**Why it happened:** The per-pool sampling design was appropriate for knowledge decks with 6–15 small pools, but silently degenerated for vocab decks whose pool structure is intentionally mega-pooled (all nouns in one pool).
+
+**Fix:** Added `--stratified N` flag to `scripts/quiz-audit-engine.ts`. It samples N facts across the whole deck stratified by `(difficulty × chainThemeId × answerTypePoolId)`, giving proportional coverage of every sub-group. `--stratified 50` on a vocab deck now produces 150 checks (50 facts × 3 mastery levels). The existing `--sample N` per-pool path is unchanged for backward compatibility.
+
+**Canonical command going forward:**
+```bash
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --deck <id> --stratified 50
+```
+
+**Rule updated:** `.claude/rules/deck-quality.md` § "50-Fact Sampling Protocol" now specifies `--stratified 50` as the canonical command.

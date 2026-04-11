@@ -858,3 +858,71 @@ Callers that have the rendered question text available should pass it as the thi
 ### Affected Decks
 
 solar_system (percentage mass facts), AP Physics (measurement quantities), AP Chemistry (molar mass, concentration), any deck with facts where the answer is a bare number but the question clarifies the unit or domain.
+
+---
+
+## Quiz Audit Engine (`scripts/quiz-audit-engine.ts`)
+
+The audit engine exercises the real game quiz engine against all curated deck JSON files, detecting 35 categories of quality issues including engine-enabled checks that the static `verify-all-decks.mjs` cannot perform.
+
+### Basic Usage
+
+```bash
+# All knowledge decks (default)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts
+
+# Single deck, verbose
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --deck <id> --verbose
+
+# Include vocab/language decks
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --include-vocab
+
+# JSON output (for programmatic processing)
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --deck <id> --json
+```
+
+### Sampling Flags
+
+#### `--sample N` — Per-Pool Sampling
+
+```bash
+npx tsx ... scripts/quiz-audit-engine.ts --deck <id> --sample 5
+```
+
+Samples at most N facts from **each answer pool** independently. For a deck with 6 pools, `--sample 5` audits up to 30 facts. This is a fast smoke-check for knowledge decks where every pool is small and relatively independent.
+
+**Limitation:** Vocab decks typically have 1–2 mega-pools (e.g., `english_meanings_nouns` with 300+ facts). `--sample 5` on such a deck audits only 5–10 facts total — never reaching the 50-fact canonical protocol. See `--stratified` for the solution.
+
+#### `--stratified N` — Stratified Sampling (canonical for vocab decks)
+
+```bash
+npx tsx ... scripts/quiz-audit-engine.ts --deck <id> --stratified 50 --include-vocab
+```
+
+Samples N facts **across the whole deck**, stratified by the cross-product of `(difficulty × chainThemeId × answerTypePoolId)`. This guarantees proportional coverage of every sub-group, so large single-pool decks are no longer under-sampled.
+
+**When to use `--stratified`:**
+- Vocab/language decks (always — they have 1–2 mega-pools that defeat per-pool sampling)
+- Any deck where `--sample N` would produce far fewer than N×3 checks
+- The canonical 50-fact deck-quality protocol (`.claude/rules/deck-quality.md`)
+
+**Allocation algorithm:**
+1. Group all eligible (non-image) facts by `(difficulty, chainThemeId, answerTypePoolId)` — each group is a "stratum".
+2. Allocate at least 1 fact per non-empty stratum (floor allocation).
+3. Distribute remaining budget proportionally by stratum size.
+4. Assign fractional-remainder slack to strata with the largest fractional parts.
+5. Clamp each stratum's allocation to its actual size (no over-sampling even with large N).
+6. Within each stratum, draw using a seeded shuffle keyed on `deckId + stratumKey` for reproducibility.
+
+**Clamping:** `--stratified 999` on a 76-fact deck will audit all 76 facts, not 999. Running twice with the same budget produces byte-identical results (excluding the timestamp field).
+
+**If both `--stratified` and `--sample` are provided:** `--stratified` wins and a warning is written to stderr:
+```
+[quiz-audit-engine] both --stratified and --sample provided; using --stratified
+```
+
+**Output check count:** `totalChecks = stratifiedFacts × masteryLevels.length`. With `--stratified 50 --mastery 0,2,4`, expect `totalChecks = 150` for most vocab decks.
+
+### Backward Compatibility
+
+`--sample N` behavior is unchanged. Not passing `--stratified` runs the original per-pool sampling path exactly as before.

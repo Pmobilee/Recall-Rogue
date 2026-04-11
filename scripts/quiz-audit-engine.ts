@@ -15,6 +15,9 @@
  * Programmatic options:
  *   --deck <id>          Single deck (default: all non-image decks)
  *   --sample <N>         Max facts per pool (default: all)
+ *   --stratified <N>     Sample N facts stratified across (difficulty × chainThemeId × answerTypePoolId).
+ *                        Replaces --sample when active. Canonical 50-fact protocol for vocab decks.
+ *                        If both --stratified and --sample are given, --stratified wins.
  *   --mastery 0,2,4      Comma-separated mastery levels (default: 0,2,4)
  *   --verbose            Show every fact's quiz presentation
  *   --json               JSON output to stdout
@@ -83,6 +86,91 @@ function seededShuffle<T>(arr: T[], seed: number): T[] {
 }
 
 // ---------------------------------------------------------------------------
+// Stratified sampler
+// ---------------------------------------------------------------------------
+
+type StratumKey = string; // 'diff=<d>|theme=<t>|pool=<p>'
+
+/**
+ * Sample `budget` facts from `facts`, stratified by (difficulty × chainThemeId × answerTypePoolId).
+ *
+ * Allocation strategy:
+ *   1. Each non-empty stratum gets at least 1 fact (floor allocation).
+ *   2. Remaining slots are distributed proportionally by stratum size.
+ *   3. Fractional-remainder slack goes to strata with the largest fractional parts.
+ *   4. Each stratum's allocation is clamped to its actual size (no over-sampling).
+ *   5. Within each stratum, facts are drawn using a seeded shuffle for reproducibility.
+ *
+ * @param facts     Full list of DeckFact objects to sample from.
+ * @param budget    Target number of facts to return (≤ facts.length).
+ * @param seedKey   Deck ID or other stable string — makes sampling reproducible.
+ */
+function stratifiedSample(
+  facts: DeckFact[],
+  budget: number,
+  seedKey: string,
+): DeckFact[] {
+  if (facts.length === 0 || budget <= 0) return [];
+  if (budget >= facts.length) return [...facts];
+
+  // Group by (difficulty, chainThemeId, answerTypePoolId)
+  const strata = new Map<StratumKey, DeckFact[]>();
+  for (const f of facts) {
+    const d = f.difficulty ?? 0;
+    const t = f.chainThemeId ?? 0;
+    const p = f.answerTypePoolId ?? '_nopool';
+    const key: StratumKey = `diff=${d}|theme=${t}|pool=${p}`;
+    if (!strata.has(key)) strata.set(key, []);
+    strata.get(key)!.push(f);
+  }
+
+  const nonEmpty = [...strata.entries()].filter(([, arr]) => arr.length > 0);
+  if (nonEmpty.length === 0) return [];
+
+  // Floor allocation: 1 per stratum
+  const allocated = new Map<StratumKey, number>();
+  let allocatedTotal = 0;
+  for (const [key] of nonEmpty) {
+    allocated.set(key, 1);
+    allocatedTotal++;
+  }
+
+  const remaining = budget - allocatedTotal;
+  if (remaining > 0) {
+    const totalFacts = nonEmpty.reduce((s, [, arr]) => s + arr.length, 0);
+    const remainders: Array<{ key: StratumKey; frac: number }> = [];
+    for (const [key, arr] of nonEmpty) {
+      const exact = (remaining * arr.length) / totalFacts;
+      const base = Math.floor(exact);
+      allocated.set(key, allocated.get(key)! + base);
+      remainders.push({ key, frac: exact - base });
+    }
+    // Distribute rounding slack to largest fractional remainders
+    const slack = budget - [...allocated.values()].reduce((s, n) => s + n, 0);
+    remainders.sort((a, b) => b.frac - a.frac);
+    for (let i = 0; i < slack && i < remainders.length; i++) {
+      allocated.set(remainders[i].key, allocated.get(remainders[i].key)! + 1);
+    }
+  }
+
+  // Clamp per-stratum allocation to actual stratum size (cannot over-sample)
+  for (const [key, arr] of nonEmpty) {
+    if (allocated.get(key)! > arr.length) allocated.set(key, arr.length);
+  }
+
+  // Seeded shuffle + draw
+  const out: DeckFact[] = [];
+  for (const [key, arr] of nonEmpty) {
+    const n = allocated.get(key) ?? 0;
+    if (n === 0) continue;
+    const shuffled = seededShuffle([...arr], djb2(seedKey + ':' + key));
+    out.push(...shuffled.slice(0, n));
+  }
+
+  return out;
+}
+
+// ---------------------------------------------------------------------------
 // Deck classification
 // ---------------------------------------------------------------------------
 
@@ -110,6 +198,8 @@ interface CliOptions {
   renderMode: boolean;
   renderPerPool: number;
   minPoolFacts: number;
+  /** When non-null, uses stratified sampling instead of per-pool --sample N. */
+  stratified: number | null;
 }
 
 function parseArgs(): CliOptions {
@@ -124,6 +214,7 @@ function parseArgs(): CliOptions {
   let renderMode = false;
   let renderPerPool = 5;
   let minPoolFacts = 5;
+  let stratified: number | null = null;
 
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -147,10 +238,17 @@ function parseArgs(): CliOptions {
       renderPerPool = parseInt(args[++i], 10);
     } else if (arg === '--min-pool-facts' && args[i + 1]) {
       minPoolFacts = parseInt(args[++i], 10);
+    } else if (arg === '--stratified' && args[i + 1]) {
+      stratified = parseInt(args[++i], 10);
     }
   }
 
-  return { deckId, sample, masteryLevels, verbose, jsonOutput, includeVocab, confusionTest, renderMode, renderPerPool, minPoolFacts };
+  if (stratified !== null && sample !== null) {
+    process.stderr.write('[quiz-audit-engine] both --stratified and --sample provided; using --stratified\n');
+    sample = null;
+  }
+
+  return { deckId, sample, masteryLevels, verbose, jsonOutput, includeVocab, confusionTest, renderMode, renderPerPool, minPoolFacts, stratified };
 }
 
 // ---------------------------------------------------------------------------
@@ -927,6 +1025,7 @@ function auditDeck(
   masteryLevels: number[],
   samplePerPool: number | null,
   opts: { verbose: boolean; confusionTestMode: boolean; minPoolFacts: number },
+  stratifiedBudget: number | null = null,
 ): DeckAuditResult {
   const deckClass = classifyDeck(deck.id);
   const factResults: FactAuditResult[] = [];
@@ -1030,9 +1129,16 @@ function auditDeck(
   }
 
 
-  // Determine facts to audit (optionally sampled per pool)
+  // Determine facts to audit (stratified OR per-pool sample OR full deck)
   let factsToAudit: DeckFact[];
-  if (samplePerPool !== null) {
+  if (stratifiedBudget !== null) {
+    // Stratified mode: sample N facts across (difficulty × chainThemeId × answerTypePoolId)
+    // Skip image facts before sampling — they have separate quiz paths
+    const eligibleFacts = deck.facts.filter(
+      f => f.quizMode !== 'image_question' && f.quizMode !== 'image_answers',
+    );
+    factsToAudit = stratifiedSample(eligibleFacts, stratifiedBudget, deck.id);
+  } else if (samplePerPool !== null) {
     const perPool = new Map<string, DeckFact[]>();
     for (const fact of deck.facts) {
       const list = perPool.get(fact.answerTypePoolId) ?? [];
@@ -1181,7 +1287,8 @@ function printReport(
   opts: CliOptions,
 ): void {
   console.log(`\n${BOLD}Real-Engine Quiz Audit (mastery levels: ${masteryLevels.join(', ')})${RESET}`);
-  console.log(`Auditing ${deckResults.length} decks (mode: ${opts.sample !== null ? `sample ${opts.sample}/pool` : 'full'})\n`);
+  const modeLabel = opts.stratified !== null ? `stratified ${opts.stratified} facts` : opts.sample !== null ? `sample ${opts.sample}/pool` : 'full';
+  console.log(`Auditing ${deckResults.length} decks (mode: ${modeLabel})\n`);
 
   for (const result of deckResults) {
     printDeckLine(result);
@@ -1279,7 +1386,7 @@ function buildJsonOutput(
 ): JsonOutput {
   return {
     timestamp: new Date().toISOString(),
-    mode: opts.sample !== null ? `sample:${opts.sample}` : 'full',
+    mode: opts.stratified !== null ? `stratified:${opts.stratified}` : opts.sample !== null ? `sample:${opts.sample}` : 'full',
     masteryLevels,
     deckCount: deckResults.length,
     totalChecks: deckResults.reduce((s, r) => s + r.totalChecks, 0),
@@ -1511,7 +1618,7 @@ function main(): void {
       verbose: opts.verbose,
       confusionTestMode: opts.confusionTest,
       minPoolFacts: opts.minPoolFacts,
-    });
+    }, opts.stratified);
     deckResults.push(result);
   }
 

@@ -121,10 +121,19 @@ The 50 samples MUST be distributed across varied difficulty levels and sub-decks
 Why 50 (not 20 or 10): the 2026-04-10 re-check sweep found 3 placeholder leaks in decks that had previously passed 20-fact samples, because the scars clustered in obscure sub-decks (hundred-handers, stymphalian birds, bomber crews) that a 20-sample draw did not reach. The 10-sample shortcut is only acceptable for smoke-checking after a narrowly-scoped fix (e.g. "verify the 3 facts I just changed").
 
 ```bash
-npm run audit:quiz-engine                          # All knowledge decks
-npm run audit:quiz-engine -- --deck <id> --verbose  # Single deck, detail
-npm run audit:quiz-engine -- --render --deck <id>   # Render for LLM review
+# Knowledge decks — full deck or per-pool sample
+npm run audit:quiz-engine                                     # All knowledge decks
+npm run audit:quiz-engine -- --deck <id> --verbose            # Single deck, detail
+npm run audit:quiz-engine -- --render --deck <id>             # Render for LLM review
+
+# Canonical 50-fact protocol — use --stratified for vocab AND knowledge decks
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --deck <id> --stratified 50
+npx tsx --tsconfig tests/playtest/headless/tsconfig.json scripts/quiz-audit-engine.ts --deck <id> --stratified 50 --include-vocab
 ```
+
+**`--stratified 50` is the canonical command for meeting the 50-fact protocol.** It replaces manual per-pool sampling by distributing the budget across the cross-product of `(difficulty × chainThemeId × answerTypePoolId)`. Every sub-group of the deck gets proportional representation. This is especially critical for vocab decks where `--sample 5` was producing only 15 total checks (5 facts × 3 mastery levels) because the deck has a single mega-pool.
+
+Use `--sample N` only for quick smoke-checks on narrowly-scoped fixes to specific pools.
 
 24 checks (10 structural + 14 engine-enabled). Run `node scripts/quiz-audit.mjs --deck <id> --full` for structural-only.
 
