@@ -706,13 +706,32 @@ Enemy intent rolls use a named fork `'enemyIntents'` of the run RNG via `getRunR
 
 ---
 
-## Co-op Cancel UX (2026-04-09)
+## Co-op Cancel UX (updated Issue 9, 2026-04-11)
 
-When a player taps "End Turn" in co-op mode, `coopWaitingForPartner` becomes `true` and the End Turn button shows "WAITING…". The `.coop-waiting-banner` now contains a **Cancel** button (`data-testid="coop-cancel-btn"`):
+When a player taps "End Turn" in co-op mode, `coopWaitingForPartner` becomes `true`. The **End Turn button transforms** into one of two cancel states:
 
-- Calls `cancelCoopTurnEnd()` from `multiplayerCoopSync` — sends `mp:coop:turn_end_cancel` to peers and resolves the local barrier promise with `'cancelled'`
-- Sets `coopWaitingForPartner` to `false` — restores End Turn button immediately
-- The banner has `pointer-events: auto` and `display: flex` to keep text + cancel button inline
+### State 1 — CANCEL END TURN (hand non-empty)
+- Rendered when `$coopWaitingForPartner && handHasCards` — `handHasCards = $derived(handCards.length > 0)`
+- Button label: **CANCEL END TURN**
+- CSS class `.cancel-state`: amber/dark-orange `background: #92400e`, `color: #fcd34d`, `min-width: calc(160px * var(--layout-scale, 1))`, `cancelPulse` animation
+- `data-testid="btn-cancel-end-turn"`
+- `onclick` calls `handleCancelEndTurn()` → `cancelEndTurnRequested()` from `encounterBridge`
+- On `'cancelled'` result: `coopWaitingForPartner` store clears automatically via the bridge's finally block; button returns to END TURN
+
+### State 2 — WAITING… (hand empty)
+- Rendered when `$coopWaitingForPartner && !handHasCards`
+- Button label: **WAITING…**, `disabled`
+- Native `title` tooltip: "You played all your cards — waiting for your partners"
+- `data-testid="btn-end-turn"` (same testid as default — there is no cancel action available)
+
+### Default — END TURN
+- Rendered when `!$coopWaitingForPartner` (solo or before turn-end signal)
+- Unchanged from pre-Issue-9 behavior: `endTurnDisabled`, `end-turn-pulse`, `has-ap-remaining` classes all apply normally
+
+### Secondary cancel path (banner)
+The `.coop-waiting-banner` with `.coop-cancel-btn` (`data-testid="coop-cancel-btn"`) is retained as a secondary entry point. `handleCoopCancel()` now routes through `cancelEndTurnRequested()` (same bridge function) instead of calling `cancelCoopTurnEnd()` directly. The banner remains for screen-reader / accessibility access and as a familiar control for players who notice it first.
+
+**API summary:** `cancelEndTurnRequested()` in `encounterBridge.ts` is the sole UI-callable cancel function. It checks `not_in_coop`, `no_barrier`, and `empty_hand` guards before calling `cancelCoopTurnEnd()` on the sync layer.
 
 ---
 

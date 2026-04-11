@@ -30,8 +30,7 @@
   import { RELIC_BY_ID } from '../../data/relics/index'
   import { getMaxRelicSlots, resolveChargeButtonState } from '../../services/relicEffectResolver'
   import { juiceManager } from '../../services/juiceManager'
-  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent, coopWaitingForPartner } from '../../services/encounterBridge'
-  import { cancelCoopTurnEnd } from '../../services/multiplayerCoopSync'
+  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent, coopWaitingForPartner, cancelEndTurnRequested } from '../../services/encounterBridge'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId, playerSave } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
@@ -439,6 +438,8 @@
   })
 
   let handCards = $derived<Card[]>(reshuffleHoldingHand || combatEntryDelayCards ? [] : (turnState?.deck.hand ?? []))
+  /** True when the player still has at least one card in hand — used to gate co-op cancel. */
+  let handHasCards = $derived(handCards.length > 0)
 
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
   let chainLength = $derived(turnState?.chainLength ?? 0)
@@ -780,10 +781,18 @@
   })
 
 
-  /** Cancel co-op turn-end wait — unblocks local player immediately. */
+  /** Cancel co-op turn-end wait — routes through encounterBridge guard. */
   function handleCoopCancel(): void {
-    cancelCoopTurnEnd()
-    coopWaitingForPartner.set(false)
+    const result = cancelEndTurnRequested()
+    // 'cancelled' → store clears automatically via encounterBridge finally block
+    // 'empty_hand' → should not fire (button hidden when hand empty), but guard log
+    if (result === 'empty_hand') console.warn('[end-turn] cancel attempted with empty hand')
+  }
+
+  /** Cancel co-op turn-end from the transformed end-turn button. */
+  async function handleCancelEndTurn(): Promise<void> {
+    const result = cancelEndTurnRequested()
+    if (result === 'empty_hand') console.warn('[end-turn] cancel-from-btn attempted with empty hand')
   }
 
   let selectedCard = $derived<Card | null>(
@@ -2943,18 +2952,43 @@
     />
 
     {#if showEndTurn}
-      <button
-        class="end-turn-btn"
-        class:disabled={endTurnDisabled || $coopWaitingForPartner}
-        class:end-turn-pulse={!endTurnDisabled && !$coopWaitingForPartner && cardPlayStage !== 'committed' && (apCurrent === 0 || !hasPlayableCards)}
-        class:has-ap-remaining={apCurrent > 0 && hasPlayableCards && !endTurnDisabled}
-        data-testid="btn-end-turn"
-        aria-label="End turn"
-        onclick={handleEndTurn}
-        disabled={endTurnDisabled || $coopWaitingForPartner}
-      >
-        {$coopWaitingForPartner ? 'WAITING…' : 'END TURN'}
-      </button>
+      {#if $coopWaitingForPartner && handHasCards}
+        <!-- Co-op waiting + hand non-empty: show amber CANCEL END TURN button -->
+        <button
+          class="end-turn-btn cancel-state"
+          data-testid="btn-cancel-end-turn"
+          aria-label="Cancel end turn and return to your turn"
+          onclick={handleCancelEndTurn}
+        >
+          CANCEL END TURN
+        </button>
+      {:else if $coopWaitingForPartner && !handHasCards}
+        <!-- Co-op waiting + empty hand: disabled WAITING… with tooltip -->
+        <button
+          class="end-turn-btn"
+          class:disabled={true}
+          data-testid="btn-end-turn"
+          aria-label="Waiting for partner — you played all your cards"
+          title="You played all your cards — waiting for your partners"
+          disabled
+        >
+          WAITING…
+        </button>
+      {:else}
+        <!-- Default: END TURN -->
+        <button
+          class="end-turn-btn"
+          class:disabled={endTurnDisabled}
+          class:end-turn-pulse={!endTurnDisabled && cardPlayStage !== 'committed' && (apCurrent === 0 || !hasPlayableCards)}
+          class:has-ap-remaining={apCurrent > 0 && hasPlayableCards && !endTurnDisabled}
+          data-testid="btn-end-turn"
+          aria-label="End turn"
+          onclick={handleEndTurn}
+          disabled={endTurnDisabled}
+        >
+          END TURN
+        </button>
+      {/if}
     {/if}
 
     {#if $coopWaitingForPartner}
@@ -3715,6 +3749,25 @@
   .end-turn-btn:disabled {
     background: #334155;
     color: #cbd5e1;
+  }
+
+  /* Cancel-state: amber/orange tint when co-op turn-end cancel is available. */
+  .end-turn-btn.cancel-state {
+    background: #92400e;
+    color: #fcd34d;
+    border-color: rgba(252, 211, 77, 0.5);
+    min-width: calc(160px * var(--layout-scale, 1));
+    animation: cancelPulse 2s ease-in-out infinite;
+  }
+
+  .end-turn-btn.cancel-state:hover {
+    background: #b45309;
+    color: #fde68a;
+  }
+
+  @keyframes cancelPulse {
+    0%, 100% { box-shadow: 0 0 4px rgba(251, 191, 36, 0.4); }
+    50% { box-shadow: 0 0 14px rgba(251, 191, 36, 0.65); }
   }
 
   .end-turn-pulse {
