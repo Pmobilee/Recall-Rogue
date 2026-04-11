@@ -30,7 +30,7 @@ export interface CuratedDeck {
 export interface DeckFact {
   id: string;
   correctAnswer: string;
-  acceptableAlternatives: string[];
+  acceptableAlternatives?: string[];
   synonymGroupId?: string;
   /** Generic chain theme slot 0-5. */
   chainThemeId: number;

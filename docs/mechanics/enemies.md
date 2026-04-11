@@ -478,8 +478,8 @@ Act 3 commons: baseHP 5–8 (−1 across all, pass #6). Attack values 3. Multi p
 ### Act 3 Bosses
 | Enemy | Base HP | Phase | Notes |
 |---|---|---|---|
-| `omnibus` | 12 | 50% HP | Ph1: atk 4/5, defend 5, charge 7. Ph2: atk 5, multi 4×2, buff str+2, charge 7 | (HP 15→12, ph2 buff str 3→2, pass 2 2026-04-09) |
-| `final_lesson` | 18 | 33% HP | Ph1: atk 5, multi 4×4. Ph2: atk 6, multi 4×4. Quiz phases at 66%+33% |
+| `omnibus` | 9 | 50% HP | Ph1: atk 4/5, defend 5, charge 7. Ph2: atk 5, multi 4×2, buff str+2, charge 7 | (HP 12→9, T1.2 -25%, 2026-04-11) |
+| `final_lesson` | 10 | 33% HP | Ph1: atk 5, multi 4×4. Ph2: atk 6, multi 4×4. Quiz phases at 66%+33% | (HP 14→10, T1.2 -25%, 2026-04-11) |
 
 ---
 
@@ -556,8 +556,8 @@ Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY
 | `curriculum` | 17 | 50% HP | `onPhaseTransition`: `_quickPlayDamageMultiplierOverride = 0` + +2 `enrageBonusDamage`; only Charge deals damage |
 | `group_project` | 14 | 50% HP | Phase 2: 2-hit dual strike, 4-hit fang barrage, Poison 4×3, atk 4 (pass 2: HP 18→14, peak atk 6→4) |
 | `rabbit_hole` | 21 | — | Debuffs hand with vulnerable and weakness each turn; no phase transition |
-| `omnibus` | 12 | 50% HP | Phase 2: 5-base attacks, 2-hit page storm, +2 Strength buff; charges 7-damage Tome Avalanche (pass 2: HP 15→12, ph2 Str buff 3→2) |
-| `final_lesson` | 18 | 33% HP | Quiz phases at 66% HP (5q) and 33% HP (8q, 4s rapid-fire); `onPlayerChargeWrong`: +2 permanent Strength |
+| `omnibus` | 9 | 50% HP | Phase 2: 5-base attacks, 2-hit page storm, +2 Strength buff; charges 7-damage Tome Avalanche (T1.2: HP 12→9, -25%, 2026-04-11) |
+| `final_lesson` | 10 | 33% HP | Quiz phases at 66% HP (5q) and 33% HP (8q, 4s rapid-fire); `onPlayerChargeWrong`: +2 permanent Strength | (T1.2: HP 14→10, -25%, 2026-04-11) |
 
 ---
 

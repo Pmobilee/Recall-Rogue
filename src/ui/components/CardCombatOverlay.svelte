@@ -37,7 +37,7 @@
   import { getCardTier } from '../../services/tierDerivation'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { ambientAudio } from '../../services/ambientAudioService'
-  import { reshuffleEvent } from '../../services/deckManager'
+  import { reshuffleEvent, drawHand } from '../../services/deckManager'
   import { audioManager } from '../../services/audioService'
   import { REVEAL_DURATION, SWOOSH_DURATION, IMPACT_DURATION, DISCARD_DURATION, FIZZLE_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { turboDelay } from '../../utils/turboMode'
@@ -1483,7 +1483,7 @@
       correctAnswer: correctAnswerDisplay,
       variantIndex: 0,
       factId: fact.id,
-      acceptableAnswers: fact.acceptableAlternatives.length > 0 ? fact.acceptableAlternatives : undefined,
+      acceptableAnswers: (fact.acceptableAlternatives ?? []).length > 0 ? fact.acceptableAlternatives : undefined,
       language: fact.language ?? undefined,
       // DeckFact may not have pronunciation — fall back to reading field, or look up from trivia DB
       pronunciation: fact.pronunciation ?? fact.reading ?? (factsDB.isReady() ? factsDB.getById(fact.id)?.pronunciation : undefined) ?? undefined,
@@ -2129,8 +2129,12 @@
       pendingCardPickState = null
 
       if (state.type === 'transmute' && turnState) {
-        resolveTransmutePick(turnState, state.sourceCardId, newSelected)
-        // handCards is derived from turnState.deck.hand — Svelte will reactively update
+        const pickResolvedCards = resolveTransmutePick(turnState, state.sourceCardId, newSelected)
+        // Issue 5: draw the resolved cards into hand with the normal draw animation.
+        // drawHand with explicit count bypasses the HAND_SIZE cap.
+        if (pickResolvedCards.length > 0) {
+          drawHand(turnState.deck, pickResolvedCards.length)
+        }
       }
 
       if (state.type === 'adapt' && turnState) {

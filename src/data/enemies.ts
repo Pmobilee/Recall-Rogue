@@ -570,7 +570,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Omnibus',
     category: 'boss',
     region: 'the_archive',
-    baseHP: 12, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03), 18→15 (pass #6, 2026-04-09), 15→12 (pass 2)
+    baseHP: 9, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03), 18→15 (pass #6, 2026-04-09), 15→12 (pass 2), 12→9 (T1.2, -25%, 2026-04-11: F18/F21 boss kill rate fix)
     intentPool: [
       { type: 'attack', value: 4, weight: 35, telegraph: 'Tome slam' },
       { type: 'attack', value: 5, weight: 25, telegraph: 'Crushing knowledge' },
@@ -595,7 +595,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'The Final Lesson',
     category: 'boss',
     region: 'the_archive',
-    baseHP: 14, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03), 18→14 (pass #6, 2026-04-09)
+    baseHP: 10, // rebalanced — HP raised 17→24 (pass #1), 24→20 (pass #4), 20→18 (pass #5, 2026-04-03), 18→14 (pass #6, 2026-04-09), 14→10 (T1.2, -25%, 2026-04-11: F24 boss kill rate fix)
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Cataloguing strike' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Archive barrage', hitCount: 4 },

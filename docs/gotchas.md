@@ -3085,6 +3085,14 @@ There is an existing comment `// put on top` at `turnManager.ts` line 2224 that 
 
 **Test coverage:** `scripts/lint/check-deck-schema-drift.test.mjs` extended to 14 tests — 7 new optionality cases.
 
+### 2026-04-11 — DeckFact.acceptableAlternatives made optional to match Zod semantics
+
+**Fix:** Changed `acceptableAlternatives: string[]` to `acceptableAlternatives?: string[]` in `src/data/curatedDeckTypes.ts` (line 33). The Zod schema already had `.default([])` so the decode boundary was already optional — the interface was the lie.
+
+**Reader audit:** One unsafe read found at `src/ui/components/CardCombatOverlay.svelte:1486` — `fact.acceptableAlternatives.length` changed to `(fact.acceptableAlternatives ?? []).length`. `src/services/ankiDistractorGenerator.ts:160` already had `?? []` and was safe. All other usages are assignments (`acceptableAlternatives: []`), function parameters, or test fixtures — none affected.
+
+**Decision:** optional marker is correct. Many existing deck rows omit the field; Zod fills in `[]`. Dropping `.default([])` from the schema would cause Zod to reject those rows silently — the wrong fix.
+
 ### 2026-04-11 — HSK1-5 particle/interjection enrichment (continuation of HSK6 commit 0ae3e18c0)
 
 **What:** Promoted the particle/interjection enrichment pattern established in HSK6 (commit `0ae3e18c0`) to the higher-traffic HSK1-5 decks, where beginners most need grounding.
