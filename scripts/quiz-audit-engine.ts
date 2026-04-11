@@ -520,14 +520,29 @@ function runChecks(
   // Catches cases like: correct="15 days" (has units, has digit, multi-word) but distractor="7" (numeric only).
   // Math/physics formulas are excluded: equations like "U_s = ½kx²" and "v = v₀ + at" differ in
   // format features naturally but are both valid answers from the same semantic pool.
+  //
+  // Capitalization is treated as a SINGLE categorical axis (Phase-3 fix, 2026-04-10).
+  // Previously `startsCapital` and `isAllLower` were two independent booleans that both flipped
+  // when comparing a capitalized answer (e.g. "Bones") to an all-lowercase answer (e.g. "ufotable"),
+  // causing a cosmetic 2-feature diff that tripped the threshold. Replacing them with one
+  // `capitalizationStyle` field ('capitalized' | 'lowercase' | 'mixed' | 'numeric') collapses
+  // that double-count into a single axis, eliminating ~65% false-positive noise (1200+ warns
+  // across 49 decks) while keeping real cross-category pool contamination warns intact.
   if (!isNumerical && distractorFacts.length > 0) {
-    const getFormatFeatures = (s: string): Record<string, boolean> => {
+    type CapStyle = 'capitalized' | 'lowercase' | 'mixed' | 'numeric';
+    const getCapStyle = (s: string): CapStyle => {
+      if (/^\d/.test(s)) return 'numeric';
+      if (/^[A-Z]/.test(s)) return 'capitalized';
+      if (s === s.toLowerCase() && /[a-z]/.test(s)) return 'lowercase';
+      return 'mixed';
+    };
+    type FormatFeatures = { hasUnits: boolean; isNumericOnly: boolean; capitalizationStyle: CapStyle; isMultiWord: boolean };
+    const getFormatFeatures = (s: string): FormatFeatures => {
       const stripped = displayAnswer(s);
       return {
         hasUnits: /[a-zA-Z]+$/.test(stripped.replace(/[.,]/g, '')) && /\d/.test(stripped),
         isNumericOnly: /^[\d,.\s]+$/.test(stripped.trim()),
-        startsCapital: /^[A-Z]/.test(stripped.trim()),
-        isAllLower: stripped === stripped.toLowerCase() && /[a-z]/.test(stripped),
+        capitalizationStyle: getCapStyle(stripped.trim()),
         isMultiWord: stripped.trim().split(/\s+/).length > 1,
       };
     };
@@ -538,9 +553,12 @@ function runChecks(
       const correctIsFormula = looksLikeFormula(correctDisplay);
       if (correctIsFormula && looksLikeFormula(dDisplay)) continue; // skip format check for formulas
       const dFeatures = getFormatFeatures(dDisplay);
+      // Count each feature as ONE axis regardless of type (boolean or string enum).
+      // The threshold stays at ≥2 — only the counting is fixed.
       let diffCount = 0;
-      for (const key of Object.keys(correctFeatures) as Array<keyof typeof correctFeatures>) {
-        if (correctFeatures[key] !== dFeatures[key]) diffCount++;
+      const keys = Object.keys(correctFeatures) as Array<keyof FormatFeatures>;
+      for (const key of keys) {
+        if ((correctFeatures[key] as unknown) !== (dFeatures[key] as unknown)) diffCount++;
       }
       if (diffCount >= 2) {
         issues.push({
