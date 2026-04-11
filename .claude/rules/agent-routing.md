@@ -67,7 +67,7 @@ Do NOT pass `isolation: "worktree"` to `Agent` calls by default. Sub-agents work
 2. **Read first.** "Read relevant docs under `docs/` BEFORE writing code. Navigate via `docs/INDEX.md`."
 3. **Docs same-commit.** "After changes, update the same doc files. Docs-first is non-negotiable; see `.claude/rules/docs-first.md`."
 4. **Tasks.** "Break work into granular `TaskCreate` tasks before starting. `TaskList` must be empty before delivering. See `.claude/rules/task-tracking.md`."
-5. **Build & test.** "Run `npm run typecheck` and `npm run build` after implementation. Run relevant unit tests."
+5. **Build & test — OWN FILES ONLY.** "Run `npm run typecheck` and `npm run build` after implementation. Run relevant unit tests. **Only verify your OWN edited files compile cleanly.** Ignore pre-existing failures in files you did not touch — those belong to another parallel agent. Do NOT install missing deps you did not introduce, do NOT delete unrelated broken code, do NOT 'fix' tests you did not author. See `.claude/rules/testing.md` → 'Agent Scope — Own-Files-Only Build Failures'."
 6. **Docker visual verify.** "Run Docker visual verification per `.claude/rules/testing.md` → Docker Visual Verification. No exceptions."
 7. **Output sampling.** "After ANY batch operation or content edit, sample 5–10 items and READ them back. Sub-agents produce broken output ~15–20% of the time — catch it before delivering."
 8. **Autonomy charter.** "Follow `.claude/rules/autonomy-charter.md`. Default to action, not interrogation. Never report work as 'deferred' — fix Green-zone issues in the same commit. Only come back with a question if a Red-zone action is required."

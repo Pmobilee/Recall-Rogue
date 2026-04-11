@@ -80,7 +80,7 @@ Red-zone findings become a logged TODO with the exact file path, so the user can
 
 A deliverable is "done" only when **every** item on this checklist is satisfied. If any item is incomplete, the deliverable is "in progress" — say so honestly with the exact state.
 
-1. **Code compiles.** `npm run typecheck` passes for the touched area.
+1. **Code compiles — own files only.** `npm run typecheck` passes for files YOU edited. Pre-existing errors in untouched files belong to another parallel agent and are NOT your responsibility. See `.claude/rules/testing.md` → "Agent Scope — Own-Files-Only Build Failures".
 2. **Tests pass.** Relevant unit tests, integration tests, or balance sim pass.
 3. **Visual verified.** If the change is observable, Docker visual verify has produced a screenshot and layout dump. Per `.claude/rules/testing.md`.
 4. **Docs updated same-commit.** Any file you touched has its corresponding doc updated in the same commit. No exceptions.

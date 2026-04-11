@@ -13,6 +13,41 @@
 - `npm run build` — Production build (check Vite warnings)
 - Both must pass before committing
 
+## Agent Scope — Own-Files-Only Build Failures (MANDATORY)
+
+**When multiple agents are working in parallel, each agent MUST IGNORE build / typecheck / test failures that originate outside the files it is editing. Fix only your own breakage. Never chase unrelated failures.**
+
+### Rule
+- An agent owns the files it edited in the current task. Period.
+- If `npm run typecheck` or `npm run build` reports errors in files the agent did **not** touch, those errors are SOMEONE ELSE'S problem — another parallel agent, an in-progress WIP branch, or a feature mid-landing.
+- The agent may verify its own diff compiles cleanly (grep the error list for the files it edited), but must NOT:
+  - Install missing npm deps it did not introduce
+  - Delete or comment out broken code it did not write
+  - "Fix" failing tests it did not author
+  - Report the unrelated failures as blockers in its final summary
+- The agent's job: confirm its own changes don't introduce new errors, then ship.
+
+### How to verify your own scope is green
+1. Keep a list of files you edited this task.
+2. Run `npm run typecheck` (or `build`) and capture output.
+3. Grep the error list for your file paths: `grep -F -f my-touched-files.txt errors.log`
+4. If your files are clean, you are done with verification — ignore everything else.
+5. If the pre-existing, unrelated breakage blocks your verification (e.g., prevents `npm run build` from reaching your file), say so in ONE sentence in the final report and stop. Do NOT attempt to unblock it yourself.
+
+### Rationale
+Multiple agents edit multiple files concurrently. One agent chasing another agent's missing dep / broken import / failing test creates:
+- Scope creep (agent does work it wasn't asked to do)
+- Red-zone dep installs without authorization
+- Conflicting edits to files owned by other agents
+- False "done" reports where the fixes land but the original task didn't
+
+If everyone fixes only their own breakage, the sum of parallel work converges to green. If agents chase each other's failures, they fight each other's edits.
+
+### When this rule does NOT apply
+- Single-agent sessions with no `.claude/multi-agent.lock` and no parallel worktrees — then you own the whole build and should fix everything.
+- The user explicitly asks you to fix an unrelated failure ("while you're at it, fix the chess.js import").
+- The unrelated failure is in a file in your own routing domain (per `.claude/rules/agent-routing.md`) AND the task description covers that domain.
+
 ## Multi-Agent Pre-Commit Mode
 When multiple agents work in parallel, `.claude/hooks/pre-commit-verify.sh`
 soft-warns on typecheck / build / vitest failures instead of blocking — those
