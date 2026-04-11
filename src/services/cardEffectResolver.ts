@@ -1389,20 +1389,25 @@ export function resolveCardEffect(
 
     // Gambit — HP swing attack
     case 'gambit': {
+      // 2026-04-11 audit fix (Severity A): resolver was hardcoding gambitHeal=5 and
+      // selfDmg via masteryL3 check instead of reading the stat table.
+      // stat table L0: healOnCC=3, selfDmg=4. This matches the description.
+      // Balance invariant preserved: stat table values already encode the intended numbers.
       applyAttackDamage(finalValue);
-      const masteryL3 = (card.masteryLevel ?? 0) >= 3;
       if (isChargeCorrect) {
-        result.gambitHeal = 5;
-        result.healApplied = 5;
+        const gambitHeal = stats?.extras?.['healOnCC'] ?? 5;  // fallback=5 matches old hardcode
+        result.gambitHeal = gambitHeal;
+        result.healApplied = gambitHeal;
       } else if (isChargeWrong) {
-        const selfDmg = masteryL3 ? 4 : 5;
-        result.gambitselfDamage = selfDmg;
-        result.selfDamage = selfDmg;
+        // CW self-damage: stat table does not define cwSelfDmg; use selfDmg + 1 as CW penalty
+        const cwSelfDmg = (stats?.extras?.['selfDmg'] ?? 4) + 1;
+        result.gambitselfDamage = cwSelfDmg;
+        result.selfDamage = cwSelfDmg;
       } else {
-        // QP
-        const selfDmg = masteryL3 ? 1 : 2;
-        result.gambitselfDamage = selfDmg;
-        result.selfDamage = selfDmg;
+        // QP: self-damage from stat table extras.selfDmg
+        const qpSelfDmg = stats?.extras?.['selfDmg'] ?? 2;  // fallback=2 matches old hardcode pre-L3
+        result.gambitselfDamage = qpSelfDmg;
+        result.selfDamage = qpSelfDmg;
       }
       return result;
     }
@@ -1467,23 +1472,24 @@ export function resolveCardEffect(
 
     // Warcry — Strength buff + optional free Charge
     case 'warcry': {
-      const masteryL3Warcry = (card.masteryLevel ?? 0) >= 3;
+      // 2026-04-11 audit fix (Severity A): resolver was hardcoding value=2 on CC/QP regardless
+      // of stat table. Stat table extras.str defines the Strength amount per mastery level.
+      // L0: str=1; L1: str=2; L4: str=3; L5: str=3 permanent on CC.
+      // Balance preserved: stat table already encodes the intended values.
+      const warcryStrValue = stats?.extras?.['str'] ?? 1;  // L0=1, grows with mastery
       if (isChargeCorrect) {
-        // +2 Str permanent + free Charge flag
-        result.applyStrengthToPlayer = { value: 2, permanent: true };
+        // CC: permanent Strength + free next Charge (warcryFreeCharge flag waives surcharge)
+        result.applyStrengthToPlayer = { value: warcryStrValue, permanent: true };
         result.warcryFreeCharge = true;
       } else if (isChargeWrong) {
-        // +1 Str this turn only
+        // CW: minimal Strength this turn only (1 stack regardless of mastery)
         result.applyStrengthToPlayer = { value: 1, permanent: false };
       } else {
-        // QP: +2 Str this turn; L3+: also +1 Str permanent
-        result.applyStrengthToPlayer = { value: 2, permanent: false };
-        if (masteryL3Warcry) {
-          // Handled in turnManager: check for warcry_perm_str tag at L3+
-          result.warcryFreeCharge = false; // no free charge on QP
-        }
+        // QP: Strength this turn only (stat-table value)
+        // L3+: turnManager also applies permanent Str via warcry_perm_str tag (handled there)
+        result.applyStrengthToPlayer = { value: warcryStrValue, permanent: false };
       }
-      result.finalValue = isChargeCorrect ? 2 : (isChargeWrong ? 1 : 2);
+      result.finalValue = warcryStrValue;
       return result;
     }
 
@@ -1788,8 +1794,11 @@ export function resolveCardEffect(
 
     // Hemorrhage — Bleed finisher: consumes all Bleed stacks on enemy
     case 'hemorrhage': {
+      // 2026-04-11 audit fix (Severity A): use stat-table qpValue not deprecated getMasteryBaseBonus.
+      // stat table: L0 qpValue=4 (bumped from 2 in L0 Balance Overhaul 2026-04-10).
+      // bleedMult: CC=6, QP=4, CW=2 (hardcoded — stat table has extras.bleedMult but not used for CC/CW split).
       const bleedStacks = advanced.enemyBleedStacks ?? 0;
-      const hemoBase = (mechanic?.baseValue ?? 4) + getMasteryBaseBonus(mechanicId, card.masteryLevel ?? 0);
+      const hemoBase = stats?.qpValue ?? ((mechanic?.baseValue ?? 4) + getMasteryBaseBonus(mechanicId, card.masteryLevel ?? 0));
       const bleedMult = isChargeCorrect ? 6 : (isChargeWrong ? 2 : 4);
       const hemoDmg = hemoBase + (bleedMult * bleedStacks);
       applyAttackDamage(hemoDmg);

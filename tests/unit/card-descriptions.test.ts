@@ -215,3 +215,120 @@ describe('card-descriptions — specific mechanics', () => {
     }
   });
 });
+
+// ── 2026-04-11 Audit Fix Tests ─────────────────────────────────────────────
+// These tests verify that card descriptions now match resolver behavior.
+// Previously descriptions used card.baseEffectValue (BASE_EFFECT[cardType] = attack:4, shield:3)
+// instead of stat-table qpValue. See docs/gotchas.md 2026-04-11 entry.
+
+describe('card-descriptions — 2026-04-11 audit fix: power reads from stat table', () => {
+  it('heavy_strike shows stat-table qpValue=7 (not baseEffectValue=4)', () => {
+    const card = makeCard('heavy_strike', { cardType: 'attack', baseEffectValue: 4 });
+    const detailed = getDetailedCardDescription(card);
+    // stat table L0 qpValue=7; baseEffectValue=4 (attack BASE_EFFECT)
+    expect(detailed).toContain('7');
+    expect(detailed).not.toMatch(/Deal 4 damage/);
+  });
+
+  it('block shows stat-table qpValue=4 (not old seed value 3)', () => {
+    const card = makeCard('block', { cardType: 'shield', baseEffectValue: 3 });
+    const detailed = getDetailedCardDescription(card);
+    // stat table L0 qpValue=4 (updated from old seed=3); description reads stat table
+    expect(detailed).toContain('4');
+    expect(detailed).not.toContain('undefined');
+  });
+
+  it('twin_strike shows stat-table qpValue=2 (not baseEffectValue=5)', () => {
+    const card = makeCard('twin_strike', { cardType: 'attack', baseEffectValue: 5 });
+    const detailed = getDetailedCardDescription(card);
+    // stat table L0 qpValue=2; baseEffectValue=5 is seed value
+    expect(detailed).toContain('2');
+    expect(detailed).not.toMatch(/Deal 5 damage/);
+  });
+
+  it('fortify description reflects scaling mechanic, not flat block value', () => {
+    const card = makeCard('fortify', { cardType: 'shield', baseEffectValue: 7 });
+    const detailed = getDetailedCardDescription(card);
+    // Must NOT show "Gain 7 Block" (that was the flat-value lie)
+    expect(detailed).not.toMatch(/Gain 7 Block/);
+    expect(detailed).not.toMatch(/Gain \d+ Block\. Persists/);
+    // Must explain the scaling formula
+    expect(detailed.toLowerCase()).toMatch(/50%|current block|current Block/);
+  });
+
+  it('fortify short description does not show flat power number', () => {
+    const card = makeCard('fortify', { cardType: 'shield', baseEffectValue: 7 });
+    const short = getShortCardDescription(card);
+    // Must not show "Gain 7" or "Gain 5" — no flat block numbers
+    expect(short).not.toMatch(/Gain \d+/);
+  });
+
+  it('fortify parts do not use numWithMastery(power) pattern', () => {
+    const card = makeCard('fortify', { cardType: 'shield', baseEffectValue: 7 });
+    const parts = getCardDescriptionParts(card);
+    const joined = parts.map(p => p.value).join('');
+    // Should show scaling info not a raw number from baseEffectValue
+    expect(joined).not.toBe('7');  // not just the old flat value
+  });
+
+  it('feedback_loop description shows Pass-8 values (CC: 28, not 40)', () => {
+    const card = makeCard('feedback_loop', { cardType: 'attack', baseEffectValue: 5 });
+    const detailed = getDetailedCardDescription(card);
+    // Pass 8 (2026-04-10): CC reduced from 40→28
+    expect(detailed).toContain('28');
+    expect(detailed).not.toMatch(/CC: 40 damage/);
+  });
+
+  it('feedback_loop short description shows updated value', () => {
+    const card = makeCard('feedback_loop', { cardType: 'attack', baseEffectValue: 5 });
+    const short = getShortCardDescription(card);
+    // Must not still say "40"
+    expect(short).not.toBe('CC: 40 dmg');
+  });
+
+  it('overheal threshold shows 60% not 50%', () => {
+    const card = makeCard('overheal', { cardType: 'shield', baseEffectValue: 3 });
+    const detailed = getDetailedCardDescription(card);
+    // Resolver uses healthPercentage < 0.6 (60%), not 50%
+    expect(detailed).toContain('60%');
+    expect(detailed).not.toContain('50%');
+  });
+
+  it('smite shows stat-table QP value (L0=7, not old seed 10)', () => {
+    const card = makeCard('smite', { cardType: 'attack', baseEffectValue: 10 });
+    const detailed = getDetailedCardDescription(card);
+    // stat table L0 qpValue=7
+    expect(detailed).toContain('7');
+    // "Deal 10 damage" was the old wrong value
+    expect(detailed).not.toMatch(/Deal 10 damage \(QP\)/);
+  });
+
+  it('warcry description shows str from stat table (L0 str=1)', () => {
+    const card = makeCard('warcry', { cardType: 'buff', baseEffectValue: 0 });
+    const detailed = getDetailedCardDescription(card);
+    // stat table L0 extras.str=1; description reads this
+    expect(detailed).toContain('+1 Strength');
+    expect(detailed).toContain('CC:');
+  });
+
+  it('all three description functions return no NaN for stat-table mechanics at L0', () => {
+    // Spot-check mechanics that previously showed wrong values
+    const mechanics = [
+      { id: 'heavy_strike', type: 'attack' as const },
+      { id: 'twin_strike', type: 'attack' as const },
+      { id: 'bash', type: 'attack' as const },
+      { id: 'rupture', type: 'attack' as const },
+      { id: 'guard', type: 'shield' as const },
+      { id: 'absorb', type: 'shield' as const },
+    ];
+    for (const { id, type } of mechanics) {
+      const card = makeCard(id, { cardType: type, baseEffectValue: 4, masteryLevel: 0 });
+      const detailed = getDetailedCardDescription(card);
+      expect(detailed).not.toContain('NaN');
+      expect(detailed).not.toContain('undefined');
+      const short = getShortCardDescription(card);
+      expect(short).not.toContain('NaN');
+      expect(short).not.toContain('undefined');
+    }
+  });
+});

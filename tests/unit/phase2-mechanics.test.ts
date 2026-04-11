@@ -124,26 +124,31 @@ describe('Phase 2 mechanic definitions present', () => {
 // ── ATTACK: gambit ──
 
 describe('gambit mechanic', () => {
-  it('QP: deals damage and takes 2 self-damage', () => {
+  // 2026-04-11 audit fix: gambit now reads selfDmg and healOnCC from stat table.
+  // L0 stat table: extras.selfDmg=4, extras.healOnCC=3.
+  // Old hardcoded values (QP selfDmg=2, CC heal=5) are replaced by stat-table truth.
+  it('QP: deals damage and takes selfDmg from stat table (L0=4)', () => {
     const result = resolve('gambit', 'quick');
     expect(result.damageDealt).toBeGreaterThan(0);
-    // QP: self damage 2 (default mastery 0)
-    expect(result.selfDamage).toBe(2);
-    expect(result.gambitselfDamage).toBe(2);
+    // QP: self damage = stat table extras.selfDmg = 4 at L0
+    expect(result.selfDamage).toBe(4);
+    expect(result.gambitselfDamage).toBe(4);
     expect(result.healApplied ?? 0).toBe(0);
   });
 
-  it('CC: deals damage and heals 5 HP', () => {
+  it('CC: deals damage and heals healOnCC from stat table (L0=3)', () => {
     const result = resolve('gambit', 'charge_correct');
     expect(result.damageDealt).toBeGreaterThan(0);
-    expect(result.healApplied).toBe(5);
-    expect(result.gambitHeal).toBe(5);
+    // CC: heal = stat table extras.healOnCC = 3 at L0
+    expect(result.healApplied).toBe(3);
+    expect(result.gambitHeal).toBe(3);
     expect(result.selfDamage ?? 0).toBe(0);
   });
 
-  it('CW: deals damage and takes 5 self-damage', () => {
+  it('CW: deals damage and takes selfDmg+1 as CW penalty (L0=5)', () => {
     const result = resolve('gambit', 'charge_wrong');
     expect(result.damageDealt).toBeGreaterThan(0);
+    // CW: selfDmg+1 = 4+1 = 5
     expect(result.selfDamage).toBe(5);
     expect(result.gambitselfDamage).toBe(5);
     expect(result.healApplied ?? 0).toBe(0);
@@ -307,18 +312,22 @@ describe('knowledge_ward mechanic (scales with correct charges)', () => {
 // ── BUFF: warcry ──
 
 describe('warcry mechanic', () => {
-  it('QP: applies +2 Strength this turn (not permanent)', () => {
+  // 2026-04-11 audit fix: warcry now reads str from stat table extras.str.
+  // L0 stat table: extras.str=1. Old hardcoded value=2 replaced by stat-table truth.
+  it('QP: applies +1 Strength this turn (stat table L0 str=1, not permanent)', () => {
     const result = resolve('warcry', 'quick');
     expect(result.applyStrengthToPlayer).toBeDefined();
-    expect(result.applyStrengthToPlayer!.value).toBe(2);
+    // L0 stat table extras.str = 1
+    expect(result.applyStrengthToPlayer!.value).toBe(1);
     expect(result.applyStrengthToPlayer!.permanent).toBe(false);
     expect(result.warcryFreeCharge).toBeFalsy();
   });
 
-  it('CC: applies +2 Strength permanently AND grants free Charge', () => {
+  it('CC: applies +1 Strength permanently (stat table L0 str=1) AND grants free Charge', () => {
     const result = resolve('warcry', 'charge_correct');
     expect(result.applyStrengthToPlayer).toBeDefined();
-    expect(result.applyStrengthToPlayer!.value).toBe(2);
+    // L0 stat table extras.str = 1 (grows to 2 at L1, 3 at L4)
+    expect(result.applyStrengthToPlayer!.value).toBe(1);
     expect(result.applyStrengthToPlayer!.permanent).toBe(true);
     expect(result.warcryFreeCharge).toBe(true);
   });
@@ -336,6 +345,17 @@ describe('warcry mechanic', () => {
     const cc = resolve('warcry', 'charge_correct');
     expect(qp.applyStrengthToPlayer!.permanent).toBe(false);
     expect(cc.applyStrengthToPlayer!.permanent).toBe(true);
+  });
+
+  it('At L1 mastery, str value is 2 (stat table progression)', () => {
+    // 2026-04-11 audit: verify stat table progression works
+    const ccL1 = resolve('warcry', 'charge_correct', undefined, undefined, { masteryLevel: 1 });
+    expect(ccL1.applyStrengthToPlayer!.value).toBe(2); // L1 extras.str=2
+  });
+
+  it('At L4+ mastery, str value is 3 (stat table progression)', () => {
+    const ccL4 = resolve('warcry', 'charge_correct', undefined, undefined, { masteryLevel: 4 });
+    expect(ccL4.applyStrengthToPlayer!.value).toBe(3); // L4 extras.str=3
   });
 });
 

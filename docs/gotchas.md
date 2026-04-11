@@ -2706,3 +2706,27 @@ The correct convention (as used by `chessPuzzleService.ts` with runtime Lichess 
 - Fortify description: changed from "Gain X Block. Persists into next turn." to an accurate description of the scaling formula. "Persists" was also wrong — it only applies at L5 via the `fortify_carry` tag.
 - Feedback Loop description: updated from stale pre-Pass-8 values (CC: 40/+16) to correct Pass-8 values (CC: 28/+12, max 40).
 - Overheal threshold: changed from 50% to 60% in descriptions (resolver checks `healthPercentage < 0.6`).
+
+### 2026-04-11 — Steam lobby metadata is public; password hashes are UX gates only
+
+**What:** Steam lobby metadata (written via `setLobbyData`) is readable by any Steam client using the Steamworks API. The `password_hash` key written by `steamBackend.createLobby` is visible in plaintext (as a hex string) to any player who knows the lobby ID.
+
+**Why it matters:** The SHA-256 hash prevents casual observers from seeing the password, but a determined player can read the hash and brute-force short passwords offline. This is the same threat model as password-protecting a Garry's Mod server — a social/UX boundary, not cryptographic auth.
+
+**Fix/mitigation:** Document clearly in the lobby creation UI ("password-protected" not "private"). Do not use lobby password for anything security-sensitive. Real auth requires a server-side token exchange (Fastify web backend path has a `joinToken` mechanism for WS upgrade that is more secure).
+
+### 2026-04-11 — Fastify MP registry is in-memory; server restart drops all lobbies
+
+**What:** `mpLobbyRegistry.ts` uses `Map<lobbyId, MpLobby>` with no persistence. A server restart drops all active lobbies. Players in a lobby lose their session.
+
+**Why it matters:** This is accepted for V1. Among Us and Left 4 Dead 2 have the same behavior for their relay-based sessions. The 10-minute TTL and stale-pruning mean lobbies clean up naturally.
+
+**Fix/deferred:** Full persistence to SQLite via drizzle is out of scope for V1. A `lastActivity` heartbeat + restore-on-startup path would be the follow-up. Document this to players in the lobby screen ("Lobby may be lost if the server restarts").
+
+### 2026-04-11 — createLobby and joinLobby are now async (Phase 6)
+
+**What:** `createLobby` and `joinLobby` in `multiplayerLobbyService.ts` are now `async` because they await the backend (Fastify REST, Steamworks, or localStorage). Call sites must `await` them.
+
+**Callers fixed in this commit:** `CardApp.svelte` `handleCreateLobby` / `handleJoinLobby` (made async).
+
+**Potential hidden callers:** Any code that calls `createLobby()` or `joinLobby()` without `await` will silently receive a `Promise<LobbyState>` instead of `LobbyState` — TypeScript will catch it on `npm run typecheck` (the `LobbyState` properties are missing from `Promise`). Run typecheck after any new call site addition.

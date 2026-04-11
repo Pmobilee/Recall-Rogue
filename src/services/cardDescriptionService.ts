@@ -29,8 +29,12 @@ const GENERIC_TYPE_DESCRIPTIONS: Record<CardType, string> = {
  * Verb-first prose; proper sentences.
  */
 export function getDetailedCardDescription(card: Card, powerOverride?: number): string {
-  const power = powerOverride ?? Math.round(card.baseEffectValue);
   const mechanic = getMechanicDefinition(card.mechanicId);
+  // 2026-04-11: Use stat-table qpValue as canonical power source (audit fix — baseEffectValue
+  // is BASE_EFFECT[cardType] which is attack=4/shield=3 and does NOT reflect per-mechanic balance).
+  // See docs/gotchas.md 2026-04-11 entry and docs/content/card-description-audit.md root-cause §2.
+  const _statsForPower = mechanic ? getMasteryStats(mechanic.id, card.masteryLevel ?? 0) : null;
+  const power = powerOverride ?? (_statsForPower?.qpValue != null ? _statsForPower.qpValue : Math.round(card.baseEffectValue));
 
   const apCost = getEffectiveApCost(card);
   const apSuffix = apCost === 0 ? ' (Free)' : apCost === 2 ? ' (Costs 2 AP)' : apCost >= 3 ? ` (Costs ${apCost} AP — full turn)` : '';
@@ -135,7 +139,9 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
       return `Gain ${power} Block. Reflect ${reflect} damage when hit.` + apSuffix;
     }
     case 'fortify':
-      return `Gain ${power} Block. Persists into next turn.` + apSuffix;
+      // 2026-04-11 audit fix: resolver uses current block x 0.5/0.75, NOT a flat value.
+      // fortify_carry (persistence) is only at L5 tag.
+      return `Gain Block = 50% of current Block (QP) or 75% + card value (CC). L5: Block persists next turn.` + apSuffix;
     case 'parry':
       return `Gain ${power} Block. Draw 1 card if enemy attacks.` + apSuffix;
     case 'brace':
@@ -143,7 +149,8 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     case 'cleanse':
       return `Purge all debuffs. Draw 1 card.` + apSuffix;
     case 'overheal':
-      return `Gain ${power} Block. Double if HP below 50%.` + apSuffix;
+      // 2026-04-11 audit fix: resolver checks healthPercentage < 0.6 (60%), not 50%.
+      return `Gain ${power} Block. Double if HP below 60%.` + apSuffix;
     case 'lifetap':
       return `Deal ${power} damage. Heal 20% of damage dealt.` + apSuffix;
     case 'emergency':
@@ -352,16 +359,30 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     }
 
     // ── AR-264: Quiz-integrated cards ─────────────────────────────────────────
-    case 'recall':
-      return `Deal 10 damage (QP). CC: 20 damage (30 on Review Queue fact). CW: 6 damage.` + apSuffix;
-    case 'precision_strike':
-      return `Deal 8 damage (QP). CC: scales with question difficulty (8 × options). CW: 4 damage.` + apSuffix;
+    case 'recall': {
+      const recallQpDmg = _statsForPower?.qpValue ?? 5;
+      // 2026-04-11 audit fix: stat table L0 qpValue=5 (not 10, the old seed). CC=20/30 still hardcoded in resolver.
+      return `Deal ${recallQpDmg} damage (QP). CC: 20 damage (30 on Review Queue fact). CW: ${Math.max(1, Math.round(recallQpDmg * 0.75))} damage.` + apSuffix;
+    }
+    case 'precision_strike': {
+      const psQpDmg = _statsForPower?.qpValue ?? 5;
+      // 2026-04-11 audit fix: stat table L0 qpValue=5 (not 8). Pass 8: CC formula uses 6x not 8x.
+      // CC: 6 x (distractors+1). At L0 (2 distractors): 18. At L3+ (4 distractors): 30.
+      return `Deal ${psQpDmg} damage (QP). CC: scales with difficulty (6 × options, min 18). CW: ${Math.round(psQpDmg * 0.5)} damage.` + apSuffix;
+    }
     case 'knowledge_ward':
       return `Gain Block scaled by correct Charges this encounter. QP: 6×Charges. CC: 10×Charges. CW: 4 Block.` + apSuffix;
-    case 'smite':
-      return `Deal 10 damage (QP). CC: 10 + (6 × Aura level) damage. CW: 6 damage + Aura −1.` + apSuffix;
-    case 'feedback_loop':
-      return `Deal 5 damage (QP). CC: 40 damage (+16 in Flow State). CW: 0 damage + Aura −3 crash.` + apSuffix;
+    case 'smite': {
+      const smQpValue = _statsForPower?.qpValue ?? 7;
+      // 2026-04-11 audit fix: stat table L0 qpValue=7 (not 10, the old seed value).
+      return `Deal ${smQpValue} damage (QP). CC: 10 + (6 × Aura level) damage. CW: 6 damage + Aura −1.` + apSuffix;
+    }
+    case 'feedback_loop': {
+      const flQpValue = _statsForPower?.qpValue ?? 3;
+      // Pass 8 (2026-04-10): CC base reduced 40->28; flow bonus reduced +16->+12.
+      // 2026-04-11 audit fix: description was showing stale pre-Pass-8 values.
+      return `Deal ${flQpValue} damage (QP). CC: 28 damage (+12 in Flow State, max 40). CW: 0 damage + Aura −3 crash.` + apSuffix;
+    }
 
     default: {
       // Type-based sensible defaults — better than just mechanic.name
@@ -395,8 +416,10 @@ export function getMechanicTag(card: Card): string {
  * Verb-first terse format, ≤20 chars target.
  */
 export function getShortCardDescription(card: Card, powerOverride?: number): string {
-  const power = powerOverride ?? Math.round(card.baseEffectValue);
   const mechanic = getMechanicDefinition(card.mechanicId);
+  // 2026-04-11 audit fix: use stat-table qpValue not baseEffectValue.
+  const _shortStatsForPower = mechanic ? getMasteryStats(mechanic.id, card.masteryLevel ?? 0) : null;
+  const power = powerOverride ?? (_shortStatsForPower?.qpValue != null ? _shortStatsForPower.qpValue : Math.round(card.baseEffectValue));
 
   if (!mechanic) {
     switch (card.cardType) {
@@ -465,7 +488,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     // ── Shield ───────────────────────────────────────────────────────────────
     case 'block': return `Gain ${power}`;
     case 'thorns': return `Gain ${power}, refl ${secondary ?? 3}`;
-    case 'fortify': return `Gain ${power}, lasts`;
+    case 'fortify': return '50% block';  // 2026-04-11: resolver scales current block
     case 'parry': return `Gain ${power}, draw`;
     case 'brace': return 'Match telegraph';
     case 'cleanse': return 'Purge';
@@ -631,8 +654,8 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'recall': return '10/20/30 dmg';
     case 'precision_strike': return 'Deal 8×options';
     case 'knowledge_ward': return 'Gain ×charges';
-    case 'smite': return '10+6×Aura dmg';
-    case 'feedback_loop': return 'CC: 40 dmg';
+    case 'smite': return '7+CC×Aura dmg';  // 2026-04-11 audit: L0 QP=7 from stat table
+    case 'feedback_loop': return 'CC: 28/40 dmg';  // 2026-04-11 Pass-8 updated values
 
     default: {
       // Type-based sensible defaults — better than just mechanic.name
@@ -716,9 +739,11 @@ function cond(v: number, active: boolean): CardDescPart {
  * 2 lines max ideal. Keywords use kw(), numbers use num()/numWithMastery().
  */
 export function getCardDescriptionParts(card: Card, gameState?: CardGameState, powerOverride?: number): CardDescPart[] {
-  const power = powerOverride ?? Math.round(card.baseEffectValue);
   const mechanic = getMechanicDefinition(card.mechanicId);
   const masteryLevel = card.masteryLevel ?? 0;
+  // 2026-04-11 audit fix: use stat-table qpValue not baseEffectValue.
+  const _partsStatsForPower = mechanic ? getMasteryStats(mechanic.id, masteryLevel) : null;
+  const power = powerOverride ?? (_partsStatsForPower?.qpValue != null ? _partsStatsForPower.qpValue : Math.round(card.baseEffectValue));
 
   if (!mechanic) {
     switch (card.cardType) {
@@ -824,7 +849,9 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'thorns':
       return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nReflect '), ...numWithSecondaryMastery(secondary ?? 3, mechanic.id, masteryLevel)];
     case 'fortify':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nPersists')];
+      // 2026-04-11 audit fix: resolver scales current block, not flat block.
+      // Persistence only happens at L5 (fortify_carry tag).
+      return [txt('50% Block'), txt('\nCC: 75% Block')];
     case 'parry':
       return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nDraw on hit')];
     case 'brace':
@@ -1062,10 +1089,14 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       return [txt('Deal '), num(8), txt(' damage\nCC: ×(options+1)')];
     case 'knowledge_ward':
       return [txt('Gain '), kw('Block', 'block'), txt(' ×\ncorrect charges')];
-    case 'smite':
-      return [txt('Deal '), num(10), txt(' damage\n+'), num(6), txt(' per Aura')];
+    case 'smite': {
+      // 2026-04-11 audit fix: qpValue from stat table (L0=7, not old seed 10).
+      const smPartsPower = _partsStatsForPower?.qpValue ?? 7;
+      return [txt('Deal '), num(smPartsPower), txt(' dmg\nCC: +Aura scale')];
+    }
     case 'feedback_loop':
-      return [txt('CC: Deal '), num(40), txt(' damage\n+'), num(16), txt(' in '), kw('Flow State', 'flow_state')];
+      // 2026-04-11 audit fix: Pass 8 reduced CC from 40 to 28 (max 40 in Flow State).
+      return [txt('CC: 28/40 dmg\n'), kw('Flow State', 'flow_state'), txt(' bonus')];
 
     default: {
       // Type-based sensible defaults — better than just mechanic.name
