@@ -3033,3 +3033,13 @@ After careful reading of `handleEndTurn()` in `encounterBridge.ts`, the hand dis
 **Alias added:** `sendTurnEndCancel()` in `multiplayerCoopSync.ts` as an explicit alias for `cancelCoopTurnEnd()` per Issue 9 naming convention.
 
 **Files:** `src/services/encounterBridge.ts` (cancelEndTurnRequested), `src/services/multiplayerCoopSync.ts` (sendTurnEndCancel), `src/services/turnManager.endTurnCancel.test.ts` (22 tests).
+
+### 2026-04-11 — wowFactorService.ts: DeckFact type tightening broke direct Record cast
+
+**What:** Parallel session commit `766223a3a` (feat(ui): Phase 7 multiplayer lobby browser) tightened the `DeckFact` interface in `src/data/curatedDeckTypes.ts` — it now lacks an index signature for `string`. This caused `svelte-check` to error on three cast sites in `src/services/wowFactorService.ts` (lines 63, 77, 85) where `DeckFact | undefined` was directly cast to `Record<string, unknown>`. TS error: "Conversion of type 'DeckFact | undefined' to type 'Record<string, unknown>' may be a mistake because neither type sufficiently overlaps."
+
+**Why:** The `wowFactor` field is intentionally a runtime-only field that some curated facts include but the TypeScript type does not declare (per the code comment). The original `as Record<string, unknown>` cast was valid when `DeckFact` had broader typing. After the tightening, TS requires an intermediate `unknown` step.
+
+**Fix:** Changed `(deckFact as Record<string, unknown>)` to `(deckFact as unknown as Record<string, unknown>)` at all three cast sites. This is the TS-blessed pattern for bypassing incompatible direct casts when the intent is deliberate.
+
+**Fix commit:** applied in fix(services) after parallel regression. See `src/services/wowFactorService.ts` lines 63, 77, 85.

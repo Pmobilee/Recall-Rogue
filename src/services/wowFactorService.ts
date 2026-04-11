@@ -60,7 +60,7 @@ export function resolveWowFactorText(
       // DeckFact does not officially carry wowFactor (not in curatedDeckTypes.ts),
       // but some curated facts include it as a runtime-only field. Fall back to
       // explanation, which is always present.
-      return (deckFact as Record<string, unknown>)?.wowFactor as string | null
+      return (deckFact as unknown as Record<string, unknown>)?.wowFactor as string | null
         ?? deckFact?.explanation
         ?? null;
     }
@@ -74,7 +74,7 @@ export function resolveWowFactorText(
     const sourceDeckId = factSourceDeckMap?.[answeredFactId];
     if (sourceDeckId) {
       const deckFact = getCuratedDeckFact(sourceDeckId, answeredFactId);
-      return (deckFact as Record<string, unknown>)?.wowFactor as string | null
+      return (deckFact as unknown as Record<string, unknown>)?.wowFactor as string | null
         ?? deckFact?.explanation
         ?? null;
     }
@@ -82,7 +82,7 @@ export function resolveWowFactorText(
     for (const item of deckMode.items) {
       const deckFact = getCuratedDeckFact(item.deckId, answeredFactId);
       if (deckFact) {
-        return (deckFact as Record<string, unknown>)?.wowFactor as string | null
+        return (deckFact as unknown as Record<string, unknown>)?.wowFactor as string | null
           ?? deckFact?.explanation
           ?? null;
       }
