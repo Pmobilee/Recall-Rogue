@@ -1,30 +1,39 @@
-### 2026-04-11 — Pre-commit hook soft-warns under multi-agent concurrency
+### 2026-04-11 — Both pre-commit hooks soft-warn under multi-agent concurrency
 
-**Symptom:** When multiple Claude sub-agents were committing in parallel,
-`.claude/hooks/pre-commit-verify.sh` was hard-blocking on spurious typecheck /
-build / vitest failures. The failures weren't real regressions — they were
-collisions from concurrent edits mid-flight (shared `dist/` writes, flaky test
-timing, source files being read while another agent was saving them).
+**Symptom:** When multiple Claude sub-agents were committing in parallel, both
+pre-commit hooks were hard-blocking on spurious failures — typecheck / build /
+vitest collisions in `.claude/hooks/pre-commit-verify.sh`, and deck-verify /
+quiz-audit collisions in `.git/hooks/pre-commit` (shared `facts.db` writes,
+mid-edit deck files). None of the failures were real regressions.
 
-**Fix:** The hook now detects multi-agent mode and downgrades typecheck / build
-/ vitest failures from BLOCK (exit 2) to WARN (exit 0, with a loud warning).
+**Fix:** Both hooks now detect multi-agent mode and downgrade the
+concurrency-prone checks from BLOCK to WARN with a loud notice.
 
 Detection signals (any one trips multi-agent mode):
 1. `RR_MULTI_AGENT=1` env var — explicit opt-in
-2. `.claude/multi-agent.lock` file present — marker-file opt-in
+2. `.claude/multi-agent.lock` marker file — marker-file opt-in
 3. `git worktree list` reports > 1 worktree — automatic detection
 
-**What still hard-blocks in multi-agent mode** (deterministic, collision-free):
+**What soft-warns in multi-agent mode:**
+- Claude hook: typecheck, build, vitest
+- Git hook: `verify-all-decks.mjs`, `quiz-audit.mjs --full`
+
+**What still hard-blocks** (deterministic, collision-free):
 - Skill template drift (`check-skill-drift.mjs`)
-- Deck verification (`verify-all-decks.mjs`)
 - Docker visual verification
 
-**If you see a WARN from this hook:** re-run the commit in single-agent mode
-(no other Claude agents running, no worktrees) to confirm it's not a real
-regression. The soft-warn is there to unblock concurrent work, NOT to silence
-genuine breakage.
+**Mirror-drift gotcha:** The git hook has TWO copies — `hooks/pre-commit` (the
+checked-in source of truth) and `.git/hooks/pre-commit` (the live copy git
+actually runs). Before this fix, the live copy had silently gained a quiz
+audit section that was never backported to the mirror. On clone, run
+`cp hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`
+to resync. No automated sync yet — worth a future hook-install script.
 
-**Files:** `.claude/hooks/pre-commit-verify.sh:8-78`
+**If you see a WARN:** re-run the commit in single-agent mode (no other Claude
+agents running, no worktrees) to confirm it's not a real regression. The
+soft-warn is there to unblock concurrent work, NOT to silence genuine breakage.
+
+**Files:** `.claude/hooks/pre-commit-verify.sh:8-74`, `hooks/pre-commit:13-82`
 
 ---
 

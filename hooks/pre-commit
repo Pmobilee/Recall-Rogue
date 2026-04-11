@@ -1,17 +1,81 @@
 #!/bin/sh
-# Pre-commit hook: verify curated decks if any deck files are staged
+# Pre-commit hook: verify curated decks if any deck files are staged.
+#
+# This is the git-side hook (invoked by `git commit` directly). It runs in
+# addition to .claude/hooks/pre-commit-verify.sh (the Claude-harness hook).
+# Both hooks honor multi-agent mode — when concurrent agent work is detected,
+# deck verification and quiz audit soft-warn instead of hard-blocking, since
+# the shared facts.db and in-flight deck edits can cause spurious failures.
+#
+# SOURCE OF TRUTH: this file. Copy to .git/hooks/pre-commit on clone:
+#     cp hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# The .git/hooks/ copy is untracked and drifts silently — keep them in sync.
 
-# Check if any deck JSON files are staged
+# --- Multi-agent detection (POSIX sh, matches .claude/hooks/pre-commit-verify.sh) ---
+REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+MULTI_AGENT=0
+MULTI_AGENT_REASON=""
+if [ "${RR_MULTI_AGENT:-0}" = "1" ]; then
+  MULTI_AGENT=1
+  MULTI_AGENT_REASON="RR_MULTI_AGENT=1 env var"
+elif [ -f "$REPO_ROOT/.claude/multi-agent.lock" ]; then
+  MULTI_AGENT=1
+  MULTI_AGENT_REASON=".claude/multi-agent.lock present"
+else
+  wt_count=$(git worktree list 2>/dev/null | wc -l | tr -d ' ')
+  if [ "${wt_count:-0}" -gt 1 ]; then
+    MULTI_AGENT=1
+    MULTI_AGENT_REASON="$wt_count git worktrees active"
+  fi
+fi
+
+if [ "$MULTI_AGENT" = "1" ]; then
+  echo ""
+  echo "⚠️  MULTI-AGENT MODE DETECTED ($MULTI_AGENT_REASON)"
+  echo "   Deck verify / quiz audit failures will soft-warn instead of block."
+  echo ""
+fi
+
+# block_or_warn <label> <fix-hint>
+block_or_warn() {
+  label="$1"
+  hint="$2"
+  if [ "$MULTI_AGENT" = "1" ]; then
+    echo ""
+    echo "⚠️  WARN: $label failed — NOT blocking because multi-agent mode is active."
+    echo "   Reason: $MULTI_AGENT_REASON"
+    echo "   If this is a real regression, re-run the commit in single-agent mode."
+    echo "   $hint"
+    echo ""
+    return 0
+  fi
+  echo ""
+  echo "ERROR: $label failed. Fix before committing."
+  echo "$hint"
+  exit 1
+}
+
+# --- Deck verification (only when deck files are staged) ---
 STAGED_DECKS=$(git diff --cached --name-only -- 'data/decks/*.json')
 
 if [ -n "$STAGED_DECKS" ]; then
   echo "Deck files staged — running batch verification..."
-  node scripts/verify-all-decks.mjs 2>&1
-  if [ $? -ne 0 ]; then
-    echo ""
-    echo "ERROR: Deck verification failed. Fix issues before committing."
-    echo "Run: node scripts/verify-all-decks.mjs --verbose"
-    exit 1
+  if ! node scripts/verify-all-decks.mjs 2>&1; then
+    block_or_warn "Deck verification" "Run: node scripts/verify-all-decks.mjs --verbose"
+  else
+    echo "All decks pass verification."
   fi
-  echo "All decks pass verification."
+
+  echo "Running quiz engine audit..."
+  # Capture output once — previous version invoked --full twice (wasteful).
+  QUIZ_OUTPUT=$(node scripts/quiz-audit.mjs --full 2>&1)
+  QUIZ_EXIT=$?
+  echo "$QUIZ_OUTPUT"
+  QUIZ_FAILS=$(echo "$QUIZ_OUTPUT" | grep "TOTAL" | grep -oE '[0-9]+ fails' | grep -oE '[0-9]+' | head -1)
+  QUIZ_FAILS="${QUIZ_FAILS:-0}"
+  if [ "$QUIZ_EXIT" -ne 0 ] || [ "$QUIZ_FAILS" != "0" ]; then
+    block_or_warn "Quiz audit" "Run: node scripts/quiz-audit.mjs --full"
+  else
+    echo "Quiz audit passed."
+  fi
 fi
