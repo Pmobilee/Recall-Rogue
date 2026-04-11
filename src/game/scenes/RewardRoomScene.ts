@@ -867,6 +867,22 @@ export class RewardRoomScene extends Phaser.Scene {
       this.clearOverlay()
     })
 
+    // DOM accessibility bridge (BATCH-ULTRA T11) — wire scene-level events so
+    // the DOM overlay buttons (RewardRoomOverlay.svelte) drive the same handlers
+    // as the Phaser canvas buttons. Use once() to avoid stale listeners
+    // accumulating across multiple showRelicDetail() calls in the same session.
+    this.events.once('relicDetailAccept', () => {
+      this.clearOverlay()
+      item.collected = true
+      this.destroyItemSprite(item)
+      this.events.emit('relicAccepted', relic)
+      this.disintegrateRemainingItems(item)
+      this.checkAutoAdvance()
+    })
+    this.events.once('relicDetailLeave', () => {
+      this.clearOverlay()
+    })
+
     this.tweens.add({
       targets: [panel, iconText, title, rarityLabel, desc, acceptBtn, acceptLabel, leaveBtn, leaveLabel],
       scaleX: { from: 0.8, to: 1 },
