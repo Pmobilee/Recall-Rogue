@@ -40659,7 +40659,7 @@
         "medterm_root_vagino"
       ],
       "minimumSize": 5,
-      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminator \"(ophthalm/o)\" added to distinguish ophthalm/o from ocul/o (both meaning \"eye\")",
+      "homogeneityExemptNote": "2026-04-11: Pool contains single-word root meanings (3-6 chars). Length variance is minimal and inherent. Eye discriminator facts (ophthalm/o, ocul/o) moved to root_meanings_long in the same commit.",
       "label": "root_meanings (short)",
       "syntheticDistractors": [
         "gut",
