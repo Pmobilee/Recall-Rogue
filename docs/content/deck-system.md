@@ -853,6 +853,7 @@ Architecture: `data/deck-architectures/ap_us_history_arch_meta.yaml`
 | `facts` | 504 |
 | `chainThemes` | 9 (one per CED period) |
 | `answerTypePools` | 10 active pools |
+| `subDecks` | 9 (one per CED period, with date ranges) |
 
 **Chain themes (9 CED periods):**
 - 0: The New World Rift (Period 1: 1491–1607)
