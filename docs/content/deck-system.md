@@ -114,6 +114,15 @@ Two backfill scripts produced full coverage:
 - `scripts/backfill-pos-field.mjs` — Japanese/Korean source-data pass (2026-04-02). Maps JLPT `word` POS label to `phrase` on ingest. NOTE: skips japanese_n4 (incorrectly believed complete); n4 was separately fixed 2026-04-03 (49 facts, inline patch).
 - `scripts/backfill-pos-from-english.mjs` — English-heuristic pass (2026-04-02). Infers POS from the English `correctAnswer` field for the 26 non-Japanese/Korean language decks (18,650 facts newly tagged, 100% final coverage across 26,454 facts). Rules fire in priority order: grammar-metadata suffixes (“completion marker” → particle), `to `–prefix (verb), exact-match word lists (pronouns, prepositions, conjunctions, adverbs, interjections, determiners), article prefix (`a/an/the ` → noun), morphological noun suffixes (-tion/-ness/-ment/-ity/-ance/-ence/-er/-or etc.), adjective suffixes (-ous/-ful/-al/-ic/-ive/-able), -ing suffix (verb, with noun exceptions list), -ed suffix (verb), number words, default → noun.
 
+**POS-split answer pools (Anti-Pattern 10 fix, 2026-04-10 to 2026-04-11):** All 35 vocabulary decks now ship with `english_meanings` split into five per-POS sub-pools instead of one mega-pool. This eliminates the POS-tell exploit where players could identify the correct answer by grammatical shape alone (e.g., "to swim" is obviously a verb; choosing it requires no vocabulary knowledge).
+
+Sub-pools created: `english_meanings_verbs`, `english_meanings_nouns`, `english_meanings_adjectives`, `english_meanings_adverbs`, `english_meanings_other`. Each has 15 synthetic distractors of matching grammatical form. The `_other` pool covers phrases, particles, pronouns, conjunctions, interjections, expressions, numbers, suffixes, and any unclassified POS.
+
+**Phase 1 (commit 629545d46, 2026-04-10):** Spanish A1–B2, French A1–B2, German A1–B2 — 14 decks, ~15,947 facts.
+**Phase 2 (2026-04-11):** Chinese HSK 1–6, Czech A1–B2, Dutch A1–B2, Japanese N1–N5, Korean TOPIK 1–2 — 21 decks, 22,709 facts.
+
+Script: `scripts/split-vocab-pos-mega-pool.mjs` — idempotent, handles all 21 Phase 2 decks. Critical implementation note: POS routing uses exact equality (`=== 'adverb'` checked BEFORE `=== 'verb'`) to prevent substring match bugs. See `.claude/rules/deck-quality.md` Anti-Pattern 10.
+
 **Non-standard fields that must NOT appear in final decks:** `statement`, `wowFactor`, `tags`, `ageGroup` — these are WIP-generation artifacts and must be stripped before a deck is live.
 
 ---
