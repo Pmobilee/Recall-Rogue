@@ -21,6 +21,26 @@ export const KEYWORD_DEFINITIONS: Record<string, KeywordDef> = {
     name: 'Exposed',
     description: 'Target takes 50% more damage while vulnerable.',
   },
+  strength: {
+    name: 'Clarity',
+    description: 'Attacks deal +25% damage per stack. Passive; does not tick.',
+  },
+  regen: {
+    name: 'Recall',
+    description: 'Heals value HP at the start of each turn. Decreases by 1 each turn.',
+  },
+  immunity: {
+    name: 'Shielded Mind',
+    description: 'Absorbs next Doubt (Poison) damage instance. Consumed on trigger.',
+  },
+  burn: {
+    name: 'Brain Burn',
+    description: 'On-hit: deal bonus damage equal to stacks, then stacks halve (floor).',
+  },
+  bleed: {
+    name: 'Lingering Doubt',
+    description: 'Card-play attacks deal +1 bonus damage per stack. Decays 1/turn.',
+  },
   thorns: {
     name: 'Thorns',
     description: 'When hit, reflect damage back to the attacker.',

@@ -1,7 +1,7 @@
 # Status Effects
 
 > **Purpose:** Complete list of all status effects, stacking rules, tick timing, and application behavior.
-> **Last verified:** 2026-04-11 (Issue 13: study-themed display name rename; IDs unchanged)
+> **Last verified:** 2026-04-11 (Issue 13 completeness: all 8 status effect keyword entries added to `src/data/keywords.ts`)
 > **Source files:** `src/data/statusEffects.ts`, `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`
 
 
@@ -10,6 +10,8 @@
 ## Display Names (Issue 13 — Study-Themed Rename)
 
 IDs (the `StatusEffectType` values) never change. The table below maps each ID to its current player-visible display name. Update this when `InRunTopBar.svelte`, `StatusEffectBar.svelte`, or `CardCombatOverlay.svelte` display tables change.
+
+All 8 core status effect IDs also have entries in `KEYWORD_DEFINITIONS` (`src/data/keywords.ts`) for tooltip resolution. Test coverage in `src/data/keywords.test.ts`.
 
 | ID | Display Name | Floater Abbreviation |
 |----|-------------|----------------------|

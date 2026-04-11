@@ -3450,3 +3450,24 @@ The 25% HP cut was retained — both changes stack. Target metric: Floor 18 deat
 **Why DeckMode has no study-multi:** `DeckMode` is in `src/data/studyPreset.ts` (game-logic scope). Adding a proper `study-multi` DeckMode variant that carries both decks and trivia domains is the correct fix long-term but requires touching `encounterBridge.ts`, `presetPoolBuilder.ts`, and the save schema — a non-trivial game-logic change. The CardApp mapping is the minimal UI-scope fix.
 
 **Lesson:** When a UI type (LobbyContentSelection) evolves faster than its game-logic counterpart (DeckMode), explicit mapping at the boundary (CardApp.svelte) keeps both concerns isolated. The console.warn is the signal for when the game-logic migration is needed.
+
+### 2026-04-11 — Camp upgrade sprite gaps: missing tier-N.webp files cause 404s
+
+**What:** Three camp element directories had numeric gaps in their tier files. `getCampUpgradeUrl(element, tier)` blindly built `/assets/camp/upgrades/${element}/tier-${tier}.webp`, producing 404s at certain tiers:
+- `pet/tier-3.webp` — missing (files: tier-0,1,2,4,5,6). Any player at pet tier 3 saw a broken sprite.
+- `campfire/tier-1.webp` — missing (files: tier-0,2,3,4,5,6). Campfire tier 1 was broken.
+- `journal/tier-3.webp` — missing (files: tier-0,1,2,4,5,6). Journal tier 3 broken. `CAMP_MAX_TIERS.journal` was also set to 6 despite only 6 sprites existing — 7 sprites needed for max=6.
+
+**Root cause:** Art pipeline generated these sprites out of order / skipped tier-3 for pet and journal. `campfire/tier-1.webp` was simply never generated. `library/tier-6.webp` exists but is orphaned (library max is 5).
+
+**Fix (2026-04-11):** Added `CAMP_UPGRADE_TIER_FILES: Record<CampElement, readonly number[]>` to `src/ui/utils/campArtManifest.ts`. Array index = logical tier, value = actual file number. `getCampUpgradeUrl` now clamps and resolves through this mapping — can never request a non-existent file. `CAMP_MAX_TIERS.journal` lowered from 6 → 5 (matches the 6 actual sprites it has, which give tiers 0–5). `UPGRADE_COSTS.journal` trimmed from 6 entries to 5. Existing saves with `tiers.journal === 6` automatically clamp to 5 via `sanitizeState`.
+
+**If you later regenerate art and fill the gaps:** update `CAMP_UPGRADE_TIER_FILES` to sequential arrays `[0,1,2,3,4,5,6]` for the fixed elements, and restore `CAMP_MAX_TIERS.journal` to 6 with a 6-entry `UPGRADE_COSTS.journal`. The missing targets: `pet/tier-3.webp`, `campfire/tier-1.webp`, `journal/tier-3.webp`.
+
+### 2026-04-11 — Keyword entries now complete for all 8 status effects (Issue 13 completeness)
+
+**Symptom:** `getKeywordDefinition('burn')`, `getKeywordDefinition('bleed')`, `getKeywordDefinition('strength')`, `getKeywordDefinition('regen')`, and `getKeywordDefinition('immunity')` all returned `undefined`. The Issue 13 commit renamed `poison → Doubt`, `weakness → Drawing Blanks`, `vulnerable → Exposed` in `KEYWORD_DEFINITIONS` but never added the other 5 status effects, leaving tooltip lookups silently broken for those IDs.
+
+**Root cause:** `KEYWORD_DEFINITIONS` in `src/data/keywords.ts` had 3 of 8 status effect entries. The other 5 were never added when the file was first created — `cardDescriptionService.ts` already used `kw('Clarity', 'strength')`, `kw('Brain Burn', 'burn')`, etc. and expected resolution, but received `undefined`.
+
+**Fix (2026-04-11):** Added the 5 missing entries (`strength → Clarity`, `regen → Recall`, `immunity → Shielded Mind`, `burn → Brain Burn`, `bleed → Lingering Doubt`) with descriptions drawn from `src/data/statusEffects.ts` actual behavior. Added `src/data/keywords.test.ts` asserting all 8 IDs resolve with correct names and non-empty descriptions under 80 chars.
