@@ -664,3 +664,30 @@ When a player taps "End Turn" in co-op mode, `coopWaitingForPartner` becomes `tr
 - Calls `cancelCoopTurnEnd()` from `multiplayerCoopSync` — sends `mp:coop:turn_end_cancel` to peers and resolves the local barrier promise with `'cancelled'`
 - Sets `coopWaitingForPartner` to `false` — restores End Turn button immediately
 - The banner has `pointer-events: auto` and `display: flex` to keep text + cancel button inline
+
+---
+
+## RNG Determinism Enforcement — Commit-Time Lint (2026-04-11)
+
+The `no-bare-math-random` lint (`scripts/lint/no-bare-math-random.mjs`) enforces the RNG determinism invariant at commit time. Run via `npm run lint:rng`.
+
+**What it catches:** Bare `Math.random()` calls in gameplay code with no seeded-RNG fallback check. These cause co-op delta desync — both clients roll independently, producing divergent game state for the same card play.
+
+**What it allows:** Guarded patterns are explicitly whitelisted. The correct form is:
+```typescript
+const _rng = isRunRngActive() ? getRunRng('relicEffects') : null;
+const isCrit = (_rng ? _rng.next() : Math.random()) < 0.25;
+// OR:
+const roll = isRunRngActive() ? getRunRng('bucket').next() : Math.random();
+```
+
+Both forms pass the lint. The fallback to `Math.random()` in the non-run context (dev tools, tests, headless sim preview) is intentional and harmless.
+
+**Cluster D (BATCH-2026-04-11-ULTRA):** Three CRITICALs were found and fixed before this lint shipped:
+- `relicEffectResolver.ts:1647` — `crit_lens` 25% crit chance → now guarded with `_critRng`
+- `relicEffectResolver.ts:1712` — `obsidian_dice` multiplier roll → now guarded with `_diceRng`
+- `relicAcquisitionService.ts:73,93` — rarity roll and candidate pick → now guarded with `_relicRng` / `_pickRng`
+
+**Pre-existing violations:** ~168 bare calls exist in the codebase (gradual migration target). The lint runs as soft-warn in the pre-commit hook until the count reaches zero.
+
+**Allowlist governance:** The allowlist in `no-bare-math-random.mjs` is printed on every run so code reviewers can audit what is granted. Cosmetic systems (particles, visual FX, hub ambience, boot animation) are explicitly allowlisted because they affect only visuals, never shared game state.
