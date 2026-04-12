@@ -129,6 +129,47 @@
         @keyframes load { 0%{transform:translateX(-100%)} 100%{transform:translateX(350%)} }
       </style>
     </div>
+
+    <!-- Last-resort crash overlay: shown only on fatal JS errors before/during Svelte init.
+         Pure vanilla DOM — no framework dependency, works even when Svelte itself is broken. -->
+    <div id="rr-crash-overlay" style="display:none;position:fixed;inset:0;z-index:99999;background:#0a0e1a;align-items:center;justify-content:center;font-family:monospace;">
+      <div style="max-width:480px;width:90%;background:#111827;border:1px solid #4ecca3;border-radius:8px;padding:32px;text-align:center;color:#c8d8e8;">
+        <div style="color:#4ecca3;font-size:1.5rem;letter-spacing:2px;margin-bottom:16px;">SOMETHING WENT WRONG</div>
+        <p style="margin:0 0 8px;font-size:0.9rem;line-height:1.5;">Recall Rogue hit an unexpected error. Your save data is safe.</p>
+        <button onclick="window.location.reload()" style="margin-top:20px;padding:10px 28px;background:#4ecca3;color:#0a0e1a;border:none;border-radius:4px;font-family:monospace;font-size:1rem;font-weight:700;letter-spacing:1px;cursor:pointer;">Restart Game</button>
+        <div style="margin-top:20px;text-align:left;">
+          <button onclick="var d=document.getElementById('rr-crash-detail');d.style.display=d.style.display==='none'?'block':'none';" style="background:none;border:none;color:#4ecca3;font-family:monospace;font-size:0.75rem;cursor:pointer;padding:0;">Error details &#9660;</button>
+          <pre id="rr-crash-detail" style="display:none;margin:8px 0 0;padding:8px;background:#0a0e1a;border-radius:4px;font-size:0.7rem;color:#ff6b6b;white-space:pre-wrap;word-break:break-all;max-height:120px;overflow-y:auto;"></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crash overlay activation: listens for fatal errors during early load only.
+         Heuristic: error within 10 s of page load AND Svelte has not yet replaced #splash. -->
+    <script>
+      (function() {
+        var startTime = Date.now();
+        window.addEventListener('error', function(ev) {
+          var elapsed = Date.now() - startTime;
+          var appEl = document.getElementById('app');
+          // Only activate within the first 10 seconds, and only while #splash is still
+          // the sole child of #app (Svelte has not mounted yet — i.e., the app is broken).
+          var svelteNotMounted = appEl && appEl.children.length <= 2 &&
+            document.getElementById('splash') !== null;
+          if (elapsed < 10000 && svelteNotMounted) {
+            var overlay = document.getElementById('rr-crash-overlay');
+            var detail = document.getElementById('rr-crash-detail');
+            if (overlay) {
+              overlay.style.display = 'flex';
+              if (detail && ev.message) {
+                detail.textContent = ev.message + (ev.filename ? '\n' + ev.filename + ':' + ev.lineno : '');
+              }
+            }
+          }
+        });
+      })();
+    </script>
+
     <script>
       // Dev-only SW cleanup: remove stale cache-first workers during local runs.
       // In production this must stay disabled so offline/PWA behavior works.

@@ -1,7 +1,7 @@
 # Platform & Device Services
 
 > **Purpose:** Device detection, haptics, performance monitoring, analytics, error reporting, input handling, accessibility, notifications, entitlements, Steam integration, Steam P2P networking, and browser compatibility.
-> **Last verified:** 2026-04-06
+> **Last verified:** 2026-04-12
 > **Source files:** platformService.ts, hapticService.ts, perfService.ts, analyticsService.ts, errorReporting.ts, inputService.ts, keyboardInput.ts, shortcutService.ts, accessibilityManager.ts, notificationService.ts, entitlementService.ts, steamService.ts, steamNetworkingService.ts, reviewPromptService.ts, browserCompat.ts, deviceTierService.ts, kidModeService.ts, legalConstants.ts, sessionTimer.ts, multiplayerTransport.ts
 
 > **See also:** [`platform-audio.md`](platform-audio.md) — audioService, cardAudioManager, and juiceManager (audio synthesis and game-feel coordination).
@@ -53,9 +53,11 @@ Platform services form the bridge between web-standard APIs and the three deploy
 | | |
 |---|---|
 | **File** | src/services/errorReporting.ts |
-| **Purpose** | Lightweight uncaught exception capture; sends to game's own API (no Sentry required); max 20 errors/session |
+| **Purpose** | Lightweight uncaught exception capture; on Steam/desktop (Tauri) logs to console with `[ErrorReport]` prefix instead of HTTP POST — no backend server exists in that build; max 20 errors/session |
 | **Key exports** | `initErrorReporting`, `captureError` |
-| **Key dependencies** | None (fetch to API) |
+| **Key dependencies** | platformService (`isDesktop`) |
+| **Version** | Uses `__RR_VERSION__` (Vite define injection); falls back to `'unknown'` |
+| **Platform field** | `ErrorReport.platform` is `'web' \| 'android' \| 'ios' \| 'desktop'`; `'desktop'` is detected via `isDesktop` before UA sniffing |
 
 ## inputService
 

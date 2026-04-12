@@ -4,7 +4,15 @@
  * Lightweight error capture for uncaught exceptions and unhandled promise rejections.
  * Designed as a thin abstraction that can be backed by Sentry or a custom endpoint.
  * No third-party SDK required — sends errors to the game's own API server.
+ *
+ * On Steam/desktop (Tauri), there is no backend server, so HTTP reporting is skipped.
+ * Errors are logged to the console with a [ErrorReport] prefix instead.
  */
+
+// Vite injects this at build time via the `define` option in vite.config.ts.
+declare const __RR_VERSION__: string;
+
+import { isDesktop } from './platformService'
 
 interface ErrorReport {
   message: string
@@ -13,12 +21,20 @@ interface ErrorReport {
   timestamp: number
   userAgent: string
   url: string
-  platform: 'web' | 'android' | 'ios'
+  platform: 'web' | 'android' | 'ios' | 'desktop'
   appVersion: string
 }
 
 const MAX_ERRORS_PER_SESSION = 20
-const APP_VERSION = '0.1.0'
+
+/** App version from Vite define injection, falls back to 'unknown' if not set. */
+const APP_VERSION: string = (() => {
+  try {
+    return typeof __RR_VERSION__ !== 'undefined' ? __RR_VERSION__ : 'unknown'
+  } catch {
+    return 'unknown'
+  }
+})()
 
 let errorCount = 0
 
@@ -37,17 +53,30 @@ function resolveApiBase(): string {
   return window.location.origin
 }
 
-function getPlatform(): 'web' | 'android' | 'ios' {
+function getPlatform(): 'web' | 'android' | 'ios' | 'desktop' {
+  if (isDesktop) return 'desktop'
   const ua = navigator.userAgent.toLowerCase()
   if (ua.includes('iphone') || ua.includes('ipad') || ua.includes('ios')) return 'ios'
   if (ua.includes('android')) return 'android'
   return 'web'
 }
 
-/** Reports an error to the backend error collection endpoint */
+/** Reports an error to the backend error collection endpoint, or logs it on desktop. */
 function reportError(error: ErrorReport): void {
   if (errorCount >= MAX_ERRORS_PER_SESSION) return
   errorCount++
+
+  // On Steam/desktop there is no backend server — log to console instead of HTTP POST.
+  if (isDesktop) {
+    console.error(
+      `[ErrorReport] ${error.context} | v${error.appVersion} | ${new Date(error.timestamp).toISOString()}`,
+      '\nMessage:', error.message,
+      '\nStack:', error.stack ?? '(none)',
+      '\nURL:', error.url,
+    )
+    return
+  }
+
   const endpoint = `${resolveApiBase()}/api/errors`
 
   // Fire-and-forget — don't let error reporting itself cause crashes
