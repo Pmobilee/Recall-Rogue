@@ -21,6 +21,8 @@ import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
 import { funScoreWeight } from './funnessBoost';
 import { factMatchesDomainSelection, factMatchesPresetSelection } from './presetSelectionService';
 import type { ChainDistribution } from './chainDistribution';
+import { getCuratedDeck, getCuratedDeckFacts } from '../data/curatedDeckStore';
+import type { DeckFact } from '../data/curatedDeckTypes';
 
 /** Maps domain IDs to the category strings used in the facts DB. */
 const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
@@ -613,4 +615,198 @@ export function buildLanguageRunPool(
     [`language:${normalizedCode}`]: [],
   };
   return buildPresetRunPool(domainSelections, allReviewStates, options);
+}
+
+// ── Curated deck → Fact adapter ──────────────────────────────────
+
+/**
+ * Convert a curated DeckFact to a Fact-compatible object so the existing
+ * card creation pipeline (createCard, resolveDomain) can consume it.
+ * The resulting Fact carries the curated deck's string ID (e.g.
+ * "chess-tactics-sicilian-01"), NOT a factsDB integer ID — so lookupFact
+ * in encounterBridge will resolve it via the curatedDeckStore fallback.
+ */
+function deckFactToFact(df: DeckFact, deckDomain: string): Fact {
+  return {
+    id: df.id,
+    type: df.language ? 'vocabulary' : 'fact',
+    statement: df.explanation || df.quizQuestion,
+    explanation: df.explanation,
+    quizQuestion: df.quizQuestion,
+    correctAnswer: df.correctAnswer,
+    distractors: df.distractors ?? [],
+    category: [deckDomain],
+    rarity: 'common',
+    difficulty: df.difficulty ?? 3,
+    funScore: df.funScore ?? 5,
+    ageRating: 'kid',
+    language: df.language,
+    pronunciation: df.reading,
+  };
+}
+
+/**
+ * Build a run pool from a specific curated deck's facts.
+ *
+ * Unlike buildGeneralRunPool (which pulls from the entire trivia DB) or
+ * buildLanguageRunPool (which pulls all facts for a language), this function
+ * restricts the combat fact pool to ONLY facts from the specified curated deck.
+ * Quiz questions will come exclusively from this deck.
+ *
+ * Used when combat is started with a deckId via the scenario simulator or
+ * any future curated-deck combat mode.
+ */
+export function buildCuratedDeckRunPool(
+  deckId: string,
+  subDeckId: string | undefined,
+  allReviewStates: ReviewState[],
+  options?: {
+    poolSize?: number;
+    funnessBoostFactor?: number;
+    chainDistribution?: ChainDistribution;
+    characterLevel?: number;
+  },
+): Card[] {
+  const deck = getCuratedDeck(deckId);
+  if (!deck) {
+    console.warn(`[presetPoolBuilder] Curated deck '${deckId}' not loaded, falling back to general pool`);
+    return buildGeneralRunPool(allReviewStates, options);
+  }
+
+  const deckFacts = getCuratedDeckFacts(deckId, subDeckId);
+  if (deckFacts.length === 0) {
+    console.warn(`[presetPoolBuilder] Curated deck '${deckId}' has 0 facts, falling back to general pool`);
+    return buildGeneralRunPool(allReviewStates, options);
+  }
+
+  const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
+  resetCardIdCounter();
+
+  // Convert DeckFacts to Fact-compatible objects
+  const facts: Fact[] = deckFacts
+    .filter(df => df.quizQuestion && df.quizQuestion.trim().length > 0)
+    .map(df => deckFactToFact(df, deck.domain));
+
+  // Build review state lookup (curated deck fact IDs may have review history)
+  const stateByFactId = new Map<string, ReviewState>();
+  for (const state of allReviewStates) stateByFactId.set(state.factId, state);
+
+  // Sample facts — 70% content, 30% review (matching buildPresetRunPool ratios)
+  const contentTarget = Math.round(poolSize * 0.70);
+  const usedFactIds = new Set<string>();
+
+  const contentFacts = stratifiedSample(facts, contentTarget, options?.funnessBoostFactor);
+  const contentCards: Card[] = [];
+  for (const fact of contentFacts) {
+    if (usedFactIds.has(fact.id)) continue;
+    usedFactIds.add(fact.id);
+    contentCards.push(createCard(fact, stateByFactId.get(fact.id)));
+  }
+
+  // Review cards from facts the player has seen before
+  const now = Date.now();
+  const reviewTarget = poolSize - contentTarget;
+  const reviewCandidates = allReviewStates.filter(state => {
+    if (usedFactIds.has(state.factId)) return false;
+    const fact = facts.find(f => f.id === state.factId);
+    return !!fact;
+  });
+
+  const DAY_MS = 86_400_000;
+  const WEEK_MS = 7 * DAY_MS;
+  const weightedReviews = reviewCandidates.map(r => ({
+    ...r,
+    _weight: r.nextReviewAt <= now ? 3.0
+      : r.nextReviewAt <= now + DAY_MS ? 2.0
+      : r.nextReviewAt <= now + WEEK_MS ? 1.0
+      : 0.3,
+  }));
+  const selectedReviews = weightedShuffle(weightedReviews, reviewTarget + 20);
+
+  const reviewCards: Card[] = [];
+  for (const state of selectedReviews) {
+    if (reviewCards.length >= reviewTarget) break;
+    const fact = facts.find(f => f.id === state.factId);
+    if (!fact || usedFactIds.has(fact.id)) continue;
+    reviewCards.push(createCard(fact, state));
+    usedFactIds.add(fact.id);
+  }
+
+  // Combine and fill if under target
+  let pool = [...contentCards, ...reviewCards];
+
+  if (pool.length < poolSize) {
+    const remaining = facts.filter(f => !usedFactIds.has(f.id));
+    const fillerFacts = stratifiedSample(remaining, poolSize - pool.length, options?.funnessBoostFactor);
+    for (const fact of fillerFacts) {
+      if (usedFactIds.has(fact.id)) continue;
+      pool.push(createCard(fact, stateByFactId.get(fact.id)));
+      usedFactIds.add(fact.id);
+      if (pool.length >= poolSize) break;
+    }
+  }
+
+  pool = pool.slice(0, poolSize);
+
+  // Filter mastered passive cards
+  pool = pool.filter(card => card.tier !== '3');
+
+  // Stamp the correct domain on all cards
+  const deckDomain = deck.domain as FactDomain;
+  for (const card of pool) {
+    card.domain = deckDomain;
+  }
+
+  // Assign card types and mechanics
+  pool = assignTypesToCards(pool);
+  const unlockedMechanicIds = getUnlockedMechanics(options?.characterLevel ?? 0);
+  pool = applyMechanics(pool, unlockedMechanicIds);
+
+  // Assign chain types — proportional when chainDistribution provided
+  const chainRng = isRunRngActive() ? getRunRng('chainSelect') : null;
+  const chainSeed = chainRng ? chainRng.getState() : Math.floor(Math.random() * 0xFFFFFFFF);
+  const runChainTypes = selectRunChainTypes(chainSeed);
+
+  const chainDistribution = options?.chainDistribution;
+  if (chainDistribution) {
+    const chainWeights: { chainType: number; weight: number }[] = [];
+    for (let i = 0; i < chainDistribution.runChainTypes.length; i++) {
+      const chainType = chainDistribution.runChainTypes[i];
+      const groups = chainDistribution.assignments[i];
+      const totalFacts = groups.reduce((sum, g) => sum + g.factIds.length, 0);
+      chainWeights.push({ chainType, weight: totalFacts });
+    }
+    const totalWeight = chainWeights.reduce((s, cw) => s + cw.weight, 0);
+    if (totalWeight === 0 || chainWeights.length === 0) {
+      for (let i = 0; i < pool.length; i++) {
+        pool[i].chainType = chainDistribution.runChainTypes[i % chainDistribution.runChainTypes.length];
+      }
+    } else {
+      const shuffledIndices = isRunRngActive()
+        ? seededShuffled(getRunRng('chain'), [...pool.keys()])
+        : shuffled([...pool.keys()]);
+      const chainSlots: number[] = [];
+      for (const cw of chainWeights) {
+        const count = Math.round((cw.weight / totalWeight) * pool.length);
+        for (let j = 0; j < count; j++) chainSlots.push(cw.chainType);
+      }
+      while (chainSlots.length < pool.length) {
+        chainSlots.push(chainWeights[chainSlots.length % chainWeights.length].chainType);
+      }
+      chainSlots.length = pool.length;
+      for (let i = 0; i < shuffledIndices.length; i++) {
+        pool[shuffledIndices[i]].chainType = chainSlots[i];
+      }
+    }
+  } else {
+    const chainIndices = pool.map((_, i) => i);
+    const shuffledChainIndices = isRunRngActive()
+      ? seededShuffled(getRunRng('chain'), chainIndices)
+      : shuffled(chainIndices);
+    for (let i = 0; i < shuffledChainIndices.length; i++) {
+      pool[shuffledChainIndices[i]].chainType = runChainTypes[i % runChainTypes.length];
+    }
+  }
+
+  return isRunRngActive() ? seededShuffled(getRunRng('rewards'), pool) : shuffled(pool);
 }
