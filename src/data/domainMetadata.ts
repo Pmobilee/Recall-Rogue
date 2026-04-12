@@ -132,6 +132,15 @@ export const DOMAIN_METADATA: Record<CanonicalFactDomain, DomainMetadata> = {
     ageDefault: 'kid',
     comingSoon: true,
   },
+  games: {
+    id: 'games',
+    displayName: 'Strategy Games',
+    shortName: 'Games',
+    colorTint: '#A78BFA',
+    icon: '♟️',
+    description: 'Chess tactics, Go problems, and strategic puzzles.',
+    ageDefault: 'kid',
+  },
   language: {
     id: 'language',
     displayName: 'Language',
