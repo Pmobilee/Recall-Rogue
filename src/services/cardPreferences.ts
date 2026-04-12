@@ -17,6 +17,12 @@ export interface OnboardingState {
   hasSeenEndTurnTooltip: boolean
   hasSeenAPTooltip: boolean
   runsCompleted: number
+  /** Whether the player has seen the combat tutorial overlay (gates auto-trigger for run/trivia combat). */
+  hasSeenCombatTutorial: boolean
+  /** Whether the player has seen the study tutorial overlay (gates auto-trigger for study temple). */
+  hasSeenStudyTutorial: boolean
+  /** Whether the player explicitly dismissed the tutorial early via "Skip Tutorial". */
+  tutorialDismissedEarly: boolean
 }
 
 export interface AscensionProfile {
@@ -32,6 +38,9 @@ const defaultOnboardingState: OnboardingState = {
   hasSeenEndTurnTooltip: false,
   hasSeenAPTooltip: false,
   runsCompleted: 0,
+  hasSeenCombatTutorial: false,
+  hasSeenStudyTutorial: false,
+  tutorialDismissedEarly: false,
 }
 
 const defaultAscensionProfile: AscensionProfile = {
@@ -124,9 +133,40 @@ export function markOnboardingTooltipSeen(
     | 'hasSeenAnswerTooltip'
     | 'hasSeenEndTurnTooltip'
     | 'hasSeenAPTooltip'
+    | 'hasSeenCombatTutorial'
+    | 'hasSeenStudyTutorial'
+    | 'tutorialDismissedEarly'
   >,
 ): void {
   onboardingState.update((state) => ({ ...state, [key]: true }))
+}
+
+/** Mark that the player has completed or skipped the combat tutorial. */
+export function markCombatTutorialSeen(): void {
+  onboardingState.update((state) => ({ ...state, hasSeenCombatTutorial: true }))
+}
+
+/** Mark that the player has completed or skipped the study tutorial. */
+export function markStudyTutorialSeen(): void {
+  onboardingState.update((state) => ({ ...state, hasSeenStudyTutorial: true }))
+}
+
+/** Mark that the player explicitly dismissed the tutorial before it finished. */
+export function markTutorialDismissedEarly(): void {
+  onboardingState.update((state) => ({ ...state, tutorialDismissedEarly: true }))
+}
+
+/**
+ * Reset all tutorial flags — used in dev/testing to re-trigger tutorials.
+ * Does NOT reset other onboarding state (tooltips, runs, etc.).
+ */
+export function resetTutorialFlags(): void {
+  onboardingState.update((state) => ({
+    ...state,
+    hasSeenCombatTutorial: false,
+    hasSeenStudyTutorial: false,
+    tutorialDismissedEarly: false,
+  }))
 }
 
 export function getAscensionLevel(): number {
