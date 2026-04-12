@@ -113,7 +113,7 @@ describe('ascension modifiers', () => {
     expect(getAscensionModifiers(8).enemyRegenPerTurn).toBe(0)
     expect(getAscensionModifiers(13).playerMaxHpOverride).toBe(75)
     expect(getAscensionModifiers(15).bossHpMultiplier).toBe(1.10)
-    expect(getAscensionModifiers(17).wrongAnswerSelfDamage).toBe(3)
+    expect(getAscensionModifiers(17).wrongAnswerSelfDamage).toBe(2)
   })
 
   it('reduced buff values (delayed to high ascension levels)', () => {
@@ -134,33 +134,33 @@ describe('ascension modifiers', () => {
     expect(a20.scholarsInversion).toBe(true)
     expect(a19.scholarsInversion).toBe(false)
 
-    // A20 removes the boss HP buff (was 1.10× at A15-A19)
-    expect(a20.bossHpMultiplier).toBe(1.00)
+    // Pass 9a: A20 KEEPS boss HP and hard formats — Scholar's Inversion stacks on top
+    expect(a20.bossHpMultiplier).toBe(1.10)
     expect(a19.bossHpMultiplier).toBe(1.10)
 
-    // A20 removes flat wrong-answer self-damage (was 3 at A17-A19)
+    // Pass 9a: A20 removes flat self-damage — Scholar's Inversion replaces it
     expect(a20.wrongAnswerSelfDamage).toBe(0)
-    expect(a19.wrongAnswerSelfDamage).toBe(3)
+    expect(a19.wrongAnswerSelfDamage).toBe(2)
 
-    // A20 removes forced hard question formats (was true at A19)
-    expect(a20.forceHardQuestionFormats).toBe(false)
+    // A20 keeps forced hard formats (stacks with Scholar's Inversion)
+    expect(a20.forceHardQuestionFormats).toBe(true)
     expect(a19.forceHardQuestionFormats).toBe(true)
   })
 
-  it("Scholar's Inversion (A20): correctAnswerHeal buffed to 2 HP at A17+", () => {
-    // Pass 9: correctAnswerHeal increased from 1→2 HP at all A17+ levels.
+  it("Scholar's Inversion (A20): correctAnswerHeal stays at 1 HP at A17+", () => {
+    // Pass 9a: kept at 1 HP (2 was too generous)
     expect(getAscensionModifiers(16).correctAnswerHeal).toBe(0)
-    expect(getAscensionModifiers(17).correctAnswerHeal).toBe(2)
-    expect(getAscensionModifiers(19).correctAnswerHeal).toBe(2)
-    expect(getAscensionModifiers(20).correctAnswerHeal).toBe(2)
+    expect(getAscensionModifiers(17).correctAnswerHeal).toBe(1)
+    expect(getAscensionModifiers(19).correctAnswerHeal).toBe(1)
+    expect(getAscensionModifiers(20).correctAnswerHeal).toBe(1)
   })
 
   it("Scholar's Inversion (A20): level rule name and effect updated", () => {
     const rule20 = getAscensionRule(20)
     expect(rule20?.name).toBe("Scholar's Inversion")
-    expect(rule20?.effect).toContain('Wrong charges damage you')
-    // A17 heal description updated
+    expect(rule20?.effect).toContain('Wrong charges deal full damage to you')
+    // A17 heal stays at 1 HP
     const rule17 = getAscensionRule(17)
-    expect(rule17?.effect).toContain('heal 2 HP')
+    expect(rule17?.effect).toContain('heal 1')
   })
 })

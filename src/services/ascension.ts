@@ -27,11 +27,11 @@ export const ASCENSION_LEVEL_RULES: AscensionLevelRule[] = [
   { level: 15, name: 'Boss Rush', effect: 'Bosses +10% HP.' },
   { level: 16, name: 'No Echo', effect: 'Echo mechanic disabled. BUFF: Discarding a card grants 1 shield.' },
   // Pass 8 (2026-04-11): Reduced wrong-answer self-damage from 5 to 3.
-  // Pass 9 (Scholar's Inversion): correctAnswerHeal buffed from 1 HP to 2 HP at A17+.
-  { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 3 self-damage. BUFF: Correct answers heal 2 HP.' },
+  { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 2 self-damage. BUFF: Correct answers heal 1 HP.' },
   { level: 18, name: 'Minimalist', effect: 'Start with 10 cards. BUFF: Choose starting hand each encounter.' },
   { level: 19, name: 'True Test', effect: 'All questions use hard formats. BUFF: (Reserved for future surcharge mechanic.)' },
-  { level: 20, name: "Scholar's Inversion", effect: "Wrong charges damage you instead of the enemy. Boss HP bonus, self-damage, and hard formats removed. BUFF: Start with 2 relics. Correct answers heal 2 HP." },
+  // Pass 9a: A20 keeps all A19 penalties + adds Scholar's Inversion on top.
+  { level: 20, name: "Scholar's Inversion", effect: "Wrong charges deal full damage to you instead of half to the enemy. No flat self-damage." },
 ];
 
 export interface AscensionModifiers {
@@ -115,15 +115,13 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     tier1OptionCount: l >= 12 ? 4 : 3,
     playerMaxHpOverride: l >= 13 ? 75 : null,
     // Pass 8 (2026-04-11): Reduced boss HP multiplier 1.50→1.10 to close the A15 cliff.
-    // Prior 1.50× alone caused a 50pp win-rate drop (A15: 52% → A20: 2% for experienced players).
-    // Pass 9 (Scholar's Inversion): A20 removes the boss HP buff entirely — Scholar's Inversion
-    // replaces all stacking multipliers (boss HP, self-damage, hard formats) with one unified mechanic.
-    bossHpMultiplier: l >= 20 ? 1.00 : l >= 15 ? 1.10 : 1.00,
-    // Pass 8 (2026-04-11): Reduced wrong-answer self-damage 5→3.
-    // Pass 9 (Scholar's Inversion): A20 removes flat self-damage — the redirect mechanic replaces it.
-    wrongAnswerSelfDamage: l >= 20 ? 0 : l >= 17 ? 3 : 0,
-    // Pass 9: A20 removes forced hard formats — Scholar's Inversion is the sole A20 challenge.
-    forceHardQuestionFormats: l >= 20 ? false : l >= 19,
+    // Pass 9a: Kept at A20 — Scholar's Inversion ADDS to existing penalties, doesn't replace them.
+    bossHpMultiplier: l >= 15 ? 1.10 : 1.00,
+    // Pass 9a: Reduced 3→2 to smooth A15→A17 cliff. A20 removes flat self-damage entirely
+    // (Scholar's Inversion replaces it with card-value damage to self).
+    wrongAnswerSelfDamage: l >= 20 ? 0 : l >= 17 ? 2 : 0,
+    // Pass 9a: Hard formats stay active at A20 — Scholar's Inversion stacks on top.
+    forceHardQuestionFormats: l >= 19,
     curatorSecretSecondPhase: l >= 20,
     // Pass 9 (Scholar's Inversion): wrong-charge fizzle damage hits the player, not the enemy.
     scholarsInversion: l >= 20,
@@ -148,12 +146,13 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     perfectTurnBonusAp: 0,
     bossDefeatFullHeal: false,
     discardGivesShield: l >= 16 ? 1 : 0,
-    // Pass 9: buffed from 1→2 HP to compensate for Scholar's Inversion risk at A20.
-    correctAnswerHeal: l >= 17 ? 2 : 0,
+    // Pass 9a: kept at 1 HP — 2 was too generous. Scholar's Inversion is the A20 mechanic, not healing.
+    correctAnswerHeal: l >= 17 ? 1 : 0,
     chooseStartingHand: l >= 18,
     freeCharging: false,
     // Pass 7: No free relic at A1 (was the #1 cause of A1 > A0). Relics start at A10.
-    startingRelicCount: l >= 20 ? 2 : l >= 10 ? 1 : 0,
+    // Pass 9a: A20 stays at 1 relic — 2 relics was overcompensating for Scholar's Inversion.
+    startingRelicCount: l >= 10 ? 1 : 0,
     // Pass 7: Combo heal nerfed — 4+ combo for 3 HP (was 3+ combo for 5 HP).
     // High-accuracy players hit 3-combos constantly; 4+ is rarer and 3 HP is less snowbally.
     comboHealThreshold: l >= 6 ? 4 : 0,

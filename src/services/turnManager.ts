@@ -1233,9 +1233,11 @@ export function playCardAction(
 
     // Apply partial fizzle effects to game state
     if (fizzledEffect.damageDealt > 0) {
-      // Scholar's Inversion (A20): wrong-charge fizzle damage hits the player instead of the enemy.
+      // Scholar's Inversion (A20): FULL base damage (1.0×) hits the PLAYER instead of enemy.
+      // Replaces flat wrongAnswerSelfDamage. Stacks with hard formats + boss HP.
       if (turnState.ascensionScholarsInversion) {
-        turnState.playerState.hp = Math.max(0, turnState.playerState.hp - fizzledEffect.damageDealt);
+        const inversionDamage = card.baseEffectValue;  // 1.0× base, not fizzle ratio
+        turnState.playerState.hp = Math.max(0, turnState.playerState.hp - inversionDamage);
         if (turnState.playerState.hp <= 0) {
           turnState.result = 'defeat';
           turnState.phase = 'encounter_end';
