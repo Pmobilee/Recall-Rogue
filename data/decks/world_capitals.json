@@ -1,8 +1,7 @@
 {
   "id": "world_capitals",
   "name": "World Capitals",
-  "domain": "games",
-  "subDomain": "capitals",
+  "domain": "geography_drill",
   "description": "The capital cities of 168 countries. All of them.",
   "minimumFacts": 30,
   "targetFacts": 168,
@@ -29,14 +28,7 @@
         "Amsterdam",
         "Vienna",
         "Lisbon"
-      ],
-      "mapCoordinates": [
-        48.8566,
-        2.3522
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_de",
@@ -60,14 +52,7 @@
         "Brussels",
         "Copenhagen",
         "Stockholm"
-      ],
-      "mapCoordinates": [
-        52.52,
-        13.405
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_gb",
@@ -91,14 +76,7 @@
         "Brussels",
         "Dublin",
         "Copenhagen"
-      ],
-      "mapCoordinates": [
-        51.5074,
-        -0.1278
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_es",
@@ -122,14 +100,7 @@
         "Vienna",
         "Athens",
         "Bern"
-      ],
-      "mapCoordinates": [
-        40.4168,
-        -3.7038
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_it",
@@ -153,14 +124,7 @@
         "Brussels",
         "Bern",
         "Ljubljana"
-      ],
-      "mapCoordinates": [
-        41.9028,
-        12.4964
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_pt",
@@ -184,14 +148,7 @@
         "Dublin",
         "Bern",
         "Athens"
-      ],
-      "mapCoordinates": [
-        38.7169,
-        -9.1395
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_be",
@@ -215,14 +172,7 @@
         "Bern",
         "Copenhagen",
         "Dublin"
-      ],
-      "mapCoordinates": [
-        50.8503,
-        4.3517
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_nl",
@@ -246,14 +196,7 @@
         "Stockholm",
         "Helsinki",
         "Dublin"
-      ],
-      "mapCoordinates": [
-        52.3676,
-        4.9041
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_lu",
@@ -279,14 +222,7 @@
         "Berlin",
         "Dublin",
         "Copenhagen"
-      ],
-      "mapCoordinates": [
-        49.6116,
-        6.1319
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ch",
@@ -310,14 +246,7 @@
         "Luxembourg City",
         "Rome",
         "Prague"
-      ],
-      "mapCoordinates": [
-        46.948,
-        7.4474
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_at",
@@ -341,14 +270,7 @@
         "Bratislava",
         "Ljubljana",
         "Rome"
-      ],
-      "mapCoordinates": [
-        48.2082,
-        16.3738
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_pl",
@@ -372,14 +294,7 @@
         "Riga",
         "Tallinn",
         "Kyiv"
-      ],
-      "mapCoordinates": [
-        52.2297,
-        21.0122
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cz",
@@ -405,14 +320,7 @@
         "Bern",
         "Ljubljana",
         "Zagreb"
-      ],
-      "mapCoordinates": [
-        50.0755,
-        14.4378
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sk",
@@ -436,14 +344,7 @@
         "Warsaw",
         "Bern",
         "Berlin"
-      ],
-      "mapCoordinates": [
-        48.1486,
-        17.1077
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_hu",
@@ -467,14 +368,7 @@
         "Warsaw",
         "Zagreb",
         "Belgrade"
-      ],
-      "mapCoordinates": [
-        47.4979,
-        19.0402
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ro",
@@ -498,14 +392,7 @@
         "Skopje",
         "Tirana",
         "Sarajevo"
-      ],
-      "mapCoordinates": [
-        44.4268,
-        26.1025
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bg",
@@ -529,14 +416,7 @@
         "Tirana",
         "Chisinau",
         "Zagreb"
-      ],
-      "mapCoordinates": [
-        42.6977,
-        23.3219
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_gr",
@@ -560,14 +440,7 @@
         "Skopje",
         "Tirana",
         "Sarajevo"
-      ],
-      "mapCoordinates": [
-        37.9838,
-        23.7275
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_al",
@@ -591,14 +464,7 @@
         "Pristina",
         "Belgrade",
         "Zagreb"
-      ],
-      "mapCoordinates": [
-        41.3317,
-        19.8317
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_mk",
@@ -622,14 +488,7 @@
         "Belgrade",
         "Bucharest",
         "Athens"
-      ],
-      "mapCoordinates": [
-        41.9981,
-        21.4254
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_rs",
@@ -655,14 +514,7 @@
         "Bucharest",
         "Sofia",
         "Budapest"
-      ],
-      "mapCoordinates": [
-        44.7866,
-        20.4489
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ba",
@@ -686,14 +538,7 @@
         "Sofia",
         "Pristina",
         "Bucharest"
-      ],
-      "mapCoordinates": [
-        43.8563,
-        18.4131
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_hr",
@@ -717,14 +562,7 @@
         "Budapest",
         "Bern",
         "Bratislava"
-      ],
-      "mapCoordinates": [
-        45.815,
-        15.9819
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_si",
@@ -748,14 +586,7 @@
         "Belgrade",
         "Prague",
         "Bern"
-      ],
-      "mapCoordinates": [
-        46.0569,
-        14.5058
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_me",
@@ -779,14 +610,7 @@
         "Pristina",
         "Sofia",
         "Bucharest"
-      ],
-      "mapCoordinates": [
-        42.4304,
-        19.2594
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_xk",
@@ -813,14 +637,7 @@
         "Sofia",
         "Bucharest",
         "Zagreb"
-      ],
-      "mapCoordinates": [
-        42.6629,
-        21.1655
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_md",
@@ -847,14 +664,7 @@
         "Warsaw",
         "Budapest",
         "Bratislava"
-      ],
-      "mapCoordinates": [
-        47.0105,
-        28.8638
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ua",
@@ -880,14 +690,7 @@
         "Budapest",
         "Belgrade",
         "Sofia"
-      ],
-      "mapCoordinates": [
-        50.4501,
-        30.5234
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_by",
@@ -911,14 +714,7 @@
         "Prague",
         "Budapest",
         "Chisinau"
-      ],
-      "mapCoordinates": [
-        53.9045,
-        27.5615
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_lt",
@@ -942,14 +738,7 @@
         "Helsinki",
         "Stockholm",
         "Copenhagen"
-      ],
-      "mapCoordinates": [
-        54.6872,
-        25.2797
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_lv",
@@ -973,14 +762,7 @@
         "Stockholm",
         "Copenhagen",
         "Oslo"
-      ],
-      "mapCoordinates": [
-        56.9496,
-        24.1052
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ee",
@@ -1004,14 +786,7 @@
         "Oslo",
         "Minsk",
         "Warsaw"
-      ],
-      "mapCoordinates": [
-        59.437,
-        24.7536
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_fi",
@@ -1035,14 +810,7 @@
         "Reykjavik",
         "Vilnius",
         "Minsk"
-      ],
-      "mapCoordinates": [
-        60.1699,
-        24.9384
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_se",
@@ -1066,14 +834,7 @@
         "Riga",
         "Vilnius",
         "Amsterdam"
-      ],
-      "mapCoordinates": [
-        59.3293,
-        18.0686
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_no",
@@ -1097,14 +858,7 @@
         "Amsterdam",
         "Berlin",
         "London"
-      ],
-      "mapCoordinates": [
-        59.9139,
-        10.7522
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_dk",
@@ -1128,14 +882,7 @@
         "Berlin",
         "Dublin",
         "London"
-      ],
-      "mapCoordinates": [
-        55.6761,
-        12.5683
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_is",
@@ -1159,14 +906,7 @@
         "London",
         "Amsterdam",
         "Tallinn"
-      ],
-      "mapCoordinates": [
-        64.1466,
-        -21.9426
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ie",
@@ -1190,14 +930,7 @@
         "Oslo",
         "Lisbon",
         "Paris"
-      ],
-      "mapCoordinates": [
-        53.3498,
-        -6.2603
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cy",
@@ -1223,14 +956,7 @@
         "Ankara",
         "Sofia",
         "Bucharest"
-      ],
-      "mapCoordinates": [
-        35.1856,
-        33.3823
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ru",
@@ -1256,14 +982,7 @@
         "Tallinn",
         "Helsinki",
         "Stockholm"
-      ],
-      "mapCoordinates": [
-        55.7558,
-        37.6173
-      ],
-      "mapRegion": "europe",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cn",
@@ -1289,14 +1008,7 @@
         "Kuala Lumpur",
         "Manila",
         "Delhi"
-      ],
-      "mapCoordinates": [
-        39.9042,
-        116.4074
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_jp",
@@ -1320,14 +1032,7 @@
         "Kuala Lumpur",
         "Singapore",
         "Taipei"
-      ],
-      "mapCoordinates": [
-        35.6762,
-        139.6503
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_kr",
@@ -1351,14 +1056,7 @@
         "Jakarta",
         "Kuala Lumpur",
         "Hanoi"
-      ],
-      "mapCoordinates": [
-        37.5665,
-        126.978
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_kp",
@@ -1382,14 +1080,7 @@
         "Bangkok",
         "Manila",
         "Jakarta"
-      ],
-      "mapCoordinates": [
-        39.0392,
-        125.7625
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_mn",
@@ -1415,14 +1106,7 @@
         "Tashkent",
         "Dushanbe",
         "Ashgabat"
-      ],
-      "mapCoordinates": [
-        47.8864,
-        106.9057
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_in",
@@ -1448,14 +1132,7 @@
         "Thimphu",
         "Kabul",
         "Bangkok"
-      ],
-      "mapCoordinates": [
-        28.6139,
-        77.209
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_pk",
@@ -1479,14 +1156,7 @@
         "Tashkent",
         "Dushanbe",
         "Colombo"
-      ],
-      "mapCoordinates": [
-        33.6844,
-        73.0479
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bd",
@@ -1510,14 +1180,7 @@
         "Yangon",
         "Bangkok",
         "Hanoi"
-      ],
-      "mapCoordinates": [
-        23.8103,
-        90.4125
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_np",
@@ -1541,14 +1204,7 @@
         "Kabul",
         "Bangkok",
         "Beijing"
-      ],
-      "mapCoordinates": [
-        27.7172,
-        85.324
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bt",
@@ -1572,14 +1228,7 @@
         "Islamabad",
         "Naypyidaw",
         "Beijing"
-      ],
-      "mapCoordinates": [
-        27.4712,
-        89.6339
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_lk",
@@ -1606,14 +1255,7 @@
         "Kuala Lumpur",
         "Jakarta",
         "Bangkok"
-      ],
-      "mapCoordinates": [
-        6.9108,
-        79.8878
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_af",
@@ -1637,14 +1279,7 @@
         "Ashgabat",
         "New Delhi",
         "Baghdad"
-      ],
-      "mapCoordinates": [
-        34.5553,
-        69.2075
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ir",
@@ -1668,14 +1303,7 @@
         "Tashkent",
         "Kuwait City",
         "Amman"
-      ],
-      "mapCoordinates": [
-        35.6892,
-        51.389
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_iq",
@@ -1699,14 +1327,7 @@
         "Kuwait City",
         "Doha",
         "Abu Dhabi"
-      ],
-      "mapCoordinates": [
-        33.3152,
-        44.3661
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sy",
@@ -1730,14 +1351,7 @@
         "Jerusalem",
         "Nicosia",
         "Cairo"
-      ],
-      "mapCoordinates": [
-        33.5102,
-        36.2913
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_lb",
@@ -1761,14 +1375,7 @@
         "Cairo",
         "Ankara",
         "Tehran"
-      ],
-      "mapCoordinates": [
-        33.8938,
-        35.5018
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_jo",
@@ -1792,14 +1399,7 @@
         "Cairo",
         "Nicosia",
         "Tehran"
-      ],
-      "mapCoordinates": [
-        31.9566,
-        35.9457
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_il",
@@ -1823,14 +1423,7 @@
         "Baghdad",
         "Ankara",
         "Riyadh"
-      ],
-      "mapCoordinates": [
-        31.7683,
-        35.2137
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ps",
@@ -1854,14 +1447,7 @@
         "Nicosia",
         "Baghdad",
         "Tehran"
-      ],
-      "mapCoordinates": [
-        31.8996,
-        35.2042
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sa",
@@ -1885,14 +1471,7 @@
         "Abu Dhabi",
         "Muscat",
         "Sana'a"
-      ],
-      "mapCoordinates": [
-        24.6877,
-        46.7219
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ye",
@@ -1918,14 +1497,7 @@
         "Doha",
         "Kuwait City",
         "Abu Dhabi"
-      ],
-      "mapCoordinates": [
-        15.3694,
-        44.191
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_om",
@@ -1949,14 +1521,7 @@
         "Manama",
         "Baghdad",
         "Tehran"
-      ],
-      "mapCoordinates": [
-        23.588,
-        58.3829
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ae",
@@ -1980,14 +1545,7 @@
         "Baghdad",
         "Tehran",
         "Amman"
-      ],
-      "mapCoordinates": [
-        24.4539,
-        54.3773
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_qa",
@@ -2011,14 +1569,7 @@
         "Baghdad",
         "Amman",
         "Tehran"
-      ],
-      "mapCoordinates": [
-        25.2854,
-        51.531
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_kw",
@@ -2042,14 +1593,7 @@
         "Baghdad",
         "Tehran",
         "Amman"
-      ],
-      "mapCoordinates": [
-        29.3759,
-        47.9774
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_tr",
@@ -2073,14 +1617,7 @@
         "Sofia",
         "Bucharest",
         "Tbilisi"
-      ],
-      "mapCoordinates": [
-        39.9334,
-        32.8597
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_am",
@@ -2104,14 +1641,7 @@
         "Nicosia",
         "Sofia",
         "Bucharest"
-      ],
-      "mapCoordinates": [
-        40.1792,
-        44.4991
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ge",
@@ -2135,14 +1665,7 @@
         "Moscow",
         "Minsk",
         "Kyiv"
-      ],
-      "mapCoordinates": [
-        41.6938,
-        44.8015
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_az",
@@ -2166,14 +1689,7 @@
         "Tashkent",
         "Ashgabat",
         "Astana"
-      ],
-      "mapCoordinates": [
-        40.4093,
-        49.8671
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_kz",
@@ -2199,14 +1715,7 @@
         "Baku",
         "Yerevan",
         "Tbilisi"
-      ],
-      "mapCoordinates": [
-        51.1694,
-        71.4491
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_kg",
@@ -2230,14 +1739,7 @@
         "Kabul",
         "Islamabad",
         "Yerevan"
-      ],
-      "mapCoordinates": [
-        42.8746,
-        74.5698
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_tj",
@@ -2261,14 +1763,7 @@
         "Islamabad",
         "Yerevan",
         "Baku"
-      ],
-      "mapCoordinates": [
-        38.5598,
-        68.7738
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_tm",
@@ -2292,14 +1787,7 @@
         "Kabul",
         "Baku",
         "Yerevan"
-      ],
-      "mapCoordinates": [
-        37.9601,
-        58.3261
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_uz",
@@ -2323,14 +1811,7 @@
         "Tehran",
         "Baku",
         "Yerevan"
-      ],
-      "mapCoordinates": [
-        41.2995,
-        69.2401
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_mm",
@@ -2354,14 +1835,7 @@
         "Kuala Lumpur",
         "New Delhi",
         "Beijing"
-      ],
-      "mapCoordinates": [
-        19.7633,
-        96.0785
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_th",
@@ -2387,14 +1861,7 @@
         "Kuala Lumpur",
         "Manila",
         "Beijing"
-      ],
-      "mapCoordinates": [
-        13.7563,
-        100.5018
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_la",
@@ -2418,14 +1885,7 @@
         "Kuala Lumpur",
         "Manila",
         "Beijing"
-      ],
-      "mapCoordinates": [
-        17.9757,
-        102.6331
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_kh",
@@ -2449,14 +1909,7 @@
         "Kuala Lumpur",
         "Manila",
         "Singapore"
-      ],
-      "mapCoordinates": [
-        11.5625,
-        104.916
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_vn",
@@ -2480,14 +1933,7 @@
         "Kuala Lumpur",
         "Manila",
         "Beijing"
-      ],
-      "mapCoordinates": [
-        21.0285,
-        105.8542
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ph",
@@ -2511,14 +1957,7 @@
         "Taipei",
         "Tokyo",
         "Seoul"
-      ],
-      "mapCoordinates": [
-        14.5995,
-        120.9842
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_id",
@@ -2544,14 +1983,7 @@
         "Phnom Penh",
         "Colombo",
         "Delhi"
-      ],
-      "mapCoordinates": [
-        -6.2088,
-        106.8456
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_my",
@@ -2577,14 +2009,7 @@
         "Phnom Penh",
         "Colombo",
         "Delhi"
-      ],
-      "mapCoordinates": [
-        3.139,
-        101.6869
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bn",
@@ -2610,14 +2035,7 @@
         "Hanoi",
         "Phnom Penh",
         "Dili"
-      ],
-      "mapCoordinates": [
-        4.9031,
-        114.9398
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_tl",
@@ -2643,14 +2061,7 @@
         "Vientiane",
         "Hanoi",
         "Port Moresby"
-      ],
-      "mapCoordinates": [
-        -8.5569,
-        125.5789
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_tw",
@@ -2674,14 +2085,7 @@
         "Hanoi",
         "Kuala Lumpur",
         "Jakarta"
-      ],
-      "mapCoordinates": [
-        25.033,
-        121.5654
-      ],
-      "mapRegion": "asia",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_eg",
@@ -2705,14 +2109,7 @@
         "Tunis",
         "Algiers",
         "Rabat"
-      ],
-      "mapCoordinates": [
-        30.0444,
-        31.2357
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ly",
@@ -2736,14 +2133,7 @@
         "Nouakchott",
         "Bangui",
         "Niamey"
-      ],
-      "mapCoordinates": [
-        32.8872,
-        13.1913
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_tn",
@@ -2767,14 +2157,7 @@
         "Dakar",
         "Bamako",
         "Niamey"
-      ],
-      "mapCoordinates": [
-        36.8065,
-        10.1815
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_dz",
@@ -2798,14 +2181,7 @@
         "Dakar",
         "Bamako",
         "Niamey"
-      ],
-      "mapCoordinates": [
-        36.7372,
-        3.0865
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ma",
@@ -2829,14 +2205,7 @@
         "Dakar",
         "Bamako",
         "Niamey"
-      ],
-      "mapCoordinates": [
-        34.0209,
-        -6.8416
-      ],
-      "mapRegion": "middle_east",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_mr",
@@ -2860,14 +2229,7 @@
         "Conakry",
         "Bissau",
         "Banjul"
-      ],
-      "mapCoordinates": [
-        18.0858,
-        -15.9785
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sn",
@@ -2891,14 +2253,7 @@
         "Bamako",
         "Ouagadougou",
         "Nouakchott"
-      ],
-      "mapCoordinates": [
-        14.7167,
-        -17.4677
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_gm",
@@ -2922,14 +2277,7 @@
         "Bamako",
         "Nouakchott",
         "Rabat"
-      ],
-      "mapCoordinates": [
-        13.4531,
-        -16.5775
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_gw",
@@ -2953,14 +2301,7 @@
         "Bamako",
         "Ouagadougou",
         "Abidjan"
-      ],
-      "mapCoordinates": [
-        11.8636,
-        -15.5977
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_gn",
@@ -2984,14 +2325,7 @@
         "Banjul",
         "Bamako",
         "Ouagadougou"
-      ],
-      "mapCoordinates": [
-        9.6412,
-        -13.5784
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sl",
@@ -3015,14 +2349,7 @@
         "Bissau",
         "Bamako",
         "Ouagadougou"
-      ],
-      "mapCoordinates": [
-        8.4897,
-        -13.2344
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_lr",
@@ -3046,14 +2373,7 @@
         "Yamoussoukro",
         "Ouagadougou",
         "Bamako"
-      ],
-      "mapCoordinates": [
-        6.2907,
-        -10.7605
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ci",
@@ -3079,14 +2399,7 @@
         "Bamako",
         "Dakar",
         "Bangui"
-      ],
-      "mapCoordinates": [
-        6.8276,
-        -5.2893
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_gh",
@@ -3110,14 +2423,7 @@
         "Dakar",
         "Monrovia",
         "Bangui"
-      ],
-      "mapCoordinates": [
-        5.6037,
-        -0.187
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_tg",
@@ -3141,14 +2447,7 @@
         "Conakry",
         "Freetown",
         "Bangui"
-      ],
-      "mapCoordinates": [
-        6.1375,
-        1.2123
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bj",
@@ -3174,14 +2473,7 @@
         "Conakry",
         "Freetown",
         "Bangui"
-      ],
-      "mapCoordinates": [
-        6.3703,
-        2.3912
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ng",
@@ -3205,14 +2497,7 @@
         "Lomé",
         "Cotonou",
         "Libreville"
-      ],
-      "mapCoordinates": [
-        9.0579,
-        7.4951
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ne",
@@ -3236,14 +2521,7 @@
         "Bangui",
         "Lomé",
         "Nouakchott"
-      ],
-      "mapCoordinates": [
-        13.5137,
-        2.1098
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ml",
@@ -3267,14 +2545,7 @@
         "Bangui",
         "Lomé",
         "Accra"
-      ],
-      "mapCoordinates": [
-        12.6392,
-        -8.0029
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bf",
@@ -3298,14 +2569,7 @@
         "Conakry",
         "Dakar",
         "Bangui"
-      ],
-      "mapCoordinates": [
-        12.3647,
-        -1.5353
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sd",
@@ -3329,14 +2593,7 @@
         "Nairobi",
         "Kampala",
         "Djibouti City"
-      ],
-      "mapCoordinates": [
-        15.5007,
-        32.5599
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ss",
@@ -3360,14 +2617,7 @@
         "N'Djamena",
         "Asmara",
         "Djibouti City"
-      ],
-      "mapCoordinates": [
-        4.8594,
-        31.5713
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_td",
@@ -3391,14 +2641,7 @@
         "Juba",
         "Yaoundé",
         "Libreville"
-      ],
-      "mapCoordinates": [
-        12.1348,
-        15.0557
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cm",
@@ -3422,14 +2665,7 @@
         "Accra",
         "Brazzaville",
         "Kinshasa"
-      ],
-      "mapCoordinates": [
-        3.848,
-        11.5021
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cf",
@@ -3453,14 +2689,7 @@
         "Juba",
         "N'Djamena",
         "Kampala"
-      ],
-      "mapCoordinates": [
-        4.3612,
-        18.555
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_gq",
@@ -3484,14 +2713,7 @@
         "Kinshasa",
         "Luanda",
         "Bangui"
-      ],
-      "mapCoordinates": [
-        3.75,
-        8.7833
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ga",
@@ -3515,14 +2737,7 @@
         "Luanda",
         "N'Djamena",
         "Accra"
-      ],
-      "mapCoordinates": [
-        0.4162,
-        9.4673
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cg",
@@ -3546,14 +2761,7 @@
         "Malabo",
         "Abuja",
         "Accra"
-      ],
-      "mapCoordinates": [
-        -4.2634,
-        15.2429
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cd",
@@ -3577,14 +2785,7 @@
         "Kampala",
         "Nairobi",
         "Lagos"
-      ],
-      "mapCoordinates": [
-        -4.322,
-        15.322
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ao",
@@ -3608,14 +2809,7 @@
         "Maputo",
         "Lilongwe",
         "Bangui"
-      ],
-      "mapCoordinates": [
-        -8.8368,
-        13.2343
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_zm",
@@ -3639,14 +2833,7 @@
         "Nairobi",
         "Windhoek",
         "Gaborone"
-      ],
-      "mapCoordinates": [
-        -15.3875,
-        28.3228
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_mw",
@@ -3670,14 +2857,7 @@
         "Windhoek",
         "Gaborone",
         "Mbabane"
-      ],
-      "mapCoordinates": [
-        -13.9626,
-        33.7741
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_mz",
@@ -3701,14 +2881,7 @@
         "Mbabane",
         "Antananarivo",
         "Nairobi"
-      ],
-      "mapCoordinates": [
-        -25.9692,
-        32.5732
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_zw",
@@ -3732,14 +2905,7 @@
         "Gaborone",
         "Mbabane",
         "Kinshasa"
-      ],
-      "mapCoordinates": [
-        -17.8292,
-        31.0522
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bw",
@@ -3763,14 +2929,7 @@
         "Mbabane",
         "Lilongwe",
         "Maseru"
-      ],
-      "mapCoordinates": [
-        -24.6282,
-        25.9231
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_na",
@@ -3794,14 +2953,7 @@
         "Maputo",
         "Mbabane",
         "Maseru"
-      ],
-      "mapCoordinates": [
-        -22.5609,
-        17.0658
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_za",
@@ -3828,14 +2980,7 @@
         "Mbabane",
         "Maseru",
         "Antananarivo"
-      ],
-      "mapCoordinates": [
-        -25.7479,
-        28.2293
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sz",
@@ -3861,14 +3006,7 @@
         "Harare",
         "Lilongwe",
         "Lusaka"
-      ],
-      "mapCoordinates": [
-        -26.3186,
-        31.141
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ls",
@@ -3892,14 +3030,7 @@
         "Harare",
         "Lilongwe",
         "Lusaka"
-      ],
-      "mapCoordinates": [
-        -29.3167,
-        27.4833
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_et",
@@ -3923,14 +3054,7 @@
         "Kampala",
         "Juba",
         "Cairo"
-      ],
-      "mapCoordinates": [
-        9.025,
-        38.7469
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_er",
@@ -3954,14 +3078,7 @@
         "Kampala",
         "Juba",
         "Cairo"
-      ],
-      "mapCoordinates": [
-        15.3381,
-        38.9318
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_dj",
@@ -3987,14 +3104,7 @@
         "Juba",
         "Kampala",
         "Cairo"
-      ],
-      "mapCoordinates": [
-        11.572,
-        43.145
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_so",
@@ -4018,14 +3128,7 @@
         "Kampala",
         "Dar es Salaam",
         "Cairo"
-      ],
-      "mapCoordinates": [
-        2.0469,
-        45.3182
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ke",
@@ -4049,14 +3152,7 @@
         "Juba",
         "Khartoum",
         "Cairo"
-      ],
-      "mapCoordinates": [
-        -1.2921,
-        36.8219
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ug",
@@ -4080,14 +3176,7 @@
         "Addis Ababa",
         "Kinshasa",
         "Dar es Salaam"
-      ],
-      "mapCoordinates": [
-        0.3476,
-        32.5825
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_rw",
@@ -4111,14 +3200,7 @@
         "Lusaka",
         "Addis Ababa",
         "Dar es Salaam"
-      ],
-      "mapCoordinates": [
-        -1.9536,
-        30.0606
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bi",
@@ -4144,14 +3226,7 @@
         "Nairobi",
         "Lilongwe",
         "Harare"
-      ],
-      "mapCoordinates": [
-        -3.4271,
-        29.9307
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_tz",
@@ -4177,14 +3252,7 @@
         "Lilongwe",
         "Harare",
         "Addis Ababa"
-      ],
-      "mapCoordinates": [
-        -6.1722,
-        35.7395
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_mg",
@@ -4208,14 +3276,7 @@
         "Moroni",
         "Victoria",
         "Pretoria"
-      ],
-      "mapCoordinates": [
-        -18.9249,
-        47.5185
-      ],
-      "mapRegion": "africa",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_us",
@@ -4242,14 +3303,7 @@
         "Belmopan",
         "Guatemala City",
         "Tegucigalpa"
-      ],
-      "mapCoordinates": [
-        38.9072,
-        -77.0369
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ca",
@@ -4273,14 +3327,7 @@
         "Belmopan",
         "Guatemala City",
         "Tegucigalpa"
-      ],
-      "mapCoordinates": [
-        45.4215,
-        -75.6972
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_mx",
@@ -4307,14 +3354,7 @@
         "Belmopan",
         "Kingston",
         "Nassau"
-      ],
-      "mapCoordinates": [
-        19.4326,
-        -99.1332
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 1,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cu",
@@ -4340,14 +3380,7 @@
         "Tegucigalpa",
         "Managua",
         "Panama City"
-      ],
-      "mapCoordinates": [
-        23.1136,
-        -82.3666
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_jm",
@@ -4371,14 +3404,7 @@
         "Panama City",
         "Bridgetown",
         "Castries"
-      ],
-      "mapCoordinates": [
-        17.997,
-        -76.7936
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ht",
@@ -4402,14 +3428,7 @@
         "Guatemala City",
         "Belmopan",
         "Castries"
-      ],
-      "mapCoordinates": [
-        18.5944,
-        -72.3074
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_do",
@@ -4433,14 +3452,7 @@
         "Guatemala City",
         "Panama City",
         "Castries"
-      ],
-      "mapCoordinates": [
-        18.4861,
-        -69.9312
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bs",
@@ -4464,14 +3476,7 @@
         "Panama City",
         "Bridgetown",
         "Castries"
-      ],
-      "mapCoordinates": [
-        25.0443,
-        -77.3504
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_tt",
@@ -4495,14 +3500,7 @@
         "Basseterre",
         "Nassau",
         "Santo Domingo"
-      ],
-      "mapCoordinates": [
-        10.6549,
-        -61.5019
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_gt",
@@ -4526,14 +3524,7 @@
         "San José",
         "Panama City",
         "Havana"
-      ],
-      "mapCoordinates": [
-        14.6349,
-        -90.5069
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bz",
@@ -4557,14 +3548,7 @@
         "Panama City",
         "Nassau",
         "Havana"
-      ],
-      "mapCoordinates": [
-        17.251,
-        -88.759
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_hn",
@@ -4588,14 +3572,7 @@
         "Panama City",
         "Mexico City",
         "Havana"
-      ],
-      "mapCoordinates": [
-        14.0818,
-        -87.2068
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sv",
@@ -4619,14 +3596,7 @@
         "Panama City",
         "Mexico City",
         "Havana"
-      ],
-      "mapCoordinates": [
-        13.6929,
-        -89.2182
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ni",
@@ -4650,14 +3620,7 @@
         "Panama City",
         "Mexico City",
         "Havana"
-      ],
-      "mapCoordinates": [
-        12.1149,
-        -86.2362
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cr",
@@ -4681,14 +3644,7 @@
         "San Salvador",
         "Havana",
         "Nassau"
-      ],
-      "mapCoordinates": [
-        9.9281,
-        -84.0907
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_pa",
@@ -4712,14 +3668,7 @@
         "Bogotá",
         "Quito",
         "Lima"
-      ],
-      "mapCoordinates": [
-        8.9936,
-        -79.5197
-      ],
-      "mapRegion": "north_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_br",
@@ -4745,14 +3694,7 @@
         "Asunción",
         "Montevideo",
         "Caracas"
-      ],
-      "mapCoordinates": [
-        -15.7975,
-        -47.8919
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ar",
@@ -4776,14 +3718,7 @@
         "Asunción",
         "Montevideo",
         "Caracas"
-      ],
-      "mapCoordinates": [
-        -34.6037,
-        -58.3816
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_cl",
@@ -4807,14 +3742,7 @@
         "Asunción",
         "Montevideo",
         "Caracas"
-      ],
-      "mapCoordinates": [
-        -33.4489,
-        -70.6693
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_pe",
@@ -4838,14 +3766,7 @@
         "Asunción",
         "Caracas",
         "La Paz"
-      ],
-      "mapCoordinates": [
-        -12.0464,
-        -77.0428
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_bo",
@@ -4871,14 +3792,7 @@
         "Asunción",
         "Montevideo",
         "Caracas"
-      ],
-      "mapCoordinates": [
-        -19.0196,
-        -65.2619
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_co",
@@ -4902,14 +3816,7 @@
         "Brasília",
         "Asunción",
         "Montevideo"
-      ],
-      "mapCoordinates": [
-        4.711,
-        -74.0721
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ve",
@@ -4933,14 +3840,7 @@
         "Brasília",
         "Buenos Aires",
         "Panama City"
-      ],
-      "mapCoordinates": [
-        10.4806,
-        -66.9036
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_ec",
@@ -4964,14 +3864,7 @@
         "Buenos Aires",
         "Asunción",
         "Montevideo"
-      ],
-      "mapCoordinates": [
-        -0.2295,
-        -78.5243
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_gy",
@@ -4995,14 +3888,7 @@
         "Brasília",
         "Buenos Aires",
         "Montevideo"
-      ],
-      "mapCoordinates": [
-        6.8013,
-        -58.1551
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sr",
@@ -5026,14 +3912,7 @@
         "Buenos Aires",
         "Montevideo",
         "Lima"
-      ],
-      "mapCoordinates": [
-        5.852,
-        -55.2038
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_py",
@@ -5057,14 +3936,7 @@
         "Brasília",
         "La Paz",
         "Quito"
-      ],
-      "mapCoordinates": [
-        -25.2867,
-        -57.647
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_uy",
@@ -5088,14 +3960,7 @@
         "Brasília",
         "Quito",
         "Caracas"
-      ],
-      "mapCoordinates": [
-        -34.9011,
-        -56.1645
-      ],
-      "mapRegion": "south_america",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_au",
@@ -5119,14 +3984,7 @@
         "Nuku'alofa",
         "Apia",
         "Funafuti"
-      ],
-      "mapCoordinates": [
-        -35.2809,
-        149.13
-      ],
-      "mapRegion": "oceania",
-      "mapDifficultyTier": 2,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_nz",
@@ -5150,14 +4008,7 @@
         "Nuku'alofa",
         "Apia",
         "Funafuti"
-      ],
-      "mapCoordinates": [
-        -41.2866,
-        174.7756
-      ],
-      "mapRegion": "oceania",
-      "mapDifficultyTier": 3,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_pg",
@@ -5181,14 +4032,7 @@
         "Nuku'alofa",
         "Apia",
         "Funafuti"
-      ],
-      "mapCoordinates": [
-        -9.4438,
-        147.1803
-      ],
-      "mapRegion": "oceania",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_fj",
@@ -5212,14 +4056,7 @@
         "Nuku'alofa",
         "Apia",
         "Tarawa"
-      ],
-      "mapCoordinates": [
-        -18.1416,
-        178.4419
-      ],
-      "mapRegion": "oceania",
-      "mapDifficultyTier": 4,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_sb",
@@ -5243,14 +4080,7 @@
         "Nuku'alofa",
         "Apia",
         "Funafuti"
-      ],
-      "mapCoordinates": [
-        -9.4319,
-        160.0483
-      ],
-      "mapRegion": "oceania",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     },
     {
       "id": "capital_vu",
@@ -5274,14 +4104,7 @@
         "Nuku'alofa",
         "Apia",
         "Funafuti"
-      ],
-      "mapCoordinates": [
-        -17.7333,
-        168.3167
-      ],
-      "mapRegion": "oceania",
-      "mapDifficultyTier": 5,
-      "quizResponseMode": "map_pin"
+      ]
     }
   ],
   "answerTypePools": [
