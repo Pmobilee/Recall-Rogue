@@ -142,8 +142,6 @@ Three regions. Combat, shops, rest sites, treasure rooms, mystery events. The Bu
 
 Rest at the campfire. Heal, or study three questions to level up your cards without combat pressure. The Keeper sits by the fire. They've been there longer than you.
 
-[img]{STEAM_APP_IMAGE}/extras/camp-cat.png[/img]
-
 [h2]TWO WAYS TO PLAY[/h2]
 
 [b]Trivia Dungeon[/b] — the roguelite. Pick a deck, fight through three acts, beat the bosses.

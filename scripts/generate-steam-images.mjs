@@ -9,7 +9,7 @@
  */
 
 import { chromium } from 'playwright';
-import { writeFileSync, mkdirSync, copyFileSync, unlinkSync } from 'fs';
+import { writeFileSync, mkdirSync, unlinkSync } from 'fs';
 import { join, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -22,9 +22,6 @@ mkdirSync(OUTPUT_DIR, { recursive: true });
 // ── Absolute file:// paths ──────────────────────────────────────────────────
 const ENEMY = (name) => `file://${PROJECT_ROOT}/public/assets/sprites/enemies/${name}`;
 const ICON  = (name) => `file://${PROJECT_ROOT}/public/assets/sprites/icons/${name}`;
-const CAT_SPRITE = `file://${PROJECT_ROOT}/steam/store-images/cat-cropped.png`;
-const CAMP_BG = `file:///Users/damion/CODE/recall_rogue_site/generated/backgrounds-landscape/camp/camp-background-wide.webp`;
-
 // ── HTML ────────────────────────────────────────────────────────────────────
 function buildHTML() {
   const enemies = [
@@ -98,7 +95,7 @@ function buildHTML() {
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg-deep); font-family: 'Inter', sans-serif; }
+  body { background: transparent; font-family: 'Inter', sans-serif; }
 
   /* ── Shared panel style ── */
   .glass-panel {
@@ -118,7 +115,7 @@ function buildHTML() {
   #enemy-showcase {
     width: 1560px;
     height: 1100px;
-    background: var(--bg-deep);
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -182,7 +179,7 @@ function buildHTML() {
   #relic-grid {
     width: 1560px;
     height: 1200px;
-    background: var(--bg-deep);
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -244,49 +241,12 @@ function buildHTML() {
   }
 
   /* ══════════════════════════════════════════════
-     SECTION 3 — CAMP CAT  1560 × 500
-  ══════════════════════════════════════════════ */
-  #camp-cat {
-    width: 1560px;
-    height: 500px;
-    position: relative;
-    overflow: hidden;
-  }
-  #camp-cat .bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-  }
-  #camp-cat .cat-img {
-    position: absolute;
-    bottom: 80px;
-    right: 480px;
-    width: 308px;
-    height: 204px;
-    image-rendering: pixelated;
-    z-index: 2;
-  }
-  #camp-cat .caption {
-    position: absolute;
-    bottom: 24px;
-    left: 32px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    color: rgba(232,228,220,0.7);
-    font-style: italic;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
-  }
-
-  /* ══════════════════════════════════════════════
      SECTION 4 — DIALOGUE SHOWCASE  1560 × 900
   ══════════════════════════════════════════════ */
   #dialogue-showcase {
     width: 1560px;
     height: 900px;
-    background: var(--bg-deep);
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -353,7 +313,7 @@ function buildHTML() {
   #deck-domains {
     width: 1560px;
     height: 700px;
-    background: var(--bg-deep);
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -431,12 +391,6 @@ function buildHTML() {
   </div>
 </section>
 
-<!-- SECTION 3: Camp Cat -->
-<section id="camp-cat">
-  <img class="bg" src="${CAMP_BG}" alt="Camp background">
-  <img class="cat-img" src="${CAT_SPRITE}" alt="Camp cat">
-  <div class="caption">A cat. You can pet it.</div>
-</section>
 
 <!-- SECTION 4: Dialogue Showcase -->
 <section id="dialogue-showcase">
@@ -485,7 +439,6 @@ await page.waitForTimeout(2500);
 const sections = [
   { id: 'enemy-showcase',    file: 'enemy-showcase.png',    w: 1560, h: 1100 },
   { id: 'relic-grid',        file: 'relic-grid.png',        w: 1560, h: 1200 },
-  { id: 'camp-cat',          file: 'camp-cat.png',          w: 1560, h: 500  },
   { id: 'dialogue-showcase', file: 'dialogue-showcase.png', w: 1560, h: 900  },
   { id: 'deck-domains',      file: 'deck-domains.png',      w: 1560, h: 700  },
 ];
@@ -493,17 +446,12 @@ const sections = [
 for (const { id, file, w, h } of sections) {
   const el = page.locator(`#${id}`);
   const outPath = join(OUTPUT_DIR, file);
-  await el.screenshot({ path: outPath });
+  await el.screenshot({ path: outPath, omitBackground: true });
   console.log(`Saved ${file} (${w}x${h})`);
 }
 
 await browser.close();
 
-// Copy banner
-const bannerSrc = '/Users/damion/CODE/recall_rogue_site/public/assets/banner.webp';
-const bannerDst = join(OUTPUT_DIR, 'banner.webp');
-copyFileSync(bannerSrc, bannerDst);
-console.log('Copied banner.webp');
 
 // Clean up temp
 unlinkSync(tmpPath);

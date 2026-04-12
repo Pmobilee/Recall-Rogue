@@ -23,12 +23,10 @@
 
 | Image | File | Dimensions | Content |
 |---|---|---|---|
-| Enemy Showcase | `enemy-showcase.png` | 3120x1800 | 3x2 grid: Burning Deadline, Group Project, Moth of Enlightenment, Curriculum, Dunning-Kruger, Fake News |
-| Relic Grid | `relic-grid.png` | 3120x1200 | 12 relics with icons and names |
-| Camp Cat | `camp-cat.png` | 3120x1000 | Camp corridor background with pixel cat in warm light |
-| Dialogue Showcase | `dialogue-showcase.png` | 3120x1600 | 4 enemy quotes: Dunning-Kruger, Singularity, Helicopter Parent, Student Debt |
-| Deck Domains | `deck-domains.png` | 3120x1400 | "LEARN ANYTHING. FIGHT EVERYTHING." — 10 domain badges with example decks |
-| Banner | `banner.webp` | 3584x1184 | Tavern scene (from recall_rogue_site) |
+| Enemy Showcase | `enemy-showcase.png` | 3120x2200 | 3x2 grid: Final Lesson, Curriculum, Textbook, Pop Quiz, Helicopter Parent, Trick Question — transparent PNG |
+| Relic Grid | `relic-grid.png` | 3120x2400 | 3x4 grid, 12 relics with icons, names, descriptions — transparent PNG |
+| Dialogue Showcase | `dialogue-showcase.png` | 3120x1800 | 5 enemy quotes: Singularity, Devil's Advocate, Institution, Moth of Enlightenment, Lost Thesis — transparent PNG |
+| Deck Domains | `deck-domains.png` | 3120x1400 | "LEARN ANYTHING. FIGHT EVERYTHING." — 10 domain badges — transparent PNG |
 
 ### 4. Competitor Analysis (complete)
 - File: `competitor-analysis.md`
@@ -71,7 +69,6 @@ To finish the store page on Steamworks:
 |---|---|
 | Generated store images | `steam/store-images/` |
 | Image generator script | `scripts/generate-steam-images.mjs` |
-| Cropped cat sprite | `steam/store-images/cat-cropped.png` |
 | Enemy sprites (89) | `public/assets/sprites/enemies/*_idle.png` |
 | Relic icons (144) | `public/assets/sprites/icons/icon_relic_*.png` |
 | Camp background | `recall_rogue_site/generated/backgrounds-landscape/camp/camp-background-wide.webp` |
