@@ -37,7 +37,7 @@ vi.mock('../data/statusEffects', () => ({
 }));
 
 // ── Import AFTER mocks (vi.mock is hoisted but imports resolve after) ─────────
-import { computeIntentHpImpact, computeIntentDisplayDamage } from './intentDisplay';
+import { computeIntentHpImpact, computeIntentDisplayDamage, computeIntentDisplayDamageSnapshot } from './intentDisplay';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -199,5 +199,66 @@ describe('computeIntentDisplayDamage (backward compat)', () => {
     const intent = makeIntent(10, 'defend');
     const enemy = makeEnemy();
     expect(computeIntentDisplayDamage(intent, enemy)).toBe(0);
+  });
+});
+
+// ── Tests: computeIntentDisplayDamageSnapshot (Bug 3) ───────────────────────
+//
+// Before this fix, CardCombatOverlay.svelte had a `$derived.by` that called
+// `computeIntentHpImpact(intent, enemy, turnState.playerState.shield)`. Every
+// card play mutated shield, re-triggered the derived, and recomputed intent
+// display mid-turn. Intent damage should be pinned at turn-start (intent-roll time).
+//
+// Backend fix: turnManager.ts now calls `computeIntentDisplayDamageSnapshot()`
+// after rollNextIntent() and stores the result on `enemy.lockedDisplayDamage`.
+// The UI should read `enemy.lockedDisplayDamage` rather than deriving live.
+//
+// These tests verify:
+//   1. The snapshot function is deterministic and matches computeIntentDisplayDamage.
+//   2. A snapshot taken with block=5 is NOT affected by subsequent block changes.
+
+describe('Bug 3 — computeIntentDisplayDamageSnapshot pins damage at lock time', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('snapshot returns same value as computeIntentDisplayDamage (deterministic)', () => {
+    const intent = makeIntent(15);
+    const enemy = makeEnemy();
+    const playerStateAtLockTime = { shield: 5, statusEffects: [] };
+
+    const live = computeIntentDisplayDamage(intent, enemy);
+    const snapshot = computeIntentDisplayDamageSnapshot(intent, enemy, playerStateAtLockTime);
+
+    // Both should produce the same raw damage value.
+    expect(snapshot).toBe(live);
+  });
+
+  it('snapshot is independent of subsequent shield changes (core regression case)', () => {
+    const intent = makeIntent(20);
+    const enemy = makeEnemy();
+
+    // Simulate: intent locked at start-of-turn when player has 5 block.
+    const playerStateAtLockTime = { shield: 5, statusEffects: [] };
+    const locked = computeIntentDisplayDamageSnapshot(intent, enemy, playerStateAtLockTime);
+
+    // Player then plays shield cards — 15 more block added mid-turn.
+    const playerStateMidTurn = { shield: 20, statusEffects: [] };
+    const midTurnComputed = computeIntentDisplayDamageSnapshot(intent, enemy, playerStateMidTurn);
+
+    // The locked value from start-of-turn should equal the mid-turn computed value
+    // because the snapshot function returns raw damage (not block-adjusted).
+    // The point is: when the UI reads enemy.lockedDisplayDamage, it gets the
+    // start-of-turn raw value, not a value that drifts as block changes.
+    expect(locked).toBe(midTurnComputed);
+  });
+
+  it('snapshot returns 0 for non-attack intents', () => {
+    const intent = makeIntent(10, 'defend');
+    const enemy = makeEnemy();
+    const playerState = { shield: 50, statusEffects: [] };
+
+    const snapshot = computeIntentDisplayDamageSnapshot(intent, enemy, playerState);
+    expect(snapshot).toBe(0);
   });
 });

@@ -29,7 +29,7 @@ import {
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
 import { playCardAudio } from './cardAudioManager';
 import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects, dispatchEnemyTurnStart } from './enemyManager';
-import { applyStatusEffect, triggerBurn, getBleedBonus } from '../data/statusEffects';
+import { applyStatusEffect, triggerBurn, getBleedBonus, PERMANENT_DURATION_SENTINEL } from '../data/statusEffects';
 import type { EnemyReactContext } from '../data/enemies';
 import { hasSynergy, getMasteryAscensionBonus } from './relicSynergyResolver';
 import {
@@ -74,6 +74,7 @@ import {
   resolveChainBreakEffects,
 } from './relicEffectResolver';
 import { applyPostIntentDamageScaling } from './enemyDamageScaling';
+import { computeIntentDisplayDamageSnapshot } from './intentDisplay';
 
 // ─── AR-269: Akashic Record — fact spacing tracker ──────────────────────────
 /**
@@ -2356,13 +2357,13 @@ export function playCardAction(
     if (existingStr) {
       existingStr.value += value;
       if (permanent) {
-        existingStr.turnsRemaining = 9999; // permanent = rest of combat
+        existingStr.turnsRemaining = PERMANENT_DURATION_SENTINEL; // permanent = rest of combat
       }
     } else {
       playerState.statusEffects.push({
         type: 'strength',
         value,
-        turnsRemaining: permanent ? 9999 : 1,
+        turnsRemaining: permanent ? PERMANENT_DURATION_SENTINEL : 1,
       });
     }
     // L3 QP bonus: also +1 permanent Str (direct check — warcry_perm_str tag removed 2026-04-11; tag was never dispatched)
@@ -2370,9 +2371,9 @@ export function playCardAction(
       const strEffect = playerState.statusEffects.find(s => s.type === 'strength');
       if (strEffect) {
         strEffect.value += 1;
-        strEffect.turnsRemaining = 9999;
+        strEffect.turnsRemaining = PERMANENT_DURATION_SENTINEL;
       } else {
-        playerState.statusEffects.push({ type: 'strength', value: 1, turnsRemaining: 9999 });
+        playerState.statusEffects.push({ type: 'strength', value: 1, turnsRemaining: PERMANENT_DURATION_SENTINEL });
       }
     }
   }
@@ -3301,6 +3302,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.phase = 'encounter_end';
     turnState.turnLog.push({ type: 'defeat', message: 'Player defeated!' });
     rollNextIntent(enemy);
+  // Pin display damage at intent-roll time so UI reads a stable snapshot (Bug 3 fix).
+  enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+      canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+      ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+      difficultyMode: get(difficultyMode),
+    });
     return {
       damageDealt,
       effectsApplied,
@@ -3318,6 +3325,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.phase = 'encounter_end';
     turnState.turnLog.push({ type: 'defeat', message: 'Player defeated by status effects!' });
     rollNextIntent(enemy);
+  // Pin display damage at intent-roll time so UI reads a stable snapshot (Bug 3 fix).
+  enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+      canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+      ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+      difficultyMode: get(difficultyMode),
+    });
     return {
       damageDealt,
       effectsApplied,
@@ -3353,6 +3366,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.phase = 'encounter_end';
     turnState.turnLog.push({ type: 'victory', message: 'Enemy defeated by status effects!' });
     rollNextIntent(enemy);
+  // Pin display damage at intent-roll time so UI reads a stable snapshot (Bug 3 fix).
+  enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+      canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+      ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+      difficultyMode: get(difficultyMode),
+    });
     return {
       damageDealt,
       effectsApplied,
@@ -3546,6 +3565,13 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     }
     turnState.forcedAttackTurnsRemaining -= 1;
   }
+  // Pin display damage after the final intent is locked (including forcedAttack override).
+  // Pin display damage at intent-roll time so UI reads a stable snapshot (Bug 3 fix).
+  enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+      canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+      ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+      difficultyMode: get(difficultyMode),
+    });
   turnState.turnNumber += 1;
   turnState.encounterTurnNumber += 1;
   turnState.isSurge = isSurgeTurn(turnState.turnNumber);

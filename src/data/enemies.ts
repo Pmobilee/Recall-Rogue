@@ -3,7 +3,7 @@
 // NO Phaser, Svelte, or DOM imports.
 
 import type { StatusEffectType, StatusEffect } from './statusEffects';
-import { applyStatusEffect } from './statusEffects';
+import { applyStatusEffect, PERMANENT_DURATION_SENTINEL } from './statusEffects';
 import type { FactDomain } from './card-types';
 import type { AnimArchetype } from './enemyAnimations';
 
@@ -263,6 +263,25 @@ export interface EnemyInstance {
    * Defaults to 1 (solo). Used by getCoopBlockMultiplier and getCoopDamageCapMultiplier.
    */
   playerCount?: number;
+  /**
+   * Locked display damage — snapped at intent-roll time from the player state that existed
+   * when rollNextIntent() was called. Updated each time a new intent is rolled.
+   *
+   * WHY: The Svelte UI previously re-derived intent damage inside a `$derived.by` that
+   * tracked live `turnState?.playerState?.shield`. Every card play mutated shield, which
+   * retriggered the derived and recomputed intent display mid-turn — causing the displayed
+   * damage to drift as the player built block. Intent display should be pinned to the
+   * player state at the START of the player turn, before any cards are played.
+   *
+   * HOW: After rollNextIntent() resolves the new intent, turnManager.ts calls
+   * `computeIntentDisplayDamageSnapshot(intent, enemy, playerState)` from intentDisplay.ts
+   * and stores the result here. The UI reads `enemy.lockedDisplayDamage` instead of
+   * re-deriving it live.
+   *
+   * BACKWARD COMPAT: undefined on enemies created before this field was added (pre-fix
+   * saves). The UI falls back to `computeIntentDisplayDamage()` when the field is absent.
+   */
+  lockedDisplayDamage?: number;
 }
 
 // ============================================================
@@ -667,12 +686,12 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     onEnemyTurnStart: (ctx) => {
       // 6.5: Use Strength status effect instead of enrageBonusDamage so the UI shows
       // a visible "growing stronger" indicator. Each turn from turn 4, +1 Strength
-      // (≈ +25% damage multiplier per stack). Sentinel 9999 so it never expires.
+      // (≈ +25% damage multiplier per stack). PERMANENT_DURATION_SENTINEL so it never expires.
       if (ctx.turnNumber >= 4) {
         applyStatusEffect(ctx.enemy.statusEffects, {
           type: 'strength',
           value: 1,
-          turnsRemaining: 9999,
+          turnsRemaining: PERMANENT_DURATION_SENTINEL,
         });
       }
     },
@@ -1833,7 +1852,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'debuff', value: 2, weight: 2, telegraph: 'Magma burn', statusEffect: { type: 'poison', value: 2, turns: 2 } },
       { type: 'buff', value: 1, weight: 1, telegraph: 'Heat surge', statusEffect: { type: 'strength', value: 1, turns: 2 } },
     ],
-    description: 'Mantle-born demon. Burns, poisons, and gets stronger doing it.',
+    description: 'Mantle-born demon. Every hit scorches deeper.',
     rarity: 'uncommon',
     spawnWeight: 5,
     animArchetype: 'striker',

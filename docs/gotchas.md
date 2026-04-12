@@ -3707,3 +3707,33 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix:** Changed `.tooltip-backdrop` to `pointer-events: none` (CSS) and replaced the `<button onclick=dismiss>` with a `<div aria-hidden>`. Click-outside dismiss is now handled by a `$effect` that adds a `document.addEventListener('pointerdown', ..., { capture: true })` listener while `relicTooltip` is non-null, dismissing on any click that doesn't originate inside `.relic-tooltip`. Mouse-away (`onmouseleave` on the relic item) still dismisses immediately. The 3-second auto-dismiss timer is unchanged.
 
 **Rule:** If you add a full-viewport backdrop element (`position: fixed; inset: 0`) to handle click-outside dismissal, give it `pointer-events: none` and handle dismissal via a `document pointerdown` listener in a `$effect` instead. The backdrop-as-click-catcher pattern makes every other interactive element in the viewport unreachable while the backdrop is mounted.
+
+### 2026-04-12 — baseEffectValue is a stale snapshot in getCombatState (Bug 1)
+
+**What:** `playtestAPI.getCombatState()` returned `hand[i].baseEffectValue = card.baseEffectValue` — the static value set when the card was created at the start of a run. The resolver uses `getMasteryStats(card.mechanicId, card.masteryLevel).qpValue` which grows with mastery. Strike at L3 reports `baseEffectValue = 4` in the API but hits for 6.
+
+**Why:** `Card.baseEffectValue` is initialized once in `cardFactory.ts` from `mechanic.quickPlayValue`. It is never updated when the card's `masteryLevel` increases during a run. The resolver computes the live value at call time; `playtestAPI` was reading the stale snapshot instead.
+
+**Fix:** `playtestAPI.ts` now computes `effectiveQpValue = getMasteryStats(id, level)?.qpValue ?? mechDef?.quickPlayValue ?? c.baseEffectValue` at read time, mirroring the same fallback chain the resolver uses. The `baseEffectValue` field in the returned object now reflects the live mastery-scaled Quick Play value.
+
+**Class of bug:** Any API or display path that reads `card.baseEffectValue` directly instead of consulting the mastery stat table will silently diverge from the resolver at mastery > 0. `getDetailedCardDescription` in the UI has the same root cause (tracked separately in `docs/content/card-description-audit.md`).
+
+### 2026-04-12 — 9999 permanent-buff sentinel was being decremented by tickStatusEffects (Bug 2)
+
+**What:** Warcry's permanent Strength effect (created with `turnsRemaining: 9999`) was ticked down by `tickStatusEffects` like any other effect — 9999 → 9998 → 9997. The UI would eventually display a countdown for a buff that is supposed to last the full encounter.
+
+**Why:** `tickStatusEffects` decremented all effects unconditionally with `effect.turnsRemaining -= 1`. There was no gate for effects meant to be permanent.
+
+**Fix:** Added `PERMANENT_DURATION_SENTINEL = 9999` constant to `src/data/statusEffects.ts`. Gated the decrement with `if (effect.turnsRemaining < PERMANENT_DURATION_SENTINEL)`. All creation sites in `turnManager.ts`, `enemies.ts`, and `enemyManager.ts` were updated to use the constant instead of the magic number `9999`.
+
+**Sentinel clarification:** `99` (Burn, Bleed, Immunity) is NOT gated — these effects expire via their own dedicated mechanisms (Burn halves on hit, Bleed decays on enemy turn, Immunity absorbs on takeDamage) and will never actually reach 0 via tick countdown in a realistic encounter. `99999` (permanent Bleed via rupture_bleed_perm) is also not gated by the constant but is handled by a separate condition in the Bleed decay path.
+
+### 2026-04-12 — Enemy intent displayDamage should be pinned at intent-lock time, not derived live (Bug 3)
+
+**What:** `CardCombatOverlay.svelte` had a `$derived.by` that called `computeIntentHpImpact(intent, enemy, turnState.playerState.shield)`. Every card play mutated `shield`, which re-triggered the derived and recomputed the intent display mid-turn. The displayed damage number would drift as the player built block during their action phase.
+
+**Why:** Intent display was wired directly to live reactive state. The "correct" behavior is to show the damage as it was when the enemy committed to its intent at the START of the player turn — the same number the actual `takeDamage()` call will use.
+
+**Fix (backend side, 2026-04-12):** Added `lockedDisplayDamage?: number` to `EnemyInstance`. Added `computeIntentDisplayDamageSnapshot()` export to `intentDisplay.ts`. After each `rollNextIntent()` call in `turnManager.ts` (all 4 call sites including early-return victory/defeat cases), the code now calls `computeIntentDisplayDamageSnapshot()` with the current `playerState` and stores the result on `enemy.lockedDisplayDamage`. The UI agent will complete the fix by reading `enemy.lockedDisplayDamage` instead of the live derived.
+
+**Why not pin in rollNextIntent() directly:** `rollNextIntent()` in `enemyManager.ts` doesn't have access to `playerState`. The lock call is in `turnManager.ts` which does have both objects.

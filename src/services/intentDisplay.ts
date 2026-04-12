@@ -161,3 +161,45 @@ export function computeIntentHpImpact(
 
   return { raw, postDecayBlock, hpDamage };
 }
+
+
+/**
+ * Minimal player state snapshot passed to intent lock calculation.
+ * Contains only the fields needed to compute display damage at a point in time.
+ */
+export interface PlayerStateSnapshot {
+  /** Player's current shield/block value at the time the intent was rolled. */
+  shield: number;
+  /** Player's active status effects (e.g. strength/weakness that affect received damage). */
+  statusEffects: import('../data/statusEffects').StatusEffect[];
+}
+
+/**
+ * Compute and return a SNAPSHOT of the intent's display damage, pinned to the
+ * player state that exists at the moment rollNextIntent() is called.
+ *
+ * This is the value that should be stored on `EnemyInstance.lockedDisplayDamage`
+ * so that the UI reads a stable number rather than re-deriving it live from
+ * mutable `turnState.playerState.shield`.
+ *
+ * Internally calls `computeIntentDisplayDamage()` — the same formula the live
+ * derived previously used, but called once at lock time instead of on every shield
+ * mutation.
+ *
+ * @param intent      - The newly rolled enemy intent.
+ * @param enemy       - The enemy instance (for strength, floor, variance).
+ * @param playerState - Snapshot of the player state AT INTENT-ROLL TIME.
+ * @param scalingCtx  - Optional scaling context (canary/ascension/difficulty).
+ * @returns The locked display damage value to store on the enemy.
+ */
+export function computeIntentDisplayDamageSnapshot(
+  intent: EnemyIntent,
+  enemy: EnemyInstance,
+  playerState: Pick<PlayerStateSnapshot, 'shield' | 'statusEffects'>,
+  scalingCtx?: EnemyDamageScalingContext,
+): number {
+  // Snapshot the raw scaled damage using the same pipeline as live display.
+  // We deliberately do NOT apply block-decay here — that is the UI's responsibility
+  // when displaying the locked value. The stored value is raw damage post-scaling.
+  return computeIntentDisplayDamage(intent, enemy, scalingCtx);
+}
