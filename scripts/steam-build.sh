@@ -3,12 +3,14 @@ set -euo pipefail
 
 # Steam Build, Test & Deploy Script
 # Usage:
-#   ./scripts/steam-build.sh              # Build only (release)
-#   ./scripts/steam-build.sh --debug      # Build only (debug)
-#   ./scripts/steam-build.sh --test       # Build + copy to Steam install + launch
-#   ./scripts/steam-build.sh --test-only  # Copy existing build to Steam install + launch (no build)
-#   ./scripts/steam-build.sh --deploy     # Build + upload to Steam via SteamPipe
-#   ./scripts/steam-build.sh --deploy-only # Upload existing build (no build)
+#   ./scripts/steam-build.sh              # Build macOS only (release)
+#   ./scripts/steam-build.sh --debug      # Build macOS only (debug)
+#   ./scripts/steam-build.sh --test       # Build macOS + copy to Steam install + launch
+#   ./scripts/steam-build.sh --test-only  # Copy existing macOS build to Steam install + launch
+#   ./scripts/steam-build.sh --deploy     # Build macOS + upload to Steam via SteamPipe
+#   ./scripts/steam-build.sh --deploy-only # Upload existing macOS build (no build)
+#   ./scripts/steam-build.sh --windows --deploy  # Cross-compile Windows + upload to Steam
+#   ./scripts/steam-build.sh --windows           # Cross-compile Windows only (no upload)
 #
 # Notes:
 #   --test and --deploy are mutually exclusive.
@@ -28,6 +30,7 @@ CARGO_FLAG=""
 DO_BUILD=true
 DO_TEST=false
 DO_DEPLOY=false
+PLATFORM="mac"
 
 for arg in "$@"; do
     case $arg in
@@ -36,6 +39,8 @@ for arg in "$@"; do
         --test-only)   DO_TEST=true; DO_BUILD=false ;;
         --deploy)      DO_DEPLOY=true ;;
         --deploy-only) DO_DEPLOY=true; DO_BUILD=false ;;
+        --windows)     PLATFORM="windows" ;;
+        --linux)       PLATFORM="linux" ;;
         *) echo "[steam] Unknown flag: $arg"; exit 1 ;;
     esac
 done
@@ -47,7 +52,53 @@ fi
 
 APP_BUNDLE="$TAURI_DIR/target/$MODE/bundle/macos/Recall Rogue.app"
 
-# ── Build ──
+# ── Windows cross-compile ──
+if [[ "$PLATFORM" == "windows" ]]; then
+    WIN_TARGET="x86_64-pc-windows-msvc"
+    WIN_BUILD="$PROJECT_ROOT/steam/windows-build"
+    WIN_VDF="$PROJECT_ROOT/steam/app_build_4547570_windows.vdf"
+
+    if $DO_BUILD; then
+        echo "[steam] Building frontend..."
+        cd "$PROJECT_ROOT"
+        npm run build
+
+        echo "[steam] Cross-compiling for Windows ($WIN_TARGET)..."
+        export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+        cd "$TAURI_DIR"
+        cargo xwin build --release --target "$WIN_TARGET"
+
+        echo "[steam] Staging Windows build..."
+        mkdir -p "$WIN_BUILD"
+        cp "$TAURI_DIR/target/$WIN_TARGET/release/recall-rogue.exe" "$WIN_BUILD/"
+        WINDLL=$(find "$TAURI_DIR/target/$WIN_TARGET/release/build" -name "steam_api64.dll" -path "*/steamworks-sys-*/out/*" | head -1)
+        if [[ -z "$WINDLL" ]]; then
+            echo "[steam] ERROR: steam_api64.dll not found!"
+            exit 1
+        fi
+        cp "$WINDLL" "$WIN_BUILD/"
+        cp "$TAURI_DIR/steam_appid.txt" "$WIN_BUILD/"
+        echo "[steam] Windows build staged:"
+        ls -lh "$WIN_BUILD/"
+    fi
+
+    if $DO_DEPLOY || $DO_TEST; then
+        ENV_FILE="$PROJECT_ROOT/.env.local"
+        STEAM_USER=$(grep STEAM_USERNAME "$ENV_FILE" | cut -d= -f2 | tr -d ' ')
+        echo "[steam] Uploading Windows build to Steam as $STEAM_USER..."
+        echo "[steam] You may be prompted for password + Steam Guard code."
+        steamcmd +login "$STEAM_USER" +run_app_build "$WIN_VDF" +quit
+        echo "[steam] Windows upload complete!"
+    fi
+
+    if ! $DO_BUILD && ! $DO_DEPLOY && ! $DO_TEST; then
+        echo "[steam] Windows build ready at: $WIN_BUILD"
+        ls -lh "$WIN_BUILD/"
+    fi
+    exit 0
+fi
+
+# ── macOS Build ──
 if $DO_BUILD; then
     echo "[steam] Building frontend..."
     cd "$PROJECT_ROOT"

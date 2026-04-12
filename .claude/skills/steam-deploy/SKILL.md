@@ -14,29 +14,47 @@ Parse the user's message for a subcommand:
 
 | Subcommand | Description |
 |---|---|
-| `setup` | Verify toolchain (Rust, Tauri CLI, steamcmd), check auth, validate VDFs |
+| `setup` | Verify toolchain (Rust, Tauri CLI, steamcmd, cargo-xwin), check auth, validate VDFs |
 | `build` | Build Tauri app for macOS (local). Runs `./scripts/steam-build.sh` |
 | `build debug` | Build debug variant (faster, larger) |
+| `build windows` | Cross-compile Windows exe from macOS via cargo-xwin. `npm run steam:windows:build` |
 | `test` | Full build + copy to local Steam install + launch. `npm run steam:test` |
 | `test quick` | Copy existing build to Steam install + launch (no rebuild, ~10s). `npm run steam:test:quick` |
 | `deploy` | Full build + upload to Steam via SteamPipe (auto-sets-live). `npm run steam:deploy` |
 | `deploy quick` | Upload existing build only (no rebuild). `npm run steam:deploy:quick` |
+| `deploy windows` | Cross-compile Windows + upload to Steam. `npm run steam:windows` |
 | `status` | Show last build info, git version, depot status |
 
 If no subcommand is given, default to `test` (local).
 
 ## Deployment Modes
 
-There are two deployment targets. **Default is local.**
+**Default is local macOS.**
 
 | Mode | Command | What it does |
 |---|---|---|
-| **Local** (default) | `npm run steam:test` | Build + copy to local Steam install + launch. No internet needed. |
+| **Local macOS** (default) | `npm run steam:test` | Build + copy to local Steam install + launch. No internet needed. |
 | **Local quick** | `npm run steam:test:quick` | Copy existing build to local Steam install + launch (no rebuild, ~10s). |
-| **Cloud** | `npm run steam:deploy` | Build + upload to Steam cloud via SteamPipe. Requires steamcmd auth. |
-| **Cloud quick** | `npm run steam:deploy:quick` | Upload existing build to Steam cloud (no rebuild). |
+| **Cloud macOS** | `npm run steam:deploy` | Build macOS + upload to Steam cloud via SteamPipe. Requires steamcmd auth. |
+| **Cloud quick** | `npm run steam:deploy:quick` | Upload existing macOS build to Steam cloud (no rebuild). |
+| **Windows build** | `npm run steam:windows:build` | Cross-compile Windows exe from macOS via cargo-xwin (~12s cached). |
+| **Windows deploy** | `npm run steam:windows` | Cross-compile Windows + upload to Steam depot 4547572. |
 
 When the user says "deploy", "push to steam", or "update steam" without specifying cloud/online, **always use local** (`test` or `test quick`). Only use cloud deploy when the user explicitly says "cloud", "online", "SteamPipe", or "upload".
+
+## Windows Cross-Compilation (cargo-xwin)
+
+Windows builds are cross-compiled directly on macOS — no VMs, no CI, no cloud. Requirements:
+- `cargo-xwin` — `cargo install cargo-xwin`
+- `x86_64-pc-windows-msvc` Rust target — `rustup target add x86_64-pc-windows-msvc`
+- `llvm` (for llvm-rc resource compiler) — `brew install llvm`
+- PATH must include `/opt/homebrew/opt/llvm/bin` (the build script handles this)
+
+First build downloads the Windows MSVC SDK (~1GB, cached after). Subsequent builds take ~12s.
+
+Output: `steam/windows-build/recall-rogue.exe` + `steam_api64.dll` + `steam_appid.txt`
+
+GitHub Actions workflow (`.github/workflows/steam-build.yml`) also exists for CI builds on real Windows runners, but local cross-compilation is faster and doesn't require Steam Guard workarounds.
 
 ## Constants
 

@@ -18,11 +18,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "scripts/hooks/end-of-turn-check.sh"
+            "command": "bash -c 'cd \"${CLAUDE_PROJECT_DIR:-/Users/damion/CODE/Recall_Rogue}\" && scripts/hooks/end-of-turn-check.sh'"
           },
           {
             "type": "command",
-            "command": "scripts/hooks/persist-whats-next.sh"
+            "command": "bash -c 'cd \"${CLAUDE_PROJECT_DIR:-/Users/damion/CODE/Recall_Rogue}\" && scripts/hooks/persist-whats-next.sh'"
           }
         ]
       }

@@ -23,6 +23,8 @@
     "steam:test:quick": "./scripts/steam-build.sh --test-only",
     "steam:deploy": "./scripts/steam-build.sh --deploy",
     "steam:deploy:quick": "./scripts/steam-build.sh --deploy-only",
+    "steam:windows": "./scripts/steam-build.sh --windows --deploy",
+    "steam:windows:build": "./scripts/steam-build.sh --windows",
     "build:mobile": "npx cap sync && npx cap build",
     "dev:desktop": "cd src-tauri && cargo tauri dev",
     "audit:sprites": "node scripts/audit-fact-sprites.mjs",
