@@ -168,7 +168,7 @@ steamcmd +login <username> +run_app_build steam/app_build_4547570.vdf +quit
 ## Steamworks SDK Integration
 
 ### Working Features
-- **Achievements** — `steamService.unlockAchievement(id)` → Rust → Steamworks SDK. 18 achievements defined; wired in `gameFlowController.ts`.
+- **Achievements** — `steamService.unlockAchievement(id)` → Rust → Steamworks SDK. 24 achievements defined; wired in `gameFlowController.ts`.
 - **Rich Presence** — Auto-updates per screen via `steamPresenceWatcher.ts` (initialized at boot in `main.ts`). Combat shows floor + enemy name; hub/library/shop show contextual status.
 - **Platform Detection** — `platformService.hasSteam` guards all Steam calls
 - **File-Based Saves** — implemented (see above); ready for Steam Auto-Cloud configuration
@@ -179,7 +179,7 @@ steamcmd +login <username> +run_app_build steam/app_build_4547570.vdf +quit
 
 ### Achievements
 
-18 achievements defined in `src/data/steamAchievements.ts`. IDs must match the Steamworks dashboard exactly.
+24 achievements defined in `src/data/steamAchievements.ts`. IDs must match the Steamworks dashboard exactly.
 
 | ID | Name | Trigger |
 |---|---|---|
@@ -201,13 +201,19 @@ steamcmd +login <username> +run_app_build steam/app_build_4547570.vdf +quit
 | `ASCENSION_1` | Rising Challenge | Complete a run (non-defeat) at Ascension 1+ |
 | `ASCENSION_5` | True Scholar | Complete a run (non-defeat) at Ascension 5+ |
 | `ELITE_SLAYER` | Elite Hunter | 10 cumulative elite kills (`stats.totalElitesDefeated` — extended field) |
+| `FACTS_5000` | Grand Librarian | 5000 cumulative correct answers (`stats.totalQuizCorrect`) |
+| `MASTERY_FIRST` | First Mastery | 1 fact mastered (`stats.lifetimeFactsMastered >= 1`) |
+| `MASTERY_100` | Centurion Scholar | 100 facts mastered (`stats.lifetimeFactsMastered >= 100`) |
+| `MASTERY_500` | Living Encyclopedia | 500 facts mastered (`stats.lifetimeFactsMastered >= 500`) |
+| `STREAK_7` | Week Warrior | 7-day play streak (`save.longestStreak >= 7`) |
+| `DECK_EXPLORER` | Deck Explorer | 5 unique curated decks used across runs (`save.runHistory` unique `deckId` count) |
 
 **Wiring points:**
 - Combat victories: `onEncounterComplete()` in `gameFlowController.ts` — `FIRST_VICTORY`, `BOSS_SLAYER`, `PERFECT_ENCOUNTER`, and cumulative elite tracking
 - Run end: `finishRunAndReturnToHub()` — floor/streak/relic/ascension/cumulative achievements
 - Level-ups: inside XP award block in `finishRunAndReturnToHub()` — `LEVEL_5/15/25`
 
-**Cumulative achievements** (`FACTS_100/1000`, `ELITE_SLAYER`) read from `playerSave` via `checkCumulativeAchievements()`. `ELITE_SLAYER` uses `stats.totalElitesDefeated` (an extended field on `PlayerStats` — not in the TypeScript interface, stored as `any` extension).
+**Cumulative achievements** (`FACTS_100/1000/5000`, `ELITE_SLAYER`, `MASTERY_FIRST/100/500`, `STREAK_7`, `DECK_EXPLORER`) read from `playerSave` via `checkCumulativeAchievements()`. `ELITE_SLAYER` uses `stats.totalElitesDefeated` (an extended field on `PlayerStats` — not in the TypeScript interface, stored as `any` extension). Mastery achievements read `stats.lifetimeFactsMastered`; `STREAK_7` reads `save.longestStreak`; `DECK_EXPLORER` counts unique `deckId` values in `save.runHistory`.
 
 ### Dev Override Fix
 
@@ -237,7 +243,7 @@ Comprehensive checklist for shipping Recall Rogue on Steam. Items grouped by pha
 - [ ] Create `development` and `staging` branches
 - [ ] Set content descriptors and age ratings
 - [ ] Configure Steam Auto-Cloud (saves/*.json, per-OS root paths — see Save System section)
-- [ ] Register 18 achievements in App Admin → Achievements (IDs from `steamAchievements.ts`)
+- [ ] Register 24 achievements in App Admin → Achievements (IDs from `steamAchievements.ts`)
 - [ ] Upload achievement icons (locked + unlocked, 256×256 PNG) — use `/artstudio` to generate
 - [ ] Configure Rich Presence localization tokens (optional — English hardcoded in `steamService.ts`)
 

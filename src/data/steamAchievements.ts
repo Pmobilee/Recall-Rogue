@@ -82,6 +82,11 @@ export const STEAM_ACHIEVEMENTS: SteamAchievementDef[] = [
     name: 'Encyclopedic Mind',
     description: 'Answer 1000 facts correctly across all runs.',
   },
+  {
+    id: 'FACTS_5000',
+    name: 'Grand Librarian',
+    description: 'Answer 5000 facts correctly across all runs.',
+  },
 
   // ── Character level ──────────────────────────────────────────────────────────
   {
@@ -117,5 +122,36 @@ export const STEAM_ACHIEVEMENTS: SteamAchievementDef[] = [
     id: 'ASCENSION_5',
     name: 'True Scholar',
     description: 'Complete a run at Ascension 5 or higher.',
+  },
+
+  // ── Mastery / learning progression ───────────────────────────────────────────
+  {
+    id: 'MASTERY_FIRST',
+    name: 'First Mastery',
+    description: 'Master your first fact.',
+  },
+  {
+    id: 'MASTERY_100',
+    name: 'Centurion Scholar',
+    description: 'Master 100 facts across all runs.',
+  },
+  {
+    id: 'MASTERY_500',
+    name: 'Living Encyclopedia',
+    description: 'Master 500 facts across all runs.',
+  },
+
+  // ── Play streak ──────────────────────────────────────────────────────────────
+  {
+    id: 'STREAK_7',
+    name: 'Week Warrior',
+    description: 'Maintain a 7-day play streak.',
+  },
+
+  // ── Exploration ──────────────────────────────────────────────────────────────
+  {
+    id: 'DECK_EXPLORER',
+    name: 'Deck Explorer',
+    description: 'Complete a run using 5 different curated decks.',
   },
 ];

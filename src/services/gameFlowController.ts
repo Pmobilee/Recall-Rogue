@@ -173,6 +173,7 @@ function checkCumulativeAchievements(): void {
   const totalCorrect = save.stats.totalQuizCorrect;
   if (totalCorrect >= 100) tryUnlock('FACTS_100');
   if (totalCorrect >= 1000) tryUnlock('FACTS_1000');
+  if (totalCorrect >= 5000) tryUnlock('FACTS_5000');
 
   // Cumulative elite kills — tracked in bestFloor proxy via elitesDefeated field
   // (stored in stats when each run ends via recordRunComplete; we derive from
@@ -181,6 +182,21 @@ function checkCumulativeAchievements(): void {
   // the save.stats extension field; gracefully handle missing field.
   const cumulativeElites = (save.stats as any).totalElitesDefeated as number | undefined;
   if ((cumulativeElites ?? 0) >= 10) tryUnlock('ELITE_SLAYER');
+
+  // Cumulative mastery — facts that reached tier 3 across all runs
+  const factsMastered = save.stats.lifetimeFactsMastered ?? 0;
+  if (factsMastered >= 1) tryUnlock('MASTERY_FIRST');
+  if (factsMastered >= 100) tryUnlock('MASTERY_100');
+  if (factsMastered >= 500) tryUnlock('MASTERY_500');
+
+  // Daily play streak
+  if ((save.longestStreak ?? 0) >= 7) tryUnlock('STREAK_7');
+
+  // Unique curated decks used across runs
+  const uniqueDecks = new Set(
+    (save.runHistory ?? []).filter(r => r.deckId).map(r => r.deckId)
+  ).size;
+  if (uniqueDecks >= 5) tryUnlock('DECK_EXPLORER');
 }
 
 /**
