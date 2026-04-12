@@ -347,6 +347,14 @@
     await scenario.loadCustom({ screen: 'combat', enemy: enemyId })
   }
 
+  async function steamCombat(deckId: string): Promise<void> {
+    const scenario = (globalThis as any).__rrScenario
+    if (!scenario) return
+    const allEnemyIds = ENEMY_TEMPLATES.map(t => t.id)
+    const enemy = allEnemyIds[Math.floor(Math.random() * allEnemyIds.length)]
+    await scenario.loadCustom({ screen: 'combat', enemy, deckId })
+  }
+
   function onTransitionComplete(): void {
     transitionActive = false
   }
@@ -566,6 +574,9 @@
         <button class="dev-btn" onclick={testLighting}>Lighting</button>
         <button class="dev-btn" onclick={testBrightIdea}>BrightIdea</button>
         <button class="dev-btn" onclick={testInkSlug}>InkSlug</button>
+        <button class="dev-btn" onclick={() => steamCombat('chess_tactics')}>♟ Chess</button>
+        <button class="dev-btn" onclick={() => steamCombat('japanese_n4_grammar')}>🇯🇵 Japanese</button>
+        <button class="dev-btn" onclick={() => steamCombat('famous_paintings')}>🎨 Paintings</button>
       </div>
       <PendingNextStepsOverlay />
       {/if}
@@ -803,6 +814,9 @@
       <button class="dev-btn" onclick={previewEnter}>Enter</button>
       <button class="dev-btn" onclick={previewExit}>Exit</button>
       <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
+      <button class="dev-btn" onclick={() => steamCombat('chess_tactics')}>♟ Chess</button>
+      <button class="dev-btn" onclick={() => steamCombat('japanese_n4_grammar')}>🇯🇵 Japanese</button>
+      <button class="dev-btn" onclick={() => steamCombat('famous_paintings')}>🎨 Paintings</button>
     </div>
     <PendingNextStepsOverlay />
     {/if}
