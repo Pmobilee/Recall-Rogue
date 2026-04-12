@@ -1,0 +1,28 @@
+{
+  "batchId": "BATCH-2026-04-12-001",
+  "createdAt": "2026-04-12T00:04:00Z",
+  "completedAt": "2026-04-12T01:50:00Z",
+  "testers": ["quiz-quality", "balance-curve", "fun-engagement", "study-temple", "full-run"],
+  "args": {
+    "runs": 3,
+    "domain": "general_knowledge",
+    "floors": 2
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "agentId": "llm-playtest-BATCH-2026-04-12-001",
+  "overallVerdict": "FAIL",
+  "totals": {
+    "critical": 4,
+    "high": 19,
+    "medium": 20,
+    "low": 13
+  },
+  "reports": {
+    "quiz-quality": { "status": "complete", "verdict": "FAIL", "criticalCount": 2, "highCount": 3, "mediumCount": 2, "lowCount": 3 },
+    "balance-curve": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 2, "mediumCount": 4, "lowCount": 2 },
+    "fun-engagement": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 5, "mediumCount": 5, "lowCount": 4 },
+    "study-temple": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 3, "mediumCount": 3, "lowCount": 1 },
+    "full-run": { "status": "complete", "verdict": "ISSUES", "criticalCount": 2, "highCount": 6, "mediumCount": 6, "lowCount": 3 }
+  }
+}
