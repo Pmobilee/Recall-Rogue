@@ -97,6 +97,9 @@ CREATE TABLE IF NOT EXISTS deck_facts (
   solution_moves         TEXT,
   tactic_theme           TEXT,
   lichess_rating         INTEGER,
+  map_coordinates        TEXT,    -- JSON [lat, lng] tuple
+  map_region             TEXT,
+  map_difficulty_tier    INTEGER,
   FOREIGN KEY (deck_id) REFERENCES decks(id)
 );
 
@@ -186,6 +189,9 @@ function factToRow(fact, deckId) {
     jsonOrNull(fact.solutionMoves                    ?? null),
     fact.tacticTheme                                 ?? null,
     fact.lichessRating                               ?? null,
+    fact.mapCoordinates  ? JSON.stringify(fact.mapCoordinates) : null,
+    fact.mapRegion       ?? null,
+    fact.mapDifficultyTier ?? null,
   ];
 }
 
@@ -330,7 +336,8 @@ async function main() {
       part_of_speech, exam_tags,
       sentence_furigana, sentence_romaji, sentence_translation, grammar_point_label,
       category_l1, category_l2,
-      fen_position, solution_moves, tactic_theme, lichess_rating
+      fen_position, solution_moves, tactic_theme, lichess_rating,
+      map_coordinates, map_region, map_difficulty_tier
     ) VALUES (
       ?, ?, ?, ?, ?,
       ?, ?, ?,
@@ -343,7 +350,8 @@ async function main() {
       ?, ?,
       ?, ?, ?, ?,
       ?, ?,
-      ?, ?, ?, ?
+      ?, ?, ?, ?,
+      ?, ?, ?
     )
   `);
 
