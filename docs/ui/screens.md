@@ -292,7 +292,7 @@ Topic group cards show a compact breakdown: `5N 8L 10R 3M` where:
 `CardApp.svelte` wires the real service functions directly:
 
 - `handleRunPreviewShuffle()` — calls `reshuffleChainDistribution(++shuffleSeedOffset)` (imported from `gameFlowController`); `shuffleSeedOffset` increments each shuffle so each press produces a different seed
-- `handleRunPreviewBack()` — calls `abandonActiveRun()` (already imported at line ~66), then `transitionScreen('studyTemple')`; order matters: `abandonActiveRun` sets `currentScreen='hub'` internally; the subsequent `transitionScreen` overrides that to `studyTemple`
+- `handleRunPreviewBack()` — calls `abandonActiveRun('studyTemple')` or `abandonActiveRun()` then `transitionScreen('studyTemple')`. Note: the function now accepts an optional `returnScreen` param (defaults to `'hub'`), so callers can pass a target directly instead of overriding afterward
 - `handleRunPreviewBeginExpedition()` — calls `confirmChainDistribution()` (imported from `gameFlowController`)
 - `handleOpenRunPreview()` — removed (was unused; navigation to `runPreview` handled by game-logic directly)
 

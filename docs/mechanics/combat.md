@@ -322,7 +322,7 @@ Player clicks 'Return to Hub' -> returnToMenu() -> currentScreen.set('hub')
 |---|---|---|
 | playerHp <= 0 (combat death) | `onEncounterComplete('defeat')` | Yes |
 | Player retreats (retreat/delve screen) | `onRetreat()` | Yes |
-| Dev abandon | `abandonActiveRun()` | No — direct hub, no run data shown |
+| Dev abandon | `abandonActiveRun(returnScreen?)` | No — navigates to `returnScreen` (defaults to `hub`), no run data shown |
 | Campfire exit (run preserved) | `returnToHubFromCampfire()` | No — run is saved, not ended |
 
 **Regression test:** `src/services/gameFlowController.termination.test.ts` (MEDIUM-10).

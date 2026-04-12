@@ -3,7 +3,7 @@
  */
 
 import { writable, get } from 'svelte/store';
-import { currentScreen, activeRewardBundle, activeRewardRevealStep, holdScreenTransition, combatExitRequested, combatExitEnemyId } from '../ui/stores/gameState';
+import { currentScreen, activeRewardBundle, activeRewardRevealStep, holdScreenTransition, combatExitRequested, combatExitEnemyId, type Screen } from '../ui/stores/gameState';
 import type { RunState, RunEndData } from './runManager';
 import { createRunState, endRun } from './runManager';
 import type { RewardArchetype } from './runManager';
@@ -2524,7 +2524,7 @@ export function returnToHubFromCampfire(): void {
   currentScreen.set('hub');
 }
 
-export function abandonActiveRun(): void {
+export function abandonActiveRun(returnScreen?: Screen): void {
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()
@@ -2548,7 +2548,7 @@ export function abandonActiveRun(): void {
   pendingClearedFloor = 0;
   pendingDomainSelection = null;
   gameFlowState.set('idle');
-  currentScreen.set('hub');
+  currentScreen.set(returnScreen ?? 'hub');
 }
 
 export function checkAndResumeActiveRun(): boolean {

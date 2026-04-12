@@ -85,7 +85,7 @@ Added in v3 to enable per-run knowledge delta tracking. All in-memory only — n
 The `returnToMenu()` and `playAgain()` exports handle the `runEnd → hub` transition when the player clicks a button in `RunEndScreen`.
 
 Functions that legitimately bypass `finishRunAndReturnToHub` (and jump direct to hub):
-- `abandonActiveRun()` — emergency dev abandon, no run summary
+- `abandonActiveRun(returnScreen?: Screen)` — emergency dev abandon, no run summary; navigates to `returnScreen` (defaults to `hub`)
 - `returnToHubFromCampfire()` — campfire exit preserves the run state for resume
 
 See `docs/mechanics/combat.md` §"Run Termination State Machine" for the full flow diagram.
