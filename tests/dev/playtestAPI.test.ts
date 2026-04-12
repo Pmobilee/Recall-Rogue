@@ -51,6 +51,8 @@ vi.mock('../../src/services/encounterBridge', () => ({
 
 vi.mock('../../src/services/cardUpgradeService', () => ({
   get canMasteryUpgrade() { return mockCanMasteryUpgrade },
+  getMasteryStats: () => null,
+  getEffectiveApCost: () => 1,
 }))
 
 // ---------------------------------------------------------------------------

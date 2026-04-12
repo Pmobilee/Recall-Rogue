@@ -475,31 +475,30 @@ describe('twin_strike mechanic', () => {
 });
 
 // ── 10. iron_wave ────────────────────────────────────────────────────────────
-// Stat table L0: qpValue=2, secondaryValue=3 (2026-04-11 fix: normalized from deprecated getMastarySecondaryBonus)
-// QP: damage=2, block=stat-table secondaryValue=3
-// CC: damage=round(2*1.50)=3, block=round(3*1.50)=5 (same as deprecated path at L0 — coincidence)
-// CW: damage=1, block=max(1, round(3*0.7))=max(1,2)=2
+// Stat table L0: qpValue=3, secondaryValue=5 (2026-04-12 fix: restored from seed; was 2+3 — unintentional nerf)
+// QP: damage=3, block=stat-table secondaryValue=5
+// CC: damage=round(3*1.50)=5, block=round(5*1.50)=round(7.5)=8
+// CW: damage=2 (chargeWrongValue), block=max(1, round(5*0.7))=max(1,4)=4
 
 describe('iron_wave mechanic', () => {
-  it('QP: 2 damage AND 3 block (stat-table secondaryValue L0=3 — 2026-04-11 normalized from deprecated getMastarySecondaryBonus)', () => {
+  it('QP: 3 damage AND 5 block (stat-table L0 qpValue=3, secondaryValue=5 — 2026-04-12 restored from seed)', () => {
     const result = resolve('iron_wave', 'quick');
-    expect(result.damageDealt).toBe(2);
-    expect(result.shieldApplied).toBe(3);
-  });
-
-  it('CC: 3 damage AND 5 block (round(secondaryValue=3 × 1.5)=5 — same value as deprecated path coincidentally)', () => {
-    // CC block = round(stat-table secondaryValue × 1.5) = round(3 × 1.5) = round(4.5) = 5
-    // Old deprecated path: round(mechanic.quickPlayValue × 1.5 + getMastarySecondaryBonus(0)) = round(3 × 1.5 + 0) = 5
-    // Values match at L0 — both produce 5.
-    const result = resolve('iron_wave', 'charge_correct');
     expect(result.damageDealt).toBe(3);
     expect(result.shieldApplied).toBe(5);
   });
 
-  it('CW: 1 damage AND 2 block (max(1, round(stat-table secondaryValue=3 × 0.7))=max(1,2)=2)', () => {
+  it('CC: 5 damage AND 8 block (round(qpValue=3 × 1.5)=5, round(secondaryValue=5 × 1.5)=round(7.5)=8)', () => {
+    // CC damage = round(stat-table qpValue × 1.5) = round(3 × 1.5) = round(4.5) = 5
+    // CC block = round(stat-table secondaryValue × 1.5) = round(5 × 1.5) = round(7.5) = 8
+    const result = resolve('iron_wave', 'charge_correct');
+    expect(result.damageDealt).toBe(5);
+    expect(result.shieldApplied).toBe(8);
+  });
+
+  it('CW: 2 damage AND 4 block (chargeWrongValue=2, max(1, round(secondaryValue=5 × 0.7))=max(1,4)=4)', () => {
     const result = resolve('iron_wave', 'charge_wrong');
-    expect(result.damageDealt).toBe(1);
-    expect(result.shieldApplied).toBe(2);
+    expect(result.damageDealt).toBe(2);
+    expect(result.shieldApplied).toBe(4);
   });
 
   it('grants both damage AND block in all play modes', () => {
