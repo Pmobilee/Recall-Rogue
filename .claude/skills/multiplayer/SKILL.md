@@ -74,7 +74,7 @@ Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared
 | Priority | Task | Complexity |
 |----------|------|-----------|
 | **HIGH** | Test lobby browser with 2 Steam accounts on LAN — user-executed environmental test (Red-zone); all other backends verified | Low |
-| **HIGH** | Two-tab Fastify E2E scenario via warm Docker + `?mp=web` override + real server boot | Medium |
+| **DONE** | Two-container Fastify E2E playtest via `/multiplayer-playtest` skill (2 Docker warm containers + Fastify webBackend) | — |
 | **HIGH** | Wire RaceResultsScreen into run end flow | Low |
 | **HIGH** | Wire Duel mode (shared enemy, simultaneous turns) into gameplay | Medium |
 | **MEDIUM** | Server-side matchmaking queue (replace client simulation) | Medium |

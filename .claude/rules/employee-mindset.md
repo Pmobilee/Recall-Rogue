@@ -121,6 +121,7 @@ When the conversation matches, proactively suggest or invoke:
 | New room background | `/depth-transitions`, `/light-mapping` |
 | New enemy sprite | `/sprite-animate` |
 | Testing/verification question | `/inspect` (master orchestrator) |
+| Multiplayer change, lobby, transport, MP mode | `/multiplayer-playtest` |
 | Gameplay change committed | `/game-design-sync` |
 | Steam deploy | `/steam-deploy` |
 | Performance/FPS | `/phaser-perf` |
