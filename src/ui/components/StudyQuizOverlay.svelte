@@ -10,6 +10,10 @@
   import { displayAnswer } from '../../services/numericalDistractorService'
   import MapPinDrop from './MapPinDrop.svelte'
   import { updateGeoElo, tierToRating } from '../../services/geoEloService'
+  import { get } from 'svelte/store'
+  import { tutorialActive, evaluateTutorialStep } from '../../services/tutorialService'
+  import { onboardingState } from '../../services/cardPreferences'
+  import type { TutorialContext } from '../../data/tutorialSteps'
 
   interface Props {
     questions: QuizQuestion[]
@@ -84,6 +88,46 @@
     } else {
       chessContext = null
     }
+  })
+
+  // Study tutorial evaluation — builds TutorialContext from quiz state
+  $effect(() => {
+    if (!$tutorialActive) return
+
+    const state = get(onboardingState)
+    const ctx: TutorialContext = {
+      enemyName: null,
+      enemyCategory: null,
+      playerHp: 0,
+      playerMaxHp: 0,
+      playerBlock: 0,
+      apCurrent: 0,
+      apMax: 0,
+      handSize: 0,
+      turnNumber: 0,
+      encounterTurnNumber: 0,
+      phase: null,
+      cardsPlayedThisTurn: 0,
+      cardsCorrectThisTurn: 0,
+      chainLength: 0,
+      isSurgeTurn: false,
+      selectedCardType: null,
+      selectedCardApCost: null,
+      cardPlayStage: null,
+      quizVisible: false,
+      hasPlayedQuickPlay: false,
+      hasPlayedCharge: false,
+      hasAnsweredWrong: false,
+      hasSeenCombatTutorial: state.hasSeenCombatTutorial,
+      hasSeenStudyTutorial: state.hasSeenStudyTutorial,
+      mode: 'study',
+      enemyIntentType: null,
+      enemyIntentValue: null,
+      studyQuestionsAnswered: currentIndex + (showFeedback ? 1 : 0),
+      studySessionComplete: done,
+    }
+
+    evaluateTutorialStep(ctx)
   })
 
   /**
@@ -240,7 +284,7 @@
             <p class="grammar-hint-label">{currentQuestion.grammarPointLabel}</p>
           {/if}
         {:else}
-          <p class="question-text">{currentQuestion.question}</p>
+          <p class="question-text" data-tutorial-anchor="study-card">{currentQuestion.question}</p>
         {/if}
 
         {#key currentIndex}
@@ -289,7 +333,7 @@
             {/each}
           </div>
         {:else}
-        <div class="answers-grid">
+        <div class="answers-grid" data-tutorial-anchor="study-answers">
           {#each currentQuestion.answers as answer}
             <button
               class="answer-btn {getAnswerClass(answer)}"

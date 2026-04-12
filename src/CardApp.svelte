@@ -242,6 +242,15 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
   })
 
+  // Auto-trigger study tutorial on first-ever study session
+  $effect(() => {
+    const screen = $currentScreen
+    const state = get(onboardingState)
+    if (screen === 'restStudy' && !state.hasSeenStudyTutorial && !state.tutorialDismissedEarly) {
+      startTutorial('study')
+    }
+  })
+
   // Apply font accessibility class to document.body based on user preference.
   $effect(() => {
     const unsub = fontChoice.subscribe((fc: FontChoice) => {
