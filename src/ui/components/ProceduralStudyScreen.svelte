@@ -34,6 +34,11 @@
     questionsAnswered === 0 ? 0 : Math.round((correctCount / questionsAnswered) * 100)
   );
 
+  /** Shows ratio (0/1) for first 2 questions, then switches to % — avoids "0%" discouragement. */
+  const displayAccuracy = $derived(
+    questionsAnswered < 3 ? `${correctCount}/${questionsAnswered}` : `${accuracyPct}%`
+  );
+
   // ── Deck metadata ─────────────────────────────────────────────────────────
 
   const deckEntry = $derived(getAllDecks().find(d => d.id === deckId) ?? null);
@@ -120,8 +125,8 @@
         <span class="stat-label">answered</span>
       </span>
       <span class="stat-item">
-        <span class="stat-value">{accuracyPct}%</span>
-        <span class="stat-label">accuracy</span>
+        <span class="stat-value">{displayAccuracy}</span>
+        <span class="stat-label">{questionsAnswered < 3 ? 'correct' : 'accuracy'}</span>
       </span>
       <button class="stop-btn" type="button" onclick={onBack} aria-label="Stop practice session">
         Stop
