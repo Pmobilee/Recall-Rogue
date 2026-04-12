@@ -278,7 +278,7 @@ export class CombatScene extends Phaser.Scene {
   // ── Quiz slide state ──────────────────────────────────────
   /** When non-null, overrides LANDSCAPE.ENEMY_X_PCT for HP bar rendering during quiz slide. */
   private quizEnemyXOverride: number | null = null
-  /** When non-null, overrides the HP bar width/height scale during quiz slide (0.55 when active). */
+  /** When non-null, overrides the HP bar width/height scale during quiz slide (0.85 when active). */
   private quizEnemyScaleOverride: number | null = null
 
   // ═════════════════════════════════════════════════════════
@@ -325,8 +325,8 @@ export class CombatScene extends Phaser.Scene {
     const defaultX = gameW * LANDSCAPE.ENEMY_X_PCT
     // Quiz panel occupies left ~58%; enemy fits in right 42% centered around 79%
     const targetX = active ? gameW * 0.79 : defaultX
-    // Scale enemy down to 0.6875x (0.55 * 1.25) — 25% bigger than before for better visibility
-    const targetScale = active ? 0.6875 : 1.0
+    // Scale enemy to 0.85x during quiz — keeps enemy readable while leaving room for the quiz overlay
+    const targetScale = active ? 0.85 : 1.0
 
     // Initialize the override to the current X if not already set
     if (this.quizEnemyXOverride === null) {
