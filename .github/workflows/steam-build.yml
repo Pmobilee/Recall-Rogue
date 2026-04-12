@@ -121,6 +121,87 @@ jobs:
             src-tauri/target/release/steam_appid.txt
           retention-days: 7
 
+      - name: Install SteamCMD (Windows)
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri "https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip" -OutFile steamcmd.zip
+          Expand-Archive steamcmd.zip -DestinationPath steamcmd
+          Write-Host "SteamCMD installed."
+
+      - name: Restore Steam credentials
+        shell: pwsh
+        env:
+          STEAM_CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+        run: |
+          # steamcmd stores config relative to its install dir
+          $configDir = "steamcmd\config"
+          New-Item -ItemType Directory -Force -Path $configDir | Out-Null
+          [System.IO.File]::WriteAllBytes("$configDir\config.vdf",
+            [System.Convert]::FromBase64String($env:STEAM_CONFIG_VDF))
+          Write-Host "Steam credentials restored."
+
+      - name: Generate Windows depot VDF
+        shell: pwsh
+        env:
+          STEAM_BRANCH: ${{ inputs.branch }}
+        run: |
+          $contentRoot = (Resolve-Path "src-tauri/target/release").Path
+          $outputDir = (New-Item -ItemType Directory -Force -Path "steamcmd/output").FullName
+
+          # Depot VDF
+          @"
+          "DepotBuildConfig"
+          {
+            "DepotID" "4547572"
+            "contentroot" "$contentRoot"
+            "FileMapping"
+            {
+              "LocalPath" "recall-rogue.exe"
+              "DepotPath" "."
+            }
+            "FileMapping"
+            {
+              "LocalPath" "steam_api64.dll"
+              "DepotPath" "."
+            }
+            "FileMapping"
+            {
+              "LocalPath" "steam_appid.txt"
+              "DepotPath" "."
+            }
+          }
+          "@ | Set-Content -Path "steamcmd/depot_4547572.vdf"
+
+          # App build VDF
+          $depotVdf = (Resolve-Path "steamcmd/depot_4547572.vdf").Path
+          @"
+          "appbuild"
+          {
+            "appid" "4547570"
+            "desc" "Recall Rogue Windows build (CI)"
+            "buildoutput" "$outputDir"
+            "contentroot" ""
+            "setlive" "$env:STEAM_BRANCH"
+            "depots"
+            {
+              "4547572" "$depotVdf"
+            }
+          }
+          "@ | Set-Content -Path "steamcmd/app_build.vdf"
+
+          Write-Host "Depot VDF:"
+          Get-Content "steamcmd/depot_4547572.vdf"
+          Write-Host "App build VDF:"
+          Get-Content "steamcmd/app_build.vdf"
+
+      - name: Upload to Steam via SteamCMD
+        shell: pwsh
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        run: |
+          $appBuild = (Resolve-Path "steamcmd/app_build.vdf").Path
+          & .\steamcmd\steamcmd.exe +login $env:STEAM_USERNAME +run_app_build $appBuild +quit
+
 # ─── macOS Build ─────────────────────────────────────────────────────────────
   build-macos:
     name: Build (macOS)
@@ -251,166 +332,6 @@ jobs:
           retention-days: 7
 
 # ─── Steam Deploy ─────────────────────────────────────────────────────────────
-  deploy-steam:
-    name: Deploy to Steam
-    runs-on: ubuntu-latest
-    # Wait for whichever build jobs ran. GitHub skips needs that were skipped,
-    # so this job will start once the applicable builds finish.
-    needs: [build-windows, build-macos, build-linux]
-    if: |
-      always() &&
-      (needs.build-windows.result == 'success' || needs.build-windows.result == 'skipped') &&
-      (needs.build-macos.result == 'success' || needs.build-macos.result == 'skipped') &&
-      (needs.build-linux.result == 'success' || needs.build-linux.result == 'skipped') &&
-      (needs.build-windows.result == 'success' || needs.build-macos.result == 'success' || needs.build-linux.result == 'success')
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install SteamCMD
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y lib32gcc-s1
-          mkdir -p ~/steamcmd
-          cd ~/steamcmd
-          curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
-          echo "$HOME/steamcmd" >> $GITHUB_PATH
-
-      - name: Restore Steam credentials from secret
-        # STEAM_CONFIG_VDF must be a base64-encoded config.vdf with cached Steam Guard
-        # credentials. Generate it locally: base64 -i ~/.steam/config/config.vdf | pbcopy
-        # then store as a GitHub Actions secret named STEAM_CONFIG_VDF.
-        run: |
-          mkdir -p ~/.steam/config
-          echo "${{ secrets.STEAM_CONFIG_VDF }}" | base64 -d > ~/.steam/config/config.vdf
-          chmod 600 ~/.steam/config/config.vdf
-
-      - name: Download Windows build artifact
-        if: ${{ needs.build-windows.result == 'success' }}
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-build
-          path: /tmp/steam-content/windows/
-
-      - name: Download macOS build artifact
-        if: ${{ needs.build-macos.result == 'success' }}
-        uses: actions/download-artifact@v4
-        with:
-          name: macos-build
-          path: /tmp/steam-content/macos/
-
-      - name: Download Linux build artifact
-        if: ${{ needs.build-linux.result == 'success' }}
-        uses: actions/download-artifact@v4
-        with:
-          name: linux-build
-          path: /tmp/steam-content/linux/
-
-      - name: Generate SteamPipe VDFs for this run
-        # Writes depot VDFs with absolute contentroot paths to the downloaded artifacts,
-        # then writes an app_build VDF that includes only depots that were actually built.
-        env:
-          STEAM_BRANCH: ${{ inputs.branch }}
-          BUILD_WINDOWS: ${{ needs.build-windows.result == 'success' }}
-          BUILD_MACOS: ${{ needs.build-macos.result == 'success' }}
-          BUILD_LINUX: ${{ needs.build-linux.result == 'success' }}
-        run: |
-          mkdir -p /tmp/steam-vdf
-
-          # ── Depot VDFs (absolute contentroot for CI environment) ──
-          if [ "$BUILD_WINDOWS" = "true" ]; then
-            cat > /tmp/steam-vdf/depot_4547572.vdf << VDF
-          "DepotBuildConfig"
-          {
-            "DepotID" "4547572"
-            "contentroot" "/tmp/steam-content/windows/"
-            "FileMapping"
-            {
-              "LocalPath" "*"
-              "DepotPath" "."
-              "recursive" "1"
-            }
-          }
-          VDF
-          fi
-
-          if [ "$BUILD_MACOS" = "true" ]; then
-            cat > /tmp/steam-vdf/depot_4547574.vdf << VDF
-          "DepotBuildConfig"
-          {
-            "DepotID" "4547574"
-            "contentroot" "/tmp/steam-content/macos/"
-            "FileMapping"
-            {
-              "LocalPath" "*"
-              "DepotPath" "."
-              "recursive" "1"
-            }
-          }
-          VDF
-          fi
-
-          if [ "$BUILD_LINUX" = "true" ]; then
-            cat > /tmp/steam-vdf/depot_4547573.vdf << VDF
-          "DepotBuildConfig"
-          {
-            "DepotID" "4547573"
-            "contentroot" "/tmp/steam-content/linux/"
-            "FileMapping"
-            {
-              "LocalPath" "*"
-              "DepotPath" "."
-              "recursive" "1"
-            }
-          }
-          VDF
-          fi
-
-          # ── App build VDF — includes only depots that were built ──
-          DESC="Recall Rogue CI build ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
-          DEPOTS_BLOCK=""
-          if [ "$BUILD_WINDOWS" = "true" ]; then
-            DEPOTS_BLOCK="${DEPOTS_BLOCK}    \"4547572\" \"/tmp/steam-vdf/depot_4547572.vdf\"\n"
-          fi
-          if [ "$BUILD_MACOS" = "true" ]; then
-            DEPOTS_BLOCK="${DEPOTS_BLOCK}    \"4547574\" \"/tmp/steam-vdf/depot_4547574.vdf\"\n"
-          fi
-          if [ "$BUILD_LINUX" = "true" ]; then
-            DEPOTS_BLOCK="${DEPOTS_BLOCK}    \"4547573\" \"/tmp/steam-vdf/depot_4547573.vdf\"\n"
-          fi
-
-          cat > /tmp/steam-vdf/app_build.vdf << VDF
-          "appbuild"
-          {
-            "appid" "4547570"
-            "desc" "$DESC"
-            "buildoutput" "/tmp/steam-vdf/output/"
-            "contentroot" ""
-            "setlive" "$STEAM_BRANCH"
-            "depots"
-            {
-          $(printf "$DEPOTS_BLOCK")
-            }
-          }
-          VDF
-
-          mkdir -p /tmp/steam-vdf/output
-          echo "Generated VDFs:"
-          ls -la /tmp/steam-vdf/
-          echo "App build VDF contents:"
-          cat /tmp/steam-vdf/app_build.vdf
-
-      - name: Upload to Steam via SteamCMD
-        env:
-          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-        run: |
-          ~/steamcmd/steamcmd.sh \
-            +login "$STEAM_USERNAME" \
-            +run_app_build /tmp/steam-vdf/app_build.vdf \
-            +quit
-
-      - name: Report upload result
-        if: always()
-        run: |
-          echo "Upload log (if present):"
-          cat /tmp/steam-vdf/output/*.log 2>/dev/null || echo "(no log files found)"
+# Deploy now happens directly in each platform's build job (above).
+# This avoids downloading large artifacts between jobs and cross-platform
+# credential issues. Each build job installs steamcmd and uploads its depot.
