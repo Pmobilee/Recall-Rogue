@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T07:50:46.794Z",
+  "updatedAt": "2026-04-12T07:52:04.862Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -39,8 +39,8 @@
   ],
   "topIssueCounts": {
     "critical": 3,
-    "high": 17,
-    "medium": 40,
+    "high": 14,
+    "medium": 33,
     "low": 21
   },
   "issues": [
@@ -1981,7 +1981,7 @@
       "lastSeen": "2026-04-11T17:30:00.000Z",
       "rank": 55,
       "score": 6,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "CARD-AUDIT-2026-04-11",
       "bestEvidence": {
         "metric": "3/3 container boot attempts failed at 120s timeout",
@@ -1994,7 +1994,9 @@
       "reproductionSteps": [
         "scripts/docker-visual-test.sh --warm start --agent-id postaudit-visual (retry after parallel session releases containers)"
       ],
-      "clusterBoost": 0
+      "clusterBoost": 0,
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "Docker visual verify deferred — tracking task, not a bug"
     },
     {
       "canonicalId": "02-neural-optimal-issue-1775871222977-02-002",
@@ -2517,7 +2519,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 71,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/study/study-01-q1.png",
@@ -2528,7 +2530,9 @@
         "Wait 6s",
         "Observe: empty state with 'Return to Hub' button, no quiz questions"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "study-quiz requires pre-seeded FSRS data — scenario limitation, not game bug"
     },
     {
       "canonicalId": "10-visual-sweep-issue-1744334400001-10-001",
@@ -2822,7 +2826,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 81,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "errorText": "SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox (repeated 30+ times)",
@@ -2835,7 +2839,9 @@
         "Attempt to run any test in any container",
         "Page crashes with Target crashed error"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "Docker SwiftShader limitation at 16+ containers — not a game bug"
     },
     {
       "canonicalId": "balance_damage_spike_early",
@@ -3047,7 +3053,7 @@
       "lastSeen": "2026-03-14T05:04:44.019Z",
       "rank": 85,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceReports": [
         "visual-playthrough-593000-1773464646265"
       ],
@@ -3060,7 +3066,9 @@
         "Visual seed: 593000",
         "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
       ],
-      "sourceBatch": "smoke-campaign-postmove-2026-03-14"
+      "sourceBatch": "smoke-campaign-postmove-2026-03-14",
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "playtest scenario reached turn limit without starting run — bot behavior, not game bug"
     },
     {
       "canonicalId": "meta-lint-001",
@@ -3635,7 +3643,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 108,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": null,
@@ -3649,7 +3657,9 @@
         "Run 5+ sequential tests against the same container",
         "Run 6th test — container crashes, 'Target crashed' error"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "Docker warm container memory leak — test infra, not game code"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247393-06-002",
@@ -3998,7 +4008,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 119,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/a0-combat-screenshot.png",
@@ -4014,7 +4024,9 @@
         "Observe: Test fails in <10ms with 'page.evaluate: Target crashed'",
         "This is reproducible on every fresh container first test"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "Docker warm container crash — test infra limitation"
     },
     {
       "canonicalId": "09-multiplayer-issue-1744335811000-09-04",
@@ -4090,7 +4102,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 122,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/multiplayerLobby/screenshot.png",
@@ -4102,7 +4114,9 @@
         "Wait 5000ms",
         "Observe: empty screen, layout dump shows only screen-transition element"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "multiplayerLobby empty is expected — requires active lobby to mount"
     },
     {
       "canonicalId": "10-visual-sweep-issue-1744334400004-10-004",
@@ -4207,7 +4221,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 126,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/hub/screenshot.png",
@@ -4220,7 +4234,9 @@
         "Observe btn-start-run position at top of screen",
         "Layout dump confirms: (826, 119) 267x292"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "Start Run Y=119 — Steam PC landscape first, thumb zone is mobile (post-Steam)"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400005-11-006",
@@ -4575,7 +4591,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 138,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "fpsCurve": "evidence/fps-curve.csv",
@@ -4596,7 +4612,9 @@
         "Execute 10+ quickPlayCard + endTurn cycles",
         "Sample __rrDebug().phaserPerf.fps every 3 seconds"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "FPS is SwiftShader software rendering, not real GPU — not actionable"
     },
     {
       "canonicalId": "balance_too_hard_early",
@@ -4694,7 +4712,7 @@
       "lastSeen": "2026-03-14T05:04:44.019Z",
       "rank": 140,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceReports": [
         "visual-playthrough-593000-1773464646265"
       ],
@@ -4707,7 +4725,9 @@
         "Visual seed: 593000",
         "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
       ],
-      "sourceBatch": "smoke-campaign-postmove-2026-03-14"
+      "sourceBatch": "smoke-campaign-postmove-2026-03-14",
+      "resolvedAt": "2026-04-12T07:52:04.862Z",
+      "resolvedBy": "playtest scenario limitation — bot never started a run, not a game bug"
     },
     {
       "canonicalId": "meta-lint-002",
