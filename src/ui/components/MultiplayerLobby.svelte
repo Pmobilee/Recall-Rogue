@@ -231,6 +231,7 @@
           <span class="lobby-code-label">Lobby Code</span>
           <button
             class="lobby-code-value"
+            data-testid="lobby-code"
             class:copied={copyFeedback}
             onclick={handleCopyCode}
             aria-label="Copy lobby code {lobby.lobbyCode}"
@@ -249,9 +250,10 @@
 
       <!-- Player list -->
       <div class="player-list" aria-label="Players">
-        {#each lobby.players as player}
+        {#each lobby.players as player, index}
           <div
             class="player-slot"
+            data-testid="player-slot-{index}"
             class:ready={player.isReady}
             class:is-local={player.id === localPlayerId}
             aria-label="{player.displayName} {player.isReady ? 'ready' : 'not ready'}"
@@ -293,7 +295,7 @@
 
       <!-- Dev: Add bot for local testing -->
       {#if amHost && lobby.players.length < lobby.maxPlayers}
-        <button class="add-bot-btn" onclick={() => addLocalBot()}>
+        <button class="add-bot-btn" data-testid="btn-add-bot" onclick={() => addLocalBot()}>
           + Add Bot
         </button>
       {/if}
@@ -302,6 +304,7 @@
       <div class="lobby-actions">
         <button
           class="ready-btn"
+          data-testid="btn-ready"
           class:is-ready={isReady}
           onclick={handleReadyToggle}
           aria-pressed={isReady}
@@ -312,6 +315,7 @@
         {#if amHost}
           <button
             class="start-btn"
+            data-testid="btn-start-game"
             disabled={!canStart}
             onclick={handleStart}
             aria-label={startButtonLabel(lobby, amHost)}
@@ -354,6 +358,7 @@
         {#if amHost}
           <button
             class="choose-content-btn"
+            data-testid="btn-deck-picker"
             onclick={() => { showDeckPicker = true }}
             aria-label={lobby.contentSelection ? 'Change content selection' : 'Choose content'}
           >
@@ -496,7 +501,7 @@
       <section class="settings-section">
         <h3 class="section-label">Visibility</h3>
         {#if amHost}
-          <div class="radio-pills" role="radiogroup" aria-label="Lobby visibility">
+          <div class="radio-pills" data-testid="visibility-toggle" role="radiogroup" aria-label="Lobby visibility">
             {#each (['public', 'password', 'friends_only'] as LobbyVisibility[]) as vis}
               {@const labels: Record<LobbyVisibility, string> = { public: 'Public', password: 'Password', friends_only: 'Friends Only' }}
               {@const isFriendsDisabled = vis === 'friends_only' && !hasSteam}
@@ -522,6 +527,7 @@
             <div class="password-row">
               <input
                 class="password-input"
+                data-testid="password-input"
                 type={showPasswordText ? 'text' : 'password'}
                 placeholder="Min 4 characters"
                 minlength={4}
@@ -555,7 +561,7 @@
       <section class="settings-section">
         <h3 class="section-label">Max Players</h3>
         {#if amHost}
-          <div class="radio-pills" role="radiogroup" aria-label="Max players">
+          <div class="radio-pills" data-testid="max-players" role="radiogroup" aria-label="Max players">
             {#each maxPlayersRange as n}
               <label
                 class="pill-label"
@@ -606,7 +612,7 @@
 
   <!-- Bottom bar -->
   <footer class="mp-footer">
-    <button class="leave-btn" onclick={handleLeave} aria-label="Leave lobby">
+    <button class="leave-btn" data-testid="btn-leave-lobby" onclick={handleLeave} aria-label="Leave lobby">
       Cancel / Leave
     </button>
   </footer>

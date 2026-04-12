@@ -83,6 +83,7 @@
         <button
           class="tab-btn"
           class:active={activeTab === 'create'}
+          data-testid="tab-create"
           role="tab"
           aria-selected={activeTab === 'create'}
           onclick={() => { activeTab = 'create' }}
@@ -92,6 +93,7 @@
         <button
           class="tab-btn"
           class:active={activeTab === 'join'}
+          data-testid="tab-join"
           role="tab"
           aria-selected={activeTab === 'join'}
           onclick={() => { activeTab = 'join' }}
@@ -110,6 +112,7 @@
               <li
                 class="mode-card"
                 class:selected={isSelected}
+                data-testid="mode-{mode}"
                 role="option"
                 aria-selected={isSelected}
                 tabindex="0"
@@ -127,10 +130,10 @@
           </ul>
 
           <div class="create-footer">
-            <button class="primary-btn" onclick={handleCreateLobby}>
+            <button class="primary-btn" data-testid="btn-create-lobby" onclick={handleCreateLobby}>
               Create Lobby
             </button>
-            <button class="browse-btn" onclick={onBrowseLobbies}>
+            <button class="browse-btn" data-testid="btn-browse-lobbies" onclick={onBrowseLobbies}>
               &#127760; Browse Lobbies
             </button>
           </div>
@@ -144,6 +147,7 @@
             <label class="join-label" for="join-code-input">Enter Lobby Code</label>
             <input
               id="join-code-input"
+              data-testid="join-code-input"
               class="join-input"
               type="text"
               maxlength="6"
@@ -161,6 +165,7 @@
             {/if}
             <button
               class="primary-btn"
+              data-testid="btn-join-lobby"
               disabled={!canJoin}
               onclick={handleJoinLobby}
             >

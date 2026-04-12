@@ -143,12 +143,12 @@
 
   <!-- Header — always rendered (escape hatch per softlock prevention) -->
   <header class="lb-header">
-    <button class="back-btn" onclick={onBack} aria-label="Back to multiplayer menu">
+    <button class="back-btn" data-testid="btn-back" onclick={onBack} aria-label="Back to multiplayer menu">
       <span aria-hidden="true">&#8592;</span> Back
     </button>
     <h1 class="lb-title">Browse Lobbies</h1>
     <div class="header-actions">
-      <button class="refresh-btn" onclick={() => void refresh()} aria-label="Refresh lobby list">
+      <button class="refresh-btn" data-testid="btn-refresh" onclick={() => void refresh()} aria-label="Refresh lobby list">
         &#8635; Refresh
       </button>
       <span class="transport-badge" title="Multiplayer backend">{transportLabel}</span>
@@ -157,7 +157,7 @@
 
   <!-- Filter bar -->
   <div class="filter-bar" role="group" aria-label="Filters">
-    <div class="filter-group" role="radiogroup" aria-label="Mode filter">
+    <div class="filter-group" data-testid="filter-mode" role="radiogroup" aria-label="Mode filter">
       <label class="pill-label" class:active={modeFilter === 'all'}>
         <input type="radio" name="mode-filter" value="all" checked={modeFilter === 'all'}
           onchange={() => { modeFilter = 'all' }} />
@@ -207,10 +207,10 @@
     {:else}
       <!-- Lobby grid -->
       <ul class="lobby-grid" aria-label="Available lobbies">
-        {#each lobbies as entry (entry.lobbyId)}
+        {#each lobbies as entry, index (entry.lobbyId)}
           {@const full = isFull(entry)}
           {@const fresh = isNew(entry)}
-          <li class="lobby-card" class:full={full} class:fresh={fresh}>
+          <li class="lobby-card" data-testid="lobby-row-{index}" class:full={full} class:fresh={fresh}>
             <div class="card-top">
               <span class="host-name" title={entry.hostName}>{entry.hostName}</span>
               <div class="card-badges">
@@ -242,6 +242,7 @@
               {/if}
               <button
                 class="join-btn"
+                data-testid="btn-join-{index}"
                 disabled={full}
                 onclick={() => void handleJoin(entry)}
                 aria-label="Join lobby hosted by {entry.hostName}"
@@ -270,8 +271,10 @@
         <h2 class="modal-title">&#128274; Password Required</h2>
         <p class="modal-host">Lobby hosted by <strong>{passwordModalEntry.hostName}</strong></p>
 
+        <!-- svelte-ignore a11y_autofocus -->
         <input
           class="modal-input"
+          data-testid="password-modal-input"
           type="password"
           placeholder="Enter password"
           bind:value={passwordInput}
@@ -285,7 +288,7 @@
         {/if}
 
         <div class="modal-actions">
-          <button class="modal-join-btn" onclick={() => void handlePasswordJoin()}>
+          <button class="modal-join-btn" data-testid="btn-password-submit" onclick={() => void handlePasswordJoin()}>
             Join
           </button>
           <button class="modal-cancel-btn" onclick={closePasswordModal}>

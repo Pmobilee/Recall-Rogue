@@ -65,6 +65,7 @@
 
 <div
   class="mp-hud"
+  data-testid="mp-hud"
   class:expanded
   class:finished={isFinished}
   class:quiz-hidden={quizVisible}
@@ -110,7 +111,7 @@
     <div class="hud-detail" role="region" aria-label="Full opponent stats">
 
       <!-- HP bar with label -->
-      <div class="stat-row hp-row">
+      <div class="stat-row hp-row" data-testid="opponent-hp">
         <span class="stat-label">HP</span>
         <div
           class="hp-bar"
@@ -140,7 +141,7 @@
       </div>
 
       <!-- Score -->
-      <div class="stat-row">
+      <div class="stat-row" data-testid="opponent-score">
         <span class="stat-label">Score</span>
         <span class="stat-value score-value" aria-live="polite">{progress.score.toLocaleString()}</span>
       </div>
