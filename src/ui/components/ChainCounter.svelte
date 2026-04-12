@@ -47,33 +47,52 @@
     }
     _prevMultiplier = m
   })
+
+  /**
+   * Chain-break animation: fires when chainMultiplier drops from >1 back to 1.0
+   * (off-colour card breaks the chain). Remounts the bar via {#key breakKey} to
+   * trigger the chainBreakShake keyframe. Mirrors the {#key multKey} pattern above.
+   */
+  let breakKey = $state(0)
+  let _prevBreakMultiplier = 1.0
+  $effect(() => {
+    const m = chainMultiplier
+    if (m <= 1.0 && _prevBreakMultiplier > 1.0) {
+      breakKey = breakKey + 1
+    }
+    _prevBreakMultiplier = m
+  })
 </script>
 
 {#if showActiveColor}
   {#key activeColorKey}
-    <div
-      class="active-chain-bar"
-      class:has-chain={chainLength >= 1}
-      class:chain-tier-3={chainLength >= 3}
-      class:chain-tier-4={chainLength >= 4}
-      class:chain-tier-5={chainLength >= 5}
-      class:perfect-turn={isPerfectTurn}
-      data-testid="active-chain-bar"
-      style="--chain-color: {activeColor};"
-    >
-      <span class="chain-dot" style="background: {activeColor}; box-shadow: 0 0 calc(6px * var(--layout-scale, 1)) {activeColor}80;"></span>
-      <span class="chain-name" style="color: {activeColor}; text-shadow: 0 0 calc(6px * var(--layout-scale, 1)) {activeColor}60;">{activeName}</span>
-      {#if chainLength >= 1 && chainType !== null}
-        <span class="chain-sep" style="opacity: 0.5;">·</span>
-        <!-- Bug 4 fix: {#key multKey} remounts the multiplier element on each chain build,
-             triggering the chainBuildPop animation so players see why their damage is changing. -->
-        {#key multKey}
-          <span class="chain-mult chain-mult-pop" style="color: {chainColor};">{chainMultiplier.toFixed(1)}x</span>
-        {/key}
-      {:else}
-        <span class="chain-hint">Play to chain!</span>
-      {/if}
-    </div>
+    <!-- chain-break wrapper: remounts the bar on chain-break to trigger chainBreakShake animation -->
+    {#key breakKey}
+      <div
+        class="active-chain-bar"
+        class:has-chain={chainLength >= 1}
+        class:chain-tier-3={chainLength >= 3}
+        class:chain-tier-4={chainLength >= 4}
+        class:chain-tier-5={chainLength >= 5}
+        class:perfect-turn={isPerfectTurn}
+        class:chain-breaking={breakKey > 0}
+        data-testid="active-chain-bar"
+        style="--chain-color: {activeColor};"
+      >
+        <span class="chain-dot" style="background: {activeColor}; box-shadow: 0 0 calc(6px * var(--layout-scale, 1)) {activeColor}80;"></span>
+        <span class="chain-name" style="color: {activeColor}; text-shadow: 0 0 calc(6px * var(--layout-scale, 1)) {activeColor}60;">{activeName}</span>
+        {#if chainLength >= 1 && chainType !== null}
+          <span class="chain-sep" style="opacity: 0.5;">·</span>
+          <!-- Bug 4 fix: {#key multKey} remounts the multiplier element on each chain build,
+               triggering the chainBuildPop animation so players see why their damage is changing. -->
+          {#key multKey}
+            <span class="chain-mult chain-mult-pop" style="color: {chainColor};">{chainMultiplier.toFixed(1)}x</span>
+          {/key}
+        {:else}
+          <span class="chain-hint">Play to chain!</span>
+        {/if}
+      </div>
+    {/key}
   {/key}
 {/if}
 
@@ -181,6 +200,24 @@
     50% { opacity: 0.75; }
   }
 
+  /**
+   * Chain-break animation: horizontal shake with red tint.
+   * Fires when breakKey increments (multiplier drops from >1 to 1.0).
+   * 250ms keeps it snappy — short enough not to interrupt the next card play.
+   */
+  .active-chain-bar.chain-breaking {
+    animation: chainBreakShake 250ms ease-out;
+  }
+
+  @keyframes chainBreakShake {
+    0%   { transform: translateX(0); filter: brightness(1); }
+    18%  { transform: translateX(calc(-5px * var(--layout-scale, 1))); filter: brightness(1.8) hue-rotate(-20deg); }
+    36%  { transform: translateX(calc(4px * var(--layout-scale, 1))); filter: brightness(1.6) hue-rotate(-20deg); }
+    54%  { transform: translateX(calc(-3px * var(--layout-scale, 1))); filter: brightness(1.3) hue-rotate(-10deg); }
+    72%  { transform: translateX(calc(2px * var(--layout-scale, 1))); filter: brightness(1.1); }
+    100% { transform: translateX(0); filter: brightness(1); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .chain-mult-pop {
       animation: none;
@@ -188,6 +225,9 @@
     .active-chain-bar.chain-tier-4 .chain-mult,
     .active-chain-bar.chain-tier-5 .chain-mult,
     .active-chain-bar.perfect-turn .chain-mult {
+      animation: none;
+    }
+    .active-chain-bar.chain-breaking {
       animation: none;
     }
   }

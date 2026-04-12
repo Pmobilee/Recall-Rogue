@@ -30,7 +30,7 @@
   import { RELIC_BY_ID } from '../../data/relics/index'
   import { getMaxRelicSlots, resolveChargeButtonState } from '../../services/relicEffectResolver'
   import { juiceManager } from '../../services/juiceManager'
-  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent, coopWaitingForPartner, cancelEndTurnRequested } from '../../services/encounterBridge'
+  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent, coopWaitingForPartner, cancelEndTurnRequested, activeTurnState } from '../../services/encounterBridge'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId, playerSave } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
@@ -2299,7 +2299,10 @@
       onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex, 'charge', undefined, true)
 
       // AR-113: Check for mastery downgrade after wrong answer
-      const discardedWrong = turnState?.deck.discardPile.find(c => c.id === cardId)
+      // Use get(activeTurnState) not the `turnState` prop — the prop update is scheduled
+      // asynchronously by Svelte; the store reflects the post-play state immediately.
+      const freshTsWrong = get(activeTurnState)
+      const discardedWrong = freshTsWrong?.deck.discardPile.find(c => c.id === cardId)
       if (discardedWrong && discardedWrong.masteryChangedThisEncounter) {
         triggerMasteryFeedback(cardId, 'downgrade')
       }
@@ -2409,7 +2412,10 @@
       }
 
       // AR-113: Check for mastery upgrade after correct answer
-      const discardedCorrect = turnState?.deck.discardPile.find(c => c.id === cardId)
+      // Use get(activeTurnState) not the `turnState` prop — the prop update is scheduled
+      // asynchronously by Svelte; the store reflects the post-play state immediately.
+      const freshTsCorrect = get(activeTurnState)
+      const discardedCorrect = freshTsCorrect?.deck.discardPile.find(c => c.id === cardId)
       if (discardedCorrect && discardedCorrect.masteryChangedThisEncounter && (discardedCorrect.masteryLevel ?? 0) > 0) {
         triggerMasteryFeedback(cardId, 'upgrade')
       }

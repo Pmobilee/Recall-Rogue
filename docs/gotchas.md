@@ -3815,3 +3815,19 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **What:** `bootstrapRun()` in `scenarioSimulator.ts` calls `resetEncounterBridge()` which sets `activeRunPool = []`. The restStudy spawn path then called `generateStudyQuestions()` which falls back to `getRunPoolCards()` for the trivia path → empty array → 0 questions → `StudyQuizOverlay` mounted in empty-state showing "QUESTION 0 / 0".
 
 **Fix (2026-04-12):** Added `seedRunPool(cards: Card[])` export to `encounterBridge.ts`. When `generateStudyQuestions()` returns 0 and `factsDB` is ready, `scenarioSimulator.ts` now seeds the run pool with up to 20 trivia facts before calling `generateStudyQuestions()` again.
+
+### 2026-04-12 — window.confirm() silently returns false in headless Chrome (Bug A)
+
+**What:** `ShopRoomOverlay.svelte` used `window.confirm('Leave shop?')` to gate the leave-shop action. In headless Chromium (used by Docker playtests and all automated browser contexts), `window.confirm()` is a browser-native blocking dialog — it returns `false` silently without showing any UI. Players in automated playtests could never exit the shop via `btn-leave-shop`, generating a CRIT softlock report.
+
+**Fix (2026-04-12):** Replaced `window.confirm()` with an inline Svelte modal driven by `showLeaveConfirm = $state(false)`. Clicking the button sets the state, rendering a `.leave-confirm-modal` with "Leave anyway" (`btn-leave-confirm`) and "Stay" (`btn-leave-cancel`) buttons. `confirmLeave()` calls `ondone()` to exit. If no affordable items remain, the shop exits immediately without the dialog.
+
+**Rule:** Never use `window.confirm()`, `window.alert()`, or `window.prompt()` in game UI. These are browser-native blocking dialogs that return false/null in headless contexts and cannot be tested or styled. Replace with Svelte `$state`-driven inline modals.
+
+### 2026-04-12 — Svelte 5 prop updates are async; reading a prop immediately after store.set() gives stale value (Bug C)
+
+**What:** `CardCombatOverlay.svelte` checks for mastery level changes immediately after `onplaycard()` returns. The `turnState` prop is derived from the `activeTurnState` store, but Svelte 5's reactive scheduler batches prop updates asynchronously. In the same JS execution frame that `activeTurnState.set(freshTurnState)` runs, the `turnState` prop in the child component still reflects the pre-play value. The mastery popup check found no `masteryChangedThisEncounter` flag and never fired the popup.
+
+**Fix (2026-04-12):** Both the downgrade and upgrade mastery check paths now call `get(activeTurnState)` (Svelte's synchronous store reader, imported from `svelte/store`) instead of reading the `turnState` prop. `get()` reads the current store value immediately, bypassing the async prop schedule.
+
+**Rule:** If a service sets a store synchronously and you need to read the post-update value in the same execution frame, use `get(store)` — not a prop that derives from the store. Props update on Svelte's next reactive batch, not synchronously.

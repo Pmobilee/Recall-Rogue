@@ -1529,20 +1529,25 @@
     animation: cardDrawnIn 450ms cubic-bezier(0.22, 1, 0.36, 1) both !important;
   }
 
+  /**
+   * Card draw-in: scales up from below with a gold brightness burst.
+   * Enhanced 2026-04-12 to be more prominent — new cards get a gold glow ring
+   * so players can distinguish newly drawn cards from hand-shift repositioning.
+   */
   @keyframes cardDrawnIn {
     0% {
       opacity: 0;
-      transform: scale(0.65) translateY(calc(30px * var(--layout-scale, 1)));
-      filter: brightness(1.8);
+      transform: scale(0.55) translateY(calc(40px * var(--layout-scale, 1)));
+      filter: brightness(2.5) drop-shadow(0 0 calc(12px * var(--layout-scale, 1)) rgba(250, 204, 21, 0.9));
     }
-    60% {
+    50% {
       opacity: 1;
-      filter: brightness(1.3);
+      filter: brightness(1.6) drop-shadow(0 0 calc(8px * var(--layout-scale, 1)) rgba(250, 204, 21, 0.6));
     }
     100% {
       opacity: 1;
       transform: scale(1) translateY(0);
-      filter: brightness(1);
+      filter: brightness(1) drop-shadow(0 0 0px transparent);
     }
   }
 
