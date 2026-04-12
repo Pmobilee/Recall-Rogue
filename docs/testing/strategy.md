@@ -1,12 +1,12 @@
 # Testing Strategy
 
 > **Purpose:** Overview of all testing layers in Recall Rogue — when to use each method, where tests live, and how to run them.
-> **Last verified:** 2026-04-10
+> **Last verified:** 2026-04-12
 > **Source files:** `vitest.config.ts`, `tests/unit/*.test.ts`, `src/services/__tests__/`, `CLAUDE.md`
 
-## Four Testing Layers
+## Five Testing Layers
 
-Recall Rogue uses four complementary layers. Use the right tool — they are not interchangeable.
+Recall Rogue uses five complementary layers. Use the right tool — they are not interchangeable.
 
 | Layer | Tool | Speed | Best For |
 |-------|------|-------|----------|
@@ -14,8 +14,9 @@ Recall Rogue uses four complementary layers. Use the right tool — they are not
 | Headless balance sim | `tsx` + Node.js | 6 000 runs/5s | Win rates, economy balance, ascension tuning |
 | Visual (Playwright) | MCP + E2E scripts | Seconds per screen | UI rendering, transitions, layout regressions |
 | LLM playtest | `/llm-playtest` skill | Minutes | Subjective engagement, quiz quality, real card interactions |
+| Multiplayer E2E | `/multiplayer-playtest` skill | 10–20 min | Two-player flows, lobby, race mode, WebSocket transport |
 
-Use headless sim for **all balance work** — it imports real game code with zero reimplementation drift. Use Playwright only for visual confirmation. Use LLM playtest for judgment calls numbers cannot capture.
+Use headless sim for **all balance work** — it imports real game code with zero reimplementation drift. Use Playwright only for visual confirmation. Use LLM playtest for judgment calls numbers cannot capture. Use multiplayer E2E for any change touching lobby, transport, or race mode.
 
 ## Unit Tests (Vitest)
 
@@ -117,6 +118,25 @@ Supports 2-3 simultaneous containers (stagger launches by 3s). Requires Docker D
 Spawns Sonnet sub-agents that actually play the game via Playwright. Each agent has a distinct focus (quiz quality, balance curve, engagement, study flow). Reports land in `data/playtests/llm-batches/`.
 
 Use for questions headless sim cannot answer: "Is the quiz fun?", "Do distractors feel fair?", "Does card reward feel rewarding?"
+
+## Multiplayer E2E Playtest (`/multiplayer-playtest` skill)
+
+Two-container Docker playtest that tests the full multiplayer system with real WebSocket transport. Boots two warm containers (host + guest) against the Fastify `webBackend`, then runs coordinated action sequences to verify:
+
+- **Lobby system** (10 scenarios): create, join by code, password protection, lobby browser, deck selection, house rules, max players, visibility, ready/start gate, leave
+- **Race Mode** (5 scenarios): race start, shared seed verification, gameplay, MultiplayerHUD, race end
+- **Mode UI**: all 5 mode cards render correctly
+- **Trivia Night**: isolated scenario preset test
+
+**Usage:** `/multiplayer-playtest [lobby|race|smoke|ui]` (no argument = full suite)
+
+**Infrastructure:** Requires Fastify server (port 3000), Vite dev server, and Docker. The skill manages all infrastructure automatically, including try/finally teardown so containers never leak.
+
+**Output:** `data/playtests/mp-batches/MP-{DATE}/` with SUMMARY.md and per-scenario reports.
+
+**When to run:** Any change touching `src/services/multiplayerLobbyService.ts`, `multiplayerTransport.ts`, `MultiplayerMenu.svelte`, `MultiplayerLobby.svelte`, `LobbyBrowserScreen.svelte`, `MultiplayerHUD.svelte`, or the Fastify server routes under `server/src/routes/`.
+
+See `.claude/skills/multiplayer-playtest/SKILL.md` for full documentation.
 
 ## Inspection Registry
 
