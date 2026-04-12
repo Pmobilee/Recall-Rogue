@@ -3667,3 +3667,13 @@ Two defences are now wired in. First, item 11 in the Sub-Agent Prompt Template (
 This gotcha entry was itself written using the manual fallback procedure end-to-end, as the dogfood proof that it works. If the self-check at the top of the sub-agent task showed the correct worktree path and branch, the procedure is confirmed working.
 
 What to watch for next: any future dispatch where the item 11 self-check shows `toplevel=/Users/damion/CODE/Recall_Rogue, branch=main` is a silent fallback. Do not retry with stronger prompt wording — retry via the manual fallback. If silent fallback happens repeatedly, Mode A (isolation parameter) should be demoted to optional and Mode B (manual pre-creation) becomes the default.
+
+### 2026-04-12 — Tooltip backdrop with `pointer-events: auto` eats all shop item clicks
+
+**What:** Every click on a relic buy button in the shop was swallowed by an invisible full-viewport backdrop, opening nothing. Cards worked fine. The playtest report (BATCH-2026-04-12-001-C-004) said "missing click handler" — the handler was wired correctly; the backdrop was the culprit.
+
+**Root cause:** When a relic item is hovered, `showRelicTooltip()` mounts two elements: a `.tooltip-backdrop` (`position: fixed; inset: 0; z-index: 199`) and the `.relic-tooltip` panel (`z-index: 200`). The backdrop was a `<button>` with the default `pointer-events: auto`, covering the entire viewport. Clicking the relic buy button first hit the backdrop at z-index 199 — triggering `dismissRelicTooltip()` and absorbing the event before it could reach the buy button. Cards have no tooltip so they never had a backdrop in their path.
+
+**Fix:** Changed `.tooltip-backdrop` to `pointer-events: none` (CSS) and replaced the `<button onclick=dismiss>` with a `<div aria-hidden>`. Click-outside dismiss is now handled by a `$effect` that adds a `document.addEventListener('pointerdown', ..., { capture: true })` listener while `relicTooltip` is non-null, dismissing on any click that doesn't originate inside `.relic-tooltip`. Mouse-away (`onmouseleave` on the relic item) still dismisses immediately. The 3-second auto-dismiss timer is unchanged.
+
+**Rule:** If you add a full-viewport backdrop element (`position: fixed; inset: 0`) to handle click-outside dismissal, give it `pointer-events: none` and handle dismissal via a `document pointerdown` listener in a `$effect` instead. The backdrop-as-click-catcher pattern makes every other interactive element in the viewport unreachable while the backdrop is mounted.
