@@ -146,6 +146,7 @@ import { getCurrentLobby } from './multiplayerLobbyService'
 import { computeRaceScore } from './multiplayerScoring'
 import type { MultiplayerMode } from '../data/multiplayerTypes'
 import { ensureCuratedDeckLoaded } from '../data/curatedDeckStore'
+import { injectChessPuzzlesForDeck } from './chessRunInjection'
 // Fire-and-forget: preload narrative JSON data in parallel with other init.
 // The loader warns but never throws if narrative files are absent.
 void preloadNarrativeData();
@@ -1014,6 +1015,10 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
   initNarrative(run);
   playCardAudio('domain-select');
   playCardAudio('run-start');
+  // Chess runtime puzzle injection — replace baked fallback with live Elo-targeted
+  // Lichess puzzles when starting a chess_tactics run. Graceful fallback on DB unavailability.
+  await injectChessPuzzlesForDeck(run.runDeckId);
+
   // Initialize forked RNG system for all modes that use a seed
   initRunRng(run.runSeed);
   // Activate deterministic random for standard and endless_depths runs
@@ -2405,6 +2410,9 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
       // In study mode, some mystery events (e.g. flashcard_merchant) need deck facts.
       if (run?.deckMode?.type === 'study' && run.deckMode.deckId) {
         await ensureCuratedDeckLoaded(run.deckMode.deckId);
+        // Late injection: if chess-puzzles.db became ready after run start, inject now.
+        // injectChessPuzzlesForDeck is a no-op when already injected or DB still not ready.
+        await injectChessPuzzlesForDeck(run.deckMode.deckId);
       }
       activeMasteryChallenge.set(null);
       activeMysteryEvent.set(null);
