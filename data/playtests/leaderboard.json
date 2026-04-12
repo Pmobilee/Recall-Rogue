@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T09:26:44.783Z",
+  "updatedAt": "2026-04-12T10:29:48.417Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -38,7 +38,7 @@
     }
   ],
   "topIssueCounts": {
-    "critical": 3,
+    "critical": 2,
     "high": 0,
     "medium": 0,
     "low": 0
@@ -1133,7 +1133,7 @@
       "title": "Ascension 20 unplayable: experienced profile at 2% win rate (cliff from 52% at A15)",
       "description": "WAVE-A (28k runs) confirms A15→A20 drop is 52pp for experienced, 20pp for master — 3x steeper than any prior tier. Root cause: wrongAnswerSelfDamage (A17, 3 HP/wrong) + forceHardQuestionFormats (A19, ~20% accuracy loss) + bossHpMultiplier (A15, 1.10x) stack multiplicatively with quiz accuracy, creating a feedback loop no buff offsets. experienced@A20 dies in Act 1 with avg 0.2 acts played — 2-relic starter buff never activates. User approved Option C: \"Scholar's Inversion\" — wrong charges resolve at 1.0x against the PLAYER instead of the enemy; QP is the safe line; A17/A19/A15 boss mult removed at A20; correctAnswerHeal raised 1→2. Fully specced in Task #18 of swift-splashing-crown.md. Implementation is one conditional on the fizzle path in cardEffectResolver.ts + ascension.ts modifier edit + GAME_DESIGN.md §27 drift fix.",
       "source": "WAVE-A balance-report.md + game-logic design proposal round",
-      "status": "open",
+      "status": "resolved",
       "score": 15,
       "affectedTracks": [
         "alpha-launch-blocker",
@@ -1141,7 +1141,9 @@
       ],
       "firstSeen": "2026-04-11T08:00:00.000Z",
       "suggestedFix": "Spawn game-logic for Task #18. Single atomic commit: src/services/ascension.ts (remove A17/A19 flags, add chargeInvertTargetOnWrong at A20, bump correctAnswerHeal to 2) + src/services/cardEffectResolver.ts (invertTarget conditional on fizzle path) + docs/GAME_DESIGN.md §27 table drift fix + gotcha append. Verify via 1000-run headless sim: experienced@A20 ≥ 15%, A15→A20 drop ≤ 25pp. UI follow-up: INVERT badge on charge button at A20.",
-      "rank": 19
+      "rank": 19,
+      "resolvedAt": "2026-04-12T10:29:48.417Z",
+      "resolvedBy": "5f20c31cb — Scholar's Inversion Pass 9"
     },
     {
       "canonicalId": "CARD-AUDIT-2026-04-11-critical-001",
