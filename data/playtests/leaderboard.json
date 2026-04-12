@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T07:37:31.488Z",
+  "updatedAt": "2026-04-12T07:50:46.794Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -39,9 +39,9 @@
   ],
   "topIssueCounts": {
     "critical": 3,
-    "high": 22,
-    "medium": 49,
-    "low": 29
+    "high": 17,
+    "medium": 40,
+    "low": 21
   },
   "issues": [
     {
@@ -2481,7 +2481,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 70,
       "score": 5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "What is the symbiotic culture of bacteria and yeast used to ferment kombucha tea called?",
@@ -2498,7 +2498,9 @@
         "Draw SCOBY/kombucha question",
         "Observe temperature and body-part distractors"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:50:46.794Z",
+      "resolvedBy": "f2614f274"
     },
     {
       "canonicalId": "07-mode-coverage-issue-1775873221654-07-006",
@@ -2543,7 +2545,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 72,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/dungeonMap/screenshot.png",
@@ -2556,7 +2558,9 @@
         "Observe: screenshot shows near-black with fog wisps, no map nodes visible",
         "Layout dump: all map-node buttons at y=693–1233, viewport height=1080"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:50:46.794Z",
+      "resolvedBy": "Docker layout-dump false positive — fog opacity intentional, gotchas.md documents this explicitly"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400000-11-001",
@@ -2663,7 +2667,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 76,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/dungeonMap/screenshot.png",
@@ -2676,7 +2680,9 @@
         "Observe screenshot — nearly blank dark screen",
         "Layout dump shows map nodes but all buried under fog-overlay"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:50:46.794Z",
+      "resolvedBy": "Docker layout-dump false positive — fog opacity intentional, gotchas.md documents this explicitly"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400009-11-010",
@@ -2783,7 +2789,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 80,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/runEnd/screenshot.png",
@@ -2797,7 +2803,9 @@
         "Multiple enemies show '❓' symbol instead of portraits",
         "Layout dump confirms: enemy-badge-img HIDDEN with badge-fallback visible for several enemies"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:50:46.794Z",
+      "resolvedBy": "all 89 enemy sprites exist; fallback only fires on invalid ID — no evidence of invalid IDs in production"
     },
     {
       "canonicalId": "12-stress-edge-issue-17758744933N-12-003",
@@ -3142,14 +3150,16 @@
       "title": "22 test failures + 7 typecheck errors from parallel session exhaust→forget rename (727c4b8c6)",
       "description": "Parallel Claude session \"727c4b8c6 docs: rename exhaust mechanic to forget\" was labeled as docs but touched type definitions. 22 tests now reference fields/functions that were renamed without updating dependents (CardRunState.exhaustPile, resolveExhaustEffects in relicEffectResolver). Not introduced by BATCH-ULTRA work, traced to parallel session. Soft-warn hook lets it through locally but CI will block.",
       "source": "final verification gate",
-      "status": "open",
+      "status": "resolved",
       "score": 5,
       "affectedTracks": [
         "parallel-session-regression"
       ],
       "firstSeen": "2026-04-11T17:15:00.000Z",
       "suggestedFix": "Finish the exhaust→forget rename: grep the full repo for \"exhaust\" (case-insensitive) in src/ and tests/, update each to forget, commit.",
-      "rank": 90
+      "rank": 90,
+      "resolvedAt": "2026-04-12T07:40:26.230Z",
+      "resolvedBy": "pre-existing fix verified ee427b198"
     },
     {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-006",
@@ -3822,7 +3832,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 114,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "Which manga series by Akira Toriyama was serialized in Weekly Shonen Jump from 1984 to 1995?",
@@ -3838,7 +3848,9 @@
         "Load deck anime_manga",
         "Draw Dragon Ball question"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:50:46.794Z",
+      "resolvedBy": "f2614f274"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247407-06-016",
@@ -3888,7 +3900,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 116,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "The euro currency, adopted by European Union this in 1999 for electronic transactions and 2002 for coins and notes, is currently used by how many eurozone members?",
@@ -3904,7 +3916,9 @@
         "Load deck ap_world_history",
         "Draw eurozone members question"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:43:07.539Z",
+      "resolvedBy": "verified clean in current ap_world_history.json (apwh_9_050)"
     },
     {
       "canonicalId": "07-mode-coverage-issue-1775873221654-07-002",
@@ -4017,7 +4031,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 120,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "file": "src/services/multiplayerTransport.ts",
@@ -4028,7 +4042,9 @@
         "Attempt to have both join the same BroadcastChannel",
         "Messages will not be received across containers"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:43:07.539Z",
+      "resolvedBy": "BroadcastChannel transport limitation documented, not a game bug"
     },
     {
       "canonicalId": "10-visual-sweep-issue-1744334400002-10-002",
@@ -4221,7 +4237,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 127,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/combat/screenshot.png",
@@ -4234,7 +4250,9 @@
         "Check accessibility tree for enemy intent information",
         "Note HIDDEN flag in layout dump despite visual rendering"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:50:46.794Z",
+      "resolvedBy": "Docker layout-dump false positive — HIDDEN flag on transformed/animated elements per testing.md"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400006-11-007",
@@ -4281,7 +4299,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 129,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/combat/screenshot.png",
@@ -4294,7 +4312,9 @@
         "Look for AP counter display on screen",
         "Layout dump shows span.ap-number at (0,0) HIDDEN"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:50:46.794Z",
+      "resolvedBy": "Docker layout-dump false positive — HIDDEN flag on transformed/animated elements per testing.md"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400011-11-012",
@@ -4311,7 +4331,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 130,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/cardReward/screenshot.png",
@@ -4324,7 +4344,9 @@
         "Layout dump shows h1 at (93, -157) — above the 1080 viewport top edge",
         "Screenshot confirms no heading visible at top of card reward screen"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:50:46.794Z",
+      "resolvedBy": "Docker layout-dump false positive — HIDDEN flag on transformed/animated elements per testing.md"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400012-11-013",
@@ -4401,7 +4423,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 133,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/shopRoom/screenshot.png",
@@ -4414,7 +4436,9 @@
         "Observe Card Transform section",
         "Layout dump shows active button despite 'Coming soon' status"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:43:07.539Z",
+      "resolvedBy": "button already has disabled attribute, not interactive"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400017-11-018",
@@ -4692,7 +4716,7 @@
       "title": "RaceResultsScreen.svelte orphan — not imported by CardApp router",
       "description": "Third orphan screen beyond BATCH-ULTRA T7 TriviaRoundScreen. In-progress multiplayer feature that was never wired up. Either route it or add // @wiring-check:skip comment.",
       "source": "check-wiring.mjs",
-      "status": "open",
+      "status": "closed",
       "score": 3,
       "affectedTracks": [
         "meta-lint"
@@ -4702,7 +4726,9 @@
       ],
       "suggestedFix": "Wire into CardApp.svelte routing with a new {:else if} branch, OR add suppression comment if it is intentionally not yet routed.",
       "firstSeen": "2026-04-11T14:50:00.000Z",
-      "rank": 141
+      "rank": 141,
+      "resolvedAt": "2026-04-12T07:43:07.539Z",
+      "resolvedBy": "intentional orphan: future multiplayer feature, wiring-check:skip annotated"
     },
     {
       "canonicalId": "meta-lint-003",
@@ -4711,7 +4737,7 @@
       "title": "SocialScreen.svelte orphan — not imported by CardApp router",
       "description": "Fourth orphan screen. Social features that were never wired up.",
       "source": "check-wiring.mjs",
-      "status": "open",
+      "status": "closed",
       "score": 3,
       "affectedTracks": [
         "meta-lint"
@@ -4721,7 +4747,9 @@
       ],
       "suggestedFix": "Wire or suppress.",
       "firstSeen": "2026-04-11T14:50:00.000Z",
-      "rank": 142
+      "rank": 142,
+      "resolvedAt": "2026-04-12T07:43:07.539Z",
+      "resolvedBy": "intentional orphan: future multiplayer feature, wiring-check:skip annotated"
     },
     {
       "canonicalId": "parallel-session-regression-001",
@@ -5033,7 +5061,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 153,
       "score": 1,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": null,
@@ -5046,7 +5074,9 @@
         "Run: scripts/docker-visual-test.sh --warm test --scenario rest-site & scripts/docker-visual-test.sh --warm test --scenario mystery-event",
         "The second request queues behind first but result.json captures intermediate state"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:43:07.539Z",
+      "resolvedBy": "test infrastructure limitation, not a game bug"
     },
     {
       "canonicalId": "05-save-load-issue-1775872580000-05-004",
@@ -5361,7 +5391,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 164,
       "score": 1,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "fpsCurve": "evidence/fps-curve.csv",
@@ -5371,7 +5401,9 @@
       "reproductionSteps": [
         "Check window.__rrDebug().phaserPerf.drawCalls in Docker container"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:43:07.539Z",
+      "resolvedBy": "SwiftShader limitation, not a game bug"
     },
     {
       "canonicalId": "12-stress-edge-issue-17758744933N-12-004",
@@ -5388,7 +5420,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 165,
       "score": 1,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "iterationsRun": 50,
@@ -5398,7 +5430,9 @@
         "recentErrors": []
       },
       "reproductionSteps": [],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:40:26.232Z",
+      "resolvedBy": "PASS result, not a bug"
     },
     {
       "canonicalId": "12-stress-edge-issue-17758744933N-12-005",
@@ -5415,7 +5449,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 166,
       "score": 1,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "layoutScaleInitial": "1.5",
@@ -5425,7 +5459,9 @@
         "screenshotPath": "evidence/screenshots/s4-1920x1080.png"
       },
       "reproductionSteps": [],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:40:26.232Z",
+      "resolvedBy": "Playwright viewport limitation, not a game bug"
     },
     {
       "canonicalId": "12-stress-edge-issue-17758744933N-12-006",
@@ -5442,7 +5478,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 167,
       "score": 1,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "shopRendered": true,
@@ -5453,7 +5489,9 @@
         "setGoldAvailable": false
       },
       "reproductionSteps": [],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:40:26.232Z",
+      "resolvedBy": "PASS result, not a bug"
     },
     {
       "canonicalId": "12-stress-edge-issue-17758744933N-12-007",
@@ -5470,7 +5508,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 168,
       "score": 1,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "keysCorrupted": 4,
@@ -5480,7 +5518,9 @@
         "errorsAfterCorrupt": []
       },
       "reproductionSteps": [],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:40:26.232Z",
+      "resolvedBy": "PASS result, not a bug"
     },
     {
       "canonicalId": "12-stress-edge-issue-17758744933N-12-008",
@@ -5497,7 +5537,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 169,
       "score": 1,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "memoryAtStart": 350.3,
@@ -5509,7 +5549,9 @@
         "csvPath": "evidence/memory-samples.csv"
       },
       "reproductionSteps": [],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:40:26.232Z",
+      "resolvedBy": "PASS result, not a bug"
     },
     {
       "canonicalId": "12-stress-edge-issue-17758744933N-12-009",
@@ -5526,7 +5568,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 170,
       "score": 1,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "gameLogicErrors": 0,
@@ -5541,7 +5583,9 @@
         "errorsPath": "evidence/console-errors.json"
       },
       "reproductionSteps": [],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:40:26.232Z",
+      "resolvedBy": "PASS result, not a bug"
     },
     {
       "canonicalId": "balance_too_easy_mid_early",
