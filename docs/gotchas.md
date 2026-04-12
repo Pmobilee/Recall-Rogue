@@ -3677,3 +3677,23 @@ What to watch for next: any future dispatch where the item 11 self-check shows `
 **Fix:** Added `import { displayAnswer } from '../../services/numericalDistractorService'` to `StudyQuizOverlay.svelte`. Wrapped all three render sites: `{displayAnswer(answer)}` in text buttons, `aria-label="Choice {i + 1}: {displayAnswer(answer)}"` in image buttons, and `{displayAnswer(answer)}` in `.study-image-label` feedback span. Also fixed `ShopRoomOverlay.svelte` line 696 — the import was already present (used for feedback text at line 709) but not applied to the button body.
 
 **Display safety:** `displayAnswer("Rome")` → `"Rome"` (no-op for non-numerical). Only strips `{N}` patterns matching `/\{(\d[\d,]*\.?\d*)\}/`. Scoring logic in `selectAnswer()` uses the raw `answer` value from the array (not the displayed text), so grading is unaffected.
+
+### 2026-04-12 — CRITICAL-3: CardRunState Set fields in encounterSnapshot.activeDeck silently serialize as `{}`
+
+**What:** On "Continue Run" after a save, `chargePlayCard` threw "deck.currentEncounterSeenFacts.add is not a function" immediately when the player tried to play a card mid-encounter. This was a complete combat softlock: the encounter was unresolvable and the run could not be continued. Issue BATCH-2026-04-12-001-C-003.
+
+**Root cause:** `saveActiveRun` in `src/services/runSaveService.ts` spread `encounterSnapshot.activeDeck` directly into the serialized snapshot without converting Set fields to arrays first. `JSON.stringify` silently converts a `Set` to `{}` (empty object). On resume, `loadActiveRun` returned the activeDeck with `currentEncounterSeenFacts = {}` — a plain object, not a Set. The first `drawHand` call hit `deckManager.ts:327` (`deck.currentEncounterSeenFacts.add(factId)`) which threw because `{}.add` is undefined.
+
+**Why the lint missed it:** `scripts/lint/check-set-map-rehydration.mjs` only scanned the `SerializedRunState` Omit union at the RunState top level. `CardRunState.currentEncounterSeenFacts` is embedded inside `encounterSnapshot.activeDeck`, which is a separate object that bypassed the Omit union entirely — the lint never descended into it.
+
+**Why the defensive wrap in deckManager didn't fire:** `deckManager.ts:311-313` has a defensive guard that re-wraps `currentEncounterSeenFacts` if it is not a Set. However, this guard only fires during `drawHand`. When a run is resumed mid-encounter (encounterSnapshot is active), the encounter bridge restores the activeDeck directly from the snapshot and the game may call `chargePlayCard` before `drawHand` is reached again. The guard did not cover the direct-play path.
+
+**Fix:** Two new pure helpers in `runSaveService.ts`:
+- `serializeActiveDeckSets(deck: CardRunState)` — converts `currentEncounterSeenFacts` (Set) to an array via `Array.from()` before the snapshot hits `JSON.stringify`. Called in `saveActiveRun` when serializing `encounterSnapshot.activeDeck`.
+- `rehydrateActiveDeckSets(deck: Record<string, unknown>)` — after JSON parse, re-wraps the field as `new Set(array)` for new saves, or `new Set()` for legacy saves written before this fix (where the field was `{}`). Called in `loadActiveRun` immediately after `migrateExhaustPileToForgetPile`.
+
+The `undefined` case (encounter not yet started) is explicitly left as-is; `deckManager.ts:311` already handles initialization on first draw.
+
+**Lint extended:** `scripts/lint/check-set-map-rehydration.mjs` now verifies that `serializeActiveDeckSets` and `rehydrateActiveDeckSets` both exist and handle `currentEncounterSeenFacts`, and that `saveActiveRun`/`loadActiveRun` call them respectively (checks 4a–4d). Also replaced fragile `^}` multiline regexes with a brace-counting `extractFunctionBody` helper and index-slice patterns — the old regex approach silently matched wrong bodies for functions with complex return type signatures.
+
+**Lesson:** The Set/Map serialization lint was only a "one level deep" check. Any nested object that embeds a Set/Map and is serialized via a direct spread (not through `serializeRunState`) creates an identical blind spot. When adding a new object to the save format, always trace its full path through JSON.stringify and verify every Set/Map field in every embedded type.
