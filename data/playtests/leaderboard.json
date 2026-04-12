@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T03:00:00.000Z",
+  "updatedAt": "2026-04-12T03:30:00.000Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -309,7 +309,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "Literal substring present on player-facing card",
@@ -320,7 +320,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 30
+      "rank": 30,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-006",
@@ -337,7 +339,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "Piercing vs 9-block enemy = 0 HP damage (identical to Strike)",
@@ -348,7 +350,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 31
+      "rank": 31,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-007",
@@ -365,7 +369,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "2/13 turns had misclick events from hand index shuffle",
@@ -376,7 +380,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 32
+      "rank": 32,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-008",
@@ -455,7 +461,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "startStudy() fails every call; manual writeStore workaround required",
@@ -468,7 +474,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 35
+      "rank": 35,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-011",
@@ -485,7 +493,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "getStudyPoolSize()=0 after spawn; overlay empty-state",
@@ -498,7 +506,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 36
+      "rank": 36,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-012",
@@ -515,7 +525,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "getMysteryEventChoices()=[]; selectMysteryChoice(0) returns not-found",
@@ -526,7 +536,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 37
+      "rank": 37,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-013",
@@ -543,7 +555,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "getShopInventory relics=[]; shopBuyRelic(0) DOM lookup fails",
@@ -554,7 +566,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 38
+      "rank": 38,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-014",
@@ -571,7 +585,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "DOM click dispatched but screen state unchanged",
@@ -582,7 +596,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 39
+      "rank": 39,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-015",
@@ -665,7 +681,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "Profile spec vs UI: no grade buttons, no SM-2 reappearance, no interval fields populated",
@@ -676,7 +692,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 40
+      "rank": 40,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-018",
@@ -723,7 +741,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "2 mastery upgrades observed silently during combat 1",
@@ -734,7 +752,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 41
+      "rank": 41,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-M-001",
@@ -813,7 +833,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "4 testers flagged distinct drift items",
@@ -824,7 +844,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#medium"
       },
       "score": 12,
-      "rank": 22
+      "rank": 22,
+      "resolvedAt": "2026-04-12T03:30:00.000Z",
+      "resolvedBy": "commits 4956bd89e + d2a01e1fe + c60090dd1 + 7d713c668"
     },
     {
       "canonicalId": "02-neural-optimal-issue-1775871222977-02-001",
@@ -5557,6 +5579,6 @@
       "sourceBatch": "smoke-campaign-postmove-2026-03-14"
     }
   ],
-  "openCount": 134,
-  "resolvedCount": 37
+  "openCount": 123,
+  "resolvedCount": 48
 }
