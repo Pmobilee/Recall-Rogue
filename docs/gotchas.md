@@ -3667,3 +3667,13 @@ Two defences are now wired in. First, item 11 in the Sub-Agent Prompt Template (
 This gotcha entry was itself written using the manual fallback procedure end-to-end, as the dogfood proof that it works. If the self-check at the top of the sub-agent task showed the correct worktree path and branch, the procedure is confirmed working.
 
 What to watch for next: any future dispatch where the item 11 self-check shows `toplevel=/Users/damion/CODE/Recall_Rogue, branch=main` is a silent fallback. Do not retry with stronger prompt wording — retry via the manual fallback. If silent fallback happens repeatedly, Mode A (isolation parameter) should be demoted to optional and Mode B (manual pre-creation) becomes the default.
+
+### 2026-04-12 — {N} bracket notation leaked into StudyQuizOverlay answer buttons
+
+**What:** Playtest BATCH-2026-04-12-001 reported `{206}` (bracket notation) appearing literally in Study quiz answer buttons instead of the expected display form `206`. Affects any curated-deck fact whose `correctAnswer` uses the `{N}` numerical bracket system.
+
+**Why:** `StudyQuizOverlay.svelte` rendered `{answer}` directly in its button text, `aria-label`, and image-label feedback span — without calling `displayAnswer()`. Every other quiz overlay in the codebase (CardCombatOverlay, CardExpanded, ShopRoomOverlay, ChallengeQuizOverlay) either applied `displayAnswer` at answer-array construction time OR at the render site. `StudyQuizOverlay` was the sole exception. `ShopRoomOverlay`'s haggle quiz buttons had the same raw-render bug (both paths: direct trivia and `nonCombatQuizSelector` choices).
+
+**Fix:** Added `import { displayAnswer } from '../../services/numericalDistractorService'` to `StudyQuizOverlay.svelte`. Wrapped all three render sites: `{displayAnswer(answer)}` in text buttons, `aria-label="Choice {i + 1}: {displayAnswer(answer)}"` in image buttons, and `{displayAnswer(answer)}` in `.study-image-label` feedback span. Also fixed `ShopRoomOverlay.svelte` line 696 — the import was already present (used for feedback text at line 709) but not applied to the button body.
+
+**Display safety:** `displayAnswer("Rome")` → `"Rome"` (no-op for non-numerical). Only strips `{N}` patterns matching `/\{(\d[\d,]*\.?\d*)\}/`. Scoring logic in `selectAnswer()` uses the raw `answer` value from the array (not the displayed text), so grading is unaffected.

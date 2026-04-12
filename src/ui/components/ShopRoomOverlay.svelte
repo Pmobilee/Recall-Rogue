@@ -693,7 +693,7 @@
               class="quiz-answer-btn"
               onclick={() => submitHaggleAnswer(answer)}
             >
-              {answer}
+              {displayAnswer(answer)}
             </button>
           {/each}
         </div>
