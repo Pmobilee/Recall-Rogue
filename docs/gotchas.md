@@ -3737,3 +3737,11 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix (backend side, 2026-04-12):** Added `lockedDisplayDamage?: number` to `EnemyInstance`. Added `computeIntentDisplayDamageSnapshot()` export to `intentDisplay.ts`. After each `rollNextIntent()` call in `turnManager.ts` (all 4 call sites including early-return victory/defeat cases), the code now calls `computeIntentDisplayDamageSnapshot()` with the current `playerState` and stores the result on `enemy.lockedDisplayDamage`. The UI agent will complete the fix by reading `enemy.lockedDisplayDamage` instead of the live derived.
 
 **Why not pin in rollNextIntent() directly:** `rollNextIntent()` in `enemyManager.ts` doesn't have access to `playerState`. The lock call is in `turnManager.ts` which does have both objects.
+
+### 2026-04-12 — screens.md run flow diagram drifted from gameFlowController reality
+
+**What:** `docs/ui/screens.md` described a run start flow of `hub → deckSelectionHub → triviaDungeon/studyTemple → archetypeSelection → runPreview → dungeonMap`. In reality, `deckSelectionHub`, `triviaDungeon`, and `archetypeSelection` are dormant screens never shown in the current flow. The actual flow is `hub → startNewRun() → onboarding? → onArchetypeSelected('balanced') [auto] → runPreview (Study Temple only) → dungeonMap`. Additionally, `docs/architecture/services/run.md` listed the `gameFlowController` entry point as `startRun` when the real exported function is `startNewRun`.
+
+**Fix:** Updated flow diagram, screen descriptions (dormant callouts), and run.md key exports. Drift discovered via BATCH-2026-04-12-001 playtest finding H-032.
+
+**Reader tip:** Always treat `src/services/gameFlowController.ts` as the canonical source for screen transitions — search for `currentScreen.set(` calls to trace the real flow. `docs/ui/screens.md` is a convenience summary that can lag behind code changes; verify against the source when uncertain.
