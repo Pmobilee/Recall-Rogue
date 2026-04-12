@@ -217,7 +217,7 @@ export class ApiClient {
    * tokens, allowing immediate play without registering.
    *
    * The guest account is identified by a generated email like
-   * `guest-<uuid>@terragacha.local`. Guests can later upgrade their account
+   * `guest-<uuid>@recallrogue.local`. Guests can later upgrade their account
    * to a full registered account via `linkGuest()`.
    *
    * @returns The auth response containing tokens and the guest user's info.

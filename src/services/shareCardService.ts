@@ -145,7 +145,7 @@ export async function renderShareCard(payload: ShareCardPayload): Promise<ShareC
 
   ctx.fillStyle = PALETTE.textMuted
   ctx.font = '16px "Space Mono", monospace'
-  ctx.fillText('terragacha.com', 48, 68)
+  ctx.fillText('recallrogue.com', 48, 68)
 
   // ── Player name ────────────────────────────────────────────────────────
   ctx.fillStyle = PALETTE.textMuted
@@ -190,9 +190,9 @@ export async function renderShareCard(payload: ShareCardPayload): Promise<ShareC
   const dataUrl = canvas.toDataURL('image/png')
 
   const shareTexts: Record<ShareCardTemplate, string> = {
-    fact_mastery: `I just mastered ${payload.primaryMetric.toLocaleString()} facts about Earth's deep past in Recall Rogue! Join me: https://terragacha.com`,
-    dive_record:  `I reached Layer ${payload.primaryMetric} in Recall Rogue! How deep can you go? https://terragacha.com`,
-    guild_win:    `My guild just completed a Knowledge Challenge in Recall Rogue. The Earth still has secrets to share. https://terragacha.com`,
+    fact_mastery: `I just mastered ${payload.primaryMetric.toLocaleString()} facts about Earth's deep past in Recall Rogue! Join me: https://recallrogue.com`,
+    dive_record:  `I reached Layer ${payload.primaryMetric} in Recall Rogue! How deep can you go? https://recallrogue.com`,
+    guild_win:    `My guild just completed a Knowledge Challenge in Recall Rogue. The Earth still has secrets to share. https://recallrogue.com`,
   }
 
   return {

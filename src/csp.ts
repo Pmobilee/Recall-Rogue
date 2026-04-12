@@ -33,7 +33,7 @@ export function getCSPMeta(isDev: boolean): string {
     "script-src 'self' 'unsafe-eval' 'unsafe-inline' 'wasm-unsafe-eval'; " +
     "style-src 'self' 'unsafe-inline'; " +
     "img-src 'self' data: blob:; " +
-    "connect-src 'self' https://*.terragacha.com https://localhost:*; " +
+    "connect-src 'self' https://*.recallrogue.com https://localhost:*; " +
     "font-src 'self'"
   )
 }

@@ -27,7 +27,7 @@ function cspInjectPlugin(): Plugin {
       const isDev = ctx.server !== undefined
       const csp = isDev
         ? "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' ws: wss: http://localhost:* http://*:3001; font-src 'self'"
-        : "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://*.terragacha.com https://localhost:*; font-src 'self'"
+        : "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://*.recallrogue.com https://localhost:*; font-src 'self'"
       return html.replace(
         '</head>',
         `  <meta http-equiv="Content-Security-Policy" content="${csp}">\n  </head>`
@@ -46,12 +46,12 @@ function structuredDataPlugin(): Plugin {
         '@context': 'https://schema.org',
         '@type': 'VideoGame',
         'name': 'Recall Rogue',
-        'url': 'https://terragacha.com/',
-        'description': 'A spaced-repetition mining roguelite set on far-future Earth.',
+        'url': 'https://recallrogue.com/',
+        'description': 'A card roguelite where knowledge is power — answer to charge your cards, chain related facts for massive damage.',
         'genre': ['Educational', 'Roguelite', 'Puzzle'],
-        'gamePlatform': ['Web', 'Android', 'iOS'],
+        'gamePlatform': ['Web', 'Steam', 'Android', 'iOS'],
         'applicationCategory': 'Game',
-        'operatingSystem': 'Any',
+        'operatingSystem': 'Windows, macOS, Linux',
         'offers': {
           '@type': 'Offer',
           'price': '0',

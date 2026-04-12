@@ -117,5 +117,5 @@ export function evaluateNewBadges(
  * @returns Full URL string for the badge page.
  */
 export function getBadgeShareUrl(playerId: string, badgeId: string): string {
-  return `https://terragacha.com/badge/${encodeURIComponent(playerId)}/${encodeURIComponent(badgeId)}`
+  return `https://recallrogue.com/badge/${encodeURIComponent(playerId)}/${encodeURIComponent(badgeId)}`
 }
