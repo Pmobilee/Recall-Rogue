@@ -13,13 +13,9 @@
 - `npm run build` — Production build (check Vite warnings)
 - Both must pass before committing
 
-## Build Failure Ownership — You're Always in a Worktree
+## Build Failure Ownership
 
-Every file-editing sub-agent runs in an isolated worktree on a one-time branch (policy in `.claude/rules/git-workflow.md` → "Worktrees — MANDATORY for Every File-Editing Dispatch"). Your tree is clean: no other agent is editing it, no cross-session dirty state, no pre-existing breakage that isn't yours.
-
-**You own the full build.** Run full `npm run typecheck`, `npm run build`, and relevant unit tests after your implementation. Any failure in your tree is your responsibility — there's no "own-files-only" escape hatch under the worktree-mandatory policy.
-
-Pre-commit hooks run in full blocking mode inside worktrees. The legacy `RR_MULTI_AGENT=1` soft-warn path and the old "shared-main own-files-only" carve-out are both retired — they only made sense when multiple agents could edit `main` concurrently, which no longer happens under the current policy.
+Run full `npm run typecheck`, `npm run build`, and relevant unit tests after your implementation. Fix any failures you introduce.
 
 ## Balance Testing
 - Headless simulator is DEFAULT for balance: imports real game code, zero drift
