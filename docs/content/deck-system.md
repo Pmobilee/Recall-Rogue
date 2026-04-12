@@ -1115,8 +1115,8 @@ Beyond standard `DeckFact` fields, chess puzzle facts carry:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `fenPosition` | `string` | Starting board position in FEN notation |
-| `solutionMoves` | `string[]` | Acceptable first moves in UCI notation |
+| `fenPosition` | `string` | Raw Lichess FEN — the position **before** the setup move (`solutionMoves[0]`). `chessGrader.ts` re-applies the setup move to reach the player-facing position. |
+| `solutionMoves` | `string[]` | UCI move array: `[0]`=opponent setup move, `[1]`=player's first move, `[2+]`=alternating opponent/player for multi-move puzzles. |
 | `tacticTheme` | `string` | Lichess tactic tag — maps to `chainThemeId` |
 | `lichessRating` | `number` | Lichess Elo (600–3000), used for adaptive selection |
 
