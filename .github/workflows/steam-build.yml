@@ -128,17 +128,21 @@ jobs:
           Expand-Archive steamcmd.zip -DestinationPath steamcmd
           Write-Host "SteamCMD installed."
 
-      - name: Restore Steam credentials
+      - name: Authenticate SteamCMD
         shell: pwsh
         env:
-          STEAM_CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
         run: |
-          # steamcmd stores config relative to its install dir
-          $configDir = "steamcmd\config"
-          New-Item -ItemType Directory -Force -Path $configDir | Out-Null
-          [System.IO.File]::WriteAllBytes("$configDir\config.vdf",
-            [System.Convert]::FromBase64String($env:STEAM_CONFIG_VDF))
-          Write-Host "Steam credentials restored."
+          # First run: steamcmd self-updates. Then login with username+password.
+          # Steam Guard must be disabled for the CI account, OR use app-based
+          # authenticator with STEAM_TOTP secret (not implemented yet).
+          & .\steamcmd\steamcmd.exe +login $env:STEAM_USERNAME $env:STEAM_PASSWORD +quit
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "SteamCMD login failed (exit code $LASTEXITCODE)"
+            exit 1
+          }
+          Write-Host "SteamCMD authenticated."
 
       - name: Generate Windows depot VDF
         shell: pwsh
