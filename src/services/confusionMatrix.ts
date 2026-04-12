@@ -9,9 +9,18 @@ export interface ConfusionEntry {
 /**
  * Confusion Matrix: tracks which facts the player confuses with each other.
  * Persists across runs in player save.
+ *
+ * Entry count is capped at MAX_ENTRIES to prevent unbounded save file growth
+ * over months of play. Pruning removes stale low-count entries first.
  */
 export class ConfusionMatrix {
   private entries: Map<string, ConfusionEntry> = new Map();  // key = "target|confused"
+
+  /** Maximum number of confusion pairs stored. Prevents save bloat over long play sessions. */
+  private static readonly MAX_ENTRIES = 5000;
+
+  /** 90 days in ms — entries older than this are considered stale during pruning. */
+  private static readonly STALE_AGE_MS = 90 * 24 * 60 * 60 * 1000;
 
   private static key(target: string, confused: string): string {
     return `${target}|${confused}`;
@@ -31,6 +40,46 @@ export class ConfusionMatrix {
         count: 1,
         lastOccurred: Date.now(),
       });
+      // Prune after inserting a new entry if we've exceeded the cap
+      if (this.entries.size > ConfusionMatrix.MAX_ENTRIES) {
+        this.pruneOldestOrStalest();
+      }
+    }
+  }
+
+  /**
+   * Remove one entry to bring the map back within MAX_ENTRIES.
+   * Preference order:
+   *   1. Lowest count among entries older than 90 days (stale and rarely confused)
+   *   2. If none qualify, the entry with the oldest lastOccurred timestamp
+   */
+  private pruneOldestOrStalest(): void {
+    const staleThreshold = Date.now() - ConfusionMatrix.STALE_AGE_MS;
+
+    let bestStaleKey: string | null = null;
+    let bestStaleCount = Infinity;
+
+    let oldestKey: string | null = null;
+    let oldestTimestamp = Infinity;
+
+    for (const [key, entry] of this.entries) {
+      // Track the absolute oldest regardless
+      if (entry.lastOccurred < oldestTimestamp) {
+        oldestTimestamp = entry.lastOccurred;
+        oldestKey = key;
+      }
+      // Track the lowest-count stale entry
+      if (entry.lastOccurred < staleThreshold) {
+        if (entry.count < bestStaleCount) {
+          bestStaleCount = entry.count;
+          bestStaleKey = key;
+        }
+      }
+    }
+
+    const keyToRemove = bestStaleKey ?? oldestKey;
+    if (keyToRemove !== null) {
+      this.entries.delete(keyToRemove);
     }
   }
 

@@ -144,12 +144,13 @@ describe('card-descriptions — specific mechanics', () => {
     expect(detailed.toLowerCase()).toContain('lost');
   });
 
-  it('chameleon uses static multipliers in detailed, "Copy last" in short', () => {
+  it('chameleon reads multipliers from mastery stat table (L0: 70% QP, 100% CC, 50% CW), "Copy last" in short', () => {
     const card = makeCard('chameleon', { cardType: 'wild', baseEffectValue: 0 });
     const detailed = getDetailedCardDescription(card);
-    expect(detailed).toContain('100%');
-    expect(detailed).toContain('130%');
+    // L0 stat table: qpMult=70, ccMult=100, cwMult=50
     expect(detailed).toContain('70%');
+    expect(detailed).toContain('100%');
+    expect(detailed).toContain('50%');
     const short = getShortCardDescription(card);
     expect(short).toBe('Copy last');
   });

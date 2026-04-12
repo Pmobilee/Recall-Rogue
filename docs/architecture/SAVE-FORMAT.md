@@ -217,3 +217,24 @@ This guard covers draws on fresh encounters where the field is undefined. It doe
 replace the save-layer fix because `chargePlayCard` can be called before `drawHand`
 on a resumed encounter (the encounter bridge may restore the deck without triggering a draw).
 Both layers must remain in place.
+
+## Confusion Matrix Size Cap (2026-04-12)
+
+`ConfusionMatrix` in `src/services/confusionMatrix.ts` tracks which facts the player
+confuses with each other across all runs. Without a size cap this map can grow to
+thousands of entries over months of play, bloating the serialized `PlayerSave`.
+
+**Cap:** `ConfusionMatrix.MAX_ENTRIES = 5000`. After each new entry is inserted, if the
+map exceeds this cap a single entry is pruned using this preference order:
+
+1. The entry with the lowest `count` that has `lastOccurred` older than 90 days
+   (`STALE_AGE_MS = 90 * 24 * 60 * 60 * 1000`). These are ancient, rarely-confused
+   pairs that carry little signal.
+2. If no stale entries exist, the entry with the oldest `lastOccurred` timestamp
+   regardless of count.
+
+Pruning happens synchronously on insert, not via a scheduled job. Existing entries
+that are updated (not newly inserted) never trigger pruning — only net-new pairs do.
+
+`fromJSON` does not apply the cap; the cap only enforces on live writes. This avoids
+truncating historical data on load for saves that predate the cap.

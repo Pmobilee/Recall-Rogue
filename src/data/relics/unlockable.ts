@@ -738,6 +738,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     isStarter: false,
     startsUnlocked: false,
     excludeFromPhase1: false,
+    excludeFromPool: true,
   },
 
   // === TRADEOFF / CURSED (8) ===

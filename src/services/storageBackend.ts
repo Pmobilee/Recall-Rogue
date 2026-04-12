@@ -381,6 +381,19 @@ export async function migrateLocalStorageToFiles(): Promise<void> {
     'card:ascensionProfile',
     'settingsMusicVolume',
     'settingsSfxVolume',
+    // UI/UX preferences and feature flags
+    'recall-rogue-ui-scale',
+    'recall-rogue-boot-anim-seen',
+    'rr_onboarding_complete',
+    'device-tier-override',
+    'rr_lang_mode',
+    'rr_locale',
+    'rr_review_prompt_state',
+    'rr_notification_state',
+    'rr_scholar_challenge',
+    'tutorial:apShown',
+    'tutorial:chargeShown',
+    'tutorial:comparisonShown',
   ];
   for (const key of settingsKeys) {
     const val = localStorage.getItem(key);

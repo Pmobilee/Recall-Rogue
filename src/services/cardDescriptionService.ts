@@ -60,13 +60,16 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     case 'strike':
       return `Deal ${power} damage.` + apSuffix;
     case 'multi_hit': {
-      const hits = secondary ?? 3;
+      const hits = stats?.hitCount ?? secondary ?? 3;
       return `Deal ${power} damage ${hits} times (${power * hits} total).` + apSuffix;
     }
     case 'heavy_strike':
       return `Deal ${power} damage.${apSuffix}`;
-    case 'piercing':
-      return `Deal ${power} damage. Ignores enemy Block.` + apSuffix;
+    case 'piercing': {
+      const pierceStrip = (stats?.tags ?? []).includes('pierce_strip3');
+      const pierceVuln = (stats?.tags ?? []).includes('pierce_vuln1');
+      return `Deal ${power} damage. Ignores enemy Block.${pierceStrip ? ' Also strips 3 enemy Block.' : ''}${pierceVuln ? ' Applies Exposed 1t.' : ''}` + apSuffix;
+    }
     case 'reckless': {
       const selfDmg = stats?.extras?.['selfDmg'] ?? secondary ?? 4;
       return `Deal ${power} damage. Take ${selfDmg} self-damage.` + apSuffix;
@@ -83,11 +86,12 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
       return `Deal ${power} damage ${hits} times. Each hit triggers Lingering Doubt and Brain Burn separately. CC: ${hits + 1} hits at L3+.` + apSuffix;
     }
     case 'iron_wave': {
-      const sec = stats?.secondaryValue ?? 3;
+      const sec = stats?.secondaryValue ?? 5;
       return `Deal ${power} damage and gain ${sec} Block. CC: both scale up. L5: Block doubles when you have 10+ Block.` + apSuffix;
     }
     case 'bash': {
-      return `Deal ${power} damage. Apply Exposed 1 turn (CC: 2 turns).` + apSuffix;
+      const bashVulnTurns = (stats?.tags ?? []).includes('bash_vuln2t') ? 2 : 1;
+      return `Deal ${power} damage. Apply Exposed ${bashVulnTurns} turn${bashVulnTurns > 1 ? 's' : ''} (CC: ${bashVulnTurns === 2 ? '2 turns — both QP and CC' : '2 turns via CC'}).` + apSuffix;
     }
     case 'sap':
       return `Deal ${power} damage and apply Drawing Blanks 1 turn. CC: more damage.` + apSuffix;
@@ -97,16 +101,19 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     }
     case 'lacerate': {
       const bleed = stats?.secondaryValue ?? 3;
-      return `Deal ${power} damage and apply ${bleed} Lingering Doubt. CC: massive Lingering Doubt bonus.` + apSuffix;
+      const lacerVuln = (stats?.tags ?? []).includes('lacerate_vuln1t');
+      return `Deal ${power} damage and apply ${bleed} Lingering Doubt. CC: massive Lingering Doubt bonus.${lacerVuln ? ' L5: also applies Exposed 1t.' : ''}` + apSuffix;
     }
     case 'kindle': {
-      const burn = stats?.secondaryValue ?? 2;
+      const burn = stats?.secondaryValue ?? 4;
       return `Deal ${power} damage, apply ${burn} Brain Burn, then trigger Brain Burn immediately. CC: more Brain Burn. L5: trigger twice.` + apSuffix;
     }
-    case 'overcharge':
-      return `Deal ${power} damage. CC: deal ${Math.round(power * 1.75)} damage + 2 per correct Charge used this encounter (own CC counts).` + apSuffix;
+    case 'overcharge': {
+      const ovchX2 = (stats?.tags ?? []).includes('overcharge_bonus_x2');
+      return `Deal ${power} damage. CC: deal ${Math.round(power * 1.75)} damage + ${ovchX2 ? '4' : '2'} per correct Charge used this encounter (own CC counts).${ovchX2 ? ' (L3+: bonus doubled.)' : ''}` + apSuffix;
+    }
     case 'riposte': {
-      const sec = stats?.secondaryValue ?? 3;
+      const sec = stats?.secondaryValue ?? 4;
       return `Deal ${power} damage and gain ${sec} Block. CC: both scale. L5: also deal 40% of Block as bonus damage.` + apSuffix;
     }
     case 'siphon_strike': {
@@ -136,18 +143,22 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     }
 
     // ── Shield mechanics ─────────────────────────────────────────────────────
-    case 'block':
-      return `Gain ${power} Block. Absorbs damage before HP.` + apSuffix;
+    case 'block': {
+      const blockConsec = (stats?.tags ?? []).includes('block_consecutive3');
+      return `Gain ${power} Block. Absorbs damage before HP.${blockConsec ? ' Bonus Block when played 3+ times consecutively.' : ''}` + apSuffix;
+    }
     case 'thorns': {
-      const reflect = secondary ?? 3;
+      const reflect = stats?.secondaryValue ?? secondary ?? 3;
       return `Gain ${power} Block. Reflect ${reflect} damage when hit.` + apSuffix;
     }
     case 'fortify':
       // 2026-04-11 audit fix: resolver uses current block x 0.5/0.75, NOT a flat value.
       // fortify_carry (persistence) is only at L5 tag.
       return `Gain Block = 50% of current Block (QP) or 75% + card value (CC). L5: Block persists next turn.` + apSuffix;
-    case 'parry':
-      return `Gain ${power} Block. Draw 1 card if enemy attacks.` + apSuffix;
+    case 'parry': {
+      const parryDraw = stats?.secondaryValue ?? 1;
+      return `Gain ${power} Block. Draw ${parryDraw} card${parryDraw > 1 ? 's' : ''} if enemy attacks.` + apSuffix;
+    }
     case 'brace':
       return `Gain Block equal to enemy's telegraphed attack damage.` + apSuffix;
     case 'cleanse':
@@ -159,8 +170,10 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
       return `Deal ${power} damage. Heal 20% of damage dealt.` + apSuffix;
     case 'emergency':
       return `Gain ${power} Block. Double if HP below 30%.` + apSuffix;
-    case 'immunity':
-      return `Absorb next damage instance (up to ${power}).` + apSuffix;
+    case 'immunity': {
+      const absorbAmt = stats?.extras?.['absorb'] ?? 4;
+      return `Absorb next damage instance (up to ${absorbAmt}).` + apSuffix;
+    }
     case 'reinforce':
       return `Gain ${power} Block. CC: ${Math.round(power * 1.75)} Block. Mastery increases both.` + apSuffix;
     case 'shrug_it_off': {
@@ -172,7 +185,7 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     case 'absorb':
       return `Gain ${power} Block. CC: also draw 1 card (2 at L3+). L5: refund 1 AP when the Block absorbs damage.` + apSuffix;
     case 'reactive_shield': {
-      const thorns = stats?.secondaryValue ?? 1;
+      const thorns = stats?.secondaryValue ?? 2;
       return `Gain ${power} Block and apply ${thorns} Thorns for 1 turn. CC: more of each.` + apSuffix;
     }
     case 'aegis_pulse':
@@ -189,10 +202,18 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     }
 
     // ── Buff mechanics ────────────────────────────────────────────────────────
-    case 'empower':
-      return `Next card deals ${power}% more damage.` + apSuffix;
-    case 'quicken':
-      return `Gain +1 AP this turn.` + apSuffix;
+    case 'empower': {
+      const emp2cards = (stats?.tags ?? []).includes('empower_2cards');
+      return `Next ${emp2cards ? '2 cards deal' : 'card deals'} ${power}% more damage.` + apSuffix;
+    }
+    case 'quicken': {
+      const qkDraw1 = (stats?.tags ?? []).includes('quicken_draw1');
+      const qkDraw2 = (stats?.tags ?? []).includes('quicken_draw2');
+      const qkAp2 = (stats?.tags ?? []).includes('quicken_ap2');
+      const qkAp = qkAp2 ? 2 : 1;
+      const qkDrawCount = qkDraw2 ? 2 : qkDraw1 ? 1 : 0;
+      return `Gain +${qkAp} AP this turn.${qkDrawCount > 0 ? ` Also draws ${qkDrawCount} card${qkDrawCount > 1 ? 's' : ''}.` : ''}` + apSuffix;
+    }
     case 'double_strike': {
       const hitMult = stats?.extras?.['hitMult'] ?? 75;
       return `Next attack card hits twice at ${hitMult}% power each.` + apSuffix;
@@ -211,11 +232,14 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     }
     case 'warcry': {
       const str = stats?.extras?.['str'] ?? 1;
-      return `QP: gain +${str} Clarity this turn. CC: gain Clarity permanently and next Charge costs 0 AP. L5: +3 Str permanent.` + apSuffix;
+      const warcryFree = (stats?.tags ?? []).includes('warcry_freecharge');
+      return `QP: gain +${str} Clarity this turn. CC: gain Clarity permanently${warcryFree ? ' and next Charge costs 0 AP' : ''}.` + apSuffix;
     }
     case 'battle_trance': {
       const drawCount = stats?.drawCount ?? 2;
-      return `Draw ${drawCount} cards. QP/CW: cannot play or Charge more cards this turn. CC: no restriction. L3: QP no longer locks out.` + apSuffix;
+      const tranceNoLock = (stats?.tags ?? []).includes('trance_no_lockout_qp');
+      const tranceCcAp1 = (stats?.tags ?? []).includes('trance_cc_ap1');
+      return `Draw ${drawCount} cards. ${tranceNoLock ? 'CW: cannot play more cards this turn. CC: no restriction.' : 'QP/CW: cannot play or Charge more cards this turn. CC: no restriction.'}${tranceCcAp1 ? ' L5: CC grants +1 AP.' : ''}` + apSuffix;
     }
     case 'frenzy': {
       const freeCards = stats?.extras?.['freeCards'] ?? 1;
@@ -236,14 +260,18 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     }
 
     // ── Debuff mechanics ──────────────────────────────────────────────────────
-    case 'weaken':
-      return `Apply ${power} Drawing Blanks. Enemy deals less damage.` + apSuffix;
-    case 'expose':
-      return `Apply ${power} Exposed. Enemy takes more damage.` + apSuffix;
+    case 'weaken': {
+      const weakenTurns = stats?.extras?.['turns'] ?? 1;
+      return `Apply ${power} Drawing Blanks for ${weakenTurns} turn${weakenTurns !== 1 ? 's' : ''}. Enemy deals less damage.` + apSuffix;
+    }
+    case 'expose': {
+      const exposeTurns = stats?.extras?.['turns'] ?? 1;
+      return `Apply ${power} Exposed for ${exposeTurns} turn${exposeTurns !== 1 ? 's' : ''}. Enemy takes more damage.` + apSuffix;
+    }
     case 'slow':
       return `Skip enemy's next defend or buff action.` + apSuffix;
     case 'hex': {
-      const turns = secondary ?? 3;
+      const turns = stats?.extras?.['turns'] ?? secondary ?? 3;
       return `Apply ${power} Doubt over ${turns} turns.` + apSuffix;
     }
     case 'stagger':
@@ -274,23 +302,30 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
 
     // ── Utility mechanics ─────────────────────────────────────────────────────
     case 'scout': {
-      const drawCount = Math.max(1, Math.floor((secondary as number | undefined) ?? power ?? 2));
+      const drawCount = stats?.drawCount ?? Math.max(1, Math.floor((secondary as number | undefined) ?? power ?? 2));
       return `Draw ${drawCount} extra card(s) this turn.` + apSuffix;
     }
-    case 'focus':
-      return `Next card costs 1 less AP to play.` + apSuffix;
+    case 'focus': {
+      const focusFree = (stats?.tags ?? []).includes('focus_ap0');
+      const focusNext2 = (stats?.tags ?? []).includes('focus_next2free');
+      return `Next card costs 1 less AP to play.${apSuffix}${focusFree ? ' (This card is free.)' : ''}${focusNext2 ? ' L5: next 2 cards cost 0 AP.' : ''}`;
+    }
     case 'recycle':
       return `Draw 3 cards.` + apSuffix;
     case 'foresight':
       return `Draw ${power} cards. Forget: removed from combat after use.` + apSuffix;
-    case 'transmute':
-      return `QP: Auto-transform into a random new card for this encounter. CC: Choose 1 of 3 new cards (2 at mastery 3+) for this encounter. CW: Auto-transform into a random card.` + apSuffix;
+    case 'transmute': {
+      const transChoices = stats?.extras?.['transforms'] === 2 ? 2 : 1;
+      return `QP: Auto-transform into a random new card for this encounter. CC: Choose 1 of 3 new cards (${transChoices === 2 ? '2' : '1'} at L5) for this encounter. CW: Auto-transform into a random card.${transChoices === 2 ? ' L5: transform 2 cards.' : ''}` + apSuffix;
+    }
     case 'sift': {
       const scryCount = stats?.extras?.['scryCount'] ?? 2;
       return `Look at top ${scryCount} cards of your draw pile and discard any. CC: look at more cards. L3+: also draw 1.` + apSuffix;
     }
-    case 'scavenge':
-      return `Put 1 card from your discard pile on top of your draw pile. CC: same effect. L2+: also draw 1. L5: costs 0 AP.` + apSuffix;
+    case 'scavenge': {
+      const scavPicks = stats?.extras?.['picks'] ?? 1;
+      return `Put ${scavPicks} card${scavPicks > 1 ? 's' : ''} from your discard pile on top of your draw pile. CC: same effect. L2+: also draw 1. L5: costs 0 AP.` + apSuffix;
+    }
     case 'swap': {
       const draws = stats?.drawCount ?? 1;
       return `Discard 1 card and draw ${draws} replacement (free). CC: draw 2 (3 at L3+). CW: discard 1, draw 1 (same as QP).` + apSuffix;
@@ -333,8 +368,12 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
       return `Next card's effect is doubled.` + apSuffix;
     case 'phase_shift':
       return `QP/CW: choose ${power} damage OR ${power} Block. CC: deal ${Math.round(power * 1.75)} damage AND gain the same Block.` + apSuffix;
-    case 'chameleon':
-      return `Copy the previous card's effect at 100% power (QP). CC: 130% power and inherit its chain type. CW: 70% power.` + apSuffix;
+    case 'chameleon': {
+      const chamQp = stats?.extras?.['qpMult'] ?? 70;
+      const chamCc = stats?.extras?.['ccMult'] ?? 100;
+      const chamCw = stats?.extras?.['cwMult'] ?? 40;
+      return `Copy the previous card's effect at ${chamQp}% power (QP). CC: ${chamCc}% power and inherit its chain type. CW: ${chamCw}% power.` + apSuffix;
+    }
     case 'dark_knowledge': {
       const dmgPerCurse = stats?.extras?.['dmgPerCurse'] ?? 2;
       return `Deal ${dmgPerCurse} damage per cursed fact in your deck. CC: higher multiplier. L5: also heal 1 HP per curse.` + apSuffix;
@@ -445,7 +484,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
   switch (mechanic.id) {
     // ── Attack ───────────────────────────────────────────────────────────────
     case 'strike': return `Deal ${power}`;
-    case 'multi_hit': return `${secondary ?? 3}× ${power} dmg`;
+    case 'multi_hit': return `${stats?.hitCount ?? secondary ?? 3}× ${power} dmg`;
     case 'heavy_strike': return `Deal ${power}`;
     case 'piercing': return `${power} pierce`;
     case 'reckless': return `${power} dmg, ${stats?.extras?.['selfDmg'] ?? secondary ?? 4} self`;
@@ -460,7 +499,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
       return `${hits}× ${power} dmg`;
     }
     case 'iron_wave': {
-      const sec = stats?.secondaryValue ?? 3;
+      const sec = stats?.secondaryValue ?? 5;
       return `${power} dmg +${sec} blk`;
     }
     case 'bash': return `${power} dmg +Vuln`;
@@ -474,12 +513,12 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
       return `${power} dmg +${bleed} L.Doubt`;
     }
     case 'kindle': {
-      const burn = stats?.secondaryValue ?? 2;
+      const burn = stats?.secondaryValue ?? 4;
       return `${power} dmg +${burn} B.Burn▶`;
     }
     case 'overcharge': return `${power} / CC×charges`;
     case 'riposte': {
-      const sec = stats?.secondaryValue ?? 3;
+      const sec = stats?.secondaryValue ?? 4;
       return `${power} dmg +${sec} blk`;
     }
     case 'siphon_strike': return `${power} drain`;
@@ -497,9 +536,9 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
 
     // ── Shield ───────────────────────────────────────────────────────────────
     case 'block': return `Gain ${power}`;
-    case 'thorns': return `Gain ${power}, refl ${secondary ?? 3}`;
+    case 'thorns': return `Gain ${power}, refl ${stats?.secondaryValue ?? secondary ?? 3}`;
     case 'fortify': return '50% block';  // 2026-04-11: resolver scales current block
-    case 'parry': return `Gain ${power}, draw`;
+    case 'parry': return `Gain ${power}, draw${(stats?.secondaryValue ?? 1) > 1 ? ' ' + (stats?.secondaryValue ?? 1) : ''}`;
     case 'brace': return 'Match telegraph';
     case 'cleanse': return 'Purge';
     case 'overheal': return `Gain ${power} ×2<50%`;
@@ -511,7 +550,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'guard': return `Gain ${power}`;
     case 'absorb': return `${power} blk, CC+draw`;
     case 'reactive_shield': {
-      const thorns = stats?.secondaryValue ?? 1;
+      const thorns = stats?.secondaryValue ?? 2;
       return `${power} blk +${thorns}▸`;
     }
     case 'aegis_pulse': return `${power} blk, CC+chain`;
@@ -564,7 +603,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'weaken': return `Weak ${power}`;
     case 'expose': return `Vuln ${power}`;
     case 'slow': return 'Skip action';
-    case 'hex': return `Doubt ${power}×${secondary ?? 3}`;
+    case 'hex': return `Doubt ${power}×${stats?.extras?.['turns'] ?? secondary ?? 3}`;
     case 'stagger': return 'Skip action';
     case 'corrode': return 'Strip blk +Weak';
     case 'curse_of_doubt': {
@@ -586,7 +625,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     }
 
     // ── Utility ──────────────────────────────────────────────────────────────
-    case 'scout': return `Draw ${power}`;
+    case 'scout': return `Draw ${stats?.drawCount ?? power ?? 1}`;
     case 'recycle': return 'Draw 3';
     case 'foresight': {
       // 10.2: use drawCount from mastery stat table, not qpValue (which is 0)
@@ -777,7 +816,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'strike':
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage')];
     case 'multi_hit': {
-      const hits = secondary ?? 3;
+      const hits = stats?.hitCount ?? secondary ?? 3;
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), num(hits), txt(' times')];
     }
     case 'heavy_strike':
@@ -807,11 +846,12 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), num(hits), txt('× hits')];
     }
     case 'iron_wave': {
-      const sec = stats?.secondaryValue ?? 3;
+      const sec = stats?.secondaryValue ?? 5;
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\nGain '), num(sec), txt(' '), kw('Block', 'block')];
     }
     case 'bash': {
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), kw('Vuln', 'vulnerable'), txt(' 1t')];
+      const bashTurns = (stats?.tags ?? []).includes('bash_vuln2t') ? 2 : 1;
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), kw('Vuln', 'vulnerable'), txt(` ${bashTurns}t`)];
     }
     case 'sap':
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), kw('Drawing Blanks', 'weakness'), txt(' 1t')];
@@ -824,13 +864,13 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       return [txt('Deal '), num(power), txt(' damage\n'), num(bleed), txt(' '), kw('Lingering Doubt', 'bleed')];
     }
     case 'kindle': {
-      const burn = stats?.secondaryValue ?? 2;
+      const burn = stats?.secondaryValue ?? 4;
       return [txt('Deal '), num(power), txt(' damage\n'), num(burn), txt(' '), kw('Brain Burn', 'burn'), txt(' ▶trigger')];
     }
     case 'overcharge':
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\nCC: ×charges')];
     case 'riposte': {
-      const sec = stats?.secondaryValue ?? 3;
+      const sec = stats?.secondaryValue ?? 4;
       return [txt('Deal '), num(power), txt(' damage\nGain '), num(sec), txt(' '), kw('Block', 'block')];
     }
     case 'siphon_strike': {
@@ -861,13 +901,15 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'block':
       return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block')];
     case 'thorns':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nReflect '), ...numWithSecondaryMastery(secondary ?? 3, mechanic.id, masteryLevel)];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nReflect '), ...numWithSecondaryMastery(stats?.secondaryValue ?? secondary ?? 3, mechanic.id, masteryLevel)];
     case 'fortify':
       // 2026-04-11 audit fix: resolver scales current block, not flat block.
       // Persistence only happens at L5 (fortify_carry tag).
       return [txt('50% Block'), txt('\nCC: 75% Block')];
-    case 'parry':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nDraw on hit')];
+    case 'parry': {
+      const parryDrawCount = stats?.secondaryValue ?? 1;
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nDraw '), num(parryDrawCount), txt(' on hit')];
+    }
     case 'brace':
       return [kw('Block', 'block'), txt('\n= enemy attack')];
     case 'overheal': {
@@ -891,7 +933,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'absorb':
       return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: draw 1')];
     case 'reactive_shield': {
-      const thorns = stats?.secondaryValue ?? 1;
+      const thorns = stats?.secondaryValue ?? 2;
       return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('\n'), num(thorns), txt(' '), kw('Thorns', 'thorns'), txt(' 1t')];
     }
     case 'aegis_pulse':
@@ -961,14 +1003,18 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     }
 
     // ── Debuffs ───────────────────────────────────────────────────────────────
-    case 'weaken':
-      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Drawing Blanks', 'weakness')];
-    case 'expose':
-      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Exposed', 'vulnerable')];
+    case 'weaken': {
+      const weakTurns = stats?.extras?.['turns'] ?? 1;
+      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Drawing Blanks', 'weakness'), txt(' '), num(weakTurns), txt('t')];
+    }
+    case 'expose': {
+      const expTurns = stats?.extras?.['turns'] ?? 1;
+      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Exposed', 'vulnerable'), txt(' '), num(expTurns), txt('t')];
+    }
     case 'slow':
       return [txt("Skip enemy's\nnext action")];
     case 'hex': {
-      const turns = secondary ?? 3;
+      const turns = stats?.extras?.['turns'] ?? secondary ?? 3;
       return [txt('Apply '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Doubt', 'poison'), txt('\n'), num(turns), txt(' turns')];
     }
     case 'stagger':
@@ -999,7 +1045,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
 
     // ── Utility ───────────────────────────────────────────────────────────────
     case 'scout': {
-      const drawCount = Math.max(1, Math.floor((secondary as number | undefined) ?? power ?? 2));
+      const drawCount = stats?.drawCount ?? Math.max(1, Math.floor((secondary as number | undefined) ?? power ?? 2));
       return [txt('Draw '), num(drawCount)];
     }
     case 'recycle':
@@ -1018,8 +1064,10 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       return [txt('Transform for encounter'), txt('\nCharge: choose 1/3')];
     case 'cleanse':
       return [txt('Purge debuffs\nDraw 1')];
-    case 'immunity':
-      return [txt('Absorb next hit\nup to '), num(power)];
+    case 'immunity': {
+      const immAbsorb = stats?.extras?.['absorb'] ?? 4;
+      return [txt('Absorb next hit\nup to '), num(immAbsorb)];
+    }
     case 'sift': {
       const sc = stats?.extras?.['scryCount'] ?? 2;
       return [txt('Scry '), num(sc), txt('\nDiscard any')];
