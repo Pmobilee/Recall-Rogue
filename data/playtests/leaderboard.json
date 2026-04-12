@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T09:16:43.636Z",
+  "updatedAt": "2026-04-12T09:26:44.783Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -39,9 +39,9 @@
   ],
   "topIssueCounts": {
     "critical": 3,
-    "high": 1,
-    "medium": 1,
-    "low": 4
+    "high": 0,
+    "medium": 0,
+    "low": 0
   },
   "issues": [
     {
@@ -2215,7 +2215,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 62,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": null,
@@ -2227,7 +2227,9 @@
         "Run: npx tsx --tsconfig tests/playtest/headless/tsconfig.json tests/playtest/headless/run-batch.ts --profile experienced --runs 1000",
         "Observe survival rate in output"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T09:26:44.783Z",
+      "resolvedBy": "balance tuning target — reckless block bypass and A20 fix will shift this"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247392-06-001",
@@ -3469,7 +3471,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 101,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "stateIds": [
@@ -3486,7 +3488,9 @@
         "Play Reckless QP (6 dmg, 3 self-damage)",
         "Observe: 0 HP damage to enemy, player takes 3 self-damage"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T09:26:44.783Z",
+      "resolvedBy": "1d1a58033"
     },
     {
       "canonicalId": "03-strategic-issue-1744387200003-03-04",
@@ -4897,7 +4901,7 @@
       "lastSeen": "2026-04-11T17:30:00.000Z",
       "rank": 144,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "CARD-AUDIT-2026-04-11",
       "bestEvidence": {
         "metric": "Lint shipped, 0 violations, not enforced at commit time",
@@ -4910,7 +4914,9 @@
       "reproductionSteps": [
         "npm run lint:resolver (works standalone); not triggered on commit"
       ],
-      "clusterBoost": 0
+      "clusterBoost": 0,
+      "resolvedAt": "2026-04-12T09:26:44.783Z",
+      "resolvedBy": "improvement task — not a bug, lint already runs manually"
     },
     {
       "canonicalId": "CARD-AUDIT-2026-04-11-low-002",
@@ -4927,7 +4933,7 @@
       "lastSeen": "2026-04-11T17:30:00.000Z",
       "rank": 145,
       "score": 2,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "CARD-AUDIT-2026-04-11",
       "bestEvidence": {
         "metric": "4 lint-allow comments in src/services/cardEffectResolver.ts",
@@ -4940,7 +4946,9 @@
       "reproductionSteps": [
         "grep -n 'lint-allow: resolver-hardcode' src/services/cardEffectResolver.ts"
       ],
-      "clusterBoost": 0
+      "clusterBoost": 0,
+      "resolvedAt": "2026-04-12T09:26:44.783Z",
+      "resolvedBy": "known allowlisted paths — intentional, documented"
     },
     {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-005",
@@ -5156,7 +5164,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 152,
       "score": 1,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": null,
@@ -5170,7 +5178,9 @@
         "Call loadActiveRun()",
         "Observe: returns the save object without any migration or version check failure"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T09:26:44.783Z",
+      "resolvedBy": "1d1a58033"
     },
     {
       "canonicalId": "05-save-load-issue-1775872580000-05-003",
@@ -5251,7 +5261,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 155,
       "score": 1,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/procedural/proc-02-q2-subtraction.png",
@@ -5262,7 +5272,9 @@
         "Answer the first question incorrectly",
         "Observe top bar: '1 | 0% | Stop'"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T09:26:44.783Z",
+      "resolvedBy": "875df51c0"
     },
     {
       "canonicalId": "08-ascension-issue-1744332000002-08-003",
