@@ -6,32 +6,9 @@ A 2D card roguelite knowledge game built with Vite + Svelte + TypeScript + Phase
 
 Before doing ANYTHING else in a fresh conversation, invoke the `/catchup` skill. Applies to the first message in every new chat, every `/clear`, every worktree session, every sub-agent spawn that starts a new orchestrator context. The only exception is when the user's first message IS a skill invocation. Do not announce it — just invoke, read, and respond.
 
-## 🚨 WORKTREES ARE MANDATORY FOR EVERY FILE-EDITING SUB-AGENT
+## Sub-Agent Dispatch
 
-**Every `Agent` dispatch for a file-editing sub-agent MUST pass `isolation: "worktree"`. There is no sequential carve-out, no "small change" exception, no "just this once."** A `PreToolUse` hook (`scripts/hooks/pre-tool-agent-worktree.sh`) enforces this — it will **BLOCK** any dispatch of `game-logic`, `ui-agent`, `content-agent`, `qa-agent`, or `docs-agent` that is missing `isolation: "worktree"`. You will see a loud error telling you to re-dispatch. This is not a warning; it is a hard refusal.
-
-**Read-only sub-agents are exempt**: `Explore`, `Plan`, `claude-code-guide`, `general-purpose`, `statusline-setup` pass through without isolation.
-
-**The orchestrator itself stays on `main`** for coordination, reading, verification, and direct edits to `.claude/`, `CLAUDE.md`, plans, and memory. Anything else — `src/`, `data/`, `docs/`, `scripts/`, `public/`, `tests/` — is delegated to a domain sub-agent, which runs in a worktree.
-
-**After a worktree sub-agent returns**, merge via:
-```
-scripts/merge-worktree.sh <worktree-path> <branch-name> "<merge-message>"
-```
-The script handles the `--no-ff` merge, removes the worktree, and deletes the one-time branch. If you forget, the `end-of-turn-check.sh` Stop hook warns about stray worktrees. Never leave a worktree behind.
-
-**Why this exists**: on 2026-04-11, three cross-session `git add` races produced bundled commits (`713ea981c`, `4a1ba6f5c`, `63995b4ce`) where one orchestrator's files were swept into another orchestrator's commit under a wrong title. Worktrees eliminate the race because each session has its own git index. Full rationale: `.claude/rules/git-workflow.md` → "Worktrees — MANDATORY for Every File-Editing Dispatch".
-
-**⚠️ Silent harness fallback (observed 2026-04-11, same day):** on at least one dispatch, the harness accepted `isolation: "worktree"` but silently fell back to shared `main` — no worktree created, no `WorktreeCreate` hook fired, and the sub-agent committed directly on main anyway. Two defences are now in place: (1) item 11 in the Sub-Agent Prompt Template forces a `git rev-parse --show-toplevel` self-check at task start that ABORTS if the agent is on main; (2) when the self-check aborts, the orchestrator retries via the **manual fallback procedure** that pre-creates the worktree via `scripts/setup-worktree.sh` and embeds the absolute `WT_PATH` in the next dispatch. Full procedure: `.claude/rules/git-workflow.md` → "Silent Harness Fallback — Manual Worktree Procedure".
-
-**Quick decision table:**
-
-| Agent type | `isolation: "worktree"`? |
-|---|---|
-| `game-logic`, `ui-agent`, `content-agent`, `qa-agent`, `docs-agent` | **YES — always** |
-| `Explore`, `Plan`, `claude-code-guide`, `general-purpose` | No (read-only) |
-| Orchestrator direct edits to `.claude/**`, `CLAUDE.md`, plans, memory | No (stays on `main`) |
-| Orchestrator direct edits to `src/`, `data/`, `docs/`, `scripts/`, `public/`, `tests/` | **DELEGATE** to a domain agent with worktree |
+File-editing sub-agents (`game-logic`, `ui-agent`, `content-agent`, `qa-agent`, `docs-agent`) work directly on `main`. Worktree isolation is **optional** — use `isolation: "worktree"` only when you need true git isolation (e.g. risky refactors, parallel agents editing overlapping files). For normal sequential work, dispatch without isolation.
 
 ## 🚨 Employee Mindset — First Principle
 
@@ -74,17 +51,6 @@ After cloning this repo, run `npm run hooks:install` once. It sets
 directly, eliminating the drift problem between the checked-in mirror and
 the `.git/hooks/` live copy. Skip this and you'll run the old unversioned
 hook. See `docs/gotchas.md` 2026-04-11 for the full story.
-
-## Parallel Agent Isolation (Hybrid Worktree Mode)
-When the orchestrator dispatches 2+ file-editing sub-agents simultaneously,
-each gets `isolation: "worktree"` for true git isolation. Sequential
-single-agent tasks work directly on `main`. The `WorktreeCreate` hook
-auto-bootstraps worktrees (symlinks `node_modules`, etc.) via
-`scripts/setup-worktree.sh`. After each agent returns, the orchestrator
-merges via `scripts/merge-worktree.sh`. Pre-commit hooks run in full
-blocking mode inside worktrees (no soft-warn needed — the tree is isolated).
-Fallback: set `RR_MULTI_AGENT=1` to soft-warn if agents must share `main`.
-See `.claude/rules/git-workflow.md` → "Worktrees — Automatic for Parallel Batches".
 
 ## Directory Structure
 ```

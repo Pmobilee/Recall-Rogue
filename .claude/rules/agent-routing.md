@@ -56,31 +56,6 @@ The orchestrator does NOT write game code — but DOES do all pre-implementation
 4. **Cross-domain tasks:** spawn one agent per domain. Never let one domain agent touch another's files.
 5. **Unrouted files:** assign to the closest domain agent, then update this table.
 
-## Worktrees — MANDATORY for File-Editing Dispatches
-
-**Every file-editing sub-agent dispatch uses an isolated worktree.** Read-only agents (Explore, review, search-only) never need worktrees.
-
-There are **two valid dispatch modes**, in order of preference:
-
-### Mode A — Harness-native `isolation: "worktree"` (preferred when it works)
-
-Pass `isolation: "worktree"` on the Agent tool call. The harness creates the worktree, fires the `WorktreeCreate` hook (which runs `scripts/setup-worktree.sh` to symlink `node_modules`), and dispatches the sub-agent inside. The sub-agent's item 11 worktree self-check confirms the harness honored the parameter.
-
-**If the self-check reports main** — the harness silently fell back (first observed 2026-04-11). The sub-agent aborts, and the orchestrator MUST retry via Mode B.
-
-### Mode B — Orchestrator-side manual fallback
-
-The orchestrator creates the worktree directly and embeds its absolute path in the sub-agent prompt. Used when Mode A fails or when the harness behavior is unknown. Full procedure in `.claude/rules/git-workflow.md` → "Silent Harness Fallback — Manual Worktree Procedure".
-
-### After any worktree agent returns
-
-1. Verify changes: `git -C <worktree_path> log main..HEAD --oneline`
-2. Run ground-truth verification (same as Post-Sub-Agent Verification below, but in the worktree)
-3. Merge: `scripts/merge-worktree.sh <worktree-path> <branch-name> "<merge-message>"`
-4. The script handles `--no-ff` merge, worktree removal, and branch cleanup
-
-**Worktree agents own the full build.** A worktree agent has a clean isolated tree. It runs full `npm run typecheck`, `npm run build`, and relevant tests — no "own-files-only" scoping. Pre-commit hooks run in full blocking mode.
-
 ## Sub-Agent Prompt Template — Canonical
 
 **This is the only source of the Sub-Agent Prompt Template.** Every sub-agent prompt MUST include every item below. Agent definitions MUST NOT re-state this list — they reference this template.
@@ -89,7 +64,7 @@ The orchestrator creates the worktree directly and embeds its absolute path in t
 2. **Read first.** "Read relevant docs under `docs/` BEFORE writing code. Navigate via `docs/INDEX.md`."
 3. **Docs same-commit.** "After changes, update the same doc files. Docs-first is non-negotiable; see `.claude/rules/docs-first.md`."
 4. **Tasks.** "Break work into granular `TaskCreate` tasks before starting. `TaskList` must be empty before delivering. See `.claude/rules/task-tracking.md`."
-5. **Build & test.** "You are running in an isolated worktree on a clean one-time branch. Run full `npm run typecheck`, `npm run build`, and relevant unit tests — you own every failure in your tree because no other agent is editing it. No 'own-files-only' scoping applies; that carve-out belonged to the retired shared-main dispatch mode. See `.claude/rules/testing.md`."
+5. **Build & test.** "Run `npm run typecheck`, `npm run build`, and relevant unit tests after your implementation. See `.claude/rules/testing.md`."
 6. **Visual verify — ONLY when visual.** "Run Docker visual verification per `.claude/rules/testing.md` → Visual Verify — Scoped. Run it only when the change could actually be seen by the player (UI, sprites, shaders, CSS, card/enemy data the combat screen reads, content text). Skip it for lint/test/doc/script edits and pure-TypeScript refactors. Don't burn 50–60s on a cold Docker boot for a change that has zero visual surface."
 7. **Output sampling.** "After ANY batch operation or content edit, sample 5–10 items and READ them back. Sub-agents produce broken output ~15–20% of the time — catch it before delivering."
 8. **Employee mindset.** "Follow `.claude/rules/employee-mindset.md` (single file covering Autonomy Ladder, Never Defer, Finished-Work Checklist, Clarification Bar, PX Lens, Creative Pass, What's Next). Default to action, not interrogation. Fix Green-zone issues in the same commit. Creative Pass + What's Next are required ONLY on non-trivial tasks — skip for mechanical single-purpose edits."
@@ -103,8 +78,7 @@ The orchestrator creates the worktree directly and embeds its absolute path in t
     - **Build / typecheck** → the final `ERRORS N WARNINGS M` line (or the full error list if non-zero)
 
     If you cannot verify a claim, say so explicitly: 'unable to verify X because Y'. Returning a success summary without a `## Self-Verification` section for data-mutating claims is a hard failure — the orchestrator will re-run ground-truth checks regardless, and a missing self-verification section is treated as evidence the work did not land. See `docs/gotchas.md` 2026-04-11 for the sub-agent stamping incident that prompted this rule."
-11. **Worktree self-check (MANDATORY, first Bash call before ANY edit).** "If the dispatch prompt embedded an explicit worktree path (`WT_PATH=/tmp/rr-wt-...`), `cd` into it first. Then run `git rev-parse --show-toplevel && git rev-parse --abbrev-ref HEAD` and paste the raw output at the top of your `## Self-Verification` section. **If the toplevel resolves to `/Users/damion/CODE/Recall_Rogue` AND the branch is `main`, the harness silently fell back from worktree isolation.** ABORT IMMEDIATELY — do NOT edit any files, do NOT commit, do NOT delegate. Return a single-line message: `ABORTED: silent worktree fallback at task start — orchestrator must retry via manual fallback (.claude/rules/git-workflow.md → Silent Harness Fallback)`. The orchestrator will re-dispatch via the manual fallback procedure. This check exists because on 2026-04-11 a ui-agent dispatched with `isolation: \"worktree\"` silently committed directly on main with no worktree ever created; the harness parameter was accepted but not honored. Full incident: `docs/gotchas.md` 2026-04-11 — silent worktree fallback."
-12. **The specific task description.**
+11. **The specific task description.**
 
 ## Post-Sub-Agent Verification — MANDATORY
 

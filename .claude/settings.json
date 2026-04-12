@@ -27,17 +27,7 @@
         ]
       }
     ],
-    "PreToolUse": [
-      {
-        "matcher": "Agent",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "scripts/hooks/pre-tool-agent-worktree.sh"
-          }
-        ]
-      }
-    ],
+    "PreToolUse": [],
     "PostToolUse": [
       {
         "matcher": "Write|Edit|MultiEdit",
