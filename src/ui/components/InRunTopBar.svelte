@@ -701,7 +701,7 @@
      ============================================================ */
   .segment-name {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(10px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.85);
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -710,7 +710,7 @@
 
   .floor-label {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(10px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.6);
     white-space: nowrap;
   }
@@ -755,7 +755,7 @@
 
   .gold-value {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
     font-weight: 700;
     color: #fbbf24;
     line-height: 1;

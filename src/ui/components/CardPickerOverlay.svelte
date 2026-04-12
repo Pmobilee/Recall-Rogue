@@ -335,6 +335,8 @@
   }
 
   .btn-skip {
+    /* TEMP: hidden per user request 2026-04-12 */
+    display: none;
     padding: calc(10px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -378,6 +380,8 @@
   }
 
   .btn-skip-remaining {
+    /* TEMP: hidden per user request 2026-04-12 */
+    display: none;
     padding: calc(10px * var(--layout-scale, 1)) calc(22px * var(--layout-scale, 1));
     background: rgba(246, 213, 125, 0.12);
     border: 1px solid rgba(246, 213, 125, 0.35);
