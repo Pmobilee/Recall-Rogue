@@ -3,6 +3,8 @@
 > TEMPORARY FOLDER. DELETE THIS ENTIRE FOLDER after all specs are implemented and the
 > relevant sections of `docs/mechanics/` and `docs/ui/` have been updated to reflect
 > the new systems.
+>
+> **Near-complete: 8 of 9 specs done. Only spec 04 (Floor Descent Ceremony) UI pass remains before this folder can be deleted.**
 
 ## Prerequisite Reading
 

@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-11
+> **Last rebuilt:** 2026-04-12
 
 ---
 
@@ -66,7 +66,7 @@
 
 ## Immersion Overhaul (Temporary)
 
-> **DELETE THIS SECTION** after all specs are implemented and main docs updated.
+> **DELETE THIS SECTION** after all specs are implemented and main docs updated. (8/9 complete — only 04 Floor Descent UI pending)
 
 | Doc | Summary |
 |-----|---------|

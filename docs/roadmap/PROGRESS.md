@@ -7,7 +7,7 @@
 
 ## Current Status
 
-**Playable pre-launch build.** AR-01 through AR-16 core gameplay/content infrastructure is complete. AR-20 and AR-21 social/monetization runtime wiring is complete. AR-22 through AR-26 game design overhaul is complete (rename to Recall Rogue, 24-floor run structure, balance/UX pass, push notifications, doc overhaul). AR-32 mobile performance/snappiness pass is complete. AR-33 mobile interaction frame-pacing pass is active.
+**Playable pre-launch build.** AR-01 through AR-16 core gameplay/content infrastructure is complete. AR-20 and AR-21 social/monetization runtime wiring is complete. AR-22 through AR-26 game design overhaul is complete (rename to Recall Rogue, 24-floor run structure, balance/UX pass, push notifications, doc overhaul). AR-32 mobile performance/snappiness pass is complete. AR-33 mobile interaction frame-pacing status: [verify].
 
 **Recent completed phases (March 9-10, 2026):**
 - AR-22 Global rename from "Arcane Recall" to "Recall Rogue" across all files.
@@ -35,7 +35,7 @@
 - Duel networking hardening: Duel UI now routes challenge/pending/history/friend flows through `duelService` + `socialService` instead of ad-hoc fetch calls, improving error consistency and reducing duplicated auth logic.
 - Trade/referral hardening: server now registers `/api/trading` and `/api/referrals`; trade/referral/feedback UIs now call shared services (`tradingService`, `referralService`, `feedbackService`) with normalized auth/error handling and compatibility payload mapping.
 
-**Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
+**Next up:** Steam Windows release is imminent — build pipeline, store page, and error handling are complete. Immersion overhaul is 8/9 done (spec 04 UI pending). Content pipeline (AR-17/AR-19 worker runs, visual descriptions, ComfyUI art) continues in its separate workstream.
 
 **Parallel workstreams (separate from core engineering):**
 - Visual descriptions regeneration (AR-11 Part C + AR-18 visual theming) is handled in a dedicated content-art stream.
@@ -50,10 +50,17 @@
 - **AR-17:** Worker fact generation engine tooling is complete and in active worker execution.
 - **AR-18:** Vocabulary tooling/UI wiring is complete; full corpus generation and themed visuals remain in progress.
 - **AR-19:** QA/promotion tooling is complete; production-scale worker output review, visual descriptions, and ComfyUI art passes remain in progress.
-- **AR-33:** Mobile interaction frame-pacing pass (combat drag + timer cadence optimization) is in progress. Spec: `docs/roadmap/phases/AR-33-MOBILE-INTERACTION-FRAME-PACING.md`.
+- **AR-33:** Mobile interaction frame-pacing pass — [verify status]; no completion spec found in `completed/`.
 - ~~**AR-34:** Content pipeline spec alignment~~ ✅ COMPLETE — Entity curation (B.1-B.6), generation workflow (C.1-C.3), 11-gate validation (D.1-D.2), pilot verified. 4,847 curated entities across 10 domains. → [Spec](completed/AR-34-CONTENT-PIPELINE-SPEC-ALIGNMENT.md)
-- **AR-35:** Combat UI card size & background pass — nearly double card size in hand, move AP orb up, stretch overlay background to full viewport height. → [Spec](phases/AR-35-COMBAT-UI-CARD-SIZE.md)
-- **AR-38:** Knowledge Fact Generation Round 1 — 100 validated facts per domain across all 10 domains (1,000 total). Curated entity pipeline → Sonnet workers → 11-gate validation. → [Spec](phases/AR-38-KNOWLEDGE-FACT-GENERATION-ROUND-1.md)
+- ~~**AR-35:** Combat UI card size & background pass~~ ✅ COMPLETE — Cards doubled in hand, AP orb repositioned, overlay background stretched. → [Spec](completed/AR-35-COMBAT-UI-CARD-SIZE.md)
+- ~~**AR-38:** Knowledge Fact Generation Round 1~~ ✅ COMPLETE — 100+ validated facts per domain shipped across curated deck pipeline. → [Spec](completed/AR-38-KNOWLEDGE-FACT-GENERATION-ROUND-1.md)
+
+**Recent major completions (April 2026, not yet reflected above):**
+- **Steam Windows release prep** — Cross-platform Tauri build (cargo-xwin), SteamPipe CI workflow, store page copy, capsule art, screenshot pipeline, production error handling + crash overlay, save data hardening.
+- **24 Steam achievements** — Full achievement set wired including 6 learning-progression achievements added 2026-04-12. → Commits `67d4c17a8`, `dc503937c`
+- **Dungeon immersion overhaul** — 8 of 9 specs complete (turn breathing, enemy entrance, chain escalation, knowledge-reactive dungeon, weapon-impact sync, foreground parallax, background micro-animation, dynamic mood). Spec 04 (Floor Descent UI) remains.
+- **v3 save hardening** — Confusion matrix cap, settings migration completeness, ReviewState backfill, run version guard. → Commit `5c0336291`
+- **Minor issues sweep 2026-04-11** — 14 bugs: lobby content picker redesign, card-pick animation, AP counter, co-op intent sync, status-effect study-theme rename, deck viewer overlay. → [Spec](completed/MINOR-SWEEP-2026-04-11.md)
 
 ---
 
