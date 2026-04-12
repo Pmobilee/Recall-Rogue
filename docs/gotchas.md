@@ -1,5 +1,15 @@
 
 
+### 2026-04-12 — Combat with curated deckId used wrong fact pool
+
+**What:** Starting combat with a curated `deckId` (via scenario simulator or study deckMode) built the run pool from the entire trivia DB (knowledge decks) or all language facts (language decks). The `deckId` only stamped a domain label — it never filtered the actual fact pool. Chess decks showed Hindu tradition questions; grammar decks showed kanji meaning questions; Famous Paintings showed random trivia.
+
+**Root cause:** `encounterBridge.ts` → `ensureActiveRunPool()` used `buildGeneralRunPool()` or `buildLanguageRunPool()` for study deckMode, neither of which filtered to the specific deck. Zero ID overlap between factsDB integer IDs and curated deck string IDs meant the chain distribution comment already acknowledged the mismatch but nothing acted on it.
+
+**Fix:** New `buildCuratedDeckRunPool()` in `presetPoolBuilder.ts` converts `DeckFact` → `Fact` adapters with the deck's own string IDs, then feeds them through the standard card creation pipeline. Applied to `study`, `custom_deck`, and `study-multi` branches. Cards now carry curated deck fact IDs, so `lookupFact()` resolves them via the curatedDeckStore fallback.
+
+**Also fixed:** 7,166 Wikipedia/Wikidata seed facts had empty `category[0]` arrays, making them invisible to `getByCategory()`. Added `categoryL1` → display name fallback in `factsDB.ensureIndexes()`. Added `social_sciences` domain mapping and `'Food & Cuisine'` variant to `DOMAIN_TO_CATEGORY`.
+
 ### 2026-04-12 — check-human-prose.mjs broken in git worktrees + JSDoc false positives
 
 **Bug A — `.git` is a file in worktrees, not a directory.**

@@ -107,6 +107,10 @@ Facts in this domain should have `categoryL1: 'sports_entertainment'` or `catego
 
 `GENERAL_MODE_DOMAINS` in `presetPoolBuilder.ts` also excludes `mathematics` (along with `language`, `geography`, `geography_drill`) so trivia runs never attempt to query math facts.
 
+`DOMAIN_TO_CATEGORY` in `presetPoolBuilder.ts` maps domain IDs to the display-name strings used in `factsDB`'s category index. All 13 knowledge domains are mapped (including `social_sciences`). The `food_cuisine` entry includes both `'Food & World Cuisine'` and `'Food & Cuisine'` variants for backward compatibility with older bridge data.
+
+**`categoryL1` fallback in factsDB:** ~7,100 seed facts from Wikipedia/Wikidata have empty `category[0]` arrays but valid `categoryL1` fields. The `topCategoryIndex` in `factsDB.ts` falls back to a `categoryL1 → display name` mapping when `category[0]` is empty, ensuring these facts are findable by `getByCategory()`. This was fixed 2026-04-12 — before the fix, these seed facts were invisible to Trivia Dungeon.
+
 `sports_entertainment` is included by `getKnowledgeDomains()` — it is a standard knowledge domain for trivia dungeon use. The FIFA World Cup deck provides the first 181 facts. The `comingSoon` flag should be removed from `domainMetadata.ts` once the trivia dungeon pool is large enough for good variety (recommend: 500+ facts across 3+ decks).
 
 ---

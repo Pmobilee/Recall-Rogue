@@ -84,14 +84,15 @@ Fact selection → question formatting → answer grading → FSRS schedule upda
 
 ### Step 1: Fact selection for combat (`encounterBridge.startEncounterForRoom`)
 
-Run pool is built by one of three builders depending on `run.deckMode`:
-- `buildGeneralRunPool(reviewStates, opts)` — general knowledge, weighted by FSRS due dates
-- `buildPresetRunPool(domainSelections, reviewStates, opts)` — preset deck domains
-- `buildLanguageRunPool(languageCode, reviewStates, opts)` — language-only facts
+Run pool is built by one of four builders depending on `run.deckMode`:
+- `buildGeneralRunPool(reviewStates, opts)` — general knowledge ("All Topics" trivia), weighted by FSRS due dates
+- `buildPresetRunPool(domainSelections, reviewStates, opts)` — preset deck domains (trivia with selected domains)
+- `buildLanguageRunPool(languageCode, reviewStates, opts)` — all-language mode (all decks for a language)
+- `buildCuratedDeckRunPool(deckId, subDeckId, reviewStates, opts)` — single curated deck combat (converts `DeckFact` → `Fact` adapters so quiz questions come exclusively from the selected deck)
 
 The run pool (`activeRunPool: Card[]`) is persisted in `encounterBridge` for the duration of the run.
 
-Each card in the hand carries a `factId` linking it to a `Fact` record in `factsDB`.
+Each card in the hand carries a `factId` linking it to a `Fact` record in `factsDB` (trivia runs) or `curatedDeckStore` (curated deck runs — `lookupFact` falls back to the curated store when the ID isn't found in `factsDB`).
 
 ### Step 2: Quiz fact retrieval
 
