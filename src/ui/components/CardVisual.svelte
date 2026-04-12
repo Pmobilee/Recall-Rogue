@@ -305,7 +305,7 @@
   /* Effect description text box */
   .v2-effect-text {
     font-family: 'Kreon', 'Georgia', serif;
-    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.115);
+    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.085);
     font-weight: 600;
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -323,16 +323,16 @@
   }
 
   .v2-effect-text.effect-text-md {
-    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.093);
+    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.078);
   }
 
   .v2-effect-text.effect-text-sm {
-    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.076);
+    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.070);
     line-height: 1.2;
   }
 
   .v2-effect-text.effect-text-xs {
-    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.062);
+    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.058);
     line-height: 1.15;
   }
 
