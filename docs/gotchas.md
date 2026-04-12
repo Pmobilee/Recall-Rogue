@@ -1,5 +1,15 @@
 
 
+### 2026-04-12 — Music restarts after user pauses via MusicWidget
+
+**What:** Player clicks pause in MusicWidget during a run. On the next screen transition (map→combat, combat→reward, etc.), music restarts from scratch. Separately, changing volume/mute in the pause menu (CampfirePause quick settings) during a crossfade had no effect — the 5-second fade-in interval continuously overwrote `HTMLAudioElement.volume`.
+
+**Why:** `musicService.startWithFadeIn()` only guarded on `_isPlaying` — user-initiated pause set `_isPlaying = false`, so the `$effect` in `CardApp.svelte` that fires on every in-run screen change called `startWithFadeIn()` and it passed the guard. For the settings bug, `crossfadeIn()` captured `target = get(musicVolume)` once and ran a `setInterval` for the full fade duration — the `musicVolume.subscribe()` callback in `init()` set `audio.volume = vol` but the very next interval tick overwrote it.
+
+**Fix:** Added `_userPaused` flag to MusicService — set on pause, cleared on play/new-run. `startWithFadeIn()` and `startIfNotPlaying()` now return early if `_userPaused`. Stored the crossfade interval ID as `_crossfadeInterval` class field; volume/enabled subscriptions cancel it before applying the new value.
+
+
+
 ### 2026-04-12 — Combat with curated deckId used wrong fact pool
 
 **What:** Starting combat with a curated `deckId` (via scenario simulator or study deckMode) built the run pool from the entire trivia DB (knowledge decks) or all language facts (language decks). The `deckId` only stamped a domain label — it never filtered the actual fact pool. Chess decks showed Hindu tradition questions; grammar decks showed kanji meaning questions; Famous Paintings showed random trivia.

@@ -276,11 +276,12 @@ AnalyserNode is connected after `element.play()` starts (Safari compatibility �
 ### Features
 
 - **Two categories**: Epic (combat) and Lo-Fi/Quiet (ambient) — user toggles via MusicWidget. Category label shown as EPIC / LO-FI in the widget; internal key is `'quiet'` for the Lo-Fi category.
-- **Crossfade**: Sequential 1.5s fade-out → 1.5s fade-in (no overlap). `HTMLAudioElement.volume` ramped via `requestAnimationFrame`.
+- **Crossfade**: Sequential 1.5s fade-out → 1.5s fade-in (no overlap). `HTMLAudioElement.volume` ramped via `requestAnimationFrame`. The crossfade interval is stored as a class field (`_crossfadeInterval`) and cancelled immediately when `musicVolume`/`musicEnabled` stores change, so settings adjustments during a fade take instant effect.
 - **Run start fade-in**: `startWithFadeIn(5000)` provides a 5-second gentle fade-in when entering a run.
+- **User-pause persistence**: `togglePlayPause()` sets a `_userPaused` flag. `startWithFadeIn()` and `startIfNotPlaying()` check this flag — screen transitions within a run cannot restart music the player explicitly paused. `resetUserPause()` clears the flag on new-run start (via `$effect` in `CardApp.svelte`).
 - **Shuffle queue**: Fisher-Yates with back-to-back repeat avoidance. Only playable tracks enter the queue (see Jukebox below).
 - **AnalyserNode**: 32 frequency bins at 60fps for spectrogram visualiser in MusicWidget
-- **Volume / mute**: Single source of truth is `musicVolume` / `musicEnabled` Svelte stores from `cardAudioManager`. `musicService` subscribes to these — never duplicates its own mute state.
+- **Volume / mute**: Single source of truth is `musicVolume` / `musicEnabled` Svelte stores from `cardAudioManager`. `musicService` subscribes to these — never duplicates its own mute state. Both subscriptions cancel any active `_crossfadeInterval` before applying the new volume/enabled value.
 - **Persistence**: Volume, mute, category saved to `localStorage` key `music_prefs`
 - **User gesture gating**: AudioContext created lazily; `startIfNotPlaying()` is a no-op until `unlock()` is called from a user gesture handler
 - **Ambient coexistence**: Calls `ambientAudio.setMusicCoexistence(true/false)` to duck ambient layers when music plays

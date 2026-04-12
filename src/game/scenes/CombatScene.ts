@@ -74,12 +74,13 @@ const ENEMY_SIZE_BOSS = 400
 
 /**
  * Enemy display sizes for LANDSCAPE mode, in absolute game units (NOT multiplied by scaleFactor).
- * The right 30% panel is 384px at 1280 game width. Enemy must fit comfortably within it.
- * These are raw pixel values used directly without scaleFactor multiplication.
+ * Scaled to canvas by (w / LANDSCAPE_BASE_WIDTH) at runtime — at 1920px that is 1.5x.
+ * Sizes increased ~30% so enemies fill the screen prominently (600/720/840px at 1920px normal).
+ * During quiz (0.85x scale via slideEnemyForQuiz): 510/612/714px.
  */
-const LANDSCAPE_ENEMY_SIZE_COMMON = 300
-const LANDSCAPE_ENEMY_SIZE_ELITE = 360
-const LANDSCAPE_ENEMY_SIZE_BOSS = 420
+const LANDSCAPE_ENEMY_SIZE_COMMON = 400
+const LANDSCAPE_ENEMY_SIZE_ELITE = 480
+const LANDSCAPE_ENEMY_SIZE_BOSS = 560
 
 /** Color constants. */
 const COLOR_HP_RED = 0xe74c3c

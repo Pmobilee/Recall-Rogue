@@ -120,6 +120,7 @@
   import { languageService } from './services/languageService'
   import { getDueReviews, playerSave, persistPlayer } from './ui/stores/playerData'
   import { authStore } from './ui/stores/authStore'
+  import { devMode } from './ui/stores/devMode'
   import { lastRunSummary } from './services/hubState'
   import { factsDB } from './services/factsDB'
   import { initializeCuratedDecks } from './data/curatedDeckStore'
@@ -1145,6 +1146,17 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
   })
 
+  // Reset user-pause flag when entering a run, so music starts fresh.
+  // Uses a local tracker to fire only on the null → non-null transition.
+  let prevHadActiveRun = false
+  $effect(() => {
+    const hasRun = $activeRunState !== null
+    if (hasRun && !prevHadActiveRun) {
+      musicService.resetUserPause()
+    }
+    prevHadActiveRun = hasRun
+  })
+
   function nextSegmentName(floor: number): string {
     if (floor < 3) return 'Shallow Depths'
     if (floor < 6) return 'Deep Dungeon'
@@ -1578,10 +1590,11 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       onclick={handlePause}
       aria-label="Pause"
     ><span class="pause-icon" aria-hidden="true"></span></button>
-    {#if import.meta.env.DEV}
+    {#if $devMode}
       <button
         type="button"
         class="dev-skip-btn"
+        data-dev-only="true"
         onclick={() => devForceEncounterVictory()}
       >&#x23ED; Skip</button>
     {/if}

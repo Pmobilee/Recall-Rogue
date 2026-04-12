@@ -40,6 +40,15 @@ class MusicService {
   private _userGestureReceived = false
   /** Duration for the next crossfadeIn call — reset to CROSSFADE_MS after use. */
   private _fadeInDuration: number = CROSSFADE_MS
+  /**
+   * Set to true when the user explicitly pauses via MusicWidget.togglePlayPause().
+   * startWithFadeIn() and startIfNotPlaying() respect this flag so screen transitions
+   * within a run do not restart music the user deliberately silenced.
+   * Reset by resetUserPause() when a NEW run begins.
+   */
+  private _userPaused = false
+  /** Active crossfade-in interval, stored so user volume changes can cancel it immediately. */
+  private _crossfadeInterval: ReturnType<typeof setInterval> | null = null
 
   private shuffleQueue: MusicTrack[] = []
   private listeners = new Set<() => void>()
@@ -60,6 +69,8 @@ class MusicService {
     return this._userGestureReceived && this.ctx != null && this.ctx.state !== 'suspended'
   }
   get isPreviewing(): boolean { return this._isPreviewing }
+  /** True when the user has explicitly paused via the MusicWidget. See resetUserPause(). */
+  get userPaused(): boolean { return this._userPaused }
 
   // ─── Initialisation ───────────────────────────────────────────────────────
 
@@ -72,13 +83,23 @@ class MusicService {
     this.analyser.smoothingTimeConstant = 0.75
     this.analyser.connect(this.ctx.destination)
 
-    // Sync volume from settings stores
+    // Sync volume from settings stores.
+    // IMPORTANT: Cancel any active crossfade before applying the new volume — this ensures
+    // volume slider changes during a 5-second fade-in take immediate precedence (Fix 3).
     musicVolume.subscribe(vol => {
+      if (this._crossfadeInterval) {
+        clearInterval(this._crossfadeInterval)
+        this._crossfadeInterval = null
+      }
       if (this.currentAudio && get(musicEnabled)) {
         this.currentAudio.volume = vol
       }
     })
     musicEnabled.subscribe(enabled => {
+      if (this._crossfadeInterval) {
+        clearInterval(this._crossfadeInterval)
+        this._crossfadeInterval = null
+      }
       if (this.currentAudio) {
         this.currentAudio.volume = enabled ? get(musicVolume) : 0
       }
@@ -177,16 +198,24 @@ class MusicService {
 
   /** Crossfade audio.volume from 0 → target over _fadeInDuration ms (then resets to default). */
   private crossfadeIn(audio: HTMLAudioElement): void {
+    // Cancel any in-progress crossfade before starting a new one
+    if (this._crossfadeInterval) {
+      clearInterval(this._crossfadeInterval)
+      this._crossfadeInterval = null
+    }
     const duration = this._fadeInDuration
     this._fadeInDuration = CROSSFADE_MS  // reset to default after use
     const target = get(musicEnabled) ? get(musicVolume) : 0
     const steps = 30
     const stepMs = duration / steps
     let step = 0
-    const interval = setInterval(() => {
+    this._crossfadeInterval = setInterval(() => {
       step++
       audio.volume = Math.min(1, (step / steps) * target)
-      if (step >= steps) clearInterval(interval)
+      if (step >= steps) {
+        clearInterval(this._crossfadeInterval!)
+        this._crossfadeInterval = null
+      }
     }, stepMs)
   }
 
@@ -308,27 +337,32 @@ class MusicService {
     this._userGestureReceived = true
     console.log(`[Music] togglePlayPause: playing=${this._isPlaying}, track=${this._currentTrack?.title ?? 'none'}`)
     if (!this._currentTrack) {
+      this._userPaused = false
       void this.playCategory(this._currentCategory)
       return
     }
     if (this._isPlaying && this.currentAudio) {
       this.currentAudio.pause()
       this._isPlaying = false
+      this._userPaused = true
       ambientAudio.setMusicCoexistence(false)
       this.notify()
     } else if (this.currentAudio) {
+      this._userPaused = false
       void this.currentAudio.play().then(() => {
         this._isPlaying = true
         ambientAudio.setMusicCoexistence(true)
         this.notify()
       })
     } else {
+      this._userPaused = false
       void this.playCategory(this._currentCategory)
     }
   }
 
-  /** Start playback if not already playing. No-op without prior user gesture. */
+  /** Start playback if not already playing. No-op without prior user gesture or user-initiated pause. */
   startIfNotPlaying(): void {
+    if (this._userPaused) return
     if (this._isPlaying) return
     if (!this._userGestureReceived) return
     void this.playCategory(this._currentCategory)
@@ -336,13 +370,25 @@ class MusicService {
 
   /**
    * Start playback with a slow fade-in. Used at run start for a gentle intro.
-   * No-op if already playing or no user gesture has been received.
+   * No-op if already playing, no user gesture received, or user has explicitly paused.
+   * The user-pause guard prevents screen transitions within a run from restarting
+   * music the player deliberately silenced. Call resetUserPause() when a NEW run begins.
    */
   startWithFadeIn(durationMs: number): void {
+    if (this._userPaused) return
     if (this._isPlaying) return
     if (!this._userGestureReceived) return
     this._fadeInDuration = durationMs
     void this.playCategory(this._currentCategory)
+  }
+
+  /**
+   * Clear the user-pause flag so startWithFadeIn/startIfNotPlaying will resume normally.
+   * Call this when a NEW run begins (not between screens within a run), so music plays
+   * fresh for the next run even if the player paused during the previous one.
+   */
+  resetUserPause(): void {
+    this._userPaused = false
   }
 
   /** Fade out to silence and stop. */

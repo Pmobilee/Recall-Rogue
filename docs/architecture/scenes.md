@@ -87,7 +87,7 @@ Renders the combat display zone (top ~58% of viewport in portrait, full canvas i
 
 **Layout constants (portrait):** `DISPLAY_ZONE_HEIGHT_PCT = 0.58`, `ENEMY_X_PCT = 0.50`, enemy sizes 300/340/400px scaled by `scaleFactor (w/BASE_WIDTH)`.
 
-**Layout constants (landscape, `LANDSCAPE` object):** enemy centered at `ENEMY_X_PCT: 0.50`, slides to `0.79` during quiz. During quiz, enemy scales to `0.6875` (25% larger than the previous `0.55`). HP bar sits at `ENEMY_HP_Y_PCT: 0.14` (moved up from 0.155). `ENEMY_HP_BAR_H = 14` (increased from 12 for more text room). Enemy name offset below sprite is `24px * scaleFactor` (increased from 12px). HP text font scales with `barScale` during quiz so text fits inside the shrunken bar. Enemy sizes are absolute game units (300/360/420px). In `repositionAll()`, the enemy sprite container is scaled by `w / LANDSCAPE_BASE_WIDTH` (1280) so sprites maintain proportional size across viewport changes.
+**Layout constants (landscape, `LANDSCAPE` object):** enemy centered at `ENEMY_X_PCT: 0.50`, slides to `0.79` during quiz. During quiz, enemy scales to `0.6875` (25% larger than the previous `0.55`). HP bar sits at `ENEMY_HP_Y_PCT: 0.14` (moved up from 0.155). `ENEMY_HP_BAR_H = 14` (increased from 12 for more text room). Enemy name offset below sprite is `24px * scaleFactor` (increased from 12px). HP text font scales with `barScale` during quiz so text fits inside the shrunken bar. Enemy sizes are absolute game units (400/480/560px). In `repositionAll()`, the enemy sprite container is scaled by `w / LANDSCAPE_BASE_WIDTH` (1280) so sprites maintain proportional size across viewport changes.
 
 ### RewardRoomScene
 
