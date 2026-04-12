@@ -45,7 +45,7 @@ import {
   resolveEncounterStartEffects,
   resolveBaseDrawCount,
 } from './relicEffectResolver';
-import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool } from './presetPoolBuilder'
+import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool, buildCuratedDeckRunPool } from './presetPoolBuilder'
 import { getCuratedDeck, getCuratedDeckFact, getCuratedDeckFacts } from '../data/curatedDeckStore'
 import type { FactDomain } from '../data/card-types'
 import { turboDelay } from '../utils/turboMode'
@@ -522,41 +522,15 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
             chainDistribution: run.chainDistribution,
           });
         } else {
-          // Single curated deck.
-          // Check if it's a vocabulary deck (ID starts with a known language prefix).
-          const LANG_PREFIX_TO_CODE: Record<string, string> = {
-            japanese: 'ja', korean: 'ko', chinese: 'zh', mandarin: 'zh',
-            spanish: 'es', french: 'fr', german: 'de', dutch: 'nl',
-            czech: 'cs', portuguese: 'pt', italian: 'it', russian: 'ru',
-            arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
-          };
-          const deckPrefix = studyDeckId.indexOf('_') > 0 ? studyDeckId.substring(0, studyDeckId.indexOf('_')) : studyDeckId;
-          const langCode = LANG_PREFIX_TO_CODE[deckPrefix];
-
-          if (langCode) {
-            // Vocabulary deck — use language-specific pool so facts have language field.
-            // Pass chainDistribution so Study Temple vocabulary runs get proportional chain assignment.
-            activeRunPool = buildLanguageRunPool(langCode, reviewStates, {
-              categoryFilters,
-              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
-              chainDistribution: run.chainDistribution,
-            });
-          } else {
-            // Knowledge curated deck — build general pool and stamp domain.
-            // Pass chainDistribution so topic-aware chain assignment is used (Study Temple).
-            activeRunPool = buildGeneralRunPool(reviewStates, {
-              categoryFilters,
-              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
-              chainDistribution: run.chainDistribution,
-            });
-            const curatedDeck = getCuratedDeck(studyDeckId);
-            if (curatedDeck) {
-              const deckDomain = curatedDeck.domain as FactDomain;
-              for (const card of activeRunPool) {
-                card.domain = deckDomain;
-              }
-            }
-          }
+          // Single curated deck — build pool from this deck's facts only.
+          // Previously this used buildGeneralRunPool (knowledge) or buildLanguageRunPool
+          // (language prefix match), both of which pulled from the ENTIRE trivia/language
+          // pool instead of the specific deck. That caused chess decks to show Hindu
+          // tradition questions and grammar decks to show kanji meaning questions.
+          activeRunPool = buildCuratedDeckRunPool(studyDeckId, run.deckMode.subDeckId, reviewStates, {
+            funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+            chainDistribution: run.chainDistribution,
+          });
         }
       } else if (run.deckMode.type === 'trivia') {
         // Trivia mode — filter by selected domains + subdomains.
@@ -573,59 +547,16 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
         });
       } else if (run.deckMode.type === 'custom_deck') {
         // Custom deck mode: build merged pool from all deck items.
-        // Each item is either a vocab deck (language prefix) or a knowledge deck.
-        const LANG_PREFIX_TO_CODE: Record<string, string> = {
-          japanese: 'ja', korean: 'ko', chinese: 'zh', mandarin: 'zh',
-          spanish: 'es', french: 'fr', german: 'de', dutch: 'nl',
-          czech: 'cs', portuguese: 'pt', italian: 'it', russian: 'ru',
-          arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
-        };
-
-        // Detect if ANY item in the custom deck is a language/vocabulary deck.
-        // When true, we must allow language facts into the general pool built for
-        // non-language items so the merged pool is truly mixed, not stripped.
-        const hasLanguageItem = run.deckMode.items.some((item) => {
-          const deckPrefix = item.deckId.indexOf('_') > 0 ? item.deckId.substring(0, item.deckId.indexOf('_')) : item.deckId;
-          return LANG_PREFIX_TO_CODE[deckPrefix] !== undefined;
-        });
-
+        // Each item builds its own curated deck pool, then we merge them.
         let mergedPool: Card[] = [];
         const seenFactIds = new Set<string>();
 
         for (const item of run.deckMode.items) {
-          const deckPrefix = item.deckId.indexOf('_') > 0 ? item.deckId.substring(0, item.deckId.indexOf('_')) : item.deckId;
-          const langCode = LANG_PREFIX_TO_CODE[deckPrefix];
+          const itemPool = buildCuratedDeckRunPool(item.deckId, undefined, reviewStates, {
+            funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+            chainDistribution: run.chainDistribution,
+          });
 
-          let itemPool: Card[];
-          if (langCode) {
-            itemPool = buildLanguageRunPool(langCode, reviewStates, {
-              categoryFilters,
-              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
-              chainDistribution: run.chainDistribution,
-            });
-          } else {
-            // Knowledge curated deck — build general pool and stamp domain.
-            itemPool = buildGeneralRunPool(reviewStates, {
-              categoryFilters,
-              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
-              chainDistribution: run.chainDistribution,
-              // Allow language/vocab facts when the custom deck mixes language and knowledge items.
-              // Without this, factIsTrivia would strip all grammar/vocab facts from the non-language
-              // domain builds, producing divergent pools between host and guest in coop.
-              allowLanguageFacts: hasLanguageItem,
-            });
-            const curatedDeck = getCuratedDeck(item.deckId);
-            if (curatedDeck) {
-              const deckDomain = curatedDeck.domain as FactDomain;
-              for (const card of itemPool) {
-                card.domain = deckDomain;
-              }
-            }
-          }
-
-          // Deduplicate by factId across deck items.
-          // Uses a Set<string> keyed by factId — order-independent dedup that preserves
-          // first-seen insertion order. Safe regardless of which item is iterated first.
           for (const card of itemPool) {
             if (!seenFactIds.has(card.factId)) {
               seenFactIds.add(card.factId);
@@ -637,79 +568,27 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
         activeRunPool = mergedPool;
       } else if (run.deckMode.type === 'study-multi') {
         // Multi-source mode: merge curated deck facts and trivia-domain facts.
-        // Curated deck entries use the same LANG_PREFIX_TO_CODE / pool-builder
-        // logic as custom_deck. Trivia domains use buildPresetRunPool.
+        // Curated deck entries use buildCuratedDeckRunPool for per-deck filtering.
+        // Trivia domains use buildPresetRunPool.
         // All cards are deduplicated by factId (first-seen wins).
-        const LANG_PREFIX_TO_CODE_SM: Record<string, string> = {
-          japanese: 'ja', korean: 'ko', chinese: 'zh', mandarin: 'zh',
-          spanish: 'es', french: 'fr', german: 'de', dutch: 'nl',
-          czech: 'cs', portuguese: 'pt', italian: 'it', russian: 'ru',
-          arabic: 'ar', hindi: 'hi', vietnamese: 'vi', turkish: 'tr',
-        };
-
-        // Detect if ANY curated deck entry is a language deck (affects allowLanguageFacts).
-        const hasLangDeckSM = run.deckMode.decks.some((entry) => {
-          const prefix = entry.deckId.indexOf('_') > 0
-            ? entry.deckId.substring(0, entry.deckId.indexOf('_'))
-            : entry.deckId;
-          return LANG_PREFIX_TO_CODE_SM[prefix] !== undefined;
-        });
-
         const smMergedPool: Card[] = [];
         const smSeenFactIds = new Set<string>();
 
         // --- Curated deck contributions ---
         for (const entry of run.deckMode.decks) {
-          const prefix = entry.deckId.indexOf('_') > 0
-            ? entry.deckId.substring(0, entry.deckId.indexOf('_'))
-            : entry.deckId;
-          const langCode = LANG_PREFIX_TO_CODE_SM[prefix];
-
-          let entryPool: Card[];
-          if (langCode) {
-            entryPool = buildLanguageRunPool(langCode, reviewStates, {
-              categoryFilters,
+          // When subDeckIds is 'all' or undefined, pass undefined to get all facts.
+          // When it's an array, build pool for each subdeck and merge.
+          const subDeckIds = entry.subDeckIds === 'all' ? [undefined] : (entry.subDeckIds ?? [undefined]);
+          for (const subId of subDeckIds) {
+            const entryPool = buildCuratedDeckRunPool(entry.deckId, subId, reviewStates, {
               funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
               chainDistribution: run.chainDistribution,
             });
-            // If partial subdeck selection, filter to the matching fact IDs.
-            if (entry.subDeckIds !== 'all') {
-              const subDeckFactIdSets = entry.subDeckIds.map(
-                (subId) => new Set(getCuratedDeckFacts(entry.deckId, subId).map((f) => f.id)),
-              );
-              const allowedIds = new Set(entry.subDeckIds.flatMap(
-                (subId) => getCuratedDeckFacts(entry.deckId, subId).map((f) => f.id),
-              ));
-              entryPool = entryPool.filter((c) => allowedIds.has(c.factId));
-              void subDeckFactIdSets; // suppress unused-var lint; computed inline above
-            }
-          } else {
-            entryPool = buildGeneralRunPool(reviewStates, {
-              categoryFilters,
-              funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
-              chainDistribution: run.chainDistribution,
-              allowLanguageFacts: hasLangDeckSM,
-            });
-            const curatedDeckSM = getCuratedDeck(entry.deckId);
-            if (curatedDeckSM) {
-              const deckDomainSM = curatedDeckSM.domain as FactDomain;
-              for (const card of entryPool) {
-                card.domain = deckDomainSM;
+            for (const card of entryPool) {
+              if (!smSeenFactIds.has(card.factId)) {
+                smSeenFactIds.add(card.factId);
+                smMergedPool.push(card);
               }
-            }
-            // If partial subdeck selection, filter to facts in those subdecks.
-            if (entry.subDeckIds !== 'all') {
-              const allowedIds = new Set(entry.subDeckIds.flatMap(
-                (subId) => getCuratedDeckFacts(entry.deckId, subId).map((f) => f.id),
-              ));
-              entryPool = entryPool.filter((c) => allowedIds.has(c.factId));
-            }
-          }
-
-          for (const card of entryPool) {
-            if (!smSeenFactIds.has(card.factId)) {
-              smSeenFactIds.add(card.factId);
-              smMergedPool.push(card);
             }
           }
         }
