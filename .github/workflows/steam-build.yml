@@ -68,11 +68,11 @@ jobs:
         run: cargo install tauri-cli --version "^2" --locked
 
       - name: Build Tauri (Windows — raw exe, no installer bundle)
-        # --bundles none skips NSIS installer creation; we only need the raw exe for Steam.
+        # --no-bundle skips NSIS installer creation; we only need the raw exe for Steam.
         # The steamworks crate downloads steam_api64.dll automatically via cargo build.
         run: |
           cd src-tauri
-          cargo tauri build --bundles none
+          cargo tauri build --no-bundle
         shell: pwsh
 
       - name: Copy steam_api64.dll into release directory
