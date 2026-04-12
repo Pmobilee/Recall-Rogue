@@ -251,11 +251,11 @@ describe('hemorrhage mechanic', () => {
     expect(result.damageDealt).toBe(4);
   });
 
-  it('QP with 3 Bleed stacks: 4 + (4*3) = 16 damage', () => {
+  it('QP with 3 Bleed stacks: 4 + (3*3) = 13 damage (bleedMult=3 from stat table extras)', () => {
     const result = resolve('hemorrhage', 'quick', undefined, undefined, undefined, {
       enemyBleedStacks: 3,
     });
-    expect(result.damageDealt).toBe(16);
+    expect(result.damageDealt).toBe(13);
   });
 
   it('CC with 3 Bleed stacks: 4 + (6*3) = 22 damage', () => {

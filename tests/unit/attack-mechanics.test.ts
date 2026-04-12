@@ -302,34 +302,34 @@ describe('piercing mechanic — full pipeline block bypass (regression: 2026-04-
 });
 
 // ── 5. reckless ──────────────────────────────────────────────────────────────
-// Stat table L0: qpValue=4, extras.selfDmg=4 (but resolver reads mechanic.secondaryValue=3)
+// Stat table L0: qpValue=4, extras.selfDmg=4 (resolver now reads extras.selfDmg)
 // QP=4, CC=round(4*1.50)=6, CW=max(0, 4+(-2))=2 (chargeWrongValue=4, masteryBonus=4-6=-2)
-// selfDamage = mechanic.secondaryValue = 3 (extras.selfDmg not wired to resolver at L0)
+// selfDamage = 4 (from stat table extras.selfDmg — fixed 2026-04-12)
 // Note: stat table qpValue=4, mechanic.quickPlayValue=6, masteryBonus = 4-6 = -2
 
 describe('reckless mechanic', () => {
-  it('QP: 4 damage (stat table L0 qpValue=4), 3 self-damage (mechanic.secondaryValue)', () => {
+  it('QP: 4 damage (stat table L0 qpValue=4), 4 self-damage (stat table extras.selfDmg=4)', () => {
     const result = resolve('reckless', 'quick');
     expect(result.damageDealt).toBe(4);
-    expect(result.selfDamage).toBe(3);
+    expect(result.selfDamage).toBe(4);
   });
 
-  it('CC: 6 damage (round(4*1.50)=6), 3 self-damage (flat — does NOT scale)', () => {
+  it('CC: 6 damage (round(4*1.50)=6), 4 self-damage (flat — does NOT scale)', () => {
     const result = resolve('reckless', 'charge_correct');
     expect(result.damageDealt).toBe(6);
-    expect(result.selfDamage).toBe(3);
+    expect(result.selfDamage).toBe(4);
   });
 
-  it('CW: 2 damage (chargeWrongValue=4 + masteryBonus=-2 = 2), 3 self-damage', () => {
+  it('CW: 2 damage (chargeWrongValue=4 + masteryBonus=-2 = 2), 4 self-damage', () => {
     const result = resolve('reckless', 'charge_wrong');
     expect(result.damageDealt).toBe(2);
-    expect(result.selfDamage).toBe(3);
+    expect(result.selfDamage).toBe(4);
   });
 
-  it('self-damage does NOT scale with play mode (always 3 at L0)', () => {
-    expect(resolve('reckless', 'quick').selfDamage).toBe(3);
-    expect(resolve('reckless', 'charge_correct').selfDamage).toBe(3);
-    expect(resolve('reckless', 'charge_wrong').selfDamage).toBe(3);
+  it('self-damage does NOT scale with play mode (always 4 at L0 from stat table extras.selfDmg)', () => {
+    expect(resolve('reckless', 'quick').selfDamage).toBe(4);
+    expect(resolve('reckless', 'charge_correct').selfDamage).toBe(4);
+    expect(resolve('reckless', 'charge_wrong').selfDamage).toBe(4);
   });
 
   it('CW: always deals > 0 damage', () => {

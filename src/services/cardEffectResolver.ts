@@ -759,7 +759,7 @@ export function resolveCardEffect(
       return result;
     }
     case 'reckless': {
-      result.selfDamage = card.secondaryValue ?? mechanic?.secondaryValue ?? 3;
+      result.selfDamage = stats?.extras?.['selfDmg'] ?? card.secondaryValue ?? mechanic?.secondaryValue ?? 4;
       // Reckless bypasses enemy block — the self-damage trade-off only makes sense
       // if the attack always lands for full value, even against block-stacking enemies.
       result.damageDealtBypassesBlock = true;
@@ -1857,7 +1857,7 @@ export function resolveCardEffect(
       // bleedMult: CC=6, QP=4, CW=2 (hardcoded — stat table has extras.bleedMult but not used for CC/CW split).
       const bleedStacks = advanced.enemyBleedStacks ?? 0;
       const hemoBase = stats?.qpValue ?? ((mechanic?.baseValue ?? 4) + getMasteryBaseBonus(mechanicId, card.masteryLevel ?? 0));
-      const bleedMult = isChargeCorrect ? 6 : (isChargeWrong ? 2 : 4);
+      const bleedMult = isChargeCorrect ? 6 : (isChargeWrong ? 2 : (stats?.extras?.['bleedMult'] ?? 4));
       const hemoDmg = hemoBase + (bleedMult * bleedStacks);
       applyAttackDamage(hemoDmg);
       // Signal turnManager to consume all Bleed stacks after damage calculation

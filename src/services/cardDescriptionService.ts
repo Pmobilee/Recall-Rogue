@@ -68,12 +68,13 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     case 'piercing':
       return `Deal ${power} damage. Ignores enemy Block.` + apSuffix;
     case 'reckless': {
-      const selfDmg = secondary ?? 3;
+      const selfDmg = stats?.extras?.['selfDmg'] ?? secondary ?? 4;
       return `Deal ${power} damage. Take ${selfDmg} self-damage.` + apSuffix;
     }
     case 'execute': {
-      const bonusDmg = secondary ?? 8;
-      return `Deal ${power} damage. +${bonusDmg} bonus if enemy below 30% HP.` + apSuffix;
+      const bonusDmg = stats?.extras?.['execBonus'] ?? secondary ?? 8;
+      const threshold = stats?.extras?.['execThreshold'] ?? 0.3;
+      return `Deal ${power} damage. +${bonusDmg} bonus if enemy below ${Math.round(threshold * 100)}% HP.` + apSuffix;
     }
     case 'power_strike':
       return `Deal ${power} damage. CC: +${Math.round(power * 0.75)} bonus damage. L5: also applies Exposed 1 turn.` + apSuffix;
@@ -192,8 +193,10 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
       return `Next card deals ${power}% more damage.` + apSuffix;
     case 'quicken':
       return `Gain +1 AP this turn.` + apSuffix;
-    case 'double_strike':
-      return `Next attack card hits twice at full power (${power}% each).` + apSuffix;
+    case 'double_strike': {
+      const hitMult = stats?.extras?.['hitMult'] ?? 75;
+      return `Next attack card hits twice at ${hitMult}% power each.` + apSuffix;
+    }
     case 'ignite': {
       const burnStacks = stats?.extras?.['burnStacks'] ?? 2;
       return `Next attack applies ${burnStacks} Brain Burn stacks. CC: double stacks. L3+: applies to next 2 attacks.` + apSuffix;
@@ -445,8 +448,12 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'multi_hit': return `${secondary ?? 3}× ${power} dmg`;
     case 'heavy_strike': return `Deal ${power}`;
     case 'piercing': return `${power} pierce`;
-    case 'reckless': return `${power} dmg, ${secondary ?? 3} self`;
-    case 'execute': return `${power}+${secondary ?? 8} <30%`;
+    case 'reckless': return `${power} dmg, ${stats?.extras?.['selfDmg'] ?? secondary ?? 4} self`;
+    case 'execute': {
+      const eb = stats?.extras?.['execBonus'] ?? secondary ?? 8;
+      const et = stats?.extras?.['execThreshold'] ?? 0.3;
+      return `${power}+${eb} <${Math.round(et * 100)}%`;
+    }
     case 'power_strike': return `Deal ${power}`;
     case 'twin_strike': {
       const hits = stats?.hitCount ?? 2;
@@ -520,7 +527,7 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'empower': return `Next +${power}%`;
     case 'quicken': return '+1 AP';
     case 'focus': return 'Next −1 AP';
-    case 'double_strike': return '2× full power';
+    case 'double_strike': return `2× ${stats?.extras?.['hitMult'] ?? 75}% power`;
     case 'ignite': {
       const burnStacks = stats?.extras?.['burnStacks'] ?? 2;
       return `Next +${burnStacks} B.Burn`;
@@ -777,16 +784,19 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage')];
     case 'piercing':
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), kw('Pierce', 'pierce')];
-    case 'reckless':
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\nSelf-hit '), num(secondary ?? 3)];
+    case 'reckless': {
+      const selfDmg = stats?.extras?.['selfDmg'] ?? secondary ?? 4;
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\nSelf-hit '), num(selfDmg)];
+    }
     case 'execute': {
-      const bonus = secondary ?? 8;
-      const active = eHp < 0.3;
+      const bonus = stats?.extras?.['execBonus'] ?? secondary ?? 8;
+      const threshold = stats?.extras?.['execThreshold'] ?? 0.3;
+      const active = eHp < threshold;
       const secMasteryBonus = getMasterySecondaryBonus(mechanic.id, masteryLevel);
       const bonusParts: CardDescPart[] = secMasteryBonus > 0 && masteryLevel > 0
         ? [cond(bonus, active), masteryNum('+' + Math.round(secMasteryBonus))]
         : [cond(bonus, active)];
-      return [txt('Deal '), num(power), txt(' damage\n+'), ...bonusParts, txt(' if <30% HP')];
+      return [txt('Deal '), num(power), txt(' damage\n+'), ...bonusParts, txt(` if <${Math.round(threshold * 100)}% HP`)];
     }
     case 'lifetap':
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\nHeal 20%')];
@@ -908,8 +918,10 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
         ? [txt('Next '), num(count), txt(' cards −1 AP')]
         : [txt('Next card −1 AP')];
     }
-    case 'double_strike':
-      return [txt('Next attack\nhits twice')];
+    case 'double_strike': {
+      const hitMult = stats?.extras?.['hitMult'] ?? 75;
+      return [txt('Next attack\nhits twice at '), num(hitMult + '%'), txt(' power')];
+    }
     case 'ignite': {
       const burn = stats?.extras?.['burnStacks'] ?? 2;
       return [txt('Next attack\n+'), num(burn), txt(' '), kw('Brain Burn', 'burn')];

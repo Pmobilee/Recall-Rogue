@@ -3887,3 +3887,17 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix (2026-04-12):** Added `CURRENT_RUN_SAVE_VERSION = 1` constant in `runSaveService.ts` and an exact-match guard (`parsed.version !== CURRENT_RUN_SAVE_VERSION`). Saves with a non-matching version log a warning and return `null`, preventing runtime errors from incompatible schema. All 17 existing save-service tests pass with version 1 saves.
 
 **Note:** The 2026-04-11 gotcha suggested `> CURRENT_SAVE_VERSION`. The exact-match (`!==`) is stricter: it also rejects downgrade scenarios (loading v2 code on a v3 save) where a field-addition migration would be needed to backfill expected defaults.
+
+### 2026-04-12 — Mastery extras not reflected in card descriptions and resolver
+
+**What:** Three card mechanics had `extras` fields in `MASTERY_STAT_TABLES` that were never read by the description service or resolver. This caused card descriptions to show stale seed defaults instead of per-mastery-level values.
+
+**Mechanics fixed:**
+1. **reckless** — `selfDmg` in description and resolver was read from `mechanic.secondaryValue` (=3) instead of `stats.extras.selfDmg` (=4 at L0). Default changes from 3 to 4 per stat table.
+2. **execute** — Description showed hardcoded `30%` threshold and `8` bonus; now reads `extras.execBonus` (L3+: widens to 40%, L5: 50%) and `extras.execThreshold`. Resolver QP bonus was already fixed in a prior pass; descriptions now match.
+3. **double_strike** — Description showed "full power (X% each)" using BASE_EFFECT not `extras.hitMult`. Now shows actual hitMult (75% at L0, scaling to 100% at L5).
+4. **hemorrhage** — Resolver QP bleedMult was hardcoded to 4; `extras.bleedMult` at L0 is 3. Now reads stat table for QP path. CC (=6) and CW (=2) remain intentionally hardcoded.
+
+**Fix:** `src/services/cardDescriptionService.ts` — 9 edits across `getDetailedCardDescription`, `getCompactDescription`, `getCardDescriptionParts`. `src/services/cardEffectResolver.ts` — 2 edits (reckless selfDamage, hemorrhage bleedMult).
+
+**Tests updated:** `tests/unit/attack-mechanics.test.ts`, `tests/unit/play-mode-mechanics.test.ts` (reckless selfDamage 3→4), `tests/unit/phase3-mechanics.test.ts` (hemorrhage QP bleed 16→13).

@@ -189,21 +189,21 @@ describe('strike mechanic play modes', () => {
 // ── Reckless: self-damage stays flat ──
 
 describe('reckless mechanic', () => {
-  it('quick: 4 damage, 3 self-damage (stat table L0 QP=4; selfDmg from mechanic.secondaryValue=3)', () => {
+  it('quick: 4 damage, 4 self-damage (stat table L0 QP=4; selfDmg=4 from extras.selfDmg)', () => {
     const result = resolve('reckless', 'quick');
     expect(result.damageDealt).toBe(4);
-    expect(result.selfDamage).toBe(3);
+    expect(result.selfDamage).toBe(4);
   });
 
-  it('charge_correct: 6 damage (round(4*1.50)=6), still 3 self-damage (flat, stat table extras.selfDmg not wired to resolver)', () => {
+  it('charge_correct: 6 damage (round(4*1.50)=6), still 4 self-damage (flat from extras.selfDmg, does NOT scale)', () => {
     const result = resolve('reckless', 'charge_correct');
     expect(result.damageDealt).toBe(6);
-    expect(result.selfDamage).toBe(3); // self-damage does NOT scale
+    expect(result.selfDamage).toBe(4); // self-damage does NOT scale
   });
 
-  it('charge_wrong: 8.4 (rounds to 8) damage, still 3 self-damage', () => {
+  it('charge_wrong: damage dealt, still 4 self-damage (flat from extras.selfDmg)', () => {
     const result = resolve('reckless', 'charge_wrong');
-    expect(result.selfDamage).toBe(3);
+    expect(result.selfDamage).toBe(4);
     expect(result.damageDealt).toBeGreaterThan(0);
   });
 });
