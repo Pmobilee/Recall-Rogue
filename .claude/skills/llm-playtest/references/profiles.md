@@ -43,14 +43,11 @@ Your first batch should:
 ```json
 [
   {"type":"rrPlay","method":"startRun"},
-  {"type":"wait","ms":2000},
-  {"type":"rrPlay","method":"selectDomain","args":["{DOMAIN}"]},
-  {"type":"wait","ms":2000},
-  {"type":"rrPlay","method":"selectArchetype","args":["balanced"]},
-  {"type":"wait","ms":2000},
+  {"type":"wait","ms":3000},
   {"type":"rrPlay","method":"getScreen"}
 ]
 ```
+Expect `getScreen` to return `'dungeonMap'` (archetype auto-selects to `'balanced'`, no domain/archetype screens exist in current flow — see `action-specs.md` → Run Flow).
 
 **Step 2: Enter first map node** — `{"type":"rrPlay","method":"selectMapNode","args":["r0-n0"]}` then check `getScreen` returns `'combat'`.
 
@@ -274,7 +271,7 @@ Report format lives in `../references/artifacts.md` → "Fun/Engagement Report F
 
 **STUDY TEMPLE TESTER — SELF-CONTAINED PROMPT**
 
-You are the Study Temple Tester for Recall Rogue. Your job is to verify the study mode (spaced repetition / SM-2 system) works correctly — both its mechanics and its content quality. You'll run two study sessions with a time-advance between them to verify the SM-2 scheduling logic.
+You are the Study Temple Tester for Recall Rogue. Your job is to verify the Study Temple mode works correctly — both its content quality and its visual/interaction polish. The Study Temple is a **3-question multiple-choice quiz** via `StudyQuizOverlay.svelte`, NOT an Anki-style SM-2 grading system. There are no again/hard/good/easy buttons. Cards auto-advance ~1200ms after answer selection.
 
 **Your output**: Write a markdown report to `{BATCH_DIR}/study-temple.md` using the standard report format defined in `../references/artifacts.md` → "Study Temple Report Format".
 
@@ -288,63 +285,51 @@ Same as Profile 1.
 
 See `../references/action-specs.md` → "Study Mode" for the full list. Key methods:
 
-- `getStudyPoolSize` — Returns count of cards eligible for mastery upgrade. Returns `0` when no active run or no upgradeable cards. Read-only. Use BEFORE `startStudy` to verify the pool is non-empty.
-- `startStudy(size)` — Start study session. Returns `{ok, cardCount}`. NOTE: The `size` parameter is no longer functional; the function navigates to the Study screen and clicks the Study button in RestRoomOverlay. Use `__rrScenario.spawn({ screen: 'restStudy' })` for direct access.
-- `getStudyCard` — `{question, answer, category, choices?, interval?, reps?}`. Returns null when session complete.
-- `gradeCard(button)` — `'again' | 'hard' | 'good' | 'easy'`. Returns `{ok, nextInterval?}`.
+- `getStudyPoolSize` — Returns count of cards eligible for mastery upgrade. Returns `0` when no active run or no upgradeable cards. Read-only.
+- `startStudy(size)` — Navigates to the Study quiz. Returns `{ok, cardCount}`. If `{ok: false}`, use `__rrScenario.spawn({ screen: 'restStudy' })` as a fallback.
+- `getStudyCard` — `{question, answer, category, choices: string[]}`. Returns null when session complete.
 - `endStudy` — `{ok, studied}`.
-- `fastForward(hours)` — Advance game clock by N hours (for SM-2 testing). Shifts all FSRS scheduling fields (nextReviewAt, due, lastReviewAt, lastReview).
-- `getLeechInfo` — `{suspended: [], nearLeech: []}` — cards that failed too many times.
 - `getSessionSummary` — Returns aggregate stats including review accuracy.
 
 ### Study Protocol
 
-**Session 1 — Baseline:**
+**Session — 3-Question MCQ:**
 
-1. `startStudy(10)` — Study 10 cards
-2. For cards 1-5: grade as `'again'` (failed — should reschedule soon)
-3. For cards 6-8: grade as `'good'` (passed — should reschedule later)
-4. For cards 9-10: grade as `'easy'` (mastered — long interval)
-5. `endStudy`
-6. `getLeechInfo` — record any near-leech cards
-7. `getSessionSummary` — record stats
+1. Start study session via `startStudy()` or `__rrScenario.spawn({ screen: 'restStudy', deckId: '<any-curated-deck-id>' })`.
+2. Wait 3 seconds for StudyQuizOverlay to mount.
+3. Take `rrScreenshot` of the quiz in its initial state. Layout dump for button positions.
+4. For each of the 3 questions:
+   a. Call `getStudyCard` — record `{question, answer, choices}`.
+   b. Screenshot the question state with all answer buttons visible.
+   c. Click the correct MCQ answer button via DOM eval: `document.querySelector('button.answer-btn:nth-child(N)').click()` where N matches the correct answer.
+   d. Wait 1500ms (auto-advance timing).
+   e. Screenshot the feedback state (correct/incorrect indicator).
+5. After all 3 questions: `endStudy` — record `{ok, studied}`.
+6. `getSessionSummary` — record stats.
 
-Record all cards and their questions for content analysis.
-
-**Time Advance:**
-
-8. `fastForward(2)` — Advance 2 hours
-
-**Session 2 — SM-2 Verification:**
-
-9. `startStudy(10)` — Start second session
-10. Record which cards appear:
-    - "Again" cards (graded failing) SHOULD reappear now (short interval)
-    - "Good" cards SHOULD NOT reappear (interval > 2 hours)
-    - "Easy" cards DEFINITELY should not reappear
-11. For each card that appears: `getStudyCard` → record details → `gradeCard('good')`
-12. `endStudy`
+Record all cards and their questions/choices for content analysis.
 
 ### Objective Checklist
 
 | ID | Check | Pass Condition |
 |----|-------|---------------|
-| O-ST1 | Session starts | `startStudy(10)` returns `{ok: true}` with cardCount > 0 |
-| O-ST2 | Card data complete | Every `getStudyCard` returns non-null question AND answer (not empty, not "undefined") |
-| O-ST3 | Grade accepts all types | `gradeCard('again')`, `gradeCard('hard')`, `gradeCard('good')`, `gradeCard('easy')` all return `{ok: true}` |
-| O-ST4 | Session ends cleanly | `endStudy` returns `{ok: true}` |
-| O-ST5 | SM-2 reschedule — "again" cards | After `fastForward(2)`, "again"-graded cards reappear in session 2 |
-| O-ST6 | SM-2 reschedule — "good" cards | "good"-graded cards do NOT reappear after only 2 hours |
-| O-ST7 | No data artifacts | No card question/answer contains `undefined`, `null`, `NaN`, `[object` |
+| O-ST1 | Session starts | `startStudy()` returns `{ok: true}` with cardCount > 0 |
+| O-ST2 | Card data complete | Every `getStudyCard` returns non-null question AND answer AND choices (not empty, not "undefined") |
+| O-ST3 | 3 questions shown | Exactly 3 questions appear before session ends |
+| O-ST4 | No `{N}` artifacts | No answer button text contains `{` or `}` bracket markers |
+| O-ST5 | Answer buttons clickable | Every answer button responds to click (no dead clicks, no tooltip-backdrop eating events) |
+| O-ST6 | Session ends cleanly | `endStudy` returns `{ok: true}` |
+| O-ST7 | No data artifacts | No card question/answer/choice contains `undefined`, `null`, `NaN`, `[object` |
+| O-ST8 | Empty-state handled | If `getStudyPoolSize` returns 0, StudyQuizOverlay shows an empty-state message with a back button (not a blank screen) |
 
 ### Subjective Quality Checklist
 
 | ID | Check | What to Assess |
 |----|-------|---------------|
 | S-ST1 | Question-answer pairing quality | Does each answer actually answer the question? Are there any mismatches? |
-| S-ST2 | Study session pacing | Does studying 10 cards feel appropriately short (2-3 minutes)? Not too long? |
-| S-ST3 | Grade button clarity | Is it clear what 'again'/'hard'/'good'/'easy' mean without explanation? |
-| S-ST4 | Learning value | After studying 10 cards, would you actually feel like you learned something? |
+| S-ST2 | Distractor plausibility | Are the wrong MCQ choices plausible? Would a student be genuinely fooled? |
+| S-ST3 | Auto-advance pacing | Does the 1200ms auto-advance after answering feel right? Too fast for reading feedback? |
+| S-ST4 | Learning value | After answering 3 questions, would you feel like you learned something? |
 
 Report format lives in `../references/artifacts.md` → "Study Temple Report Format".
 
@@ -403,7 +388,7 @@ Then read `result.json` and the screenshot to decide the next action.
 
 ### GAME DESIGN REFERENCE — What You Should Expect
 
-**Run Flow**: Hub → startRun → domainSelect → archetypeSelect → dungeonMap → [room nodes] → boss → retreatOrDelve → [next floor or runEnd]
+**Run Flow (updated 2026-04-12)**: Hub → startRun → onboarding? (first run only) → runPreview (Study Temple only) → dungeonMap → [room nodes] → boss → retreatOrDelve → [next floor or runEnd]. Note: `domainSelect` and `archetypeSelect` screens are dormant — archetype auto-selects to `'balanced'`.
 
 **Room Types on the Map**:
 
@@ -461,12 +446,10 @@ scripts/docker-visual-test.sh --warm test \
 #### Phase 1: Start the Run
 
 ```
-1. startRun → check getScreen → LAYOUT DUMP (verify domainSelect screen elements)
-2. selectDomain('{DOMAIN}') → check getScreen → LAYOUT DUMP
-3. selectArchetype('balanced') → check getScreen → LAYOUT DUMP + SCREENSHOT (should be dungeonMap)
+1. startRun → wait 3 seconds → check getScreen → LAYOUT DUMP + SCREENSHOT (should be dungeonMap)
 ```
 
-Wait 2 seconds between each call. If any returns `{ok: false}`, capture evidence and retry once.
+Domain/archetype selection is dormant — archetype auto-selects to `'balanced'` inside `gameFlowController.startNewRun()`. If `getScreen` returns `'onboarding'` (first-run only), dismiss the onboarding overlay and re-check. If any step returns `{ok: false}`, capture evidence and retry once.
 
 #### Phase 2: Map Navigation Loop
 

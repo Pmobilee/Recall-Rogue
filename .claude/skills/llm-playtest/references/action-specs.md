@@ -138,10 +138,20 @@ All calls go through an `rrPlay` action in an actions-file. Example: `{"type":"r
 
 ### Run Flow
 
-- `startRun()` — Start a new run from hub screen. Returns `{ok: boolean}`.
-- `selectDomain(domain)` — Pick domain. Returns `{ok: boolean}`.
-- `selectArchetype(archetype)` — Pick archetype. Returns `{ok: boolean}`.
-- `selectMapNode(nodeId)` — Select a map node. Use `'r0-n0'` for first available. Returns `{ok: boolean}`.
+- `startRun()` — Start a new run from hub screen. Returns `{ok: boolean}`. In the current flow, this transitions `hub → onboarding?` (first run only) `→ runPreview?` (Study Temple runs only) `→ dungeonMap`. Archetype auto-selects to `'balanced'` — see `src/services/gameFlowController.ts:420`.
+- `selectDomain(domain)` — **DORMANT** — the current `startRun` flow does not show a domain-select screen. The rrPlay wrapper still exists for backwards compat but has no runtime target. Call is a no-op returning `{ok: true}` or `{ok: false}` depending on current screen. Do NOT include in new tester flows.
+- `selectArchetype(archetype)` — **DORMANT** — archetype auto-selects to `'balanced'` inside `startNewRun()`. The rrPlay wrapper still exists for backwards compat. Do NOT include in new tester flows.
+- `selectMapNode(nodeId)` — Select a map node. Use `'r0-n0'` for first available. Returns `{ok: boolean}`. This is the first REAL interactive call after `startRun`.
+
+**Canonical run-start sequence (2026-04-12 post-drift-fix):**
+```json
+[
+  {"type":"rrPlay","method":"startRun"},
+  {"type":"wait","ms":3000},
+  {"type":"rrPlay","method":"getScreen"}
+]
+```
+Expect `getScreen` to return `'dungeonMap'` (or `'onboarding'` if first-run; dismiss the onboarding overlay via its continue button, then re-check `getScreen`).
 
 ### Combat
 
@@ -201,15 +211,17 @@ All calls go through an `rrPlay` action in an actions-file. Example: `{"type":"r
 
 ### Study Mode
 
+**⚠ Study UI reality (verified 2026-04-12):** Study Temple is a **3-question multiple-choice quiz** via `StudyQuizOverlay.svelte`, NOT an Anki-style SM-2 grading interface. There are no again/hard/good/easy buttons. Cards auto-advance ~1200ms after answer selection. `fastForward` has no observable effect on a single 3-question session. If you are testing Study, follow the MCQ protocol in `profiles.md` → Profile 4, not SM-2 expectations.
+
 - `getStudyPoolSize()` — Returns count of cards eligible for mastery upgrade. Returns `0` when no active run or no upgradeable cards. Read-only. Use BEFORE `startStudy()` to verify the pool is non-empty.
-- `startStudy(size)` — Start study session. Returns `{ok: boolean, cardCount: number}`. NOTE: The `size` parameter is no longer functional. The function navigates to the Study screen and clicks the Study button in RestRoomOverlay. Use `__rrScenario.spawn({ screen: 'restStudy' })` for direct access.
-- `getStudyCard()` — Get current card: `{question, answer, category, choices?: string[], interval?: number, reps?: number}`. Returns null when session complete.
-- `gradeCard(button)` — Grade current card: `'again'` | `'hard'` | `'good'` | `'easy'`. Returns `{ok, nextInterval?: number}`.
+- `startStudy(size)` — Navigates to the Study screen. Returns `{ok: boolean, cardCount: number}`. The `size` parameter is no longer functional — the session length is hard-coded to 3. If the helper returns `{ok: false}`, use `__rrScenario.spawn({ screen: 'restStudy' })` as a fallback direct-entry path.
+- `getStudyCard()` — Get current quiz card: `{question, answer, choices: string[], ...}`. Returns null when session complete. Use this to capture MCQ data.
+- `gradeCard(button)` — **DORMANT-ISH** — the current Study UI is MCQ, not SM-2 grading. The rrPlay helper still exists but does not correspond to any visible button. To answer a study question, click the correct MCQ choice via `click('study-answer-N')` or `eval` a direct DOM click on the button whose text matches the correct answer. Do NOT use `gradeCard` in new test flows.
 - `endStudy()` — End study session. Returns `{ok, studied: number}`.
 
 ### Time Control
 
-- `fastForward(hours)` — Advance game clock by N hours (for SM-2 testing). Returns `{ok}`. Shifts all FSRS scheduling fields (nextReviewAt, due, lastReviewAt, lastReview). Fixed in BATCH-004.
+- `fastForward(hours)` — Advance game clock by N hours. Returns `{ok}`. Shifts all FSRS scheduling fields (nextReviewAt, due, lastReviewAt, lastReview) used by card reappearance in subsequent runs — NOT visible within a single 3-question Study session. Useful for between-session testing, not within-session SM-2 verification (that UI no longer exists).
 
 ### Diagnostics
 
