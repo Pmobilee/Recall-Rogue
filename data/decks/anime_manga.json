@@ -1272,7 +1272,7 @@
         "Shoujo Comic"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "manga_series_titles",
+      "answerTypePoolId": "publisher_magazine_names",
       "difficulty": 5,
       "funScore": 5,
       "ageGroup": "all",
@@ -1534,7 +1534,7 @@
         "Bessatsu Shounen Magazine"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "manga_series_titles",
+      "answerTypePoolId": "publisher_magazine_names",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "teen",
@@ -1704,7 +1704,7 @@
       "correctAnswer": "Young Magazine",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "manga_series_titles",
+      "answerTypePoolId": "publisher_magazine_names",
       "difficulty": 4,
       "funScore": 6,
       "ageGroup": "teen",
@@ -5931,12 +5931,24 @@
       "answerFormat": "name",
       "factIds": [
         "am_onepiece_bestselling",
-        "am_dragonball_manga_years",
-        "am_banana_fish_magazine",
-        "am_aot_magazine",
-        "am_akira_manga_magazine"
+        "am_dragonball_manga_years"
       ],
-      "minimumSize": 5
+      "syntheticDistractors": [
+        "Naruto",
+        "Bleach",
+        "Fullmetal Alchemist",
+        "Attack on Titan",
+        "Death Note",
+        "Hunter x Hunter",
+        "Demon Slayer",
+        "Tokyo Ghoul",
+        "Fairy Tail",
+        "Slam Dunk",
+        "Berserk",
+        "Vinland Saga",
+        "Chainsaw Man"
+      ],
+      "minimumSize": 2
     },
     {
       "id": "creator_names_short",
@@ -6216,7 +6228,10 @@
         "am_comiket_doujinshi",
         "am_one_piece_publisher",
         "am_attack_on_titan_publisher",
-        "am_fairy_tail_magazine"
+        "am_fairy_tail_magazine",
+        "am_banana_fish_magazine",
+        "am_aot_magazine",
+        "am_akira_manga_magazine"
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,

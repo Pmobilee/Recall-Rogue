@@ -1266,7 +1266,7 @@
         "480 degrees"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -1600,7 +1600,7 @@
       "correctAnswer": "Curcumin",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "ingredient_names_short",
+      "answerTypePoolId": "ingredient_science_terms",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "teen+",
@@ -1750,7 +1750,7 @@
         "nerve receptors"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "ingredient_science_terms",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "teen+",
@@ -2050,7 +2050,7 @@
         "up to 17x"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "ingredient_science_terms",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "teen+",
@@ -2100,7 +2100,7 @@
         "20 to 50 percent"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "ingredient_science_terms",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "teen+",
@@ -2199,7 +2199,7 @@
         "amino acids and reducing sugars"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "teen+",
@@ -2507,7 +2507,7 @@
         "tandoor oven"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -2555,7 +2555,7 @@
         "wok qi"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -2602,7 +2602,7 @@
         "elBulli"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "teen+",
@@ -2798,7 +2798,7 @@
         "mushroom"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -4075,7 +4075,7 @@
         "four denarii"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "ingredient_science_terms",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -4467,7 +4467,7 @@
         "tomato"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "ingredient_names_short",
+      "answerTypePoolId": "ingredient_science_terms",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -4858,7 +4858,7 @@
         "pumping air under skin"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "teen+",
@@ -5255,7 +5255,7 @@
         "zymurgy"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "teen+",
@@ -5304,7 +5304,7 @@
         "spherification technique"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "teen+",
@@ -5351,7 +5351,7 @@
       "correctAnswer": "Osmosis",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_cooking",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -5497,7 +5497,7 @@
         "bitter beverage"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "technique_terms_long",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "teen+",
@@ -6879,7 +6879,7 @@
         "two thousand"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "technique_terms_short",
+      "answerTypePoolId": "ingredient_science_terms",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -7131,27 +7131,22 @@
       "label": "date_facts (long)"
     },
     {
-      "id": "technique_terms_short",
-      "description": "Culinary techniques, processes, trade statistics, and named food concepts",
+      "id": "technique_terms_cooking",
+      "description": "Cooking processes, named techniques, preparation methods, and culinary terminology",
       "factIds": [
-        "food_dish_naan_tandoor",
         "food_tech_kombucha_scoby",
-        "food_hist_dim_sum_2000_types",
-        "food_spice_coconut_milk_fat",
         "food_tech_tandoor_temp",
         "food_tech_wok_hei",
         "food_tech_salting_osmosis",
         "food_tech_molecular_gastronomy",
         "food_tech_fermentation_foods",
-        "food_spice_pepper_roman",
-        "food_spice_voc_nutmeg",
         "food_tech_maillard_vs_caramelization",
-        "food_dish_peking_duck_skin",
-        "food_hist_chocolate_xocolatl",
-        "food_spice_capsaicin_science",
-        "food_tech_molecular_techniques"
+        "food_tech_molecular_techniques",
+        "food_dish_naan_tandoor",
+        "food_dish_peking_duck_skin"
       ],
-      "label": "technique_terms (short)"
+      "label": "Cooking Techniques & Methods",
+      "minimumSize": 5
     },
     {
       "id": "technique_terms_long",
@@ -7163,7 +7158,8 @@
         "food_tech_bbq_temperature",
         "food_tech_maillard_temperature",
         "food_hist_falafel_raw",
-        "food_spice_black_pepper_currency"
+        "food_spice_black_pepper_currency",
+        "food_hist_chocolate_xocolatl"
       ],
       "label": "technique_terms (long)",
       "syntheticDistractors": [
@@ -7178,6 +7174,33 @@
       ]
     },
     {
+      "id": "ingredient_science_terms",
+      "label": "Ingredient Science & Spice Trade",
+      "description": "Chemistry and biology of ingredients, spice trade history, and food science concepts",
+      "answerFormat": "term",
+      "factIds": [
+        "food_spice_capsaicin_science",
+        "food_spice_coconut_milk_fat",
+        "food_spice_pepper_roman",
+        "food_spice_voc_nutmeg",
+        "food_spice_turmeric_compound",
+        "food_tech_umami_foods_rich",
+        "food_hist_dim_sum_2000_types"
+      ],
+      "minimumSize": 5,
+      "syntheticDistractors": [
+        "Maillard reaction",
+        "Saponification",
+        "Emulsification",
+        "Fermentation",
+        "Oxidation",
+        "Hydrolysis",
+        "Denaturation",
+        "Osmosis",
+        "Coagulation"
+      ]
+    },
+    {
       "id": "ingredient_names_short",
       "description": "Ingredients, spices, food components, and culinary uses",
       "factIds": [
@@ -7187,8 +7210,6 @@
         "food_spice_vanilla_aztec",
         "food_spice_saffron_price",
         "food_tech_risotto_rice",
-        "food_spice_turmeric_compound",
-        "food_tech_umami_foods_rich",
         "food_spice_chili_capsaicin_name"
       ],
       "syntheticDistractors": [
