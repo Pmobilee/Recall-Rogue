@@ -8,6 +8,8 @@
   import { getPlayerContext, gradeChessMove, isInCheck } from '../../services/chessGrader'
   import { updateChessElo } from '../../services/chessEloService'
   import { displayAnswer } from '../../services/numericalDistractorService'
+  import MapPinDrop from './MapPinDrop.svelte'
+  import { updateGeoElo, tierToRating } from '../../services/geoEloService'
 
   interface Props {
     questions: QuizQuestion[]
@@ -110,6 +112,37 @@
   }
 
   // ---------------------------------------------------------------------------
+  // Map pin state
+  // ---------------------------------------------------------------------------
+
+  let mapDisabled = $state(false)
+  let mapEloChange = $state<number | null>(null)
+
+  /**
+   * Handle a pin placement from the MapPinDrop component.
+   * Updates geo Elo then fires selectAnswer after a brief delay.
+   * accuracy >= 0.5 is treated as correct (within acceptable radius for the difficulty tier).
+   */
+  function handleMapPinConfirm(pinCoordinates: [number, number], distanceKm: number, accuracy: number): void {
+    mapDisabled = true
+
+    if (currentQuestion?.mapDifficultyTier) {
+      const locationRating = tierToRating(currentQuestion.mapDifficultyTier)
+      const result = updateGeoElo(locationRating, accuracy, distanceKm, currentQuestion.mapRegion)
+      mapEloChange = result.ratingChange
+    }
+
+    setTimeout(() => {
+      if (accuracy >= 0.5) {
+        selectAnswer(currentQuestion!.correctAnswer)
+      } else {
+        const wrongAnswer = currentQuestion!.answers.find(a => a !== currentQuestion!.correctAnswer)
+        if (wrongAnswer) selectAnswer(wrongAnswer)
+      }
+    }, accuracy >= 0.5 ? 400 : 800)
+  }
+
+  // ---------------------------------------------------------------------------
   // Answer flow
   // ---------------------------------------------------------------------------
 
@@ -128,6 +161,8 @@
         showFeedback = false
         chessContext = null
         chessDisabled = false
+        mapDisabled = false
+        mapEloChange = null
         currentIndex++
       } else {
         done = true
@@ -220,6 +255,21 @@
               isInCheck={chessCheckState}
               showNotationInput={$isLandscape}
             />
+          </div>
+        {:else if currentQuestion.quizResponseMode === 'map_pin' && currentQuestion.mapCoordinates}
+          <div class="map-pin-quiz-container">
+            <MapPinDrop
+              targetCoordinates={currentQuestion.mapCoordinates}
+              targetRegion={currentQuestion.mapRegion}
+              masteryLevel={0}
+              disabled={mapDisabled || selectedAnswer !== null}
+              onconfirm={handleMapPinConfirm}
+            />
+            {#if mapEloChange !== null}
+              <div class="elo-change-badge" class:elo-positive={mapEloChange > 0} class:elo-negative={mapEloChange < 0}>
+                {mapEloChange > 0 ? '+' : ''}{mapEloChange}
+              </div>
+            {/if}
           </div>
         {:else if currentQuestion.quizMode === 'image_answers' && currentQuestion.answerImagePaths?.length}
           <div class="answers-image-grid">
@@ -430,6 +480,43 @@
     gap: calc(8px * var(--layout-scale, 1));
     width: 100%;
     padding: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* Map pin drop container — matches CardExpanded layout */
+  .map-pin-quiz-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+    min-height: calc(300px * var(--layout-scale, 1));
+    position: relative;
+    align-items: center;
+  }
+
+  /* Elo change badge shown after map pin confirmation */
+  .elo-change-badge {
+    font-size: calc(18px * var(--text-scale, 1));
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    padding: calc(4px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    border-radius: calc(12px * var(--layout-scale, 1));
+    margin-top: calc(6px * var(--layout-scale, 1));
+    animation: elo-float 1.5s ease-out forwards;
+  }
+
+  .elo-positive {
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.15);
+  }
+
+  .elo-negative {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.15);
+  }
+
+  @keyframes elo-float {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(calc(-20px * var(--layout-scale, 1))); }
   }
 
   .answers-image-grid {
@@ -667,6 +754,11 @@
 
   .study-overlay.landscape .answer-btn {
     text-align: center;
+  }
+
+  /* In landscape, give the map more breathing room */
+  .study-overlay.landscape .map-pin-quiz-container {
+    min-height: calc(360px * var(--layout-scale, 1));
   }
 
   /* === Empty state (no questions available) === */
