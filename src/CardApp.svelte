@@ -336,11 +336,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   function handleRunPreviewBeginExpedition(): void {
     confirmChainDistribution()
+    shuffleSeedOffset = 0
   }
 
   function handleRunPreviewBack(): void {
-    abandonActiveRun()
-    transitionScreen('studyTemple')
+    shuffleSeedOffset = 0
+    abandonActiveRun('studyTemple')
   }
 
 
