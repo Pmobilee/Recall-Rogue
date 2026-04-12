@@ -32,6 +32,7 @@ const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {
   art_architecture: ['Art & Architecture', 'Culture', 'Arts'],
   social_sciences: ['Social Sciences', 'Psychology', 'Economics', 'Sociology'],
   sports_entertainment: ['Sports & Entertainment', 'Sports'],
+  games: ['Games', 'Chess', 'Strategy Games'],
   // Procedural domain — no static facts in factsDB, always returns empty array.
   mathematics: [],
   // Legacy IDs kept for save compatibility.

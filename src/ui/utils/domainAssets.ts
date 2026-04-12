@@ -16,6 +16,7 @@ export const DOMAIN_ICON_PATHS: Record<FactDomain, string> = {
   social_sciences: '/assets/sprites/icons/icon_domain_social_sciences.png',
   sports_entertainment: '/assets/sprites/icons/icon_domain_sports_entertainment.png',
   mathematics: '/assets/sprites/icons/icon_domain_mathematics.png',
+  games: '/assets/sprites/icons/icon_domain_sports_entertainment.png',  // Fallback until dedicated games icon is created
   // Legacy aliases — mapped to closest domain-specific icon.
   science: '/assets/sprites/icons/icon_domain_natural_sciences.png',
   math: '/assets/sprites/icons/icon_domain_mathematics.png',
