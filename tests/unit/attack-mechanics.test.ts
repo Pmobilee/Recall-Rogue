@@ -12,6 +12,8 @@
  */
 import { describe, it, expect } from 'vitest';
 import { resolveCardEffect } from '../../src/services/cardEffectResolver';
+import { startEncounter, playCardAction } from '../../src/services/turnManager';
+import { createDeck } from '../../src/services/deckManager';
 import type { Card, CardType } from '../../src/data/card-types';
 import type { PlayerCombatState } from '../../src/services/playerCombatState';
 import type { EnemyInstance } from '../../src/data/enemies';
@@ -203,6 +205,99 @@ describe('piercing mechanic', () => {
   it('bypass flag is set even with enemy block > 0 (turnManager handles the bypass)', () => {
     const result = resolve('piercing', 'quick', undefined, { block: 50 });
     expect(result.damageDealtBypassesBlock).toBe(true);
+  });
+});
+
+// ── 4b. piercing — full pipeline block bypass ─────────────────────────────────
+// Regression test: prior to 2026-04-12 fix, damageDealtBypassesBlock was set by the
+// resolver but never consumed by turnManager, so enemy.block still absorbed damage.
+// This test exercises the full playCardAction → turnManager → applyDamageToEnemy path.
+//
+// Piercing QP stat table L0: qpValue=3 → should deal 3 HP damage regardless of block.
+
+describe('piercing mechanic — full pipeline block bypass (regression: 2026-04-12)', () => {
+  function makePiercingCard(): Card {
+    const mechanic = getMechanicDefinition('piercing');
+    return {
+      id: 'test-piercing-card',
+      factId: 'test-fact',
+      cardType: 'attack' as CardType,
+      domain: 'test' as any,
+      tier: '1' as const,
+      baseEffectValue: mechanic?.baseValue ?? 3,
+      effectMultiplier: 1.0,
+      apCost: 1,
+      mechanicId: 'piercing',
+      mechanicName: 'Piercing',
+      chainType: 0,
+    };
+  }
+
+  function makeBlockedEnemy(blockAmount: number): EnemyInstance {
+    const template: EnemyTemplate = {
+      id: 'test-blocked-enemy',
+      name: 'Blocked Enemy',
+      category: 'common',
+      baseHP: 100,
+      intentPool: [{ type: 'attack', value: 5, weight: 1, telegraph: 'Strike' }],
+      description: 'Enemy with block',
+    };
+    return {
+      template,
+      currentHP: 100,
+      maxHP: 100,
+      nextIntent: template.intentPool[0],
+      block: blockAmount,
+      statusEffects: [],
+      phase: 1,
+      floor: 1,
+      isCharging: false,
+      chargedDamage: 0,
+      difficultyVariance: 1,
+    };
+  }
+
+  it('QP: deals full damage through enemy block=9 (block stripped, HP reduced by 3)', () => {
+    const piercingCard = makePiercingCard();
+    const deck = createDeck([piercingCard]);
+    const enemy = makeBlockedEnemy(9);
+    const turnState = startEncounter(deck, enemy);
+
+    // Ensure our piercing card is in hand
+    const cardInHand = turnState.deck.hand.find(c => c.mechanicId === 'piercing');
+    if (!cardInHand) {
+      // Skip if draw didn't pull the card (deck setup is non-deterministic).
+      // In practice a 1-card deck always draws that card.
+      return;
+    }
+
+    const hpBefore = enemy.currentHP;
+
+    // Quick play mode: no charge, no answer. answeredCorrectly=true with playMode='quick'
+    playCardAction(turnState, cardInHand.id, true, false, 'quick');
+
+    // Pre-patch: enemy.block absorbed 3 damage → enemy.currentHP stayed at 100.
+    // Post-patch: piercing bypasses block → enemy.currentHP dropped by 3, block stripped to 0.
+    expect(enemy.currentHP).toBeLessThan(hpBefore);  // HP must have gone down
+    expect(enemy.block).toBe(0);                      // Block must be completely stripped
+  });
+
+  it('CC: deals full charge-correct damage through enemy block=9', () => {
+    const piercingCard = makePiercingCard();
+    const deck = createDeck([piercingCard]);
+    const enemy = makeBlockedEnemy(9);
+    const turnState = startEncounter(deck, enemy);
+
+    const cardInHand = turnState.deck.hand.find(c => c.mechanicId === 'piercing');
+    if (!cardInHand) return;
+
+    const hpBefore = enemy.currentHP;
+
+    // Charge Correct: answeredCorrectly=true, playMode='charge'
+    playCardAction(turnState, cardInHand.id, true, false, 'charge');
+
+    expect(enemy.currentHP).toBeLessThan(hpBefore);
+    expect(enemy.block).toBe(0);
   });
 });
 

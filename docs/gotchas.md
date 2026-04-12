@@ -3785,3 +3785,33 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Rule:** `fenPosition` in a chess puzzle fact ALWAYS stores the *pre-setup* (raw Lichess) FEN. The grader and service re-apply `solutionMoves[0]` to get the player-facing position. Never pre-apply the setup move when assembling facts.
 
 **Detection:** Run `node scripts/content-pipeline/chess/validate-chess-deck.mjs` — Check 2 now verifies setup move legality on `fenPosition` and Check 2b verifies player move legality after setup.
+
+### 2026-04-12 — damageDealtBypassesBlock was dead code — Piercing was silently broken
+
+**What:** `cardEffectResolver.ts` assigned `result.damageDealtBypassesBlock = true` for the `piercing` mechanic, and the field had a JSDoc comment "Ignores enemy block." But `turnManager.ts` never read this field before calling `applyDamageToEnemy`. `applyDamageToEnemy` always subtracts `enemy.block` from damage unconditionally. A Piercing card with any enemy block would absorb all damage into the block value — e.g. Piercing QP deals 3 damage, enemy has 9 block → `applyDamageToEnemy` subtracts 3 from block → enemy takes 0 HP damage. The "Ignores enemy block" tooltip was a lie.
+
+**Why:** The field was introduced as an intent signal but the consumer code was never written. The `removeEnemyBlock` field (used by Corrode) works by stripping block post-damage in turnManager around line 2182 — but that's too late for damage calculation.
+
+**Fix (2026-04-12):** Added a pre-`applyDamageToEnemy` block-clear in `turnManager.ts` at line 1993: if `effect.damageDealtBypassesBlock && enemy.block > 0`, set `enemy.block = 0` before calling `applyDamageToEnemy`. The resolver assignment is preserved as the signal. Regression test added to `tests/unit/attack-mechanics.test.ts` ("piercing mechanic — full pipeline block bypass").
+
+**Rule:** When adding a new behavioral flag to `CardEffectResult`, always add the consumption site in `turnManager.ts` in the same commit. Dead flag = silent mechanics bug.
+
+### 2026-04-12 — playtestAPI.ts had four selector mismatches (shop, mystery, study screen)
+
+**What (Shop):** `shopBuyRelic(index)` queried `[data-testid="shop-relic-${index}"]`. Actual testid is `shop-buy-relic-{relic.id}` (keyed by relic ID, not index). `shopBuyCard(index)` queried `shop-card-${index}`; actual is `shop-buy-card-${idx}`. `getShopInventory()` read `item.relic?.definitionId` to look up `RELIC_BY_ID` — but `ShopRelicItem.relic` is a `RelicDefinition` with field `.id`, not `.definitionId`. Every relic returned an empty metadata block.
+
+**What (Mystery event choices):** `getMysteryEventChoices()` and `selectMysteryChoice()` queried `[data-testid="mystery-choice-{i}"]`. `MysteryEventOverlay.svelte` never had this testid — choice buttons render as `.choice-btn` elements with no data-testid at all.
+
+**What (startStudy screen):** `startStudy()` wrote `'restStudy'` to `rr:currentScreen` before querying `[data-testid="rest-study"]`. `data-testid="rest-study"` lives on `RestRoomOverlay`, which only mounts on `'restRoom'`. Writing `'restStudy'` mounts `StudyQuizOverlay` directly (skipping `RestRoomOverlay` entirely), so the querySelector always returned null.
+
+**What (activeMysteryEvent not registered):** `readStore('rr:activeMysteryEvent')` in `playtestDescriber.ts` returned undefined because `activeMysteryEvent` was never registered at `Symbol.for('rr:activeMysteryEvent')` in `debugBridge.ts`'s `registerStoresLazy`.
+
+**Fix (2026-04-12):** All four fixed in `src/dev/playtestAPI.ts` and `src/dev/debugBridge.ts`. Shop buy functions now resolve relic ID from inventory store before querying. Mystery choice helpers now use `.choice-btn` DOM query (with store fallback for structured choice events). `startStudy` now navigates to `'restRoom'` first. `activeMysteryEvent` added to `registerStoresLazy`.
+
+**Rule:** When adding a new playtest API helper that queries the DOM, verify testids against the actual component source file before shipping. Cross-reference with `grep -rn "data-testid" src/ui/components/<ComponentName>.svelte`.
+
+### 2026-04-12 — spawn({screen:'restStudy'}) produced 0 study questions (empty run pool)
+
+**What:** `bootstrapRun()` in `scenarioSimulator.ts` calls `resetEncounterBridge()` which sets `activeRunPool = []`. The restStudy spawn path then called `generateStudyQuestions()` which falls back to `getRunPoolCards()` for the trivia path → empty array → 0 questions → `StudyQuizOverlay` mounted in empty-state showing "QUESTION 0 / 0".
+
+**Fix (2026-04-12):** Added `seedRunPool(cards: Card[])` export to `encounterBridge.ts`. When `generateStudyQuestions()` returns 0 and `factsDB` is ready, `scenarioSimulator.ts` now seeds the run pool with up to 20 trivia facts before calling `generateStudyQuestions()` again.
