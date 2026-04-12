@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T05:56:24.304Z",
+  "updatedAt": "2026-04-12T05:58:30.476Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -39,7 +39,7 @@
   ],
   "topIssueCounts": {
     "critical": 3,
-    "high": 23,
+    "high": 22,
     "medium": 51,
     "low": 29
   },
@@ -2102,7 +2102,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 59,
       "score": 5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "stateIds": [
@@ -2119,7 +2119,9 @@
         "Play Slow expecting to cancel the heal",
         "Observe: heal fires anyway. 2+ AP wasted."
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T05:58:30.476Z",
+      "resolvedBy": "323372025"
     },
     {
       "canonicalId": "04-combat-core-issue-1744339200001-04-002",
