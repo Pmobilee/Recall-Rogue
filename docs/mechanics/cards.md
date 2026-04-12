@@ -1,7 +1,7 @@
 # Card System Mechanics
 
 > **Purpose:** Card entity, card types, tier system, damage formula, mastery system, and card creation pipeline.
-> **Last verified:** 2026-04-11 (Severity-A resolver normalization: 11 mechanics normalized to stat-table reads; HARD STOP rule documented for 5 mechanics with non-1.5 CC:QP ratios; warcry_perm_str dead tag removed; Gambit description reframed CC-first; Phase 6 audit rollup: four-source rule added; Pass 8 + L0 Balance Overhaul from 2026-04-10)
+> **Last verified:** 2026-04-12 (BATCH-2026-04-12-001 Bug A fix: Piercing now actually bypasses enemy block. Previously `damageDealtBypassesBlock` was assigned in `cardEffectResolver.ts` but never consumed in `turnManager.ts`, so enemy block still absorbed Piercing damage. Fix: added block-strip in `turnManager.ts` line 1993 before `applyDamageToEnemy`. See also gotchas.md 2026-04-12.)
 > **Source files:** `src/data/card-types.ts`, `src/data/mechanics.ts`, `src/services/cardFactory.ts`, `src/services/cardUpgradeService.ts`, `src/services/cardEffectResolver.ts`, `src/services/damagePreviewService.ts`, `src/services/catchUpMasteryService.ts`, `src/data/balance.ts`
 
 > **See also:** [`card-mechanics.md`](card-mechanics.md) — Complete table of all 50+ mechanics (attack, shield, buff, debuff, utility, wild).

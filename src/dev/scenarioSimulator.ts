@@ -1382,7 +1382,30 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
 
     // Generate study questions and inject via global bridge so CardApp can pick them up
     const { generateStudyQuestions, gameFlowState } = await import('../services/gameFlowController');
-    const questions = generateStudyQuestions();
+    let questions = generateStudyQuestions();
+
+    // Bug fix 2026-04-12: bootstrapRun resets activeRunPool to [].
+    // Without a prior encounter, generateStudyQuestions() sees an empty trivia pool
+    // and returns 0 questions, mounting the Study overlay in empty-state.
+    // Seed the pool with trivia facts so at least 3 questions are available.
+    if (questions.length === 0 && factsDB.isReady()) {
+      const { seedRunPool } = await import('../services/encounterBridge');
+      const triviaFacts = factsDB.getTriviaFacts().filter(f =>
+        f.quizQuestion && f.correctAnswer && (f.distractors ?? []).length >= 1
+      );
+      // Build minimal Card objects — structurally compatible with Card interface.
+      const seedCards = triviaFacts.slice(0, 20).map((f, i) => ({
+        id: `scenario_seed_${i}`,
+        factId: f.id,
+        cardType: 'attack' as const,
+        domain: (f.categoryL1 ?? 'general_knowledge') as any,
+        tier: '1' as const,
+        baseEffectValue: 4,
+        effectMultiplier: 1.0,
+      }));
+      seedRunPool(seedCards as any);
+      questions = generateStudyQuestions();
+    }
 
     // Store on a well-known symbol so CardApp's $effect can read them
     const sym = Symbol.for('rr:scenarioStudyQuestions');

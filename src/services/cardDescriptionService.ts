@@ -1000,7 +1000,10 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       return [txt('Draw '), num(foresightDraw), txt('\n'), kw('Forget', 'forget')];
     }
     case 'transmute':
-      return [txt('Transform for\nencounter'), txt('\nCharge: choose 1/3')];
+      // 2026-04-12: Fixed word-boundary issue. Previous parts had 'for\nencounter' which,
+      // when rendered in contexts that don't split on \n (RunDeckOverlay inline span),
+      // displayed as 'forencounterCharge: choose 1/3' — confirmed playtest BATCH-2026-04-12-001 Bug F.
+      return [txt('Transform for encounter'), txt('\nCharge: choose 1/3')];
     case 'cleanse':
       return [txt('Purge debuffs\nDraw 1')];
     case 'immunity':

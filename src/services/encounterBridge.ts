@@ -1819,6 +1819,16 @@ export function getRunPoolCards(): Card[] {
   return [...activeRunPool];
 }
 
+/**
+ * Seed the run pool with a set of pre-built cards.
+ * Used by scenarioSimulator when spawning a restStudy screen without going
+ * through a full encounter start (which normally populates activeRunPool).
+ * Without this, generateStudyQuestions() sees an empty pool and returns 0 questions.
+ */
+export function seedRunPool(cards: Card[]): void {
+  activeRunPool = [...cards];
+}
+
 export function getActiveDeckCards(): Card[] {
   if (!activeDeck) return [];
   return [

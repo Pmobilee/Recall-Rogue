@@ -725,11 +725,12 @@ async function getShopInventory(): Promise<Record<string, unknown> | null> {
   if (!inventory) return null;
   return {
     relics: (inventory.relics ?? []).map((item: any, i: number) => {
-      const def = RELIC_BY_ID[item.relic?.definitionId];
+      // ShopRelicItem.relic is a RelicDefinition with .id (not .definitionId).
+      const def = RELIC_BY_ID[item.relic?.id];
       return {
         index: i,
-        id: item.relic?.definitionId ?? '',
-        name: def?.name ?? item.relic?.definitionId ?? '',
+        id: item.relic?.id ?? '',
+        name: def?.name ?? item.relic?.id ?? '',
         description: def?.description ?? '',
         rarity: def?.rarity ?? 'common',
         price: item.price ?? 0,
@@ -753,23 +754,39 @@ async function getShopInventory(): Promise<Record<string, unknown> | null> {
   };
 }
 
-/** Buy a relic from the shop by index. */
+/** Buy a relic from the shop by index.
+ *
+ * ShopRoomOverlay uses data-testid="shop-buy-relic-{relic.id}" (keyed by relic ID,
+ * not index). This function reads the Nth relic from the inventory store to resolve
+ * its ID, then clicks the correct buy button.
+ */
 async function shopBuyRelic(index: number): Promise<PlayResult> {
   return safeAction(async () => {
-    const btn = document.querySelector(`[data-testid="shop-relic-${index}"]`) as HTMLButtonElement | null;
-    if (!btn) return { ok: false, message: `Shop relic button ${index} not found` };
-    if (btn.disabled) return { ok: false, message: `Shop relic ${index} is not purchasable (sold or not enough gold)` };
+    const { activeShopInventory } = await import('../services/gameFlowController');
+    const { get } = await import('svelte/store');
+    const inventory = get(activeShopInventory);
+    const item = inventory?.relics?.[index];
+    if (!item) return { ok: false, message: `Shop relic index ${index} not found in inventory` };
+    const relicId = (item as any).relic?.id ?? '';
+    if (!relicId) return { ok: false, message: `Shop relic ${index} has no ID` };
+    const btn = document.querySelector(`[data-testid="shop-buy-relic-${relicId}"]`) as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: `Shop relic buy button for '${relicId}' not found` };
+    if (btn.disabled) return { ok: false, message: `Shop relic '${relicId}' is not purchasable (sold or not enough gold)` };
     btn.click();
     await wait(turboDelay(1000));
-    return { ok: true, message: `Bought shop relic ${index}. Screen: ${getScreen()}` };
+    return { ok: true, message: `Bought shop relic '${relicId}'. Screen: ${getScreen()}` };
   });
 }
 
-/** Buy a card from the shop by index. */
+/** Buy a card from the shop by index.
+ *
+ * ShopRoomOverlay uses data-testid="shop-buy-card-{idx}" (index-keyed, consistent
+ * with how cards are rendered). The previous testid "shop-card-{index}" did not match.
+ */
 async function shopBuyCard(index: number): Promise<PlayResult> {
   return safeAction(async () => {
-    const btn = document.querySelector(`[data-testid="shop-card-${index}"]`) as HTMLButtonElement | null;
-    if (!btn) return { ok: false, message: `Shop card button ${index} not found` };
+    const btn = document.querySelector(`[data-testid="shop-buy-card-${index}"]`) as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: `Shop card buy button ${index} not found` };
     if (btn.disabled) return { ok: false, message: `Shop card ${index} is not purchasable (sold or not enough gold)` };
     btn.click();
     await wait(turboDelay(1000));
@@ -801,24 +818,45 @@ async function rerollReward(): Promise<PlayResult> {
   });
 }
 
-/** Get mystery event choices from the DOM. */
+/** Get mystery event choices.
+ *
+ * MysteryEventOverlay renders choices as `.choice-btn` elements (no data-testid).
+ * This function reads from the activeMysteryEvent store for 'choice'-type events
+ * to return labeled options, then falls back to querying visible .choice-btn DOM
+ * elements for other event types (doubleOrNothing, speedRound, etc.).
+ */
 function getMysteryEventChoices(): Array<{ index: number; text: string }> {
-  const choices: Array<{ index: number; text: string }> = [];
-  for (let i = 0; i < 5; i++) {
-    const btn = document.querySelector(`[data-testid="mystery-choice-${i}"]`) as HTMLElement | null;
-    if (!btn) break;
-    const style = getComputedStyle(btn);
-    if (style.display === 'none' || style.visibility === 'hidden') continue;
-    choices.push({ index: i, text: btn.textContent?.trim() ?? '' });
+  // Primary: read from store for 'choice'-type events (struct has .options[].label)
+  const event = readStore<any>('rr:activeMysteryEvent');
+  if (event?.effect?.type === 'choice' && Array.isArray(event.effect.options)) {
+    return (event.effect.options as Array<{ label: string }>).map((opt, i) => ({
+      index: i,
+      text: opt.label,
+    }));
   }
-  return choices;
+  // Fallback: query visible .choice-btn elements from DOM (speedRound, doubleOrNothing, etc.)
+  const buttons = Array.from(document.querySelectorAll<HTMLElement>('.choice-btn'));
+  return buttons
+    .filter(btn => {
+      const style = getComputedStyle(btn);
+      return style.display !== 'none' && style.visibility !== 'hidden';
+    })
+    .map((btn, i) => ({ index: i, text: btn.textContent?.trim() ?? '' }));
 }
 
-/** Select a mystery event choice by index. */
+/** Select a mystery event choice by index.
+ *
+ * MysteryEventOverlay uses class `.choice-btn` for choice buttons (no data-testid).
+ */
 async function selectMysteryChoice(index: number): Promise<PlayResult> {
   return safeAction(async () => {
-    const btn = document.querySelector(`[data-testid="mystery-choice-${index}"]`) as HTMLButtonElement | null;
-    if (!btn) return { ok: false, message: `Mystery choice ${index} not found` };
+    const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.choice-btn'))
+      .filter(btn => {
+        const style = getComputedStyle(btn);
+        return style.display !== 'none' && style.visibility !== 'hidden';
+      });
+    const btn = buttons[index] ?? null;
+    if (!btn) return { ok: false, message: `Mystery choice ${index} not found (only ${buttons.length} visible .choice-btn elements)` };
     btn.click();
     await wait(turboDelay(1000));
     return { ok: true, message: `Selected mystery choice ${index}. Screen: ${getScreen()}` };
@@ -939,8 +977,12 @@ async function startStudy(size?: number): Promise<PlayResult> {
       return { ok: false, message: 'empty study pool — no cards are eligible for mastery upgrade in this run' };
     }
 
-    // Navigate to the rest room — RestRoomOverlay.svelte will mount.
-    writeStore('rr:currentScreen', 'restStudy');
+    // Navigate to the rest room — RestRoomOverlay.svelte mounts on 'restRoom', NOT 'restStudy'.
+    // Bug fix 2026-04-12: The old code wrote 'restStudy' here, which mounts StudyQuizOverlay
+    // directly (skipping RestRoomOverlay entirely). data-testid="rest-study" lives on
+    // RestRoomOverlay, so the querySelector always returned null. Fix: navigate to 'restRoom'
+    // first so the rest room UI mounts, then click the Study button to trigger the transition.
+    writeStore('rr:currentScreen', 'restRoom');
     await wait(turboDelay(500));
 
     // Click the Study option on the rest room. RestRoomOverlay.svelte exposes
@@ -959,7 +1001,7 @@ async function startStudy(size?: number): Promise<PlayResult> {
 
     // rest-study button not found: we may be on the wrong screen or
     // RestRoomOverlay has not mounted yet.
-    return { ok: false, message: 'Study button [data-testid="rest-study"] not found. Is the rest room open? Use writeStore("rr:currentScreen","restStudy") to navigate there first.' };
+    return { ok: false, message: 'Study button [data-testid="rest-study"] not found. Is the rest room open? Ensure writeStore("rr:currentScreen","restRoom") succeeds before clicking.' };
   });
 }
 

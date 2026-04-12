@@ -1990,6 +1990,13 @@ export function playCardAction(
         });
       }
     }
+    // AR-2026-04-12: Piercing bypass — strip enemy block entirely before damage so
+    // applyDamageToEnemy sees block=0 and deals full HP damage. The
+    // damageDealtBypassesBlock field was previously dead code (assigned in the
+    // resolver but never consumed). This is the consumption site.
+    if (effect.damageDealtBypassesBlock && enemy.block > 0) {
+      enemy.block = 0;
+    }
     const damageResult = applyDamageToEnemy(enemy, effect.damageDealt);
     effect.enemyDefeated = damageResult.defeated;
     turnState.damageDealtThisTurn += effect.damageDealt;
