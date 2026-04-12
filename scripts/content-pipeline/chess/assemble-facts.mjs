@@ -199,28 +199,25 @@ function uciToSan(fen, uciMove) {
 function buildFact(puzzle) {
   const { id, fen, moves, rating, popularity, themes, gameUrl, primaryTheme, chainThemeId } = puzzle;
 
-  // Apply setup move (moves[0]) to get the player's starting position
-  let setupResult;
-  try {
-    setupResult = uciToSan(fen, moves[0]);
-  } catch {
-    return null;
-  }
+  // Determine the player's color by applying the setup move (moves[0]) to a temporary position.
+  // We do NOT store this post-setup FEN — fenPosition must be the raw Lichess FEN (pre-setup),
+  // because chessGrader.ts and chessPuzzleService.ts both re-apply solutionMoves[0] themselves.
+  const setupResult = uciToSan(fen, moves[0]);
   if (!setupResult) return null;
 
-  const playerFen = setupResult.fenAfter;
+  const playerFenTemp = setupResult.fenAfter;
 
-  // Parse the player's position to determine whose turn it is
+  // Parse the temporary post-setup position only to determine whose turn it is
   let playerChess;
   try {
-    playerChess = new Chess(playerFen);
+    playerChess = new Chess(playerFenTemp);
   } catch {
     return null;
   }
   const color = playerChess.turn() === 'w' ? 'White' : 'Black';
 
-  // Convert the solution move (moves[1]) to SAN
-  const solResult = uciToSan(playerFen, moves[1]);
+  // Convert the solution move (moves[1]) to SAN using the post-setup position
+  const solResult = uciToSan(playerFenTemp, moves[1]);
   if (!solResult) return null;
   const sanMove = solResult.san;
 
@@ -247,7 +244,7 @@ function buildFact(puzzle) {
     // Chess-specific fields
     quizMode: 'chess_tactic',
     quizResponseMode: 'chess_move',
-    fenPosition: playerFen,
+    fenPosition: fen,           // Raw Lichess FEN (pre-setup) — grader re-applies solutionMoves[0]
     solutionMoves: moves,
     tacticTheme: primaryTheme,
     lichessRating: rating,

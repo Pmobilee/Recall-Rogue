@@ -5,7 +5,8 @@
  *
  * Checks:
  *  1. Every fenPosition parses as a valid chess position
- *  2. Every solutionMoves[1] is legal in the fenPosition
+ *  2. Every solutionMoves[0] (setup move) is legal on fenPosition
+ *  2b. Every solutionMoves[1] (player move) is legal after the setup move
  *  3. correctAnswer matches the SAN of solutionMoves[1]
  *  4. No duplicate fenPosition values
  *  5. mateIn1 puzzles: solution delivers checkmate
@@ -107,36 +108,69 @@ function main() {
   }
 
   // -------------------------------------------------------------------------
-  // Check 2: Solution move legality
+  // Check 2: Setup move (solutionMoves[0]) is legal on fenPosition (pre-setup FEN)
+  // fenPosition must be the raw Lichess FEN — chessGrader.ts re-applies solutionMoves[0]
+  // to reach the player-facing position.
   // -------------------------------------------------------------------------
   {
-    const illegalMoves = [];
+    const illegalSetup = [];
     for (const fact of facts) {
-      if (!fact.fenPosition || !fact.solutionMoves?.[1]) {
-        illegalMoves.push(`${fact.id}: missing fenPosition or solutionMoves[1]`);
+      if (!fact.fenPosition || !fact.solutionMoves?.[0]) {
+        illegalSetup.push(`${fact.id}: missing fenPosition or solutionMoves[0]`);
         continue;
       }
-      const result = uciApply(fact.fenPosition, fact.solutionMoves[1]);
+      const result = uciApply(fact.fenPosition, fact.solutionMoves[0]);
       if (!result) {
-        illegalMoves.push(`${fact.id}: ${fact.solutionMoves[1]} is illegal in position`);
+        illegalSetup.push(`${fact.id}: setup move ${fact.solutionMoves[0]} is illegal on fenPosition`);
       }
     }
-    if (illegalMoves.length === 0) {
-      checkPass(`Check 2: All solution moves are legal in their positions`);
+    if (illegalSetup.length === 0) {
+      checkPass(`Check 2: All setup moves (solutionMoves[0]) are legal on fenPosition`);
     } else {
-      checkFail('Check 2: Illegal solution moves', `${illegalMoves.length} failures (first: ${illegalMoves[0]})`);
+      checkFail('Check 2: Illegal setup moves on fenPosition', `${illegalSetup.length} failures (first: ${illegalSetup[0]})`);
     }
   }
 
   // -------------------------------------------------------------------------
+  // Check 2b: Player move (solutionMoves[1]) is legal after the setup move
+  // Applies solutionMoves[0] to fenPosition first, then checks solutionMoves[1].
+  // -------------------------------------------------------------------------
+  {
+    const illegalMoves = [];
+    for (const fact of facts) {
+      if (!fact.fenPosition || !fact.solutionMoves?.[0] || !fact.solutionMoves?.[1]) {
+        illegalMoves.push(`${fact.id}: missing fenPosition or solutionMoves`);
+        continue;
+      }
+      // Apply the setup move to reach the player-facing position
+      const setupResult = uciApply(fact.fenPosition, fact.solutionMoves[0]);
+      if (!setupResult) continue; // Already caught in Check 2
+      // Now check the player's solution move in the resulting position
+      const result = uciApply(setupResult.chess.fen(), fact.solutionMoves[1]);
+      if (!result) {
+        illegalMoves.push(`${fact.id}: ${fact.solutionMoves[1]} is illegal after setup move`);
+      }
+    }
+    if (illegalMoves.length === 0) {
+      checkPass(`Check 2b: All player moves (solutionMoves[1]) are legal after setup move`);
+    } else {
+      checkFail('Check 2b: Illegal player moves after setup', `${illegalMoves.length} failures (first: ${illegalMoves[0]})`);
+    }
+  }
+
   // Check 3: correctAnswer matches SAN of solution move
+  // (applies setup move first, then tests solutionMoves[1] SAN in post-setup position)
   // -------------------------------------------------------------------------
   {
     const mismatches = [];
     for (const fact of facts) {
-      if (!fact.fenPosition || !fact.solutionMoves?.[1]) continue;
-      const result = uciApply(fact.fenPosition, fact.solutionMoves[1]);
-      if (!result) continue;  // Already caught in Check 2
+      if (!fact.fenPosition || !fact.solutionMoves?.[0] || !fact.solutionMoves?.[1]) continue;
+      // Apply setup move first
+      const setupResult = uciApply(fact.fenPosition, fact.solutionMoves[0]);
+      if (!setupResult) continue;  // Already caught in Check 2
+      // Now test correctAnswer against SAN of solutionMoves[1]
+      const result = uciApply(setupResult.chess.fen(), fact.solutionMoves[1]);
+      if (!result) continue;  // Already caught in Check 2b
       if (result.san !== fact.correctAnswer) {
         mismatches.push(`${fact.id}: expected "${result.san}", got "${fact.correctAnswer}"`);
       }
@@ -148,8 +182,7 @@ function main() {
     }
   }
 
-  // -------------------------------------------------------------------------
-  // Check 4: No duplicate FEN positions
+    // Check 4: No duplicate FEN positions
   // -------------------------------------------------------------------------
   {
     const fenCounts = new Map();
@@ -173,8 +206,12 @@ function main() {
     const mateIn1Facts = facts.filter(f => f.tacticTheme === 'mateIn1' || f.tacticTheme === 'smotheredMate');
     const notMate = [];
     for (const fact of mateIn1Facts) {
-      if (!fact.fenPosition || !fact.solutionMoves?.[1]) continue;
-      const result = uciApply(fact.fenPosition, fact.solutionMoves[1]);
+      if (!fact.fenPosition || !fact.solutionMoves?.[0] || !fact.solutionMoves?.[1]) continue;
+      // Apply setup move first to reach player-facing position
+      const setupResult = uciApply(fact.fenPosition, fact.solutionMoves[0]);
+      if (!setupResult) continue;
+      // Now apply the player's solution move and check for checkmate
+      const result = uciApply(setupResult.chess.fen(), fact.solutionMoves[1]);
       if (!result) continue;
       if (!result.chess.isCheckmate()) {
         notMate.push(`${fact.id}: solution ${fact.solutionMoves[1]} (SAN: ${result.san}) does not give checkmate`);

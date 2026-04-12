@@ -3745,3 +3745,13 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix:** Updated flow diagram, screen descriptions (dormant callouts), and run.md key exports. Drift discovered via BATCH-2026-04-12-001 playtest finding H-032.
 
 **Reader tip:** Always treat `src/services/gameFlowController.ts` as the canonical source for screen transitions — search for `currentScreen.set(` calls to trace the real flow. `docs/ui/screens.md` is a convenience summary that can lag behind code changes; verify against the source when uncertain.
+
+### 2026-04-12 — chess_tactics FEN convention mismatch: fenPosition must be pre-setup FEN
+
+**What:** 298/298 chess puzzle facts rendered as "Invalid puzzle position" at runtime. `assemble-facts.mjs` stored `fenPosition: playerFen` — the FEN *after* applying `solutionMoves[0]` (the opponent's setup move). Both `chessGrader.ts` (`setupPuzzlePosition`) and `chessPuzzleService.ts` (`puzzleToDeckFact`) treat `fenPosition` as the *base* FEN and re-apply `solutionMoves[0]` themselves. When they tried to move a piece that had already moved, the source square was empty and `chess.move()` threw.
+
+**Fix:** Post-processed `chess_tactics.json` via `scripts/content-pipeline/chess/fix-fen-convention.mjs` to replace every `fenPosition` with the raw Lichess FEN (sourced from `puzzles-selected.json`). Updated `assemble-facts.mjs` to store `fenPosition: fen` (raw) instead of `fenPosition: playerFen` (post-setup). Updated `validate-chess-deck.mjs` Check 2 and added Check 2b to verify the correct convention: solutionMoves[0] legal on fenPosition, solutionMoves[1] legal AFTER applying solutionMoves[0].
+
+**Rule:** `fenPosition` in a chess puzzle fact ALWAYS stores the *pre-setup* (raw Lichess) FEN. The grader and service re-apply `solutionMoves[0]` to get the player-facing position. Never pre-apply the setup move when assembling facts.
+
+**Detection:** Run `node scripts/content-pipeline/chess/validate-chess-deck.mjs` — Check 2 now verifies setup move legality on `fenPosition` and Check 2b verifies player move legality after setup.
