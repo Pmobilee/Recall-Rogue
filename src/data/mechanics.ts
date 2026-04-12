@@ -195,7 +195,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   },
   {
     id: 'slow', name: 'Slow', type: 'debuff',
-    description: "Skip enemy's next defend or buff.",
+    description: "Skip enemy's next defend or buff. Won't stop attacks or heals.",
     baseValue: 1, apCost: 2, maxPerPool: 0, tags: ['slow'], launchPhase: 1, unlockLevel: 0,
     quickPlayValue: 1, chargeCorrectValue: 1, chargeWrongValue: 1,
     chargeBonusEffect: 'slow_weaken',
