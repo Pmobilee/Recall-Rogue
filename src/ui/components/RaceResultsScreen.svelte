@@ -5,7 +5,6 @@
 
      All layout via calc() + --layout-scale / --text-scale. ZERO hardcoded px.
 -->
-<!-- @wiring-check:skip reason: multiplayer race/duel results overlay — wiring blocked on multiplayerGameService onRaceComplete integration in CardApp; no raceResults screen state or RaceResults store exists yet; wiring requires game-logic agent work (Screen union + state management) scheduled post-multiplayer-lobby freeze -->
 <script lang="ts">
   import type { RaceResults } from '../../data/multiplayerTypes'
 

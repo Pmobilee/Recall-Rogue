@@ -199,6 +199,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import MultiplayerMenu from './ui/components/MultiplayerMenu.svelte'
   import LobbyBrowserScreen from './ui/components/LobbyBrowserScreen.svelte'
   import TriviaRoundScreen from './ui/components/TriviaRoundScreen.svelte'
+  import RaceResultsScreen from './ui/components/RaceResultsScreen.svelte'
   import {
     createLobby,
     joinLobby,
@@ -209,7 +210,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     onGameStart as registerGameStartCb,
     generatePlayerId,
   } from './services/multiplayerLobbyService'
-  import { onOpponentProgressUpdate } from './services/multiplayerGameService'
+  import { onOpponentProgressUpdate, onRaceComplete } from './services/multiplayerGameService'
   import {
     initMapNodeSync,
     destroyMapNodeSync,
@@ -225,7 +226,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     broadcastPartnerState,
     type PartnerState,
   } from './services/multiplayerCoopSync'
-  import type { LobbyState, RaceProgress, MultiplayerMode, LobbyContentSelection } from './data/multiplayerTypes'
+  import type { LobbyState, RaceProgress, RaceResults, MultiplayerMode, LobbyContentSelection } from './data/multiplayerTypes'
   import { computeRaceScore } from './services/multiplayerScoring'
 
   // Update Steam Rich Presence whenever the active screen changes.
@@ -516,6 +517,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   /** True while an active multiplayer lobby exists (race progress HUD visible in combat). */
   let isMultiplayerRun = $derived(currentLobby !== null)
 
+  /** Race/duel results received from onRaceComplete — shown on raceResults screen. */
+  let activeRaceResults = $state<RaceResults | null>(null)
+
   /** Live map node picks across all players, refreshed via multiplayerMapSync. */
   let mapNodePicks = $state<Record<string, string | null>>({})
 
@@ -568,6 +572,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     if (currentLobby) {
       leaveLobby()
       currentLobby = null
+      activeRaceResults = null
       transitionScreen('multiplayerMenu')
     } else {
       transitionScreen('hub')
@@ -691,12 +696,17 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         accuracy: partner.accuracy ?? opponentProgress.accuracy,
       }
     })
+    const unsubRace = onRaceComplete((results) => {
+      activeRaceResults = results
+      currentScreen.set('raceResults')
+    })
     return () => {
       unsubStart()
       unsubProgress()
       unsubPicks()
       unsubConsensus()
       unsubPartner()
+      unsubRace()
       destroyMapNodeSync()
       destroyCoopSync()
     }
@@ -2034,6 +2044,19 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         onPlayAgain={() => { currentScreen.set('multiplayerMenu'); }}
         onReturnToLobby={() => { currentScreen.set('multiplayerLobby'); }}
         onReturnToHub={() => { currentScreen.set('hub'); }}
+      />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'raceResults' && activeRaceResults}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <RaceResultsScreen
+        results={activeRaceResults}
+        localPlayerId={localPlayerId}
+        mode={currentLobby?.mode === 'same_cards' ? 'same_cards' : currentLobby?.mode === 'duel' ? 'duel' : 'race'}
+        onPlayAgain={() => { activeRaceResults = null; transitionScreen('multiplayerMenu'); }}
+        onReturnToLobby={() => { activeRaceResults = null; transitionScreen('multiplayerLobby'); }}
+        onReturnToHub={() => { activeRaceResults = null; transitionScreen('hub'); }}
       />
     </div>
   {/if}

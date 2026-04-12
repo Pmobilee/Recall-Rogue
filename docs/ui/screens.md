@@ -50,6 +50,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `runPreview` | Pre-run chain distribution preview — shows topic assignments across 3 chains before expedition begins |
 | `proceduralStudy` | Procedural math practice session — one question at a time with FSRS grading; bypasses combat run entirely |
 | `triviaRound` | Solo Trivia Night screen — `TriviaRoundScreen.svelte` rendered in `waiting` phase; wired in BATCH-ULTRA T7 fix (issue-1775873221654-07-004). Real-game flow populated via `triviaNightService`; scenario preset `trivia-round` for testing |
+| `raceResults` | Full-screen race/duel results — shown after both players finish a multiplayer race or duel. Fires via `onRaceComplete` in `multiplayerGameService`. **Added 2026-04-12.** |
 
 ---
 
@@ -112,6 +113,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `studyTemple` | `StudyTempleScreen` | |
 | `proceduralStudy` | `ProceduralStudyScreen` | Props: `deckId`, `subDeckId?`, `onBack`; `onBack` returns to `studyTemple` |
 | `triviaRound` | `TriviaRoundScreen` | Wired BATCH-ULTRA T7. Props: `gameState`, `localPlayerId`, `currentQuestion`, `lastRoundResult`, `onAnswer`, `onPlayAgain`, `onReturnToLobby`, `onReturnToHub`. Initial mock state: `phase: 'waiting'`. Use `trivia-round` scenario preset for testing. |
+| `raceResults` | `RaceResultsScreen` | Full-screen results shown when both players finish a Race or Duel. Wired via `onRaceComplete` from `multiplayerGameService`. Props: `results` (`RaceResults`), `localPlayerId`, `mode` (`'race'|'same_cards'|'duel'`), `onPlayAgain`, `onReturnToLobby`, `onReturnToHub`. State: `activeRaceResults` in `CardApp.svelte`. Cleared on lobby leave. **Added 2026-04-12.** |
 | `runPreview` | `RunPreviewScreen` | Shows chain distribution; `onBack` calls `abandonActiveRun('studyTemple')` (resets shuffleSeedOffset first); `onShuffle` calls `reshuffleChainDistribution()`; `onBeginExpedition` calls `confirmChainDistribution()` (resets shuffleSeedOffset after) |
 | `relicSanctum` | `RelicCollectionScreen` | |
 
