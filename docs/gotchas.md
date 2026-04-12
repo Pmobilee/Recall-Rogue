@@ -3831,3 +3831,19 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix (2026-04-12):** Both the downgrade and upgrade mastery check paths now call `get(activeTurnState)` (Svelte's synchronous store reader, imported from `svelte/store`) instead of reading the `turnState` prop. `get()` reads the current store value immediately, bypassing the async prop schedule.
 
 **Rule:** If a service sets a store synchronously and you need to read the post-update value in the same execution frame, use `get(store)` — not a prop that derives from the store. Props update on Svelte's next reactive batch, not synchronously.
+
+### 2026-04-12 — playtestAPI: getScreen() reports 'combat' during combat→reward async window (H-016)
+
+**What:** After a kill blow, `gameFlowController.openRewardRoom()` is async (it awaits `initRewardSpawnService()` and optionally waits ~500ms for Phaser to boot). During this window, `rr:currentScreen` still says `'combat'`, `getCombatState()` returns null, but Phaser's RewardRoomScene is already active. LLM testers polling `getScreen()` were stuck in a loop believing they were in combat with no combat state to act on.
+
+**Fix (2026-04-12):** `getScreen()` now checks the RewardRoomScene's `scene.isActive()` when the store reports `'combat'`. If the scene is active, returns `'rewardRoom'` — the actual game state. Uses the same `globalThis[Symbol.for('rr:cardGameManager')]` + `getRewardRoomScene()` pattern already established in `acceptReward()`.
+
+**Rule:** Svelte store updates during async transitions lag behind the actual Phaser scene state. Any `getScreen()`-like reader that needs ground-truth state during scene transitions must cross-check the Phaser scene manager, not just the Svelte store.
+
+### 2026-04-12 — playtestAPI: getRewardChoices() always returns [] in the Phaser RewardRoomScene path (H-004)
+
+**What:** `getRewardChoices()` read from `activeCardRewardOptions` (a Svelte store in `gameFlowController`). That store is only written on the Svelte fallback card reward path (line ~1350 in `gameFlowController.ts`). The primary reward path boots Phaser's `RewardRoomScene` directly (line ~1295) and never sets `activeCardRewardOptions`. Every LLM playtest call to `getRewardChoices()` during a Phaser reward room returned `[]`.
+
+**Fix (2026-04-12):** After checking the Svelte store, `getRewardChoices()` now falls back to reading `scene.getItems()` from the active `RewardRoomScene` and filtering for uncollected card-type items. Extracted `mapCardToChoice()` helper that uses live mastery stats (matching the `getCombatState` hand-mapping logic) so both code paths produce consistent `baseEffectValue` output.
+
+**Rule:** When two code paths both lead to the same game state but write to different data sources (Svelte store vs. Phaser scene state), the perception API must check both. Always trace which path actually writes the authoritative state for each screen.

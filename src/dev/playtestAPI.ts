@@ -73,9 +73,19 @@ async function navigate(screen: string): Promise<PlayResult> {
   });
 }
 
-/** Get the current screen name. */
+/** Get the current screen name.
+ *  H-016: During the combat→reward async transition, the Svelte store still
+ *  reports 'combat' while Phaser's RewardRoomScene is already active. Poll the
+ *  scene to return the ground-truth screen value. */
 function getScreen(): string {
-  return readStore<string>('rr:currentScreen') ?? 'unknown';
+  const screen = readStore<string>('rr:currentScreen') ?? 'unknown';
+  // If the store says combat but the Phaser RewardRoomScene is already active,
+  // report the real state. The store lags because openRewardRoom() is async.
+  if (screen === 'combat') {
+    const mgr = (globalThis as Record<symbol, unknown>)[Symbol.for('rr:cardGameManager')] as any;
+    if (mgr?.getRewardRoomScene?.()?.scene?.isActive()) return 'rewardRoom';
+  }
+  return screen;
 }
 
 /** Get the list of available screens based on current state. */
@@ -605,32 +615,67 @@ function getRelicDetails(): Array<Record<string, unknown>> {
   });
 }
 
+/** Map a Card object to the choice schema returned by getRewardChoices.
+ *  Uses live mastery stats (same fallback chain as getCombatState hand mapping). */
+function mapCardToChoice(card: any, i: number): Record<string, unknown> {
+  if (!card) return {
+    index: i, id: '', cardType: '', mechanicId: null, mechanicName: null,
+    domain: null, tier: 0, apCost: 1, baseEffectValue: 0, masteryLevel: 0,
+    chainType: null, factId: null, factQuestion: null, factAnswer: null,
+  };
+  const fact = card.factId && factsDB.isReady() ? factsDB.getById(card.factId) : null;
+  // Mirror the resolver fallback chain: mastery stat table → mechanic quickPlayValue → raw baseEffectValue
+  const _ms = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0);
+  const _mechDef = getMechanicDefinition(card.mechanicId);
+  const effectiveQpValue = _ms?.qpValue ?? _mechDef?.quickPlayValue ?? card.baseEffectValue;
+  return {
+    index: i,
+    id: card.id ?? '',
+    cardType: card.cardType ?? '',
+    mechanicId: card.mechanicId ?? null,
+    mechanicName: card.mechanicName ?? null,
+    domain: card.domain ?? null,
+    tier: card.tier ?? 0,
+    apCost: getEffectiveApCost(card),
+    baseEffectValue: effectiveQpValue,
+    masteryLevel: card.masteryLevel ?? 0,
+    chainType: card.chainType ?? null,
+    factId: card.factId ?? null,
+    factQuestion: fact?.quizQuestion ?? null,
+    factAnswer: fact?.correctAnswer ?? null,
+  };
+}
+
 /** Get the 3-card reward choices from the active reward picker WITHOUT accepting.
- *  Returns an empty array if no card reward is currently pending. */
+ *  Returns an empty array if no card reward is currently pending.
+ *  Checks the Svelte activeCardRewardOptions store first (used by the Svelte fallback
+ *  card reward screen). If that is empty, falls back to reading the Phaser
+ *  RewardRoomScene's item list directly (H-004: the primary reward path populates
+ *  the scene items but never writes activeCardRewardOptions). */
 async function getRewardChoices(): Promise<Array<Record<string, unknown>>> {
+  // Check Svelte store first (used by Svelte card reward screen, not primary path)
   const { activeCardRewardOptions } = await import('../services/gameFlowController');
   const { get } = await import('svelte/store');
   const options = get(activeCardRewardOptions);
-  if (!Array.isArray(options) || options.length === 0) return [];
-  return options.map((card: any, i: number) => {
-    const fact = card.factId && factsDB.isReady() ? factsDB.getById(card.factId) : null;
-    return {
-      index: i,
-      id: card.id ?? '',
-      cardType: card.cardType ?? '',
-      mechanicId: card.mechanicId ?? null,
-      mechanicName: card.mechanicName ?? null,
-      domain: card.domain ?? null,
-      tier: card.tier ?? 0,
-      apCost: card.apCost ?? 1,
-      baseEffectValue: card.baseEffectValue ?? 0,
-      masteryLevel: card.masteryLevel ?? 0,
-      chainType: card.chainType ?? null,
-      factId: card.factId ?? null,
-      factQuestion: fact?.quizQuestion ?? null,
-      factAnswer: fact?.correctAnswer ?? null,
-    };
-  });
+  if (Array.isArray(options) && options.length > 0) {
+    return options.map((card: any, i: number) => mapCardToChoice(card, i));
+  }
+
+  // H-004: Primary path uses Phaser RewardRoomScene — activeCardRewardOptions is NOT
+  // populated by gameFlowController.ts when rewards are presented via that scene.
+  // Read uncollected card items directly from the scene.
+  const mgr = (globalThis as Record<symbol, unknown>)[Symbol.for('rr:cardGameManager')] as any;
+  const scene = mgr?.getRewardRoomScene?.();
+  if (scene?.scene?.isActive()) {
+    const items = scene.getItems?.() as
+      Array<{ collected: boolean; reward: { type: string; card?: any } }> | undefined;
+    if (items) {
+      const cardItems = items.filter((item: any) => !item.collected && item.reward.type === 'card');
+      return cardItems.map((item: any, i: number) => mapCardToChoice(item.reward.card, i));
+    }
+  }
+
+  return [];
 }
 
 /** Get the number of cards currently eligible for mastery upgrade (study pool size).
