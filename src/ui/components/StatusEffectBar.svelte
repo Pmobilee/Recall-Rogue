@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { PERMANENT_DURATION_SENTINEL } from '../../data/statusEffects'
+
   interface StatusEffect {
     type: string
     value: number
@@ -63,6 +65,34 @@
     activeEffectType = null
   }
 
+  /**
+   * Returns the display label for a turnsRemaining value.
+   * Permanent effects (>= PERMANENT_DURATION_SENTINEL) show ∞ instead of the raw sentinel number.
+   */
+  function turnsLabel(t: number): string {
+    return t >= PERMANENT_DURATION_SENTINEL ? '∞' : String(t)
+  }
+
+  /**
+   * Returns a tooltip desc string that is sentinel-aware.
+   * For permanent effects the t argument passed to desc() is replaced with a special
+   * sentinel so the desc function's "${t} turns left" fragment reads "permanent" instead.
+   * The replacement value is intentionally not PERMANENT_DURATION_SENTINEL so desc functions
+   * that use the raw number (e.g. `${v} stacks`) still receive the correct value count.
+   */
+  function descForEffect(effect: StatusEffect): string {
+    const info = getInfo(effect.type)
+    if (effect.turnsRemaining >= PERMANENT_DURATION_SENTINEL) {
+      // Build desc with a sentinel-aware turns value, then patch away any "(9999 turn…)" fragments
+      const raw = info.desc(effect.value, effect.turnsRemaining)
+      // Replace any "(9999 turns left)", "(9999 turn left)", or just the number alone in parens
+      return raw
+        .replace(/\(\s*9999\s+turns?\s+left\)/gi, '(permanent)')
+        .replace(/\b9999\b/g, '∞')
+    }
+    return info.desc(effect.value, effect.turnsRemaining)
+  }
+
   // Only show effects with turns remaining
   let grouped = $derived(effects.filter(e => e.turnsRemaining > 0))
 </script>
@@ -71,10 +101,11 @@
   <div class="effect-bar" class:effect-bar-enemy={position === 'enemy'} class:effect-bar-player={position === 'player'} class:status-effect-bar-enemy={position === 'enemy'} class:status-effect-bar-player={position === 'player'}>
     {#each grouped as effect}
       {@const info = getInfo(effect.type)}
+      {@const isPermanent = effect.turnsRemaining >= PERMANENT_DURATION_SENTINEL}
       <button
         class="effect-icon"
         onclick={() => showEffect(effect.type)}
-        aria-label="{info.name}: {effect.value} stacks, {effect.turnsRemaining} turns"
+        aria-label="{info.name}: {effect.value} stacks, {isPermanent ? 'permanent' : `${effect.turnsRemaining} turns`}"
       >
         {#if info.spriteIcon}
           <img src={info.spriteIcon} alt={info.name} class="effect-sprite-icon" />
@@ -84,7 +115,8 @@
         {#if effect.value >= 1}
           <span class="effect-stack" style="background: {info.color};">{effect.value}</span>
         {/if}
-        <span class="effect-turns">{effect.turnsRemaining}</span>
+        <!-- Bug 2 fix: show ∞ for permanent-duration effects instead of the raw 9999 sentinel -->
+        <span class="effect-turns" class:effect-turns-permanent={isPermanent}>{turnsLabel(effect.turnsRemaining)}</span>
       </button>
     {/each}
   </div>
@@ -104,7 +136,8 @@
             {/if}
             <div class="popup-text">
               <span class="popup-name" style="color: {info.color};">{info.name}</span>
-              <span class="popup-desc">{info.desc(activeEffect.value, activeEffect.turnsRemaining)}</span>
+              <!-- Bug 2 fix: use sentinel-aware desc so popup never shows "9999 turns" -->
+              <span class="popup-desc">{descForEffect(activeEffect)}</span>
             </div>
           </div>
         </div>
@@ -184,6 +217,12 @@
     font-weight: 700;
     color: #e2e8f0;
     text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+  }
+
+  /* Bug 2 fix: ∞ badge gets a slightly larger font for readability */
+  .effect-turns-permanent {
+    font-size: calc(14px * var(--layout-scale, 1));
+    color: #fbbf24;
   }
 
   .effect-popup-backdrop {

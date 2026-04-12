@@ -15,11 +15,12 @@
   // Task 7.1: Multiplier color uses activeChainColor (turn's chain) not the last card's chainType
   let chainColor = $derived(activeChainColor !== null && activeChainColor !== undefined ? getChainTypeColor(activeChainColor) : (chainType !== null && chainType !== undefined ? getChainTypeColor(chainType) : '#888888'))
 
-
   // AR-310: Active chain color indicator — always visible during combat
   let showActiveColor = $derived(activeChainColor !== null && activeChainColor !== undefined)
   let activeColor = $derived(activeChainColor !== null && activeChainColor !== undefined ? getChainTypeColor(activeChainColor) : '#888888')
   let activeName = $derived(activeChainColor !== null && activeChainColor !== undefined ? getChainTypeName(activeChainColor) : '')
+
+  // Key for full-bar re-mount animation (fires on activeChainColor change once per turn)
   let activeColorKey = $state(0)
   let _prevActiveChainColor: number | null = null
   $effect(() => {
@@ -28,6 +29,23 @@
       activeColorKey = activeColorKey + 1
     }
     _prevActiveChainColor = acc
+  })
+
+  /**
+   * Bug 4 fix: key that increments whenever the chain multiplier increases.
+   * This remounts the .chain-mult span, triggering the chainBuildPop CSS animation
+   * so the player gets visual feedback every time they extend the chain.
+   * We only animate on increase (build), not decrease (chain break resets to 0 which
+   * is handled by the bar sliding back to "Play to chain!" state).
+   */
+  let multKey = $state(0)
+  let _prevMultiplier = 1.0
+  $effect(() => {
+    const m = chainMultiplier
+    if (m > _prevMultiplier) {
+      multKey = multKey + 1
+    }
+    _prevMultiplier = m
   })
 </script>
 
@@ -47,7 +65,11 @@
       <span class="chain-name" style="color: {activeColor}; text-shadow: 0 0 calc(6px * var(--layout-scale, 1)) {activeColor}60;">{activeName}</span>
       {#if chainLength >= 1 && chainType !== null}
         <span class="chain-sep" style="opacity: 0.5;">·</span>
-        <span class="chain-mult" style="color: {chainColor};">{chainMultiplier.toFixed(1)}x</span>
+        <!-- Bug 4 fix: {#key multKey} remounts the multiplier element on each chain build,
+             triggering the chainBuildPop animation so players see why their damage is changing. -->
+        {#key multKey}
+          <span class="chain-mult chain-mult-pop" style="color: {chainColor};">{chainMultiplier.toFixed(1)}x</span>
+        {/key}
       {:else}
         <span class="chain-hint">Play to chain!</span>
       {/if}
@@ -103,6 +125,23 @@
     font-family: 'Cinzel', 'Georgia', serif;
   }
 
+  /**
+   * Bug 4 fix: pop animation on chain build.
+   * Fires each time the span is remounted via {#key multKey}.
+   * A quick scale-up-then-settle tells the player their chain just got stronger.
+   * Duration 300ms keeps it snappy without blocking card-play rhythm.
+   */
+  .chain-mult-pop {
+    animation: chainBuildPop 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-block;
+  }
+
+  @keyframes chainBuildPop {
+    0%   { transform: scale(1.0); }
+    40%  { transform: scale(1.45); }
+    100% { transform: scale(1.0); }
+  }
+
   .chain-hint {
     font-size: calc(9px * var(--text-scale, 1));
     font-weight: 500;
@@ -143,6 +182,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .chain-mult-pop {
+      animation: none;
+    }
     .active-chain-bar.chain-tier-4 .chain-mult,
     .active-chain-bar.chain-tier-5 .chain-mult,
     .active-chain-bar.perfect-turn .chain-mult {
