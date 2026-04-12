@@ -210,7 +210,7 @@
 {/if}
 
 <!-- Tooltip bubble -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
+<!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_interactive_supports_focus -->
 <div
   bind:this={tooltipEl}
@@ -327,6 +327,15 @@
   }
 
   /* Arrow pointing DOWN (tooltip is above anchor → arrow points toward bottom) */
+  .tutorial-coach-mark.arrow-down::before,
+  .tutorial-coach-mark.arrow-down::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+  }
   .tutorial-coach-mark.arrow-down::before {
     bottom: calc(-13px * var(--layout-scale, 1));
     border-left: calc(10px * var(--layout-scale, 1)) solid transparent;
@@ -343,6 +352,7 @@
   /* Arrow pointing LEFT (tooltip is to the right of anchor) */
   .tutorial-coach-mark.arrow-left::before,
   .tutorial-coach-mark.arrow-left::after {
+    content: '';
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -366,6 +376,7 @@
   /* Arrow pointing RIGHT (tooltip is to the left of anchor) */
   .tutorial-coach-mark.arrow-right::before,
   .tutorial-coach-mark.arrow-right::after {
+    content: '';
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
