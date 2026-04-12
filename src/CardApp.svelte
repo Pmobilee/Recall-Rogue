@@ -456,6 +456,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   let combatTransitionType = $state<'enter' | 'exit-forward'>('enter')
   let prevScreen = $state('')
   let exitEnemyId = $state<string | null>(null)
+  /** True when combat has ended and we're waiting for the player to click the doorway. */
+  let combatExitWaiting = $state(false)
+  /** Tracks 5-second timeout ID for doorway hint display. */
+  let doorwayHintTimer = $state<ReturnType<typeof setTimeout> | null>(null)
+  /** True after 5 seconds of waiting — shows the hint message. */
+  let doorwayHintVisible = $state(false)
 
   // ── Multiplayer state ─────────────────────────────────────────────────────
 
@@ -1262,7 +1268,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     prevScreen = screen
   })
 
-  // Combat exit transition: show parallax walk-forward when combat ends
+  // Combat exit: gate on doorway click — player must click the doorway zone to proceed.
   $effect(() => {
     if ($combatExitRequested && $currentScreen === 'combat') {
       // Use store captured BEFORE activeTurnState was cleared by encounterBridge
@@ -1270,10 +1276,38 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       if (enemyId) {
         exitEnemyId = enemyId
         combatTransitionType = 'exit-forward'
-        combatTransitionActive = true
+        // Show doorway zone instead of auto-triggering the transition.
+        // After 5 seconds, reveal the hint text.
+        combatExitWaiting = true
+        const timer = setTimeout(() => {
+          doorwayHintVisible = true
+        }, 5000)
+        doorwayHintTimer = timer
       } else {
         onCombatExitComplete()
       }
+    }
+  })
+
+  /** Called when the player clicks the doorway zone after combat. Triggers the exit transition. */
+  function handleDoorwayClick(): void {
+    if (!combatExitWaiting) return
+    // Clear the hint timer if still pending
+    if (doorwayHintTimer !== null) {
+      clearTimeout(doorwayHintTimer)
+      doorwayHintTimer = null
+    }
+    doorwayHintVisible = false
+    combatExitWaiting = false
+    combatTransitionActive = true
+  }
+
+  // Clean up doorway hint timer whenever combatExitWaiting turns off for any reason
+  $effect(() => {
+    if (!combatExitWaiting && doorwayHintTimer !== null) {
+      clearTimeout(doorwayHintTimer)
+      doorwayHintTimer = null
+      doorwayHintVisible = false
     }
   })
 
@@ -1558,6 +1592,22 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         mode={currentLobby?.mode ?? 'race'}
         quizVisible={$quizPanelVisible}
       />
+    {/if}
+    {#if combatExitWaiting}
+      <!-- Doorway exit zone: player clicks this to leave after combat victory -->
+      <div
+        class="doorway-exit-zone"
+        role="button"
+        tabindex="0"
+        aria-label="Doorway to next room"
+        onclick={handleDoorwayClick}
+        onkeydown={(e) => e.key === 'Enter' || e.key === ' ' ? handleDoorwayClick() : null}
+      >
+        <div class="doorway-glow" aria-hidden="true"></div>
+        {#if doorwayHintVisible}
+          <p class="doorway-hint" aria-live="polite">Step through the doorway.</p>
+        {/if}
+      </div>
     {/if}
     {#if combatTransitionActive}
       {@const enemyId = combatTransitionType === 'exit-forward' ? exitEnemyId : $activeTurnState?.enemy?.template?.id}
@@ -2593,6 +2643,70 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   .dev-skip-btn:hover {
     background: rgba(255, 50, 50, 1);
+  }
+
+  /* ── Doorway exit zone (shown after combat victory, before parallax transition) ── */
+
+  .doorway-exit-zone {
+    position: fixed;
+    /* Upper-center: doorway sits on the far wall, roughly 20-40% from top */
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(200px * var(--layout-scale, 1));
+    height: calc(220px * var(--layout-scale, 1));
+    /* Above Phaser canvas (z-index 1), below full-screen overlays */
+    z-index: 100;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Minimum tap target: 44×44px */
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+  }
+
+  .doorway-exit-zone:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: calc(4px * var(--layout-scale, 1));
+    border-radius: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* Subtle pulsing glow — visible enough to be a hint, subtle enough not to break immersion */
+  .doorway-glow {
+    width: calc(160px * var(--layout-scale, 1));
+    height: calc(180px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    background: radial-gradient(ellipse at 50% 40%, rgba(255, 245, 200, 0.08) 0%, rgba(255, 245, 200, 0) 70%);
+    border: 1px solid rgba(255, 245, 200, 0.12);
+    animation: doorway-pulse 2.5s ease-in-out infinite;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .doorway-exit-zone:hover .doorway-glow {
+    background: radial-gradient(ellipse at 50% 40%, rgba(255, 245, 200, 0.15) 0%, rgba(255, 245, 200, 0) 70%);
+    border-color: rgba(255, 245, 200, 0.28);
+  }
+
+  @keyframes doorway-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .doorway-hint {
+    margin: calc(8px * var(--layout-scale, 1)) 0 0;
+    font-size: calc(13px * var(--text-scale, 1));
+    color: rgba(255, 245, 200, 0.75);
+    text-align: center;
+    letter-spacing: 0.03em;
+    pointer-events: none;
+    animation: doorway-hint-in 0.8s ease-out both;
+  }
+
+  @keyframes doorway-hint-in {
+    from { opacity: 0; transform: translateY(calc(4px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
 </style>
