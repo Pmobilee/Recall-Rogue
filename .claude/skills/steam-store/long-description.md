@@ -111,8 +111,6 @@ Three quick plays per turn, or one charged play and one quick. The right call ch
 
 [img]{STEAM_APP_IMAGE}/extras/enemy-showcase.png[/img]
 
-[img]{STEAM_APP_IMAGE}/extras/dialogue-showcase.png[/img]
-
 [h2]98 DECKS. 67,000 FACTS.[/h2]
 
 Pick your deck before each run. Every deck is curated, real knowledge.
@@ -135,6 +133,10 @@ Pick your deck before each run. Every deck is curated, real knowledge.
 [/list]
 
 [img]{STEAM_APP_IMAGE}/extras/relic-grid.png[/img]
+
+[img]{STEAM_APP_IMAGE}/extras/mastery-progression.png[/img]
+
+[img]{STEAM_APP_IMAGE}/extras/numbers-flex.png[/img]
 
 [h2]THE DUNGEON[/h2]
 

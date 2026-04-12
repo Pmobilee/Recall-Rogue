@@ -48,14 +48,6 @@ function buildHTML() {
     { name: 'Insight Prism', icon: ICON('icon_relic_insight_prism.png'), desc: 'Wrong answers reveal the correct answer. Next time, auto-succeed.' },
   ];
 
-  const dialogues = [
-    { enemy: 'The Singularity', sprite: ENEMY('singularity_idle.png'), quote: '"I am the end of human learning."' },
-    { enemy: "Devil's Advocate", sprite: ENEMY('devils_advocate_idle.png'), quote: '"Everything you say is wrong — watch me prove it."' },
-    { enemy: 'The Institution', sprite: ENEMY('institution_idle.png'), quote: '"I am the system. The system cannot break."' },
-    { enemy: 'Moth of Enlightenment', sprite: ENEMY('moth_of_enlightenment_idle.png'), quote: '"Knowledge is a light — come burn with me."' },
-    { enemy: 'The Lost Thesis', sprite: ENEMY('lost_thesis_idle.png'), quote: `"I've already thought through every scenario. You're in one of them."` },
-  ];
-
   const domains = [
     { name: 'History',            color: '#D4A44A', decks: 'Ancient Greece · WWII · US Presidents' },
     { name: 'Science',            color: '#2A9D8F', decks: 'Periodic Table · AP Biology · AP Physics' },
@@ -67,6 +59,26 @@ function buildHTML() {
     { name: 'Health & Medicine',  color: '#E74C3C', decks: 'Human Anatomy · Medical Terminology · Pharmacology' },
     { name: 'General Knowledge',  color: '#9A9590', decks: 'Pop Culture · Movies & Cinema · Famous Inventions' },
     { name: 'AP Exams',           color: '#F0C75E', decks: '12 AP subjects covered' },
+  ];
+
+  const numbers = [
+    { value: '98', label: 'Curated Decks' },
+    { value: '67K+', label: 'Real Facts' },
+    { value: '89', label: 'Enemies' },
+    { value: '56', label: 'Relics' },
+    { value: '620K+', label: 'Chess Puzzles' },
+    { value: '7', label: 'Languages' },
+    { value: '20', label: 'Ascension Levels' },
+    { value: '38+', label: 'Card Mechanics' },
+  ];
+
+  const masteryLevels = [
+    { level: 0, damage: 4, stars: '', tag: '' },
+    { level: 1, damage: 4, stars: '★', tag: '' },
+    { level: 2, damage: 5, stars: '★★', tag: '' },
+    { level: 3, damage: 6, stars: '★★★', tag: '' },
+    { level: 4, damage: 7, stars: '★★★★', tag: '' },
+    { level: 5, damage: 8, stars: '★★★★★', tag: '+ TEMPO' },
   ];
 
   const hex2rgba = (hex, alpha) => {
@@ -241,74 +253,7 @@ function buildHTML() {
   }
 
   /* ══════════════════════════════════════════════
-     SECTION 4 — DIALOGUE SHOWCASE  1560 × 900
-  ══════════════════════════════════════════════ */
-  #dialogue-showcase {
-    width: 1560px;
-    height: 900px;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    padding: 40px 48px;
-    gap: 20px;
-  }
-  #dialogue-showcase .section-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-    align-self: flex-start;
-  }
-  #dialogue-showcase .strip {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 24px;
-    flex: 1;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.04);
-    border-radius: 12px;
-    padding: 16px 24px;
-  }
-  #dialogue-showcase .strip img {
-    width: 100px;
-    height: 100px;
-    image-rendering: pixelated;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-  #dialogue-showcase .bubble {
-    flex: 1;
-    background: var(--bg-card);
-    border-left: 3px solid var(--gold-dim);
-    border-radius: 0 8px 8px 0;
-    padding: 14px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  #dialogue-showcase .bubble .quote {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--text);
-    line-height: 1.5;
-  }
-  #dialogue-showcase .bubble .speaker {
-    font-family: 'Cinzel', serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--gold);
-    letter-spacing: 0.05em;
-  }
-
-  /* ══════════════════════════════════════════════
-     SECTION 5 — DECK DOMAINS  1560 × 500
+     SECTION 3 — DECK DOMAINS  1560 × 700
   ══════════════════════════════════════════════ */
   #deck-domains {
     width: 1560px;
@@ -359,6 +304,129 @@ function buildHTML() {
     text-align: center;
     line-height: 1.3;
   }
+
+  /* ══════════════════════════════════════════════
+     SECTION 4 — NUMBERS FLEX  1560 × 500
+  ══════════════════════════════════════════════ */
+  #numbers-flex {
+    width: 1560px;
+    height: 500px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 48px;
+    gap: 32px;
+  }
+  #numbers-flex .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 24px 40px;
+    width: 100%;
+  }
+  .number-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .number-block .num {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .number-block .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ══════════════════════════════════════════════
+     SECTION 5 — MASTERY PROGRESSION  1560 × 400
+  ══════════════════════════════════════════════ */
+  #mastery-progression {
+    width: 1560px;
+    height: 400px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 48px;
+    gap: 20px;
+  }
+  #mastery-progression .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  #mastery-progression .levels {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+  }
+  .mastery-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    min-width: 160px;
+    position: relative;
+  }
+  .mastery-card .m-level {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .mastery-card .m-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .mastery-card .m-damage {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .mastery-card .m-stars {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+  .mastery-card .m-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    color: #4CAF50;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .mastery-card .m-arrow {
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--text-dim);
+  }
 </style>
 </head>
 <body>
@@ -391,21 +459,7 @@ function buildHTML() {
   </div>
 </section>
 
-
-<!-- SECTION 4: Dialogue Showcase -->
-<section id="dialogue-showcase">
-  <div class="section-title">They Have Words for You</div>
-  ${dialogues.map(d => `
-  <div class="strip">
-    <img src="${d.sprite}" alt="${d.enemy}">
-    <div class="bubble">
-      <div class="quote">${d.quote}</div>
-      <div class="speaker">${d.enemy}</div>
-    </div>
-  </div>`).join('\n')}
-</section>
-
-<!-- SECTION 5: Deck Domains -->
+<!-- SECTION 3: Deck Domains -->
 <section id="deck-domains">
   <div class="section-title">Learn Anything. Fight Everything.</div>
   <div class="grid">
@@ -414,6 +468,39 @@ function buildHTML() {
       <div class="domain-name" style="color:${d.color};">${d.name}</div>
       <div class="domain-decks">${d.decks}</div>
     </div>`).join('\n')}
+  </div>
+</section>
+
+<!-- SECTION 4: Numbers Flex -->
+<section id="numbers-flex">
+  <div class="grid">
+    ${numbers.map(n => `
+    <div class="number-block">
+      <div class="num">${n.value}</div>
+      <div class="label">${n.label}</div>
+    </div>`).join('\n')}
+  </div>
+</section>
+
+<!-- SECTION 5: Mastery Progression -->
+<section id="mastery-progression">
+  <div class="section-title">Cards Get Stronger When You Learn</div>
+  <div class="levels">
+    ${masteryLevels.map((m, i) => {
+      const intensity = 0.4 + (m.level * 0.12);
+      const dmgColor = `rgba(255, ${180 - m.level * 20}, ${80 - m.level * 12}, ${intensity})`;
+      const starColor = `rgba(255, 215, 0, ${0.3 + m.level * 0.14})`;
+      const arrow = i < 5 ? '<div class="m-arrow">→</div>' : '';
+      return `
+    <div class="mastery-card">
+      <div class="m-level">Mastery ${m.level}</div>
+      <div class="m-name">Strike</div>
+      <div class="m-damage" style="color: ${dmgColor};">${m.damage}</div>
+      <div class="m-stars" style="color: ${starColor};">${m.stars || '—'}</div>
+      ${m.tag ? `<div class="m-tag">${m.tag}</div>` : ''}
+      ${arrow}
+    </div>`;
+    }).join('\n')}
   </div>
 </section>
 
@@ -439,8 +526,9 @@ await page.waitForTimeout(2500);
 const sections = [
   { id: 'enemy-showcase',    file: 'enemy-showcase.png',    w: 1560, h: 1100 },
   { id: 'relic-grid',        file: 'relic-grid.png',        w: 1560, h: 1200 },
-  { id: 'dialogue-showcase', file: 'dialogue-showcase.png', w: 1560, h: 900  },
   { id: 'deck-domains',      file: 'deck-domains.png',      w: 1560, h: 700  },
+  { id: 'numbers-flex',        file: 'numbers-flex.png',        w: 1560, h: 500  },
+  { id: 'mastery-progression', file: 'mastery-progression.png', w: 1560, h: 400  },
 ];
 
 for (const { id, file, w, h } of sections) {

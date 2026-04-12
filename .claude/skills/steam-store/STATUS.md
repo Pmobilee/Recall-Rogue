@@ -25,8 +25,9 @@
 |---|---|---|---|
 | Enemy Showcase | `enemy-showcase.png` | 3120x2200 | 3x2 grid: Final Lesson, Curriculum, Textbook, Pop Quiz, Helicopter Parent, Trick Question — transparent PNG |
 | Relic Grid | `relic-grid.png` | 3120x2400 | 3x4 grid, 12 relics with icons, names, descriptions — transparent PNG |
-| Dialogue Showcase | `dialogue-showcase.png` | 3120x1800 | 5 enemy quotes: Singularity, Devil's Advocate, Institution, Moth of Enlightenment, Lost Thesis — transparent PNG |
 | Deck Domains | `deck-domains.png` | 3120x1400 | "LEARN ANYTHING. FIGHT EVERYTHING." — 10 domain badges — transparent PNG |
+| Numbers Flex | `numbers-flex.png` | 3120x1000 | 4x2 grid of content numbers (98 decks, 67K facts, 89 enemies, etc.) — transparent PNG |
+| Mastery Progression | `mastery-progression.png` | 3120x800 | Strike L0→L5 progression showing damage scaling + Tempo tag — transparent PNG |
 
 ### 4. Competitor Analysis (complete)
 - File: `competitor-analysis.md`
