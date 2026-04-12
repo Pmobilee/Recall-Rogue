@@ -227,6 +227,8 @@
   // === Removal picker state ===
   let showRemovalPicker = $state(false)
   let pendingRemovalHaggled = $state(false)
+  /** Inline leave-shop confirmation: replaces window.confirm() which blocks in headless Chrome. */
+  let showLeaveConfirm = $state(false)
 
   /** Cards that can be removed (full active deck, not just the sell slice) */
   let removableCards = $derived(getActiveDeckCards())
@@ -242,23 +244,32 @@
   })
 
   function handleLeaveShop() {
-    // If player has gold and at least one item is affordable, confirm
+    // If player has gold and at least one item is affordable, show inline confirm dialog.
+    // Previously used window.confirm() which blocks silently in headless Chrome (returns false),
+    // causing the leave button to never work during Docker playtests. See docs/gotchas.md 2026-04-12.
     const hasAffordableItem = shopInventory && (
       shopInventory.relics.some(r => currency >= r.price) ||
       shopInventory.cards.some(c => currency >= c.price) ||
       (shopInventory.removalCost != null && currency >= shopInventory.removalCost)
     )
     if (hasAffordableItem && currency > 0) {
-      if (confirm('Leave without buying?')) {
-        showBark('leave_with_gold')
-        playCardAudio('shop-close')
-        ondone()
-      }
+      showLeaveConfirm = true
     } else {
       showBark(currency <= 0 ? 'leave_broke' : 'leave_bought')
       playCardAudio('shop-close')
       ondone()
     }
+  }
+
+  function confirmLeave() {
+    showLeaveConfirm = false
+    showBark('leave_with_gold')
+    playCardAudio('shop-close')
+    ondone()
+  }
+
+  function cancelLeave() {
+    showLeaveConfirm = false
   }
 
   /** Chain composition summary for the removal picker */
@@ -795,6 +806,20 @@
     </div>
     <div class="relic-tooltip-desc">{relicTooltip.relic.description}</div>
     <div class="relic-tooltip-trigger">Trigger: Permanent</div>
+  </div>
+{/if}
+
+{#if showLeaveConfirm}
+  <!-- Inline leave confirmation — replaces window.confirm() which headless Chrome blocks silently -->
+  <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Leave shop confirmation">
+    <div class="modal leave-confirm-modal">
+      <div class="modal-title">Leave the shop?</div>
+      <div class="modal-desc">You still have gold and can afford items here.</div>
+      <div class="leave-confirm-btns">
+        <button type="button" class="modal-btn modal-btn-confirm" data-testid="btn-leave-confirm" onclick={confirmLeave}>Leave anyway</button>
+        <button type="button" class="modal-btn modal-btn-cancel" data-testid="btn-leave-cancel" onclick={cancelLeave}>Stay</button>
+      </div>
+    </div>
   </div>
 {/if}
 
@@ -1360,6 +1385,41 @@
 
   .modal-btn-cancel:hover {
     background: #374151;
+  }
+
+  /* === Leave confirm modal === */
+  .leave-confirm-modal {
+    max-width: calc(320px * var(--layout-scale, 1));
+  }
+
+  .modal-desc {
+    font-size: calc(13px * var(--layout-scale, 1));
+    color: #9ba4ad;
+    text-align: center;
+    margin-bottom: calc(12px * var(--layout-scale, 1));
+  }
+
+  .leave-confirm-btns {
+    display: flex;
+    gap: calc(10px * var(--layout-scale, 1));
+    justify-content: center;
+  }
+
+  .modal-btn-confirm {
+    background: #b91c1c;
+    border: 1px solid #ef4444;
+    color: #fef2f2;
+    padding: calc(8px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
+    border-radius: calc(6px * var(--layout-scale, 1));
+    cursor: pointer;
+    font-size: calc(13px * var(--layout-scale, 1));
+    font-weight: 600;
+    min-height: calc(44px * var(--layout-scale, 1));
+    transition: background 120ms;
+  }
+
+  .modal-btn-confirm:hover {
+    background: #dc2626;
   }
 
   /* === Haggle quiz === */
