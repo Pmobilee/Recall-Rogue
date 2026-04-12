@@ -67,6 +67,10 @@ export interface RunSaveState {
  *
  * Currently serialized via class round-trip (toJSON / fromJSON):
  *   - inRunFactTracker (InRunFactTracker class instance)
+ *
+ * CardRunState embedded in encounterSnapshot.activeDeck:
+ *   - currentEncounterSeenFacts (Set<string>) — explicitly serialized to array
+ *     in saveActiveRun and re-wrapped on loadActiveRun (CRITICAL-3, 2026-04-12).
  */
 interface SerializedRunState extends Omit<
   RunState,
@@ -111,6 +115,10 @@ interface SerializedRunState extends Omit<
   // deltas accumulate from this point forward only).
 }
 
+/**
+ * Wire type for the serialized encounter snapshot.
+ * currentEncounterSeenFacts is stored as string[] (Set is not JSON-safe).
+ */
 interface SerializedEncounterSnapshot {
   activeDeck: CardRunState | null
   activeRunPool: Card[]
@@ -159,6 +167,54 @@ function serializeRunState(run: RunState): SerializedRunState {
     // tracker.getTotalCharges).
     inRunFactTracker: run.inRunFactTracker ? run.inRunFactTracker.toJSON() : undefined,
   };
+}
+
+/**
+ * Explicitly serialize all Set fields in a CardRunState to arrays.
+ * This is necessary because JSON.stringify converts a Set to `{}` — the
+ * rehydrator must receive arrays to re-wrap them correctly.
+ *
+ * CRITICAL-3 (2026-04-12): currentEncounterSeenFacts is the only Set/Map
+ * currently on CardRunState. If new Set/Map fields are added, extend this
+ * function AND the rehydration in rehydrateActiveDeckSets().
+ */
+function serializeActiveDeckSets(deck: CardRunState): CardRunState {
+  return {
+    ...deck,
+    // Convert Set<string> → string[] so JSON.stringify round-trips cleanly.
+    // A missing/undefined field stays undefined (first encounter of a new run
+    // where drawHand hasn't fired yet).
+    currentEncounterSeenFacts: deck.currentEncounterSeenFacts instanceof Set
+      ? (Array.from(deck.currentEncounterSeenFacts) as unknown as Set<string>)
+      : deck.currentEncounterSeenFacts,
+  };
+}
+
+/**
+ * Re-wrap Set fields in a CardRunState after JSON deserialization.
+ * Called on the activeDeck from an encounterSnapshot before it is returned to
+ * the caller. Companion to serializeActiveDeckSets().
+ *
+ * CRITICAL-3 (2026-04-12): fixes the continued-run softlock where
+ * chargePlayCard threw because currentEncounterSeenFacts came back as a plain
+ * array (or `{}`) instead of a Set after JSON round-trip.
+ */
+function rehydrateActiveDeckSets(deck: Record<string, unknown>): void {
+  // Re-wrap currentEncounterSeenFacts: array → Set (serialized path),
+  // or reset plain object → empty Set (legacy saves written before this fix
+  // where JSON.stringify silently converted Set to `{}`).
+  if (Array.isArray(deck['currentEncounterSeenFacts'])) {
+    deck['currentEncounterSeenFacts'] = new Set(deck['currentEncounterSeenFacts'] as string[]);
+  } else if (
+    typeof deck['currentEncounterSeenFacts'] === 'object' &&
+    deck['currentEncounterSeenFacts'] !== null &&
+    !(deck['currentEncounterSeenFacts'] instanceof Set)
+  ) {
+    // Plain `{}` from an old save (pre-CRITICAL-3) — reset to empty Set.
+    // The encounter will repopulate it on the next drawHand call.
+    deck['currentEncounterSeenFacts'] = new Set<string>();
+  }
+  // undefined is valid (encounter not yet started) — leave as-is.
 }
 
 /** Migration: rename exhaustPile → forgetPile in a CardRunState (2026-04-11 exhaust→forget rename). */
@@ -238,7 +294,14 @@ export function saveActiveRun(state: {
 }): void {
   const encounterSnapshot: SerializedEncounterSnapshot | undefined = state.encounterSnapshot
     ? {
-      activeDeck: state.encounterSnapshot.activeDeck,
+      // CRITICAL-3 (2026-04-12): explicitly serialize CardRunState Set fields
+      // to arrays before the snapshot reaches JSON.stringify. Without this,
+      // currentEncounterSeenFacts (Set<string>) becomes `{}` in the stored
+      // JSON, and on resume deckManager.ts:327 throws
+      // "deck.currentEncounterSeenFacts.add is not a function".
+      activeDeck: state.encounterSnapshot.activeDeck
+        ? serializeActiveDeckSets(state.encounterSnapshot.activeDeck)
+        : null,
       activeRunPool: state.encounterSnapshot.activeRunPool,
     }
     : undefined;
@@ -296,7 +359,15 @@ export function loadActiveRun(): {
       encounterSnapshot: parsed.encounterSnapshot
         ? (() => {
             const eDeck = parsed.encounterSnapshot!.activeDeck as (Record<string, unknown> | null);
-            if (eDeck) migrateExhaustPileToForgetPile(eDeck);
+            if (eDeck) {
+              migrateExhaustPileToForgetPile(eDeck);
+              // CRITICAL-3 (2026-04-12): re-wrap CardRunState Set fields after
+              // JSON deserialization. currentEncounterSeenFacts arrives as a
+              // string[] (new saves via serializeActiveDeckSets) or as `{}`
+              // (legacy saves before this fix). Both cases are handled by
+              // rehydrateActiveDeckSets() so that .add() never throws.
+              rehydrateActiveDeckSets(eDeck);
+            }
             return {
               activeDeck: parsed.encounterSnapshot!.activeDeck ?? null,
               activeRunPool: parsed.encounterSnapshot!.activeRunPool ?? [],

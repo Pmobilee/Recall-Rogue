@@ -9,12 +9,17 @@
  * These tests exercise the full JSON round-trip through the save service and
  * verify that every Set/Map-typed field on RunState is a proper instance after
  * deserialization, so that `.has()` and `.get()` work without throwing.
+ *
+ * CRITICAL-3 (2026-04-12): extended to cover CardRunState.currentEncounterSeenFacts
+ * inside encounterSnapshot.activeDeck — the field that caused the continued-run
+ * softlock reported in BATCH-2026-04-12-001-C-003.
  */
 
 // @vitest-environment node
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { RunState } from './runManager';
+import type { CardRunState } from '../data/card-types';
 
 // ---------------------------------------------------------------------------
 // Mock heavy game-code dependencies so the test can run in a Node environment
@@ -58,6 +63,7 @@ vi.mock('./seededRng', () => ({
 // ---------------------------------------------------------------------------
 
 import { saveActiveRun, loadActiveRun } from './runSaveService';
+import { getBackend } from './storageBackend';
 import { InRunFactTracker } from './inRunFactTracker';
 
 // ---------------------------------------------------------------------------
@@ -170,6 +176,31 @@ function makeMinimalSavePayload(runState: RunState) {
     runState,
     currentScreen: 'dungeonMap',
     runMode: 'standard' as const,
+  };
+}
+
+/**
+ * Minimal valid CardRunState with currentEncounterSeenFacts populated.
+ * Used to exercise encounterSnapshot.activeDeck serialization/rehydration.
+ */
+function makeActiveDeck(seenFacts: string[]): CardRunState {
+  return {
+    drawPile: [],
+    discardPile: [],
+    hand: [],
+    forgetPile: [],
+    currentFloor: 2,
+    currentEncounter: 1,
+    playerHP: 80,
+    playerMaxHP: 100,
+    playerShield: 0,
+    hintsRemaining: 3,
+    currency: 0,
+    factPool: seenFacts,
+    factCooldown: [],
+    currentEncounterSeenFacts: new Set(seenFacts),
+    consecutiveCursedDraws: 0,
+    pendingAutoCure: false,
   };
 }
 
@@ -368,5 +399,141 @@ describe('runSaveService — round-trip preserves scalar fields', () => {
     const loaded = loadActiveRun();
 
     expect(loaded!.runState.retreatRewardLocked).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// CRITICAL-3 (2026-04-12): CardRunState.currentEncounterSeenFacts in
+// encounterSnapshot.activeDeck must survive the JSON round-trip as a Set.
+//
+// Bug: saveActiveRun spread activeDeck directly → Set became `{}` via
+// JSON.stringify → on resume deckManager.ts:327 threw
+// "deck.currentEncounterSeenFacts.add is not a function" → combat softlock.
+//
+// Issue ref: BATCH-2026-04-12-001-C-003
+// ---------------------------------------------------------------------------
+
+describe('runSaveService — CRITICAL-3 encounterSnapshot.activeDeck Set rehydration', () => {
+  it('currentEncounterSeenFacts is a Set after round-trip (not plain array or {})', () => {
+    const run = makeRunState();
+    const activeDeck = makeActiveDeck(['fact_a', 'fact_b']);
+    expect(activeDeck.currentEncounterSeenFacts).toBeInstanceOf(Set);
+
+    saveActiveRun({
+      ...makeMinimalSavePayload(run),
+      encounterSnapshot: { activeDeck, activeRunPool: [] },
+    });
+
+    const loaded = loadActiveRun();
+    expect(loaded).not.toBeNull();
+    expect(loaded!.encounterSnapshot).not.toBeNull();
+
+    const restoredDeck = loaded!.encounterSnapshot!.activeDeck!;
+    expect(restoredDeck.currentEncounterSeenFacts).toBeInstanceOf(Set);
+  });
+
+  it('.add() on currentEncounterSeenFacts does not throw after round-trip (the softlock regression)', () => {
+    // This is the exact call that threw in BATCH-2026-04-12-001-C-003.
+    // deckManager.ts:327: deck.currentEncounterSeenFacts.add(factId)
+    const run = makeRunState();
+    const activeDeck = makeActiveDeck(['fact_a', 'fact_b']);
+
+    saveActiveRun({
+      ...makeMinimalSavePayload(run),
+      encounterSnapshot: { activeDeck, activeRunPool: [] },
+    });
+
+    const loaded = loadActiveRun();
+    const restoredDeck = loaded!.encounterSnapshot!.activeDeck!;
+
+    // Must not throw — before the fix this was a TypeError:
+    // "deck.currentEncounterSeenFacts.add is not a function"
+    expect(() => restoredDeck.currentEncounterSeenFacts!.add('fact_c')).not.toThrow();
+  });
+
+  it('currentEncounterSeenFacts values are preserved after round-trip', () => {
+    const run = makeRunState();
+    const activeDeck = makeActiveDeck(['fact_a', 'fact_b']);
+
+    saveActiveRun({
+      ...makeMinimalSavePayload(run),
+      encounterSnapshot: { activeDeck, activeRunPool: [] },
+    });
+
+    const loaded = loadActiveRun();
+    const restoredDeck = loaded!.encounterSnapshot!.activeDeck!;
+    const seenFacts = restoredDeck.currentEncounterSeenFacts!;
+
+    expect(seenFacts.has('fact_a')).toBe(true);
+    expect(seenFacts.has('fact_b')).toBe(true);
+    expect(seenFacts.has('fact_c')).toBe(false);
+    expect(seenFacts.size).toBe(2);
+  });
+
+  it('adding to currentEncounterSeenFacts after round-trip persists new values', () => {
+    // Verifies the Set is fully functional (not a frozen snapshot).
+    const run = makeRunState();
+    const activeDeck = makeActiveDeck(['fact_a', 'fact_b']);
+
+    saveActiveRun({
+      ...makeMinimalSavePayload(run),
+      encounterSnapshot: { activeDeck, activeRunPool: [] },
+    });
+
+    const loaded = loadActiveRun();
+    const restoredDeck = loaded!.encounterSnapshot!.activeDeck!;
+    restoredDeck.currentEncounterSeenFacts!.add('fact_c');
+
+    expect(restoredDeck.currentEncounterSeenFacts!.has('fact_c')).toBe(true);
+    expect(restoredDeck.currentEncounterSeenFacts!.size).toBe(3);
+  });
+
+  it('handles legacy saves where currentEncounterSeenFacts was `{}` (pre-CRITICAL-3)', () => {
+    // Simulates a save file written before the fix, where JSON.stringify
+    // silently converted the Set to a plain `{}`. The rehydrator must
+    // upgrade it to an empty Set rather than leaving it as a plain object.
+    const run = makeRunState();
+    const activeDeck = makeActiveDeck(['fact_a']);
+
+    saveActiveRun({
+      ...makeMinimalSavePayload(run),
+      encounterSnapshot: { activeDeck, activeRunPool: [] },
+    });
+
+    // Corrupt the saved JSON to simulate old format: replace the serialized
+    // array with a plain `{}` (what JSON.stringify(new Set()) produces).
+    const raw = getBackend().readSync('recall-rogue-active-run')!;
+    const parsed = JSON.parse(raw);
+    parsed.encounterSnapshot.activeDeck.currentEncounterSeenFacts = {};
+    getBackend().write('recall-rogue-active-run', JSON.stringify(parsed));
+
+    const loaded = loadActiveRun();
+    const restoredDeck = loaded!.encounterSnapshot!.activeDeck!;
+
+    // Must be an empty Set, not `{}`
+    expect(restoredDeck.currentEncounterSeenFacts).toBeInstanceOf(Set);
+    expect(restoredDeck.currentEncounterSeenFacts!.size).toBe(0);
+    // And .add() must not throw
+    expect(() => restoredDeck.currentEncounterSeenFacts!.add('fact_x')).not.toThrow();
+  });
+
+  it('handles activeDeck with undefined currentEncounterSeenFacts gracefully', () => {
+    // Encounter not yet started — field is undefined. Must stay undefined (not
+    // coerced to empty Set), allowing deckManager to initialize it on first draw.
+    const run = makeRunState();
+    const activeDeck = makeActiveDeck([]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    delete (activeDeck as any).currentEncounterSeenFacts;
+
+    saveActiveRun({
+      ...makeMinimalSavePayload(run),
+      encounterSnapshot: { activeDeck, activeRunPool: [] },
+    });
+
+    const loaded = loadActiveRun();
+    const restoredDeck = loaded!.encounterSnapshot!.activeDeck!;
+
+    // undefined is the valid pre-encounter state; deckManager.ts:311 guards for it
+    expect(restoredDeck.currentEncounterSeenFacts).toBeUndefined();
   });
 });

@@ -181,3 +181,38 @@ Two optional fields added to `PlayerSave`:
 | `chessEloHistory` | `Array<{rating,puzzleRating,correct,timestamp}>?` | Last 100 rating changes for chart display |
 
 No save migration required — both are optional with runtime defaults. See `src/services/chessEloService.ts`.
+
+## CardRunState Set fields in encounterSnapshot (CRITICAL-3, 2026-04-12)
+
+`encounterSnapshot.activeDeck` is a `CardRunState` object that is serialized as a plain
+JSON spread in `saveActiveRun`. Unlike `RunState`, it does NOT go through `serializeRunState`
+(which has the safe destructure-then-rest pattern). This means any `Set` or `Map` field
+on `CardRunState` requires explicit manual serialization.
+
+**Currently affected field:**
+
+| Field | Type | Serialization | Rehydration |
+|-------|------|---------------|-------------|
+| `currentEncounterSeenFacts` | `Set<string>` | `serializeActiveDeckSets()` → `string[]` | `rehydrateActiveDeckSets()` → `new Set(array)` |
+
+**How it works:**
+
+- `serializeActiveDeckSets(deck: CardRunState)` — called in `saveActiveRun` before the
+  snapshot hits `JSON.stringify`. Converts the Set to an array via `Array.from()`.
+- `rehydrateActiveDeckSets(deck: Record<string, unknown>)` — called in `loadActiveRun`
+  after `migrateExhaustPileToForgetPile`. Re-wraps the field:
+  - `string[]` (new saves) → `new Set(array)`
+  - `{}` (legacy saves before the fix) → `new Set()`
+  - `undefined` (encounter not yet started) → left as-is
+
+**Adding new Set/Map fields to CardRunState:** extend both `serializeActiveDeckSets` and
+`rehydrateActiveDeckSets` in `src/services/runSaveService.ts`. The lint script
+`scripts/lint/check-set-map-rehydration.mjs` (checks 4a–4d) will fail if either helper
+is removed or no longer references `currentEncounterSeenFacts`.
+
+**Why the defensive wrap in deckManager.ts is still needed:** `deckManager.ts:311-313`
+re-initializes `currentEncounterSeenFacts` to a new Set if it is not already a Set instance.
+This guard covers draws on fresh encounters where the field is undefined. It does NOT
+replace the save-layer fix because `chargePlayCard` can be called before `drawHand`
+on a resumed encounter (the encounter bridge may restore the deck without triggering a draw).
+Both layers must remain in place.
