@@ -27,10 +27,11 @@ export const ASCENSION_LEVEL_RULES: AscensionLevelRule[] = [
   { level: 15, name: 'Boss Rush', effect: 'Bosses +10% HP.' },
   { level: 16, name: 'No Echo', effect: 'Echo mechanic disabled. BUFF: Discarding a card grants 1 shield.' },
   // Pass 8 (2026-04-11): Reduced wrong-answer self-damage from 5 to 3.
-  { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 3 self-damage. BUFF: Correct answers heal 1 HP.' },
+  // Pass 9 (Scholar's Inversion): correctAnswerHeal buffed from 1 HP to 2 HP at A17+.
+  { level: 17, name: "Scholar's Burden", effect: 'Wrong answers deal 3 self-damage. BUFF: Correct answers heal 2 HP.' },
   { level: 18, name: 'Minimalist', effect: 'Start with 10 cards. BUFF: Choose starting hand each encounter.' },
   { level: 19, name: 'True Test', effect: 'All questions use hard formats. BUFF: (Reserved for future surcharge mechanic.)' },
-  { level: 20, name: 'Heart of the Archive', effect: 'Final boss gains second phase. BUFF: Start with 2 relics (choose from 5).' },
+  { level: 20, name: "Scholar's Inversion", effect: "Wrong charges damage you instead of the enemy. Boss HP bonus, self-damage, and hard formats removed. BUFF: Start with 2 relics. Correct answers heal 2 HP." },
 ];
 
 export interface AscensionModifiers {
@@ -52,6 +53,8 @@ export interface AscensionModifiers {
   bossHpMultiplier: number;
   wrongAnswerSelfDamage: number;
   forceHardQuestionFormats: boolean;
+  /** A20: wrong-charge damage redirects to player instead of enemy (Scholar's Inversion). */
+  scholarsInversion: boolean;
   curatorSecretSecondPhase: boolean;
   // --- New challenge fields ---
   enemyRegenPerTurn: number;
@@ -113,15 +116,17 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     playerMaxHpOverride: l >= 13 ? 75 : null,
     // Pass 8 (2026-04-11): Reduced boss HP multiplier 1.50→1.10 to close the A15 cliff.
     // Prior 1.50× alone caused a 50pp win-rate drop (A15: 52% → A20: 2% for experienced players).
-    // Combined with wrongAnswerSelfDamage and A19 hard-format penalty, 1.10× is appropriate.
-    // Sim result: experienced@asc20 = 32% (corresponds to ~15% real-world with A19 hard quiz penalty).
-    bossHpMultiplier: l >= 15 ? 1.10 : 1.00,
+    // Pass 9 (Scholar's Inversion): A20 removes the boss HP buff entirely — Scholar's Inversion
+    // replaces all stacking multipliers (boss HP, self-damage, hard formats) with one unified mechanic.
+    bossHpMultiplier: l >= 20 ? 1.00 : l >= 15 ? 1.10 : 1.00,
     // Pass 8 (2026-04-11): Reduced wrong-answer self-damage 5→3.
-    // Old value (5) combined with A17's enemy damage jump created a 56pp win-rate cliff.
-    // New value (3) + A19 hard formats (~20% accuracy loss) land at ~15% real-world experienced@A20.
-    wrongAnswerSelfDamage: l >= 17 ? 3 : 0,
-    forceHardQuestionFormats: l >= 19,
+    // Pass 9 (Scholar's Inversion): A20 removes flat self-damage — the redirect mechanic replaces it.
+    wrongAnswerSelfDamage: l >= 20 ? 0 : l >= 17 ? 3 : 0,
+    // Pass 9: A20 removes forced hard formats — Scholar's Inversion is the sole A20 challenge.
+    forceHardQuestionFormats: l >= 20 ? false : l >= 19,
     curatorSecretSecondPhase: l >= 20,
+    // Pass 9 (Scholar's Inversion): wrong-charge fizzle damage hits the player, not the enemy.
+    scholarsInversion: l >= 20,
     restHealMultiplier: l >= 3 ? 0.83 : 1.00,  // 25/30 = 0.83
     enemyRegenPerTurn: l >= 9 ? 3 : 0,
     startWithCurseCard: l >= 10,
@@ -143,7 +148,8 @@ export function getAscensionModifiers(level: number): AscensionModifiers {
     perfectTurnBonusAp: 0,
     bossDefeatFullHeal: false,
     discardGivesShield: l >= 16 ? 1 : 0,
-    correctAnswerHeal: l >= 17 ? 1 : 0,
+    // Pass 9: buffed from 1→2 HP to compensate for Scholar's Inversion risk at A20.
+    correctAnswerHeal: l >= 17 ? 2 : 0,
     chooseStartingHand: l >= 18,
     freeCharging: false,
     // Pass 7: No free relic at A1 (was the #1 cause of A1 > A0). Relics start at A10.

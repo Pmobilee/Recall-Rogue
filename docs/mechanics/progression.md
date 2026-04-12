@@ -231,10 +231,10 @@ Selected level effects:
 | 14 | Combo resets each turn | *(none — pure challenge)* |
 | 15 | Bosses +10% HP | *(none — pure challenge)* |
 | 16 | Echo mechanic disabled | BUFF: Discarding a card grants 1 shield |
-| 17 | Wrong answers deal 3 self-damage | BUFF: Correct answers heal 1 HP |
+| 17 | Wrong answers deal 3 self-damage | BUFF: Correct answers heal 2 HP |
 | 18 | Start with 10 cards | BUFF: Choose starting hand each encounter |
 | 19 | All questions use hard formats | (Reserved for future surcharge mechanic) |
-| 20 | Final boss second phase | BUFF: Start with 2 relics (choose from 5) |
+| 20 | Scholar's Inversion: wrong charges damage YOU (not the enemy). Removes A15/A17/A19 penalties. | BUFF: Start with 2 relics + correct answers heal 2 HP |
 
 **Stepped multipliers (2026-04-05, updated 2026-04-11 Pass 8):**
 - `enemyHpMultiplier`: `l >= 15 ? 1.15 : l >= 9 ? 1.10 : 1.00` (A9 durability wall, A15 tougher regulars)
@@ -243,8 +243,11 @@ Selected level effects:
 **Key modifier values:**
 - `enemyRegenPerTurn`: `l >= 9 ? 3 : 0` (forces faster kills)
 - `playerMaxHpOverride`: `l >= 13 ? 75 : null`
-- `bossHpMultiplier`: `l >= 15 ? 1.10 : 1.00` (Pass 8: reduced from 1.50; was the A15 cliff driver)
-- `wrongAnswerSelfDamage`: `l >= 17 ? 3 : 0` (Pass 8: reduced from 5; combined with A19 hard formats = ~15% real A20 win rate)
+- `bossHpMultiplier`: `l >= 20 ? 1.00 : l >= 15 ? 1.10 : 1.00` (Pass 9: A20 removes boss HP buff entirely — Scholar's Inversion is the sole A20 challenge)
+- `wrongAnswerSelfDamage`: `l >= 20 ? 0 : l >= 17 ? 3 : 0` (Pass 9: A20 removes flat self-damage; the redirect mechanic replaces it)
+- `forceHardQuestionFormats`: `l >= 20 ? false : l >= 19` (Pass 9: A20 removes hard format requirement)
+- `scholarsInversion`: `l >= 20` — wrong-charge fizzle damage redirects to the player instead of the enemy
+- `correctAnswerHeal`: `l >= 17 ? 2 : 0` (Pass 9: buffed from 1→2 HP to compensate for Scholar's Inversion risk at A20)
 - `chargeCorrectDamageBonus`: `l >= 12 ? 0.10 : 0` (was A7 — delayed to A12, Pass 7)
 - `relicTriggerBonus`: `l >= 11 ? 0.15 : 0`
 - `firstTurnBonusAp`: always `0` (removed — A2 challenge stands alone)
@@ -266,11 +269,13 @@ Selected level effects:
 |---------|---------|----------|----------|----------|
 | experienced | 94% | 56% | 34% | ~15% |
 
-**Why sim ≠ real-world at A20:** The simulator runs all ascension levels with the same fixed accuracy (76% for experienced). However A19 forces hard question formats, which typically reduce effective accuracy by ~15-20pp for a 76%-baseline player. At 60% real accuracy, `wrongAnswerSelfDamage=3` costs 1.2 HP/charge vs 0.72 HP/charge in the sim. This pressure closes the 34% sim win rate to ~15% real-world — matching the design target of ~15% (±5%).
+**Why sim ≠ real-world at A20 (pre-Pass 9):** The simulator runs all ascension levels with the same fixed accuracy (76% for experienced). However A19 forces hard question formats, which typically reduce effective accuracy by ~15-20pp for a 76%-baseline player. At 60% real accuracy, `wrongAnswerSelfDamage=3` costs 1.2 HP/charge vs 0.72 HP/charge in the sim.
 
 **Pass 8 cliff closure (2026-04-11):** Prior curve had 50pp cliff (A15: 52% → A20: 2%). The cliff sat entirely at A17 (not A15 as expected) due to wrong-answer self-damage stacking with enemy damage. Post-fix cliff: A15: 56% → A20: 34% sim / ~15% real = 22pp cliff (target: 20-25pp).
 
-**Ascension curve win rates (2026-04-11, experienced profile, 500 runs each):**
+**Pass 9 — Scholar's Inversion (2026-04-12):** A20 now replaces the three stacking mechanics (boss HP buff, flat self-damage, hard formats) with a single mechanic: wrong-charge fizzle damage redirects to the player. This removes the sim vs. real-world accuracy gap at A20 since hard formats are no longer active there. Win-rate target: ≥15% sim / ≥15% real (same target, better player experience). `correctAnswerHeal` buffed from 1→2 HP at all A17+ levels as the BUFF compensation.
+
+**Ascension curve win rates (2026-04-11, experienced profile, 500 runs each — pre-Pass 9):**
 | Ascension | Win% |
 |-----------|------|
 | A15 | 56% |

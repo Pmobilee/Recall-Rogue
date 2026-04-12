@@ -123,4 +123,44 @@ describe('ascension modifiers', () => {
     expect(getAscensionModifiers(11).relicTriggerBonus).toBe(0.15)
     expect(getAscensionModifiers(10).relicTriggerBonus).toBe(0)
   })
+
+  it("Scholar's Inversion (A20): replaces stacking cliff mechanics with redirect", () => {
+    // Pass 9 (Scholar's Inversion): A20 removes boss HP buff, flat self-damage, and hard formats.
+    // The redirect mechanic (scholarsInversion) is the sole A20 challenge modifier.
+    const a19 = getAscensionModifiers(19)
+    const a20 = getAscensionModifiers(20)
+
+    // A20 Scholar's Inversion is ON; A19 is OFF
+    expect(a20.scholarsInversion).toBe(true)
+    expect(a19.scholarsInversion).toBe(false)
+
+    // A20 removes the boss HP buff (was 1.10× at A15-A19)
+    expect(a20.bossHpMultiplier).toBe(1.00)
+    expect(a19.bossHpMultiplier).toBe(1.10)
+
+    // A20 removes flat wrong-answer self-damage (was 3 at A17-A19)
+    expect(a20.wrongAnswerSelfDamage).toBe(0)
+    expect(a19.wrongAnswerSelfDamage).toBe(3)
+
+    // A20 removes forced hard question formats (was true at A19)
+    expect(a20.forceHardQuestionFormats).toBe(false)
+    expect(a19.forceHardQuestionFormats).toBe(true)
+  })
+
+  it("Scholar's Inversion (A20): correctAnswerHeal buffed to 2 HP at A17+", () => {
+    // Pass 9: correctAnswerHeal increased from 1→2 HP at all A17+ levels.
+    expect(getAscensionModifiers(16).correctAnswerHeal).toBe(0)
+    expect(getAscensionModifiers(17).correctAnswerHeal).toBe(2)
+    expect(getAscensionModifiers(19).correctAnswerHeal).toBe(2)
+    expect(getAscensionModifiers(20).correctAnswerHeal).toBe(2)
+  })
+
+  it("Scholar's Inversion (A20): level rule name and effect updated", () => {
+    const rule20 = getAscensionRule(20)
+    expect(rule20?.name).toBe("Scholar's Inversion")
+    expect(rule20?.effect).toContain('Wrong charges damage you')
+    // A17 heal description updated
+    const rule17 = getAscensionRule(17)
+    expect(rule17?.effect).toContain('heal 2 HP')
+  })
 })

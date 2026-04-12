@@ -835,6 +835,10 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   turnState.ascensionTier1OptionCount = ascensionModifiers.tier1OptionCount;
   turnState.ascensionForceHardQuestionFormats = ascensionModifiers.forceHardQuestionFormats;
   turnState.ascensionPreventFlee = ascensionModifiers.preventFlee;
+  // A20 Scholar's Inversion: wrong-charge fizzle damage redirects to player.
+  turnState.ascensionScholarsInversion = ascensionModifiers.scholarsInversion;
+  // A17+ buff: HP healed per correct Charge answer.
+  turnState.ascensionCorrectAnswerHeal = ascensionModifiers.correctAnswerHeal;
 
   // Thread player character level so Deja Vu can apply level-15+ scaling (2 cards instead of 1).
   const saveForLevel = get(playerSave);

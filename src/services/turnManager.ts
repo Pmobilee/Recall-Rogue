@@ -232,6 +232,16 @@ export interface TurnState {
   ascensionTier1OptionCount: number;
   ascensionForceHardQuestionFormats: boolean;
   ascensionPreventFlee: boolean;
+  /**
+   * A20 Scholar's Inversion: when true, wrong-charge fizzle damage redirects to the player
+   * instead of the enemy. Set from ascensionModifiers.scholarsInversion at encounter start.
+   */
+  ascensionScholarsInversion: boolean;
+  /**
+   * A17+ buff: HP to heal the player on each correct Charge answer.
+   * Set from ascensionModifiers.correctAnswerHeal at encounter start. 0 = inactive.
+   */
+  ascensionCorrectAnswerHeal: number;
   result: EncounterResult;
   turnLog: TurnLogEntry[];
   /** Facts answered (correct or incorrect) during this encounter */
@@ -696,6 +706,8 @@ export function startEncounter(
     ascensionTier1OptionCount: 3,
     ascensionForceHardQuestionFormats: false,
     ascensionPreventFlee: false,
+    ascensionScholarsInversion: false,
+    ascensionCorrectAnswerHeal: 0,
     result: null,
     turnLog: [],
     encounterAnsweredFacts: [],
@@ -1221,9 +1233,18 @@ export function playCardAction(
 
     // Apply partial fizzle effects to game state
     if (fizzledEffect.damageDealt > 0) {
-      const damageResult = applyDamageToEnemy(enemy, fizzledEffect.damageDealt);
-      fizzledEffect.enemyDefeated = damageResult.defeated;
-      turnState.damageDealtThisTurn += fizzledEffect.damageDealt;
+      // Scholar's Inversion (A20): wrong-charge fizzle damage hits the player instead of the enemy.
+      if (turnState.ascensionScholarsInversion) {
+        turnState.playerState.hp = Math.max(0, turnState.playerState.hp - fizzledEffect.damageDealt);
+        if (turnState.playerState.hp <= 0) {
+          turnState.result = 'defeat';
+          turnState.phase = 'encounter_end';
+        }
+      } else {
+        const damageResult = applyDamageToEnemy(enemy, fizzledEffect.damageDealt);
+        fizzledEffect.enemyDefeated = damageResult.defeated;
+        turnState.damageDealtThisTurn += fizzledEffect.damageDealt;
+      }
     }
     if (fizzledEffect.shieldApplied > 0) applyShield(playerState, fizzledEffect.shieldApplied);
     if (fizzledEffect.healApplied > 0) healPlayer(playerState, fizzledEffect.healApplied);
@@ -2965,6 +2986,13 @@ export function playCardAction(
     if (playMode === 'charge') {
       turnState.chargeCorrectsThisTurn = (turnState.chargeCorrectsThisTurn ?? 0) + 1;
     }
+  }
+  // A17+ buff: heal the player for each correct Charge answer.
+  if (playMode === 'charge' && turnState.ascensionCorrectAnswerHeal > 0) {
+    turnState.playerState.hp = Math.min(
+      turnState.playerState.maxHP ?? 100,
+      turnState.playerState.hp + turnState.ascensionCorrectAnswerHeal,
+    );
   }
   turnState.isPerfectTurn = (
     turnState.cardsCorrectThisTurn > 0 &&

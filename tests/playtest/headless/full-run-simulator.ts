@@ -555,12 +555,7 @@ function simulateSingleEncounter(
 
           if (answeredCorrectly) {
             correctAnswers++;
-            if (ascMods.correctAnswerHeal > 0) {
-              turnState.playerState.hp = Math.min(
-                turnState.playerState.hp + ascMods.correctAnswerHeal,
-                turnState.playerState.maxHP,
-              );
-            }
+            // correctAnswerHeal is now applied by turnManager.ts internally (A17+ buff).
           } else {
             wrongAnswers++;
           }
@@ -662,12 +657,7 @@ function simulateSingleEncounter(
 
         if (answeredCorrectly) {
           correctAnswers++;
-          if (ascMods.correctAnswerHeal > 0) {
-            turnState.playerState.hp = Math.min(
-              turnState.playerState.hp + ascMods.correctAnswerHeal,
-              turnState.playerState.maxHP,
-            );
-          }
+          // correctAnswerHeal is now applied by turnManager.ts internally (A17+ buff).
         } else {
           wrongAnswers++;
         }
@@ -863,6 +853,10 @@ function handleCombatNode(
   initialTurnState.ascensionTier1OptionCount = ascMods.tier1OptionCount;
   initialTurnState.ascensionForceHardQuestionFormats = ascMods.forceHardQuestionFormats;
   initialTurnState.ascensionPreventFlee = ascMods.preventFlee;
+  // Pass 9 (Scholar's Inversion): wire new A20 mechanics to turn state.
+  // turnManager.ts applies both internally on each card play.
+  initialTurnState.ascensionScholarsInversion = ascMods.scholarsInversion;
+  initialTurnState.ascensionCorrectAnswerHeal = ascMods.correctAnswerHeal;
   initialTurnState.activeRelicIds = new Set(runState.relicIds);
 
   // Bug 3: apply initial Canary damage multiplier

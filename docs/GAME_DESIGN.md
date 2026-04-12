@@ -3983,12 +3983,12 @@ Unlocks after first successful run completion (reach Act 3+ and retreat, or defe
 | 12 | Deep Knowledge | Tier 1 cards use 4-option MCQ | Tier 1 charged correct +20% damage |
 | 13 | Fragile | Player max HP reduced to 80 | Start with Vitality Ring (+20 HP, takes slot) |
 | 14 | Combo Breaker | Combo resets each turn | Perfect turns grant +1 AP next turn |
-| 15 | Boss Rush | Bosses +25% HP | Boss defeat fully heals player |
+| 15 | Boss Rush | Bosses +10% HP | Boss defeat fully heals player |
 | 16 | No Echo | Echo mechanic disabled | Discarding a card grants 1 shield |
-| 17 | Scholar's Burden | Wrong answers deal 3 self-damage | Correct answers heal 1 HP |
+| 17 | Scholar's Burden | Wrong answers deal 3 self-damage | Correct answers heal 2 HP |
 | 18 | Minimalist | Start with 10 cards | Choose starting hand each encounter |
-| 19 | True Test | All questions use hard formats | Charge plays cost 0 extra AP |
-| 20 | Heart of the Archive | Final boss gains second phase | Start with 3 relics (choose from 7) |
+| 19 | True Test | All questions use hard formats | (Reserved for future surcharge mechanic) |
+| 20 | Scholar's Inversion | Wrong charges damage YOU instead of the enemy. Removes A15/A17/A19 penalties. | Start with 2 relics + correct answers heal 2 HP |
 
 ### Design Philosophy
 
