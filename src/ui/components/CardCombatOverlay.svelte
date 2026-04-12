@@ -795,6 +795,7 @@
         if (se.type === 'weakness') return `Applies Drawing Blanks for ${se.turns} turns`
         if (se.type === 'vulnerable') return `Applies Exposed for ${se.turns} turns`
         if (se.type === 'poison') return `Applies ${se.value} Doubt`
+        if (se.type === 'strip_block') return `Strips ${se.value} Block`
         return `Applies ${se.value} ${se.type} for ${se.turns} turns`
       }
       default:
