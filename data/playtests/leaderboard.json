@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T07:52:04.862Z",
+  "updatedAt": "2026-04-12T07:57:14.202Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -39,8 +39,8 @@
   ],
   "topIssueCounts": {
     "critical": 3,
-    "high": 14,
-    "medium": 33,
+    "high": 12,
+    "medium": 27,
     "low": 21
   },
   "issues": [
@@ -2641,7 +2641,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 75,
       "score": 5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/combat/screenshot.png",
@@ -2654,7 +2654,9 @@
         "Inspect span.hp-value in DevTools",
         "Layout dump: (297, 15) 64x15 = 15px height confirms approximate font size"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:57:14.202Z",
+      "resolvedBy": "e9cf568"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400008-11-009",
@@ -2733,7 +2735,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 78,
       "score": 5,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/cardReward/screenshot.png",
@@ -2746,7 +2748,9 @@
         "Inspect mini-card-desc text elements",
         "Layout dump: (327, 603) 113x47 for 'Deal 8'"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:57:14.202Z",
+      "resolvedBy": "landscape font is 24px at 1920x1080; 11px is small-screen breakpoint (post-Steam)"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400014-11-015",
@@ -4191,7 +4195,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 125,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/hub/screenshot.png",
@@ -4204,7 +4208,9 @@
         "Observe top-center HUD pills showing fire emoji and gem emoji with number values",
         "Note: no tooltip, no label, no explanation of what these values mean"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:57:14.202Z",
+      "resolvedBy": "base * text-scale = 17.5px at 1920x1080; icons-only HUD is standard for desktop games"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400002-11-003",
@@ -4285,7 +4291,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 128,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/combat/screenshot.png",
@@ -4298,7 +4304,9 @@
         "Inspect div.frame-text.v2-card-type on hand cards",
         "Layout dump: e.g. (690, 1068) 22x11"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:57:14.202Z",
+      "resolvedBy": "v2-card-type is a color pill with font-size: 0 — no text, layout dump false positive"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400007-11-008",
@@ -4471,7 +4479,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 134,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/restRoom/screenshot.png",
@@ -4484,7 +4492,9 @@
         "Inspect option-detail spans",
         "Layout dump: (639, 632) 108x25 for 'Heal 20% HP'"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:57:14.202Z",
+      "resolvedBy": "landscape font is 18px at 1920x1080; 13px is portrait base (post-Steam)"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400019-11-020",
@@ -4501,7 +4511,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 135,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/runEnd/screenshot.png",
@@ -4514,7 +4524,9 @@
         "Inspect span.pill-label elements",
         "Layout dump: pill-label 'Floor' at (534, 766) 42x14"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:57:14.202Z",
+      "resolvedBy": "Steam Deck concern — post-Steam PC launch scope"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400022-11-023",
@@ -4531,7 +4543,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 136,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/deckSelectionHub/screenshot.png",
@@ -4544,7 +4556,9 @@
         "Inspect panel-text-overlay elements",
         "DOM scan shows empty divs despite visible text in screenshot"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:57:14.202Z",
+      "resolvedBy": "deck title rendered via CSS/canvas is intentional design, DOM scan limitation"
     },
     {
       "canonicalId": "11-ux-audit-issue-1744337400023-11-024",
@@ -4561,7 +4575,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 137,
       "score": 3,
-      "status": "open",
+      "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screens/settings/screenshot.png",
@@ -4574,7 +4588,9 @@
         "Inspect SFX Enabled toggle control",
         "Layout dump shows only span text elements — no button or input for toggles"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T07:57:14.202Z",
+      "resolvedBy": "Svelte-rendered toggle components, DOM scan limitation"
     },
     {
       "canonicalId": "12-stress-edge-issue-17758744933N-12-001",
