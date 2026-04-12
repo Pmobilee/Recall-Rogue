@@ -3911,3 +3911,13 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix:** `src/services/cardDescriptionService.ts` — 9 edits across `getDetailedCardDescription`, `getCompactDescription`, `getCardDescriptionParts`. `src/services/cardEffectResolver.ts` — 2 edits (reckless selfDamage, hemorrhage bleedMult).
 
 **Tests updated:** `tests/unit/attack-mechanics.test.ts`, `tests/unit/play-mode-mechanics.test.ts` (reckless selfDamage 3→4), `tests/unit/phase3-mechanics.test.ts` (hemorrhage QP bleed 16→13).
+
+### 2026-04-12 — TutorialCoachMark arrow-down/left/right pseudo-elements missing content: ''
+
+**What:** `TutorialCoachMark.svelte` defines CSS arrows for four directions but only the shared `arrow-up::before, arrow-up::after` rule includes `content: ''`. The shared `arrow-left::before, arrow-left::after` and `arrow-right::before, arrow-right::after` rules do not include `content: ''`, and neither do the individual `arrow-down::before` / `arrow-down::after` rules. Pseudo-elements without `content` set are not rendered.
+
+**Why:** The `arrow-up` shared block was written correctly, but the three other shared blocks were copy-pasted without including the mandatory `content: ''` property. `arrow-down` has individual `::before` and `::after` rules but no shared rule with `content: ''`. The tutorials for `hand_intro` (card-hand, position above → `arrowDir = down`), `charge_explain` (quiz-panel, position left → `arrowDir = right`), and similar steps will silently show no arrow.
+
+**Fix needed:** Add `content: ''` to the shared pseudo-element blocks for `arrow-down`, `arrow-left`, and `arrow-right` in `TutorialCoachMark.svelte`. The `arrow-up` pattern is the reference. Flag for `ui-agent`.
+
+**Detected by:** QA visual verification on 2026-04-12.
