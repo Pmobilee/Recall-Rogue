@@ -553,7 +553,7 @@
   }
 
   .hp-value {
-    font-size: calc(12px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
   }
 
   .shield-badge {
@@ -755,7 +755,7 @@
 
   .gold-value {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(12px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;
     color: #fbbf24;
     line-height: 1;
