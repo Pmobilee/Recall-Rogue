@@ -229,6 +229,7 @@
   .deck-tile-3d {
     perspective: calc(800px * var(--layout-scale, 1));
     width: 100%;
+    container-type: inline-size;
   }
 
   .deck-tile {
@@ -312,10 +313,10 @@
   /* When a deck front image is present: bottom-center, floating in 3D */
   .has-image .deck-title-3d {
     position: absolute;
-    bottom: calc(8px * var(--layout-scale, 1));
+    bottom: calc(4px * var(--layout-scale, 1));
     left: 50%;
     transform: translateX(-50%) translateZ(calc(40px * var(--layout-scale, 1)));
-    width: 90%;
+    width: 96%;
     color: #ffffff;
     text-shadow:
       calc(-2px * var(--layout-scale, 1)) 0 0 rgba(0, 0, 0, 0.9),
@@ -348,13 +349,13 @@
 
   /* Deck title floats above parallax layers */
   .deck-title-3d {
-    font-size: calc(20px * var(--text-scale, 1));
+    font-size: clamp(calc(12px * var(--text-scale, 1)), 8cqi, calc(26px * var(--text-scale, 1)));
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
     line-height: 1.2;
     letter-spacing: 0.06em;
-    padding: calc(16px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1));
     color: rgba(255, 255, 255, 0.95);
     text-shadow:
       0 calc(1px * var(--layout-scale, 1)) 0 rgba(255, 255, 255, 0.15),
@@ -369,7 +370,7 @@
     text-wrap: balance;
     word-break: normal;
     hyphens: none;
-    max-width: 92%;
+    max-width: 96%;
     position: relative;
     z-index: 2;
   }
@@ -420,11 +421,11 @@
   }
 
   .info-area {
-    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
-    gap: calc(4px * var(--layout-scale, 1));
-    min-height: calc(100px * var(--layout-scale, 1));
+    gap: calc(3px * var(--layout-scale, 1));
+    min-height: calc(68px * var(--layout-scale, 1));
   }
 
   .deck-description {

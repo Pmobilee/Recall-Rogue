@@ -38,7 +38,71 @@
 
   let activeTab = $state<string | null>(null);
   let searchQuery = $state('');
-  let sortOption = $state<'alpha' | 'progress-high' | 'progress-low' | 'facts' | 'newest'>('alpha');
+  let sortOption = $state<'alpha' | 'progress-high' | 'progress-low' | 'facts' | 'newest' | 'coolest'>('alpha');
+
+  // Hand-curated order for Steam screenshot: maximum visual variety & "wow" factor.
+  // Rules: never 2 consecutive same-domain, interleave languages every 3-4, lead with
+  // the most unexpected/impressive topics, alternate warm/cool domain colors.
+  const COOLEST_ORDER: string[] = [
+    // ── Visible top 12 — the ONLY thing the Steam buyer sees ──
+    // Pattern: fun → academic → language → culture → science → unique → repeat
+    'greek_mythology',      // dramatic, universally recognized
+    'ap_biology',           // "oh this actually helps with school"
+    'all:japanese',         // language learning hook, kanji is striking
+    'famous_paintings',     // art & culture depth
+    'human_anatomy',        // practical, impressive diagrams
+    'chess_tactics',        // "wait, chess puzzles?!" unique hook
+    'all:spanish',          // most-studied language worldwide
+    'dinosaurs',            // universally fun, nature lovers
+    'ap_psychology',        // another AP = academic cred
+    'anime_manga',          // modern culture, younger audience
+    'constellations',       // cosmic beauty
+    'ancient_rome',         // classic history
+    // ── Below the fold — still good if they scroll ──
+    'norse_mythology',
+    'all:french',
+    'world_cuisines',
+    'fifa_world_cup',
+    'periodic_table',
+    'medieval_world',
+    'all:korean',
+    'egyptian_mythology',
+    'music_history',
+    'ap_world_history',
+    'all:chinese',
+    'world_war_ii',
+    'famous_inventions',
+    'all:german',
+    'world_capitals',
+    'world_religions',
+    'philosophy',
+    'pharmacology',
+    'mammals_world',
+    'ancient_greece',
+    'world_literature',
+    'ocean_life',
+    'ap_chemistry',
+    'all:dutch',
+    'computer_science',
+    'medical_terminology',
+    'movies_cinema',
+    'solar_system',
+    'world_countries',
+    'us_presidents',
+    'all:czech',
+    'pop_culture',
+    'ap_us_history',
+    'ap_european_history',
+    'world_wonders',
+    'world_flags',
+    'map_explorer',
+    'nasa_missions',
+    'us_states',
+    'ap_human_geography',
+    'ap_macroeconomics',
+    'ap_microeconomics',
+    'ap_physics_1',
+  ];
   let activeFilters = $state<Array<'in-progress' | 'not-started' | 'mastered'>>([]);
   let selectedDeckId = $state<string | null>(null);
   let syntheticLanguageDeck = $state<DeckRegistryEntry | null>(null);
@@ -191,6 +255,15 @@
         case 'progress-low': return getDeckProgress(a.id).progressPercent - getDeckProgress(b.id).progressPercent;
         case 'facts': return b.factCount - a.factCount;
         case 'newest': return 0;
+        case 'coolest': {
+          const idxA = COOLEST_ORDER.indexOf(a.id);
+          const idxB = COOLEST_ORDER.indexOf(b.id);
+          // Decks not in the list go to the end, preserving alpha between them
+          if (idxA === -1 && idxB === -1) return a.name.localeCompare(b.name);
+          if (idxA === -1) return 1;
+          if (idxB === -1) return -1;
+          return idxA - idxB;
+        }
         default: return 0;
       }
     });
@@ -443,7 +516,7 @@
     searchQuery = v;
   }
 
-  function handleSortChange(v: 'alpha' | 'progress-high' | 'progress-low' | 'facts' | 'newest') {
+  function handleSortChange(v: 'alpha' | 'progress-high' | 'progress-low' | 'facts' | 'newest' | 'coolest') {
     sortOption = v;
   }
 
@@ -862,9 +935,9 @@
 
   .deck-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(calc(240px * var(--layout-scale, 1)), 1fr));
-    gap: calc(20px * var(--layout-scale, 1));
-    padding: calc(20px * var(--layout-scale, 1));
+    grid-template-columns: repeat(auto-fill, minmax(calc(160px * var(--layout-scale, 1)), 1fr));
+    gap: calc(14px * var(--layout-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1));
     padding-bottom: calc(96px * var(--layout-scale, 1));
     align-content: start;
   }

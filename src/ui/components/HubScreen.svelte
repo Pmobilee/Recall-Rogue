@@ -347,12 +347,48 @@
     await scenario.loadCustom({ screen: 'combat', enemy: enemyId })
   }
 
+  /** Pick N random items from an array. */
+  function pickRandom<T>(arr: T[], n: number): T[] {
+    const copy = [...arr]
+    const result: T[] = []
+    while (result.length < n && copy.length > 0) {
+      const idx = Math.floor(Math.random() * copy.length)
+      result.push(copy.splice(idx, 1)[0])
+    }
+    return result
+  }
+
+  const SCREENSHOT_MECHANICS = [
+    'strike', 'heavy_strike', 'block', 'multi_hit', 'piercing', 'reckless',
+    'lifetap', 'thorns', 'empower', 'quicken', 'weaken', 'expose', 'fortify',
+    'execute', 'focus', 'hex', 'scout', 'cleanse', 'brace', 'double_strike',
+  ]
+
+  const SCREENSHOT_RELICS = [
+    'whetstone', 'iron_shield', 'swift_boots', 'chain_reactor', 'quicksilver_quill',
+    'crit_lens', 'scholars_crown', 'phoenix_feather', 'prismatic_shard', 'thorn_crown',
+    'vitality_ring', 'lucky_coin', 'capacitor', 'double_down', 'red_fang',
+  ]
+
+  /** Load combat with random enemy, deck, AND randomized mid-encounter state. */
   async function steamCombat(deckId: string): Promise<void> {
     const scenario = (globalThis as any).__rrScenario
     if (!scenario) return
     const allEnemyIds = ENEMY_TEMPLATES.map(t => t.id)
     const enemy = allEnemyIds[Math.floor(Math.random() * allEnemyIds.length)]
-    await scenario.loadCustom({ screen: 'combat', enemy, deckId })
+    const hand = pickRandom(SCREENSHOT_MECHANICS, 4 + Math.floor(Math.random() * 3))
+    const relics = pickRandom(SCREENSHOT_RELICS, 1 + Math.floor(Math.random() * 4))
+    const playerHp = 40 + Math.floor(Math.random() * 50)
+    const playerBlock = Math.random() > 0.5 ? Math.floor(Math.random() * 15) : 0
+    const enemyBlock = Math.random() > 0.6 ? Math.floor(Math.random() * 12) : 0
+    const floor = 2 + Math.floor(Math.random() * 6)
+    const gold = 30 + Math.floor(Math.random() * 200)
+    const chainTypes = hand.map(() => Math.floor(Math.random() * 3))
+    await scenario.loadCustom({
+      screen: 'combat', enemy, deckId, hand, relics,
+      playerHp, playerMaxHp: 100, playerBlock, enemyBlock,
+      floor, gold, chainTypes,
+    })
   }
 
   function onTransitionComplete(): void {
@@ -577,6 +613,8 @@
         <button class="dev-btn" onclick={() => steamCombat('chess_tactics')}>♟ Chess</button>
         <button class="dev-btn" onclick={() => steamCombat('japanese_n4_grammar')}>🇯🇵 Japanese</button>
         <button class="dev-btn" onclick={() => steamCombat('famous_paintings')}>🎨 Paintings</button>
+        <button class="dev-btn" onclick={() => steamCombat('human_anatomy')}>🫀 Anatomy</button>
+        <button class="dev-btn" onclick={() => steamCombat('world_war_ii')}>⚔️ WWII</button>
       </div>
       <PendingNextStepsOverlay />
       {/if}
@@ -817,6 +855,8 @@
       <button class="dev-btn" onclick={() => steamCombat('chess_tactics')}>♟ Chess</button>
       <button class="dev-btn" onclick={() => steamCombat('japanese_n4_grammar')}>🇯🇵 Japanese</button>
       <button class="dev-btn" onclick={() => steamCombat('famous_paintings')}>🎨 Paintings</button>
+      <button class="dev-btn" onclick={() => steamCombat('human_anatomy')}>🫀 Anatomy</button>
+      <button class="dev-btn" onclick={() => steamCombat('world_war_ii')}>⚔️ WWII</button>
     </div>
     <PendingNextStepsOverlay />
     {/if}

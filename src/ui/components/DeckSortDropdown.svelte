@@ -1,5 +1,5 @@
 <script lang="ts">
-  type SortOption = 'alpha' | 'progress-high' | 'progress-low' | 'facts' | 'newest';
+  type SortOption = 'alpha' | 'progress-high' | 'progress-low' | 'facts' | 'newest' | 'coolest';
 
   interface Props {
     value: SortOption;
@@ -24,6 +24,7 @@
     <option value="progress-low">Progress (Low)</option>
     <option value="facts">Most Facts</option>
     <option value="newest">Newest</option>
+    <option value="coolest">Coolest</option>
   </select>
 </div>
 
