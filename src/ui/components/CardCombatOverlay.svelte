@@ -81,6 +81,11 @@
   import { quizPanelVisible } from '../stores/combatUiStore'
   import { reducedMotion } from '../stores/settings'
   import { resolveWowFactorText } from '../../services/wowFactorService'
+  import {
+    tutorialActive,
+    evaluateTutorialStep,
+  } from '../../services/tutorialService'
+  import type { TutorialContext } from '../../data/tutorialSteps'
 
 
   interface Props {
@@ -209,6 +214,12 @@
   let hasQuickPlayed = $state(false)
   /** Whether the player has done a Charge this run (for comparison banner). */
   let hasCharged = $state(false)
+  /** Tutorial tracking: has the player quick-played this session (for tutorial eval). */
+  let tutorialHasPlayedQuickPlay = $state(false)
+  /** Tutorial tracking: has the player charged this session (for tutorial eval). */
+  let tutorialHasPlayedCharge = $state(false)
+  /** Tutorial tracking: has the player answered wrong this session (for tutorial eval). */
+  let tutorialHasAnsweredWrong = $state(false)
   let apTutorialTimer = $state<ReturnType<typeof setTimeout> | null>(null)
   let chargeTutorialTimer = $state<ReturnType<typeof setTimeout> | null>(null)
   let comparisonBannerTimer = $state<ReturnType<typeof setTimeout> | null>(null)
@@ -981,6 +992,7 @@
   let isHpCritical = $derived(playerHpRatio <= 0.15 && playerHpRatio > 0)
 
   let onboardingTip = $derived.by(() => {
+    if ($tutorialActive) return null
     const state = get(onboardingState)
     if (state.hasCompletedOnboarding) return null
 
@@ -1892,6 +1904,8 @@
     // AR-124: Tutorial — AP tooltip on first-ever play; comparison banner tracking
     maybeShowApTutorial()
     maybeShowComparisonBanner('quick')
+    // Tutorial tracking
+    tutorialHasPlayedQuickPlay = true
 
     // Animate as reveal → swoosh → impact → discard
     animatingCards = [...animatingCards, card]
@@ -2030,6 +2044,8 @@
     maybeShowApTutorial()
     maybeShowChargeTutorial(isFreeCharge)
     maybeShowComparisonBanner('charge')
+    // Tutorial tracking
+    tutorialHasPlayedCharge = true
 
     const state = get(onboardingState)
     if (!state.hasCompletedOnboarding && !state.hasSeenCastTooltip) {
@@ -2297,6 +2313,7 @@
 
     if (!isCorrect) {
       // Wrong answer: fizzle (unchanged)
+      tutorialHasAnsweredWrong = true
       animatingCards = [...animatingCards, card]
       cardAnimations = { ...cardAnimations, [cardId]: 'fizzle' }
       onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex, 'charge', undefined, true)
@@ -2702,6 +2719,48 @@
   })
   // --- End Enemy Dialogue ---
 
+  // ── Tutorial evaluation $effect ─────────────────────────────────────────
+  // Builds TutorialContext from live state and calls evaluateTutorialStep each time
+  // relevant state changes. The service handles debouncing / step sequencing.
+  $effect(() => {
+    if (!$tutorialActive) return
+
+    const state = get(onboardingState)
+    const ctx: TutorialContext = {
+      enemyName: turnState?.enemy?.template?.name ?? null,
+      enemyCategory: turnState?.enemy?.template?.category ?? null,
+      playerHp: turnState?.playerState?.hp ?? 0,
+      playerMaxHp: turnState?.playerState?.maxHP ?? 0,
+      playerBlock: turnState?.playerState?.shield ?? 0,
+      apCurrent: apCurrent,
+      apMax: turnState?.apMax ?? 0,
+      handSize: handCards.length,
+      turnNumber: turnState?.turnNumber ?? 0,
+      encounterTurnNumber: turnState?.encounterTurnNumber ?? 0,
+      phase: turnState?.phase ?? null,
+      cardsPlayedThisTurn: turnState?.cardsPlayedThisTurn ?? 0,
+      cardsCorrectThisTurn: turnState?.cardsCorrectThisTurn ?? 0,
+      chainLength: turnState?.chainLength ?? 0,
+      isSurgeTurn: isSurgeActive,
+      selectedCardType: selectedCard?.cardType ?? null,
+      selectedCardApCost: selectedCard ? getEffectiveApCost(selectedCard) : null,
+      cardPlayStage,
+      quizVisible: committedQuizData != null,
+      hasPlayedQuickPlay: tutorialHasPlayedQuickPlay,
+      hasPlayedCharge: tutorialHasPlayedCharge,
+      hasAnsweredWrong: tutorialHasAnsweredWrong,
+      hasSeenCombatTutorial: state.hasSeenCombatTutorial,
+      hasSeenStudyTutorial: state.hasSeenStudyTutorial,
+      mode: 'combat',
+      enemyIntentType: turnState?.enemy?.nextIntent?.type ?? null,
+      enemyIntentValue: turnState?.enemy?.nextIntent?.value ?? null,
+      studyQuestionsAnswered: 0,
+      studySessionComplete: false,
+    }
+
+    evaluateTutorialStep(ctx)
+  })
+
   onDestroy(() => {
     for (const unsub of kbdUnsubscribers) unsub()
     kbdUnsubscribers = []
@@ -2763,7 +2822,7 @@
       </div>
     {/if}
 
-    <div class="ap-orb" class:ap-active={apCurrent > 0} class:ap-empty={apCurrent === 0} aria-label="Action points: {apCurrent}">
+    <div class="ap-orb" class:ap-active={apCurrent > 0} class:ap-empty={apCurrent === 0} aria-label="Action points: {apCurrent}" data-tutorial-anchor="ap-indicator">
       <span class="ap-number">{apCurrent}</span>
       <span class="ap-label" aria-hidden="true">AP</span>
     </div>
@@ -2880,6 +2939,7 @@
       <!-- §7 spec: quiz panel fade out = 200ms when dismissed -->
       <div
         class="quiz-wrapper"
+        data-tutorial-anchor="quiz-panel"
         out:fade={{ duration: 200 }}
       >
         <CardExpanded
@@ -2966,8 +3026,11 @@
       <span class="ap-num">{apCurrent}</span>
     </div>
 
+    <div data-tutorial-anchor="chain-counter" style="display: contents;">
     <ChainCounter {isPerfectTurn} {chainLength} {chainType} {chainMultiplier} {activeChainColor} />
+    </div>
 
+    <div data-tutorial-anchor="card-hand" style="display: contents;">
     <CardHand
       cards={handCards}
       {animatingCards}
@@ -2989,6 +3052,7 @@
       {damagePreviews}
       {activeChainColor}
     />
+    </div>
 
     {#if showEndTurn}
       {#if $coopWaitingForPartner && handHasCards}
@@ -3021,6 +3085,7 @@
           class:end-turn-pulse={!endTurnDisabled && cardPlayStage !== 'committed' && (apCurrent === 0 || !hasPlayableCards)}
           class:has-ap-remaining={apCurrent > 0 && hasPlayableCards && !endTurnDisabled}
           data-testid="btn-end-turn"
+          data-tutorial-anchor="end-turn-btn"
           aria-label="End turn"
           onclick={handleEndTurn}
           disabled={endTurnDisabled}
@@ -3110,7 +3175,9 @@
 <KeyboardShortcutHelp />
 
 <!-- §6 Surge golden border overlay — both portrait and landscape, pointer-events: none -->
+<div data-tutorial-anchor="surge-border" style="display: contents;">
 <SurgeBorderOverlay active={isSurgeActive} />
+</div>
 
 <!-- AR-204: Forget pile viewer overlay -->
 {#if showForgetViewer && turnState}
