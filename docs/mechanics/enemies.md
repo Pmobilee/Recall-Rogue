@@ -1,7 +1,7 @@
 # Enemy System
 
 > **Purpose:** Complete reference for the enemy roster, categories, scaling formulas, special behaviors, and encounter selection.
-> **Last verified:** 2026-04-11 (T1.2-retry: Omnibus + Final Lesson status stacks cut 40% to reduce damage-per-turn. Phase 8: Elite unique mechanics — Librarian Silence, Tutor Pop Quiz, Headmistress Detention, Study Group phase sim. Phase 9: strip_block intents on page_flutter/bookmark_vine/staple_bug)
+> **Last verified:** 2026-04-12 (T1.2-retry: Omnibus + Final Lesson status stacks cut 40% to reduce damage-per-turn. Phase 8: Elite unique mechanics — Librarian Silence, Tutor Pop Quiz, Headmistress Detention, Study Group phase sim. Phase 9: strip_block intents on page_flutter/bookmark_vine/staple_bug. Same-floor enemy dedup added 2026-04-12.)
 > **Source files:** `src/data/enemies.ts`, `src/services/enemyManager.ts`, `src/data/balance.ts`, `src/services/ascension.ts`
 
 ## Enemy Categories
@@ -486,6 +486,19 @@ Act 3 commons: baseHP 5–8 (−1 across all, pass #6). Attack values 3. Multi p
 ## Act Enemy Pools (`ACT_ENEMY_POOLS`)
 
 Enemy selection uses `getEnemiesForNode(act, nodeType)` which maps to `ACT_ENEMY_POOLS`.
+
+### Same-Floor Enemy Dedup (2026-04-12)
+
+**Source:** `src/services/encounterBridge.ts` — `_lastFloorEnemyId`, `_lastFloorEliteId`, `_lastFloorTracked`
+
+When `startEncounterForRoom` picks a common or elite enemy from an act pool, it filters out the last enemy that appeared on the current floor. This prevents `page_flutter` (or any single enemy) from filling both encounter 1 and encounter 2 on the same floor.
+
+**Rules:**
+- Applies to: common encounters and elite encounters (challenge mode).
+- Does NOT apply to: mini-bosses, bosses (they have their own rotation — AR-98 `getLastBossForAct`).
+- **Softlock guard:** if the pool has only 1 candidate after filtering, the filter is skipped and that single enemy is used.
+- **Cross-floor:** trackers reset when `run.floor.currentFloor` changes, so floor 2 may re-use an enemy from floor 1.
+- **Run boundary:** `resetEncounterBridge()` clears all three tracker variables so a new run starts fresh.
 
 ### Act 1 — Shallow Depths (floors 1–8)
 - **Commons (11):** page_flutter, thesis_construct, mold_puff, ink_slug, bookmark_vine, staple_bug, margin_gremlin, index_weaver, overdue_golem, pop_quiz, eraser_worm

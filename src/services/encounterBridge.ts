@@ -296,6 +296,14 @@ function setLastBossForAct(act: number, bossId: string): void {
   }
 }
 
+
+// ── Same-floor enemy dedup helpers ──
+// Tracks the last regular and elite enemy spawned on the current floor.
+// Reset when the floor number changes, ensuring dedup only applies within a single floor.
+let _lastFloorEnemyId: string | null = null;
+let _lastFloorEliteId: string | null = null;
+let _lastFloorTracked: number = -1;
+
 type EncounterCompletionResult = 'victory' | 'defeat';
 let encounterCompleteHandler: ((result: EncounterCompletionResult) => void) | null = null;
 
@@ -669,6 +677,15 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     const poolRng = isRunRngActive() ? getRunRng('enemyPool') : null;
     const poolRand = () => poolRng ? poolRng.next() : Math.random();
 
+    // Reset per-floor dedup trackers when we move to a new floor.
+    // This ensures no same-enemy consecutive encounters within a floor, but does
+    // not bleed across floors (floor 2 may repeat an enemy that appeared on floor 1).
+    if (run.floor.currentFloor !== _lastFloorTracked) {
+      _lastFloorEnemyId = null;
+      _lastFloorEliteId = null;
+      _lastFloorTracked = run.floor.currentFloor;
+    }
+
     if (isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter === run.floor.encountersPerFloor) {
       // V2: use act-based boss pool with rotation (AR-98 — no same boss twice in a row per act)
       const bossCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'boss');
@@ -690,22 +707,40 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
         : getMiniBossForFloor(run.floor.currentFloor);
     } else {
       if (run.canary.mode === 'challenge' && poolRand() < 0.50) {
-        // V2: use act-based elite pool, fall back to region-based
+        // V2: use act-based elite pool, fall back to region-based, no same elite twice on same floor
         const eliteCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'elite');
         if (eliteCandidates.length > 0) {
-          templateId = eliteCandidates[Math.floor(poolRand() * eliteCandidates.length)].id;
+          const dedupedElites = _lastFloorEliteId && eliteCandidates.length > 1
+            ? eliteCandidates.filter(e => e.id !== _lastFloorEliteId)
+            : eliteCandidates;
+          const elitePool = dedupedElites.length > 0 ? dedupedElites : eliteCandidates;
+          templateId = elitePool[Math.floor(poolRand() * elitePool.length)].id;
+          _lastFloorEliteId = templateId;
         } else {
           const region = getRegionForFloor(run.floor.currentFloor);
           const regionElites = ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite' && enemyTemplate.region === region);
           const effectiveElites = regionElites.length > 0 ? regionElites : ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite');
-          templateId = effectiveElites[Math.floor(poolRand() * effectiveElites.length)]?.id ?? pickCombatEnemy(run.floor.currentFloor);
+          const dedupedFallbackElites = _lastFloorEliteId && effectiveElites.length > 1
+            ? effectiveElites.filter(e => e.id !== _lastFloorEliteId)
+            : effectiveElites;
+          const eliteFallbackPool = dedupedFallbackElites.length > 0 ? dedupedFallbackElites : effectiveElites;
+          templateId = eliteFallbackPool[Math.floor(poolRand() * eliteFallbackPool.length)]?.id ?? pickCombatEnemy(run.floor.currentFloor);
+          if (templateId) _lastFloorEliteId = templateId;
         }
       } else {
-        // V2: use act-based common pool for regular encounters
+        // V2: use act-based common pool for regular encounters, no same enemy twice on same floor
         const commonCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'combat');
-        templateId = commonCandidates.length > 0
-          ? commonCandidates[Math.floor(poolRand() * commonCandidates.length)].id
-          : pickCombatEnemy(run.floor.currentFloor);
+        if (commonCandidates.length > 0) {
+          const dedupedCommon = _lastFloorEnemyId && commonCandidates.length > 1
+            ? commonCandidates.filter(c => c.id !== _lastFloorEnemyId)
+            : commonCandidates;
+          const commonPool = dedupedCommon.length > 0 ? dedupedCommon : commonCandidates;
+          templateId = commonPool[Math.floor(poolRand() * commonPool.length)].id;
+          _lastFloorEnemyId = templateId;
+        } else {
+          templateId = pickCombatEnemy(run.floor.currentFloor);
+          if (templateId) _lastFloorEnemyId = templateId;
+        }
       }
     }
   }
@@ -1772,6 +1807,10 @@ export function resetEncounterBridge(): void {
   encounterGeneration++;
   // AR-269: Clear Akashic Record fact-spacing history so it doesn't persist across runs.
   resetFactLastSeenEncounter();
+  // Reset same-floor enemy dedup trackers so a new run starts fresh.
+  _lastFloorEnemyId = null;
+  _lastFloorEliteId = null;
+  _lastFloorTracked = -1;
 }
 
 /**
