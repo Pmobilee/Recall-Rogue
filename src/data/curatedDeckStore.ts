@@ -367,6 +367,9 @@ function rowToDeckFact(row: Record<string, unknown>, deckId: string): DeckFact |
     solutionMoves: row['solution_moves'] ? JSON.parse(String(row['solution_moves'])) : undefined,
     tacticTheme: row['tactic_theme'] ? String(row['tactic_theme']) : undefined,
     lichessRating: row['lichess_rating'] ? Number(row['lichess_rating']) : undefined,
+    mapCoordinates: row['map_coordinates'] ? JSON.parse(String(row['map_coordinates'])) : undefined,
+    mapRegion: row['map_region'] ? String(row['map_region']) : undefined,
+    mapDifficultyTier: row['map_difficulty_tier'] ? Number(row['map_difficulty_tier']) : undefined,
   };
   return parseDeckFact(assembled, deckId, assembled.id);
 }
