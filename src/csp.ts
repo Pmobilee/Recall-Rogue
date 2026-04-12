@@ -23,7 +23,7 @@ export function getCSPMeta(isDev: boolean): string {
       "script-src 'self' 'unsafe-eval' 'unsafe-inline'; " +
       "style-src 'self' 'unsafe-inline'; " +
       "img-src 'self' data: blob:; " +
-      "connect-src 'self' ws: wss: http://localhost:* http://*:3001; " +
+      "connect-src 'self' ws: wss: http://localhost:* http://*:3001 http://host.docker.internal:*; " +
       "font-src 'self'"
     )
   }

@@ -1,0 +1,136 @@
+[
+  {
+    "id": "MP-001",
+    "title": "CSP blocks Docker containers from connecting to Fastify server",
+    "severity": "critical",
+    "category": "transport_bug",
+    "description": "The Vite plugin in vite.config.ts hardcodes the dev CSP connect-src without http://host.docker.internal:*. Docker containers running the game cannot reach the Fastify multiplayer server at host.docker.internal:3000. CSP errors block all REST and WebSocket connections.",
+    "expected": "Docker containers can connect to Fastify via host.docker.internal",
+    "actual": "CSP blocks all connections: 'Connecting to host.docker.internal:3000 violates Content Security Policy'",
+    "fix_applied": "Added http://host.docker.internal:* to dev CSP connect-src in vite.config.ts line 29",
+    "scenario": "smoke",
+    "screenshot": "smoke-host.png"
+  },
+  {
+    "id": "MP-002",
+    "title": "CORS rejects Docker origin for Fastify multiplayer API",
+    "severity": "critical",
+    "category": "transport_bug",
+    "description": "Fastify server defaults CORS_ORIGIN to http://localhost:5173, but Docker containers connect from http://host.docker.internal:5173. CORS preflight fails with 'Access-Control-Allow-Origin header has a value http://localhost:5173 that is not equal to the supplied origin'.",
+    "expected": "Docker containers pass CORS preflight",
+    "actual": "CORS blocks all API requests from Docker containers",
+    "fix_applied": "Must start Fastify with CORS_ORIGIN='http://localhost:5173,http://host.docker.internal:5173'. Skill spec should document this.",
+    "scenario": "S1",
+    "screenshot": "S1-menu.png"
+  },
+  {
+    "id": "MP-003",
+    "title": "Lobby state persists across navigation - auto-reconnects on multiplayerMenu return",
+    "severity": "high",
+    "category": "lobby_bug",
+    "description": "Once a player connects to a lobby, navigating away (hub) and back to multiplayerMenu auto-reconnects to the old lobby. The player sees lobby elements (lobby-code, player-slots, btn-ready) instead of the mode selection menu (tab-create, tab-join, mode cards). navigate('hub') does not call leaveLobby() on the lobby service. This makes it impossible to join a different lobby without restarting the container.",
+    "expected": "Navigating to hub should cleanly leave the lobby. Returning to multiplayerMenu should show the mode selection screen.",
+    "actual": "Player is auto-reconnected to the previous lobby. Tab-join and mode cards are not visible.",
+    "scenario": "S3, S2-retry",
+    "screenshot": "S3-after-force-leave.png"
+  },
+  {
+    "id": "MP-004",
+    "title": "Guest ready button does not toggle - cannot mark as ready",
+    "severity": "critical",
+    "category": "lobby_bug",
+    "description": "Guest's Ready button click does not toggle ready state. Button stays showing 'Ready' (not toggled) even after multiple clicks via Playwright click and eval-dispatched pointer events. Host's Ready button toggles correctly to 'Not Ready'. Start gate remains disabled because guest is never ready. This completely blocks two-player race starts.",
+    "expected": "Guest clicks Ready -> button shows 'Not Ready', player marked ready, start gate enables",
+    "actual": "Guest clicks Ready -> no state change, button stays 'Ready', start gate stays disabled",
+    "scenario": "S9",
+    "screenshot": "guest-ready-retry.png"
+  },
+  {
+    "id": "MP-005",
+    "title": "Player slot count inconsistency between Fastify and host UI",
+    "severity": "high",
+    "category": "lobby_bug",
+    "description": "Fastify REST API reports currentPlayers: 2 but host UI only renders 1 player slot (Player 1 only, no Player 2). The guest appears in the server state but not in the host's DOM. Possibly a WebSocket state sync issue where the guest's join message doesn't update the host's reactive player list.",
+    "expected": "Host UI shows same player count as Fastify server",
+    "actual": "Fastify shows 2 players, host DOM shows 1 player slot",
+    "scenario": "S2-verify",
+    "screenshot": "host-ready-state.png"
+  },
+  {
+    "id": "MP-006",
+    "title": "Leave lobby button click stuck on loading screen",
+    "severity": "high",
+    "category": "lobby_bug",
+    "description": "Clicking btn-leave-lobby triggers a page transition but gets stuck on a loading screen (three dots animation on dark background). The DOM still reports lobby elements (lobby-code, player-slots) but the visual state is a blank loading screen. eval-clicking the button has the same result.",
+    "expected": "Leave lobby returns player to multiplayerMenu or hub",
+    "actual": "Player stuck on loading screen with lobby DOM still present",
+    "scenario": "S10, S3",
+    "screenshot": "S3-after-force-leave.png"
+  },
+  {
+    "id": "MP-007",
+    "title": "Race enterRoom() from dungeon map leads to black screen",
+    "severity": "critical",
+    "category": "race_bug",
+    "description": "After starting a race (lobby -> onboarding -> dungeonMap), calling enterRoom() or selectMapNode() transitions to a black screen with screen: 'unknown' and inCombat: false. The Phaser scene transition fails silently. No console errors. The game is completely stuck.",
+    "expected": "Entering a room from dungeonMap loads the combat scene with an enemy",
+    "actual": "Black screen, screen='unknown', no combat state, game stuck",
+    "scenario": "R3",
+    "screenshot": "R3-combat-wait.png"
+  },
+  {
+    "id": "MP-008",
+    "title": "Race start shows onboarding instead of directly entering dungeon",
+    "severity": "medium",
+    "category": "race_bug",
+    "description": "Starting a race from a lobby (with bot + deck selected + ready) shows the onboarding 'RECALL ROGUE - Enter the depths' splash screen before the dungeon map. This adds a mandatory click-through step. In multiplayer, both players should enter the dungeon simultaneously without an intro screen.",
+    "expected": "Race start goes directly to dungeonMap or combat",
+    "actual": "Race start shows onboarding screen requiring 'ENTER THE DEPTHS' click",
+    "scenario": "R1",
+    "screenshot": "R1-race-started.png"
+  },
+  {
+    "id": "MP-009",
+    "title": "Deck picker 'Nothing selected' after clicking deck row",
+    "severity": "medium",
+    "category": "ui_bug",
+    "description": "In the LobbyDeckPicker, clicking a deck row (e.g., 'Mammals of the World') does not visually select it. The picker footer still shows 'Nothing selected'. The correct interaction is to click the ldp-deck-check-btn checkbox button next to the deck, not the row itself.",
+    "expected": "Clicking a deck row selects that deck",
+    "actual": "Must click the specific checkbox button; row click has no effect. UX mismatch.",
+    "scenario": "S5",
+    "screenshot": "S5-deck-picker.png"
+  },
+  {
+    "id": "MP-010",
+    "title": "Error details button visible in lobby UI",
+    "severity": "low",
+    "category": "ui_bug",
+    "description": "The lobby screen contains a 'Restart Game' button and an 'Error details' collapsible at the bottom of the DOM. These appear to be dev/error-state elements that are rendered even when no error has occurred. They may not be visible to the player (could be hidden via CSS) but are present in the DOM.",
+    "expected": "Error UI elements only present when an error occurs",
+    "actual": "Restart Game and Error details elements in DOM on normal lobby load",
+    "scenario": "S5-inspect",
+    "screenshot": "lobby-deck-picker.png"
+  },
+  {
+    "id": "MP-011",
+    "title": "Start button shows 'Select Content' before deck is chosen",
+    "severity": "low",
+    "category": "ui_bug",
+    "description": "The btn-start-game button text shows 'Select Content' instead of 'Start Game' when no deck has been selected. After deck selection it changes to 'Start Game'. Then after guest joins but guest not ready, it shows 'Start Game' but disabled. These state transitions work but the 'Select Content' label is confusing as a start button label.",
+    "expected": "Start button clearly indicates what action is needed (e.g., separate 'Choose Deck' prompt)",
+    "actual": "Start button repurposed as 'Select Content' label",
+    "scenario": "S5",
+    "screenshot": "S5-confirmed.png"
+  },
+  {
+    "id": "MP-012",
+    "title": "csp.ts module is dead code - CSP is hardcoded in vite.config.ts plugin",
+    "severity": "low",
+    "category": "content_bug",
+    "description": "src/csp.ts exports getCSPMeta() but it is never imported or used. The actual CSP is hardcoded inline in vite.config.ts's cspInjectPlugin(). The csp.ts file is dead code that creates a maintenance trap - changes to csp.ts have no effect.",
+    "expected": "Single source of truth for CSP policy",
+    "actual": "Two CSP definitions: dead csp.ts and live vite.config.ts. Edits to csp.ts are silently ignored.",
+    "scenario": "smoke-debug",
+    "screenshot": null
+  }
+]

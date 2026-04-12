@@ -26,7 +26,7 @@ function cspInjectPlugin(): Plugin {
     transformIndexHtml(html, ctx) {
       const isDev = ctx.server !== undefined
       const csp = isDev
-        ? "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' ws: wss: http://localhost:* http://*:3001; font-src 'self'"
+        ? "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' ws: wss: http://localhost:* http://*:3001 http://host.docker.internal:*; font-src 'self'"
         : "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://*.recallrogue.com https://localhost:*; font-src 'self'"
       return html.replace(
         '</head>',
