@@ -1,5 +1,21 @@
 
 
+### 2026-04-12 — check-human-prose.mjs broken in git worktrees + JSDoc false positives
+
+**Bug A — `.git` is a file in worktrees, not a directory.**
+
+`getCommitMessage()` read `.git/COMMIT_EDITMSG` via a hardcoded relative path. In a git worktree, `.git` is a plain text file containing `gitdir: /path/to/main/.git/worktrees/<branch>` — not a directory. `existsSync('.git/COMMIT_EDITMSG')` always returns `false` inside a worktree, so `getCommitMessage()` always returned `''`, so the `[humanizer-verified]` override token was **never detected in worktree commits**, causing the lint to block commits that legitimately had the token.
+
+**Fix:** Replaced the hardcoded path with `execSync('git rev-parse --git-path COMMIT_EDITMSG').trim()`. This command returns the correct absolute path regardless of whether the cwd is a main checkout or a worktree. Same fix applied to `MERGE_MSG`.
+
+**Class of bug:** Any lint script, hook, or tool that reads from `.git/<file>` via a relative path will silently fail in worktrees. Always use `git rev-parse --git-path <filename>` to resolve git internal file paths.
+
+**Bug B — JSDoc continuation lines not excluded from Svelte code-skip heuristic.**
+
+`SVELTE_CODE_LINE` matched `/*` and `*/` block-comment markers but not ` * text` JSDoc middle lines. A sentence like `"scales speed, opacity, and size"` on a JSDoc continuation line inside a Svelte `<script>` block triggered the rule-of-three detector as a false positive. This was a legitimate technical description, not AI-generated prose.
+
+**Fix:** Added `\*\s` and `\/\*\*` alternates to `SVELTE_CODE_LINE`. Lines starting with optional whitespace then `* ` are now treated as code lines (skipped). This eliminated the false positive on `HubFireflies.svelte` L10.
+
 ### 2026-04-11 — curatedDeckStore silently dropped sub_decks column
 
 **What:** `rowToDeckShell()` in `curatedDeckStore.ts` never read the `sub_decks` column from the SQLite `decks` table. Every curated deck's `subDecks` was `undefined` at runtime even though the build script correctly wrote the JSON column. `medieval_world` showed 0 subdecks in the Study Temple UI; all AP decks (`ap_biology`, `ap_world_history`, `ap_human_geography`) fell through to the `chainDistribution` "Group N" fallback in combat instead of using their real unit names. `deckFactIndex` received no sub-deck mappings, so `getSubDeckFactIds()` always returned [].
