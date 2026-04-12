@@ -72,13 +72,24 @@ function buildHTML() {
     { value: '38+', label: 'Card Mechanics' },
   ];
 
-  const masteryLevels = [
-    { level: 0, damage: 4, stars: '', tag: '' },
-    { level: 1, damage: 4, stars: '★', tag: '' },
-    { level: 2, damage: 5, stars: '★★', tag: '' },
-    { level: 3, damage: 6, stars: '★★★', tag: '' },
-    { level: 4, damage: 7, stars: '★★★★', tag: '' },
-    { level: 5, damage: 8, stars: '★★★★★', tag: '+ TEMPO' },
+  const CARD_BASE = `file://${PROJECT_ROOT}/public/assets/cardframes/v2`;
+
+  const masteryCards = [
+    {
+      name: 'Strike', type: 'attack', chainType: 1,
+      l0: { ap: 1, qp: 4, desc: 'Deal 4 damage.' },
+      l5: { ap: 1, qp: 8, desc: 'Deal 8 damage. +3 Block on play.', tag: 'TEMPO' },
+    },
+    {
+      name: 'Twin Strike', type: 'attack', chainType: 2,
+      l0: { ap: 1, qp: '2×2', desc: 'Hit twice for 2 damage each.' },
+      l5: { ap: 1, qp: '4×3', desc: 'Hit 3 times for 4 each. Apply 2 Burn per hit.', tag: 'BURN' },
+    },
+    {
+      name: 'Heavy Strike', type: 'attack', chainType: 3,
+      l0: { ap: 2, qp: 7, desc: 'Deal 7 damage. Costs 2 AP.' },
+      l5: { ap: 1, qp: 12, desc: 'Deal 12 damage. Now costs only 1 AP.', tag: 'AP DOWN' },
+    },
   ];
 
   const hex2rgba = (hex, alpha) => {
@@ -94,7 +105,7 @@ function buildHTML() {
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500&family=Kreon:wght@700&display=swap" rel="stylesheet">
 <style>
   :root {
     --gold: #d4a44a;
@@ -348,84 +359,150 @@ function buildHTML() {
   }
 
   /* ══════════════════════════════════════════════
-     SECTION 5 — MASTERY PROGRESSION  1560 × 400
+     SECTION 5 — MASTERY PROGRESSION  1560 × 700
   ══════════════════════════════════════════════ */
   #mastery-progression {
     width: 1560px;
-    height: 400px;
+    height: 700px;
     background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 24px 48px;
-    gap: 20px;
+    gap: 24px;
   }
   #mastery-progression .section-title {
     font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--gold);
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
-  #mastery-progression .levels {
+  #mastery-progression .card-rows {
     display: flex;
-    gap: 16px;
-    align-items: flex-end;
-    justify-content: center;
-    width: 100%;
-  }
-  .mastery-card {
-    display: flex;
-    flex-direction: column;
+    gap: 48px;
     align-items: center;
-    gap: 8px;
-    padding: 16px 20px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    min-width: 160px;
-    position: relative;
+    justify-content: center;
   }
-  .mastery-card .m-level {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+  .card-pair {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
-  .mastery-card .m-name {
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    font-weight: 700;
+  .card-pair .arrow {
+    font-size: 2rem;
     color: var(--gold);
-  }
-  .mastery-card .m-damage {
-    font-family: 'Cinzel', serif;
-    font-size: 2.2rem;
     font-weight: 700;
-    line-height: 1;
   }
-  .mastery-card .m-stars {
-    font-size: 0.9rem;
-    letter-spacing: 2px;
+  .game-card {
+    position: relative;
+    width: 140px;
+    height: 180px;
+    flex-shrink: 0;
   }
-  .mastery-card .m-tag {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    color: #4CAF50;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  .mastery-card .m-arrow {
+  .game-card img.card-layer {
     position: absolute;
-    right: -18px;
-    top: 50%;
-    transform: translateY(-50%);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .game-card .card-ap {
+    position: absolute;
+    left: 2%;
+    top: 2.8%;
+    width: 18.5%;
+    height: 10.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
     font-size: 1.2rem;
+    font-weight: 900;
+    color: #1a0a00;
+  }
+  .game-card .card-name {
+    position: absolute;
+    left: 23.1%;
+    top: 11.2%;
+    width: 54%;
+    height: 7.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Kreon', 'Georgia', serif;
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: #1a0a00;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .game-card .card-qp {
+    position: absolute;
+    left: 22%;
+    top: 22%;
+    width: 56%;
+    height: 36%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #2d1a00;
+    text-shadow: 0 1px 2px rgba(255,220,180,0.3);
+  }
+  .game-card .card-desc {
+    position: absolute;
+    left: 15.1%;
+    top: 58%;
+    width: 72.2%;
+    height: 32%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.5rem;
+    color: #e8e4dc;
+    line-height: 1.4;
+    padding-top: 4px;
+  }
+  .game-card .card-upgrade {
+    position: absolute;
+    left: 0;
+    bottom: 42%;
+    width: 16%;
+    height: 12%;
+    object-fit: contain;
+  }
+  .game-card .card-tag {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.45rem;
+    font-weight: 700;
+    color: #4CAF50;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: rgba(0,0,0,0.6);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+  .mastery-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
     color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+    margin-top: 4px;
   }
 </style>
 </head>
@@ -485,21 +562,35 @@ function buildHTML() {
 <!-- SECTION 5: Mastery Progression -->
 <section id="mastery-progression">
   <div class="section-title">Cards Get Stronger When You Learn</div>
-  <div class="levels">
-    ${masteryLevels.map((m, i) => {
-      const intensity = 0.4 + (m.level * 0.12);
-      const dmgColor = `rgba(255, ${180 - m.level * 20}, ${80 - m.level * 12}, ${intensity})`;
-      const starColor = `rgba(255, 215, 0, ${0.3 + m.level * 0.14})`;
-      const arrow = i < 5 ? '<div class="m-arrow">→</div>' : '';
+  <div class="card-rows">
+    ${masteryCards.map(card => {
+      const border = `${CARD_BASE}/card-border-${card.type}.webp`;
+      const base = `${CARD_BASE}/card-frame-base.webp`;
+      const banner = `${CARD_BASE}/card-banner-chain${card.chainType}.webp`;
+      const upgrade = `${CARD_BASE}/card-upgrade-icon.webp`;
+      
+      const renderCard = (level, isMax) => `
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div class="game-card">
+            <img class="card-layer" src="${border}" alt="">
+            <img class="card-layer" src="${base}" alt="">
+            <img class="card-layer" src="${banner}" alt="">
+            <div class="card-ap">${level.ap}</div>
+            <div class="card-name">${card.name}</div>
+            <div class="card-qp">${level.qp}</div>
+            <div class="card-desc">${level.desc}</div>
+            ${isMax ? `<img class="card-upgrade card-layer" src="${upgrade}" alt="" style="filter: hue-rotate(60deg) saturate(2) brightness(1.3); inset: auto; position: absolute;">` : ''}
+            ${level.tag ? `<div class="card-tag">${level.tag}</div>` : ''}
+          </div>
+          <div class="mastery-label">${isMax ? 'Mastery 5' : 'Mastery 0'}</div>
+        </div>`;
+      
       return `
-    <div class="mastery-card">
-      <div class="m-level">Mastery ${m.level}</div>
-      <div class="m-name">Strike</div>
-      <div class="m-damage" style="color: ${dmgColor};">${m.damage}</div>
-      <div class="m-stars" style="color: ${starColor};">${m.stars || '—'}</div>
-      ${m.tag ? `<div class="m-tag">${m.tag}</div>` : ''}
-      ${arrow}
-    </div>`;
+      <div class="card-pair">
+        ${renderCard(card.l0, false)}
+        <div class="arrow">→</div>
+        ${renderCard(card.l5, true)}
+      </div>`;
     }).join('\n')}
   </div>
 </section>
@@ -528,7 +619,7 @@ const sections = [
   { id: 'relic-grid',        file: 'relic-grid.png',        w: 1560, h: 1200 },
   { id: 'deck-domains',      file: 'deck-domains.png',      w: 1560, h: 700  },
   { id: 'numbers-flex',        file: 'numbers-flex.png',        w: 1560, h: 500  },
-  { id: 'mastery-progression', file: 'mastery-progression.png', w: 1560, h: 400  },
+  { id: 'mastery-progression', file: 'mastery-progression.png', w: 1560, h: 700  },
 ];
 
 for (const { id, file, w, h } of sections) {
