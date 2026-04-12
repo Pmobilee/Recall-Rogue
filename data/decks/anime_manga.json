@@ -3766,7 +3766,7 @@
       "correctAnswer": "CLAMP",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "creator_names_short",
+      "answerTypePoolId": "creator_names_long",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -5775,7 +5775,7 @@
       "correctAnswer": "ONE",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "creator_names_short",
+      "answerTypePoolId": "creator_names_long",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -5944,12 +5944,17 @@
       "answerFormat": "name",
       "factIds": [
         "am_opm_creator",
-        "am_mob_psycho_creator",
         "am_cardcaptor_sakura_creator",
-        "am_clamp_doujinshi_origin",
         "am_bleach_creator"
       ],
-      "minimumSize": 5
+      "minimumSize": 3,
+      "syntheticDistractors": [
+        "Fujiko F. Fujio",
+        "Gosho Aoyama",
+        "Hirohiko Araki",
+        "Go Nagai",
+        "Mitsuru Adachi"
+      ]
     },
     {
       "id": "creator_names_long",
@@ -5993,9 +5998,13 @@
         "am_hxh_creator",
         "am_yuyu_hakusho_creator",
         "am_nobuyuki_takahashi_cosplay",
-        "am_cowboy_bebop_director"
+        "am_cowboy_bebop_director",
+        "am_clamp_doujinshi_origin",
+        "am_mob_psycho_creator"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Pool contains both short mononyms/pseudonyms (CLAMP, ONE) and full names — length variance is inherent to creator naming conventions"
     },
     {
       "id": "character_names_short",

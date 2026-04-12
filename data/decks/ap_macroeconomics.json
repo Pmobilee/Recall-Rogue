@@ -5651,13 +5651,14 @@
     },
     {
       "id": "ap_macro_3a_mpc_plus_mps",
-      "correctAnswer": "1",
+      "correctAnswer": "100%",
       "acceptableAlternatives": [
+        "1",
         "One",
-        "100%"
+        "one"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "equation_symbols",
+      "answerTypePoolId": "equation_short_terms",
       "difficulty": 1,
       "funScore": 4,
       "ageGroup": "all",
@@ -16825,7 +16826,6 @@
       "id": "equation_symbols",
       "label": "Single-Letter/Symbol Notations",
       "factIds": [
-        "ap_macro_3a_mpc_plus_mps",
         "ap_macro_3b_government_spending_gdp_component",
         "ap_macro_4a_reserve_ratio_10pct_multiplier",
         "ap_macro_3a_balanced_budget_multiplier"
@@ -16852,7 +16852,8 @@
       "factIds": [
         "ap_macro_2a_gdp_definition",
         "ap_macro_2a_gnp_vs_gdp",
-        "ap_macro_6a_bop_must_balance"
+        "ap_macro_6a_bop_must_balance",
+        "ap_macro_3a_mpc_plus_mps"
       ],
       "syntheticDistractors": [
         "CPI",
