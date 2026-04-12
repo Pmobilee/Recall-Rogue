@@ -3697,3 +3697,13 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Lint extended:** `scripts/lint/check-set-map-rehydration.mjs` now verifies that `serializeActiveDeckSets` and `rehydrateActiveDeckSets` both exist and handle `currentEncounterSeenFacts`, and that `saveActiveRun`/`loadActiveRun` call them respectively (checks 4a–4d). Also replaced fragile `^}` multiline regexes with a brace-counting `extractFunctionBody` helper and index-slice patterns — the old regex approach silently matched wrong bodies for functions with complex return type signatures.
 
 **Lesson:** The Set/Map serialization lint was only a "one level deep" check. Any nested object that embeds a Set/Map and is serialized via a direct spread (not through `serializeRunState`) creates an identical blind spot. When adding a new object to the save format, always trace its full path through JSON.stringify and verify every Set/Map field in every embedded type.
+
+### 2026-04-12 — Tooltip backdrop with `pointer-events: auto` eats all shop item clicks
+
+**What:** Every click on a relic buy button in the shop was swallowed by an invisible full-viewport backdrop, opening nothing. Cards worked fine. The playtest report (BATCH-2026-04-12-001-C-004) said "missing click handler" — the handler was wired correctly; the backdrop was the culprit.
+
+**Root cause:** When a relic item is hovered, `showRelicTooltip()` mounts two elements: a `.tooltip-backdrop` (`position: fixed; inset: 0; z-index: 199`) and the `.relic-tooltip` panel (`z-index: 200`). The backdrop was a `<button>` with the default `pointer-events: auto`, covering the entire viewport. Clicking the relic buy button first hit the backdrop at z-index 199 — triggering `dismissRelicTooltip()` and absorbing the event before it could reach the buy button. Cards have no tooltip so they never had a backdrop in their path.
+
+**Fix:** Changed `.tooltip-backdrop` to `pointer-events: none` (CSS) and replaced the `<button onclick=dismiss>` with a `<div aria-hidden>`. Click-outside dismiss is now handled by a `$effect` that adds a `document.addEventListener('pointerdown', ..., { capture: true })` listener while `relicTooltip` is non-null, dismissing on any click that doesn't originate inside `.relic-tooltip`. Mouse-away (`onmouseleave` on the relic item) still dismisses immediately. The 3-second auto-dismiss timer is unchanged.
+
+**Rule:** If you add a full-viewport backdrop element (`position: fixed; inset: 0`) to handle click-outside dismissal, give it `pointer-events: none` and handle dismissal via a `document pointerdown` listener in a `$effect` instead. The backdrop-as-click-catcher pattern makes every other interactive element in the viewport unreachable while the backdrop is mounted.

@@ -206,6 +206,24 @@
     relicTooltip = null
   }
 
+  // Dismiss relic tooltip when the player clicks anywhere outside the tooltip panel.
+  // pointer-events: none on .tooltip-backdrop means we can't rely on the backdrop click
+  // handler any more — so we use a document-level pointerdown listener instead.
+  $effect(() => {
+    if (!relicTooltip) return
+    function onPointerDown(e: PointerEvent) {
+      const target = e.target as Element | null
+      if (!target) return
+      // Keep tooltip alive if the player clicked inside the tooltip itself
+      if (target.closest('.relic-tooltip')) return
+      dismissRelicTooltip()
+    }
+    document.addEventListener('pointerdown', onPointerDown, { capture: true })
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown, { capture: true })
+    }
+  })
+
   // === Removal picker state ===
   let showRemovalPicker = $state(false)
   let pendingRemovalHaggled = $state(false)
@@ -765,7 +783,8 @@
 {/if}
 
 {#if relicTooltip}
-  <button class="tooltip-backdrop" onclick={dismissRelicTooltip} aria-label="Dismiss tooltip"></button>
+  <!-- tooltip-backdrop: pointer-events: none makes it click-through; dismiss is handled by document pointerdown $effect -->
+  <div class="tooltip-backdrop" aria-hidden="true"></div>
   <div
     class="relic-tooltip"
     role="tooltip"
@@ -1174,6 +1193,11 @@
     border: none;
     padding: 0;
     cursor: default;
+    /* pointer-events: none — backdrop is purely structural/visual.
+       A z-index: 199 element with pointer-events: auto was intercepting all
+       shop item clicks while the relic tooltip was showing (C-004 regression).
+       Click-outside dismiss is now handled by a document pointerdown $effect. */
+    pointer-events: none;
   }
 
   .relic-tooltip {
