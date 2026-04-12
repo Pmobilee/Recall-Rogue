@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T01:50:00.000Z",
+  "updatedAt": "2026-04-12T02:30:00.000Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -65,7 +65,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "33% hit rate on sampled pc_* numeric-answer facts; 4 testers converged",
@@ -76,7 +76,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#critical"
       },
       "score": 60,
-      "rank": 1
+      "rank": 1,
+      "resolvedAt": "2026-04-12T02:30:00.000Z",
+      "resolvedBy": "ab4214526 + 775f0d6d5 + 1b35f38e7"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-C-002",
@@ -121,7 +123,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "1/1 on continued-run state; 0/N on fresh runs",
@@ -132,7 +134,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#critical"
       },
       "score": 15,
-      "rank": 9
+      "rank": 9,
+      "resolvedAt": "2026-04-12T02:30:00.000Z",
+      "resolvedBy": "ab4214526 + 775f0d6d5 + 1b35f38e7"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-C-004",
@@ -149,7 +153,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "1/1 relic clicks silent",
@@ -160,7 +164,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#critical"
       },
       "score": 15,
-      "rank": 10
+      "rank": 10,
+      "resolvedAt": "2026-04-12T02:30:00.000Z",
+      "resolvedBy": "ab4214526 + 775f0d6d5 + 1b35f38e7"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-001",
@@ -411,7 +417,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "{1984} visible in study session 2 Q1 button render",
@@ -422,7 +428,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 34
+      "rank": 34,
+      "resolvedAt": "2026-04-12T02:30:00.000Z",
+      "resolvedBy": "ab4214526 + 775f0d6d5 + 1b35f38e7"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-010",
@@ -5535,6 +5543,6 @@
       "sourceBatch": "smoke-campaign-postmove-2026-03-14"
     }
   ],
-  "openCount": 119,
-  "resolvedCount": 26
+  "openCount": 141,
+  "resolvedCount": 30
 }
