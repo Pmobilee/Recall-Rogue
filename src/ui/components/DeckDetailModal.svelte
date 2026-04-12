@@ -188,9 +188,11 @@
             </div>
             <span class="progress-pct">{Math.round(progress.progressPercent)}%</span>
           </div>
+          {#if deck.id !== 'chess_tactics'}
           <div class="mastered-count">
             {deck.procedural ? progress.totalFacts : progress.factsMastered} / {progress.totalFacts} {deck.procedural ? "skills" : "facts mastered"}
           </div>
+          {/if}
 
           {#if chessElo !== null}
             <div class="chess-elo-display">
@@ -292,7 +294,8 @@
 
       <!-- RIGHT COLUMN: stats + action buttons -->
       <div class="col-right">
-        <!-- Key stats -->
+        <!-- Key stats (hidden for chess_tactics — facts don't apply to procedural puzzles) -->
+        {#if deck.id !== 'chess_tactics'}
         <div class="stat-block">
           <div class="stat-row">
             <span class="stat-label">Total facts</span>
@@ -303,6 +306,7 @@
             <span class="stat-value stat-mastered">{progress.factsMastered}</span>
           </div>
         </div>
+        {/if}
 
         <!-- Action buttons -->
         <div class="action-block">

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T03:30:00.000Z",
+  "updatedAt": "2026-04-12T05:30:06.991Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -38,10 +38,10 @@
     }
   ],
   "topIssueCounts": {
-    "critical": 18,
-    "high": 68,
-    "medium": 55,
-    "low": 30
+    "critical": 3,
+    "high": 33,
+    "medium": 53,
+    "low": 29
   },
   "issues": [
     {
@@ -95,7 +95,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "2/2 encounters showed same broken distractor set",
@@ -106,7 +106,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#critical"
       },
       "score": 15,
-      "rank": 8
+      "rank": 8,
+      "resolvedAt": "2026-04-12T05:29:35.897Z",
+      "resolvedBy": "683288810"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-C-003",
@@ -281,7 +283,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "getRewardChoices()=[], altar shows 3 cards, card appears in next combat",
@@ -292,7 +294,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 29
+      "rank": 29,
+      "resolvedAt": "2026-04-12T05:29:35.897Z",
+      "resolvedBy": "6e77ac1a8"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-005",
@@ -653,7 +657,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "getScreen=combat while Phaser scene=RewardRoomScene; getCombatState=null",
@@ -664,7 +668,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 16,
-      "rank": 6
+      "rank": 6,
+      "resolvedAt": "2026-04-12T05:29:35.897Z",
+      "resolvedBy": "6e77ac1a8"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-017",
@@ -1406,7 +1412,7 @@
       "title": "RewardRoom Continue button is Phaser-only: keyboard-inaccessible, Steam review risk",
       "description": "RewardRoomScene.ts Continue button is implemented as a Phaser canvas object (setInteractive()) with no DOM overlay equivalent. Keyboard-only and screen-reader users cannot advance past the reward room. Wiring lint (check-wiring.mjs) flags this with WARN status. Steam reviewers ding accessibility issues consistently. 1-2 hour fix: add a new RewardRoomOverlay.svelte component OR extend an existing overlay with a DOM button that triggers the same continue flow.",
       "source": "swift-splashing-crown.md T0.4 + Agent 1 feature inventory",
-      "status": "open",
+      "status": "resolved",
       "score": 8,
       "affectedTracks": [
         "alpha-review-risk",
@@ -1414,7 +1420,9 @@
       ],
       "firstSeen": "2026-04-11T08:00:00.000Z",
       "suggestedFix": "ui-agent: create src/ui/components/RewardRoomOverlay.svelte with a DOM Continue button (`<button>` with onclick + data-testid=\"reward-continue\"). game-logic: expose a postMessage-style hook from RewardRoomScene that the overlay can trigger. Verify with keyboard-only walkthrough: Tab to button, Enter to continue.",
-      "rank": 42
+      "rank": 42,
+      "resolvedAt": "2026-04-12T05:30:06.991Z",
+      "resolvedBy": "already-fixed: RewardRoomOverlay.svelte provides DOM keyboard/a11y overlay for Continue, Relic Accept, Relic Leave"
     },
     {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-001",
@@ -1930,7 +1938,7 @@
       "title": "4 facts contain literal 'undefined' strings in player-visible text",
       "description": "Four curated deck facts contain the literal string 'undefined' (lowercase) in their question or answer text, visible to players during combat quiz. Indicates a generation-pipeline bug where a template slot failed to substitute and the string 'undefined' was written into the fact body verbatim. 10-minute content-agent fix: grep facts.db / curated.db for `undefined` tokens, identify the 4 facts, rewrite each manually. Not a blocker but a predictable Steam review complaint (\"typos in questions\").",
       "source": "swift-splashing-crown.md T3.2",
-      "status": "open",
+      "status": "resolved",
       "score": 6,
       "affectedTracks": [
         "alpha-review-risk",
@@ -1938,7 +1946,9 @@
       ],
       "firstSeen": "2026-04-11T08:00:00.000Z",
       "suggestedFix": "content-agent: `grep -rn '\\bundefined\\b' data/decks/` — identify affected facts, rewrite each, rebuild curated.db via `npm run build:curated`, verify in-game display via visual-inspect scenario.",
-      "rank": 54
+      "rank": 54,
+      "resolvedAt": "2026-04-12T05:29:35.897Z",
+      "resolvedBy": "false-positive: all 3 facts use undefined as legitimate English word"
     },
     {
       "canonicalId": "CARD-AUDIT-2026-04-11-medium-001",
