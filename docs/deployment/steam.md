@@ -305,6 +305,70 @@ Comprehensive checklist for shipping Recall Rogue on Steam. Items grouped by pha
 - [ ] Steam Deck verification (Linux + gamepad controls)
 - [ ] Workshop support — wire 6 Tauri UGC commands (`steam_ugc_create_item`, `steam_ugc_update_item`, `steam_ugc_subscribe`, `steam_ugc_browse`, `steam_ugc_get_my_items`, `steam_ugc_get_item_path`) in `src-tauri/src/steam.rs`. TypeScript service layer + UI already implemented in `workshopService.ts` and `WorkshopBrowser.svelte`. See `docs/content/anki-integration.md` §Steam Workshop Integration.
 
+### Code-Complete Status (2026-04-12)
+
+Triage of all Phase 1–6 items against current codebase state. Last verified against commits through `de54e6a`.
+
+**Verified facts:**
+- App ID `4547570` is set in `src-tauri/steam_appid.txt` and hardcoded in `src-tauri/src/steam.rs`.
+- `package.json` and `src-tauri/tauri.conf.json` both report version `0.1.0` (in sync).
+- `npm run steam:build`, `npm run steam:deploy`, and `npm run steam:test` scripts all exist in `package.json`.
+
+#### Code-Complete (code written; needs dashboard action or manual test to verify)
+
+- Steam App ID configured (`4547570` in `steam_appid.txt` and `steam.rs`)
+- Achievement system wired: 24 achievements in `steamAchievements.ts`, triggered in `gameFlowController.ts` via `checkCumulativeAchievements()`
+- Rich Presence wired: `steamPresenceWatcher.ts` initialized at boot, updates on every screen transition
+- File-based save system implemented: `storageBackend.ts`, `filesave.rs`, atomic `.tmp` write pattern
+- Settings migration completeness: 12 previously missing keys added to `migrateLocalStorageToFiles()`
+- Confusion matrix capped at 5000 entries — unbounded save growth risk eliminated
+- Dev-mode overrides guarded by `import.meta.env.DEV` — will not leak to production
+- `createNewPlayer()` starts at level 1, not 25
+- Production crash overlay in `index.html` — shows restart prompt before Svelte mounts on fatal error
+- `errorReporting.ts` skips HTTP POST on Tauri builds (no server); uses `__RR_VERSION__` not a hardcoded string
+- `npm run steam:build` script exists and targets Tauri release bundle
+- XOR obfuscation pipeline in place (`build:curated` + `build:obfuscate` run automatically via `npm run build`)
+- PNG metadata stripping scripts exist (`scripts/strip-asset-metadata.mjs`, `scripts/audit-asset-metadata.mjs`)
+- VDF depot configs exist for all platforms (`steam/depot_build_454757{2,3,4}.vdf`)
+
+#### Needs Dashboard Setup (must be done in partner.steamgames.com)
+
+- Create depots 4547571–4547574 in App Admin
+- Set launch options per OS (`.app` for macOS, AppImage for Linux)
+- Create `development` and `staging` branches
+- Set content descriptors and age ratings
+- Configure Steam Auto-Cloud (root paths per OS + `saves/*.json` pattern)
+- Register all 24 achievements — IDs from `steamAchievements.ts` must match exactly
+- Upload achievement icons (locked + unlocked 256×256 PNG — not yet generated)
+- Set Coming Soon page live (2-week lead time required before release)
+- Upload store page assets (see `docs/marketing/steam-store-page.md` for full 9-asset spec)
+- Write and publish store description (short + long copy)
+- Set tags and categories
+
+#### Needs Manual Testing (can only be verified by playing the game)
+
+- Launch, save/load, and fullscreen toggle (F11) on a real Steam install (`npm run steam:test`)
+- Save files appear in correct platform directory after first launch
+- Steam overlay (Shift+Tab) does not break WebView rendering
+- Achievements fire correctly — use Steamworks debug overlay to confirm each trigger
+- Rich Presence visible to friends in Steam friend list
+- Offline mode: fully playable with no network connection
+- XOR-obfuscated DBs load correctly in production bundle (no sql.js errors)
+- First-run experience on a clean machine (no prior save files)
+- Steam Cloud sync: save on machine A appears on machine B
+- PNG metadata stripped from all shipped assets (`node scripts/audit-asset-metadata.mjs dist/` exits 0)
+
+#### Not Started / Post-Launch (deferred)
+
+- Leaderboards (Rust async callback handler + TypeScript service layer)
+- Background Steamworks callback pump thread
+- GitHub Actions CI for cross-platform builds
+- Windows build testing
+- Steam Deck verification (Linux + gamepad controls)
+- Workshop support (Rust UGC commands — TypeScript + UI layer already done)
+- Language DLC configuration in Steamworks
+- Trading cards
+
 ## Cross-Platform CI (Planned)
 
 GitHub Actions workflow `.github/workflows/steam-build.yml` will:
