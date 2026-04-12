@@ -485,44 +485,61 @@
       ]
     },
     {
-      "homogeneityExempt": true,
-      "id": "equation_explanations_u2",
-      "label": "Equation Explanation (Unit 2)",
+      "id": "equation_explanations_u2_short",
+      "label": "Equation Explanation (Unit 2) (short)",
       "factIds": [
-        "ap_phys1_centripetal_accel",
-        "ap_phys1_inclined_plane_components",
-        "ap_phys1_atwood_machine",
-        "ap_phys1_cm_calculation",
-        "ap_phys1_circular_period_frequency",
-        "ap_phys1_incline_component_forces",
         "ap_phys1_newton2_rotational_system",
-        "ap_phys1_circular_top_bottom",
-        "ap_phys1_g_surface_formula",
-        "ap_phys1_spring_series_parallel",
+        "ap_phys1_impulse_equals_area_check",
+        "ap_phys1_circular_period_frequency",
+        "ap_phys1_ke_loss_formula_inelastic",
+        "ap_phys1_atwood_machine",
         "ap_phys1_angle_friction_starts_sliding",
         "ap_phys1_vector_components",
-        "ap_phys1_relative_velocity_concept",
-        "ap_phys1_impulse_equals_area_check",
-        "ap_phys1_ke_loss_formula_inelastic",
-        "ap_phys1_frequency_period",
-        "ap_phys1_shm_max_speed_formula"
+        "ap_phys1_centripetal_accel"
       ]
     },
     {
-      "homogeneityExempt": true,
-      "id": "equation_explanations_u3",
-      "label": "Equation Explanation (Unit 3)",
+      "id": "equation_explanations_u2_long",
+      "label": "Equation Explanation (Unit 2) (long)",
       "factIds": [
-        "ap_phys1_energy_with_friction",
-        "ap_phys1_work_gravity",
-        "ap_phys1_spring_work",
-        "ap_phys1_efficiency",
-        "ap_phys1_work_by_gravity",
-        "ap_phys1_efficiency_formula",
+        "ap_phys1_cm_calculation",
+        "ap_phys1_incline_component_forces",
+        "ap_phys1_g_surface_formula",
+        "ap_phys1_frequency_period",
+        "ap_phys1_shm_max_speed_formula",
+        "ap_phys1_inclined_plane_components",
+        "ap_phys1_spring_series_parallel",
+        "ap_phys1_relative_velocity_concept",
+        "ap_phys1_circular_top_bottom"
+      ]
+    },
+    {
+      "id": "equation_explanations_u3_short",
+      "label": "Equation Explanation (Unit 3) (short)",
+      "factIds": [
         "ap_phys1_work_spring",
-        "ap_phys1_height_to_speed",
+        "ap_phys1_max_height_from_ke",
+        "ap_phys1_spring_work",
         "ap_phys1_work_by_friction_formula",
-        "ap_phys1_max_height_from_ke"
+        "ap_phys1_energy_with_friction"
+      ],
+      "syntheticDistractors": [
+        "KE = ½mv²",
+        "PE_gravity = mgh",
+        "F = ma (Newton's Second Law)",
+        "W = F·d·cosθ",
+        "p = mv (linear momentum)"
+      ]
+    },
+    {
+      "id": "equation_explanations_u3_long",
+      "label": "Equation Explanation (Unit 3) (long)",
+      "factIds": [
+        "ap_phys1_work_by_gravity",
+        "ap_phys1_height_to_speed",
+        "ap_phys1_efficiency",
+        "ap_phys1_efficiency_formula",
+        "ap_phys1_work_gravity"
       ],
       "syntheticDistractors": [
         "KE = ½mv²",
@@ -1807,7 +1824,7 @@
         "x-component = A cosθ, y-component = A sinθ"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_short",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "For a vector A at angle θ above the horizontal, what are its x (horizontal) and y (vertical) components?",
@@ -3276,7 +3293,7 @@
         "v²/r toward center"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_short",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "What equation gives the centripetal acceleration of an object in uniform circular motion?",
@@ -3426,7 +3443,7 @@
         "weight component along incline is mg sinθ, perpendicular is mg cosθ"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_long",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "For an object on an incline at angle θ, what are the components of gravity parallel and perpendicular to the incline surface?",
@@ -3575,7 +3592,7 @@
         "unbalanced masses on a pulley accelerate with net force over total mass"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_short",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "For an Atwood machine (two unequal masses m₁ < m₂ connected over a frictionless pulley), what is the system's acceleration?",
@@ -4442,7 +4459,7 @@
         "mechanical energy decreases by work done by friction"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_short",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "When friction does work on a system, how is the conservation of energy equation modified?",
@@ -4629,7 +4646,7 @@
         "work by gravity = mgh downward"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_long",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the work done by gravity on an object that descends a vertical height h?",
@@ -4704,7 +4721,7 @@
         "work done by spring equals decrease in spring PE"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_short",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the work done by a spring force as the spring goes from compression/extension x_i to x_f?",
@@ -4743,7 +4760,7 @@
         "Efficiency = (useful energy output / total energy input) × 100%"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_long",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "How is the efficiency of an energy conversion process defined?",
@@ -6736,7 +6753,7 @@
         "frequency equals one over period"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_long",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "What is the relationship between frequency (f) and period (T) in oscillatory motion?",
@@ -8228,7 +8245,7 @@
         "relative velocity = vA − vB"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_long",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "If object A moves at velocity vA and object B moves at velocity vB (both measured relative to the ground), what is the velocity of A as seen by B?",
@@ -8479,7 +8496,7 @@
         "sum of mass times position divided by total mass"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_long",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What formula gives the x-coordinate of the center of mass for a system of particles?",
@@ -8944,7 +8961,7 @@
         "T = 1/f and f = 1/T"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_short",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "What is the relationship between the period T and frequency f of circular motion?",
@@ -9088,7 +9105,7 @@
         "Component along incline = mg sinθ; component perpendicular = mg cosθ"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_long",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "For an object on a frictionless incline of angle θ, how do you decompose the weight into components?",
@@ -9232,7 +9249,7 @@
         "F_net,ext = M·a_cm where M is total mass and a_cm is acceleration of center of mass"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_short",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "Newton's 2nd law for a system of objects relates the net external force to what?",
@@ -9303,7 +9320,7 @@
         "top of loop: N = mv²/r − mg; bottom of loop: N = mv²/r + mg"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_long",
       "difficulty": 4,
       "funScore": 8,
       "quizQuestion": "For an object moving in a vertical circle, how do the normal force equations differ at the top vs. bottom of the loop?",
@@ -9448,7 +9465,7 @@
         "g = GM/R²"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_long",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What formula gives the gravitational field strength (g) at the surface of a planet?",
@@ -9591,7 +9608,7 @@
         "Springs in series: k_eff = k₁k₂/(k₁+k₂); springs in parallel: k_eff = k₁ + k₂"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_long",
       "difficulty": 4,
       "funScore": 6,
       "quizQuestion": "How does the effective spring constant differ for springs connected in series vs. in parallel?",
@@ -9662,7 +9679,7 @@
         "tanθ = μs at the angle where sliding just begins"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_short",
       "difficulty": 4,
       "funScore": 7,
       "quizQuestion": "At what angle of an incline does an object just begin sliding, and how is that angle related to the coefficient of static friction?",
@@ -9841,7 +9858,7 @@
         "W_gravity = mgh (positive when moving down, negative when moving up)"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_long",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the work done by gravity on an object that moves a vertical distance h?",
@@ -10132,7 +10149,7 @@
         "Efficiency = (useful energy output / total energy input) × 100%"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_long",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "What is the formula for the useful-output-to-input ratio of an energy conversion process?",
@@ -10169,7 +10186,7 @@
         "W_spring = ½kx² (energy stored equals work done to compress or stretch)"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_short",
       "difficulty": 2,
       "funScore": 6,
       "quizQuestion": "How much work is required to compress or stretch a spring by displacement x from its natural length?",
@@ -10275,7 +10292,7 @@
         "v = √(2gh) for an object falling from height h from rest (ignoring friction)"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_long",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Using conservation of energy, what is the speed of an object that falls from height h starting from rest?",
@@ -10383,7 +10400,7 @@
         "work by friction equals negative kinetic friction times distance"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_short",
       "difficulty": 2,
       "funScore": 5,
       "quizQuestion": "What is the formula for work done by kinetic friction on an object sliding distance d?",
@@ -10562,7 +10579,7 @@
         "Set initial KE equal to gained gravitational PE: ½mv² = mgh → h = v²/(2g)"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "equation_explanations_u3",
+      "answerTypePoolId": "equation_explanations_u3_short",
       "difficulty": 2,
       "funScore": 7,
       "quizQuestion": "Using energy conservation, what maximum height does an object reach if launched straight up at speed v?",
@@ -11067,7 +11084,7 @@
         "J = Δp = p_f − p_i (impulse = change in momentum, both in kg·m/s)"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_short",
       "difficulty": 1,
       "funScore": 5,
       "quizQuestion": "What is the impulse-momentum theorem equation?",
@@ -11104,7 +11121,7 @@
         "ΔKE_lost = ½(m₁m₂/(m₁+m₂)) × (v₁ − v₂)²  for head-on perfectly inelastic collision"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_short",
       "difficulty": 5,
       "funScore": 5,
       "quizQuestion": "In a perfectly inelastic collision, what is the easiest method to find kinetic energy lost?",
@@ -12213,7 +12230,7 @@
         "maximum speed = A × omega = A × sqrt(k/m)"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "equation_explanations_u2",
+      "answerTypePoolId": "equation_explanations_u2_long",
       "difficulty": 3,
       "funScore": 6,
       "quizQuestion": "What is the formula for the maximum speed of a mass on a spring in simple harmonic motion?",

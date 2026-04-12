@@ -4895,7 +4895,7 @@
         "Inflamed"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "suffix_meanings_short",
+      "answerTypePoolId": "suffix_meanings_long",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -5131,7 +5131,7 @@
         "Pain"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "suffix_meanings_short",
+      "answerTypePoolId": "suffix_meanings_long",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -5190,7 +5190,7 @@
         "Pain"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "suffix_meanings_short",
+      "answerTypePoolId": "suffix_meanings_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -5661,7 +5661,7 @@
         "Tissue wasting"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "suffix_meanings_short",
+      "answerTypePoolId": "suffix_meanings_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -6133,7 +6133,7 @@
         "Decreased count"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "suffix_meanings_short",
+      "answerTypePoolId": "suffix_meanings_long",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -6841,7 +6841,7 @@
         "Surgical incision"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "suffix_meanings_short",
+      "answerTypePoolId": "suffix_meanings_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -8078,7 +8078,7 @@
         "Abnormal enlargement"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "suffix_meanings_short",
+      "answerTypePoolId": "suffix_meanings_long",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -8137,7 +8137,7 @@
         "Like"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "suffix_meanings_short",
+      "answerTypePoolId": "suffix_meanings_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -8429,7 +8429,7 @@
       "correctAnswer": "Heart",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_short",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -8545,7 +8545,7 @@
       "correctAnswer": "Artery",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_short",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -8604,7 +8604,7 @@
         "Vein"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -8663,7 +8663,7 @@
         "Vein"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -8722,7 +8722,7 @@
         "Blood"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_long",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -8781,7 +8781,7 @@
         "Blood"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -8840,7 +8840,7 @@
         "Blood clot"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_short",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -8957,7 +8957,7 @@
       "correctAnswer": "Aorta",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -9014,7 +9014,7 @@
       "correctAnswer": "Valve",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -9071,7 +9071,7 @@
       "correctAnswer": "Pulse",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_short",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -9130,7 +9130,7 @@
         "Blood vessel"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -9190,7 +9190,7 @@
         "Crown/heart"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_short",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -9250,7 +9250,7 @@
         "Wall"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -9310,7 +9310,7 @@
         "Lung"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_long",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -9370,7 +9370,7 @@
         "Lung"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -9430,7 +9430,7 @@
         "Airway"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -9549,7 +9549,7 @@
         "Voice box"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -9608,7 +9608,7 @@
         "Windpipe"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_short",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -9667,7 +9667,7 @@
         "Throat"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -9726,7 +9726,7 @@
         "Nose"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_long",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -9785,7 +9785,7 @@
         "Nose"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_long",
       "difficulty": 2,
       "funScore": 9,
       "ageGroup": "all",
@@ -9845,7 +9845,7 @@
         "Rib"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_short",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -9904,7 +9904,7 @@
         "Thorax"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -9961,7 +9961,7 @@
       "correctAnswer": "Oxygen",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -10080,7 +10080,7 @@
         "Respiration"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -10140,7 +10140,7 @@
         "Hollow"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_respiratory",
+      "answerTypePoolId": "root_meanings_respiratory_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -10197,7 +10197,7 @@
       "correctAnswer": "Stomach",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -10257,7 +10257,7 @@
         "Small intestine"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -10314,7 +10314,7 @@
       "correctAnswer": "Liver",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 1,
       "funScore": 8,
       "ageGroup": "all",
@@ -10373,7 +10373,7 @@
         "Gall bladder"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -10432,7 +10432,7 @@
         "Gall"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -10489,7 +10489,7 @@
       "correctAnswer": "Pancreas",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -10548,7 +10548,7 @@
         "Oesophagus"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -10607,7 +10607,7 @@
         "Large intestine"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -10666,7 +10666,7 @@
         "Rectum"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -10727,7 +10727,7 @@
         "Rectum"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -10843,7 +10843,7 @@
       "correctAnswer": "Duodenum",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 3,
       "funScore": 9,
       "ageGroup": "all",
@@ -10900,7 +10900,7 @@
       "correctAnswer": "Jejunum",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 3,
       "funScore": 8,
       "ageGroup": "all",
@@ -10957,7 +10957,7 @@
       "correctAnswer": "Ileum",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -11016,7 +11016,7 @@
         "Vermiform appendix"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -11076,7 +11076,7 @@
         "Mouth"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -11136,7 +11136,7 @@
         "Mouth"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -11193,7 +11193,7 @@
       "correctAnswer": "Tongue",
       "acceptableAlternatives": [],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -11252,7 +11252,7 @@
         "Teeth"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -11312,7 +11312,7 @@
         "Gum tissue"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -11369,7 +11369,7 @@
       "correctAnswer": "Peritoneum",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -11429,7 +11429,7 @@
         "Abdominal cavity"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_long",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -12675,7 +12675,7 @@
         "bones"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -12729,7 +12729,7 @@
         "articulation"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -12784,7 +12784,7 @@
         "muscle"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_long",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -12838,7 +12838,7 @@
         "hyaline cartilage"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -12893,7 +12893,7 @@
         "tendon"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -12947,7 +12947,7 @@
         "joint ligament"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -13002,7 +13002,7 @@
         "fluid-filled sac near joint"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -13110,7 +13110,7 @@
         "braincase"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -13166,7 +13166,7 @@
         "vertebra"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -13221,7 +13221,7 @@
         "vertebra"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_long",
       "difficulty": 3,
       "funScore": 7,
       "ageGroup": "all",
@@ -13275,7 +13275,7 @@
         "pelvic basin"
       ],
       "chainThemeId": 0,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -13329,7 +13329,7 @@
         "femoral bone"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -13383,7 +13383,7 @@
         "breast bone"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -13438,7 +13438,7 @@
         "the lumbar spine"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -13493,7 +13493,7 @@
         "muscular movement"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "all",
@@ -13547,7 +13547,7 @@
         "knee cap"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -14271,7 +14271,7 @@
         "masculine"
       ],
       "chainThemeId": "4",
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_short",
       "difficulty": 2,
       "funScore": 4,
       "ageGroup": "all",
@@ -14313,7 +14313,7 @@
         "ovary"
       ],
       "chainThemeId": "5",
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_long",
       "difficulty": 3,
       "funScore": 4,
       "ageGroup": "all",
@@ -14440,7 +14440,7 @@
         "breast"
       ],
       "chainThemeId": "2",
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_long",
       "difficulty": 2,
       "funScore": 3,
       "ageGroup": "all",
@@ -16541,7 +16541,7 @@
         "ovary"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -16595,7 +16595,7 @@
         "uterus"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_long",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -16649,7 +16649,7 @@
         "uterus"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_long",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "all",
@@ -16703,7 +16703,7 @@
         "breast"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_long",
       "difficulty": 1,
       "funScore": 7,
       "ageGroup": "all",
@@ -16757,7 +16757,7 @@
         "testes"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -16864,7 +16864,7 @@
         "seed"
       ],
       "chainThemeId": 3,
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_short",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -16915,7 +16915,7 @@
       "correctAnswer": "vagina",
       "acceptableAlternatives": [],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_short",
       "difficulty": 1,
       "funScore": 5,
       "ageGroup": "all",
@@ -16968,7 +16968,7 @@
         "external female genitalia"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -17342,7 +17342,7 @@
         "language"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -17395,7 +17395,7 @@
         "teeth"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -17448,7 +17448,7 @@
         "roof of the mouth"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -17662,7 +17662,7 @@
         "to clot"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "root_meanings_cardiovascular",
+      "answerTypePoolId": "root_meanings_cardiovascular_long",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -17823,7 +17823,7 @@
         "muscle"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_long",
       "difficulty": 1,
       "funScore": 6,
       "ageGroup": "all",
@@ -17877,7 +17877,7 @@
         "tendon"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_long",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -18037,7 +18037,7 @@
         "sacral bone"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -18091,7 +18091,7 @@
         "neck or cervix"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -18144,7 +18144,7 @@
         "upper arm bone"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -18197,7 +18197,7 @@
         "shin bone"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -18250,7 +18250,7 @@
         "calf bone"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -18303,7 +18303,7 @@
         "medial forearm bone"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -18356,7 +18356,7 @@
         "lateral forearm bone"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 6,
       "ageGroup": "all",
@@ -18410,7 +18410,7 @@
         "carpal bones"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 7,
       "ageGroup": "all",
@@ -18464,7 +18464,7 @@
         "palm bones"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -18518,7 +18518,7 @@
         "ankle"
       ],
       "chainThemeId": 8,
-      "answerTypePoolId": "root_meanings_musculoskeletal",
+      "answerTypePoolId": "root_meanings_musculoskeletal_short",
       "difficulty": 2,
       "funScore": 5,
       "ageGroup": "all",
@@ -40319,7 +40319,7 @@
         "Cheeks"
       ],
       "chainThemeId": 2,
-      "answerTypePoolId": "root_meanings_digestive",
+      "answerTypePoolId": "root_meanings_digestive_short",
       "difficulty": 3,
       "funScore": 6,
       "ageGroup": "adult",
@@ -40420,7 +40420,7 @@
         "Relating to milk"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "root_meanings_reproductive",
+      "answerTypePoolId": "root_meanings_reproductive_short",
       "difficulty": 2,
       "funScore": 8,
       "ageGroup": "adult",
@@ -40564,8 +40564,6 @@
     {
       "id": "suffix_meanings_short",
       "factIds": [
-        "medterm_suf_algia",
-        "medterm_suf_dynia",
         "medterm_suf_cyte",
         "medterm_suf_phasia",
         "medterm_suf_pathy",
@@ -40577,18 +40575,27 @@
         "medterm_suf_malacia",
         "medterm_suf_sclerosis",
         "medterm_suf_stenosis",
-        "medterm_suf_pnea",
+        "medterm_suf_pnea"
+      ],
+      "minimumSize": 5,
+      "homogeneityExemptNote": "Medical suffixes have inherent length variation; discriminators added to distinguish synonym pairs (-algia/-dynia both meaning \"pain\")",
+      "label": "suffix_meanings (short) (short)"
+    },
+    {
+      "id": "suffix_meanings_long",
+      "factIds": [
         "medterm_suf_penia",
         "medterm_suf_oid",
         "medterm_suf_megaly",
         "medterm_suf_itis",
         "medterm_suf_atrophy",
-        "medterm_suf_otomy"
+        "medterm_suf_otomy",
+        "medterm_suf_algia",
+        "medterm_suf_dynia"
       ],
       "minimumSize": 5,
       "homogeneityExemptNote": "Medical suffixes have inherent length variation; discriminators added to distinguish synonym pairs (-algia/-dynia both meaning \"pain\")",
-      "label": "suffix_meanings (short)",
-      "homogeneityExempt": true
+      "label": "suffix_meanings (short) (long)"
     },
     {
       "id": "suffix_meanings_long",
@@ -41156,22 +41163,17 @@
       "homogeneityExemptNote": "Bracket numbers use algorithmic numeric distractors — pool size check not applicable"
     },
     {
-      "id": "root_meanings_cardiovascular",
+      "id": "root_meanings_cardiovascular_short",
       "factIds": [
-        "medterm_root_phlebo",
-        "medterm_root_veno",
         "medterm_root_thrombo",
         "medterm_root_cardio",
-        "medterm_root_hemo",
-        "medterm_root_hemato",
         "medterm_root_aorto",
         "medterm_root_valvulo",
         "medterm_root_sphygmo",
         "medterm_root_corono",
         "medterm_root_arterio",
         "medterm_root_vaso",
-        "medterm_root_septo",
-        "medterm_root_coagulo"
+        "medterm_root_septo"
       ],
       "syntheticDistractors": [
         "Capillary",
@@ -41185,25 +41187,43 @@
         "Bundle branch",
         "Venule"
       ],
-      "homogeneityExempt": true,
-      "homogeneityExemptNote": "Medical combining forms have inherent length variation; discriminators added to distinguish vein (phleb/o/ven/o) and blood (hem/o/hemat/o) synonym pairs"
+      "homogeneityExemptNote": "Medical combining forms have inherent length variation; discriminators added to distinguish vein (phleb/o/ven/o) and blood (hem/o/hemat/o) synonym pairs",
+      "label": "root_meanings_cardiovascular (short)"
     },
     {
-      "id": "root_meanings_respiratory",
+      "id": "root_meanings_cardiovascular_long",
       "factIds": [
-        "medterm_root_pulmono",
-        "medterm_root_pneumono",
-        "medterm_root_naso",
-        "medterm_root_rhino",
+        "medterm_root_coagulo",
+        "medterm_root_veno",
+        "medterm_root_hemo",
+        "medterm_root_phlebo",
+        "medterm_root_hemato"
+      ],
+      "syntheticDistractors": [
+        "Capillary",
+        "Lymph vessel",
+        "Ventricular wall",
+        "Atrium",
+        "Pericardium",
+        "Myocardium",
+        "Endocardium",
+        "Sinus node",
+        "Bundle branch",
+        "Venule"
+      ],
+      "homogeneityExemptNote": "Medical combining forms have inherent length variation; discriminators added to distinguish vein (phleb/o/ven/o) and blood (hem/o/hemat/o) synonym pairs",
+      "label": "root_meanings_cardiovascular (long)"
+    },
+    {
+      "id": "root_meanings_respiratory_short",
+      "factIds": [
         "medterm_root_thoraco",
         "medterm_root_sinuso",
         "medterm_root_laryngo",
         "medterm_root_pleuro",
         "medterm_root_oxi",
         "medterm_root_tracheo",
-        "medterm_root_pharyngo",
-        "medterm_root_broncho",
-        "medterm_root_spiro"
+        "medterm_root_pharyngo"
       ],
       "syntheticDistractors": [
         "Alveolus",
@@ -41217,37 +41237,48 @@
         "Glottis",
         "Respiratory membrane"
       ],
-      "homogeneityExempt": true,
-      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish lung (pulmon/o/pneumon/o) and nose (nas/o/rhin/o) synonym pairs"
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish lung (pulmon/o/pneumon/o) and nose (nas/o/rhin/o) synonym pairs",
+      "label": "root_meanings_respiratory (short)"
     },
     {
-      "id": "root_meanings_digestive",
+      "id": "root_meanings_respiratory_long",
+      "factIds": [
+        "medterm_root_broncho",
+        "medterm_root_spiro",
+        "medterm_root_naso",
+        "medterm_root_rhino",
+        "medterm_root_pulmono",
+        "medterm_root_pneumono"
+      ],
+      "syntheticDistractors": [
+        "Alveolus",
+        "Diaphragm",
+        "Nasal septum",
+        "Vocal cord",
+        "Intercostal",
+        "Hilum",
+        "Carina",
+        "Epiglottis",
+        "Glottis",
+        "Respiratory membrane"
+      ],
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish lung (pulmon/o/pneumon/o) and nose (nas/o/rhin/o) synonym pairs",
+      "label": "root_meanings_respiratory (long)"
+    },
+    {
+      "id": "root_meanings_digestive_short",
       "factIds": [
         "medterm_root_chole",
         "medterm_root_gingivo",
         "medterm_root_hepato",
         "medterm_root_colo",
         "medterm_root_ileo",
-        "medterm_root_oro",
-        "medterm_root_stomato",
         "medterm_root_dento",
         "medterm_root_odonto",
         "medterm_root_bucco",
-        "medterm_root_recto",
-        "medterm_root_procto",
         "medterm_root_glosso",
         "medterm_root_linguo",
-        "medterm_root_palato",
-        "medterm_root_gastro",
-        "medterm_root_jejuno",
-        "medterm_root_lapar",
-        "medterm_root_pancreato",
-        "medterm_root_duodeno",
-        "medterm_root_appendico",
-        "medterm_root_entero",
-        "medterm_root_esophago",
-        "medterm_root_peritone",
-        "medterm_root_cholecysto"
+        "medterm_root_palato"
       ],
       "syntheticDistractors": [
         "Villus",
@@ -41261,8 +41292,41 @@
         "Bile duct",
         "Ampulla"
       ],
-      "homogeneityExempt": true,
-      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish mouth (or/o/stomat/o) and rectum (rect/o/proct/o) synonym pairs"
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish mouth (or/o/stomat/o) and rectum (rect/o/proct/o) synonym pairs",
+      "label": "root_meanings_digestive (short)"
+    },
+    {
+      "id": "root_meanings_digestive_long",
+      "factIds": [
+        "medterm_root_gastro",
+        "medterm_root_jejuno",
+        "medterm_root_lapar",
+        "medterm_root_pancreato",
+        "medterm_root_duodeno",
+        "medterm_root_appendico",
+        "medterm_root_entero",
+        "medterm_root_esophago",
+        "medterm_root_peritone",
+        "medterm_root_cholecysto",
+        "medterm_root_oro",
+        "medterm_root_recto",
+        "medterm_root_stomato",
+        "medterm_root_procto"
+      ],
+      "syntheticDistractors": [
+        "Villus",
+        "Mesentery",
+        "Fundus",
+        "Omentum",
+        "Crypt of Lieberkühn",
+        "Sphincter",
+        "Haustra",
+        "Portal vein",
+        "Bile duct",
+        "Ampulla"
+      ],
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish mouth (or/o/stomat/o) and rectum (rect/o/proct/o) synonym pairs",
+      "label": "root_meanings_digestive (long)"
     },
     {
       "id": "root_meanings_nervous",
@@ -41292,7 +41356,7 @@
       ]
     },
     {
-      "id": "root_meanings_musculoskeletal",
+      "id": "root_meanings_musculoskeletal_short",
       "factIds": [
         "medterm_root_osteo",
         "medterm_root_cervico",
@@ -41303,11 +41367,7 @@
         "medterm_root_femoro",
         "medterm_root_tibio",
         "medterm_root_carpo",
-        "medterm_root_myo",
-        "medterm_root_tendo",
         "medterm_root_pelvo",
-        "medterm_root_musculo",
-        "medterm_root_tendino",
         "medterm_root_sacro",
         "medterm_root_fibulo",
         "medterm_root_radio_bone",
@@ -41315,8 +41375,6 @@
         "medterm_root_patello",
         "medterm_root_humero",
         "medterm_root_ligamento",
-        "medterm_root_vertebro",
-        "medterm_root_spondylo",
         "medterm_root_kinesio",
         "medterm_root_chondro",
         "medterm_root_lumbo",
@@ -41335,8 +41393,33 @@
         "Intervertebral disc",
         "Haversian canal"
       ],
-      "homogeneityExempt": true,
-      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish muscle (my/o/muscul/o), tendon (tend/o/tendin/o), and vertebra (vertebr/o/spondyl/o) synonym pairs"
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish muscle (my/o/muscul/o), tendon (tend/o/tendin/o), and vertebra (vertebr/o/spondyl/o) synonym pairs",
+      "label": "root_meanings_musculoskeletal (short)"
+    },
+    {
+      "id": "root_meanings_musculoskeletal_long",
+      "factIds": [
+        "medterm_root_myo",
+        "medterm_root_tendo",
+        "medterm_root_musculo",
+        "medterm_root_tendino",
+        "medterm_root_vertebro",
+        "medterm_root_spondylo"
+      ],
+      "syntheticDistractors": [
+        "Periosteum",
+        "Epiphysis",
+        "Diaphysis",
+        "Marrow cavity",
+        "Trabecula",
+        "Meniscus",
+        "Labrum",
+        "Facet joint",
+        "Intervertebral disc",
+        "Haversian canal"
+      ],
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish muscle (my/o/muscul/o), tendon (tend/o/tendin/o), and vertebra (vertebr/o/spondyl/o) synonym pairs",
+      "label": "root_meanings_musculoskeletal (long)"
     },
     {
       "id": "root_meanings_integumentary",
@@ -41366,17 +41449,11 @@
       "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish skin (derm/o/dermat/o/cutane/o) and hair (trich/o/pil/o) synonym pairs"
     },
     {
-      "id": "root_meanings_reproductive",
+      "id": "root_meanings_reproductive_short",
       "factIds": [
         "medterm_root_lacto",
-        "mtr_018",
-        "medterm_root_ovario",
         "medterm_root_spermo",
-        "mtr_021",
         "medterm_root_vulvo",
-        "medterm_root_utero",
-        "medterm_root_metro",
-        "medterm_root_mammo",
         "medterm_root_orchido",
         "medterm_root_vagino",
         "mtr_017"
@@ -41393,8 +41470,33 @@
         "Seminal vesicle",
         "Bulbourethral"
       ],
-      "homogeneityExempt": true,
-      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish ovary (oophor/o/ovari/o), breast (mast/o/mamm/o), and uterus (uter/o/metr/o) synonym pairs"
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish ovary (oophor/o/ovari/o), breast (mast/o/mamm/o), and uterus (uter/o/metr/o) synonym pairs",
+      "label": "root_meanings_reproductive (short)"
+    },
+    {
+      "id": "root_meanings_reproductive_long",
+      "factIds": [
+        "medterm_root_ovario",
+        "mtr_021",
+        "medterm_root_utero",
+        "medterm_root_metro",
+        "medterm_root_mammo",
+        "mtr_018"
+      ],
+      "syntheticDistractors": [
+        "Fallopian tube",
+        "Endometrium",
+        "Myometrium",
+        "Corpus luteum",
+        "Follicle",
+        "Seminiferous tubule",
+        "Epididymis",
+        "Vas deferens",
+        "Seminal vesicle",
+        "Bulbourethral"
+      ],
+      "homogeneityExemptNote": "Medical roots have inherent length variation; discriminators added to distinguish ovary (oophor/o/ovari/o), breast (mast/o/mamm/o), and uterus (uter/o/metr/o) synonym pairs",
+      "label": "root_meanings_reproductive (long)"
     },
     {
       "id": "root_meanings_urinary",
