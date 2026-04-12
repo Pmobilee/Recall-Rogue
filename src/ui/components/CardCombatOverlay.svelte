@@ -4580,7 +4580,7 @@
     font-size: calc(10px * var(--text-scale, 1));
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    opacity: 0.8;
+    opacity: 1;
   }
 
   .lsb-chain-count {

@@ -164,7 +164,7 @@
   .chain-hint {
     font-size: calc(9px * var(--text-scale, 1));
     font-weight: 500;
-    opacity: 0.45;
+    opacity: 1;
     font-style: italic;
     letter-spacing: 0.02em;
   }

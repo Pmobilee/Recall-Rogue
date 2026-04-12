@@ -274,7 +274,7 @@
   /* Mechanic name in the banner region */
   .v2-mechanic-name {
     font-family: 'Kreon', 'Georgia', serif;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 16px;
     color: #1a0a00;
     text-transform: uppercase;
@@ -295,7 +295,7 @@
 
   @keyframes chainPillPulse {
     0%, 100% { transform: scale(1); box-shadow: 0 0 4px var(--pill-color, rgba(255, 215, 0, 0.5)); }
-    50% { transform: scale(1.35); box-shadow: 0 0 10px var(--pill-color, rgba(255, 215, 0, 0.8)); }
+    50% { transform: scale(1.6); box-shadow: 0 0 14px var(--pill-color, rgba(255, 215, 0, 0.8)); }
   }
 
   .pill-chain-active {
