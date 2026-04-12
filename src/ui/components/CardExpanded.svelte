@@ -193,6 +193,8 @@
   let chessMoveTimeoutId: ReturnType<typeof setTimeout> | undefined
   /** Current move index in a multi-move puzzle (0 = first player move). */
   let chessCurrentMoveIndex = $state(0)
+  /** Tracks whether the last chess puzzle attempt was correct (null = not yet answered). */
+  let chessWasCorrect = $state<boolean | null>(null)
   /** Tracks current board FEN for multi-move puzzles (updates after each ply). */
   let chessBoardFen = $state<string | undefined>(undefined)
   /** True while the opponent's animated response is playing (disables player input). */
@@ -225,6 +227,7 @@
       chessDisabled = true
       chessCheckState = false
       chessCurrentMoveIndex = 0
+      chessWasCorrect = null
       chessAnimatingOpponent = false
       eloChange = null
 
@@ -595,7 +598,10 @@
     const isCorrect = gradeChessMove(uci, currentMove.solutionUCI)
 
     if (!isCorrect) {
-      // Wrong at any step = fail the whole puzzle
+      // Wrong at any step = fail the whole puzzle.
+      // Bypass handleAnswer entirely — for chess, answers = [correctAnswer] only,
+      // so handleAnswer(any index) always resolves to correct. Call onanswer directly.
+      chessWasCorrect = false
       chessDisabled = true
       chessLastMove = { from: uci.substring(0, 2), to: uci.substring(2, 4) }
 
@@ -604,9 +610,27 @@
         eloChange = result.ratingChange
       }
 
+      selectedAnswerIndex = 0
+      answersDisabled = true
+
       chessMoveTimeoutId = setTimeout(() => {
-        const wrongIdx = answers.findIndex((a) => a !== correctAnswer)
-        handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
+        answerRevealed = true
+        if ($isLandscape) {
+          quizResultState = 'wrong'
+          quizResultTimeoutId = setTimeout(() => { quizResultState = null }, 500)
+        }
+        if ($autoResumeAfterAnswer) {
+          const speed = $answerDisplaySpeed
+          const baseDelay = Math.min(
+            WRONG_ANSWER_RESUME_BASE + correctAnswer.length * WRONG_ANSWER_RESUME_PER_CHAR,
+            WRONG_ANSWER_RESUME_MAX,
+          )
+          autoResumeTimeoutId = setTimeout(() => {
+            onanswer(0, false, false)
+          }, Math.round(baseDelay * speed))
+        } else {
+          waitingForGotIt = true
+        }
       }, 800)
       return
     }
@@ -658,6 +682,8 @@
       }
     } else {
       // Last player move — puzzle complete!
+      // Bypass handleAnswer — call onanswer directly with isCorrect=true.
+      chessWasCorrect = true
       chessDisabled = true
 
       if (lichessRating) {
@@ -665,8 +691,35 @@
         eloChange = result.ratingChange
       }
 
+      selectedAnswerIndex = 0
+      answersDisabled = true
+      answerRevealed = true
+
       chessMoveTimeoutId = setTimeout(() => {
-        handleAnswer(answers.indexOf(correctAnswer) >= 0 ? answers.indexOf(correctAnswer) : 0)
+        if ($isLandscape) {
+          quizResultState = 'correct'
+          quizResultTimeoutId = setTimeout(() => { quizResultState = null }, 500)
+        }
+        const elapsedNow = timerEnabled
+          ? Math.min(timerTotalMs, Math.max(elapsed, performance.now() - startTime))
+          : elapsed
+        elapsed = elapsedNow
+        const speedBonus = timerEnabled
+          ? elapsedNow < (timerTotalMs * speedBonusThreshold)
+          : false
+        if (speedBonus) {
+          showSpeedBonus = true
+          speedBonusTimeoutId = setTimeout(() => { showSpeedBonus = false }, 500)
+        }
+        if ($autoResumeAfterAnswer) {
+          feedbackTimeoutId = setTimeout(() => {
+            onanswer(0, true, speedBonus)
+          }, Math.round(CORRECT_ANSWER_RESUME_DELAY * $answerDisplaySpeed))
+        } else {
+          feedbackTimeoutId = setTimeout(() => {
+            onanswer(0, true, speedBonus)
+          }, 1600)
+        }
       }, 400)
     }
   }
@@ -864,7 +917,7 @@
         {#if chessDisabled && selectedAnswerIndex !== null}
           <div class="chess-solution-display">
             <span class="chess-solution-label">
-              {getAnswerClass(selectedAnswerIndex).includes('correct') ? 'Correct!' : 'Solution:'}
+              {chessWasCorrect ? 'Correct!' : 'Solution:'}
             </span>
             <span class="chess-solution-move">
               {correctAnswer}
@@ -1728,6 +1781,7 @@
     align-items: center;
     gap: calc(8px * var(--layout-scale, 1));
     width: 100%;
+    max-height: 100%;
     padding: calc(4px * var(--layout-scale, 1));
   }
 

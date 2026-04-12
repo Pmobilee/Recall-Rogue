@@ -1023,6 +1023,8 @@
    */
   function showWowFactor(answeredFactId: string, card: Card): void {
     if (wowFactorCount >= WOW_FACTOR_MAX_PER_ENCOUNTER) return
+    // Chess puzzles have no wowFactor text — skip to avoid empty popups.
+    if (committedQuizData?.quizResponseMode === 'chess_move') return
 
     // Delegate lookup to wowFactorService (pure, testable).
     // resolveWowFactorText also checks card.tier — no need to duplicate here.

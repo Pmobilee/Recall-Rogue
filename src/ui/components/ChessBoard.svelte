@@ -617,7 +617,8 @@
 <style>
   .chess-board-container {
     width: 100%;
-    /* max-width removed — board fills parent panel */
+    /* Constrain by viewport height so 1:1 board can't overflow vertically */
+    max-width: min(100%, 55vh);
     aspect-ratio: unset;
     margin: 0 auto;
     display: flex;
