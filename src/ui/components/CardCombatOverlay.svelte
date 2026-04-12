@@ -6,7 +6,7 @@
   import type { EnemyInstance, EnemyIntent } from '../../data/enemies'
   import type { TurnState } from '../../services/turnManager'
   import { isAnyCardPlayable, resolveTransmutePick } from '../../services/turnManager'
-  import { BALANCE, FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
+  import { BALANCE, FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS, BLOCK_DECAY_PER_ACT, BLOCK_DECAY_RETAIN_RATE } from '../../data/balance'
   import { isSurgeTurn } from '../../services/surgeSystem'
   import { getQuestionPresentation } from '../../services/questionFormatter'
   import {
@@ -682,13 +682,35 @@
    * Block decays at end-of-player-turn BEFORE the enemy swings. A player with
    * 15 block facing 15 damage in Act 1 retains floor(15 × 0.85) = 12 block → 3 HP lost.
    * This was Issue 11: showing "15" instead of "3" misled players who had block.
+   *
+   * Bug 3 fix: when enemy.lockedDisplayDamage is set, use it as the raw value instead of
+   * re-deriving via computeIntentDisplayDamage(). lockedDisplayDamage is pinned at intent-roll
+   * time (start of player turn) by turnManager.ts, so it does NOT drift as the player stacks
+   * block mid-turn. We still apply block decay here because that is the UI's responsibility
+   * per the intentDisplay.ts contract (computeIntentDisplayDamageSnapshot intentionally excludes
+   * block decay). Falls back to the full computeIntentHpImpact() call for pre-fix saves
+   * (enemy.lockedDisplayDamage === undefined).
    */
   function displayImpact(intent: EnemyIntent, enemy: EnemyInstance | null): IntentHpImpact {
     const playerBlock = turnState?.playerState?.shield ?? 0
     if (!enemy) {
-      // Fallback: no block context available — show raw damage as hpDamage
+      // Fallback: no enemy context — show raw intent value as hpDamage
       return { raw: intent.value, postDecayBlock: playerBlock, hpDamage: intent.value }
     }
+    // Bug 3 fix: read the pinned raw value locked by turnManager at intent-roll time.
+    // This prevents the displayed damage from drifting as the player builds block mid-turn.
+    if (enemy.lockedDisplayDamage !== undefined) {
+      const raw = enemy.lockedDisplayDamage
+      // Apply the same block decay formula as computeIntentHpImpact() in intentDisplay.ts
+      const decayRate = currentAct !== undefined
+        ? (BLOCK_DECAY_PER_ACT[currentAct] ?? (1 - BLOCK_DECAY_RETAIN_RATE))
+        : (1 - BLOCK_DECAY_RETAIN_RATE)
+      const retainRate = 1 - decayRate
+      const postDecayBlock = Math.floor(playerBlock * retainRate)
+      const hpDamage = Math.max(0, raw - postDecayBlock)
+      return { raw, postDecayBlock, hpDamage }
+    }
+    // Backward compat: pre-fix saves where lockedDisplayDamage was never set.
     return computeIntentHpImpact(intent, enemy, playerBlock, currentAct, turnState ?? undefined)
   }
 
@@ -1250,7 +1272,7 @@
   }
 
   /**
-   * Study mode quiz: dynamically select fact, template, and distractors from curated deck.
+   * Study mode quiz: loads a fact from the curated deck then builds the matching question + distractor set.
    *
    * @param useReverse - When true and the fact supports it, flip image_question → image_answers
    *                     (show country name, pick flag image) instead of the default direction.
@@ -3052,15 +3074,19 @@
     <div class="landscape-stats-bar" aria-label="Player status">
     </div>
 
-    <!-- Chain indicator: to the right of the card hand, vertically centered with cards -->
+    <!-- Chain indicator: to the right of the card hand, vertically centered with cards.
+         Bug 4 fix: uses {#key chainMultiplier} on the count span so it gets a pop animation
+         each time the multiplier increases, making the chain mechanic visible to the player. -->
     {#if chainLength >= 2 && chainType !== null && chainType !== undefined}
       {@const chainDisplayColor = getChainTypeColor(chainType)}
       <div
         class="lsb-chain-indicator"
         style="color: {chainDisplayColor}; border-color: {chainDisplayColor}4d;"
       >
-        <span class="lsb-chain-label">Chain</span>
-        <span class="lsb-chain-count">{chainMultiplier.toFixed(1)}x</span>
+        <span class="lsb-chain-label">{getChainTypeName(chainType)}</span>
+        {#key chainMultiplier}
+          <span class="lsb-chain-count lsb-chain-count-pop">{chainMultiplier.toFixed(1)}x</span>
+        {/key}
       </div>
     {/if}
 
@@ -4553,6 +4579,24 @@
     font-family: 'Cinzel', 'Georgia', serif;
     font-weight: 900;
     line-height: 1;
+  }
+
+  /* Bug 4 fix: pop animation for landscape chain multiplier — fires on each {#key chainMultiplier} remount */
+  .lsb-chain-count-pop {
+    display: inline-block;
+    animation: lsbChainPop 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes lsbChainPop {
+    0%   { transform: scale(1.0); }
+    40%  { transform: scale(1.45); }
+    100% { transform: scale(1.0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lsb-chain-count-pop {
+      animation: none;
+    }
   }
 
   /* Quiz backdrop scrim — dims the Phaser canvas behind the quiz panel */

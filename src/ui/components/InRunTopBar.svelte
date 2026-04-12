@@ -2,6 +2,7 @@
   import { getRelicIconPath, getGoldCoinIconPath } from '../utils/iconAssets'
   import { openRunDeckOverlay } from '../stores/runDeckOverlayStore'
   import { activeTurnState } from '../../services/encounterBridge'
+  import { PERMANENT_DURATION_SENTINEL } from '../../data/statusEffects'
 
   // ============================================================
   // Segment name lookup
@@ -157,6 +158,21 @@
     return STATUS_EFFECT_INFO[type] ?? { name: type, icon: '❓', color: '#94a3b8', desc: (v: number, t: number) => `${type}: ${v} (${t} turns)` }
   }
 
+  /**
+   * Bug 2 fix: returns sentinel-aware desc for permanent-duration effects.
+   * Permanent effects show 'permanent' in the popup instead of '9999 turns'.
+   */
+  function topbarDescForEffect(effect: { type: string; value: number; turnsRemaining: number }): string {
+    const info = getStatusInfo(effect.type)
+    if (effect.turnsRemaining >= PERMANENT_DURATION_SENTINEL) {
+      const raw = info.desc(effect.value, effect.turnsRemaining)
+      return raw
+        .replace(/\(\s*9999\s+turns?\s+left\)/gi, '(permanent)')
+        .replace(/9999/g, '∞')
+    }
+    return info.desc(effect.value, effect.turnsRemaining)
+  }
+
   /** Only show effects that are still active */
   const activeStatusEffects = $derived(statusEffects.filter(e => e.turnsRemaining > 0))
 
@@ -220,7 +236,7 @@
             <button
               class="topbar-status-icon"
               type="button"
-              aria-label="{info.name}: {effect.value} stacks, {effect.turnsRemaining} turns"
+              aria-label="{info.name}: {effect.value} stacks, {effect.turnsRemaining >= PERMANENT_DURATION_SENTINEL ? "permanent" : `${effect.turnsRemaining} turns`}"
             >
               {#if info.spriteIcon}
                 <img src={info.spriteIcon} alt={info.name} class="topbar-status-sprite" />
@@ -241,7 +257,8 @@
                   {/if}
                   <div class="topbar-status-popup-text">
                     <span class="topbar-status-popup-name" style="color: {info.color};">{info.name}</span>
-                    <span class="topbar-status-popup-desc">{info.desc(effect.value, effect.turnsRemaining)}</span>
+                    <!-- Bug 2 fix: use sentinel-aware desc so popup never shows 9999 turns -->
+                    <span class="topbar-status-popup-desc">{topbarDescForEffect(effect)}</span>
                   </div>
                 </div>
               </div>

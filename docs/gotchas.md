@@ -157,7 +157,7 @@ add-time, not commit-time.
 
 **Fallback:** When `act` is undefined, `computeIntentHpImpact` falls back to `BLOCK_DECAY_RETAIN_RATE` (75% retain = 25% decay), matching the fallback in `resetTurnState()`.
 
-**UI follow-up pending:** `CardCombatOverlay.svelte` still calls `computeIntentDisplayDamage` — ui-agent must replace with `computeIntentHpImpact` to complete the fix for the player-facing display. The service-layer function is ready.
+**UI follow-up resolved (2026-04-12):** `CardCombatOverlay.svelte` `displayImpact()` now reads `enemy.lockedDisplayDamage` (pinned at intent-roll time) instead of re-deriving live. Falls back to `computeIntentHpImpact()` for pre-fix saves.
 
 ### 2026-04-11 — Enemy intent determinism for co-op (Issue 12)
 
@@ -3745,3 +3745,17 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix:** Updated flow diagram, screen descriptions (dormant callouts), and run.md key exports. Drift discovered via BATCH-2026-04-12-001 playtest finding H-032.
 
 **Reader tip:** Always treat `src/services/gameFlowController.ts` as the canonical source for screen transitions — search for `currentScreen.set(` calls to trace the real flow. `docs/ui/screens.md` is a convenience summary that can lag behind code changes; verify against the source when uncertain.
+
+### 2026-04-12 — PERMANENT_DURATION_SENTINEL (9999) leaked raw into status effect UI (Bug 2)
+
+**What:** Buffs/debuffs with `turnsRemaining: PERMANENT_DURATION_SENTINEL` (9999) showed "9999" in the turn-counter badge on `StatusEffectBar.svelte` and "9999 turns" in popup text in both `StatusEffectBar.svelte` and `InRunTopBar.svelte`. Any enemy with a permanently-applied `strength` effect (e.g. the Lurker creature applying strength every turn from turn 4) or a player Warcry card (`turnsRemaining: PERMANENT_DURATION_SENTINEL` for permanent Strength) would show this sentinel number to the player.
+
+**Fix (2026-04-12):** Added `PERMANENT_DURATION_SENTINEL` import to both components. `StatusEffectBar.svelte` gates the `.effect-turns` span: values >= sentinel show ∞ with a gold color class (`.effect-turns-permanent`). Popup desc uses a `descForEffect()` helper that replaces any remaining sentinel text fragments via regex. `InRunTopBar.svelte` gets the same treatment via `topbarDescForEffect()` and sentinel-aware aria-label.
+
+**The ∞ symbol:** Prefer showing ∞ over hiding the badge entirely — players benefit from knowing this effect is permanent (not just long-running). The gold color distinguishes it from the white countdown numbers.
+
+### 2026-04-12 — Chain multiplier was mechanically active but had no build-moment feedback (Bug 4)
+
+**What:** The chain system was working correctly — `ChainCounter.svelte` displayed the current multiplier value. But there was no animation on the multiplier element itself when the chain extended. A player going Strike → Strike saw the number change from 1.0x to 1.5x with no pop or flash. Combined with the fact that damage varies by chain type anyway (different card effects scale differently), the visible reason for damage changes was invisible to the player.
+
+**Fix (2026-04-12):** Added a `multKey` state in `ChainCounter.svelte` that increments whenever `chainMultiplier` increases. The multiplier `<span>` is wrapped in `{#key multKey}` which remounts it on each increment, firing a `chainBuildPop` CSS animation (cubic-bezier overshoot spring, 300ms). The landscape sidebar `lsb-chain-count` element in `CardCombatOverlay.svelte` gets the same treatment (`{#key chainMultiplier}` remount + `.lsb-chain-count-pop`). Both respect `prefers-reduced-motion`. The landscape indicator also now shows the chain type name instead of the generic "Chain" label.
