@@ -52,7 +52,7 @@ These five are not the full humanizer list — they're the top offenders. The fu
 2. **Invoke `/humanizer`** with `.claude/skills/humanizer/voice-sample.md` loaded. Explicitly: tell the skill "use voice-sample.md as the calibration sample."
 3. **Run the self-audit pass** the skill mandates: *"What still makes this obviously AI-generated?"* then rewrite.
 4. **Paste the self-audit output** under a `## Humanizer Audit` heading in your final report (or PR body, or sub-agent return summary).
-5. **Commit with the code in the SAME commit.** If the lint (`scripts/lint/check-human-prose.mjs`) still fires on your diff, either rewrite the flagged lines or, if you have consciously rejected the lint's complaint after running the humanizer workflow, add `[humanizer-verified]` to the commit message as the conscious-override token.
+5. **Commit with the code in the SAME commit.** If the lint (`scripts/lint/check-human-prose.mjs`) still fires on your diff, either rewrite the flagged lines or, if you have consciously rejected the lint's complaint after running the humanizer workflow, add `[humanizer-verified]` to the commit message as the conscious-override token. The override token is detected correctly in both main checkouts and git worktrees (fixed 2026-04-12 — see `docs/gotchas.md`).
 
 ## Failure mode
 

@@ -132,17 +132,25 @@ function isUserFacing(path) {
 
 // Heuristic: skip lines in .svelte files that look like code (not template text)
 // to avoid false positives on JS comments, identifiers, and destructures.
-const SVELTE_CODE_LINE = /(?:\bconst\b|\blet\b|\bvar\b|\bfunction\b|\bimport\b|\bexport\b|=>|\/\/|\/\*|\*\/|\s:\s|=\s*['"`{]|\$:|\$state|\$derived|\$effect|\bprops?\b\s*[=:])/;
+// Also matches JSDoc continuation lines (" * text") to avoid false positives on factual
+// lists in JSDoc inside Svelte <script> blocks (e.g. "loads a fact, template, and distractors").
+const SVELTE_CODE_LINE = /(?:\bconst\b|\blet\b|\bvar\b|\bfunction\b|\bimport\b|\bexport\b|=>|\/\/|\/\*|\*\/|\*\s|\/\*\*|\s:\s|=\s*['"`{]|\$:|\$state|\$derived|\$effect|\bprops?\b\s*[=:])/;
 
 function getCommitMessage() {
-  // Check the staged commit message via .git/COMMIT_EDITMSG if it exists.
-  const paths = ['.git/COMMIT_EDITMSG', '.git/MERGE_MSG'];
-  for (const p of paths) {
-    if (existsSync(p)) {
-      try {
+  // Use `git rev-parse --git-path` to resolve the correct COMMIT_EDITMSG path.
+  // In a git worktree, `.git` is a plain file (not a directory), so the
+  // relative path `.git/COMMIT_EDITMSG` does not exist — it resolves inside
+  // `.git/worktrees/<branch>/` in the main repo's object store.
+  // `git rev-parse --git-path COMMIT_EDITMSG` returns the correct absolute
+  // path in both main checkouts and worktrees. See docs/gotchas.md 2026-04-12.
+  const filenames = ['COMMIT_EDITMSG', 'MERGE_MSG'];
+  for (const name of filenames) {
+    try {
+      const p = execSync(`git rev-parse --git-path ${name}`, { encoding: 'utf8' }).trim();
+      if (existsSync(p)) {
         return readFileSync(p, 'utf8');
-      } catch {}
-    }
+      }
+    } catch {}
   }
   return '';
 }
