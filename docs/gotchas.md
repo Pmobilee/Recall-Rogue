@@ -3707,3 +3707,11 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix:** Changed `.tooltip-backdrop` to `pointer-events: none` (CSS) and replaced the `<button onclick=dismiss>` with a `<div aria-hidden>`. Click-outside dismiss is now handled by a `$effect` that adds a `document.addEventListener('pointerdown', ..., { capture: true })` listener while `relicTooltip` is non-null, dismissing on any click that doesn't originate inside `.relic-tooltip`. Mouse-away (`onmouseleave` on the relic item) still dismisses immediately. The 3-second auto-dismiss timer is unchanged.
 
 **Rule:** If you add a full-viewport backdrop element (`position: fixed; inset: 0`) to handle click-outside dismissal, give it `pointer-events: none` and handle dismissal via a `document pointerdown` listener in a `$effect` instead. The backdrop-as-click-catcher pattern makes every other interactive element in the viewport unreachable while the backdrop is mounted.
+
+### 2026-04-12 — screens.md run flow diagram drifted from gameFlowController reality
+
+**What:** `docs/ui/screens.md` described a run start flow of `hub → deckSelectionHub → triviaDungeon/studyTemple → archetypeSelection → runPreview → dungeonMap`. In reality, `deckSelectionHub`, `triviaDungeon`, and `archetypeSelection` are dormant screens never shown in the current flow. The actual flow is `hub → startNewRun() → onboarding? → onArchetypeSelected('balanced') [auto] → runPreview (Study Temple only) → dungeonMap`. Additionally, `docs/architecture/services/run.md` listed the `gameFlowController` entry point as `startRun` when the real exported function is `startNewRun`.
+
+**Fix:** Updated flow diagram, screen descriptions (dormant callouts), and run.md key exports. Drift discovered via BATCH-2026-04-12-001 playtest finding H-032.
+
+**Reader tip:** Always treat `src/services/gameFlowController.ts` as the canonical source for screen transitions — search for `currentScreen.set(` calls to trace the real flow. `docs/ui/screens.md` is a convenience summary that can lag behind code changes; verify against the source when uncertain.

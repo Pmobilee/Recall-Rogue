@@ -1,7 +1,7 @@
 # Screen Flow & State Machine
 
 > **Purpose:** Complete list of all Screen values, routing logic, transition rules, and component mappings.
-> **Last verified:** 2026-04-11
+> **Last verified:** 2026-04-12
 > **Source files:** `src/ui/stores/gameState.ts`, `src/CardApp.svelte`, `src/services/screenController.ts`
 
 ---
@@ -16,9 +16,9 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `mainMenu` | Alias for hub (normalized to `hub` on load) |
 | `base` | Alias for hub (normalized to `hub` on load) |
 | `onboarding` | First-time dungeon entrance + tutorial |
-| `archetypeSelection` | Run-start archetype picker (Balanced/Aggressive/Defensive/Scholar) |
-| `deckSelectionHub` | Choose trivia mode vs. curated study deck before starting a run |
-| `triviaDungeon` | Trivia domain selection screen |
+| `archetypeSelection` | **Dormant** — reserved for future archetype selection work. Auto-selects `balanced` at run start; this screen is never shown in the standard flow. Component exists in code but is not reached via `gameFlowController`. |
+| `deckSelectionHub` | **Dormant** — previously the entry-point for selecting trivia vs. study modes. The hub now drives deck selection directly. Screen component exists but is not reached in the standard run flow. |
+| `triviaDungeon` | **Dormant** — trivia domain selection. Previously shown before a general-knowledge run; domain selection is now handled internally. Screen component exists but is not reached in the standard run flow. |
 | `dungeonMap` | Procedurally generated dungeon node map |
 | `combat` | Active combat — Phaser canvas + CardCombatOverlay |
 | `cardReward` | Post-combat 3-card reward pick |
@@ -81,9 +81,9 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 |--------|-------------------|-------|
 | `hub` / `mainMenu` / `base` | `HubScreen` | Always mounted when on hub alias screens |
 | `onboarding` | `DungeonEntrance` | Uses `handleOnboardingBegin` callback |
-| `archetypeSelection` | `ArchetypeSelection` | |
-| `deckSelectionHub` | `DeckSelectionHub` | |
-| `triviaDungeon` | `TriviaDungeonScreen` | |
+| `archetypeSelection` | `ArchetypeSelection` | **Dormant — not mounted in standard run flow.** `onArchetypeSelected('balanced')` is called automatically; no user-facing screen transition occurs. |
+| `deckSelectionHub` | `DeckSelectionHub` | **Dormant — not mounted in standard run flow.** |
+| `triviaDungeon` | `TriviaDungeonScreen` | **Dormant — not mounted in standard run flow.** |
 | `dungeonMap` | `DungeonMap` | Only if `activeRunState.floor.actMap` exists. **Boss preview (BATCH-ULTRA Cluster A):** `BossPreviewBanner` component renders in the HUD when the act has an undefeated boss node (`node.type === 'boss'` && `state !== 'visited'`). Shows boss name, silhouette, description, and floor number. Always visible from map open to boss defeat — mirrors StS persistent boss icon. Use scenario `map-with-boss-preview` to test. **(Temporarily disabled 2026-04-11, guarded by `{#if false && ...}` in `DungeonMap.svelte`; re-enable by removing the `false &&`.)** |
 | `combat` | `CardCombatOverlay` | Phaser container also shown; `ParallaxTransition` for enter/exit |
 | `cardReward` | `CardRewardScreen` | |
@@ -161,12 +161,22 @@ rewardRoom, masteryChallenge, relicSwapOverlay
 ## Key Navigation Flows
 
 ### Start a Run
+
+Canonical entry point is `startNewRun()` in `gameFlowController.ts` (line ~392). Archetype selection is
+never shown — `onArchetypeSelected('balanced')` is called automatically.
+
 ```
-hub → (handleStartRun) → deckSelectionHub → triviaDungeon or studyTemple
-    → archetypeSelection → runPreview → (confirm) → dungeonMap → [room nodes] → combat/shop/rest/mystery
+hub → startNewRun() → onboarding (first run only)
+    → onArchetypeSelected('balanced') [auto, no screen shown]
+        → runPreview (Study Temple runs only, when chainDistribution computed)
+        → dungeonMap
+    → [room nodes] → combat/shop/rest/mystery
 ```
 
-If a saved run exists, `handleStartRun` shows a Run Guard popup (continue vs. abandon).
+Study Temple runs (deck mode `study` or `custom_deck`) receive a chain distribution preview
+before the map. Trivia/general runs skip `runPreview` and go directly to `dungeonMap`.
+
+If a saved run exists, the hub shows a Run Guard popup (continue vs. abandon) before calling `startNewRun()`.
 
 ### Custom Deck Run Flow
 
@@ -252,7 +262,7 @@ Shows the player how their selected deck's topic groups are distributed across t
 
 ### Navigation
 
-- Reached from: `archetypeSelection` (via game-logic's `onArchetypeSelected`) or directly from `triviaDungeon`/`studyTemple` confirmation
+- Reached from: `onArchetypeSelected('balanced')` in `gameFlowController.ts` (auto-called by `startNewRun()`), but only when the run has a `chainDistribution` (Study Temple runs). Trivia/general runs skip this screen and go directly to `dungeonMap`.
 - Leaves to: `dungeonMap` (via "Begin Expedition") or reshuffles in-place (via "Shuffle Chains")
 
 ### Props
@@ -643,3 +653,9 @@ Template:
 - Bottom spacer div (`virtual-spacer-bottom`) sets `height` = `paddingBottom` px
 
 Scroll resets to top whenever `filteredDomainEntries` changes (filter/search). No npm dependencies added.
+
+---
+
+### Updated 2026-04-12
+
+Run flow diagram synced with `gameFlowController.ts` canonical source (lines 392–1084). `archetypeSelection`, `deckSelectionHub`, and `triviaDungeon` screens are now documented as dormant — the screen enum values and components still exist but are never reached in the standard run flow. `startNewRun()` is the correct entry point (was incorrectly listed as `startRun`). `runPreview` is only shown for Study Temple runs where `chainDistribution` is computed; trivia/general runs go directly to `dungeonMap`. Source: BATCH-2026-04-12-001 playtest finding H-032.

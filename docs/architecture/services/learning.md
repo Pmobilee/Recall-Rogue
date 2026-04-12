@@ -141,10 +141,10 @@ implement `toJSON()` / `fromJSON()` and be handled explicitly in `serializeRunSt
 | `offeredRelicIds` | `Set<string>` | Array→Set round-trip | Relic dedup |
 | `cursedFactIds` | `Set<string>` | Array→Set round-trip | Curse state |
 | `attemptedFactIds` | `Set<string>` | Array→Set round-trip | New-fact protection (AR-223) |
-| `reviewStateSnapshot` | `Map<string, ...>` | **NOT persisted** — `undefined` after resume | Rebuilt at `startRun()` |
-| `firstTimeFactIds` | `Set<string>` | **NOT persisted** — empty Set after resume | Rebuilt at `startRun()` |
-| `tierAdvancedFactIds` | `Set<string>` | **NOT persisted** — empty Set after resume | Rebuilt at `startRun()` |
-| `masteredThisRunFactIds` | `Set<string>` | **NOT persisted** — empty Set after resume | Rebuilt at `startRun()` |
+| `reviewStateSnapshot` | `Map<string, ...>` | **NOT persisted** — `undefined` after resume | Rebuilt at `onArchetypeSelected()` (called automatically by `startNewRun()`) |
+| `firstTimeFactIds` | `Set<string>` | **NOT persisted** — empty Set after resume | Rebuilt at `onArchetypeSelected()` |
+| `tierAdvancedFactIds` | `Set<string>` | **NOT persisted** — empty Set after resume | Rebuilt at `onArchetypeSelected()` |
+| `masteredThisRunFactIds` | `Set<string>` | **NOT persisted** — empty Set after resume | Rebuilt at `onArchetypeSelected()` |
 
 ### Adding new Set/Map fields to RunState
 

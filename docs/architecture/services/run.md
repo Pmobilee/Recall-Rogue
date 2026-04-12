@@ -1,7 +1,7 @@
 # Run Lifecycle Services
 
 > **Purpose:** Run creation/management, floor/map generation, enemy spawning, reward generation, shop, ascension, and run-scoped utilities.
-> **Last verified:** 2026-04-01
+> **Last verified:** 2026-04-12
 > **Source files:** runManager.ts, floorManager.ts, mapGenerator.ts, enemyManager.ts (see also combat.md), shopService.ts, ascension.ts, relicAcquisitionService.ts, rewardGenerator.ts, encounterRewards.ts, rewardRoomBridge.ts, rewardSpawnService.ts, gameFlowController.ts, screenController.ts, runStateStore.ts, hubState.ts, runSaveService.ts (see persistence.md), runEarlyBoostController.ts, deterministicRandom.ts, seededRng.ts, randomUtils.ts
 
 > See also: [run-competitive.md](run-competitive.md) for bountyManager, canaryService, masteryChallengeService, dailyExpeditionService, endlessDepthsService, scholarChallengeService, characterLevel, loreService, cardPreferences, funnessBoost
@@ -72,7 +72,7 @@ Added in v3 to enable per-run knowledge delta tracking. All in-memory only — n
 |---|---|
 | **File** | src/services/gameFlowController.ts |
 | **Purpose** | Screen routing state machine — drives all transitions between hub, combat, reward, shop, rest, mystery, and run-end screens |
-| **Key exports** | `startRun`, `handleCombatVictory`, `handlePlayerDeath`, `handleRoomChoice`, `handleCardRewardChoice`, `handleRelicChoice`, `handleShopAction`, `handleMysteryChoice`, `handleRestAction` |
+| **Key exports** | `startNewRun`, `handleCombatVictory`, `handlePlayerDeath`, `handleRoomChoice`, `handleCardRewardChoice`, `handleRelicChoice`, `handleShopAction`, `handleMysteryChoice`, `handleRestAction` |
 | **Key dependencies** | runManager, floorManager, encounterBridge, rewardGenerator, relicAcquisitionService, shopService, deckManager, gameState store |
 
 ### Run termination contract (MEDIUM-10, 2026-04-10)
@@ -218,3 +218,9 @@ See `docs/mechanics/combat.md` §"Run Termination State Machine" for the full fl
 | **Purpose** | Fisher-Yates shuffle without sort-bias |
 | **Key exports** | `shuffled` |
 | **Key dependencies** | None |
+
+---
+
+### Updated 2026-04-12
+
+Corrected `gameFlowController` key exports: `startRun` → `startNewRun` (the actual exported function name at line 392 of `gameFlowController.ts`). The old `startRun` name never existed in this service. Source: BATCH-2026-04-12-001 playtest finding H-032.
