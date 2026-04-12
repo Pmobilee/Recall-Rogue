@@ -1,0 +1,416 @@
+name: Steam Build & Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: 'Platforms to build'
+        required: true
+        type: choice
+        options:
+          - windows
+          - macos
+          - linux
+          - all
+        default: 'windows'
+      branch:
+        description: 'Steam branch to set live after upload'
+        required: false
+        type: string
+        default: 'development'
+
+env:
+  NODE_VERSION: '22'
+  APP_ID: '4547570'
+  DEPOT_WINDOWS: '4547572'
+  DEPOT_LINUX: '4547573'
+  DEPOT_MACOS: '4547574'
+
+# ─── Windows Build ────────────────────────────────────────────────────────────
+jobs:
+  build-windows:
+    name: Build (Windows)
+    runs-on: windows-latest
+    if: ${{ inputs.platforms == 'windows' || inputs.platforms == 'all' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo registry & build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            src-tauri/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('src-tauri/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build frontend (Vite + curated DB + obfuscation)
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --version "^2" --locked
+
+      - name: Build Tauri (Windows — raw exe, no installer bundle)
+        # --bundles none skips NSIS installer creation; we only need the raw exe for Steam.
+        # The steamworks crate downloads steam_api64.dll automatically via cargo build.
+        run: |
+          cd src-tauri
+          cargo tauri build --bundles none
+        shell: pwsh
+
+      - name: Copy steam_api64.dll into release directory
+        # The steamworks-sys build script places steam_api64.dll in an out/ subdirectory
+        # under target/release/build/steamworks-sys-*/out/. We copy it next to the exe.
+        shell: pwsh
+        run: |
+          $dll = Get-ChildItem -Path src-tauri/target/release/build -Recurse -Filter "steam_api64.dll" `
+            | Where-Object { $_.DirectoryName -like "*steamworks-sys*" } `
+            | Select-Object -First 1
+          if (-not $dll) {
+            Write-Error "steam_api64.dll not found under src-tauri/target/release/build/"
+            exit 1
+          }
+          Write-Host "Found DLL at: $($dll.FullName)"
+          Copy-Item $dll.FullName -Destination src-tauri/target/release/
+          Write-Host "Copied steam_api64.dll to src-tauri/target/release/"
+
+      - name: Copy steam_appid.txt into release directory
+        shell: pwsh
+        run: |
+          Copy-Item src-tauri/steam_appid.txt -Destination src-tauri/target/release/
+          Write-Host "Copied steam_appid.txt (app ID: $(Get-Content src-tauri/steam_appid.txt))"
+
+      - name: Verify Windows release contents
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem src-tauri/target/release/ -File | Where-Object { $_.Extension -in '.exe','.dll','.txt' }
+          $files | Format-Table Name, Length
+          $required = @('recall-rogue.exe', 'steam_api64.dll', 'steam_appid.txt')
+          foreach ($f in $required) {
+            if (-not (Test-Path "src-tauri/target/release/$f")) {
+              Write-Error "Missing required file: $f"
+              exit 1
+            }
+          }
+          Write-Host "All required files present."
+
+      - name: Upload Windows build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: |
+            src-tauri/target/release/recall-rogue.exe
+            src-tauri/target/release/steam_api64.dll
+            src-tauri/target/release/steam_appid.txt
+          retention-days: 7
+
+# ─── macOS Build ─────────────────────────────────────────────────────────────
+  build-macos:
+    name: Build (macOS)
+    runs-on: macos-latest
+    if: ${{ inputs.platforms == 'macos' || inputs.platforms == 'all' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo registry & build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            src-tauri/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('src-tauri/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build frontend (Vite + curated DB + obfuscation)
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --version "^2" --locked
+
+      - name: Build Tauri (macOS .app bundle)
+        run: |
+          cd src-tauri
+          cargo tauri build --bundles app
+
+      - name: Copy libsteam_api.dylib into .app bundle
+        # steamworks-sys builds the dylib under target/release/build/steamworks-sys-*/out/.
+        # The binary links against @loader_path/libsteam_api.dylib, so it must be
+        # co-located with the recall-rogue binary inside the .app's MacOS/ directory.
+        run: |
+          DYLIB=$(find src-tauri/target/release/build -name "libsteam_api.dylib" \
+            -path "*/steamworks-sys-*/out/*" | head -1)
+          if [[ -z "$DYLIB" ]]; then
+            echo "ERROR: libsteam_api.dylib not found"
+            exit 1
+          fi
+          echo "Found dylib at: $DYLIB"
+          APP_BUNDLE="src-tauri/target/release/bundle/macos/Recall Rogue.app"
+          cp "$DYLIB" "$APP_BUNDLE/Contents/MacOS/libsteam_api.dylib"
+          echo "Copied libsteam_api.dylib into bundle."
+
+      - name: Upload macOS build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-build
+          path: src-tauri/target/release/bundle/macos/
+          retention-days: 7
+
+# ─── Linux Build ─────────────────────────────────────────────────────────────
+  build-linux:
+    name: Build (Linux)
+    runs-on: ubuntu-latest
+    if: ${{ inputs.platforms == 'linux' || inputs.platforms == 'all' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo registry & build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            src-tauri/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('src-tauri/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Install Linux system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev \
+            libappindicator3-dev \
+            librsvg2-dev \
+            patchelf
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build frontend (Vite + curated DB + obfuscation)
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli --version "^2" --locked
+
+      - name: Build Tauri (Linux AppImage)
+        run: |
+          cd src-tauri
+          cargo tauri build --bundles appimage
+
+      - name: Upload Linux build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-build
+          path: src-tauri/target/release/bundle/appimage/
+          retention-days: 7
+
+# ─── Steam Deploy ─────────────────────────────────────────────────────────────
+  deploy-steam:
+    name: Deploy to Steam
+    runs-on: ubuntu-latest
+    # Wait for whichever build jobs ran. GitHub skips needs that were skipped,
+    # so this job will start once the applicable builds finish.
+    needs: [build-windows, build-macos, build-linux]
+    if: |
+      always() &&
+      (needs.build-windows.result == 'success' || needs.build-windows.result == 'skipped') &&
+      (needs.build-macos.result == 'success' || needs.build-macos.result == 'skipped') &&
+      (needs.build-linux.result == 'success' || needs.build-linux.result == 'skipped') &&
+      (needs.build-windows.result == 'success' || needs.build-macos.result == 'success' || needs.build-linux.result == 'success')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install SteamCMD
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lib32gcc-s1
+          mkdir -p ~/steamcmd
+          cd ~/steamcmd
+          curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+          echo "$HOME/steamcmd" >> $GITHUB_PATH
+
+      - name: Restore Steam credentials from secret
+        # STEAM_CONFIG_VDF must be a base64-encoded config.vdf with cached Steam Guard
+        # credentials. Generate it locally: base64 -i ~/.steam/config/config.vdf | pbcopy
+        # then store as a GitHub Actions secret named STEAM_CONFIG_VDF.
+        run: |
+          mkdir -p ~/.steam/config
+          echo "${{ secrets.STEAM_CONFIG_VDF }}" | base64 -d > ~/.steam/config/config.vdf
+          chmod 600 ~/.steam/config/config.vdf
+
+      - name: Download Windows build artifact
+        if: ${{ needs.build-windows.result == 'success' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-build
+          path: /tmp/steam-content/windows/
+
+      - name: Download macOS build artifact
+        if: ${{ needs.build-macos.result == 'success' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: macos-build
+          path: /tmp/steam-content/macos/
+
+      - name: Download Linux build artifact
+        if: ${{ needs.build-linux.result == 'success' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-build
+          path: /tmp/steam-content/linux/
+
+      - name: Generate SteamPipe VDFs for this run
+        # Writes depot VDFs with absolute contentroot paths to the downloaded artifacts,
+        # then writes an app_build VDF that includes only depots that were actually built.
+        env:
+          STEAM_BRANCH: ${{ inputs.branch }}
+          BUILD_WINDOWS: ${{ needs.build-windows.result == 'success' }}
+          BUILD_MACOS: ${{ needs.build-macos.result == 'success' }}
+          BUILD_LINUX: ${{ needs.build-linux.result == 'success' }}
+        run: |
+          mkdir -p /tmp/steam-vdf
+
+          # ── Depot VDFs (absolute contentroot for CI environment) ──
+          if [ "$BUILD_WINDOWS" = "true" ]; then
+            cat > /tmp/steam-vdf/depot_4547572.vdf << VDF
+          "DepotBuildConfig"
+          {
+            "DepotID" "4547572"
+            "contentroot" "/tmp/steam-content/windows/"
+            "FileMapping"
+            {
+              "LocalPath" "*"
+              "DepotPath" "."
+              "recursive" "1"
+            }
+          }
+          VDF
+          fi
+
+          if [ "$BUILD_MACOS" = "true" ]; then
+            cat > /tmp/steam-vdf/depot_4547574.vdf << VDF
+          "DepotBuildConfig"
+          {
+            "DepotID" "4547574"
+            "contentroot" "/tmp/steam-content/macos/"
+            "FileMapping"
+            {
+              "LocalPath" "*"
+              "DepotPath" "."
+              "recursive" "1"
+            }
+          }
+          VDF
+          fi
+
+          if [ "$BUILD_LINUX" = "true" ]; then
+            cat > /tmp/steam-vdf/depot_4547573.vdf << VDF
+          "DepotBuildConfig"
+          {
+            "DepotID" "4547573"
+            "contentroot" "/tmp/steam-content/linux/"
+            "FileMapping"
+            {
+              "LocalPath" "*"
+              "DepotPath" "."
+              "recursive" "1"
+            }
+          }
+          VDF
+          fi
+
+          # ── App build VDF — includes only depots that were built ──
+          DESC="Recall Rogue CI build ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+          DEPOTS_BLOCK=""
+          if [ "$BUILD_WINDOWS" = "true" ]; then
+            DEPOTS_BLOCK="${DEPOTS_BLOCK}    \"4547572\" \"/tmp/steam-vdf/depot_4547572.vdf\"\n"
+          fi
+          if [ "$BUILD_MACOS" = "true" ]; then
+            DEPOTS_BLOCK="${DEPOTS_BLOCK}    \"4547574\" \"/tmp/steam-vdf/depot_4547574.vdf\"\n"
+          fi
+          if [ "$BUILD_LINUX" = "true" ]; then
+            DEPOTS_BLOCK="${DEPOTS_BLOCK}    \"4547573\" \"/tmp/steam-vdf/depot_4547573.vdf\"\n"
+          fi
+
+          cat > /tmp/steam-vdf/app_build.vdf << VDF
+          "appbuild"
+          {
+            "appid" "4547570"
+            "desc" "$DESC"
+            "buildoutput" "/tmp/steam-vdf/output/"
+            "contentroot" ""
+            "setlive" "$STEAM_BRANCH"
+            "depots"
+            {
+          $(printf "$DEPOTS_BLOCK")
+            }
+          }
+          VDF
+
+          mkdir -p /tmp/steam-vdf/output
+          echo "Generated VDFs:"
+          ls -la /tmp/steam-vdf/
+          echo "App build VDF contents:"
+          cat /tmp/steam-vdf/app_build.vdf
+
+      - name: Upload to Steam via SteamCMD
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        run: |
+          ~/steamcmd/steamcmd.sh \
+            +login "$STEAM_USERNAME" \
+            +run_app_build /tmp/steam-vdf/app_build.vdf \
+            +quit
+
+      - name: Report upload result
+        if: always()
+        run: |
+          echo "Upload log (if present):"
+          cat /tmp/steam-vdf/output/*.log 2>/dev/null || echo "(no log files found)"

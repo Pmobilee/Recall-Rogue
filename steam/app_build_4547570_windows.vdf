@@ -1,12 +1,12 @@
 "appbuild"
 {
 	"appid" "4547570"
-	"desc" "Recall Rogue macOS build"
+	"desc" "Recall Rogue Windows build"
 	"buildoutput" "./output/"
 	"contentroot" ""
 	"setlive" ""
 	"depots"
 	{
-		"4547574" "depot_build_4547574.vdf"
+		"4547572" "depot_build_4547572.vdf"
 	}
 }
