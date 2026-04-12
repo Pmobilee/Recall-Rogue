@@ -502,10 +502,34 @@ class FactsDB {
     const kid: Fact[] = []
     const teen: Fact[] = []
 
+    // Maps categoryL1 snake_case IDs to the display names used by DOMAIN_TO_CATEGORY
+    // in presetPoolBuilder.ts. When a fact has no category[0], we index it under this
+    // display name so getByCategory() can find it. Must stay in sync with DOMAIN_TO_CATEGORY.
+    const L1_TO_DISPLAY: Record<string, string> = {
+      general_knowledge: 'General Knowledge',
+      natural_sciences: 'Natural Sciences',
+      space_astronomy: 'Space & Astronomy',
+      history: 'History',
+      geography: 'Geography',
+      language: 'Language',
+      mythology_folklore: 'Mythology & Folklore',
+      animals_wildlife: 'Animals & Wildlife',
+      human_body_health: 'Human Body & Health',
+      food_cuisine: 'Food & Cuisine',
+      art_architecture: 'Art & Architecture',
+      sports_entertainment: 'Sports & Entertainment',
+      social_sciences: 'Social Sciences',
+    }
+
     for (const fact of all) {
       byId.set(fact.id, fact)
 
-      const topCategory = fact.category[0] ?? ''
+      let topCategory = fact.category[0] ?? ''
+      // Fallback: if category[0] is empty but categoryL1 exists, use its display name.
+      // 7,166 seed facts from Wikipedia/Wikidata have empty category arrays but valid categoryL1.
+      if (!topCategory && fact.categoryL1) {
+        topCategory = L1_TO_DISPLAY[fact.categoryL1] ?? ''
+      }
       if (topCategory) {
         const bucket = categoryIndex.get(topCategory)
         if (bucket) bucket.push(fact)
