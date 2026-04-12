@@ -338,6 +338,11 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     confirmChainDistribution()
   }
 
+  function handleRunPreviewBack(): void {
+    abandonActiveRun()
+    transitionScreen('studyTemple')
+  }
+
 
   function handleGuardContinue(): void {
     showRunGuardPopup = false
@@ -1873,6 +1878,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   {#if $currentScreen === 'runPreview'}
     <div in:fly={{ y: 8, duration: 350 }}>
       <RunPreviewScreen
+        onBack={handleRunPreviewBack}
         onShuffle={handleRunPreviewShuffle}
         onBeginExpedition={handleRunPreviewBeginExpedition}
       />

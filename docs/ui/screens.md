@@ -112,7 +112,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `studyTemple` | `StudyTempleScreen` | |
 | `proceduralStudy` | `ProceduralStudyScreen` | Props: `deckId`, `subDeckId?`, `onBack`; `onBack` returns to `studyTemple` |
 | `triviaRound` | `TriviaRoundScreen` | Wired BATCH-ULTRA T7. Props: `gameState`, `localPlayerId`, `currentQuestion`, `lastRoundResult`, `onAnswer`, `onPlayAgain`, `onReturnToLobby`, `onReturnToHub`. Initial mock state: `phase: 'waiting'`. Use `trivia-round` scenario preset for testing. |
-| `runPreview` | `RunPreviewScreen` | Shows chain distribution; `onShuffle` calls `reshuffleChainDistribution()`; `onBeginExpedition` calls `confirmChainDistribution()` |
+| `runPreview` | `RunPreviewScreen` | Shows chain distribution; `onBack` calls `abandonActiveRun()` then returns to `studyTemple`; `onShuffle` calls `reshuffleChainDistribution()`; `onBeginExpedition` calls `confirmChainDistribution()` |
 | `relicSanctum` | `RelicCollectionScreen` | |
 
 ---
@@ -263,12 +263,13 @@ Shows the player how their selected deck's topic groups are distributed across t
 ### Navigation
 
 - Reached from: `onArchetypeSelected('balanced')` in `gameFlowController.ts` (auto-called by `startNewRun()`), but only when the run has a `chainDistribution` (Study Temple runs). Trivia/general runs skip this screen and go directly to `dungeonMap`.
-- Leaves to: `dungeonMap` (via "Begin Expedition") or reshuffles in-place (via "Shuffle Chains")
+- Leaves to: `dungeonMap` (via "Begin Expedition"), `studyTemple` (via "Back" — calls `abandonActiveRun()` for clean run teardown, then `transitionScreen('studyTemple')`), or reshuffles in-place (via "Shuffle Chains")
 
 ### Props
 
 | Prop | Type | Description |
 |------|------|-------------|
+| `onBack` | `() => void` | Called when "Back" is clicked. Calls `abandonActiveRun()` then `transitionScreen('studyTemple')`. |
 | `onShuffle` | `() => void` | Called when "Shuffle Chains" is clicked. Calls `reshuffleChainDistribution(++shuffleSeedOffset)`. |
 | `onBeginExpedition` | `() => void` | Called when "Begin Expedition" is clicked. Calls `confirmChainDistribution()`. |
 
@@ -291,6 +292,7 @@ Topic group cards show a compact breakdown: `5N 8L 10R 3M` where:
 `CardApp.svelte` wires the real service functions directly:
 
 - `handleRunPreviewShuffle()` — calls `reshuffleChainDistribution(++shuffleSeedOffset)` (imported from `gameFlowController`); `shuffleSeedOffset` increments each shuffle so each press produces a different seed
+- `handleRunPreviewBack()` — calls `abandonActiveRun()` (already imported at line ~66), then `transitionScreen('studyTemple')`; order matters: `abandonActiveRun` sets `currentScreen='hub'` internally; the subsequent `transitionScreen` overrides that to `studyTemple`
 - `handleRunPreviewBeginExpedition()` — calls `confirmChainDistribution()` (imported from `gameFlowController`)
 - `handleOpenRunPreview()` — removed (was unused; navigation to `runPreview` handled by game-logic directly)
 

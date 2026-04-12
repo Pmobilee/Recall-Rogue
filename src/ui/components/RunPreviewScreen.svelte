@@ -7,17 +7,21 @@
 
   /**
    * Props:
+   *   onBack           — Returns the player to the Study Temple screen, abandoning the
+   *                      in-progress run. Provided by CardApp; calls abandonActiveRun()
+   *                      followed by transitionScreen('studyTemple').
    *   onShuffle        — Re-distributes topics across chains with a new seed.
    *                      Provided by CardApp; calls game-logic's reshuffleChainDistribution().
    *   onBeginExpedition — Confirms the distribution and transitions to dungeonMap.
    *                      Provided by CardApp; calls game-logic's confirmChainDistribution().
    */
   interface Props {
+    onBack: () => void;
     onShuffle: () => void;
     onBeginExpedition: () => void;
   }
 
-  const { onShuffle, onBeginExpedition }: Props = $props();
+  const { onBack, onShuffle, onBeginExpedition }: Props = $props();
 
   /** Reactive snapshot of the run's chain distribution. */
   const distribution = $derived($activeRunState?.chainDistribution ?? null);
@@ -34,6 +38,11 @@
   function fsrsLabel(group: TopicGroup): string {
     const { new: n, learning: l, review: r, mastered: m } = group.fsrs;
     return `${n}N ${l}L ${r}R ${m}M`;
+  }
+
+  function handleBack(): void {
+    playCardAudio('tab-switch');
+    onBack();
   }
 
   function handleShuffle(): void {
@@ -98,11 +107,16 @@
   </div>
 
   <footer class="screen-footer">
-    <div class="fsrs-legend">
-      <span class="legend-item legend-item--new">N = New</span>
-      <span class="legend-item legend-item--learning">L = Learning</span>
-      <span class="legend-item legend-item--review">R = Review</span>
-      <span class="legend-item legend-item--mastered">M = Mastered</span>
+    <div class="footer-left">
+      <button class="btn-ghost" onclick={handleBack}>
+        ← Back
+      </button>
+      <div class="fsrs-legend">
+        <span class="legend-item legend-item--new">N = New</span>
+        <span class="legend-item legend-item--learning">L = Learning</span>
+        <span class="legend-item legend-item--review">R = Review</span>
+        <span class="legend-item legend-item--mastered">M = Mastered</span>
+      </div>
     </div>
 
     <div class="action-buttons">
@@ -295,6 +309,42 @@
     padding: calc(20px * var(--layout-scale, 1)) calc(48px * var(--layout-scale, 1)) calc(28px * var(--layout-scale, 1));
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     background: rgba(0, 0, 0, 0.15);
+  }
+
+  /* ── Footer left: Back button + FSRS legend ──────────── */
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: calc(24px * var(--layout-scale, 1));
+  }
+
+  /* ── Ghost / tertiary Back button ────────────────────── */
+
+  .btn-ghost {
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    color: #64748b;
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    min-height: calc(44px * var(--layout-scale, 1));
+    min-width: calc(44px * var(--layout-scale, 1));
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.20);
+    color: #94a3b8;
+  }
+
+  .btn-ghost:active {
+    transform: scale(0.97);
   }
 
   /* ── FSRS legend ─────────────────────────────────────── */
