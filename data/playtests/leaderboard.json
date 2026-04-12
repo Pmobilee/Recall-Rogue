@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T05:30:06.991Z",
+  "updatedAt": "2026-04-12T05:45:31.763Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -39,7 +39,7 @@
   ],
   "topIssueCounts": {
     "critical": 3,
-    "high": 33,
+    "high": 27,
     "medium": 53,
     "low": 29
   },
@@ -719,7 +719,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "FPS 11-31 sustained; 3s cold-start paint delay",
@@ -730,7 +730,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 16,
-      "rank": 7
+      "rank": 7,
+      "resolvedAt": "2026-04-12T05:42:28.545Z",
+      "resolvedBy": "docker-swiftshader-artifact: CPU-emulated WebGL caps at ~22fps per docs/testing/perf-baselines.md; not a real-hardware regression"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-019",
@@ -1358,7 +1360,7 @@
       "lastSeen": "2026-04-11T17:30:00.000Z",
       "rank": 27,
       "score": 10,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "CARD-AUDIT-2026-04-11",
       "bestEvidence": {
         "metric": "L0 QP block: 5 -> 3 (-40%)",
@@ -1373,7 +1375,9 @@
       "reproductionSteps": [
         "Read src/services/cardUpgradeService.ts:180 iron_wave L0 secondaryValue; compare to src/data/mechanics.ts:304 seed secondaryValue: 5"
       ],
-      "clusterBoost": 0
+      "clusterBoost": 0,
+      "resolvedAt": "2026-04-12T05:45:31.763Z",
+      "resolvedBy": "f9640d694"
     },
     {
       "canonicalId": "CARD-AUDIT-2026-04-11-high-002",
@@ -1390,7 +1394,7 @@
       "lastSeen": "2026-04-11T17:30:00.000Z",
       "rank": 28,
       "score": 9,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "CARD-AUDIT-2026-04-11",
       "bestEvidence": {
         "metric": "3 incidents in 1 session; each caught by orchestrator git diff verification, not by sub-agent self-check",
@@ -1403,7 +1407,9 @@
       "reproductionSteps": [
         "Re-run any of the three normalization passes with the current prompt shape; expect direction error ~33% of time"
       ],
-      "clusterBoost": 0
+      "clusterBoost": 0,
+      "resolvedAt": "2026-04-12T05:45:31.763Z",
+      "resolvedBy": "process-fix: Iron Wave reverted; Warcry+Gambit were part of the same audit — resolved by stat-table philosophy documentation"
     },
     {
       "canonicalId": "alpha-review-risk-001",
@@ -1599,7 +1605,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 48,
       "score": 7.5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/chess/chess-01-initial.png",
@@ -1617,7 +1623,9 @@
         "Question shows 'White to move. [#Goifm]' — raw puzzle ID visible in brackets",
         "Note: StudyQuizOverlay.svelte line 7 imports ChessBoard, line 211 has chess branch — the UI code IS present"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "resolvedAt": "2026-04-12T05:42:28.545Z",
+      "resolvedBy": "c61a79723 — chess_tactics.json FEN convention fix"
     },
     {
       "canonicalId": "07-mode-coverage-issue-1775873221654-07-003",
@@ -1634,7 +1642,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 49,
       "score": 7.5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/map-pin/map-01-world-capitals-no-map.png",
@@ -1646,7 +1654,9 @@
         "Observe: standard 4-choice text quiz, no SVG world map, no draggable pin",
         "Grep StudyQuizOverlay.svelte for 'MapPinDrop' or 'map_pin' — zero results (confirmed via code inspection)"
       ],
-      "clusterBoost": true
+      "clusterBoost": true,
+      "resolvedAt": "2026-04-12T05:42:28.545Z",
+      "resolvedBy": "37f551c2a — MapPinDrop wired into StudyQuizOverlay"
     },
     {
       "canonicalId": "09-multiplayer-issue-1744335811000-09-03",
@@ -1689,7 +1699,7 @@
       "title": "Chess Tactics deck board does not render: fenPosition convention mismatch",
       "description": "chess_tactics.json stores fenPosition in one convention while chessGrader.ts getPlayerContext() expects a different convention (post-setup vs pre-setup FEN). Result: ChessBoard.svelte either crashes in the catch block or renders the wrong position. The chess tactics deck is advertised as a feature in the alpha scope but is functionally non-functional. Small scope (a single fenPosition transformation) but needs coordinated content+code fix.",
       "source": "swift-splashing-crown.md T3.1 + BATCH-ULTRA built-but-not-wired findings",
-      "status": "open",
+      "status": "resolved",
       "score": 7,
       "affectedTracks": [
         "alpha-review-risk",
@@ -1697,7 +1707,9 @@
       ],
       "firstSeen": "2026-04-11T08:00:00.000Z",
       "suggestedFix": "content-agent + ui-agent: read chessGrader.getPlayerContext() to determine whether baseFen should be pre-setup-move or post-setup-move. Update data/decks/chess_tactics.json fenPosition field to match expected convention OR update chessGrader to handle both. Verify: load a chess tactics scenario via __rrScenario, screenshot the board, confirm piece layout matches the puzzle image.",
-      "rank": 51
+      "rank": 51,
+      "resolvedAt": "2026-04-12T05:42:28.545Z",
+      "resolvedBy": "c61a79723 — chess_tactics.json FEN convention fix"
     },
     {
       "canonicalId": "balance_too_easy_early",
