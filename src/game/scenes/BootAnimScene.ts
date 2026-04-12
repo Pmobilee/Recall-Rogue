@@ -4,14 +4,10 @@ import type { LayoutMode } from '../../stores/layoutStore'
 /**
  * BootAnimScene — Cinematic boot/splash for Recall Rogue.
  *
- * ~12s animation:
+ * ~5.6s animation:
  *   Part 1 (0–4.8s): Stars + logo deblur, glow, title sweep, studio tag, fireflies
- *   Transition (4.8–5.6s): Logo/title/studio disintegrate, stars destroyed
- *   Part 2 (5.6–~12s): 8-ring cave descent with 3D perspective stretch,
- *     decelerating freefall, campsite revealed through ring holes via ADD blending
+ *   Transition (4.8–5.6s): Logo/title/studio disintegrate, campsite fades in
  *
- * Ring assets are 1024×1024 with pure black backgrounds.
- * Using ADD blend mode, black = invisible, rock detail glows additively.
  * The Phaser game is created with `transparent: true` so the WebGL canvas
  * composites over the Svelte HubScreen behind it.
  *
@@ -31,14 +27,6 @@ export default class BootAnimScene extends Phaser.Scene {
   // Group center = (631+1326)/2 = 978.5, image center = 917.5.
   // In landscape, shift all images down by this delta so the group is screen-centered.
   private static readonly LANDSCAPE_GROUP_OFFSET = 978.5 - 917.5  // 61
-
-  // Ring display order: surface → deep → void then library (swapped 7↔8)
-  // File names stay as generated, but display order is swapped.
-  private static readonly RING_FILES = [
-    'cave_ring_1_entrance', 'cave_ring_2_roots', 'cave_ring_3_stalactite',
-    'cave_ring_4_crystal', 'cave_ring_5_magma', 'cave_ring_6_runes',
-    'cave_ring_8_void', 'cave_ring_7_library',
-  ] as const
 
   constructor() {
     super({ key: 'BootAnimScene' })
@@ -66,9 +54,6 @@ export default class BootAnimScene extends Phaser.Scene {
     this.load.image('boot_bramblegategames', base + 'bramblegategames.png')
     this.load.image('boot_bramblegategames_blur_medium', base + 'bramblegategames_blur_medium.png')
     this.load.image('boot_bramblegategames_blur_heavy', base + 'bramblegategames_blur_heavy.png')
-    for (let i = 0; i < BootAnimScene.RING_FILES.length; i++) {
-      this.load.image(`boot_cave_ring_${i + 1}`, base + BootAnimScene.RING_FILES[i] + '.png')
-    }
   }
 
   create(): void {
@@ -105,7 +90,6 @@ export default class BootAnimScene extends Phaser.Scene {
       'boot_logo', 'boot_logo_blur_medium', 'boot_logo_blur_heavy',
       'boot_recallrogue', 'boot_recallrogue_blur_medium', 'boot_recallrogue_blur_heavy',
       'boot_bramblegategames', 'boot_bramblegategames_blur_medium', 'boot_bramblegategames_blur_heavy',
-      ...Array.from({ length: 8 }, (_, i) => `boot_cave_ring_${i + 1}`),
     ]
     for (const key of bootKeys) {
       const tex = this.textures.get(key)
@@ -337,104 +321,13 @@ export default class BootAnimScene extends Phaser.Scene {
     // 5) Signal hub to show blurred campsite BEHIND the canvas
     this.game.events.emit('boot-anim-show-blurred')
 
-    // 6) Start descent after disintegration
-    this.time.delayedCall(800, () => this.playPartTwo(cx, cy))
-  }
-
-  // ═══ Part 2: 8-Ring Cave Descent ═══════════════════════════════════════════
-  //
-  // How transparency works:
-  // - Phaser game was created with `transparent: true` (see CardGameManager)
-  // - Camera background is set to alpha 0 → WebGL clears to (0,0,0,0)
-  // - Rings use NORMAL blend mode: black outer areas = opaque tunnel walls,
-  //   transparent centers = holes you see THROUGH to the Svelte campsite behind
-  // - No black screen — the campsite is visible through ring holes the entire descent
-  // - Campsite appears blurred (from boot-anim-show-blurred emit in transition()),
-  //   then sharpens at ring 7 (boot-anim-deblur emit)
-  //
-  // 3D effect: rings scale Y 30-50% more than X as they approach,
-  // creating a tunnel-mouth perspective distortion.
-
-  private playPartTwo(cx: number, cy: number): void {
-    const viewW = this.scale.width
-    const viewH = this.scale.height
-    const ringCover = Math.max(viewW / 1024, viewH / 1024)
-
-    // ── Ring configs: decelerating descent with 3D stretch ──
-    const ringConfigs = [
-      { delay: 0,    duration: 1400,  yDrift: -100, startScale: 0.08,  angle: 0,    yStretch: 3.5 },
-      { delay: 80,   duration: 1800,  yDrift: -75,  startScale: 0.06,  angle: 1.2,  yStretch: 3.0 },
-      { delay: 180,  duration: 2200,  yDrift: -55,  startScale: 0.05,  angle: -0.8, yStretch: 2.5 },
-      { delay: 300,  duration: 2600,  yDrift: -40,  startScale: 0.04,  angle: 0.6,  yStretch: 2.1 },
-      { delay: 450,  duration: 3000,  yDrift: -28,  startScale: 0.035, angle: -0.4, yStretch: 1.8 },
-      { delay: 650,  duration: 3400,  yDrift: -16,  startScale: 0.03,  angle: 0.3,  yStretch: 1.5 },
-      { delay: 1050, duration: 3800,  yDrift: -8,   startScale: 0.025, angle: -0.2, yStretch: 1.3 },
-      { delay: 1500, duration: 4200,  yDrift: -3,   startScale: 0.02,  angle: 0,    yStretch: 1.12 },
-    ]
-
-    const endScaleX = ringCover * 4
-    const fadeThreshold = ringCover * 1.5
-
-    for (let i = 0; i < 8; i++) {
-      const cfg = ringConfigs[i]
-      const ringKey = `boot_cave_ring_${i + 1}`
-      // Rings at depth 10-17, all ABOVE the black screen (depth 5)
-      const depth = 17 - i
-
-      this.time.delayedCall(cfg.delay, () => {
-        const offsetX = cx + Phaser.Math.Between(-5, 5)
-        const offsetY = cy + Phaser.Math.Between(0, 6)
-
-        const ring = this.add.image(offsetX, offsetY, ringKey)
-          .setScale(ringCover * cfg.startScale)
-          .setDepth(depth)
-          .setAlpha(0)
-        this.sceneSprites.push(ring)
-
-        // Fade in
-        this.tweens.add({
-          targets: ring, alpha: 1,
-          duration: 400, ease: 'Sine.easeOut',
-        })
-
-        // 3D zoom: ring stretches outward in ALL directions as it passes.
-        // Early rings stretch massively (high-speed flyby), later rings barely.
-        const endScale = endScaleX * cfg.yStretch
-        const ease = i < 2 ? 'Expo.easeIn'
-          : i < 5 ? 'Cubic.easeIn'
-            : 'Quad.easeIn'
-
-        this.tweens.add({
-          targets: ring,
-          scaleX: endScale,
-          scaleY: endScale,
-          y: offsetY + cfg.yDrift,
-          x: offsetX + Phaser.Math.Between(-8, 8),
-          angle: cfg.angle,
-          duration: cfg.duration,
-          ease,
-          onUpdate: (_tween, target) => {
-            const img = target as Phaser.GameObjects.Image
-            const s = img.scaleX
-            if (s > fadeThreshold) {
-              const progress = (s - fadeThreshold) / (endScale - fadeThreshold)
-              img.setAlpha(Math.max(0, 1 - progress * progress))
-            }
-          },
-          onComplete: () => { if (ring.active) ring.destroy() },
-        })
-
-        // Deblur campsite at ring 7
-        if (i === 6) {
-          this.game.events.emit('boot-anim-deblur')
-        }
-
-        // Last ring → complete
-        if (i === 7) {
-          this.time.delayedCall(cfg.duration, () => this.complete())
-        }
-      })
-    }
+    // 6) Deblur campsite and complete after disintegration settles
+    this.time.delayedCall(400, () => {
+      this.game.events.emit('boot-anim-deblur')
+    })
+    this.time.delayedCall(800, () => {
+      this.complete()
+    })
   }
 
   private complete(): void {
