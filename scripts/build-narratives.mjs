@@ -13,10 +13,11 @@
  */
 
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync } from 'fs';
-import { join, relative, extname, basename } from 'path';
+import { join, relative, extname, basename, dirname } from 'path';
+import { fileURLToPath } from 'url';
 import { load } from 'js-yaml';
 
-const ROOT = new URL('..', import.meta.url).pathname;
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const INPUT_DIR = join(ROOT, 'data/narratives');
 const OUTPUT_DIR = join(ROOT, 'public/data/narratives');
 
