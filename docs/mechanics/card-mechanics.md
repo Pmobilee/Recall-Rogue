@@ -20,7 +20,7 @@ Mechanics are assigned by the run pool builder and stored on the `Card` as `mech
 | `multi_hit` | Multi-Hit | 1 | 2 | 2 | Hits 3× (`secondaryValue: 3`) |
 | `heavy_strike` | Heavy Strike | 1 | 10 | 2 | High damage |
 | `piercing` | Piercing | 1 | 3 | 1 | Ignores enemy block |
-| `reckless` | Reckless | 1 | 6 | 1 | +self-damage `secondaryValue: 3`; L5 (`reckless_selfdmg_scale3`): add `selfDamageTakenThisEncounter × 3` bonus damage |
+| `reckless` | Reckless | 1 | 6 | 1 | Ignores block; +self-damage `secondaryValue: 3`; L5 (`reckless_selfdmg_scale3`): add `selfDamageTakenThisEncounter × 3` bonus damage |
 | `execute` | Execute | 1 | 3 | 1 | +`secondaryValue: 8` bonus below 30% HP |
 | `lifetap` | Lifetap | 1 | 4 | 2 | Heal 20% of damage dealt |
 | `power_strike` | Power Strike | 1 | 5 | 1 | Heavier basic strike; L5 (`power_vuln2t`, `power_vuln75`): Vulnerable lasts 2 turns + passive 1.75× Vuln multiplier |

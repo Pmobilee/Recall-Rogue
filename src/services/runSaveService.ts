@@ -16,6 +16,14 @@ import { InRunFactTracker, type InRunFactTrackerSnapshot } from './inRunFactTrac
 
 const SAVE_KEY = 'recall-rogue-active-run';
 
+/**
+ * Current schema version for run saves.
+ * Bump this constant (and add a migration in saveMigration.ts) whenever the
+ * RunSaveState shape changes in a breaking way. loadActiveRun() rejects saves
+ * with a different version so stale saves don't cause runtime errors.
+ */
+const CURRENT_RUN_SAVE_VERSION = 1;
+
 /** Serializable snapshot of an active run for save/resume. */
 export interface RunSaveState {
   /** Schema version for future migration. */
@@ -346,6 +354,10 @@ export function loadActiveRun(): {
     if (!raw) return null;
     const parsed: RunSaveState = JSON.parse(raw);
     if (!parsed || typeof parsed.version !== 'number') return null;
+    if (parsed.version !== CURRENT_RUN_SAVE_VERSION) {
+      console.warn(`[runSaveService] Incompatible run save version: got ${parsed.version}, expected ${CURRENT_RUN_SAVE_VERSION}. Discarding.`);
+      return null;
+    }
     return {
       runState: deserializeRunState(parsed.runState),
       currentScreen: parsed.currentScreen,

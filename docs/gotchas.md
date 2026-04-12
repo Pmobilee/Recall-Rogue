@@ -3857,3 +3857,23 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix (2026-04-12):** After checking the Svelte store, `getRewardChoices()` now falls back to reading `scene.getItems()` from the active `RewardRoomScene` and filtering for uncollected card-type items. Extracted `mapCardToChoice()` helper that uses live mastery stats (matching the `getCombatState` hand-mapping logic) so both code paths produce consistent `baseEffectValue` output.
 
 **Rule:** When two code paths both lead to the same game state but write to different data sources (Svelte store vs. Phaser scene state), the perception API must check both. Always trace which path actually writes the authoritative state for each screen.
+
+---
+
+### 2026-04-12 — reckless mechanic dealt zero net damage against block-stacking enemies
+
+**What:** The `reckless` case in `cardEffectResolver.ts` called `applyAttackDamage(finalValue)` without setting `result.damageDealtBypassesBlock = true`. Against enemies with block, the full damage was absorbed — the player took self-damage but dealt zero net damage. The card was effectively a liability against the block-stacking enemy archetype.
+
+**Why:** The `piercing` mechanic already used `damageDealtBypassesBlock` correctly (line 751). The reckless case was written before this field existed and was never updated. The self-damage trade-off only makes sense if the hit always lands.
+
+**Fix (2026-04-12):** Added `result.damageDealtBypassesBlock = true` before `applyAttackDamage(finalValue)` in the reckless case. Also updated `description` in `mechanics.ts` from `'High damage, self-damage.'` to `'Ignores block. Self-damage.'` to surface this property to players.
+
+---
+
+### 2026-04-12 — loadActiveRun() version guard applied (closes 2026-04-11 gotcha)
+
+**What:** `loadActiveRun()` previously validated only `typeof parsed.version === 'number'`, accepting any version number including future incompatible ones.
+
+**Fix (2026-04-12):** Added `CURRENT_RUN_SAVE_VERSION = 1` constant in `runSaveService.ts` and an exact-match guard (`parsed.version !== CURRENT_RUN_SAVE_VERSION`). Saves with a non-matching version log a warning and return `null`, preventing runtime errors from incompatible schema. All 17 existing save-service tests pass with version 1 saves.
+
+**Note:** The 2026-04-11 gotcha suggested `> CURRENT_SAVE_VERSION`. The exact-match (`!==`) is stricter: it also rejects downgrade scenarios (loading v2 code on a v3 save) where a field-addition migration would be needed to backfill expected defaults.

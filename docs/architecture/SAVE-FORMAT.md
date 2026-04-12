@@ -65,6 +65,7 @@ Note: `src/services/saveService.ts` still exports `SAVE_KEY = 'recall-rogue-save
 | Domain | Version field | Current constant |
 | --- | --- | --- |
 | Full player save | `PlayerSave.version` | `SAVE_VERSION = 3` (`saveService.ts`) |
+| Active run checkpoint | `RunSaveState.version` | `CURRENT_RUN_SAVE_VERSION = 1` (`runSaveService.ts`) — exact-match guard rejects mismatches |
 
 ## Save version history
 

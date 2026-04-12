@@ -760,6 +760,9 @@ export function resolveCardEffect(
     }
     case 'reckless': {
       result.selfDamage = card.secondaryValue ?? mechanic?.secondaryValue ?? 3;
+      // Reckless bypasses enemy block — the self-damage trade-off only makes sense
+      // if the attack always lands for full value, even against block-stacking enemies.
+      result.damageDealtBypassesBlock = true;
       applyAttackDamage(finalValue);
       // Tag: reckless_selfdmg_scale3 — add selfDamageTakenThisEncounter * 3 as bonus damage.
       // Note: selfDamageTakenThisEncounter is the value BEFORE this play's self-damage.

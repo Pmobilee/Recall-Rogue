@@ -288,7 +288,7 @@ The old helpers (`getMasteryBaseBonus`, `getMasterySecondaryBonus`, `getMasteryA
 | L4 | 0 | 0 | 3 | — | Draw 3! |
 | L5 | 0 | **0** | 3 | scout_scry2 | FREE! Draw 3 + scry 2 |
 
-**`reckless`** — Self-damage decreases as you master it (Great tier):
+**`reckless`** — Ignores enemy block. Self-damage decreases as you master it (Great tier):
 
 | Level | QP | CC (×1.50) | Self-Dmg | Notes |
 |-------|-----|-----------|---------|-------|

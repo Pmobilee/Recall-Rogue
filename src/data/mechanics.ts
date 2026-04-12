@@ -73,7 +73,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   },
   {
     id: 'reckless', name: 'Reckless', type: 'attack',
-    description: 'High damage, self-damage.',
+    description: 'Ignores block. Self-damage.',
     baseValue: 12, apCost: 1, maxPerPool: 0, secondaryValue: 3, tags: ['risk'], launchPhase: 1, unlockLevel: 0,
     quickPlayValue: 6, chargeCorrectValue: 36, chargeWrongValue: 4,
   },
