@@ -109,7 +109,7 @@ describe('createNewPlayer — field types and defaults', () => {
     expect(save.lifetimeEnemyKillCounts).toBeDefined();
     expect(typeof save.lifetimeEnemyKillCounts).toBe('object');
     expect(Array.isArray(save.lifetimeEnemyKillCounts)).toBe(false);
-    expect(Object.keys(save.lifetimeEnemyKillCounts)).toHaveLength(0);
+    expect(Object.keys(save.lifetimeEnemyKillCounts ?? {})).toHaveLength(0);
   });
 
   it('characterLevel is 1 — dev override must not leak', () => {
