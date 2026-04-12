@@ -2932,7 +2932,11 @@
     {/each}
 
     {#if wowFactorText}
-      <div class="wow-factor-overlay" class:wow-visible={wowFactorVisible}>{wowFactorText}</div>
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <div class="wow-factor-overlay" class:wow-visible={wowFactorVisible}
+        onclick={() => { wowFactorVisible = false; setTimeout(() => { wowFactorText = null }, 200) }}
+      >{wowFactorText}</div>
     {/if}
 
     {#if turnBannerText}
@@ -4013,16 +4017,17 @@
     border-radius: 10px;
     padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     line-height: 1.4;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 300ms ease, transform 300ms ease;
+    transition: opacity 200ms ease, transform 200ms ease;
   }
 
   .wow-factor-overlay.wow-visible {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 200ms ease, transform 200ms ease;
+    transition: opacity 150ms ease, transform 150ms ease;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -4368,7 +4373,7 @@
     position: fixed;
     top: 28%;
     right: auto;
-    left: calc(50% - calc(220px * var(--layout-scale, 1)));
+    left: calc(39% - calc(220px * var(--layout-scale, 1)));
     bottom: auto;
     transform: translateX(-100%);
     transition: left 350ms cubic-bezier(0.33, 1, 0.68, 1), top 350ms cubic-bezier(0.33, 1, 0.68, 1);
@@ -4384,7 +4389,7 @@
   }
 
   .layout-landscape.quiz-active .enemy-intent-bubble {
-    left: calc(72% - calc(220px * var(--layout-scale, 1)));
+    left: calc(61% - calc(220px * var(--layout-scale, 1)));
     right: auto;
     top: 28%;
     transform: translateX(-100%);
@@ -4461,6 +4466,37 @@
   /* Tighten status effect icon containers in landscape */
   :global(.layout-landscape .status-effect-bar-player .status-icon-wrapper) {
     padding: calc(2px * var(--layout-scale, 1));
+  }
+
+  /* Enemy power badges: to the right of the Phaser enemy HP bar, vertically centered with it.
+     HP bar: center at 50% X, Y at 14vh, width ~800px scaled. Right edge ≈ 75%. */
+  :global(.layout-landscape .enemy-power-badges) {
+    position: fixed;
+    top: 14vh;
+    left: 76%;
+    right: auto;
+    transform: translateY(-50%);
+    flex-direction: row;
+  }
+
+  :global(.layout-landscape .enemy-power-badges .badge-icon) {
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
+  }
+
+  /* Power tooltip anchored below badges */
+  :global(.layout-landscape .power-tooltip) {
+    left: 76%;
+    right: auto;
+    top: calc(14vh + calc(24px * var(--layout-scale, 1)));
+    transform: none;
+  }
+
+  /* Quiz-active: enemy slides right to ~72%, so HP bar right edge shifts to ~97%.
+     Badges follow — pin just past the right edge of the shifted bar. */
+  :global(.layout-landscape.quiz-active .enemy-power-badges) {
+    left: 96%;
+    right: auto;
   }
 
   /* Must-charge tooltip: above center of hand strip */

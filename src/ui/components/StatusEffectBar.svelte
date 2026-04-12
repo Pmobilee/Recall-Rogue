@@ -235,8 +235,9 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(240px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    width: calc(340px * var(--layout-scale, 1));
+    max-width: calc(100vw - calc(32px * var(--layout-scale, 1)));
+    padding: calc(14px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
     background: rgba(15, 23, 42, 0.95);
     border: 1px solid rgba(148, 163, 184, 0.3);
     border-radius: 10px;
@@ -266,27 +267,27 @@
   }
 
   .popup-icon {
-    font-size: calc(16px * var(--layout-scale, 1));
+    font-size: calc(24px * var(--layout-scale, 1));
     flex-shrink: 0;
-    width: calc(24px * var(--layout-scale, 1));
+    width: calc(32px * var(--layout-scale, 1));
     text-align: center;
   }
 
   .popup-text {
     display: flex;
     flex-direction: column;
-    gap: calc(2px * var(--layout-scale, 1));
+    gap: calc(3px * var(--layout-scale, 1));
   }
 
   .popup-name {
-    font-size: calc(12px * var(--layout-scale, 1));
+    font-size: calc(18px * var(--layout-scale, 1));
     font-weight: 700;
   }
 
   .popup-desc {
-    font-size: calc(11px * var(--layout-scale, 1));
+    font-size: calc(16px * var(--layout-scale, 1));
     color: #94a3b8;
-    line-height: 1.3;
+    line-height: 1.4;
   }
 
   .effect-sprite-icon {
@@ -296,8 +297,8 @@
   }
 
   .popup-sprite-icon {
-    width: calc(30px * var(--layout-scale, 1));
-    height: calc(30px * var(--layout-scale, 1));
+    width: calc(40px * var(--layout-scale, 1));
+    height: calc(40px * var(--layout-scale, 1));
     object-fit: contain;
     flex-shrink: 0;
   }

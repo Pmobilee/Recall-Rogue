@@ -265,7 +265,36 @@
     const len = question.length
     if (len < 30) return 'quiz-text-short'
     if (len < 80) return 'quiz-text-medium'
-    return 'quiz-text-long'
+    if (len < 150) return 'quiz-text-long'
+    if (len < 250) return 'quiz-text-extra-long'
+    return 'quiz-text-max-long'
+  })
+
+  /** Content-aware grid class for answer buttons based on count and text length. */
+  let answerLayoutClass = $derived.by(() => {
+    const count = answers.length
+    const maxLen = Math.max(...answers.map(a => a.length))
+    // True/False: always side-by-side
+    if (count === 2 && answers.every(a => ['True', 'False', 'Yes', 'No'].includes(a)))
+      return 'answers-tf-pair'
+    // Any answer >50 chars OR more than 4 answers: single column
+    if (maxLen > 50 || count > 4) return 'answers-single-column'
+    // 2 short answers: side-by-side
+    if (count === 2 && maxLen < 30) return 'answers-two-wide'
+    // 3-4 short answers: 2x2 grid
+    if (count >= 3 && count <= 4 && maxLen < 30) return 'answers-grid-2x2'
+    return 'answers-single-column'
+  })
+
+  /** Reduces answer button font size when any answer is very long. */
+  let answerFontClass = $derived.by(() => {
+    const maxLen = Math.max(...answers.map(a => a.length))
+    return maxLen > 80 ? 'answer-font-small' : ''
+  })
+
+  /** Left-aligns question text for longer questions to improve readability. */
+  let questionAlignClass = $derived.by(() => {
+    return question.length >= 80 ? 'quiz-align-left' : ''
   })
 
   /** Whether the current fact is Japanese. */
@@ -805,6 +834,7 @@
     </div>
   {/if}
 
+  <div class="question-zone">
   {#if questionImageUrl}
     <div class="question-image-container">
       <img
@@ -820,7 +850,7 @@
       <img src={imageAssetPath} alt="Identify this" class="quiz-asset-image" />
     </div>
   {/if}
-  <div class="card-question {questionLengthClass}">
+  <div class="card-question {questionLengthClass} {questionAlignClass}">
     {#if japaneseParts}
       {japaneseParts.before}<FuriganaText
         text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word}
@@ -857,6 +887,7 @@
       {question}
     {/if}
   </div>
+  </div><!-- end .question-zone -->
   {#if timerEnabled}
     <div class="timer-bar-container">
       <div
@@ -874,6 +905,7 @@
     {/if}
   {/if}
 
+  <div class="answer-zone">
   {#if effectiveResponseMode === 'map_pin' && mapCoordinates}
     <div class="map-pin-quiz-container">
       <MapPinDrop
@@ -995,11 +1027,7 @@
     </div>
   {:else}
     <div
-      class="card-answers"
-      class:card-answers-landscape={$isLandscape}
-      class:card-answers-landscape-2={$isLandscape && answers.length === 2}
-      class:card-answers-landscape-3={$isLandscape && answers.length === 3}
-      class:card-answers-landscape-4={$isLandscape && answers.length >= 4}
+      class="card-answers {$isLandscape ? answerLayoutClass : ''} {answerFontClass}"
     >
       {#each answers as answer, i}
         <button
@@ -1022,6 +1050,7 @@
       {/each}
     </div>
   {/if}
+  </div><!-- end .answer-zone -->
 
   {#if waitingForGotIt && grammarNote}
     <div class="grammar-note" role="note" aria-label="Grammar Note">
@@ -1112,11 +1141,13 @@
     /* Vertically: fill arena above stats bar + card hand */
     top: calc(var(--topbar-height, 4.5vh) + calc(40px * var(--layout-scale, 1)));
     bottom: calc(9vh + calc(16px * var(--layout-scale, 1)));
-    /* Center content vertically within the panel */
+    /* Two-zone flex layout: question-zone (40%) + answer-zone (60%) */
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
+    /* isolation: isolate creates a containing block for absolute children (badge)
+       without overriding position: fixed — position: relative would break top/bottom pinning */
     padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     /* Layout overrides */
     overflow: hidden;
@@ -1140,29 +1171,78 @@
     to   { transform: translateX(0); }
   }
 
-  /* Landscape answer layout — flexible columns based on answer count (spec §5) */
-  .card-answers-landscape {
+  /* Category badge — absolute top-left in landscape so it does not consume flex space */
+  .card-expanded-landscape .card-header {
+    position: absolute;
+    top: calc(12px * var(--layout-scale, 1));
+    left: calc(16px * var(--layout-scale, 1));
+    right: auto;
+    padding: 0;
+    min-height: auto;
+    z-index: 5;
+  }
+
+  .card-expanded-landscape .header-domain {
+    font-size: calc(11px * var(--text-scale, 1));
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    color: rgba(200, 180, 120, 0.65);
+  }
+
+  /* Two-zone layout: question zone takes ~40% flex space in landscape */
+  .card-expanded-landscape .question-zone {
+    flex: 1 1 40%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* Two-zone layout: answer zone takes ~60% flex space in landscape */
+  .card-expanded-landscape .answer-zone {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* Content-based answer grid layouts (landscape only) */
+  .answers-tf-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: calc(8px * var(--layout-scale, 1));
   }
 
-  /* 2 answers: two wide buttons side by side */
-  .card-answers-landscape-2 .answer-btn {
-    flex: 1 1 calc(50% - 4px);
-    min-width: 0;
+  .answers-two-wide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
-  /* 3 answers: three equal columns */
-  .card-answers-landscape-3 .answer-btn {
-    flex: 1 1 calc(33% - 6px);
-    min-width: 0;
+  .answers-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(8px * var(--layout-scale, 1));
   }
 
-  /* 4+ answers: 2×2 grid (flex wrap, two per row) */
-  .card-answers-landscape-4 .answer-btn {
-    flex: 1 1 calc(50% - 4px);
-    min-width: 0;
+  .answers-single-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  /* Answer font reduction when any answer is very long (>80 chars) */
+  .answer-font-small .answer-btn {
+    font-size: calc(14px * var(--text-scale, 1));
+  }
+
+  /* Image question max-height in landscape */
+  .card-expanded-landscape .quiz-asset-image {
+    max-height: 40vh;
   }
 
   /* AR-76: Keyboard shortcut badge on answer buttons — gold-toned game style */
@@ -1385,6 +1465,18 @@
     font-size: calc(18px * var(--text-scale, 1));
   }
 
+  .card-question.quiz-text-extra-long {
+    font-size: calc(16px * var(--text-scale, 1));
+  }
+
+  .card-question.quiz-text-max-long {
+    font-size: calc(15px * var(--text-scale, 1));
+  }
+
+  .card-question.quiz-align-left {
+    text-align: left;
+  }
+
   .grammar-blank {
     display: inline-block;
     min-width: calc(60px * var(--layout-scale, 1));
@@ -1446,16 +1538,16 @@
 
   /* ── Answer buttons: dark gradient with gold hover ── */
   .answer-btn {
-    min-height: calc(56px * var(--layout-scale, 1));
+    min-height: calc(48px * var(--layout-scale, 1));
     width: 100%;
     background: linear-gradient(180deg, rgba(30, 40, 60, 0.95) 0%, rgba(20, 28, 45, 0.98) 100%);
     border: 1.5px solid rgba(150, 160, 180, 0.3);
     border-radius: 6px;
     color: #e2e8f0;
     font-family: var(--font-rpg);
-    font-size: calc(15px * var(--text-scale, 1));
+    font-size: calc(18px * var(--text-scale, 1));
     line-height: 1.5;
-    padding: calc(14px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     text-align: left;
     transition: all 150ms ease;
     cursor: pointer;

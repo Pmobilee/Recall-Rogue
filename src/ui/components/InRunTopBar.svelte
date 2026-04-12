@@ -701,7 +701,7 @@
      ============================================================ */
   .segment-name {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(21px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.85);
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -710,14 +710,14 @@
 
   .floor-label {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.6);
     white-space: nowrap;
   }
 
   .progress-divider {
     color: rgba(255, 255, 255, 0.25);
-    font-size: calc(10px * var(--text-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     line-height: 1;
   }
 
@@ -748,14 +748,14 @@
   }
 
   .gold-icon-img {
-    width: calc(18px * var(--layout-scale, 1));
-    height: calc(18px * var(--layout-scale, 1));
+    width: calc(24px * var(--layout-scale, 1));
+    height: calc(24px * var(--layout-scale, 1));
     object-fit: contain;
   }
 
   .gold-value {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(16px * var(--text-scale, 1));
+    font-size: calc(24px * var(--text-scale, 1));
     font-weight: 700;
     color: #fbbf24;
     line-height: 1;
@@ -848,18 +848,21 @@
      ============================================================ */
   .relic-tooltip {
     position: absolute;
-    top: calc(100% + calc(6px * var(--layout-scale, 1)));
+    top: calc(100% + calc(8px * var(--layout-scale, 1)));
     right: 0;
     background: rgba(14, 20, 32, 0.97);
     border: 1.5px solid #c9a227;
-    border-radius: calc(6px * var(--layout-scale, 1));
-    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    max-width: calc(200px * var(--layout-scale, 1));
-    min-width: calc(130px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    max-width: calc(300px * var(--layout-scale, 1));
+    min-width: calc(180px * var(--layout-scale, 1));
     z-index: 300;
     pointer-events: auto;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
     white-space: normal;
+    /* Clamp to viewport so it never clips off-screen */
+    max-height: calc(80vh - var(--topbar-height, 4.5vh));
+    overflow-y: auto;
   }
 
   .tooltip-arrow {
@@ -875,7 +878,7 @@
 
   .tooltip-name {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     font-weight: 700;
     color: #f4d35e;
     margin-bottom: calc(4px * var(--layout-scale, 1));
@@ -884,7 +887,7 @@
   }
 
   .tooltip-desc {
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     color: #d4c9a8;
     line-height: 1.5;
     letter-spacing: 0.02em;
@@ -900,10 +903,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(var(--topbar-height, 4.5vh) * 0.65);
-    height: calc(var(--topbar-height, 4.5vh) * 0.7);
-    min-width: calc(44px * var(--layout-scale, 1));
-    min-height: calc(44px * var(--layout-scale, 1));
+    width: calc(var(--topbar-height, 4.5vh) * 0.585);
+    height: calc(var(--topbar-height, 4.5vh) * 0.63);
+    min-width: calc(40px * var(--layout-scale, 1));
+    min-height: calc(40px * var(--layout-scale, 1));
     border-radius: calc(4px * var(--layout-scale, 1));
     background: transparent;
     border: none;
@@ -930,8 +933,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(28px * var(--layout-scale, 1));
-    height: calc(36px * var(--layout-scale, 1));
+    width: calc(25px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
   }
 
   .deck-stack-cards {

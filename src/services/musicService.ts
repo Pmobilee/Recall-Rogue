@@ -13,7 +13,7 @@
 
 import { type MusicCategory, type MusicTrack, getTracksByCategory, getPlayableTracks } from '../data/musicTracks'
 import { ambientAudio } from './ambientAudioService'
-import { musicVolume, musicEnabled } from './cardAudioManager'
+import { musicVolume, musicEnabled, musicUserPaused } from './cardAudioManager'
 import { get } from 'svelte/store'
 import { playerSave } from '../ui/stores/playerData'
 
@@ -41,12 +41,9 @@ class MusicService {
   /** Duration for the next crossfadeIn call — reset to CROSSFADE_MS after use. */
   private _fadeInDuration: number = CROSSFADE_MS
   /**
-   * Set to true when the user explicitly pauses via MusicWidget.togglePlayPause().
-   * startWithFadeIn() and startIfNotPlaying() respect this flag so screen transitions
-   * within a run do not restart music the user deliberately silenced.
-   * Reset by resetUserPause() when a NEW run begins.
+   * User-pause state is now persisted via the musicUserPaused store in cardAudioManager.
+   * Reads/writes go through get(musicUserPaused) / musicUserPaused.set().
    */
-  private _userPaused = false
   /** Active crossfade-in interval, stored so user volume changes can cancel it immediately. */
   private _crossfadeInterval: ReturnType<typeof setInterval> | null = null
 
@@ -69,8 +66,8 @@ class MusicService {
     return this._userGestureReceived && this.ctx != null && this.ctx.state !== 'suspended'
   }
   get isPreviewing(): boolean { return this._isPreviewing }
-  /** True when the user has explicitly paused via the MusicWidget. See resetUserPause(). */
-  get userPaused(): boolean { return this._userPaused }
+  /** True when the user has explicitly paused via the MusicWidget. Persisted across sessions. */
+  get userPaused(): boolean { return get(musicUserPaused) }
 
   // ─── Initialisation ───────────────────────────────────────────────────────
 
@@ -337,32 +334,32 @@ class MusicService {
     this._userGestureReceived = true
     console.log(`[Music] togglePlayPause: playing=${this._isPlaying}, track=${this._currentTrack?.title ?? 'none'}`)
     if (!this._currentTrack) {
-      this._userPaused = false
+      musicUserPaused.set(false)
       void this.playCategory(this._currentCategory)
       return
     }
     if (this._isPlaying && this.currentAudio) {
       this.currentAudio.pause()
       this._isPlaying = false
-      this._userPaused = true
+      musicUserPaused.set(true)
       ambientAudio.setMusicCoexistence(false)
       this.notify()
     } else if (this.currentAudio) {
-      this._userPaused = false
+      musicUserPaused.set(false)
       void this.currentAudio.play().then(() => {
         this._isPlaying = true
         ambientAudio.setMusicCoexistence(true)
         this.notify()
       })
     } else {
-      this._userPaused = false
+      musicUserPaused.set(false)
       void this.playCategory(this._currentCategory)
     }
   }
 
   /** Start playback if not already playing. No-op without prior user gesture or user-initiated pause. */
   startIfNotPlaying(): void {
-    if (this._userPaused) return
+    if (get(musicUserPaused)) return
     if (this._isPlaying) return
     if (!this._userGestureReceived) return
     void this.playCategory(this._currentCategory)
@@ -371,11 +368,10 @@ class MusicService {
   /**
    * Start playback with a slow fade-in. Used at run start for a gentle intro.
    * No-op if already playing, no user gesture received, or user has explicitly paused.
-   * The user-pause guard prevents screen transitions within a run from restarting
-   * music the player deliberately silenced. Call resetUserPause() when a NEW run begins.
+   * The user-pause flag is persisted — pausing music stays across sessions.
    */
   startWithFadeIn(durationMs: number): void {
-    if (this._userPaused) return
+    if (get(musicUserPaused)) return
     if (this._isPlaying) return
     if (!this._userGestureReceived) return
     this._fadeInDuration = durationMs
@@ -383,12 +379,11 @@ class MusicService {
   }
 
   /**
-   * Clear the user-pause flag so startWithFadeIn/startIfNotPlaying will resume normally.
-   * Call this when a NEW run begins (not between screens within a run), so music plays
-   * fresh for the next run even if the player paused during the previous one.
+   * Clear the persisted user-pause flag. No longer called automatically at run start —
+   * the player's pause preference persists until they press play.
    */
   resetUserPause(): void {
-    this._userPaused = false
+    musicUserPaused.set(false)
   }
 
   /** Fade out to silence and stop. */

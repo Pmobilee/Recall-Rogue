@@ -408,6 +408,8 @@ export const sfxVolume = persistedWritable<number>('card:sfxVolume', 1)
 export const musicVolume = persistedWritable<number>('card:musicVolume', 0.5)
 export const ambientEnabled = persistedWritable<boolean>('card:ambientEnabled', true)
 export const ambientVolume = persistedWritable<number>('card:ambientVolume', 0.7)
+/** Persisted user-pause flag — survives page reloads and new runs. */
+export const musicUserPaused = persistedWritable<boolean>('card:musicUserPaused', false)
 
 let initialized = false
 

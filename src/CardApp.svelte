@@ -1146,16 +1146,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
   })
 
-  // Reset user-pause flag when entering a run, so music starts fresh.
-  // Uses a local tracker to fire only on the null → non-null transition.
-  let prevHadActiveRun = false
-  $effect(() => {
-    const hasRun = $activeRunState !== null
-    if (hasRun && !prevHadActiveRun) {
-      musicService.resetUserPause()
-    }
-    prevHadActiveRun = hasRun
-  })
+  // Music pause state is now persisted across sessions via musicUserPaused store.
+  // No resetUserPause() at run start — if the player paused, it stays paused.
 
   function nextSegmentName(floor: number): string {
     if (floor < 3) return 'Shallow Depths'
@@ -1590,14 +1582,15 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       onclick={handlePause}
       aria-label="Pause"
     ><span class="pause-icon" aria-hidden="true"></span></button>
-    {#if $devMode}
+    <!-- Dev skip button disabled — use __rrScenario.load() from console instead -->
+    <!-- {#if $devMode}
       <button
         type="button"
         class="dev-skip-btn"
         data-dev-only="true"
         onclick={() => devForceEncounterVictory()}
       >&#x23ED; Skip</button>
-    {/if}
+    {/if} -->
     {#if isMultiplayerRun}
       <MultiplayerHUD
         progress={opponentProgress}
@@ -2633,30 +2626,10 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   /* F-16: hover states moved to desktop.css (unscoped) */
 
-  /* Dev-only: skip encounter button (only shown in import.meta.env.DEV builds) */
-  .dev-skip-btn {
-    position: fixed;
-    top: calc(var(--topbar-height, 4.5vh) + 0.5vh + clamp(36px, 4vw, 52px) + calc(8px * var(--layout-scale, 1)));
-    right: 1vw;
-    z-index: 201;
-    background: rgba(255, 50, 50, 0.8);
-    color: white;
-    border: none;
-    border-radius: calc(4px * var(--layout-scale, 1));
-    padding: calc(4px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
-    font-size: calc(11px * var(--text-scale, 1));
-    cursor: pointer;
-    font-family: inherit;
-    min-width: calc(44px * var(--layout-scale, 1));
-    min-height: calc(44px * var(--layout-scale, 1));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .dev-skip-btn:hover {
-    background: rgba(255, 50, 50, 1);
-  }
+  /* Dev skip button disabled — CSS kept for reference if re-enabled
+  .dev-skip-btn { ... }
+  .dev-skip-btn:hover { ... }
+  */
 
   /* ── Doorway exit zone (shown after combat victory, before parallax transition) ── */
 
