@@ -6,10 +6,7 @@
   OR the auto-dismiss timer expires (default 10s, configurable via AUTO_DISMISS_MS).
 
   MEDIUM-11 (2026-04-10): Added auto-dismiss timer (10s after last line settles) and
-  improved hint contrast/size so it is unmissable. Persistent skip preference: if user
-  manually dismisses 3+ overlays in a row, a toast offers "Always skip narrative overlays?"
-  and sets setting_skipNarrativeOverlays in localStorage. When the skip preference is set,
-  the overlay jumps immediately to dissolve on mount.
+  improved hint contrast/size so it is unmissable.
 
   State machine: REVEALING -> DISSOLVING -> DONE
   - REVEALING: lines appear one at a time via auto-reveal timers (or on click).
@@ -35,39 +32,6 @@
     onDismiss: () => void;
   }
   let { lines, onDismiss }: Props = $props()
-
-  // Skip preference (MEDIUM-11)
-  const SKIP_PREF_KEY = 'setting_skipNarrativeOverlays'
-  const CONSECUTIVE_DISMISS_KEY = 'setting_narrativeConsecutiveDismisses'
-  const CONSECUTIVE_THRESHOLD = 3   // suggest always-skip after 3 manual dismissals
-
-  function readSkipPref(): boolean {
-    if (typeof window === 'undefined') return false
-    return window.localStorage.getItem(SKIP_PREF_KEY) === 'true'
-  }
-
-  function readConsecutiveDismisses(): number {
-    if (typeof window === 'undefined') return 0
-    return parseInt(window.localStorage.getItem(CONSECUTIVE_DISMISS_KEY) ?? '0', 10) || 0
-  }
-
-  function writeConsecutiveDismisses(n: number): void {
-    if (typeof window === 'undefined') return
-    window.localStorage.setItem(CONSECUTIVE_DISMISS_KEY, String(n))
-  }
-
-  function setSkipPref(enabled: boolean): void {
-    if (typeof window === 'undefined') return
-    window.localStorage.setItem(SKIP_PREF_KEY, String(enabled))
-    writeConsecutiveDismisses(0)
-  }
-
-  /** Whether always-skip preference is active. */
-  let skipPrefActive = $state(readSkipPref())
-
-  /** Whether the "always skip?" toast is showing. */
-  let showAlwaysSkipToast = $state(false)
-  let alwaysSkipToastTimer: ReturnType<typeof setTimeout> | null = null
 
   // Auto-dismiss timer (MEDIUM-11)
   /** ms after last line settles before auto-dismiss fires. Default 10 000ms. */
@@ -142,7 +106,6 @@
     if (autoRevealTimer)      { clearTimeout(autoRevealTimer);       autoRevealTimer = null }
     if (autoDismissTimer)     { clearTimeout(autoDismissTimer);      autoDismissTimer = null }
     if (countdownIntervalId)  { clearInterval(countdownIntervalId);  countdownIntervalId = null }
-    if (alwaysSkipToastTimer) { clearTimeout(alwaysSkipToastTimer);  alwaysSkipToastTimer = null }
   }
 
   /** Start the auto-dismiss countdown after the last line settles. */
@@ -237,39 +200,8 @@
     }, totalMs)
   }
 
-  /**
-   * Track a manual dismiss for the always-skip preference system.
-   * After CONSECUTIVE_THRESHOLD dismissals, show the toast offer.
-   */
-  function trackManualDismiss(): void {
-    const prev = readConsecutiveDismisses()
-    const next = prev + 1
-    writeConsecutiveDismisses(next)
-    // Toast is shown on the NEXT overlay mount if count >= threshold
-  }
-
   // Lifecycle
   onMount(() => {
-    // If skip pref is active, jump directly to dissolve
-    if (skipPrefActive) {
-      showAlwaysSkipToast = true
-      alwaysSkipToastTimer = setTimeout(() => {
-        showAlwaysSkipToast = false
-      }, 3500)
-      // Begin dissolve after a tiny delay so the overlay renders first
-      setTimeout(() => beginDissolve(), 150)
-      return
-    }
-
-    // Check if we should prompt the user about always-skip
-    const consecutiveDismisses = readConsecutiveDismisses()
-    if (consecutiveDismisses >= CONSECUTIVE_THRESHOLD) {
-      showAlwaysSkipToast = true
-      alwaysSkipToastTimer = setTimeout(() => {
-        showAlwaysSkipToast = false
-      }, 6000)
-    }
-
     // Schedule first reveal with start delay so overlay fade-in finishes first
     autoRevealTimer = setTimeout(() => {
       autoRevealTimer = null
@@ -304,7 +236,6 @@
 
     // Last line is settled -- dismiss (manual click)
     if (isLastLine) {
-      trackManualDismiss()
       beginDissolve()
     }
   }
@@ -316,16 +247,6 @@
     }
   }
 
-  function handleAlwaysSkip(): void {
-    setSkipPref(true)
-    skipPrefActive = true
-    showAlwaysSkipToast = false
-  }
-
-  function handleNeverSkip(): void {
-    writeConsecutiveDismisses(0)
-    showAlwaysSkipToast = false
-  }
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -366,34 +287,6 @@
     </div>
   {/if}
 
-  <!-- Always-skip toast (MEDIUM-11) -->
-  {#if showAlwaysSkipToast}
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <div
-      class="always-skip-toast"
-      role="alertdialog"
-      aria-label="Always skip narrative overlays?"
-      tabindex="0"
-      onclick={(e) => e.stopPropagation()}
-    >
-      {#if skipPrefActive}
-        <span class="toast-msg">Auto-skipping overlays.</span>
-        <button class="toast-btn toast-btn-secondary" onclick={handleNeverSkip} type="button">
-          Turn off
-        </button>
-      {:else}
-        <span class="toast-msg">Always skip story overlays?</span>
-        <div class="toast-actions">
-          <button class="toast-btn toast-btn-primary" onclick={handleAlwaysSkip} type="button">
-            Yes, always skip
-          </button>
-          <button class="toast-btn toast-btn-secondary" onclick={handleNeverSkip} type="button">
-            No
-          </button>
-        </div>
-      {/if}
-    </div>
-  {/if}
 </div>
 
 <style>
@@ -606,72 +499,6 @@
   @keyframes chevronBounce {
     0%, 100% { transform: translateY(0); }
     50%       { transform: translateY(calc(4px * var(--layout-scale, 1))); }
-  }
-
-  /* Always-skip toast (MEDIUM-11) */
-  .always-skip-toast {
-    position: absolute;
-    bottom: calc(110px * var(--layout-scale, 1));
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: calc(10px * var(--layout-scale, 1));
-    background: rgba(20, 20, 35, 0.96);
-    border: 1px solid rgba(140, 120, 255, 0.40);
-    border-radius: calc(12px * var(--layout-scale, 1));
-    padding: calc(14px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
-    z-index: 2;
-    cursor: default;
-    animation: toastSlideUp 0.35s ease forwards;
-    white-space: nowrap;
-  }
-
-  @keyframes toastSlideUp {
-    from { opacity: 0; transform: translateX(-50%) translateY(calc(16px * var(--layout-scale, 1))); }
-    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-  }
-
-  .toast-msg {
-    font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
-    font-size: calc(14px * var(--text-scale, 1));
-    color: #c8c8d0;
-    text-align: center;
-  }
-
-  .toast-actions {
-    display: flex;
-    gap: calc(10px * var(--layout-scale, 1));
-  }
-
-  .toast-btn {
-    cursor: pointer;
-    border: none;
-    border-radius: calc(8px * var(--layout-scale, 1));
-    font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
-    font-size: calc(13px * var(--text-scale, 1));
-    padding: calc(6px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
-    min-height: calc(36px * var(--layout-scale, 1));
-    transition: background 0.15s;
-  }
-
-  .toast-btn-primary {
-    background: rgba(120, 80, 220, 0.85);
-    color: #fff;
-  }
-
-  .toast-btn-primary:hover {
-    background: rgba(140, 100, 255, 0.95);
-  }
-
-  .toast-btn-secondary {
-    background: rgba(80, 80, 100, 0.6);
-    color: #c8c8d0;
-  }
-
-  .toast-btn-secondary:hover {
-    background: rgba(100, 100, 130, 0.8);
   }
 
   /* Playwright animation pause hook */
