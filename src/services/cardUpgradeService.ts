@@ -177,8 +177,8 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Iron Wave: attack + block simultaneously. Both scale together. L5: block doubles (iron_wave_block_double). */
   iron_wave: {
     levels: [
-      { qpValue: 2, secondaryValue: 3 },                                     // L0 — 2 dmg + 3 block
-      { qpValue: 3, secondaryValue: 4 },                                     // L1
+      { qpValue: 3, secondaryValue: 5 },                                     // L0 — 3 dmg + 5 block (restored from seed; was 2+3 — unintentional nerf)
+      { qpValue: 3, secondaryValue: 5 },                                     // L1 — prevent block regression from L0
       { qpValue: 3, secondaryValue: 5 },                                     // L2
       { qpValue: 4, secondaryValue: 5 },                                     // L3
       { qpValue: 4, secondaryValue: 6 },                                     // L4
