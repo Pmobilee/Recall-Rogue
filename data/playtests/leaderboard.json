@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T05:45:31.763Z",
+  "updatedAt": "2026-04-12T05:56:24.304Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -39,8 +39,8 @@
   ],
   "topIssueCounts": {
     "critical": 3,
-    "high": 27,
-    "medium": 53,
+    "high": 23,
+    "medium": 51,
     "low": 29
   },
   "issues": [
@@ -2136,7 +2136,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 60,
       "score": 5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": null,
@@ -2147,7 +2147,9 @@
       "reproductionSteps": [
         "Run: SELECT id, category, quiz_question, distractors FROM facts WHERE distractors LIKE '%undefined%'"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T05:56:24.304Z",
+      "resolvedBy": "false-positive: all 9 facts use undefined as legitimate AP Chemistry distractor (thermodynamic concept)"
     },
     {
       "canonicalId": "04-combat-core-issue-1744339200003-04-004",
@@ -2224,7 +2226,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 63,
       "score": 5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/ap_macroeconomics/quiz_01.jpg",
@@ -2242,7 +2244,9 @@
         "Draw balanced budget multiplier question",
         "Observe two '1' choices"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T05:55:57.356Z",
+      "resolvedBy": "3f4f76e71"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247394-06-003",
@@ -2329,7 +2333,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 66,
       "score": 5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "In a surplus graph, producer surplus is the triangular area below the price level and above the Supply curve. This area is...",
@@ -2345,7 +2349,9 @@
         "Load deck ap_microeconomics",
         "Draw producer surplus question"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T05:55:57.356Z",
+      "resolvedBy": "3f4f76e71"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247401-06-010",
@@ -2433,7 +2439,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 69,
       "score": 5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/anime_manga/quiz_01.jpg",
@@ -2450,7 +2456,9 @@
         "Load deck anime_manga",
         "Draw Bleach creator question"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T05:55:57.356Z",
+      "resolvedBy": "3f4f76e71"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247406-06-015",
@@ -3492,7 +3500,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 104,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": null,
@@ -3503,7 +3511,9 @@
       "reproductionSteps": [
         "Run: SELECT quiz_question FROM facts WHERE quiz_question LIKE '%Azerbaijani%'"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T05:55:57.356Z",
+      "resolvedBy": "3f4f76e71"
     },
     {
       "canonicalId": "04-combat-core-issue-1744339200004-04-005",
@@ -3905,7 +3915,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 117,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "screenshotPath": "evidence/screenshots/chess/chess-02-question.png",
@@ -3915,7 +3925,9 @@
         "Load study-deck-chess scenario",
         "Observe question text: 'White to move. [#Goifm]'"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T05:55:57.356Z",
+      "resolvedBy": "3f4f76e71"
     },
     {
       "canonicalId": "08-ascension-issue-1744332000001-08-002",
