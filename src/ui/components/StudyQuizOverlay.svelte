@@ -7,6 +7,7 @@
   import ChessBoard from './ChessBoard.svelte'
   import { getPlayerContext, gradeChessMove, isInCheck } from '../../services/chessGrader'
   import { updateChessElo } from '../../services/chessEloService'
+  import { displayAnswer } from '../../services/numericalDistractorService'
 
   interface Props {
     questions: QuizQuestion[]
@@ -227,12 +228,12 @@
                 class="answer-img-btn {getAnswerClass(answer)}"
                 onclick={() => selectAnswer(answer)}
                 disabled={showFeedback}
-                aria-label="Choice {i + 1}: {answer}"
+                aria-label="Choice {i + 1}: {displayAnswer(answer)}"
               >
                 <span class="study-kbd-hint" aria-hidden="true">{i + 1}</span>
                 <img src={currentQuestion.answerImagePaths![i]} alt="" class="study-flag-img" />
                 {#if showFeedback}
-                  <span class="study-image-label">{answer}</span>
+                  <span class="study-image-label">{displayAnswer(answer)}</span>
                 {/if}
               </button>
             {/each}
@@ -245,7 +246,7 @@
               onclick={() => selectAnswer(answer)}
               disabled={showFeedback}
             >
-              {answer}
+              {displayAnswer(answer)}
             </button>
           {/each}
         </div>
