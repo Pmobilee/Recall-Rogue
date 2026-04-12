@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T05:58:30.476Z",
+  "updatedAt": "2026-04-12T07:37:31.488Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -40,7 +40,7 @@
   "topIssueCounts": {
     "critical": 3,
     "high": 22,
-    "medium": 51,
+    "medium": 49,
     "low": 29
   },
   "issues": [
@@ -779,7 +779,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "First-turn intent bubble text",
@@ -790,7 +790,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#medium"
       },
       "score": 3,
-      "rank": 91
+      "rank": 91,
+      "resolvedAt": "2026-04-12T07:37:31.485Z",
+      "resolvedBy": "fdf216c47"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-M-002",
@@ -807,7 +809,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "2/2 floor-1 combats = same enemy",
@@ -818,7 +820,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#medium"
       },
       "score": 3,
-      "rank": 92
+      "rank": 92,
+      "resolvedAt": "2026-04-12T07:37:31.487Z",
+      "resolvedBy": "cf747e7c7"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-M-003",
