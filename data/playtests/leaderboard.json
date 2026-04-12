@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T02:30:00.000Z",
+  "updatedAt": "2026-04-12T03:00:00.000Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -187,7 +187,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "3 testers converging; fun-engagement subjective feedback rating 1/5 clarity",
@@ -198,7 +198,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 24,
-      "rank": 3
+      "rank": 3,
+      "resolvedAt": "2026-04-12T03:00:00.000Z",
+      "resolvedBy": "commits 2154f0fb0 (backend) + 31963f4f0 (UI) + db43541e8 (docs)"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-002",
@@ -217,7 +219,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "Strike baseEffectValue=8 vs observed=4; charge:quick=2.25× vs docs 1.5×",
@@ -228,7 +230,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 16,
-      "rank": 4
+      "rank": 4,
+      "resolvedAt": "2026-04-12T03:00:00.000Z",
+      "resolvedBy": "commits 2154f0fb0 (backend) + 31963f4f0 (UI) + db43541e8 (docs)"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-003",
@@ -247,7 +251,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "Visible across multiple turns; observed on Margin Gremlin Strength buff",
@@ -258,7 +262,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 16,
-      "rank": 5
+      "rank": 5,
+      "resolvedAt": "2026-04-12T03:00:00.000Z",
+      "resolvedBy": "commits 2154f0fb0 (backend) + 31963f4f0 (UI) + db43541e8 (docs)"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-004",
@@ -389,7 +395,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "15 → 17 → 22 within one turn, no buff animation",
@@ -400,7 +406,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 8,
-      "rank": 33
+      "rank": 33,
+      "resolvedAt": "2026-04-12T03:00:00.000Z",
+      "resolvedBy": "commits 2154f0fb0 (backend) + 31963f4f0 (UI) + db43541e8 (docs)"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-009",
@@ -597,7 +605,7 @@
       ],
       "firstSeen": "2026-04-12T01:50:00.000Z",
       "lastSeen": "2026-04-12T01:50:00.000Z",
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-12-001",
       "bestEvidence": {
         "metric": "4/5 testers had to discover new flow via DOM inspection + spawn workaround",
@@ -608,7 +616,9 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#high"
       },
       "score": 32,
-      "rank": 2
+      "rank": 2,
+      "resolvedAt": "2026-04-12T03:00:00.000Z",
+      "resolvedBy": "commits 2154f0fb0 (backend) + 31963f4f0 (UI) + db43541e8 (docs)"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-016",
@@ -1071,14 +1081,16 @@
       "title": "Build broken: chess.js, zod, @types/geojson imports unresolved",
       "description": "`npm run build` fails at Rollup resolution for `chess.js` (ChessBoard.svelte + chessGrader.ts), `zod` (curatedDeckSchema.ts), and `geojson` types (MapPinDrop.svelte + geoDataLoader.ts). All three are WIP features shipped by parallel agents without adding their deps to package.json. Blocks EVERY downstream step: Steam build, ship-gate verification, production bundle. Nothing can upload until resolved. Either install the three deps or revert the WIP feature commits that introduced the imports.",
       "source": "swift-splashing-crown.md alpha plan catchup",
-      "status": "open",
+      "status": "resolved",
       "score": 15,
       "affectedTracks": [
         "alpha-launch-blocker"
       ],
       "firstSeen": "2026-04-11T08:00:00.000Z",
       "suggestedFix": "`npm install chess.js zod @types/geojson` — OR identify the owning agent of each feature and have them either install the dep or revert their import. Minimum-viable path: install all three (they're small, mainstream libs), then address whether each feature ships in alpha or gets gated.",
-      "rank": 18
+      "rank": 18,
+      "resolvedAt": "2026-04-12T02:40:00.000Z",
+      "resolvedBy": "stale-sweep-2026-04-12 (verified: npm run typecheck=0 errors, npm run build=clean, npx vitest run=6121/6121 pass on main cd63bb9f9)"
     },
     {
       "canonicalId": "alpha-launch-blocker-002",
@@ -1112,7 +1124,7 @@
       "lastSeen": "2026-04-11T17:30:00.000Z",
       "rank": 20,
       "score": 15,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "CARD-AUDIT-2026-04-11",
       "bestEvidence": {
         "metric": "5 test failures, 6070 pass. Typecheck 0 errors.",
@@ -1128,7 +1140,9 @@
       "reproductionSteps": [
         "npx vitest run tests/unit/card-foundation.test.ts tests/unit/cardUpgradeService-apCost.test.ts"
       ],
-      "clusterBoost": 0
+      "clusterBoost": 0,
+      "resolvedAt": "2026-04-12T02:40:00.000Z",
+      "resolvedBy": "stale-sweep-2026-04-12 (verified: npm run typecheck=0 errors, npm run build=clean, npx vitest run=6121/6121 pass on main cd63bb9f9)"
     },
     {
       "canonicalId": "progression_difficulty_spike_early",
@@ -5543,6 +5557,6 @@
       "sourceBatch": "smoke-campaign-postmove-2026-03-14"
     }
   ],
-  "openCount": 141,
-  "resolvedCount": 30
+  "openCount": 134,
+  "resolvedCount": 37
 }
