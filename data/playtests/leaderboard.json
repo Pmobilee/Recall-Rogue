@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T07:57:47.683Z",
+  "updatedAt": "2026-04-12T08:05:59.198Z",
   "totalPlaythroughs": 22,
   "totalIssues": 171,
   "batches": [
@@ -39,8 +39,8 @@
   ],
   "topIssueCounts": {
     "critical": 3,
-    "high": 11,
-    "medium": 22,
+    "high": 10,
+    "medium": 16,
     "low": 21
   },
   "issues": [
@@ -2271,7 +2271,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 64,
       "score": 5,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "What does \"además\" mean?",
@@ -2287,7 +2287,9 @@
         "Load deck spanish (spanish_a1)",
         "Draw questions about además, incluso, or other adverbs with compound translations"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T08:05:59.198Z",
+      "resolvedBy": "74880c3dc"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247395-06-004",
@@ -3682,7 +3684,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 109,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "What type of bank deposit requires funds to remain for a set term and penalizes early withdrawal?",
@@ -3698,7 +3700,9 @@
         "Load deck ap_macroeconomics",
         "Draw question about bank deposit types"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T08:05:59.198Z",
+      "resolvedBy": "74880c3dc"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247396-06-005",
@@ -3715,7 +3719,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 110,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "Multiple vocabulary questions",
@@ -3732,7 +3736,9 @@
         "Draw 5+ questions",
         "Note 'store, shop', 'teach', 'meat' recurring"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T08:05:59.198Z",
+      "resolvedBy": "74880c3dc"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247397-06-006",
@@ -3749,7 +3755,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 111,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "In a particulate diagram showing a reaction, the circles and molecular models drawn on the right side represent...",
@@ -3765,7 +3771,9 @@
         "Load deck ap_chemistry",
         "Draw Unit 4 particulate diagram questions"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T08:05:59.198Z",
+      "resolvedBy": "74880c3dc"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247399-06-008",
@@ -3782,7 +3790,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 112,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "According to traditional Chinese sources, in what year was Confucius born?",
@@ -3798,7 +3806,9 @@
         "Load deck philosophy",
         "Draw Confucius birth year question"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T08:05:59.198Z",
+      "resolvedBy": "74880c3dc"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247400-06-009",
@@ -3815,7 +3825,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 113,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "What philosophical position is the Vaisheshika school best known for — its belief that reality is composed of?",
@@ -3831,7 +3841,9 @@
         "Load deck philosophy",
         "Draw Vaisheshika atomism question"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T08:05:59.198Z",
+      "resolvedBy": "74880c3dc"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247404-06-013",
@@ -3883,7 +3895,7 @@
       "lastSeen": "2026-04-11T11:30:00.000Z",
       "rank": 115,
       "score": 3,
-      "status": "open",
+      "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
       "bestEvidence": {
         "questionText": "The British Tea Act of 1773 provoked which event that escalated into the American Revolution?",
@@ -3899,7 +3911,9 @@
         "Load deck world_cuisines",
         "Draw Boston Tea Party question"
       ],
-      "clusterBoost": false
+      "clusterBoost": false,
+      "resolvedAt": "2026-04-12T08:05:59.198Z",
+      "resolvedBy": "74880c3dc"
     },
     {
       "canonicalId": "06-content-sample-issue-1775872247408-06-017",
