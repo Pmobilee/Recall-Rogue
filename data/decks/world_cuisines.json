@@ -7288,26 +7288,30 @@
       "id": "cultural_references",
       "description": "Literary works, historical events, and cultural references in food history",
       "factIds": [
-        "food_hist_tea_act",
         "food_dish_turkish_delight_narnia",
-        "food_hist_tagine_1001_nights"
+        "food_hist_tagine_1001_nights",
+        "food_hist_tea_act"
       ],
       "minimumSize": 3,
       "syntheticDistractors": [
         "The Odyssey",
         "Beowulf",
-        "Thousand and One Days",
         "Canterbury Tales",
-        "Mahabharata",
         "The Iliad",
         "Epic of Gilgamesh",
+        "Don Quixote",
         "Shahnameh",
+        "Panchatantra",
+        "Ramayana",
+        "Arthashastra",
         "Boston Massacre",
-        "Stamp Act protests",
-        "Continental Congress",
-        "American Civil War",
-        "French Revolution"
-      ]
+        "Stamp Act",
+        "French Revolution",
+        "Meiji Restoration",
+        "Silk Road Trade"
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Pool contains 1 historical event and 2 literary works, all food-related cultural touchstones; too few facts in each sub-category to split into separate pools while maintaining the 5-fact minimum per pool. Both literary and historical synth distractors are intentionally included."
     }
   ],
   "difficultyTiers": [

@@ -12576,16 +12576,30 @@
         "es-cefr-2997"
       ],
       "syntheticDistractors": [
-        "quickly",
+        "elderly",
+        "barely",
+        "never",
+        "only, just",
+        "probably",
+        "well",
         "rarely",
-        "almost",
-        "gently",
-        "finally",
-        "sometimes",
-        "carefully",
-        "suddenly"
+        "usually",
+        "perhaps",
+        "somehow",
+        "mostly",
+        "namely",
+        "likely",
+        "formerly",
+        "broadly",
+        "roughly",
+        "mainly",
+        "often",
+        "clearly",
+        "indeed"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Spanish adverbs at this CEFR level include both single-word and multi-word equivalents; pool is too small to split further while maintaining >=5 facts per sub-pool."
     }
   ],
   "synonymGroups": [

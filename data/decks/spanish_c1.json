@@ -28878,13 +28878,29 @@
         "es-cefr-5196"
       ],
       "syntheticDistractors": [
-        "quickly",
-        "rarely",
-        "almost",
-        "gently",
-        "finally",
-        "sometimes"
-      ]
+        "no",
+        "as",
+        "online",
+        "below, under",
+        "including, even",
+        "come in!",
+        "the distant past",
+        "day before yesterday",
+        "so, then; in that case",
+        "formerly",
+        "hereto",
+        "henceforth",
+        "therewith",
+        "thereby",
+        "inasmuch",
+        "nonetheless",
+        "straightaway",
+        "overhead",
+        "hereafter",
+        "thereupon"
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Spanish adverbs at this CEFR level include both single-word and multi-word equivalents; pool is too small to split further while maintaining >=5 facts per sub-pool."
     },
     {
       "id": "english_meanings_nouns",

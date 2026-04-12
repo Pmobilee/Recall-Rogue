@@ -643,6 +643,32 @@ function deckFactToFact(df: DeckFact, deckDomain: string): Fact {
     ageRating: 'kid',
     language: df.language,
     pronunciation: df.reading,
+
+    // Classification fields
+    categoryL1: df.categoryL1,
+    categoryL2: df.categoryL2,
+
+    // Sourcing
+    sourceName: df.sourceName,
+    sourceUrl: df.sourceUrl,
+
+    // Acceptable answer alternatives (DeckFact.acceptableAlternatives → Fact.acceptableAnswers)
+    acceptableAnswers: df.acceptableAlternatives,
+
+    // Visual / image quiz fields
+    quizMode: df.quizMode,
+    imageAssetPath: df.imageAssetPath,
+    visualDescription: df.visualDescription,
+
+    // Chess puzzle fields
+    fenPosition: df.fenPosition,
+    solutionMoves: df.solutionMoves,
+
+    // Japanese grammar deck fields
+    sentenceFurigana: df.sentenceFurigana,
+    sentenceRomaji: df.sentenceRomaji,
+    sentenceTranslation: df.sentenceTranslation,
+    grammarPointLabel: df.grammarPointLabel,
   };
 }
 

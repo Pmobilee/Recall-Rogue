@@ -16718,13 +16718,29 @@
         "es-cefr-c2-0831"
       ],
       "syntheticDistractors": [
-        "quickly",
-        "rarely",
-        "almost",
-        "gently",
-        "finally",
-        "sometimes"
-      ]
+        "sufficiently, rather, quite",
+        "quasi, almost",
+        "nowadays, in our time",
+        "apathetically",
+        "harmoniously",
+        "vigorously",
+        "laconically",
+        "perfidiously",
+        "formerly",
+        "boldly",
+        "incessantly",
+        "imperiously",
+        "magnanimously",
+        "inexorably",
+        "presumptuously",
+        "perspicaciously",
+        "equanimously",
+        "meticulously",
+        "irrepressibly",
+        "superciliously"
+      ],
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Spanish adverbs at this CEFR level include both single-word and multi-word equivalents; pool is too small to split further while maintaining >=5 facts per sub-pool."
     }
   ],
   "synonymGroups": [],

@@ -20316,16 +20316,30 @@
         "es-cefr-3680"
       ],
       "syntheticDistractors": [
+        "yearly, annual",
+        "monthly",
+        "heavenly",
+        "cunning",
+        "nice",
+        "cheerfully",
+        "frequently",
+        "broadly",
+        "roughly",
+        "formerly",
+        "gladly",
+        "briefly",
+        "slowly",
         "quickly",
-        "rarely",
-        "almost",
-        "gently",
-        "finally",
-        "sometimes",
-        "carefully",
-        "suddenly"
+        "calmly",
+        "boldly",
+        "wisely",
+        "deeply",
+        "softly",
+        "evenly"
       ],
-      "minimumSize": 5
+      "minimumSize": 5,
+      "homogeneityExempt": true,
+      "homogeneityExemptNote": "Spanish adverbs at this CEFR level include both single-word and multi-word equivalents; pool is too small to split further while maintaining >=5 facts per sub-pool."
     }
   ],
   "synonymGroups": [

@@ -16,7 +16,7 @@
       ],
       "chainThemeId": 0,
       "subDeckId": "ancient_western",
-      "answerTypePoolId": "concept_terms_tiny",
+      "answerTypePoolId": "philosophical_concepts_brief",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -93,7 +93,7 @@
       ],
       "chainThemeId": 0,
       "subDeckId": "ancient_western",
-      "answerTypePoolId": "concept_terms_tiny",
+      "answerTypePoolId": "philosophical_concepts_brief",
       "difficulty": 3,
       "funScore": 5,
       "distractors": [
@@ -1970,7 +1970,7 @@
       ],
       "chainThemeId": 1,
       "subDeckId": "eastern_classical",
-      "answerTypePoolId": "concept_terms_tiny",
+      "answerTypePoolId": "philosophical_concepts_brief",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -2022,7 +2022,7 @@
       ],
       "chainThemeId": 1,
       "subDeckId": "eastern_classical",
-      "answerTypePoolId": "concept_terms_tiny",
+      "answerTypePoolId": "philosophical_concepts_brief",
       "difficulty": 2,
       "funScore": 7,
       "distractors": [
@@ -2520,7 +2520,7 @@
       ],
       "chainThemeId": 1,
       "subDeckId": "eastern_classical",
-      "answerTypePoolId": "concept_terms_tiny",
+      "answerTypePoolId": "philosophical_concepts_brief",
       "difficulty": 2,
       "funScore": 6,
       "distractors": [
@@ -2974,7 +2974,7 @@
       ],
       "chainThemeId": 1,
       "subDeckId": "eastern_classical",
-      "answerTypePoolId": "concept_terms_tiny",
+      "answerTypePoolId": "philosophical_concepts_brief",
       "difficulty": 3,
       "funScore": 7,
       "distractors": [
@@ -3351,7 +3351,7 @@
       ],
       "chainThemeId": 1,
       "subDeckId": "eastern_classical",
-      "answerTypePoolId": "concept_terms_tiny",
+      "answerTypePoolId": "philosophical_concepts_brief",
       "difficulty": 1,
       "funScore": 6,
       "distractors": [
@@ -7412,7 +7412,7 @@
     },
     {
       "id": "philosophy_em_hobbes_leviathan_1651",
-      "correctAnswer": "{1651}",
+      "correctAnswer": "1651",
       "acceptableAlternatives": [
         "1651"
       ],
@@ -7448,7 +7448,7 @@
     },
     {
       "id": "philosophy_em_descartes_discourse_1637",
-      "correctAnswer": "{1637}",
+      "correctAnswer": "1637",
       "acceptableAlternatives": [
         "1637"
       ],
@@ -7484,7 +7484,7 @@
     },
     {
       "id": "philosophy_em_spinoza_herem_1656",
-      "correctAnswer": "{1656}",
+      "correctAnswer": "1656",
       "acceptableAlternatives": [
         "1656"
       ],
@@ -7520,10 +7520,10 @@
     },
     {
       "id": "philosophy_em_locke_essay_1690",
-      "correctAnswer": "{1690}",
+      "correctAnswer": "1690",
       "acceptableAlternatives": [
         "1690",
-        "{1689}"
+        "1689"
       ],
       "chainThemeId": 3,
       "subDeckId": "early_modern",
@@ -11803,7 +11803,7 @@
     },
     {
       "id": "philosophy_at_frege_begriffsschrift_year",
-      "correctAnswer": "{1879}",
+      "correctAnswer": "1879",
       "acceptableAlternatives": [
         "1879"
       ],
@@ -12063,7 +12063,7 @@
     },
     {
       "id": "philosophy_at_wittgenstein_investigations_year",
-      "correctAnswer": "{1953}",
+      "correctAnswer": "1953",
       "acceptableAlternatives": [
         "1953"
       ],
@@ -16086,18 +16086,9 @@
     },
     {
       "id": "concept_terms_tiny",
-      "label": "Philosophical Concepts — Single Words & Short Terms",
-      "answerFormat": "term",
       "factIds": [
-        "philosophy_aw_thales_arche",
-        "philosophy_aw_anaximenes_arche",
         "philosophy_aw_pyrrho_epoche",
         "philosophy_aw_iamblichus_theurgy",
-        "philosophy_ec_mencius_human_nature",
-        "philosophy_ec_xunzi_human_nature",
-        "philosophy_ec_four_noble_truths_second",
-        "philosophy_ec_vaisheshika_atomism",
-        "philosophy_ec_karma_shared_doctrine",
         "philosophy_em_machiavelli_virtu",
         "philosophy_em_spinoza_conatus",
         "philosophy_em_leibniz_monad",
@@ -16108,8 +16099,6 @@
         "philosophy_ct_benjamin_aura",
         "philosophy_ct_deleuze_rhizome"
       ],
-      "minimumSize": 5,
-      "homogeneityExempt": false,
       "syntheticDistractors": [
         "logos",
         "eidos",
@@ -16121,6 +16110,35 @@
         "physis",
         "dike",
         "aletheia"
+      ]
+    },
+    {
+      "id": "philosophical_concepts_brief",
+      "factIds": [
+        "philosophy_aw_thales_arche",
+        "philosophy_aw_anaximenes_arche",
+        "philosophy_ec_mencius_human_nature",
+        "philosophy_ec_xunzi_human_nature",
+        "philosophy_ec_four_noble_truths_second",
+        "philosophy_ec_vaisheshika_atomism",
+        "philosophy_ec_karma_shared_doctrine"
+      ],
+      "syntheticDistractors": [
+        "Fire",
+        "Earth",
+        "void",
+        "flux",
+        "chaos",
+        "logos",
+        "dharma",
+        "nirvana",
+        "samsara",
+        "tao",
+        "qi",
+        "yin",
+        "yang",
+        "wu",
+        "virtue"
       ]
     },
     {
@@ -16437,7 +16455,33 @@
       ],
       "minimumSize": 5,
       "homogeneityExempt": true,
-      "homogeneityExemptNote": "Numeric bracket values — not length-comparable; runtime generates distractors for bracket pools."
+      "homogeneityExemptNote": "Numeric bracket values — not length-comparable; runtime generates distractors for bracket pools.",
+      "syntheticDistractors": [
+        "1643",
+        "1724",
+        "1802",
+        "1848",
+        "1900",
+        "1913",
+        "1927",
+        "1943",
+        "1967",
+        "427 BCE",
+        "384 BCE",
+        "469 BCE",
+        "470 BCE",
+        "287 BCE",
+        "341 BCE",
+        "1588",
+        "1596",
+        "1714",
+        "1748",
+        "1770",
+        "1806",
+        "1818",
+        "1844",
+        "1872"
+      ]
     },
     {
       "id": "bracket_numbers",
