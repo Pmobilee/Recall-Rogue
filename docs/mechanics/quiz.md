@@ -644,7 +644,9 @@ All 620,000+ filtered Lichess CC0 puzzles are compiled into `public/chess-puzzle
 | `excludeIds?` | Set of already-seen puzzle IDs, excluded client-side |
 | `count?` | Number of puzzles to return (default 10) |
 
-The DB is lazy-loaded on first call to `getNextPuzzles()`. If the fetch fails, the caller falls back to the baked 300 facts from `curated.db`.
+The DB is lazy-loaded on first call to `getNextPuzzles()`. If the fetch fails, the caller falls back to the baked 298 facts from `curated.db`.
+
+**Run-start injection:** `gameFlowController.ts` calls `injectChessPuzzlesForDeck()` from `src/services/chessRunInjection.ts` when `run.runDeckId === 'chess_tactics'`. This replaces the in-memory baked deck with 30 live Elo-targeted puzzles before the first encounter. If `chess-puzzles.db` is not yet loaded at run start, a secondary injection fires at the mystery room guard. See `docs/content/deck-system.md` — Runtime Puzzle Injection for full details.
 
 **DB schema:** `puzzles(id, fen, moves, rating, themes, game_url)` — `rating` is indexed for fast range queries.
 

@@ -1128,11 +1128,26 @@ Each chain theme has one `AnswerTypePool` with `answerFormat: 'move'`. Because t
 
 All 620,000+ filtered Lichess CC0 puzzles live in `public/chess-puzzles.db` (124 MB SQLite). This is separate from `curated.db` and is loaded lazily at runtime by `src/services/chessPuzzleService.ts`.
 
-**Puzzle selection:** Elo-targeted (±200 of player rating), optional theme filter, excludes already-seen IDs. Falls back to the 300 baked facts if the DB fetch fails.
+**Puzzle selection:** Elo-targeted (±200 of player rating), optional theme filter, excludes already-seen IDs. Falls back to the 298 baked facts if the DB fetch fails.
 
 **Build command:** `npm run build:chess` — runs `scripts/build-chess-db.mjs`, reading from `data/sources/lichess/puzzles-filtered.json`.
 
 **DB schema:** `puzzles(id, fen, moves, rating, themes, game_url)` — `rating` column is indexed.
+
+### Runtime Puzzle Injection (added 2026-04-12)
+
+When a `chess_tactics` run starts, `gameFlowController.ts` calls `injectChessPuzzlesForDeck(run.runDeckId)` from `src/services/chessRunInjection.ts`. This replaces the baked fallback facts with 30 live puzzles targeted to the player's current Elo.
+
+**Injection points:**
+1. **Run start** — after `run.runDeckId` is set, before `initRunRng()`. Covers both `standard` and `study` (Study Temple) modes.
+2. **Mystery room guard** — after `ensureCuratedDeckLoaded()` for study-mode runs where `deckId === 'chess_tactics'`. Acts as a late-injection fallback if `chess-puzzles.db` finished loading between run start and first mystery room.
+
+**Behaviour:**
+- If `isChessPuzzleDbReady()` returns false, injection is skipped silently and the baked deck remains active.
+- Target count: 30 puzzles (constant `CHESS_INJECTION_COUNT` in `chessRunInjection.ts`).
+- Target rating: `getChessElo()` from `src/services/chessEloService.ts` (defaults to 1000 for new players).
+- On any error, falls back to baked deck and logs a warning — run continues normally.
+- `refreshChessTacticsFacts()` in `curatedDeckStore.ts` mutates the in-memory `chess_tactics` deck entry and updates the fact index.
 
 ### Production Pipeline
 
