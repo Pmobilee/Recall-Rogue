@@ -298,3 +298,61 @@ describe('tickStatusEffects — Burn and Bleed produce no passive damage', () =>
     expect(bleed?.turnsRemaining).toBe(2);
   });
 });
+
+// ─────────────────────────────────────────────────────────
+// PERMANENT_DURATION_SENTINEL — Bug 2 regression test
+// Permanent buffs (Warcry Strength at 9999) must NEVER
+// tick down. Pre-fix code decremented every effect
+// unconditionally, causing 9999 → 9998 → ... in the UI.
+// ─────────────────────────────────────────────────────────
+
+describe('Bug 2 — PERMANENT_DURATION_SENTINEL never decrements', () => {
+  it('effect with turnsRemaining=9999 remains at 9999 after 5 ticks', async () => {
+    const { tickStatusEffects, PERMANENT_DURATION_SENTINEL } = await import('../../src/data/statusEffects');
+    const effects: StatusEffect[] = [
+      { type: 'strength', value: 2, turnsRemaining: PERMANENT_DURATION_SENTINEL },
+    ];
+    for (let i = 0; i < 5; i++) {
+      tickStatusEffects(effects);
+    }
+    // Effect must still be present and unchanged
+    const str = effects.find(e => e.type === 'strength');
+    expect(str).toBeDefined();
+    expect(str!.turnsRemaining).toBe(PERMANENT_DURATION_SENTINEL);
+    expect(str!.value).toBe(2);
+  });
+
+  it('PERMANENT_DURATION_SENTINEL value is 9999', async () => {
+    const { PERMANENT_DURATION_SENTINEL } = await import('../../src/data/statusEffects');
+    // The constant is the source of truth — this locks it against accidental changes.
+    expect(PERMANENT_DURATION_SENTINEL).toBe(9999);
+  });
+
+  it('normal effect still ticks down 3 → 2 → 1 → expires', async () => {
+    const { tickStatusEffects } = await import('../../src/data/statusEffects');
+    const effects: StatusEffect[] = [
+      { type: 'strength', value: 1, turnsRemaining: 3 },
+    ];
+    tickStatusEffects(effects);
+    expect(effects[0].turnsRemaining).toBe(2);
+    tickStatusEffects(effects);
+    expect(effects[0].turnsRemaining).toBe(1);
+    tickStatusEffects(effects);
+    // Should be removed (turnsRemaining hit 0)
+    expect(effects.find(e => e.type === 'strength')).toBeUndefined();
+  });
+
+  it('permanent effect co-exists with normal effect; normal expires, permanent remains', async () => {
+    const { tickStatusEffects, PERMANENT_DURATION_SENTINEL } = await import('../../src/data/statusEffects');
+    const effects: StatusEffect[] = [
+      { type: 'weakness', value: 1, turnsRemaining: 2 },
+      { type: 'strength', value: 3, turnsRemaining: PERMANENT_DURATION_SENTINEL },
+    ];
+    tickStatusEffects(effects);
+    tickStatusEffects(effects);
+    // weakness should be gone; strength should remain intact
+    expect(effects.find(e => e.type === 'weakness')).toBeUndefined();
+    const str = effects.find(e => e.type === 'strength');
+    expect(str?.turnsRemaining).toBe(PERMANENT_DURATION_SENTINEL);
+  });
+});

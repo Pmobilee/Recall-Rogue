@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-11 (Issue 11 UI: intent badge shows HP damage after block decay)
+> **Last verified:** 2026-04-12 (Bug 3 fix: EnemyInstance.lockedDisplayDamage field added; intent display no longer drifts mid-turn from live shield mutations)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -274,6 +274,16 @@ Accounts for block decay applied at end-of-player-turn (before the enemy swings)
 - Fully blocked: "Fully blocked (raw absorbed)" — bubble gets `.intent-bubble-blocked` CSS class (muted colors) and `data-intent-blocked="true"` attribute
 
 **Result:** The enemy intent display shows the same number that `takeDamage()` receives, including coop canary scaling. This fixes the AR-263 bug where coop intent showed 18 but only 11 was applied (canary multiplier 0.6 not reflected in display).
+
+**`EnemyInstance.lockedDisplayDamage` field (Bug 3, 2026-04-12):**
+Intent display drift was observed in BATCH-2026-04-12-001 (H-score 8): the UI had a `$derived.by` that re-computed intent damage from live `turnState.playerState.shield`. Every card play mutated shield, retriggered the derived, and recomputed the displayed value mid-turn — the intent bubble would fluctuate as the player built block during their turn.
+
+Fix: `turnManager.ts` now calls `computeIntentDisplayDamageSnapshot(intent, enemy, playerState, scalingCtx)` (exported from `intentDisplay.ts`) immediately after every `rollNextIntent()` call, and stores the result on `enemy.lockedDisplayDamage`. The UI agent's next pass should read `enemy.lockedDisplayDamage` instead of re-deriving. The field is `undefined` on pre-fix saves (backward compat: fall back to `computeIntentDisplayDamage()`).
+
+`computeIntentDisplayDamageSnapshot(intent, enemy, playerState, scalingCtx?)` in `src/services/intentDisplay.ts`:
+- Identical formula to `computeIntentDisplayDamage` — returns raw scaled damage, NOT block-adjusted.
+- Called at intent-roll time (not at render time).
+- Ensures the displayed value matches the damage that will actually be dealt regardless of mid-turn shield mutations.
 
 ---
 

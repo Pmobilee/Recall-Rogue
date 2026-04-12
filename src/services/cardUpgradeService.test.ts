@@ -97,3 +97,48 @@ describe('Foresight AP cost — mastery-gated 0→1 (BATCH-ULTRA Cluster G)', ()
     }
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Bug 1 — baseEffectValue mismatch in getCombatState()
+//
+// playtestAPI.getCombatState() was returning hand[i].baseEffectValue = the
+// static Card.baseEffectValue set at creation time, while the resolver uses
+// getMasteryStats(id, level).qpValue which grows with mastery. Strike at L3
+// should report 6, not the L0 static value of 4.
+//
+// The fix computes effectiveQpValue = getMasteryStats(id, level).qpValue at
+// read time. These tests verify the stat table returns the correct values
+// that the fix would produce for Strike (the canonical example in the report).
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('Bug 1 — getMasteryStats qpValue diverges from card.baseEffectValue at mastery > 0', () => {
+  it('Strike L0: getMasteryStats qpValue matches the base quickPlayValue (4)', () => {
+    const stats = getMasteryStats('strike', 0);
+    // L0 qpValue should equal the mechanic's base quickPlayValue.
+    expect(stats?.qpValue).toBe(4);
+  });
+
+  it('Strike L3: getMasteryStats qpValue is 6 (baseEffectValue stays 4 — mismatch pre-fix)', () => {
+    const stats = getMasteryStats('strike', 3);
+    // This divergence is exactly the bug: a pre-fix getCombatState() would return 4
+    // while the resolver would compute 6.
+    expect(stats?.qpValue).toBe(6);
+  });
+
+  it('Strike L5: getMasteryStats qpValue is 8', () => {
+    const stats = getMasteryStats('strike', 5);
+    expect(stats?.qpValue).toBe(8);
+  });
+
+  it('getMasteryStats returns non-null for known mechanics', () => {
+    expect(getMasteryStats('strike', 0)).not.toBeNull();
+    expect(getMasteryStats('strike', 5)).not.toBeNull();
+  });
+
+  it('getMasteryStats returns null for unknown mechanic id (should fall back to card.baseEffectValue)', () => {
+    const stats = getMasteryStats('__not_a_real_mechanic__', 3);
+    // If the mechanic definition is also missing, getMasteryStats returns null.
+    // The fix in playtestAPI falls back to c.baseEffectValue in this case.
+    expect(stats).toBeNull();
+  });
+});

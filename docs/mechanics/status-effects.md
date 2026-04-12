@@ -1,7 +1,7 @@
 # Status Effects
 
 > **Purpose:** Complete list of all status effects, stacking rules, tick timing, and application behavior.
-> **Last verified:** 2026-04-11 (Issue 13 completeness: all 8 status effect keyword entries added to `src/data/keywords.ts`)
+> **Last verified:** 2026-04-12 (Bug 2 fix: `PERMANENT_DURATION_SENTINEL` constant added; `tickStatusEffects` now gates decrement on `turnsRemaining < 9999`; all 9999 creation sites updated to use the constant)
 > **Source files:** `src/data/statusEffects.ts`, `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`
 
 
@@ -160,10 +160,21 @@ There is no cap on stacked value. Duration takes the higher of the two values (d
 1. Immunity check — if immunity is present, Poison damage is suppressed (immunity consumed)
 2. Poison — damages by `value`
 3. Regen — heals by `value`
-4. All effects: `turnsRemaining -= 1`
+4. All effects: `turnsRemaining -= 1` **unless `turnsRemaining >= PERMANENT_DURATION_SENTINEL` (9999)** — permanent effects are never decremented
 5. Effects with `turnsRemaining <= 0` are removed
 
 Burn and Bleed do NOT tick in this function. Burn fires in `triggerBurn()` (called during card play). Bleed decays in `endPlayerTurn()` after the enemy status tick, at `bleedEffect.value -= BLEED_DECAY_PER_TURN`.
+
+### Duration Sentinels
+
+| Value | Meaning | Created by |
+|-------|---------|-----------|
+| Normal number | Counts down each tick; removed at 0 | Most status effects |
+| `99` | "Expires by other mechanism" — ticks down but expires via Burn halving / Bleed decay / Immunity absorption before reaching 0 in any reasonable encounter | Burn, Bleed, Immunity application sites |
+| `PERMANENT_DURATION_SENTINEL` = `9999` | Never decrements — lasts entire encounter | Warcry permanent Strength, enemy buff intents (e.g. Plagiarist, buff intent case in `executeEnemyIntent`) |
+| `99999` | Permanent bleed (rupture_bleed_perm tag) — special sentinel checked separately in Bleed decay path | Rupture mechanic at L5+ |
+
+**Bug fixed (2026-04-12):** Before this fix, `tickStatusEffects` decremented ALL effects including those with `turnsRemaining = 9999`. Warcry's permanent Strength would tick 9999 → 9998 → 9997 visibly in the UI. Now guarded by `if (effect.turnsRemaining < PERMANENT_DURATION_SENTINEL)` in the decrement loop.
 
 ---
 

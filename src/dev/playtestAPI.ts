@@ -13,7 +13,8 @@ import { turboDelay } from '../utils/turboMode'
 import { factsDB } from '../services/factsDB'
 import { RELIC_BY_ID } from '../data/relics'
 import { computeIntentDisplayDamage } from '../services/intentDisplay'
-import { getEffectiveApCost } from '../services/cardUpgradeService';
+import { getEffectiveApCost, getMasteryStats } from '../services/cardUpgradeService';
+import { getMechanicDefinition } from '../data/mechanics';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -201,13 +202,29 @@ function getCombatState(): Record<string, unknown> | null {
     handSize: turnState.deck?.hand?.length ?? 0,
     hand: (turnState.deck?.hand ?? []).map((c: any) => {
       const fact = c.factId && factsDB.isReady() ? factsDB.getById(c.factId) : null;
+      // Compute the effective Quick Play value at READ TIME rather than returning the
+      // static card.baseEffectValue snapshot. card.baseEffectValue is set once at card
+      // creation and never updated when mastery level changes during a run. By the time
+      // this API reads it, the resolver uses getMasteryStats(id, level).qpValue which
+      // grows with mastery — Strike at L3 is 6, but baseEffectValue stays at 4.
+      //
+      // Mirror the same fallback chain the resolver uses (cardEffectResolver.ts:573-590):
+      //   1. getMasteryStats(id, level).qpValue  — stat-table or synthesized
+      //   2. mechanic.quickPlayValue              — if stat lookup returns null
+      //   3. c.baseEffectValue                    — fallback for unknown mechanics
+      const _ms = getMasteryStats(c.mechanicId ?? '', c.masteryLevel ?? 0);
+      const _mechDef = getMechanicDefinition(c.mechanicId);
+      const effectiveQpValue = _ms?.qpValue
+        ?? _mechDef?.quickPlayValue
+        ?? c.baseEffectValue;
       return {
         type: c.cardType,
         mechanic: c.mechanicId ?? null,
         mechanicName: c.mechanicName ?? null,
         tier: c.tier,
         apCost: getEffectiveApCost(c),
-        baseEffectValue: c.baseEffectValue,
+        /** Live Quick Play value at current mastery level (mirrors resolver logic, not the static card.baseEffectValue). */
+        baseEffectValue: effectiveQpValue,
         domain: c.domain ?? null,
         factId: c.factId ?? null,
         factQuestion: fact?.quizQuestion ?? null,

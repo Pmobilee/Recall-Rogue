@@ -4,7 +4,7 @@
 
 import type { EnemyTemplate, EnemyInstance, EnemyIntent, EnemyTurnStartContext } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
-import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
+import { applyStatusEffect, tickStatusEffects, getStrengthModifier, PERMANENT_DURATION_SENTINEL } from '../data/statusEffects';
 import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_MID, GLOBAL_ENEMY_DAMAGE_MULTIPLIER, getBalanceValue, ENEMY_BASE_HP_MULTIPLIER, ENEMY_HP_SCALING_PER_FLOOR, ENEMY_HP_SCALING_PER_FLOOR_BY_SEGMENT } from '../data/balance';
 import { resolvePoisonTickBonus } from './relicEffectResolver';
 import { getAuraState } from './knowledgeAuraSystem';
@@ -326,14 +326,14 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
     }
     case 'buff': {
       // Apply buff to enemy (e.g., strength).
-      // 6.3: Enemy buffs persist the entire encounter — use 9999 sentinel so
+      // 6.3: Enemy buffs persist the entire encounter — use PERMANENT_DURATION_SENTINEL so
       // tickStatusEffects never expires them mid-fight. Player debuffs still use
       // their normal duration (handled in the 'debuff' case below).
       if (intent.statusEffect) {
         applyStatusEffect(enemy.statusEffects, {
           type: intent.statusEffect.type,
           value: intent.statusEffect.value,
-          turnsRemaining: 9999,
+          turnsRemaining: PERMANENT_DURATION_SENTINEL,
         });
       }
       break;

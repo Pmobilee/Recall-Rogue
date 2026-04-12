@@ -44,6 +44,23 @@ export interface TickResult {
 }
 
 /**
+ * Permanent-duration sentinel for status effects that must persist for the
+ * entire encounter regardless of turn count (e.g. Warcry permanent Strength,
+ * enemy buff intents). Any effect with `turnsRemaining >= PERMANENT_DURATION_SENTINEL`
+ * is NEVER decremented by `tickStatusEffects()`.
+ *
+ * Creation sites in turnManager.ts use this constant directly:
+ *   `turnsRemaining: permanent ? PERMANENT_DURATION_SENTINEL : N`
+ *
+ * The value 9999 was chosen because it is far above any realistic encounter
+ * length and unambiguously distinguishable from the `99` sentinel used for
+ * Burn/Bleed/Immunity (which expire via their own dedicated mechanisms — halving,
+ * decay, and absorption — and are allowed to countdown, though they will never
+ * reach 0 via tick alone in a normal-length encounter).
+ */
+export const PERMANENT_DURATION_SENTINEL = 9999;
+
+/**
  * Applies a new status effect to an existing effects array.
  *
  * If an effect of the same type already exists, values are added
@@ -70,6 +87,10 @@ export function applyStatusEffect(effects: StatusEffect[], newEffect: StatusEffe
  * Poison deals its value as damage. Regen heals its value.
  * Effects with turnsRemaining <= 0 after decrement are removed.
  *
+ * **Permanent sentinels:** Effects with `turnsRemaining >= PERMANENT_DURATION_SENTINEL`
+ * (value 9999) are NEVER decremented — they persist for the full encounter.
+ * This prevents Warcry's permanent Strength from visibly counting down (9999 → 9998 → ...).
+ *
  * @param effects - The current status effects (mutated in place).
  * @returns Tick result with updated effects and damage/heal amounts.
  */
@@ -89,7 +110,10 @@ export function tickStatusEffects(effects: StatusEffect[]): TickResult {
     if (effect.type === 'regen') {
       regenHeal += effect.value;
     }
-    effect.turnsRemaining -= 1;
+    // Permanent sentinels never decrement — they last the full encounter.
+    if (effect.turnsRemaining < PERMANENT_DURATION_SENTINEL) {
+      effect.turnsRemaining -= 1;
+    }
   }
 
   // Remove expired effects
