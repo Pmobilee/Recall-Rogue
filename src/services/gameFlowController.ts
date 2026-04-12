@@ -2541,6 +2541,33 @@ export function returnToHubFromCampfire(): void {
 }
 
 export function abandonActiveRun(returnScreen?: Screen): void {
+  // Load the persisted run state to check whether any encounters were completed.
+  // loadActiveRun() returns a fully deserialized RunState (Sets re-wrapped) so
+  // we can call encountersWon safely without further hydration.
+  const saved = loadActiveRun();
+  const savedRun = saved?.runState ?? null;
+
+  if (savedRun && savedRun.encountersWon >= 1) {
+    // Meaningful run (at least one encounter won) — route through RunEndScreen
+    // so the player sees their summary, earns XP, and gets journal/stats entries.
+    // Restore mode context so finishRunAndReturnToHub handles mode-specific logic.
+    activeRunMode = saved!.runMode ?? 'standard';
+    activeDailySeed = saved!.dailySeed ?? null;
+
+    applyRunCompletionBonuses(savedRun);
+    markRunCompleted();
+    const endData = endRun(savedRun, 'defeat');
+    const summary = captureRunSummary(savedRun, endData);
+    recordRunComplete(savedRun.floor.currentFloor, endData, summary);
+    // finishRunAndReturnToHub handles all cleanup (clearActiveRun, store resets,
+    // XP award, achievements, analytics) and navigates to 'runEnd'.
+    finishRunAndReturnToHub(savedRun, endData, summary);
+    return;
+  }
+
+  // Pre-encounter abandon (encountersWon === 0) or no saved run: silent discard.
+  // Also covers the RunPreview "Back" button path where no encounters have started.
+  // returnScreen is preserved for callers like handleRunPreviewBack('studyTemple').
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()

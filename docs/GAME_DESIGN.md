@@ -2583,6 +2583,45 @@ All tutorial tooltips use:
 
 ---
 
+### Guided Tutorial System (Reactive Coach Marks)
+
+Added 2026-04-12. A reactive overlay tutorial layer — not a separate game mode. The game plays normally while contextual coach marks appear based on real-time game state.
+
+**Architecture:** Steps are declarative objects in `src/data/tutorialSteps.ts` with `showWhen`/`doneWhen` predicates evaluated against a `TutorialContext` snapshot built from live Svelte state. The orchestration service (`src/services/tutorialService.ts`) runs `evaluateTutorialStep(ctx)` in a `$effect` inside `CardCombatOverlay.svelte` and shows the first step whose `showWhen` fires. Steps are non-linear — if a player skips ahead, the tutorial adapts.
+
+**Entry points:**
+1. Auto-triggers on screen='combat' when `runsCompleted === 0`, `!hasSeenCombatTutorial`, and `!tutorialDismissedEarly`
+2. Tutorial button bottom-left on `NarrativeOverlay` during combat (always available via `showTutorialButton` prop)
+3. `resetTutorialFlags()` in `cardPreferences.ts` — for dev/replay
+
+**Combat steps (13 total, encounter-agnostic):**
+- `enemy_intro` — orient player to the enemy (turn 1, before first card play)
+- `hand_intro` — explain card hand and AP resource
+- `tap_card` — prompt player to select a card
+- `card_selected` — explain Quick Play vs Charge before committing
+- `charge_explain` — quiz panel appeared, explain the mechanic
+- `quiz_wrong_ok` — reassurance after first wrong answer
+- `quick_play_explain` — explain Quick Play after player uses it first
+- `ap_running_low` — AP budget nudge mid-turn
+- `end_turn_prompt` — spotlight End Turn button when AP/hand exhausted
+- `enemy_turn_explain` — explain enemy attack phase (turn 2)
+- `enemy_intent_read` — teach intent reading on second turn
+- `chain_intro` — explain chain multiplier on first chain x2+
+- `surge_intro` — explain Surge turn on first bonus AP turn
+
+**Study steps (5 total):**
+- `study_intro` → `study_card` → `study_answer` → `study_fsrs` → `study_done`
+
+**Persistence:** Completion stored in `OnboardingState.hasSeenCombatTutorial` / `hasSeenStudyTutorial` (in `cardPreferences.ts` `onboardingState` store, persisted to localStorage). Early skip sets `tutorialDismissedEarly`.
+
+**Suppression of AR-124 tooltips:** When the reactive tutorial is active, `CardCombatOverlay.svelte` skips the old AR-124 per-feature tooltips (`maybeShowApTutorial`, `maybeShowChargeTutorial`, etc.). The AR-124 tooltips remain as fallback for sessions where the tutorial was already seen.
+
+**Coach mark component:** `TutorialCoachMark.svelte` — z-index 960, optional spotlight dim (z-index 959). See `docs/ui/components.md` → CardApp Global Overlays.
+
+**Stores** (exported from `src/services/tutorialService.ts`): `tutorialActive`, `tutorialMode`, `tutorialStepId`, `tutorialMessage`, `tutorialAnchor`, `tutorialSpotlight`.
+
+---
+
 ## 15. Wrong Answer Design
 
 Wrong Charge resolves at **0.7× multiplier** (mastery 1+) or **0.6×** (mastery 0) — partial effect, not full fizzle. Card is never wasted. It resolves weakly.

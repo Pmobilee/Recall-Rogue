@@ -23,6 +23,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
   import type { NarrativeLine } from '../../services/narrativeTypes'
+  import { startTutorial } from '../../services/tutorialService'
 
   // Props
   interface Props {
@@ -30,8 +31,10 @@
     /** Kept for API compatibility -- ignored. Always behaves as auto-reveal. */
     mode?: 'auto-fade' | 'click-through';
     onDismiss: () => void;
+    /** When true, shows a "Tutorial" button (bottom-left) so the player can opt in. */
+    showTutorialButton?: boolean;
   }
-  let { lines, onDismiss }: Props = $props()
+  let { lines, onDismiss, showTutorialButton = false }: Props = $props()
 
   // Auto-dismiss timer (MEDIUM-11)
   /** ms after last line settles before auto-dismiss fires. Default 10 000ms. */
@@ -215,6 +218,12 @@
 
   // Click / keyboard handlers
 
+  function handleTutorialStart(e: MouseEvent): void {
+    e.stopPropagation()
+    startTutorial('combat')
+    // Narration continues — tutorial evaluates once combat is rendering
+  }
+
   function handleAdvance(): void {
     if (phase === 'DISSOLVING' || phase === 'DONE') return
 
@@ -285,6 +294,17 @@
       <span class="hint-text">{hintLabel}</span>
       <span class="hint-chevron">&#9662;</span>
     </div>
+  {/if}
+
+  <!-- Optional tutorial opt-in button (bottom-left) -->
+  {#if showTutorialButton && phase === 'REVEALING'}
+    <button
+      class="tutorial-btn"
+      onclick={handleTutorialStart}
+      aria-label="Start tutorial"
+    >
+      tutorial
+    </button>
   {/if}
 
 </div>
@@ -499,6 +519,38 @@
   @keyframes chevronBounce {
     0%, 100% { transform: translateY(0); }
     50%       { transform: translateY(calc(4px * var(--layout-scale, 1))); }
+  }
+
+  /* Tutorial opt-in button (bottom-left) */
+  .tutorial-btn {
+    position: absolute;
+    bottom: calc(48px * var(--layout-scale, 1));
+    left: calc(32px * var(--layout-scale, 1));
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: calc(20px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    color: rgba(255, 240, 220, 0.85);
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+    text-transform: lowercase;
+    font-style: italic;
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
+  }
+
+  .tutorial-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
   }
 
   /* Playwright animation pause hook */

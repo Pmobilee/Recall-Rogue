@@ -2,7 +2,7 @@
 
 > **Purpose:** All Svelte stores, state ownership, reactivity patterns, and initialization order
 > **Last verified:** 2026-04-03
-> **Source files:** `src/ui/stores/authStore.ts`, `src/ui/stores/gameState.ts`, `src/ui/stores/playerData.ts`, `src/ui/stores/profileStore.ts`, `src/ui/stores/settings.ts`, `src/ui/stores/syncStore.ts`, `src/ui/stores/factSprites.ts`, `src/ui/stores/omniscient.ts`, `src/ui/stores/singletonStore.ts`, `src/ui/stores/reviewForecast.ts`, `src/ui/stores/welcomeBack.ts`, `src/ui/stores/narrativeStore.ts`
+> **Source files:** `src/ui/stores/authStore.ts`, `src/ui/stores/gameState.ts`, `src/ui/stores/playerData.ts`, `src/ui/stores/profileStore.ts`, `src/ui/stores/settings.ts`, `src/ui/stores/syncStore.ts`, `src/ui/stores/factSprites.ts`, `src/ui/stores/omniscient.ts`, `src/ui/stores/singletonStore.ts`, `src/ui/stores/reviewForecast.ts`, `src/ui/stores/welcomeBack.ts`, `src/ui/stores/narrativeStore.ts`, `src/services/tutorialService.ts`
 
 > See also: [stores-gameplay.md](stores-gameplay.md) for combatState, coopState, campState, classroomStore, and parentalStore
 
@@ -177,6 +177,29 @@ The narrative engine (`narrativeEngine.ts` — PLANNED) calls `showNarrative()` 
 
 ---
 
+### tutorialService — Tutorial Overlay State
+
+**File:** `src/services/tutorialService.ts`
+
+> Note: These stores live in a service file, not `src/ui/stores/`, because the store values and mutation logic are tightly coupled. Separating them would require import cycles.
+
+Plain `writable` (no singleton needed). Consumed by `TutorialCoachMark.svelte` via `CardApp.svelte`.
+
+| Export | Type | Purpose |
+|---|---|---|
+| `tutorialActive` | `Writable<boolean>` | Whether any tutorial is currently running |
+| `tutorialMode` | `Writable<TutorialMode \| null>` | `'combat'` or `'study'`, null when idle |
+| `tutorialStepId` | `Writable<string \| null>` | ID of the currently displayed step |
+| `tutorialMessage` | `Writable<string \| null>` | Text to display in the coach mark bubble |
+| `tutorialAnchor` | `Writable<TutorialAnchor \| null>` | `{ target: string, position: 'above'\|'below'\|'left'\|'right'\|'center' }` |
+| `tutorialSpotlight` | `Writable<boolean>` | Whether to dim behind the anchor element |
+
+**Public API:** `startTutorial(mode)`, `skipTutorial()`, `advanceStep()`, `evaluateTutorialStep(ctx)`, `isTutorialActive()`
+
+**Step definitions:** `src/data/tutorialSteps.ts` — 13 combat steps, 5 study steps. Each step has `showWhen`/`doneWhen` predicates against `TutorialContext`.
+
+---
+
 ## State Ownership
 
 | Store | Written by | Consumed by |
@@ -193,6 +216,7 @@ The narrative engine (`narrativeEngine.ts` — PLANNED) calls `showNarrative()` 
 | `classroomStore` | `classroomService` (30min poll) | Homework badge, assignment overlay |
 | `reviewForecast` | `refreshReviewForecast()` | Hub review count badge |
 | `narrativeDisplay` | `showNarrative()` / `dismissNarrative()` in `narrativeStore.ts` | `NarrativeOverlay.svelte` |
+| `tutorial*` (6 stores) | `tutorialService.ts` (`startTutorial`, `advanceStep`, `skipTutorial`, `evaluateTutorialStep`) | `TutorialCoachMark.svelte` via `CardApp.svelte` |
 | `omniscientStatus` | `checkOmniscientStatus()` | Hub visual overlays |
 
 ---

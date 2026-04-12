@@ -151,6 +151,7 @@
 | tradingService | src/services/tradingService.ts | [social.md](social.md) |
 | triviaNightService | src/services/triviaNightService.ts | [social.md](social.md) |
 | turnManager | src/services/turnManager.ts | [combat.md](combat.md) |
+| tutorialService | src/services/tutorialService.ts | [run-competitive.md](run-competitive.md) |
 | vocabDistractorService | src/services/vocabDistractorService.ts | [quiz.md](quiz.md) |
 | vocabVariantService | src/services/vocabVariantService.ts | [quiz.md](quiz.md) |
 | wowScore | src/services/wowScore.ts | [learning.md](learning.md) |

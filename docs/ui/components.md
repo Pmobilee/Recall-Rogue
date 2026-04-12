@@ -628,6 +628,45 @@ The  plus  centers the title horizontally over the art, independent of its text 
 
 Global overlays rendered directly in `src/CardApp.svelte` (not component files).
 
+### TutorialCoachMark.svelte (added 2026-04-12)
+
+Floating coach-mark tooltip for the reactive tutorial overlay system. Positions relative to
+`data-tutorial-anchor="xxx"` DOM attributes. Falls back to screen-center when no anchor found.
+
+**Props:** `message: string`, `anchor: TutorialAnchor` ({ target, position: 'above' | 'below' | 'left' | 'right' | 'center' }),
+`spotlight: boolean`, `ondismiss: () => void`, `onskip: () => void`
+
+**Positioning:** Queries `[data-tutorial-anchor="{target}"]` on mount + resize, uses `getBoundingClientRect()`.
+For `target: 'enemy-sprite'` or `position: 'center'`: fixed at viewport ~35% from top, horizontally centered.
+Clamps to viewport edges (8px margin).
+
+**Visual:** Dark bg `rgba(6,8,16,0.92)`, gold border `rgba(241,196,15,0.5)`, CSS-triangle arrow pointing toward anchor.
+z-index 960. Font `var(--font-rpg)` 14px. Max-width `calc(320px * var(--layout-scale,1))`. Fade-in 200ms on mount.
+
+**Spotlight:** When `spotlight=true`, renders `rgba(0,0,0,0.5)` overlay at z-index 959 with clip-path polygon
+cutout (8px padding) around the anchor element. `pointer-events: none` — gameplay is not blocked.
+
+**Buttons:** "Got it" (gold-style, min 44×44 tap target); "skip tutorial" (subtle text link, min 44×44).
+
+**data-tutorial-anchor attributes in CardCombatOverlay.svelte:**
+- `ap-indicator` — `.ap-orb` div
+- `quiz-panel` — `.quiz-wrapper` div
+- `chain-counter` — wrapper div around `<ChainCounter>`
+- `card-hand` — wrapper div around `<CardHand>`
+- `end-turn-btn` — default END TURN `<button>`
+- `surge-border` — wrapper div around `<SurgeBorderOverlay>`
+
+**NarrativeOverlay `showTutorialButton` prop (2026-04-12):** Added `showTutorialButton?: boolean`. When true and
+phase=REVEALING, renders a "tutorial" button bottom-left. Calls `startTutorial('combat')` on click.
+CardApp passes `showTutorialButton` when screen is 'combat' or 'dungeonMap'.
+
+**Auto-trigger in CardApp:** Starts tutorial on screen='combat' when `runsCompleted===0`,
+`!hasSeenCombatTutorial`, and `!tutorialDismissedEarly`.
+
+**Service:** Driven by `tutorialService.ts` stores (`tutorialActive`, `tutorialMessage`, `tutorialAnchor`, `tutorialSpotlight`).
+Calls `advanceStep()` on dismiss, `skipTutorial()` on skip.
+
+
 ### Active-Run Banner (`.active-run-banner`)
 
 Fixed banner at the top of the screen (z-index 250) shown when `showActiveRunBanner` is true and there is a saved run in progress.

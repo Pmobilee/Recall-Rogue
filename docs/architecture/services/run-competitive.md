@@ -1,8 +1,8 @@
 # Run Competitive & Meta Services
 
-> **Purpose:** Competitive modes (Daily Expedition, Endless Depths, Scholar Challenge), adaptive difficulty, player progression, lore unlocks, and preference/boost systems.
-> **Last verified:** 2026-03-31
-> **Source files:** bountyManager.ts, canaryService.ts, masteryChallengeService.ts, dailyExpeditionService.ts, endlessDepthsService.ts, scholarChallengeService.ts, characterLevel.ts, ascension.ts, loreService.ts, cardPreferences.ts, funnessBoost.ts
+> **Purpose:** Competitive modes (Daily Expedition, Endless Depths, Scholar Challenge), adaptive difficulty, player progression, lore unlocks, preference/boost systems, and reactive tutorial overlay.
+> **Last verified:** 2026-04-12
+> **Source files:** bountyManager.ts, canaryService.ts, masteryChallengeService.ts, dailyExpeditionService.ts, endlessDepthsService.ts, scholarChallengeService.ts, characterLevel.ts, ascension.ts, loreService.ts, cardPreferences.ts, funnessBoost.ts, tutorialService.ts, src/data/tutorialSteps.ts
 
 > See also: [run.md](run.md) for core run lifecycle — runManager, floorManager, mapGenerator, gameFlowController, rewards, shop, and RNG utilities
 
@@ -77,7 +77,7 @@
 |---|---|
 | **File** | src/services/cardPreferences.ts |
 | **Purpose** | Persistent Svelte stores for all player preference flags — difficulty, text size, font, onboarding state, ascension profile |
-| **Key exports** | `difficultyMode`, `textSize`, `fontChoice`, `onboardingState`, `ascensionProfile` (stores) |
+| **Key exports** | `difficultyMode`, `textSize`, `fontChoice`, `onboardingState`, `ascensionProfile` (stores); `markCombatTutorialSeen`, `markStudyTutorialSeen`, `markTutorialDismissedEarly`, `resetTutorialFlags` (tutorial helpers added 2026-04-12) |
 | **Key dependencies** | Svelte stores, localStorage |
 
 ## loreService
@@ -97,3 +97,19 @@
 | **Purpose** | Biases early-run fact pools toward high-funScore facts (runs 0–9 full boost, linear decay to 0 at run 100) |
 | **Key exports** | `calculateFunnessBoostFactor`, `funScoreWeight` |
 | **Key dependencies** | None |
+
+## tutorialService
+
+| | |
+|---|---|
+| **File** | src/services/tutorialService.ts |
+| **Purpose** | Reactive tutorial overlay orchestration — watches game state via `$effect`, shows contextual coach marks for first-time players |
+| **Key exports** | `tutorialActive`, `tutorialMode`, `tutorialStepId`, `tutorialMessage`, `tutorialAnchor`, `tutorialSpotlight` (Svelte stores); `startTutorial(mode)`, `skipTutorial()`, `advanceStep()`, `evaluateTutorialStep(ctx)`, `isTutorialActive()` |
+| **Key dependencies** | cardPreferences (for marking seen flags), tutorialSteps.ts (step definitions) |
+
+Step definitions live in `src/data/tutorialSteps.ts`: 13 combat steps + 5 study steps, each with `showWhen`/`doneWhen` predicates against `TutorialContext`. Steps are encounter-agnostic and non-linear — the tutorial adapts if the player skips ahead.
+
+Entry points:
+1. `CardApp.svelte` auto-triggers on first combat (`runsCompleted === 0` and `!hasSeenCombatTutorial` and `!tutorialDismissedEarly`)
+2. `NarrativeOverlay` "Tutorial" button (always visible in combat, via `showTutorialButton` prop)
+3. `resetTutorialFlags()` in `cardPreferences.ts` for dev/replay

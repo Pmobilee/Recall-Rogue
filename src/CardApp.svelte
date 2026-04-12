@@ -179,6 +179,16 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import { runDeckOverlayOpen } from './ui/stores/runDeckOverlayStore'
   import MusicWidget from './ui/components/MusicWidget.svelte'
   import NarrativeOverlay from './ui/components/NarrativeOverlay.svelte'
+  import TutorialCoachMark from './ui/components/TutorialCoachMark.svelte'
+  import {
+    tutorialActive,
+    tutorialMessage,
+    tutorialAnchor,
+    tutorialSpotlight,
+    advanceStep,
+    skipTutorial,
+    startTutorial,
+  } from './services/tutorialService' 
   import { musicService } from './services/musicService'
   import { ambientAudio } from './services/ambientAudioService'
   import { quizPanelVisible } from './ui/stores/combatUiStore'
@@ -221,6 +231,15 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
     updateRichPresence($currentScreen)
+  })
+
+  // Auto-trigger combat tutorial on first-ever combat encounter
+  $effect(() => {
+    const screen = $currentScreen
+    const state = get(onboardingState)
+    if (screen === 'combat' && state.runsCompleted === 0 && !state.hasSeenCombatTutorial && !state.tutorialDismissedEarly) {
+      startTutorial('combat')
+    }
   })
 
   // Apply font accessibility class to document.body based on user preference.
@@ -2055,11 +2074,22 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     {/if}
   {/if}
 
+  {#if $tutorialActive && $tutorialMessage && $tutorialAnchor}
+    <TutorialCoachMark
+      message={$tutorialMessage}
+      anchor={$tutorialAnchor}
+      spotlight={$tutorialSpotlight}
+      ondismiss={advanceStep}
+      onskip={skipTutorial}
+    />
+  {/if}
+
   {#if $narrativeDisplay.active}
     <NarrativeOverlay
       lines={$narrativeDisplay.lines}
       mode={$narrativeDisplay.mode}
       onDismiss={dismissNarrative}
+      showTutorialButton={$currentScreen === 'combat' || $currentScreen === 'dungeonMap'}
     />
   {/if}
 

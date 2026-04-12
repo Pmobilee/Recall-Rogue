@@ -1,5 +1,15 @@
 
 
+### 2026-04-12 — abandonActiveRun silently discarded all run data
+
+**What:** When a player confirmed "Abandon Run" from the hub dialog mid-run, `abandonActiveRun()` in `gameFlowController.ts` reset all state and navigated directly to hub. No `RunEndScreen` was shown, no XP was awarded, no journal entry was created, and no `runHistory` entry was recorded. The run simply vanished.
+
+**Why:** `abandonActiveRun` predated the MEDIUM-10 fix (which established `finishRunAndReturnToHub` as the single convergence point for all terminations). It was written to silently discard — which is correct for pre-encounter abandons (RunPreview "Back" button) but wrong for mid-run abandons where the player has won at least one encounter.
+
+**Fix:** `abandonActiveRun` now checks `loadActiveRun()` for a persisted run. If `encountersWon >= 1`, it calls `applyRunCompletionBonuses` → `markRunCompleted` → `endRun('defeat')` → `captureRunSummary` → `recordRunComplete` → `finishRunAndReturnToHub`, which routes to `runEnd`. If `encountersWon === 0` or no save exists, it retains the original silent-discard path (correct for RunPreview back-navigation).
+
+**Key invariant:** Never add a new termination path that writes `currentScreen.set('hub')` directly — always route through `finishRunAndReturnToHub`. See `.claude/rules/save-load.md` Run Lifecycle Termination Invariants.
+
 ### 2026-04-12 — Music restarts after user pauses via MusicWidget
 
 **What:** Player clicks pause in MusicWidget during a run. On the next screen transition (map→combat, combat→reward, etc.), music restarts from scratch. Separately, changing volume/mute in the pause menu (CampfirePause quick settings) during a crossfade had no effect — the 5-second fade-in interval continuously overwrote `HTMLAudioElement.volume`.
