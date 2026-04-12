@@ -45,9 +45,13 @@ export function stretchText(node: HTMLElement): { destroy(): void } {
       return;
     }
 
-    // Step 6: Apply scale to fill container edge-to-edge
-    const scaleX = containerW / naturalW;
+    // Step 6: Scale to fit container — cap X so short names don't stretch uncomfortably.
+    // The Y scale sets the maximum comfortable X: text should never be wider relative
+    // to its height than ~1.8× the natural aspect ratio would suggest.
+    const rawScaleX = containerW / naturalW;
     const scaleY = containerH / naturalH;
+    const maxScaleX = scaleY * 1.8;
+    const scaleX = Math.min(rawScaleX, maxScaleX);
 
     node.style.transformOrigin = 'center center';
     node.style.transform = `scale(${scaleX}, ${scaleY})`;
