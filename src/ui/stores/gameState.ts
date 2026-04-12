@@ -44,6 +44,7 @@ export type Screen =
   | 'runPreview'
   | 'proceduralStudy' // Procedural math practice session — bypasses combat run
   | 'triviaRound' // Solo Trivia Night screen — wired from multiplayer mode; see BATCH-ULTRA T7 issue-1775873221654-07-004
+  | 'raceResults' // Post-race comparison screen — wired from onRaceComplete callback
   // 'starterRelicSelection' removed in AR-59.12 — runs start directly at dungeonMap
 
 const SCREEN_STORAGE_KEY = 'card:currentScreen'
@@ -87,6 +88,7 @@ const VALID_SCREENS: Screen[] = [
   'runPreview',
   'proceduralStudy',
   'triviaRound',
+  'raceResults',
   // 'starterRelicSelection' removed AR-59.12
 ]
 
