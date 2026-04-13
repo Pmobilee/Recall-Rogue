@@ -184,10 +184,10 @@ Effects are resolved via pure functions from a `Set<string>` of held relic IDs. 
 Key resolved contexts:
 - `resolveTurnStartEffects()` — block grants (iron_shield: 2 + shieldsPlayedLastTurn), AP bonuses, draw bonuses, poison to all enemies (herbal_pouch), Capacitor release, Deja Vu spawn, `tempStrengthGain` (brass_knuckles: +1 temp Strength each turn start). Context field `shieldsPlayedLastTurn` required for iron_shield dynamic block.
 - `resolveDamageTakenEffects()` — flat damage reduction (steel_skin: -1 nerfed from -3), thorns, pity counter. Note: thick_skin no longer increases damage taken (reworked to encounter_start_block, 2026-04-09).
-- `resolveEncounterStartEffects()` — hollow_armor starting block (12), gladiator_s_mark temp Strength, plague_flask encounter start poison (2 stacks to all enemies), thick_skin encounter start block (+5).
+- `resolveEncounterStartEffects()` — hollow_armor starting block (12), gladiator_s_mark temp Strength (wired 2026-04-12), plague_flask encounter start poison (2 stacks to all enemies, wired 2026-04-12), thick_skin encounter start block (+5, wired 2026-04-12).
 - `resolveChargeCorrectEffects()` — multiplier bonuses, draw bonuses, speed bonuses. mnemonic_scar v3: +25% extraMultiplier when `factPreviouslyCorrect` is true.
 - `resolveChargeWrongEffects()` — safety nets (lucky_coin), self-damage (volatile_core, scholars_gambit), draw bonus (mnemonic_scar v3: drawBonus=1 on any wrong charge)
-- `resolveAttackModifiers()` — percentDamageBonus includes ritual_blade (+50% first card, -15% other cards; Pass 7 2026-04-09). brass_knuckles strengthGain is always 0 (moved to turn start).
+- `resolveAttackModifiers()` — percentDamageBonus includes ritual_blade (+50% first card, -15% other cards; Pass 7 2026-04-09), red_fang (+30% first attack per encounter, wired 2026-04-12). brass_knuckles strengthGain is always 0 (moved to turn start).
 - `resolveDebuffAppliedModifiers()` — returns `reflectToEnemy: boolean`; always false now (thick_skin no longer reflects debuffs, 2026-04-09).
 - `resolveShieldModifiers()` — worn_shield grants +1 flatBlockBonus on CHARGED shield cards only (nerf: Pass 7 removed QP bonus entirely). hollow_armor: shields work normally; `blockGainHalved` removed (Pass 7). Context field `wasCharged` required to get the worn_shield bonus. TurnEndEffects.blockDrain = 3 after turn 3.
 - `resolveForgetEffects()` — returns `bonusCardDraw` (exhaustion_engine +2, scavengers_eye +1) and `tempStrengthGain` (tattered_notebook +1 for 1 turn). Caller must apply strength status effect.

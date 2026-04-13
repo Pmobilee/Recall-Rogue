@@ -450,6 +450,11 @@ export function resolveAttackModifiers(
     percentDamageBonus += 0.4;
   }
 
+  // red_fang — First attack each encounter +30% damage
+  if (relicIds.has('red_fang') && context.isFirstAttack) {
+    percentDamageBonus += 0.3;
+  }
+
   // berserker_band — Below 50% HP: attacks +40% damage
   if (relicIds.has('berserker_band') && context.playerHpPercent < 0.5) {
     percentDamageBonus += 0.4;

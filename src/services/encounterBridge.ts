@@ -45,6 +45,7 @@ import {
   resolveEncounterStartEffects,
   resolveBaseDrawCount,
 } from './relicEffectResolver';
+import { applyStatusEffect } from '../data/statusEffects';
 import { buildPresetRunPool, buildGeneralRunPool, buildLanguageRunPool, buildCuratedDeckRunPool } from './presetPoolBuilder'
 import { getCuratedDeck, getCuratedDeckFact, getCuratedDeckFacts } from '../data/curatedDeckStore'
 import type { FactDomain } from '../data/card-types'
@@ -858,6 +859,31 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   // hollow_armor: grant starting block at encounter start (block gain disabled after turn 0)
   if (encounterStartFx.startingBlock) {
     turnState.playerState.shield += encounterStartFx.startingBlock;
+  }
+  // thick_skin: start each encounter with +5 block (stacks with bonusBlock from other sources)
+  if ((encounterStartFx.thickSkinBlock ?? 0) > 0) {
+    turnState.playerState.shield += encounterStartFx.thickSkinBlock!;
+  }
+  // plague_flask: apply 2 Poison to all enemies at encounter start
+  if ((encounterStartFx.encounterStartPoison ?? 0) > 0) {
+    playCardAudio('relic-trigger');
+    applyStatusEffect(turnState.enemy.statusEffects, {
+      type: 'poison',
+      value: encounterStartFx.encounterStartPoison!,
+      turnsRemaining: 99,
+    });
+    turnState.triggeredRelicId = 'plague_flask';
+  }
+  // gladiator_s_mark: grant +1 Strength for 3 turns at encounter start
+  if (encounterStartFx.tempStrengthBonus !== null) {
+    playCardAudio('relic-trigger');
+    const { amount, durationTurns } = encounterStartFx.tempStrengthBonus!;
+    applyStatusEffect(turnState.playerState.statusEffects, {
+      type: 'strength',
+      value: amount,
+      turnsRemaining: durationTurns,
+    });
+    turnState.triggeredRelicId = 'gladiator_s_mark';
   }
 
   turnState.activePassives = [];

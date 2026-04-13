@@ -3921,3 +3921,277 @@ The `undefined` case (encounter not yet started) is explicitly left as-is; `deck
 **Fix needed:** Add `content: ''` to the shared pseudo-element blocks for `arrow-down`, `arrow-left`, and `arrow-right` in `TutorialCoachMark.svelte`. The `arrow-up` pattern is the reference. Flag for `ui-agent`.
 
 **Detected by:** QA visual verification on 2026-04-12.
+
+### 2026-04-13 — quizService.ts does not apply displayAnswer() to distractors, exposing {N} tokens
+
+**What:** In `src/services/quizService.ts` `getQuizChoices()` calls `displayAnswer(fact.correctAnswer)` to strip `{N}` braces from the correct answer, but applies no such transformation to distractors from `distractorSource`. Numerical facts whose distractor pool entries are stored as `{1807}`, `{25}`, `{1945}` render as literal `{N}` tokens in the player-visible quiz overlay.
+
+**Why:** The `displayAnswer()` function in `numericalDistractorService.ts` strips surrounding braces from numerical answers (e.g., `{500}` → `500`). It was only wired to the correct answer path. Distractors sourced from other facts' distractor arrays pass through unprocessed.
+
+**Scope:** 34 confirmed affected facts across 5 decks: famous_inventions (9), ancient_greece (11), ancient_rome (8), constellations (4), medieval_world (2). Checked via live factsDB scan in Docker container.
+
+**Fix:** In `src/services/quizService.ts` line 229, add `.map(d => displayAnswer(d))` to the distractors slice before combining with the correct answer.
+
+```typescript
+// BEFORE (broken):
+const distractors = shuffleArray([...distractorSource]).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
+// AFTER (fixed):
+const distractors = shuffleArray([...distractorSource]).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN).map(d => displayAnswer(d))
+```
+
+**Also found:** `world_cuisines` has 141 facts in deck JSON but 0 facts in factsDB (cuisine_ prefix). The deck is not reaching gameplay. Verify `npm run build:curated` includes this deck and check the domain/ID mapping.
+
+### 2026-04-12 — Bridged distractor pipeline returns raw `{N}` brace strings into quiz choices
+
+**What:** After fixing the primary `{N}` placeholder leak in `correctAnswer` display, a secondary leak remained in `getBridgedDistractors()` (`quizService.ts` line 188). Pop-culture facts tagged `bridge:pop_culture` (e.g. `pc_5_gamergate_year`, `pc_4_hot_wheels_launch_year`) showed quiz choices like `{2013}`, `{2023}`, `{1984}` even though their own `distractors` array in facts.db was clean. Players see raw brace strings as answer choices.
+
+**Root cause:** `getBridgedDistractors()` calls `selectDistractors()` which returns pool facts. Line 188 maps those to `d.correctAnswer` directly — but pool facts for numeric-answer pop-culture items have `{year}` format `correctAnswer` fields. The `displayAnswer()` stripping function is never called on the distractor objects, only on the primary fact's answer.
+
+**Fix:** Change `quizService.ts` line 188 from:
+```typescript
+return result.distractors.map(d => d.correctAnswer)
+```
+to:
+```typescript
+return result.distractors.map(d => displayAnswer(d.correctAnswer))
+```
+`displayAnswer` is already imported in `quizService.ts` from `./numericalDistractorService`.
+
+**Detection:** Load `combat-basic` scenario, call `previewCardQuiz` on cards with `bridge:` tagged facts, check choices array for `{` characters. Confirmed in BATCH-2026-04-12-002 track-01 regression sweep.
+
+### 2026-04-12 — Docker warm container: enemy HP escalates across action batches on same container
+
+**What:** In the `combat-basic` warm container scenario, Page Flutter's maxHP escalated monotonically across successive action batch files: 30 → 36 → 31 → 32 → 36 → 37 → 38. Each new batch file starts fresh from the initial scenario but enemy HP was higher than the previous batch.
+
+**Root cause (hypothesis):** The combat scenario likely uses an RNG seed tied to a per-session counter that increments with each Playwright test run inside the container. Each warm `--warm test` invocation bumps the counter, changing the seed used for enemy HP scaling — even though the same "combat-basic" scenario preset is loaded. The per-session counter does not reset between batch files.
+
+**Fix/Workaround:** Use `__rrScenario.setEnemyHp(N)` to patch enemy HP to a known value at the start of a test batch when precise values matter. Do not rely on enemy stats being identical across batch files in the same warm container session.
+
+**Detection:** Run getCombatState at the start of 5+ successive batch files on the same warm container. Enemy maxHP will differ each time.
+
+### 2026-04-12 — getCombatState returns stale/wrong HP when End Turn confirmation dialog is open
+
+**What:** When the "You still have AP to spend. End turn anyway?" dialog is open, `__rrPlay.getCombatState()` returns incorrect HP values. Screenshot showed enemy at 30/36 HP but the API returned 36/36 (the pre-attack values). Player HP similarly reported incorrectly.
+
+**Root cause:** The dialog intercepts UI state but the combat state getter may be reading from a pre-dialog snapshot or a state that doesn't include mid-turn damage application.
+
+**Fix:** Always ensure the end-turn dialog is dismissed before reading combat state. If AP > 0 when you call endTurn, the game will show a confirm dialog — the endTurn API does not auto-confirm it. Use `quickPlayCard` or play all cards before calling `endTurn` to avoid the dialog.
+
+**Detection:** Call `endTurn` with remaining AP, then immediately `getCombatState`. Compare HP values to screenshot.
+
+### 2026-04-12 — shopBuyRelic returns ok:true before purchase confirmation dialog is clicked
+
+**What:** `__rrPlay.shopBuyRelic(index)` returns `{ok: true, message: "Bought shop relic '...'" }` but the purchase confirmation dialog is still showing on screen. The relic is NOT actually purchased — `getShopInventory` shows `sold: false` on the "bought" relic.
+
+**Root cause:** `shopBuyRelic` likely clicks the relic item to open its detail panel (which returns success) but the actual purchase requires a second click on "Buy (150g)" in the dialog. The API conflates "opened purchase dialog" with "completed purchase".
+
+**Fix/Workaround:** After calling `shopBuyRelic`, use `eval` to find and click the Buy confirmation button in the dialog: `document.querySelector('.buy-confirm-btn, [data-testid="btn-buy-confirm"]')?.click()`. Verify with `getShopInventory` that `sold: true` before moving on.
+
+**Detection:** Call shopBuyRelic, then immediately getShopInventory and check sold field. Also take a screenshot to see if dialog is still visible.
+
+### 2026-04-12 — selectMapNode(N) fails: DOM uses map-node-r{row}-n{col} format
+
+**What:** `__rrPlay.selectMapNode(0)` returns `{ok: false, message: "Map node 0 not found"}`. The API looks for a selector matching integer index 0 but the DOM uses `data-testid="map-node-r0-n0"` (row + node position).
+
+**Fix/Workaround:** Use `eval` to click map nodes directly: `document.querySelector('[data-testid="map-node-r0-n0"]')?.click()`. The row-0 nodes are the bottom (entry) row. Locked nodes have `disabled=true`.
+
+**Detection:** Load dungeon-map scenario, call selectMapNode(0), observe failure, check DOM with `document.querySelector('[data-testid^="map-node"]').dataset.testid`.
+
+### 2026-04-12 — getMysteryEventChoices always returns [] for quiz-flow mystery events
+
+**What:** All mystery event scenarios tested (mystery-event, mystery-tutors-office, mystery-knowledge-gamble, mystery-rival-student) return `getMysteryEventChoices: []` and `selectMysteryChoice` fails with "0 visible .choice-btn elements". All current mystery events use a "Begin Quiz" button flow, not choice buttons.
+
+**Root cause:** `getMysteryEventChoices` queries `.choice-btn` elements but the mystery event implementations tested use `continue-btn` class ("Begin Quiz") instead of `.choice-btn`. Either the choice-based mystery events are a different category that wasn't encountered, or this UI pattern was changed.
+
+**Fix/Workaround:** For quiz-flow mystery events, click "Begin Quiz" via `eval`: `document.querySelector('.continue-btn')?.click()`. For the original mystery-event preset (Lost and Found), use `mysteryContinue()`.
+
+**Detection:** Load any mystery event scenario, call getMysteryEventChoices, observe [] return.
+
+### 2026-04-12 — Missing asset: knowledge_gamble/landscape.webp causes ParallaxTransition WebGL error
+
+**What:** Loading the `mystery-knowledge-gamble` scenario logs console error: `[ParallaxTransition] WebGL init failed: Error: Failed to load image: /assets/backgrounds/mystery/knowledge_gamble/landscape.webp`. The background parallax layer fails silently and the scene renders without the parallax effect.
+
+**Fix:** Add the missing asset at `src/assets/backgrounds/mystery/knowledge_gamble/landscape.webp` (and/or `public/assets/...`). Check if other mystery event types also have missing landscape.webp assets.
+
+**Detection:** Load mystery-knowledge-gamble scenario, check consoleErrors for WebGL/image load failures.
+
+### 2026-04-12 — Two divergent fizzle (charge-wrong) implementations produce inconsistent damage
+
+**What:** Wrong charge plays in live combat deal different damage than what unit tests verify. For strike: unit tests show CW=3 (from `mechanic.chargeWrongValue`); live combat shows CW=4 (= `card.baseEffectValue × FIZZLE_EFFECT_RATIO = 8 × 0.5`).
+
+**Why:** `cardEffectResolver.resolveCardEffect()` uses `mechanic.chargeWrongValue` (explicit per-mechanic value). But `turnManager.playCardAction()` handles wrong-answer fizzle INLINE (lines 1208-1211) via `Math.round(card.baseEffectValue × FIZZLE_EFFECT_RATIO)`. Scenario-spawned cards have `card.baseEffectValue = mechanic.baseValue = 8` for strike, giving fizzle=4. Unit tests use `BASE_EFFECT.attack=4`, giving fizzle=2. Production `cardFactory.ts` uses `BASE_EFFECT[cardType]=4` for the static property, giving 2. So the real player experience gives fizzle=2 (not 3 or 4) in production. Only the test scenario cards inflate this to 4.
+
+**Fix:** The real production bug is that the inline fizzle in turnManager ignores `mechanic.chargeWrongValue` entirely. The docs state FIZZLE_EFFECT_RATIO "is a FALLBACK for cards without explicit CW values" but the code applies it universally. If this matters for balance, the inline fizzle path should check `mechanic.chargeWrongValue` first before falling back to `baseEffectValue × ratio`. AR ticket needed.
+
+**Test methodology note:** `__rrScenario.loadCustom()` does NOT apply nested `turnOverrides.playerState.statusEffects`. Use `__rrScenario.spawn()` instead. Confirmed 2026-04-12.
+
+**Surge draw bonus undocumented:** `SURGE_DRAW_BONUS=1` in `balance.ts` causes surge turns to draw 6 cards (5 base + 1 surge) plus an additional 1 if `getAuraState()==='flow_state'` (fog ≤ 2, which is always true on encounter start). Total 7 cards drawn on first surge turn. Not mentioned in `docs/mechanics/combat.md` AP section.
+
+### 2026-04-12 — Truncated quiz question in general_knowledge seed data
+
+**What:** Fact `general_knowledge-romance-languages-vulgar-latin` in `src/data/seed/knowledge-general_knowledge.json` has a broken `quizQuestion`: `"Which specific form of did all Romance languages directly descend from?"` — missing the word "Latin" after "of".
+
+**Correct question should be:** `"Which specific form of Latin did all Romance languages directly descend from?"`
+
+**Fix:** Edit line 21460 of `src/data/seed/knowledge-general_knowledge.json` to add "Latin" after "of". Then rebuild `facts.db` with `npm run build:curated` or equivalent pipeline command.
+
+**Detection:** The question text is visible in `getCombatState` hand data when a card with this factId appears, or via previewCardQuiz. The displayed question is ungrammatical and confusing.
+
+### 2026-04-12 — fortify description says "Double" but resolver does +50%
+
+**What:** `fortify` (`src/data/mechanics.ts` line 119) has description "Double your current block." The actual resolver (`src/services/cardEffectResolver.ts` lines 791-808) does QP=+50% of current block, CC=+75% + card value, CW=+25%. Observed in card-mechanic testing: 4 block → 6 block on QP (not 8 as doubling would give).
+
+**Why:** Description was written to describe the CC behavior conceptually but doesn't match QP behavior. Resolver was updated during balance passes without updating the description.
+
+**Fix needed:** Either update the mechanics.ts description to "Gain block equal to half your current block" (QP) or update it to say "CC: double your current block." Flag for docs-agent or game-logic.
+
+### 2026-04-12 — spawn API sets enemyMaxHp = enemyHp, breaking conditional mechanics testing
+
+**What:** When using `__rrPlay.spawn({enemyHp: N})`, the enemy's `maxHP` is also set to N. Mechanics like `execute` (fires at `currentHP/maxHP < 0.3`) and `emergency` (fires at `currentHP/maxHP < 0.3`) use ratio-based triggers. When spawning with a low HP value, the ratio is always 1.0 and no conditional bonus fires.
+
+**Why:** Spawn API designed for enemy HP = max HP at encounter start; no separate `enemyMaxHp` override was exposed.
+
+**Fix:** Add `enemyMaxHp` as a separate spawn parameter so QA testing can spawn enemies at partial HP for conditional-mechanic testing.
+
+### 2026-04-12 — encounterBridge.ts silently drops encounter-start relic effects
+
+**What:** `src/services/encounterBridge.ts` calls `resolveEncounterStartEffects` (line 848) but only handles `bonusBlock`, `bonusHeal`, `bonusAP`, and `startingBlock`. The fields `encounterStartPoison` (plague_flask), `thickSkinBlock` (thick_skin), `firstAttackDamageBonus` (red_fang), and `tempStrengthBonus` (gladiator_s_mark) are returned by the resolver but never read or applied.
+
+**Why:** `resolveEncounterStartEffects` was extended with new return fields for relics added in v2 expansion, but the encounter bridge call-site was not updated to handle them.
+
+**Effect:** plague_flask gives 0 poison at combat start. thick_skin gives 0 block at combat start. red_fang's first-attack bonus never fires. gladiator_s_mark temp strength bonus never fires.
+
+**Fix:** In encounterBridge.ts after line 861, add: apply `encounterStartFx.encounterStartPoison` to each enemy's status effects; apply `encounterStartFx.thickSkinBlock` to `turnState.playerState.shield`; set a `firstAttackBonusActive` flag in turnState from `encounterStartFx.firstAttackDamageBonus`; apply `encounterStartFx.tempStrengthBonus` to player strength buff.
+
+**Detected by:** Track-7 relic trigger audit BATCH-2026-04-12-002.
+
+### 2026-04-12 — iron_shield triggers UI animation as 'iron_buckler' (old name)
+
+**What:** `src/services/turnManager.ts` line 3681 has `turnState.triggeredRelicId = 'iron_buckler'` hardcoded. The relic was renamed from `iron_buckler` → `iron_shield` in the v2 migration. The turn-start block correctly fires (bonusBlock logic works), but the triggered relic name logged is the old v1 id.
+
+**Why:** The iron_buckler → iron_shield rename (saveMigration.ts) updated save data and the relic catalog but missed this hardcoded string in turnManager.ts.
+
+**Effect:** UI relic-trigger animation/highlight shows nothing (no relic id matches 'iron_buckler' in the display layer). Player gets no visual feedback that iron_shield triggered.
+
+**Fix:** Change line 3681 in turnManager.ts from `'iron_buckler'` to `'iron_shield'`.
+
+### 2026-04-12 — iron_shield shieldsPlayedLastTurn context never forwarded in turnManager
+
+**What:** `iron_shield`'s `2 + shieldsPlayedLastTurn` scaling formula requires `shieldsPlayedLastTurn` to be passed in the `TurnStartContext` when calling `resolveTurnStartEffects`. The `turnState.shieldsPlayedLastTurn` field IS correctly tracked (incremented during shield plays and copied at turn-end), but turnManager.ts line 3669–3678 does not include it in the context object passed to `resolveTurnStartEffects`.
+
+**Why:** The context field was added to the resolver interface for v3 iron_shield rework but the corresponding call-site was not updated.
+
+**Effect:** iron_shield always gives exactly 2 block per turn regardless of shields played on the previous turn. The "2 + shields played last turn" scaling is silently dead code.
+
+**Fix:** In turnManager.ts at the `resolveTurnStartEffects` call, add `shieldsPlayedLastTurn: turnState.shieldsPlayedLastTurn` to the context object.
+
+### 2026-04-12 — getCombatState() mastery lookup breaks silently when patching with public API card objects
+
+**What:** When using `__rrScenario.patch()` to set mastery levels on hand cards, spreading cards from `getCombatState()` output causes `getMasteryStats()` to silently return null and fall back to L0 values for all levels. The `masteryLevel` field updates correctly but `qp`/`ap` values don't change.
+
+**Why:** `getCombatState()` returns a public API object with `mechanic: "strike"` (not `mechanicId`). The internal TurnState store expects `mechanicId`. When the patch replaces the hand array with public API objects, the store cards lose `mechanicId` → undefined. `getMasteryStats(undefined, N)` returns null → fallback to `mechanic.quickPlayValue` (the static L0 default). The `masteryLevel` field itself persists because it's a plain number field that the deepMerge carries, but the stat lookup ignores it.
+
+**Fix for QA tooling:** Always add `mechanicId: c.mechanic` explicitly when constructing patch payloads from getCombatState() output:
+```js
+const h = window.__rrPlay.getCombatState().hand;
+window.__rrScenario.patch({turn:{deck:{hand: h.map(c=>({...c, mechanicId: c.mechanic, masteryLevel: N}))}}});
+```
+
+**Not a game logic bug:** The combat resolver reads from the raw store where `mechanicId` is always populated. This only affects QA tooling that builds patch payloads from the public API's card view.
+
+### 2026-04-12 — ascension-15-elite preset has stale turnOverrides after balance passes
+
+**What:** The `ascension-15-elite` scenario preset in `src/dev/scenarioSimulator.ts` has `turnOverrides` that set `ascensionEnemyDamageMultiplier: 1.5` and `ascensionWrongAnswerSelfDamage: 5`. Both values are from before Pass 8/9a balance changes. Current correct A15 values are `ascensionEnemyDamageMultiplier: 1.20` and `ascensionWrongAnswerSelfDamage: 0` (wrong-answer self-damage only activates at A17, and is 2 not 5). The preset also uses `playerHp: 60` to set current HP but does not override maxHP, so it shows 60/100 instead of 60/75 (A13 caps player maxHP at 75).
+
+**Why:** `turnOverrides` in scenario presets are manually maintained. When `getAscensionModifiers()` values change during balance passes, the presets that hard-code specific turn-state values are not automatically updated. This creates a two-source-of-truth problem: the live game uses `encounterBridge.ts` which calls `getAscensionModifiers()` correctly, but dev presets can bypass this with stale overrides.
+
+**Fix:** Either (a) remove the stale turnOverrides from the preset and let the run bootstrap compute the correct values via `ascension: 15` in the base config, or (b) add a CI check that validates turnOverride ascension fields against `getAscensionModifiers(level)`. Option (a) is the immediate fix; option (b) is the two-sided enforcement solution.
+
+### 2026-04-13 — spawn `hand:[]` silently ignored; injected `enemyHp` causes display/state desync
+
+**What:** Two `__rrPlay.spawn()` parameter injection failures discovered during edge-case stress testing:
+
+1. `spawn({..., hand:[]})` is silently ignored — a full default hand is loaded instead of empty. There is no error, no warning.
+2. `spawn({..., enemyHp:9999})` sets the game engine state correctly (`getCombatState()` returns `enemyHp:9999`) but the Phaser HP bar and label render the enemy's definition HP (e.g., 71 for The Algorithm). Cards deal damage from 9999 in the engine but the display never shows the injected value.
+
+**Why:** The `spawn` path for `hand` likely requires non-empty arrays and falls back to default on empty. The `enemyHp` injection updates the turn state data store but not the Phaser scene's enemy entity, which initializes from enemy definition stats during scene setup rather than reading from the live store reactively.
+
+**Fix:** (1) For empty-hand testing, use `__rrScenario.forceHand([])` after spawn rather than passing `hand:[]` to spawn. (2) For enemy HP injection, use `__rrScenario.setEnemyHp(9999)` after spawn — this is a post-spawn mutation that updates the live store reactively and triggers the Phaser scene to re-read.
+
+**Scope:** QA devtools only — no impact on real gameplay.
+
+### 2026-04-13 — `shopBuyRelic` returns ok:true with no effect when devtools shop state is empty
+
+**What:** `__rrPlay.shopBuyRelic(0)` returns `{ok:true, message:"Bought shop relic 'whetstone'"}` even when `getShopInventory()` returns `{}`. Gold is not deducted and the relic is not added. The API is using an internal shop inventory (the real game state) while `getShopInventory()` returns a different or empty structure.
+
+**Why:** `shopBuyRelic(index)` references slot index from the game's internal shop roster, not from the object returned by `getShopInventory()`. The two are desynced in scenarios spawned via `__rrPlay.spawn({screen:'shopRoom',...})` vs. the real shop room entered from the dungeon map. In the devtools scenario the shop is loaded but `getShopInventory()` has not been wired to the same data source.
+
+**Fix:** Always verify purchase success by checking gold delta: `before = getRunState().currency; shopBuyRelic(0); after = getRunState().currency; assert(before !== after)`. Do not trust `ok:true` alone from shop APIs in devtools scenarios.
+
+**Impact:** The max-relic cap (5 relics) behavior cannot be verified via devtools until the shop inventory API is fixed to reflect the real game shop list. Needs a follow-up investigation whether the 6th relic cap is enforced in real gameplay.
+
+### 2026-04-13 — `snapshot`/`restore` pattern requires storing the return value, not calling snapshot() at restore time
+
+**What:** `__rrPlay.restore(window.__rrPlay.snapshot('name'))` silently fails to revert state. The restore call returns `'restored'` but state is not reverted.
+
+**Why:** The correct pattern is `const snap = window.__rrPlay.snapshot('name'); /* ...play cards...; */ window.__rrPlay.restore(snap)`. Calling `snapshot('name')` at restore-time takes a NEW snapshot of the current (already mutated) state and passes that to restore() — effectively restoring to the current state. The API accepted the call without error.
+
+**Fix for QA tooling:** Always store snapshot return values in variables before making state changes: `window.__snapBefore = window.__rrPlay.snapshot('pre-test'); /* mutations... */ window.__rrPlay.restore(window.__snapBefore)`.
+
+### 2026-04-13 — `setPlayerHp()` no-ops outside of combat (restRoom, shopRoom)
+
+**What:** `__rrScenario.setPlayerHp(60)` returns the expected message but `getRunState().playerHp` stays at its previous value when called from the rest site or shop screens. The function is wired only to active combat `TurnState`, not to `RunState`.
+
+**Why:** The function writes to `TurnState.playerHp`, which is null outside of combat. RunState HP (used by restRoom) is a separate field. The two are synced at combat start/end but not exposed by the same override.
+
+**Fix:** To set player HP before a rest-site test, use `loadCustom({screen:'restRoom', playerHp:60, playerMaxHp:100})` instead of `setPlayerHp()`. This correctly seeds RunState before the screen loads.
+
+### 2026-04-13 — Warm Docker container needs a grace period after reporting ready
+
+**What:** Submitting a test action file immediately after `--warm start` reports success causes a `page.waitForTimeout: Target page, context or browser has been closed` crash. The exact same action file succeeds on the next attempt.
+
+**Why:** The container's `/ready` endpoint returns before Chromium has fully initialized the Vite-served page. The booting dots complete at the HTTP layer but the page context isn't stable for `page.evaluate` yet.
+
+**Fix:** After `--warm start` succeeds, either run a trivial single-action warm-up test (a bare `rrScreenshot` with a short wait), or wait 5–10 additional seconds before submitting the real test. This was observed when Docker Desktop had just started and all containers were cold.
+
+### 2026-04-13 — `canMeditate()` requires deck.length > 5, not >= 5
+
+**What:** The Meditate option at the rest site requires strictly more than 5 cards (`getActiveDeckCards().length > 5`). With exactly 5 cards the button is disabled with the message "Deck too small (min 5)", which is misleading — it actually means "min 6".
+
+**Why:** `canMeditate()` in `gameFlowController.ts:2915` uses `> 5`, not `>= 5`. This is intentional (removing a card from a 5-card deck would drop to 4, which is below the combat minimum) but the UI message says "min 5" when it should say "min 6 to meditate".
+
+**Fix:** Either change the condition to `>= 6` (no behavior change) or update the UI string to "Deck too small (need 6+)". Flag for ui-agent.
+
+### 2026-04-12 — DOM text scraping picks up display:none elements
+
+**What:** When scraping visible text by iterating `querySelectorAll('*')` and reading `el.textContent`, text from `display:none` elements (like the `#rr-crash-overlay` in `index.html`) appears in the results. `getComputedStyle(el).display` on an element INSIDE a `display:none` parent returns `"block"` — CSS display is not inherited in getComputedStyle. This caused false "SOMETHING WENT WRONG" error reports in track-14 deck diversity testing.
+
+**Why:** `getComputedStyle` returns the element's own computed value, not whether it's visible. `display:none` on a parent hides children visually but does NOT change `getComputedStyle(child).display`.
+
+**Fix:** Use a `TreeWalker` with `NodeFilter.SHOW_TEXT` and walk the ancestor chain checking for any ancestor with `display:none`. Alternatively filter with `offsetParent === null` as a visibility proxy (doesn't work for fixed/absolute positioned elements). Best approach: `el.checkVisibility()` or check `el.getBoundingClientRect().width > 0`.
+
+### 2026-04-12 — scenario action type uses 'preset' field, not 'scenario'
+
+**What:** Docker warm container action files for `{"type":"scenario"}` require a `"preset"` field (e.g. `{"type":"scenario","preset":"study-deck-rome"}`), NOT `"scenario"`. Using `"scenario"` key is silently ignored — the action returns `ok:true` but loads `undefined`, causing the prior scenario to persist.
+
+**Fix:** Always use `{"type":"scenario","preset":"<name>"}` in Docker action files.
+
+### 2026-04-12 — Human anatomy study deck serves only image_answers quiz mode facts
+
+**What:** `study-deck-anatomy` generates study session questions exclusively from `ha_visual_*` facts with `quizMode: "image_answers"`. These are unrenderable in the text-based study quiz overlay. The study session silently fails, showing whatever question was previously rendered.
+
+**Why:** `generateStudyQuestions()` using the human_anatomy curated deck selects facts without filtering by quizMode. The anatomy deck has ~2009 facts but only 18 are text-based (non-image); the curated deck's study session logic samples from the full deck including image-mode facts.
+
+**Fix:** Filter out `quizMode: "image_answers"` and `quizMode: "image_question"` in `generateStudyQuestions()` when selecting study session facts.
+
+### 2026-04-12 — Encounter-start relic effects silently never fired (plague_flask, thick_skin, gladiator_s_mark, red_fang)
+
+**What:** Four relics with `on_encounter_start` effects produced zero in-game effect despite the resolver computing correct values. `resolveEncounterStartEffects()` returned `encounterStartPoison`, `thickSkinBlock`, `tempStrengthBonus`, and `firstAttackDamageBonus` but `encounterBridge.ts` never read them.
+
+**Why:** The `encounterBridge.ts` wiring block (lines 848-861) was written before those four fields were added to `EncounterStartEffects`. The resolver's return type grew in isolation from its consumer. `red_fang`'s bonus was additionally missing from `resolveAttackModifiers` — it was tagged "informational, caller applies" but no caller ever did.
+
+**Fix:**
+1. `encounterBridge.ts`: Added `applyStatusEffect` import; wired `thickSkinBlock` → player shield, `encounterStartPoison` → enemy `statusEffects` (type `'poison'`, turnsRemaining 99), `tempStrengthBonus` → player `statusEffects` (type `'strength'`, duration from resolver).
+2. `relicEffectResolver.ts`: Added `red_fang` check to `resolveAttackModifiers` (`context.isFirstAttack` → `+0.3` percentDamageBonus), matching the existing `flame_brand` pattern.
+
+**Pattern:** When adding a new field to a resolver's return type, immediately search for every callsite and wire it. A resolver field with no consumer is a silent no-op — TypeScript won't catch it.
