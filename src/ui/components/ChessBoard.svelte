@@ -618,7 +618,7 @@
   .chess-board-container {
     width: 100%;
     /* Constrain by viewport height so 1:1 board can't overflow vertically */
-    max-width: min(100%, 55vh);
+    max-width: min(100%, 60vh);
     aspect-ratio: unset;
     margin: 0 auto;
     display: flex;
@@ -752,9 +752,9 @@
     flex: 1;
     font-family: monospace;
     font-size: calc(14px * var(--text-scale, 1));
-    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(60, 65, 80, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: calc(4px * var(--layout-scale, 1));
     color: var(--text-primary, #e2e8f0);
     outline: none;

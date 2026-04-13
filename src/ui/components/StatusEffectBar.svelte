@@ -31,8 +31,8 @@
     fortify: { name: 'Fortify', icon: '🏰', color: '#94a3b8', desc: (v) => `${v} block persists into next turn` },
     overclock: { name: 'Overclock', icon: '⚙️', color: '#e879f9', desc: () => `Next card effect doubled, draw -1 next turn` },
     slow: { name: 'Slow', icon: '🐌', color: '#a1a1aa', desc: (v, t) => `Skips next defend/buff action (${t} turn${t !== 1 ? 's' : ''} left)` },
-    burn: { name: 'Brain Burn', icon: '🔥', spriteIcon: '/assets/sprites/icons/icon_status_burn.png', color: '#f97316', desc: (v) => `Brain Burn [${v}]: Next hit deals +${v} bonus damage, then halves.` },
-    bleed: { name: 'Lingering Doubt', icon: '🩸', spriteIcon: '/assets/sprites/icons/icon_status_bleed.png', color: '#ef4444', desc: (v) => `Lingering Doubt [${v}]: Incoming card attacks deal +${v} damage. Decays 1/turn.` },
+    burn: { name: 'Brain Burn', icon: '🔥', spriteIcon: '/assets/sprites/icons/icon_status_burn.png', color: '#f97316', desc: (v) => `Next hit deals +${v} bonus damage, then halves.` },
+    bleed: { name: 'Lingering Doubt', icon: '🩸', spriteIcon: '/assets/sprites/icons/icon_status_bleed.png', color: '#ef4444', desc: (v) => `Incoming card attacks deal +${v} damage. Decays 1/turn.` },
     freeze: { name: 'Freeze', icon: '❄️', color: '#38bdf8', desc: (v, t) => `Frozen — skips action (${t} turn${t !== 1 ? 's' : ''} left)` },
     // Knowledge Aura states (AR-261) — desc reflects actual fog level thresholds (0-2: flow, 3-6: neutral, 7-10: fog)
     brain_fog: { name: 'Brain Fog', icon: '🌫️', color: '#818cf8', desc: (v) => {
@@ -174,7 +174,7 @@
     height: calc(50px * var(--layout-scale, 1));
     border-radius: 50%;
     border: none;
-    background: transparent;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.55) 40%, transparent 70%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -287,10 +287,20 @@
     image-rendering: pixelated;
   }
 
+  /* Boost the faint poison/Doubt icon so it reads against dark backgrounds */
+  .effect-sprite-icon[src*="poison"] {
+    filter: brightness(2.5) saturate(1.5);
+  }
+
   .popup-sprite-icon {
     width: calc(40px * var(--layout-scale, 1));
     height: calc(40px * var(--layout-scale, 1));
     object-fit: contain;
     flex-shrink: 0;
+  }
+
+  /* Boost the faint poison/Doubt icon in the popup */
+  .popup-sprite-icon[src*="poison"] {
+    filter: brightness(2.5) saturate(1.5);
   }
 </style>

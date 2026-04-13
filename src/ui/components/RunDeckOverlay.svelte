@@ -144,10 +144,10 @@
   })
 
   // ============================================================
-  // Card visual sizing — ~170px base width, aspect 886:1142
+  // Card visual sizing — ~220px base width, aspect 886:1142
   // ============================================================
   /** CSS card width used as grid column basis (unitless px for --card-w var). */
-  const CARD_W_PX = 170
+  const CARD_W_PX = 220
 
   // ============================================================
   // Mastery label (L0-L5)
@@ -170,42 +170,15 @@
   interface SelectedCardState {
     card: Card
     pile: PileId
-    top: number
-    left: number
   }
 
   let selectedCard = $state<SelectedCardState | null>(null)
 
-  const POPUP_WIDTH_PX = 320
-
   /**
-   * Open the mastery popup positioned beside the clicked card cell.
-   * Flips to left side if the card is near the right viewport edge.
-   * Clamps top so popup stays visible.
+   * Open the mastery popup centered in the viewport.
    */
   function openMasteryPopup(e: MouseEvent, card: Card, pile: PileId): void {
-    const btn = e.currentTarget as HTMLElement
-    const rect = btn.getBoundingClientRect()
-    const popupWidth = POPUP_WIDTH_PX + 20 // padding buffer
-
-    // Decide left/right placement
-    let left: number
-    if (rect.right + popupWidth > window.innerWidth) {
-      // Flip: popup opens to the left of the card
-      left = rect.left - popupWidth + 20
-    } else {
-      left = rect.right + 10
-    }
-
-    // Clamp left to stay inside viewport
-    left = Math.max(8, Math.min(left, window.innerWidth - popupWidth - 8))
-
-    // Clamp top so popup stays on screen (assume max popup height ~440px)
-    const maxPopupH = 440
-    let top = rect.top
-    top = Math.max(8, Math.min(top, window.innerHeight - maxPopupH - 8))
-
-    selectedCard = { card, pile, top, left }
+    selectedCard = { card, pile }
   }
 
   function closeMasteryPopup(): void {
@@ -393,77 +366,73 @@
   </div>
 </div>
 
-<!-- Mastery popup — rendered fixed to viewport so it floats beside the clicked card -->
+<!-- Mastery popup — centered in viewport, backdrop catches outside clicks -->
 {#if selectedCard !== null}
   {@const sc = selectedCard}
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <!-- svelte-ignore a11y_click_events_have_key_events -->
-  <div
-    class="rdo-mastery-popup"
-    style="top: calc({sc.top}px * var(--layout-scale, 1)); left: calc({sc.left}px * var(--layout-scale, 1));"
-    role="dialog"
-    aria-modal="false"
-    aria-label="Mastery levels for {sc.card.mechanicName ?? 'card'}"
-    data-testid="rdo-mastery-popup"
-  >
-    <!-- Popup header -->
-    <div class="rdo-popup-header">
-      <span class="rdo-popup-mechanic-name">{sc.card.mechanicName ?? sc.card.factId ?? 'Card'}</span>
-      <button
-        type="button"
-        class="rdo-popup-close"
-        onclick={closeMasteryPopup}
-        aria-label="Close mastery popup"
-      >✕</button>
-    </div>
+  <div class="rdo-mastery-backdrop" onclick={closeMasteryPopup}>
+    <div
+      class="rdo-mastery-popup"
+      onclick={(e) => e.stopPropagation()}
+      role="dialog"
+      aria-modal="false"
+      aria-label="Mastery levels for {sc.card.mechanicName ?? 'card'}"
+      data-testid="rdo-mastery-popup"
+    >
+      <!-- Popup header -->
+      <div class="rdo-popup-header">
+        <span class="rdo-popup-mechanic-name">{sc.card.mechanicName ?? sc.card.factId ?? 'Card'}</span>
+      </div>
 
-    <!-- Per-level rows L0 → L5 -->
-    <div class="rdo-popup-levels" role="list" aria-label="Mastery levels">
-      {#each [0, 1, 2, 3, 4, 5] as level}
-        {@const isCurrent = (sc.card.masteryLevel ?? 0) === level}
-        {@const descParts = getDescPartsAtLevel(sc.card, level)}
-        {@const stats = getMasteryStats(sc.card.mechanicId ?? '', level)}
-        <div
-          class="rdo-popup-level-row"
-          class:rdo-popup-level-current={isCurrent}
-          role="listitem"
-          aria-label="Level {level}{isCurrent ? ' (current)' : ''}"
-        >
-          <!-- Icon column — background-crop renders the 73×73 plus region from the
-               full 886×1142 canvas at 40px display size. Avoids object-fit: contain
-               collapsing the plus to ~2px when the whole canvas is crammed into 28px. -->
-          <div class="rdo-popup-icon-col">
-            <div
-              class="rdo-popup-icon"
-              class:rdo-popup-icon-bob={isCurrent}
-              style="--rdo-icon-filter: {level === 0 ? 'grayscale(1) brightness(0.55) opacity(0.6)' : getMasteryIconFilter(level)};"
-              aria-hidden="true"
-            ></div>
-          </div>
-          <!-- Text column -->
-          <div class="rdo-popup-text-col">
-            <span class="rdo-popup-level-label" style="color: {masteryColor(level)};">L{level}</span>
-            <span class="rdo-popup-desc">
-              {#each descParts as part}
-                {#if part.type === 'number'}
-                  <span class="rdo-popup-desc-number">{part.value}</span>
-                {:else if part.type === 'keyword'}
-                  <span class="rdo-popup-desc-keyword">{part.value}</span>
-                {:else if part.type === 'conditional-number'}
-                  <span class="rdo-popup-desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
-                {:else if part.type === 'mastery-bonus'}
-                  <span class="rdo-popup-desc-mastery">{part.value}</span>
-                {:else}
-                  {part.value}
+      <!-- Per-level rows L0 → L5 -->
+      <div class="rdo-popup-levels" role="list" aria-label="Mastery levels">
+        {#each [0, 1, 2, 3, 4, 5] as level}
+          {@const isCurrent = (sc.card.masteryLevel ?? 0) === level}
+          {@const descParts = getDescPartsAtLevel(sc.card, level)}
+          {@const stats = getMasteryStats(sc.card.mechanicId ?? '', level)}
+          <div
+            class="rdo-popup-level-row"
+            class:rdo-popup-level-current={isCurrent}
+            role="listitem"
+            aria-label="Level {level}{isCurrent ? ' (current)' : ''}"
+          >
+            <!-- Icon column — background-crop renders the 73×73 plus region from the
+                 full 886×1142 canvas at 52px display size. Avoids object-fit: contain
+                 collapsing the plus to ~2px when the whole canvas is crammed into 28px. -->
+            <div class="rdo-popup-icon-col">
+              <div
+                class="rdo-popup-icon"
+                class:rdo-popup-icon-bob={isCurrent}
+                style="--rdo-icon-filter: {level === 0 ? 'grayscale(1) brightness(0.55) opacity(0.6)' : getMasteryIconFilter(level)};"
+                aria-hidden="true"
+              ></div>
+            </div>
+            <!-- Text column -->
+            <div class="rdo-popup-text-col">
+              <span class="rdo-popup-level-label" style="color: {masteryColor(level)};">L{level}</span>
+              <span class="rdo-popup-desc">
+                {#each descParts as part}
+                  {#if part.type === 'number'}
+                    <span class="rdo-popup-desc-number">{part.value}</span>
+                  {:else if part.type === 'keyword'}
+                    <span class="rdo-popup-desc-keyword">{part.value}</span>
+                  {:else if part.type === 'conditional-number'}
+                    <span class="rdo-popup-desc-conditional" class:active={part.active}>{part.active ? part.value : '0'}</span>
+                  {:else if part.type === 'mastery-bonus'}
+                    <span class="rdo-popup-desc-mastery">{part.value}</span>
+                  {:else}
+                    {part.value}
+                  {/if}
+                {/each}
+                {#if stats?.apCost != null}
+                  <span class="rdo-popup-desc-ap"> ({stats.apCost} AP)</span>
                 {/if}
-              {/each}
-              {#if stats?.apCost != null}
-                <span class="rdo-popup-desc-ap"> ({stats.apCost} AP)</span>
-              {/if}
-            </span>
+              </span>
+            </div>
           </div>
-        </div>
-      {/each}
+        {/each}
+      </div>
     </div>
   </div>
 {/if}
@@ -493,7 +462,7 @@
     box-shadow:
       0 calc(8px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.8),
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    width: calc(900px * var(--layout-scale, 1));
+    width: calc(1200px * var(--layout-scale, 1));
     max-width: 90vw;
     max-height: 80vh;
     display: flex;
@@ -524,14 +493,14 @@
 
   .rdo-title {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     font-weight: 700;
     color: #f4d35e;
     letter-spacing: 0.04em;
   }
 
   .rdo-total {
-    font-size: calc(10px * var(--text-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.45);
   }
 
@@ -546,7 +515,7 @@
 
   .rdo-chip {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;
     letter-spacing: 0.05em;
     padding: calc(2px * var(--layout-scale, 1)) calc(7px * var(--layout-scale, 1));
@@ -565,7 +534,7 @@
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.55);
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: calc(18px * var(--text-scale, 1));
     min-width: calc(28px * var(--layout-scale, 1));
     min-height: calc(28px * var(--layout-scale, 1));
     border-radius: calc(4px * var(--layout-scale, 1));
@@ -607,7 +576,7 @@
   }
 
   .rdo-control-label {
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.4);
     letter-spacing: 0.05em;
     font-family: var(--font-pixel, var(--font-rpg));
@@ -617,7 +586,7 @@
   .rdo-filter-btn,
   .rdo-sort-btn {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;
     letter-spacing: 0.04em;
     padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
@@ -677,7 +646,7 @@
      ============================================================ */
   .rdo-card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(calc(170px * var(--layout-scale, 1)), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(calc(220px * var(--layout-scale, 1)), 1fr));
     gap: calc(30px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     justify-items: center;
     /* Extra top padding so pile badges (which float above cards) are not clipped */
@@ -728,7 +697,7 @@
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(7px * var(--text-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
     font-weight: 700;
     letter-spacing: 0.04em;
     border: 1px solid;
@@ -746,7 +715,7 @@
     bottom: calc(4px * var(--layout-scale, 1));
     right: calc(0px * var(--layout-scale, 1));
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;
     letter-spacing: 0.03em;
     pointer-events: none;
@@ -765,14 +734,14 @@
     padding: calc(32px * var(--layout-scale, 1));
     text-align: center;
     color: rgba(255, 255, 255, 0.5);
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
   }
 
   .rdo-close-btn-center {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: rgba(255, 255, 255, 0.7);
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
     padding: calc(8px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
     border-radius: calc(4px * var(--layout-scale, 1));
     cursor: pointer;
@@ -785,11 +754,24 @@
   }
 
   /* ============================================================
-     Mastery popup — fixed viewport panel
+     Mastery popup backdrop — transparent, catches outside clicks
+     ============================================================ */
+  .rdo-mastery-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 455;
+    /* transparent — just catches clicks */
+  }
+
+  /* ============================================================
+     Mastery popup — centered in viewport
      ============================================================ */
   .rdo-mastery-popup {
     position: fixed;
-    width: calc(320px * var(--layout-scale, 1));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(480px * var(--layout-scale, 1));
     background: rgba(10, 16, 30, 0.95);
     border: 1px solid rgba(201, 162, 39, 0.45);
     border-radius: calc(8px * var(--layout-scale, 1));
@@ -807,14 +789,14 @@
   .rdo-popup-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     border-bottom: 1px solid rgba(201, 162, 39, 0.2);
   }
 
   .rdo-popup-mechanic-name {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(10px * var(--text-scale, 1));
+    font-size: calc(18px * var(--text-scale, 1));
     font-weight: 700;
     color: #f4d35e;
     text-transform: uppercase;
@@ -822,36 +804,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    flex: 1;
-    min-width: 0;
-    margin-right: calc(8px * var(--layout-scale, 1));
-  }
-
-  .rdo-popup-close {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: rgba(255, 255, 255, 0.5);
-    font-size: calc(11px * var(--text-scale, 1));
-    min-width: calc(24px * var(--layout-scale, 1));
-    min-height: calc(24px * var(--layout-scale, 1));
-    border-radius: calc(4px * var(--layout-scale, 1));
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    flex-shrink: 0;
-    transition: color 120ms ease, border-color 120ms ease;
-  }
-
-  .rdo-popup-close:hover {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-
-  .rdo-popup-close:focus-visible {
-    outline: 2px solid rgba(244, 211, 94, 0.8);
-    outline-offset: 2px;
+    text-align: center;
   }
 
   /* Level rows container */
@@ -859,15 +812,15 @@
     padding: calc(6px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
-    gap: calc(2px * var(--layout-scale, 1));
+    gap: calc(4px * var(--layout-scale, 1));
   }
 
   /* Individual level row */
   .rdo-popup-level-row {
     display: flex;
     align-items: center;
-    gap: calc(8px * var(--layout-scale, 1));
-    padding: calc(5px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    gap: calc(12px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: calc(4px * var(--layout-scale, 1));
     border: 1px solid transparent;
     transition: background 150ms ease;
@@ -879,32 +832,32 @@
     border-color: rgba(201, 162, 39, 0.3);
   }
 
-  /* Mastery icon — 44px column gives padding around the 40px icon */
+  /* Mastery icon — 56px column gives padding around the 52px icon */
   .rdo-popup-icon-col {
     flex-shrink: 0;
-    width: calc(44px * var(--layout-scale, 1));
-    height: calc(44px * var(--layout-scale, 1));
+    width: calc(56px * var(--layout-scale, 1));
+    height: calc(56px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   /* background-crop approach: shows the 73×73 green plus region
-     from the 886×1142 card-upgrade-icon.webp canvas at 40px display size.
-     Scale factor: 40/73 ≈ 0.5479 → scaled canvas ~485×626px; plus starts at ~76,294px. */
+     from the 886×1142 card-upgrade-icon.webp canvas at 52px display size.
+     Scale factor: 52/73 ≈ 0.712 → scaled canvas ~631×813px; plus starts at ~99,382px. */
   .rdo-popup-icon {
-    width: calc(40px * var(--layout-scale, 1));
-    height: calc(40px * var(--layout-scale, 1));
+    width: calc(52px * var(--layout-scale, 1));
+    height: calc(52px * var(--layout-scale, 1));
     background-image: url('/assets/cardframes/v2/card-upgrade-icon.webp');
     background-repeat: no-repeat;
-    background-size: calc(485px * var(--layout-scale, 1)) calc(626px * var(--layout-scale, 1));
-    background-position: calc(-76px * var(--layout-scale, 1)) calc(-294px * var(--layout-scale, 1));
+    background-size: calc(631px * var(--layout-scale, 1)) calc(813px * var(--layout-scale, 1));
+    background-position: calc(-99px * var(--layout-scale, 1)) calc(-382px * var(--layout-scale, 1));
     image-rendering: pixelated;
     flex-shrink: 0;
     filter: var(--rdo-icon-filter, none);
   }
 
-  /* Bob animation for the current level's icon — 4px amplitude for visibility at 40px icon */
+  /* Bob animation for the current level's icon — 4px amplitude for visibility at 52px icon */
   @keyframes rdoIconBob {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(calc(-4px * var(--layout-scale, 1))); }
@@ -926,7 +879,7 @@
 
   .rdo-popup-level-label {
     font-family: var(--font-pixel, var(--font-rpg));
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     font-weight: 700;
     letter-spacing: 0.04em;
     flex-shrink: 0;
@@ -935,7 +888,7 @@
 
   .rdo-popup-desc {
     font-family: 'Kreon', 'Georgia', serif;
-    font-size: calc(10px * var(--text-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     font-weight: 500;
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.4;
@@ -968,6 +921,6 @@
 
   .rdo-popup-desc-ap {
     color: rgba(255, 255, 255, 0.45);
-    font-size: calc(9px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
   }
 </style>

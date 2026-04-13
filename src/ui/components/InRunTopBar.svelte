@@ -145,8 +145,8 @@
     fortify:       { name: 'Fortify',       icon: '🏰', color: '#94a3b8', desc: (v) => `${v} block persists next turn` },
     overclock:     { name: 'Overclock',     icon: '⚙️', color: '#e879f9', desc: () => `Next card doubled, draw -1` },
     slow:          { name: 'Slow',          icon: '🐌', color: '#a1a1aa', desc: (_, t) => `Skips defend/buff (${t} left)` },
-    burn:          { name: 'Brain Burn',     icon: '🔥', spriteIcon: '/assets/sprites/icons/icon_status_burn.png',       color: '#f97316', desc: (v) => `Brain Burn [${v}]: +${v} next hit, then halves` },
-    bleed:         { name: 'Lingering Doubt', icon: '🩸', spriteIcon: '/assets/sprites/icons/icon_status_bleed.png',     color: '#ef4444', desc: (v) => `Lingering Doubt [${v}]: +${v} incoming damage/turn` },
+    burn:          { name: 'Brain Burn',     icon: '🔥', spriteIcon: '/assets/sprites/icons/icon_status_burn.png',       color: '#f97316', desc: (v) => `+${v} next hit, then halves` },
+    bleed:         { name: 'Lingering Doubt', icon: '🩸', spriteIcon: '/assets/sprites/icons/icon_status_bleed.png',     color: '#ef4444', desc: (v) => `+${v} incoming damage/turn` },
     freeze:        { name: 'Freeze',        icon: '❄️', color: '#38bdf8', desc: (_, t) => `Frozen — skips action (${t} left)` },
     brain_fog:     { name: 'Brain Fog',     icon: '🌫️', color: '#818cf8', desc: (v) => `Enemies deal +20% damage. Fog: ${v}/10` },
     flow_state:    { name: 'Flow State',    icon: '✨', color: '#fbbf24', desc: (v) => `Draw +1 card/turn. Fog: ${v}/10` },
@@ -589,9 +589,9 @@
 
   .topbar-status-icon {
     position: relative;
-    width: calc(var(--topbar-height, 4.5vh) * 0.58);
-    height: calc(var(--topbar-height, 4.5vh) * 0.58);
-    min-width: calc(var(--topbar-height, 4.5vh) * 0.58);
+    width: calc(var(--topbar-height, 4.5vh) * 0.72);
+    height: calc(var(--topbar-height, 4.5vh) * 0.72);
+    min-width: calc(var(--topbar-height, 4.5vh) * 0.72);
     border: none;
     background: transparent;
     display: flex;
@@ -614,8 +614,13 @@
     object-fit: contain;
   }
 
+  /* Boost the faint poison/Doubt icon so it reads against dark backgrounds */
+  .topbar-status-sprite[src*="poison"] {
+    filter: brightness(2.5) saturate(1.5);
+  }
+
   .topbar-status-emoji {
-    font-size: calc(var(--topbar-height, 4.5vh) * 0.40);
+    font-size: calc(var(--topbar-height, 4.5vh) * 0.50);
     line-height: 1;
   }
 
@@ -624,10 +629,10 @@
     position: absolute;
     bottom: calc(-3px * var(--layout-scale, 1));
     right: calc(-3px * var(--layout-scale, 1));
-    min-width: calc(14px * var(--layout-scale, 1));
-    height: calc(14px * var(--layout-scale, 1));
+    min-width: calc(18px * var(--layout-scale, 1));
+    height: calc(18px * var(--layout-scale, 1));
     border-radius: 50%;
-    font-size: calc(8px * var(--text-scale, 1));
+    font-size: calc(10px * var(--text-scale, 1));
     font-weight: 800;
     color: #fff;
     display: flex;
@@ -646,7 +651,7 @@
     left: 50%;
     transform: translateX(-50%);
     margin-top: calc(4px * var(--layout-scale, 1));
-    width: calc(220px * var(--layout-scale, 1));
+    width: calc(300px * var(--layout-scale, 1));
     padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: rgba(15, 23, 42, 0.97);
     border: 1px solid rgba(148, 163, 184, 0.3);
@@ -664,17 +669,22 @@
   }
 
   .topbar-status-popup-icon {
-    font-size: calc(16px * var(--layout-scale, 1));
+    font-size: calc(20px * var(--layout-scale, 1));
     flex-shrink: 0;
-    width: calc(28px * var(--layout-scale, 1));
+    width: calc(32px * var(--layout-scale, 1));
     text-align: center;
   }
 
   .topbar-status-popup-sprite {
-    width: calc(28px * var(--layout-scale, 1));
-    height: calc(28px * var(--layout-scale, 1));
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
     object-fit: contain;
     flex-shrink: 0;
+  }
+
+  /* Boost the faint poison/Doubt icon in the popup */
+  .topbar-status-popup-sprite[src*="poison"] {
+    filter: brightness(2.5) saturate(1.5);
   }
 
   .topbar-status-popup-text {
@@ -684,14 +694,14 @@
   }
 
   .topbar-status-popup-name {
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     font-weight: 700;
     font-family: var(--font-pixel, var(--font-rpg));
     line-height: 1.2;
   }
 
   .topbar-status-popup-desc {
-    font-size: calc(10px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     color: #94a3b8;
     line-height: 1.3;
   }

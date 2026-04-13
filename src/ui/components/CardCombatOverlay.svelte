@@ -3506,17 +3506,23 @@
   }
 
   .intent-attack-name {
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: calc(18px * var(--text-scale, 1));
     font-weight: 800;
     color: #f1f5f9;
     white-space: nowrap;
+    max-width: calc(240px * var(--layout-scale, 1));
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .intent-detail-line {
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.75);
     white-space: nowrap;
     line-height: 1.3;
+    max-width: calc(280px * var(--layout-scale, 1));
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* When the player's block fully absorbs incoming damage, mute the attack intent bubble
@@ -3544,8 +3550,8 @@
   }
 
   .intent-icon-img {
-    width: calc(28px * var(--layout-scale, 1));
-    height: calc(28px * var(--layout-scale, 1));
+    width: calc(36px * var(--layout-scale, 1));
+    height: calc(36px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -3557,7 +3563,7 @@
   }
 
   .intent-value {
-    font-size: calc(18px * var(--text-scale, 1));
+    font-size: calc(22px * var(--text-scale, 1));
     font-weight: 700;
     font-family: 'Georgia', serif;
     color: #e2e8f0;
@@ -4483,7 +4489,10 @@
   :global(.layout-landscape.quiz-active .status-effect-bar-enemy) {
     left: 58%;
     right: 0;
-    transform: none;
+    transform: scale(0.8);
+    transform-origin: center top;
+    top: 16vh;
+    justify-content: center;
   }
 
   /* Pile indicators: bottom-left/right, just above card hand strip in landscape */

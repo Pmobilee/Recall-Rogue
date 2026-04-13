@@ -850,7 +850,7 @@
       <img src={imageAssetPath} alt="Identify this" class="quiz-asset-image" />
     </div>
   {/if}
-  <div class="card-question {questionLengthClass} {questionAlignClass}">
+  <div class="card-question {questionLengthClass} {questionAlignClass} {quizMode === 'chess_tactic' ? 'chess-question' : ''}">
     {#if japaneseParts}
       {japaneseParts.before}<FuriganaText
         text={kanaOnly && japaneseParts.reading ? japaneseParts.reading : japaneseParts.word}
@@ -1457,6 +1457,11 @@
     font-size: calc(26px * var(--text-scale, 1));
   }
 
+  /* Chess tactic questions are short — override auto-scale with a larger size */
+  .card-expanded-landscape .card-question.chess-question {
+    font-size: calc(32px * var(--text-scale, 1));
+  }
+
   .card-question.quiz-text-medium {
     font-size: calc(22px * var(--text-scale, 1));
   }
@@ -1875,6 +1880,13 @@
     width: 100%;
     max-height: 100%;
     padding: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* Landscape: let board fill available space without clipping the top rows */
+  .card-expanded-landscape .chess-puzzle-container {
+    flex: 1;
+    overflow: visible;
+    min-height: 0;
   }
 
   .chess-puzzle-error {

@@ -680,11 +680,14 @@ async function bootstrapRun(config: ScenarioConfig): Promise<boolean> {
   // Pass ascension level from config so encounterBridge picks up correct modifiers
   // when startEncounterForRoom() is called — without this, TurnState is initialized
   // at A0 difficulty even if the scenario badge shows a higher level (issue-1744332000000-08-001)
+  // Pass deckMode so createRunState initializes inRunFactTracker (study mode quiz path)
+  const deckMode = config.deckId ? { type: 'study' as const, deckId: config.deckId, subDeckId: config.subDeckId } : undefined;
   const run = createRunState(domain, domain, {
     selectedArchetype: 'balanced',
     starterDeckSize: 15,
     startingAp: 3,
     ascensionLevel: config.ascension ?? 0,
+    deckMode,
   });
 
   // Apply config overrides to run
@@ -755,18 +758,6 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
   if (!enemyTemplate) {
     const validIds = ENEMY_TEMPLATES.map(t => t.id).join(', ');
     return { ok: false, message: `Unknown enemy ID: '${enemyId}'. Valid IDs: ${validIds}` };
-  }
-
-  // If a deckId was specified, set deckMode so the encounter pool uses the curated deck
-  if (config.deckId) {
-    updateStore<any>('rr:activeRunState', (run: any) => ({
-      ...run,
-      deckMode: {
-        type: 'study' as const,
-        deckId: config.deckId,
-        subDeckId: config.subDeckId,
-      },
-    }));
   }
 
   const started = await startEncounterForRoom(enemyId);
@@ -851,7 +842,8 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
         statusEffects: config.enemyStatusEffects.map(e => ({
           type: e.id as any,
           value: e.stacks,
-          turnsRemaining: 9999,
+          // strength (Clarity) is permanent; other effects use realistic 2-3 turn durations
+          turnsRemaining: e.id === 'strength' ? 9999 : 2 + Math.floor(Math.random() * 2),
         })),
       };
       mutated = true;
@@ -864,7 +856,8 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
         statusEffects: config.playerStatusEffects.map(e => ({
           type: e.id as any,
           value: e.stacks,
-          turnsRemaining: 9999,
+          // strength (Clarity) is permanent; other effects use realistic 2-3 turn durations
+          turnsRemaining: e.id === 'strength' ? 9999 : 2 + Math.floor(Math.random() * 2),
         })),
       };
       mutated = true;
