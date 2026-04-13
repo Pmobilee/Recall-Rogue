@@ -290,6 +290,24 @@ export function selectDistractors(
       }
     }
 
+    // Chain theme matching: prefer distractors from the same thematic sub-category.
+    // When a pool spans multiple chainThemes (e.g. an AP deck pool covers all units,
+    // or a world-religions deck pools city names from Buddhist AND Christian facts),
+    // penalise cross-theme candidates so distractors stay category-coherent.
+    // chainThemeId 0 is "unthemed" — no penalty applied in that case.
+    // This is a score penalty, not a hard filter, so the fallback path still works
+    // when the correct fact's theme has too few pool members to fill the requested count.
+    // 2026-04-12: Added after playtest BATCH-2026-04-12-002 Track 3 found Hindu/Buddhist
+    // city names appearing as Christianity distractors and animal speed values appearing
+    // as mammal weight distractors — cross-theme contamination in broad mega-pools.
+    if (correctFact.chainThemeId !== 0 && candidateFact.chainThemeId !== 0) {
+      if (candidateFact.chainThemeId === correctFact.chainThemeId) {
+        score += 4.0;  // Boost: same chain theme — high semantic coherence
+      } else {
+        score *= 0.2;  // Penalty: different chain theme — reduces cross-category picks
+      }
+    }
+
     // Similar difficulty band (±1)
     const diffDelta = Math.abs(correctFact.difficulty - candidateFact.difficulty);
     if (diffDelta <= 1) {

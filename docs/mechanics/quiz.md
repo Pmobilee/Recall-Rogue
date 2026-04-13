@@ -164,7 +164,7 @@ Mastery Trial overrides (`MASTERY_TRIAL` constant): 5 options, close distractors
 `selectDistractors` priority order:
 1. Synonym group exclusion (mandatory — synonyms never appear as distractors)
 2. Pool size check: if fewer than 5 unique answers available (real + synthetic combined), use pre-generated `fact.distractors[]`
-3. Scoring from `answerPool.factIds`: known confusions (+10.0×count), reverse confusions (+5.0×count), in-run struggles (+3.0), same part-of-speech (+4.0 or ×0.3 penalty), **same measurement unit (+5.0 or ×0.1 penalty — see below)**, similar difficulty ±1 (+2.0)
+3. Scoring from `answerPool.factIds`: known confusions (+10.0×count), reverse confusions (+5.0×count), in-run struggles (+3.0), same part-of-speech (+4.0 or ×0.3 penalty), **same measurement unit (+5.0 or ×0.1 penalty — see below)**, **same chainThemeId (+4.0 or ×0.2 penalty — see below)**, similar difficulty ±1 (+2.0)
 4. Synthetic pool members scored at base 0.5 (lower than real pool members at 1.0 — real facts always preferred); unit matching also applied to synthetics
 5. Jitter (0–0.5) seeded from `totalCharges × fact ID hash` for per-encounter variety
 6. Deduplication: skips distractor answers that appear by name in the question text
@@ -183,6 +183,18 @@ When the correct answer has a detectable unit, the scoring step applies:
 This prevents cross-unit contamination in broad measurement pools (such as `measurement_number` in world-wonders decks) that mix heights, weights, durations, and counts in the same pool. When fewer same-unit candidates exist than the requested distractor count, the penalty is overridden and mixed-unit candidates fill remaining slots rather than leaving the response underfilled.
 
 The unit penalty is a scoring heuristic, not a hard filter — confusion matrix data (+10.0×count) still overrides the penalty when a player genuinely confuses two measurements of different units.
+
+#### Chain Theme Matching (`chainThemeId`)
+
+When the correct fact has a non-zero `chainThemeId`, the scoring step applies:
+- **+4.0** for candidates whose `chainThemeId` matches the correct fact's theme
+- **×0.2** penalty for candidates with a different non-zero `chainThemeId`
+
+Facts with `chainThemeId === 0` (unthemed) are never penalised — unthemed pools are intentionally broad (e.g. vocabulary decks).
+
+This prevents cross-category contamination in broad pools that span multiple thematic sub-categories. For example, a world-religions deck with a single "sacred cities" pool covering Hindu, Buddhist, and Christian sites: when the correct answer is a Christian holy city, the +4.0 boost for `chainThemeId === 2` (Christianity) means other Christian cities score above Hindu/Buddhist cities even though all are in the same pool. Cross-theme cities still fill remaining slots when the same-theme candidates are exhausted (score penalty, not hard filter).
+
+**Added 2026-04-12** after playtest BATCH-2026-04-12-002 Track 3 found Hindu/Buddhist city names appearing as Christianity distractors and animal speed values appearing as mammal weight distractors — cross-theme contamination in broad mega-pools that had not been split by sub-category.
 
 #### Synthetic Distractor Members (`AnswerTypePool.syntheticDistractors`)
 

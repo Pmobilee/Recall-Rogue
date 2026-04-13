@@ -1,4 +1,25 @@
 
+### 2026-04-12 — Cross-category distractor contamination in broad chainTheme pools
+
+**What:** Hindu/Buddhist city names appeared as Christianity distractors; animal speed values appeared as mammal weight distractors; feudal terms appeared as printing-date distractors. Playtest BATCH-2026-04-12-002 Track 3 (HIGH).
+
+**Why:** `selectDistractors` in `curatedDistractorSelector.ts` scored all pool members equally on the thematic axis. Broad pools that span multiple `chainThemeId` sub-categories (e.g. a "sacred cities" pool covering Hindu, Buddhist, and Christian facts) would select distractors from any sub-category — the scoring system had no signal for thematic coherence.
+
+**Fix:** Added `chainThemeId` matching to the scoring loop. Candidates with the same non-zero `chainThemeId` as the correct fact receive +4.0; candidates with a different non-zero `chainThemeId` receive ×0.2. `chainThemeId === 0` (unthemed) is never penalised. Score penalty, not hard filter — same-theme candidates fill first, cross-theme fill remaining slots if needed.
+
+**File:** `src/services/curatedDistractorSelector.ts` — scoring loop around line 292.
+
+### 2026-04-12 — Duplicate factIds in a single combat hand when fact pool < hand size
+
+**What:** The same fact appeared at card indices 1 and 4 in a single combat hand. Player saw the identical question twice in one turn. Playtest BATCH-2026-04-12-002 Track 3 (HIGH).
+
+**Why:** In `drawHand()` in `deckManager.ts`, when `candidateFacts` (a copy of `shuffledFacts`) was exhausted (fact pool smaller than requested hand size), the fallback was `shuffledFacts[0]` — always the first element regardless of what was already assigned. All extra cards beyond the pool size received the same factId.
+
+**Fix:** Changed the fallback from `?? shuffledFacts[0]` to `?? shuffledFacts.find(f => !usedFactIds.has(f)) ?? shuffledFacts[0]`. Now the fallback finds the first not-yet-used fact in the original shuffled list before resorting to index 0. When every fact in the pool is already used (unavoidable with a tiny pool), the final fallback to index 0 is semantically correct.
+
+**File:** `src/services/deckManager.ts` — line in the Per-Draw Fact Shuffling block, `for (const card of drawn)` loop.
+
+
 
 ### 2026-04-12 — abandonActiveRun silently discarded all run data
 

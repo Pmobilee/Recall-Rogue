@@ -105,12 +105,12 @@ describe('canStartLobby — all gates must pass', () => {
 // ---------------------------------------------------------------------------
 
 describe('startButtonLabel — three-state label', () => {
-  it('returns "Select Content" when no contentSelection is set (Issue 1)', () => {
+  it('returns "Choose Content First" when no contentSelection is set (Issue 1)', () => {
     const lobby = {
       players: [makeReadyPlayer('host', true), makeReadyPlayer('guest')],
       contentSelection: undefined,
     }
-    expect(startButtonLabel(lobby, true)).toBe('Select Content')
+    expect(startButtonLabel(lobby, true)).toBe('Choose Content First')
   })
 
   it('returns "Waiting for players..." when content is set but not all ready', () => {

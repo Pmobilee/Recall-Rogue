@@ -312,7 +312,14 @@ export function drawHand(
       deck.currentEncounterSeenFacts = new Set(Array.isArray(deck.currentEncounterSeenFacts) ? deck.currentEncounterSeenFacts : []);
     }
     for (const card of drawn) {
-      const factId = pickCandidateFactId() ?? shuffledFacts[0];
+      // When candidateFacts is exhausted (fact pool smaller than hand size), pick
+      // the first fact in shuffledFacts that hasn't been assigned yet. Fall back to
+      // shuffledFacts[0] only when every fact is already in use (tiny deck edge case).
+      // Using shuffledFacts[0] unconditionally caused duplicate factIds in the same
+      // hand when the fact pool had fewer facts than the hand size. (2026-04-12)
+      const factId = pickCandidateFactId()
+        ?? shuffledFacts.find(f => !usedFactIds.has(f))
+        ?? shuffledFacts[0];
       if (factId) {
         card.factId = factId;
         // AR-202: Mark card as cursed if its assigned fact is in the cursedFactIds set.

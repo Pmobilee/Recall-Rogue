@@ -36,7 +36,7 @@ export function canStartLobby(lobby: Pick<LobbyState, 'players' | 'contentSelect
  */
 export function startButtonLabel(lobby: Pick<LobbyState, 'players' | 'contentSelection'>, amHost: boolean): string {
   if (!amHost) return 'Waiting for host...'
-  if (!lobby.contentSelection) return 'Select Content'
+  if (!lobby.contentSelection) return 'Choose Content First'
   if (!lobby.players.every(p => p.isReady)) return 'Waiting for players...'
   return 'Start Game'
 }

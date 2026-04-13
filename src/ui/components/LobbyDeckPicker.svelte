@@ -277,14 +277,21 @@
                   role="option"
                   aria-selected={checkState !== 'none'}
                 >
-                  <!-- Deck row -->
-                  <div class="ldp-deck-row">
-                    <!-- Checkbox area — selects whole deck -->
+                  <!-- Deck row — clicking anywhere toggles selection -->
+                  <div
+                    class="ldp-deck-row"
+                    role="button"
+                    tabindex="0"
+                    onclick={() => handleWholeDeckToggle(deck.id)}
+                    onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleWholeDeckToggle(deck.id) } }}
+                    aria-label="{deck.name} — toggle selection"
+                  >
+                    <!-- Checkbox area — also toggles whole deck; stopPropagation prevents double-fire from row click -->
                     <button
                       class="ldp-deck-check-btn"
                       class:checked={checkState === 'all'}
                       class:indeterminate={checkState === 'partial'}
-                      onclick={() => handleWholeDeckToggle(deck.id)}
+                      onclick={(e) => { e.stopPropagation(); handleWholeDeckToggle(deck.id) }}
                       aria-label="{deck.name} — select whole deck"
                       aria-pressed={checkState !== 'none'}
                       title={checkState === 'all' ? 'Deselect deck' : 'Select whole deck'}
@@ -313,7 +320,7 @@
                       <button
                         class="ldp-expand-btn"
                         class:expanded={isExpanded}
-                        onclick={() => toggleExpand(deck.id)}
+                        onclick={(e) => { e.stopPropagation(); toggleExpand(deck.id) }}
                         aria-label="{isExpanded ? 'Collapse' : 'Expand'} sub-decks for {deck.name}"
                         aria-expanded={isExpanded}
                       >
@@ -654,6 +661,12 @@
     display: flex;
     align-items: stretch;
     min-height: calc(54px * var(--layout-scale, 1));
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+
+  .ldp-deck-row:hover {
+    background: rgba(255, 255, 255, 0.03);
   }
 
   /* Whole-deck checkbox button */

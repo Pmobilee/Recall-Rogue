@@ -454,3 +454,119 @@ describe('selectDistractors — unit matching', () => {
     expect(answers).toContain('5 metres');
   });
 });
+
+// ---------------------------------------------------------------------------
+// selectDistractors — chain theme matching (cross-category contamination fix)
+// ---------------------------------------------------------------------------
+
+describe('selectDistractors — chain theme matching', () => {
+  it('prefers same-chainTheme distractors over cross-theme distractors in a broad pool', () => {
+    // Simulate a world-religions deck where one pool contains facts from
+    // both Hindu/Buddhist and Christianity sub-themes. The correct fact is
+    // from theme 2 (Christianity). Distractors should come from theme 2, not theme 1.
+    const correctFact = makeFact('christian_city', 'Vatican City', {
+      chainThemeId: 2,
+      answerTypePoolId: 'pool_cities',
+    });
+
+    // Same theme (Christianity) — should be preferred
+    const christianCity2 = makeFact('christian_c2', 'Lourdes', {
+      chainThemeId: 2,
+      answerTypePoolId: 'pool_cities',
+    });
+    const christianCity3 = makeFact('christian_c3', 'Fatima', {
+      chainThemeId: 2,
+      answerTypePoolId: 'pool_cities',
+    });
+    const christianCity4 = makeFact('christian_c4', 'Knock', {
+      chainThemeId: 2,
+      answerTypePoolId: 'pool_cities',
+    });
+
+    // Different theme (Hindu/Buddhist) — should be deprioritised
+    const hinduCity1 = makeFact('hindu_c1', 'Varanasi', {
+      chainThemeId: 1,
+      answerTypePoolId: 'pool_cities',
+    });
+    const hinduCity2 = makeFact('hindu_c2', 'Bodh Gaya', {
+      chainThemeId: 1,
+      answerTypePoolId: 'pool_cities',
+    });
+    const hinduCity3 = makeFact('hindu_c3', 'Lumbini', {
+      chainThemeId: 1,
+      answerTypePoolId: 'pool_cities',
+    });
+
+    const allFacts = [
+      correctFact,
+      christianCity2, christianCity3, christianCity4,
+      hinduCity1, hinduCity2, hinduCity3,
+    ];
+    const pool: AnswerTypePool = {
+      id: 'pool_cities',
+      label: 'Sacred Cities',
+      answerFormat: 'place',
+      minimumSize: 5,
+      factIds: allFacts.map(f => f.id),
+    };
+
+    const result = selectDistractors(
+      correctFact, pool, allFacts, noSynonymGroups, emptyConfusion, null, 3, 1,
+    );
+    const answers = result.distractors.map(d => d.correctAnswer);
+
+    // All 3 same-theme candidates should win over the 3 cross-theme candidates
+    expect(answers).toContain('Lourdes');
+    expect(answers).toContain('Fatima');
+    expect(answers).toContain('Knock');
+    expect(answers).not.toContain('Varanasi');
+    expect(answers).not.toContain('Bodh Gaya');
+    expect(answers).not.toContain('Lumbini');
+  });
+
+  it('does not penalise when chainThemeId is 0 (unthemed facts)', () => {
+    // Facts with chainThemeId 0 should not be penalised — unthemed pools
+    // are intentionally broad (e.g. vocabulary decks).
+    const correctFact = makeFact('fact_a', 'Alpha', { chainThemeId: 0 });
+    const factB = makeFact('fact_b', 'Beta', { chainThemeId: 0 });
+    const factC = makeFact('fact_c', 'Gamma', { chainThemeId: 0 });
+    const factD = makeFact('fact_d', 'Delta', { chainThemeId: 0 });
+    const factE = makeFact('fact_e', 'Epsilon', { chainThemeId: 0 });
+
+    const allFacts = [correctFact, factB, factC, factD, factE];
+    const pool = makePool(allFacts.map(f => f.id));
+
+    const result = selectDistractors(
+      correctFact, pool, allFacts, noSynonymGroups, emptyConfusion, null, 3, 1,
+    );
+
+    // Should return 3 distractors regardless of chainThemeId
+    expect(result.distractors.length).toBe(3);
+  });
+
+  it('falls back to cross-theme distractors when same-theme pool has too few members', () => {
+    // When there are only 1 same-theme distractor but 3 needed, cross-theme
+    // candidates should fill the gap (score penalty, not hard filter).
+    const correctFact = makeFact('fact_x', 'Right Answer', { chainThemeId: 5 });
+    const sameTheme = makeFact('same_theme', 'Same Theme Distractor', { chainThemeId: 5 });
+
+    // Cross-theme distractors — should fill slots when same-theme pool is exhausted
+    const crossA = makeFact('cross_a', 'Cross A', { chainThemeId: 9 });
+    const crossB = makeFact('cross_b', 'Cross B', { chainThemeId: 9 });
+    const crossC = makeFact('cross_c', 'Cross C', { chainThemeId: 9 });
+    const crossD = makeFact('cross_d', 'Cross D', { chainThemeId: 9 });
+
+    const allFacts = [correctFact, sameTheme, crossA, crossB, crossC, crossD];
+    const pool = makePool(allFacts.map(f => f.id));
+
+    const result = selectDistractors(
+      correctFact, pool, allFacts, noSynonymGroups, emptyConfusion, null, 3, 1,
+    );
+
+    // Same-theme distractor should be included first
+    const answers = result.distractors.map(d => d.correctAnswer);
+    expect(answers).toContain('Same Theme Distractor');
+    // Should still return 3 total — cross-theme fills the gap
+    expect(answers.length).toBe(3);
+  });
+});
