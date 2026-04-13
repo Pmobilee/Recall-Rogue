@@ -53,17 +53,18 @@
 
 <style>
   .enemy-power-badges {
-    position: fixed;
-    top: 22vh;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
+    position: relative;
     z-index: 10;
     display: flex;
     gap: calc(4px * var(--layout-scale, 1));
     flex-wrap: nowrap;
     align-items: center;
     pointer-events: auto;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .power-badge {
@@ -74,8 +75,8 @@
   }
 
   .badge-icon {
-    width: calc(60px * var(--layout-scale, 1));
-    height: calc(60px * var(--layout-scale, 1));
+    width: calc(22px * var(--layout-scale, 1));
+    height: calc(22px * var(--layout-scale, 1));
     flex-shrink: 0;
   }
 
@@ -83,9 +84,7 @@
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    top: calc(
-      calc(118px * var(--layout-scale, 1)) + var(--safe-top, 0px)
-    );
+    top: calc(10vh + var(--safe-top, 0px));
     z-index: 20;
     background: rgba(0, 0, 0, 0.92);
     border: 1px solid #666;

@@ -115,6 +115,8 @@ export interface ScenarioConfig {
   enemyBlock?: number;
   /** Status effects on enemy (combat). */
   enemyStatusEffects?: Array<{ id: string; stacks: number }>;
+  /** Status effects on player (combat). */
+  playerStatusEffects?: Array<{ id: string; stacks: number }>;
   /** Turn number override (combat). */
   turn?: number;
 }
@@ -839,6 +841,32 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
     // Enemy block
     if (config.enemyBlock !== undefined && ts.enemy) {
       ts.enemy = { ...ts.enemy, block: config.enemyBlock };
+      mutated = true;
+    }
+
+    // Enemy status effects
+    if (config.enemyStatusEffects && ts.enemy) {
+      ts.enemy = {
+        ...ts.enemy,
+        statusEffects: config.enemyStatusEffects.map(e => ({
+          type: e.id as any,
+          value: e.stacks,
+          turnsRemaining: 9999,
+        })),
+      };
+      mutated = true;
+    }
+
+    // Player status effects
+    if (config.playerStatusEffects) {
+      ts.playerState = {
+        ...ts.playerState,
+        statusEffects: config.playerStatusEffects.map(e => ({
+          type: e.id as any,
+          value: e.stacks,
+          turnsRemaining: 9999,
+        })),
+      };
       mutated = true;
     }
 
@@ -1875,6 +1903,8 @@ function printHelp(): void {
     '    playerMaxHp?: number        // Override player max HP',
     '    playerBlock?: number        // Override player block (combat)',
     '    enemyBlock?: number         // Override enemy block (combat)',
+    '    enemyStatusEffects?: Array<{id,stacks}>  // Status effects on enemy',
+    '    playerStatusEffects?: Array<{id,stacks}> // Status effects on player',
     '    comboMultiplier?: number    // Override combo multiplier (combat)',
     '    turn?: number               // Override turn counter (combat)',
     '    hand?: string[]             // Mechanic IDs for the hand',

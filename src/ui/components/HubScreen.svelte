@@ -381,12 +381,34 @@
     const playerHp = 40 + Math.floor(Math.random() * 50)
     const playerBlock = Math.random() > 0.5 ? Math.floor(Math.random() * 15) : 0
     const enemyBlock = Math.random() > 0.6 ? Math.floor(Math.random() * 12) : 0
+    const enemyHp = 20 + Math.floor(Math.random() * 60)
     const floor = 2 + Math.floor(Math.random() * 6)
     const gold = 30 + Math.floor(Math.random() * 200)
     const chainTypes = hand.map(() => Math.floor(Math.random() * 3))
+    const PLAYER_EFFECTS = [
+      { id: 'strength', stacks: 1 + Math.floor(Math.random() * 3) },
+      { id: 'regen', stacks: 1 + Math.floor(Math.random() * 3) },
+      { id: 'burn', stacks: 1 + Math.floor(Math.random() * 4) },
+      { id: 'poison', stacks: 1 + Math.floor(Math.random() * 5) },
+    ]
+    const playerStatusCount = 1 + Math.floor(Math.random() * 3)
+    const playerStatusEffects = pickRandom(PLAYER_EFFECTS, playerStatusCount)
+    const ENEMY_EFFECTS = [
+      { id: 'vulnerable', stacks: 1 + Math.floor(Math.random() * 2) },
+      { id: 'weakness', stacks: 1 + Math.floor(Math.random() * 2) },
+      { id: 'poison', stacks: 2 + Math.floor(Math.random() * 6) },
+      { id: 'burn', stacks: 1 + Math.floor(Math.random() * 4) },
+      { id: 'bleed', stacks: 1 + Math.floor(Math.random() * 3) },
+      { id: 'strength', stacks: 1 + Math.floor(Math.random() * 2) },
+    ]
+    const enemyStatusCount = 1 + Math.floor(Math.random() * 3)
+    const enemyStatusEffects = pickRandom(ENEMY_EFFECTS, enemyStatusCount)
     await scenario.loadCustom({
       screen: 'combat', enemy, deckId, hand, relics,
       playerHp, playerMaxHp: 100, playerBlock, enemyBlock,
+      enemyHp,
+      playerStatusEffects,
+      enemyStatusEffects,
       floor, gold, chainTypes,
     })
   }

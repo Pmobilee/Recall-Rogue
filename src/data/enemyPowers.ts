@@ -54,13 +54,13 @@ export const ENEMY_POWERS: Record<string, EnemyPowerDef> = {
     id: 'punish_wrong',
     label: 'Punish Wrong',
     color: '#e74c3c',
-    tooltip: 'Wrong answers on Charged cards trigger a penalty',
+    tooltip: 'Wrong answers make this enemy stronger or deal bonus damage to you',
   },
   onPlayerChargeCorrect: {
     id: 'punish_correct',
     label: 'Punish Correct',
     color: '#e67e22',
-    tooltip: 'Correct Charges trigger a reaction',
+    tooltip: 'This enemy reacts when you answer correctly. It may heal, gain block, or counterattack',
   },
   onPlayerNoCharge: {
     id: 'punish_skip',

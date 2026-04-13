@@ -2803,8 +2803,11 @@
     {/if}
 
     {#if turnState && enemyName}
-      <div class="enemy-name-header" role="heading" aria-level="2" aria-label="{enemyName}">
-        {enemyName}
+      <div class="enemy-name-row">
+        <div class="enemy-name-header" role="heading" aria-level="2" aria-label="{enemyName}">
+          {enemyName}
+        </div>
+        <EnemyPowerBadges enemy={turnState?.enemy} />
       </div>
     {/if}
 
@@ -2815,7 +2818,6 @@
     {/if}
 
     <StatusEffectBar effects={enemyEffects} position="enemy" />
-    <EnemyPowerBadges enemy={turnState?.enemy} />
 
     {#if turnState}
       <div class="sr-only" aria-live="polite" role="status">
@@ -3621,12 +3623,19 @@
     white-space: nowrap;
   }
 
-  .enemy-name-header {
+  .enemy-name-row {
     position: fixed;
     top: calc(6vh + var(--safe-top));
     left: 50%;
     transform: translateX(-50%);
     z-index: 11;
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    pointer-events: none;
+  }
+
+  .enemy-name-header {
     color: #ffffff;
     font-size: calc(24px * var(--text-scale, 1));
     font-weight: 800;
@@ -4421,15 +4430,18 @@
     display: none !important;
   }
 
-  /* Enemy name: top-center of arena, offset below the persistent top bar */
-  .layout-landscape .enemy-name-header {
+  /* Enemy name row: top-center of arena, offset below the persistent top bar */
+  .layout-landscape .enemy-name-row {
     position: fixed;
     top: 6.5vh;
     left: 0;
     right: 0;
-    text-align: center;
-    bottom: auto;
     transform: none;
+    justify-content: center;
+  }
+
+  .layout-landscape .enemy-name-header {
+    text-align: center;
   }
 
   .layout-landscape .enemy-dialogue {
@@ -4450,11 +4462,15 @@
   }
 
   /* Quiz-active landscape: enemy slides to right ~72% — reposition overlay elements to match */
-  .layout-landscape.quiz-active .enemy-name-header {
+  .layout-landscape.quiz-active .enemy-name-row {
     left: 58%;
     right: 0;
-    text-align: center;
     transform: none;
+    justify-content: center;
+  }
+
+  .layout-landscape.quiz-active .enemy-name-header {
+    text-align: center;
   }
 
   .layout-landscape.quiz-active .enemy-intent-bubble {
@@ -4537,36 +4553,8 @@
     padding: calc(2px * var(--layout-scale, 1));
   }
 
-  /* Enemy power badges: to the right of the Phaser enemy HP bar, vertically centered with it.
-     HP bar: center at 50% X, Y at 14vh, width ~800px scaled. Right edge ≈ 75%. */
-  :global(.layout-landscape .enemy-power-badges) {
-    position: fixed;
-    top: 14vh;
-    left: 76%;
-    right: auto;
-    transform: translateY(-50%);
-    flex-direction: row;
-  }
-
-  :global(.layout-landscape .enemy-power-badges .badge-icon) {
-    width: calc(32px * var(--layout-scale, 1));
-    height: calc(32px * var(--layout-scale, 1));
-  }
-
-  /* Power tooltip anchored below badges */
-  :global(.layout-landscape .power-tooltip) {
-    left: 76%;
-    right: auto;
-    top: calc(14vh + calc(24px * var(--layout-scale, 1)));
-    transform: none;
-  }
-
-  /* Quiz-active: enemy slides right to ~72%, so HP bar right edge shifts to ~97%.
-     Badges follow — pin just past the right edge of the shifted bar. */
-  :global(.layout-landscape.quiz-active .enemy-power-badges) {
-    left: 96%;
-    right: auto;
-  }
+  /* Enemy power badges are now inline in .enemy-name-row — no fixed position override needed.
+     Landscape: badges follow the name row naturally via flex layout. */
 
   /* Must-charge tooltip: above center of hand strip */
   .layout-landscape .must-charge-tooltip {

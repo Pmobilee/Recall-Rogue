@@ -112,11 +112,9 @@
         {:else}
           <span class="effect-emoji">{info.icon}</span>
         {/if}
-        {#if effect.value >= 1}
+        {#if effect.value > 1}
           <span class="effect-stack" style="background: {info.color};">{effect.value}</span>
         {/if}
-        <!-- Bug 2 fix: show ∞ for permanent-duration effects instead of the raw 9999 sentinel -->
-        <span class="effect-turns" class:effect-turns-permanent={isPermanent}>{turnsLabel(effect.turnsRemaining)}</span>
       </button>
     {/each}
   </div>
@@ -138,6 +136,7 @@
               <span class="popup-name" style="color: {info.color};">{info.name}</span>
               <!-- Bug 2 fix: use sentinel-aware desc so popup never shows "9999 turns" -->
               <span class="popup-desc">{descForEffect(activeEffect)}</span>
+              <span class="popup-stacks">{activeEffect.value} stack{activeEffect.value !== 1 ? 's' : ''}</span>
             </div>
           </div>
         </div>
@@ -194,35 +193,20 @@
 
   .effect-stack {
     position: absolute;
-    top: calc(-4px * var(--layout-scale, 1));
-    right: calc(-4px * var(--layout-scale, 1));
+    bottom: calc(-6px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
     min-width: calc(20px * var(--layout-scale, 1));
     height: calc(20px * var(--layout-scale, 1));
     border-radius: 50%;
-    font-size: calc(13px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--layout-scale, 1));
     font-weight: 800;
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    color: #000;
+    text-shadow: none;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 calc(2px * var(--layout-scale, 1));
-  }
-
-  .effect-turns {
-    position: absolute;
-    bottom: calc(-2px * var(--layout-scale, 1));
-    right: calc(2px * var(--layout-scale, 1));
-    font-size: calc(12px * var(--layout-scale, 1));
-    font-weight: 700;
-    color: #e2e8f0;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.9);
-  }
-
-  /* Bug 2 fix: ∞ badge gets a slightly larger font for readability */
-  .effect-turns-permanent {
-    font-size: calc(14px * var(--layout-scale, 1));
-    color: #fbbf24;
   }
 
   .effect-popup-backdrop {
@@ -290,10 +274,17 @@
     line-height: 1.4;
   }
 
+  .popup-stacks {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #64748b;
+    margin-top: calc(2px * var(--layout-scale, 1));
+  }
+
   .effect-sprite-icon {
-    width: calc(40px * var(--layout-scale, 1));
-    height: calc(40px * var(--layout-scale, 1));
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
     object-fit: contain;
+    image-rendering: pixelated;
   }
 
   .popup-sprite-icon {
