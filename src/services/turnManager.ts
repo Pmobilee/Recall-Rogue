@@ -1205,10 +1205,15 @@ export function playCardAction(
       }
     }
 
-    // Partial fizzle: wrong answers still apply FIZZLE_EFFECT_RATIO (0.50×) of the base effect.
+    // Partial fizzle: wrong answers apply chargeWrongValue from the mechanic definition when
+    // available (canonical path matching cardEffectResolver). Falls back to
+    // card.baseEffectValue × FIZZLE_EFFECT_RATIO for mechanics without an explicit CW value.
     // Free First Charge special multiplier was removed in Pass 8 (always use standard fizzle ratio now).
+    const fizzleMechDef = card.mechanicId ? getMechanicDefinition(card.mechanicId) : null;
     const wrongMultiplier = getBalanceValue('fizzleEffectRatio', FIZZLE_EFFECT_RATIO);
-    const fizzleBase = Math.round(card.baseEffectValue * wrongMultiplier);
+    const fizzleBase = (fizzleMechDef?.chargeWrongValue != null)
+      ? Math.max(0, fizzleMechDef.chargeWrongValue)
+      : Math.round(card.baseEffectValue * wrongMultiplier);
     const fizzledEffect: CardEffectResult = {
       ...createNoEffect(card),
       targetHit: true,

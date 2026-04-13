@@ -1,28 +1,22 @@
 /**
  * Regression tests for charge-wrong (fizzle) damage through the full playCardAction pipeline.
  *
- * CRITICAL BUG DOCUMENTED 2026-04-12:
- * Two divergent fizzle implementations produce inconsistent damage values:
+ * FIXED 2026-04-12 (previously documented as CRITICAL BUG):
+ * The two fizzle implementations now agree. Before the fix, there were two divergent paths:
  *
- * 1. cardEffectResolver.resolveCardEffect() — uses mechanic.chargeWrongValue (canonical, used in unit tests)
- * 2. turnManager.playCardAction() wrong-answer inline path — uses card.baseEffectValue × FIZZLE_EFFECT_RATIO
+ * 1. cardEffectResolver.resolveCardEffect() — uses mechanic.chargeWrongValue (canonical)
+ * 2. turnManager.playCardAction() wrong-answer inline path — used card.baseEffectValue × FIZZLE_EFFECT_RATIO
  *
- * The inline path (path 2) is what actually executes when a player answers a quiz wrong in combat.
- * The resolver path (path 1) is what attack-mechanics.test.ts exercises via resolveCardEffect().
+ * The inline path now checks mechanic.chargeWrongValue first and only falls back to
+ * card.baseEffectValue × FIZZLE_EFFECT_RATIO when chargeWrongValue is undefined/null (no mechanic
+ * lookup possible).
  *
  * For strike at L0:
- *   mechanic.chargeWrongValue = 3  (resolver path — canonical intent)
+ *   mechanic.chargeWrongValue = 3  (canonical, now used by BOTH paths)
  *   card.baseEffectValue (production, from BASE_EFFECT.attack) = 4
  *   FIZZLE_EFFECT_RATIO = 0.50
- *   Inline fizzle result: Math.round(4 × 0.50) = 2
- *
- * This means:
- *   - resolver says strike CW = 3
- *   - live game inline path says strike CW = 2
- *   - These are different and the difference is undocumented
- *
- * This test file exercises the ACTUAL production code path (playCardAction → inline fizzle)
- * to lock in the current behavior and catch any future regressions.
+ *   Old inline fizzle result: Math.round(4 × 0.50) = 2  (was wrong)
+ *   New inline fizzle result: mechanic.chargeWrongValue = 3  (matches resolver)
  */
 
 import { describe, it, expect } from 'vitest';
@@ -103,15 +97,11 @@ function makeEnemy(hpOverride = 100, blockOverride = 0): EnemyInstance {
 
 describe('fizzle (charge-wrong) — full turnManager pipeline (production card factory path)', () => {
   /**
-   * Strike at L0 via production card factory:
-   *   card.baseEffectValue = BASE_EFFECT.attack = 4
-   *   FIZZLE_EFFECT_RATIO = 0.50
-   *   Inline fizzle = Math.round(4 * 0.50) = Math.round(2.0) = 2
-   *
-   * This is the ACTUAL live game behavior when a player wrongs a charge.
-   * Note: cardEffectResolver gives 3 (mechanic.chargeWrongValue) — different value, different path.
+   * Strike at L0 via production card factory.
+   * After fix: inline path uses mechanic.chargeWrongValue = 3.
+   * This matches the resolver path.
    */
-  it('strike CW: playCardAction inline fizzle deals 2 damage (Math.round(BASE_EFFECT.attack=4 × 0.50))', () => {
+  it('strike CW: playCardAction inline fizzle deals 3 damage (mechanic.chargeWrongValue)', () => {
     const card = makeProductionCard('strike');
     const deck = createDeck([card]);
     const enemy = makeEnemy(100);
@@ -125,8 +115,8 @@ describe('fizzle (charge-wrong) — full turnManager pipeline (production card f
     playCardAction(turnState, cardInHand.id, false, false, 'charge');
 
     const damage = hpBefore - enemy.currentHP;
-    // Math.round(4 × 0.50) = Math.round(2.0) = 2
-    expect(damage).toBe(2);
+    // mechanic.chargeWrongValue for strike = 3
+    expect(damage).toBe(3);
   });
 
   it('strike CW: inline fizzle always > 0 (non-negative guarantee)', () => {
@@ -143,12 +133,14 @@ describe('fizzle (charge-wrong) — full turnManager pipeline (production card f
   });
 
   /**
-   * Block card fizzle via production path:
-   *   card.baseEffectValue = BASE_EFFECT.shield = 3
-   *   Inline fizzle for shield = Math.round(3 × 0.50) = Math.round(1.5) = 2
+   * Block card fizzle via production path.
+   * After fix: inline path uses mechanic.chargeWrongValue for block = 3.
+   * (Previously Math.round(BASE_EFFECT.shield=3 × 0.50) = 2 — now 3 to match resolver.)
    */
-  it('block CW: inline fizzle applies partial shield (Math.round(BASE_EFFECT.shield=3 × 0.50) = 2)', () => {
+  it('block CW: inline fizzle applies partial shield equal to mechanic.chargeWrongValue', () => {
     const card = makeProductionCard('block');
+    const mechanic = getMechanicDefinition('block');
+    const expectedShield = mechanic?.chargeWrongValue ?? 0;
     const deck = createDeck([card]);
     const enemy = makeEnemy(100);
     const turnState = startEncounter(deck, enemy);
@@ -160,21 +152,18 @@ describe('fizzle (charge-wrong) — full turnManager pipeline (production card f
     playCardAction(turnState, cardInHand.id, false, false, 'charge');
 
     const shieldGained = turnState.playerState.shield - shieldBefore;
-    // Math.round(3 × 0.50) = Math.round(1.5) = 2 (JS rounds half up)
-    expect(shieldGained).toBe(2);
+    expect(shieldGained).toBe(expectedShield);
   });
 
   /**
-   * Discrepancy documentation test: two fizzle paths, two different values for strike.
+   * Convergence test: after the fix, both fizzle paths must agree for strike.
    *
    * cardEffectResolver path: uses mechanic.chargeWrongValue = 3
-   * turnManager inline path: uses BASE_EFFECT.attack=4 × 0.50 = 2
+   * turnManager inline path: now also uses mechanic.chargeWrongValue = 3
    *
-   * This test documents and locks in this known discrepancy (2026-04-12).
-   * If this test fails, it means one of the two implementations was changed
-   * and the discrepancy may have been resolved.
+   * This test replaces the old "DISCREPANCY DOCUMENTED" test and verifies the bug is fixed.
    */
-  it('DISCREPANCY DOCUMENTED: resolver path gives 3, inline path gives 2, for strike CW at L0', () => {
+  it('CONVERGENCE: resolver path and inline path now agree for strike CW at L0', () => {
     const card = makeProductionCard('strike');
     const player = makePlayerState();
     const enemy1 = makeEnemy(100);
@@ -196,10 +185,9 @@ describe('fizzle (charge-wrong) — full turnManager pipeline (production card f
     const hpBefore = enemy2.currentHP;
     playCardAction(ts, cardInHand.id, false, false, 'charge');
     const inlineDamage = hpBefore - enemy2.currentHP;
-    expect(inlineDamage).toBe(2); // Math.round(BASE_EFFECT.attack=4 × 0.50) = 2
+    expect(inlineDamage).toBe(3); // mechanic.chargeWrongValue = 3 (fixed from old inline value of 2)
 
-    // The two implementations disagree:
-    // resolver = 3, inline = 2. This is a known code inconsistency.
-    expect(resolverResult.damageDealt).not.toBe(inlineDamage);
+    // Both paths must now agree
+    expect(resolverResult.damageDealt).toBe(inlineDamage);
   });
 });
