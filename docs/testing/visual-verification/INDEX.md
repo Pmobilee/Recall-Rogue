@@ -64,9 +64,9 @@ Relics, edge cases, complex interactions.
 | 03-relics-visual-functional | 129 | 0 | 129 | never |
 | 04-enemies-rooms-screens | 185 | 0 | 185 | never |
 | 05-edge-cases-interactions | 41 | 0 | 41 | never |
-| 06-cards-functional | 151 | 0 | 151 | never |
+| 06-cards-functional | 151 | 151 | 0 | 2026-04-13 |
 | 07-status-chains-combos | 156 | 0 | 156 | never |
-| 08-card-description-accuracy | 68 | 0 | 68 | never |
+| 08-card-description-accuracy | 68 | 68 | 0 | 2026-04-13 |
 
 ---
 
