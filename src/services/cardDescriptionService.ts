@@ -749,10 +749,10 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     }
     case 'bash': {
       const bashTurns = (stats?.tags ?? []).includes('bash_vuln2t') ? 2 : 1;
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), kw('Vuln', 'vulnerable'), txt(` ${bashTurns}t`)];
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), kw('Exposed', 'vulnerable'), txt(` ${bashTurns} turn(s)`)];
     }
     case 'sap':
-      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), kw('Drawing Blanks', 'weakness'), txt(' 1t')];
+      return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\nApply '), kw('Drawing Blanks', 'weakness')];
     case 'rupture': {
       const bleed = stats?.secondaryValue ?? 2;
       return [txt('Deal '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\n'), num(bleed), txt(' '), kw('Lingering Doubt', 'bleed')];
@@ -792,7 +792,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     }
     case 'eruption': {
       const dpa = stats?.extras?.['dmgPerAp'] ?? 6;
-      return [txt('Spend all AP\n'), num(dpa), txt(' dmg/AP (X)')];
+      return [txt('Spend all AP\n'), num(dpa), txt(' damage per AP')];
     }
 
     // ── Shields ───────────────────────────────────────────────────────────────
@@ -803,23 +803,17 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'fortify':
       // 2026-04-11 audit fix: resolver scales current block, not flat block.
       // Persistence only happens at L5 (fortify_carry tag).
-      return [txt('50% Block'), txt('\nCC: 75% Block')];
+      return [txt('Gain half your\ncurrent '), kw('Block', 'block')];
     case 'parry': {
       const parryDrawCount = stats?.secondaryValue ?? 1;
       return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nDraw '), num(parryDrawCount), txt(' on hit')];
     }
     case 'brace':
       return [kw('Block', 'block'), txt('\n= enemy attack')];
-    case 'overheal': {
-      const doubled = power * 2;
-      const active = pHp < 0.5;
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\n×2 ('), cond(doubled, active), txt(') if <50%')];
-    }
-    case 'emergency': {
-      const active = pHp < 0.3;
-      const val = active ? power * 2 : power;
-      return [txt('Gain '), ...numWithMastery(val, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\n×2 if <30%')];
-    }
+    case 'overheal':
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nDoubled if wounded')];
+    case 'emergency':
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nDoubled if wounded')];
     case 'reinforce':
       return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block')];
     case 'shrug_it_off': {
@@ -829,19 +823,19 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'guard':
       return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block')];
     case 'absorb':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: draw 1')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCharge: draw a card')];
     case 'reactive_shield': {
       const thorns = stats?.secondaryValue ?? 2;
-      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('\n'), num(thorns), txt(' '), kw('Thorns', 'thorns'), txt(' 1t')];
+      return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('\n'), num(thorns), txt(' '), kw('Thorns', 'thorns'), txt(' 1 turn')];
     }
     case 'aegis_pulse':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: chain +2 blk')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCharge: +2 chain block')];
     case 'burnout_shield':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Forget', 'forget')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCharge: consumed')];
     case 'bulwark':
-      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: '), kw('Forget', 'forget')];
+      return [txt('Gain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCharge: consumed')];
     case 'conversion':
-      return [txt('Deal Block as dmg\nGain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block')];
+      return [txt('Deal your '), kw('Block', 'block'), txt(' as damage\nGain '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block')];
     case 'ironhide': {
       const str = stats?.extras?.['str'] ?? 1;
       return [txt('Gain '), num(power), txt(' '), kw('Block', 'block'), txt('\n+'), num(str), txt(' '), kw('Clarity', 'strength')];
@@ -858,10 +852,8 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
         ? [txt('Next '), num(count), txt(' cards −1 AP')]
         : [txt('Next card −1 AP')];
     }
-    case 'double_strike': {
-      const hitMult = stats?.extras?.['hitMult'] ?? 75;
-      return [txt('Next attack\nhits twice at '), num(hitMult + '%'), txt(' power')];
-    }
+    case 'double_strike':
+      return [txt('Next attack\nhits twice')];
     case 'ignite': {
       const burn = stats?.extras?.['burnStacks'] ?? 2;
       return [txt('Next attack\n+'), num(burn), txt(' '), kw('Brain Burn', 'burn')];
@@ -869,18 +861,18 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'inscription_fury':
       return [txt('All attacks +'), ...numWithMastery(power, mechanic.id, masteryLevel), txt('\nrest of combat')];
     case 'inscription_iron':
-      return [txt('+'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('/turn\nrest of combat')];
+      return [txt('+'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt(' per turn\nRest of combat')];
     case 'inscription_wisdom': {
       const dpc = stats?.extras?.['drawPerCC'] ?? 1;
-      return [txt('Each CC: draw +'), num(dpc), txt('\nrest of combat')];
+      return [txt('Draw +'), num(dpc), txt(' on charge\nRest of combat')];
     }
     case 'warcry': {
       const str = stats?.extras?.['str'] ?? 1;
-      return [txt('+'), num(str), txt(' '), kw('Clarity', 'strength'), txt('\nCC: permanent')];
+      return [txt('+'), num(str), txt(' '), kw('Clarity', 'strength'), txt('\nCharge: permanent')];
     }
     case 'battle_trance': {
       const draws = stats?.drawCount ?? 2;
-      return [txt('Draw '), num(draws), txt('\nQP: lockout')];
+      return [txt('Draw '), num(draws), txt('\nEnds your turn')];
     }
     case 'frenzy': {
       const free = stats?.extras?.['freeCards'] ?? 1;
@@ -888,7 +880,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     }
     case 'mastery_surge': {
       const tgts = stats?.extras?.['targets'] ?? 1;
-      return [txt('+1 '), kw('Mastery', 'mastery'), txt('\n'), num(tgts), txt(' card(s) (CC: choose)')];
+      return [txt('+1 '), kw('Mastery', 'mastery'), txt(' to\n'), num(tgts), txt(' card(s)')];
     }
     case 'war_drum': {
       const bon = stats?.extras?.['bonus'] ?? 1;
@@ -903,11 +895,11 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     // ── Debuffs ───────────────────────────────────────────────────────────────
     case 'weaken': {
       const weakTurns = stats?.extras?.['turns'] ?? 1;
-      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Drawing Blanks', 'weakness'), txt(' '), num(weakTurns), txt('t')];
+      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Drawing Blanks', 'weakness'), txt('\n'), num(weakTurns), txt(' turn(s)')];
     }
     case 'expose': {
       const expTurns = stats?.extras?.['turns'] ?? 1;
-      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Exposed', 'vulnerable'), txt(' '), num(expTurns), txt('t')];
+      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Exposed', 'vulnerable'), txt('\n'), num(expTurns), txt(' turn(s)')];
     }
     case 'slow':
       return [txt("Skip enemy's\nnext action")];
@@ -918,27 +910,27 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'stagger':
       return [txt("Skip enemy's\nnext action")];
     case 'corrode':
-      return [txt('Strip '), kw('Block', 'block'), txt('\n+'), kw('Drawing Blanks', 'weakness'), txt(' 1t')];
+      return [txt('Strip '), kw('Block', 'block'), txt('\nApply '), kw('Drawing Blanks', 'weakness')];
     case 'curse_of_doubt': {
       const pct = stats?.extras?.['pctBonus'] ?? 15;
       const turns = stats?.extras?.['turns'] ?? 1;
-      return [txt('+'), num(pct), txt('% charge dmg\n'), num(turns), txt('t  CC: ×2')];
+      return [txt('+'), num(pct), txt('% charge damage\n'), num(turns), txt(' turns. CC: doubled')];
     }
     case 'mark_of_ignorance': {
       const flat = stats?.extras?.['flatBonus'] ?? 2;
       const turns = stats?.extras?.['turns'] ?? 1;
-      return [txt('+'), num(flat), txt(' flat/charge\n'), num(turns), txt('t  CC: more')];
+      return [txt('+'), num(flat), txt(' per charge\n'), num(turns), txt(' turns')];
     }
     case 'corroding_touch': {
       const ws = stats?.extras?.['weakStacks'] ?? 1;
       const wt = stats?.extras?.['weakTurns'] ?? 1;
-      return [txt('Apply '), num(ws), txt(' '), kw('Drawing Blanks', 'weakness'), txt(' '), num(wt), txt('t\nFree  CC: +Vuln')];
+      return [txt('Apply '), num(ws), txt(' '), kw('Drawing Blanks', 'weakness'), txt('\n'), num(wt), txt(' turns\nFree. CC: +'), kw('Exposed', 'vulnerable')];
     }
     case 'entropy': {
       const burn = stats?.extras?.['burn'] ?? 2;
       const pois = stats?.extras?.['poison'] ?? 1;
       const pt = stats?.extras?.['poisonTurns'] ?? 2;
-      return [txt('Apply '), num(burn), txt(' '), kw('Brain Burn', 'burn'), txt('+'), num(pois), txt(' '), kw('Doubt', 'poison'), txt('\n'), num(pt), txt('t')];
+      return [num(burn), txt(' '), kw('Brain Burn', 'burn'), txt(' + '), num(pois), txt(' '), kw('Doubt', 'poison'), txt('\n'), num(pt), txt(' turn(s)')];
     }
 
     // ── Utility ───────────────────────────────────────────────────────────────
@@ -959,16 +951,16 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
       // 2026-04-12: Fixed word-boundary issue. Previous parts had 'for\nencounter' which,
       // when rendered in contexts that don't split on \n (RunDeckOverlay inline span),
       // displayed as 'forencounterCharge: choose 1/3' — confirmed playtest BATCH-2026-04-12-001 Bug F.
-      return [txt('Transform for encounter'), txt('\nCharge: choose 1/3')];
+      return [txt('Transform this card\nCharge: choose from 3')];
     case 'cleanse':
-      return [txt('Purge debuffs\nDraw 1')];
+      return [txt('Remove debuffs\nDraw 1')];
     case 'immunity': {
       const immAbsorb = stats?.extras?.['absorb'] ?? 4;
       return [txt('Absorb next hit\nup to '), num(immAbsorb)];
     }
     case 'sift': {
       const sc = stats?.extras?.['scryCount'] ?? 2;
-      return [txt('Scry '), num(sc), txt('\nDiscard any')];
+      return [txt('Look at top '), num(sc), txt('\nDiscard any')];
     }
     case 'scavenge': {
       const picks = stats?.extras?.['picks'] ?? 1;
@@ -993,12 +985,12 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     }
     case 'synapse': {
       const draws = stats?.drawCount ?? 1;
-      return [txt('Draw '), num(draws), txt('\nCC: chain link')];
+      return [txt('Draw '), num(draws), txt('\nCharge: chain link')];
     }
     case 'siphon_knowledge': {
       const draws = stats?.drawCount ?? 1;
       const sec = stats?.extras?.['previewSec'] ?? 2;
-      return [txt('Draw '), num(draws), txt('\nPreview answers '), num(sec), txt('s')];
+      return [txt('Draw '), num(draws), txt('\nPreview '), num(sec), txt(' seconds')];
     }
     case 'tutor': {
       const srch = stats?.extras?.['search'] ?? 1;
@@ -1013,55 +1005,55 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'mirror':
       return [txt('Copy last card')];
     case 'adapt':
-      return [txt('Auto:\n'), kw('Block', 'block'), txt('·Atk·'), kw('Cleanse', 'cleanse')];
+      return [txt('Auto-picks best:\nAttack, Block, or Cleanse')];
     case 'overclock':
       return [txt('Next card ×2')];
     case 'phase_shift':
-      return [txt('Choose: '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' dmg\nor same Block\nCC: BOTH')];
+      return [txt('Choose: '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' damage\nor '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Block', 'block'), txt('\nCC: both')];
     case 'chameleon':
       return [txt('Copy last card')];
     case 'dark_knowledge': {
       const dpc = stats?.extras?.['dmgPerCurse'] ?? 2;
-      return [txt('Deal '), num(dpc), txt(' per curse\nCC: '), num(Math.round(dpc * 1.5)), txt(' per curse')];
+      return [txt('Deal '), num(dpc), txt(' per\ncursed card')];
     }
     case 'chain_anchor': {
       const draws = stats?.drawCount ?? 1;
-      return [txt('Draw '), num(draws), txt('\nCC: set chain→2')];
+      return [txt('Draw '), num(draws), txt('\nCharge: boost chain')];
     }
     case 'unstable_flux':
       return [txt('Random effect\nCC: choose effect')];
     case 'sacrifice':
       return [txt('−'), num(5), txt(' HP\nDraw '), num(2), txt(' +'), num(1), txt(' AP')];
     case 'catalyst':
-      return [txt('Double '), kw('Doubt', 'poison'), txt('\nCC: +B.Burn  L4: +L.Doubt')];
+      return [txt('Double '), kw('Doubt', 'poison'), txt('\nCharge: also '), kw('Brain Burn', 'burn')];
     case 'mimic': {
       const qpM = stats?.extras?.['qpMult'] ?? 60;
-      return [txt('Replay discard\n'), num(qpM), txt('% / CC: choose')];
+      return [txt('Replay a discarded\ncard at '), num(qpM), txt('%')];
     }
     case 'aftershock': {
       const qpM = stats?.extras?.['qpMult'] ?? 40;
-      return [txt('Echo last card\n'), num(qpM), txt('%  CC: '), num(stats?.extras?.['ccMult'] ?? 50), txt('%')];
+      return [txt('Repeat last card\nat '), num(qpM), txt('% power')];
     }
     case 'knowledge_bomb': {
       const ppc = stats?.extras?.['perCorrect'] ?? 3;
-      return [txt('QP: 4 dmg\nCC: '), num(ppc), txt('×charges')];
+      return [txt('Deal '), num(ppc), txt(' per\ncorrect charge')];
     }
 
     // ── AR-264: Quiz-integrated cards ──────────────────────────────────────────
     case 'recall':
-      return [txt('Deal '), num(10), txt(' damage\nCC: '), num(20), txt(' / Review: '), num(30)];
+      return [txt('Deal '), num(power), txt(' damage\nBonus on review')];
     case 'precision_strike':
-      return [txt('Deal '), num(8), txt(' damage\nCC: ×(options+1)')];
+      return [txt('Deal '), num(power), txt(' damage\nPer answer option')];
     case 'knowledge_ward':
       return [txt('Gain '), kw('Block', 'block'), txt(' ×\ncorrect charges')];
     case 'smite': {
       // 2026-04-11 audit fix: qpValue from stat table (L0=7, not old seed 10).
       const smPartsPower = _partsStatsForPower?.qpValue ?? 7;
-      return [txt('Deal '), num(smPartsPower), txt(' dmg\nCC: +Aura scale')];
+      return [txt('Deal '), num(smPartsPower), txt(' damage\nScales with aura')];
     }
     case 'feedback_loop':
       // 2026-04-11 audit fix: Pass 8 reduced CC from 40 to 28 (max 40 in Flow State).
-      return [txt('CC: 28/40 dmg\n'), kw('Flow State', 'flow_state'), txt(' bonus')];
+      return [txt('Deal '), num(power), txt(' damage\n'), kw('Flow State', 'flow_state'), txt(' bonus')];
 
     default: {
       // Type-based sensible defaults — better than just mechanic.name
