@@ -4460,7 +4460,7 @@
     position: fixed;
     top: 28%;
     right: auto;
-    left: calc(39% - calc(220px * var(--layout-scale, 1)));
+    left: 25%;
     bottom: auto;
     transform: translateX(-100%);
     transition: left 350ms cubic-bezier(0.33, 1, 0.68, 1), top 350ms cubic-bezier(0.33, 1, 0.68, 1);
@@ -4480,7 +4480,7 @@
   }
 
   .layout-landscape.quiz-active .enemy-intent-bubble {
-    left: calc(61% - calc(220px * var(--layout-scale, 1)));
+    left: 47%;
     right: auto;
     top: 28%;
     transform: translateX(-100%);
