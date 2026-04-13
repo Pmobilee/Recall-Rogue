@@ -1743,6 +1743,49 @@ describe('siphon_knowledge — L3 stat table preview duration', () => {
   });
 });
 
+// ── Structural result fields ─────────────────────────────────────────────────
+
+describe('targetHit — domain immunity blocks card', () => {
+  it('card with enemy immuneDomain → targetHit=false, zero effects', () => {
+    const card = makeCard('strike', { domain: 'natural_sciences' });
+    const enemy = makeEnemy({
+      template: {
+        id: 'test-immune', name: 'Immune Enemy', category: 'common' as const, baseHP: 100,
+        intentPool: [{ type: 'attack' as const, value: 10, weight: 1, telegraph: 'Strike' }],
+        description: 'Test', immuneDomain: 'natural_sciences',
+      },
+    });
+    const result = resolveCardEffect(card, makePlayer(), enemy, 1.0, 0, undefined, undefined, { playMode: 'quick' });
+    expect(result.targetHit).toBe(false);
+    expect(result.damageDealt).toBe(0);
+  });
+
+  it('card with non-immune domain → targetHit=true', () => {
+    const result = resolve('strike', 'quick');
+    expect(result.targetHit).toBe(true);
+  });
+});
+
+describe('effectType — wild cards adopt last card type', () => {
+  it('phase_shift with lastCardType=shield → effectType=shield', () => {
+    const card = makeCard('phase_shift');
+    const result = resolveCardEffect(card, makePlayer(), makeEnemy(), 1.0, 0, 'shield' as CardType, undefined, { playMode: 'charge_correct' });
+    expect(result.effectType).toBe('shield');
+  });
+
+  it('chameleon with no lastCardType → effectType=attack (default)', () => {
+    const card = makeCard('chameleon');
+    const result = resolveCardEffect(card, makePlayer(), makeEnemy(), 1.0, 0, undefined, undefined, { playMode: 'quick' });
+    expect(result.effectType).toBe('attack');
+  });
+
+  it('overclock is wild but does NOT change effectType', () => {
+    const card = makeCard('overclock');
+    const result = resolveCardEffect(card, makePlayer(), makeEnemy(), 1.0, 0, 'shield' as CardType, undefined, { playMode: 'quick' });
+    expect(result.effectType).toBe('wild');
+  });
+});
+
 describe('expose — CW mode stacks', () => {
   it('L0 CW: applies at least 1 vulnerable stack', () => {
     const result = resolve('expose', 'charge_wrong');
