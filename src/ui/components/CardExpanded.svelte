@@ -1200,6 +1200,11 @@
     overflow: hidden;
   }
 
+  /* Chess tactic: question is a single short line — shrink to content so the board gets max space */
+  .card-expanded-landscape .question-zone:has(.chess-question) {
+    flex: 0 0 auto;
+  }
+
   /* Two-zone layout: answer zone takes ~60% flex space in landscape */
   .card-expanded-landscape .answer-zone {
     flex: 1 1 60%;
@@ -1208,6 +1213,11 @@
     justify-content: flex-start;
     min-height: 0;
     overflow: hidden;
+  }
+
+  /* Chess tactic: answer zone expands to fill all remaining space */
+  .card-expanded-landscape .answer-zone:has(.chess-puzzle-container) {
+    flex: 1 1 auto;
   }
 
   /* Content-based answer grid layouts (landscape only) */

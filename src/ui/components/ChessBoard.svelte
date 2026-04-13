@@ -616,12 +616,12 @@
 
 <style>
   .chess-board-container {
+    /* Fill the parent flex container (chess-puzzle-container has flex: 1; min-height: 0
+       in landscape). flex: 1 1 auto + min-height: 0 lets the container grow/shrink with
+       available height rather than being pegged to a fixed vh fraction. */
+    flex: 1 1 auto;
+    min-height: 0;
     width: 100%;
-    /* Constrain by viewport height so 1:1 board can't overflow vertically.
-       In the landscape combat panel the answer-zone is ~49vh tall;
-       the board is square, so cap width to leave room for notation input. */
-    max-width: min(100%, 44vh);
-    aspect-ratio: unset;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -630,8 +630,14 @@
   }
 
   .chess-board {
-    width: 100%;
-    /* max-width removed — board fills parent panel */
+    /* Size from the height dimension when height is the limiting constraint (landscape).
+       max-width: 100% prevents overflow when width is tighter than height (narrow viewports).
+       height: 100% + aspect-ratio: 1 makes the board as tall as its container, then
+       constrains width to match — producing the largest square that fits both dimensions. */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: 100%;
     aspect-ratio: 1;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -742,11 +748,12 @@
   /* ---- Algebraic notation input (desktop/landscape) ---- */
 
   .notation-input-container {
+    /* Don't let the notation row shrink the board — board gets all remaining height */
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: calc(8px * var(--layout-scale, 1));
     width: 100%;
-    /* max-width removed — board fills parent panel */
     margin-top: calc(4px * var(--layout-scale, 1));
   }
 
