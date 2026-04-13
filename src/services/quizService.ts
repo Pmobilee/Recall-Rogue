@@ -156,7 +156,8 @@ export function selectDifficultyWeightedQuestion(
  * deck's answer type pools and confusion matrix for smarter distractor selection
  * instead of random pre-generated distractors.
  *
- * Returns distractor answer strings, or null to fall back to pre-generated distractors.
+ * Returns distractor answer strings (brace tokens already stripped), or null to
+ * fall back to pre-generated distractors.
  *
  * @param fact - The trivia fact with a bridge tag
  * @param deckId - The source curated deck ID (extracted from the bridge tag)
@@ -185,7 +186,8 @@ function getBridgedDistractors(fact: Fact, deckId: string): string[] | null {
   )
 
   if (result.distractors.length === 0) return null
-  return result.distractors.map(d => d.correctAnswer)
+  // Apply displayAnswer so brace tokens ({N}) are stripped before the player sees them
+  return result.distractors.map(d => displayAnswer(d.correctAnswer))
 }
 
 /**
@@ -226,7 +228,10 @@ export function getQuizChoices(fact: Fact): string[] {
     distractorSource = getNumericalDistractors(fact)
   }
 
-  const distractors = shuffleArray([...distractorSource]).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
+  // Apply displayAnswer to every distractor so brace tokens ({N}) are stripped
+  const distractors = shuffleArray([...distractorSource])
+    .slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
+    .map(d => displayAnswer(d))
   const correctDisplay = displayAnswer(fact.correctAnswer)
   const choices = [...distractors, correctDisplay]
 
