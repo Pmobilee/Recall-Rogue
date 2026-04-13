@@ -300,11 +300,11 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
 
 ### 12.1 Starter Common Relics (13)
 
-- [ ] **whetstone — attack damage +2 on all attacks**
+- [x] **whetstone — attack damage +2 on all attacks**
   Setup: `SC.loadCustom({screen:'combat', enemy:'page_flutter', relics:['whetstone'], hand:['strike']})`, QP strike
   Check: enemyHp delta = strike_base + 2 (vs no-relic baseline)
 
-- [ ] **iron_shield — all shield cards grant +2 extra block**
+- [x] **iron_shield — all shield cards grant +2 extra block**
   Setup: `SC.loadCustom({..., relics:['iron_shield'], hand:['block']})`, play block
   Check: playerBlock delta = block_base + 2
 
@@ -336,7 +336,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: `SC.loadCustom({..., relics:['quick_study']})`, correct charge
   Check: mastery progression faster than baseline (verify via masteryLevel increment speed)
 
-- [ ] **thick_skin — gain 2 block at start of each player turn**
+- [x] **thick_skin — gain 2 block at start of each player turn**
   Setup: `SC.loadCustom({..., relics:['thick_skin']})`, end turn, start new turn
   Check: `getCombatState().playerBlock` ≥ 2 at turn start (before any card play)
 
@@ -344,25 +344,25 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: `SC.loadCustom({..., relics:['tattered_notebook'], hand:['strike']})`, correct charge, then QP strike
   Check: strike damage includes +1 bonus from tattered_notebook trigger
 
-- [ ] **battle_scars — gain 3 HP on enemy kill**
+- [x] **battle_scars — gain 3 HP on enemy kill**
   Setup: `SC.loadCustom({..., relics:['battle_scars'], playerHp:80})`, kill enemy
   Check: playerHp = 83 after kill
 
-- [ ] **brass_knuckles — multi-hit attack gains +1 hit**
+- [x] **brass_knuckles — multi-hit attack gains +1 hit**
   Setup: `SC.loadCustom({..., relics:['brass_knuckles'], hand:['multi_hit']})`, play multi_hit
   Check: hit count is L0 hitCount + 1
 
 ### 12.2 Starter Uncommon Relics (Select)
 
-- [ ] **herbal_pouch — cleanse 1 debuff at turn start**
+- [x] **herbal_pouch — cleanse 1 debuff at turn start**
   Setup: player has poison; `SC.loadCustom({..., relics:['herbal_pouch']})`, end turn
   Check: poison stacks reduced by 1 at next turn start
 
-- [ ] **steel_skin — reduce all incoming damage by 2**
+- [x] **steel_skin — reduce all incoming damage by 2**
   Setup: `SC.loadCustom({..., relics:['steel_skin']})`, end turn, enemy attacks
   Check: player takes enemy_damage - 2
 
-- [ ] **last_breath — prevent death once, survive at 1 HP**
+- [x] **last_breath — prevent death once, survive at 1 HP**
   Setup: `SC.loadCustom({..., relics:['last_breath'], playerHp:5})`, take 10+ damage
   Check: playerHp = 1 (not 0 or dead); last_breath consumed (won't trigger again)
 
@@ -370,11 +370,11 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: `SC.loadCustom({..., relics:['adrenaline_shard']})`, end turn, enemy attacks
   Check: `getCombatState().ap` +1 after taking damage
 
-- [ ] **volatile_core — enemy death causes 8 AoE splash**
+- [x] **volatile_core — enemy death causes 8 AoE splash**
   Setup: `SC.loadCustom({..., relics:['volatile_core']})`, kill enemy
   Check: encounter notes AoE explosion damage; in multi-enemy context next enemy takes 8 damage
 
-- [ ] **aegis_stone — correct charge grants +3 block**
+- [x] **aegis_stone — correct charge grants +3 block**
   Setup: `SC.loadCustom({..., relics:['aegis_stone']})`, correct charge
   Check: `getCombatState().playerBlock` += 3 after correct answer
 
@@ -382,7 +382,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: `SC.loadCustom({..., relics:['regeneration_orb'], playerHp:80})`, end turn
   Check: playerHp = 82 at start of next turn (regen tick)
 
-- [ ] **plague_flask — encounter start: enemy gains 2 Poison**
+- [x] **plague_flask — encounter start: enemy gains 2 Poison**
   Setup: `SC.loadCustom({screen:'combat', enemy:'page_flutter', relics:['plague_flask']})`
   Check: `getCombatState().enemyStatusEffects` contains `{type:'poison', value:2}` at combat start
 
@@ -394,11 +394,11 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: deck with domain-matching card; `SC.loadCustom({..., relics:['insight_prism']})`, play domain card
   Check: damage includes +3 domain bonus
 
-- [ ] **blood_price — spend 3 HP to gain +1 AP at turn start**
+- [x] **blood_price — spend 3 HP to gain +1 AP at turn start**
   Setup: `SC.loadCustom({..., relics:['blood_price'], playerHp:50})`
   Check: each turn playerHp -= 3; ap += 1
 
-- [ ] **reckless_resolve — reduce self-damage by 2**
+- [x] **reckless_resolve — reduce self-damage by 2**
   Setup: `SC.loadCustom({..., relics:['reckless_resolve'], hand:['reckless']})`, play reckless
   Check: player self-damage = reckless.selfDmg - 2
 
@@ -418,7 +418,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: `SC.loadCustom({..., relics:['chain_link_charm']})`, build chain to max
   Check: chain multiplier can exceed standard max (3.5×)
 
-- [ ] **worn_shield — start encounter with 4 block**
+- [x] **worn_shield — start encounter with 4 block**
   Setup: `SC.loadCustom({screen:'combat', enemy:'page_flutter', relics:['worn_shield']})`
   Check: `getCombatState().playerBlock` = 4 at combat start
 
@@ -426,7 +426,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: apply bleed to enemy; `SC.loadCustom({..., relics:['bleedstone']})`, attack
   Check: attack damage vs bleeding enemy = baseline × 1.5
 
-- [ ] **ember_core — burn ticks deal +2 extra damage**
+- [x] **ember_core — burn ticks deal +2 extra damage**
   Setup: apply burn to enemy; equip ember_core; end turn
   Check: burn tick damage includes +2 ember_core bonus
 
@@ -434,7 +434,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: `SC.loadCustom({..., relics:['gambler_s_token'], hand:['strike']})`, play strike 10 times (batch)
   Check: damage varies; occasional 2× strike damage confirms crit proc
 
-- [ ] **scar_tissue — gain 1 block per 5 HP lost this encounter**
+- [x] **scar_tissue — gain 1 block per 5 HP lost this encounter**
   Setup: take 10 damage; equip scar_tissue; end turn
   Check: playerBlock includes +2 from scar_tissue scaling
 
@@ -450,7 +450,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: equip obsidian_dice; play strike 5 times
   Check: damage varies between base-2 and base+2 across trials
 
-- [ ] **gladiator_s_mark — +1 strength on encounter start**
+- [x] **gladiator_s_mark — +1 strength on encounter start**
   Setup: `SC.loadCustom({screen:'combat', enemy:'page_flutter', relics:['gladiator_s_mark']})`
   Check: playerStatusEffects contains strength value≥1 at combat start
 
@@ -472,15 +472,15 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: `SC.loadCustom({..., relics:['crit_lens']})`, CC with L3 card multiple times
   Check: some CC hits deal 1.5× normal CC damage (crit fires)
 
-- [ ] **thorn_crown — take damage: deal 5 thorns back to attacker**
+- [x] **thorn_crown — take damage: deal 5 thorns back to attacker**
   Setup: equip thorn_crown; end turn, enemy attacks
   Check: enemyHp decreases by 5 after attacking player
 
-- [ ] **bastions_will — at 15+ block: attacks deal +4 bonus damage**
+- [x] **bastions_will — at 15+ block: attacks deal +4 bonus damage**
   Setup: `SC.patch({turn:{playerState:{shield:15}}})`, equip bastions_will; play strike
   Check: strike damage = base + 4 bonus
 
-- [ ] **festering_wound — applying bleed also applies 1 extra bleed stack**
+- [x] **festering_wound — applying bleed also applies 1 extra bleed stack**
   Setup: equip festering_wound; play rupture (adds bleed)
   Check: bleed stacks = rupture bleed + 1 extra from festering_wound
 
@@ -492,7 +492,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: `SC.loadCustom({..., relics:['double_down'], hand:['strike']})`, CC
   Check: strike CC damage = floor(qpValue × 1.5 × 2.0) (double_down doubles CC)
 
-- [ ] **phoenix_feather — prevent death once; enter rage state**
+- [x] **phoenix_feather — prevent death once; enter rage state**
   Setup: `SC.loadCustom({..., relics:['phoenix_feather'], playerHp:1})`, take 10+ damage
   Check: playerHp = 1 (survival); playerStatusEffects contains rage state
 
@@ -504,7 +504,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: equip mirror_of_knowledge; play strike QP, then correct charge any card
   Check: strike QP effect fires again on CC
 
-- [ ] **red_fang — attacks heal player for 20% of damage dealt**
+- [x] **red_fang — attacks heal player for 20% of damage dealt**
   Setup: equip red_fang; attack enemy for 10 damage
   Check: playerHp += 2 (20% of 10)
 
@@ -512,7 +512,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: equip soul_jar; kill enemy
   Check: soul_jar charge count increases; release triggers damage
 
-- [ ] **null_shard — strip one enemy power badge at encounter start**
+- [x] **null_shard — strip one enemy power badge at encounter start**
   Setup: `SC.loadCustom({screen:'combat', enemy:'bookwyrm', relics:['null_shard']})`
   Check: one power badge removed from enemy at encounter start
 
@@ -520,7 +520,7 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: apply bleed to enemy; equip hemorrhage_lens; attack
   Check: attack damage = base × 1.5
 
-- [ ] **inferno_crown — burn stacks: +1 burn damage per active burn stack on enemy**
+- [x] **inferno_crown — burn stacks: +1 burn damage per active burn stack on enemy**
   Setup: apply 5 burn to enemy; equip inferno_crown; end turn
   Check: burn tick damage = base + 5 extra
 
@@ -528,11 +528,11 @@ For each relic, the test loads the relic via `SC.loadCustom({..., relics:['relic
   Setup: equip mind_palace; build chain to 5
   Check: `getCombatState().ap` += 2 when chain reaches 5
 
-- [ ] **bloodstone_pendant — below 50% HP: +3 attack damage**
+- [x] **bloodstone_pendant — below 50% HP: +3 attack damage**
   Setup: equip bloodstone_pendant; drop to <50% HP; attack
   Check: attack damage = base + 3
 
-- [ ] **dragon_s_heart — at full HP: CC deals +5 bonus damage**
+- [x] **dragon_s_heart — at full HP: CC deals +5 bonus damage**
   Setup: equip dragon_s_heart; playerHp = playerMaxHp; CC any attack
   Check: CC damage = normal CC + 5
 

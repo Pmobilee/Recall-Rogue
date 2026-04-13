@@ -61,11 +61,11 @@ Relics, edge cases, complex interactions.
 |------|-------|----------|-----------|----------|
 | 01-status-effects-passives | 47 | 0 | 47 | never |
 | 02-card-effects-visual | 108 | 0 | 108 | never |
-| 03-relics-visual-functional | 129 | 0 | 129 | never |
+| 03-relics-visual-functional | 129 | 26 | 103 | 2026-04-13 |
 | 04-enemies-rooms-screens | 185 | 0 | 185 | never |
 | 05-edge-cases-interactions | 41 | 0 | 41 | never |
 | 06-cards-functional | 151 | 151 | 0 | 2026-04-13 |
-| 07-status-chains-combos | 156 | 0 | 156 | never |
+| 07-status-chains-combos | 156 | 35 | 121 | 2026-04-13 |
 | 08-card-description-accuracy | 68 | 68 | 0 | 2026-04-13 |
 
 ---

@@ -8,7 +8,7 @@
 
 ### 13.1 Poison
 
-- [ ] **Poison application — correct stacks applied**
+- [x] **Poison application — correct stacks applied**
   Setup: `SC.patch({turn:{enemy:{statusEffects:[]}}})`, play hex or weaken with poison secondary; or `SC.patch({turn:{enemy:{statusEffects:[{type:'poison',value:3,turnsRemaining:3}]}}})`
   Check: `getCombatState().enemyStatusEffects` contains `{type:'poison', value:3}`
 
@@ -16,7 +16,7 @@
   Setup: enemy has 3 poison; end turn
   Check: enemyHp decreases by 3 at end of enemy turn; turnsRemaining decreases by 1
 
-- [ ] **Poison stacking — additive**
+- [x] **Poison stacking — additive**
   Setup: apply 3 poison, then apply 2 more poison
   Check: total poison stacks = 5
 
@@ -30,7 +30,7 @@
 
 ### 13.2 Strength
 
-- [ ] **Strength increases all attack damage by stacks × damage formula**
+- [x] **Strength increases all attack damage by stacks × damage formula**
   Setup: `SC.patch({turn:{playerState:{statusEffects:[{type:'strength',value:2,turnsRemaining:9999}]}}})`, play strike
   Check: strike damage includes +2 per strength stack
 
@@ -38,7 +38,7 @@
   Setup: `SC.patch({turn:{enemy:{statusEffects:[{type:'strength',value:3,turnsRemaining:9999}]}}})`, end turn
   Check: enemy attack deals base + 3 × strength_scale extra damage
 
-- [ ] **Permanent strength (9999 turns) does not expire**
+- [x] **Permanent strength (9999 turns) does not expire**
   Setup: strength turnsRemaining=9999; end 5 turns
   Check: strength still present after 5 turns
 
@@ -48,11 +48,11 @@
   Setup: `SC.patch({turn:{enemy:{statusEffects:[{type:'weakness',value:1,turnsRemaining:2}]}}})`, play attack
   Check: enemy attack damage reduced; player takes less damage
 
-- [ ] **Weakness on player reduces player attack damage**
+- [x] **Weakness on player reduces player attack damage**
   Setup: `SC.patch({turn:{playerState:{statusEffects:[{type:'weakness',value:1,turnsRemaining:2}]}}})`, play strike
   Check: strike damage lower than baseline
 
-- [ ] **Weakness + Strength combined — strength partially overrides weakness**
+- [x] **Weakness + Strength combined — strength partially overrides weakness**
   Setup: player has both strength=2 and weakness=1; play strike
   Check: damage = baseline + strength_bonus, then weakness reduction applied
 
@@ -62,7 +62,7 @@
 
 ### 13.4 Vulnerable
 
-- [ ] **Vulnerable increases damage taken by 50%**
+- [x] **Vulnerable increases damage taken by 50%**
   Setup: `SC.patch({turn:{enemy:{statusEffects:[{type:'vulnerable',value:1,turnsRemaining:2}]}}})`, play strike
   Check: strike damage = floor(baseline × 1.5)
 
@@ -153,43 +153,43 @@
 
 ### 14.1 Chain Building and Breaking
 
-- [ ] **Chain extends on same-type CC — chainLength increments**
+- [x] **Chain extends on same-type CC — chainLength increments**
   Setup: `SC.patch({turn:{activeChainColor:1, chainLength:1}})`, CC with chain-type-1 card
   Check: `getCombatState().chainLength` = 2
 
-- [ ] **Chain breaks on different-type CC — chainLength resets to 0**
+- [x] **Chain breaks on different-type CC — chainLength resets to 0**
   Setup: chain type 1 active at length 3; CC with chain-type-2 card
   Check: chainLength = 0 after play; chainMultiplier = 1.0
 
-- [ ] **Chain extends on QP — chainLength does NOT increment (QP doesn't chain)**
+- [x] **Chain extends on QP — chainLength does NOT increment (QP doesn't chain)**
   Setup: chain active at length 2; QP with same-type card
   Check: chainLength = 2 (unchanged); multiplier unchanged
 
-- [ ] **Chain multiplier [0] = 1.0 (no chain)**
+- [x] **Chain multiplier [0] = 1.0 (no chain)**
   Setup: `SC.patch({turn:{chainLength:0}})`, play any attack
   Check: damage = floor(qpValue × 1.5 × 1.0) — no chain bonus
 
-- [ ] **Chain multiplier [1] = 1.2 (first link)**
+- [x] **Chain multiplier [1] = 1.2 (first link)**
   Setup: chainLength=1, chainMultiplier=1.2; CC attack
   Check: damage = floor(qpValue × 1.5 × 1.2)
 
-- [ ] **Chain multiplier [2] = 1.5**
+- [x] **Chain multiplier [2] = 1.5**
   Setup: chainLength=2, chainMultiplier=1.5; CC attack
   Check: damage = floor(qpValue × 1.5 × 1.5)
 
-- [ ] **Chain multiplier [3] = 2.0**
+- [x] **Chain multiplier [3] = 2.0**
   Setup: chainLength=3, chainMultiplier=2.0; CC attack
   Check: damage = floor(qpValue × 1.5 × 2.0)
 
-- [ ] **Chain multiplier [4] = 2.5**
+- [x] **Chain multiplier [4] = 2.5**
   Setup: chainLength=4, chainMultiplier=2.5; CC attack
   Check: damage = floor(qpValue × 1.5 × 2.5)
 
-- [ ] **Chain multiplier [5] = 3.5 (maximum)**
+- [x] **Chain multiplier [5] = 3.5 (maximum)**
   Setup: chainLength=5, chainMultiplier=3.5; CC attack
   Check: damage = floor(qpValue × 1.5 × 3.5)
 
-- [ ] **Chain break resets multiplier to 1.0**
+- [x] **Chain break resets multiplier to 1.0**
   Setup: chain at length 4 (mult=2.5); play off-type card CC
   Check: chainMultiplier = 1.0; chainLength = 0
 
@@ -233,15 +233,15 @@
 
 ### 15.1 Representative Card Stat Verification (L0–L5)
 
-- [ ] **strike progression: L0=4, L1=4, L2=5, L3=6, L4=7, L5=8 QP**
+- [x] **strike progression: L0=4, L1=4, L2=5, L3=6, L4=7, L5=8 QP**
   Setup: card at each mastery level; QP each
   Check: enemyHp deltas match QP values: 4, 4, 5, 6, 7, 8
 
-- [ ] **strike L5 CC = floor(8 × 1.5) = 12**
+- [x] **strike L5 CC = floor(8 × 1.5) = 12**
   Setup: L5 strike, CC
   Check: enemyHp delta = 12
 
-- [ ] **block progression: L0=4, L1=4, L2=5, L3=6, L4=7, L5=8 block**
+- [x] **block progression: L0=4, L1=4, L2=5, L3=6, L4=7, L5=8 block**
   Setup: card at each mastery level; QP each
   Check: playerBlock deltas match: 4, 4, 5, 6, 7, 8
 
@@ -249,11 +249,11 @@
   Setup: play multi_hit at each mastery; count damage hits
   Check: hit count matches per-level spec
 
-- [ ] **heavy_strike L5 AP cost = 1**
+- [x] **heavy_strike L5 AP cost = 1**
   Setup: L5 heavy_strike in hand
   Check: `getCombatState().hand[i].apCost` = 1
 
-- [ ] **chain_lightning L5 AP cost = 1**
+- [x] **chain_lightning L5 AP cost = 1**
   Setup: L5 chain_lightning in hand
   Check: apCost = 1
 
@@ -261,11 +261,11 @@
   Setup: transmute at L0 and L5; check apCost
   Check: apCost consistent at 1 for all levels
 
-- [ ] **L3 tag activation — strike has no L3 tag (no change), multi_hit gains multi_bleed1**
+- [x] **L3 tag activation — strike has no L3 tag (no change), multi_hit gains multi_bleed1**
   Setup: multi_hit at L3; CC
   Check: bleed stacks applied after multi_hit CC
 
-- [ ] **L5 tag activation — strike gains strike_tempo3; verify tempo bonus fires**
+- [x] **L5 tag activation — strike gains strike_tempo3; verify tempo bonus fires**
   Setup: L5 strike; play 3+ cards this turn, then CC strike
   Check: damage includes strike_tempo3 bonus (4+ extra damage)
 
@@ -295,23 +295,23 @@
 
 ### 15.2 CW Consistent at 0.50× Across All Levels
 
-- [ ] **CW multiplier 0.50× at L0**
+- [x] **CW multiplier 0.50× at L0**
   Setup: L0 strike (qpValue=4), CW
   Check: enemyHp delta = floor(4 × 0.50) = 2
 
-- [ ] **CW multiplier 0.50× at L3**
+- [x] **CW multiplier 0.50× at L3**
   Setup: L3 strike (qpValue=6), CW
   Check: enemyHp delta = floor(6 × 0.50) = 3
 
-- [ ] **CW multiplier 0.50× at L5**
+- [x] **CW multiplier 0.50× at L5**
   Setup: L5 strike (qpValue=8), CW
   Check: enemyHp delta = floor(8 × 0.50) = 4
 
-- [ ] **CC multiplier 1.50× at L0**
+- [x] **CC multiplier 1.50× at L0**
   Setup: L0 strike, CC with no chain/buffs
   Check: enemyHp delta = floor(4 × 1.50) = 6
 
-- [ ] **CC multiplier 1.50× at L5**
+- [x] **CC multiplier 1.50× at L5**
   Setup: L5 strike, CC with no chain/buffs
   Check: enemyHp delta = floor(8 × 1.50) = 12
 
@@ -415,7 +415,7 @@
 
 ### 17.1 Buff + Damage Stacking
 
-- [ ] **Empower + chain multiplier — both apply multiplicatively**
+- [x] **Empower + chain multiplier — both apply multiplicatively**
   Setup: player has Empower; chain at length 3 (mult=2.0); CC attack
   Check: damage = floor(qpValue × empower_mult × 1.5 × 2.0)
 
@@ -423,7 +423,7 @@
   Setup: play double_strike, then play multi_hit
   Check: multi_hit hits twice per normal hit (total hits = 2 × hitCount)
 
-- [ ] **Overclock + chain_lightning — overclock doubles chain_lightning effect**
+- [x] **Overclock + chain_lightning — overclock doubles chain_lightning effect**
   Setup: play overclock, then CC chain_lightning at chain=3
   Check: chain_lightning damage = floor(2 × base × 1.5 × chain_mult)
 
@@ -431,7 +431,7 @@
   Setup: play catalyst, then play kindle
   Check: kindle applies 2× its normal burn stacks
 
-- [ ] **Warcry (permanent strength) + high chain — stacking multiplicative**
+- [x] **Warcry (permanent strength) + high chain — stacking multiplicative**
   Setup: player has strength=2 (warcry); chain=3 (2.0×); CC strike
   Check: damage = floor(4 × (1 + 2 × strength_scale) × 1.5 × 2.0)
 
@@ -534,15 +534,15 @@
 
 ### 17.8 Edge Cases — Damage Floor and Overflow
 
-- [ ] **CW never deals 0 damage (Math.max floor applies)**
+- [x] **CW never deals 0 damage (Math.max floor applies)**
   Setup: any card, CW; even L0 low-value card
   Check: enemyHp delta ≥ 1 (CW always resolves at Math.max(1, floor(qpValue × 0.50)))
 
-- [ ] **CC with chain=5 (3.5×) on strike L5 — maximum no-relic damage**
+- [x] **CC with chain=5 (3.5×) on strike L5 — maximum no-relic damage**
   Setup: L5 strike (qpValue=8), chainLength=5 (mult=3.5), CC, no buffs
   Check: enemyHp delta = floor(8 × 1.5 × 3.5) = floor(42) = 42
 
-- [ ] **Block at 0 — attacks deal full damage (no reduction)**
+- [x] **Block at 0 — attacks deal full damage (no reduction)**
   Setup: `SC.patch({turn:{enemy:{block:0}}})`, attack
   Check: enemyHp delta = full attack value
 
