@@ -1,0 +1,44 @@
+{
+  "batchId": "BATCH-2026-04-12-002",
+  "date": "2026-04-12",
+  "commit": "18743ff2a28a841be95f46d3667e7e0496bb5c8f",
+  "description": "Comprehensive pre-Steam audit — 16 tracks, 5 waves",
+  "tracks": 16,
+  "waves": 5,
+  "status": "completed",
+  "verdict": "FAIL",
+  "issues": { "critical": 7, "high": 8, "medium": 20, "low": 21, "total": 56 },
+  "preflight": {
+    "typecheck": "0 errors, 20 a11y warnings",
+    "build": "success (10.53s)",
+    "tests": "6193 passed, 0 failed, 189 files",
+    "docker": "rr-playwright built (cached)",
+    "smoke": "all 6 checks green"
+  },
+  "trackVerdicts": {
+    "track-01-regressions": "ISSUES",
+    "track-02-combat-mechanics": "ISSUES",
+    "track-03-quiz-content": "FAIL",
+    "track-04-full-run": "ISSUES",
+    "track-05-fsrs": "PASS",
+    "track-06-card-mechanics": "PASS",
+    "track-07-relics": "FAIL",
+    "track-08-visual-sweep": "PASS",
+    "track-09-ascension": "PASS",
+    "track-10-edge-cases": "ISSUES",
+    "track-11-rooms": "PASS",
+    "track-12-mastery": "PASS",
+    "track-13-balance-sim": "ISSUES",
+    "track-14-deck-diversity": "ISSUES",
+    "track-15-api-drift": "FAIL",
+    "track-16-save-load": "PASS"
+  },
+  "systemsClean": ["FSRS scheduling", "Card mastery L0-L5", "Save/load + Set/Map", "Visual rendering", "Room interactions", "Card mechanics"],
+  "topBlockers": [
+    "{N} distractor brace-token leak (quizService.ts:188,229)",
+    "Encounter-start relic effects broken (encounterBridge.ts)",
+    "world_cuisines deck 0 facts in factsDB",
+    "Human anatomy study freezes on image_answers facts",
+    "action-specs.md startRun() destination wrong"
+  ]
+}
