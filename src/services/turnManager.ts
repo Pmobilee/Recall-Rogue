@@ -3665,7 +3665,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.phase = 'player_action';
   turnState.turnLog = [];
 
-  // Turn-start relic effects (iron_buckler: +3 block per turn; blood_price: +1 AP; deja_vu: spawn)
+  // Turn-start relic effects (iron_shield: 2+N block per turn; blood_price: +1 AP; deja_vu: spawn)
   const turnStartFx = resolveTurnStartEffects(
     turnState.activeRelicIds,
     0, // capacitor stored AP — maintained elsewhere
@@ -3674,11 +3674,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       characterLevel: turnState.characterLevel,
       dejaVuUsedThisEncounter: turnState.dejaVuUsedThisEncounter,
       auraState: getAuraState(),
+      shieldsPlayedLastTurn: turnState.shieldsPlayedLastTurn,
     },
   );
   if (turnStartFx.bonusBlock > 0) {
     applyShield(playerState, turnStartFx.bonusBlock);
-    turnState.triggeredRelicId = 'iron_buckler';
+    turnState.triggeredRelicId = 'iron_shield';
   }
   if (turnStartFx.bonusAP > 0) {
     turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + turnStartFx.bonusAP);

@@ -116,7 +116,7 @@ export const MECHANIC_DEFINITIONS: MechanicDefinition[] = [
   // Shield (phase 1 promoted)
   {
     id: 'fortify', name: 'Entrench', type: 'shield',
-    description: 'Double your current block.',
+    description: 'Gain 50% of your current block.',
     baseValue: 7, apCost: 2, maxPerPool: 0, tags: ['persistent_block'], launchPhase: 1, unlockLevel: 0,
     quickPlayValue: 6, chargeCorrectValue: 21, chargeWrongValue: 4,
   },
