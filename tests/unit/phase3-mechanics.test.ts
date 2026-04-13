@@ -511,35 +511,34 @@ describe('war_drum mechanic', () => {
 // ── Entropy (Debuff — dual DoT: burn + poison) ────────────────────────────────
 
 describe('entropy mechanic', () => {
-  it('QP: 0 Burn stacks at L0 and 2 Poison for 2 turns', () => {
-    // MASTERY_STAT_TABLES.entropy[0].qpValue=0; masteryBonus = 0-2 = -2.
-    // burnStacks = finalValue = mechanicBaseValue = quickPlayValue + masteryBonus = 2-2 = 0.
-    // Poison comes from the hardcoded QP path in resolver (poisonStacks=2, poisonTurns=2).
+  it('QP: 2 Burn stacks at L0 and 1 Poison for 2 turns (from stat-table extras)', () => {
+    // MASTERY_STAT_TABLES.entropy[0].extras = { burn: 2, poison: 1, poisonTurns: 2 }.
+    // burnStacks read directly from extras.burn (not finalValue which was 0 due to qpValue=0).
+    // poisonStacks read from extras.poison, poisonDuration from extras.poisonTurns.
     const result = resolve('entropy', 'quick');
-    expect(result.applyBurnStacks).toBe(0);
+    expect(result.applyBurnStacks).toBe(2);
     const poison = result.statusesApplied.find(s => s.type === 'poison');
     expect(poison).toBeDefined();
-    expect(poison!.value).toBe(2);
+    expect(poison!.value).toBe(1);
     expect(poison!.turnsRemaining).toBe(2);
   });
 
-  it('CC: 0 Burn stacks at L0 and 4 Poison for 3 turns', () => {
-    // At L0, burnStacks = finalValue = 0 (stat table qpValue=0 makes mechanicBaseValue=0 via CC mult too).
-    // CC mechanicBaseValue = Math.round((2-2)*1.50) = 0.
-    // Poison comes from hardcoded CC path (poisonStacks=4, poisonDuration=3).
+  it('CC: 6 Burn stacks (hardcoded) and 4 Poison for 3 turns', () => {
+    // CC burn is hardcoded at 6 (mirrors hex pattern: fixed CC values).
+    // Poison from hardcoded CC path (poisonStacks=4, poisonDuration=3).
     const result = resolve('entropy', 'charge_correct');
-    expect(result.applyBurnStacks).toBe(0);
+    expect(result.applyBurnStacks).toBe(6);
     const poison = result.statusesApplied.find(s => s.type === 'poison');
     expect(poison).toBeDefined();
     expect(poison!.value).toBe(4);
     expect(poison!.turnsRemaining).toBe(3);
   });
 
-  it('CW: 0 Burn stacks at L0 and 1 Poison for 1 turn', () => {
-    // CW mechanicBaseValue = Math.max(0, chargeWrongValue + masteryBonus) = Math.max(0, 1-2) = 0.
+  it('CW: 2 Burn stacks (hardcoded) and 1 Poison for 1 turn', () => {
+    // CW burn is hardcoded at 2 (fizzle — reduced but not zero).
     // Poison from hardcoded CW path (poisonStacks=1, poisonDuration=1).
     const result = resolve('entropy', 'charge_wrong');
-    expect(result.applyBurnStacks).toBe(0);
+    expect(result.applyBurnStacks).toBe(2);
     const poison = result.statusesApplied.find(s => s.type === 'poison');
     expect(poison).toBeDefined();
     expect(poison!.value).toBe(1);

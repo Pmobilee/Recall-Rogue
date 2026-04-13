@@ -2012,10 +2012,9 @@ export function resolveCardEffect(
 
     // Entropy — dual DoT: Burn + Poison
     case 'entropy': {
-      const masteryLevelEntropy = card.masteryLevel ?? 0;
-      // perLevelDelta = +1 Burn per level (QP base 3, so at L3 = 6)
-      // finalValue already has mastery bonus applied (encodes Burn stacks)
-      const burnStacks = finalValue; // includes mastery delta
+      // Burn/poison stacks read from stat-table extras (qpValue=0 for entropy).
+      // CC/CW hardcoded at fixed values; QP scales with mastery via extras.burn/poison.
+      const burnStacks = isChargeCorrect ? 6 : (isChargeWrong ? 2 : (_masteryStats?.extras?.['burn'] ?? 2));
       let poisonStacks: number;
       let poisonDuration: number;
       if (isChargeCorrect) {
@@ -2025,10 +2024,8 @@ export function resolveCardEffect(
         poisonStacks = 1;
         poisonDuration = 1;
       } else {
-        poisonStacks = 2;
-        poisonDuration = 2;
-        // L3: QP also gets +1 Poison (entropy_poison_qp tag)
-        if (masteryLevelEntropy >= 3) poisonStacks += 1;
+        poisonStacks = _masteryStats?.extras?.['poison'] ?? 2;
+        poisonDuration = _masteryStats?.extras?.['poisonTurns'] ?? 2;
       }
       result.applyBurnStacks = Math.round(burnStacks * chainMultiplier);
       result.statusesApplied.push({ type: 'poison', value: Math.round(poisonStacks * chainMultiplier), turnsRemaining: poisonDuration });

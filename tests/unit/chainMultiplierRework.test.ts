@@ -316,29 +316,27 @@ describe('Group 4: DoT scaling with chain multiplier', () => {
     expect(result.applyBleedStacks).toBe(3);
   });
 
-  // Entropy L0 QP: burnStacks comes from finalValue=0 (stat table qpValue=0, masteryBonus=-2)
-  // This is a known limitation — entropy burn stacks are always 0 at QP L0 due to stat table mismatch.
-  // Poison IS chain-scaled: poisonStacks hardcoded to 2 at QP, then round(2 * chainMult)
-  it('entropy L0 QP chain=2.0 — poison is chain-scaled (4 stacks), burn stacks reflect stat table state', () => {
+  // Entropy L0 QP: burn and poison both read from stat-table extras (burn=2, poison=1, poisonTurns=2).
+  // Both are chain-scaled: round(base * chainMult).
+  it('entropy L0 QP chain=2.0 — burn chain-scaled to 4, poison chain-scaled to 2', () => {
     const result = resolve('entropy', 'quick', 2.0);
     const poison = result.statusesApplied.find(s => s.type === 'poison');
-    // Poison: hardcoded QP base=2, chain=2.0 → round(2*2.0)=4
-    expect(poison?.value).toBe(4);
-    // Burn: finalValue=0 at L0 (stat table qpValue=0, masteryBonus=-2, mechanic.quickPlayValue=2)
-    // round(0 * chainMult) = 0 — documents actual behavior
-    expect(result.applyBurnStacks).toBe(0);
+    // Poison: stat-table QP base=1, chain=2.0 → round(1*2.0)=2
+    expect(poison?.value).toBe(2);
+    // Burn: stat-table extras.burn=2, chain=2.0 → round(2*2.0)=4
+    expect(result.applyBurnStacks).toBe(4);
   });
 
-  it('entropy L0 QP chain=3.5 — poison scaled to 7 stacks (round(2*3.5)=7)', () => {
+  it('entropy L0 QP chain=3.5 — poison scaled to 4 stacks (round(1*3.5)=4)', () => {
     const result = resolve('entropy', 'quick', 3.5);
     const poison = result.statusesApplied.find(s => s.type === 'poison');
-    expect(poison?.value).toBe(7);
+    expect(poison?.value).toBe(4);
   });
 
-  it('entropy L0 QP chain=1.0 — poison baseline is 2 stacks', () => {
+  it('entropy L0 QP chain=1.0 — poison baseline is 1 stack (stat-table extras.poison=1)', () => {
     const result = resolve('entropy', 'quick', 1.0);
     const poison = result.statusesApplied.find(s => s.type === 'poison');
-    expect(poison?.value).toBe(2);
+    expect(poison?.value).toBe(1);
   });
 });
 
