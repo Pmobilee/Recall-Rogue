@@ -16,6 +16,14 @@ import { computeIntentDisplayDamage } from '../services/intentDisplay'
 import { getEffectiveApCost, getMasteryStats } from '../services/cardUpgradeService';
 import { getMechanicDefinition } from '../data/mechanics';
 
+// Module-level registry for named snapshots.
+// Allows restore('label') to look up a previously taken snapshot by label
+// instead of requiring callers to hold the snapshot object themselves.
+// Fix #14: restore(snapshot('x')) is a silent no-op (snapshot() creates a new
+// snapshot at call time). The correct pattern is:
+//   const snap = snapshot('before'); ... restore('before');  // or restore(snap)
+const _snapshotRegistry: Map<string, Record<string, unknown>> = new Map();
+
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
@@ -395,7 +403,7 @@ async function endTurn(): Promise<PlayResult> {
   return safeAction(async () => {
     // If we're no longer in combat, the turn is already over (enemy died, etc.)
     const screen = getScreen();
-    if (screen !== 'combat') return { ok: true, message: `Combat already ended. Screen: ${screen}` };
+    if (screen !== 'combat') return { ok: false, message: `Not in combat. Screen: ${screen}` };
 
     const btn = document.querySelector('[data-testid="btn-end-turn"]') as HTMLButtonElement | null;
     // Button gone but still nominally in combat — enemy likely just died, treat as success
@@ -406,8 +414,8 @@ async function endTurn(): Promise<PlayResult> {
     const prevScreen = getScreen();
     btn.click();
 
-    // Poll until turn advances or screen changes (max 3s)
-    for (let i = 0; i < 60; i++) {
+    // Poll until turn advances or screen changes (max 6s — some enemies take 5-8s for their turn)
+    for (let i = 0; i < 120; i++) {
       await wait(50);
       const screen = getScreen();
       if (screen !== prevScreen || screen !== 'combat') break;
@@ -971,14 +979,34 @@ function getMysteryEventChoices(): Array<{ index: number; text: string }> {
       text: opt.label,
     }));
   }
-  // Fallback: query visible .choice-btn elements from DOM (speedRound, doubleOrNothing, etc.)
-  const buttons = Array.from(document.querySelectorAll<HTMLElement>('.choice-btn'));
-  return buttons
+  // Fallback 1: query visible .choice-btn elements from DOM (speedRound, doubleOrNothing, etc.)
+  const choiceBtns = Array.from(document.querySelectorAll<HTMLElement>('.choice-btn'))
     .filter(btn => {
       const style = getComputedStyle(btn);
       return style.display !== 'none' && style.visibility !== 'hidden';
-    })
-    .map((btn, i) => ({ index: i, text: btn.textContent?.trim() ?? '' }));
+    });
+  if (choiceBtns.length > 0) {
+    return choiceBtns.map((btn, i) => ({ index: i, text: btn.textContent?.trim() ?? '' }));
+  }
+
+  // Fallback 2: quiz-type events (e.g. knowledge_gamble) show a quiz overlay
+  // with [data-testid^="quiz-answer-"] buttons instead of .choice-btn elements.
+  // Also surface .continue-btn for events that resolve immediately with a prompt.
+  const quizBtns = Array.from(document.querySelectorAll<HTMLElement>('[data-testid^="quiz-answer-"]'))
+    .filter(btn => {
+      const style = getComputedStyle(btn);
+      return style.display !== 'none' && style.visibility !== 'hidden';
+    });
+  if (quizBtns.length > 0) {
+    return quizBtns.map((btn, i) => ({ index: i, text: btn.textContent?.trim() ?? '' }));
+  }
+
+  const continueBtns = Array.from(document.querySelectorAll<HTMLElement>('.continue-btn'))
+    .filter(btn => {
+      const style = getComputedStyle(btn);
+      return style.display !== 'none' && style.visibility !== 'hidden';
+    });
+  return continueBtns.map((btn, i) => ({ index: i, text: btn.textContent?.trim() ?? '' }));
 }
 
 /** Select a mystery event choice by index.
@@ -1451,20 +1479,38 @@ function patchState(overrides: { turn?: Record<string, unknown>; run?: Record<st
   return scenario.patch(overrides);
 }
 
-/** Capture full state snapshot. Delegates to __rrScenario.snapshot(). */
+/** Capture full state snapshot. Delegates to __rrScenario.snapshot().
+ *  If a label is provided, the snapshot is stored in _snapshotRegistry for
+ *  later retrieval via restoreState('label') — avoiding the silent no-op of
+ *  calling restoreState(snapshotState('x')) inline (Fix #14). */
 function snapshotState(label?: string): Record<string, unknown> | PlayResult {
   const scenario = (window as any).__rrScenario;
   if (!scenario?.snapshot) {
     return { ok: false, message: '__rrScenario not initialized' };
   }
-  return scenario.snapshot(label);
+  const snap = scenario.snapshot(label);
+  if (label && snap && typeof snap === 'object' && !('ok' in snap && (snap as any).ok === false)) {
+    _snapshotRegistry.set(label, snap as Record<string, unknown>);
+  }
+  return snap;
 }
 
-/** Restore from snapshot. Delegates to __rrScenario.restore(). */
-function restoreState(snap: Record<string, unknown>): PlayResult {
+/** Restore from snapshot. Delegates to __rrScenario.restore().
+ *  Accepts either a snapshot object (as before) OR a string label previously
+ *  passed to snapshotState() — so callers can write:
+ *    await snapshot('before');  // ... do stuff ...  await restore('before');
+ *  instead of holding the snapshot object manually (Fix #14). */
+function restoreState(snap: Record<string, unknown> | string): PlayResult {
   const scenario = (window as any).__rrScenario;
   if (!scenario?.restore) {
     return { ok: false, message: '__rrScenario not initialized' };
+  }
+  if (typeof snap === 'string') {
+    const saved = _snapshotRegistry.get(snap);
+    if (!saved) {
+      return { ok: false, message: `No snapshot found for label '${snap}'. Call snapshot('${snap}') first.` };
+    }
+    return scenario.restore(saved);
   }
   return scenario.restore(snap);
 }
