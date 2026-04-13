@@ -99,6 +99,15 @@ let _broadcastHeartbeat: ReturnType<typeof setInterval> | null = null;
 /** Transport for the local bot player, if one is active. Dev-only. */
 let _botTransport: LocalMultiplayerTransport | null = null;
 
+/**
+ * Guards against double handler registration.
+ * setupMessageHandlers() is called by createLobby(), joinLobby(), and
+ * joinLobbyById(). If a code path calls it twice on the same transport,
+ * every message handler fires twice, doubling side-effects (e.g. ready
+ * toggles getting overwritten). Reset in leaveLobby().
+ */
+let _handlersAttached = false;
+
 /** Get the current lobby state (null if not in a lobby) */
 export function getCurrentLobby(): LobbyState | null { return _currentLobby; }
 
@@ -323,11 +332,22 @@ export async function joinLobbyById(
 /** Leave the current lobby and clean up all related state. */
 export function leaveLobby(): void {
   if (!_currentLobby) return;
-  const transport = getMultiplayerTransport();
-  transport.send('mp:lobby:leave', { playerId: _localPlayerId });
-  destroyMultiplayerTransport();
+  // Send leave message — wrapped in try/catch because the transport may already
+  // be disconnected (server dropped the connection) and send() would throw,
+  // preventing the cleanup below from running.
+  try {
+    const transport = getMultiplayerTransport();
+    transport.send('mp:lobby:leave', { playerId: _localPlayerId });
+  } catch (err) {
+    console.warn('[MP:LobbyService] leaveLobby send failed (transport may be disconnected):', err);
+  }
+  try {
+    destroyMultiplayerTransport();
+  } catch (err) {
+    console.warn('[MP:LobbyService] destroyMultiplayerTransport failed:', err);
+  }
 
-  // Clear the broadcast heartbeat so the directory entry expires naturally (30 s TTL)
+  // Always clean up local state regardless of transport errors
   if (_broadcastHeartbeat !== null) {
     clearInterval(_broadcastHeartbeat);
     _broadcastHeartbeat = null;
@@ -335,6 +355,7 @@ export function leaveLobby(): void {
 
   _currentLobby = null;
   _passwordHash = null;
+  _handlersAttached = false;
 }
 
 // ── Lobby Settings (host only) ───────────────────────────────────────────────
@@ -524,6 +545,7 @@ export function removeLocalBot(): void {
 export function setReady(ready: boolean): void {
   if (!_currentLobby) return;
   const player = _currentLobby.players.find(p => p.id === _localPlayerId);
+  console.log(`[MP:LobbyService] setReady(${ready}) for player=${_localPlayerId}, found=${!!player}`);
   if (player) {
     player.isReady = ready;
     const transport = getMultiplayerTransport();
@@ -617,11 +639,18 @@ function notifyLobbyUpdate(): void {
 }
 
 function setupMessageHandlers(): void {
+  // Guard: transport.on() accumulates listeners — calling this twice doubles every
+  // handler. Since createLobby(), joinLobby(), and joinLobbyById() all call this
+  // function, a future code path that calls two of them would silently double-fire.
+  if (_handlersAttached) return;
+  _handlersAttached = true;
+
   const transport = getMultiplayerTransport();
 
   transport.on('mp:lobby:join', (msg) => {
     if (!_currentLobby) return;
     const { playerId, displayName } = msg.payload as { playerId: string; displayName: string };
+    console.log(`[MP:LobbyService] mp:lobby:join received: player=${playerId}, name=${displayName}, existing=${_currentLobby.players.length}`);
     if (!_currentLobby.players.find(p => p.id === playerId)) {
       _currentLobby.players.push({
         id: playerId, displayName, isHost: false, isReady: false
@@ -649,16 +678,29 @@ function setupMessageHandlers(): void {
   transport.on('mp:lobby:settings', (msg) => {
     if (!_currentLobby || isHost()) return; // Host already has correct state
     const settings = msg.payload as Partial<LobbyState>;
-    // Preserve local player ready states — settings broadcasts can arrive
-    // after ready messages due to network latency, which would overwrite them.
-    if (settings.players && _currentLobby.players) {
-      const readyMap = new Map(_currentLobby.players.map(p => [p.id, p.isReady]));
+    // Snapshot the local player ready states BEFORE Object.assign merges the
+    // host's players array over ours. We use this to restore the local player's
+    // ready state afterward (see MP-004 fix below).
+    const readyMap = new Map(_currentLobby.players.map(p => [p.id, p.isReady]));
+    // Preserve ALL players' ready states in the incoming array — settings broadcasts
+    // can arrive after ready messages due to network latency.
+    if (settings.players) {
       for (const p of settings.players as LobbyPlayer[]) {
         const localReady = readyMap.get(p.id);
         if (localReady !== undefined) p.isReady = p.isReady || localReady;
       }
     }
     Object.assign(_currentLobby, settings);
+    // Re-apply the local player's ready state after Object.assign.
+    // The host's settings broadcast carries its own copy of the players array
+    // where the guest is isReady:false (host doesn't know the guest toggled).
+    // Without this, a settings broadcast arriving after a ready toggle reverts
+    // the guest's ready state — this is the root cause of MP-004.
+    const localPlayer = _currentLobby.players.find(p => p.id === _localPlayerId);
+    const localReady = readyMap.get(_localPlayerId);
+    if (localPlayer && localReady !== undefined) {
+      localPlayer.isReady = localReady;
+    }
     notifyLobbyUpdate();
   });
 

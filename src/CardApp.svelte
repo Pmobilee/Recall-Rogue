@@ -570,7 +570,11 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   function handleMultiplayerBack(): void {
     if (currentLobby) {
-      leaveLobby()
+      try {
+        leaveLobby()
+      } catch (err) {
+        console.warn('[CardApp] leaveLobby failed during back navigation:', err)
+      }
       currentLobby = null
       activeRaceResults = null
       transitionScreen('multiplayerMenu')
@@ -607,6 +611,26 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       currentLobby = lobby
     })
     return unsub
+  })
+
+  // Clean up lobby state when navigating away from multiplayer screens.
+  // Handles the case where rrPlay API or direct screen transitions bypass handleMultiplayerBack().
+  $effect(() => {
+    const screen = $currentScreen
+    const mpScreens = new Set(['multiplayerMenu', 'multiplayerLobby', 'lobbyBrowser', 'raceResults'])
+    // Game screens are active gameplay — do NOT clean up during a multiplayer run.
+    const gameScreens = new Set(['dungeonMap', 'combat', 'shop', 'rest', 'mystery', 'reward', 'runEnd', 'onboarding'])
+
+    if (!mpScreens.has(screen) && !gameScreens.has(screen) && currentLobby) {
+      // Navigated away from MP to a non-game screen (hub, settings, etc.) — clean up.
+      try {
+        leaveLobby()
+      } catch (err) {
+        console.warn('[CardApp] leaveLobby failed during screen navigation cleanup:', err)
+      }
+      currentLobby = null
+      activeRaceResults = null
+    }
   })
 
   // Wire game start and live opponent progress for multiplayer races.
