@@ -454,6 +454,42 @@ describe('blank_spot — onPlayerChargeWrong (+8 block)', () => {
   });
 });
 
+// ── onPlayerChargeWrong + onPlayerNoCharge: comparison_trap ──────────────────
+
+describe('comparison_trap — onPlayerChargeWrong + onPlayerNoCharge', () => {
+  it('mirrors damage on wrong charge (_mirrorDamage = cardBaseDamage)', () => {
+    const enemy = makeInstance('comparison_trap');
+    const ctx = makeCtx(enemy, { cardBaseDamage: 6, chargeCorrect: false });
+    enemy.template.onPlayerChargeWrong!(ctx);
+    expect((ctx as any)._mirrorDamage).toBe(6);
+  });
+
+  it('gains +1 permanent Strength on wrong charge', () => {
+    const enemy = makeInstance('comparison_trap');
+    enemy.template.onPlayerChargeWrong!(makeCtx(enemy, { chargeCorrect: false }));
+    const str = enemy.statusEffects.find(e => e.type === 'strength');
+    expect(str).toBeDefined();
+    expect(str!.value).toBe(1);
+    expect(str!.turnsRemaining).toBeGreaterThanOrEqual(999);
+  });
+
+  it('gains +2 permanent Strength on no charge', () => {
+    const enemy = makeInstance('comparison_trap');
+    enemy.template.onPlayerNoCharge!(makeCtx(enemy));
+    const str = enemy.statusEffects.find(e => e.type === 'strength');
+    expect(str).toBeDefined();
+    expect(str!.value).toBe(2);
+  });
+
+  it('Strength stacks across multiple triggers', () => {
+    const enemy = makeInstance('comparison_trap');
+    enemy.template.onPlayerChargeWrong!(makeCtx(enemy, { chargeCorrect: false }));
+    enemy.template.onPlayerNoCharge!(makeCtx(enemy));
+    const str = enemy.statusEffects.find(e => e.type === 'strength');
+    expect(str!.value).toBe(3); // 1 from wrong + 2 from no-charge
+  });
+});
+
 // ── onPlayerChargeCorrect: pop_quiz ──────────────────────────────────────────
 
 describe('pop_quiz — onPlayerChargeCorrect (_stunNextTurn)', () => {
@@ -1119,6 +1155,7 @@ describe('callback coverage exhaustiveness', () => {
       'blank_spot',
       'textbook',
       'final_lesson',
+      'comparison_trap',
     ];
     for (const id of withCb) {
       expect(
@@ -1149,6 +1186,7 @@ describe('callback coverage exhaustiveness', () => {
       'perfectionist',
       'dean',
       'ancient_tongue',
+      'comparison_trap',
     ];
     for (const id of withCb) {
       expect(

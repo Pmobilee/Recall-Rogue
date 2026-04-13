@@ -556,7 +556,7 @@ When `startEncounterForRoom` picks a common or elite enemy from an act pool, it 
 | `tenure_guardian` | 11 | `onPlayerNoCharge`: gains +1 permanent Strength |
 | `proctor` | 13 | `onPlayerNoCharge`: gains +1 Strength; telegraphs 7-damage Seismic Slam charge |
 | `grade_dragon` | 13 | Fire breath + Poison 2×2 turns |
-| `comparison_trap` | 10 | 3-hit phantom copies + vulnerable debuff |
+| `comparison_trap` | 10 | `onPlayerChargeWrong`: mirrors `cardBaseDamage` back to player + gains +1 permanent Strength; `onPlayerNoCharge`: gains +2 permanent Strength. Nastier than crib_sheet — escalates on mistakes AND punishes avoidance |
 | `textbook` | 13 | `hardcoverArmor: 16`; reduces Quick Play damage; -4 per correct Charge, +2 per wrong; breaking opens full damage |
 
 ### Boss Enemies

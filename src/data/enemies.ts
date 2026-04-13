@@ -749,6 +749,23 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     ],
     description: 'Copies your last card type. Nastier than the Shadow Mimic.',
     animArchetype: 'striker',
+    onPlayerChargeWrong: (ctx) => {
+      // Copies your failure: mirror damage back + gain +1 permanent Strength
+      (ctx as any)._mirrorDamage = ctx.cardBaseDamage;
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 1,
+        turnsRemaining: PERMANENT_DURATION_SENTINEL,
+      });
+    },
+    onPlayerNoCharge: (ctx) => {
+      // Punishes avoidance: +2 permanent Strength per turn without Charging
+      applyStatusEffect(ctx.enemy.statusEffects, {
+        type: 'strength',
+        value: 2,
+        turnsRemaining: PERMANENT_DURATION_SENTINEL,
+      });
+    },
   },
 
   // AR-59.13: Bone Collector promoted to Act 2 common with onPlayerChargeWrong hook.
