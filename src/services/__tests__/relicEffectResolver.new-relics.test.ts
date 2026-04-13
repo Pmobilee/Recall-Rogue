@@ -33,6 +33,7 @@ import {
   resolveForgetEffects,
   resolveChainBreakEffects,
   resolveHealModifiers,
+  resolveLethalEffects,
 } from '../relicEffectResolver';
 
 // ─── Shared test context helpers ─────────────────────────────────────
@@ -1294,5 +1295,58 @@ describe('chain_addict (conditional)', () => {
   it('no heal without relic', () => {
     const result = resolveChainCompleteEffects(new Set([]), { chainLength: 3, firstCardId: 'x' });
     expect(result.healAmount ?? 0).toBe(0);
+  });
+});
+
+describe('scavengers_eye (on_forget draw)', () => {
+  it('draws 1 card on forget', () => {
+    const result = resolveForgetEffects(new Set(['scavengers_eye']));
+    expect(result.bonusCardDraw).toBe(1);
+  });
+
+  it('stacks with exhaustion_engine for 3 total draws', () => {
+    const result = resolveForgetEffects(new Set(['scavengers_eye', 'exhaustion_engine']));
+    expect(result.bonusCardDraw).toBe(3);
+  });
+
+  it('does not affect tempStrengthGain', () => {
+    const result = resolveForgetEffects(new Set(['scavengers_eye']));
+    expect(result.tempStrengthGain).toBe(0);
+  });
+});
+
+describe('phoenix_feather once-per-run (AR-59.11)', () => {
+  it('saves player when phoenixUsedThisRun is false', () => {
+    const result = resolveLethalEffects(
+      new Set(['phoenix_feather']),
+      { lastBreathUsedThisEncounter: false, phoenixUsedThisRun: false, isBossEncounter: false },
+    );
+    expect(result.phoenixSave).toBe(true);
+  });
+
+  it('does not save player when phoenixUsedThisRun is true (once-per-run)', () => {
+    const result = resolveLethalEffects(
+      new Set(['phoenix_feather']),
+      { lastBreathUsedThisEncounter: false, phoenixUsedThisRun: true, isBossEncounter: false },
+    );
+    expect(result.phoenixSave).toBe(false);
+  });
+
+  it('last_breath takes priority over phoenix (last_breath fires first)', () => {
+    const result = resolveLethalEffects(
+      new Set(['last_breath', 'phoenix_feather']),
+      { lastBreathUsedThisEncounter: false, phoenixUsedThisRun: false, isBossEncounter: false },
+    );
+    expect(result.lastBreathSave).toBe(true);
+    expect(result.phoenixSave).toBe(false);
+  });
+
+  it('phoenix fires if last_breath already used this encounter', () => {
+    const result = resolveLethalEffects(
+      new Set(['last_breath', 'phoenix_feather']),
+      { lastBreathUsedThisEncounter: true, phoenixUsedThisRun: false, isBossEncounter: false },
+    );
+    expect(result.lastBreathSave).toBe(false);
+    expect(result.phoenixSave).toBe(true);
   });
 });

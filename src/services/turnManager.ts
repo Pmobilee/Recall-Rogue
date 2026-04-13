@@ -2363,6 +2363,12 @@ export function playCardAction(
         const forgetFx = resolveForgetEffects(turnState.activeRelicIds);
         if (forgetFx.bonusCardDraw > 0) {
           drawHand(deck, forgetFx.bonusCardDraw);
+          // Signal UI which relic triggered the draw (scavengers_eye takes priority over exhaustion_engine)
+          if (turnState.activeRelicIds.has('scavengers_eye')) {
+            turnState.triggeredRelicId = 'scavengers_eye';
+          } else if (turnState.activeRelicIds.has('exhaustion_engine')) {
+            turnState.triggeredRelicId = 'exhaustion_engine';
+          }
         }
         if (forgetFx.tempStrengthGain > 0) {
           // tattered_notebook v3: +1 Strength this turn (1 turn duration)
@@ -3306,7 +3312,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   if (playerDefeated) {
     const lethalFx = resolveLethalEffects(turnState.activeRelicIds, {
       lastBreathUsedThisEncounter: turnState.secondWindUsed,
-      phoenixUsedThisRun: false, // TODO: wire up run-level phoenix flag (AR-59.11)
+      phoenixUsedThisRun: get(activeRunState)?.phoenixFeatherUsed ?? false,
       isBossEncounter: turnState.enemy?.template?.category === 'boss',
     });
     if (lethalFx.lastBreathSave) {
@@ -3335,6 +3341,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       if ((lethalFx as any).phoenixRageActive) {
         turnState.phoenixRageTurnsRemaining = 5;
         turnState.glassPenaltyRemovedTurnsRemaining = 3;
+      }
+      // Mark phoenix as used for this run — once-per-run rule (AR-59.11)
+      const _runStatePhoenix = get(activeRunState);
+      if (_runStatePhoenix) {
+        _runStatePhoenix.phoenixFeatherUsed = true;
+        activeRunState.set(_runStatePhoenix);
       }
     }
   }

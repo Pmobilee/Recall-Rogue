@@ -131,7 +131,12 @@ The empty-hand trick uses the current (pre-damage) `turnState` — it does not r
 
 > **Issue 7 fix (2026-04-11):** Prior to this fix, `encounterBridge` set `apMax = startingAp` instead of `apCurrent = startingAp`, causing Act 2's 4 AP unlock to be ignored. Fixed by threading `startingApPerTurn` through `TurnState` and using `Math.max(AP_PER_ACT[act], startingApPerTurn)` as the per-turn base.
 
-**Surge turns** (`isSurgeTurn(turnNumber)`; turns 2, 6, 10, 14, ...) grant `+SURGE_BONUS_AP` (+1) at the start of the turn. Surge turns still pay full `CHARGE_AP_SURCHARGE` — the extra AP is a flexible resource, not a free-charge voucher. Changed from surcharge-waiver to AP-grant (Pass 3 balance, 2026-04-09).
+**Surge turns** (`isSurgeTurn(turnNumber)`; turns 2, 6, 10, 14, ...) grant two bonuses at the start of the turn:
+
+- `+SURGE_BONUS_AP` (+1 AP) — a flexible resource; surge still pays full `CHARGE_AP_SURCHARGE`. Changed from surcharge-waiver to AP-grant (Pass 3 balance, 2026-04-09).
+- `+SURGE_DRAW_BONUS` (+1 card drawn) — added to `drawCount` in `endPlayerTurn` alongside the base draw and any flow-state bonus.
+
+**Combined draw on surge turns:** base 5 + `SURGE_DRAW_BONUS` 1 + `flow_state` bonus 1 (when fog ≤ 2) = **7 cards total**. The flow-state bonus fires when `getAuraState() === 'flow_state'`; fog starts at 0 each encounter so flow_state is active from the first turn unless the player has accumulated fog from wrong answers.
 
 Charge plays add +1 AP surcharge. Surcharge waivers (checked in priority order in `playCardAction`):
 1. **Warcry buff** — `warcryFreeChargeActive` flag (consumed on use)
