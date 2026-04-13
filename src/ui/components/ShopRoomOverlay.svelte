@@ -13,6 +13,7 @@
   import { SHOP_HAGGLE_DISCOUNT } from '../../data/balance'
   import { get } from 'svelte/store'
   import { activeRunState } from '../../services/runStateStore'
+  import { isRelicSlotsFull } from '../../services/relicEffectResolver'
   import { selectNonCombatStudyQuestion } from '../../services/nonCombatQuizSelector'
   import { getConfusionMatrix } from '../../services/confusionMatrixStore'
   import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
@@ -236,6 +237,20 @@
   let canRemoveCard = $derived(removableCards.length > 5)
 
   let deckCount = $derived(getActiveDeckCards().length)
+
+  // Whether relic slots are at capacity — disables relic buy buttons with feedback.
+  // Uses $state + $effect to reactively track activeRunState changes (e.g. after buying a relic).
+  let relicSlotsFull = $state((() => {
+    const run = get(activeRunState)
+    return run ? isRelicSlotsFull(run.runRelics) : false
+  })())
+
+  $effect(() => {
+    const unsub = activeRunState.subscribe(run => {
+      relicSlotsFull = run ? isRelicSlotsFull(run.runRelics) : false
+    })
+    return unsub
+  })
 
   // Get floor from run state
   let floor = $derived.by(() => {
@@ -477,19 +492,25 @@
 
   {#if shopInventory && (shopInventory.relics.length > 0 || shopInventory.cards.length > 0)}
     {#if shopInventory.relics.length > 0}
-      <div class="section-label">RELICS</div>
+      <div class="section-label relic-label">
+        RELICS
+        {#if relicSlotsFull}<span class="slots-full-badge">Relic slots full</span>{/if}
+      </div>
       <div class="card-list">
         {#each shopInventory.relics as item (item.relic.id)}
           {@const canAfford = currency >= item.price}
+          {@const canBuyRelic = canAfford && !relicSlotsFull}
+          <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
           <article
             class="card-item relic-item"
             class:unaffordable={!canAfford}
+            class:slots-full={relicSlotsFull}
             class:shake={shakeItemId === item.relic.id}
             class:purchased={purchasedItemId === item.relic.id}
             style="border-color: {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}40"
             onmouseenter={(e) => showRelicTooltip(item.relic, e)}
             onmouseleave={dismissRelicTooltip}
-            onclick={(e) => !canAfford && handleUnaffordableTap(item.price, item.relic.id, e)}
+            onclick={(e) => !canAfford && !relicSlotsFull && handleUnaffordableTap(item.price, item.relic.id, e)}
           >
             <div class="meta">
               <span class="icon">{item.relic.icon}</span>
@@ -503,13 +524,14 @@
             <button
               type="button"
               class="buy"
-              class:disabled={!canAfford}
-              disabled={!canAfford}
+              class:disabled={!canBuyRelic}
+              disabled={!canBuyRelic}
+              title={relicSlotsFull ? 'Relic slots full' : undefined}
               data-testid="shop-buy-relic-{item.relic.id}"
-              aria-label="Buy {item.relic.name} for {item.price}g"
-              onclick={() => canAfford && openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
+              aria-label={relicSlotsFull ? 'Relic slots full' : `Buy {item.relic.name} for {item.price}g`}
+              onclick={() => canBuyRelic && openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
             >
-              {item.price}g
+              {relicSlotsFull ? 'Full' : `${item.price}g`}
             </button>
           </article>
         {/each}
@@ -521,6 +543,7 @@
       <div class="card-list">
         {#each shopInventory.cards as item, idx (item.card.id)}
           {@const canAfford = currency >= item.price}
+          <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
           <article
             class="card-item"
             class:unaffordable={!canAfford}
@@ -972,6 +995,32 @@
 
   .relic-item {
     border-width: 2px;
+  }
+
+  /* Relic slots full — badge in section label */
+  .relic-label {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .slots-full-badge {
+    font-size: calc(9px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1)) calc(6px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    letter-spacing: calc(1px * var(--layout-scale, 1));
+    white-space: nowrap;
+  }
+
+  /* Relic card when slots are full */
+  .slots-full {
+    filter: grayscale(0.5);
+    opacity: 0.75;
   }
 
   .services-row {

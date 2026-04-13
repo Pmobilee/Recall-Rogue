@@ -63,7 +63,7 @@
     background-repeat: no-repeat;
     display: grid;
     place-items: center;
-    z-index: 120;
+    z-index: 10001; /* Above ParallaxTransition (9999) so panel shows correctly */
   }
 
   .onboarding-panel {
