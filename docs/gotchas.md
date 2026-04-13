@@ -4300,3 +4300,19 @@ Poison IS chain-scaled correctly because the QP poison count is hardcoded to `2`
 **Fix needed:** Either update the entropy resolver to read `_masteryStats?.extras?.['burn'] ?? finalValue` (similar to how hex reads `extras.stacks`), or restructure the stat table to use non-zero `qpValue` and store the delta. This is a game-logic concern (file: `src/services/cardEffectResolver.ts` line ~2018, `src/services/cardUpgradeService.ts` entropy stat table).
 
 **Discovery:** Found while writing chain multiplier rework unit tests (`tests/unit/chainMultiplierRework.test.ts`). Test group 4 documents actual behavior rather than spec behavior.
+
+### 2026-04-13 — Docker eval action field is "js" not "code"
+
+The Docker warm-server action runner (`docker/playwright-xvfb/warm-server.mjs`) reads `a.js` for eval actions, not `a.code`. Using `{"type":"eval","code":"..."}` silently evaluates `undefined` and returns `ok: true`. Cost: ~2 hours debugging SC.patch "not working" when the eval was never executing. Use `{"type":"eval","js":"..."}` always.
+
+### 2026-04-13 — SC.patch writes to Svelte store but encounterBridge internal state clobbers it
+
+`__rrScenario.patch()` called `writeStore('rr:activeTurnState', merged)` which set the Svelte store. But encounterBridge maintains an internal `turnState` variable. Any subsequent action (timer, animation) calls `activeTurnState.set(freshTurnState(turnState))` which overwrites the patched store with the un-patched internal state. Fix: `patchTurnState()` exported from encounterBridge deep-merges into the internal state AND refreshes the store.
+
+### 2026-04-13 — enrageBonusDamage is NOT dead code
+
+`getEnrageBonus()` in turnManager.ts always returns 0 (deprecated). But `enrageBonusDamage` on EnemyInstance is a SEPARATE field that `executeEnemyIntent()` in enemyManager.ts reads directly: `baseValue = intent.value + (enemy.enrageBonusDamage ?? 0)`. Pop Quiz and Grade Curve use this field for their escalate mechanics. It works — but there's no visible Strength icon, making it a UX gap. Don't confuse the two.
+
+### 2026-04-13 — comparison_trap "Copies your last card type" was never implemented
+
+The comparison_trap mini_boss had description claiming copy mechanics but zero callbacks. Was effectively a vanilla enemy with multi-attack intents. Fixed by adding onPlayerChargeWrong (mirror + strength) and onPlayerNoCharge (+2 strength). Always verify enemy descriptions match code when adding new enemies.

@@ -70,6 +70,36 @@ Relics, edge cases, complex interactions.
 
 ---
 
+## Automated Test Coverage (Phase B — 2026-04-13)
+
+7 unit test files, 1,355 tests total, all passing in <1 second:
+
+| Test File | Tests | Covers |
+|-----------|-------|--------|
+| verification-phase1-functional.test.ts | 366 | All 98 mechanics: damage/block/status at L0/L3/L5 for QP/CC/CW |
+| verification-phase1-descriptions.test.ts | 276 | Card description accuracy, chain display, abbreviation bans |
+| verification-phase1-milestones.test.ts | 101 | Mastery milestone behaviors: pickCount, draw counts, AP grants |
+| verification-exhaustive-gaps.test.ts | 245 | Every remaining resolver result field across all play modes |
+| verification-phase2-status-chains.test.ts | 86 | Status modifiers, all 6 chain multipliers, combo stacking |
+| verification-phase2-relics.test.ts | 121 | 40+ relic functional correctness via resolveAttackModifiers |
+| verification-enemy-passives.test.ts | 160 | All 15 enemy callbacks, phase transitions, passive flags |
+
+### Bugs Found and Fixed
+1. multi_hit hitCount from stat table was dead data (resolver read card.secondaryValue)
+2. Negative masterySecondaryBonus silently dropped (rupture L0 bleed=3 not 2)
+3. ignite/war_drum/curse_of_doubt/mark_of_ignorance stat tables had qpValue=0
+4. Foresight forget tag missing from stat table (cards never forgotten)
+5. Archive retain count never read from stat table extras
+6. SC.patch() didn't update encounterBridge internal state (Docker visual blocked)
+7. comparison_trap "Copies your last card type" was unimplemented placeholder
+
+### Remaining Visual Items
+505 items across files 01-05 require Docker visual verification (screenshot-based).
+SC.patch() reactivity fix landed — Docker containers can now patch status effects.
+Action JSON must use `"js"` field (not `"code"`) for eval actions.
+
+---
+
 ## Implementation Notes
 
 **Viewport presets for Docker containers:**
