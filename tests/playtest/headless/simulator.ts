@@ -33,6 +33,9 @@ import { STARTER_RELIC_IDS } from '../../../src/data/relics/index.js';
 import { selectRunChainTypes } from '../../../src/data/chainTypes.js';
 import { BotBrain, type BotSkills } from './bot-brain.js';
 import { createCanaryState, recordCanaryAnswer, resetCanaryFloor, type CanaryState } from '../../../src/services/canaryService.js';
+import { activeRunState } from '../../../src/services/runStateStore.js';
+import { createFloorState } from '../../../src/services/floorManager.js';
+import type { RunState } from '../../../src/services/runManager.js';
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Types
@@ -682,6 +685,75 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
   let totalWrong = 0;
   let survived = true;
 
+  // Initialize activeRunState so turnManager's get(activeRunState) calls work correctly.
+  // Without this, phoenixFeatherUsed, cursedFactIds, factsAnsweredCorrectly, etc. return null defaults.
+  const simRunState: RunState = {
+    isActive: true,
+    primaryDomain: 'general_knowledge' as FactDomain,
+    secondaryDomain: 'general_knowledge' as FactDomain,
+    selectedArchetype: 'balanced',
+    starterDeckSize: 10,
+    startingAp: 3,
+    primaryDomainRunNumber: 1,
+    earlyBoostActive: false,
+    floor: createFloorState(),
+    playerHp: currentPlayerHP,
+    playerMaxHp: playerMaxHP,
+    currency: 0,
+    cardsEarned: 0,
+    factsAnswered: 0,
+    factsCorrect: 0,
+    correctAnswers: 0,
+    bestCombo: 0,
+    newFactsLearned: 0,
+    factsMastered: 0,
+    encountersWon: 0,
+    encountersTotal: 0,
+    elitesDefeated: 0,
+    miniBossesDefeated: 0,
+    bossesDefeated: 0,
+    defeatedEnemyIds: [],
+    currentEncounterWrongAnswers: 0,
+    bounties: [],
+    canary: createCanaryState(),
+    startedAt: Date.now(),
+    firstChargeFreeFactIds: new Set<string>(),
+    attemptedFactIds: new Set<string>(),
+    cursedFactIds: new Set<string>(),
+    consumedRewardFactIds: new Set<string>(),
+    factsAnsweredCorrectly: new Set<string>(),
+    factsAnsweredIncorrectly: new Set<string>(),
+    runAccuracyBonusApplied: false,
+    endlessEnemyDamageMultiplier: 1,
+    ascensionLevel: options.ascensionLevel,
+    ascensionModifiers: ascMods,
+    retreatRewardLocked: false,
+    runRelics: [],
+    offeredRelicIds: new Set<string>(),
+    firstMiniBossRelicAwarded: false,
+    relicPityCounter: 0,
+    phoenixFeatherUsed: false,
+    domainAccuracy: {},
+    cardsUpgraded: 0,
+    cardsRemovedAtShop: 0,
+    haggleAttempts: 0,
+    haggleSuccesses: 0,
+    questionsAnswered: 0,
+    questionsCorrect: 0,
+    novelQuestionsAnswered: 0,
+    novelQuestionsCorrect: 0,
+    runSeed: options.seed,
+    globalTurnCounter: 1,
+    soulJarCharges: 0,
+    factVariantLevel: {},
+    totalDamageDealt: 0,
+    perfectEncountersCount: 0,
+    firstTimeFactIds: new Set<string>(),
+    tierAdvancedFactIds: new Set<string>(),
+    masteredThisRunFactIds: new Set<string>(),
+  };
+  activeRunState.set(simRunState);
+
   for (let i = 0; i < options.encounterCount; i++) {
     const floor = i + 1;
     deck.currentFloor = floor;
@@ -822,6 +894,9 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
   }
 
   const totalAnswered = totalCorrect + totalWrong;
+
+  // Clean up activeRunState after simulation completes
+  activeRunState.set(null);
 
   return {
     runId,

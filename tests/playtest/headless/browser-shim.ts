@@ -16,9 +16,19 @@ if (typeof globalThis.localStorage === 'undefined') {
   };
 }
 
-// import.meta.env shim
+// import.meta.env shim — use Object.defineProperty for worker_threads compatibility
+// Direct assignment to import.meta.env fails in worker threads in some tsx/Node versions.
 if (typeof (import.meta as unknown as Record<string, unknown>).env === 'undefined') {
-  (import.meta as unknown as Record<string, unknown>).env = { DEV: true, PROD: false, MODE: 'development' };
+  try {
+    Object.defineProperty(import.meta, 'env', {
+      value: { DEV: true, PROD: false, MODE: 'development' },
+      writable: true,
+      configurable: true,
+    });
+  } catch {
+    // Fallback: direct assignment (works in main thread contexts)
+    (import.meta as unknown as Record<string, unknown>).env = { DEV: true, PROD: false, MODE: 'development' };
+  }
 }
 
 // window shim (minimal)

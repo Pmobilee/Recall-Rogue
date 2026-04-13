@@ -62,7 +62,9 @@ import {
   type MapNode,
   type MapNodeType,
 } from '../../../src/services/mapGenerator.js';
-import { generateMysteryEvent } from '../../../src/services/floorManager.js';
+import { generateMysteryEvent, createFloorState } from '../../../src/services/floorManager.js';
+import { activeRunState } from '../../../src/services/runStateStore.js';
+import type { RunState } from '../../../src/services/runManager.js';
 
 // Import and re-export types used by run-batch.ts so it can import from one place
 import type { CardPlayRecord } from './simulator.js';
@@ -1528,6 +1530,75 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   // Bug 3: Canary state persists across encounters for streak tracking
   let canaryState: CanaryState = createCanaryState();
 
+  // Initialize activeRunState so turnManager's get(activeRunState) calls work correctly.
+  // Without this, phoenixFeatherUsed, cursedFactIds, factsAnsweredCorrectly, etc. return null defaults.
+  const simRunState: RunState = {
+    isActive: true,
+    primaryDomain: 'general_knowledge' as FactDomain,
+    secondaryDomain: 'general_knowledge' as FactDomain,
+    selectedArchetype: 'balanced',
+    starterDeckSize: 10,
+    startingAp: 3,
+    primaryDomainRunNumber: 1,
+    earlyBoostActive: false,
+    floor: createFloorState(),
+    playerHp: runState.hp,
+    playerMaxHp: runState.maxHp,
+    currency: runState.gold,
+    cardsEarned: 0,
+    factsAnswered: 0,
+    factsCorrect: 0,
+    correctAnswers: 0,
+    bestCombo: 0,
+    newFactsLearned: 0,
+    factsMastered: 0,
+    encountersWon: 0,
+    encountersTotal: 0,
+    elitesDefeated: 0,
+    miniBossesDefeated: 0,
+    bossesDefeated: 0,
+    defeatedEnemyIds: [],
+    currentEncounterWrongAnswers: 0,
+    bounties: [],
+    canary: createCanaryState(),
+    startedAt: Date.now(),
+    firstChargeFreeFactIds: new Set<string>(),
+    attemptedFactIds: new Set<string>(),
+    cursedFactIds: new Set<string>(),
+    consumedRewardFactIds: new Set<string>(),
+    factsAnsweredCorrectly: new Set<string>(),
+    factsAnsweredIncorrectly: new Set<string>(),
+    runAccuracyBonusApplied: false,
+    endlessEnemyDamageMultiplier: 1,
+    ascensionLevel: options.ascensionLevel,
+    ascensionModifiers: ascMods,
+    retreatRewardLocked: false,
+    runRelics: [],
+    offeredRelicIds: new Set<string>(),
+    firstMiniBossRelicAwarded: false,
+    relicPityCounter: 0,
+    phoenixFeatherUsed: false,
+    domainAccuracy: {},
+    cardsUpgraded: 0,
+    cardsRemovedAtShop: 0,
+    haggleAttempts: 0,
+    haggleSuccesses: 0,
+    questionsAnswered: 0,
+    questionsCorrect: 0,
+    novelQuestionsAnswered: 0,
+    novelQuestionsCorrect: 0,
+    runSeed: options.seed,
+    globalTurnCounter: 1,
+    soulJarCharges: 0,
+    factVariantLevel: {},
+    totalDamageDealt: 0,
+    perfectEncountersCount: 0,
+    firstTimeFactIds: new Set<string>(),
+    tierAdvancedFactIds: new Set<string>(),
+    masteredThisRunFactIds: new Set<string>(),
+  };
+  activeRunState.set(simRunState);
+
   // ── Act loop ──
   for (let act = 1; act <= options.acts; act++) {
     if (!survived) break;
@@ -1801,6 +1872,9 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
   }
 
   const totalAnswered = totalCorrect + totalWrong;
+
+  // Clean up activeRunState after run completes
+  activeRunState.set(null);
 
   // Compute mastery distribution from runState.deck at run end
   const masteryDistribution = [0, 0, 0, 0, 0, 0];

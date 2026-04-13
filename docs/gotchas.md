@@ -4359,3 +4359,25 @@ import('/src/services/deckOptionsService.ts').then(m => {
 This updates the Svelte store reactively, and the UI responds on the next render cycle.
 
 **Discovery:** Japanese grammar deck usability playtest BATCH-2026-04-13-001.
+
+### 2026-04-13 — Headless sim activeRunState null → 6 dead code paths in turnManager
+
+**What:** The headless balance simulator (`tests/playtest/headless/`) never initialized `activeRunState` (a Svelte writable store from `runStateStore.ts`). All `get(activeRunState)` calls in `turnManager.ts` returned `null`, silently breaking phoenix feather (always re-usable), cursed facts tracking, in-run fact damage bonus, deja vu relic, fact variant progression, and first-attempt tracking.
+
+**Why:** `full-run-simulator.ts` and `simulator.ts` create their own internal `SimRunState` for the sim loop, but never set the `activeRunState` store that `turnManager.ts` reads on every card play. The sim ran for months before anyone noticed because the affected mechanics (phoenix, cursed facts, etc.) had no observable baseline to compare against.
+
+**Fix:** Both simulators now create a `simRunState: RunState` object with all required fields and call `activeRunState.set(simRunState)` before the encounter loop, then `activeRunState.set(null)` after the run completes. The Svelte shim at `tests/playtest/headless/svelte-shim.ts` handles `writable`/`get` correctly in Node.js.
+
+**Side effect discovered:** Activating previously-dead code paths in `turnManager.ts` exposed `import.meta.env.DEV` accesses that crash in worker threads. Fixed by adding `loader-hook.mjs` to `tsx-worker-bootstrap.mjs` (replaces `import.meta.env.DEV` → `false` via Node.js ESM load hook, since tsx does not substitute `import.meta.env` like Vite does).
+
+**Files:** `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsx-worker-bootstrap.mjs`, `tests/playtest/headless/loader-hook.mjs` (new).
+
+### 2026-04-13 — import.meta.env.DEV undefined in worker threads with tsx
+
+**What:** `turnManager.ts` uses `import.meta.env.DEV` for debug logging. In Node.js/tsx, `import.meta.env` is `undefined` — tsx doesn't substitute it like Vite does. Setting `import.meta.env` in `browser-shim.ts` only affects that module's `import.meta` object; each ES module has its own `import.meta`.
+
+**Why:** ESM modules each have a separate `import.meta` object. Runtime assignment in `browser-shim.ts` sets env on the SHIM's `import.meta`, not on `turnManager.ts`'s `import.meta`. There is no global `import.meta` to patch.
+
+**Fix:** Created `tests/playtest/headless/loader-hook.mjs` — a Node.js ESM load hook that intercepts all loaded modules and replaces `import.meta.env.DEV` → `false` (string substitution before evaluation). Registered in `tsx-worker-bootstrap.mjs` via `node:module`'s `register()` API. The main thread is unaffected since `run-batch.ts` only calls simulation via workers in normal operation.
+
+**Pattern:** Any time you enable previously-dead code paths in source files that use Vite-specific APIs (`import.meta.env.*`, `import.meta.hot`, etc.), check for these in the game code and ensure the test infrastructure handles them.
