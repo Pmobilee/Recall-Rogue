@@ -41,6 +41,13 @@ function isRelayType(type: string): boolean {
 /**
  * Build a sanitized lobby snapshot for the mp:lobby:settings broadcast.
  * Omits server-only fields (passwordHash, joinTokens, ws handles).
+ *
+ * The `players` array uses the client-side LobbyPlayer shape:
+ *   { id, displayName, isHost, isReady }
+ * — `id` matches LobbyPlayer.id (not `playerId`), and `isReady` is always false
+ * because the server does not track ready state (it is client-side only; the
+ * client's mp:lobby:settings handler restores ready states from its local readyMap
+ * after Object.assign).
  */
 function buildLobbySnapshot(lobbyId: string): object {
   const lobby = getLobby(lobbyId)
@@ -59,8 +66,10 @@ function buildLobbySnapshot(lobbyId: string): object {
     fairnessRating: lobby.fairnessRating ?? null,
     status: lobby.status,
     players: [...lobby.connections.values()].map(c => ({
-      playerId: c.playerId,
+      id: c.playerId,           // matches client LobbyPlayer.id (not playerId)
       displayName: c.displayName,
+      isHost: c.playerId === lobby.hostId,
+      isReady: false,           // server does not track ready state — client restores from readyMap
     })),
   }
 }
