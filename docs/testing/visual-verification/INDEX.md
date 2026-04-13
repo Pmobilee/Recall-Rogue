@@ -32,26 +32,26 @@ Validates damage formulas and card description accuracy. Must pass before visual
 
 | File | Items | Covers |
 |------|-------|--------|
-| [06-cards-functional.md](06-cards-functional.md) | — | Card damage/block/DoT formulas at all mastery levels (S11) |
-| [08-card-description-accuracy.md](08-card-description-accuracy.md) | — | Display vs actual values, resolver drift, modifier reflection (S18) |
+| [06-cards-functional.md](06-cards-functional.md) | 151 | Card damage/block/DoT formulas at all mastery levels (S11) |
+| [08-card-description-accuracy.md](08-card-description-accuracy.md) | 68 | Display vs actual values, resolver drift, modifier reflection (S18) |
 
 ### Phase 2 — Visual Regression
 Layout correctness, VFX, screen rendering.
 
 | File | Items | Covers |
 |------|-------|--------|
-| [01-status-effects-passives.md](01-status-effects-passives.md) | — | Status bars, power badges, quiz-active state (S1) |
-| [02-card-effects-visual.md](02-card-effects-visual.md) | — | Card VFX, mastery popups, card picker overlay (S2) |
-| [04-enemies-rooms-screens.md](04-enemies-rooms-screens.md) | — | Enemies, rooms, sprites, misc screens (S4+S5+S9+S10) |
+| [01-status-effects-passives.md](01-status-effects-passives.md) | 47 | Status bars, power badges, quiz-active state (S1) |
+| [02-card-effects-visual.md](02-card-effects-visual.md) | 108 | Card VFX, mastery popups, card picker overlay (S2) |
+| [04-enemies-rooms-screens.md](04-enemies-rooms-screens.md) | 185 | Enemies, rooms, sprites, misc screens (S4+S5+S9+S10) |
 
 ### Phase 3 — Depth Coverage
 Relics, edge cases, complex interactions.
 
 | File | Items | Covers |
 |------|-------|--------|
-| [03-relics-visual-functional.md](03-relics-visual-functional.md) | — | Relic rendering + functional correctness (S3+S12) |
-| [05-edge-cases-interactions.md](05-edge-cases-interactions.md) | — | Overflow, interaction states, megastates (S6+S7+S8) |
-| [07-status-chains-combos.md](07-status-chains-combos.md) | — | Status math, chain system, mastery, enemy mechanics, combos (S13-S17) |
+| [03-relics-visual-functional.md](03-relics-visual-functional.md) | 129 | Relic rendering + functional correctness (S3+S12) |
+| [05-edge-cases-interactions.md](05-edge-cases-interactions.md) | 41 | Overflow, interaction states, megastates (S6+S7+S8) |
+| [07-status-chains-combos.md](07-status-chains-combos.md) | 156 | Status math, chain system, mastery, enemy mechanics, combos (S13-S17) |
 
 ---
 
@@ -59,14 +59,14 @@ Relics, edge cases, complex interactions.
 
 | File | Total | Verified | Remaining | Last Run |
 |------|-------|----------|-----------|----------|
-| 01-status-effects-passives | — | 0 | — | never |
-| 02-card-effects-visual | — | 0 | — | never |
-| 03-relics-visual-functional | — | 0 | — | never |
-| 04-enemies-rooms-screens | — | 0 | — | never |
-| 05-edge-cases-interactions | — | 0 | — | never |
-| 06-cards-functional | — | 0 | — | never |
-| 07-status-chains-combos | — | 0 | — | never |
-| 08-card-description-accuracy | — | 0 | — | never |
+| 01-status-effects-passives | 47 | 0 | 47 | never |
+| 02-card-effects-visual | 108 | 0 | 108 | never |
+| 03-relics-visual-functional | 129 | 0 | 129 | never |
+| 04-enemies-rooms-screens | 185 | 0 | 185 | never |
+| 05-edge-cases-interactions | 41 | 0 | 41 | never |
+| 06-cards-functional | 151 | 0 | 151 | never |
+| 07-status-chains-combos | 156 | 0 | 156 | never |
+| 08-card-description-accuracy | 68 | 0 | 68 | never |
 
 ---
 

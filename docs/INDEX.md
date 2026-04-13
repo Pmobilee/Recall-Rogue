@@ -105,7 +105,7 @@
 | [inspection-registry](testing/inspection-registry.md) | Inspection registry structure, deck-specific date fields, agent lock protocol, and CLI reference for parallel agent coordination |
 | [dev-presets](testing/DEVPRESET-REFERENCE.md) | Dev scenario presets and query parameters |
 | [playtest-dashboard](testing/PLAYTEST-DASHBOARD.md) | Playtest dashboard server and data locations |
-| [visual-verification-checklist](testing/VISUAL-VERIFICATION-CHECKLIST.md) | 885-item master checklist — visual layout, functional correctness, card description accuracy for every card, relic, enemy, status effect, room, mastery level, and combo interaction |
+| [visual-verification/](testing/visual-verification/INDEX.md) | 885-item verification checklist — 8 domain files across 3 phases (core math, visual regression, depth coverage) |
 
 ---
 

@@ -18,6 +18,8 @@ Recall Rogue uses five complementary layers. Use the right tool — they are not
 
 Use headless sim for **all balance work** — it imports real game code with zero reimplementation drift. Use Playwright only for visual confirmation. Use LLM playtest for judgment calls numbers cannot capture. Use multiplayer E2E for any change touching lobby, transport, or race mode.
 
+**Visual verification checklist:** `docs/testing/visual-verification/INDEX.md` — 885 items organized into 3 execution phases. Use for systematic pre-launch verification.
+
 ## Unit Tests (Vitest)
 
 **Run:** `npx vitest run`
