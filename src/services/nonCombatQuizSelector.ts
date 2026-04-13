@@ -104,6 +104,18 @@ export function selectNonCombatStudyQuestion(
   let factPool = getCuratedDeckFacts(deckId, subDeckId, examTags);
   if (factPool.length === 0) return null;
 
+  // Filter out image-based quiz modes that StudyQuizOverlay cannot render.
+  // image_question and image_answers require a dedicated image rendering component
+  // that study sessions do not mount — selecting these facts causes a UI freeze.
+  // Only filter when the text-only subset is non-empty; fall back to full pool for
+  // decks that are exclusively image-based (avoids returning null and hiding the deck).
+  const textOnlyPool = factPool.filter(
+    f => !f.quizMode || f.quizMode === 'text' || f.quizMode === 'chess_tactic',
+  );
+  if (textOnlyPool.length > 0) {
+    factPool = textOnlyPool;
+  }
+
   // Exclude already-selected facts to prevent duplicates across a multi-question batch.
   // Only filter if there will still be facts left — fall through to full pool if pool
   // would become empty (edge case: tiny decks smaller than questionCount).

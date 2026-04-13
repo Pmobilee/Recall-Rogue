@@ -745,14 +745,14 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
 
   // If a deckId was specified, set deckMode so the encounter pool uses the curated deck
   if (config.deckId) {
-    const run = readStore('rr:activeRunState') as any;
-    if (run) {
-      run.deckMode = {
+    updateStore<any>('rr:activeRunState', (run: any) => ({
+      ...run,
+      deckMode: {
         type: 'study' as const,
         deckId: config.deckId,
         subDeckId: config.subDeckId,
-      };
-    }
+      },
+    }));
   }
 
   const started = await startEncounterForRoom(enemyId);
@@ -1370,14 +1370,22 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
 
     // If a deckId was specified, set the run's deckMode so generateStudyQuestions() uses curated deck
     if (config.deckId) {
-      const run = readStore('rr:activeRunState') as any;
-      if (run) {
-        run.deckMode = {
+      updateStore<any>('rr:activeRunState', (run: any) => ({
+        ...run,
+        deckMode: {
           type: 'study' as const,
           deckId: config.deckId,
           subDeckId: config.subDeckId,
-        };
-      }
+        },
+      }));
+
+      // Wait for the curated deck to finish loading before generating questions.
+      // initializeCuratedDecks() is fired with void at app startup — it may still be
+      // in-flight when the scenario runs. Without this await, getCuratedDeck() returns
+      // undefined, selectNonCombatStudyQuestion() returns null, and the study overlay
+      // opens with 0 questions even though the deck has facts in curated.db.
+      const { ensureCuratedDeckLoaded } = await import('../data/curatedDeckStore');
+      await ensureCuratedDeckLoaded(config.deckId);
     }
 
     // Generate study questions and inject via global bridge so CardApp can pick them up
