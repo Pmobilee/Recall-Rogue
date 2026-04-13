@@ -53,6 +53,8 @@
   let selectedAnswer = $state<string | null>(null)
   let showFeedback = $state(false)
   let done = $state(false)
+  /** Set true when the player submits via typing input; prevents MCQ buttons flashing during feedback phase. */
+  let answeredViaTyping = $state(false)
 
   let currentQuestion = $derived(questions[currentIndex] ?? null)
 
@@ -237,6 +239,7 @@
       if (currentIndex < questions.length - 1) {
         selectedAnswer = null
         showFeedback = false
+        answeredViaTyping = false
         chessContext = null
         chessDisabled = false
         mapDisabled = false
@@ -366,36 +369,47 @@
               </button>
             {/each}
           </div>
-        {:else if useTypingMode && !showFeedback}
+        {:else if useTypingMode}
           <!-- Always-write typing mode: show text input instead of MCQ buttons. -->
-          <!-- When showFeedback becomes true (after submit), fall through to MCQ for correct/wrong highlighting. -->
-          {#if quizLanguageCode === 'ja'}
-            <GrammarTypingInput
-              correctAnswer={currentQuestion.correctAnswer}
-              acceptableAlternatives={[]}
-              onsubmit={(correct, _typed) => {
-                if (correct) {
-                  selectAnswer(currentQuestion!.correctAnswer)
-                } else {
-                  const wrongAnswer = currentQuestion!.answers.find(a => a !== currentQuestion!.correctAnswer)
-                  if (wrongAnswer) selectAnswer(wrongAnswer)
-                }
-              }}
-            />
+          <!-- When showFeedback is true, show a typed-answer-feedback display instead of MCQ buttons. -->
+          {#if !showFeedback}
+            {#if quizLanguageCode === 'ja'}
+              <GrammarTypingInput
+                correctAnswer={currentQuestion.correctAnswer}
+                acceptableAlternatives={[]}
+                onsubmit={(correct, _typed) => {
+                  answeredViaTyping = true
+                  if (correct) {
+                    selectAnswer(currentQuestion!.correctAnswer)
+                  } else {
+                    const wrongAnswer = currentQuestion!.answers.find(a => a !== currentQuestion!.correctAnswer)
+                    if (wrongAnswer) selectAnswer(wrongAnswer)
+                  }
+                }}
+              />
+            {:else}
+              <TypingInput
+                correctAnswer={currentQuestion.correctAnswer}
+                acceptableAlternatives={[]}
+                language={quizLanguageCode ?? ''}
+                onsubmit={(correct, _typed) => {
+                  answeredViaTyping = true
+                  if (correct) {
+                    selectAnswer(currentQuestion!.correctAnswer)
+                  } else {
+                    const wrongAnswer = currentQuestion!.answers.find(a => a !== currentQuestion!.correctAnswer)
+                    if (wrongAnswer) selectAnswer(wrongAnswer)
+                  }
+                }}
+              />
+            {/if}
           {:else}
-            <TypingInput
-              correctAnswer={currentQuestion.correctAnswer}
-              acceptableAlternatives={[]}
-              language={quizLanguageCode ?? ''}
-              onsubmit={(correct, _typed) => {
-                if (correct) {
-                  selectAnswer(currentQuestion!.correctAnswer)
-                } else {
-                  const wrongAnswer = currentQuestion!.answers.find(a => a !== currentQuestion!.correctAnswer)
-                  if (wrongAnswer) selectAnswer(wrongAnswer)
-                }
-              }}
-            />
+            <!-- Feedback after typed answer — show correct answer text, no MCQ buttons -->
+            <div class="typed-answer-feedback">
+              <span class="typed-answer-label" class:typed-answer-correct={selectedAnswer === currentQuestion.correctAnswer} class:typed-answer-wrong={selectedAnswer !== currentQuestion.correctAnswer}>
+                {displayAnswer(currentQuestion.correctAnswer)}
+              </span>
+            </div>
           {/if}
         {:else}
         <div class="answers-grid" data-tutorial-anchor="study-answers">
@@ -519,7 +533,7 @@
   }
 
   .question-text {
-    font-size: calc(15px * var(--text-scale, 1));
+    font-size: calc(17px * var(--text-scale, 1));
     color: #E6EDF3;
     text-align: center;
     line-height: 1.5;
@@ -538,7 +552,7 @@
 
   .grammar-translation {
     margin: calc(4px * var(--layout-scale, 1)) 0 0;
-    font-size: calc(12px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
     font-style: italic;
@@ -701,6 +715,36 @@
     text-align: center;
   }
 
+
+  /* Feedback display after a typed answer — replaces MCQ buttons during feedback phase */
+  .typed-answer-feedback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(16px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .typed-answer-label {
+    font-size: calc(18px * var(--text-scale, 1));
+    font-weight: 700;
+    text-align: center;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+  }
+
+  .typed-answer-correct {
+    color: #2ECC71;
+    background: rgba(46, 204, 113, 0.1);
+    border: 2px solid rgba(46, 204, 113, 0.4);
+  }
+
+  .typed-answer-wrong {
+    color: #E74C3C;
+    background: rgba(231, 76, 60, 0.1);
+    border: 2px solid rgba(231, 76, 60, 0.4);
+  }
+
   .answers-grid {
     display: flex;
     flex-direction: column;
@@ -713,7 +757,7 @@
     border: 2px solid #484F58;
     border-radius: 8px;
     padding: calc(12px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
-    font-size: calc(13px * var(--layout-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     color: #E6EDF3;
     cursor: pointer;
     text-align: left;
@@ -743,7 +787,7 @@
 
   .feedback-text {
     font-family: var(--font-pixel, monospace);
-    font-size: calc(13px * var(--layout-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     font-weight: 700;
     margin: 0;
   }

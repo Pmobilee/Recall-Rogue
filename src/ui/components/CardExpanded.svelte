@@ -177,6 +177,8 @@
   let selectedAnswerIndex = $state<number | null>(null)
   let answerRevealed = $state(false)
   let answersDisabled = $state(false)
+  /** Set true when the player submits via typing input; prevents MCQ buttons flashing during feedback phase. */
+  let answeredViaTyping = $state(false)
 
   // --- Chess puzzle state ---
   const chessContext = $derived.by(() => {
@@ -982,34 +984,45 @@
         </div>
       {/if}
     </div>
-  {:else if effectiveResponseMode === 'typing' && !isTypingExcluded && !answersDisabled}
-    {#if quizLanguageCode === 'ja'}
-      <GrammarTypingInput
-        {correctAnswer}
-        acceptableAlternatives={[]}
-        onsubmit={(correct, _typed) => {
-          if (correct) {
-            handleAnswer(answers.indexOf(correctAnswer))
-          } else {
-            const wrongIdx = answers.findIndex(a => a !== correctAnswer)
-            handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
-          }
-        }}
-      />
+  {:else if effectiveResponseMode === 'typing' && !isTypingExcluded && (!answersDisabled || answeredViaTyping)}
+    {#if !answersDisabled}
+      {#if quizLanguageCode === 'ja'}
+        <GrammarTypingInput
+          {correctAnswer}
+          acceptableAlternatives={[]}
+          onsubmit={(correct, _typed) => {
+            answeredViaTyping = true
+            if (correct) {
+              handleAnswer(answers.indexOf(correctAnswer))
+            } else {
+              const wrongIdx = answers.findIndex(a => a !== correctAnswer)
+              handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
+            }
+          }}
+        />
+      {:else}
+        <TypingInput
+          {correctAnswer}
+          acceptableAlternatives={[]}
+          language={quizLanguageCode ?? ''}
+          onsubmit={(correct, _typed) => {
+            answeredViaTyping = true
+            if (correct) {
+              handleAnswer(answers.indexOf(correctAnswer))
+            } else {
+              const wrongIdx = answers.findIndex(a => a !== correctAnswer)
+              handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
+            }
+          }}
+        />
+      {/if}
     {:else}
-      <TypingInput
-        {correctAnswer}
-        acceptableAlternatives={[]}
-        language={quizLanguageCode ?? ''}
-        onsubmit={(correct, _typed) => {
-          if (correct) {
-            handleAnswer(answers.indexOf(correctAnswer))
-          } else {
-            const wrongIdx = answers.findIndex(a => a !== correctAnswer)
-            handleAnswer(wrongIdx >= 0 ? wrongIdx : 0)
-          }
-        }}
-      />
+      <!-- Feedback after typed answer — show correct answer text, no MCQ buttons -->
+      <div class="typed-answer-feedback">
+        <span class="typed-answer-label" class:typed-answer-correct={answers.indexOf(correctAnswer) === selectedAnswerIndex} class:typed-answer-wrong={answers.indexOf(correctAnswer) !== selectedAnswerIndex}>
+          {displayAnswer(correctAnswer)}
+        </span>
+      </div>
     {/if}
   {:else if quizMode === 'image_answers' && answerImagePaths?.length}
     <div class="card-answers-image-grid">
@@ -1271,7 +1284,7 @@
 
   /* Answer font reduction when any answer is very long (>80 chars) */
   .answer-font-small .answer-btn {
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
   }
 
   /* Image question max-height in landscape */
@@ -1511,7 +1524,7 @@
 
   /* AR-221: Auto-scaling font sizes based on question character count */
   .card-question.quiz-text-short {
-    font-size: calc(26px * var(--text-scale, 1));
+    font-size: calc(28px * var(--text-scale, 1));
   }
 
   /* Chess tactic questions are short — override auto-scale with a larger size */
@@ -1520,19 +1533,19 @@
   }
 
   .card-question.quiz-text-medium {
-    font-size: calc(22px * var(--text-scale, 1));
+    font-size: calc(24px * var(--text-scale, 1));
   }
 
   .card-question.quiz-text-long {
-    font-size: calc(18px * var(--text-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
   }
 
   .card-question.quiz-text-extra-long {
-    font-size: calc(16px * var(--text-scale, 1));
+    font-size: calc(18px * var(--text-scale, 1));
   }
 
   .card-question.quiz-text-max-long {
-    font-size: calc(15px * var(--text-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
   }
 
   .card-question.quiz-align-left {
@@ -1549,19 +1562,19 @@
   /* Landscape: bump all font-size tiers up to fill the wider panel (~1113px at 1920x1080).
      chess-question has its own size rule (32px) above — exclude it here to avoid conflict. */
   .card-expanded-landscape .card-question.quiz-text-short:not(.chess-question) {
-    font-size: calc(42px * var(--text-scale, 1));
+    font-size: calc(44px * var(--text-scale, 1));
   }
   .card-expanded-landscape .card-question.quiz-text-medium:not(.chess-question) {
-    font-size: calc(34px * var(--text-scale, 1));
+    font-size: calc(36px * var(--text-scale, 1));
   }
   .card-expanded-landscape .card-question.quiz-text-long:not(.chess-question) {
-    font-size: calc(28px * var(--text-scale, 1));
+    font-size: calc(30px * var(--text-scale, 1));
   }
   .card-expanded-landscape .card-question.quiz-text-extra-long:not(.chess-question) {
-    font-size: calc(23px * var(--text-scale, 1));
+    font-size: calc(25px * var(--text-scale, 1));
   }
   .card-expanded-landscape .card-question.quiz-text-max-long:not(.chess-question) {
-    font-size: calc(19px * var(--text-scale, 1));
+    font-size: calc(21px * var(--text-scale, 1));
   }
 
   /* Landscape: force all answer grids to single column — 2-column grids waste space at wide widths */
@@ -1574,7 +1587,7 @@
   /* Landscape: larger answer buttons to fill space with only 3-4 answers visible */
   .card-expanded-landscape .answer-btn {
     min-height: calc(56px * var(--layout-scale, 1));
-    font-size: calc(20px * var(--text-scale, 1));
+    font-size: calc(22px * var(--text-scale, 1));
     padding: calc(14px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
   }
 
@@ -1646,7 +1659,7 @@
     border-radius: 6px;
     color: #e2e8f0;
     font-family: var(--font-rpg);
-    font-size: calc(18px * var(--text-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     line-height: 1.5;
     padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     text-align: left;
@@ -1682,6 +1695,36 @@
   .answer-btn.answer-eliminated {
     opacity: 0.35;
     text-decoration: line-through;
+  }
+
+
+  /* Feedback display after a typed answer — replaces MCQ buttons during feedback phase */
+  .typed-answer-feedback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(16px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    width: 100%;
+  }
+
+  .typed-answer-label {
+    font-size: calc(20px * var(--text-scale, 1));
+    font-weight: 700;
+    text-align: center;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+  }
+
+  .typed-answer-correct {
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+    border: 2px solid rgba(34, 197, 94, 0.4);
+  }
+
+  .typed-answer-wrong {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.1);
+    border: 2px solid rgba(220, 38, 38, 0.4);
   }
 
   .speed-bonus-badge {
