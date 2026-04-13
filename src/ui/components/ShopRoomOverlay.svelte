@@ -136,8 +136,8 @@
     legendary: '#f1c40f',
   }
 
-  // Shop card visual sizing: 130px wide at scale 1, ratio 886:1142
-  const SHOP_CARD_W = 130
+  // Shop card visual sizing: 155px wide at scale 1, ratio 886:1142
+  const SHOP_CARD_W = 155
   const SHOP_CARD_H = Math.round(SHOP_CARD_W * (1142 / 886))
   // Transform options modal uses larger cards for easier selection
   const MODAL_CARD_W = 170
@@ -534,28 +534,8 @@
 <section class="shop-overlay" bind:this={overlayEl} class:landscape={$isLandscape} aria-label="Shop room">
   <img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
 
-  <!-- HUD bar: replaces InRunTopBar during shop visit. Extends full-width to eliminate black-bar gaps. -->
-  <div class="shop-hud">
-    <button type="button" class="hud-back" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">←</button>
-    <div class="hud-gold">
-      <span class="gold-icon">🪙</span>
-      <span class="gold-amount" class:gold-gain={goldFlash === 'gain'} class:gold-loss={goldFlash === 'loss'}>{currency}g</span>
-    </div>
-    <span class="hud-info">Shop · Floor {floor}</span>
-    <span class="hud-deck">Deck: {deckCount} cards</span>
-    <!-- Settings gear — mirrors InRunTopBar pause-btn SVG for visual consistency -->
-    <button
-      type="button"
-      class="hud-settings-btn"
-      aria-label="Settings"
-      onclick={() => { /* Parent handles settings open via event dispatch */ }}
-    >
-      <svg class="pause-gear-svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  </div>
+  <!-- Leave shop button — InRunTopBar already shows gold, floor, HP, settings above -->
+  <button type="button" class="leave-shop-btn" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">← Leave Shop</button>
 
   {#if currentBark}
     <div class="shopkeeper-bark" transition:fade={{ duration: 200 }}>
@@ -1065,7 +1045,7 @@
         staggerPopIn({
           container: overlayEl,
           elements: [
-            '.shop-hud',
+            '.leave-shop-btn',
             '.section-label',
             '.relics-row',
             '.cards-grid',
@@ -1081,126 +1061,63 @@
 
 <style>
   .shop-screen-bg {
-    position: absolute;
-    inset: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
   }
 
   .shop-overlay {
     position: fixed;
-    inset: 0;
-    z-index: 220;
-    background: linear-gradient(180deg, rgba(16, 18, 20, 0.75) 0%, rgba(31, 35, 41, 0.75) 100%);
+    top: var(--run-viewport-top, 0px);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 150;
+    background: none;
     color: #e6edf3;
     padding: 0 calc(16px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     display: grid;
     align-content: start;
-    gap: calc(4px * var(--layout-scale, 1));
+    gap: calc(6px * var(--layout-scale, 1));
     overflow-y: auto;
   }
 
-  /* ── HUD bar ────────────────────────────────────────────────── */
-  .shop-hud {
+  /* ── Leave shop button ────────────────────────────────────── */
+  .leave-shop-btn {
     position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    gap: calc(12px * var(--layout-scale, 1));
-    height: calc(48px * var(--layout-scale, 1));
-    background: rgba(10, 15, 25, 0.95);
-    padding: 0 calc(12px * var(--layout-scale, 1));
-    border-bottom: calc(2px * var(--layout-scale, 1)) solid rgba(194, 157, 72, 0.5);
-    /* Negative horizontal margins extend the bar to cover the full viewport width,
-       preventing the thin black gap on the right edge caused by the shop overlay's
-       own padding. This mirrors the technique used in other overlay HUDs. */
-    margin: 0 calc(-16px * var(--layout-scale, 1));
-    box-sizing: border-box;
-  }
-
-  .hud-back {
-    background: none;
-    border: none;
+    top: calc(8px * var(--layout-scale, 1));
+    z-index: 5;
+    background: rgba(10, 15, 25, 0.85);
+    border: 1px solid rgba(194, 157, 72, 0.5);
     color: #e6edf3;
-    font-size: calc(20px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
+    font-weight: 600;
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
     cursor: pointer;
-    padding: calc(8px * var(--layout-scale, 1));
-    min-width: calc(44px * var(--layout-scale, 1));
+    width: fit-content;
     min-height: calc(44px * var(--layout-scale, 1));
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: calc(8px * var(--layout-scale, 1));
-    flex-shrink: 0;
   }
-
-  .hud-back:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  .hud-gold {
-    display: flex;
-    align-items: center;
-    gap: calc(4px * var(--layout-scale, 1));
-  }
-
-  .gold-icon {
-    font-size: calc(16px * var(--layout-scale, 1));
-  }
-
-  .gold-amount {
-    font-size: calc(16px * var(--text-scale, 1));
-    font-weight: 700;
-    color: #f59e0b;
-  }
-
-  .hud-info {
-    font-size: calc(11px * var(--text-scale, 1));
-    color: #64748b;
-    margin-left: auto;
-  }
-
-  .hud-deck {
-    font-size: calc(11px * var(--text-scale, 1));
-    color: #64748b;
-  }
-
-  /* Settings gear button — inherits InRunTopBar pause-btn visual pattern */
-  .hud-settings-btn {
-    background: none;
-    border: none;
-    color: #94a3b8;
-    cursor: pointer;
-    min-width: calc(44px * var(--layout-scale, 1));
-    min-height: calc(44px * var(--layout-scale, 1));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: calc(8px * var(--layout-scale, 1));
-    flex-shrink: 0;
-    padding: calc(8px * var(--layout-scale, 1));
-  }
-
-  .hud-settings-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #e6edf3;
-  }
-
-  .pause-gear-svg {
-    width: calc(20px * var(--layout-scale, 1));
-    height: calc(20px * var(--layout-scale, 1));
+  .leave-shop-btn:hover {
+    background: rgba(30, 40, 55, 0.95);
+    border-color: rgba(194, 157, 72, 0.8);
   }
 
   /* ── Section labels ─────────────────────────────────────────── */
   .section-label {
     margin-top: calc(10px * var(--layout-scale, 1));
     margin-bottom: calc(4px * var(--layout-scale, 1));
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: 600;
     color: #64748b;
     text-transform: uppercase;
@@ -1243,6 +1160,9 @@
     gap: calc(16px * var(--layout-scale, 1));
     align-items: flex-start;
     justify-content: center;
+    background: rgba(13, 17, 23, 0.65);
+    border-radius: calc(12px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1));
   }
 
   .relic-float-card {
@@ -1299,7 +1219,7 @@
   }
 
   .relic-float-name {
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
     font-weight: 700;
     text-align: center;
     line-height: 1.2;
@@ -1315,7 +1235,7 @@
   }
 
   .relic-float-desc {
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     color: #94a3b8;
     text-align: center;
     line-height: 1.4;
@@ -1339,6 +1259,9 @@
     gap: calc(12px * var(--layout-scale, 1));
     align-items: flex-start;
     justify-content: center;
+    background: rgba(13, 17, 23, 0.55);
+    border-radius: calc(12px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1));
   }
 
   .card-visual-item {
@@ -1399,26 +1322,33 @@
 
   .service-card {
     border-radius: calc(12px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     gap: calc(8px * var(--layout-scale, 1));
-    transition: opacity 200ms ease;
+    background: rgba(13, 17, 23, 0.88);
   }
 
   .service-removal {
     border: 1px solid #7F77DD;
-    background: rgba(127, 119, 221, 0.05);
+    background: rgba(127, 119, 221, 0.12);
   }
 
   .service-transform {
     border: 1px solid #D85A30;
-    background: rgba(216, 90, 48, 0.05);
+    background: rgba(216, 90, 48, 0.12);
   }
 
-  /* Unaffordable: dim but keep pointer-events so player can see the price */
+  /* Unaffordable: red-tinted border, keep fully visible */
   .service-unaffordable {
-    opacity: 0.6;
+    opacity: 1;
+    border-color: rgba(239, 68, 68, 0.4);
+  }
+  .service-unaffordable .service-action {
+    color: #4b5563;
+  }
+  .service-unaffordable .service-price {
+    color: #ef4444;
   }
 
   .service-icon {
@@ -1432,13 +1362,13 @@
   }
 
   .service-title {
-    font-size: calc(14px * var(--text-scale, 1));
-    font-weight: 500;
+    font-size: calc(18px * var(--text-scale, 1));
+    font-weight: 600;
     color: #e6edf3;
   }
 
   .service-price {
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(18px * var(--text-scale, 1));
     font-weight: 700;
     color: #f59e0b;
   }
@@ -1448,7 +1378,7 @@
   }
 
   .service-desc {
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     color: #9ba4ad;
     line-height: 1.4;
   }
@@ -1458,7 +1388,7 @@
     background: none;
     border: none;
     color: #93c5fd;
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: calc(15px * var(--text-scale, 1));
     font-weight: 600;
     cursor: pointer;
     text-align: left;
