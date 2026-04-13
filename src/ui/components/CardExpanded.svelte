@@ -1151,11 +1151,11 @@
     /* Vertically: fill arena above stats bar + card hand */
     top: calc(var(--topbar-height, 4.5vh) + calc(40px * var(--layout-scale, 1)));
     bottom: calc(9vh + calc(16px * var(--layout-scale, 1)));
-    /* Two-zone flex layout: question-zone (40%) + answer-zone (60%) */
+    /* Two-zone flex layout: question-zone + answer-zone, vertically centered */
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-start;
+    justify-content: center;
     /* isolation: isolate creates a containing block for absolute children (badge)
        without overriding position: fixed — position: relative would break top/bottom pinning */
     padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
@@ -1199,9 +1199,9 @@
     color: rgba(200, 180, 120, 0.65);
   }
 
-  /* Two-zone layout: question zone takes ~40% flex space in landscape */
+  /* Two-zone layout: question zone grows to content — no rigid 40% floor */
   .card-expanded-landscape .question-zone {
-    flex: 1 1 40%;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1217,12 +1217,12 @@
     flex: 0 0 auto;
   }
 
-  /* Two-zone layout: answer zone takes ~60% flex space in landscape */
+  /* Two-zone layout: answer zone shrinks to content — no forced 60% floor */
   .card-expanded-landscape .answer-zone {
-    flex: 1 1 60%;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     min-height: 0;
     overflow: hidden;
   }
@@ -1520,6 +1520,43 @@
 
   .card-question.quiz-align-left {
     text-align: left;
+  }
+
+  /* Landscape: center-align ALL questions — width is ~58vw so there's plenty of room */
+  .card-expanded-landscape .card-question {
+    text-align: center;
+  }
+
+  /* Landscape: bump all font-size tiers up to fill the wider panel (~1113px at 1920x1080).
+     chess-question has its own size rule (32px) above — exclude it here to avoid conflict. */
+  .card-expanded-landscape .card-question.quiz-text-short:not(.chess-question) {
+    font-size: calc(30px * var(--text-scale, 1));
+  }
+  .card-expanded-landscape .card-question.quiz-text-medium:not(.chess-question) {
+    font-size: calc(26px * var(--text-scale, 1));
+  }
+  .card-expanded-landscape .card-question.quiz-text-long:not(.chess-question) {
+    font-size: calc(22px * var(--text-scale, 1));
+  }
+  .card-expanded-landscape .card-question.quiz-text-extra-long:not(.chess-question) {
+    font-size: calc(19px * var(--text-scale, 1));
+  }
+  .card-expanded-landscape .card-question.quiz-text-max-long:not(.chess-question) {
+    font-size: calc(17px * var(--text-scale, 1));
+  }
+
+  /* Landscape: force all answer grids to single column — 2-column grids waste space at wide widths */
+  .card-expanded-landscape .answers-tf-pair,
+  .card-expanded-landscape .answers-two-wide,
+  .card-expanded-landscape .answers-grid-2x2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Landscape: larger answer buttons to fill space with only 3-4 answers visible */
+  .card-expanded-landscape .answer-btn {
+    min-height: calc(56px * var(--layout-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
   }
 
   .grammar-blank {
