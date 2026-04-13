@@ -133,6 +133,7 @@
   import { BASE_WIDTH } from './data/layout'
   import { layoutMode } from './stores/layoutStore'
   import { restoreRunRngState } from './services/seededRng'
+  import { getLanguageCodeForDeck } from './services/deckOptionsService'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -970,6 +971,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
   let studyQuestions = $state<QuizQuestion[]>([])
+  let studyLanguageCode = $state<string | null>(null)
   let meditateCandidates = $state<import('./data/card-types').Card[]>([])
 
   // Pick up scenario-injected study questions when the screen switches to restStudy
@@ -977,16 +979,31 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   $effect(() => {
     if ($currentScreen === 'restStudy' && studyQuestions.length === 0) {
       const sym = Symbol.for('rr:scenarioStudyQuestions')
+      const langSym = Symbol.for('rr:scenarioStudyLanguage')
       const injected = (globalThis as any)[sym]
       if (Array.isArray(injected) && injected.length > 0) {
         studyQuestions = injected
+        studyLanguageCode = (globalThis as any)[langSym] ?? null
         delete (globalThis as any)[sym]
+        delete (globalThis as any)[langSym]
       }
     }
   })
 
   function handleRestStudy(): void {
     studyQuestions = generateStudyQuestions()
+    // Derive language code from active deck mode so StudyQuizOverlay can use alwaysWrite
+    const save = get(playerSave)
+    const dm = save?.activeDeckMode
+    if (dm?.type === 'study' && dm.deckId) {
+      studyLanguageCode = getLanguageCodeForDeck(dm.deckId)
+    } else if (dm?.type === 'preset' && dm.presetId) {
+      studyLanguageCode = getLanguageCodeForDeck(dm.presetId)
+    } else if (dm?.type === 'language') {
+      studyLanguageCode = dm.languageCode
+    } else {
+      studyLanguageCode = null
+    }
     gameFlowState.set('restStudy')
     currentScreen.set('restStudy')
   }
@@ -999,6 +1016,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   function handleStudyComplete(correctFactIds: string[]): void {
     studyQuestions = []
+    studyLanguageCode = null
     onStudyComplete(correctFactIds)
   }
 
@@ -1825,7 +1843,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   {#if $currentScreen === 'restStudy'}
     <div in:fly={{ y: 8, duration: 350 }}>
-      <StudyQuizOverlay questions={studyQuestions} oncomplete={handleStudyComplete} />
+      <StudyQuizOverlay questions={studyQuestions} oncomplete={handleStudyComplete} quizLanguageCode={studyLanguageCode} />
     </div>
   {/if}
 

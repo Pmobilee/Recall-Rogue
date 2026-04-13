@@ -3,11 +3,13 @@
   import { currentScreen } from '../stores/gameState'
   import { isLandscape } from '../../stores/layoutStore'
   import GrammarSentenceFurigana from './GrammarSentenceFurigana.svelte'
+  import GrammarTypingInput from './GrammarTypingInput.svelte'
+  import TypingInput from './TypingInput.svelte'
   import { deckOptions } from '../../services/deckOptionsService'
   import ChessBoard from './ChessBoard.svelte'
   import { getPlayerContext, gradeChessMove, isInCheck } from '../../services/chessGrader'
   import { updateChessElo } from '../../services/chessEloService'
-  import { displayAnswer } from '../../services/numericalDistractorService'
+  import { isNumericalAnswer, displayAnswer } from '../../services/numericalDistractorService'
   import MapPinDrop from './MapPinDrop.svelte'
   import { updateGeoElo, tierToRating } from '../../services/geoEloService'
   import { get } from 'svelte/store'
@@ -21,9 +23,11 @@
     /** Optional back handler. Called when the user dismisses from the empty state.
      *  If not provided, navigates to 'hub'. */
     onback?: () => void
+    /** ISO 639-1 language code for the current deck (e.g. 'ja', 'fr', 'es'). Null for non-language decks. */
+    quizLanguageCode?: string | null
   }
 
-  let { questions, oncomplete, onback }: Props = $props()
+  let { questions, oncomplete, onback, quizLanguageCode = null }: Props = $props()
 
   /** Navigate back — used in the empty state and always-visible escape hatch.
    *  Calls the caller-supplied onback if provided, otherwise returns to hub. */
@@ -59,6 +63,36 @@
 
   /** Reactively read romaji toggle from deckOptions store. */
   const showRomaji = $derived.by(() => ($deckOptions as any)?.ja?.romaji ?? false)
+
+  // ---------------------------------------------------------------------------
+  // Always-write / typing mode
+  // ---------------------------------------------------------------------------
+
+  /** Whether always-write mode is active for the current language. */
+  const alwaysWriteEnabled = $derived.by(() => {
+    if (!quizLanguageCode) return false
+    const opts = $deckOptions
+    return opts?.[quizLanguageCode]?.alwaysWrite ?? false
+  })
+
+  /** Whether the current question should use typing input instead of MCQ buttons. */
+  const useTypingMode = $derived.by(() => {
+    if (!alwaysWriteEnabled) return false
+    if (!currentQuestion) return false
+    // Exclude image-based, chess, map_pin, and numerical questions from typing
+    if (
+      currentQuestion.quizMode === 'image_question' ||
+      currentQuestion.quizMode === 'image_answers' ||
+      currentQuestion.quizMode === 'chess_tactic'
+    ) return false
+    if (
+      currentQuestion.quizResponseMode === 'chess_move' ||
+      currentQuestion.quizResponseMode === 'map_pin'
+    ) return false
+    if (isNumericalAnswer(currentQuestion.correctAnswer)) return false
+    if (displayAnswer(currentQuestion.correctAnswer).length > 80) return false
+    return true
+  })
 
   // ---------------------------------------------------------------------------
   // Chess puzzle state
@@ -332,6 +366,37 @@
               </button>
             {/each}
           </div>
+        {:else if useTypingMode && !showFeedback}
+          <!-- Always-write typing mode: show text input instead of MCQ buttons. -->
+          <!-- When showFeedback becomes true (after submit), fall through to MCQ for correct/wrong highlighting. -->
+          {#if quizLanguageCode === 'ja'}
+            <GrammarTypingInput
+              correctAnswer={currentQuestion.correctAnswer}
+              acceptableAlternatives={[]}
+              onsubmit={(correct, _typed) => {
+                if (correct) {
+                  selectAnswer(currentQuestion!.correctAnswer)
+                } else {
+                  const wrongAnswer = currentQuestion!.answers.find(a => a !== currentQuestion!.correctAnswer)
+                  if (wrongAnswer) selectAnswer(wrongAnswer)
+                }
+              }}
+            />
+          {:else}
+            <TypingInput
+              correctAnswer={currentQuestion.correctAnswer}
+              acceptableAlternatives={[]}
+              language={quizLanguageCode ?? ''}
+              onsubmit={(correct, _typed) => {
+                if (correct) {
+                  selectAnswer(currentQuestion!.correctAnswer)
+                } else {
+                  const wrongAnswer = currentQuestion!.answers.find(a => a !== currentQuestion!.correctAnswer)
+                  if (wrongAnswer) selectAnswer(wrongAnswer)
+                }
+              }}
+            />
+          {/if}
         {:else}
         <div class="answers-grid" data-tutorial-anchor="study-answers">
           {#each currentQuestion.answers as answer}

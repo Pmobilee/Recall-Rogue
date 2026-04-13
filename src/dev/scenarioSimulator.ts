@@ -1416,7 +1416,15 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
 
     // Store on a well-known symbol so CardApp's $effect can read them
     const sym = Symbol.for('rr:scenarioStudyQuestions');
+    const langSym = Symbol.for('rr:scenarioStudyLanguage');
     (globalThis as any)[sym] = questions;
+    // Inject language code if deckId is provided, so StudyQuizOverlay can use alwaysWrite mode
+    if (config.deckId) {
+      const { getLanguageCodeForDeck } = await import('../services/deckOptionsService');
+      (globalThis as any)[langSym] = getLanguageCodeForDeck(config.deckId);
+    } else {
+      (globalThis as any)[langSym] = null;
+    }
 
     gameFlowState.set('restStudy' as any);
     writeStore('rr:currentScreen', 'restStudy');
