@@ -183,9 +183,11 @@ When `lichessRating` is present, `handleChessMove` calls `updateChessElo(lichess
 | `sentenceFurigana` | `Array<{ t: string; r?: string; g?: string }>` | Pre-baked furigana segments; passed to `GrammarSentenceFurigana` when present |
 | `sentenceRomaji` | `string` | Whole-sentence romaji; shown below the sentence when the romaji toggle is ON |
 | `sentenceTranslation` | `string` | English translation; shown as `.grammar-translation` in MCQ mode and as `.grammar-hint-translation` in typing mode |
-| `grammarPointLabel` | `string` | Short label (e.g., "が — subject marker particle"); shown as `.grammar-hint-label` in typing mode |
+| `grammarPointLabel` | `string` | Short label (e.g., "が — subject marker particle"); shown AFTER answering (when `waitingForGotIt` is true) with a fade-in reveal — NOT before, to prevent spoilers |
 
-The `showRomaji` reactive is derived from `$deckOptions?.ja?.romaji`. A `.grammar-typing-hints` panel (teal left-border box) renders above `GrammarTypingInput` when typing mode is active and either label or translation is present. Grammar rendering no longer loops `sentence.split('{___}')` — `GrammarSentenceFurigana` handles blanks internally via `{ t: "{___}" }` segment entries.
+The `showRomaji` reactive is derived from `$deckOptions?.ja?.romaji`. A `.grammar-typing-hints` panel (teal left-border box) renders above `GrammarTypingInput` when typing mode is active and `sentenceTranslation` is present (only the translation hint, not `grammarPointLabel`). Grammar rendering no longer loops `sentence.split('{___}')` — `GrammarSentenceFurigana` handles blanks internally via `{ t: "{___}" }` segment entries.
+
+**Grammar point spoiler prevention (2026-04-13):** `grammarPointLabel` is no longer shown in the `.grammar-typing-hints` pre-answer block — it was revealing the answer (e.g. "ている — to do something for someone"). It is now shown post-answer inside the `waitingForGotIt` block with a 250ms `.grammar-point-label-reveal` fade-in animation.
 
 `CardCombatOverlay.svelte` forwards these four fields through `QuizData` (interface updated with the same fields) from the curated-deck path in `getStudyModeQuiz()`.
 
@@ -196,7 +198,7 @@ The `showRomaji` reactive is derived from `$deckOptions?.ja?.romaji`. A `.gramma
 **Vertical positioning (2026-04-08, updated Ch8):**
 - `top: calc(var(--topbar-height, 4.5vh) + calc(40px * var(--layout-scale, 1)))` — topbar height + fog meter (28px) + 12px gap ≈ 89px at 1080p.
 - `bottom: calc(9vh + calc(16px * var(--layout-scale, 1)))` — stops near the card hand.
-- `overflow: hidden` — no scrolling; all content must fit within the available panel height.
+- `.question-zone` uses `overflow-y: auto` (was `overflow: hidden`) — content is scrollable rather than silently clipped when grammar furigana + translation exceed available height. Scrollbar styled thin via `scrollbar-color`.
 
 **Two-zone flex layout (2026-04-12):**
 - `justify-content: flex-start` (was `center`) — panel fills from top, no centering. `position: relative` removed from `.card-expanded-landscape` (was accidentally overriding `position: fixed` and breaking top/bottom pinning — container now always fills between topbar and card hand).
@@ -206,6 +208,8 @@ The `showRomaji` reactive is derived from `$deckOptions?.ja?.romaji`. A `.gramma
   - Timer bar, grammar note, continue button, speed bonus badge, and quiz result overlay remain **outside** both zones as flex siblings of the panel root.
 
 **Category badge (2026-04-12):** `.card-header` is `position: absolute; top: 12px; left: 16px` in landscape (top-left corner) — does not consume flex space in the column layout.
+
+**Settings gear button (2026-04-13):** When `hasLanguageOptions && quizLanguageCode` is true, the ⚙ button is pinned absolutely to the top-right of `.card-expanded` via `.card-settings-btn-topright` (`top: 12px; right: 16px; z-index: 10`) rather than inside `.card-header`. This prevents it collapsing to the left beside the domain label in landscape.
 
 **Content-aware answer grid (2026-04-12 — replaces count-only classes):**
 
@@ -220,16 +224,19 @@ The `showRomaji` reactive is derived from `$deckOptions?.ja?.romaji`. A `.gramma
 
 `answerFontClass`: `answer-font-small` (reduces btn font to 14px) when any answer exceeds 80 chars.
 
-**Font sizes (updated 2026-04-12):**
+**Font sizes (updated 2026-04-12, revised 2026-04-13):**
 - `.card-question` base: `14px`
 - `.quiz-text-short` (< 30 chars): `26px`
 - `.quiz-text-medium` (< 80 chars): `22px`
 - `.quiz-text-long` (< 150 chars): `18px`
-- `.quiz-text-extra-long` (< 250 chars): `16px` ← new
-- `.quiz-text-max-long` (≥ 250 chars): `15px` ← new
-- `.quiz-align-left`: left-aligns question when length ≥ 80 chars ← new
+- `.quiz-text-extra-long` (< 250 chars): `16px`
+- `.quiz-text-max-long` (≥ 250 chars): `15px`
+- `.quiz-align-left`: left-aligns question when length ≥ 80 chars
 - `.answer-btn` font: `18px` (was 15px), min-height `48px` (was 56px), padding `12/16px` (was `14/18px`)
 - All values use `calc(Npx * var(--text-scale, 1))`
+- **Grammar fill-blank cap (2026-04-13):** When `isJapaneseFact && question.includes('{___}')`, `questionLengthClass` is capped at `quiz-text-long` for questions under 80 chars (never `quiz-text-short` or `quiz-text-medium`). Furigana ruby + translation lines add 40–50% extra height, so raw char count overestimates available space.
+- **Grammar sub-lines (2026-04-13):** `.grammar-translation` and `.grammar-romaji` now use `font-size: 0.7em` (was `13px`) so they scale proportionally with the parent question font size.
+- **Typing input (2026-04-13):** `.typing-input` padding: `14/16px` (was `10/12px`), font-size: `22px` (was `16px`). `.typing-submit-btn` padding: `14/20px`, font-size: `22px`. Applied in both `GrammarTypingInput.svelte` and `TypingInput.svelte`.
 
 **Image quiz in landscape:** `.quiz-asset-image` max-height capped at `40vh` inside landscape panel.
 

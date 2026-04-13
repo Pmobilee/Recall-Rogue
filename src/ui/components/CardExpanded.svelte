@@ -260,9 +260,20 @@
   let eliminatedIndices = $state<Set<number>>(new Set())
   let activeKeyword = $state<{ id: string; x: number; y: number } | null>(null)
 
-  /** CSS class for question text auto-scaling based on character count. */
+  /** CSS class for question text auto-scaling based on character count.
+   * Grammar fill-blank questions (isJapaneseFact + {___}) are capped at quiz-text-long
+   * because furigana + translation lines already take significant vertical space.
+   */
   let questionLengthClass = $derived.by(() => {
+    const isGrammarFillBlank = isJapaneseFact && question.includes('{___}')
     const len = question.length
+    if (isGrammarFillBlank) {
+      // Cap at quiz-text-long — furigana ruby + translation take extra height
+      if (len < 80) return 'quiz-text-long'
+      if (len < 150) return 'quiz-text-long'
+      if (len < 250) return 'quiz-text-extra-long'
+      return 'quiz-text-max-long'
+    }
     if (len < 30) return 'quiz-text-short'
     if (len < 80) return 'quiz-text-medium'
     if (len < 150) return 'quiz-text-long'
@@ -810,16 +821,14 @@
     <span class="header-domain">
       {deckDisplayName ?? domainName}
     </span>
-    <span class="header-icon">
-      {#if hasLanguageOptions && quizLanguageCode}
-        <button
-          class="card-settings-btn"
-          onclick={() => { showSettings = !showSettings }}
-          aria-label="Language display settings"
-        >⚙</button>
-      {/if}
-    </span>
   </div>
+  {#if hasLanguageOptions && quizLanguageCode}
+    <button
+      class="card-settings-btn card-settings-btn-topright"
+      onclick={() => { showSettings = !showSettings }}
+      aria-label="Language display settings"
+    >⚙</button>
+  {/if}
   {#if showSettings && quizLanguageCode}
     <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
     <div class="settings-modal-backdrop" onclick={() => { showSettings = false }}>
@@ -969,11 +978,8 @@
     </div>
   {:else if effectiveResponseMode === 'typing' && !isTypingExcluded && !answersDisabled}
     {#if quizLanguageCode === 'ja'}
-      {#if grammarPointLabel || sentenceTranslation}
+      {#if sentenceTranslation}
         <div class="grammar-typing-hints">
-          {#if grammarPointLabel}
-            <p class="grammar-hint-label">{grammarPointLabel}</p>
-          {/if}
           {#if sentenceTranslation}
             <p class="grammar-hint-translation">{sentenceTranslation}</p>
           {/if}
@@ -1052,12 +1058,16 @@
   {/if}
   </div><!-- end .answer-zone -->
 
-  {#if waitingForGotIt && grammarNote}
+  {#if waitingForGotIt && (grammarNote || grammarPointLabel)}
     <div class="grammar-note" role="note" aria-label="Grammar Note">
-      {#if grammarPointHeader}
+      {#if grammarPointLabel}
+        <span class="grammar-note-header grammar-point-label-reveal">{grammarPointLabel}</span>
+      {:else if grammarPointHeader}
         <span class="grammar-note-header">{grammarPointHeader}</span>
       {/if}
-      <p class="grammar-note-text">{grammarNote}</p>
+      {#if grammarNote}
+        <p class="grammar-note-text">{grammarNote}</p>
+      {/if}
     </div>
   {/if}
 
@@ -1197,7 +1207,9 @@
     align-items: center;
     justify-content: center;
     min-height: 0;
-    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 140, 200, 0.3) transparent;
   }
 
   /* Chess tactic: question is a single short line — shrink to content so the board gets max space */
@@ -1391,8 +1403,26 @@
     box-shadow: 0 calc(1px * var(--layout-scale, 1)) calc(4px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.4);
   }
 
+  /* Pinned to top-right of the quiz container — clear of the domain label */
+  .card-settings-btn-topright {
+    position: absolute;
+    top: calc(12px * var(--layout-scale, 1));
+    right: calc(16px * var(--layout-scale, 1));
+    z-index: 10;
+  }
+
   .card-settings-btn:hover {
     background: #92400e;
+  }
+
+  /* Fade-in reveal for grammar point label shown post-answer */
+  .grammar-point-label-reveal {
+    animation: grammar-label-fade-in 250ms ease-out forwards;
+  }
+
+  @keyframes grammar-label-fade-in {
+    from { opacity: 0; transform: translateY(calc(4px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   /* Settings modal — centered overlay */
@@ -1505,7 +1535,7 @@
 
   .grammar-translation {
     color: var(--color-text-dim, #8899aa);
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: 0.7em;
     margin-top: calc(4px * var(--layout-scale, 1));
     text-align: center;
     font-style: italic;
@@ -1514,7 +1544,7 @@
 
   .grammar-romaji {
     margin: calc(4px * var(--layout-scale, 1)) 0 0;
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: 0.7em;
     color: rgba(255, 255, 255, 0.65);
     text-align: center;
     font-style: italic;

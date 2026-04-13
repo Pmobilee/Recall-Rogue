@@ -134,8 +134,8 @@
 
   .typing-input {
     flex: 1;
-    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-    font-size: calc(16px * var(--text-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    font-size: calc(22px * var(--text-scale, 1));
     background: rgba(255, 255, 255, 0.08);
     border: 2px solid rgba(255, 255, 255, 0.15);
     border-radius: calc(8px * var(--layout-scale, 1));
@@ -160,8 +160,8 @@
   }
 
   .typing-submit-btn {
-    padding: calc(10px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
-    font-size: calc(16px * var(--text-scale, 1));
+    padding: calc(14px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    font-size: calc(22px * var(--text-scale, 1));
     background: #4ecdc4;
     border: none;
     border-radius: calc(8px * var(--layout-scale, 1));

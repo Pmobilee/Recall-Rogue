@@ -280,8 +280,8 @@
           {#if showRomaji && currentQuestion.sentenceRomaji}
             <p class="grammar-romaji">{currentQuestion.sentenceRomaji}</p>
           {/if}
-          {#if currentQuestion.grammarPointLabel}
-            <p class="grammar-hint-label">{currentQuestion.grammarPointLabel}</p>
+          {#if showFeedback && currentQuestion.grammarPointLabel}
+            <p class="grammar-hint-label grammar-point-label-reveal">{currentQuestion.grammarPointLabel}</p>
           {/if}
         {:else}
           <p class="question-text" data-tutorial-anchor="study-card">{currentQuestion.question}</p>
@@ -498,6 +498,16 @@
     font-weight: 600;
     text-align: left;
     align-self: stretch;
+  }
+
+  /* Fade-in animation for grammar point label revealed post-answer */
+  .grammar-point-label-reveal {
+    animation: study-label-fade-in 250ms ease-out forwards;
+  }
+
+  @keyframes study-label-fade-in {
+    from { opacity: 0; transform: translateY(calc(4px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .study-quiz-image-container {
