@@ -1672,6 +1672,16 @@
     }
 
     const distractorCount = Math.max(2, optionCount - 1)
+
+    // Runtime numerical distractor generation for brace-marked answers in trivia mode
+    // Mirrors the logic in quizService.ts getQuizChoices()
+    if (distractorSource.length === 0 && isNumericalAnswer(correctAnswer)) {
+      const factAdapter = { id: fact.id, correctAnswer: fact.correctAnswer } as Fact
+      distractorSource = getNumericalDistractors(factAdapter, distractorCount)
+    }
+
+    // Strip brace markers from correct answer for display (e.g. "{19}th" → "19th")
+    correctAnswer = displayNumericalAnswer(correctAnswer)
     let picked = pickDistractors(
       distractorSource,
       correctAnswer,
