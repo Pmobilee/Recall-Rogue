@@ -614,11 +614,6 @@
     object-fit: contain;
   }
 
-  /* Boost the faint poison/Doubt icon so it reads against dark backgrounds */
-  .topbar-status-sprite[src*="poison"] {
-    filter: brightness(2.5) saturate(1.5);
-  }
-
   .topbar-status-emoji {
     font-size: calc(var(--topbar-height, 4.5vh) * 0.50);
     line-height: 1;
@@ -680,11 +675,6 @@
     height: calc(32px * var(--layout-scale, 1));
     object-fit: contain;
     flex-shrink: 0;
-  }
-
-  /* Boost the faint poison/Doubt icon in the popup */
-  .topbar-status-popup-sprite[src*="poison"] {
-    filter: brightness(2.5) saturate(1.5);
   }
 
   .topbar-status-popup-text {

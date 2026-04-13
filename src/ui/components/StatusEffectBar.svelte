@@ -174,7 +174,7 @@
     height: calc(50px * var(--layout-scale, 1));
     border-radius: 50%;
     border: none;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.55) 40%, transparent 70%);
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -287,11 +287,6 @@
     image-rendering: pixelated;
   }
 
-  /* Boost the faint poison/Doubt icon so it reads against dark backgrounds */
-  .effect-sprite-icon[src*="poison"] {
-    filter: brightness(2.5) saturate(1.5);
-  }
-
   .popup-sprite-icon {
     width: calc(40px * var(--layout-scale, 1));
     height: calc(40px * var(--layout-scale, 1));
@@ -299,8 +294,4 @@
     flex-shrink: 0;
   }
 
-  /* Boost the faint poison/Doubt icon in the popup */
-  .popup-sprite-icon[src*="poison"] {
-    filter: brightness(2.5) saturate(1.5);
-  }
 </style>
