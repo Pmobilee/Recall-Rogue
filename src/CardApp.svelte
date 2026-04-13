@@ -1807,7 +1807,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         studyDisabled={!hasRestUpgradeCandidates()}
         studyDisabledReason="No cards to upgrade"
         meditateDisabled={!canMeditate()}
-        meditateDisabledReason="Deck too small (min 5)"
+        meditateDisabledReason="Need 6+ cards to remove one"
       />
     </div>
   {/if}

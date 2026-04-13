@@ -1484,14 +1484,12 @@
     width: min(80vw, 1200px);
     max-height: 85vh;
     overflow-y: auto;
-    transform: scale(1.5);
-    transform-origin: center center;
+    /* transform: scale(1.5) removed — --layout-scale is already 1.5 at 1920x1080,
+       so an additional CSS scale was doubling it and pushing the header above the viewport */
   }
 
   .reward-screen.landscape .actions {
     width: min(80vw, 1200px);
-    transform: scale(1.5);
-    transform-origin: center center;
   }
 
   .reward-screen.landscape .altar-options {
