@@ -1243,8 +1243,6 @@ async function proceedAfterReward(): Promise<void> {
   currentScreen.set('dungeonMap');
 }
 
-const USE_REWARD_ROOM_SCENE = true;
-
 function openCardReward(): void {
   const run = get(activeRunState);
   if (!run) return;
@@ -1270,103 +1268,36 @@ function openCardReward(): void {
     return;
   }
 
-  if (USE_REWARD_ROOM_SCENE) {
-    const bundle = get(activeRewardBundle);
-    const totalGold = bundle ? bundle.goldEarned : 0;
-    const healAmount = bundle ? bundle.healAmount : 0;
+  const bundle = get(activeRewardBundle);
+  const totalGold = bundle ? bundle.goldEarned : 0;
+  const healAmount = bundle ? bundle.healAmount : 0;
 
-    const rewards: RewardItem[] = [];
-    // Always include gold (minimum 5 from encounter)
-    const displayGold = totalGold > 0 ? totalGold : 5;
-    rewards.push({ type: 'gold', amount: displayGold });
-    // Include health vial: always for elite/boss, 10% chance for normal combat
-    const isElevatedReward = pendingRewardIsEliteOrBoss;
-    pendingRewardIsEliteOrBoss = false; // consume the flag
-    if (isElevatedReward || Math.random() < HEALTH_VIAL_DROP_CHANCE) {
-      const displayHeal = healAmount > 0 ? healAmount : 8;
-      rewards.push({ type: 'health_vial', size: displayHeal > 15 ? 'large' : 'small', healAmount: displayHeal });
-    }
-    for (const card of options) {
-      rewards.push({ type: 'card', card });
-    }
-
-    // 8% chance per floor to include a bonus relic alongside card choices
-    if (!run.floor.bonusRelicOfferedThisFloor && Math.random() < RELIC_BONUS_CHANCE_REWARD_ROOM) {
-      const relicPool = buildRelicPool();
-      if (relicPool.length > 0) {
-        const bonusRelic = relicPool[Math.floor(Math.random() * relicPool.length)];
-        rewards.push({ type: 'relic', relic: bonusRelic });
-        run.floor.bonusRelicOfferedThisFloor = true;
-        activeRunState.set(run);
-      }
-    }
-
-    analyticsService.track({
-      name: 'card_reward',
-      properties: {
-        option_types: options.map((option) => option.cardType),
-        floor: run.floor.currentFloor,
-        encounter: run.floor.currentEncounter,
-      },
-    });
-
-    void openRewardRoom(
-      rewards,
-      // onGoldCollected
-      (amount) => {
-        const r = get(activeRunState);
-        if (!r) return;
-        r.currency += amount;
-        activeRunState.set(r);
-      },
-      // onVialCollected
-      (healAmt) => {
-        const r = get(activeRunState);
-        if (!r) return;
-        healPlayer(r, healAmt);
-        activeRunState.set(r);
-      },
-      // onCardAccepted
-      (card) => {
-        const r = get(activeRunState);
-        if (!r) return;
-        r.consumedRewardFactIds.add(card.factId);
-        activeRunState.set(r);
-        addRewardCardToActiveDeck(card);
-        analyticsService.track({
-          name: 'card_type_selected',
-          properties: {
-            card_type: card.cardType,
-            fact_id: card.factId,
-            floor: r.floor.currentFloor,
-            encounter: r.floor.currentEncounter,
-          },
-        });
-      },
-      // onRelicAccepted
-      (relic) => {
-        addRelicToRun(relic);
-      },
-      // onComplete
-      () => {
-        activeCardRewardOptions.set([]);
-        activeRewardBundle.set(null);
-        activeRewardRevealStep.set('gold');
-        autoSaveRun('dungeonMap');
-        void proceedAfterReward();
-      },
-    );
-    return;
+  const rewards: RewardItem[] = [];
+  // Always include gold (minimum 5 from encounter)
+  const displayGold = totalGold > 0 ? totalGold : 5;
+  rewards.push({ type: 'gold', amount: displayGold });
+  // Include health vial: always for elite/boss, 10% chance for normal combat
+  const isElevatedReward = pendingRewardIsEliteOrBoss;
+  pendingRewardIsEliteOrBoss = false; // consume the flag
+  if (isElevatedReward || Math.random() < HEALTH_VIAL_DROP_CHANCE) {
+    const displayHeal = healAmount > 0 ? healAmount : 8;
+    rewards.push({ type: 'health_vial', size: displayHeal > 15 ? 'large' : 'small', healAmount: displayHeal });
+  }
+  for (const card of options) {
+    rewards.push({ type: 'card', card });
   }
 
-  // Existing Svelte card reward (fallback)
-  const bundle = get(activeRewardBundle);
-  const initialRevealStep = (!bundle || (bundle.goldEarned === 0 && bundle.healAmount === 0))
-    ? 'card'
-    : 'gold';
+  // 8% chance per floor to include a bonus relic alongside card choices
+  if (!run.floor.bonusRelicOfferedThisFloor && Math.random() < RELIC_BONUS_CHANCE_REWARD_ROOM) {
+    const relicPool = buildRelicPool();
+    if (relicPool.length > 0) {
+      const bonusRelic = relicPool[Math.floor(Math.random() * relicPool.length)];
+      rewards.push({ type: 'relic', relic: bonusRelic });
+      run.floor.bonusRelicOfferedThisFloor = true;
+      activeRunState.set(run);
+    }
+  }
 
-  activeCardRewardOptions.set(options);
-  activeRewardRevealStep.set(initialRevealStep);
   analyticsService.track({
     name: 'card_reward',
     properties: {
@@ -1375,9 +1306,53 @@ function openCardReward(): void {
       encounter: run.floor.currentEncounter,
     },
   });
-  gameFlowState.set('cardReward');
-  currentScreen.set('cardReward');
-  autoSaveRun('cardReward');
+
+  void openRewardRoom(
+    rewards,
+    // onGoldCollected
+    (amount) => {
+      const r = get(activeRunState);
+      if (!r) return;
+      r.currency += amount;
+      activeRunState.set(r);
+    },
+    // onVialCollected
+    (healAmt) => {
+      const r = get(activeRunState);
+      if (!r) return;
+      healPlayer(r, healAmt);
+      activeRunState.set(r);
+    },
+    // onCardAccepted
+    (card) => {
+      const r = get(activeRunState);
+      if (!r) return;
+      r.consumedRewardFactIds.add(card.factId);
+      activeRunState.set(r);
+      addRewardCardToActiveDeck(card);
+      analyticsService.track({
+        name: 'card_type_selected',
+        properties: {
+          card_type: card.cardType,
+          fact_id: card.factId,
+          floor: r.floor.currentFloor,
+          encounter: r.floor.currentEncounter,
+        },
+      });
+    },
+    // onRelicAccepted
+    (relic) => {
+      addRelicToRun(relic);
+    },
+    // onComplete
+    () => {
+      activeCardRewardOptions.set([]);
+      activeRewardBundle.set(null);
+      activeRewardRevealStep.set('gold');
+      autoSaveRun('dungeonMap');
+      void proceedAfterReward();
+    },
+  );
 }
 
 export function onCardRewardReroll(type: Card['cardType']): void {

@@ -74,8 +74,6 @@ export interface ScenarioConfig {
   shopCards?: string[];
   /** Mystery event: specific event ID to show. */
   mysteryEventId?: string;
-  /** Card reward: specific mechanic IDs for the 3 card choices. */
-  cardRewardMechanics?: string[];
   /** Run end: result type. */
   runEndResult?: 'victory' | 'defeat' | 'retreat';
   /** Run end: override stats. */
@@ -219,8 +217,13 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'restRoom',
   },
   'card-reward': {
-    screen: 'cardReward',
-    cardRewardMechanics: ['strike', 'block', 'heavy_strike'],
+    screen: 'rewardRoom',
+    rewards: [
+      { type: 'gold', amount: 35 },
+      { type: 'card', mechanicId: 'strike' },
+      { type: 'card', mechanicId: 'block' },
+      { type: 'card', mechanicId: 'heavy_strike' },
+    ],
   },
   'dungeon-map': {
     screen: 'dungeonMap',
@@ -273,12 +276,22 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
 
   // === Card reward scenarios ===
   'card-reward-attacks': {
-    screen: 'cardReward',
-    cardRewardMechanics: ['heavy_strike', 'multi_hit', 'lifetap'],
+    screen: 'rewardRoom',
+    rewards: [
+      { type: 'gold', amount: 35 },
+      { type: 'card', mechanicId: 'heavy_strike' },
+      { type: 'card', mechanicId: 'multi_hit' },
+      { type: 'card', mechanicId: 'lifetap' },
+    ],
   },
   'card-reward-mixed': {
-    screen: 'cardReward',
-    cardRewardMechanics: ['strike', 'block', 'expose'],
+    screen: 'rewardRoom',
+    rewards: [
+      { type: 'gold', amount: 35 },
+      { type: 'card', mechanicId: 'strike' },
+      { type: 'card', mechanicId: 'block' },
+      { type: 'card', mechanicId: 'expose' },
+    ],
   },
 
   // === Run end scenarios ===
@@ -1137,40 +1150,6 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   }
 
   // -----------------------------------------------------------------------
-  // cardReward
-  // -----------------------------------------------------------------------
-  if (screen === 'cardReward') {
-    await bootstrapRun(config);
-    const { activeCardRewardOptions } = await import('../services/gameFlowController');
-
-    if (config.cardRewardMechanics && config.cardRewardMechanics.length > 0) {
-      const cards = config.cardRewardMechanics.map((mId, i) => {
-        const mechanic = MECHANIC_BY_ID[mId];
-        if (!mechanic) { console.warn(`[__rrScenario] Unknown mechanic: ${mId}`); return null; }
-        return {
-          id: `reward_${mId}_${i}_${Math.random().toString(36).slice(2, 6)}`,
-          factId: `fact_${Math.random().toString(36).slice(2, 8)}`,
-          cardType: mechanic.type,
-          domain: (config.domain ?? 'general_knowledge') as any,
-          tier: '1' as const,
-          baseEffectValue: mechanic.baseValue,
-          effectMultiplier: 1,
-          mechanicId: mechanic.id,
-          mechanicName: mechanic.name,
-          apCost: mechanic.apCost,
-        };
-      }).filter(Boolean);
-      activeCardRewardOptions.set(cards as any);
-    }
-
-    const { gameFlowState: _gfsCardReward } = await import('../services/gameFlowController');
-    _gfsCardReward.set('cardReward');
-    writeStore('rr:currentScreen', 'cardReward');
-    await wait(300);
-    return { ok: true, message: 'Card reward screen opened' };
-  }
-
-  // -----------------------------------------------------------------------
   // runEnd
   // -----------------------------------------------------------------------
   if (screen === 'runEnd') {
@@ -1909,7 +1888,6 @@ function printHelp(): void {
     '    shopRelics?: string[]       // shopRoom: explicit relic IDs',
     '    shopCards?: string[]        // shopRoom: explicit card mechanic IDs',
     '    mysteryEventId?: string     // mysteryEvent: specific event ID (use listMysteryEvents())',
-    '    cardRewardMechanics?: string[] // cardReward: 3 mechanic IDs',
     '    runEndResult?: string       // runEnd: "victory"|"defeat"|"retreat"',
     '    runEndStats?: object        // runEnd: stat overrides',
     '    quizQuestionCount?: number  // restStudy: number of questions (default 3)',

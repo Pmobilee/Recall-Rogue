@@ -21,7 +21,7 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `triviaDungeon` | **Dormant** — trivia domain selection. Previously shown before a general-knowledge run; domain selection is now handled internally. Screen component exists but is not reached in the standard run flow. |
 | `dungeonMap` | Procedurally generated dungeon node map |
 | `combat` | Active combat — Phaser canvas + CardCombatOverlay |
-| `cardReward` | Post-combat 3-card reward pick |
+| `cardReward` | **Dormant** — old Svelte card reward overlay. Kept in screen union for save compatibility. The active reward path uses `rewardRoom` (Phaser `RewardRoomScene`) — `cardRewardScreen` component is deleted. Saves with `cardReward` screen redirect to `dungeonMap` or trigger the Phaser reward room. |
 | `rewardRoom` | Phaser-driven reward room scene (relic rewards) |
 | `shopRoom` | Shop room: buy/sell cards and relics |
 | `restRoom` | Rest room: heal / study / meditate choice |
@@ -87,7 +87,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `triviaDungeon` | `TriviaDungeonScreen` | **Dormant — not mounted in standard run flow.** |
 | `dungeonMap` | `DungeonMap` | Only if `activeRunState.floor.actMap` exists. **Boss preview (BATCH-ULTRA Cluster A):** `BossPreviewBanner` component renders in the HUD when the act has an undefeated boss node (`node.type === 'boss'` && `state !== 'visited'`). Shows boss name, silhouette, description, and floor number. Always visible from map open to boss defeat — mirrors StS persistent boss icon. Use scenario `map-with-boss-preview` to test. **(Temporarily disabled 2026-04-11, guarded by `{#if false && ...}` in `DungeonMap.svelte`; re-enable by removing the `false &&`.)** |
 | `combat` | `CardCombatOverlay` | Phaser container also shown; `ParallaxTransition` for enter/exit. **Doorway exit gate (2026-04-12):** After combat victory, instead of auto-triggering the exit transition, `combatExitWaiting` is set to `true` and a `.doorway-exit-zone` overlay renders in the upper-center of the screen. Clicking the zone triggers `handleDoorwayClick()` which starts the `exit-forward` `ParallaxTransition`. After 5 seconds of waiting, `.doorway-hint` fades in with the text "Step through the doorway." State: `combatExitWaiting`, `doorwayHintVisible`, `doorwayHintTimer` in `CardApp.svelte`. |
-| `cardReward` | `CardRewardScreen` | |
+| `cardReward` | *(no component — deleted)* | **Dormant save-compat screen value.** `CardRewardScreen.svelte` deleted. Active reward path goes through `rewardRoom`. Saves with `cardReward` redirect to `dungeonMap`. |
 | `rewardRoom` | *(Phaser scene)* | `RewardRoomScene` handles rendering; `RewardCardDetail` as DOM overlay. **A11y (BATCH-ULTRA T11, fully wired):** `RewardRoomOverlay.svelte` renders 3 transparent DOM buttons over the Phaser canvas: Continue (`btn-reward-room-continue`, wired to `triggerRewardRoomContinue()` → emits `sceneComplete`), Relic Accept (`btn-reward-room-relic-accept`, wired to `triggerRelicDetailAccept()` → emits `relicDetailAccept` → `this.events.once('relicDetailAccept')` in `showRelicDetail()` at RewardRoomScene.ts line 874), Relic Leave (`btn-reward-room-relic-leave`, wired to `triggerRelicDetailLeave()` → emits `relicDetailLeave` → `this.events.once('relicDetailLeave')` at line 882). DOM→Phaser bridge is complete. |
 | `shopRoom` | `ShopRoomOverlay` | |
 | `restRoom` | `RestRoomOverlay` | |
@@ -125,7 +125,7 @@ Transition type is inferred automatically in `inferTransitionDirection()`:
 
 | Destination | Transition Type |
 |-------------|-----------------|
-| `combat`, `shopRoom`, `restRoom`, `mysteryEvent`, `cardReward` | `zoom` (room entry) |
+| `combat`, `shopRoom`, `restRoom`, `mysteryEvent` | `zoom` (room entry) |
 | `dungeonMap` (from any room) | `zoom` (zoom out) |
 | `hub`, `runEnd` | `zoom` |
 | `retreatOrDelve` | `zoom` |
@@ -148,7 +148,7 @@ Transition type is inferred automatically in `inferTransitionDirection()`:
 Screens where `InRunTopBar` (landscape HUD) is shown, and where run state must be active:
 
 ```
-combat, cardReward, shopRoom, restRoom, mysteryEvent,
+combat, cardReward, shopRoom, restRoom, mysteryEvent,  // cardReward kept for save-compat
 dungeonMap, retreatOrDelve, campfire, specialEvent,
 upgradeSelection, postMiniBossRest, restStudy, restMeditate,
 rewardRoom, masteryChallenge, relicSwapOverlay
@@ -218,7 +218,7 @@ All changes persist immediately to `playerSave.lastDungeonSelection.customDecks`
 ### Combat Loop
 ```
 dungeonMap → (node select) → combat
-    → (victory) → rewardRoom [Phaser] → cardReward → dungeonMap
+    → (victory) → rewardRoom [Phaser] → dungeonMap
     → (defeat) → runEnd → hub
 ```
 
@@ -620,16 +620,9 @@ All 10 interactive hub sprites now pass a `tooltip` prop with descriptive text e
 
 ---
 
-## CardRewardScreen — Reward Altar Tooltips (MEDIUM-15, 2026-04-10)
+## CardRewardScreen — Deleted (2026-04-12)
 
-**Source file:** `src/ui/components/CardRewardScreen.svelte`
-
-### Hover Tooltip on Altar Items
-Each altar card option shows an `.altar-card-tooltip` on hover (before clicking to select):
-- Positioned absolutely above the card with `bottom: calc(105% ...)` 
-- Shows: card name, detailed description (`getDetailedCardDescription()`), "Click to select" hint
-- Disappears once a card is selected (`!isSelected(option)` guard)
-- `@keyframes rewardTooltipIn` for subtle scale-up entry
+`src/ui/components/CardRewardScreen.svelte` was the old Svelte-based fallback card reward overlay. It is now deleted. The active reward path is `rewardRoom` (Phaser `RewardRoomScene`), which has been the only path since `USE_REWARD_ROOM_SCENE = true` was set. The `cardReward` screen type is retained in the union for save-file compatibility only — saves that stored `cardReward` redirect to `dungeonMap` or trigger the Phaser reward room.
 
 ---
 

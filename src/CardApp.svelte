@@ -142,7 +142,6 @@
   import StudyQuizOverlay from './ui/components/StudyQuizOverlay.svelte'
   import MeditateOverlay from './ui/components/MeditateOverlay.svelte'
   import RunEndScreen from './ui/components/RunEndScreen.svelte'
-  import CardRewardScreen from './ui/components/CardRewardScreen.svelte'
   import RetreatOrDelve from './ui/components/RetreatOrDelve.svelte'
   import DungeonEntrance from './ui/components/DungeonEntrance.svelte'
   import HubScreen from './ui/components/HubScreen.svelte'
@@ -1694,18 +1693,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         />
       {/if}
     {/if}
-  {/if}
-
-  {#if $currentScreen === 'cardReward'}
-    <div in:fly={{ y: 8, duration: 350 }}>
-      <CardRewardScreen
-        options={$activeCardRewardOptions}
-        onselect={handleRewardSelected}
-        onskip={onCardRewardSkipped}
-        onrewardstepchange={() => autoSaveRun('cardReward')}
-        onreroll={(type) => onCardRewardReroll(type)}
-      />
-    </div>
   {/if}
 
   {#if $currentScreen === 'shopRoom'}
