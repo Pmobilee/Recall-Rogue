@@ -74,9 +74,55 @@ async function main() {
       // Load and ensure RGBA
       let img = sharp(srcPath).ensureAlpha();
 
-      // Trim solid-color / transparent borders.
-      // Use a generous threshold so colored backgrounds from the art studio get trimmed.
-      // Catch trim failures (e.g. fully transparent or single-color images) and fall back.
+      // ── Stray pixel removal ──────────────────────────────────
+      // AI-generated icons often have semi-transparent stray pixels far from the
+      // main content. These cause trim() to keep a huge bounding box, making the
+      // actual icon tiny within the output frame.
+      //
+      // Strategy: threshold the alpha channel — pixels below a minimum opacity
+      // become fully transparent. Then apply a median filter to remove isolated
+      // single-pixel noise while preserving edges.
+      {
+        const { data, info } = await img.clone().raw().toBuffer({ resolveWithObject: true });
+        const { width, height, channels } = info;
+        if (channels === 4) {
+          // Pass 1: zero out pixels with alpha < 20 (nearly invisible stray pixels)
+          const ALPHA_THRESHOLD = 20;
+          for (let i = 3; i < data.length; i += 4) {
+            if (data[i] < ALPHA_THRESHOLD) {
+              data[i - 3] = 0; data[i - 2] = 0; data[i - 1] = 0; data[i] = 0;
+            }
+          }
+
+          // Pass 2: remove isolated opaque pixels (no opaque neighbours = stray)
+          // Check a 3x3 neighbourhood; if fewer than 2 neighbours have alpha > ALPHA_THRESHOLD,
+          // clear the pixel. This kills scattered noise without affecting icon edges.
+          const NEIGHBOUR_MIN = 2;
+          const cleared = Buffer.from(data); // work on a copy
+          for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+              const idx = (y * width + x) * 4;
+              if (data[idx + 3] === 0) continue; // already transparent
+              let neighbours = 0;
+              for (let dy = -1; dy <= 1; dy++) {
+                for (let dx = -1; dx <= 1; dx++) {
+                  if (dy === 0 && dx === 0) continue;
+                  const nx = x + dx, ny = y + dy;
+                  if (nx < 0 || nx >= width || ny < 0 || ny >= height) continue;
+                  if (data[(ny * width + nx) * 4 + 3] >= ALPHA_THRESHOLD) neighbours++;
+                }
+              }
+              if (neighbours < NEIGHBOUR_MIN) {
+                cleared[idx] = 0; cleared[idx + 1] = 0; cleared[idx + 2] = 0; cleared[idx + 3] = 0;
+              }
+            }
+          }
+
+          img = sharp(cleared, { raw: { width, height, channels } }).ensureAlpha();
+        }
+      }
+
+      // Trim transparent borders after stray pixel removal.
       try {
         img = img.trim({ threshold: 30 });
       } catch {
