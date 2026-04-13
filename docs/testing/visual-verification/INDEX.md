@@ -1,0 +1,116 @@
+<!--
+  Purpose: Master index for visual + functional verification checklist.
+  Sources: src/data/mechanics.ts, src/data/enemies.ts, src/data/relics/,
+           src/data/statusEffects.ts, src/data/enemyPowers.ts,
+           src/dev/scenarioSimulator.ts, src/dev/playtestAPI.ts
+  Last rebuilt: 2026-04-13
+-->
+
+# Visual + Functional Verification Checklist
+
+885 items across 8 domain files, organized into 3 execution phases.
+
+**Prerequisite:** The [chain multiplier rework](../../RESEARCH/chain-multiplier-rework.md) must land before Phase 1 items are meaningful — it changes the damage/block/DoT formulas every card tests against.
+
+---
+
+## Legend
+
+- `SC.loadCustom(...)` = `__rrScenario.loadCustom({ ... })`
+- `SC.patch(...)` = `__rrScenario.patch({ turn: {...}, run: {...} })`
+- `SC.forceHand(...)` = `__rrScenario.forceHand([...])`
+- `SC.addRelic(...)` = `__rrScenario.addRelic('id')`
+- `LD()` = `__rrLayoutDump()` — spatial check
+- `SS()` = `__rrScreenshotFile()` — pixel check
+
+---
+
+## Execution Phases
+
+### Phase 1 — Core Math (blocking)
+Validates damage formulas and card description accuracy. Must pass before visual checks.
+
+| File | Items | Covers |
+|------|-------|--------|
+| [06-cards-functional.md](06-cards-functional.md) | — | Card damage/block/DoT formulas at all mastery levels (S11) |
+| [08-card-description-accuracy.md](08-card-description-accuracy.md) | — | Display vs actual values, resolver drift, modifier reflection (S18) |
+
+### Phase 2 — Visual Regression
+Layout correctness, VFX, screen rendering.
+
+| File | Items | Covers |
+|------|-------|--------|
+| [01-status-effects-passives.md](01-status-effects-passives.md) | — | Status bars, power badges, quiz-active state (S1) |
+| [02-card-effects-visual.md](02-card-effects-visual.md) | — | Card VFX, mastery popups, card picker overlay (S2) |
+| [04-enemies-rooms-screens.md](04-enemies-rooms-screens.md) | — | Enemies, rooms, sprites, misc screens (S4+S5+S9+S10) |
+
+### Phase 3 — Depth Coverage
+Relics, edge cases, complex interactions.
+
+| File | Items | Covers |
+|------|-------|--------|
+| [03-relics-visual-functional.md](03-relics-visual-functional.md) | — | Relic rendering + functional correctness (S3+S12) |
+| [05-edge-cases-interactions.md](05-edge-cases-interactions.md) | — | Overflow, interaction states, megastates (S6+S7+S8) |
+| [07-status-chains-combos.md](07-status-chains-combos.md) | — | Status math, chain system, mastery, enemy mechanics, combos (S13-S17) |
+
+---
+
+## Progress
+
+| File | Total | Verified | Remaining | Last Run |
+|------|-------|----------|-----------|----------|
+| 01-status-effects-passives | — | 0 | — | never |
+| 02-card-effects-visual | — | 0 | — | never |
+| 03-relics-visual-functional | — | 0 | — | never |
+| 04-enemies-rooms-screens | — | 0 | — | never |
+| 05-edge-cases-interactions | — | 0 | — | never |
+| 06-cards-functional | — | 0 | — | never |
+| 07-status-chains-combos | — | 0 | — | never |
+| 08-card-description-accuracy | — | 0 | — | never |
+
+---
+
+## Implementation Notes
+
+**Viewport presets for Docker containers:**
+- Portrait: `412 × 915` (default mobile, primary)
+- Landscape: `1280 × 720` (Steam primary target)
+- Tablet: `1024 × 768` (secondary check)
+
+**Standard test sequence per item:**
+1. `await __rrScenario.loadCustom(config)` or `__rrScenario.load('preset-name')`
+2. `await __rrScenario.patch(overrides)` if needed
+3. `const layout = await __rrLayoutDump()` — verify spatial correctness
+4. `const path = await __rrScreenshotFile()` — capture visual state
+5. Read screenshot + layout dump together for full verification
+
+**Key spatial assertions from `__rrLayoutDump()`:**
+- Status effects: y-position should be > (enemy HP bar y + HP bar height) and < (enemy sprite bottom)
+- Power badges: x-positions all within `[0, viewportWidth]`, y within `[0, viewportHeight]`
+- Hand cards: all card bottom edges < viewport height (no clipping below fold)
+- Relic tray: all relic slots x within `[0, viewportWidth]`
+- AP orb: x/y within viewport, clickable
+
+**Key pixel assertions from screenshots:**
+- Status effect icons: minimum 24px visible height; label text readable
+- Power badge icons: minimum 32px visible; no overlap with adjacent badges
+- Chain counter: multiplier text clearly readable; color bar matches chain type
+- Damage numbers: at least 30px font size; contrast ratio sufficient against background
+- HP bars: fill width visually proportional to HP percentage
+
+---
+
+### Critical Files for Implementation
+
+- `/Users/damion/CODE/Recall_Rogue/src/dev/scenarioSimulator.ts`
+- `/Users/damion/CODE/Recall_Rogue/src/ui/components/CardCombatOverlay.svelte`
+- `/Users/damion/CODE/Recall_Rogue/src/ui/components/EnemyPowerBadges.svelte`
+
+---
+
+## Cross-References
+
+- [Testing strategy](../strategy.md) — five testing layers overview
+- [Inspection registry](../inspection-registry.md) — element-level test tracking
+- [Scenario playtest skills](../../../.claude/skills/scenario-playtest/SKILL.md) — automated scenario execution
+- [Chain multiplier rework](../../RESEARCH/chain-multiplier-rework.md) — prerequisite design spec
