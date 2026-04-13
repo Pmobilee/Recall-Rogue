@@ -821,7 +821,7 @@
     </span>
   </div>
   {#if showSettings && quizLanguageCode}
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
     <div class="settings-modal-backdrop" onclick={() => { showSettings = false }}>
       <!-- svelte-ignore a11y_click_events_have_key_events -->
       <div class="settings-modal-container" onclick={(e) => e.stopPropagation()}>

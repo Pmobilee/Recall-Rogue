@@ -131,6 +131,7 @@
     <div class="modal-header">
       <div class="header-title-row">
         {#if isEditing}
+          <!-- svelte-ignore a11y_autofocus -->
           <input
             class="name-input"
             type="text"

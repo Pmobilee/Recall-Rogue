@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-12
+> **Last rebuilt:** 2026-04-13
 
 ---
 
@@ -105,6 +105,7 @@
 | [inspection-registry](testing/inspection-registry.md) | Inspection registry structure, deck-specific date fields, agent lock protocol, and CLI reference for parallel agent coordination |
 | [dev-presets](testing/DEVPRESET-REFERENCE.md) | Dev scenario presets and query parameters |
 | [playtest-dashboard](testing/PLAYTEST-DASHBOARD.md) | Playtest dashboard server and data locations |
+| [visual-verification-checklist](testing/VISUAL-VERIFICATION-CHECKLIST.md) | Master checklist of ~450 visual verification items — every card, relic, enemy, status effect, room, and edge case testable via Docker visual tests |
 
 ---
 

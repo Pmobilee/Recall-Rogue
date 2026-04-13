@@ -183,8 +183,7 @@
   ></canvas>
 
   {#if expanded}
-    <!-- Track info -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events --> <!-- Track info -->
     <div class="track-info" onclick={(e) => e.stopPropagation()}>
       <div
         class="track-name"
@@ -200,7 +199,7 @@
     </div>
 
     <!-- Category toggle -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
     <div class="category-toggle" role="group" aria-label="Music category" onclick={(e) => e.stopPropagation()}>
       <button
         type="button"
@@ -219,7 +218,7 @@
     </div>
 
     <!-- Playback controls -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
     <div class="playback-controls" role="group" aria-label="Playback controls" onclick={(e) => e.stopPropagation()}>
       <button type="button" class="ctrl-btn" onclick={(e) => { e.stopPropagation(); musicService.prev() }} aria-label="Previous track">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6l-8.5 6z" fill="currentColor"/></svg>
@@ -237,7 +236,7 @@
     </div>
 
     <!-- Volume -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
     <div class="volume-row" onclick={(e) => e.stopPropagation()}>
       <button type="button" class="mute-btn" class:muted={isMuted} onclick={(e) => { e.stopPropagation(); musicService.toggleMute(); }} aria-label={isMuted ? 'Unmute' : 'Mute'}>
         {#if isMuted}
@@ -252,7 +251,7 @@
     </div>
 
     <!-- Ambient toggle -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
     <div class="ambient-row" onclick={(e) => e.stopPropagation()}>
       <span class="ambient-label">AMB</span>
       <button

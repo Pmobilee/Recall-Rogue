@@ -391,6 +391,13 @@
     })
   }
 
+  /** Load a named non-combat scenario for Steam screenshots. */
+  async function steamScenario(preset: string): Promise<void> {
+    const scenario = (globalThis as any).__rrScenario
+    if (!scenario) return
+    await scenario.load(preset)
+  }
+
   function onTransitionComplete(): void {
     transitionActive = false
   }
@@ -400,6 +407,7 @@
   <!-- ═══ LANDSCAPE LAYOUT ═══════════════════════════════════════════════════ -->
   <div
     class="hub-landscape"
+    role="main"
     aria-label="Camp hub"
     style:cursor={disableEffects ? undefined : 'none'}
     onpointermove={handleHubPointerMove}
@@ -600,21 +608,38 @@
       {/if}
 
 {#if $devMode}
-      <div class="dev-btn-row" data-dev-only="true">
-        {#if onReplayBootAnim}
-          <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
-        {/if}
-        <button class="dev-btn" onclick={previewEnter}>Enter</button>
-        <button class="dev-btn" onclick={previewExit}>Exit</button>
-        <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
-        <button class="dev-btn" onclick={testLighting}>Lighting</button>
-        <button class="dev-btn" onclick={testBrightIdea}>BrightIdea</button>
-        <button class="dev-btn" onclick={testInkSlug}>InkSlug</button>
-        <button class="dev-btn" onclick={() => steamCombat('chess_tactics')}>♟ Chess</button>
-        <button class="dev-btn" onclick={() => steamCombat('japanese_n4_grammar')}>🇯🇵 Japanese</button>
-        <button class="dev-btn" onclick={() => steamCombat('famous_paintings')}>🎨 Paintings</button>
-        <button class="dev-btn" onclick={() => steamCombat('human_anatomy')}>🫀 Anatomy</button>
-        <button class="dev-btn" onclick={() => steamCombat('world_war_ii')}>⚔️ WWII</button>
+      <div class="dev-btn-stack" data-dev-only="true">
+        <div class="dev-btn-row">
+          {#if onReplayBootAnim}
+            <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
+          {/if}
+          <button class="dev-btn" onclick={previewEnter}>Enter</button>
+          <button class="dev-btn" onclick={previewExit}>Exit</button>
+          <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
+          <button class="dev-btn" onclick={testLighting}>Lighting</button>
+          <button class="dev-btn" onclick={testBrightIdea}>BrightIdea</button>
+          <button class="dev-btn" onclick={testInkSlug}>InkSlug</button>
+          <button class="dev-btn" onclick={() => steamCombat('chess_tactics')}>♟ Chess</button>
+          <button class="dev-btn" onclick={() => steamCombat('japanese_n4_grammar')}>🇯🇵 Japanese</button>
+          <button class="dev-btn" onclick={() => steamCombat('famous_paintings')}>🎨 Paintings</button>
+          <button class="dev-btn" onclick={() => steamCombat('human_anatomy')}>🫀 Anatomy</button>
+          <button class="dev-btn" onclick={() => steamCombat('world_war_ii')}>⚔️ WWII</button>
+        </div>
+        <div class="dev-btn-row">
+          <button class="dev-btn" onclick={() => steamCombat('greek_mythology')}>🏛 Greek Myth</button>
+          <button class="dev-btn" onclick={() => steamCombat('dinosaurs')}>🦕 Dinos</button>
+          <button class="dev-btn" onclick={() => steamCombat('anime_manga')}>🎌 Anime</button>
+          <button class="dev-btn" onclick={() => steamCombat('constellations')}>⭐ Stars</button>
+          <button class="dev-btn" onclick={() => steamCombat('ancient_rome')}>🏟 Rome</button>
+          <button class="dev-btn" onclick={() => steamCombat('ap_biology')}>🧬 Biology</button>
+        </div>
+        <div class="dev-btn-row">
+          <button class="dev-btn" onclick={() => steamScenario('shop-loaded')}>🛒 Shop</button>
+          <button class="dev-btn" onclick={() => steamScenario('dungeon-map')}>🗺 Map</button>
+          <button class="dev-btn" onclick={() => steamScenario('card-reward-mixed')}>🃏 Rewards</button>
+          <button class="dev-btn" onclick={() => steamScenario('rest-site')}>⛺ Rest</button>
+          <button class="dev-btn" onclick={() => steamScenario('reward-relic')}>💎 Relic</button>
+        </div>
       </div>
       <PendingNextStepsOverlay />
       {/if}
@@ -845,18 +870,35 @@
     {/if}
 
 {#if $devMode}
-    <div class="dev-btn-row" data-dev-only="true">
-      {#if onReplayBootAnim}
-        <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
-      {/if}
-      <button class="dev-btn" onclick={previewEnter}>Enter</button>
-      <button class="dev-btn" onclick={previewExit}>Exit</button>
-      <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
-      <button class="dev-btn" onclick={() => steamCombat('chess_tactics')}>♟ Chess</button>
-      <button class="dev-btn" onclick={() => steamCombat('japanese_n4_grammar')}>🇯🇵 Japanese</button>
-      <button class="dev-btn" onclick={() => steamCombat('famous_paintings')}>🎨 Paintings</button>
-      <button class="dev-btn" onclick={() => steamCombat('human_anatomy')}>🫀 Anatomy</button>
-      <button class="dev-btn" onclick={() => steamCombat('world_war_ii')}>⚔️ WWII</button>
+    <div class="dev-btn-stack" data-dev-only="true">
+      <div class="dev-btn-row">
+        {#if onReplayBootAnim}
+          <button class="dev-btn" onclick={onReplayBootAnim}>Intro</button>
+        {/if}
+        <button class="dev-btn" onclick={previewEnter}>Enter</button>
+        <button class="dev-btn" onclick={previewExit}>Exit</button>
+        <button class="dev-btn" onclick={fakeRunEnd}>RunEnd</button>
+        <button class="dev-btn" onclick={() => steamCombat('chess_tactics')}>♟ Chess</button>
+        <button class="dev-btn" onclick={() => steamCombat('japanese_n4_grammar')}>🇯🇵 Japanese</button>
+        <button class="dev-btn" onclick={() => steamCombat('famous_paintings')}>🎨 Paintings</button>
+        <button class="dev-btn" onclick={() => steamCombat('human_anatomy')}>🫀 Anatomy</button>
+        <button class="dev-btn" onclick={() => steamCombat('world_war_ii')}>⚔️ WWII</button>
+      </div>
+      <div class="dev-btn-row">
+        <button class="dev-btn" onclick={() => steamCombat('greek_mythology')}>🏛 Greek Myth</button>
+        <button class="dev-btn" onclick={() => steamCombat('dinosaurs')}>🦕 Dinos</button>
+        <button class="dev-btn" onclick={() => steamCombat('anime_manga')}>🎌 Anime</button>
+        <button class="dev-btn" onclick={() => steamCombat('constellations')}>⭐ Stars</button>
+        <button class="dev-btn" onclick={() => steamCombat('ancient_rome')}>🏟 Rome</button>
+        <button class="dev-btn" onclick={() => steamCombat('ap_biology')}>🧬 Biology</button>
+      </div>
+      <div class="dev-btn-row">
+        <button class="dev-btn" onclick={() => steamScenario('shop-loaded')}>🛒 Shop</button>
+        <button class="dev-btn" onclick={() => steamScenario('dungeon-map')}>🗺 Map</button>
+        <button class="dev-btn" onclick={() => steamScenario('card-reward-mixed')}>🃏 Rewards</button>
+        <button class="dev-btn" onclick={() => steamScenario('rest-site')}>⛺ Rest</button>
+        <button class="dev-btn" onclick={() => steamScenario('reward-relic')}>💎 Relic</button>
+      </div>
     </div>
     <PendingNextStepsOverlay />
     {/if}
@@ -972,13 +1014,20 @@
     }
   }
 
-  .dev-btn-row {
+  .dev-btn-stack {
     position: absolute;
     bottom: calc(max(110px, 106px + var(--safe-bottom, 0px)));
     right: calc(12px * var(--layout-scale, 1));
     display: flex;
-    gap: calc(6px * var(--layout-scale, 1));
+    flex-direction: column;
+    gap: calc(4px * var(--layout-scale, 1));
     z-index: 50;
+    align-items: flex-end;
+  }
+
+  .dev-btn-row {
+    display: flex;
+    gap: calc(6px * var(--layout-scale, 1));
   }
 
   .dev-btn {

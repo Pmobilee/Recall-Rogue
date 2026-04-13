@@ -367,7 +367,6 @@
               class:history-row-selected={idx === selectedIndex}
               onclick={() => handleSelectRun(idx)}
               aria-label="{resultLabel(run.result)} on {formatDate(run.runDate)}, floor {run.floorReached}"
-              role="listitem"
             >
               <span class="h-icon" class:h-victory={run.result === 'victory'} class:h-defeat={run.result === 'defeat'} class:h-retreat={run.result === 'retreat'}>
                 {resultIcon(run.result)}

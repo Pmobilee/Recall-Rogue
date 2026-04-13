@@ -1,11 +1,18 @@
 /**
  * generate-steam-images.mjs
  *
- * Generates 6 static PNG images for the Steam store page "About This Game" section.
+ * Generates 5 static PNG images for the Steam store page "About This Game" section.
  * Uses Playwright to screenshot HTML sections rendered in a headless Chrome browser.
  *
  * Usage: node scripts/generate-steam-images.mjs
  * Output: steam/store-images/*.png + steam/store-images/banner.webp
+ *
+ * Sections:
+ *   1. enemy-showcase    (1200×1600)
+ *   2. relic-grid        (1200×1800)
+ *   3. deck-domains      (1200×auto ~2400-3000) — all decks, dense layout
+ *   4. mastery-progression (1200×1200)
+ *   5. cat-stats         (1200×600) — cat + stats composite
  */
 
 import { chromium } from 'playwright';
@@ -48,28 +55,125 @@ function buildHTML() {
     { name: 'Insight Prism', icon: ICON('icon_relic_insight_prism.png'), desc: 'Wrong answers reveal the correct answer. Next time, auto-succeed.' },
   ];
 
-  const domains = [
-    { name: 'History',            color: '#D4A44A', decks: 'Ancient Greece · WWII · US Presidents' },
-    { name: 'Science',            color: '#2A9D8F', decks: 'Periodic Table · AP Biology · AP Physics' },
-    { name: 'Languages',          color: '#6B4C9A', decks: 'Japanese N5-N1 · Spanish A1-C2 · French' },
-    { name: 'Geography',          color: '#4A90D9', decks: 'World Capitals · Countries · World Flags' },
-    { name: 'Art & Culture',      color: '#D4766C', decks: 'Famous Paintings · Music History · Literature' },
-    { name: 'Mythology',          color: '#8B6914', decks: 'Greek · Norse · Egyptian Mythology' },
-    { name: 'Games',              color: '#4CAF50', decks: 'Chess Tactics (620K+ puzzles) · Anime & Manga' },
-    { name: 'Health & Medicine',  color: '#E74C3C', decks: 'Human Anatomy · Medical Terminology · Pharmacology' },
-    { name: 'General Knowledge',  color: '#9A9590', decks: 'Pop Culture · Movies & Cinema · Famous Inventions' },
-    { name: 'AP Exams',           color: '#F0C75E', decks: '12 AP subjects covered' },
+  // Updated to real current numbers
+  const numbers = [
+    { value: '100',  label: 'Curated Decks' },
+    { value: '68K+', label: 'Real Facts' },
+    { value: '89',   label: 'Enemies' },
+    { value: '90',   label: 'Relics' },
+    { value: '620K+',label: 'Chess Puzzles' },
+    { value: '8',    label: 'Languages' },
+    { value: '20',   label: 'Ascension Levels' },
+    { value: '98',   label: 'Card Mechanics' },
   ];
 
-  const numbers = [
-    { value: '98', label: 'Curated Decks' },
-    { value: '67K+', label: 'Real Facts' },
-    { value: '89', label: 'Enemies' },
-    { value: '56', label: 'Relics' },
-    { value: '620K+', label: 'Chess Puzzles' },
-    { value: '7', label: 'Languages' },
-    { value: '20', label: 'Ascension Levels' },
-    { value: '38+', label: 'Card Mechanics' },
+  // All domains with every individual deck listed — dense "holy fuck" layout
+  const domainGroups = [
+    {
+      name: 'HISTORY',
+      color: '#D4A44A',
+      decks: ['Ancient Greece', 'Ancient Rome', 'Medieval World', 'WWII', 'US Presidents', 'AP World History', 'AP U.S. History', 'AP European History'],
+    },
+    {
+      name: 'SCIENCE',
+      color: '#2A9D8F',
+      decks: ['Periodic Table', 'AP Biology', 'AP Chemistry', 'AP Physics', 'Dinosaurs & Paleontology'],
+    },
+    {
+      name: 'LANGUAGES — Japanese',
+      color: '#9B59B6',
+      decks: ['Hiragana', 'Katakana', 'JLPT N5 Vocab', 'JLPT N4 Vocab', 'JLPT N3 Vocab', 'JLPT N2 Vocab', 'JLPT N1 Vocab', 'JLPT N5 Grammar', 'JLPT N4 Grammar', 'JLPT N3 Grammar', 'JLPT N2 Grammar', 'JLPT N1 Grammar'],
+    },
+    {
+      name: 'LANGUAGES — Chinese',
+      color: '#E74C3C',
+      decks: ['HSK 1', 'HSK 2', 'HSK 3', 'HSK 4', 'HSK 5', 'HSK 6'],
+    },
+    {
+      name: 'LANGUAGES — Spanish',
+      color: '#F39C12',
+      decks: ['Spanish A1 Vocab', 'Spanish A2 Vocab', 'Spanish B1 Vocab', 'Spanish B2 Vocab', 'Spanish C1 Vocab', 'Spanish C2 Vocab', 'Spanish A1 Grammar', 'Spanish A2 Grammar', 'Spanish B1 Grammar', 'Spanish B2 Grammar'],
+    },
+    {
+      name: 'LANGUAGES — French',
+      color: '#3498DB',
+      decks: ['French A1 Vocab', 'French A2 Vocab', 'French B1 Vocab', 'French B2 Vocab', 'French A1 Grammar', 'French A2 Grammar', 'French B1 Grammar', 'French B2 Grammar'],
+    },
+    {
+      name: 'LANGUAGES — German',
+      color: '#95A5A6',
+      decks: ['German A1', 'German A2', 'German B1', 'German B2'],
+    },
+    {
+      name: 'LANGUAGES — Korean',
+      color: '#1ABC9C',
+      decks: ['Hangul', 'TOPIK 1', 'TOPIK 2'],
+    },
+    {
+      name: 'LANGUAGES — Czech',
+      color: '#D35400',
+      decks: ['Czech A1', 'Czech A2', 'Czech B1', 'Czech B2'],
+    },
+    {
+      name: 'LANGUAGES — Dutch',
+      color: '#8E44AD',
+      decks: ['Dutch A1', 'Dutch A2', 'Dutch B1', 'Dutch B2'],
+    },
+    {
+      name: 'MYTHOLOGY & RELIGION',
+      color: '#8B6914',
+      decks: ['Greek Mythology', 'Norse Mythology', 'Egyptian Mythology', 'World Religions'],
+    },
+    {
+      name: 'GEOGRAPHY',
+      color: '#4A90D9',
+      decks: ['World Capitals', 'World Countries', 'World Flags', 'US States', 'AP Human Geography', 'World Wonders & Landmarks', 'Map Explorer'],
+    },
+    {
+      name: 'ART & CULTURE',
+      color: '#D4766C',
+      decks: ['Famous Paintings', 'Music History', 'Movies & Cinema', 'World Literature', 'Anime & Manga'],
+    },
+    {
+      name: 'GENERAL KNOWLEDGE',
+      color: '#9A9590',
+      decks: ['Philosophy', 'Computer Science', 'Pop Culture', 'Famous Inventions'],
+    },
+    {
+      name: 'SOCIAL SCIENCES',
+      color: '#F0C75E',
+      decks: ['AP Psychology', 'AP Macroeconomics', 'AP Microeconomics'],
+    },
+    {
+      name: 'SPACE & ASTRONOMY',
+      color: '#5D6DBE',
+      decks: ['Constellations', 'NASA Missions', 'Solar System'],
+    },
+    {
+      name: 'HEALTH & MEDICINE',
+      color: '#E74C3C',
+      decks: ['Human Anatomy', 'Medical Terminology', 'Pharmacology'],
+    },
+    {
+      name: 'ANIMALS & NATURE',
+      color: '#27AE60',
+      decks: ['Mammals', 'Ocean Life'],
+    },
+    {
+      name: 'GAMES',
+      color: '#4CAF50',
+      decks: ['Chess Tactics (620K+ puzzles)', 'Map Explorer'],
+    },
+    {
+      name: 'FOOD & CULTURE',
+      color: '#E67E22',
+      decks: ['World Cuisines & Spices'],
+    },
+    {
+      name: 'SPORTS',
+      color: '#16A085',
+      decks: ['FIFA World Cup'],
+    },
   ];
 
   const CARD_BASE = `file://${PROJECT_ROOT}/public/assets/cardframes/v2`;
@@ -98,6 +202,8 @@ function buildHTML() {
     const b = parseInt(hex.slice(5,7), 16);
     return `rgba(${r},${g},${b},${alpha})`;
   };
+
+  const CAT_IMAGE = `file://${PROJECT_ROOT}/steam/store-images/cat-cropped.png`;
 
   return /* html */`<!DOCTYPE html>
 <html>
@@ -133,22 +239,22 @@ function buildHTML() {
   }
 
   /* ══════════════════════════════════════════════
-     SECTION 1 — ENEMY SHOWCASE  1560 × 1100
+     SECTION 1 — ENEMY SHOWCASE  1200 × 1600
   ══════════════════════════════════════════════ */
   #enemy-showcase {
-    width: 1560px;
-    height: 1100px;
+    width: 1200px;
+    height: 1600px;
     background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 48px;
-    gap: 24px;
+    gap: 28px;
   }
   #enemy-showcase .section-title {
     font-family: 'Cinzel', serif;
-    font-size: 1.6rem;
+    font-size: 2.4rem;
     font-weight: 700;
     color: var(--gold);
     letter-spacing: 0.12em;
@@ -157,9 +263,9 @@ function buildHTML() {
   }
   #enemy-showcase .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 24px;
     width: 100%;
     flex: 1;
   }
@@ -167,52 +273,52 @@ function buildHTML() {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 12px;
-    padding: 1.25rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
+    gap: 0.8rem;
     transition: none;
   }
   #enemy-showcase .card img {
-    height: 180px;
-    max-width: 180px;
+    height: 220px;
+    max-width: 220px;
     image-rendering: pixelated;
     object-fit: contain;
   }
   #enemy-showcase .card .name {
     font-family: 'Cinzel', serif;
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: var(--gold);
     text-align: center;
   }
   #enemy-showcase .card .desc {
     font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
+    font-size: 1.2rem;
     color: var(--text-dim);
     text-align: center;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   /* ══════════════════════════════════════════════
-     SECTION 2 — RELIC GRID  1560 × 1200
+     SECTION 2 — RELIC GRID  1200 × 1800
   ══════════════════════════════════════════════ */
   #relic-grid {
-    width: 1560px;
-    height: 1200px;
+    width: 1200px;
+    height: 1800px;
     background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 40px;
-    gap: 20px;
+    gap: 24px;
   }
   #relic-grid .section-title {
     font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--gold);
     letter-spacing: 0.12em;
@@ -221,9 +327,9 @@ function buildHTML() {
   }
   #relic-grid .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 18px;
     width: 100%;
     flex: 1;
   }
@@ -231,15 +337,15 @@ function buildHTML() {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 12px;
-    padding: 1rem 1.25rem;
+    padding: 1.1rem 1.4rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    gap: 1.1rem;
   }
   #relic-grid .card img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     image-rendering: pixelated;
     object-fit: contain;
     flex-shrink: 0;
@@ -247,134 +353,95 @@ function buildHTML() {
   #relic-grid .card .info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
   #relic-grid .card .name {
     font-family: 'Cinzel', serif;
-    font-size: 0.85rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--gold);
     line-height: 1.2;
   }
   #relic-grid .card .desc {
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: 1.1rem;
     color: var(--text-dim);
     line-height: 1.4;
   }
 
   /* ══════════════════════════════════════════════
-     SECTION 3 — DECK DOMAINS  1560 × 700
+     SECTION 3 — DECK DOMAINS  1200 × auto
+     Colored badge style — lots of badges = volume
   ══════════════════════════════════════════════ */
   #deck-domains {
-    width: 1560px;
-    height: 700px;
+    width: 1200px;
     background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 36px 48px;
-    gap: 24px;
+    padding: 48px 40px 56px;
+    gap: 32px;
   }
   #deck-domains .section-title {
     font-family: 'Cinzel', serif;
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     color: var(--gold);
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    text-align: center;
+    line-height: 1.3;
   }
   #deck-domains .grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 14px;
     justify-content: center;
     align-items: flex-start;
-    max-width: 1400px;
+    max-width: 1120px;
   }
   .domain-badge {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px 28px;
-    border-radius: 20px;
-    gap: 6px;
-    min-width: 160px;
+    padding: 14px 22px;
+    border-radius: 16px;
+    gap: 5px;
+    min-width: 140px;
   }
   .domain-badge .domain-name {
     font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 700;
+    color: #fff;
     letter-spacing: 0.04em;
+    text-align: center;
   }
   .domain-badge .domain-decks {
     font-family: 'Inter', sans-serif;
-    font-size: 0.82rem;
-    color: var(--text-dim);
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.8);
     text-align: center;
-    line-height: 1.3;
+    line-height: 1.4;
   }
 
   /* ══════════════════════════════════════════════
-     SECTION 4 — NUMBERS FLEX  1560 × 500
-  ══════════════════════════════════════════════ */
-  #numbers-flex {
-    width: 1560px;
-    height: 500px;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 36px 48px;
-    gap: 32px;
-  }
-  #numbers-flex .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 24px 40px;
-    width: 100%;
-  }
-  .number-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
-  .number-block .num {
-    font-family: 'Cinzel', serif;
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .number-block .label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  /* ══════════════════════════════════════════════
-     SECTION 5 — MASTERY PROGRESSION  1560 × 700
+     SECTION 4 — MASTERY PROGRESSION  1200 × 1200
   ══════════════════════════════════════════════ */
   #mastery-progression {
-    width: 1560px;
-    height: 700px;
+    width: 1200px;
+    height: 1200px;
     background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 24px 48px;
-    gap: 24px;
+    padding: 32px 48px;
+    gap: 28px;
   }
   #mastery-progression .section-title {
     font-family: 'Cinzel', serif;
-    font-size: 1.6rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--gold);
     letter-spacing: 0.12em;
@@ -382,24 +449,25 @@ function buildHTML() {
   }
   #mastery-progression .card-rows {
     display: flex;
-    gap: 48px;
+    flex-direction: column;
+    gap: 40px;
     align-items: center;
     justify-content: center;
   }
   .card-pair {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
   }
   .card-pair .arrow {
-    font-size: 2rem;
+    font-size: 2.4rem;
     color: var(--gold);
     font-weight: 700;
   }
   .game-card {
     position: relative;
-    width: 140px;
-    height: 180px;
+    width: 180px;
+    height: 230px;
     flex-shrink: 0;
   }
   .game-card img.card-layer {
@@ -419,7 +487,7 @@ function buildHTML() {
     align-items: center;
     justify-content: center;
     font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 900;
     color: #1a0a00;
   }
@@ -433,7 +501,7 @@ function buildHTML() {
     align-items: center;
     justify-content: center;
     font-family: 'Kreon', 'Georgia', serif;
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     font-weight: 900;
     color: #1a0a00;
     text-transform: uppercase;
@@ -467,7 +535,7 @@ function buildHTML() {
     justify-content: center;
     text-align: center;
     font-family: 'Inter', sans-serif;
-    font-size: 0.5rem;
+    font-size: 0.65rem;
     color: #e8e4dc;
     line-height: 1.4;
     padding-top: 4px;
@@ -486,23 +554,79 @@ function buildHTML() {
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Inter', sans-serif;
-    font-size: 0.45rem;
+    font-size: 0.55rem;
     font-weight: 700;
     color: #4CAF50;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     background: rgba(0,0,0,0.6);
-    padding: 1px 6px;
+    padding: 2px 8px;
     border-radius: 4px;
   }
   .mastery-label {
     font-family: 'Inter', sans-serif;
-    font-size: 0.6rem;
+    font-size: 0.9rem;
     color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     text-align: center;
-    margin-top: 4px;
+    margin-top: 6px;
+  }
+
+  /* ══════════════════════════════════════════════
+     SECTION 5 — CAT STATS COMPOSITE  1200 × 600
+     Cat on left, stats grid on right
+  ══════════════════════════════════════════════ */
+  #cat-stats {
+    width: 1200px;
+    height: 600px;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 60px;
+    gap: 60px;
+  }
+  #cat-stats .cat-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  #cat-stats .cat-side img {
+    height: 300px;
+    width: auto;
+    image-rendering: pixelated;
+    object-fit: contain;
+  }
+  #cat-stats .stats-side {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px 60px;
+    flex: 1;
+  }
+  .stat-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .stat-block .stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-block .stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
   }
 </style>
 </head>
@@ -536,30 +660,19 @@ function buildHTML() {
   </div>
 </section>
 
-<!-- SECTION 3: Deck Domains -->
+<!-- SECTION 3: Deck Domains — colored badges -->
 <section id="deck-domains">
-  <div class="section-title">Learn Anything. Fight Everything.</div>
+  <div class="section-title">LEARN ANYTHING. FIGHT EVERYTHING.</div>
   <div class="grid">
-    ${domains.map(d => `
-    <div class="domain-badge" style="background:${hex2rgba(d.color, 0.15)};border:1px solid ${d.color};">
-      <div class="domain-name" style="color:${d.color};">${d.name}</div>
-      <div class="domain-decks">${d.decks}</div>
+    ${domainGroups.map(d => `
+    <div class="domain-badge" style="background:${hex2rgba(d.color, 0.2)};border:1px solid ${d.color};">
+      <div class="domain-name">${d.name}</div>
+      <div class="domain-decks">${d.decks.join(' · ')}</div>
     </div>`).join('\n')}
   </div>
 </section>
 
-<!-- SECTION 4: Numbers Flex -->
-<section id="numbers-flex">
-  <div class="grid">
-    ${numbers.map(n => `
-    <div class="number-block">
-      <div class="num">${n.value}</div>
-      <div class="label">${n.label}</div>
-    </div>`).join('\n')}
-  </div>
-</section>
-
-<!-- SECTION 5: Mastery Progression -->
+<!-- SECTION 4: Mastery Progression -->
 <section id="mastery-progression">
   <div class="section-title">Cards Get Stronger When You Learn</div>
   <div class="card-rows">
@@ -568,7 +681,7 @@ function buildHTML() {
       const base = `${CARD_BASE}/card-frame-base.webp`;
       const banner = `${CARD_BASE}/card-banner-chain${card.chainType}.webp`;
       const upgrade = `${CARD_BASE}/card-upgrade-icon.webp`;
-      
+
       const renderCard = (level, isMax) => `
         <div style="display:flex;flex-direction:column;align-items:center;">
           <div class="game-card">
@@ -584,7 +697,7 @@ function buildHTML() {
           </div>
           <div class="mastery-label">${isMax ? 'Mastery 5' : 'Mastery 0'}</div>
         </div>`;
-      
+
       return `
       <div class="card-pair">
         ${renderCard(card.l0, false)}
@@ -592,6 +705,20 @@ function buildHTML() {
         ${renderCard(card.l5, true)}
       </div>`;
     }).join('\n')}
+  </div>
+</section>
+
+<!-- SECTION 5: Cat + Stats Composite -->
+<section id="cat-stats">
+  <div class="cat-side">
+    <img src="${CAT_IMAGE}" alt="Camp Cat">
+  </div>
+  <div class="stats-side">
+    ${numbers.map(n => `
+    <div class="stat-block">
+      <div class="stat-num">${n.value}</div>
+      <div class="stat-label">${n.label}</div>
+    </div>`).join('\n')}
   </div>
 </section>
 
@@ -606,7 +733,8 @@ writeFileSync(tmpPath, html);
 console.log(`Wrote temp HTML to ${tmpPath}`);
 
 const browser = await chromium.launch({ channel: 'chrome' });
-const context = await browser.newContext({ deviceScaleFactor: 2, viewport: { width: 1600, height: 3400 } });
+// Tall viewport needed: deck-domains is ~2400-3000px auto-height
+const context = await browser.newContext({ deviceScaleFactor: 2, viewport: { width: 1300, height: 5000 } });
 const page = await context.newPage();
 
 await page.goto(`file://${tmpPath}`);
@@ -615,22 +743,21 @@ await page.goto(`file://${tmpPath}`);
 await page.waitForTimeout(2500);
 
 const sections = [
-  { id: 'enemy-showcase',    file: 'enemy-showcase.png',    w: 1560, h: 1100 },
-  { id: 'relic-grid',        file: 'relic-grid.png',        w: 1560, h: 1200 },
-  { id: 'deck-domains',      file: 'deck-domains.png',      w: 1560, h: 700  },
-  { id: 'numbers-flex',        file: 'numbers-flex.png',        w: 1560, h: 500  },
-  { id: 'mastery-progression', file: 'mastery-progression.png', w: 1560, h: 700  },
+  { id: 'enemy-showcase',      file: 'enemy-showcase.png',      w: 1200, h: 1600 },
+  { id: 'relic-grid',          file: 'relic-grid.png',          w: 1200, h: 1800 },
+  { id: 'deck-domains',        file: 'deck-domains.png',        w: 1200, h: null },
+  { id: 'mastery-progression', file: 'mastery-progression.png', w: 1200, h: 1200 },
+  { id: 'cat-stats',           file: 'cat-stats.png',           w: 1200, h: 600  },
 ];
 
 for (const { id, file, w, h } of sections) {
   const el = page.locator(`#${id}`);
   const outPath = join(OUTPUT_DIR, file);
   await el.screenshot({ path: outPath, omitBackground: true });
-  console.log(`Saved ${file} (${w}x${h})`);
+  console.log(`Saved ${file}${h ? ` (${w}x${h})` : ` (${w}×auto)`}`);
 }
 
 await browser.close();
-
 
 // Clean up temp
 unlinkSync(tmpPath);
