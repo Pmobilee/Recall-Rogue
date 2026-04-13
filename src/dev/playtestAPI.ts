@@ -435,14 +435,44 @@ async function selectRoom(index: number): Promise<PlayResult> {
   });
 }
 
-/** Select a map node by ID (e.g. 'r0-n0'). Triggers the full node selection + room entry flow.
- *  Polls until screen changes from dungeonMap (max 5s) to handle slow ensurePhaserBooted + startEncounterForRoom. */
-async function selectMapNode(nodeId: string): Promise<PlayResult> {
+/** Select a map node by ID or integer index.
+ *
+ * Fix 1: LLM agents often call this with a bare integer (e.g. 0) expecting
+ * "click the first available node". The DOM uses data-testid="map-node-r{row}-n{col}"
+ * so a plain integer would never match. We now handle three call patterns:
+ *   - "r0-n0" style → used as-is
+ *   - integer or bare string that is all-digits → auto-select the Nth available
+ *     (non-disabled, clickable) map node from the DOM
+ *   - any other string → used as-is (fallback, may still fail if format wrong)
+ *
+ * Polls until screen changes from dungeonMap (max 5s) to handle slow
+ * ensurePhaserBooted + startEncounterForRoom.
+ */
+async function selectMapNode(nodeId: string | number): Promise<PlayResult> {
   return safeAction(async () => {
-    // Click the DOM button directly — this fires the Svelte onclick handler
-    const btn = document.querySelector(`[data-testid="map-node-${nodeId}"]`) as HTMLButtonElement | null;
-    if (!btn) return { ok: false, message: `Map node ${nodeId} not found` };
-    if (btn.disabled) return { ok: false, message: `Map node ${nodeId} is disabled (state: ${btn.className})` };
+    const nodeIdStr = String(nodeId);
+    let btn: HTMLButtonElement | null = null;
+
+    if (/^\d+$/.test(nodeIdStr)) {
+      // Integer index: pick the Nth non-disabled map node
+      const index = parseInt(nodeIdStr, 10);
+      const all = Array.from(
+        document.querySelectorAll<HTMLButtonElement>('[data-testid^="map-node-"]')
+      ).filter(el => !el.disabled);
+      btn = all[index] ?? null;
+      if (!btn) {
+        return {
+          ok: false,
+          message: `Map node index ${index} not found (only ${all.length} available nodes)`,
+        };
+      }
+    } else {
+      // r{row}-n{col} format or any explicit string ID
+      btn = document.querySelector(`[data-testid="map-node-${nodeIdStr}"]`) as HTMLButtonElement | null;
+      if (!btn) return { ok: false, message: `Map node ${nodeIdStr} not found` };
+      if (btn.disabled) return { ok: false, message: `Map node ${nodeIdStr} is disabled (state: ${btn.className})` };
+    }
+
     btn.click();
 
     // Poll until screen changes from dungeonMap (max 5s)
@@ -453,7 +483,8 @@ async function selectMapNode(nodeId: string): Promise<PlayResult> {
       if (screen !== 'dungeonMap') break;
     }
 
-    return { ok: true, message: `Selected map node ${nodeId}. Screen: ${getScreen()}` };
+    const resolvedId = btn.dataset.testid ?? nodeIdStr;
+    return { ok: true, message: `Selected map node ${resolvedId}. Screen: ${getScreen()}` };
   });
 }
 
@@ -762,48 +793,98 @@ async function mysteryContinue(): Promise<PlayResult> {
   });
 }
 
-/** Get the current shop inventory (relics, cards, prices). */
+/** Get the current shop inventory (relics, cards, prices).
+ *
+ * Fix 3: When the shop screen opens, activeShopInventory is populated by
+ * gameFlowController.openShopRoom(). If this is called before the store
+ * populates (e.g. race condition on screen transition), the store returns null.
+ * We fall back to reading the DOM directly from shop-buy-relic-* buttons to
+ * build a minimal inventory descriptor, so callers always get something useful.
+ */
 async function getShopInventory(): Promise<Record<string, unknown> | null> {
   const { activeShopInventory } = await import('../services/gameFlowController');
   const { get } = await import('svelte/store');
   const inventory = get(activeShopInventory);
-  if (!inventory) return null;
+  if (inventory) {
+    return {
+      relics: (inventory.relics ?? []).map((item: any, i: number) => {
+        // ShopRelicItem.relic is a RelicDefinition with .id (not .definitionId).
+        const def = RELIC_BY_ID[item.relic?.id];
+        return {
+          index: i,
+          id: item.relic?.id ?? '',
+          name: def?.name ?? item.relic?.id ?? '',
+          description: def?.description ?? '',
+          rarity: def?.rarity ?? 'common',
+          price: item.price ?? 0,
+          sold: item.sold ?? false,
+        };
+      }),
+      cards: (inventory.cards ?? []).map((item: any, i: number) => {
+        const fact = item.card?.factId && factsDB.isReady() ? factsDB.getById(item.card.factId) : null;
+        return {
+          index: i,
+          type: item.card?.cardType ?? '',
+          mechanic: item.card?.mechanicId ?? null,
+          mechanicName: item.card?.mechanicName ?? null,
+          domain: item.card?.domain ?? null,
+          factQuestion: fact?.quizQuestion ?? null,
+          price: item.price ?? 0,
+          sold: item.sold ?? false,
+        };
+      }),
+      removalCost: inventory.removalCost ?? null,
+    };
+  }
+
+  // DOM fallback: read available relic buy buttons directly from the shop overlay.
+  // These are present when ShopRoomOverlay is mounted even if the store hasn't updated.
+  const relicBtns = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-testid^="shop-buy-relic-"]')
+  );
+  const cardBtns = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-testid^="shop-buy-card-"]')
+  );
+  if (relicBtns.length === 0 && cardBtns.length === 0) return null;
+
   return {
-    relics: (inventory.relics ?? []).map((item: any, i: number) => {
-      // ShopRelicItem.relic is a RelicDefinition with .id (not .definitionId).
-      const def = RELIC_BY_ID[item.relic?.id];
+    relics: relicBtns.map((btn, i) => {
+      const relicId = (btn.dataset.testid ?? '').replace('shop-buy-relic-', '');
+      const def = RELIC_BY_ID[relicId];
       return {
         index: i,
-        id: item.relic?.id ?? '',
-        name: def?.name ?? item.relic?.id ?? '',
+        id: relicId,
+        name: def?.name ?? relicId,
         description: def?.description ?? '',
         rarity: def?.rarity ?? 'common',
-        price: item.price ?? 0,
-        sold: item.sold ?? false,
+        price: null, // price not readable from DOM alone
+        sold: btn.disabled,
       };
     }),
-    cards: (inventory.cards ?? []).map((item: any, i: number) => {
-      const fact = item.card?.factId && factsDB.isReady() ? factsDB.getById(item.card.factId) : null;
-      return {
-        index: i,
-        type: item.card?.cardType ?? '',
-        mechanic: item.card?.mechanicId ?? null,
-        mechanicName: item.card?.mechanicName ?? null,
-        domain: item.card?.domain ?? null,
-        factQuestion: fact?.quizQuestion ?? null,
-        price: item.price ?? 0,
-        sold: item.sold ?? false,
-      };
-    }),
-    removalCost: inventory.removalCost ?? null,
+    cards: cardBtns.map((_btn, i) => ({
+      index: i,
+      type: '',
+      mechanic: null,
+      mechanicName: null,
+      domain: null,
+      factQuestion: null,
+      price: null,
+      sold: _btn.disabled,
+    })),
+    removalCost: null,
   };
 }
 
 /** Buy a relic from the shop by index.
  *
+ * Fix 2: ShopRoomOverlay.svelte uses a two-step purchase flow:
+ *   1. data-testid="shop-buy-relic-{relicId}" opens the confirmation modal
+ *   2. data-testid="shop-btn-buy" inside the modal confirms the purchase (calls confirmBuy)
+ * Without step 2, the modal opens but the purchase is never completed.
+ *
  * ShopRoomOverlay uses data-testid="shop-buy-relic-{relic.id}" (keyed by relic ID,
  * not index). This function reads the Nth relic from the inventory store to resolve
- * its ID, then clicks the correct buy button.
+ * its ID, then clicks the correct buy button, then confirms via the modal.
  */
 async function shopBuyRelic(index: number): Promise<PlayResult> {
   return safeAction(async () => {
@@ -817,8 +898,19 @@ async function shopBuyRelic(index: number): Promise<PlayResult> {
     const btn = document.querySelector(`[data-testid="shop-buy-relic-${relicId}"]`) as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: `Shop relic buy button for '${relicId}' not found` };
     if (btn.disabled) return { ok: false, message: `Shop relic '${relicId}' is not purchasable (sold or not enough gold)` };
+    // Step 1: open the purchase confirmation modal
     btn.click();
-    await wait(turboDelay(1000));
+    await wait(turboDelay(400));
+    // Step 2: click the confirm button inside the modal (shop-btn-buy → confirmBuy())
+    const confirmBtn = document.querySelector('[data-testid="shop-btn-buy"]') as HTMLButtonElement | null;
+    if (!confirmBtn) {
+      return { ok: false, message: `Shop confirm button not found after opening relic modal for '${relicId}'` };
+    }
+    if (confirmBtn.disabled) {
+      return { ok: false, message: `Shop confirm button is disabled — insufficient gold for '${relicId}'` };
+    }
+    confirmBtn.click();
+    await wait(turboDelay(800));
     return { ok: true, message: `Bought shop relic '${relicId}'. Screen: ${getScreen()}` };
   });
 }

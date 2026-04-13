@@ -491,9 +491,18 @@ export function getQuizText(): QuizTextResult | null {
 
 /**
  * Returns study card text if a study session is active, or null.
+ *
+ * Fix 6: StudyQuizOverlay.svelte renders the question as:
+ *   <p class="question-text" data-tutorial-anchor="study-card">...</p>
+ * There is NO data-testid="study-card-question" in the component. We check
+ * the tutorial-anchor attribute as the primary selector, falling back to the
+ * testid for any future component that adds it.
  */
 export function getStudyCardText(): StudyCardTextResult | null {
-  const question = testIdText('study-card-question');
+  // Primary: data-tutorial-anchor="study-card" (used by StudyQuizOverlay.svelte)
+  const question =
+    textOf('[data-tutorial-anchor="study-card"]') ??
+    testIdText('study-card-question');
   if (!question) return null;
 
   return {

@@ -128,34 +128,42 @@ All calls go through an `rrPlay` action in an actions-file. Example: `{"type":"r
 
 ### Navigation & State
 
-- `getScreen()` — Returns current screen name (string). Possible values: `'hub'`, `'domainSelect'`, `'archetypeSelect'`, `'dungeonMap'`, `'combat'`, `'cardReward'`, `'rewardRoom'`, `'restRoom'`, `'shopRoom'`, `'mysteryEvent'`, `'retreatOrDelve'`, `'runEnd'`
-- `look()` — Full game state snapshot. Returns a large object with all current state.
+- `getScreen()` — Returns current screen name (string). Possible values: `'hub'`, `'domainSelect'`, `'archetypeSelect'`, `'deckSelectionHub'`, `'dungeonMap'`, `'combat'`, `'cardReward'`, `'rewardRoom'`, `'restRoom'`, `'shopRoom'`, `'mysteryEvent'`, `'retreatOrDelve'`, `'runEnd'`
+- `getAvailableScreens()` — Returns `string[]` of screens reachable from current state. Always includes `['hub', 'library', 'settings', 'profile', 'journal', 'leaderboards']`; adds run screens (`'combat'`, `'dungeonMap'`, etc.) when a run is active.
+- `look()` — Full game state description. **Returns a formatted multi-line STRING** (a console dump), not a structured object. Use `getCombatState()` / `getRunState()` for structured data you can parse programmatically. `look()` is a human-readable narrative for quick diagnosis only.
 - `getRecentEvents(N)` — Last N events from ring buffer. Use to see what just happened.
-- `getAllText()` — All visible text on screen. Use to read UI state.
+- `getAllText()` — All visible text on screen. **Returns a structured object** `{screen: string, byTestId: Record<string, string>, byClass: Record<string, string>, raw: string[]}`, NOT a plain string. Access `result.byTestId['some-id']` for targeted reads, or `result.raw` for the full flat list.
+- `getHUDText()` — HUD values from DOM + stores. Returns `{hp, currency, floor, streak, combo}` (all `string | null`). Use when you need just the HUD without a full `getAllText()` payload.
+- `getQuizText()` — Returns `{question, choices[], gaiaReaction, memoryTip, resultText, consistencyWarning}` or `null` when no quiz is visible. Use to read the active quiz UI state.
+- `getStudyCardText()` — Returns `{question, answer, explanation, mnemonic, gaiaComment, progress, category}` or `null` when no study session is active.
+- `getNotifications()` — Returns `string[]` of all visible toast/notification text (Gaia bubble, toasts, etc.). Returns `[]` when nothing is showing.
 - `getSessionSummary()` — Aggregate session stats (accuracy, encounters, damage dealt).
-- `validateScreen()` — Check screen state validity
+- `validateScreen()` — Check screen state validity.
 - `getRunState()` — Returns: `{floor, segment, currency, deckSize, relics, playerHp, playerMaxHp, encountersCompleted}`
 
 ### Run Flow
 
-- `startRun()` — Start a new run from hub screen. Returns `{ok: boolean}`. In the current flow, this transitions `hub → onboarding?` (first run only) `→ runPreview?` (Study Temple runs only) `→ dungeonMap`. Archetype auto-selects to `'balanced'` — see `src/services/gameFlowController.ts:420`.
-- `selectDomain(domain)` — **DORMANT** — the current `startRun` flow does not show a domain-select screen. The rrPlay wrapper still exists for backwards compat but has no runtime target. Call is a no-op returning `{ok: true}` or `{ok: false}` depending on current screen. Do NOT include in new tester flows.
+- `startRun()` — Start a new run from hub screen. Returns `{ok: boolean}`. **In the current flow, this transitions `hub → deckSelectionHub`**, where the player picks a mode (Trivia Dungeon, etc.) before the run actually begins. The previous documentation claiming this lands on `dungeonMap` was wrong. After `startRun()`, call `selectDomain(domain)` to navigate through `deckSelectionHub → triviaDungeon → start`.
+- `selectDomain(domain)` — Handles the `deckSelectionHub → triviaDungeon → start` flow. If on `deckSelectionHub`, first clicks the Trivia Dungeon panel, then clicks the matching domain card, then clicks Start Run. After this completes, the run is active and `getScreen()` returns `'dungeonMap'`. Returns `{ok: boolean}`.
 - `selectArchetype(archetype)` — **DORMANT** — archetype auto-selects to `'balanced'` inside `startNewRun()`. The rrPlay wrapper still exists for backwards compat. Do NOT include in new tester flows.
-- `selectMapNode(nodeId)` — Select a map node. Use `'r0-n0'` for first available. Returns `{ok: boolean}`. This is the first REAL interactive call after `startRun`.
+- `selectMapNode(nodeId)` — Select a map node. Use `'r0-n0'` for first available. Returns `{ok: boolean}`. This is the first REAL interactive call after the run starts.
 
-**Canonical run-start sequence (2026-04-12 post-drift-fix):**
+**Canonical run-start sequence (2026-04-12 corrected — lands on `deckSelectionHub`, not `dungeonMap`):**
 ```json
 [
   {"type":"rrPlay","method":"startRun"},
-  {"type":"wait","ms":3000},
+  {"type":"wait","ms":2000},
+  {"type":"rrPlay","method":"getScreen"},
+  {"type":"rrPlay","method":"selectDomain","args":["mixed"]},
+  {"type":"wait","ms":2000},
   {"type":"rrPlay","method":"getScreen"}
 ]
 ```
-Expect `getScreen` to return `'dungeonMap'` (or `'onboarding'` if first-run; dismiss the onboarding overlay via its continue button, then re-check `getScreen`).
+After `selectDomain`, expect `getScreen` to return `'dungeonMap'`. If `getScreen` returns `'onboarding'` after `startRun`, dismiss the overlay via its continue button, then proceed with `selectDomain`.
 
 ### Combat
 
-- `getCombatState()` — Returns full combat state:
+- `getCombatState()` — Returns full combat state (use this for structured data, not `look()`):
   ```
   {
     // Player
@@ -164,7 +172,7 @@ Expect `getScreen` to return `'dungeonMap'` (or `'onboarding'` if first-run; dis
     ap, apMax,
     // Enemy
     enemyName, enemyHp, enemyMaxHp, enemyBlock,
-    enemyIntent: {type, value, telegraph, hitCount, statusEffect},
+    enemyIntent: {type, value, displayDamage, telegraph, hitCount, statusEffect},
     enemyStatusEffects: [{type, value, turnsRemaining}],
     // Hand
     handSize,
@@ -177,6 +185,7 @@ Expect `getScreen` to return `'dungeonMap'` (or `'onboarding'` if first-run; dis
     turn, cardsPlayedThisTurn, floor, segment, gold
   }
   ```
+- `playCard(index)` — Click a card in the hand by index (opens card detail / triggers play). Returns `{ok: boolean}`. Use `quickPlayCard` or `chargePlayCard` for programmatic play.
 - `previewCardQuiz(index)` — Preview the quiz for a card WITHOUT playing it. Returns: `{ok, state: {question, choices[], correctAnswer, correctIndex, factId, domain, cardType}}`. Use this to see the question before deciding whether to answer correctly or incorrectly.
 - `quickPlayCard(index)` — Quick play (1 AP, base damage, no quiz). Returns `{ok, damage?, block?}`.
 - `chargePlayCard(index, answerCorrectly)` — Charge play with quiz (2 AP, 1.5× damage if correct, ~0.5× if wrong — FIZZLE_EFFECT_RATIO). `answerCorrectly` is a boolean. Returns `{ok, damage?, quizData?}`. NOTE: This bypasses the visual quiz UI — the quiz is answered programmatically.
@@ -191,9 +200,14 @@ Expect `getScreen` to return `'dungeonMap'` (or `'onboarding'` if first-run; dis
 3. Play the card: `chargePlayCard(index, true/false)` — answer based on your assessment
 4. `previewCardQuiz` does NOT consume AP or play the card — it's purely informational
 
+**Quiz answer helpers (for visible quiz UI — use when `getQuiz()` returns non-null):**
+- `answerQuizCorrectly()` — Reads `getQuiz().correctIndex` and clicks that DOM button. Returns `{ok: boolean}`.
+- `answerQuizIncorrectly()` — Reads `getQuiz().correctIndex`, picks a different index, and clicks it. Returns `{ok: boolean}`.
+- `forceQuizForFact(factId)` — Force a quiz for a specific fact ID (for deterministic playtest targeting). Writes directly to the `rr:activeQuiz` store. Returns `{ok: boolean, state: {factId, question}}`.
+
 ### Post-Combat
 
-- `getRewardChoices()` — Preview 3-card reward choices WITHOUT accepting. Returns: `[{index, id, cardType, mechanicId, mechanicName, domain, tier, apCost, baseEffectValue, masteryLevel, factId, factQuestion}]`. Returns `[]` when no reward pending. Use BEFORE `acceptReward` to read the options.
+- `getRewardChoices()` — Preview card reward choices WITHOUT accepting. Returns: `[{index, id, cardType, mechanicId, mechanicName, domain, tier, apCost, baseEffectValue, masteryLevel, factId, factQuestion}]`. **Returns `{}` (empty object) when no reward is pending** — NOT `[]`. Always check `Array.isArray(result)` before iterating. Use BEFORE `acceptReward` to read the options.
 - `acceptReward()` — Accept reward (handles cards, relics, gold, and vials). Relics use Phaser overlay accept button; cards use Svelte callbacks.
 - `selectRewardType(cardType)` — Pick reward card type by type name.
 - `selectRelic(index)` — Pick relic by index.
@@ -201,31 +215,54 @@ Expect `getScreen` to return `'dungeonMap'` (or `'onboarding'` if first-run; dis
 - `delve()` — Delve deeper at checkpoint screen.
 - `retreat()` — Cash out at checkpoint screen.
 - `restHeal()` — Heal at rest room.
+- `restUpgrade()` — Click the upgrade option in a rest room. Returns `{ok: boolean}`.
 - `restMeditate()` — Meditate at rest room.
 - `mysteryContinue()` — Continue past mystery event.
-- `getShopInventory()` — Returns shop items: `{relics: [{index, id, name, description, price, sold}], cards: [{index, type, domain, factQuestion, price, sold}], removalCost}`.
-- `shopBuyRelic(index)` — Buy a relic from shop.
-- `shopBuyCard(index)` — Buy a card from shop.
+- `getShopInventory()` — **Currently broken — returns `{}` regardless of shop state.** Do NOT rely on this method. Instead, use DOM selectors directly to read shop contents:
+  - Relics: `[data-testid="shop-buy-relic-{relicId}"]` (keyed by relic ID string)
+  - Cards: `[data-testid="shop-buy-card-{index}"]` (keyed by numeric index)
+  - Query all available buttons via `eval` with `JSON.stringify(Array.from(document.querySelectorAll('[data-testid^="shop-buy-"]')).map(b=>b.dataset.testid))` to discover what's in stock.
+- `shopBuyRelic(index)` — Buy a relic from shop by its position index in the inventory store. Resolves the relic's ID internally and clicks `[data-testid="shop-buy-relic-{relicId}"]`.
+- `shopBuyCard(index)` — Buy a card from shop by index. Clicks `[data-testid="shop-buy-card-{index}"]`.
 - `getMysteryEventChoices()` — Returns: `[{index, text}]`.
 - `selectMysteryChoice(index)` — Select a mystery event choice.
+- `selectRoom(index)` — Select a room choice door by index. Returns `{ok: boolean}`.
+- `enterRoom(roomId)` — Navigate to a specific room by writing the screen store directly. Returns `{ok: boolean, state: {screen}}`.
+- `exitRoom()` — Return to base/dome by writing `'base'` to the screen store. Returns `{ok: boolean}`.
 
 ### Study Mode
 
-**⚠ Study UI reality (verified 2026-04-12):** Study Temple is a **3-question multiple-choice quiz** via `StudyQuizOverlay.svelte`, NOT an Anki-style SM-2 grading interface. There are no again/hard/good/easy buttons. Cards auto-advance ~1200ms after answer selection. `fastForward` has no observable effect on a single 3-question session. If you are testing Study, follow the MCQ protocol in `profiles.md` → Profile 4, not SM-2 expectations.
+**Study UI reality (verified 2026-04-12):** Study Temple is a **3-question multiple-choice quiz** via `StudyQuizOverlay.svelte`, NOT an Anki-style SM-2 grading interface. There are no again/hard/good/easy buttons. Cards auto-advance ~1200ms after answer selection. `fastForward` has no observable effect on a single 3-question session. If you are testing Study, follow the MCQ protocol in `profiles.md` → Profile 4, not SM-2 expectations.
 
-- `getStudyPoolSize()` — Returns count of cards eligible for mastery upgrade. Returns `0` when no active run or no upgradeable cards. Read-only. Use BEFORE `startStudy()` to verify the pool is non-empty.
+- `getStudyPoolSize()` — Returns count of cards eligible for mastery upgrade. **In practice currently returns `{}` instead of a number** — do not use this for arithmetic. Use `getRunState()` or inspect the rest room UI state as a workaround until this is fixed. Nominally should return `0` when no active run or no upgradeable cards.
 - `startStudy(size)` — Navigates to the Study screen. Returns `{ok: boolean, cardCount: number}`. The `size` parameter is no longer functional — the session length is hard-coded to 3. If the helper returns `{ok: false}`, use `__rrScenario.spawn({ screen: 'restStudy' })` as a fallback direct-entry path.
 - `getStudyCard()` — Get current quiz card: `{question, answer, choices: string[], ...}`. Returns null when session complete. Use this to capture MCQ data.
 - `gradeCard(button)` — **DORMANT-ISH** — the current Study UI is MCQ, not SM-2 grading. The rrPlay helper still exists but does not correspond to any visible button. To answer a study question, click the correct MCQ choice via `click('study-answer-N')` or `eval` a direct DOM click on the button whose text matches the correct answer. Do NOT use `gradeCard` in new test flows.
 - `endStudy()` — End study session. Returns `{ok, studied: number}`.
 
+### Quiz (standalone)
+
+- `getQuiz()` — Returns `{question, choices: string[], correctIndex: number, mode: string}` or `null` when no quiz visible.
+- `answerQuizCorrectly()` — Auto-answers the active quiz correctly using stored `correctIndex`. Returns `{ok: boolean}`.
+- `answerQuizIncorrectly()` — Auto-answers with a wrong choice. Returns `{ok: boolean}`.
+- `forceQuizForFact(factId)` — Force-inject a quiz for a specific fact ID. Returns `{ok: boolean}`.
+
 ### Time Control
 
 - `fastForward(hours)` — Advance game clock by N hours. Returns `{ok}`. Shifts all FSRS scheduling fields (nextReviewAt, due, lastReviewAt, lastReview) used by card reappearance in subsequent runs — NOT visible within a single 3-question Study session. Useful for between-session testing, not within-session SM-2 verification (that UI no longer exists).
 
+### Save & Stats
+
+- `getSave()` — Returns full player save state from `rr:playerSave` store, or `null` if unavailable.
+- `getStats()` — Returns key stats extracted from save: `{totalRunsCompleted, totalEncountersWon, totalQuizCorrect, totalQuizWrong, currentStreak, bestStreak, learnedFactCount, currency}`. Returns `{}` when no save data.
+- `getInventory()` — Returns `any[]` from `rr:inventory` store. Returns `[]` when empty.
+- `resetToPreset(presetId)` — Clear localStorage, inject a preset save, and reload. Triggers a full page reload. Available presets discovered from `src/dev/presets.ts`. Returns `{ok: boolean}`.
+- `seedDriftFixture(factCount?, maxIntervalDays?)` — Seed a dense review-state fixture for 7-day drift testing. Sets `factCount` (default 30) facts to short intervals. Returns `{ok: boolean}`.
+
 ### Diagnostics
 
-- `getLeechInfo()` — Returns `{suspended: [], nearLeech: []}` — cards that failed too many times.
+- `getLeechInfo()` — Returns `{suspended: [], nearLeech: [], totalLeeches: number}` — cards that failed too many times.
+- `getRecentEvents(N)` — Last N entries from the `__rrLog` ring buffer. Returns `[{ts, type, detail}]`. Returns `[]` when log is empty.
 
 ### Instant State Spawning (PREFERRED for targeted testing)
 
@@ -263,10 +300,11 @@ Apply this protocol whenever any API call returns unexpected results:
    - `'rewardRoom'` → call `look()` to see reward types, then `acceptReward()`
    - `'retreatOrDelve'` → always `delve()` (to keep the run going)
    - `'dungeonMap'` → `selectMapNode('r0-n0')` or next available
-   - `'shopRoom'` → `getShopInventory()` to see items, then `shopBuyRelic(0)` or `shopBuyCard(0)` or skip
+   - `'shopRoom'` → use DOM selectors (see `getShopInventory` note above), then `shopBuyRelic(0)` or `shopBuyCard(0)` or skip
    - `'restRoom'` → `restHeal()` or `restMeditate()`
    - `'mysteryEvent'` → `getMysteryEventChoices()` to see choices, then `selectMysteryChoice(0)` or `mysteryContinue()`
    - `'runEnd'` → run is over; start a new run if encounters target not met
+   - `'deckSelectionHub'` → call `selectDomain('mixed')` (or desired domain) to start the run
 
 ### Full-run stuck detection (extended)
 
@@ -294,10 +332,11 @@ After EVERY action, check `getScreen()` and route:
 | `rewardRoom` | → Reward Room handler (accept reward, wait for transition) |
 | `cardReward` | → Redirect to Reward Room handler (card selection is inline in rewardRoom) |
 | `dungeonMap` | → Map Navigation (pick next node) |
-| `shopRoom` | → Shop handler |
+| `deckSelectionHub` | → Call `selectDomain(domain)` to complete run setup |
+| `shopRoom` | → Shop handler (use DOM selectors — `getShopInventory` is broken) |
 | `restRoom` | → Rest handler |
 | `mysteryEvent` | → Mystery handler |
 | `retreatOrDelve` | → Retreat/Delve handler |
-| `runEnd` | → Run End handler (start new run if target not met) |
+| `runEnd` | → Run End handler (start new run if floors target not met) |
 | `hub` | → Run ended, start new if floors target not met |
 | Unknown | → Log as anomaly, LAYOUT DUMP, try `look()` + `getAllText()` |
