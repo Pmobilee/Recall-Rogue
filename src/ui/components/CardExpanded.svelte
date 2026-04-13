@@ -255,6 +255,9 @@
   let showSpeedBonus = $state(false)
   let timerExpired = $state(false)
   let waitingForGotIt = $state(false)
+  /** Manual mode: set true 500ms after a correct answer, awaiting click to continue. */
+  let waitingForCorrectContinue = $state(false)
+  let savedSpeedBonus = $state(false)
   let showTimerExpiredLabel = $state(false)
   let touchStartY = $state<number | null>(null)
   let eliminatedIndices = $state<Set<number>>(new Set())
@@ -436,6 +439,7 @@
 
   let rafId: number | undefined
   let feedbackTimeoutId: ReturnType<typeof setTimeout> | undefined
+  let waitingForCorrectTimeoutId: ReturnType<typeof setTimeout> | undefined
   let correctRevealTimeoutId: ReturnType<typeof setTimeout> | undefined
   let speedBonusTimeoutId: ReturnType<typeof setTimeout> | undefined
   let quizResultTimeoutId: ReturnType<typeof setTimeout> | undefined
@@ -477,6 +481,7 @@
       if (quizResultTimeoutId !== undefined) clearTimeout(quizResultTimeoutId)
       if (timerExpiredLabelTimeoutId !== undefined) clearTimeout(timerExpiredLabelTimeoutId)
       if (autoResumeTimeoutId !== undefined) clearTimeout(autoResumeTimeoutId)
+      if (waitingForCorrectTimeoutId !== undefined) clearTimeout(waitingForCorrectTimeoutId)
     }
   })
 
@@ -556,11 +561,12 @@
         }, delay)
       }
     } else {
-      // Manual mode: correct auto-dismisses after 1600ms, wrong waits for "Continue"
+      // Manual mode: correct waits for click, wrong waits for "Continue"
       if (isCorrect) {
-        feedbackTimeoutId = setTimeout(() => {
-          onanswer(index, isCorrect, speedBonus)
-        }, 1600)
+        savedSpeedBonus = speedBonus
+        waitingForCorrectTimeoutId = setTimeout(() => {
+          waitingForCorrectContinue = true
+        }, 500)
       }
       // Wrong answers wait for "Continue" button tap — no auto-dismiss
     }
@@ -978,13 +984,6 @@
     </div>
   {:else if effectiveResponseMode === 'typing' && !isTypingExcluded && !answersDisabled}
     {#if quizLanguageCode === 'ja'}
-      {#if sentenceTranslation}
-        <div class="grammar-typing-hints">
-          {#if sentenceTranslation}
-            <p class="grammar-hint-translation">{sentenceTranslation}</p>
-          {/if}
-        </div>
-      {/if}
       <GrammarTypingInput
         {correctAnswer}
         acceptableAlternatives={[]}
@@ -1057,6 +1056,19 @@
     </div>
   {/if}
   </div><!-- end .answer-zone -->
+
+  {#if waitingForCorrectContinue}
+    <button
+      class="continue-overlay"
+      onclick={() => {
+        waitingForCorrectContinue = false
+        if (waitingForCorrectTimeoutId !== undefined) clearTimeout(waitingForCorrectTimeoutId)
+        onanswer(selectedAnswerIndex!, true, savedSpeedBonus)
+      }}
+    >
+      <span class="continue-hint">Click to continue</span>
+    </button>
+  {/if}
 
   {#if waitingForGotIt && (grammarNote || grammarPointLabel)}
     <div class="grammar-note" role="note" aria-label="Grammar Note">
@@ -1199,9 +1211,9 @@
     color: rgba(200, 180, 120, 0.65);
   }
 
-  /* Two-zone layout: question zone grows to content — no rigid 40% floor */
+  /* Two-zone layout: question zone can grow and shrink; min-height 0 allows flex shrink */
   .card-expanded-landscape .question-zone {
-    flex: 1 1 auto;
+    flex: 1 1 0%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1217,14 +1229,14 @@
     flex: 0 0 auto;
   }
 
-  /* Two-zone layout: answer zone shrinks to content — no forced 60% floor */
+  /* Two-zone layout: answer zone shrinks to content — min-height 0 enables proper flex shrink */
   .card-expanded-landscape .answer-zone {
     flex: 0 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 0;
-    overflow: hidden;
+    overflow-y: auto;
   }
 
   /* Chess tactic: answer zone expands to fill all remaining space */
@@ -1265,6 +1277,11 @@
   /* Image question max-height in landscape */
   .card-expanded-landscape .quiz-asset-image {
     max-height: 40vh;
+  }
+
+  /* Prevent question images from blowing out the container in landscape */
+  .card-expanded-landscape .question-image {
+    max-height: 30vh;
   }
 
   /* AR-76: Keyboard shortcut badge on answer buttons — gold-toned game style */
@@ -1525,24 +1542,26 @@
   /* Landscape: center-align ALL questions — width is ~58vw so there's plenty of room */
   .card-expanded-landscape .card-question {
     text-align: center;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   /* Landscape: bump all font-size tiers up to fill the wider panel (~1113px at 1920x1080).
      chess-question has its own size rule (32px) above — exclude it here to avoid conflict. */
   .card-expanded-landscape .card-question.quiz-text-short:not(.chess-question) {
-    font-size: calc(30px * var(--text-scale, 1));
+    font-size: calc(42px * var(--text-scale, 1));
   }
   .card-expanded-landscape .card-question.quiz-text-medium:not(.chess-question) {
-    font-size: calc(26px * var(--text-scale, 1));
+    font-size: calc(34px * var(--text-scale, 1));
   }
   .card-expanded-landscape .card-question.quiz-text-long:not(.chess-question) {
-    font-size: calc(22px * var(--text-scale, 1));
+    font-size: calc(28px * var(--text-scale, 1));
   }
   .card-expanded-landscape .card-question.quiz-text-extra-long:not(.chess-question) {
-    font-size: calc(19px * var(--text-scale, 1));
+    font-size: calc(23px * var(--text-scale, 1));
   }
   .card-expanded-landscape .card-question.quiz-text-max-long:not(.chess-question) {
-    font-size: calc(17px * var(--text-scale, 1));
+    font-size: calc(19px * var(--text-scale, 1));
   }
 
   /* Landscape: force all answer grids to single column — 2-column grids waste space at wide widths */
@@ -2057,4 +2076,31 @@
     position: relative;
   }
 
+
+  /* Manual mode: click-to-continue overlay shown after a correct answer */
+  .continue-overlay {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: calc(16px * var(--layout-scale, 1));
+    z-index: 20;
+  }
+
+  .continue-hint {
+    font-family: var(--font-rpg);
+    font-size: calc(13px * var(--text-scale, 1));
+    color: rgba(200, 180, 120, 0.5);
+    letter-spacing: 0.05em;
+    animation: pulse-hint 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-hint {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
 </style>

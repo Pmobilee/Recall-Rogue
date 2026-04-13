@@ -4,12 +4,13 @@
   import { getRandomRoomBg, getRoomDepthMap } from '../../data/backgroundManifest'
   import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
-  import { getCardTypeIconPath, getCardTypeEmoji } from '../utils/iconAssets'
+  import { getCardTypeIconPath, getCardTypeEmoji, getRelicIconPath } from '../utils/iconAssets'
   import ParallaxTransition from './ParallaxTransition.svelte'
+  import CardVisual from './CardVisual.svelte'
   import { factsDB } from '../../services/factsDB'
   import { updateReviewStateByButton } from '../stores/playerData'
   import { shuffled } from '../../services/randomUtils'
-  import { recordHaggleAttempt } from '../../services/gameFlowController'
+  import { recordHaggleAttempt, pendingTransformOptions, onShopTransformChoice } from '../../services/gameFlowController'
   import { SHOP_HAGGLE_DISCOUNT } from '../../data/balance'
   import { get } from 'svelte/store'
   import { activeRunState } from '../../services/runStateStore'
@@ -51,11 +52,11 @@
 
   function getMasteryIconFilter(level: number): string {
     switch (level) {
-      case 1: return 'none' // green (default)
-      case 2: return 'hue-rotate(100deg)' // blue
-      case 3: return 'hue-rotate(200deg)' // purple
-      case 4: return 'hue-rotate(-40deg)' // orange
-      case 5: return 'hue-rotate(60deg) saturate(2)' // gold
+      case 1: return 'none'
+      case 2: return 'hue-rotate(100deg)'
+      case 3: return 'hue-rotate(200deg)'
+      case 4: return 'hue-rotate(-40deg)'
+      case 5: return 'hue-rotate(60deg) saturate(2)'
       default: return 'none'
     }
   }
@@ -67,6 +68,7 @@
     return _s && _m ? _s.qpValue - _m.quickPlayValue : 0
   }
 
+  // Local interface mirrors shopService.ts ShopInventory — kept in sync
   interface ShopRelicItem {
     relic: { id: string; name: string; description: string; rarity: string; icon: string }
     price: number
@@ -82,12 +84,14 @@
     cards: ShopCardItem[]
     removalCost?: number
     saleCardIndex?: number
+    transformCost?: number
   }
 
   type PendingPurchase =
     | { type: 'relic'; relicId: string; price: number; name: string }
     | { type: 'card'; cardIndex: number; price: number; name: string }
     | { type: 'removal'; cardId: string; price: number; name: string }
+    | { type: 'transform'; price: number; name: string }
 
   type HaggleState = 'idle' | 'quiz' | 'result'
 
@@ -99,10 +103,14 @@
     onbuyRelic: (relicId: string, haggled: boolean) => void
     onbuyCard: (cardIndex: number, haggled: boolean) => void
     onbuyRemoval: (cardId: string, haggled: boolean) => void
+    /** Trigger card transform: picks source card and starts replacement flow */
+    ontransform?: (cardId: string, haggled: boolean) => void
+    /** Direct transform choice passthrough — consumed by onShopTransformChoice directly */
+    ontransformchoice?: (card: Card) => void
     ondone: () => void
   }
 
-  let { cards, currency, shopInventory, onsell, onbuyRelic, onbuyCard, onbuyRemoval, ondone }: Props = $props()
+  let { cards, currency, shopInventory, onsell, onbuyRelic, onbuyCard, onbuyRemoval, ontransform, ontransformchoice, ondone }: Props = $props()
   const bgUrl = getRandomRoomBg('shop')
   const depthUrl = getRoomDepthMap('shop')
   let showRoomTransition = $state(true)
@@ -127,6 +135,13 @@
     rare: '#3498db',
     legendary: '#f1c40f',
   }
+
+  // Shop card visual sizing: 130px wide at scale 1, ratio 886:1142
+  const SHOP_CARD_W = 130
+  const SHOP_CARD_H = Math.round(SHOP_CARD_W * (1142 / 886))
+  // Transform options modal uses larger cards for easier selection
+  const MODAL_CARD_W = 170
+  const MODAL_CARD_H = Math.round(MODAL_CARD_W * (1142 / 886))
 
   // === Purchase modal state ===
   let pendingPurchase = $state<PendingPurchase | null>(null)
@@ -215,7 +230,6 @@
     function onPointerDown(e: PointerEvent) {
       const target = e.target as Element | null
       if (!target) return
-      // Keep tooltip alive if the player clicked inside the tooltip itself
       if (target.closest('.relic-tooltip')) return
       dismissRelicTooltip()
     }
@@ -231,10 +245,30 @@
   /** Inline leave-shop confirmation: replaces window.confirm() which blocks in headless Chrome. */
   let showLeaveConfirm = $state(false)
 
+  // === Transform picker state ===
+  let showTransformPicker = $state(false)
+  let pendingTransformHaggled = $state(false)
+  let showTransformOptions = $state(false)
+  let transformOptions = $state<Card[]>([])
+
+  /** Subscribe to pendingTransformOptions store for replacement card choices */
+  $effect(() => {
+    const unsub = pendingTransformOptions.subscribe(opts => {
+      transformOptions = opts ?? []
+      if (opts && opts.length > 0) {
+        showTransformPicker = false
+        showTransformOptions = true
+      }
+    })
+    return unsub
+  })
+
   /** Cards that can be removed (full active deck, not just the sell slice) */
   let removableCards = $derived(getActiveDeckCards())
   /** Whether deck is large enough to remove a card (must keep > 5) */
   let canRemoveCard = $derived(removableCards.length > 5)
+  /** Whether deck is large enough to transform a card (must keep > 5) */
+  let canTransformCard = $derived(removableCards.length > 5)
 
   let deckCount = $derived(getActiveDeckCards().length)
 
@@ -457,6 +491,32 @@
     }, 800)
   }
 
+  function openTransformPicker(haggled: boolean) {
+    pendingTransformHaggled = haggled
+    showTransformPicker = true
+    closePurchaseModal()
+  }
+
+  function pickCardForTransform(cardId: string) {
+    burningCardId = cardId
+    playCardAudio('shop-removal-burn')
+    showBark('confirm_removal')
+    // Transform flow: call ontransform → gameFlowController.onShopTransform() runs
+    // → pendingTransformOptions store gets populated → our $effect triggers showTransformOptions
+    setTimeout(() => {
+      ontransform?.(cardId, pendingTransformHaggled)
+      showTransformPicker = false
+      burningCardId = null
+    }, 800)
+  }
+
+  function pickTransformReplacement(card: Card) {
+    onShopTransformChoice(card)
+    showTransformOptions = false
+    showBark('purchase')
+    playCardAudio('shop-purchase')
+  }
+
   let modalAffordable = $derived(
     pendingPurchase != null &&
     (hagglingState === 'result' && quizResult === 'correct'
@@ -473,6 +533,8 @@
 
 <section class="shop-overlay" bind:this={overlayEl} class:landscape={$isLandscape} aria-label="Shop room">
   <img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
+
+  <!-- HUD bar: replaces InRunTopBar during shop visit. Extends full-width to eliminate black-bar gaps. -->
   <div class="shop-hud">
     <button type="button" class="hud-back" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">←</button>
     <div class="hud-gold">
@@ -481,6 +543,18 @@
     </div>
     <span class="hud-info">Shop · Floor {floor}</span>
     <span class="hud-deck">Deck: {deckCount} cards</span>
+    <!-- Settings gear — mirrors InRunTopBar pause-btn SVG for visual consistency -->
+    <button
+      type="button"
+      class="hud-settings-btn"
+      aria-label="Settings"
+      onclick={() => { /* Parent handles settings open via event dispatch */ }}
+    >
+      <svg class="pause-gear-svg" aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
   </div>
 
   {#if currentBark}
@@ -491,44 +565,63 @@
   {/if}
 
   {#if shopInventory && (shopInventory.relics.length > 0 || shopInventory.cards.length > 0)}
+
+    <!-- ─── RELICS: floating circular icons in a horizontal row ─── -->
     {#if shopInventory.relics.length > 0}
       <div class="section-label relic-label">
         RELICS
         {#if relicSlotsFull}<span class="slots-full-badge">Relic slots full</span>{/if}
       </div>
-      <div class="card-list">
+      <div class="relics-row">
         {#each shopInventory.relics as item (item.relic.id)}
           {@const canAfford = currency >= item.price}
           {@const canBuyRelic = canAfford && !relicSlotsFull}
           <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
           <article
-            class="card-item relic-item"
+            class="relic-float-card"
             class:unaffordable={!canAfford}
             class:slots-full={relicSlotsFull}
             class:shake={shakeItemId === item.relic.id}
             class:purchased={purchasedItemId === item.relic.id}
-            style="border-color: {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}40"
             onmouseenter={(e) => showRelicTooltip(item.relic, e)}
             onmouseleave={dismissRelicTooltip}
             onclick={(e) => !canAfford && !relicSlotsFull && handleUnaffordableTap(item.price, item.relic.id, e)}
           >
-            <div class="meta">
-              <span class="icon">{item.relic.icon}</span>
-              <div class="text">
-                <div class="name" style="color: {RARITY_COLORS[item.relic.rarity] ?? '#e6edf3'}">{item.relic.name}</div>
-                <span class="rarity-pill" style="background: {RARITY_COLORS[item.relic.rarity]}20; color: {RARITY_COLORS[item.relic.rarity]}; border: 1px solid {RARITY_COLORS[item.relic.rarity]}40;">
-                  {item.relic.rarity}
-                </span>
-              </div>
+            <!-- Circular icon with rarity-colored glow border and float animation -->
+            <div
+              class="relic-icon-circle"
+              style="border-color: {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}; box-shadow: 0 0 calc(14px * var(--layout-scale, 1)) {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}55;"
+            >
+              <img
+                class="relic-icon-img"
+                src={getRelicIconPath(item.relic.id)}
+                alt={item.relic.name}
+                onerror={(e) => {
+                  const img = e.currentTarget as HTMLImageElement
+                  img.style.display = 'none'
+                  const fallback = img.nextElementSibling as HTMLElement | null
+                  if (fallback) fallback.style.display = 'block'
+                }}
+              />
+              <span class="relic-icon-emoji-fallback" aria-hidden="true" style="display:none">{item.relic.icon}</span>
             </div>
+
+            <div class="relic-float-name" style="color: {RARITY_COLORS[item.relic.rarity] ?? '#e6edf3'}">{item.relic.name}</div>
+            <span
+              class="rarity-pill"
+              style="background: {RARITY_COLORS[item.relic.rarity]}20; color: {RARITY_COLORS[item.relic.rarity]}; border: 1px solid {RARITY_COLORS[item.relic.rarity]}40;"
+            >{item.relic.rarity}</span>
+            <!-- Description always visible below name — no tooltip-only hiding -->
+            <div class="relic-float-desc">{item.relic.description}</div>
+
             <button
               type="button"
-              class="buy"
+              class="buy relic-buy-btn"
               class:disabled={!canBuyRelic}
               disabled={!canBuyRelic}
               title={relicSlotsFull ? 'Relic slots full' : undefined}
               data-testid="shop-buy-relic-{item.relic.id}"
-              aria-label={relicSlotsFull ? 'Relic slots full' : `Buy {item.relic.name} for {item.price}g`}
+              aria-label={relicSlotsFull ? 'Relic slots full' : `Buy ${item.relic.name} for ${item.price}g`}
               onclick={() => canBuyRelic && openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
             >
               {relicSlotsFull ? 'Full' : `${item.price}g`}
@@ -538,48 +631,36 @@
       </div>
     {/if}
 
+    <!-- ─── CARDS: CardVisual grid ───────────────────────────────── -->
     {#if shopInventory.cards.length > 0}
       <div class="section-label">LEARNING CARDS</div>
-      <div class="card-list">
+      <div class="cards-grid">
         {#each shopInventory.cards as item, idx (item.card.id)}
           {@const canAfford = currency >= item.price}
           <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
           <article
-            class="card-item"
+            class="card-visual-item"
             class:unaffordable={!canAfford}
             class:shake={shakeItemId === `card-${idx}`}
             class:purchased={purchasedItemId === 'card-' + idx}
-            style="border-top: 6px solid {getChainColor(item.card.chainType ?? 0)}; border-color: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(item.card.chainType ?? 0)};"
             onclick={(e) => !canAfford && handleUnaffordableTap(item.price, `card-${idx}`, e)}
           >
             {#if shopInventory.saleCardIndex === idx}
               <div class="sale-ribbon">SALE</div>
             {/if}
-            <div class="meta">
-              <span class="icon">
-                <img class="type-icon-img" src={getCardTypeIconPath(item.card.cardType)} alt={item.card.cardType}
-                  onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
-                <span style="display:none">{TYPE_EMOJI[item.card.cardType] ?? '🃏'}</span>
-              </span>
-              <div class="text">
-                <div class="name">
-                  {item.card.mechanicName ?? item.card.cardType.toUpperCase()}
-                  {#if (item.card.masteryLevel ?? 0) > 0}
-                    <span class="mastery-indicator">
-                      <span class="mastery-icon" style="filter: {getMasteryIconFilter(item.card.masteryLevel ?? 0)}">✦</span>
-                      <span class="mastery-bonus">+{getMasteryBonusValue(item.card)}</span>
-                    </span>
-                  {/if}
-                </div>
-                <div class="card-sub-row">
-                  <span class="sub">{getEffectLabel(item.card)}</span>
-                  <span class="chain-dot" style="background: {getChainColor(item.card.chainType ?? 0)}; box-shadow: 0 0 4px {getChainGlowColor(item.card.chainType ?? 0)};" title="{getChainTypeName(item.card.chainType ?? 0)}"></span>
-                </div>
-              </div>
+
+            <!-- CardVisual wrapper: position:relative + explicit size + --card-w CSS var required by CardVisual internals -->
+            <div
+              class="shop-card-visual-wrapper"
+              style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1)); height: calc({SHOP_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"
+            >
+              <CardVisual card={item.card} />
             </div>
+
+            <!-- Combined price + buy button — clicking the price IS the buy action -->
             <button
               type="button"
-              class="buy"
+              class="card-price-buy"
               class:disabled={!canAfford}
               disabled={!canAfford}
               data-testid="shop-buy-card-{idx}"
@@ -597,17 +678,25 @@
       </div>
     {/if}
 
+    <!-- ─── SERVICES ─────────────────────────────────────────────── -->
     {#if shopInventory.removalCost != null}
       <div class="section-label">SERVICES</div>
       <div class="services-row">
+
         <!-- Card Removal -->
-        <article class="service-card service-removal">
+        <article
+          class="service-card service-removal"
+          class:service-unaffordable={!canRemoveCard || currency < shopInventory.removalCost}
+        >
           <div class="service-icon">🔥</div>
           <div class="service-header">
             <span class="service-title">Card Removal</span>
-            <span class="service-price" class:unaffordable-price={!canRemoveCard || currency < shopInventory.removalCost}>{shopInventory.removalCost}g</span>
+            <span
+              class="service-price"
+              class:unaffordable-price={!canRemoveCard || currency < shopInventory.removalCost}
+            >{shopInventory.removalCost}g</span>
           </div>
-          <div class="service-desc">Destroy a card from your deck permanently. A leaner deck draws stronger hands.</div>
+          <div class="service-desc">Destroy a card permanently. A smaller deck plays faster.</div>
           <button
             type="button"
             class="service-action"
@@ -622,26 +711,41 @@
           {/if}
         </article>
 
-        <!-- Card Transformation (placeholder — logic not wired yet) -->
-        <article class="service-card service-transform">
+        <!-- Card Transform — wired to pendingTransformOptions store -->
+        <article
+          class="service-card service-transform"
+          class:service-unaffordable={!canTransformCard || (shopInventory.transformCost != null && currency < shopInventory.transformCost)}
+        >
           <div class="service-icon">✨</div>
           <div class="service-header">
             <span class="service-title">Card Transform</span>
-            <span class="service-price service-price-disabled">Coming soon</span>
+            <span
+              class="service-price"
+              class:unaffordable-price={!canTransformCard || (shopInventory.transformCost != null && currency < shopInventory.transformCost)}
+            >
+              {shopInventory.transformCost != null ? `${shopInventory.transformCost}g` : '—'}
+            </span>
           </div>
-          <div class="service-desc">Destroy a card, replaced by one of 3 random options. A gamble — will fate favor you?</div>
+          <div class="service-desc">Destroy a card, pick one of 3 replacements. Fate may favor you.</div>
           <button
             type="button"
             class="service-action"
-            disabled
+            disabled={!canTransformCard || shopInventory.transformCost == null || currency < shopInventory.transformCost}
+            data-testid="shop-buy-transform"
+            onclick={() => shopInventory?.transformCost != null && openPurchaseModal({ type: 'transform', price: shopInventory.transformCost, name: 'Card Transform' })}
           >
             Choose a card →
           </button>
+          {#if !canTransformCard}
+            <span class="service-note">Need more than 5 cards</span>
+          {/if}
         </article>
       </div>
     {/if}
+
   {/if}
 
+  <!-- ─── YOUR DECK (compact sell list) ───────────────────────── -->
   {#if cards.length > 0}
     <div class="section-label">YOUR DECK</div>
     <div class="card-list">
@@ -649,7 +753,7 @@
         <article
           class="card-item"
           class:selling={sellingCardId === card.id}
-          style="border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 6px {getChainGlowColor(card.chainType ?? 0)};"
+          style="border-color: {getChainColor(card.chainType ?? 0)}; box-shadow: 0 0 calc(6px * var(--layout-scale, 1)) {getChainGlowColor(card.chainType ?? 0)};"
         >
           <div class="meta">
             <span class="icon">
@@ -669,7 +773,11 @@
       {/each}
     </div>
   {:else if !shopInventory || (shopInventory.relics.length === 0 && shopInventory.cards.length === 0)}
-    <div class="empty">Nothing available.</div>
+    <!-- Softlock prevention: always provide escape when nothing is available -->
+    <div class="empty">
+      <p>Nothing here.</p>
+      <button type="button" class="empty-back-btn" data-testid="shop-empty-back" onclick={ondone}>Leave</button>
+    </div>
   {/if}
 
 </section>
@@ -709,6 +817,31 @@
             {/if}
           {:else}
             <div class="modal-note">Need more than 5 cards to remove one.</div>
+          {/if}
+        {:else if pendingPurchase.type === 'transform'}
+          <!-- Transform: pick card first -->
+          {#if canTransformCard}
+            <button
+              type="button"
+              class="modal-btn modal-btn-primary"
+              disabled={!modalAffordable}
+              data-testid="shop-btn-transform"
+              onclick={() => openTransformPicker(false)}
+            >
+              Transform Card ({pendingPurchase.price}g)
+            </button>
+            {#if !haggledThisItem}
+              <button
+                type="button"
+                class="modal-btn modal-btn-haggle"
+                data-testid="shop-btn-haggle"
+                onclick={startHaggle}
+              >
+                Haggle — correct: 30% off
+              </button>
+            {/if}
+          {:else}
+            <div class="modal-note">Need more than 5 cards to transform one.</div>
           {/if}
         {:else}
           <button
@@ -756,7 +889,7 @@
           <div class="haggle-success">Haggled! Price: {haggledPrice}g</div>
           <div class="modal-note">Completing purchase…</div>
         {:else}
-          <div class="haggle-fail">Wrong! Original price kept: {pendingPurchase?.price}g</div>
+          <div class="haggle-fail">Wrong. Original price kept: {pendingPurchase?.price}g</div>
           {#if quizQuestion}
             <div class="modal-note">Answer: {displayAnswer(quizQuestion.correctAnswer)}</div>
           {/if}
@@ -804,6 +937,80 @@
         {/each}
       </div>
       <button type="button" class="modal-btn modal-btn-cancel" onclick={() => { showRemovalPicker = false }}>
+        Cancel
+      </button>
+    </div>
+  </div>
+{/if}
+
+<!-- Card Transform Picker: choose which card to transform -->
+{#if showTransformPicker}
+  <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Choose card to transform">
+    <div class="modal modal-removal">
+      <div class="modal-title">Transform Which Card?</div>
+      <div class="modal-note">Pick a card — it will be destroyed and you'll pick from 3 replacements.</div>
+      {#if chainComposition.length > 0}
+        <div class="chain-composition">
+          {#each chainComposition as entry}
+            <span class="chain-comp-item" style="color: {entry.color};">
+              <ChainIcon chainType={entry.type} size={12} />
+              {entry.name} ×{entry.count}
+            </span>
+          {/each}
+        </div>
+      {/if}
+      <div class="removal-list">
+        {#each removableCards as card (card.id)}
+          <button
+            type="button"
+            class="removal-card-btn"
+            class:burning={burningCardId === card.id}
+            onclick={() => pickCardForTransform(card.id)}
+          >
+            <span class="removal-card-info">
+              <span class="removal-card-name">{card.mechanicName ?? card.cardType.toUpperCase()}</span>
+              {#if card.chainType !== undefined}
+                <span class="removal-chain-badge" style="color: {getChainTypeColor(card.chainType)};">
+                  <ChainIcon chainType={card.chainType} size={10} />
+                  {getChainTypeName(card.chainType)}
+                </span>
+              {/if}
+            </span>
+            <span class="removal-card-power">{getEffectLabel(card)}</span>
+          </button>
+        {/each}
+      </div>
+      <button type="button" class="modal-btn modal-btn-cancel" onclick={() => { showTransformPicker = false }}>
+        Cancel
+      </button>
+    </div>
+  </div>
+{/if}
+
+<!-- Transform Options: pick replacement card from generated options -->
+{#if showTransformOptions && transformOptions.length > 0}
+  <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Choose replacement card">
+    <div class="modal modal-transform-options">
+      <div class="modal-title">Pick Your Replacement</div>
+      <div class="modal-note">One of these joins your deck.</div>
+      <div class="transform-options-grid">
+        {#each transformOptions as card (card.id)}
+          <button
+            type="button"
+            class="transform-card-btn"
+            aria-label="Pick {card.mechanicName ?? card.cardType}"
+            onclick={() => pickTransformReplacement(card)}
+          >
+            <div
+              class="shop-card-visual-wrapper"
+              style="width: calc({MODAL_CARD_W}px * var(--layout-scale, 1)); height: calc({MODAL_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({MODAL_CARD_W}px * var(--layout-scale, 1));"
+            >
+              <CardVisual {card} />
+            </div>
+          </button>
+        {/each}
+      </div>
+      <button type="button" class="modal-btn modal-btn-cancel" onclick={() => { showTransformOptions = false }}>
         Cancel
       </button>
     </div>
@@ -860,7 +1067,8 @@
           elements: [
             '.shop-hud',
             '.section-label',
-            '.card-list',
+            '.relics-row',
+            '.cards-grid',
             '.services-row',
           ],
           totalDuration: 2800,
@@ -892,10 +1100,11 @@
     padding: 0 calc(16px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
     display: grid;
     align-content: start;
-    gap: calc(8px * var(--layout-scale, 1));
+    gap: calc(4px * var(--layout-scale, 1));
     overflow-y: auto;
   }
 
+  /* ── HUD bar ────────────────────────────────────────────────── */
   .shop-hud {
     position: sticky;
     top: 0;
@@ -907,7 +1116,11 @@
     background: rgba(10, 15, 25, 0.95);
     padding: 0 calc(12px * var(--layout-scale, 1));
     border-bottom: calc(2px * var(--layout-scale, 1)) solid rgba(194, 157, 72, 0.5);
+    /* Negative horizontal margins extend the bar to cover the full viewport width,
+       preventing the thin black gap on the right edge caused by the shop overlay's
+       own padding. This mirrors the technique used in other overlay HUDs. */
     margin: 0 calc(-16px * var(--layout-scale, 1));
+    box-sizing: border-box;
   }
 
   .hud-back {
@@ -923,6 +1136,7 @@
     align-items: center;
     justify-content: center;
     border-radius: calc(8px * var(--layout-scale, 1));
+    flex-shrink: 0;
   }
 
   .hud-back:hover {
@@ -956,9 +1170,36 @@
     color: #64748b;
   }
 
+  /* Settings gear button — inherits InRunTopBar pause-btn visual pattern */
+  .hud-settings-btn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    flex-shrink: 0;
+    padding: calc(8px * var(--layout-scale, 1));
+  }
+
+  .hud-settings-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e6edf3;
+  }
+
+  .pause-gear-svg {
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
+  }
+
+  /* ── Section labels ─────────────────────────────────────────── */
   .section-label {
-    margin-top: calc(20px * var(--layout-scale, 1));
-    margin-bottom: calc(8px * var(--layout-scale, 1));
+    margin-top: calc(10px * var(--layout-scale, 1));
+    margin-bottom: calc(4px * var(--layout-scale, 1));
     font-size: calc(11px * var(--text-scale, 1));
     font-weight: 600;
     color: #64748b;
@@ -973,31 +1214,9 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: rgba(100, 116, 139, 0.2);
+    background: linear-gradient(90deg, rgba(194, 157, 72, 0.35) 0%, transparent 100%);
   }
 
-  .card-list {
-    display: grid;
-    gap: calc(8px * var(--layout-scale, 1));
-  }
-
-  .card-item {
-    position: relative;
-    border: 1px solid #3b434f;
-    border-radius: 12px;
-    background: rgba(13, 17, 23, 0.82);
-    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: calc(10px * var(--layout-scale, 1));
-  }
-
-  .relic-item {
-    border-width: 2px;
-  }
-
-  /* Relic slots full — badge in section label */
   .relic-label {
     display: flex;
     align-items: center;
@@ -1017,12 +1236,161 @@
     white-space: nowrap;
   }
 
-  /* Relic card when slots are full */
+  /* ── Relics: horizontal row of floating cards ───────────────── */
+  .relics-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(16px * var(--layout-scale, 1));
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .relic-float-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+    width: calc(160px * var(--layout-scale, 1));
+    min-width: calc(140px * var(--layout-scale, 1));
+    background: rgba(13, 17, 23, 0.85);
+    border-radius: calc(12px * var(--layout-scale, 1));
+    border: 1px solid rgba(100, 116, 139, 0.2);
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    position: relative;
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+
+  .relic-float-card:hover:not(.unaffordable) {
+    border-color: rgba(194, 157, 72, 0.4);
+    box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(194, 157, 72, 0.15);
+  }
+
+  /* Floating bob animation */
+  @keyframes relic-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(calc(-6px * var(--layout-scale, 1))); }
+  }
+
+  .relic-icon-circle {
+    width: calc(64px * var(--layout-scale, 1));
+    height: calc(64px * var(--layout-scale, 1));
+    border-radius: 50%;
+    border: calc(2px * var(--layout-scale, 1)) solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.9);
+    flex-shrink: 0;
+    animation: relic-float 3s ease-in-out infinite;
+    overflow: hidden;
+  }
+
+  .relic-icon-img {
+    width: calc(48px * var(--layout-scale, 1));
+    height: calc(48px * var(--layout-scale, 1));
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .relic-icon-emoji-fallback {
+    font-size: calc(28px * var(--layout-scale, 1));
+    line-height: 1;
+  }
+
+  .relic-float-name {
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .rarity-pill {
+    font-size: calc(9px * var(--text-scale, 1));
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1px calc(5px * var(--layout-scale, 1));
+    border-radius: calc(4px * var(--layout-scale, 1));
+    white-space: nowrap;
+  }
+
+  .relic-float-desc {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #94a3b8;
+    text-align: center;
+    line-height: 1.4;
+    flex: 1;
+    word-break: break-word;
+  }
+
+  .relic-buy-btn {
+    width: 100%;
+  }
+
   .slots-full {
     filter: grayscale(0.5);
     opacity: 0.75;
   }
 
+  /* ── Cards grid: CardVisual frames ─────────────────────────── */
+  .cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(12px * var(--layout-scale, 1));
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .card-visual-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  /* Wrapper required by CardVisual — must be position:relative + explicit w/h + --card-w */
+  .shop-card-visual-wrapper {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Combined price + buy pill — the gold badge IS the buy button */
+  .card-price-buy {
+    background: rgba(107, 79, 0, 0.9);
+    border: 1px solid #f1c40f;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #f9d56e;
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 700;
+    padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    min-height: calc(32px * var(--layout-scale, 1));
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
+    transition: background 120ms ease;
+  }
+
+  .card-price-buy:hover:not(:disabled) {
+    background: rgba(139, 105, 20, 0.9);
+  }
+
+  .card-price-buy.disabled,
+  .card-price-buy:disabled {
+    border-color: #ef4444;
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.12);
+    cursor: not-allowed;
+  }
+
+  .original-price {
+    text-decoration: line-through;
+    color: #6b7280;
+    font-weight: 400;
+    margin-right: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* ── Services row ───────────────────────────────────────────── */
   .services-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1031,10 +1399,11 @@
 
   .service-card {
     border-radius: calc(12px * var(--layout-scale, 1));
-    padding: calc(14px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     gap: calc(8px * var(--layout-scale, 1));
+    transition: opacity 200ms ease;
   }
 
   .service-removal {
@@ -1045,9 +1414,11 @@
   .service-transform {
     border: 1px solid #D85A30;
     background: rgba(216, 90, 48, 0.05);
-    opacity: 0.5;
-    pointer-events: none;
-    cursor: default;
+  }
+
+  /* Unaffordable: dim but keep pointer-events so player can see the price */
+  .service-unaffordable {
+    opacity: 0.6;
   }
 
   .service-icon {
@@ -1072,18 +1443,12 @@
     color: #f59e0b;
   }
 
-  .service-price-disabled {
-    color: #6b7280;
-    font-weight: 400;
-    font-size: calc(11px * var(--text-scale, 1));
-  }
-
   .unaffordable-price {
     color: #ef4444;
   }
 
   .service-desc {
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
     color: #9ba4ad;
     line-height: 1.4;
   }
@@ -1098,6 +1463,7 @@
     cursor: pointer;
     text-align: left;
     padding: calc(6px * var(--layout-scale, 1)) 0;
+    min-height: calc(44px * var(--layout-scale, 1));
   }
 
   .service-action:disabled {
@@ -1117,6 +1483,24 @@
 
   .shop-overlay:not(.landscape) .services-row {
     grid-template-columns: 1fr;
+  }
+
+  /* ── Your Deck compact list ─────────────────────────────────── */
+  .card-list {
+    display: grid;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .card-item {
+    position: relative;
+    border: 1px solid #3b434f;
+    border-radius: calc(12px * var(--layout-scale, 1));
+    background: rgba(13, 17, 23, 0.82);
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: calc(10px * var(--layout-scale, 1));
   }
 
   .meta {
@@ -1165,24 +1549,10 @@
     line-height: 1.4;
   }
 
-  /* === Card chain dot pill === */
-  .card-sub-row {
-    display: flex;
-    align-items: center;
-    gap: calc(6px * var(--layout-scale, 1));
-  }
-
-  .chain-dot {
-    width: calc(8px * var(--layout-scale, 1));
-    height: calc(8px * var(--layout-scale, 1));
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: inline-block;
-  }
-
+  /* ── Buy / Sell buttons ──────────────────────────────────────── */
   .buy {
     min-height: calc(44px * var(--layout-scale, 1));
-    border-radius: 10px;
+    border-radius: calc(10px * var(--layout-scale, 1));
     border: 1px solid #f1c40f;
     background: #6b4f00;
     color: #f9d56e;
@@ -1208,7 +1578,7 @@
 
   .sell {
     min-height: calc(44px * var(--layout-scale, 1));
-    border-radius: 10px;
+    border-radius: calc(10px * var(--layout-scale, 1));
     border: 1px solid #f59e0b;
     background: #92400e;
     color: #fef3c7;
@@ -1216,12 +1586,13 @@
     font-weight: 700;
     white-space: nowrap;
     flex-shrink: 0;
+    cursor: pointer;
   }
 
-  /* === Affordability states === */
+  /* ── Affordability states ───────────────────────────────────── */
   .unaffordable {
     filter: grayscale(0.3);
-    border-color: rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.3) !important;
     transition: filter 300ms ease;
   }
 
@@ -1230,8 +1601,6 @@
     color: #ef4444 !important;
     background: rgba(239, 68, 68, 0.1) !important;
   }
-
-
 
   .shake {
     animation: shake-horizontal 150ms ease;
@@ -1245,6 +1614,48 @@
     100% { transform: translateX(0); }
   }
 
+  /* ── Sale ribbon ────────────────────────────────────────────── */
+  .sale-ribbon {
+    position: absolute;
+    top: calc(6px * var(--layout-scale, 1));
+    right: calc(-4px * var(--layout-scale, 1));
+    background: #dc2626;
+    color: white;
+    font-size: calc(9px * var(--text-scale, 1));
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    border-radius: calc(3px * var(--layout-scale, 1));
+    z-index: 2;
+    letter-spacing: 1px;
+  }
+
+  /* ── Empty state ────────────────────────────────────────────── */
+  .empty {
+    margin-top: calc(10px * var(--layout-scale, 1));
+    border-radius: calc(12px * var(--layout-scale, 1));
+    border: 1px solid #3b434f;
+    background: rgba(13, 17, 23, 0.82);
+    padding: calc(14px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    color: #9ba4ad;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+  }
+
+  .empty-back-btn {
+    background: #1f2937;
+    border: 1px solid #4b5563;
+    color: #e6edf3;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    cursor: pointer;
+    font-size: calc(13px * var(--text-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+  }
+
+  /* ── Need-more-gold tooltip ─────────────────────────────────── */
   .need-more-tooltip {
     position: fixed;
     z-index: 200;
@@ -1258,7 +1669,7 @@
     white-space: nowrap;
   }
 
-  /* === Relic tooltip === */
+  /* ── Relic tooltip ──────────────────────────────────────────── */
   .tooltip-backdrop {
     position: fixed;
     inset: 0;
@@ -1267,10 +1678,7 @@
     border: none;
     padding: 0;
     cursor: default;
-    /* pointer-events: none — backdrop is purely structural/visual.
-       A z-index: 199 element with pointer-events: auto was intercepting all
-       shop item clicks while the relic tooltip was showing (C-004 regression).
-       Click-outside dismiss is now handled by a document pointerdown $effect. */
+    /* pointer-events: none — see C-004 regression note in original overlay */
     pointer-events: none;
   }
 
@@ -1303,48 +1711,7 @@
     color: #64748b;
   }
 
-  .rarity-pill {
-    font-size: calc(9px * var(--text-scale, 1));
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 1px calc(5px * var(--layout-scale, 1));
-    border-radius: calc(4px * var(--layout-scale, 1));
-    white-space: nowrap;
-  }
-
-  /* === Sale ribbon === */
-  .sale-ribbon {
-    position: absolute;
-    top: calc(6px * var(--layout-scale, 1));
-    right: calc(-4px * var(--layout-scale, 1));
-    background: #dc2626;
-    color: white;
-    font-size: calc(9px * var(--text-scale, 1));
-    font-weight: 800;
-    text-transform: uppercase;
-    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
-    border-radius: calc(3px * var(--layout-scale, 1));
-    z-index: 2;
-    letter-spacing: 1px;
-  }
-
-  .original-price {
-    text-decoration: line-through;
-    color: #6b7280;
-    font-weight: 400;
-    margin-right: calc(4px * var(--layout-scale, 1));
-  }
-
-  .empty {
-    margin-top: calc(10px * var(--layout-scale, 1));
-    border-radius: 12px;
-    border: 1px solid #3b434f;
-    background: rgba(13, 17, 23, 0.82);
-    padding: calc(14px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-    color: #9ba4ad;
-  }
-
-  /* === Modal === */
+  /* ── Modals ─────────────────────────────────────────────────── */
   .modal-backdrop {
     position: fixed;
     inset: 0;
@@ -1359,7 +1726,7 @@
   .modal {
     background: #161b22;
     border: 1px solid #3b434f;
-    border-radius: 16px;
+    border-radius: calc(16px * var(--layout-scale, 1));
     padding: calc(20px * var(--layout-scale, 1));
     width: 100%;
     max-width: calc(380px * var(--layout-scale, 1));
@@ -1370,6 +1737,10 @@
   .modal-removal {
     max-height: 70vh;
     overflow-y: auto;
+  }
+
+  .modal-transform-options {
+    max-width: calc(700px * var(--layout-scale, 1));
   }
 
   .modal-title {
@@ -1394,7 +1765,7 @@
 
   .modal-btn {
     min-height: calc(48px * var(--layout-scale, 1));
-    border-radius: 10px;
+    border-radius: calc(10px * var(--layout-scale, 1));
     font-weight: 700;
     font-size: calc(13px * var(--layout-scale, 1));
     cursor: pointer;
@@ -1436,7 +1807,7 @@
     background: #374151;
   }
 
-  /* === Leave confirm modal === */
+  /* ── Leave confirm modal ────────────────────────────────────── */
   .leave-confirm-modal {
     max-width: calc(320px * var(--layout-scale, 1));
   }
@@ -1471,7 +1842,30 @@
     background: #dc2626;
   }
 
-  /* === Haggle quiz === */
+  /* ── Transform options grid ─────────────────────────────────── */
+  .transform-options-grid {
+    display: flex;
+    gap: calc(16px * var(--layout-scale, 1));
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: calc(8px * var(--layout-scale, 1)) 0;
+  }
+
+  .transform-card-btn {
+    background: none;
+    border: calc(2px * var(--layout-scale, 1)) solid rgba(148, 163, 184, 0.3);
+    border-radius: calc(10px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1));
+    cursor: pointer;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  .transform-card-btn:hover {
+    border-color: #f1c40f;
+    box-shadow: 0 0 calc(16px * var(--layout-scale, 1)) rgba(241, 196, 15, 0.3);
+  }
+
+  /* ── Haggle quiz ────────────────────────────────────────────── */
   .quiz-question {
     font-size: calc(14px * var(--layout-scale, 1));
     color: #e6edf3;
@@ -1487,7 +1881,7 @@
 
   .quiz-answer-btn {
     min-height: calc(44px * var(--layout-scale, 1));
-    border-radius: 10px;
+    border-radius: calc(10px * var(--layout-scale, 1));
     background: #1a2a4a;
     border: 1px solid #3b82f6;
     color: #e6edf3;
@@ -1515,7 +1909,7 @@
     color: #e74c3c;
   }
 
-  /* === Removal picker === */
+  /* ── Removal / Transform picker ─────────────────────────────── */
   .removal-list {
     display: grid;
     gap: calc(6px * var(--layout-scale, 1));
@@ -1527,8 +1921,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 44px;
-    border-radius: 10px;
+    min-height: calc(44px * var(--layout-scale, 1));
+    border-radius: calc(10px * var(--layout-scale, 1));
     background: #1a2a1a;
     border: 1px solid #2f914f;
     color: #e6edf3;
@@ -1584,70 +1978,25 @@
     gap: calc(3px * var(--layout-scale, 1));
   }
 
-  /* === Landscape layout === */
+  /* ── Landscape layout ───────────────────────────────────────── */
   .shop-overlay.landscape {
-    /* Centered panel on dimmed backdrop */
     background: rgba(5, 8, 12, 0.7);
-    align-content: center;
+    align-content: start;
     justify-items: center;
     padding: 0;
   }
 
   .shop-overlay.landscape > * {
-    /* All direct children constrained to panel width */
     width: min(90vw, calc(1200px * var(--layout-scale, 1)));
     box-sizing: border-box;
   }
 
-  .shop-overlay.landscape .card-list {
-    /* In landscape: items in a horizontal row */
-    display: flex;
+  /* Landscape: relics row fits more icons before wrapping */
+  .shop-overlay.landscape .relics-row {
     flex-wrap: wrap;
-    gap: calc(10px * var(--layout-scale, 1));
   }
 
-  .shop-overlay.landscape .card-item {
-    flex: 1 1 calc(30% - 10px);
-    min-width: calc(240px * var(--layout-scale, 1));
-  }
-
-  /* === Mastery indicator === */
-  .mastery-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: calc(3px * var(--layout-scale, 1));
-    margin-left: calc(6px * var(--layout-scale, 1));
-  }
-
-  .mastery-icon {
-    font-size: calc(12px * var(--text-scale, 1));
-    color: #4ade80;
-  }
-
-  .mastery-bonus {
-    font-size: calc(10px * var(--text-scale, 1));
-    color: #22c55e;
-    font-weight: 700;
-  }
-
-  /* === Purchase exit animation === */
-  .purchased {
-    animation: purchase-exit 800ms ease-out forwards;
-  }
-
-  @keyframes purchase-exit {
-    0% { transform: scale(1); opacity: 1; }
-    30% { transform: scale(1.02); opacity: 1; filter: brightness(1.3); }
-    100% { transform: scale(0.8) translateY(calc(20px * var(--layout-scale, 1))); opacity: 0; }
-  }
-
-  @keyframes afford-pulse {
-    0% { opacity: 0.4; }
-    50% { opacity: 1; border-color: #22c55e; box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) rgba(34, 197, 94, 0.3); }
-    100% { opacity: 1; }
-  }
-
-  /* === Shopkeeper bark === */
+  /* ── Shopkeeper bark ────────────────────────────────────────── */
   .shopkeeper-bark {
     position: sticky;
     top: calc(44px * var(--layout-scale, 1));
@@ -1674,7 +2023,7 @@
     line-height: 1.4;
   }
 
-  /* === Sell tear animation (P3-C) === */
+  /* ── Sell tear animation ────────────────────────────────────── */
   .selling {
     animation: sell-tear 600ms ease-out forwards;
     pointer-events: none;
@@ -1687,7 +2036,7 @@
     100% { transform: scale(0.9) translateY(calc(-10px * var(--layout-scale, 1))); opacity: 0; clip-path: polygon(0 0, 40% 0, 55% 100%, 0 100%); }
   }
 
-  /* === Gold counter animation (P3-E) === */
+  /* ── Gold counter animation ─────────────────────────────────── */
   .gold-gain {
     animation: gold-flash-green 400ms ease;
   }
@@ -1708,7 +2057,18 @@
     100% { color: #f59e0b; transform: scale(1); }
   }
 
-  /* === Card burn animation (P2-D) === */
+  /* ── Purchase exit animation ────────────────────────────────── */
+  .purchased {
+    animation: purchase-exit 800ms ease-out forwards;
+  }
+
+  @keyframes purchase-exit {
+    0% { transform: scale(1); opacity: 1; }
+    30% { transform: scale(1.02); opacity: 1; filter: brightness(1.3); }
+    100% { transform: scale(0.8) translateY(calc(20px * var(--layout-scale, 1))); opacity: 0; }
+  }
+
+  /* ── Card burn animation ────────────────────────────────────── */
   .burning {
     animation: card-burn 800ms ease-out forwards;
     pointer-events: none;
@@ -1721,5 +2081,4 @@
     80% { transform: scale(0.95); filter: brightness(1.5) saturate(1.5) hue-rotate(-30deg); opacity: 0.4; }
     100% { transform: scale(0.8) translateY(calc(-10px * var(--layout-scale, 1))); opacity: 0; filter: brightness(0.5); }
   }
-
 </style>

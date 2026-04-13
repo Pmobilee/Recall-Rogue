@@ -107,6 +107,7 @@
     outline: none;
     transition: border-color 200ms ease;
     font-family: inherit;
+    text-align: center;
   }
 
   .typing-input:focus {
