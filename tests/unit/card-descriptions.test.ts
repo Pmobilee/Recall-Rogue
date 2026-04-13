@@ -69,13 +69,13 @@ describe('card-descriptions — coverage', () => {
         // We already catch the true regression (fallback to just mechanic.name) by checking > name.length.
       });
 
-      it('getShortCardDescription returns non-empty string ≤25 chars', () => {
+      it('getShortCardDescription returns non-empty string ≤40 chars', () => {
         const result = getShortCardDescription(card);
         expect(typeof result).toBe('string');
         expect(result.trim().length).toBeGreaterThan(0);
-        // Short descriptions should be concise. We allow 25 chars (5 more than the 20-char target)
-        // for mechanics with dynamic numbers that may expand slightly.
-        expect(result.length).toBeLessThanOrEqual(25);
+        // Short descriptions should be concise. We allow 40 chars (raised from 25 on 2026-04-13
+        // when getShortCardDescription switched to readable player text; longest is ~31 chars).
+        expect(result.length).toBeLessThanOrEqual(40);
         // Must not contain 'undefined' or 'NaN'
         expect(result).not.toContain('undefined');
         expect(result).not.toContain('NaN');
@@ -144,7 +144,7 @@ describe('card-descriptions — specific mechanics', () => {
     expect(detailed.toLowerCase()).toContain('lost');
   });
 
-  it('chameleon reads multipliers from mastery stat table (L0: 70% QP, 100% CC, 50% CW), "Copy last" in short', () => {
+  it('chameleon reads multipliers from mastery stat table (L0: 70% QP, 100% CC, 50% CW), "Copy last card effect" in short', () => {
     const card = makeCard('chameleon', { cardType: 'wild', baseEffectValue: 0 });
     const detailed = getDetailedCardDescription(card);
     // L0 stat table: qpMult=70, ccMult=100, cwMult=50
@@ -152,7 +152,7 @@ describe('card-descriptions — specific mechanics', () => {
     expect(detailed).toContain('100%');
     expect(detailed).toContain('50%');
     const short = getShortCardDescription(card);
-    expect(short).toBe('Copy last');
+    expect(short).toBe('Copy last card effect');
   });
 
   it('overcharge CC description mentions per-charge scaling', () => {

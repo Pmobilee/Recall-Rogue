@@ -483,146 +483,85 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
 
   switch (mechanic.id) {
     // ── Attack ───────────────────────────────────────────────────────────────
-    case 'strike': return `Deal ${power}`;
-    case 'multi_hit': return `${stats?.hitCount ?? secondary ?? 3}× ${power} dmg`;
-    case 'heavy_strike': return `Deal ${power}`;
-    case 'piercing': return `${power} pierce`;
-    case 'reckless': return `${power} dmg, ${stats?.extras?.['selfDmg'] ?? secondary ?? 4} self`;
-    case 'execute': {
-      const eb = stats?.extras?.['execBonus'] ?? secondary ?? 8;
-      const et = stats?.extras?.['execThreshold'] ?? 0.3;
-      return `${power}+${eb} <${Math.round(et * 100)}%`;
-    }
-    case 'power_strike': return `Deal ${power}`;
-    case 'twin_strike': {
-      const hits = stats?.hitCount ?? 2;
-      return `${hits}× ${power} dmg`;
-    }
-    case 'iron_wave': {
-      const sec = stats?.secondaryValue ?? 5;
-      return `${power} dmg +${sec} blk`;
-    }
-    case 'bash': return `${power} dmg +Vuln`;
-    case 'sap': return `${power} dmg +Weak`;
-    case 'rupture': {
-      const bleed = stats?.secondaryValue ?? 2;
-      return `${power} dmg +${bleed} L.Doubt`;
-    }
-    case 'lacerate': {
-      const bleed = stats?.secondaryValue ?? 3;
-      return `${power} dmg +${bleed} L.Doubt`;
-    }
-    case 'kindle': {
-      const burn = stats?.secondaryValue ?? 4;
-      return `${power} dmg +${burn} B.Burn▶`;
-    }
-    case 'overcharge': return `${power} / CC×charges`;
-    case 'riposte': {
-      const sec = stats?.secondaryValue ?? 4;
-      return `${power} dmg +${sec} blk`;
-    }
-    case 'siphon_strike': return `${power} drain`;
-    case 'gambit': return `CC:+${power}hp / QP:-hp`; // 2026-04-11: lead with CC heal
-    case 'chain_lightning': return `${power} × chain (CC)`;
-    case 'volatile_slash': return `${power} / CC+Forget`;
-    case 'hemorrhage': {
-      const bleedMult = stats?.extras?.['bleedMult'] ?? 3;
-      return `${power}+${bleedMult}×L.Doubt`;
-    }
-    case 'eruption': {
-      const dpa = stats?.extras?.['dmgPerAp'] ?? 6;
-      return `${dpa} dmg/AP (X)`;
-    }
+    case 'strike': return `Deal ${power} damage`;
+    case 'multi_hit': return `Hit ${stats?.hitCount ?? secondary ?? 3}× for ${power}`;
+    case 'heavy_strike': return `Deal ${power} damage`;
+    case 'piercing': return `Pierce for ${power}`;
+    case 'reckless': return `Deal ${power}, take ${stats?.extras?.['selfDmg'] ?? secondary ?? 4} self-damage`;
+    case 'execute': return `Deal ${power}, bonus if wounded`;
+    case 'power_strike': return `Deal ${power} damage`;
+    case 'twin_strike': return `Hit ${stats?.hitCount ?? 2}× for ${power}`;
+    case 'iron_wave': return `Deal ${power}, gain ${stats?.secondaryValue ?? 5} block`;
+    case 'bash': return `Deal ${power}, apply Exposed`;
+    case 'sap': return `Deal ${power}, apply Weakness`;
+    case 'rupture': return `Deal ${power}, apply ${stats?.secondaryValue ?? 2} Lingering Doubt`;
+    case 'lacerate': return `Deal ${power}, apply ${stats?.secondaryValue ?? 3} Lingering Doubt`;
+    case 'kindle': return `Deal ${power}, apply ${stats?.secondaryValue ?? 4} Brain Burn`;
+    case 'overcharge': return `Deal ${power}, scales with charges`;
+    case 'riposte': return `Deal ${power}, gain ${stats?.secondaryValue ?? 4} block`;
+    case 'siphon_strike': return `Deal ${power}, drain life`;
+    case 'gambit': return `Deal ${power}, risk and reward`;
+    case 'chain_lightning': return `Deal ${power} per chain link`;
+    case 'volatile_slash': return `Deal ${power}, consumed on charge`;
+    case 'hemorrhage': return `Deal ${power} + Lingering Doubt bonus`;
+    case 'eruption': return `Spend all AP, ${stats?.extras?.['dmgPerAp'] ?? 6} per AP`;
+    case 'precision_strike': return `Deal ${power} per option`;
+    case 'smite': return `Deal ${power}, scales with aura`;
+    case 'feedback_loop': return `Deal ${power}, scales with flow`;
+    case 'recall': return `Deal ${power}, bonus on review`;
+    case 'aftershock': return `Repeat last at ${stats?.extras?.['qpMult'] ?? 40}%`;
+    case 'knowledge_bomb': return `Deal ${stats?.extras?.['perCorrect'] ?? 3} per correct charge`;
+    case 'lifetap': return `Deal ${power}, drain life`;
 
     // ── Shield ───────────────────────────────────────────────────────────────
-    case 'block': return `Gain ${power}`;
-    case 'thorns': return `Gain ${power}, refl ${stats?.secondaryValue ?? secondary ?? 3}`;
-    case 'fortify': return '50% block';  // 2026-04-11: resolver scales current block
-    case 'parry': return `Gain ${power}, draw${(stats?.secondaryValue ?? 1) > 1 ? ' ' + (stats?.secondaryValue ?? 1) : ''}`;
-    case 'brace': return 'Match telegraph';
-    case 'cleanse': return 'Purge';
-    case 'overheal': return `Gain ${power} ×2<50%`;
-    case 'lifetap': return `${power} drain`;
-    case 'emergency': return `Gain ${power} ×2<30%`;
-    case 'immunity': return 'Absorb next';
-    case 'reinforce': return `Gain ${power}`;
-    case 'shrug_it_off': return `${power} blk +draw`;
-    case 'guard': return `Gain ${power}`;
-    case 'absorb': return `${power} blk, CC+draw`;
-    case 'reactive_shield': {
-      const thorns = stats?.secondaryValue ?? 2;
-      return `${power} blk +${thorns}▸`;
-    }
-    case 'aegis_pulse': return `${power} blk, CC+chain`;
-    case 'burnout_shield': return `${power} / CC+Forget`;
-    case 'bulwark': return `${power} / CC+Forget`;
-    case 'conversion': return 'Deal Block as dmg';
-    case 'ironhide': {
-      const str = stats?.extras?.['str'] ?? 1;
-      return `${power} blk +${str} Str`;
-    }
+    case 'block': return `Gain ${power} block`;
+    case 'thorns': return `Gain ${power} block, reflect ${stats?.secondaryValue ?? secondary ?? 3}`;
+    case 'fortify': return 'Block from current block';  // 2026-04-11: resolver scales current block
+    case 'parry': return `Gain ${power} block, draw`;
+    case 'brace': return 'Block equal to enemy intent';
+    case 'cleanse': return 'Remove all debuffs';
+    case 'overheal': return `Gain ${power} block, ×2 if wounded`;
+    case 'emergency': return `Gain ${power} block, ×2 if wounded`;
+    case 'immunity': return 'Absorb next hit';
+    case 'reinforce': return `Gain ${power} block`;
+    case 'shrug_it_off': return `Gain ${power} block, draw`;
+    case 'guard': return `Gain ${power} block`;
+    case 'absorb': return `Gain ${power} block`;
+    case 'reactive_shield': return `Gain ${power} block + thorns`;
+    case 'aegis_pulse': return `Gain ${power} block, boost chain`;
+    case 'burnout_shield': return `Gain ${power} block, consumed`;
+    case 'bulwark': return `Gain ${power} block, consumed`;
+    case 'conversion': return 'Deal current block as damage';
+    case 'ironhide': return `Gain ${power} block + Strength`;
+    case 'knowledge_ward': return 'Block scales with charges';
 
     // ── Buff ─────────────────────────────────────────────────────────────────
-    case 'empower': return `Next +${power}%`;
-    case 'quicken': return '+1 AP';
-    case 'focus': return 'Next −1 AP';
-    case 'double_strike': return `2× ${stats?.extras?.['hitMult'] ?? 75}% power`;
-    case 'ignite': {
-      const burnStacks = stats?.extras?.['burnStacks'] ?? 2;
-      return `Next +${burnStacks} B.Burn`;
-    }
-    case 'inscription_fury': return `+${power} dmg all atk`;
-    case 'inscription_iron': return `+${power} blk/turn`;
-    case 'inscription_wisdom': return '+1 draw/CC';
-    case 'warcry': {
-      const str = stats?.extras?.['str'] ?? 1;
-      return `+${str} Str / CC perm`;
-    }
-    case 'battle_trance': {
-      const drawCount = stats?.drawCount ?? 2;
-      return `Draw ${drawCount} +lock`;
-    }
-    case 'frenzy': {
-      const freeCards = stats?.extras?.['freeCards'] ?? 1;
-      return `Next ${freeCards} free`;
-    }
-    case 'mastery_surge': {
-      const targets = stats?.extras?.['targets'] ?? 1;
-      return `+1 mastery ×${targets}`;
-    }
-    case 'war_drum': {
-      const bonus = stats?.extras?.['bonus'] ?? 1;
-      return `Hand +${bonus} this turn`;
-    }
-    case 'forge': {
-      const amt = stats?.extras?.['amount'] ?? 1;
-      return `Forge +${amt} mastery`;
-    }
+    case 'empower': return `Next card +${power}% damage`;
+    case 'quicken': return 'Gain 1 action point';
+    case 'focus': return 'Next card costs 1 less';
+    case 'double_strike': return 'Next attack hits twice';
+    case 'ignite': return `Next attack +${stats?.extras?.['burnStacks'] ?? 2} Brain Burn`;
+    case 'inscription_fury': return `All attacks +${power} damage`;
+    case 'inscription_iron': return `+${power} block each turn`;
+    case 'inscription_wisdom': return 'Draw extra on correct charge';
+    case 'warcry': return `Gain +${stats?.extras?.['str'] ?? 1} Strength`;
+    case 'battle_trance': return `Draw ${stats?.drawCount ?? 2}, end actions`;
+    case 'frenzy': return `Next ${stats?.extras?.['freeCards'] ?? 1} cards cost 0`;
+    case 'mastery_surge': return `Upgrade ${stats?.extras?.['targets'] ?? 1} cards`;
+    case 'war_drum': return `All cards +${stats?.extras?.['bonus'] ?? 1} this turn`;
+    case 'forge': return `Upgrade a card +${stats?.extras?.['amount'] ?? 1}`;
 
     // ── Debuff ───────────────────────────────────────────────────────────────
-    case 'weaken': return `Weak ${power}`;
-    case 'expose': return `Vuln ${power}`;
-    case 'slow': return 'Skip action';
-    case 'hex': return `Doubt ${power}×${stats?.extras?.['turns'] ?? secondary ?? 3}`;
-    case 'stagger': return 'Skip action';
-    case 'corrode': return 'Strip blk +Weak';
-    case 'curse_of_doubt': {
-      const pctBonus = stats?.extras?.['pctBonus'] ?? 15;
-      return `+${pctBonus}% chg dmg`;
-    }
-    case 'mark_of_ignorance': {
-      const flatBonus = stats?.extras?.['flatBonus'] ?? 2;
-      return `+${flatBonus} flat/chg`;
-    }
-    case 'corroding_touch': {
-      const weakStacks = stats?.extras?.['weakStacks'] ?? 1;
-      return `${weakStacks} Weak (free)`;
-    }
-    case 'entropy': {
-      const burn = stats?.extras?.['burn'] ?? 2;
-      const poison = stats?.extras?.['poison'] ?? 1;
-      return `${burn}B.Burn +${poison}Doubt`;
-    }
+    case 'weaken': return `Apply ${power} Weakness`;
+    case 'expose': return `Apply ${power} Exposed`;
+    case 'slow': return 'Skip enemy action';
+    case 'hex': return `Apply ${power} Drawing Blanks`;
+    case 'stagger': return 'Skip enemy action';
+    case 'corrode': return 'Strip block, apply Weakness';
+    case 'curse_of_doubt': return `Charges deal +${stats?.extras?.['pctBonus'] ?? 15}%`;
+    case 'mark_of_ignorance': return `Charges deal +${stats?.extras?.['flatBonus'] ?? 2} bonus`;
+    case 'corroding_touch': return 'Apply Weakness for free';
+    case 'entropy': return `${stats?.extras?.['burn'] ?? 2} Brain Burn + ${stats?.extras?.['poison'] ?? 1} Drawing Blanks`;
 
     // ── Utility ──────────────────────────────────────────────────────────────
     case 'scout': return `Draw ${stats?.drawCount ?? power ?? 1}`;
@@ -633,85 +572,37 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
       const foresightDrawShort = foresightStatsShort?.drawCount ?? 1;
       return `Draw ${foresightDrawShort}`;
     }
-    case 'transmute': return 'Transform';
-    case 'sift': {
-      const scryCount = stats?.extras?.['scryCount'] ?? 2;
-      return `Scry ${scryCount}`;
-    }
-    case 'scavenge': return 'Recover 1';
-    case 'swap': {
-      const draws = stats?.drawCount ?? 1;
-      return `Cycle 1→${draws}`;
-    }
-    case 'archive': {
-      const retain = stats?.extras?.['retain'] ?? 1;
-      return `Retain ${retain}`;
-    }
-    case 'reflex': {
-      const drawCount = stats?.drawCount ?? 1;
-      return `Draw ${drawCount} +passive`;
-    }
-    case 'recollect': {
-      const returns = stats?.extras?.['returns'] ?? 1;
-      return `Return ${returns} forget`;
-    }
-    case 'synapse': {
-      const drawCount = stats?.drawCount ?? 1;
-      return `Draw ${drawCount} / CC+chain`;
-    }
-    case 'siphon_knowledge': {
-      const drawCount = stats?.drawCount ?? 1;
-      return `Draw ${drawCount} +preview`;
-    }
-    case 'tutor': return 'Search & add';
-    case 'conjure': {
-      const picks = stats?.extras?.['picks'] ?? 1;
-      return `Summon ${picks}`;
-    }
+    case 'transmute': return 'Transform this card';
+    case 'sift': return `Look at top ${stats?.extras?.['scryCount'] ?? 2}`;
+    case 'scavenge': return 'Recover a discarded card';
+    case 'swap': return `Discard 1, draw ${stats?.drawCount ?? 1}`;
+    case 'archive': return `Retain ${stats?.extras?.['retain'] ?? 1} in hand`;
+    case 'reflex': return `Draw ${stats?.drawCount ?? 1}, block on discard`;
+    case 'recollect': return `Return ${stats?.extras?.['returns'] ?? 1} forgotten`;
+    case 'synapse': return `Draw ${stats?.drawCount ?? 1}, extend chain`;
+    case 'siphon_knowledge': return `Draw ${stats?.drawCount ?? 1}, preview answers`;
+    case 'tutor': return 'Search and add a card';
+    case 'conjure': return `Summon ${stats?.extras?.['picks'] ?? 1} cards`;
 
     // ── Wild ─────────────────────────────────────────────────────────────────
-    case 'mirror': return 'Copy last';
-    case 'adapt': return 'Smart';
-    case 'overclock': return '2× effect';
-    case 'phase_shift': return `${power} dmg OR blk`;
-    case 'chameleon': return 'Copy last';
-    case 'dark_knowledge': {
-      const dmgPerCurse = stats?.extras?.['dmgPerCurse'] ?? 2;
-      return `${dmgPerCurse} dmg/curse`;
-    }
-    case 'chain_anchor': {
-      const draws = stats?.drawCount ?? 1;
-      return `Draw ${draws} / CC→2`;
-    }
-    case 'unstable_flux': return 'Random / CC: choose';
-    case 'sacrifice': return '-5HP: draw 2+AP';
-    case 'catalyst': return 'Double Doubt (CC+B.Burn)';
-    case 'mimic': {
-      const qpMult = stats?.extras?.['qpMult'] ?? 60;
-      return `Replay disc ${qpMult}%`;
-    }
-    case 'aftershock': {
-      const qpMult = stats?.extras?.['qpMult'] ?? 40;
-      return `Echo ${qpMult}% / CC>`;
-    }
-    case 'knowledge_bomb': {
-      const perCorrect = stats?.extras?.['perCorrect'] ?? 3;
-      return `CC: ${perCorrect}×charges`;
-    }
-
-    // ── AR-264: Quiz-integrated cards ─────────────────────────────────────────
-    case 'recall': return '10/20/30 dmg';
-    case 'precision_strike': return 'Deal 8×options';
-    case 'knowledge_ward': return 'Gain ×charges';
-    case 'smite': return '7+CC×Aura dmg';  // 2026-04-11 audit: L0 QP=7 from stat table
-    case 'feedback_loop': return 'CC: 28/40 dmg';  // 2026-04-11 Pass-8 updated values
+    case 'mirror': return 'Copy last card';
+    case 'adapt': return 'Auto-pick best action';
+    case 'overclock': return 'Double next effect';
+    case 'phase_shift': return `Deal ${power} or gain block`;
+    case 'chameleon': return 'Copy last card effect';
+    case 'dark_knowledge': return `${stats?.extras?.['dmgPerCurse'] ?? 2} per cursed card`;
+    case 'chain_anchor': return `Draw ${stats?.drawCount ?? 1}, boost chain`;
+    case 'unstable_flux': return 'Random effect or choose';
+    case 'sacrifice': return 'Lose 5 HP, draw 2, gain AP';
+    case 'catalyst': return 'Double all Drawing Blanks';
+    case 'mimic': return 'Replay a discarded card';
 
     default: {
       // Type-based sensible defaults — better than just mechanic.name
       const fallbackPower = Math.round(card.baseEffectValue);
       switch (card.cardType) {
-        case 'attack': return `Deal ${fallbackPower}`;
-        case 'shield': return `Gain ${fallbackPower}`;
+        case 'attack': return `Deal ${fallbackPower} damage`;
+        case 'shield': return `Gain ${fallbackPower} block`;
         case 'buff': return `+${fallbackPower}%`;
         case 'debuff': return `${fallbackPower} turns`;
         case 'utility': return `Draw ${fallbackPower}`;
