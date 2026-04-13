@@ -52,6 +52,8 @@
     showMasteryGlow?: boolean
     /** Chain-pill pulse animation (active chain match). */
     chainPillActive?: boolean
+    /** Chain multiplier for description text scaling. */
+    chainMultiplier?: number
   }
 
   let {
@@ -65,6 +67,7 @@
     apGemColor = null,
     showMasteryGlow = true,
     chainPillActive = false,
+    chainMultiplier = 1.0,
   }: Props = $props()
 
   /** Compute the AP cost to display (caller may override). */
@@ -88,7 +91,7 @@
 
   /** Compute CSS size class for effect text based on total description length. */
   function effectTextSizeClass(): string {
-    const parts = getCardDescriptionParts(card)
+    const parts = getCardDescriptionParts(card, { chainMultiplier })
     const desc = parts.map(p => p.value).join('')
     if (desc.length > 35) return 'effect-text-xs'
     if (desc.length > 25) return 'effect-text-sm'
@@ -150,7 +153,7 @@
   <!-- Effect description text (rich parts) -->
   <div class="frame-text v2-effect-text {effectTextSizeClass()}" style={GUIDE_STYLES.effectText}>
     <span class="parchment-inner">
-      {#each groupIntoLines(getCardDescriptionParts(card, undefined, resolveEffectValue())) as line}
+      {#each groupIntoLines(getCardDescriptionParts(card, { chainMultiplier }, resolveEffectValue())) as line}
         <div class="desc-line">
           {#each line as part}
             {#if part.type === 'number'}

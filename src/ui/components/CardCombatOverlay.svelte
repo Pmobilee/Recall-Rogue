@@ -537,6 +537,7 @@
       encounterTurnNumber: turnState.encounterTurnNumber,
       scarTissueStacks: turnState.scarTissueStacks ?? 0,
       playerStrengthModifier: getStrengthModifier(ps.statusEffects),
+      chainMultiplier: turnState.chainMultiplier ?? 1.0,
     };
 
     const result: Record<string, DamagePreview> = {};
@@ -3051,6 +3052,7 @@
       {showGuaranteed}
       {damagePreviews}
       {activeChainColor}
+      chainMultiplier={chainMultiplier}
     />
     </div>
 

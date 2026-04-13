@@ -49,6 +49,8 @@ export interface DamagePreviewContext {
   scarTissueStacks: number;
   /** Player strength/weakness modifier (1.0 = neutral, 0.75 = weakness 1, 1.25 = strength 1). Defaults to 1.0 if omitted. */
   playerStrengthModifier?: number;
+  /** Knowledge Chain multiplier (1.0 = no chain, default). Applied at base only. */
+  chainMultiplier?: number;
 }
 
 export interface DamagePreview {
@@ -211,6 +213,11 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
       ccBase = Math.round(ccBase * CURSED_CHARGE_CORRECT_MULTIPLIER); // 1.0 — no change
     }
 
+    // AR-CHAIN-REWORK: chain adjusts base before other multipliers
+    const chainMult = ctx.chainMultiplier ?? 1.0;
+    qpBase = Math.round(qpBase * chainMult);
+    ccBase = Math.round(ccBase * chainMult);
+
     // Step 3: barbed_edge +3 (mirrors cardEffectResolver sharpenedEdgeBonus, not resolveAttackModifiers)
     const sharpenedEdgeBonus = isStrikeTagged && ctx.activeRelicIds.has('barbed_edge') ? 3 : 0;
 
@@ -270,8 +277,8 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
     return {
       qpValue: qpFinal,
       ccValue: ccFinal,
-      qpModified: classify(qpFinal, nakedQpBase),
-      ccModified: classify(ccFinal, nakedCcBase),
+      qpModified: classify(qpFinal, Math.round(nakedQpBase * chainMult)),
+      ccModified: classify(ccFinal, Math.round(nakedCcBase * chainMult)),
     };
   }
 
@@ -280,6 +287,11 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
 
   let qpShield = nakedQpBase;
   let ccShield = nakedCcBase;
+
+  // AR-CHAIN-REWORK: chain adjusts shield base
+  const chainMult = ctx.chainMultiplier ?? 1.0;
+  qpShield = Math.round(qpShield * chainMult);
+  ccShield = Math.round(ccShield * chainMult);
 
   // stone_wall: +3 flat
   const stoneWallFlat = relicIds.has('stone_wall') ? 3 : 0;
@@ -315,7 +327,7 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   return {
     qpValue: qpFinalShield,
     ccValue: ccFinalShield,
-    qpModified: classify(qpFinalShield, nakedQpBase),
-    ccModified: classify(ccFinalShield, nakedCcBase),
+    qpModified: classify(qpFinalShield, Math.round(nakedQpBase * chainMult)),
+    ccModified: classify(ccFinalShield, Math.round(nakedCcBase * chainMult)),
   };
 }

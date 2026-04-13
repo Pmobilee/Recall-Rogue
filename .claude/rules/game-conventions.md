@@ -12,7 +12,7 @@ paths:
 - All damage is integer (floored after multipliers)
 - Block absorbs before HP, resets to 0 each turn unless Fortify
 - Card effects resolve through damage pipeline (`cardEffectResolver.ts`, GDD §15.5) — never bypass
-- Chain multipliers stack multiplicatively with charge/buff/relic multipliers
+- Chain multipliers scale the mechanic base value (step 1 of the damage pipeline) before charge, buff, and relic multipliers are applied. See docs/mechanics/chains.md
 
 ## Card Play Values
 - Quick Play = `getMasteryStats(mechanicId, level).qpValue` (explicit per-level value)

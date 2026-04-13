@@ -59,6 +59,8 @@
     damagePreviews?: Record<string, import('../../services/damagePreviewService').DamagePreview>
     /** AR-310: Active chain color for this turn — matching cards get a glow highlight. */
     activeChainColor?: number | null
+    /** Chain multiplier for description text scaling. */
+    chainMultiplier?: number
   }
 
   // Session-level preload guard: avoid creating duplicate Image objects for the same URL.
@@ -85,6 +87,7 @@
     showGuaranteed = false,
     damagePreviews = {},
     activeChainColor = null,
+    chainMultiplier = 1.0,
   }: Props = $props()
 
   // ─── Draw animation tracking ─────────────────────────────────────────────
@@ -910,6 +913,7 @@
             {displayedApCost}
             {apGemColor}
             chainPillActive={isActiveChainMatch && !isSelected && selectedIndex === null}
+            {chainMultiplier}
           />
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
@@ -1025,7 +1029,7 @@
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
           <!-- V2 layered frame — shared CardVisual component -->
-          <CardVisual {card} />
+          <CardVisual {card} {chainMultiplier} />
         </div>
         {#if cardbackUrl}
           <div class="card-back">
@@ -1192,6 +1196,7 @@
             masteryFlash={masteryFlashes[card.id] ?? null}
             {displayedApCost}
             {apGemColor}
+            {chainMultiplier}
           />
           {#if card.isMasteryTrial}
             <div class="trial-badge">TRIAL</div>
@@ -1331,7 +1336,7 @@
       <div class="card-inner" class:flipped={(isRevealing || isTierUp || isSwoosh || isImpact) && !!cardbackUrl}>
         <div class="card-front">
           <!-- V2 layered frame — shared CardVisual component -->
-          <CardVisual {card} />
+          <CardVisual {card} {chainMultiplier} />
         </div>
         {#if cardbackUrl}
           <div class="card-back">

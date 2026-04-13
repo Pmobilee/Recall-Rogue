@@ -105,6 +105,7 @@ export function selectLiveCardStats(card: Card, ctx: LiveCardTurnContext): Damag
     encounterTurnNumber: ctx.encounterTurnNumber,
     scarTissueStacks: ctx.scarTissueStacks ?? 0,
     playerStrengthModifier,
+    chainMultiplier: ctx.chainMultiplier,
   };
 
   return computeDamagePreview(card, previewCtx);

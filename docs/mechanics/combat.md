@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-12 (Bug 3 fix: EnemyInstance.lockedDisplayDamage field added; intent display no longer drifts mid-turn from live shield mutations)
+> **Last verified:** 2026-04-13 (chain multiplier rework: base-only scaling at step 6; per-card-type behavior in chains.md)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -161,7 +161,7 @@ Computed in `resolveCardEffect()` (`cardEffectResolver.ts`):
 3. **Cursed multipliers** (if `card.isCursed`) — QP: 0.7×, CC: 1.0×, CW: 0.5×
 4. **Inscription of Fury bonus** — flat add for attack cards from `activeInscriptions`
 5. **Speed/trick bonus** — speed bonus (`SPEED_BONUS_MULTIPLIER = 1.0×` — disabled as of 2026-04-09; timer still enforces urgency but no damage multiplier. Speed bonus is relic-only via Quicksilver Quill) × trick question unlock (2.0×)
-6. **Combo multipliers** — `chainMultiplier × overclockMultiplier × buffMultiplier`
+6. **Chain base adjustment** — `chainAdjustedBase = round(qpValue × chainMultiplier)` — chain scales the mechanic base value only, before all other multipliers. See docs/mechanics/chains.md for per-card-type behavior.
 7. **Relic modifiers** — `resolveAttackModifiers()` / `resolveShieldModifiers()`
 8. **Enemy modifiers** — QP damage multiplier, hardcover armor, `chargeResistant` (−50% QP), `chainVulnerable` (+50% chain damage)
 9. **Burn trigger** — `triggerBurn()`: bonus = current stacks, then stacks halve (multi-hit fires per hit)
@@ -172,7 +172,8 @@ Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `resu
 **Tier multipliers (@deprecated):** `card.effectMultiplier` is set by `TIER_MULTIPLIER[tier]` in `cardFactory.ts` but has no gameplay effect for active tiers — T1/T2a/T2b all = 1.0, making it a no-op multiplier. Tiers drive quiz difficulty ONLY. T3 = 0× (card becomes a passive and leaves the active hand). Power scaling is governed exclusively by mastery stat tables.
 
 **Knowledge Chain multipliers** (`CHAIN_MULTIPLIERS`): [1.0, 1.2, 1.5, 2.0, 2.5, 3.5] at chain lengths 0–5.
-Chains now **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of fully resetting, preserving momentum into the next turn.
+Chains **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of fully resetting, preserving momentum into the next turn.
+Chain applies at step 6 to the mechanic base value only — overclockMultiplier and buffMultiplier are separate pipeline steps applied to the chain-adjusted base (rework 2026-04-13). See docs/mechanics/chains.md.
 
 ---
 

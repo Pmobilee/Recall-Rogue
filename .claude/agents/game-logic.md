@@ -40,7 +40,7 @@ You always run inside an isolated git worktree on a one-time feature branch. You
 - Card effects are pure functions in `cardEffectResolver.ts`.
 - ALL damage goes through the damage pipeline (GDD §15.5) — never bypass.
 - Surge counter uses `RunState.globalTurnCounter`, persists across encounters.
-- Chain multipliers stack multiplicatively.
+- Chain adjusts mechanic base before other multipliers (base-only scaling).
 - Wrong charge = `FIZZLE_EFFECT_RATIO` (currently 0.50×) — never zero.
 - Facts assigned at charge-commit time, NOT draw time.
 - Weapon animations fire `onImpact` callback at contact frame — enemy hit reaction is deferred to that callback.

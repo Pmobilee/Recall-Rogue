@@ -2320,7 +2320,8 @@ export function playCardAction(
     const clBasePerLen = _clStats
       ? _clStats.qpValue
       : (mechCL?.quickPlayValue ?? 8) + getMasteryBaseBonus('chain_lightning', card.masteryLevel ?? 0);
-    const clTotalDmg = Math.round(clBasePerLen * clChainLen * currentChainMultiplier * speedBonus * (1 + turnState.buffNextCard / 100));
+    const chainAdjustedClBase = Math.round(clBasePerLen * currentChainMultiplier);
+    const clTotalDmg = Math.round(chainAdjustedClBase * clChainLen * speedBonus * (1 + turnState.buffNextCard / 100));
     // Null Shard: if chain is disabled (chainLength floors at 1 and multiplier = 1.0)
     // The above calculation already handles it since clChainLen >= 1 and multiplier = 1.0
     if (clTotalDmg !== effect.damageDealt) {
@@ -2464,8 +2465,9 @@ export function playCardAction(
       if (lastMechDef) {
         const chameleonMult = effect.chameleonMultiplier;
         const baseQPValue = lastMechDef.quickPlayValue;
-        const copiedDamage = Math.round(baseQPValue * chameleonMult * currentChainMultiplier * speedBonus);
-        const copiedShield = Math.round(baseQPValue * chameleonMult);
+        const chainAdjustedCopy = Math.round(baseQPValue * currentChainMultiplier);
+        const copiedDamage = Math.round(chainAdjustedCopy * chameleonMult * speedBonus);
+        const copiedShield = Math.round(chainAdjustedCopy * chameleonMult);
         // Apply based on last card's type
         if (lastMechDef.type === 'attack') {
           const chamResult = applyDamageToEnemy(enemy, copiedDamage);

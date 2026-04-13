@@ -4286,3 +4286,17 @@ Additionally, the server snapshot player objects were missing `isHost` and `isRe
 **Lesson:** Any WebSocket-backed session resource (lobby slot, room reservation, pairing) must have a navigation-away cleanup hook, not just an explicit "leave" button. Route-change effects in Svelte 5 via `$effect` watching `currentScreen` are the correct hook point.
 
 **Discovered:** MP-20260413-003941 playtest batch (commits `c69a581` and `bee5135`).
+
+### 2026-04-13 — Entropy burn stacks always 0 at QP due to stat table / resolver mismatch
+
+**What:** `entropy` mechanic always applies 0 burn stacks at Quick Play (all mastery levels) due to a mismatch between the stat table and the resolver.
+
+**Why:** The entropy resolver reads `burnStacks = finalValue`, where `finalValue` derives from `mechanicBaseValue`. The stat table for entropy sets `qpValue: 0` at all levels (with actual burn counts stored in `extras.burn`). This produces `masteryBonus = 0 - 2 = -2` (stat_table.qpValue - mechanic.quickPlayValue), so `mechanicBaseValue = mechanic.quickPlayValue + masteryBonus = 2 + (-2) = 0`. The resolver then uses `finalValue = 0` for burn stacks, giving `round(0 * chainMult) = 0`.
+
+Poison IS chain-scaled correctly because the QP poison count is hardcoded to `2` in the case statement (not derived from `finalValue`), then `round(2 * chainMult)` is applied.
+
+**Impact:** Burn stacks are never applied for entropy QP. CC entropy correctly applies 6 burn stacks (hardcoded). The stat table's `extras.burn` field is never read by the entropy resolver case.
+
+**Fix needed:** Either update the entropy resolver to read `_masteryStats?.extras?.['burn'] ?? finalValue` (similar to how hex reads `extras.stacks`), or restructure the stat table to use non-zero `qpValue` and store the delta. This is a game-logic concern (file: `src/services/cardEffectResolver.ts` line ~2018, `src/services/cardUpgradeService.ts` entropy stat table).
+
+**Discovery:** Found while writing chain multiplier rework unit tests (`tests/unit/chainMultiplierRework.test.ts`). Test group 4 documents actual behavior rather than spec behavior.

@@ -1,7 +1,7 @@
 # Chain System
 
 > **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, break conditions, rotating chain color, and themed chain distribution.
-> **Last verified:** 2026-04-09 (7.7 weighted rotation, 7.8 off-colour partial reset, mid-turn active color switch)
+> **Last verified:** 2026-04-13 (chain multiplier rework: base-only scaling, per-card-type table, card face preview)
 > **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`, `src/ui/components/StudyTempleScreen.svelte`
 
 ---
@@ -163,13 +163,42 @@ When enabled: a correct Charge answer waives the +1 AP surcharge on the **next**
 
 ## How Chains Interact with Damage
 
-The chain multiplier is passed into `cardEffectResolver.ts` as `options.chainMultiplier`. The full attack formula:
+The chain multiplier is passed into `cardEffectResolver.ts` as `options.chainMultiplier`. Chain applies to the **mechanic base value only** — it adjusts what that mechanic produces before other multipliers (charge, buff, relic) are layered on top.
 
+### Base-Only Formula (rework 2026-04-13)
+
+**Old formula (pre-rework):** chain compounded with ALL modifiers:
 ```
-CC damage = getMasteryStats(mechanicId, level).qpValue × 1.50 × chainMult × relicMods + inscriptionBonus
+damage = round((qpValue × ccMult) × chainMult × strength × vuln × relicMult × empower × overclock) + flat
 ```
 
-Tier multipliers are all 1.0 for active tiers and do not appear in the formula. The chain multiplier applies to the **full resolved damage** after base + mastery scaling, before relic flat bonuses. Chain Lightning (`chain_lightning` mechanic) is the only card that reads `chainLightningChainLength` directly — its CC damage is `baseValue × chain length` rather than using the standard multiplier.
+**New formula:** chain adjusts base, then other multipliers apply to the chain-adjusted base:
+```
+chainAdjustedBase = round(qpValue × chainMultiplier)
+damage = round((chainAdjustedBase × ccMult) × strength × vuln × relicMult × empower × overclock) + flat
+```
+
+This means a 3.5× chain on a 10-damage card produces `round(10 × 3.5) = 35` as the new base — relic/buff/overclock multipliers then scale from 35, not from 10. Chain is still powerful, but it no longer compounds exponentially with every other multiplier.
+
+### Per-Card-Type Chain Behavior
+
+| Card Type | What chain scales | Formula |
+|---|---|---|
+| Attack | qpValue (base damage) | `round(qpValue × chainMult)` |
+| Shield / Block | qpValue (block amount) | `round(qpValue × chainMult)` |
+| Poison / Burn / Bleed | stacks applied | `round(stacks × chainMult)` |
+| Debuff (weak / vuln / slow) | duration only (soft cap) | `round(turns × (1 + (chainMult-1) × 0.5))` |
+| Buff (empower / warcry) | nothing — chain-immune | — |
+| Utility / draw effects | nothing — chain-immune | — |
+| Heal | heal amount | `round(healAmount × chainMult)` |
+
+Debuffs use a 0.5× dampened chain scaling so a max-chain slow doesn't trivially freeze enemies for the rest of the encounter. Buff and utility cards are chain-immune by design — chain rewards damage output, not setup.
+
+### Card Face Preview
+
+Card faces now display chain-adjusted values during combat. `damagePreviewService` receives `chainMultiplier` from the current turn state and applies the base-only formula before rendering the preview number. This means the number shown on a card face exactly matches what will be dealt when played.
+
+Chain Lightning (`chain_lightning` mechanic) is the only exception — its CC damage is `baseValue × chain length` rather than using `chainMultiplier` from the standard lookup.
 
 ---
 

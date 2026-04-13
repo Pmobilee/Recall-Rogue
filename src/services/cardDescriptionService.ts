@@ -733,6 +733,8 @@ export type CardDescPart =
 interface CardGameState {
   playerHpPercent?: number;
   enemyHpPercent?: number;
+  /** Knowledge Chain multiplier (1.0 = no chain, default). Applied at base for attack/shield. */
+  chainMultiplier?: number;
 }
 
 function num(v: number | string): CardDescPart {
@@ -792,7 +794,12 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
   const masteryLevel = card.masteryLevel ?? 0;
   // 2026-04-11 audit fix: use stat-table qpValue not baseEffectValue.
   const _partsStatsForPower = mechanic ? getMasteryStats(mechanic.id, masteryLevel) : null;
-  const power = powerOverride ?? (_partsStatsForPower?.qpValue != null ? _partsStatsForPower.qpValue : Math.round(card.baseEffectValue));
+  const _partsBasePower = powerOverride ?? (_partsStatsForPower?.qpValue != null ? _partsStatsForPower.qpValue : Math.round(card.baseEffectValue));
+  // AR-CHAIN-REWORK: apply chain multiplier to power for attack/shield display.
+  const _partsChainMult = gameState?.chainMultiplier ?? 1.0;
+  const power = (card.cardType === 'attack' || card.cardType === 'shield')
+    ? Math.round(_partsBasePower * _partsChainMult)
+    : _partsBasePower;
 
   if (!mechanic) {
     switch (card.cardType) {

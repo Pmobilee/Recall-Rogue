@@ -634,7 +634,14 @@ export function resolveCardEffect(
   // AR-204: Inscription of Fury bonus — flat damage at pipeline step 3 (after mastery, before relic flat bonuses).
   // Only applies to attack cards; non-attack types are unaffected.
   const furyBonus = effectiveType === 'attack' ? (advanced.inscriptionFuryBonus ?? 0) : 0;
-  const effectiveBase = mechanicBaseValue + sharpenedEdgeBonus + furyBonus;
+
+  // AR-CHAIN-REWORK: Chain scales mechanic base BEFORE flat bonuses and other multipliers.
+  // Only attack/shield cards get chain-adjusted base; buffs/debuffs/utility use raw base.
+  const chainAdjustedMechanicBase = Math.round(mechanicBaseValue * chainMultiplier);
+
+  const effectiveBase = (effectiveType === 'attack' || effectiveType === 'shield')
+    ? chainAdjustedMechanicBase + sharpenedEdgeBonus + furyBonus
+    : mechanicBaseValue + sharpenedEdgeBonus + furyBonus;
 
   // ── Relic attack modifiers ──────────────────────────────────────────────────
   // resolveAttackModifiers handles all attack-boosting relics (whetstone, flame_brand,
@@ -680,7 +687,7 @@ export function resolveCardEffect(
 
   const rawValue = effectiveBase * focusAdjustedMultiplier;
   result.rawValue = rawValue;
-  const scaledValue = Math.round(rawValue * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier * factDamageBonusMult * surgeMultiplier);
+  const scaledValue = Math.round(rawValue * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier * factDamageBonusMult * surgeMultiplier);
   // Apply flat relic attack bonus after all multipliers (so it isn't multiplied by combo/chain).
   const relicFlatAttackBonus = relicAttackMods?.flatDamageBonus ?? 0;
   const finalValue = effectiveType === 'attack'
@@ -740,7 +747,7 @@ export function resolveCardEffect(
         result.hitCount = hits;
         // Tag: multi_bleed1 — each hit applies 1 Bleed stack (1 turn).
         if (hasTag('multi_bleed1')) {
-          result.statusesApplied.push({ type: 'bleed', value: 1, turnsRemaining: 1 });
+          result.statusesApplied.push({ type: 'bleed', value: Math.round(1 * chainMultiplier), turnsRemaining: 1 });
         }
         return result;
       }
@@ -783,7 +790,8 @@ export function resolveCardEffect(
       const execBonus = _masteryStats?.extras?.['execBonus'] ?? 8;
       const threshold = _masteryStats?.extras?.['execThreshold'] ?? mechanic?.secondaryThreshold ?? 0.3;
       const bonusBaseValue = isChargeCorrect ? 24 : (isChargeWrong ? 4 : execBonus);
-      const scaledBonus = Math.round(bonusBaseValue * focusAdjustedMultiplier * chainMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
+      const chainAdjustedBonus = Math.round(bonusBaseValue * chainMultiplier);
+      const scaledBonus = Math.round(chainAdjustedBonus * focusAdjustedMultiplier * speedBonus * buffMultiplier * attackRelicMultiplier * overclockMultiplier);
       const executeBonus = enemy.currentHP / enemy.maxHP < threshold ? scaledBonus : 0;
       applyAttackDamage(finalValue + executeBonus);
       return result;
@@ -837,7 +845,7 @@ export function resolveCardEffect(
       const bonusMultiplier = healthPercentage < 0.6 ? 2.0 : 1.0;
       result.shieldApplied = applyShieldRelics(Math.round(finalValue * bonusMultiplier));
       // L3+: overheal_heal2 — also heals 2 HP
-      if (hasTag('overheal_heal2')) result.healApplied = (result.healApplied ?? 0) + 2;
+      if (hasTag('overheal_heal2')) result.healApplied = (result.healApplied ?? 0) + Math.round(2 * chainMultiplier);
       // L5: overheal_heal_pct5 — also heals 5% of max HP
       if (hasTag('overheal_heal_pct5')) result.healPctApplied = 5;
       return result;
@@ -905,7 +913,7 @@ export function resolveCardEffect(
       const poisonValue = isChargeCorrect ? 8 : (isChargeWrong ? 2 : hexStacksQP);
       // plague_flask — poison lasts 1 extra turn
       const poisonTurns = hexTurnsQP + resolvePoisonDurationBonus(activeRelicIds);
-      result.statusesApplied.push({ type: 'poison', value: poisonValue, turnsRemaining: poisonTurns });
+      result.statusesApplied.push({ type: 'poison', value: Math.round(poisonValue * chainMultiplier), turnsRemaining: poisonTurns });
       // L3+: hex_vuln1t — also apply Vulnerable 1t
       if (hasTag('hex_vuln1t')) {
         result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
@@ -983,7 +991,7 @@ export function resolveCardEffect(
       result.extraCardsDrawn = 1;
       // cleanse_heal3: also heal 3 HP
       if (hasTag('cleanse_heal3')) {
-        result.healApplied = (result.healApplied ?? 0) + 3;
+        result.healApplied = (result.healApplied ?? 0) + Math.round(3 * chainMultiplier);
       }
       // cleanse_block3: also gain 3 block
       if (hasTag('cleanse_block3')) {
@@ -1114,7 +1122,7 @@ export function resolveCardEffect(
       const lacerateQPBleed = _masteryStats?.secondaryValue ?? (mechanic?.secondaryValue ?? 4);
       const lacerateBleed = isChargeCorrect ? 8 : (isChargeWrong ? 2 : lacerateQPBleed);
       applyAttackDamage(finalValue);
-      result.applyBleedStacks = lacerateBleed;
+      result.applyBleedStacks = Math.round(lacerateBleed * chainMultiplier);
       // Tag: lacerate_vuln1t — also apply Vulnerable 1t.
       if (hasTag('lacerate_vuln1t')) {
         result.statusesApplied.push({ type: 'vulnerable', value: 1, turnsRemaining: 1 });
@@ -1131,7 +1139,7 @@ export function resolveCardEffect(
       result.hitCount = twinHits;
       // Tag: twin_burn2 — each hit applies 2 Burn stacks.
       if (hasTag('twin_burn2')) {
-        result.applyBurnStacks = 2;
+        result.applyBurnStacks = Math.round(2 * chainMultiplier);
       }
       // Phase 3 Tag: twin_burn_chain — each hit that triggers Burn does NOT halve the stacks.
       // Signal to turnManager to skip the halving step for Burn ticks during this card's hits.
@@ -1176,7 +1184,8 @@ export function resolveCardEffect(
     // Filler: Bash — damage + apply Vulnerable
     case 'bash': {
       applyAttackDamage(finalValue);
-      const bashVulnDuration = isChargeCorrect ? 2 : 1;
+      const baseBashVulnDuration = isChargeCorrect ? 2 : 1;
+      const bashVulnDuration = Math.round(baseBashVulnDuration * (1 + (chainMultiplier - 1) * 0.5));
       // Tag: bash_vuln2t — Vuln lasts +1 turn (converts old masteryLevel >= 3 check).
       const masteryVulnBonus = hasTag('bash_vuln2t') ? 1 : 0;
       result.statusesApplied.push({
@@ -1194,7 +1203,8 @@ export function resolveCardEffect(
     case 'sap': {
       applyAttackDamage(finalValue);
       // L2+: sap_weak2t — Weakness lasts 2 turns instead of 1
-      const sapWeakDuration = hasTag('sap_weak2t') ? 2 : (isChargeCorrect ? 2 : 1);
+      const baseSapWeakDuration = hasTag('sap_weak2t') ? 2 : (isChargeCorrect ? 2 : 1);
+      const sapWeakDuration = Math.round(baseSapWeakDuration * (1 + (chainMultiplier - 1) * 0.5));
       result.statusesApplied.push({
         type: 'weakness',
         value: 1,
@@ -1208,7 +1218,7 @@ export function resolveCardEffect(
     case 'rupture': {
       applyAttackDamage(finalValue);
       const ruptureBleed = isChargeCorrect ? 8 : (isChargeWrong ? 2 : (card.secondaryValue ?? mechanic?.secondaryValue ?? 3));
-      result.applyBleedStacks = ruptureBleed;
+      result.applyBleedStacks = Math.round(ruptureBleed * chainMultiplier);
       // Tag: rupture_bleed_perm — bleed applied by this card skips decay each turn.
       if (hasTag('rupture_bleed_perm')) { result.bleedPermanent = true; }
       return result;
@@ -1223,7 +1233,7 @@ export function resolveCardEffect(
       applyAttackDamage(finalValue);
       const kindleQPBurn = _masteryStats?.secondaryValue ?? (mechanic?.secondaryValue ?? 4);
       const kindleBurn = isChargeCorrect ? 8 : (isChargeWrong ? 2 : kindleQPBurn);
-      result.applyBurnStacks = kindleBurn;
+      result.applyBurnStacks = Math.round(kindleBurn * chainMultiplier);
       // hitCount = 1 so turnManager triggers Burn once on this hit.
       // Tag: kindle_double_trigger — trigger Burn TWICE (hitCount = 2).
       result.hitCount = hasTag('kindle_double_trigger') ? 2 : 1;
@@ -1260,7 +1270,7 @@ export function resolveCardEffect(
       }
       const riposteSecondary = _masteryStats?.secondaryValue ?? (mechanic?.secondaryValue ?? 4);
       const riposteBlock = isChargeCorrect
-        ? Math.round(12 * focusAdjustedMultiplier * chainMultiplier * speedBonus * buffMultiplier * overclockMultiplier)  // CC: hardcoded, full modifier chain
+        ? Math.round(Math.round(12 * chainMultiplier) * focusAdjustedMultiplier * speedBonus * buffMultiplier * overclockMultiplier)  // CC: chain adjusts base 12 first
         : (isChargeWrong
           ? applyShieldRelics(Math.round(riposteSecondary * 0.75))   // CW: stat-table × 0.75
           : applyShieldRelics(riposteSecondary));                     // QP: stat-table secondaryValue
@@ -1277,7 +1287,7 @@ export function resolveCardEffect(
         const draws = hasTag('absorb_draw2cc') ? 2 : 1;
         result.extraCardsDrawn = draws;
         // L5: absorb_heal1cc — CC also heals 1 HP
-        if (hasTag('absorb_heal1cc')) result.healApplied = (result.healApplied ?? 0) + 1;
+        if (hasTag('absorb_heal1cc')) result.healApplied = (result.healApplied ?? 0) + Math.round(1 * chainMultiplier);
         // Phase 3 Tag: absorb_ap_on_block — grant +1 AP on CC (simple implementation).
         // Full spec: min(2, damageBlockedThisTurn) — but blocked damage is not tracked per-card.
         if (hasTag('absorb_ap_on_block')) {
@@ -1410,7 +1420,7 @@ export function resolveCardEffect(
         // Overkill heal computed here; turnManager adjusts based on actual HP remaining.
         // We store the min heal; turnManager computes overkill and clamps.
         const minHeal = _masteryStats?.extras?.['minHeal'] ?? 2;
-        result.overkillHeal = minHeal; // sentinel: turnManager computes actual overkill
+        result.overkillHeal = Math.round(minHeal * chainMultiplier); // sentinel: chain-adjusted
       }
       return result;
     }
@@ -1455,7 +1465,7 @@ export function resolveCardEffect(
       if (isChargeCorrect) {
         const gambitHeal = stats?.extras?.['healOnCC'] ?? 5;  // fallback=5 matches old hardcode
         result.gambitHeal = gambitHeal;
-        result.healApplied = gambitHeal;
+        result.healApplied = Math.round(gambitHeal * chainMultiplier);
       } else if (isChargeWrong) {
         // CW self-damage: stat table does not define cwSelfDmg; use selfDmg + 1 as CW penalty
         const cwSelfDmg = (stats?.extras?.['selfDmg'] ?? 4) + 1;
@@ -1603,7 +1613,7 @@ export function resolveCardEffect(
         result.statusesApplied.push({
           type: 'weakness',
           value: 3,
-          turnsRemaining: 2 + Math.round(masteryBonusDuration),
+          turnsRemaining: Math.round((2 + Math.round(masteryBonusDuration)) * (1 + (chainMultiplier - 1) * 0.5)),
         });
         result.statusesApplied.push({
           type: 'vulnerable',
@@ -1615,14 +1625,14 @@ export function resolveCardEffect(
         result.statusesApplied.push({
           type: 'weakness',
           value: 1,
-          turnsRemaining: 1 + Math.round(masteryBonusDuration),
+          turnsRemaining: Math.round((1 + Math.round(masteryBonusDuration)) * (1 + (chainMultiplier - 1) * 0.5)),
         });
       } else {
         // QP: 2 Weakness (1t + mastery duration)
         result.statusesApplied.push({
           type: 'weakness',
           value: 2,
-          turnsRemaining: 1 + Math.round(masteryBonusDuration),
+          turnsRemaining: Math.round((1 + Math.round(masteryBonusDuration)) * (1 + (chainMultiplier - 1) * 0.5)),
         });
       }
       // L3+: corrtouch_vuln1t — also apply Vulnerable 1t on QP/CW
@@ -1833,14 +1843,14 @@ export function resolveCardEffect(
           // Review Queue bonus: override to 30 total damage + heal 6
           mechanicBaseValue = 30;
           // Tag: recall_heal3 — on review CC, heal 3 HP (stacks with base review heal).
-          result.healApplied = hasTag('recall_heal3') ? 6 + 3 : 6;
+          result.healApplied = Math.round((hasTag('recall_heal3') ? 6 + 3 : 6) * chainMultiplier);
           // Tag: recall_draw1 — on review CC, also draw 1 card.
           if (hasTag('recall_draw1')) { result.extraCardsDrawn = 1; }
         } else {
           // Normal CC: override to 20 damage
           mechanicBaseValue = 20;
           // Tag: recall_heal3 — on non-review CC, still heals 3 HP.
-          if (hasTag('recall_heal3')) { result.healApplied = 3; }
+          if (hasTag('recall_heal3')) { result.healApplied = Math.round(3 * chainMultiplier); }
         }
         applyAttackDamage(mechanicBaseValue);
       } else {
@@ -2020,8 +2030,8 @@ export function resolveCardEffect(
         // L3: QP also gets +1 Poison (entropy_poison_qp tag)
         if (masteryLevelEntropy >= 3) poisonStacks += 1;
       }
-      result.applyBurnStacks = burnStacks;
-      result.statusesApplied.push({ type: 'poison', value: poisonStacks, turnsRemaining: poisonDuration });
+      result.applyBurnStacks = Math.round(burnStacks * chainMultiplier);
+      result.statusesApplied.push({ type: 'poison', value: Math.round(poisonStacks * chainMultiplier), turnsRemaining: poisonDuration });
       return result;
     }
 
@@ -2296,7 +2306,8 @@ export function resolveCardEffect(
     case 'expose': {
       // finalValue encodes stack count; minimum 1 so QP always applies at least 1 stack.
       const exposeStacks = Math.max(1, Math.round(finalValue));
-      const exposeDuration = isChargeCorrect ? 2 : 1;
+      const baseExposeDuration = isChargeCorrect ? 2 : 1;
+      const exposeDuration = Math.round(baseExposeDuration * (1 + (chainMultiplier - 1) * 0.5));
       result.statusesApplied.push({
         type: 'vulnerable',
         value: exposeStacks,
@@ -2310,7 +2321,8 @@ export function resolveCardEffect(
     case 'weaken': {
       // finalValue encodes stack count; minimum 1 so QP always applies at least 1 stack.
       const weakenStacks = Math.max(1, Math.round(finalValue));
-      const weakenDuration = isChargeCorrect ? 2 : 1;
+      const baseWeakenDuration = isChargeCorrect ? 2 : 1;
+      const weakenDuration = Math.round(baseWeakenDuration * (1 + (chainMultiplier - 1) * 0.5));
       result.statusesApplied.push({
         type: 'weakness',
         value: weakenStacks,
