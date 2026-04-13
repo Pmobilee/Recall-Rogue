@@ -1017,6 +1017,7 @@ export function recordRunComplete(bestFloor: number, endData?: RunEndData, runSu
     const prevVictories = save.stats.totalVictories ?? 0
     const prevDefeats = save.stats.totalDefeats ?? 0
     const prevRetreats = save.stats.totalRetreats ?? 0
+    const prevAbandons = save.stats.totalAbandons ?? 0
     const prevPlaytime = save.stats.cumulativePlaytimeMs ?? 0
     const prevEnemies = save.stats.totalEnemiesDefeated ?? 0
     const prevElites = save.stats.totalElitesDefeated ?? 0
@@ -1037,6 +1038,7 @@ export function recordRunComplete(bestFloor: number, endData?: RunEndData, runSu
       totalVictories: prevVictories + (result === 'victory' ? 1 : 0),
       totalDefeats: prevDefeats + (result === 'defeat' ? 1 : 0),
       totalRetreats: prevRetreats + (result === 'retreat' ? 1 : 0),
+      totalAbandons: prevAbandons + (result === 'abandon' ? 1 : 0),
       cumulativePlaytimeMs: prevPlaytime + (endData?.runDurationMs ?? 0),
       totalEnemiesDefeated: prevEnemies + (endData?.encountersWon ?? 0),
       totalElitesDefeated: prevElites + (endData?.elitesDefeated ?? 0),

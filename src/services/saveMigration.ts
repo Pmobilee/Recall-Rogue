@@ -236,6 +236,7 @@ export function migrateV2toV3(save: Record<string, unknown>): void {
     if (typeof stats['totalVictories'] !== 'number') stats['totalVictories'] = 0;
     if (typeof stats['totalDefeats'] !== 'number') stats['totalDefeats'] = 0;
     if (typeof stats['totalRetreats'] !== 'number') stats['totalRetreats'] = 0;
+    if (typeof stats['totalAbandons'] !== 'number') stats['totalAbandons'] = 0;
     if (typeof stats['cumulativePlaytimeMs'] !== 'number') stats['cumulativePlaytimeMs'] = 0;
     if (typeof stats['totalEnemiesDefeated'] !== 'number') stats['totalEnemiesDefeated'] = 0;
     if (typeof stats['totalElitesDefeated'] !== 'number') stats['totalElitesDefeated'] = 0;

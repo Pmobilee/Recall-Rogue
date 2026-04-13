@@ -20,8 +20,8 @@
   // Selected run index — 0 = most recent
   let selectedIndex = $state(0)
 
-  // Filter: 'all' | 'victory' | 'defeat' | 'retreat'
-  let filterResult = $state<'all' | 'victory' | 'defeat' | 'retreat'>('all')
+  // Filter: 'all' | 'victory' | 'defeat' | 'retreat' | 'abandon'
+  let filterResult = $state<'all' | 'victory' | 'defeat' | 'retreat' | 'abandon'>('all')
 
   // Filtered list derived from history + filter
   const filteredHistory = $derived(
@@ -85,15 +85,17 @@
     return `${minutes}m ${String(seconds).padStart(2, '0')}s`
   }
 
-  function resultIcon(result: 'victory' | 'defeat' | 'retreat'): string {
+  function resultIcon(result: 'victory' | 'defeat' | 'retreat' | 'abandon'): string {
     if (result === 'victory') return '🏆'
     if (result === 'defeat') return '💀'
+    if (result === 'abandon') return '🏳️'
     return '🚪'
   }
 
-  function resultLabel(result: 'victory' | 'defeat' | 'retreat'): string {
+  function resultLabel(result: 'victory' | 'defeat' | 'retreat' | 'abandon'): string {
     if (result === 'victory') return 'Victory'
     if (result === 'defeat') return 'Defeat'
+    if (result === 'abandon') return 'Abandoned'
     return 'Retreat'
   }
 
@@ -190,7 +192,7 @@
         <!-- Run header -->
         <div class="run-header-card">
           <div class="run-header-left">
-            <span class="result-icon" class:victory={run.result === 'victory'} class:defeat={run.result === 'defeat'} class:retreat={run.result === 'retreat'}>
+            <span class="result-icon" class:victory={run.result === 'victory'} class:defeat={run.result === 'defeat'} class:retreat={run.result === 'retreat'} class:abandon={run.result === 'abandon'}>
               {resultIcon(run.result)}
             </span>
             <div>
@@ -349,6 +351,12 @@
             class:pill-active={filterResult === 'retreat'}
             onclick={() => { filterResult = 'retreat' }}
           >🚪</button>
+          <button
+            type="button"
+            class="pill"
+            class:pill-active={filterResult === 'abandon'}
+            onclick={() => { filterResult = 'abandon' }}
+          >🏳️</button>
         </div>
       </div>
 
@@ -368,7 +376,7 @@
               onclick={() => handleSelectRun(idx)}
               aria-label="{resultLabel(run.result)} on {formatDate(run.runDate)}, floor {run.floorReached}"
             >
-              <span class="h-icon" class:h-victory={run.result === 'victory'} class:h-defeat={run.result === 'defeat'} class:h-retreat={run.result === 'retreat'}>
+              <span class="h-icon" class:h-victory={run.result === 'victory'} class:h-defeat={run.result === 'defeat'} class:h-retreat={run.result === 'retreat'} class:h-abandon={run.result === 'abandon'}>
                 {resultIcon(run.result)}
               </span>
               <div class="h-info">
@@ -497,6 +505,7 @@
   .result-icon.victory { filter: drop-shadow(0 0 calc(8px * var(--layout-scale, 1)) rgba(255, 215, 0, 0.6)); }
   .result-icon.defeat  { filter: drop-shadow(0 0 calc(8px * var(--layout-scale, 1)) rgba(239, 68, 68, 0.5)); }
   .result-icon.retreat { filter: drop-shadow(0 0 calc(6px * var(--layout-scale, 1)) rgba(148, 163, 184, 0.4)); }
+  .result-icon.abandon { opacity: 0.7; }
 
   .run-title {
     margin: 0;
@@ -882,6 +891,7 @@
   .h-victory { filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.5)); }
   .h-defeat  { filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.5)); }
   .h-retreat { opacity: 0.8; }
+  .h-abandon { opacity: 0.65; }
 
   .h-info {
     flex: 1;

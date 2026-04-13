@@ -745,6 +745,8 @@ export interface PlayerStats {
   totalDefeats?: number
   /** Runs ended with result === 'retreat'. */
   totalRetreats?: number
+  /** Runs ended with result === 'abandon'. */
+  totalAbandons?: number
   /** Sum of runDurationMs across all runs (ms). */
   cumulativePlaytimeMs?: number
   /** Total normal enemies defeated across all runs. */
@@ -762,7 +764,7 @@ export interface PlayerStats {
  * Must remain JSON-serializable — no Sets or Maps.
  */
 export interface RunSummary {
-  result: 'victory' | 'defeat' | 'retreat'
+  result: 'victory' | 'defeat' | 'retreat' | 'abandon'
   floorReached: number
   /** Normal enemies defeated count (encountersWon). */
   enemiesDefeated: number

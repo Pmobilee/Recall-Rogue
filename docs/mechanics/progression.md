@@ -14,7 +14,7 @@ A run is created via `createRunState(primary, secondary, options?)` in `runManag
 - `currency = 0`, `ascensionLevel`, `runSeed` (crypto random uint32)
 - `floor: FloorState` initialized via `createFloorState()`
 
-Run ends via `endRun(state, 'victory' | 'defeat' | 'retreat')`. Final `rewardMultiplier` = `deathPenalty × difficultyBonus × masteryRewardScale × poolRewardScale`. Death penalty is segment-based (`DEATH_PENALTY[segment]`). Practice runs (deck > 75% mastered) suppress rewards.
+Run ends via `endRun(state, 'victory' | 'defeat' | 'retreat' | 'abandon')`. The `abandon` result is used when the player quits an in-progress run; it routes through RunEndScreen (with death-penalty reward scaling) so the run is logged in the journal. Final `rewardMultiplier` = `deathPenalty × difficultyBonus × masteryRewardScale × poolRewardScale`. Death penalty is segment-based (`DEATH_PENALTY[segment]`). Practice runs (deck > 75% mastered) suppress rewards.
 
 ### Run Flow
 ```

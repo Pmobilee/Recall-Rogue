@@ -758,7 +758,8 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData, prebuiltSum
       accuracy: run.factsAnswered > 0 ? run.factsCorrect / run.factsAnswered : 0,
       encountersWon: run.encountersWon,
       isFinished: true,
-      result: endData.result,
+      // Multiplayer types don't include 'abandon'; treat it as 'defeat' for race reporting.
+      result: (endData.result === 'abandon' ? 'defeat' : endData.result) as 'victory' | 'defeat' | 'retreat',
     });
     stopRaceBroadcastFn?.();
     stopRaceBroadcastFn = null;
@@ -2538,57 +2539,37 @@ export function returnToHubFromCampfire(): void {
 }
 
 export function abandonActiveRun(returnScreen?: Screen): void {
-  // Load the persisted run state to check whether any encounters were completed.
+  // Load the persisted run state to check if there is anything to grade.
   // loadActiveRun() returns a fully deserialized RunState (Sets re-wrapped) so
   // we can call encountersWon safely without further hydration.
   const saved = loadActiveRun();
   const savedRun = saved?.runState ?? null;
 
-  if (savedRun && savedRun.encountersWon >= 1) {
-    // Meaningful run (at least one encounter won) — route through RunEndScreen
-    // so the player sees their summary, earns XP, and gets journal/stats entries.
-    // Restore mode context so finishRunAndReturnToHub handles mode-specific logic.
-    activeRunMode = saved!.runMode ?? 'standard';
-    activeDailySeed = saved!.dailySeed ?? null;
-
-    applyRunCompletionBonuses(savedRun);
-    markRunCompleted();
-    const endData = endRun(savedRun, 'defeat');
-    const summary = captureRunSummary(savedRun, endData);
-    recordRunComplete(savedRun.floor.currentFloor, endData, summary);
-    // finishRunAndReturnToHub handles all cleanup (clearActiveRun, store resets,
-    // XP award, achievements, analytics) and navigates to 'runEnd'.
-    finishRunAndReturnToHub(savedRun, endData, summary);
+  if (!savedRun) {
+    // No persisted run at all — nothing to grade, silent discard.
+    // Covers RunPreview "Back" button path where the run was never saved.
+    gameFlowState.set('idle');
+    currentScreen.set(returnScreen ?? 'hub');
     return;
   }
 
-  // Pre-encounter abandon (encountersWon === 0) or no saved run: silent discard.
-  // Also covers the RunPreview "Back" button path where no encounters have started.
-  // returnScreen is preserved for callers like handleRunPreviewBack('studyTemple').
-  activeRunMode = 'standard'
-  activeDailySeed = null
-  deactivateDeterministicRandom()
-  destroyRunRng()
-  resetEncounterBridge()
-  clearActiveRun();
-  activeRunState.set(null);
-  activeCardRewardOptions.set([]);
-  activeRewardBundle.set(null);
-  activeRewardRevealStep.set('gold');
-  activeShopCards.set([]);
-  activeShopInventory.set(null);
-  pendingTransformOptions.set(null);
-  activeMysteryEvent.set(null);
-  activeSpecialEvent.set(null);
-  activeMasteryChallenge.set(null);
-  activeRelicRewardOptions.set([]);
-  activeRelicPickup.set(null);
-  pendingFloorCompleted = false;
-  pendingSpecialEvent = false;
-  pendingClearedFloor = 0;
-  pendingDomainSelection = null;
-  gameFlowState.set('idle');
-  currentScreen.set(returnScreen ?? 'hub');
+  // ALL abandons where a saved run exists (any encountersWon count) route through
+  // RunEndScreen so the player sees their summary and the run is logged in the journal.
+  activeRunMode = saved!.runMode ?? 'standard';
+  activeDailySeed = saved!.dailySeed ?? null;
+
+  // Only apply accuracy-based completion bonuses when the player actually answered
+  // questions (encountersWon >= 1). Zero-encounter runs have nothing to evaluate.
+  if (savedRun.encountersWon >= 1) {
+    applyRunCompletionBonuses(savedRun);
+  }
+  markRunCompleted();
+  const endData = endRun(savedRun, 'abandon');
+  const summary = captureRunSummary(savedRun, endData);
+  recordRunComplete(savedRun.floor.currentFloor, endData, summary);
+  // finishRunAndReturnToHub handles all cleanup (clearActiveRun, store resets,
+  // XP award, achievements, analytics) and navigates to 'runEnd'.
+  finishRunAndReturnToHub(savedRun, endData, summary);
 }
 
 export function checkAndResumeActiveRun(): boolean {

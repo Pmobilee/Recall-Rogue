@@ -1038,7 +1038,7 @@
 
   .dev-btn-stack {
     position: absolute;
-    bottom: calc(max(110px, 106px + var(--safe-bottom, 0px)));
+    top: calc(12px * var(--layout-scale, 1));
     right: calc(12px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;

@@ -50,6 +50,7 @@ const EMPTY_STATS: PlayerStats = {
   totalVictories: 0,
   totalDefeats: 0,
   totalRetreats: 0,
+  totalAbandons: 0,
   cumulativePlaytimeMs: 0,
   totalEnemiesDefeated: 0,
   totalElitesDefeated: 0,

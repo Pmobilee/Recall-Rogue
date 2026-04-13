@@ -203,7 +203,7 @@ export interface RunState {
 }
 
 export interface RunEndData {
-  result: 'victory' | 'defeat' | 'retreat';
+  result: 'victory' | 'defeat' | 'retreat' | 'abandon';
   floorReached: number;
   factsAnswered: number;
   correctAnswers: number;
@@ -501,7 +501,7 @@ export function isDefeated(state: RunState): boolean {
   return state.playerHp <= 0;
 }
 
-export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'): RunEndData {
+export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat' | 'abandon'): RunEndData {
   state.isActive = false;
 
   const duration = Date.now() - state.startedAt;
@@ -510,7 +510,7 @@ export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat'
     : 0;
 
   const segment = getSegment(state.floor.currentFloor);
-  const deathPenalty = reason === 'defeat' ? DEATH_PENALTY[segment] : 1.0;
+  const deathPenalty = (reason === 'defeat' || reason === 'abandon') ? DEATH_PENALTY[segment] : 1.0;
   const mode = get(difficultyMode);
   const difficultyBonus = DIFFICULTY_REWARD_MULTIPLIER[mode] ?? 1.0;
   const masteryRewardScale = (state.deckMasteryPct ?? 0) > 0

@@ -23,6 +23,7 @@
   const totalVictories = $derived(stats?.totalVictories ?? 0)
   const totalDefeats = $derived(stats?.totalDefeats ?? 0)
   const totalRetreats = $derived(stats?.totalRetreats ?? 0)
+  const totalAbandons = $derived(stats?.totalAbandons ?? 0)
   const winRatePct = $derived(totalRuns > 0 ? Math.round((totalVictories / totalRuns) * 100) : 0)
   const bestFloor = $derived(stats?.bestFloor ?? 0)
   const bestCombo = $derived(stats?.bestStreak ?? 0)
@@ -178,6 +179,7 @@
         <div class="record-tile victory-tile"><span>Victories</span><strong>{totalVictories}</strong></div>
         <div class="record-tile defeat-tile"><span>Defeats</span><strong>{totalDefeats}</strong></div>
         <div class="record-tile retreat-tile"><span>Retreats</span><strong>{totalRetreats}</strong></div>
+        <div class="record-tile abandon-tile"><span>Abandoned</span><strong>{totalAbandons}</strong></div>
       </div>
       <div class="record-meta-row">
         <div class="meta-stat">
@@ -528,7 +530,7 @@
 
   .record-tiles {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: calc(6px * var(--layout-scale, 1));
   }
 
@@ -561,10 +563,12 @@
   .defeat-tile strong { color: #fca5a5; }
   .retreat-tile { border-color: rgba(148, 163, 184, 0.15); }
   .retreat-tile strong { color: #94a3b8; }
+  .abandon-tile { border-color: rgba(148, 163, 184, 0.10); }
+  .abandon-tile strong { color: #64748b; }
 
   .record-meta-row {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: calc(6px * var(--layout-scale, 1));
   }
 
@@ -955,7 +959,7 @@
   }
 
   .profile-landscape .record-tiles {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .profile-landscape .record-tile strong {

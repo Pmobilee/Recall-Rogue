@@ -31,7 +31,7 @@
   }
 
   interface Props {
-    result: 'victory' | 'defeat' | 'retreat'
+    result: 'victory' | 'defeat' | 'retreat' | 'abandon'
     floorReached: number
     factsAnswered: number
     correctAnswers: number
@@ -138,6 +138,18 @@
   function computeGrade(floor: number, runResult: string): { letter: string; color: string; title: string; flavor: string } {
     if (runResult === 'victory') return { letter: 'S', color: '#EF9F27', title: 'DUNGEON VANQUISHED', flavor: 'Triumphant return — the knowledge wrested from darkness shall not be forgotten.' }
     if (runResult === 'retreat') return { letter: '', color: '', title: 'TACTICAL RETREAT', flavor: 'The wise scholar knows when to regroup.' }
+    if (runResult === 'abandon') {
+      // Floor-based grade like defeat, distinct title/flavor
+      if (floor >= 22) return { letter: 'A+', color: '#EF9F27', title: 'RUN ABANDONED', flavor: 'So close, yet you walked away.' }
+      if (floor >= 19) return { letter: 'A', color: '#EF9F27', title: 'RUN ABANDONED', flavor: 'So close, yet you walked away.' }
+      if (floor >= 16) return { letter: 'B+', color: '#B4B2A9', title: 'RUN ABANDONED', flavor: 'A respectable showing, cut short.' }
+      if (floor >= 13) return { letter: 'B', color: '#B4B2A9', title: 'RUN ABANDONED', flavor: 'A respectable showing, cut short.' }
+      if (floor >= 10) return { letter: 'C+', color: '#D85A30', title: 'RUN ABANDONED', flavor: 'The dungeon barely noticed you left.' }
+      if (floor >= 7) return { letter: 'C', color: '#D85A30', title: 'RUN ABANDONED', flavor: 'The dungeon barely noticed you left.' }
+      if (floor >= 5) return { letter: 'D+', color: '#E24B4A', title: 'RUN ABANDONED', flavor: 'Discretion or cowardice? Only the dark knows.' }
+      if (floor >= 3) return { letter: 'D', color: '#E24B4A', title: 'RUN ABANDONED', flavor: 'Discretion or cowardice? Only the dark knows.' }
+      return { letter: 'F', color: '#791F1F', title: 'RUN ABANDONED', flavor: 'Barely past the threshold, already heading home.' }
+    }
     if (floor >= 22) return { letter: 'A+', color: '#EF9F27', title: 'A WORTHY EXPEDITION', flavor: 'Confidence surges as the dark yields its secrets.' }
     if (floor >= 19) return { letter: 'A', color: '#EF9F27', title: 'A WORTHY EXPEDITION', flavor: 'Confidence surges as the dark yields its secrets.' }
     if (floor >= 16) return { letter: 'B+', color: '#B4B2A9', title: 'THE DARK RETREATS', flavor: 'Adequate. The shadows will remember your face.' }
@@ -198,7 +210,7 @@
   let accuracyContext = $derived(getAccuracyContext(accuracy))
 
   let gradeExplanation = $derived.by(() => {
-    if (result === 'victory' || result === 'retreat') return ''
+    if (result === 'victory' || result === 'retreat' || result === 'abandon') return ''
     const explorationPct = encountersTotal > 0 ? Math.round((encountersWon / encountersTotal) * 100) : 0
     if (accuracy >= 80 && floorReached < 7) {
       return `You aced what you faced — but only explored ${explorationPct}% of the dungeon.`

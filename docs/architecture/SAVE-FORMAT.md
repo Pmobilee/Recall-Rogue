@@ -101,7 +101,7 @@ Gameplay economy and learning core:
 
 `PlayerStats` key fields: `totalDivesCompleted` (maps to run count), `bestFloor`, `totalFactsLearned`, `totalQuizCorrect`, `totalQuizWrong`, `currentStreak`, `bestStreak`.
 
-V3 additions: `totalVictories`, `totalDefeats`, `totalRetreats` (per-result run counters); `cumulativePlaytimeMs` (sum of all `runDurationMs`); `totalEnemiesDefeated`, `totalElitesDefeated`, `totalBossesDefeated` (enemy kill totals); `lifetimeFactsMastered` (facts that first reached tier 3 across all runs). All default to `0`.
+V3 additions: `totalVictories`, `totalDefeats`, `totalRetreats`, `totalAbandons` (per-result run counters); `cumulativePlaytimeMs` (sum of all `runDurationMs`); `totalEnemiesDefeated`, `totalElitesDefeated`, `totalBossesDefeated` (enemy kill totals); `lifetimeFactsMastered` (facts that first reached tier 3 across all runs). All default to `0`. `totalAbandons` tracks runs where the player deliberately quit via the abandon flow — logged in journal with distinct `abandon` result type.
 
 Progression/feature state (persisted by default path):
 
