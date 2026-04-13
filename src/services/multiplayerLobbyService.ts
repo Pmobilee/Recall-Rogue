@@ -647,10 +647,10 @@ function setupMessageHandlers(): void {
 
   const transport = getMultiplayerTransport();
 
-  transport.on('mp:lobby:join', (msg) => {
+  transport.on('mp:lobby:player_joined', (msg) => {
     if (!_currentLobby) return;
     const { playerId, displayName } = msg.payload as { playerId: string; displayName: string };
-    console.log(`[MP:LobbyService] mp:lobby:join received: player=${playerId}, name=${displayName}, existing=${_currentLobby.players.length}`);
+    console.log(`[MP:LobbyService] mp:lobby:player_joined received: player=${playerId}, name=${displayName}, existing=${_currentLobby.players.length}`);
     if (!_currentLobby.players.find(p => p.id === playerId)) {
       _currentLobby.players.push({
         id: playerId, displayName, isHost: false, isReady: false
