@@ -426,14 +426,13 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   'ascension-15-elite': {
     screen: 'combat',
     enemy: 'final_lesson',
+    ascension: 15,
     playerHp: 60,
     floor: 8,
     hand: ['heavy_strike', 'strike', 'block', 'expose', 'lifetap'],
     relics: ['whetstone', 'iron_shield'],
     turnOverrides: {
       ascensionLevel: 15,
-      ascensionEnemyDamageMultiplier: 1.5,
-      ascensionWrongAnswerSelfDamage: 5,
     },
     runOverrides: {
       ascensionLevel: 15,
@@ -794,7 +793,7 @@ async function startCombatScenario(config: ScenarioConfig): Promise<ScenarioResu
     }
 
     // Override hand by replacing cards with the specified mechanic IDs
-    if ((config.hand && config.hand.length > 0) || config.handSize !== undefined) {
+    if (config.hand !== undefined || config.handSize !== undefined) {
       const mechanicIds = config.hand ?? [];
       const newHand = buildHandFromMechanicIds(mechanicIds, ts.deck?.hand ?? [], config.handSize);
       if (config.chainTypes) {
@@ -1497,6 +1496,11 @@ function setEnemyHp(hp: number): ScenarioResult {
 
 /** Set gold in the active run state. */
 function setGold(amount: number): ScenarioResult {
+  if (typeof amount !== 'number') {
+    return { ok: false, message: 'setGold: amount must be a number' };
+  }
+  const rs = readStore<any>('rr:activeRunState');
+  if (!rs) return { ok: false, message: 'No active run state — load a scenario first' };
   updateStore<any>('rr:activeRunState', (r) => {
     if (!r) return r;
     return { ...r, currency: Math.max(0, amount) };
