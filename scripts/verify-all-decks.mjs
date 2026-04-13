@@ -499,7 +499,7 @@ function normaliseQuestion(q) {
 function findDuplicateQuestions(facts) {
   const seen = new Map(); // normalised -> [factId, ...]
   for (const fact of facts) {
-    if (fact.quizMode === 'image_question') continue;
+    if (fact.quizMode === 'image_question' || fact.quizMode === 'chess_tactic') continue;
     const norm = normaliseQuestion(fact.quizQuestion);
     if (!norm) continue;
     if (!seen.has(norm)) seen.set(norm, []);
