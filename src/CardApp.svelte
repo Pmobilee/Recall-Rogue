@@ -94,6 +94,7 @@
     pendingStudyUpgrade,
     onStudyUpgradeConfirmed,
     pendingTransformOptions,
+    onShopTransform,
     onShopTransformChoice,
   } from './services/gameFlowController'
   import {
@@ -1725,6 +1726,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         onbuyRelic={onShopBuyRelic}
         onbuyCard={onShopBuyCard}
         onbuyRemoval={onShopBuyRemoval}
+        ontransform={onShopTransform}
+        ontransformchoice={onShopTransformChoice}
         ondone={onShopDone}
       />
     </div>

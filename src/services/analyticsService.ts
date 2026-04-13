@@ -331,6 +331,8 @@ interface ShopTransformEvent {
     base_cost: number
     haggled: boolean
     options: number
+    source_mastery: number
+    transform_mastery: number
   }
 }
 

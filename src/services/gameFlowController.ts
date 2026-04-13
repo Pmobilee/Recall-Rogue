@@ -2045,13 +2045,17 @@ export function onShopBuyRemoval(cardId: string, haggled = false): boolean {
 
 /**
  * Handler for card transformation: deducts gold, destroys the selected card,
- * generates 3 replacement card options, and stores them in `pendingTransformOptions`
- * for the UI to display.
+ * generates 6 replacement card options (for a 2x3 grid display), and stores them
+ * in `pendingTransformOptions` for the UI to display.
  * Price escalates with each transformation: 35g base +25g per prior transform.
  * When haggled=true, applies 30% discount before deducting.
  *
  * Returns true on success, false if insufficient funds or card not found.
  * The UI should subscribe to `pendingTransformOptions` to receive the choices.
+ *
+ * Replacement options receive catch-up mastery: average of the source card's
+ * mastery level and the deck average, floored and capped at the source mastery,
+ * so a mastery-3 transform doesn't drop the player back to mastery-0 options.
  *
  * @param cardId - ID of the card to transform.
  * @param haggled - Whether a haggle discount was applied.
@@ -2079,14 +2083,28 @@ export function onShopTransform(cardId: string, haggled = false): boolean {
     activeShopInventory.set(inventory);
   }
 
-  // Generate 3 replacement card options (same-rarity-or-higher from the run pool)
+  // Generate 6 replacement card options (for a 2×3 grid, same-rarity-or-higher from the run pool)
   const options = generateCardRewardOptionsByType(
     getRunPoolCards() as any,
     getActiveDeckFactIds(),
     run.consumedRewardFactIds,
     run.selectedArchetype,
     run.floor.currentFloor,
-  ).slice(0, 3);
+  ).slice(0, 6);
+
+  // Apply smart catch-up mastery to replacement options.
+  // Transforms a mastery-3 card shouldn't yield all mastery-0 replacements —
+  // options get mastery = floor((sourceMastery + deckAvgMastery) / 2),
+  // capped at max(sourceMastery, 1) so there is always at least 1 level.
+  const sourceMastery = soldCard.masteryLevel ?? 0;
+  const deckCards = getActiveDeckCards();
+  const avgDeckMastery = deckCards.length > 0
+    ? deckCards.reduce((sum, c) => sum + (c.masteryLevel ?? 0), 0) / deckCards.length
+    : 0;
+  const transformMastery = Math.floor((sourceMastery + avgDeckMastery) / 2);
+  for (const opt of options) {
+    opt.masteryLevel = Math.min(transformMastery, Math.max(sourceMastery, 1));
+  }
 
   activeRunState.set(run);
 
@@ -2104,6 +2122,8 @@ export function onShopTransform(cardId: string, haggled = false): boolean {
       base_cost: cost,
       haggled,
       options: options.length,
+      source_mastery: sourceMastery,
+      transform_mastery: transformMastery,
     },
   });
 
