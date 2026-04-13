@@ -617,8 +617,10 @@
 <style>
   .chess-board-container {
     width: 100%;
-    /* Constrain by viewport height so 1:1 board can't overflow vertically */
-    max-width: min(100%, 60vh);
+    /* Constrain by viewport height so 1:1 board can't overflow vertically.
+       In the landscape combat panel the answer-zone is ~49vh tall;
+       the board is square, so cap width to leave room for notation input. */
+    max-width: min(100%, 44vh);
     aspect-ratio: unset;
     margin: 0 auto;
     display: flex;
