@@ -23,7 +23,11 @@
 {#if showBar}
   <div class="custom-deck-bar">
     <div class="bar-left">
-      <span class="custom-deck-icon">&#128203;</span>
+      {#if activeDeck?.icon}
+        <img class="custom-deck-icon-img" src={activeDeck.icon} alt="" />
+      {:else}
+        <span class="custom-deck-icon">&#128203;</span>
+      {/if}
       {#if customDecks.length > 1}
         <select
           class="custom-deck-select"
@@ -76,6 +80,13 @@
 
   .custom-deck-icon {
     font-size: calc(18px * var(--text-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .custom-deck-icon-img {
+    width: calc(24px * var(--layout-scale, 1));
+    height: calc(24px * var(--layout-scale, 1));
+    object-fit: contain;
     flex-shrink: 0;
   }
 

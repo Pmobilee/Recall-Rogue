@@ -2888,7 +2888,7 @@
           data-intent-blocked={intentDisplay.fullyBlocked ? 'true' : undefined}
         >
           <div class="intent-bubble-name">
-            <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
+            <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type, { statusEffect: enemyIntent.statusEffect?.type, value: enemyIntent.value, hitCount: enemyIntent.hitCount }) : ''} alt=""
               onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
             <span class="intent-icon-fallback" style="display:none">{enemyIntent ? INTENT_EMOJI[enemyIntent.type] ?? '❓' : '❓'}</span>
             <strong class="intent-attack-name">{intentDisplay.telegraph || intentDisplay.label}</strong>

@@ -1,5 +1,4 @@
 import type { CardType } from '../../data/card-types'
-import type { StatusEffectType } from '../../data/statusEffects'
 
 // ============================================================
 // Icon Path Registry
@@ -49,15 +48,6 @@ export function getCardTypeEmoji(type: string): string {
 }
 
 /**
- * Get the reward altar variant icon path.
- * @param key - The reward icon key (e.g., 'arc_scroll', 'hunter_bow')
- * @returns The path to the reward icon
- */
-export function getRewardIconPath(key: string): string {
-	return `/assets/sprites/icons/icon_reward_${key}.png`
-}
-
-/**
  * Get the relic icon path by relic ID.
  * @param relicId - The relic identifier
  * @returns The path to the relic icon
@@ -67,50 +57,34 @@ export function getRelicIconPath(relicId: string): string {
 }
 
 /**
- * Get the V2 relic icon path (for newer relic designs).
- * @param relicId - The V2 relic identifier (with rc_ prefix, e.g., 'rc_pathfinder_boots')
- * @returns The path to the V2 relic icon
- */
-export function getRelicV2IconPath(relicId: string): string {
-	// V2 relics may have IDs like 'rc_pathfinder_boots' — strip prefix for filename
-	const cleanId = relicId.replace(/^r[clr]_/, '')
-	return `/assets/sprites/icons/icon_relic_v2_${cleanId}.png`
-}
-
-/**
- * Get the V1 relic icon path (for legacy relic designs).
- * @param relicId - The V1 relic identifier
- * @returns The path to the V1 relic icon
- */
-export function getRelicV1IconPath(relicId: string): string {
-	return `/assets/sprites/icons/icon_relic_v1_${relicId}.png`
-}
-
-/**
- * Get the status effect icon path.
- * @param type - The status effect type (poison, regen, strength, weakness, vulnerable, immunity)
- * @returns The path to the status effect icon
- */
-export function getStatusEffectIconPath(type: StatusEffectType): string {
-	return `/assets/sprites/icons/icon_status_${type}.png`
-}
-
-/**
  * Get the enemy intent icon path.
- * @param intentType - The intent type (attack, multi_attack, defend, buff, debuff, heal)
- * @returns The path to the intent icon
+ * When metadata is provided, picks a more specific weapon/shield icon
+ * based on status effects, damage value, or hit count.
  */
-export function getIntentIconPath(intentType: string): string {
-	// Map intent types to icon paths
-	const INTENT_PATH_MAP: Record<string, string> = {
-		attack: '/assets/sprites/icons/icon_cardtype_attack.png',
-		multi_attack: '/assets/sprites/icons/icon_intent_multi_attack.png',
-		defend: '/assets/sprites/icons/icon_cardtype_shield.png',
-		buff: '/assets/sprites/icons/icon_intent_buff_self.png',
-		debuff: '/assets/sprites/icons/icon_intent_debuff_player.png',
-		heal: '/assets/sprites/icons/icon_cardtype_heal.png',
-	}
-	return INTENT_PATH_MAP[intentType] ?? '/assets/sprites/icons/icon_ui_unknown.png'
+export function getIntentIconPath(
+  intentType: string,
+  meta?: { statusEffect?: string; value?: number; hitCount?: number },
+): string {
+  // Enriched attack icons based on status effect or damage
+  if (intentType === 'attack' && meta) {
+    if (meta.statusEffect === 'poison') return '/assets/sprites/icons/icon_reward_venom_fang.png'
+    if (meta.statusEffect === 'burn') return '/assets/sprites/icons/icon_reward_arc_scroll.png'
+    if (meta.statusEffect === 'bleed') return '/assets/sprites/icons/icon_reward_hunter_bow.png'
+    if (meta.statusEffect === 'weakness' || meta.statusEffect === 'vulnerable') return '/assets/sprites/icons/icon_reward_hex_totem.png'
+    if (meta.value != null && meta.value > 10) return '/assets/sprites/icons/icon_reward_war_axe.png'
+    if (meta.value != null && meta.value <= 4) return '/assets/sprites/icons/icon_reward_rust_dagger.png'
+  }
+
+  const INTENT_PATH_MAP: Record<string, string> = {
+    attack: '/assets/sprites/icons/icon_cardtype_attack.png',
+    multi_attack: '/assets/sprites/icons/icon_reward_twin_blades.png',
+    defend: '/assets/sprites/icons/icon_reward_round_shield.png',
+    buff: '/assets/sprites/icons/icon_reward_surge_sigil.png',
+    debuff: '/assets/sprites/icons/icon_reward_snare_thread.png',
+    heal: '/assets/sprites/icons/icon_reward_tool_kit.png',
+    charge: '/assets/sprites/icons/icon_reward_comet_shard.png',
+  }
+  return INTENT_PATH_MAP[intentType] ?? '/assets/sprites/icons/icon_ui_unknown.png'
 }
 
 /**
@@ -162,15 +136,6 @@ export function getUIIconPath(elementId: string): string {
 }
 
 /**
- * Get the enemy power badge icon path.
- * @param powerId - The power identifier (e.g., 'charge_resistant', 'chain_vulnerable')
- * @returns The path to the power badge icon
- */
-export function getEnemyPowerIconPath(powerId: string): string {
-	return `/assets/sprites/icons/icon_power_${powerId}.png`
-}
-
-/**
  * Get the domain icon path (for Knowledge Library categories).
  * @param domainId - The domain identifier (e.g., 'animals_wildlife', 'space_astronomy')
  * @returns The path to the domain icon
@@ -180,33 +145,8 @@ export function getDomainIconPath(domainId: string): string {
 }
 
 /**
- * Gold tier thresholds — matches gold_tiers.json in reward_room assets.
- * Returns the appropriate gold pile icon based on currency amount.
- */
-const GOLD_TIERS = [
-  { min: 1, max: 10, tier: 0 },
-  { min: 11, max: 30, tier: 1 },
-  { min: 31, max: 60, tier: 2 },
-  { min: 61, max: 100, tier: 3 },
-  { min: 101, max: 200, tier: 4 },
-  { min: 201, max: Infinity, tier: 5 },
-] as const
-
-/**
- * Get the gold tier icon path based on amount.
- * Higher amounts show larger gold piles (6 tiers: 0–5).
- * @param amount - The gold amount to determine tier for
- * @returns The path to the appropriate gold tier icon (WebP format)
- */
-export function getGoldTierIconPath(amount: number): string {
-  const entry = GOLD_TIERS.find(t => amount >= t.min && amount <= t.max)
-  const tier = entry?.tier ?? 5
-  return `/assets/reward_room/gold_tier_${tier}.webp`
-}
-
-/**
  * Get the gold coin icon path (single coin, for HUD/UI display).
- * Use this for small inline gold displays. Use getGoldTierIconPath() for reward screens.
+ * Use this for small inline gold displays.
  * @returns The path to the gold coin icon (WebP format)
  */
 export function getGoldCoinIconPath(): string {

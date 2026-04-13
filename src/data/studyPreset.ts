@@ -74,6 +74,8 @@ export interface CustomDeck {
   name: string;
   /** When this custom deck was created (Unix ms). */
   createdAt: number;
+  /** Optional user-selected icon path (e.g. '/assets/sprites/icons/icon_synergy_deep_diver.png'). */
+  icon?: string;
   /** Items in this custom deck. */
   items: CustomDeckItem[];
 }

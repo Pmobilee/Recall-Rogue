@@ -7,6 +7,32 @@
   import { getDeckTags, getTagFactIds } from '../../data/deckFactIndex';
   import { untrack } from 'svelte';
 
+  const CUSTOM_DECK_ICONS: string[] = [
+    '/assets/sprites/icons/icon_synergy_deep_diver.png',
+    '/assets/sprites/icons/icon_synergy_scholars_blessing.png',
+    '/assets/sprites/icons/icon_synergy_survivors_kit.png',
+    '/assets/sprites/icons/icon_synergy_treasure_hunter.png',
+    '/assets/sprites/icons/icon_hub_archive.png',
+    '/assets/sprites/icons/icon_hub_lab.png',
+    '/assets/sprites/icons/icon_hub_workshop.png',
+    '/assets/sprites/icons/icon_hub_market.png',
+    '/assets/sprites/icons/icon_hub_museum.png',
+    '/assets/sprites/icons/icon_hub_command.png',
+    '/assets/sprites/icons/icon_reward_lucky_relic.png',
+    '/assets/sprites/icons/icon_reward_chaos_die.png',
+    '/assets/sprites/icons/icon_reward_path_compass.png',
+    '/assets/sprites/icons/icon_reward_field_tome.png',
+    '/assets/sprites/icons/icon_dust.png',
+    '/assets/sprites/icons/icon_geode.png',
+    '/assets/sprites/icons/icon_oxygen.png',
+    '/assets/sprites/icons/icon_shard.png',
+    '/assets/sprites/icons/icon_essence.png',
+    '/assets/sprites/icons/icon_crystal.png',
+    '/assets/sprites/icons/icon_level_seedling.png',
+    '/assets/sprites/icons/icon_level_learning.png',
+    '/assets/sprites/icons/icon_level_mastered.png',
+  ];
+
   interface Props {
     /** The custom deck to display and edit. */
     customDeck: CustomDeck;
@@ -18,6 +44,8 @@
     onDeleteDeck: () => void;
     /** Called when the user renames the custom deck. */
     onRenameDeck: (newName: string) => void;
+    /** Called when the user changes the deck icon (undefined = clear). */
+    onChangeIcon: (icon: string | undefined) => void;
   }
 
   let {
@@ -26,11 +54,13 @@
     onRemoveItem,
     onDeleteDeck,
     onRenameDeck,
+    onChangeIcon,
   }: Props = $props();
 
   let isEditing = $state(false);
   let editName = $state(untrack(() => customDeck.name));
   let showDeleteConfirm = $state(false);
+  let iconPickerOpen = $state(false);
 
   /** Tracks which item indices are expanded. */
   let expandedItems = $state<Set<number>>(new Set());
@@ -94,7 +124,13 @@
   }
 
   function handleKeydown(e: KeyboardEvent): void {
-    if (e.key === 'Escape') onClose();
+    if (e.key === 'Escape') {
+      if (iconPickerOpen) {
+        iconPickerOpen = false;
+      } else {
+        onClose();
+      }
+    }
   }
 
   function startEditing(): void {
@@ -129,6 +165,20 @@
   <div class="modal" role="dialog" aria-label="Custom Deck" aria-modal="true">
     <!-- Header -->
     <div class="modal-header">
+      <!-- Icon button -->
+      <button
+        class="deck-icon-btn"
+        onclick={() => { iconPickerOpen = !iconPickerOpen; }}
+        type="button"
+        aria-label="Change deck icon"
+      >
+        {#if customDeck.icon}
+          <img class="deck-icon-preview" src={customDeck.icon} alt="" />
+        {:else}
+          <span class="deck-icon-placeholder">📋</span>
+        {/if}
+      </button>
+
       <div class="header-title-row">
         {#if isEditing}
           <!-- svelte-ignore a11y_autofocus -->
@@ -151,6 +201,32 @@
       </div>
       <button class="close-btn" onclick={onClose} aria-label="Close">&#x2715;</button>
     </div>
+
+    <!-- Icon picker (shown below header when open) -->
+    {#if iconPickerOpen}
+      <div class="icon-picker-grid">
+        <button
+          class="icon-picker-item"
+          class:icon-picker-selected={!customDeck.icon}
+          onclick={() => { onChangeIcon(undefined); iconPickerOpen = false; }}
+          type="button"
+          aria-label="No icon"
+        >
+          <span>📋</span>
+        </button>
+        {#each CUSTOM_DECK_ICONS as iconPath (iconPath)}
+          <button
+            class="icon-picker-item"
+            class:icon-picker-selected={customDeck.icon === iconPath}
+            onclick={() => { onChangeIcon(iconPath); iconPickerOpen = false; }}
+            type="button"
+            aria-label="Select icon"
+          >
+            <img src={iconPath} alt="" class="icon-picker-img" />
+          </button>
+        {/each}
+      </div>
+    {/if}
 
     <!-- Body -->
     <div class="modal-body">
@@ -337,6 +413,78 @@
   .header-title-row {
     flex: 1;
     min-width: 0;
+  }
+
+  /* ── Icon button ── */
+  .deck-icon-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(40px * var(--layout-scale, 1));
+    height: calc(40px * var(--layout-scale, 1));
+    flex-shrink: 0;
+    transition: border-color 150ms ease;
+  }
+
+  .deck-icon-btn:hover {
+    border-color: rgba(244, 211, 94, 0.5);
+  }
+
+  .deck-icon-preview {
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    object-fit: contain;
+  }
+
+  .deck-icon-placeholder {
+    font-size: calc(20px * var(--text-scale, 1));
+  }
+
+  /* ── Icon picker grid ── */
+  .icon-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(44px * var(--layout-scale, 1)), 1fr));
+    gap: calc(4px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1));
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+    max-height: calc(200px * var(--layout-scale, 1));
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .icon-picker-item {
+    width: calc(44px * var(--layout-scale, 1));
+    height: calc(44px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 120ms ease;
+  }
+
+  .icon-picker-item:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .icon-picker-selected {
+    border-color: #f4d35e !important;
+    background: rgba(244, 211, 94, 0.1);
+  }
+
+  .icon-picker-img {
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
+    object-fit: contain;
   }
 
   .deck-name-btn {

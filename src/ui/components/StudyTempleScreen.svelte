@@ -499,6 +499,13 @@
     persistStudySelection();
   }
 
+  function handleChangeIcon(icon: string | undefined) {
+    customDecks = customDecks.map(p =>
+      p.id === activeCustomDeckId ? { ...p, icon } : p
+    );
+    persistStudySelection();
+  }
+
   function persistStudySelection() {
     playerSave.update(s => s ? {
       ...s,
@@ -666,6 +673,7 @@
     onRemoveItem={handleRemoveDeckItem}
     onDeleteDeck={handleDeleteDeck}
     onRenameDeck={handleRenameDeck}
+    onChangeIcon={handleChangeIcon}
   />
 {/if}
 
