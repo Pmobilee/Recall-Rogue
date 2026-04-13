@@ -86,10 +86,23 @@ export function destroyMapNodeSync(): void {
 /**
  * Local player picks a node. Broadcasts the pick to peers and re-evaluates
  * consensus. Pass `null` to clear this player's pick (e.g. on cancel).
+ *
+ * Bot players always follow the local player's choice — they never pick
+ * independently, so without this auto-agree they would block consensus
+ * forever in host+bot lobbies (MP-007).
  */
 export function pickMapNode(nodeId: string | null): void {
   if (!_localPlayerId) return;
   _picks[_localPlayerId] = nodeId;
+
+  // Auto-agree for bot players — bots always follow the local player's choice
+  // so consensus is reached immediately in host+bot lobbies.
+  for (const id of Object.keys(_picks)) {
+    if (id.startsWith('bot_')) {
+      _picks[id] = nodeId;
+    }
+  }
+
   _notifyPicksChanged();
 
   const transport = getMultiplayerTransport();

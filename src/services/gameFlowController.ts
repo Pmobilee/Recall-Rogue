@@ -426,7 +426,9 @@ export function startNewRun(options?: {
   const save = get(playerSave);
   pendingDeckMode = save?.activeDeckMode ?? { type: 'general' as const };
   const onboarding = get(onboardingState);
-  if (!onboarding.hasCompletedOnboarding) {
+  // Skip onboarding for multiplayer races — both players should enter the dungeon
+  // simultaneously. Single-player onboarding is irrelevant in MP context.
+  if (!onboarding.hasCompletedOnboarding && activeRunMode !== 'multiplayer_race') {
     gameFlowState.set('idle');
     currentScreen.set('onboarding');
     return;
