@@ -773,23 +773,23 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   curse_of_doubt: {
     levels: [
-      { qpValue: 0, extras: { pctBonus: 15, turns: 1 } },        // L0: +15% charge dmg, 1t
-      { qpValue: 0, extras: { pctBonus: 20, turns: 2 } },        // L1
-      { qpValue: 0, extras: { pctBonus: 25, turns: 2 } },        // L2
-      { qpValue: 0, extras: { pctBonus: 30, turns: 2 } },        // L3
-      { qpValue: 0, extras: { pctBonus: 35, turns: 3 } },        // L4
-      { qpValue: 0, extras: { pctBonus: 45, turns: 3 } },        // L5: nearly half more damage for 3 turns
+      { qpValue: 15, extras: { pctBonus: 15, turns: 1 } },       // L0: +15% charge dmg, 1t
+      { qpValue: 20, extras: { pctBonus: 20, turns: 2 } },       // L1
+      { qpValue: 25, extras: { pctBonus: 25, turns: 2 } },       // L2
+      { qpValue: 30, extras: { pctBonus: 30, turns: 2 } },       // L3
+      { qpValue: 35, extras: { pctBonus: 35, turns: 3 } },       // L4
+      { qpValue: 45, extras: { pctBonus: 45, turns: 3 } },       // L5: nearly half more damage for 3 turns
     ],
   },
 
   mark_of_ignorance: {
     levels: [
-      { qpValue: 0, extras: { flatBonus: 2, turns: 1 } },        // L0: +2 flat charge dmg, 1t
-      { qpValue: 0, extras: { flatBonus: 2, turns: 2 } },        // L1
-      { qpValue: 0, extras: { flatBonus: 3, turns: 2 } },        // L2
-      { qpValue: 0, extras: { flatBonus: 3, turns: 3 } },        // L3: 3 turns!
-      { qpValue: 0, extras: { flatBonus: 4, turns: 3 } },        // L4
-      { qpValue: 0, extras: { flatBonus: 5, turns: 3 } },        // L5: +5 flat per charge
+      { qpValue: 2, extras: { flatBonus: 2, turns: 1 } },        // L0: +2 flat charge dmg, 1t
+      { qpValue: 2, extras: { flatBonus: 2, turns: 2 } },        // L1
+      { qpValue: 3, extras: { flatBonus: 3, turns: 2 } },        // L2
+      { qpValue: 3, extras: { flatBonus: 3, turns: 3 } },        // L3: 3 turns!
+      { qpValue: 4, extras: { flatBonus: 4, turns: 3 } },        // L4
+      { qpValue: 5, extras: { flatBonus: 5, turns: 3 } },        // L5: +5 flat per charge
     ],
   },
 
@@ -1153,23 +1153,23 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   ignite: {
     levels: [
-      { qpValue: 0, extras: { burnStacks: 2 } },                 // L0: Next attack +2 Burn
-      { qpValue: 0, extras: { burnStacks: 3 } },                 // L1
-      { qpValue: 0, extras: { burnStacks: 3 } },                 // L2
-      { qpValue: 0, extras: { burnStacks: 4 }, tags: ['ignite_2attacks'] }, // L3: applies to next 2 attacks!
-      { qpValue: 0, extras: { burnStacks: 5 } },                 // L4
-      { qpValue: 0, extras: { burnStacks: 6 }, tags: ['ignite_2attacks'] }, // L5: 6 Burn on next 2 attacks
+      { qpValue: 2, extras: { burnStacks: 2 } },                 // L0: Next attack +2 Burn
+      { qpValue: 3, extras: { burnStacks: 3 } },                 // L1
+      { qpValue: 3, extras: { burnStacks: 3 } },                 // L2
+      { qpValue: 4, extras: { burnStacks: 4 }, tags: ['ignite_2attacks'] }, // L3: applies to next 2 attacks!
+      { qpValue: 5, extras: { burnStacks: 5 } },                 // L4
+      { qpValue: 6, extras: { burnStacks: 6 }, tags: ['ignite_2attacks'] }, // L5: 6 Burn on next 2 attacks
     ],
   },
 
   war_drum: {
     levels: [
-      { qpValue: 0, extras: { bonus: 1 } },                      // L0: +1 to all hand cards
-      { qpValue: 0, extras: { bonus: 1 } },                      // L1
-      { qpValue: 0, extras: { bonus: 2 } },                      // L2: +2!
-      { qpValue: 0, extras: { bonus: 2 } },                      // L3
-      { qpValue: 0, extras: { bonus: 3 } },                      // L4: +3!
-      { qpValue: 0, extras: { bonus: 4 }, tags: ['war_drum_draw1'] }, // L5: +4 to all + draw 1
+      { qpValue: 1, extras: { bonus: 1 } },                      // L0: +1 to all hand cards
+      { qpValue: 1, extras: { bonus: 1 } },                      // L1
+      { qpValue: 2, extras: { bonus: 2 } },                      // L2: +2!
+      { qpValue: 2, extras: { bonus: 2 } },                      // L3
+      { qpValue: 3, extras: { bonus: 3 } },                      // L4: +3!
+      { qpValue: 4, extras: { bonus: 4 }, tags: ['war_drum_draw1'] }, // L5: +4 to all + draw 1
     ],
   },
 

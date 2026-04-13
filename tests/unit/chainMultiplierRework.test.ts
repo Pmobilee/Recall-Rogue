@@ -301,19 +301,19 @@ describe('Group 4: DoT scaling with chain multiplier', () => {
     expect(result.applyBleedStacks).toBe(8);
   });
 
-  // Rupture L0 QP: ruptureBleed = card.secondaryValue = mechanic.secondaryValue = 3
-  // (stat table secondaryValue=2 < mechanic.secondaryValue=3, no override since masterySecondaryBonus<0)
-  // bleed stacks = round(3 * chainMult)
-  // chain=2.0 → round(3*2.0) = 6
-  it('rupture L0 QP chain=2.0 applies 6 bleed stacks (from mechanic.secondaryValue=3)', () => {
+  // Rupture L0 QP: ruptureBleed = card.secondaryValue = 2 (stat table secondaryValue=2, now applied).
+  // Bug fix (2026-04-13): negative masterySecondaryBonus (-1) now applied; bleed = Math.max(0, 3-1) = 2.
+  // bleed stacks = round(2 * chainMult)
+  // chain=2.0 → round(2*2.0) = 4
+  it('rupture L0 QP chain=2.0 applies 4 bleed stacks (stat table secondaryValue=2)', () => {
     const result = resolve('rupture', 'quick', 2.0);
-    expect(result.applyBleedStacks).toBe(6);
+    expect(result.applyBleedStacks).toBe(4);
   });
 
-  // Rupture L0 QP baseline: bleed = 3 at chain=1.0
-  it('rupture L0 QP chain=1.0 applies 3 bleed stacks (baseline)', () => {
+  // Rupture L0 QP baseline: bleed = 2 at chain=1.0 (stat table secondaryValue=2)
+  it('rupture L0 QP chain=1.0 applies 2 bleed stacks (baseline)', () => {
     const result = resolve('rupture', 'quick', 1.0);
-    expect(result.applyBleedStacks).toBe(3);
+    expect(result.applyBleedStacks).toBe(2);
   });
 
   // Entropy L0 QP: burn and poison both read from stat-table extras (burn=2, poison=1, poisonTurns=2).

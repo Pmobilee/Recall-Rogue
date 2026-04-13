@@ -479,21 +479,20 @@ describe('mastery_surge mechanic', () => {
 // ── War Drum (Buff — buff all hand cards) ─────────────────────────────────────
 
 describe('war_drum mechanic', () => {
-  it('QP at L0: warDrumBonus = 0 (stat table qpValue=0 overrides quickPlayValue=1)', () => {
-    // MASTERY_STAT_TABLES.war_drum[0].qpValue=0; masteryBonus = 0-1 = -1; finalValue = 1-1 = 0.
-    // Bonus unlocks at L2+ when stat table qpValue exceeds mechanic quickPlayValue.
+  it('QP at L0: warDrumBonus = 1 (stat table qpValue=1 = extras.bonus=1)', () => {
+    // Bug fix (2026-04-13): war_drum stat table qpValue=1 at L0; masteryBonus=1-1=0; finalValue=1.
     const result = resolve('war_drum', 'quick');
-    expect(result.warDrumBonus).toBe(0);
+    expect(result.warDrumBonus).toBe(1);
   });
 
-  it('CC at L0: warDrumBonus = 0 (Math.round((1-1)*1.50) = 0)', () => {
-    // mechanicBaseValue = Math.round((quickPlayValue + masteryBonus) * CC_MULT) = Math.round(0*1.50) = 0.
+  it('CC at L0: warDrumBonus = 2 (Math.round(1 * 1.50) = 2)', () => {
+    // Bug fix (2026-04-13): qpValue=1 at L0; CC = Math.round(1 * 1.50) = 2.
     const result = resolve('war_drum', 'charge_correct');
-    expect(result.warDrumBonus).toBeGreaterThanOrEqual(0);
+    expect(result.warDrumBonus).toBe(2);
   });
 
-  it('CW at L0: warDrumBonus = 0 (Math.max(0, chargeWrongValue + masteryBonus) = Math.max(0, 1-1) = 0)', () => {
-    // masteryBonus=-1; CW: Math.max(0, chargeWrongValue + masteryBonus) = Math.max(0, 1-1) = 0.
+  it('CW at L0: warDrumBonus >= 0 (chargeWrongValue=1, masteryBonus=0)', () => {
+    // Bug fix (2026-04-13): masteryBonus=0 at L0; CW = Math.max(0, chargeWrongValue + 0) = 1.
     const result = resolve('war_drum', 'charge_wrong');
     expect(result.warDrumBonus!).toBeGreaterThanOrEqual(0);
   });

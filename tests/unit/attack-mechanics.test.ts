@@ -123,29 +123,31 @@ describe('strike mechanic', () => {
 // damageDealt is per-hit base value; turnManager accumulates total
 
 describe('multi_hit mechanic', () => {
-  it('QP: per-hit damage = 2 (stat table L0 qpValue=2), hitCount = 3 (mechanic.secondaryValue=3)', () => {
+  it('QP: per-hit damage = 2 (stat table L0 qpValue=2), hitCount = 2 (stat table hitCount=2)', () => {
+    // Bug fix (2026-04-13): resolver now reads _masteryStats?.hitCount; L0 hitCount=2.
     const result = resolve('multi_hit', 'quick');
     expect(result.damageDealt).toBe(2);
-    expect(result.hitCount).toBe(3);
+    expect(result.hitCount).toBe(2);
   });
 
-  it('CC: per-hit damage = 3 (round(2*1.50)=3), hitCount = 3', () => {
+  it('CC: per-hit damage = 3 (round(2*1.50)=3), hitCount = 2 (stat table)', () => {
     const result = resolve('multi_hit', 'charge_correct');
     // Math.round(2 * 1.50) = 3
     expect(result.damageDealt).toBe(3);
-    expect(result.hitCount).toBe(3);
+    expect(result.hitCount).toBe(2);
   });
 
-  it('CW: per-hit damage = 2 (chargeWrongValue=2 + masteryBonus=0 = 2), hitCount = 3', () => {
+  it('CW: per-hit damage = 2 (chargeWrongValue=2 + masteryBonus=0 = 2), hitCount = 2 (stat table)', () => {
     const result = resolve('multi_hit', 'charge_wrong');
     expect(result.damageDealt).toBe(2);
-    expect(result.hitCount).toBe(3);
+    expect(result.hitCount).toBe(2);
   });
 
-  it('hitCount is 3 (mechanic.secondaryValue=3; stat table hitCount not applied to card.secondaryValue by default)', () => {
-    expect(resolve('multi_hit', 'quick').hitCount).toBe(3);
-    expect(resolve('multi_hit', 'charge_correct').hitCount).toBe(3);
-    expect(resolve('multi_hit', 'charge_wrong').hitCount).toBe(3);
+  it('hitCount is 2 at L0 (stat table hitCount=2 now used by resolver)', () => {
+    // Bug fix (2026-04-13): stat table hitCount now takes effect.
+    expect(resolve('multi_hit', 'quick').hitCount).toBe(2);
+    expect(resolve('multi_hit', 'charge_correct').hitCount).toBe(2);
+    expect(resolve('multi_hit', 'charge_wrong').hitCount).toBe(2);
   });
 });
 
@@ -552,14 +554,15 @@ describe('bash mechanic', () => {
 // Stat table L0: qpValue=2, secondaryValue=2 (mechanic: quickPlayValue=3, secondaryValue=3)
 // masteryBonus = 2-3 = -1
 // QP=2, CC=round(2*1.50)=3, CW=max(0, 2+(-1))=1 (chargeWrongValue=2)
-// Bleed QP=card.secondaryValue=3 (mechanic value; masterySecBonus=-1 < 0, no adjustment)
+// Bleed QP=card.secondaryValue=2 (stat table secondaryValue=2; masterySecBonus=-1 now applied)
 //       CC=8 (hardcoded in resolver), CW=2 (hardcoded in resolver)
 
 describe('rupture mechanic', () => {
-  it('QP: 2 damage (stat table L0 qpValue=2), applies 3 bleed stacks (mechanic.secondaryValue)', () => {
+  it('QP: 2 damage (stat table L0 qpValue=2), applies 2 bleed stacks (stat table secondaryValue=2)', () => {
+    // Bug fix (2026-04-13): negative masterySecondaryBonus now applied; card.secondaryValue = Math.max(0, 3+(-1)) = 2.
     const result = resolve('rupture', 'quick');
     expect(result.damageDealt).toBe(2);
-    expect(result.applyBleedStacks).toBe(3);
+    expect(result.applyBleedStacks).toBe(2);
   });
 
   it('CC: 3 damage (round(2*1.50)=3), applies 8 bleed stacks (hardcoded CC)', () => {

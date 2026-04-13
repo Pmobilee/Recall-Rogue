@@ -265,15 +265,11 @@ describe('double_strike mechanic', () => {
   });
 });
 
-// ── Ignite (buff) ─────────────────────────────────────────────────────────────
+/// ── Ignite (buff) ─────────────────────────────────────────────────────────────
 // Mechanic: ignite — next attack applies Burn stacks
-// Stat table: qpValue=0 for ALL levels (burn stacks live in extras.burnStacks, not qpValue)
-// At L0: applyIgniteBuff = finalValue = 0 (the extras.burnStacks=2 is not wired to applyIgniteBuff)
-//
-// NOTE: This is a known behavior where the resolver comment ("QP=4, CC=8, CW=2") is stale.
-// The actual resolver reads finalValue (which is 0 at L0 from stat table qpValue=0).
-// Higher mastery levels that also set qpValue=0 produce the same result.
-// The extras.burnStacks mechanism is NOT wired to result.applyIgniteBuff in the resolver.
+// Bug fix (2026-04-13): stat table qpValue corrected from 0 to match extras.burnStacks at each level.
+// At L0: qpValue=2, masteryBonus=2-2=0, finalValue=2 → applyIgniteBuff=2.
+// At L3: qpValue=4 → applyIgniteBuff=4. At L5: qpValue=6 → applyIgniteBuff=6.
 
 describe('ignite mechanic', () => {
   it('has ignite definition with burn tag', () => {
@@ -283,18 +279,17 @@ describe('ignite mechanic', () => {
     expect(m!.tags).toContain('buff');
   });
 
-  it('resolver returns applyIgniteBuff field set (even if 0 at L0)', () => {
+  it('resolver returns applyIgniteBuff field set with value=2 at L0', () => {
+    // Bug fix (2026-04-13): stat table qpValue=2 at L0 → finalValue=2 → applyIgniteBuff=2.
     const result = resolve('ignite', 'quick');
-    // At L0, stat table qpValue=0 → finalValue=0 → applyIgniteBuff=0
-    // The burn stacks are in extras.burnStacks=2 which is not wired to resolver output
     expect(result.applyIgniteBuff).toBeDefined();
-    expect(result.applyIgniteBuff).toBe(0);
+    expect(result.applyIgniteBuff).toBe(2);
   });
 
-  it('CC also resolves to applyIgniteBuff=0 at L0 (stat table qpValue=0)', () => {
+  it('CC resolves to applyIgniteBuff=3 at L0 (Math.round(2 * 1.50) = 3)', () => {
+    // Bug fix (2026-04-13): qpValue=2 at L0; CC = Math.round(2 * 1.50) = 3.
     const result = resolve('ignite', 'charge_correct');
-    // round(0 * 1.50) = 0
-    expect(result.applyIgniteBuff).toBe(0);
+    expect(result.applyIgniteBuff).toBe(3);
   });
 
   it('no damage dealt directly (ignite is a buff card)', () => {

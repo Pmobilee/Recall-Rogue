@@ -176,23 +176,22 @@ describe('11.1 Attack Cards', () => {
 
   // ── multi_hit ──
   describe('multi_hit', () => {
-    it('L0 QP: stat table hitCount=2, but resolver reads mechanic.secondaryValue=3', () => {
+    it('L0 QP: stat table hitCount=2, resolver now reads _masteryStats?.hitCount=2', () => {
       const stats = getMasteryStats('multi_hit', 0);
       expect(stats?.hitCount).toBe(2); // stat table value
       expect(stats?.qpValue).toBe(2);
-      // multi_hit resolver reads card.secondaryValue ?? mechanic.secondaryValue ?? 3
-      // card.secondaryValue is seeded from mechanic.secondaryValue=3 in makeCard.
-      // Stat table hitCount is NOT used by the resolver — it only uses card.secondaryValue.
+      // Bug fix (2026-04-13): multi_hit resolver now reads _masteryStats?.hitCount (mirrors twin_strike).
+      // L0 hitCount=2 from stat table, so L0 multi_hit fires 2 hits instead of the old mechanic.secondaryValue=3.
       const result = resolve('multi_hit', 'quick');
       expect(result.damageDealt).toBe(2); // per-hit
-      expect(result.hitCount).toBe(3); // resolver uses mechanic.secondaryValue=3, not stat hitCount=2
+      expect(result.hitCount).toBe(2); // stat table hitCount=2 now used by resolver
     });
 
-    it('L0 CC: 3 per-hit (Math.round(2 × 1.50) = 3), hitCount=3 from mechanic.secondaryValue', () => {
+    it('L0 CC: 3 per-hit (Math.round(2 × 1.50) = 3), hitCount=2 from stat table', () => {
       const result = resolve('multi_hit', 'charge_correct');
       expect(result.damageDealt).toBe(3); // per-hit CC value
-      // hitCount=3 because resolver reads mechanic.secondaryValue=3, not stat table hitCount=2
-      expect(result.hitCount).toBe(3);
+      // Bug fix (2026-04-13): resolver uses stat table hitCount=2, not mechanic.secondaryValue=3
+      expect(result.hitCount).toBe(2);
     });
 
     it('L3 applies multi_bleed1 tag (1 Bleed per hit)', () => {
@@ -206,10 +205,9 @@ describe('11.1 Attack Cards', () => {
       const stats = getMasteryStats('multi_hit', 5);
       expect(stats?.hitCount).toBe(4); // stat table value
       expect(stats?.qpValue).toBe(3);
-      // Resolver reads card.secondaryValue=mechanic.secondaryValue=3, so hitCount=3 in resolver
-      // (stat table hitCount is not used by multi_hit resolver case)
+      // Bug fix (2026-04-13): resolver now uses _masteryStats?.hitCount, so L5 fires 4 hits
       const result = resolve('multi_hit', 'charge_correct', undefined, undefined, { masteryLevel: 5 });
-      expect(result.hitCount).toBe(3); // resolver uses mechanic.secondaryValue, not stat hitCount
+      expect(result.hitCount).toBe(4); // stat table hitCount=4 now used by resolver
       expect(result.damageDealt).toBe(5); // per-hit CC value (Math.round(3 × 1.5))
     });
   });
@@ -479,16 +477,16 @@ describe('11.1 Attack Cards', () => {
 
   // ── rupture ──
   describe('rupture', () => {
-    it('L0 QP: 2 damage, bleedStacks=3 (mechanic.secondaryValue, neg masterySecondaryBonus not applied)', () => {
+    it('L0 QP: 2 damage, bleedStacks=2 (stat table secondaryValue=2, neg bonus now applied)', () => {
       const stats = getMasteryStats('rupture', 0);
       expect(stats?.qpValue).toBe(2);
       expect(stats?.secondaryValue).toBe(2); // stat table secondaryValue=2
-      // rupture resolver: ruptureBleed = card.secondaryValue ?? mechanic.secondaryValue ?? 3
-      // masterySecondaryBonus = statSecondary - mechanic.secondaryValue = 2-3 = -1 (negative, not applied)
-      // So card.secondaryValue stays at mechanic.secondaryValue=3 → bleedStacks=3
+      // Bug fix (2026-04-13): masterySecondaryBonus guard changed from > 0 to !== 0.
+      // masterySecondaryBonus = statSecondary(2) - mechanic.secondaryValue(3) = -1 (now applied).
+      // card.secondaryValue becomes Math.max(0, 3 + (-1)) = 2 → bleedStacks=2.
       const result = resolve('rupture', 'quick');
       expect(result.damageDealt).toBe(2);
-      expect(result.applyBleedStacks).toBe(3); // resolver uses mechanic.secondaryValue=3 (neg bonus not applied)
+      expect(result.applyBleedStacks).toBe(2); // stat table secondaryValue=2 now applied correctly
     });
 
     it('L5 has rupture_bleed_perm tag', () => {
@@ -1326,14 +1324,12 @@ describe('11.3 Buff Cards', () => {
 
   // ── ignite ──
   describe('ignite', () => {
-    it('L0 QP: applyIgniteBuff=0 at L0 (stat table qpValue=0 makes finalValue=0)', () => {
-      // ignite stat table has qpValue=0 at L0, overriding mechanic quickPlayValue=2.
-      // masteryBonus = 0-2 = -2, so finalValue = 2+(-2) = 0 → applyIgniteBuff=0.
-      // The resolver uses finalValue directly: result.applyIgniteBuff = finalValue.
-      // Actual burn buff amount comes from extras.burnStacks in higher-level code paths.
+    it('L0 QP: applyIgniteBuff=2 at L0 (stat table qpValue=2 matches mechanic quickPlayValue=2)', () => {
+      // Bug fix (2026-04-13): ignite stat table qpValue corrected from 0 to 2 (= extras.burnStacks).
+      // masteryBonus = 2-2 = 0, so finalValue = 2 → applyIgniteBuff=2.
+      // qpValue now equals burnStacks at each level so finalValue directly encodes the Burn stacks.
       const result = resolve('ignite', 'quick');
-      expect(result.applyIgniteBuff).toBe(0); // finalValue=0 at L0
-      // At L3+ (stats.qpValue becomes non-zero via extras-driven path — check stat table)
+      expect(result.applyIgniteBuff).toBe(2); // finalValue=2 at L0
     });
 
     it('L3 ignite_2attacks: igniteDuration=2', () => {
@@ -1501,13 +1497,12 @@ describe('11.3 Buff Cards', () => {
 
   // ── war_drum ──
   describe('war_drum', () => {
-    it('L0 QP: warDrumBonus=0 at L0 (stat table qpValue=0 makes finalValue=0)', () => {
-      // war_drum stat table has qpValue=0 at L0, overriding mechanic quickPlayValue=1.
-      // masteryBonus = 0-1 = -1, so finalValue = 1+(-1) = 0 → warDrumBonus=0.
-      // Actual bonus at L0 comes from extras.bonus=1 in higher-level code (not read by resolver).
+    it('L0 QP: warDrumBonus=1 at L0 (stat table qpValue=1 matches extras.bonus=1)', () => {
+      // Bug fix (2026-04-13): war_drum stat table qpValue corrected from 0 to 1 (= extras.bonus).
+      // masteryBonus = 1-1 = 0, so finalValue = 1 → warDrumBonus=1.
       const result = resolve('war_drum', 'quick');
       expect(result.warDrumBonus).toBeDefined();
-      expect(result.warDrumBonus).toBe(0); // finalValue=0 at L0
+      expect(result.warDrumBonus).toBe(1); // finalValue=1 at L0
     });
 
     it('L5 war_drum_draw1: extraCardsDrawn=1', () => {
@@ -1675,25 +1670,24 @@ describe('11.4 Debuff Cards', () => {
 
   // ── curse_of_doubt ──
   describe('curse_of_doubt', () => {
-    it('L0 QP: applyChargeDamageAmpPercent defined, value=0 at L0 (stat table qpValue=0)', () => {
-      // curse_of_doubt stat table has qpValue=0 at L0, overriding mechanic quickPlayValue=20.
-      // masteryBonus = 0-20 = -20, so finalValue = 20+(-20) = 0 → value=0.
-      // Stat table extras.pctBonus drives the intended behavior but resolver uses finalValue.
+    it('L0 QP: applyChargeDamageAmpPercent defined, value=15 at L0 (stat table qpValue=15)', () => {
+      // Bug fix (2026-04-13): curse_of_doubt stat table qpValue corrected from 0 to 15 (= extras.pctBonus).
+      // masteryBonus = 15-20 = -5, so finalValue = 20+(-5) = 15 → value=15.
       const result = resolve('curse_of_doubt', 'quick');
       expect(result.applyChargeDamageAmpPercent).toBeDefined();
-      expect(result.applyChargeDamageAmpPercent?.value).toBe(0); // finalValue=0 at L0
+      expect(result.applyChargeDamageAmpPercent?.value).toBe(15); // finalValue=15 at L0
       expect(result.applyChargeDamageAmpPercent?.turns).toBe(2); // turns are hardcoded by mode
     });
   });
 
   // ── mark_of_ignorance ──
   describe('mark_of_ignorance', () => {
-    it('L0 QP: applyChargeDamageAmpFlat defined, value=0 at L0 (stat table qpValue=0)', () => {
-      // mark_of_ignorance stat table has qpValue=0 at L0, overriding mechanic quickPlayValue=2.
-      // masteryBonus = 0-2 = -2, so finalValue = 2+(-2) = 0 → value=0.
+    it('L0 QP: applyChargeDamageAmpFlat defined, value=2 at L0 (stat table qpValue=2)', () => {
+      // Bug fix (2026-04-13): mark_of_ignorance stat table qpValue corrected from 0 to 2 (= extras.flatBonus).
+      // masteryBonus = 2-2 = 0, so finalValue = 2 → value=2.
       const result = resolve('mark_of_ignorance', 'quick');
       expect(result.applyChargeDamageAmpFlat).toBeDefined();
-      expect(result.applyChargeDamageAmpFlat?.value).toBe(0); // finalValue=0 at L0
+      expect(result.applyChargeDamageAmpFlat?.value).toBe(2); // finalValue=2 at L0
       expect(result.applyChargeDamageAmpFlat?.turns).toBe(2); // turns are hardcoded by mode
     });
   });

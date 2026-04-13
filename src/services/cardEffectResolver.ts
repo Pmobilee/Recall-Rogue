@@ -603,10 +603,12 @@ export function resolveCardEffect(
   const masterySecondaryBonus = (_masteryStats?.secondaryValue != null && mechanic?.secondaryValue != null)
     ? _masteryStats.secondaryValue - mechanic.secondaryValue
     : getMasterySecondaryBonus(card.mechanicId ?? '', card.masteryLevel ?? 0);
-  // Apply mastery secondary bonus to a copy of the card so switch cases can read it uniformly
-  if (masterySecondaryBonus > 0 && mechanic) {
+  // Apply mastery secondary bonus to a copy of the card so switch cases can read it uniformly.
+  // Use !== 0 (not > 0) so stat tables can define lower secondary values than mechanic defaults.
+  // Math.max(0, ...) prevents negative secondary values from propagating.
+  if (masterySecondaryBonus !== 0 && mechanic) {
     const currentSecondary = card.secondaryValue ?? mechanic.secondaryValue ?? 0;
-    card = { ...card, secondaryValue: currentSecondary + masterySecondaryBonus };
+    card = { ...card, secondaryValue: Math.max(0, currentSecondary + masterySecondaryBonus) };
   }
 
   // AR-202: Apply cursed multipliers if the card carries a cursed fact.
@@ -739,7 +741,8 @@ export function resolveCardEffect(
   const mechanicId = card.mechanicId ?? '';
   switch (mechanicId) {
     case 'multi_hit': {
-      const hits = (card.secondaryValue ?? mechanic?.secondaryValue ?? 3) + (activeRelicIds.has('chain_lightning_rod') ? 1 : 0);
+      // Use stat-table hitCount (mirrors twin_strike). card.secondaryValue seeded from mechanic.secondaryValue — dead data here.
+      const hits = (_masteryStats?.hitCount ?? mechanic?.secondaryValue ?? 3) + (activeRelicIds.has('chain_lightning_rod') ? 1 : 0);
       // AR-203: Set hitCount so turnManager resolves Burn per-hit instead of combined.
       // damageDealt is set to the per-hit base value; turnManager accumulates the total.
       if (hits > 1) {
