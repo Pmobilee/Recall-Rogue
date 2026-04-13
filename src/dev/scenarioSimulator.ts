@@ -1426,6 +1426,16 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       (globalThis as any)[langSym] = null;
     }
 
+    // Bounce screen away from restStudy first to force StudyQuizOverlay to unmount,
+    // clearing stale questions from a previous spawn. Without this, re-spawning
+    // restStudy with a different deckId serves questions from the first spawn
+    // (staleness bug found in BATCH-2026-04-13-001 grammar playtest).
+    const currentScreenValue = readStore('rr:currentScreen');
+    if (currentScreenValue === 'restStudy') {
+      writeStore('rr:currentScreen', 'hub');
+      await wait(50);
+    }
+
     gameFlowState.set('restStudy' as any);
     writeStore('rr:currentScreen', 'restStudy');
     await wait(300);

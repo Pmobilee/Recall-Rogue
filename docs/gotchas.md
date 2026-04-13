@@ -4330,3 +4330,32 @@ The comparison_trap mini_boss had description claiming copy mechanics but zero c
 4. When auditing icon usage, exclude `spriteKeys.ts` (auto-manifest) and `iconAssets.ts` (helper definitions) — only count actual component call sites.
 
 **Lesson:** Always check `sprite-gen/cardback-tool/artstudio-output/` for originals that didn't get copied to the main `sprite-gen/output/icons/` folder. The artstudio output has subfolder-per-category structure (status_icons/burn/, relicicons/whetstone/, etc.) that doesn't match the flat `icon_*_original.png` convention.
+
+### 2026-04-13 — location.reload() in Docker warm container permanently breaks __rrPlay and __rrScenario
+
+**What:** Calling `location.reload()` from inside a Docker warm container eval permanently destroys the `__rrPlay` and `__rrScenario` globals for that page session. They never recover, even after 25+ seconds of waiting. All subsequent evals return `ReferenceError: __rrScenario is not defined` or `ReferenceError: __rrPlay is not defined`.
+
+**Why:** The warm server (`docker/playwright-xvfb/warm-server.mjs`) injects `__rrPlay` and `__rrScenario` during the initial page load. A `location.reload()` triggers a full page navigation, which clears the injected globals. The warm server does not re-inject them after the reload because it only injects once at startup — it has no handler for subsequent navigations.
+
+**Fix:** Never call `location.reload()` in warm container tests. For screen-to-screen navigation, use `__rrPlay.navigate('hub')` then `__rrScenario.spawn(...)`. To reset to hub, call `__rrPlay.navigate('hub').then(r => ...)`. This is the only safe navigation pattern inside a warm container session.
+
+**Discovery:** Japanese grammar deck usability playtest BATCH-2026-04-13-001. Caused a ~45-minute debugging detour.
+
+### 2026-04-13 — deckOptions Svelte store cannot be updated via localStorage writes
+
+**What:** Writing to `localStorage['card:deckOptions']` directly from a Docker warm container eval (or any external context) does NOT update the reactive Svelte `deckOptions` store used by `GrammarSentenceFurigana.svelte`, `StudyQuizOverlay.svelte`, and `CardExpanded.svelte`. Romaji, furigana, kanaOnly, and alwaysWrite toggles all appear to stay at their previous values after the localStorage write.
+
+**Why:** `deckOptionsService.ts` initializes with `persistedWritable('card:deckOptions', {})` — a module-level singleton that reads localStorage once at import time. The store does not subscribe to subsequent external `localStorage` changes (no `storage` event listener). Only calls to the exported setter functions update both the store and localStorage atomically.
+
+**Fix:** To change deck options at runtime (e.g. in a test eval), import the service module and call its exported functions:
+```js
+import('/src/services/deckOptionsService.ts').then(m => {
+  m.setRomajiEnabled(true)
+  m.setFuriganaEnabled(false)
+  m.setKanaOnlyEnabled(true)
+  m.setAlwaysWriteEnabled('ja', true)
+})
+```
+This updates the Svelte store reactively, and the UI responds on the next render cycle.
+
+**Discovery:** Japanese grammar deck usability playtest BATCH-2026-04-13-001.

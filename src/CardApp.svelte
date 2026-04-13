@@ -974,10 +974,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   let studyLanguageCode = $state<string | null>(null)
   let meditateCandidates = $state<import('./data/card-types').Card[]>([])
 
-  // Pick up scenario-injected study questions when the screen switches to restStudy
-  // and the normal flow hasn't already populated studyQuestions.
+  // Pick up scenario-injected study questions when the screen switches to restStudy.
+  // Always prefer scenario data over stale questions — the length===0 guard was removed
+  // because re-spawning restStudy with a different deck left stale questions from the
+  // first spawn (staleness bug found in BATCH-2026-04-13-001 grammar playtest).
   $effect(() => {
-    if ($currentScreen === 'restStudy' && studyQuestions.length === 0) {
+    if ($currentScreen === 'restStudy') {
       const sym = Symbol.for('rr:scenarioStudyQuestions')
       const langSym = Symbol.for('rr:scenarioStudyLanguage')
       const injected = (globalThis as any)[sym]
