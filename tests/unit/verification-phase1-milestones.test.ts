@@ -272,12 +272,17 @@ describe('Draw Count Mechanics — extraCardsDrawn and derived fields', () => {
       expect(result.extraCardsDrawn).toBe(2);
     });
 
-    it('L0 QP: forgetOnResolve is NOT set (forget tag is in mechanic def only, not mastery stat table)', () => {
-      // The 'forget' tag lives in mechanic.tags[] for the mechanic definition but NOT in the
-      // mastery stat table's tags[] array. The resolver's hasTag() only checks stat table tags,
-      // so forgetOnResolve is never set for foresight. This is documented as current behavior.
+    it('L0 QP: forgetOnResolve === true (forget tag now present in mastery stat table at all levels)', () => {
+      // Bug fix: 'forget' tag was only in mechanic.tags[], not in MASTERY_STAT_TABLES.foresight.levels[].tags.
+      // hasTag() reads _masteryStats.tags, so forgetOnResolve was always falsy. Fixed by adding 'forget'
+      // to every level entry in the foresight stat table.
       const result = resolve('foresight', 'quick', undefined, undefined, { masteryLevel: 0 });
-      expect(result.forgetOnResolve).toBeFalsy();
+      expect(result.forgetOnResolve).toBe(true);
+    });
+
+    it('L3 QP: forgetOnResolve === true (forget tag present alongside foresight_intent)', () => {
+      const result = resolve('foresight', 'quick', undefined, undefined, { masteryLevel: 3 });
+      expect(result.forgetOnResolve).toBe(true);
     });
 
     it('L0 CC: extraCardsDrawn === 3', () => {

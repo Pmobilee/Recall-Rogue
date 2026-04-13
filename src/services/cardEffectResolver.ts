@@ -2037,15 +2037,17 @@ export function resolveCardEffect(
 
     // Archive — mark cards to be retained past turn end
     case 'archive': {
-      const masteryL3Archive = (card.masteryLevel ?? 0) >= 3;
+      // stat table extras.retain: L0=1, L2=2, L4=3 — read directly instead of using dead archive_retain2_qp tag
+      const statRetain = _masteryStats?.extras?.['retain'] as number ?? 1;
       let retainCount: number;
       if (isChargeCorrect) {
-        retainCount = 2;
+        // CC bonus: stat retain + 1, minimum 2
+        retainCount = Math.max(2, statRetain + 1);
       } else if (isChargeWrong) {
         retainCount = 1;
       } else {
-        // QP: 1 normally; archive_retain2_qp tag: 2
-        retainCount = hasTag('archive_retain2_qp') ? 2 : 1;
+        // QP: from stat table extras.retain (L0=1, L2=2, L4=3)
+        retainCount = statRetain;
       }
       result.archiveRetainCount = retainCount;
       // archive_block2_per: each retained card gains +2 block

@@ -1081,14 +1081,38 @@ describe('archive — archiveRetainCount and archiveBlockBonus per mode', () => 
     expect(result.archiveRetainCount).toBe(1);
   });
 
-  it('L0 CC: archiveRetainCount=2 (hardcoded)', () => {
+  it('L0 CC: archiveRetainCount=2 (Math.max(2, retain+1) = Math.max(2,2) = 2)', () => {
     const result = resolve('archive', 'charge_correct');
     expect(result.archiveRetainCount).toBe(2);
   });
 
-  it('L0 CW: archiveRetainCount=1 (hardcoded)', () => {
+  it('L0 CW: archiveRetainCount=1 (always 1 on wrong charge)', () => {
     const result = resolve('archive', 'charge_wrong');
     expect(result.archiveRetainCount).toBe(1);
+  });
+
+  it('L2 QP: archiveRetainCount=2 (extras.retain=2 now read by resolver)', () => {
+    const stats = getMasteryStats('archive', 2);
+    expect(stats?.extras?.retain).toBe(2);
+    const result = resolve('archive', 'quick', {}, {}, { masteryLevel: 2 });
+    expect(result.archiveRetainCount).toBe(2);
+  });
+
+  it('L2 CC: archiveRetainCount=3 (Math.max(2, 2+1) = 3)', () => {
+    const result = resolve('archive', 'charge_correct', {}, {}, { masteryLevel: 2 });
+    expect(result.archiveRetainCount).toBe(3);
+  });
+
+  it('L4 QP: archiveRetainCount=3 (extras.retain=3)', () => {
+    const stats = getMasteryStats('archive', 4);
+    expect(stats?.extras?.retain).toBe(3);
+    const result = resolve('archive', 'quick', {}, {}, { masteryLevel: 4 });
+    expect(result.archiveRetainCount).toBe(3);
+  });
+
+  it('L4 CC: archiveRetainCount=4 (Math.max(2, 3+1) = 4)', () => {
+    const result = resolve('archive', 'charge_correct', {}, {}, { masteryLevel: 4 });
+    expect(result.archiveRetainCount).toBe(4);
   });
 
   it('L3 has archive_block2_per tag', () => {
@@ -1119,16 +1143,6 @@ describe('archive — archiveRetainCount and archiveBlockBonus per mode', () => 
   it('L0 QP: no archiveBlockBonus', () => {
     const result = resolve('archive', 'quick');
     expect(result.archiveBlockBonus).toBeUndefined();
-  });
-
-  it('L2 QP: archiveRetainCount=1 (resolver uses archive_retain2_qp tag, not extras.retain)', () => {
-    // stat table says extras.retain=2 at L2, but the resolver uses the archive_retain2_qp tag
-    // for QP retain=2. That tag is NOT included in any MASTERY_STAT_TABLES entry, so QP
-    // always resolves to retain=1 at all mastery levels below tag-gate.
-    const stats = getMasteryStats('archive', 2);
-    expect(stats?.extras?.retain).toBe(2); // stat table has it, but resolver ignores extras.retain
-    const result = resolve('archive', 'quick', {}, {}, { masteryLevel: 2 });
-    expect(result.archiveRetainCount).toBe(1);
   });
 });
 
