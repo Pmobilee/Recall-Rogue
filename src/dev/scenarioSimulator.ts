@@ -1692,16 +1692,23 @@ async function spawn(config: SpawnConfig): Promise<ScenarioResult> {
 /**
  * Mid-session state patching — deep-merges into live stores without re-bootstrapping.
  * Use for mid-combat adjustments: patch({ turn: { enemy: { currentHP: 5 } } })
+ *
+ * TurnState is patched via encounterBridge.patchTurnState() so the update goes
+ * directly through the live store reference rather than the globalThis Symbol bridge.
+ * This prevents subsequent activeTurnState.set() calls in encounterBridge from
+ * overwriting the patch with un-patched state.
  */
-function patch(overrides: { turn?: Record<string, unknown>; run?: Record<string, unknown> }): ScenarioResult {
+async function patch(overrides: { turn?: Record<string, unknown>; run?: Record<string, unknown> }): Promise<ScenarioResult> {
   const messages: string[] = [];
 
   if (overrides.turn) {
-    const ts = readStore<any>('rr:activeTurnState');
-    if (ts) {
-      const merged = deepMerge(ts, overrides.turn as any);
-      writeStore('rr:activeTurnState', merged);
-      messages.push('TurnState patched');
+    // Use encounterBridge.patchTurnState to update the activeTurnState store directly.
+    // This is the canonical mutation path: it deep-merges into the live TurnState
+    // object so subsequent freshTurnState() calls in handlers (handlePlayCard, etc.)
+    // see the patched values rather than an independently-written store copy.
+    const { patchTurnState } = await import('../services/encounterBridge');
+    if (patchTurnState(overrides.turn)) {
+      messages.push('TurnState patched (via encounterBridge)');
     } else {
       messages.push('No active TurnState to patch');
     }

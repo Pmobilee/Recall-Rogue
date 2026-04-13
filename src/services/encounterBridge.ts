@@ -74,6 +74,7 @@ import {
   shouldSuppressRewardsForTinyPool,
 } from './masteryScalingService';
 import { computeCatchUpMastery } from './catchUpMasteryService';
+import { deepMerge } from '../dev/deepMerge';
 
 export interface EncounterSnapshot {
   activeDeck: CardRunState | null
@@ -1920,4 +1921,30 @@ export function syncCombatDisplayFromCurrentState(): void {
     return;
   }
   syncCombatScene(ts);
+}
+
+/**
+ * DEV ONLY — Deep-merge overrides into the internal activeTurnState AND refresh the
+ * Svelte store.  Use this instead of writing the store directly via the globalThis
+ * Symbol bridge so that the patch is applied to the live store reference — which is
+ * the same object all in-module handlers (handlePlayCard, handleEndTurn, etc.) read
+ * via `get(activeTurnState)`.
+ *
+ * Using the Symbol bridge (writeStore) risks patching a copy that is later
+ * overwritten when the bridge hasn't been registered yet, or when a deferred
+ * timer re-reads from a stale reference.
+ *
+ * Returns true if a turn state was found and patched, false if no encounter is active.
+ */
+export function patchTurnState(overrides: Record<string, unknown>): boolean {
+  const ts = get(activeTurnState);
+  if (!ts) return false;
+  const merged = deepMerge(ts, overrides as Partial<typeof ts>);
+  // Object.assign copies all enumerable own-properties from merged back onto the
+  // EXISTING ts reference so the mutated object is the same one that handlers
+  // (handlePlayCard, handleEndTurn, etc.) already hold.  Then freshTurnState
+  // triggers Svelte subscriber updates.
+  Object.assign(ts, merged);
+  activeTurnState.set(freshTurnState(ts));
+  return true;
 }
