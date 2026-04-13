@@ -4216,3 +4216,73 @@ window.__rrScenario.patch({turn:{deck:{hand: h.map(c=>({...c, mechanicId: c.mech
 2. `relicEffectResolver.ts`: Added `red_fang` check to `resolveAttackModifiers` (`context.isFirstAttack` → `+0.3` percentDamageBonus), matching the existing `flame_brand` pattern.
 
 **Pattern:** When adding a new field to a resolver's return type, immediately search for every callsite and wire it. A resolver field with no consumer is a silent no-op — TypeScript won't catch it.
+
+### 2026-04-13 — WebSocket message type mismatch: `mp:lobby:join` vs `mp:lobby:player_joined`
+
+**What (MP-004/MP-005):** After a guest joined a lobby, the host's lobby screen never updated to show the guest's player slot. The guest saw "2 players" locally but the host remained stuck at "1 player." The ready button behaved as if no guest existed.
+
+**Why:** The client listened for `mp:lobby:join` on the WebSocket to learn about new players. The Fastify server broadcasts `mp:lobby:player_joined` when a player joins. These are two different event names — the client handler was never firing because the event it was registered for is never sent by the server.
+
+**Fix:** Updated `multiplayerLobbyService.ts` to listen for `mp:lobby:player_joined` (the actual server broadcast), not `mp:lobby:join` (the client's outbound message type). Also updated `multiplayerTransport.ts` to correctly route the inbound event.
+
+**Lesson:** When multiplayer lobby state is not syncing between host and guest, check the WebSocket message type names first. Client-side outbound message types and server-side broadcast types are NOT required to match, and diverging them silently is easy to miss in code review.
+
+**Discovered:** MP-20260413-003941 playtest batch (commit `e37413d`).
+
+### 2026-04-13 — Server snapshot player shape mismatch: `playerId` vs `id`
+
+**What (MP-004/MP-005 root cause B):** Even after the message type fix above, the host's ready-state checks still silently failed. `readyMap[player.id]` always returned `undefined` for every player in the lobby.
+
+**Why:** The server's lobby snapshot broadcasts a `players` array where each player object uses `id` as the identifier field. The client code was reading `player.playerId` — a field that does not exist in the server snapshot. Every `readyMap` lookup keyed on `player.playerId` got `undefined`, so all players always appeared not-ready.
+
+Additionally, the server snapshot player objects were missing `isHost` and `isReady` fields. The client was never initializing the ready state from the snapshot.
+
+**Fix:** Updated server (`server/src/routes/mpLobbyWs.ts`) to include `id`, `isHost`, and `isReady` in each player object in the snapshot. The canonical player shape in server snapshots is `{ id, displayName, isHost, isReady }`.
+
+**Lesson:** Whenever server-side data shapes don't match client expectations, there is no runtime error — just silent undefined lookups. If lobby UI appears stuck in a valid-but-wrong state (all players show not-ready, slot count wrong), check the server snapshot player object shape vs. the client's property access paths.
+
+**Discovered:** MP-20260413-003941 playtest batch (commit `4d46239`).
+
+### 2026-04-13 — CSP lives in `vite.config.ts`, not `src/csp.ts`
+
+**What (MP-012):** A `src/csp.ts` file existed in the repository that appeared to configure Content Security Policy headers. It was dead code — the actual CSP is set via Vite plugin in `vite.config.ts`. The dead file caused confusion about where to add WebSocket origins for multiplayer.
+
+**Fix:** Deleted `src/csp.ts`. All CSP configuration lives in `vite.config.ts`. To allow a new origin (e.g., for Docker MP testing), add it to the CSP plugin configuration in `vite.config.ts`.
+
+**CORS_ORIGIN for Docker MP testing:** The Fastify server uses `CORS_ORIGIN` env var to allow the Docker container's origin. When running a two-container MP playtest, set `CORS_ORIGIN=http://host.docker.internal:5173` (or the appropriate Docker bridge origin) so WebSocket upgrade handshakes succeed. Without this, the WS connection is refused with a CORS error visible only in the container's Chromium console.
+
+**Discovered:** MP-20260413-003941 playtest batch (commit `43aa50c` for CSP fix, commit `74fad47` for csp.ts deletion).
+
+### 2026-04-13 — Map node consensus blocks both players when one is a bot
+
+**What (MP-007):** During two-container multiplayer E2E testing, entering a map room caused one container to show a black screen. The encounter never started. The issue only appeared in multiplayer race mode, not solo.
+
+**Why:** `multiplayerMapSync.ts` requires all players to agree on the same map node before proceeding to the encounter (`mapNodeConsensus`). In the test setup, one "player" was a bot that was never going to send a consensus message — so the barrier never released. The waiting container sat indefinitely at the consensus barrier.
+
+**Fix:** Added auto-agree logic in `multiplayerMapSync.ts` for bot players — when a bot's turn to pick arrives, it immediately broadcasts consensus matching the host's pick. In real play (two human containers) this doesn't matter; in automated testing it is required.
+
+**Lesson:** Any barrier that waits for all players to signal will deadlock if one player is a bot that doesn't participate. Add auto-agree stubs for bots to any consensus/barrier before testing. When an MP screen shows black and the encounter never starts, check for unreleased barriers first.
+
+**Discovered:** MP-20260413-003941 playtest batch (commit `bee5135`).
+
+### 2026-04-13 — `--scenario none` required for multi-step Docker MP tests
+
+**What:** When running multi-step action sequences in a Docker warm container (e.g., first navigating to a multiplayer screen, then sending a lobby join), if the initial action batch includes `{"type":"scenario","preset":"..."}` the scenario overwrites the navigation state set by preceding actions in the same batch.
+
+**Why:** Each action batch is processed sequentially, but a `scenario` action resets game state to the named preset. This wipes out any `navigate` or `eval` state set earlier in the same batch.
+
+**Fix:** For multiplayer E2E tests that navigate via WebSocket/lobby flow (not a scenario preset), start the initial batch with `{"type":"scenario","preset":"none"}` to explicitly reset to a clean slate without loading any preset. Then follow with navigate/eval actions. Using `"none"` as the preset name signals the scenario loader to skip preset loading and only reset state.
+
+**Discovered:** MP-20260413-003941 playtest batch.
+
+### 2026-04-13 — Lobby auto-reconnect: `leaveLobby()` not called on navigation away from MP screens
+
+**What (MP-003):** If a player navigated away from a multiplayer screen (e.g., pressed Back from the lobby) without explicitly leaving the lobby, the WS connection and server-side lobby entry persisted. If the same player re-entered the MP menu, a new lobby was created while the old one still existed on the server.
+
+**Why:** `leaveLobby()` was only called when the user explicitly clicked the "Leave" button. No cleanup hook fired on screen navigation.
+
+**Fix:** Added a `$effect` in `CardApp.svelte` that watches `currentScreen`. When the screen changes away from any multiplayer screen (`multiplayerMenu`, `multiplayerLobby`, `multiplayerGame`, `raceResults`, `lobbyBrowser`), it calls `leaveLobby()`. The function was also made defensive with `try/catch` around all transport operations so navigation-triggered cleanup never throws visible errors.
+
+**Lesson:** Any WebSocket-backed session resource (lobby slot, room reservation, pairing) must have a navigation-away cleanup hook, not just an explicit "leave" button. Route-change effects in Svelte 5 via `$effect` watching `currentScreen` are the correct hook point.
+
+**Discovered:** MP-20260413-003941 playtest batch (commits `c69a581` and `bee5135`).

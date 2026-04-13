@@ -1,7 +1,23 @@
 # Multiplayer Architecture
 
 > **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
-> **Last verified:** 2026-04-09 — Coop shared-enemy refactor (host-authoritative HP, end-of-turn delta reconciliation)
+> **Last verified:** 2026-04-13 — MP-20260413-003941 E2E playtest; all 5 modes verified with two Docker containers
+
+---
+
+## E2E Verification Status (2026-04-13)
+
+All five multiplayer modes were tested end-to-end in batch MP-20260413-003941 using two real Docker containers connected via Fastify `webBackend`. No bots were involved — both containers were full WebSocket clients.
+
+| Mode | Result | Notes |
+|------|--------|-------|
+| Race Mode | PASS | Lobby → combat → multiple turns |
+| Same Cards | PASS | Lobby → combat → 3 turns each |
+| Knowledge Duel | PASS | Lobby → combat → 2 turns each |
+| Co-op | PASS | Lobby → combat → 8+ turns, 2 enemies |
+| Trivia Night | PASS | Lobby → combat → 1 turn |
+
+**Seed sync verified:** Both players see identical enemy (Eraser Worm 28/28), identical hand (Strike, Block, Transmute, Strike, Block), and identical map (25 nodes).
 
 ---
 
@@ -125,6 +141,17 @@ interface EnemyTurnDelta {
 | `mp:coop:turn_end_cancel` | Any client | `{ playerId }` | Cancel a pending turn-end signal |
 | `mp:coop:partner_state` | Any client | `PartnerState` | Partner HP/block/score for HUD after enemy phase |
 
+### Lobby Message Type Mapping
+
+The client outbound type and server broadcast type for player-join events differ:
+
+| Direction | Message type | Notes |
+|-----------|-------------|-------|
+| Client → Server (outbound join intent) | `mp:lobby:join` | Sent when the client initiates a join via the lobby service |
+| Server → All clients (broadcast) | `mp:lobby:player_joined` | What the server broadcasts when a player successfully joins |
+
+**This is a known gotcha.** The client listens for `mp:lobby:player_joined` (not `mp:lobby:join`) to learn about new players entering the lobby. Confusing these two names causes the host's player list to never update. See `docs/gotchas.md` 2026-04-13.
+
 ---
 
 ## Helper Functions
@@ -216,6 +243,22 @@ Two TypeScript wrappers bridge the Phase-1 Rust commands to the `steamBackend`. 
 - **10-minute TTL** — `pruneStale()` runs every 60 s and drops lobbies with `lastActivity < Date.now() - 10 min`. All sockets are closed before deletion.
 - **Password convention** — client hashes the raw password with SHA-256 before sending. Server stores and compares the hash only. `timingSafeEqual` prevents timing-oracle attacks. This is a UX gate, not a crypto auth boundary.
 - **Friends-only degradation** — `friends_only` lobbies are excluded from `GET /mp/lobbies` because the web backend has no friends graph. On Steam, `SteamLobbyType::FriendsOnly` is used natively. On web, friends-only lobbies are code-join only (no browser entry).
+- **CORS_ORIGIN for Docker testing** — The Fastify server reads `CORS_ORIGIN` env var to allow cross-origin WS upgrades. When running two Docker containers against a host-machine Fastify instance, set `CORS_ORIGIN=http://host.docker.internal:5173`. Without this, WS connections fail at the HTTP upgrade step with no visible client error.
+
+### Server Snapshot Player Shape
+
+When the server broadcasts a lobby snapshot (on join, ready-state change, or settings change), each entry in the `players` array has this shape:
+
+```typescript
+{
+  id: string;          // canonical player identifier (NOT playerId — that was a bug, fixed 2026-04-13)
+  displayName: string;
+  isHost: boolean;
+  isReady: boolean;
+}
+```
+
+**Gotcha:** Early versions of the server snapshot used `playerId` instead of `id`. The client's `readyMap` lookups key on `player.id`. Using `player.playerId` silently returns `undefined` for every player — all players appear not-ready. See `docs/gotchas.md` 2026-04-13.
 
 ### REST Routes (under `/mp` prefix)
 
@@ -279,6 +322,7 @@ The transport no longer uses `target` as a raw WS URL. Instead:
 ```
 VITE_MP_WS_URL=ws://localhost:3000/mp/ws    # WebSocket URL for WS upgrade
 VITE_MP_API_URL=http://localhost:3000        # REST base URL for webBackend
+CORS_ORIGIN=http://localhost:5173            # Fastify CORS allow-origin (set to Docker bridge for container testing)
 ```
 
 ---
@@ -298,6 +342,12 @@ VITE_MP_API_URL=http://localhost:3000        # REST base URL for webBackend
 | `setPassword` | `async (password: string \| null)` | Host-only. Hashes plaintext, stores in `_passwordHash`. Clears if null. |
 | `setMaxPlayers` | `(n: number)` | Host-only. Clamped to `[MODE_MIN_PLAYERS[mode], MODE_MAX_PLAYERS[mode]]`. |
 | `listPublicLobbies` | `async (filter?)` | Delegates to active backend. Returns `LobbyBrowserEntry[]`. |
+
+### Defensive Cleanup — `leaveLobby()` and Navigation Hooks
+
+`leaveLobby()` wraps all transport operations in `try/catch`. Navigation-triggered cleanup must not throw — a failed disconnect should be logged and ignored, not surfaced to the player.
+
+`CardApp.svelte` has a `$effect` that watches `currentScreen`. When the screen changes away from any MP screen (`multiplayerMenu`, `multiplayerLobby`, `multiplayerGame`, `raceResults`, `lobbyBrowser`), it calls `leaveLobby()` automatically. This prevents orphaned server-side lobby entries when a player presses Back or navigates away without explicitly clicking Leave.
 
 ### `LobbyBackend` interface
 
@@ -351,3 +401,11 @@ interface LobbyBackend {
 | `friends_only` | `SteamLobbyType::FriendsOnly`; Steam handles native friends-graph filter | **Excluded from browser list** — no friends graph on web/broadcast; code-join only; tooltip explains |
 
 **Degradation note:** `friends_only` on web degrades to "hidden from the lobby browser" (effectively code-join only). Steam friends can still receive a direct invite link. The lobby creation UI disables the Friends Only option on non-Steam builds with a tooltip: "Steam only — invite friends via code instead."
+
+---
+
+## Bot Feature — Removed from UI (2026-04-13)
+
+The "Add Bot" button was removed from the lobby UI in commit `74fad47`. Bot-related exports remain in `multiplayerLobbyService.ts` at the service layer for potential future use, but no UI surface exposes them. All multiplayer testing should use two real containers (or two browser tabs in broadcast mode) rather than bots.
+
+**Reason:** Bot players do not participate in map node consensus barriers, causing encounter start to deadlock. See `docs/gotchas.md` 2026-04-13 "Map node consensus blocks both players when one is a bot."

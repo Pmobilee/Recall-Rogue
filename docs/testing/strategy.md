@@ -1,7 +1,7 @@
 # Testing Strategy
 
 > **Purpose:** Overview of all testing layers in Recall Rogue — when to use each method, where tests live, and how to run them.
-> **Last verified:** 2026-04-12
+> **Last verified:** 2026-04-13
 > **Source files:** `vitest.config.ts`, `tests/unit/*.test.ts`, `src/services/__tests__/`, `CLAUDE.md`
 
 ## Five Testing Layers
@@ -135,6 +135,47 @@ Two-container Docker playtest that tests the full multiplayer system with real W
 **Output:** `data/playtests/mp-batches/MP-{DATE}/` with SUMMARY.md and per-scenario reports.
 
 **When to run:** Any change touching `src/services/multiplayerLobbyService.ts`, `multiplayerTransport.ts`, `MultiplayerMenu.svelte`, `MultiplayerLobby.svelte`, `LobbyBrowserScreen.svelte`, `MultiplayerHUD.svelte`, or the Fastify server routes under `server/src/routes/`.
+
+### Two-Container Methodology (not bots)
+
+All MP E2E testing uses two real Docker containers connected via WebSocket. Bot players are deprecated and removed from the lobby UI. Bots do not participate in map node consensus barriers and cause encounter-start deadlocks. If you need to simulate a second player, boot a second container.
+
+### Required Infrastructure Setup
+
+Before running `/multiplayer-playtest`, ensure:
+
+1. **Fastify server running** on port 3000 with `CORS_ORIGIN` set to include the Docker bridge origin:
+   ```bash
+   CORS_ORIGIN=http://host.docker.internal:5173 npx tsx server/src/index.ts
+   ```
+   Without `CORS_ORIGIN`, WebSocket upgrade handshakes fail silently (the WS connection is refused at the HTTP layer, not the application layer — no visible client error).
+
+2. **Vite dev server running** on port 5173 with the MP env vars baked in:
+   ```
+   VITE_MP_API_URL=http://host.docker.internal:3000
+   VITE_MP_WS_URL=ws://host.docker.internal:3000/mp/ws
+   ```
+   Docker containers reach the host machine via `host.docker.internal`, not `localhost`.
+
+3. **Docker Desktop running** — warm container boot takes ~30s on first start.
+
+### `--scenario none` for Multi-Step Action Batches
+
+When an MP action batch navigates via WebSocket/lobby flow (not a scenario preset), start the initial action list with:
+```json
+{"type": "scenario", "preset": "none"}
+```
+This resets the game to a clean slate without loading a named preset. A `scenario` action in the middle of a batch overwrites any state set by preceding `navigate` or `eval` actions — so always put it first if you need it at all.
+
+### Seed Verification Methodology
+
+To verify that both players received the same run seed and are in sync, compare these three values across containers immediately after the race encounter starts:
+
+1. **Enemy** — both players should see identical enemy name and max HP (e.g., "Eraser Worm 28/28")
+2. **Hand** — both players should see identical cards in identical order (e.g., Strike, Block, Transmute, Strike, Block)
+3. **Map** — both players should see the same node count (e.g., 25 nodes)
+
+If any of these differ, the run seeds diverged — check the seed broadcast timing in `multiplayerGameService.ts`.
 
 See `.claude/skills/multiplayer-playtest/SKILL.md` for full documentation.
 
