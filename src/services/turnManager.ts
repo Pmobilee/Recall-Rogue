@@ -1156,7 +1156,7 @@ export function playCardAction(
           const currentLevel = runState.factVariantLevel[card.factId] ?? 0;
           runState.factVariantLevel[card.factId] = Math.max(0, currentLevel - 1);
           activeRunState.set(runState);
-          if (import.meta.env.DEV) {
+          if (import.meta.env?.DEV) {
             console.log(`[QuizVariant] fact=${card.factId} wrong (relaxed) → level ${currentLevel} → ${runState.factVariantLevel[card.factId]}`);
           }
         }
@@ -1340,7 +1340,7 @@ export function playCardAction(
         const currentLevel = runState.factVariantLevel[card.factId] ?? 0;
         runState.factVariantLevel[card.factId] = Math.max(0, currentLevel - 1);
         activeRunState.set(runState);
-        if (import.meta.env.DEV) {
+        if (import.meta.env?.DEV) {
           console.log(`[QuizVariant] fact=${card.factId} wrong → level ${currentLevel} → ${runState.factVariantLevel[card.factId]}`);
         }
       }
@@ -3063,7 +3063,7 @@ export function playCardAction(
       const MAX_LEVEL = 3; // forward=0, reverse=1, synonym=2, definition=3
       runState.factVariantLevel[card.factId] = Math.min(currentLevel + 1, MAX_LEVEL);
       activeRunState.set(runState);
-      if (import.meta.env.DEV) {
+      if (import.meta.env?.DEV) {
         console.log(`[QuizVariant] fact=${card.factId} correct → level ${currentLevel} → ${runState.factVariantLevel[card.factId]}`);
       }
     }
