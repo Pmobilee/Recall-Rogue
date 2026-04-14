@@ -104,15 +104,15 @@ export function guideStyle(x: number, y: number, w: number, h: number): string {
  * All coordinates are percentages of the 886×1142 canvas.
  *
  * Manifest pixel values:
- *   apCost       { x:18,  y:32,  w:164, h:138 }  — h increased for more vertical space in book icon
- *   mechanicName { x:205, y:114, w:478, h:86  }  — shifted up from y:128 so title sits higher on ribbon
+ *   apCost       { x:18,  y:18,  w:164, h:152 }  — shifted higher + taller for AP number visibility
+ *   mechanicName { x:205, y:100, w:478, h:86  }  — shifted up further so title sits high on ribbon
  *   artWindow    { x:194, y:186, w:498, h:412 }
  *   cardType     { x:352, y:615, w:182, h:54  }
  *   effectText   { x:134, y:662, w:640, h:376 }  — shifted down from y:646 for better spacing
  */
 export const GUIDE_STYLES = {
-  apCost: guideStyle(18, 32, 164, 138),
-  mechanicName: guideStyle(205, 114, 478, 86),
+  apCost: guideStyle(18, 18, 164, 152),
+  mechanicName: guideStyle(205, 100, 478, 86),
   artWindow: guideStyle(194, 186, 498, 412),
   cardType: guideStyle(243, 608, 400, 70),
   /** Pill-shaped chain color indicator — matches the frame's small oval cutout exactly */

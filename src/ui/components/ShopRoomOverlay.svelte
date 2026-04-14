@@ -1183,7 +1183,7 @@
   }
 
   .relic-float-name {
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(20px * var(--text-scale, 1));
     font-weight: 700;
     text-align: left;
     line-height: 1.2;
@@ -1199,7 +1199,7 @@
   }
 
   .relic-float-desc {
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(22px * var(--text-scale, 1));
     color: #94a3b8;
     text-align: left;
     line-height: 1.3;
@@ -1253,10 +1253,7 @@
     transform: translateY(calc(-3px * var(--layout-scale, 1)));
   }
 
-  /* E: Increase card effect text readability in shop */
-  .shop-card-visual-wrapper :global(.v2-effect-text) {
-    font-size: calc(11px * var(--text-scale, 1));
-  }
+  /* E: Card effect text — no shop override, uses CardVisual's own responsive sizing */
 
   /* Combined price + buy pill — sized to match relic buy buttons */
   .card-price-buy {
@@ -1352,11 +1349,11 @@
   }
 
   .service-btn-label {
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(21px * var(--text-scale, 1));
   }
 
   .service-btn-price {
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(21px * var(--text-scale, 1));
     color: #f59e0b;
     font-weight: 800;
   }
