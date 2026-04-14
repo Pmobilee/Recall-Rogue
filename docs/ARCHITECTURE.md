@@ -273,7 +273,7 @@ Core systems powering the card roguelite:
 | Map generator | `src/services/mapGenerator.ts` | Built — ActMap/MapNode types, generateActMap(), selectMapNode(), navigation helpers. Boss selection uses seeded RNG to pick randomly from a 2-boss pool per region (Shallow Depths, Deep Caverns, The Abyss, The Archive). AR-116: post-processing step enforces exact room counts per floor: row 0 = combat, 1 rest in rows 1–5, 2 shops (2+ rows apart), 2 mystery rooms (not on shop rows), row 6 = rest (pre-boss), row 7 = boss. |
 | Map cinematic | `src/ui/components/DungeonMap.svelte` | Built — Floor-entry cinematic: 1.5× zoom on boss node (~1s), zoom-out to full map, camera sweep to starting nodes. Boss node renders actual boss sprite (3D float animation). Elite nodes show purple menacing pulse. Tracked by map seed — plays once per floor. |
 | Rest room overlay | `src/ui/components/RestRoomOverlay.svelte` | Built — wired upgrade button (removed "Coming soon" stub) |
-| Shop room overlay | `src/ui/components/ShopRoomOverlay.svelte` | Complete redesign — buy relics + buy cards + sell sections |
+| Shop room overlay | `src/ui/components/ShopRoomOverlay.svelte` | STS-style floating layout: 8 cards + 3 relics + removal/transform services |
 | Mystery event overlay | `src/ui/components/MysteryEventOverlay.svelte` | Built |
 | Run end overlay | `src/ui/components/RunEndOverlay.svelte` | Built |
 | Enemy templates | `src/data/enemies.ts` | Built |
@@ -437,7 +437,7 @@ Cards now cost 0, 1, 2, or 3 AP instead of all costing 1 AP. This creates meanin
 - `src/ui/stores/gameState.ts` — Added `upgradeSelection`, `postMiniBossRest` screens; added `synergyFlash` store for visual feedback
 - `src/ui/components/CardHand.svelte` — Added `.card-upgraded` CSS class (blue glow border)
 - `src/ui/components/RestRoomOverlay.svelte` — Wired upgrade button (removed "Coming soon" stub)
-- `src/ui/components/ShopRoomOverlay.svelte` — Complete redesign with buy relics, buy cards, and sell sections
+- `src/ui/components/ShopRoomOverlay.svelte` — STS-style floating layout: 8 cards in a horizontal row, 3 relics in sidebar, removal/transform service buttons
 - `src/ui/components/CardCombatOverlay.svelte` — Added synergy flash UI element for visual feedback
 
 **Data Flow Additions:**

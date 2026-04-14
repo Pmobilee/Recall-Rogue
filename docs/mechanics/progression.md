@@ -291,7 +291,7 @@ Selected level effects:
 `ShopInventory` contains relics, cards, optional removal/transform service prices, and a sale card index.
 
 ### Inventory
-- `SHOP_RELIC_COUNT = 3` relics, `SHOP_CARD_COUNT = 6` cards per visit
+- `SHOP_RELIC_COUNT = 3` relics, `SHOP_CARD_COUNT = 8` cards per visit
 - Relic rarity weights: common 40%, uncommon 35%, rare 20%, legendary 5%
 - **Card selling removed (Ch14.2)** — `onShopSell()` is a no-op stub; `activeShopCards` store is always empty at shop generation
 
@@ -323,6 +323,13 @@ The displayed mastery is a preview — the actual mastery assigned at purchase i
 ### Haggle (Ch14.10 — UI-only)
 On haggle fail: no price penalty (original price kept), haggle button disabled for that item (`haggledThisItem` flag). Player can still buy at original price.
 Implementation is entirely in `ShopRoomOverlay.svelte` (owned by ui-agent). Backend service layer is not involved in haggle outcome tracking beyond `recordHaggleAttempt()`.
+
+### Shop UI Layout (`ShopRoomOverlay.svelte`)
+- **Cards**: 8 `CardVisual` components in a single horizontal row
+- **Relics**: 3 relics in a left sidebar column
+- **Services**: Card Removal and Card Transform as styled buttons centered at the bottom
+- **Leave Shop**: button at bottom-right
+- **Removal / Transform pickers**: display full `CardVisual` cards; selecting one triggers a confirmation popup ("are you sure?") before the action is finalized
 
 ---
 

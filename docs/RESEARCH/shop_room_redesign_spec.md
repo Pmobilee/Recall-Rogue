@@ -219,7 +219,7 @@ The player can hold up to 5 relics by default. Scholar's Gambit extends this to 
 
 ### Real data
 
-- **Count:** 6 cards per shop visit (`SHOP_CARD_COUNT = 6`)
+- **Count:** 8 cards per shop visit (`SHOP_CARD_COUNT = 8`)
 - **Prices (before floor discount):**
   - Tier 1 (common): 50g
   - Tier 2a / Tier 2b (uncommon): 80g
