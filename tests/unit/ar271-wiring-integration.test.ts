@@ -385,7 +385,13 @@ describe('AR-271 Relic Mechanic: Scar Tissue stacking', () => {
    * Uses `result.effect.damageDealt` directly (no enemy HP tracking needed).
    */
   it('Scar Tissue adds +6 flat damage after 2 wrong Charges (2 stacks × +3, Pass 7)', () => {
-    // ── (A) Baseline: CC damage without scar_tissue ──────────────────────────
+    // Use two parallel setups with matching chain state so the only diff is scar_tissue.
+    // Wrong charges via off-colour halving set chain length to 1 before the correct charge,
+    // so baseDamage and scarDamage both experience the same chain multiplier — the flat
+    // +6 (2 stacks × +3) is the only variable.
+
+    const wrong1NoRelic = makeCard({ id: 'base_w1', factId: 'base_wf1', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
+    const wrong2NoRelic = makeCard({ id: 'base_w2', factId: 'base_wf2', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
     const baseAttack = makeCard({
       id: 'base_attack',
       factId: 'base_fact',
@@ -395,13 +401,21 @@ describe('AR-271 Relic Mechanic: Scar Tissue stacking', () => {
       apCost: 1,
       baseEffectValue: 8,
     });
-    const baseTS = setupEncounter(baseAttack, new Set()); // no relics
+    const basePad: Card[] = Array.from({ length: 17 }, (_, i) =>
+      makeCard({ id: `bp_${i}`, factId: `bp_fact_${i}` })
+    );
+    const baseTS = startEncounter(makeDeck([wrong1NoRelic, wrong2NoRelic, baseAttack, ...basePad]), makeEnemy());
+    baseTS.apCurrent = 20;
+    injectIntoHand(baseTS, wrong1NoRelic);
+    injectIntoHand(baseTS, wrong2NoRelic);
+    injectIntoHand(baseTS, baseAttack);
+    playCardAction(baseTS, 'base_w1', false, false, 'charge');
+    playCardAction(baseTS, 'base_w2', false, false, 'charge');
     const baseResult = playCardAction(baseTS, 'base_attack', true, false, 'charge');
     const baseDamage = baseResult.effect.damageDealt;
     expect(baseDamage).toBeGreaterThan(0);
 
-    // ── (B) With scar_tissue: play 2 wrong charges, then CC ─────────────────
-    // Reset stacks first (beforeEach handles this, but being explicit)
+    // ── With scar_tissue: same pattern — 2 wrong charges, then CC ───────────
     resetFactLastSeenEncounter(); // resets _scarTissueStacks = 0
 
     const scarWrong1 = makeCard({ id: 'scar_w1', factId: 'scar_wf1', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
@@ -425,12 +439,10 @@ describe('AR-271 Relic Mechanic: Scar Tissue stacking', () => {
     scarTS.activeRelicIds = new Set(['scar_tissue']);
     scarTS.apCurrent = 20;
 
-    // Inject all three cards into hand
     injectIntoHand(scarTS, scarWrong1);
     injectIntoHand(scarTS, scarWrong2);
     injectIntoHand(scarTS, scarAttack);
 
-    // 2 wrong Charges → 2 scar_tissue stacks (+2 flat each = +4 total bonus)
     playCardAction(scarTS, 'scar_w1', false, false, 'charge');
     playCardAction(scarTS, 'scar_w2', false, false, 'charge');
     const scarResult = playCardAction(scarTS, 'scar_attack', true, false, 'charge');
@@ -620,12 +632,41 @@ describe('AR-271 Relic Mechanic: Lucky Coin armed flag', () => {
     injectIntoHand(lcTS2, lcW1);
     injectIntoHand(lcTS2, lcCC2);
 
-    // Only 1 wrong charge → NOT armed (threshold is 2)
+    // Only 1 wrong charge → NOT armed (threshold is 2).
+    // The wrong charge (off-colour, undefined chainType) sets chain length to 1 via
+    // 7.8 partial-reset halving (max(1, floor(0×0.5)) = 1). The correct charge then
+    // reads this pre-extension chain length — so lcResult2 gets 1.2× chain bonus,
+    // different from fresh-encounter baseDamage. Compare against a same-chain-state
+    // baseline (1 wrong charge, no coin) to isolate the "coin unarmed = no boost" check.
     playCardAction(lcTS2, 'lc2_w0', false, false, 'charge');
     const lcResult2 = playCardAction(lcTS2, 'lc2_cc', true, false, 'charge');
 
-    // Should be same as baseline (coin unarmed)
-    expect(lcResult2.effect.damageDealt).toBe(baseDamage);
+    // Compute a chain-matched baseline: same 1-wrong-charge setup but no coin boost expected.
+    // With coin unarmed, damage should equal what a non-coin player gets from the same chain state.
+    resetFactLastSeenEncounter();
+    const lcNoBoostBase = makeCard({
+      id: 'lc_nb',
+      factId: 'lc_nb_fact',
+      cardType: 'attack',
+      mechanicId: 'strike',
+      mechanicName: 'Strike',
+      apCost: 1,
+      baseEffectValue: 8,
+    });
+    const lcNBW = makeCard({ id: 'lc_nbw', factId: 'lc_nbw_fact', cardType: 'attack', apCost: 1, baseEffectValue: 8 });
+    const lcNBPad: Card[] = Array.from({ length: 18 }, (_, i) =>
+      makeCard({ id: `lnb_${i}`, factId: `lnb_fact_${i}` })
+    );
+    const lcNBTS = startEncounter(makeDeck([lcNBW, lcNoBoostBase, ...lcNBPad]), makeEnemy());
+    lcNBTS.activeRelicIds = new Set(relics); // same relics but coin won't be armed
+    lcNBTS.apCurrent = 20;
+    injectIntoHand(lcNBTS, lcNBW);
+    injectIntoHand(lcNBTS, lcNoBoostBase);
+    playCardAction(lcNBTS, 'lc_nbw', false, false, 'charge'); // same chain state (1 wrong → chain=1)
+    const lcNBResult = playCardAction(lcNBTS, 'lc_nb', true, false, 'charge');
+
+    // Coin unarmed — damage equals chain-matched baseline (no lucky_coin boost)
+    expect(lcResult2.effect.damageDealt).toBe(lcNBResult.effect.damageDealt);
   });
 });
 

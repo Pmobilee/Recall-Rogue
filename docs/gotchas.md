@@ -4381,3 +4381,15 @@ This updates the Svelte store reactively, and the UI responds on the next render
 **Fix:** Created `tests/playtest/headless/loader-hook.mjs` — a Node.js ESM load hook that intercepts all loaded modules and replaces `import.meta.env.DEV` → `false` (string substitution before evaluation). Registered in `tsx-worker-bootstrap.mjs` via `node:module`'s `register()` API. The main thread is unaffected since `run-batch.ts` only calls simulation via workers in normal operation.
 
 **Pattern:** Any time you enable previously-dead code paths in source files that use Vite-specific APIs (`import.meta.env.*`, `import.meta.hot`, etc.), check for these in the game code and ensure the test infrastructure handles them.
+
+### 2026-04-14 — Chain multiplier applied to the card that BUILT the chain (off-by-one in order of operations)
+
+**What:** A card that starts a chain (e.g., 6 block) was getting a 1.2× bonus on its own effect, even though the chain didn't exist before that card was played. The card face preview showed "6" but dealt 7.
+
+**Why:** `turnManager.ts` called `extendOrResetChain(card.chainType)` first (which extended chain 0→1 and returned 1.2×), then passed that 1.2× to `resolveCardEffect`. The multiplier applied to the card that built the chain, not to subsequent cards.
+
+**Fix:** Capture `currentChainMultiplier = getChainMultiplier(getCurrentChainLength())` (pre-extension) BEFORE calling `extendOrResetChain()`. `extendOrResetChain()` still runs to update chain state for future cards. `turnState.chainMultiplier` is then set to the POST-extension value (`getChainMultiplier(chainState.length)`) for the UI card face preview on the next card.
+
+**Secondary effect on tests:** Tests that used wrong charges to set up state before a correct charge found their chain length was non-zero (off-colour wrong charges use partial-reset halving: `max(1, floor(length×0.5))`; from length 0 this gives 1). The old code masked this because `extendOrResetChain(null)` on the correct-charge card reset chain to 0 (return = 1.0). With the fix, the pre-extension read sees chain=1 → 1.2×. Tests with wrong-charge setups needed chain-state-matched baselines rather than fresh-encounter baselines.
+
+**Files:** `src/services/turnManager.ts` lines 1388-1395 and 1415-1417, `tests/unit/ar271-wiring-integration.test.ts`.

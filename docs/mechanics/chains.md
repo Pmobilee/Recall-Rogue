@@ -1,7 +1,7 @@
 # Chain System
 
 > **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, break conditions, rotating chain color, and themed chain distribution.
-> **Last verified:** 2026-04-13 (chain multiplier rework: base-only scaling, per-card-type table, card face preview)
+> **Last verified:** 2026-04-14 (chain multiplier order-of-operations fix: pre-extension value passed to resolveCardEffect)
 > **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`, `src/ui/components/StudyTempleScreen.svelte`
 
 ---
@@ -84,14 +84,16 @@ export const CHAIN_MULTIPLIERS: number[] = [1.0, 1.2, 1.5, 2.0, 2.5, 3.5];
 export const MAX_CHAIN_LENGTH = 5;
 ```
 
-| Chain Length | Multiplier | Cards Played |
-|-------------|-----------|-------------|
-| 0 | 1.0× | no cards played yet |
-| 1 | 1.2× | first matching card |
-| 2 | 1.5× | second matching card |
-| 3 | 2.0× | third matching card |
-| 4 | 2.5× | fourth matching card |
-| 5 | 3.5× | fifth+ matching card (cap) |
+| Chain Length (before this card) | Multiplier This Card Gets | Effect |
+|---|---|---|
+| 0 | 1.0× | first matching card — no chain bonus yet |
+| 1 | 1.2× | second matching card — chain was already at 1 |
+| 2 | 1.5× | third matching card |
+| 3 | 2.0× | fourth matching card |
+| 4 | 2.5× | fifth matching card |
+| 5 | 3.5× | sixth+ matching card (cap) |
+
+**Order of operations (2026-04-14 fix):** the multiplier applied to a card's effect is the PRE-extension chain length — the chain state BEFORE this card extends it. The card that starts a chain gets 1.0×, not 1.2×. After the card resolves, `extendOrResetChain()` increments the length for future cards. This matches the card face preview: the value shown on the card face when you hover it is always what you'll deal.
 
 Once `MAX_CHAIN_LENGTH = 5` is reached, the multiplier stays at `3.5×`. Capped via `Math.min(_chain.length + 1, MAX_CHAIN_LENGTH)` in `extendOrResetChain()`.
 

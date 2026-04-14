@@ -1385,9 +1385,14 @@ export function playCardAction(
       switchActiveChainColor(card.chainType);
       turnState.activeChainColor = card.chainType; // mirror for Svelte UI reactivity
     }
-    currentChainMultiplier = extendOrResetChain(card.chainType);
-    // prismatic_shard — all chain multipliers +0.5x
+    // Capture the pre-extension multiplier: THIS card's effect uses the chain state
+    // BEFORE it extends the chain. The chain bonus rewards the NEXT card, not this one.
+    // The card face preview already showed the pre-extension value — match that here.
+    currentChainMultiplier = getChainMultiplier(getCurrentChainLength());
+    // prismatic_shard — all chain multipliers +0.5x (applies to pre-extension mult too)
     currentChainMultiplier += resolveChainMultiplierBonus(turnState.activeRelicIds);
+    // Now extend the chain for future cards — this updates internal chain state.
+    extendOrResetChain(card.chainType);
     // Narrative: track factId for chain completion sequence
     if (card.factId) {
       turnState.currentChainAnswerFactIds.push(card.factId);
@@ -1407,7 +1412,9 @@ export function playCardAction(
     }
   }
   const chainState = getChainState();
-  turnState.chainMultiplier = currentChainMultiplier;
+  // turnState.chainMultiplier is the post-extension value — used by the UI to preview
+  // the multiplier available for the NEXT card played this turn.
+  turnState.chainMultiplier = getChainMultiplier(chainState.length) + resolveChainMultiplierBonus(turnState.activeRelicIds);
   turnState.chainLength = chainState.length;
   turnState.chainType = chainState.chainType;
   // Chain link sound for correct Charge: play cue matching new chain length
@@ -2309,9 +2316,11 @@ export function playCardAction(
 
   // ── AR-207 effect application ───────────────────────────────────────────────
 
-  // Chain Lightning CC — override damage with 8 × (new chain length after extend)
+  // Chain Lightning CC — override damage with base × pre-extension mult × post-extension chain length
   if (card.mechanicId === 'chain_lightning' && isChargeCorrect) {
-    // Chain was already extended above via extendOrResetChain. chainLength is the new length.
+    // extendOrResetChain has already fired — chainLength is the post-extension length.
+    // currentChainMultiplier is the PRE-extension value (this card doesn't benefit from the
+    // chain it just built). That's intentional: CL scales by length, mult is applied to base.
     const clChainLen = Math.max(1, turnState.chainLength);
     const clBaseDmgPerLen = (effect.mechanicName !== undefined ? 1 : 1); // always 1 factor
     // base value from mechanic quick play + mastery bonus — recompute raw per-chain base
