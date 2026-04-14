@@ -272,6 +272,7 @@
       0 2px 4px rgba(0, 0, 0, 0.7);
     line-height: 1;
     overflow: visible;
+    transform: translateY(-15%);
   }
 
   /* Mechanic name in the banner region */
