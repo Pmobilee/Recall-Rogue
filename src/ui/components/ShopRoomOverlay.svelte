@@ -578,8 +578,6 @@
                 class:slots-full={relicSlotsFull}
                 class:shake={shakeItemId === item.relic.id}
                 class:purchased={purchasedItemId === item.relic.id}
-                onmouseenter={(e) => showRelicTooltip(item.relic, e)}
-                onmouseleave={dismissRelicTooltip}
                 onclick={(e) => !canAfford && !relicSlotsFull && handleUnaffordableTap(item.price, item.relic.id, e)}
               >
                 <div
