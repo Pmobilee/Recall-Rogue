@@ -344,16 +344,16 @@ export const PROGRESSION_PROFILES: Record<string, BotSkills> = {
   /** Runs 11-25: All systems understood, strategic play begins. The average engaged player. */
   competent: makeSkills({
     accuracy:       0.68,
-    cardSelection:  0.25,  // same as developing: hand-order play to avoid scoring overhead
-    chargeSkill:    0.35,  // same as developing: charge rate that matches 68% acc break-even (higher acc + more charges = more AP spent with no net gain)
-    chainSkill:     0.45,  // raised 0.35→0.45: competent players chain more reliably
-    blockSkill:     0.25,  // same as developing: pure offense, no shield penalty at combat
-    apEfficiency:   0.35,  // same as developing: stops on first unaffordable card
+    cardSelection:  0.45,
+    chargeSkill:    0.50,
+    chainSkill:     0.35,
+    blockSkill:     0.35,
+    apEfficiency:   0.50,
     surgeAwareness: 0.30,
     masteryHunting: 0.25,
     rewardSkill:    0.50,
-    shopSkill:      0.35,  // lowered 0.45→0.35: over-optimizing economy drained combat power
-    restSkill:      0.25,  // same as developing: always heals at rest sites
+    shopSkill:      0.45,
+    restSkill:      0.45,
     relicSkill:     0.40,
   }, 0),
 
@@ -379,13 +379,13 @@ export const PROGRESSION_PROFILES: Record<string, BotSkills> = {
     cardSelection:  0.80,
     chargeSkill:    0.85,
     chainSkill:     0.75,
-    blockSkill:     0.55,  // lowered 0.70→0.55: masters attack more; 85% accuracy means charges are EV-positive
+    blockSkill:     0.70,
     apEfficiency:   0.90,
     surgeAwareness: 0.80,
     masteryHunting: 0.75,
     rewardSkill:    0.80,
     shopSkill:      0.80,
-    restSkill:      0.65,  // lowered 0.80→0.65: master was healing too late (40% threshold), now heals at 50% like experienced
+    restSkill:      0.80,
     relicSkill:     0.85,
   }, 0),
 
