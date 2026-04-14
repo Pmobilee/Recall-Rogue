@@ -1037,7 +1037,8 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     // Build shop cards — from explicit list or random mechanics
     const mechanicIds = config.shopCards
       ?? Object.keys(MECHANIC_BY_ID).sort(() => Math.random() - 0.5).slice(0, 8);
-    for (const mId of mechanicIds) {
+    for (let i = 0; i < mechanicIds.length; i++) {
+      const mId = mechanicIds[i];
       const mechanic = MECHANIC_BY_ID[mId];
       if (!mechanic) { console.warn(`[__rrScenario] Unknown mechanic: ${mId}`); continue; }
       const masteryLevel = Math.floor(Math.random() * 4); // 0-3 random mastery
@@ -1053,6 +1054,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
         mechanicName: mechanic.name,
         apCost: mechanic.apCost,
         masteryLevel,
+        chainType: i % 6, // spread across all 6 chain types for visual variety
       };
       inventory.cards.push({ card, price: 50 + Math.floor(Math.random() * 30) });
     }
