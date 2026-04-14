@@ -136,8 +136,8 @@
     legendary: '#f1c40f',
   }
 
-  // Shop card visual sizing: 140px wide at scale 1, ratio 886:1142
-  const SHOP_CARD_W = 140
+  // Shop card visual sizing: 155px wide at scale 1, ratio 886:1142
+  const SHOP_CARD_W = 155
   const SHOP_CARD_H = Math.round(SHOP_CARD_W * (1142 / 886))
   // Transform options modal uses larger cards for easier selection
   const MODAL_CARD_W = 170
@@ -560,12 +560,12 @@
   {/if}
 
   {#if shopInventory && (shopInventory.relics.length > 0 || shopInventory.cards.length > 0)}
-    <!-- ─── MAIN AREA: relics left | cards right ───────────────── -->
+    <!-- ─── MAIN AREA: relics top | cards center | bottom bar ────── -->
     <div class="shop-main">
 
-      <!-- Left: Relics -->
+      <!-- Top: Relics as horizontal strip -->
       {#if shopInventory.relics.length > 0}
-        <div class="relics-column">
+        <div class="relics-row">
           {#if relicSlotsFull}<span class="slots-full-badge">Relic slots full</span>{/if}
           {#each shopInventory.relics as item (item.relic.id)}
             {#if !purchasedRelicIds.has(item.relic.id)}
@@ -607,7 +607,7 @@
         </div>
       {/if}
 
-      <!-- Right: Cards -->
+      <!-- Center: 2x4 card grid -->
       {#if shopInventory.cards.length > 0}
         <div class="cards-grid">
           {#each shopInventory.cards as item, idx (item.card.id)}
@@ -633,34 +633,42 @@
           {/each}
         </div>
       {/if}
-    </div>
 
-    <!-- ─── SERVICES: fantasy-themed buttons ─────────────────── -->
-    {#if shopInventory.removalCost != null}
-      <div class="services-row">
-        <button type="button" class="service-btn service-removal"
-          disabled={!canRemoveCard || currency < shopInventory.removalCost}
-          data-testid="shop-buy-removal"
-          onclick={() => openPurchaseModal({ type: 'removal', cardId: '', price: shopInventory!.removalCost!, name: 'Card Removal' })}
-        >
-          <span class="service-btn-icon">🔥</span>
-          <span class="service-btn-label">Card Removal</span>
-          <span class="service-btn-price">{shopInventory.removalCost}g</span>
-          {#if !canRemoveCard}<span class="service-btn-note">Need 5+ cards</span>{/if}
-        </button>
+      <!-- Bottom: Services + Leave unified bar -->
+      <div class="shop-bottom-bar">
+        {#if shopInventory.removalCost != null}
+          <div class="services-row">
+            <button type="button" class="service-btn service-removal"
+              disabled={!canRemoveCard || currency < shopInventory.removalCost}
+              data-testid="shop-buy-removal"
+              onclick={() => openPurchaseModal({ type: 'removal', cardId: '', price: shopInventory!.removalCost!, name: 'Card Removal' })}
+            >
+              <span class="service-btn-icon">🔥</span>
+              <span class="service-btn-label">Card Removal</span>
+              <span class="service-btn-price">{shopInventory.removalCost}g</span>
+              {#if !canRemoveCard}<span class="service-btn-note">Need 5+ cards</span>{/if}
+            </button>
 
-        <button type="button" class="service-btn service-transform"
-          disabled={!canTransformCard || shopInventory.transformCost == null || currency < (shopInventory.transformCost ?? Infinity)}
-          data-testid="shop-buy-transform"
-          onclick={() => shopInventory?.transformCost != null && openPurchaseModal({ type: 'transform', price: shopInventory.transformCost, name: 'Card Transform' })}
-        >
-          <span class="service-btn-icon">✨</span>
-          <span class="service-btn-label">Card Transform</span>
-          <span class="service-btn-price">{shopInventory.transformCost != null ? `${shopInventory.transformCost}g` : '—'}</span>
-          {#if !canTransformCard}<span class="service-btn-note">Need 5+ cards</span>{/if}
+            <button type="button" class="service-btn service-transform"
+              disabled={!canTransformCard || shopInventory.transformCost == null || currency < (shopInventory.transformCost ?? Infinity)}
+              data-testid="shop-buy-transform"
+              onclick={() => shopInventory?.transformCost != null && openPurchaseModal({ type: 'transform', price: shopInventory.transformCost, name: 'Card Transform' })
+              }
+            >
+              <span class="service-btn-icon">✨</span>
+              <span class="service-btn-label">Card Transform</span>
+              <span class="service-btn-price">{shopInventory.transformCost != null ? `${shopInventory.transformCost}g` : '—'}</span>
+              {#if !canTransformCard}<span class="service-btn-note">Need 5+ cards</span>{/if}
+            </button>
+          </div>
+        {/if}
+
+        <button type="button" class="service-btn leave-shop-btn" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">
+          Leave Shop
         </button>
       </div>
-    {/if}
+
+    </div>
 
   {/if}
 
@@ -701,10 +709,6 @@
 
 </section>
 
-<!-- Leave Shop button — OUTSIDE the shop-overlay to escape its width constraint -->
-<button type="button" class="leave-shop-btn-new" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">
-  Leave Shop
-</button>
 
 <!-- Purchase Modal -->
 {#if pendingPurchase}
@@ -1032,8 +1036,9 @@
         staggerPopIn({
           container: overlayEl,
           elements: [
-            '.shop-main',
-            '.services-row',
+            '.relics-row',
+            '.cards-grid',
+            '.shop-bottom-bar',
           ],
           totalDuration: 2800,
         })
@@ -1060,25 +1065,26 @@
     overflow: hidden;
   }
 
-  /* ── Main area: relics left | cards right ──────────────────── */
+  /* ── Main area: column layout (relics top, cards center, bottom bar) */
   .shop-main {
     position: relative;
     z-index: 1;
     display: flex;
-    gap: calc(12px * var(--layout-scale, 1));
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
     flex: 1;
     min-height: 0;
     align-items: stretch;
   }
 
-  /* ── Left column: relics ───────────────────────────────────── */
-  .relics-column {
+  /* ── Top row: relics as horizontal strip ───────────────────── */
+  .relics-row {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: calc(8px * var(--layout-scale, 1));
-    width: calc(240px * var(--layout-scale, 1));
     flex-shrink: 0;
-    overflow-y: auto;
   }
 
   /* ── Section labels ─────────────────────────────────────────── */
@@ -1211,16 +1217,15 @@
     opacity: 0.75;
   }
 
-  /* ── Cards grid: CardVisual frames — single horizontal row ─── */
+  /* ── Cards grid: 2×4 CSS grid ───────────────────────────── */
   .cards-grid {
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
     justify-content: center;
-    align-items: flex-start;
+    align-content: center;
     gap: calc(10px * var(--layout-scale, 1));
     flex: 1;
-    min-width: 0;
-    align-self: center;
+    min-height: 0;
   }
 
   .card-visual-item {
@@ -1282,13 +1287,21 @@
     margin-right: calc(4px * var(--layout-scale, 1));
   }
 
-  /* ── Services row ───────────────────────────────────────────── */
+  /* ── Services row (inside bottom bar) ─────────────────────── */
   .services-row {
-    position: relative;
-    z-index: 1;
     display: flex;
     gap: calc(24px * var(--layout-scale, 1));
     justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ── Bottom bar: services + leave in one row ───────────────── */
+  .shop-bottom-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: calc(16px * var(--layout-scale, 1));
     flex-shrink: 0;
     padding: calc(8px * var(--layout-scale, 1)) 0;
   }
@@ -1830,12 +1843,8 @@
     justify-content: center;
   }
 
-  /* ── Leave Shop button ───────────────────────────────────── */
-  .leave-shop-btn-new {
-    position: fixed;
-    bottom: calc(16px * var(--layout-scale, 1));
-    right: calc(20px * var(--layout-scale, 1));
-    z-index: 225;
+  /* ── Leave Shop button (inside bottom bar) ────────────────── */
+  .leave-shop-btn {
     background: rgba(180, 30, 30, 0.85);
     border: calc(2px * var(--layout-scale, 1)) solid #ef4444;
     color: #fef2f2;
@@ -1849,7 +1858,7 @@
     box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(239, 68, 68, 0.3);
   }
 
-  .leave-shop-btn-new:hover {
+  .leave-shop-btn:hover {
     background: rgba(220, 40, 40, 0.95);
     border-color: #f87171;
   }
