@@ -386,11 +386,11 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     handleResumeActiveRun()
   }
 
-  async function handleGuardAbandon(): Promise<void> {
+  function handleGuardAbandon(): void {
     showRunGuardPopup = false
     guardRunStats = null
-    if (await maybePromptOutsideDueReviews()) return
-    startNewRun({ includeOutsideDueReviews: false })
+    abandonActiveRun()
+    hasRunSave = false
   }
 
   function handleOutsideDueChoice(includeOutsideDueReviews: boolean): void {
@@ -1637,7 +1637,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
           <p class="abandon-warning">Abandoning will lose all progress from this run.</p>
           <div class="abandon-confirm-buttons">
             <button class="run-guard-btn-continue" onclick={handleGuardContinue}>Continue Run</button>
-            <button class="run-guard-btn-abandon" onclick={handleGuardAbandon}>Abandon & Start New</button>
+            <button class="run-guard-btn-abandon" onclick={handleGuardAbandon}>Abandon Run</button>
           </div>
         </div>
       </div>
@@ -1838,6 +1838,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         mechanicName={$activeCardUpgradeReveal.mechanicName}
         beforeLevel={$activeCardUpgradeReveal.beforeLevel}
         afterLevel={$activeCardUpgradeReveal.afterLevel}
+        mode={$activeCardUpgradeReveal.mode}
         ondismiss={onCardUpgradeRevealDismissed}
       />
     </div>

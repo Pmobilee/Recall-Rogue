@@ -45,6 +45,7 @@ export interface HouseRules {
   turnTimerSecs: number;        // 20 (speed) | 45 (standard) | 90 (relaxed)
   quizDifficulty: 'adaptive' | 'easy' | 'hard';
   fairness: FairnessOptions;
+  ascensionLevel: number;   // 0 = off, 1-20 = ascension level for the lobby
 }
 
 /** Content selection for a multiplayer lobby — replaces bare deckId */
@@ -228,6 +229,7 @@ export const DEFAULT_HOUSE_RULES: HouseRules = {
     deckPracticeSecs: 0,
     chainNormalized: false,
   },
+  ascensionLevel: 0,
 };
 
 /** Max players per mode — acts as the cap for the host's max-players selector. */

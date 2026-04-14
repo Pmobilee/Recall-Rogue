@@ -265,6 +265,7 @@ export interface CardUpgradeRevealData {
   mechanicName: string;
   beforeLevel: number;
   afterLevel: number;
+  mode?: 'upgrade' | 'freeCard';  // 'upgrade' = before/after reveal; 'freeCard' = single card reveal
 }
 
 /**
@@ -2981,8 +2982,8 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
   const mysteryEventId = get(activeMysteryEvent)?.id;
 
   // Apply all single-step effects directly.
-  // upgradeRandomCard is handled inline in the switch below (we need before/after snapshots for the reveal overlay).
-  if (effect.type !== 'upgradeRandomCard') {
+  // upgradeRandomCard and freeCard are handled inline in the switch below.
+  if (effect.type !== 'upgradeRandomCard' && effect.type !== 'freeCard') {
     applyMysteryEffect(effect, run);
   }
 
@@ -3009,6 +3010,46 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
       run.floor.lastSlotWasEvent = true;
       activeRunState.set(run);
       openCardReward();
+      break;
+    }
+    case 'freeCard': {
+      // Pick a random card from the run pool that isn't already in the active deck, then reveal it.
+      const runPool = getRunPoolCards();
+      const activeDeckFacts = getActiveDeckFactIds();
+      const consumedFacts = run.consumedRewardFactIds;
+      const eligible = runPool.filter(c => !activeDeckFacts.has(c.factId) && !consumedFacts.has(c.factId));
+
+      if (eligible.length > 0) {
+        const card = eligible[Math.floor(Math.random() * eligible.length)];
+        addRewardCardToActiveDeck(card);
+        run.consumedRewardFactIds.add(card.factId);
+
+        activeCardUpgradeReveal.set({
+          beforeCard: card,
+          afterCard: card,
+          mechanicName: card.mechanicName ?? card.mechanicId ?? 'Card',
+          beforeLevel: 0,
+          afterLevel: card.masteryLevel ?? 0,
+          mode: 'freeCard',
+        });
+
+        activeMysteryEvent.set(null);
+        activeMasteryChallenge.set(null);
+        run.floor.lastSlotWasEvent = true;
+        activeRunState.set(run);
+        gameFlowState.set('cardUpgradeReveal');
+        currentScreen.set('cardUpgradeReveal');
+      } else {
+        // No eligible cards — return to map without a reveal.
+        activeMysteryEvent.set(null);
+        activeMasteryChallenge.set(null);
+        run.floor.lastSlotWasEvent = true;
+        activeRunState.set(run);
+        showRoomExitNarrative('mystery', mysteryEventId);
+        activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+        gameFlowState.set('dungeonMap');
+        currentScreen.set('dungeonMap');
+      }
       break;
     }
     case 'upgradeRandomCard': {

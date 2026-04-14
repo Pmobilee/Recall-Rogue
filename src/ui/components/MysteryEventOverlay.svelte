@@ -35,12 +35,11 @@
 
   let overlayEl = $state<HTMLElement>(null!)
   let showRoomTransition = $state(true)
+  let transitionSettled = $state(false)
   holdScreenTransition()
   preloadImages([genericBgUrl]).then(releaseScreenTransition)
 
   let effectIcon = $derived(getEffectIcon(event?.effect))
-  let showCardReveal = $state(false)
-
   // ——— Quiz / rival duel state ———
   // quizPhase: 'intro' = show event desc + Start button; 'quiz' = EventQuiz active; 'results' = show outcome
   type QuizPhase = 'intro' | 'quiz' | 'results'
@@ -113,14 +112,10 @@
     playCardAudio('event-choice')
     if (isNegativeEffect(choiceEffect)) {
       playCardAudio('event-negative')
-      showCardReveal = true
-      setTimeout(() => {
-        onresolve(choiceEffect)
-      }, 1200)
     } else {
       playCardAudio('event-positive')
-      onresolve(choiceEffect)
     }
+    onresolve(choiceEffect)
   }
 
   /** Human-readable description of a MysteryEffect for result display. */
@@ -830,7 +825,7 @@
 </script>
 
 {#if event}
-  <div class="mystery-overlay" bind:this={overlayEl}>
+  <div class="mystery-overlay" bind:this={overlayEl} style:opacity={transitionSettled ? 1 : 0}>
     <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true"
       onerror={(e) => { (e.currentTarget as HTMLImageElement).src = genericBgUrl }} />
     <div class="mystery-card">
@@ -1144,18 +1139,7 @@
         </button>
       {/if}
     </div>
-    {#if showCardReveal}
-      <div class="card-reveal-overlay">
-        <div class="card-reveal">
-          <div class="card-reveal-inner">
-            <div class="card-reveal-front">
-              <span class="reveal-icon">🃏</span>
-              <span class="reveal-text">New Card!</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    {/if}
+
   </div>
 {/if}
 
@@ -1164,8 +1148,9 @@
     imageUrl={bgUrl}
     depthUrl={depthUrl}
     type="enter"
-    onComplete={() => { showRoomTransition = false }}
+    onComplete={() => { showRoomTransition = false; transitionSettled = true }}
     onSettle={() => {
+      transitionSettled = true
       tick().then(() => {
         if (!overlayEl) return
         staggerPopIn({
@@ -1316,95 +1301,6 @@
     line-height: 1.4;
   }
 
-  .card-reveal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 210;
-    animation: revealFadeIn 200ms ease-out;
-  }
-
-  .card-reveal {
-    perspective: 800px;
-  }
-
-  .card-reveal-inner {
-    width: calc(180px * var(--layout-scale, 1));
-    height: calc(260px * var(--layout-scale, 1));
-    border-radius: 14px;
-    background: linear-gradient(145deg, #2a1f4e, #1a1040);
-    border: 3px solid #c084fc;
-    box-shadow:
-      0 0 30px rgba(192, 132, 252, 0.4),
-      0 20px 60px rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: cardWaveReveal 1000ms ease-out;
-  }
-
-  .card-reveal-front {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: calc(12px * var(--layout-scale, 1));
-  }
-
-  .reveal-icon {
-    font-size: calc(64px * var(--layout-scale, 1));
-    animation: revealPulse 600ms ease-in-out 200ms;
-  }
-
-  .reveal-text {
-    font-family: var(--font-pixel);
-    font-size: calc(14px * var(--layout-scale, 1));
-    color: #e9d5ff;
-    text-shadow:
-      calc(-2px * var(--layout-scale, 1)) 0 #000, calc(2px * var(--layout-scale, 1)) 0 #000, 0 calc(-2px * var(--layout-scale, 1)) #000, 0 calc(2px * var(--layout-scale, 1)) #000;
-    letter-spacing: calc(1px * var(--layout-scale, 1));
-  }
-
-  @keyframes cardWaveReveal {
-    0% {
-      transform: rotateY(-90deg) rotateZ(5deg) scale(0.6);
-      opacity: 0;
-    }
-    30% {
-      transform: rotateY(15deg) rotateZ(-2deg) scale(1.05);
-      opacity: 1;
-    }
-    50% {
-      transform: rotateY(-8deg) rotateZ(1deg) scale(1);
-    }
-    70% {
-      transform: rotateY(4deg) rotateZ(0deg) scale(1);
-    }
-    100% {
-      transform: rotateY(0deg) rotateZ(0deg) scale(1);
-    }
-  }
-
-  @keyframes revealFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes revealPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .card-reveal-inner {
-      animation: none;
-    }
-    .reveal-icon {
-      animation: none;
-    }
-  }
 
   /* ── Study Session (Flashcard Merchant) ─────────────────────────────────── */
   .study-header {

@@ -6,6 +6,9 @@
    * animated arrow and a stat diff strip. Triggered by gameFlowController when
    * a card levels up via mastery challenge or rest-room upgrade.
    *
+   * Also supports 'freeCard' mode (mystery event free-card reward): shows only
+   * the acquired card centered with a green accent and no stat diff strip.
+   *
    * z-index: 220 (above other overlays, below quiz panel at 300+).
    * Animation: overlay fades in, before-card slides from left, after-card slides
    * from right with glow, arrow pulses.
@@ -21,10 +24,13 @@
     mechanicName: string
     beforeLevel: number
     afterLevel: number
+    mode?: 'upgrade' | 'freeCard'
     ondismiss: () => void
   }
 
-  let { beforeCard, afterCard, mechanicName, beforeLevel, afterLevel, ondismiss }: Props = $props()
+  let { beforeCard, afterCard, mechanicName, beforeLevel, afterLevel, mode = 'upgrade', ondismiss }: Props = $props()
+
+  let isFreeCard = $derived(mode === 'freeCard')
 
   // ── Card dimensions (matches CardPickerOverlay formula) ─────────────────────
   let viewportHeight = $state(typeof window !== 'undefined' ? window.innerHeight : 1080)
@@ -82,7 +88,7 @@
   class="upgrade-reveal-overlay"
   role="dialog"
   aria-modal="true"
-  aria-label="Card Upgraded"
+  aria-label={isFreeCard ? 'New Card!' : 'Card Upgraded'}
 >
   <!-- Semi-transparent backdrop — clicking it dismisses -->
   <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -91,37 +97,42 @@
   <div class="upgrade-reveal-panel">
 
     <!-- Title -->
-    <h2 class="upgrade-title">Card Upgraded!</h2>
+    <h2 class="upgrade-title" class:free-card-title={isFreeCard}>{isFreeCard ? 'New Card!' : 'Card Upgraded!'}</h2>
     <p class="upgrade-subtitle">{mechanicName}</p>
 
-    <!-- Side-by-side card comparison -->
+    <!-- Card comparison (upgrade mode: before + arrow + after; freeCard mode: after only, centered) -->
     <div class="card-comparison">
 
-      <!-- Before card (left) -->
-      <div class="card-slot before-slot">
-        <div class="level-badge before-badge" aria-label="Before level {beforeLevel}">
-          L{beforeLevel}
+      {#if !isFreeCard}
+        <!-- Before card (left) -->
+        <div class="card-slot before-slot">
+          <div class="level-badge before-badge" aria-label="Before level {beforeLevel}">
+            L{beforeLevel}
+          </div>
+          <div
+            class="card-wrapper before-card"
+            style="width: {cardW}px; height: {cardH}px; --card-w: {cardW}px;"
+          >
+            <CardVisual card={beforeCard} />
+          </div>
         </div>
-        <div
-          class="card-wrapper before-card"
-          style="width: {cardW}px; height: {cardH}px; --card-w: {cardW}px;"
-        >
-          <CardVisual card={beforeCard} />
+
+        <!-- Arrow -->
+        <div class="arrow-container" aria-hidden="true">
+          <span class="upgrade-arrow">›</span>
         </div>
-      </div>
+      {/if}
 
-      <!-- Arrow -->
-      <div class="arrow-container" aria-hidden="true">
-        <span class="upgrade-arrow">›</span>
-      </div>
-
-      <!-- After card (right) -->
+      <!-- After card (right for upgrade, centered for freeCard) -->
       <div class="card-slot after-slot">
-        <div class="level-badge after-badge" aria-label="Upgraded to level {afterLevel}">
-          L{afterLevel}
-        </div>
+        {#if !isFreeCard}
+          <div class="level-badge after-badge" aria-label="Upgraded to level {afterLevel}">
+            L{afterLevel}
+          </div>
+        {/if}
         <div
           class="card-wrapper after-card"
+          class:after-card-free={isFreeCard}
           style="width: {cardW}px; height: {cardH}px; --card-w: {cardW}px;"
         >
           <CardVisual card={afterCard} />
@@ -130,66 +141,69 @@
 
     </div><!-- /card-comparison -->
 
-    <!-- Stat diff strip -->
-    <div class="stat-changes" aria-label="Stat changes">
-      <!-- Mastery level row always shown -->
-      <div class="stat-row">
-        <span class="stat-label">Mastery</span>
-        <span class="stat-value">
-          <span class="stat-before">L{beforeLevel}</span>
-          <span class="stat-arrow" aria-hidden="true">→</span>
-          <span class="stat-after">L{afterLevel}</span>
-        </span>
+    {#if !isFreeCard}
+      <!-- Stat diff strip — upgrade mode only -->
+      <div class="stat-changes" aria-label="Stat changes">
+        <!-- Mastery level row always shown -->
+        <div class="stat-row">
+          <span class="stat-label">Mastery</span>
+          <span class="stat-value">
+            <span class="stat-before">L{beforeLevel}</span>
+            <span class="stat-arrow" aria-hidden="true">→</span>
+            <span class="stat-after">L{afterLevel}</span>
+          </span>
+        </div>
+
+        <!-- Damage / QP value -->
+        {#if hasChange(beforeStats?.qpValue, afterStats?.qpValue)}
+          <div class="stat-row">
+            <span class="stat-label">Damage</span>
+            <span class="stat-value">
+              <span class="stat-before">{beforeStats?.qpValue}</span>
+              <span class="stat-arrow" aria-hidden="true">→</span>
+              <span class="stat-after">{afterStats?.qpValue}</span>
+            </span>
+          </div>
+        {/if}
+
+        <!-- Secondary value (block on iron_wave, etc.) -->
+        {#if hasChange(beforeStats?.secondaryValue, afterStats?.secondaryValue)}
+          <div class="stat-row">
+            <span class="stat-label">Block</span>
+            <span class="stat-value">
+              <span class="stat-before">{beforeStats?.secondaryValue}</span>
+              <span class="stat-arrow" aria-hidden="true">→</span>
+              <span class="stat-after">{afterStats?.secondaryValue}</span>
+            </span>
+          </div>
+        {/if}
+
+        <!-- AP cost -->
+        {#if beforeAp !== afterAp}
+          <div class="stat-row">
+            <span class="stat-label">AP Cost</span>
+            <span class="stat-value">
+              <span class="stat-before">{beforeAp}</span>
+              <span class="stat-arrow" aria-hidden="true">→</span>
+              <span class="stat-after highlight-good">{afterAp}</span>
+            </span>
+          </div>
+        {/if}
+
+        <!-- Newly gained tags -->
+        {#each gainedTags() as tag}
+          <div class="stat-row">
+            <span class="stat-label">New ability</span>
+            <span class="stat-value stat-after">{tag}</span>
+          </div>
+        {/each}
       </div>
-
-      <!-- Damage / QP value -->
-      {#if hasChange(beforeStats?.qpValue, afterStats?.qpValue)}
-        <div class="stat-row">
-          <span class="stat-label">Damage</span>
-          <span class="stat-value">
-            <span class="stat-before">{beforeStats?.qpValue}</span>
-            <span class="stat-arrow" aria-hidden="true">→</span>
-            <span class="stat-after">{afterStats?.qpValue}</span>
-          </span>
-        </div>
-      {/if}
-
-      <!-- Secondary value (block on iron_wave, etc.) -->
-      {#if hasChange(beforeStats?.secondaryValue, afterStats?.secondaryValue)}
-        <div class="stat-row">
-          <span class="stat-label">Block</span>
-          <span class="stat-value">
-            <span class="stat-before">{beforeStats?.secondaryValue}</span>
-            <span class="stat-arrow" aria-hidden="true">→</span>
-            <span class="stat-after">{afterStats?.secondaryValue}</span>
-          </span>
-        </div>
-      {/if}
-
-      <!-- AP cost -->
-      {#if beforeAp !== afterAp}
-        <div class="stat-row">
-          <span class="stat-label">AP Cost</span>
-          <span class="stat-value">
-            <span class="stat-before">{beforeAp}</span>
-            <span class="stat-arrow" aria-hidden="true">→</span>
-            <span class="stat-after highlight-good">{afterAp}</span>
-          </span>
-        </div>
-      {/if}
-
-      <!-- Newly gained tags -->
-      {#each gainedTags() as tag}
-        <div class="stat-row">
-          <span class="stat-label">New ability</span>
-          <span class="stat-value stat-after">{tag}</span>
-        </div>
-      {/each}
-    </div>
+    {/if}
 
     <!-- Dismiss -->
     <button
       class="continue-btn"
+      class:continue-btn-free={isFreeCard}
       data-testid="btn-upgrade-reveal-continue"
       onclick={ondismiss}
     >
@@ -252,6 +266,14 @@
     animation: titlePop 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
 
+  /* freeCard mode: green title instead of gold */
+  .upgrade-title.free-card-title {
+    color: #34d399;
+    text-shadow:
+      0 0 calc(20px * var(--layout-scale, 1)) rgba(52, 211, 153, 0.6),
+      0 2px calc(8px * var(--layout-scale, 1)) rgba(0, 0, 0, 0.8);
+  }
+
   .upgrade-subtitle {
     margin: 0;
     font-size: calc(14px * var(--text-scale, 1));
@@ -298,6 +320,13 @@
       0 0 calc(32px * var(--layout-scale, 1)) rgba(245, 158, 11, 0.22);
   }
 
+  /* freeCard mode: green glow on the single card */
+  .after-card.after-card-free {
+    box-shadow:
+      0 0 calc(16px * var(--layout-scale, 1)) rgba(52, 211, 153, 0.45),
+      0 0 calc(32px * var(--layout-scale, 1)) rgba(52, 211, 153, 0.22);
+  }
+
   /* Gold shimmer border on the after card */
   .after-card::after {
     content: '';
@@ -307,6 +336,12 @@
     border: 1px solid rgba(251, 191, 36, 0.5);
     pointer-events: none;
     animation: borderShimmer 2.4s ease-in-out infinite;
+  }
+
+  /* Green shimmer border for freeCard mode */
+  .after-card.after-card-free::after {
+    border-color: rgba(52, 211, 153, 0.5);
+    animation: borderShimmerGreen 2.4s ease-in-out infinite;
   }
 
   /* ── Level badges ───────────────────────────────────────────────────────── */
@@ -423,10 +458,20 @@
     box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(245, 158, 11, 0.3);
   }
 
+  /* freeCard mode: green continue button */
+  .continue-btn.continue-btn-free {
+    background: linear-gradient(135deg, #34d399, #10b981);
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1)) rgba(52, 211, 153, 0.3);
+  }
+
   .continue-btn:hover {
     filter: brightness(1.1);
     transform: translateY(calc(-1px * var(--layout-scale, 1)));
     box-shadow: 0 calc(6px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) rgba(245, 158, 11, 0.45);
+  }
+
+  .continue-btn.continue-btn-free:hover {
+    box-shadow: 0 calc(6px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) rgba(52, 211, 153, 0.45);
   }
 
   .continue-btn:active {
@@ -464,5 +509,10 @@
   @keyframes borderShimmer {
     0%, 100% { border-color: rgba(251, 191, 36, 0.35); box-shadow: none; }
     50%       { border-color: rgba(251, 191, 36, 0.75); box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(251, 191, 36, 0.3); }
+  }
+
+  @keyframes borderShimmerGreen {
+    0%, 100% { border-color: rgba(52, 211, 153, 0.35); box-shadow: none; }
+    50%       { border-color: rgba(52, 211, 153, 0.75); box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(52, 211, 153, 0.3); }
   }
 </style>
