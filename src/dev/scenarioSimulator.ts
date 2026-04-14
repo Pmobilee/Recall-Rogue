@@ -268,7 +268,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     gold: 120,
     floor: 3,
     shopRelics: ['whetstone', 'iron_shield'],
-    shopCards: ['heavy_strike', 'lifetap', 'reckless', 'multi_hit'],
+    // shopCards omitted → random 4 mechanics with random mastery levels
   },
 
   // === Mystery event ===
@@ -1017,7 +1017,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
     const { calculateShopPrice } = await import('../services/shopService');
 
     const floor = config.floor ?? 1;
-    const inventory: any = { relics: [], cards: [], removalCost: 75 };
+    const inventory: any = { relics: [], cards: [], removalCost: 75, transformCost: 35 };
 
     if (config.shopRelics) {
       for (const relicId of config.shopRelics) {
@@ -1028,38 +1028,58 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
       }
     }
 
-    if (config.shopCards) {
-      for (const mId of config.shopCards) {
-        const mechanic = MECHANIC_BY_ID[mId];
-        if (!mechanic) { console.warn(`[__rrScenario] Unknown mechanic: ${mId}`); continue; }
-        const card = {
-          id: `shop_${mId}_${Math.random().toString(36).slice(2, 6)}`,
-          factId: `fact_${Math.random().toString(36).slice(2, 8)}`,
-          cardType: mechanic.type,
-          domain: (config.domain ?? 'general_knowledge') as any,
-          tier: '1' as const,
-          baseEffectValue: mechanic.baseValue,
-          effectMultiplier: 1,
-          mechanicId: mechanic.id,
-          mechanicName: mechanic.name,
-          apCost: mechanic.apCost,
-        };
-        inventory.cards.push({ card, price: 50 + Math.floor(Math.random() * 30) });
-      }
+    // Build shop cards — from explicit list or random mechanics
+    const mechanicIds = config.shopCards
+      ?? Object.keys(MECHANIC_BY_ID).sort(() => Math.random() - 0.5).slice(0, 4);
+    for (const mId of mechanicIds) {
+      const mechanic = MECHANIC_BY_ID[mId];
+      if (!mechanic) { console.warn(`[__rrScenario] Unknown mechanic: ${mId}`); continue; }
+      const masteryLevel = Math.floor(Math.random() * 4); // 0-3 random mastery
+      const card = {
+        id: `shop_${mId}_${Math.random().toString(36).slice(2, 6)}`,
+        factId: `fact_${Math.random().toString(36).slice(2, 8)}`,
+        cardType: mechanic.type,
+        domain: (config.domain ?? 'general_knowledge') as any,
+        tier: '1' as const,
+        baseEffectValue: mechanic.baseValue,
+        effectMultiplier: 1,
+        mechanicId: mechanic.id,
+        mechanicName: mechanic.name,
+        apCost: mechanic.apCost,
+        masteryLevel,
+      };
+      inventory.cards.push({ card, price: 50 + Math.floor(Math.random() * 30) });
     }
 
-    // Default fallback: show first 3 relics if nothing specified
-    if (!config.shopRelics && !config.shopCards) {
+    // Default fallback for relics: show first 3 if nothing specified
+    if (!config.shopRelics) {
       const allRelics = Object.values(RELIC_BY_ID);
       inventory.relics = allRelics.slice(0, 3).map((def: any) => ({ relic: def, price: 150 }));
     }
 
     activeShopInventory.set(inventory);
+
+    // Seed active deck cards so the player "has cards" in the shop (for removal/transform)
+    const { activeShopCards } = await import('../services/gameFlowController');
+    const deckMechanics = ['strike', 'strike', 'strike', 'block', 'block', 'block', 'heavy_strike', 'reckless'];
+    const deckCards = deckMechanics.map(mId => {
+      const m = MECHANIC_BY_ID[mId];
+      return m ? {
+        id: `deck_${mId}_${Math.random().toString(36).slice(2, 6)}`,
+        factId: `fact_${Math.random().toString(36).slice(2, 8)}`,
+        cardType: m.type, domain: 'general_knowledge' as any,
+        tier: '1' as const, baseEffectValue: m.baseValue, effectMultiplier: 1,
+        mechanicId: m.id, mechanicName: m.name, apCost: m.apCost,
+        masteryLevel: Math.floor(Math.random() * 3),
+      } : null;
+    }).filter(Boolean) as any[];
+    activeShopCards.set(deckCards);
+
     const { gameFlowState: _gfsShop } = await import('../services/gameFlowController');
     _gfsShop.set('shopRoom');
     writeStore('rr:currentScreen', 'shopRoom');
     await wait(300);
-    return { ok: true, message: `Shop opened with ${inventory.relics.length} relics, ${inventory.cards.length} cards` };
+    return { ok: true, message: `Shop opened with ${inventory.relics.length} relics, ${inventory.cards.length} cards, ${deckCards.length} deck cards` };
   }
 
   // -----------------------------------------------------------------------

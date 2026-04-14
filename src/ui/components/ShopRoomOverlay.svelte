@@ -977,16 +977,13 @@
 
 <style>
   .shop-screen-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
   }
 
@@ -996,29 +993,31 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 150;
-    background: none;
+    z-index: 220;
+    background: #0d1117;
     color: #e6edf3;
-    padding: calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
-    gap: calc(4px * var(--layout-scale, 1));
+    gap: calc(6px * var(--layout-scale, 1));
     overflow: hidden;
   }
 
   /* ── Leave shop button — compact arrow pill ──────────────── */
   .leave-shop-btn {
-    z-index: 5;
-    background: rgba(10, 15, 25, 0.8);
+    position: relative;
+    z-index: 2;
+    background: rgba(10, 15, 25, 0.75);
     border: 1px solid rgba(194, 157, 72, 0.4);
     color: #e6edf3;
-    font-size: calc(16px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     font-weight: 700;
-    padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    padding: calc(3px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: calc(6px * var(--layout-scale, 1));
     cursor: pointer;
     width: fit-content;
     flex-shrink: 0;
+    align-self: flex-start;
   }
   .leave-shop-btn:hover {
     background: rgba(30, 40, 55, 0.95);
@@ -1027,6 +1026,8 @@
 
   /* ── Main area: relics left | cards right ──────────────────── */
   .shop-main {
+    position: relative;
+    z-index: 1;
     display: flex;
     gap: calc(12px * var(--layout-scale, 1));
     flex: 1;
@@ -1039,9 +1040,9 @@
     display: flex;
     flex-direction: column;
     gap: calc(8px * var(--layout-scale, 1));
-    width: calc(280px * var(--layout-scale, 1));
+    width: calc(320px * var(--layout-scale, 1));
     flex-shrink: 0;
-    background: rgba(13, 17, 23, 0.65);
+    background: rgba(13, 17, 23, 0.7);
     border-radius: calc(10px * var(--layout-scale, 1));
     padding: calc(10px * var(--layout-scale, 1));
     overflow-y: auto;
@@ -1092,7 +1093,6 @@
     flex-direction: row;
     align-items: center;
     gap: calc(8px * var(--layout-scale, 1));
-    min-width: calc(140px * var(--layout-scale, 1));
     background: rgba(13, 17, 23, 0.85);
     border-radius: calc(12px * var(--layout-scale, 1));
     border: 1px solid rgba(100, 116, 139, 0.2);
@@ -1178,12 +1178,11 @@
 
   /* ── Cards grid: CardVisual frames ─────────────────────────── */
   .cards-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: calc(8px * var(--layout-scale, 1));
-    align-items: center;
     align-content: center;
-    justify-content: center;
+    justify-items: center;
     background: rgba(13, 17, 23, 0.55);
     border-radius: calc(10px * var(--layout-scale, 1));
     padding: calc(10px * var(--layout-scale, 1));
@@ -1242,6 +1241,8 @@
 
   /* ── Services row ───────────────────────────────────────────── */
   .services-row {
+    position: relative;
+    z-index: 1;
     display: flex;
     gap: calc(10px * var(--layout-scale, 1));
     flex-shrink: 0;
