@@ -276,6 +276,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   'mystery-event': {
     screen: 'mysteryEvent',
     floor: 9,
+    deckId: 'ancient_rome',
   },
 
   // === Card reward scenarios ===
@@ -1095,6 +1096,27 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // -----------------------------------------------------------------------
   if (screen === 'mysteryEvent') {
     await bootstrapRun(config);
+
+    // Seed fake quiz history so mystery events like Meditation Chamber have topic data
+    {
+      const { activeRunState } = await import('../services/runStateStore');
+      const { getCuratedDeckFacts } = await import('../data/curatedDeckStore');
+      const runForTracker = get(activeRunState);
+      if (runForTracker?.inRunFactTracker && runForTracker.deckMode?.type === 'study') {
+        const deckFacts = getCuratedDeckFacts(runForTracker.deckMode.deckId, runForTracker.deckMode.subDeckId);
+        // Pick ~20 random facts and record fake results across different themes
+        const shuffledFacts = deckFacts.sort(() => Math.random() - 0.5).slice(0, 20);
+        for (const fact of shuffledFacts) {
+          const correct = Math.random() > 0.3; // ~70% accuracy
+          runForTracker.inRunFactTracker.recordResult(
+            fact.id,
+            correct,
+            correct ? 1500 + Math.random() * 3000 : 2000 + Math.random() * 4000,
+            Math.floor(Math.random() * 5) + 1,
+          );
+        }
+      }
+    }
 
     // Seed the run pool and activeDeck so mystery event effects that manipulate cards
     // (upgradeRandomCard, removeRandomCard, transformCard, freeCard) have cards to work
