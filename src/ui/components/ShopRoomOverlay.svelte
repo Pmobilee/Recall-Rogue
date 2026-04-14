@@ -534,8 +534,8 @@
 <section class="shop-overlay" bind:this={overlayEl} class:landscape={$isLandscape} aria-label="Shop room">
   <img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
 
-  <!-- Leave shop button — InRunTopBar already shows gold, floor, HP, settings above -->
-  <button type="button" class="leave-shop-btn" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">← Leave Shop</button>
+  <!-- Small back button top-left -->
+  <button type="button" class="leave-shop-btn" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">←</button>
 
   {#if currentBark}
     <div class="shopkeeper-bark" transition:fade={{ duration: 200 }}>
@@ -545,189 +545,107 @@
   {/if}
 
   {#if shopInventory && (shopInventory.relics.length > 0 || shopInventory.cards.length > 0)}
+    <!-- ─── MAIN AREA: relics left | cards right ───────────────── -->
+    <div class="shop-main">
 
-    <!-- ─── RELICS: floating circular icons in a horizontal row ─── -->
-    {#if shopInventory.relics.length > 0}
-      <div class="section-label relic-label">
-        RELICS
-        {#if relicSlotsFull}<span class="slots-full-badge">Relic slots full</span>{/if}
-      </div>
-      <div class="relics-row">
-        {#each shopInventory.relics as item (item.relic.id)}
-          {@const canAfford = currency >= item.price}
-          {@const canBuyRelic = canAfford && !relicSlotsFull}
-          <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
-          <article
-            class="relic-float-card"
-            class:unaffordable={!canAfford}
-            class:slots-full={relicSlotsFull}
-            class:shake={shakeItemId === item.relic.id}
-            class:purchased={purchasedItemId === item.relic.id}
-            onmouseenter={(e) => showRelicTooltip(item.relic, e)}
-            onmouseleave={dismissRelicTooltip}
-            onclick={(e) => !canAfford && !relicSlotsFull && handleUnaffordableTap(item.price, item.relic.id, e)}
-          >
-            <!-- Circular icon with rarity-colored glow border and float animation -->
-            <div
-              class="relic-icon-circle"
-              style="border-color: {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}; box-shadow: 0 0 calc(14px * var(--layout-scale, 1)) {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}55;"
+      <!-- Left: Relics -->
+      {#if shopInventory.relics.length > 0}
+        <div class="relics-column">
+          {#if relicSlotsFull}<span class="slots-full-badge">Relic slots full</span>{/if}
+          {#each shopInventory.relics as item (item.relic.id)}
+            {@const canAfford = currency >= item.price}
+            {@const canBuyRelic = canAfford && !relicSlotsFull}
+            <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
+            <article
+              class="relic-float-card"
+              class:unaffordable={!canAfford}
+              class:slots-full={relicSlotsFull}
+              class:shake={shakeItemId === item.relic.id}
+              class:purchased={purchasedItemId === item.relic.id}
+              onmouseenter={(e) => showRelicTooltip(item.relic, e)}
+              onmouseleave={dismissRelicTooltip}
+              onclick={(e) => !canAfford && !relicSlotsFull && handleUnaffordableTap(item.price, item.relic.id, e)}
             >
-              <img
-                class="relic-icon-img"
-                src={getRelicIconPath(item.relic.id)}
-                alt={item.relic.name}
-                onerror={(e) => {
-                  const img = e.currentTarget as HTMLImageElement
-                  img.style.display = 'none'
-                  const fallback = img.nextElementSibling as HTMLElement | null
-                  if (fallback) fallback.style.display = 'block'
-                }}
-              />
-              <span class="relic-icon-emoji-fallback" aria-hidden="true" style="display:none">{item.relic.icon}</span>
-            </div>
+              <div
+                class="relic-icon-circle"
+                style="border-color: {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}; box-shadow: 0 0 calc(10px * var(--layout-scale, 1)) {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}55;"
+              >
+                <img class="relic-icon-img" src={getRelicIconPath(item.relic.id)} alt={item.relic.name}
+                  onerror={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = 'none'; const fb = img.nextElementSibling as HTMLElement | null; if (fb) fb.style.display = 'block'; }} />
+                <span class="relic-icon-emoji-fallback" aria-hidden="true" style="display:none">{item.relic.icon}</span>
+              </div>
+              <div class="relic-info">
+                <div class="relic-float-name" style="color: {RARITY_COLORS[item.relic.rarity] ?? '#e6edf3'}">{item.relic.name}</div>
+                <div class="relic-float-desc">{item.relic.description}</div>
+              </div>
+              <button type="button" class="buy relic-buy-btn" class:disabled={!canBuyRelic} disabled={!canBuyRelic}
+                title={relicSlotsFull ? 'Relic slots full' : undefined}
+                data-testid="shop-buy-relic-{item.relic.id}"
+                onclick={() => canBuyRelic && openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
+              >{relicSlotsFull ? 'Full' : `${item.price}g`}</button>
+            </article>
+          {/each}
+        </div>
+      {/if}
 
-            <div class="relic-float-name" style="color: {RARITY_COLORS[item.relic.rarity] ?? '#e6edf3'}">{item.relic.name}</div>
-            <span
-              class="rarity-pill"
-              style="background: {RARITY_COLORS[item.relic.rarity]}20; color: {RARITY_COLORS[item.relic.rarity]}; border: 1px solid {RARITY_COLORS[item.relic.rarity]}40;"
-            >{item.relic.rarity}</span>
-            <!-- Description always visible below name — no tooltip-only hiding -->
-            <div class="relic-float-desc">{item.relic.description}</div>
-
-            <button
-              type="button"
-              class="buy relic-buy-btn"
-              class:disabled={!canBuyRelic}
-              disabled={!canBuyRelic}
-              title={relicSlotsFull ? 'Relic slots full' : undefined}
-              data-testid="shop-buy-relic-{item.relic.id}"
-              aria-label={relicSlotsFull ? 'Relic slots full' : `Buy ${item.relic.name} for ${item.price}g`}
-              onclick={() => canBuyRelic && openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
+      <!-- Right: Cards -->
+      {#if shopInventory.cards.length > 0}
+        <div class="cards-grid">
+          {#each shopInventory.cards as item, idx (item.card.id)}
+            {@const canAfford = currency >= item.price}
+            <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
+            <article class="card-visual-item" class:unaffordable={!canAfford}
+              class:shake={shakeItemId === `card-${idx}`} class:purchased={purchasedItemId === 'card-' + idx}
+              onclick={(e) => !canAfford && handleUnaffordableTap(item.price, `card-${idx}`, e)}
             >
-              {relicSlotsFull ? 'Full' : `${item.price}g`}
-            </button>
-          </article>
-        {/each}
-      </div>
-    {/if}
+              {#if shopInventory.saleCardIndex === idx}<div class="sale-ribbon">SALE</div>{/if}
+              <div class="shop-card-visual-wrapper"
+                style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1)); height: calc({SHOP_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"
+              ><CardVisual card={item.card} /></div>
+              <button type="button" class="card-price-buy" class:disabled={!canAfford} disabled={!canAfford}
+                data-testid="shop-buy-card-{idx}"
+                onclick={() => canAfford && openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()}` })}
+              >{#if shopInventory?.saleCardIndex === idx}<span class="original-price">{item.price * 2}g</span> {item.price}g{:else}{item.price}g{/if}</button>
+            </article>
+          {/each}
+        </div>
+      {/if}
+    </div>
 
-    <!-- ─── CARDS: CardVisual grid ───────────────────────────────── -->
-    {#if shopInventory.cards.length > 0}
-      <div class="section-label">LEARNING CARDS</div>
-      <div class="cards-grid">
-        {#each shopInventory.cards as item, idx (item.card.id)}
-          {@const canAfford = currency >= item.price}
-          <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
-          <article
-            class="card-visual-item"
-            class:unaffordable={!canAfford}
-            class:shake={shakeItemId === `card-${idx}`}
-            class:purchased={purchasedItemId === 'card-' + idx}
-            onclick={(e) => !canAfford && handleUnaffordableTap(item.price, `card-${idx}`, e)}
-          >
-            {#if shopInventory.saleCardIndex === idx}
-              <div class="sale-ribbon">SALE</div>
-            {/if}
-
-            <!-- CardVisual wrapper: position:relative + explicit size + --card-w CSS var required by CardVisual internals -->
-            <div
-              class="shop-card-visual-wrapper"
-              style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1)); height: calc({SHOP_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"
-            >
-              <CardVisual card={item.card} />
-            </div>
-
-            <!-- Combined price + buy button — clicking the price IS the buy action -->
-            <button
-              type="button"
-              class="card-price-buy"
-              class:disabled={!canAfford}
-              disabled={!canAfford}
-              data-testid="shop-buy-card-{idx}"
-              aria-label="Buy {item.card.mechanicName ?? item.card.cardType} for {item.price}g"
-              onclick={() => canAfford && openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()}` })}
-            >
-              {#if shopInventory?.saleCardIndex === idx}
-                <span class="original-price">{item.price * 2}g</span> {item.price}g
-              {:else}
-                {item.price}g
-              {/if}
-            </button>
-          </article>
-        {/each}
-      </div>
-    {/if}
-
-    <!-- ─── SERVICES ─────────────────────────────────────────────── -->
+    <!-- ─── SERVICES: compact bottom strip ─────────────────────── -->
     {#if shopInventory.removalCost != null}
-      <div class="section-label">SERVICES</div>
       <div class="services-row">
-
-        <!-- Card Removal -->
-        <article
-          class="service-card service-removal"
-          class:service-unaffordable={!canRemoveCard || currency < shopInventory.removalCost}
-        >
-          <div class="service-icon">🔥</div>
-          <div class="service-header">
-            <span class="service-title">Card Removal</span>
-            <span
-              class="service-price"
-              class:unaffordable-price={!canRemoveCard || currency < shopInventory.removalCost}
-            >{shopInventory.removalCost}g</span>
-          </div>
-          <div class="service-desc">Destroy a card permanently. A smaller deck plays faster.</div>
-          <button
-            type="button"
-            class="service-action"
-            disabled={!canRemoveCard || currency < shopInventory.removalCost}
+        <article class="service-card service-removal" class:service-unaffordable={!canRemoveCard || currency < shopInventory.removalCost}>
+          <span class="service-icon">🔥</span>
+          <span class="service-title">Card Removal</span>
+          <span class="service-price" class:unaffordable-price={!canRemoveCard || currency < shopInventory.removalCost}>{shopInventory.removalCost}g</span>
+          <button type="button" class="service-action" disabled={!canRemoveCard || currency < shopInventory.removalCost}
             data-testid="shop-buy-removal"
             onclick={() => openPurchaseModal({ type: 'removal', cardId: '', price: shopInventory!.removalCost!, name: 'Card Removal' })}
-          >
-            Choose a card →
-          </button>
-          {#if !canRemoveCard}
-            <span class="service-note">Need more than 5 cards</span>
-          {/if}
+          >Choose a card →</button>
+          {#if !canRemoveCard}<span class="service-note">Need 5+ cards</span>{/if}
         </article>
 
-        <!-- Card Transform — wired to pendingTransformOptions store -->
-        <article
-          class="service-card service-transform"
-          class:service-unaffordable={!canTransformCard || (shopInventory.transformCost != null && currency < shopInventory.transformCost)}
-        >
-          <div class="service-icon">✨</div>
-          <div class="service-header">
-            <span class="service-title">Card Transform</span>
-            <span
-              class="service-price"
-              class:unaffordable-price={!canTransformCard || (shopInventory.transformCost != null && currency < shopInventory.transformCost)}
-            >
-              {shopInventory.transformCost != null ? `${shopInventory.transformCost}g` : '—'}
-            </span>
-          </div>
-          <div class="service-desc">Destroy a card, pick one of 3 replacements. Fate may favor you.</div>
-          <button
-            type="button"
-            class="service-action"
+        <article class="service-card service-transform" class:service-unaffordable={!canTransformCard || (shopInventory.transformCost != null && currency < shopInventory.transformCost)}>
+          <span class="service-icon">✨</span>
+          <span class="service-title">Card Transform</span>
+          <span class="service-price" class:unaffordable-price={!canTransformCard || (shopInventory.transformCost != null && currency < shopInventory.transformCost)}>
+            {shopInventory.transformCost != null ? `${shopInventory.transformCost}g` : '—'}
+          </span>
+          <button type="button" class="service-action"
             disabled={!canTransformCard || shopInventory.transformCost == null || currency < shopInventory.transformCost}
             data-testid="shop-buy-transform"
             onclick={() => shopInventory?.transformCost != null && openPurchaseModal({ type: 'transform', price: shopInventory.transformCost, name: 'Card Transform' })}
-          >
-            Choose a card →
-          </button>
-          {#if !canTransformCard}
-            <span class="service-note">Need more than 5 cards</span>
-          {/if}
+          >Choose a card →</button>
+          {#if !canTransformCard}<span class="service-note">Need 5+ cards</span>{/if}
         </article>
       </div>
     {/if}
 
   {/if}
 
-  <!-- ─── YOUR DECK (compact sell list) ───────────────────────── -->
-  {#if cards.length > 0}
-    <div class="section-label">YOUR DECK</div>
+  <!-- ─── YOUR DECK (compact sell list — hidden for now, sell via removal) ─── -->
+  {#if cards.length > 0 && false}
     <div class="card-list">
       {#each cards as card (card.id)}
         <article
@@ -1046,9 +964,7 @@
           container: overlayEl,
           elements: [
             '.leave-shop-btn',
-            '.section-label',
-            '.relics-row',
-            '.cards-grid',
+            '.shop-main',
             '.services-row',
           ],
           totalDuration: 2800,
@@ -1083,34 +999,52 @@
     z-index: 150;
     background: none;
     color: #e6edf3;
-    padding: 0 calc(16px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
-    display: grid;
-    align-content: start;
-    gap: calc(6px * var(--layout-scale, 1));
-    overflow-y: auto;
+    padding: calc(4px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(4px * var(--layout-scale, 1));
+    overflow: hidden;
   }
 
-  /* ── Leave shop button ────────────────────────────────────── */
+  /* ── Leave shop button — compact arrow pill ──────────────── */
   .leave-shop-btn {
-    position: sticky;
-    top: calc(8px * var(--layout-scale, 1));
     z-index: 5;
-    background: rgba(10, 15, 25, 0.85);
-    border: 1px solid rgba(194, 157, 72, 0.5);
+    background: rgba(10, 15, 25, 0.8);
+    border: 1px solid rgba(194, 157, 72, 0.4);
     color: #e6edf3;
-    font-size: calc(14px * var(--text-scale, 1));
-    font-weight: 600;
-    padding: calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
-    border-radius: calc(8px * var(--layout-scale, 1));
+    font-size: calc(16px * var(--text-scale, 1));
+    font-weight: 700;
+    padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    border-radius: calc(6px * var(--layout-scale, 1));
     cursor: pointer;
     width: fit-content;
-    min-height: calc(44px * var(--layout-scale, 1));
-    display: flex;
-    align-items: center;
+    flex-shrink: 0;
   }
   .leave-shop-btn:hover {
     background: rgba(30, 40, 55, 0.95);
     border-color: rgba(194, 157, 72, 0.8);
+  }
+
+  /* ── Main area: relics left | cards right ──────────────────── */
+  .shop-main {
+    display: flex;
+    gap: calc(12px * var(--layout-scale, 1));
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
+  }
+
+  /* ── Left column: relics ───────────────────────────────────── */
+  .relics-column {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+    width: calc(280px * var(--layout-scale, 1));
+    flex-shrink: 0;
+    background: rgba(13, 17, 23, 0.65);
+    border-radius: calc(10px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1));
+    overflow-y: auto;
   }
 
   /* ── Section labels ─────────────────────────────────────────── */
@@ -1153,24 +1087,11 @@
     white-space: nowrap;
   }
 
-  /* ── Relics: horizontal row of floating cards ───────────────── */
-  .relics-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: calc(16px * var(--layout-scale, 1));
-    align-items: flex-start;
-    justify-content: center;
-    background: rgba(13, 17, 23, 0.65);
-    border-radius: calc(12px * var(--layout-scale, 1));
-    padding: calc(12px * var(--layout-scale, 1));
-  }
-
   .relic-float-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: calc(4px * var(--layout-scale, 1));
-    width: calc(160px * var(--layout-scale, 1));
+    gap: calc(8px * var(--layout-scale, 1));
     min-width: calc(140px * var(--layout-scale, 1));
     background: rgba(13, 17, 23, 0.85);
     border-radius: calc(12px * var(--layout-scale, 1));
@@ -1191,9 +1112,14 @@
     50% { transform: translateY(calc(-6px * var(--layout-scale, 1))); }
   }
 
+  .relic-info {
+    flex: 1;
+    min-width: 0;
+  }
+
   .relic-icon-circle {
-    width: calc(64px * var(--layout-scale, 1));
-    height: calc(64px * var(--layout-scale, 1));
+    width: calc(48px * var(--layout-scale, 1));
+    height: calc(48px * var(--layout-scale, 1));
     border-radius: 50%;
     border: calc(2px * var(--layout-scale, 1)) solid;
     display: flex;
@@ -1206,8 +1132,8 @@
   }
 
   .relic-icon-img {
-    width: calc(48px * var(--layout-scale, 1));
-    height: calc(48px * var(--layout-scale, 1));
+    width: calc(36px * var(--layout-scale, 1));
+    height: calc(36px * var(--layout-scale, 1));
     object-fit: contain;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -1219,9 +1145,9 @@
   }
 
   .relic-float-name {
-    font-size: calc(16px * var(--text-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
     font-weight: 700;
-    text-align: center;
+    text-align: left;
     line-height: 1.2;
   }
 
@@ -1235,12 +1161,10 @@
   }
 
   .relic-float-desc {
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(11px * var(--text-scale, 1));
     color: #94a3b8;
-    text-align: center;
-    line-height: 1.4;
-    flex: 1;
-    word-break: break-word;
+    text-align: left;
+    line-height: 1.3;
   }
 
   .relic-buy-btn {
@@ -1256,12 +1180,15 @@
   .cards-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: calc(12px * var(--layout-scale, 1));
-    align-items: flex-start;
+    gap: calc(8px * var(--layout-scale, 1));
+    align-items: center;
+    align-content: center;
     justify-content: center;
     background: rgba(13, 17, 23, 0.55);
-    border-radius: calc(12px * var(--layout-scale, 1));
-    padding: calc(12px * var(--layout-scale, 1));
+    border-radius: calc(10px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1));
+    flex: 1;
+    min-width: 0;
   }
 
   .card-visual-item {
@@ -1315,17 +1242,19 @@
 
   /* ── Services row ───────────────────────────────────────────── */
   .services-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: calc(10px * var(--layout-scale, 1));
+    flex-shrink: 0;
   }
 
   .service-card {
-    border-radius: calc(12px * var(--layout-scale, 1));
-    padding: calc(14px * var(--layout-scale, 1));
+    flex: 1;
+    border-radius: calc(10px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     display: flex;
-    flex-direction: column;
-    gap: calc(8px * var(--layout-scale, 1));
+    flex-direction: row;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
     background: rgba(13, 17, 23, 0.88);
   }
 
@@ -1409,6 +1338,10 @@
   .service-note {
     font-size: calc(10px * var(--text-scale, 1));
     color: #94a3b8;
+  }
+
+  .service-card .service-desc {
+    display: none;
   }
 
   .shop-overlay:not(.landscape) .services-row {

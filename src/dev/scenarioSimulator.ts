@@ -265,7 +265,8 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   // === Shop scenarios ===
   'shop-loaded': {
     screen: 'shopRoom',
-    gold: 1000,
+    gold: 120,
+    floor: 3,
     shopRelics: ['whetstone', 'iron_shield'],
     shopCards: ['heavy_strike', 'lifetap', 'reckless', 'multi_hit'],
   },
