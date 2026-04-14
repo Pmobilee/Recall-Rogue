@@ -291,7 +291,7 @@ Selected level effects:
 `ShopInventory` contains relics, cards, optional removal/transform service prices, and a sale card index.
 
 ### Inventory
-- `SHOP_RELIC_COUNT = 3` relics, `SHOP_CARD_COUNT = 3` cards per visit
+- `SHOP_RELIC_COUNT = 3` relics, `SHOP_CARD_COUNT = 6` cards per visit
 - Relic rarity weights: common 40%, uncommon 35%, rare 20%, legendary 5%
 - **Card selling removed (Ch14.2)** — `onShopSell()` is a no-op stub; `activeShopCards` store is always empty at shop generation
 

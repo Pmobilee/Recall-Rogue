@@ -136,8 +136,8 @@
     legendary: '#f1c40f',
   }
 
-  // Shop card visual sizing: 155px wide at scale 1, ratio 886:1142
-  const SHOP_CARD_W = 155
+  // Shop card visual sizing: 140px wide at scale 1, ratio 886:1142
+  const SHOP_CARD_W = 140
   const SHOP_CARD_H = Math.round(SHOP_CARD_W * (1142 / 886))
   // Transform options modal uses larger cards for easier selection
   const MODAL_CARD_W = 170
@@ -155,6 +155,9 @@
 
   // === Purchase animation state ===
   let purchasedItemId = $state<string | null>(null)
+  // === Slot tracking: purchased items stay as invisible placeholders ===
+  let purchasedCardIndices = $state(new Set<number>())
+  let purchasedRelicIds = $state(new Set<string>())
 
   let overlayEl = $state<HTMLElement>(null!)
 
@@ -375,6 +378,12 @@
       purchasedItemId = `card-${pendingPurchase.cardIndex}`
     }
     setTimeout(() => { purchasedItemId = null }, 1200)
+    // Track purchased slots locally so their positions stay visible as empty placeholders
+    if (pendingPurchase.type === 'card') {
+      purchasedCardIndices = new Set([...purchasedCardIndices, pendingPurchase.cardIndex])
+    } else if (pendingPurchase.type === 'relic') {
+      purchasedRelicIds = new Set([...purchasedRelicIds, pendingPurchase.relicId])
+    }
     playCardAudio('shop-purchase')
     if (pendingPurchase.type === 'relic') {
       onbuyRelic(pendingPurchase.relicId, haggled)
@@ -543,6 +552,11 @@
   <!-- Small back button top-left -->
   <button type="button" class="leave-shop-btn" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">←</button>
 
+  <!-- Gold counter top-right -->
+  <div class="shop-gold" class:gold-gain={goldFlash === 'gain'} class:gold-loss={goldFlash === 'loss'}>
+    💰 {currency}g
+  </div>
+
   {#if currentBark}
     <div class="shopkeeper-bark" transition:fade={{ duration: 200 }}>
       <span class="bark-icon">🧙</span>
@@ -559,37 +573,41 @@
         <div class="relics-column">
           {#if relicSlotsFull}<span class="slots-full-badge">Relic slots full</span>{/if}
           {#each shopInventory.relics as item (item.relic.id)}
-            {@const canAfford = currency >= item.price}
-            {@const canBuyRelic = canAfford && !relicSlotsFull}
-            <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
-            <article
-              class="relic-float-card"
-              class:unaffordable={!canAfford}
-              class:slots-full={relicSlotsFull}
-              class:shake={shakeItemId === item.relic.id}
-              class:purchased={purchasedItemId === item.relic.id}
-              onmouseenter={(e) => showRelicTooltip(item.relic, e)}
-              onmouseleave={dismissRelicTooltip}
-              onclick={(e) => !canAfford && !relicSlotsFull && handleUnaffordableTap(item.price, item.relic.id, e)}
-            >
-              <div
-                class="relic-icon-circle"
-                style="border-color: {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}; box-shadow: 0 0 calc(10px * var(--layout-scale, 1)) {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}55;"
+            {#if !purchasedRelicIds.has(item.relic.id)}
+              {@const canAfford = currency >= item.price}
+              {@const canBuyRelic = canAfford && !relicSlotsFull}
+              <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
+              <article
+                class="relic-float-card"
+                class:unaffordable={!canAfford}
+                class:slots-full={relicSlotsFull}
+                class:shake={shakeItemId === item.relic.id}
+                class:purchased={purchasedItemId === item.relic.id}
+                onmouseenter={(e) => showRelicTooltip(item.relic, e)}
+                onmouseleave={dismissRelicTooltip}
+                onclick={(e) => !canAfford && !relicSlotsFull && handleUnaffordableTap(item.price, item.relic.id, e)}
               >
-                <img class="relic-icon-img" src={getRelicIconPath(item.relic.id)} alt={item.relic.name}
-                  onerror={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = 'none'; const fb = img.nextElementSibling as HTMLElement | null; if (fb) fb.style.display = 'block'; }} />
-                <span class="relic-icon-emoji-fallback" aria-hidden="true" style="display:none">{item.relic.icon}</span>
-              </div>
-              <div class="relic-info">
-                <div class="relic-float-name" style="color: {RARITY_COLORS[item.relic.rarity] ?? '#e6edf3'}">{item.relic.name}</div>
-                <div class="relic-float-desc">{item.relic.description}</div>
-              </div>
-              <button type="button" class="buy relic-buy-btn" class:disabled={!canBuyRelic} disabled={!canBuyRelic}
-                title={relicSlotsFull ? 'Relic slots full' : undefined}
-                data-testid="shop-buy-relic-{item.relic.id}"
-                onclick={() => canBuyRelic && openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
-              >{relicSlotsFull ? 'Full' : `${item.price}g`}</button>
-            </article>
+                <div
+                  class="relic-icon-circle"
+                  style="border-color: {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}; box-shadow: 0 0 calc(10px * var(--layout-scale, 1)) {RARITY_COLORS[item.relic.rarity] ?? '#3b434f'}55;"
+                >
+                  <img class="relic-icon-img" src={getRelicIconPath(item.relic.id)} alt={item.relic.name}
+                    onerror={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = 'none'; const fb = img.nextElementSibling as HTMLElement | null; if (fb) fb.style.display = 'block'; }} />
+                  <span class="relic-icon-emoji-fallback" aria-hidden="true" style="display:none">{item.relic.icon}</span>
+                </div>
+                <div class="relic-info">
+                  <div class="relic-float-name" style="color: {RARITY_COLORS[item.relic.rarity] ?? '#e6edf3'}">{item.relic.name}</div>
+                  <div class="relic-float-desc">{item.relic.description}</div>
+                </div>
+                <button type="button" class="buy relic-buy-btn" class:disabled={!canBuyRelic} disabled={!canBuyRelic}
+                  title={relicSlotsFull ? 'Relic slots full' : undefined}
+                  data-testid="shop-buy-relic-{item.relic.id}"
+                  onclick={() => canBuyRelic && openPurchaseModal({ type: 'relic', relicId: item.relic.id, price: item.price, name: item.relic.name })}
+                >{relicSlotsFull ? 'Full' : `${item.price}g`}</button>
+              </article>
+            {:else}
+              <div class="relic-slot-empty"></div>
+            {/if}
           {/each}
         </div>
       {/if}
@@ -598,53 +616,54 @@
       {#if shopInventory.cards.length > 0}
         <div class="cards-grid">
           {#each shopInventory.cards as item, idx (item.card.id)}
-            {@const canAfford = currency >= item.price}
-            <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
-            <article class="card-visual-item" class:unaffordable={!canAfford}
-              class:shake={shakeItemId === `card-${idx}`} class:purchased={purchasedItemId === 'card-' + idx}
-              onclick={(e) => !canAfford && handleUnaffordableTap(item.price, `card-${idx}`, e)}
-            >
-              {#if shopInventory.saleCardIndex === idx}<div class="sale-ribbon">SALE</div>{/if}
-              <div class="shop-card-visual-wrapper"
-                style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1)); height: calc({SHOP_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"
-              ><CardVisual card={item.card} /></div>
-              <button type="button" class="card-price-buy" class:disabled={!canAfford} disabled={!canAfford}
-                data-testid="shop-buy-card-{idx}"
-                onclick={() => canAfford && openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()}` })}
-              >{#if shopInventory?.saleCardIndex === idx}<span class="original-price">{item.price * 2}g</span> {item.price}g{:else}{item.price}g{/if}</button>
-            </article>
+            {#if !purchasedCardIndices.has(idx)}
+              {@const canAfford = currency >= item.price}
+              <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
+              <article class="card-visual-item" class:unaffordable={!canAfford}
+                class:shake={shakeItemId === `card-${idx}`} class:purchased={purchasedItemId === 'card-' + idx}
+                onclick={(e) => !canAfford && handleUnaffordableTap(item.price, `card-${idx}`, e)}
+              >
+                {#if shopInventory.saleCardIndex === idx}<div class="sale-ribbon">SALE</div>{/if}
+                <div class="shop-card-visual-wrapper"
+                  style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1)); height: calc({SHOP_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"
+                ><CardVisual card={item.card} /></div>
+                <button type="button" class="card-price-buy" class:disabled={!canAfford} disabled={!canAfford}
+                  data-testid="shop-buy-card-{idx}"
+                  onclick={() => canAfford && openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()}` })}
+                >{#if shopInventory?.saleCardIndex === idx}<span class="original-price">{item.price * 2}g</span> {item.price}g{:else}{item.price}g{/if}</button>
+              </article>
+            {:else}
+              <div class="card-slot-empty" style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"></div>
+            {/if}
           {/each}
         </div>
       {/if}
     </div>
 
-    <!-- ─── SERVICES: compact bottom strip ─────────────────────── -->
+    <!-- ─── SERVICES: fantasy-themed buttons ─────────────────── -->
     {#if shopInventory.removalCost != null}
       <div class="services-row">
-        <article class="service-card service-removal" class:service-unaffordable={!canRemoveCard || currency < shopInventory.removalCost}>
-          <span class="service-icon">🔥</span>
-          <span class="service-title">Card Removal</span>
-          <span class="service-price" class:unaffordable-price={!canRemoveCard || currency < shopInventory.removalCost}>{shopInventory.removalCost}g</span>
-          <button type="button" class="service-action" disabled={!canRemoveCard || currency < shopInventory.removalCost}
-            data-testid="shop-buy-removal"
-            onclick={() => openPurchaseModal({ type: 'removal', cardId: '', price: shopInventory!.removalCost!, name: 'Card Removal' })}
-          >Choose a card →</button>
-          {#if !canRemoveCard}<span class="service-note">Need 5+ cards</span>{/if}
-        </article>
+        <button type="button" class="service-btn service-removal"
+          disabled={!canRemoveCard || currency < shopInventory.removalCost}
+          data-testid="shop-buy-removal"
+          onclick={() => openPurchaseModal({ type: 'removal', cardId: '', price: shopInventory!.removalCost!, name: 'Card Removal' })}
+        >
+          <span class="service-btn-icon">🔥</span>
+          <span class="service-btn-label">Card Removal</span>
+          <span class="service-btn-price">{shopInventory.removalCost}g</span>
+          {#if !canRemoveCard}<span class="service-btn-note">Need 5+ cards</span>{/if}
+        </button>
 
-        <article class="service-card service-transform" class:service-unaffordable={!canTransformCard || (shopInventory.transformCost != null && currency < shopInventory.transformCost)}>
-          <span class="service-icon">✨</span>
-          <span class="service-title">Card Transform</span>
-          <span class="service-price" class:unaffordable-price={!canTransformCard || (shopInventory.transformCost != null && currency < shopInventory.transformCost)}>
-            {shopInventory.transformCost != null ? `${shopInventory.transformCost}g` : '—'}
-          </span>
-          <button type="button" class="service-action"
-            disabled={!canTransformCard || shopInventory.transformCost == null || currency < shopInventory.transformCost}
-            data-testid="shop-buy-transform"
-            onclick={() => shopInventory?.transformCost != null && openPurchaseModal({ type: 'transform', price: shopInventory.transformCost, name: 'Card Transform' })}
-          >Choose a card →</button>
-          {#if !canTransformCard}<span class="service-note">Need 5+ cards</span>{/if}
-        </article>
+        <button type="button" class="service-btn service-transform"
+          disabled={!canTransformCard || shopInventory.transformCost == null || currency < (shopInventory.transformCost ?? Infinity)}
+          data-testid="shop-buy-transform"
+          onclick={() => shopInventory?.transformCost != null && openPurchaseModal({ type: 'transform', price: shopInventory.transformCost, name: 'Card Transform' })}
+        >
+          <span class="service-btn-icon">✨</span>
+          <span class="service-btn-label">Card Transform</span>
+          <span class="service-btn-price">{shopInventory.transformCost != null ? `${shopInventory.transformCost}g` : '—'}</span>
+          {#if !canTransformCard}<span class="service-btn-note">Need 5+ cards</span>{/if}
+        </button>
       </div>
     {/if}
 
@@ -1001,7 +1020,7 @@
     right: 0;
     bottom: 0;
     z-index: 220;
-    background: #0d1117;
+    background: transparent;
     color: #e6edf3;
     padding: calc(6px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
     display: flex;
@@ -1047,11 +1066,8 @@
     display: flex;
     flex-direction: column;
     gap: calc(8px * var(--layout-scale, 1));
-    width: calc(320px * var(--layout-scale, 1));
+    width: calc(240px * var(--layout-scale, 1));
     flex-shrink: 0;
-    background: rgba(13, 17, 23, 0.7);
-    border-radius: calc(10px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1));
     overflow-y: auto;
   }
 
@@ -1185,18 +1201,16 @@
     opacity: 0.75;
   }
 
-  /* ── Cards grid: CardVisual frames ─────────────────────────── */
+  /* ── Cards grid: CardVisual frames — single horizontal row ─── */
   .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: calc(8px * var(--layout-scale, 1));
-    align-content: center;
-    justify-items: center;
-    background: rgba(13, 17, 23, 0.55);
-    border-radius: calc(10px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1));
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: calc(10px * var(--layout-scale, 1));
     flex: 1;
     min-width: 0;
+    align-self: center;
   }
 
   .card-visual-item {
@@ -1211,6 +1225,16 @@
   .shop-card-visual-wrapper {
     position: relative;
     flex-shrink: 0;
+  }
+
+  /* D: Nudge name banner up so it sits at top of frame, not clipping art */
+  .shop-card-visual-wrapper :global(.v2-mechanic-name) {
+    transform: translateY(calc(-3px * var(--layout-scale, 1)));
+  }
+
+  /* E: Increase card effect text readability in shop */
+  .shop-card-visual-wrapper :global(.v2-effect-text) {
+    font-size: calc(11px * var(--text-scale, 1));
   }
 
   /* Combined price + buy pill — the gold badge IS the buy button */
@@ -1253,109 +1277,75 @@
     position: relative;
     z-index: 1;
     display: flex;
-    gap: calc(10px * var(--layout-scale, 1));
+    gap: calc(24px * var(--layout-scale, 1));
+    justify-content: center;
     flex-shrink: 0;
+    padding: calc(8px * var(--layout-scale, 1)) 0;
   }
 
-  .service-card {
-    flex: 1;
-    border-radius: calc(10px * var(--layout-scale, 1));
-    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+  .service-btn {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: calc(10px * var(--layout-scale, 1));
-    background: rgba(13, 17, 23, 0.88);
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    border-radius: calc(10px * var(--layout-scale, 1));
+    font-weight: 700;
+    font-size: calc(14px * var(--text-scale, 1));
+    cursor: pointer;
+    min-height: calc(48px * var(--layout-scale, 1));
+    transition: background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
   }
 
   .service-removal {
-    border: 1px solid #7F77DD;
-    background: rgba(127, 119, 221, 0.12);
+    background: rgba(127, 40, 40, 0.85);
+    border: calc(2px * var(--layout-scale, 1)) solid #c0392b;
+    color: #fca5a5;
+    box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(192, 57, 43, 0.3);
+  }
+
+  .service-removal:hover:not(:disabled) {
+    background: rgba(160, 50, 50, 0.95);
+    border-color: #e74c3c;
+    box-shadow: 0 0 calc(20px * var(--layout-scale, 1)) rgba(231, 76, 60, 0.4);
   }
 
   .service-transform {
-    border: 1px solid #D85A30;
-    background: rgba(216, 90, 48, 0.12);
+    background: rgba(40, 40, 127, 0.85);
+    border: calc(2px * var(--layout-scale, 1)) solid #8b5cf6;
+    color: #c4b5fd;
+    box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(139, 92, 246, 0.3);
   }
 
-  /* Unaffordable: red-tinted border, keep fully visible */
-  .service-unaffordable {
-    opacity: 1;
-    border-color: rgba(239, 68, 68, 0.4);
-  }
-  .service-unaffordable .service-action {
-    color: #4b5563;
-  }
-  .service-unaffordable .service-price {
-    color: #ef4444;
+  .service-transform:hover:not(:disabled) {
+    background: rgba(55, 55, 160, 0.95);
+    border-color: #a78bfa;
+    box-shadow: 0 0 calc(20px * var(--layout-scale, 1)) rgba(167, 139, 250, 0.4);
   }
 
-  .service-icon {
-    font-size: calc(24px * var(--layout-scale, 1));
-  }
-
-  .service-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .service-title {
-    font-size: calc(18px * var(--text-scale, 1));
-    font-weight: 600;
-    color: #e6edf3;
-  }
-
-  .service-price {
-    font-size: calc(18px * var(--text-scale, 1));
-    font-weight: 700;
-    color: #f59e0b;
-  }
-
-  .unaffordable-price {
-    color: #ef4444;
-  }
-
-  .service-desc {
-    font-size: calc(14px * var(--text-scale, 1));
-    color: #9ba4ad;
-    line-height: 1.4;
-  }
-
-  .service-action {
-    margin-top: auto;
-    background: none;
-    border: none;
-    color: #93c5fd;
-    font-size: calc(15px * var(--text-scale, 1));
-    font-weight: 600;
-    cursor: pointer;
-    text-align: left;
-    padding: calc(6px * var(--layout-scale, 1)) 0;
-    min-height: calc(44px * var(--layout-scale, 1));
-  }
-
-  .service-action:disabled {
-    color: #4b5563;
+  .service-btn:disabled {
+    opacity: 0.45;
     cursor: not-allowed;
+    box-shadow: none;
   }
 
-  .service-action:hover:not(:disabled) {
-    color: #bfdbfe;
-    text-decoration: underline;
+  .service-btn-icon {
+    font-size: calc(20px * var(--layout-scale, 1));
   }
 
-  .service-note {
+  .service-btn-label {
+    font-size: calc(14px * var(--text-scale, 1));
+  }
+
+  .service-btn-price {
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #f59e0b;
+    font-weight: 800;
+  }
+
+  .service-btn-note {
     font-size: calc(10px * var(--text-scale, 1));
     color: #94a3b8;
-  }
-
-  .service-card .service-desc {
-    display: none;
-  }
-
-  .shop-overlay:not(.landscape) .services-row {
-    grid-template-columns: 1fr;
+    font-style: italic;
   }
 
   /* ── Your Deck compact list ─────────────────────────────────── */
@@ -1853,9 +1843,8 @@
 
   /* ── Landscape layout ───────────────────────────────────────── */
   .shop-overlay.landscape {
-    background: rgba(5, 8, 12, 0.7);
     align-content: start;
-    justify-items: center;
+    align-items: center;
     padding: 0;
   }
 
@@ -1953,5 +1942,31 @@
     50% { filter: brightness(2) saturate(3) hue-rotate(-15deg); opacity: 0.8; }
     80% { transform: scale(0.95); filter: brightness(1.5) saturate(1.5) hue-rotate(-30deg); opacity: 0.4; }
     100% { transform: scale(0.8) translateY(calc(-10px * var(--layout-scale, 1))); opacity: 0; filter: brightness(0.5); }
+  }
+
+  /* ── G: Gold counter display ────────────────────────────────── */
+  .shop-gold {
+    position: absolute;
+    top: calc(8px * var(--layout-scale, 1));
+    right: calc(20px * var(--layout-scale, 1));
+    z-index: 2;
+    font-size: calc(18px * var(--text-scale, 1));
+    font-weight: 800;
+    color: #f59e0b;
+    background: rgba(10, 15, 25, 0.75);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+  }
+
+  /* ── H: Empty purchased slot placeholders ───────────────────── */
+  .card-slot-empty {
+    visibility: hidden;
+    /* maintain height equal to card + price button */
+    height: calc(252px * var(--layout-scale, 1));
+  }
+
+  .relic-slot-empty {
+    height: calc(64px * var(--layout-scale, 1));
   }
 </style>
