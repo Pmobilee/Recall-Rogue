@@ -41,7 +41,7 @@
   let ascensionUnlockText = $derived(
     $ascensionProfile.highestUnlockedLevel > 0
       ? `Unlocked: ${$ascensionProfile.highestUnlockedLevel}`
-      : 'Unlock by completing a successful floor 9+ run.',
+      : 'Win a run to unlock',
   )
 
   function handleDomainTap(domain: (typeof DOMAINS)[number]): void {
@@ -173,7 +173,7 @@
         class="ascension-step"
         data-testid="ascension-decrease"
         onclick={() => shiftAscension(-1)}
-        disabled={$ascensionProfile.highestUnlockedLevel <= 0 || $ascensionProfile.selectedLevel <= 0}
+        disabled={$ascensionProfile.selectedLevel <= 0}
       >-</button>
       <div class="ascension-level">
         <strong>Level {$ascensionProfile.selectedLevel}</strong>
@@ -190,7 +190,7 @@
         class="ascension-step"
         data-testid="ascension-increase"
         onclick={() => shiftAscension(1)}
-        disabled={$ascensionProfile.highestUnlockedLevel <= 0 || $ascensionProfile.selectedLevel >= $ascensionProfile.highestUnlockedLevel}
+        disabled={$ascensionProfile.selectedLevel >= $ascensionProfile.highestUnlockedLevel}
       >+</button>
     </div>
   </section>

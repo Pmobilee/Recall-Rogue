@@ -66,6 +66,9 @@
   /** Whether the hint prompt is visible. */
   let showHint = $state(false)
 
+  /** Whether the tutorial has been activated (prevents double-tap). */
+  let tutorialEnabled = $state(false)
+
   /** Inline style per line index for ash dissolve stagger. */
   let dissolveStyles = $state<string[]>([])
 
@@ -221,6 +224,7 @@
   function handleTutorialStart(e: MouseEvent): void {
     e.stopPropagation()
     startTutorial('combat')
+    tutorialEnabled = true
     // Narration continues — tutorial evaluates once combat is rendering
   }
 
@@ -300,10 +304,12 @@
   {#if showTutorialButton && phase === 'REVEALING'}
     <button
       class="tutorial-btn"
+      class:enabled={tutorialEnabled}
       onclick={handleTutorialStart}
+      disabled={tutorialEnabled}
       aria-label="Start tutorial"
     >
-      tutorial
+      {tutorialEnabled ? 'tutorial on ✓' : 'tutorial'}
     </button>
   {/if}
 
@@ -548,9 +554,17 @@
     pointer-events: auto;
   }
 
-  .tutorial-btn:hover {
+  .tutorial-btn:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .tutorial-btn.enabled,
+  .tutorial-btn:disabled {
+    background: rgba(120, 200, 140, 0.15);
+    border-color: rgba(120, 200, 140, 0.50);
+    color: rgba(180, 240, 200, 0.95);
+    cursor: default;
   }
 
   /* Playwright animation pause hook */
