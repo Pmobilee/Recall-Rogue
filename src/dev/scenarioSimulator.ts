@@ -272,9 +272,10 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
   },
 
   // === Mystery event ===
+  // Floor 9 = Act 3 — pulls from all 4 tier pools (28+ events)
   'mystery-event': {
     screen: 'mysteryEvent',
-    floor: 3,
+    floor: 9,
   },
 
   // === Card reward scenarios ===
