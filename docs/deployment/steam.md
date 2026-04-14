@@ -102,15 +102,36 @@ All commands reject filenames containing `..`, `/`, `\`, or characters outside `
 | Windows | `%APPDATA%\com.bramblegategames.recallrogue\saves\` |
 | Linux | `~/.local/share/com.bramblegategames.recallrogue/saves/` |
 
-### Steam Auto-Cloud Configuration (Steamworks dashboard — not yet set)
+### Steam Auto-Cloud Configuration (Configured)
 
-To enable Steam Cloud Save, configure Auto-Cloud in the Steamworks App Admin:
-1. **Root Override** — set to the platform save path above (per-OS)
-2. **Include Pattern** — `saves/*.json`
-3. **Quota** — 20 MB (default 1 GB limit is ample)
-4. **Conflict resolution** — Steam compares timestamps and prompts the player
+Steam Auto-Cloud syncs the `saves/` directory across platforms without any Steamworks SDK code. Configured in Steamworks App Admin → Cloud.
 
-No Rust Steamworks SDK changes are needed — Auto-Cloud reads the files on disk automatically.
+**Root Path:**
+
+| Field | Value |
+|---|---|
+| Root | `WinAppDataRoaming` |
+| Subdirectory | `com.bramblegategames.recallrogue/saves` |
+| Pattern | `*.json` |
+| OS | `[All OSes]` |
+| Recursive | No |
+
+**Root Overrides** (cross-platform mapping):
+
+| Original Root | OS | New Root | Subdirectory |
+|---|---|---|---|
+| `WinAppDataRoaming` | macOS | `MacApplicationSupport` | `com.bramblegategames.recallrogue/saves` |
+| `WinAppDataRoaming` | Linux | `LinuxXdgDataHome` | `com.bramblegategames.recallrogue/saves` |
+
+**Resolved paths per OS:**
+
+| OS | Resolved Path |
+|---|---|
+| Windows | `%USERPROFILE%/AppData/Roaming/com.bramblegategames.recallrogue/saves/*.json` |
+| macOS | `~/Library/Application Support/com.bramblegategames.recallrogue/saves/*.json` |
+| Linux | `$XDG_DATA_HOME/com.bramblegategames.recallrogue/saves/*.json` |
+
+No Rust Steamworks SDK changes needed — Auto-Cloud reads the files on disk automatically. Conflict resolution uses Steam's built-in timestamp comparison with player prompt.
 
 ### Boot Init Order
 
@@ -242,7 +263,7 @@ Comprehensive checklist for shipping Recall Rogue on Steam. Items grouped by pha
 - [ ] Set launch options per OS (macOS: `.app`, Linux: AppImage)
 - [ ] Create `development` and `staging` branches
 - [ ] Set content descriptors and age ratings
-- [ ] Configure Steam Auto-Cloud (saves/*.json, per-OS root paths — see Save System section)
+- [x] Configure Steam Auto-Cloud (saves/*.json, per-OS root paths — see Save System section)
 - [ ] Register 24 achievements in App Admin → Achievements (IDs from `steamAchievements.ts`)
 - [ ] Upload achievement icons (locked + unlocked, 256×256 PNG) — use `/artstudio` to generate
 - [ ] Configure Rich Presence localization tokens (optional — English hardcoded in `steamService.ts`)
@@ -337,7 +358,6 @@ Triage of all Phase 1–6 items against current codebase state. Last verified ag
 - Set launch options per OS (`.app` for macOS, AppImage for Linux)
 - Create `development` and `staging` branches
 - Set content descriptors and age ratings
-- Configure Steam Auto-Cloud (root paths per OS + `saves/*.json` pattern)
 - Register all 24 achievements — IDs from `steamAchievements.ts` must match exactly
 - Upload achievement icons (locked + unlocked 256×256 PNG — not yet generated)
 - Set Coming Soon page live (2-week lead time required before release)
