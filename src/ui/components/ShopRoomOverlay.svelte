@@ -264,7 +264,11 @@
   })
 
   /** Cards that can be removed (full active deck, not just the sell slice) */
-  let removableCards = $derived(getActiveDeckCards())
+  /** Cards eligible for removal/transform — uses the active deck from encounter bridge, falls back to the cards prop */
+  let removableCards = $derived((() => {
+    const deckCards = getActiveDeckCards()
+    return deckCards.length > 0 ? deckCards : cards
+  })())
   /** Whether deck is large enough to remove a card (must keep > 5) */
   let canRemoveCard = $derived(removableCards.length > 5)
   /** Whether deck is large enough to transform a card (must keep > 5) */
@@ -531,8 +535,10 @@
   })
 </script>
 
+<!-- BG image sits OUTSIDE the overlay so it's not clipped by overflow:hidden -->
+<img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
+
 <section class="shop-overlay" bind:this={overlayEl} class:landscape={$isLandscape} aria-label="Shop room">
-  <img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
 
   <!-- Small back button top-left -->
   <button type="button" class="leave-shop-btn" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">←</button>
@@ -977,13 +983,14 @@
 
 <style>
   .shop-screen-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     object-fit: cover;
     object-position: center;
-    z-index: 0;
+    z-index: 149;
     pointer-events: none;
   }
 
@@ -1015,9 +1022,9 @@
     padding: calc(3px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
     border-radius: calc(6px * var(--layout-scale, 1));
     cursor: pointer;
-    width: fit-content;
-    flex-shrink: 0;
     align-self: flex-start;
+    flex-shrink: 0;
+    max-width: calc(40px * var(--layout-scale, 1));
   }
   .leave-shop-btn:hover {
     background: rgba(30, 40, 55, 0.95);
@@ -1113,8 +1120,9 @@
   }
 
   .relic-info {
-    flex: 1;
+    flex: 1 1 0;
     min-width: 0;
+    overflow: hidden;
   }
 
   .relic-icon-circle {
@@ -1168,7 +1176,8 @@
   }
 
   .relic-buy-btn {
-    width: 100%;
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 
   .slots-full {
