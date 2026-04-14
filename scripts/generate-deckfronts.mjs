@@ -96,6 +96,10 @@ const DECK_PROMPTS = {
     palette: 'deep burgundy aged parchment and warm brass',
     subject: 'a cavernous vaulted library dungeon with towering stone bookshelves carved into the walls, ancient leather tomes floating gently in dithered beams of candlelight, a quill writing by itself over an open manuscript on a heavy oak desk, hanging brass lanterns casting warm shadows',
   },
+  map_explorer: {
+    palette: 'deep ocean navy warm parchment tan and aged brass',
+    subject: 'a subterranean cartographer workshop carved into stone, a massive unfurled world map pinned across the back wall with small brass pins marking cities, a worn oak desk with a compass rose and brass dividers in the foreground, rolled scrolls and sea charts stacked on stone shelves, a glowing crystal globe casting dithered light across faded coastlines',
+  },
 };
 
 function buildPrompt(imageId, deckName) {
