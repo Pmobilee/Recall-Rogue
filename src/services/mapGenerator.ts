@@ -566,6 +566,11 @@ function assignRoomTypes(
       eliteCount--
     }
   }
+
+  // [TEMPORARY DEV OVERRIDE] Force ALL nodes to mystery for playtesting — remove before shipping
+  for (const n of Object.values(nodes)) {
+    if (n.type !== 'boss') n.type = 'mystery'
+  }
 }
 
 // ============================================================
@@ -637,9 +642,14 @@ function initialiseState(
  *
  * @param segment - Which act segment (1–4) this map represents.
  * @param seed    - Deterministic seed. Same seed always produces the same map layout.
+ * @param opts    - Optional overrides. `forceTutorialEnemy` pins row-0 combat nodes to 'pop_quiz'.
  * @returns A fully initialised ActMap ready for rendering and navigation.
  */
-export function generateActMap(segment: 1 | 2 | 3 | 4, seed: number): ActMap {
+export function generateActMap(
+  segment: 1 | 2 | 3 | 4,
+  seed: number,
+  opts?: { forceTutorialEnemy?: boolean },
+): ActMap {
   const rng = mulberry32(seed)
 
   // Map each segment to its starting floor number
@@ -660,6 +670,15 @@ export function generateActMap(segment: 1 | 2 | 3 | 4, seed: number): ActMap {
 
   // Step 5 — Enemy IDs (boss uses seeded rng for variety across runs)
   assignEnemyIds(nodes, startFloor, rng)
+
+  // Force tutorial enemy on first encounter when requested
+  if (opts?.forceTutorialEnemy) {
+    for (const node of Object.values(nodes)) {
+      if (node.row === 0 && node.type === 'combat') {
+        node.enemyId = 'pop_quiz'
+      }
+    }
+  }
 
   // Step 6 — Initial states
   initialiseState(nodes, sizes)

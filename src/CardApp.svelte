@@ -190,6 +190,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     tutorialMessage,
     tutorialAnchor,
     tutorialSpotlight,
+    tutorialBlocksInput,
     advanceStep,
     skipTutorial,
     startTutorial,
@@ -1666,6 +1667,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       onendturn={handleEndTurn}
       onusehint={handleUseHint}
       onreturnhub={() => { currentScreen.set('hub'); activeRunState.set(null); }}
+      fogLevel={$activeTurnState != null ? getAuraLevel() : 0}
+      fogState={$activeTurnState != null ? getAuraState() : undefined}
     />
     <button
       type="button"
@@ -2169,6 +2172,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       message={$tutorialMessage}
       anchor={$tutorialAnchor}
       spotlight={$tutorialSpotlight}
+      blockInput={$tutorialBlocksInput}
       ondismiss={advanceStep}
       onskip={skipTutorial}
     />

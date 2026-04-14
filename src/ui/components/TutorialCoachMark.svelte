@@ -10,6 +10,10 @@
   Spotlight (when spotlight=true): renders a full-screen dim
   overlay with a rectangular cutout over the anchor element.
 
+  Input blocking (when blockInput=true): the overlay blocks all
+  pointer events to the game, forcing the player to dismiss the
+  coach mark before interacting.
+
   Scaling rules: calc(Npx * var(--layout-scale|--text-scale, 1))
 -->
 <script lang="ts">
@@ -20,11 +24,12 @@
     message: string
     anchor: TutorialAnchor
     spotlight: boolean
+    blockInput?: boolean
     ondismiss: () => void
     onskip: () => void
   }
 
-  let { message, anchor, spotlight, ondismiss, onskip }: Props = $props()
+  let { message, anchor, spotlight, blockInput = false, ondismiss, onskip }: Props = $props()
 
   // ── Tooltip position state ──────────────────────────────────────────────
   interface TooltipPos {
@@ -63,10 +68,10 @@
 
     // Special case: Phaser canvas / no DOM element → fixed position near top-center
     if (anchor.target === 'enemy-sprite' || anchor.position === 'center') {
-      const ttW = tooltipEl?.offsetWidth ?? 320
-      const ttH = tooltipEl?.offsetHeight ?? 120
+      const ttW = tooltipEl?.offsetWidth ?? 500
+      const ttH = tooltipEl?.offsetHeight ?? 160
       tooltipPos = {
-        top: Math.max(EDGE_MARGIN, (vh * 0.35) - ttH / 2),
+        top: Math.max(EDGE_MARGIN, (vh * 0.25) - ttH / 2),
         left: Math.max(EDGE_MARGIN, (vw / 2) - ttW / 2),
         arrowDir: 'none',
       }
@@ -78,8 +83,8 @@
 
     if (!targetEl) {
       // No anchor found → center on screen
-      const ttW = tooltipEl?.offsetWidth ?? 320
-      const ttH = tooltipEl?.offsetHeight ?? 120
+      const ttW = tooltipEl?.offsetWidth ?? 500
+      const ttH = tooltipEl?.offsetHeight ?? 160
       tooltipPos = {
         top: Math.max(EDGE_MARGIN, vh / 2 - ttH / 2),
         left: Math.max(EDGE_MARGIN, vw / 2 - ttW / 2),
@@ -90,8 +95,8 @@
     }
 
     const rect = targetEl.getBoundingClientRect()
-    const ttW = tooltipEl?.offsetWidth ?? 320
-    const ttH = tooltipEl?.offsetHeight ?? 120
+    const ttW = tooltipEl?.offsetWidth ?? 500
+    const ttH = tooltipEl?.offsetHeight ?? 160
     const pos = anchor.position
 
     // Build spotlight cutout
@@ -185,8 +190,6 @@
   let spotlightStyle = $derived.by((): string => {
     if (!spotlightRect) return ''
     const { top, left, width, height } = spotlightRect
-    const vw = typeof window !== 'undefined' ? window.innerWidth : 1920
-    const vh = typeof window !== 'undefined' ? window.innerHeight : 1080
     // clip-path polygon: full screen with a rectangular hole cut out
     // (outer border → inner hole counterclockwise)
     return `clip-path: polygon(
@@ -200,13 +203,19 @@
   })
 </script>
 
-<!-- Spotlight dim overlay (pointer-events: none — game remains interactive) -->
+<!-- Spotlight dim overlay with optional input blocking -->
 {#if spotlight && spotlightRect}
   <div
     class="tutorial-spotlight"
+    class:tutorial-spotlight-blocking={blockInput}
     style={spotlightStyle}
     aria-hidden="true"
   ></div>
+{/if}
+
+<!-- Full blocking overlay when blockInput=true but no spotlight -->
+{#if blockInput && !spotlight}
+  <div class="tutorial-block-overlay" aria-hidden="true"></div>
 {/if}
 
 <!-- Tooltip bubble -->
@@ -257,12 +266,28 @@
     pointer-events: none;
   }
 
+  /* When blockInput=true, spotlight also blocks pointer events */
+  .tutorial-spotlight-blocking {
+    pointer-events: all;
+    cursor: default;
+  }
+
+  /* Full blocking overlay when blockInput=true but no spotlight active */
+  .tutorial-block-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 959;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: all;
+    cursor: default;
+  }
+
   /* ── Tooltip bubble ───────────────────────────────────────────────── */
   .tutorial-coach-mark {
     position: fixed;
     z-index: 960;
-    max-width: calc(320px * var(--layout-scale, 1));
-    padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    max-width: calc(500px * var(--layout-scale, 1));
+    padding: calc(18px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
     background: rgba(6, 8, 16, 0.92);
     border: 1px solid rgba(241, 196, 15, 0.5);
     border-radius: calc(10px * var(--layout-scale, 1));
@@ -401,7 +426,7 @@
   .coach-message {
     margin: 0;
     font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
-    font-size: calc(14px * var(--text-scale, 1));
+    font-size: calc(28px * var(--text-scale, 1));
     color: #f4f7fb;
     line-height: 1.5;
     font-style: italic;
@@ -421,7 +446,7 @@
     border: 1px solid rgba(241, 196, 15, 0.7);
     border-radius: calc(6px * var(--layout-scale, 1));
     font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
-    font-size: calc(13px * var(--text-scale, 1));
+    font-size: calc(22px * var(--text-scale, 1));
     color: rgba(241, 210, 100, 1);
     cursor: pointer;
     pointer-events: auto;
@@ -440,7 +465,7 @@
     width: 100%;
     text-align: center;
     font-family: var(--font-rpg, 'Lora', 'Georgia', serif);
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(18px * var(--text-scale, 1));
     color: rgba(255, 255, 255, 0.35);
     cursor: pointer;
     pointer-events: auto;

@@ -55,6 +55,7 @@
   import { getNonCuratedQuestion, getQuestionVariantCount } from '../utils/combatQuestionPolicy'
   import StatusEffectBar from './StatusEffectBar.svelte'
   import EnemyPowerBadges from './EnemyPowerBadges.svelte'
+  import { getEnemyPowers } from '../../data/enemyPowers'
   import { getShortCardDescription } from '../../services/cardDescriptionService'
   import SurgeBorderOverlay from './SurgeBorderOverlay.svelte'
   import { ENEMY_DIALOGUE } from '../../data/enemyDialogue'
@@ -129,6 +130,8 @@
     onendturn: () => void
     onusehint: () => void
     onreturnhub?: () => void
+    fogLevel?: number
+    fogState?: 'brain_fog' | 'neutral' | 'flow_state'
   }
 
   type CardPlayStage = 'hand' | 'selected' | 'committed'
@@ -183,7 +186,7 @@
     mapDifficultyTier?: number
   }
 
-  let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
+  let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub, fogLevel, fogState }: Props = $props()
 
   let cardPlayStage = $state<CardPlayStage>('hand')
   let selectedIndex = $state<number | null>(null)
@@ -2767,6 +2770,15 @@
       enemyIntentValue: turnState?.enemy?.nextIntent?.value ?? null,
       studyQuestionsAnswered: 0,
       studySessionComplete: false,
+      enemyPassives: turnState?.enemy
+        ? getEnemyPowers(turnState.enemy).map((p: { resolvedTooltip: string }) => p.resolvedTooltip)
+        : [],
+      relicCount: 0,
+      fogLevel: fogLevel ?? null,
+      fogState: fogState ?? null,
+      drawPileCount: drawPileCount ?? 0,
+      discardPileCount: discardPileCount ?? 0,
+      musicCategory: null,
     }
 
     evaluateTutorialStep(ctx)
@@ -2817,7 +2829,9 @@
         <div class="enemy-name-header" role="heading" aria-level="2" aria-label="{enemyName}">
           {enemyName}
         </div>
-        <EnemyPowerBadges enemy={turnState?.enemy} />
+        <div data-tutorial-anchor="enemy-power-badges" style="display: contents;">
+          <EnemyPowerBadges enemy={turnState?.enemy} />
+        </div>
       </div>
     {/if}
 
@@ -2840,7 +2854,7 @@
       <span class="ap-label" aria-hidden="true">AP</span>
     </div>
 
-    <div class="pile-indicator draw-pile-indicator" bind:this={drawPileEl} aria-label="Draw pile: {drawPileCount}" title={pileTooltip('Draw', turnState.deck.drawPile)}>
+    <div class="pile-indicator draw-pile-indicator" bind:this={drawPileEl} aria-label="Draw pile: {drawPileCount}" title={pileTooltip('Draw', turnState.deck.drawPile)} data-tutorial-anchor="draw-pile">
       <div class="pile-icon" style="--stack-count: {drawStackCount}">
         {#each Array(drawStackCount) as _, idx}
           <div class="pile-card-stack" style="transform: translate(calc({idx * 2}px * var(--layout-scale, 1)), calc({-idx * 2}px * var(--layout-scale, 1)));"></div>
@@ -2849,7 +2863,7 @@
       <span class="pile-count-label">{drawPileCount}</span>
     </div>
 
-    <div class="pile-indicator discard-pile-indicator" bind:this={discardPileEl} aria-label="Discard pile: {discardPileCount}" title={pileTooltip('Discard', turnState.deck.discardPile, false)}>
+    <div class="pile-indicator discard-pile-indicator" bind:this={discardPileEl} aria-label="Discard pile: {discardPileCount}" title={pileTooltip('Discard', turnState.deck.discardPile, false)} data-tutorial-anchor="discard-pile">
       <div class="pile-icon" style="--stack-count: {discardStackCount}">
         {#each Array(Math.max(1, discardStackCount)) as _, idx}
           <div class="pile-card-stack" class:pile-empty={discardStackCount === 0} style="transform: translate(calc({idx * 2}px * var(--layout-scale, 1)), calc({-idx * 2}px * var(--layout-scale, 1))); {discardStackCount === 0 ? 'opacity: 0.3;' : ''}"></div>
@@ -2896,6 +2910,7 @@
           style="background: {intentDisplay.color}; border-color: {intentDisplay.borderColor};"
           aria-label={intentDetailText}
           data-intent-blocked={intentDisplay.fullyBlocked ? 'true' : undefined}
+          data-tutorial-anchor="enemy-intent"
         >
           <div class="intent-bubble-name">
             <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type, { statusEffect: enemyIntent.statusEffect?.type, value: enemyIntent.value, hitCount: enemyIntent.hitCount }) : ''} alt=""

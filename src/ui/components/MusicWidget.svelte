@@ -136,6 +136,7 @@
   // ── Event handlers ─────────────────────────────────────────────────────────
 
   function handleVolumeInput(e: Event): void {
+    musicService.init()
     const val = parseInt((e.target as HTMLInputElement).value, 10)
     musicVolume.set(val / 100)
   }
@@ -159,7 +160,8 @@
   class:expanded
   class:playing={isPlaying}
   bind:this={wrapperEl}
-  onclick={handleTogglePill}
+  data-tutorial-anchor="music-widget"
+  onclick={() => { if (!expanded) expanded = true }}
   onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { expanded = !expanded } }}
 >
   <div class="panel-shine" aria-hidden="true"></div>

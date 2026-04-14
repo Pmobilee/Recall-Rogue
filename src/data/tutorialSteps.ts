@@ -66,6 +66,14 @@ export interface TutorialContext {
   // Study-specific
   studyQuestionsAnswered: number
   studySessionComplete: boolean
+  // Tutorial-expanded fields (optional for backward compat with legacy TutorialContext builders)
+  enemyPassives?: string[]
+  relicCount?: number
+  fogLevel?: number | null
+  fogState?: 'brain_fog' | 'neutral' | 'flow_state' | null
+  drawPileCount?: number
+  discardPileCount?: number
+  musicCategory?: string | null
 }
 
 /** A single tutorial step definition. */
@@ -87,56 +95,132 @@ export interface TutorialStep {
   maxDisplayMs?: number
   /** Whether to dim the background around the anchor target. */
   spotlight: boolean
+  /** When true, fires immediately when cursor reaches it, regardless of showWhen. */
+  proactive?: boolean
+  /** When true, the spotlight overlay blocks game input until "Got it" is clicked. */
+  blockInput?: boolean
 }
 
 /**
- * Combat tutorial steps, shown in priority order.
- * Steps are evaluated sequentially — the first whose showWhen fires (and hasn't been
- * completed) is shown. Steps are designed to be non-blocking: the game plays normally
- * while they display.
+ * Combat tutorial steps, evaluated sequentially by a step cursor.
+ * Proactive steps fire immediately when the cursor reaches them; reactive steps
+ * wait for showWhen to become true. Steps that return null from getMessage are
+ * skipped entirely (e.g. no enemy passives present).
  */
 export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
-  // 1. Enemy intro — orient player to who they're fighting
+  // ═══════════════════════════════════════════════════════════
+  // PHASE 1 — Combat Start (proactive, fires immediately)
+  // ═══════════════════════════════════════════════════════════
+
   {
     id: 'enemy_intro',
     mode: 'combat',
     anchor: { target: 'enemy-sprite', position: 'below' },
+    proactive: true,
     getMessage: (ctx) =>
-      ctx.enemyName ? `${ctx.enemyName} blocks your path. Defeat them to advance deeper.` : null,
+      ctx.enemyName
+        ? `You are facing ${ctx.enemyName}. Defeat them to advance deeper into the dungeon.`
+        : null,
+    showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: false,
+  },
+
+  {
+    id: 'enemy_passive_intro',
+    mode: 'combat',
+    anchor: { target: 'enemy-power-badges', position: 'below' },
+    proactive: true,
+    blockInput: true,
+    getMessage: (ctx) => {
+      if (!ctx.enemyPassives || ctx.enemyPassives.length === 0) return null
+      const passive = ctx.enemyPassives[0]
+      return `${ctx.enemyName ?? 'This enemy'} has a special ability: ${passive}. Keep this in mind as you play your cards.`
+    },
+    showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  {
+    id: 'enemy_intent_intro',
+    mode: 'combat',
+    anchor: { target: 'enemy-intent', position: 'below' },
+    proactive: true,
+    blockInput: true,
+    getMessage: (ctx) => {
+      const intentMap: Record<string, string> = {
+        attack: `deal ${ctx.enemyIntentValue ?? '?'} damage to you`,
+        defend: `gain ${ctx.enemyIntentValue ?? '?'} block`,
+        buff: 'gain a stat boost',
+        debuff: 'weaken you with a status effect',
+        heal: 'recover HP',
+        charge: 'charge up a powerful attack',
+        multi_attack: `hit you multiple times for ${ctx.enemyIntentValue ?? '?'} each`,
+      }
+      const intentDesc = ctx.enemyIntentType
+        ? (intentMap[ctx.enemyIntentType] ?? 'take an action')
+        : 'take an action'
+      return `That icon shows the enemy's next move. Right now they intend to ${intentDesc}. Use this to plan your cards each turn.`
+    },
     showWhen: (ctx) =>
       ctx.encounterTurnNumber === 1 &&
       ctx.phase === 'player_action' &&
-      ctx.cardsPlayedThisTurn === 0,
-    doneWhen: (ctx) => ctx.cardsPlayedThisTurn > 0 || ctx.encounterTurnNumber > 1,
-    autoDismiss: true,
-    minDisplayMs: 2000,
-    maxDisplayMs: 10000,
-    spotlight: false,
+      ctx.enemyIntentType != null,
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
   },
-  // 2. Hand intro — explain card hand and AP resource
+
+  {
+    id: 'ap_intro',
+    mode: 'combat',
+    anchor: { target: 'ap-indicator', position: 'left' },
+    proactive: true,
+    blockInput: true,
+    getMessage: (ctx) =>
+      `This is your AP. You have ${ctx.apMax} Action Points to spend this turn. Each card costs AP to play. When you run out, end your turn.`,
+    showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
   {
     id: 'hand_intro',
     mode: 'combat',
     anchor: { target: 'card-hand', position: 'above' },
-    getMessage: (ctx) =>
-      `Your cards. Each costs AP to play — you have ${ctx.apMax} AP this turn.`,
-    showWhen: (ctx) =>
-      ctx.encounterTurnNumber === 1 &&
-      ctx.phase === 'player_action' &&
-      ctx.cardPlayStage === 'hand' &&
-      ctx.cardsPlayedThisTurn === 0,
-    doneWhen: (ctx) => ctx.cardPlayStage === 'selected' || ctx.cardsPlayedThisTurn > 0,
-    autoDismiss: true,
-    minDisplayMs: 1500,
-    maxDisplayMs: 12000,
+    proactive: true,
+    blockInput: true,
+    getMessage: () =>
+      'These are your cards. There are two ways to play them: Quick Play (tap again for base damage, no quiz) or Charge (drag upward to answer a question for 1.5x power).',
+    showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
     spotlight: true,
   },
-  // 3. Tap a card — guide player to interact with their hand
+
+  // ═══════════════════════════════════════════════════════════
+  // PHASE 2 — First Card Play (reactive)
+  // ═══════════════════════════════════════════════════════════
+
   {
-    id: 'tap_card',
+    id: 'tap_card_prompt',
     mode: 'combat',
     anchor: { target: 'card-hand', position: 'above' },
-    getMessage: () => 'Tap a card to select it.',
+    getMessage: () => 'Go ahead — tap any card to select it.',
     showWhen: (ctx) =>
       ctx.phase === 'player_action' &&
       ctx.cardPlayStage === 'hand' &&
@@ -144,11 +228,11 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
       ctx.encounterTurnNumber <= 2,
     doneWhen: (ctx) => ctx.cardPlayStage === 'selected' || ctx.cardsPlayedThisTurn > 0,
     autoDismiss: true,
-    minDisplayMs: 1000,
-    maxDisplayMs: 15000,
+    minDisplayMs: 500,
+    maxDisplayMs: 60000,
     spotlight: false,
   },
-  // 4. Card selected — explain Quick Play vs Charge before they commit
+
   {
     id: 'card_selected',
     mode: 'combat',
@@ -156,23 +240,26 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     getMessage: (ctx) => {
       const type = ctx.selectedCardType ?? 'card'
       const cost = ctx.selectedCardApCost ?? 1
-      return `This ${type} costs ${cost} AP. Tap again to Quick Play, or hold/swipe up to Charge.`
+      return `This ${type} costs ${cost} AP. Tap it AGAIN for Quick Play (base damage, no quiz). Or drag it UPWARD to Charge (answer a question for 1.5x power, costs +1 extra AP).`
     },
     showWhen: (ctx) =>
-      ctx.cardPlayStage === 'selected' && !ctx.hasPlayedQuickPlay && !ctx.hasPlayedCharge,
+      ctx.cardPlayStage === 'selected' &&
+      !ctx.hasPlayedQuickPlay &&
+      !ctx.hasPlayedCharge,
     doneWhen: (ctx) =>
       ctx.cardPlayStage !== 'selected' || ctx.hasPlayedQuickPlay || ctx.hasPlayedCharge,
     autoDismiss: true,
-    minDisplayMs: 1500,
-    maxDisplayMs: 15000,
+    minDisplayMs: 1000,
+    maxDisplayMs: 60000,
     spotlight: false,
   },
-  // 5. Charge explain — quiz panel has appeared, explain the mechanic
+
   {
     id: 'charge_explain',
     mode: 'combat',
     anchor: { target: 'quiz-panel', position: 'left' },
-    getMessage: () => 'Charge powers up the card — answer correctly for 1.5x damage!',
+    getMessage: () =>
+      'You initiated a Charge! Answer the question correctly for 1.5x damage. Wrong answers still play the card at reduced power — you are never stuck.',
     showWhen: (ctx) => ctx.quizVisible && !ctx.hasPlayedCharge,
     doneWhen: (ctx) => !ctx.quizVisible || ctx.hasPlayedCharge,
     autoDismiss: true,
@@ -180,76 +267,139 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     maxDisplayMs: 20000,
     spotlight: false,
   },
-  // 6. Wrong answer reassurance — player fumbled their first charge
+
+  // ═══════════════════════════════════════════════════════════
+  // PHASE 3 — After First Card Play (dynamic feedback)
+  // ═══════════════════════════════════════════════════════════
+
   {
-    id: 'quiz_wrong_ok',
-    mode: 'combat',
-    anchor: { target: 'screen-center', position: 'center' },
-    getMessage: () =>
-      "Wrong answers still play the card at reduced power. You're never stuck.",
-    showWhen: (ctx) => ctx.hasAnsweredWrong && ctx.phase === 'player_action',
-    doneWhen: (ctx) => ctx.cardsPlayedThisTurn > 1 || ctx.encounterTurnNumber > 1,
-    autoDismiss: true,
-    minDisplayMs: 2500,
-    maxDisplayMs: 8000,
-    spotlight: false,
-  },
-  // 7. Quick play explain — player went for speed over power
-  {
-    id: 'quick_play_explain',
+    id: 'post_first_play',
     mode: 'combat',
     anchor: { target: 'card-hand', position: 'above' },
-    getMessage: () => 'Quick Play skips the quiz for base damage. Handy when AP is tight.',
+    getMessage: (ctx) => {
+      if (ctx.hasPlayedCharge && !ctx.hasAnsweredWrong) {
+        return 'Correct! You dealt 1.5x damage. You can also tap a selected card again for Quick Play — base damage, no quiz. Each approach has its place.'
+      }
+      if (ctx.hasPlayedCharge && ctx.hasAnsweredWrong) {
+        return 'Wrong answer, but the card still played at reduced power. You are never stuck. Wrong answers cost power, not your turn.'
+      }
+      if (ctx.hasPlayedQuickPlay) {
+        return 'Quick Play — base damage, no quiz. Fast and reliable. Next time try dragging a card upward to Charge for 1.5x power.'
+      }
+      return null
+    },
     showWhen: (ctx) =>
-      ctx.hasPlayedQuickPlay && !ctx.hasPlayedCharge && ctx.phase === 'player_action',
+      ctx.cardsPlayedThisTurn === 1 &&
+      ctx.phase === 'player_action' &&
+      ctx.encounterTurnNumber === 1,
     doneWhen: (ctx) => ctx.cardsPlayedThisTurn > 1 || ctx.encounterTurnNumber > 1,
     autoDismiss: true,
     minDisplayMs: 2000,
-    maxDisplayMs: 8000,
+    maxDisplayMs: 10000,
     spotlight: false,
   },
-  // 8. AP running low — nudge toward end turn or tight budgeting
+
+  // ═══════════════════════════════════════════════════════════
+  // PHASE 4 — UI Tour (proactive, after first card)
+  // ═══════════════════════════════════════════════════════════
+
   {
-    id: 'ap_running_low',
+    id: 'draw_pile_intro',
+    mode: 'combat',
+    anchor: { target: 'draw-pile', position: 'right' },
+    proactive: true,
+    blockInput: true,
+    getMessage: () =>
+      'Draw Pile — cards you have not drawn yet. You draw a fresh hand each turn. When it empties, your discard pile shuffles back in.',
+    showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  {
+    id: 'discard_pile_intro',
+    mode: 'combat',
+    anchor: { target: 'discard-pile', position: 'left' },
+    proactive: true,
+    blockInput: true,
+    getMessage: () =>
+      'Discard Pile — played cards land here. When your draw pile empties, the discard pile reshuffles automatically. Your deck cycles indefinitely.',
+    showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  {
+    id: 'fog_meter_intro',
+    mode: 'combat',
+    anchor: { target: 'fog-wing-wrapper', position: 'below' },
+    proactive: true,
+    blockInput: true,
+    getMessage: (ctx) => {
+      if (ctx.fogLevel === null) return null
+      return 'The Focus Meter. Answer questions correctly to stay in Flow State and draw extra cards. Too many wrong answers trigger Brain Fog — enemies hit harder. Stay sharp.'
+    },
+    showWhen: (ctx) =>
+      ctx.cardsPlayedThisTurn >= 1 &&
+      ctx.phase === 'player_action' &&
+      ctx.fogLevel !== null,
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // PHASE 5 — Turn Management (proactive)
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 'ap_status_reminder',
     mode: 'combat',
     anchor: { target: 'ap-indicator', position: 'left' },
-    getMessage: (ctx) => `${ctx.apCurrent} AP left. Budget wisely — or end your turn.`,
-    showWhen: (ctx) =>
-      ctx.phase === 'player_action' &&
-      ctx.apCurrent > 0 &&
-      ctx.apCurrent < ctx.apMax &&
-      ctx.cardsPlayedThisTurn > 0,
-    doneWhen: (ctx) => ctx.apCurrent === 0 || ctx.phase !== 'player_action',
-    autoDismiss: true,
-    minDisplayMs: 2000,
-    maxDisplayMs: 8000,
-    spotlight: false,
+    proactive: true,
+    getMessage: (ctx) =>
+      `You have ${ctx.apCurrent} AP left. Play more cards or end your turn whenever you like — you do not have to spend every AP.`,
+    showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 20000,
+    spotlight: true,
   },
-  // 9. End turn prompt — hand or AP exhausted, player should end turn
+
   {
     id: 'end_turn_prompt',
     mode: 'combat',
     anchor: { target: 'end-turn-btn', position: 'above' },
-    getMessage: () => 'Done playing cards? Hit End Turn. The enemy moves next.',
-    showWhen: (ctx) =>
-      ctx.phase === 'player_action' &&
-      (ctx.apCurrent === 0 || ctx.handSize === 0) &&
-      ctx.cardsPlayedThisTurn > 0,
+    proactive: true,
+    getMessage: () =>
+      'When you are done playing cards, tap End Turn. The enemy takes their action, then you draw a fresh hand.',
+    showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
     doneWhen: (ctx) => ctx.phase !== 'player_action',
     autoDismiss: true,
     minDisplayMs: 1500,
-    maxDisplayMs: 10000,
+    maxDisplayMs: 60000,
     spotlight: true,
   },
-  // 10. Enemy turn explanation — first time the enemy attacks
+
+  // ═══════════════════════════════════════════════════════════
+  // PHASE 6 — Enemy Turn (reactive)
+  // ═══════════════════════════════════════════════════════════
+
   {
-    id: 'enemy_turn_explain',
+    id: 'enemy_attacks',
     mode: 'combat',
     anchor: { target: 'enemy-sprite', position: 'below' },
     getMessage: (ctx) =>
-      ctx.enemyName
-        ? `${ctx.enemyName} attacks! Shield cards absorb damage before it hits your HP.`
-        : 'The enemy attacks! Shield cards absorb damage before it hits your HP.',
+      `${ctx.enemyName ?? 'The enemy'} takes their turn! Shield cards you played absorb damage before it reaches your HP.`,
     showWhen: (ctx) => ctx.phase === 'enemy_turn' && ctx.encounterTurnNumber <= 2,
     doneWhen: (ctx) => ctx.phase === 'player_action' && ctx.encounterTurnNumber > 1,
     autoDismiss: true,
@@ -257,13 +407,29 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     maxDisplayMs: 6000,
     spotlight: false,
   },
-  // 11. Enemy intent reading — second turn, player can now plan around it
+
+  // ═══════════════════════════════════════════════════════════
+  // PHASE 7 — Turn 2+ contextual (reactive)
+  // ═══════════════════════════════════════════════════════════
+
   {
-    id: 'enemy_intent_read',
+    id: 'intent_planning',
     mode: 'combat',
     anchor: { target: 'enemy-intent', position: 'below' },
-    getMessage: () =>
-      "Watch the enemy's intent — it shows what they'll do next. Plan around it.",
+    getMessage: (ctx) => {
+      if (!ctx.enemyIntentType) return null
+      const intentDescMap: Record<string, string> = {
+        attack: `attacking for ${ctx.enemyIntentValue ?? '?'} — play Shield cards to absorb it`,
+        defend: 'defending — push damage now while they are not attacking',
+        buff: 'buffing — press hard before they grow stronger',
+        debuff: 'planning to weaken you — plan your strongest Charges',
+        heal: 'healing — hit hard now to counter it',
+        charge: 'charging a big attack — shield up',
+        multi_attack: `hitting you multiple times — shields are critical`,
+      }
+      const desc = intentDescMap[ctx.enemyIntentType] ?? 'preparing something'
+      return `The enemy is ${desc}. Plan your cards around the intent icon every turn.`
+    },
     showWhen: (ctx) =>
       ctx.phase === 'player_action' &&
       ctx.encounterTurnNumber === 2 &&
@@ -272,16 +438,160 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     doneWhen: (ctx) => ctx.cardsPlayedThisTurn > 0 || ctx.encounterTurnNumber > 2,
     autoDismiss: true,
     minDisplayMs: 2000,
+    maxDisplayMs: 12000,
+    spotlight: false,
+  },
+
+  {
+    id: 'enemy_passive_reminder',
+    mode: 'combat',
+    anchor: { target: 'enemy-power-badges', position: 'below' },
+    getMessage: (ctx) => {
+      if (!ctx.enemyPassives || ctx.enemyPassives.length === 0) return null
+      return `Remember: ${ctx.enemyName ?? 'This enemy'} has a passive — ${ctx.enemyPassives[0]}. Factor this into your Quick Play vs Charge decisions.`
+    },
+    showWhen: (ctx) =>
+      ctx.phase === 'player_action' &&
+      ctx.encounterTurnNumber === 2 &&
+      ctx.cardsPlayedThisTurn === 0 &&
+      (ctx.enemyPassives?.length ?? 0) > 0,
+    doneWhen: (ctx) => ctx.cardsPlayedThisTurn > 0 || ctx.encounterTurnNumber > 2,
+    autoDismiss: true,
+    minDisplayMs: 2000,
     maxDisplayMs: 10000,
     spotlight: false,
   },
-  // 12. Chain intro — player has built a chain, explain the bonus
+
+  // ═══════════════════════════════════════════════════════════
+  // PHASE 8 — HUD Tour (proactive, turn 2+)
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 'deck_viewer_intro',
+    mode: 'combat',
+    anchor: { target: 'deck-btn', position: 'below' },
+    proactive: true,
+    blockInput: true,
+    getMessage: () =>
+      'Tap the deck icon to view all cards in your current deck. Know what is coming and plan around your strongest cards.',
+    showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  {
+    id: 'gold_intro',
+    mode: 'combat',
+    anchor: { target: 'gold-counter', position: 'below' },
+    proactive: true,
+    blockInput: true,
+    getMessage: () =>
+      'Your gold. Earn it by defeating enemies. Spend it at shops between fights to buy new cards and relics.',
+    showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  {
+    id: 'relics_intro',
+    mode: 'combat',
+    anchor: { target: 'relics-row', position: 'below' },
+    proactive: true,
+    blockInput: true,
+    getMessage: (ctx) =>
+      (ctx.relicCount ?? 0) > 0
+        ? `Your Relics — powerful permanent bonuses for the entire run. You have ${ctx.relicCount}. Collect more from shops and events.`
+        : 'Relic slots — currently empty. Relics grant permanent bonuses for the entire run. Find them at shops, events, and boss rewards.',
+    showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  {
+    id: 'music_intro',
+    mode: 'combat',
+    anchor: { target: 'music-widget', position: 'below' },
+    proactive: true,
+    blockInput: true,
+    getMessage: () =>
+      'Music controls. Tap to expand — switch between Epic battle music and Lo-Fi study vibes, or toggle ambient sounds.',
+    showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  {
+    id: 'settings_intro',
+    mode: 'combat',
+    anchor: { target: 'pause-btn', position: 'below' },
+    proactive: true,
+    blockInput: true,
+    getMessage: () =>
+      'The gear icon pauses the game and opens settings. Adjust volume, text size, and more. You can also abandon the run from here.',
+    showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // Ongoing contextual (reactive, any turn)
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 'quiz_wrong_ok',
+    mode: 'combat',
+    anchor: { target: 'screen-center', position: 'center' },
+    getMessage: () =>
+      'Wrong answer — but the card still played at reduced power. You are never stuck. Wrong answers are a tempo cost, not a dead end.',
+    showWhen: (ctx) =>
+      ctx.hasAnsweredWrong && ctx.phase === 'player_action' && ctx.encounterTurnNumber <= 3,
+    doneWhen: (ctx) => ctx.cardsPlayedThisTurn > 1 || ctx.encounterTurnNumber > 2,
+    autoDismiss: true,
+    minDisplayMs: 2500,
+    maxDisplayMs: 8000,
+    spotlight: false,
+  },
+
+  {
+    id: 'ap_running_low',
+    mode: 'combat',
+    anchor: { target: 'ap-indicator', position: 'left' },
+    getMessage: (ctx) =>
+      `${ctx.apCurrent} AP remaining. Play what you can afford or end your turn.`,
+    showWhen: (ctx) =>
+      ctx.phase === 'player_action' &&
+      ctx.apCurrent > 0 &&
+      ctx.apCurrent < ctx.apMax &&
+      ctx.cardsPlayedThisTurn > 1 &&
+      ctx.encounterTurnNumber <= 3,
+    doneWhen: (ctx) => ctx.apCurrent === 0 || ctx.phase !== 'player_action',
+    autoDismiss: true,
+    minDisplayMs: 2000,
+    maxDisplayMs: 8000,
+    spotlight: false,
+  },
+
   {
     id: 'chain_intro',
     mode: 'combat',
     anchor: { target: 'chain-counter', position: 'left' },
     getMessage: (ctx) =>
-      `Chain x${ctx.chainLength}! Consecutive correct charges multiply your damage.`,
+      `Knowledge Chain x${ctx.chainLength}! Consecutive correct Charges in the same topic multiply your damage. Keep answering correctly to grow it.`,
     showWhen: (ctx) => ctx.chainLength >= 2 && ctx.phase === 'player_action',
     doneWhen: (ctx) => ctx.cardsPlayedThisTurn > 0 || ctx.chainLength === 0,
     autoDismiss: true,
@@ -289,12 +599,13 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     maxDisplayMs: 8000,
     spotlight: false,
   },
-  // 13. Surge intro — surge turn grants bonus AP
+
   {
     id: 'surge_intro',
     mode: 'combat',
     anchor: { target: 'surge-border', position: 'center' },
-    getMessage: () => 'Surge turn! You get +1 bonus AP.',
+    getMessage: () =>
+      'Surge Turn! You gained +1 bonus AP. Surge turns occur every few turns — great for Charging expensive cards.',
     showWhen: (ctx) =>
       ctx.isSurgeTurn && ctx.phase === 'player_action' && ctx.cardsPlayedThisTurn === 0,
     doneWhen: (ctx) => ctx.cardsPlayedThisTurn > 0 || !ctx.isSurgeTurn,

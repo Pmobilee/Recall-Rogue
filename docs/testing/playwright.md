@@ -129,6 +129,8 @@ window.__rrScenario.setFloor(5)
 
 `ScenarioConfig` fields (from `src/dev/scenarioSimulator.ts`) allow deep state control: `enemy`, `enemyHp`, `playerHp`, `hand`, `relics`, `gold`, `floor`, `domain`, `chainTypes`, `rewards`, `shopRelics`, `shopCards`, `mysteryEventId`, `ascension`, and more.
 
+**Named scenario defaults (2026-04-14):** The `shop-loaded` scenario now seeds `shopRelics` with `phoenix_feather`, `dragon_s_heart`, and `paradox_engine` (previously `whetstone`, `iron_shield`, `crit_lens`). The `mystery-event` scenario now sets `deckId: 'ancient_rome'` and seeds ~20 fake quiz history entries at ~70% accuracy, so topic-dependent mystery events (e.g. Meditation Chamber) display real subject data instead of empty state.
+
 ### Non-combat scenario correctness (2026-04-04)
 
 `loadNonCombatScenario()` sets `gameFlowState` to the matching state **before** writing `currentScreen`. This is required because when a combat run is active `gameFlowState` stays `'combat'`, and reactive guards in `CardApp` use `gameFlowState` (not just `currentScreen`) to decide which screen to show. Without the state update, `currentScreen` is overridden back to combat immediately.

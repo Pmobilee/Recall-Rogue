@@ -14,6 +14,10 @@
  * Stores are intentionally defined here (not in a separate tutorialStore.ts) because
  * the store values and mutation logic are tightly coupled — separating them would require
  * import cycles or overly broad shared state.
+ *
+ * Step evaluation uses a sequential cursor (stepCursor) rather than a free scan.
+ * Proactive steps fire immediately when the cursor reaches them (getMessage null = skip).
+ * Reactive steps pause the cursor until showWhen becomes true.
  */
 
 import { writable, get } from 'svelte/store'
@@ -54,6 +58,9 @@ export const tutorialAnchor = writable<TutorialAnchor | null>(null)
 /** Whether the current step requests a spotlight (background dim behind anchor). */
 export const tutorialSpotlight = writable<boolean>(false)
 
+/** Whether the current step blocks game input (proactive + spotlight or blockInput). */
+export const tutorialBlocksInput = writable<boolean>(false)
+
 // ---------------------------------------------------------------------------
 // Internal state — not exported; mutated only by this module
 // ---------------------------------------------------------------------------
@@ -69,6 +76,9 @@ let currentStepStartTime = 0
 
 /** Handle for the maxDisplayMs auto-dismiss timer. */
 let maxDisplayTimer: ReturnType<typeof setTimeout> | null = null
+
+/** Index into the steps array — the next step to evaluate. */
+let stepCursor = 0
 
 // ---------------------------------------------------------------------------
 // Internal helpers
@@ -91,7 +101,7 @@ function getStepsForMode(mode: TutorialMode): TutorialStep[] {
  */
 function markRelatedTooltips(stepId: string): void {
   switch (stepId) {
-    case 'tap_card':
+    case 'tap_card_prompt':
     case 'hand_intro':
       markOnboardingTooltipSeen('hasSeenCardTapTooltip')
       break
@@ -101,7 +111,8 @@ function markRelatedTooltips(stepId: string): void {
     case 'end_turn_prompt':
       markOnboardingTooltipSeen('hasSeenEndTurnTooltip')
       break
-    case 'ap_running_low':
+    case 'ap_intro':
+    case 'ap_status_reminder':
       markOnboardingTooltipSeen('hasSeenAPTooltip')
       break
   }
@@ -115,15 +126,37 @@ function clearDisplayState(): void {
   tutorialSpotlight.set(false)
 }
 
-/** Dismiss the current step and add it to the completed set. */
+/** Activate a step and update all display stores. */
+function activateStep(step: TutorialStep, msg: string): void {
+  clearMaxDisplayTimer()
+  currentStep = step
+  currentStepStartTime = performance.now()
+
+  const blocking = !!(step.proactive && step.spotlight) || step.blockInput === true
+  tutorialStepId.set(step.id)
+  tutorialMessage.set(msg)
+  tutorialAnchor.set(step.anchor)
+  tutorialSpotlight.set(step.spotlight)
+  tutorialBlocksInput.set(blocking)
+
+  if (step.maxDisplayMs !== undefined) {
+    maxDisplayTimer = setTimeout(() => {
+      advanceStep()
+    }, step.maxDisplayMs)
+  }
+}
+
+/** Dismiss the current step, advance the cursor, and clear blocking state. */
 function completeCurrentStep(): void {
   if (currentStep) {
     completedSteps.add(currentStep.id)
     markRelatedTooltips(currentStep.id)
     currentStep = null
+    stepCursor++
   }
   clearMaxDisplayTimer()
   clearDisplayState()
+  tutorialBlocksInput.set(false)
 }
 
 // ---------------------------------------------------------------------------
@@ -139,9 +172,11 @@ export function startTutorial(mode: TutorialMode): void {
   completedSteps = new Set()
   currentStep = null
   currentStepStartTime = 0
+  stepCursor = 0
 
   tutorialActive.set(true)
   tutorialMode.set(mode)
+  tutorialBlocksInput.set(false)
   clearDisplayState()
 }
 
@@ -158,6 +193,7 @@ export function skipTutorial(): void {
 
   tutorialActive.set(false)
   tutorialMode.set(null)
+  tutorialBlocksInput.set(false)
   clearDisplayState()
   currentStep = null
 }
@@ -171,7 +207,7 @@ export function advanceStep(): void {
 }
 
 /**
- * Core reactive evaluator.
+ * Core reactive evaluator — sequential cursor engine.
  *
  * Call this from a Svelte $effect whenever game state changes. It reads the current
  * TutorialContext, decides whether to advance the current step or activate a new one,
@@ -179,9 +215,10 @@ export function advanceStep(): void {
  *
  * Design invariants:
  * - Never interrupts a step that is still within its minDisplayMs window.
- * - Steps are evaluated in array order; first match wins.
+ * - Steps are evaluated in cursor order; proactive steps fire immediately, reactive steps
+ *   pause the cursor until showWhen becomes true.
  * - A step already shown in currentStep is not replaced by a later step.
- * - When all steps are completed, marks the tutorial seen and deactivates.
+ * - When all steps are consumed, marks the tutorial seen and deactivates.
  */
 export function evaluateTutorialStep(ctx: TutorialContext): void {
   if (!get(tutorialActive)) return
@@ -189,60 +226,63 @@ export function evaluateTutorialStep(ctx: TutorialContext): void {
   const mode = get(tutorialMode)
   if (!mode) return
 
+  const steps = getStepsForMode(mode)
   const now = performance.now()
 
-  // Check if the currently displayed step's doneWhen has fired
+  // ── Check if current step should complete ─────────────────────────
   if (currentStep) {
     const elapsed = now - currentStepStartTime
     if (currentStep.doneWhen(ctx) && elapsed >= currentStep.minDisplayMs) {
-      // Step is done — auto-dismiss if configured, otherwise wait for manual "Got it"
       if (currentStep.autoDismiss) {
         completeCurrentStep()
       }
-      // If not autoDismiss, the step stays until advanceStep() is called manually
+      // If not autoDismiss, wait for manual advanceStep()
+    }
+    // Current step still active — don't replace it
+    if (currentStep) return
+  }
+
+  // ── Advance cursor to next step ───────────────────────────────────
+  while (stepCursor < steps.length) {
+    const step = steps[stepCursor]
+
+    // Skip already-completed steps
+    if (completedSteps.has(step.id)) {
+      stepCursor++
+      continue
+    }
+
+    if (step.proactive) {
+      // Proactive: fire immediately, but check getMessage for null (skip if null)
+      const msg = step.getMessage(ctx)
+      if (msg === null) {
+        // Skip this step entirely (e.g. no enemy passives)
+        completedSteps.add(step.id)
+        stepCursor++
+        continue
+      }
+      activateStep(step, msg)
+      return
     } else {
-      // Current step still active — don't replace it
+      // Reactive: check showWhen
+      if (step.showWhen(ctx)) {
+        const msg = step.getMessage(ctx)
+        if (msg !== null) {
+          activateStep(step, msg)
+          return
+        }
+        // getMessage returned null — skip
+        completedSteps.add(step.id)
+        stepCursor++
+        continue
+      }
+      // showWhen not yet true — pause cursor here, wait for condition
       return
     }
   }
 
-  // Find the next uncompleted step whose showWhen fires and has a non-null message
-  const steps = getStepsForMode(mode)
-  let nextStep: TutorialStep | null = null
-
-  for (const step of steps) {
-    if (completedSteps.has(step.id)) continue
-    if (step.showWhen(ctx)) {
-      const msg = step.getMessage(ctx)
-      if (msg !== null) {
-        nextStep = step
-        break
-      }
-    }
-  }
-
-  if (nextStep !== null) {
-    clearMaxDisplayTimer()
-    currentStep = nextStep
-    currentStepStartTime = now
-
-    tutorialStepId.set(nextStep.id)
-    tutorialMessage.set(nextStep.getMessage(ctx))
-    tutorialAnchor.set(nextStep.anchor)
-    tutorialSpotlight.set(nextStep.spotlight)
-
-    // Schedule auto-dismiss after maxDisplayMs if the step defines one
-    if (nextStep.maxDisplayMs !== undefined) {
-      maxDisplayTimer = setTimeout(() => {
-        advanceStep()
-      }, nextStep.maxDisplayMs)
-    }
-    return
-  }
-
-  // No step active and no next step found — check if all steps are done
-  const allDone = steps.every((s) => completedSteps.has(s.id))
-  if (allDone && !currentStep) {
+  // ── All steps consumed — tutorial complete ────────────────────────
+  if (!currentStep) {
     if (mode === 'combat') markCombatTutorialSeen()
     if (mode === 'study') markStudyTutorialSeen()
     tutorialActive.set(false)

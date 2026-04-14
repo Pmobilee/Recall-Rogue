@@ -290,7 +290,7 @@
     <span class="floor-label">Floor {currentFloor}</span>
 
     <!-- Gold -->
-    <div class="gold-counter" role="button" tabindex="0" aria-label="Gold: {currency}"
+    <div class="gold-counter" role="button" tabindex="0" aria-label="Gold: {currency}" data-tutorial-anchor="gold-counter"
       onmouseenter={() => { goldTooltipOpen = true }}
       onmouseleave={() => { goldTooltipOpen = false }}
       onclick={() => { goldTooltipOpen = !goldTooltipOpen }}
@@ -306,7 +306,7 @@
     </div>
 
     <!-- Relics row -->
-    <div class="relics-row" role="list" aria-label="Equipped relics">
+    <div class="relics-row" role="list" aria-label="Equipped relics" data-tutorial-anchor="relics-row">
       {#each relics as relic, i (relic.definitionId)}
         <button
           class="relic-btn"
@@ -351,6 +351,7 @@
     <!-- Deck viewer button — opens RunDeckOverlay to show all cards in the run -->
     <button
       class="deck-btn"
+      data-tutorial-anchor="deck-btn"
       aria-label="View current deck ({deckTotalCards()} cards)"
       onclick={openRunDeckOverlay}
       type="button"
@@ -373,6 +374,7 @@
     <!-- Pause button -->
     <button
       class="pause-btn"
+      data-tutorial-anchor="pause-btn"
       aria-label="Pause"
       onclick={onpause}
       type="button"
@@ -389,7 +391,7 @@
 {#if fogState !== undefined}
   {@const fl = fogLevel ?? 0}
   {@const displayFl = fl - 5}
-  <div class="fog-wing-wrapper" role="button" tabindex="0" aria-label="Focus meter" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'}
+  <div class="fog-wing-wrapper" role="button" tabindex="0" aria-label="Focus meter" data-tutorial-anchor="fog-wing-wrapper" class:fog-wing-danger={fogState === 'brain_fog'} class:fog-wing-flow={fogState === 'flow_state'}
     onclick={() => { fogTooltipOpen = !fogTooltipOpen }}
     onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') fogTooltipOpen = !fogTooltipOpen }}
     onmouseenter={() => { fogTooltipOpen = true }}
