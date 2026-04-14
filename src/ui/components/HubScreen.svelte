@@ -661,6 +661,7 @@
           <button class="dev-btn" onclick={() => steamScenario('card-reward-mixed')}>🃏 Rewards</button>
           <button class="dev-btn" onclick={() => steamScenario('rest-site')}>⛺ Rest</button>
           <button class="dev-btn" onclick={() => steamScenario('reward-relic')}>💎 Relic</button>
+          <button class="dev-btn" onclick={() => steamScenario('mystery-event')}>❓ Mystery</button>
         </div>
       </div>
       <PendingNextStepsOverlay />
@@ -920,6 +921,7 @@
         <button class="dev-btn" onclick={() => steamScenario('card-reward-mixed')}>🃏 Rewards</button>
         <button class="dev-btn" onclick={() => steamScenario('rest-site')}>⛺ Rest</button>
         <button class="dev-btn" onclick={() => steamScenario('reward-relic')}>💎 Relic</button>
+        <button class="dev-btn" onclick={() => steamScenario('mystery-event')}>❓ Mystery</button>
       </div>
     </div>
     <PendingNextStepsOverlay />

@@ -577,6 +577,11 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     mysteryEventId: 'knowledge_gamble',
     floor: 10,
   },
+  'mystery-reading-nook': {
+    screen: 'mysteryEvent',
+    mysteryEventId: 'reading_nook',
+    floor: 3,
+  },
 
   // === Special event (post-boss) ===
   'special-event': {

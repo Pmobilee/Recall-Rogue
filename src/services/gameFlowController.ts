@@ -239,7 +239,8 @@ export type GameFlowState =
   | 'restStudy'
   | 'restMeditate'
   | 'studyUpgradeSelection'
-  | 'runPreview';
+  | 'runPreview'
+  | 'cardUpgradeReveal';
   // 'starterRelicSelection' removed AR-59.12 — runs start directly at dungeonMap
 
 export const gameFlowState = writable<GameFlowState>('idle');
@@ -256,6 +257,22 @@ export const activeRelicRewardOptions = writable<RelicDefinition[]>([]);
 export const activeRelicPickup = writable<RelicDefinition | null>(null);
 export const activeUpgradeCandidates = writable<Array<{ card: Card; preview: UpgradePreview }>>([]);
 export const activeShopInventory = writable<ShopInventory | null>(null);
+
+/** Snapshot data passed to the CardUpgradeRevealOverlay when a mystery event upgrades a card. */
+export interface CardUpgradeRevealData {
+  beforeCard: Card;    // snapshot of card BEFORE upgrade
+  afterCard: Card;     // snapshot of card AFTER upgrade
+  mechanicName: string;
+  beforeLevel: number;
+  afterLevel: number;
+}
+
+/**
+ * Set when upgradeRandomCard mystery effect fires and an eligible card exists.
+ * The UI subscribes and shows CardUpgradeRevealOverlay before returning to the map.
+ * Cleared by onCardUpgradeRevealDismissed() after the player dismisses the overlay.
+ */
+export const activeCardUpgradeReveal = writable<CardUpgradeRevealData | null>(null);
 
 /**
  * Set when Study quiz completes with upgradeable cards.
@@ -1875,7 +1892,7 @@ function openShopRoom(): void {
     run.selectedArchetype,
     run.floor.currentFloor,
   );
-  const shopCardCount = hasMerchantsFavor ? 4 : 3; // merchants_favor: +1 card option
+  const shopCardCount = hasMerchantsFavor ? 7 : 6; // merchants_favor: +1 card option
   const rawShopCards = priceShopCards(cardRewardOptions.slice(0, shopCardCount), run.floor.currentFloor);
 
   // 14.7 — Apply deck-mean-based mastery to each shop card so the UI shows mastery
@@ -2963,8 +2980,11 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
   // Capture event ID before applying/clearing — needed for per-event narration (13.4).
   const mysteryEventId = get(activeMysteryEvent)?.id;
 
-  // Apply all single-step effects directly
-  applyMysteryEffect(effect, run);
+  // Apply all single-step effects directly.
+  // upgradeRandomCard is handled inline in the switch below (we need before/after snapshots for the reveal overlay).
+  if (effect.type !== 'upgradeRandomCard') {
+    applyMysteryEffect(effect, run);
+  }
 
   // Route based on effect type
   switch (effect.type) {
@@ -2991,8 +3011,47 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
       openCardReward();
       break;
     }
+    case 'upgradeRandomCard': {
+      // Pick and upgrade the card, then show a reveal popup instead of silently returning to map.
+      // Do NOT call applyMysteryEffect for this case — we handle the upgrade inline to capture before/after snapshots.
+      const allCards = getActiveDeckCards();
+      const eligible = allCards.filter(c => canMasteryUpgrade(c));
+      if (eligible.length > 0) {
+        const card = eligible[Math.floor(Math.random() * eligible.length)];
+        const beforeCard = { ...card };
+        const beforeLevel = card.masteryLevel ?? 0;
+        masteryUpgrade(card);
+        const afterCard = { ...card };
+
+        activeCardUpgradeReveal.set({
+          beforeCard,
+          afterCard,
+          mechanicName: card.mechanicName ?? card.mechanicId ?? 'Card',
+          beforeLevel,
+          afterLevel: card.masteryLevel ?? 0,
+        });
+
+        activeMysteryEvent.set(null);
+        activeMasteryChallenge.set(null);
+        run.floor.lastSlotWasEvent = true;
+        activeRunState.set(run);
+        gameFlowState.set('cardUpgradeReveal');
+        currentScreen.set('cardUpgradeReveal');
+      } else {
+        // No eligible cards — applyMysteryEffect already no-op'd; return to map like default.
+        activeMysteryEvent.set(null);
+        activeMasteryChallenge.set(null);
+        run.floor.lastSlotWasEvent = true;
+        activeRunState.set(run);
+        showRoomExitNarrative('mystery', mysteryEventId);
+        activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+        gameFlowState.set('dungeonMap');
+        currentScreen.set('dungeonMap');
+      }
+      break;
+    }
     default: {
-      // All other effects (heal, damage, currency, maxHpChange, upgradeRandomCard,
+      // All other effects (heal, damage, currency, maxHpChange,
       // removeRandomCard, healPercent, transformCard, freeCard, nothing, choice)
       // already applied above — return to map.
       activeMysteryEvent.set(null);
@@ -3136,6 +3195,21 @@ export function onMysteryRoomCombatComplete(): void {
  */
 export function getIsMysteryRoomCombat(): boolean {
   return isMysteryRoomCombat;
+}
+
+/**
+ * Called when the player dismisses the card upgrade reveal overlay.
+ * Clears the reveal data and returns to the dungeon map.
+ */
+export function onCardUpgradeRevealDismissed(): void {
+  activeCardUpgradeReveal.set(null);
+  const run = get(activeRunState);
+  if (run) {
+    showRoomExitNarrative('mystery');
+    activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+  }
+  gameFlowState.set('dungeonMap');
+  currentScreen.set('dungeonMap');
 }
 
 export function onRestResolved(): void {

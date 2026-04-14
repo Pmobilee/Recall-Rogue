@@ -96,6 +96,8 @@
     pendingTransformOptions,
     onShopTransform,
     onShopTransformChoice,
+    activeCardUpgradeReveal,
+    onCardUpgradeRevealDismissed,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -163,6 +165,7 @@
   import UpgradeSelectionOverlay from './ui/components/UpgradeSelectionOverlay.svelte'
   import PostMiniBossRestOverlay from './ui/components/PostMiniBossRestOverlay.svelte'
   import CardPickerOverlay from './ui/components/CardPickerOverlay.svelte'
+  import CardUpgradeRevealOverlay from './ui/components/CardUpgradeRevealOverlay.svelte'
   import DungeonMap from './ui/components/DungeonMap.svelte'
   // StarterRelicSelection removed in AR-59.12 — file kept as dead code pending deletion approval
   import DeckSelectionHub from './ui/components/DeckSelectionHub.svelte'
@@ -1823,6 +1826,19 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         playerHp={run?.playerHp ?? 0}
         playerMaxHp={run?.playerMaxHp ?? 0}
         onresolve={handleMysteryResolve}
+      />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'cardUpgradeReveal' && $activeCardUpgradeReveal}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <CardUpgradeRevealOverlay
+        beforeCard={$activeCardUpgradeReveal.beforeCard}
+        afterCard={$activeCardUpgradeReveal.afterCard}
+        mechanicName={$activeCardUpgradeReveal.mechanicName}
+        beforeLevel={$activeCardUpgradeReveal.beforeLevel}
+        afterLevel={$activeCardUpgradeReveal.afterLevel}
+        ondismiss={onCardUpgradeRevealDismissed}
       />
     </div>
   {/if}
