@@ -2435,85 +2435,6 @@
     "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
   },
   {
-    "id": "general_knowledge-linus-torvalds-linux",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "inventions_tech",
-    "categoryL1": "general_knowledge",
-    "categoryL2": "inventions_tech",
-    "categoryL3": "",
-    "statement": "Linus Torvalds created the Linux kernel in 1991 as a student project, and it now powers most of the world's servers, supercomputers, and smartphones.",
-    "quizQuestion": "In what year did Linus Torvalds create the Linux kernel?",
-    "correctAnswer": "{1991}",
-    "distractors": [],
-    "acceptableAnswers": [
-      "1991"
-    ],
-    "explanation": "According to Wikipedia, Linus Torvalds, born December 28, 1969, is the creator and lead developer of the Linux kernel since 1991. What started as a student project now underpins the majority of internet infrastructure worldwide — and is the foundation of Android.",
-    "wowFactor": "Linux, the OS running most of the world's internet servers, started as a hobby project by a 21-year-old Finnish student named Linus Torvalds in 1991!",
-    "variants": [
-      {
-        "type": "true_false",
-        "question": "True or false: Linus Torvalds created the Linux kernel in 1991.",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      },
-      {
-        "type": "reverse",
-        "question": "Which Finnish-American engineer created the Linux kernel in 1991?",
-        "correctAnswer": "Linus Torvalds",
-        "distractors": [
-          "Richard Stallman",
-          "Dennis Ritchie",
-          "Bill Gates"
-        ]
-      },
-      {
-        "type": "context",
-        "question": "A 21-year-old student releases a kernel that will eventually power billions of devices. What is it called?",
-        "correctAnswer": "Linux",
-        "distractors": [
-          "Unix",
-          "GNU",
-          "POSIX"
-        ]
-      },
-      {
-        "type": "fill_blank",
-        "question": "Linux was created by Linus Torvalds as a student project in ___.",
-        "correctAnswer": "1991",
-        "distractors": [
-          "1985",
-          "1995",
-          "1989"
-        ]
-      }
-    ],
-    "difficulty": 2,
-    "funScore": 8,
-    "noveltyScore": 7,
-    "ageRating": "teen",
-    "rarity": "common",
-    "sourceName": "Wikipedia",
-    "sourceUrl": "https://en.wikipedia.org/wiki/Linus_Torvalds",
-    "sourceVerified": true,
-    "contentVolatility": "timeless",
-    "sensitivityLevel": 0,
-    "sensitivityNote": null,
-    "visualDescription": "A young Linus Torvalds sits at a cluttered Finnish dorm desk in 1991, coding at a glowing terminal while a small penguin mascot watches from the shelf above.",
-    "tags": [
-      "linux",
-      "Linus Torvalds",
-      "open source",
-      "kernel",
-      "software"
-    ],
-    "_haikuProcessed": true,
-    "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
-  },
-  {
     "id": "general_knowledge-linus-torvalds-git",
     "type": "knowledge",
     "domain": "General Knowledge",
@@ -13312,95 +13233,6 @@
       "industry",
       "home appliances",
       "manufacturing"
-    ],
-    "_haikuProcessed": true,
-    "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
-  },
-  {
-    "id": "general_knowledge-steam-engine-spain-first-pump",
-    "type": "knowledge",
-    "domain": "General Knowledge",
-    "subdomain": "inventions_tech",
-    "categoryL1": "general_knowledge",
-    "categoryL2": "inventions_tech",
-    "categoryL3": "",
-    "statement": "In 1606, Spanish inventor Jerónimo de Ayanz y Beaumont patented the first steam-powered water pump — over a century before James Watt.",
-    "quizQuestion": "Who patented the first steam-powered water pump in 1606?",
-    "correctAnswer": "Jerónimo de Ayanz",
-    "distractors": [
-      "James Watt",
-      "Thomas Savery",
-      "Thomas Newcomen",
-      "Robert Boyle",
-      "Leonardo da Vinci",
-      "Denis Papin",
-      "William Rankine",
-      "Hero of Alexandria"
-    ],
-    "acceptableAnswers": [
-      "jerónimo de ayanz",
-      "ayanz",
-      "de ayanz y beaumont"
-    ],
-    "explanation": "According to Wikipedia, in 1606 Jerónimo de Ayanz y Beaumont patented his invention of the first steam-powered water pump for draining mines — predating the more famous steam pioneers by over a century.",
-    "wowFactor": "The inventor of the steam pump was Spanish, not British — and he filed his patent in 1606, over a century before Watt and Newcomen became household names!",
-    "variants": [
-      {
-        "type": "true_false",
-        "question": "True or false: the first steam-powered device was patented in 1606, over a century before Newcomen's engine.",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      },
-      {
-        "type": "context",
-        "question": "What was the first steam-powered water pump designed to do?",
-        "correctAnswer": "Drain mines",
-        "distractors": [
-          "Irrigate fields",
-          "Power looms",
-          "Pump sewage"
-        ]
-      },
-      {
-        "type": "reverse",
-        "question": "What nationality was Jerónimo de Ayanz, who patented the first steam pump in 1606?",
-        "correctAnswer": "Spanish",
-        "distractors": [
-          "British",
-          "French",
-          "Italian"
-        ]
-      },
-      {
-        "type": "fill_blank",
-        "question": "Steam-driven devices were known as early as the first century AD — the aeolipile was invented by ___ of Alexandria.",
-        "correctAnswer": "Hero",
-        "distractors": [
-          "Archimedes",
-          "Euclid",
-          "Ptolemy"
-        ]
-      }
-    ],
-    "difficulty": 5,
-    "funScore": 8,
-    "noveltyScore": 9,
-    "ageRating": "teen",
-    "rarity": "epic",
-    "sourceName": "Wikipedia",
-    "sourceUrl": "https://en.wikipedia.org/wiki/Steam_engine",
-    "sourceVerified": true,
-    "contentVolatility": "timeless",
-    "sensitivityLevel": 0,
-    "sensitivityNote": null,
-    "visualDescription": "A Renaissance-era Spanish inventor sketches blueprints by candlelight in 1606, a steam-powered mine pump model on the table beside him — a full century before Watt.",
-    "tags": [
-      "inventions",
-      "steam",
-      "history",
-      "records_firsts"
     ],
     "_haikuProcessed": true,
     "_haikuProcessedAt": "2026-03-20T00:00:00.000Z"
@@ -44400,7 +44232,7 @@
     "categoryL2": "everyday_science",
     "categoryL3": "",
     "statement": "Modal metaphysics investigates what it means for something to be possible or necessary — not just what IS, but what COULD be.",
-    "quizQuestion": "What branch of examines the concepts of possibility and necessity?",
+    "quizQuestion": "What branch of philosophy examines the concepts of possibility and necessity?",
     "correctAnswer": "Modal metaphysics",
     "distractors": [
       "Ontology",

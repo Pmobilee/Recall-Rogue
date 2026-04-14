@@ -485,7 +485,7 @@
       "correctAnswer": "Git",
       "acceptableAlternatives": [],
       "chainThemeId": 0,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "software_and_platforms",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "What distributed version-control system did Linus Torvalds create in 2005 to manage Linux kernel development after disagreeing with the existing tool's licensing?",
@@ -1079,7 +1079,7 @@
         "UNIVAC"
       ],
       "chainThemeId": 1,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "hardware_products",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "Which computer famously and correctly predicted Eisenhower's victory in the 1952 US presidential election for CBS News — though the broadcast network initially refused to air the result, doubting the computer?",
@@ -1322,7 +1322,7 @@
       "correctAnswer": "VisiCalc",
       "acceptableAlternatives": [],
       "chainThemeId": 1,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "software_and_platforms",
       "difficulty": 3,
       "funScore": 9,
       "quizQuestion": "What 1979 spreadsheet program — widely called the first 'killer app' — ran on the Apple II and drove the computer's massive commercial success?",
@@ -3392,7 +3392,7 @@
         "iPhone OS (renamed iOS in 2010)"
       ],
       "chainThemeId": 4,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "hardware_products",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Before Apple renamed it 'iOS' in 2010 when the iPad launched, what was Apple's mobile operating system originally called?",
@@ -4933,7 +4933,7 @@
         "MySpace"
       ],
       "chainThemeId": 5,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "software_and_platforms",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Which social network, founded in 2003 and famous for letting users customize their profile pages with HTML, was the world's most visited website from 2005 to 2008 — before being dethroned by Facebook?",
@@ -5317,7 +5317,7 @@
         "Jeopardy"
       ],
       "chainThemeId": 6,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "software_and_platforms",
       "difficulty": 1,
       "funScore": 8,
       "quizQuestion": "IBM's Watson AI defeated human champions Ken Jennings and Brad Rutter in February 2011 on what television quiz show?",
@@ -6309,7 +6309,7 @@
         "IBM personal computer"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "hardware_products",
       "difficulty": 3,
       "funScore": 7,
       "quizQuestion": "Lotus 1-2-3, released in 1983, is credited as the 'killer application' that drove mass adoption of which computer platform in corporate America?",
@@ -6452,7 +6452,7 @@
         "Macworld Expo"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "software_and_platforms",
       "difficulty": 2,
       "funScore": 8,
       "quizQuestion": "Steve Jobs announced the first iPhone in January 2007 at which annual Apple conference, calling it 'the most revolutionary product he'd introduced in a decade'?",
@@ -6496,7 +6496,7 @@
         "T-Mobile G1"
       ],
       "chainThemeId": 7,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "hardware_products",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "Android was first commercially released in 2008 on which smartphone — better known in the US as the T-Mobile G1?",
@@ -7192,7 +7192,7 @@
       "correctAnswer": "YouTube",
       "acceptableAlternatives": [],
       "chainThemeId": 7,
-      "answerTypePoolId": "product_names_short",
+      "answerTypePoolId": "software_and_platforms",
       "difficulty": 3,
       "funScore": 8,
       "quizQuestion": "The 'PayPal Mafia' — former PayPal employees who went on to found major tech companies — includes the founders of LinkedIn, Yelp, and which video platform?",
@@ -7659,32 +7659,6 @@
       ]
     },
     {
-      "id": "product_names_short",
-      "label": "Product & System Names (short)",
-      "answerFormat": "name",
-      "factIds": [
-        "cs_0_linus_torvalds_git",
-        "cs_7_lotus123_significance",
-        "cs_5_myspace_peak",
-        "cs_7_paypal_mafia_companies",
-        "cs_1_univac_election_prediction",
-        "cs_1_apple_ii_killer_app",
-        "cs_7_iphone_announcement_event",
-        "cs_4_ios_original_name",
-        "cs_6_watson_game",
-        "cs_7_android_first_device"
-      ],
-      "minimumSize": 5,
-      "homogeneityExemptNote": "Product names range from single words to full product titles — inherent domain variation",
-      "syntheticDistractors": [
-        "Mosaic",
-        "HyperCard",
-        "MS-DOS",
-        "WordStar",
-        "QuarkXPress"
-      ]
-    },
-    {
       "id": "product_names_long",
       "label": "Product & System Names (long)",
       "answerFormat": "name",
@@ -7820,6 +7794,60 @@
         "Integer Programming Problem"
       ],
       "homogeneityExemptNote": "NP-complete problem names — inherent minor length variation within class"
+    },
+    {
+      "id": "hardware_products",
+      "label": "Hardware Products & Devices",
+      "answerFormat": "name",
+      "factIds": [
+        "cs_1_univac_election_prediction",
+        "cs_4_ios_original_name",
+        "cs_7_android_first_device",
+        "cs_7_lotus123_significance"
+      ],
+      "minimumSize": 4,
+      "homogeneityExempt": false,
+      "syntheticDistractors": [
+        "Apple II",
+        "Commodore 64",
+        "Altair 8800",
+        "Osborne 1",
+        "TRS-80",
+        "Atari 800",
+        "ZX Spectrum",
+        "IBM PS/2",
+        "NeXT Cube",
+        "SGI Workstation",
+        "Sun Microsystems"
+      ]
+    },
+    {
+      "id": "software_and_platforms",
+      "label": "Software, Services & Platforms",
+      "answerFormat": "name",
+      "factIds": [
+        "cs_0_linus_torvalds_git",
+        "cs_1_apple_ii_killer_app",
+        "cs_5_myspace_peak",
+        "cs_6_watson_game",
+        "cs_7_iphone_announcement_event",
+        "cs_7_paypal_mafia_companies"
+      ],
+      "minimumSize": 5,
+      "homogeneityExempt": false,
+      "syntheticDistractors": [
+        "WordPerfect",
+        "Lotus Notes",
+        "Netscape Navigator",
+        "AOL Instant Messenger",
+        "ICQ",
+        "Friendster",
+        "GeoCities",
+        "AltaVista",
+        "Napster",
+        "Kazaa",
+        "HyperCard"
+      ]
     }
   ],
   "synonymGroups": [
