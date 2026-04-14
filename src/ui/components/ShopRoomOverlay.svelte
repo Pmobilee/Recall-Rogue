@@ -1081,9 +1081,6 @@
     flex-direction: column;
     justify-content: center;
     gap: calc(10px * var(--layout-scale, 1));
-    background: rgba(13, 17, 23, 0.85);
-    border: 1px solid rgba(100, 116, 139, 0.25);
-    border-radius: calc(14px * var(--layout-scale, 1));
     padding: calc(16px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     flex-shrink: 0;
   }

@@ -267,8 +267,8 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'shopRoom',
     gold: 120,
     floor: 3,
-    shopRelics: ['whetstone', 'iron_shield'],
-    // shopCards omitted → random 4 mechanics with random mastery levels
+    shopRelics: ['whetstone', 'iron_shield', 'crit_lens'],
+    // shopCards omitted → random 8 mechanics with random mastery levels
   },
 
   // === Mystery event ===
@@ -1036,7 +1036,7 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
 
     // Build shop cards — from explicit list or random mechanics
     const mechanicIds = config.shopCards
-      ?? Object.keys(MECHANIC_BY_ID).sort(() => Math.random() - 0.5).slice(0, 4);
+      ?? Object.keys(MECHANIC_BY_ID).sort(() => Math.random() - 0.5).slice(0, 8);
     for (const mId of mechanicIds) {
       const mechanic = MECHANIC_BY_ID[mId];
       if (!mechanic) { console.warn(`[__rrScenario] Unknown mechanic: ${mId}`); continue; }
