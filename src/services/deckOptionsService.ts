@@ -166,6 +166,27 @@ export function setKoreanRomanizationEnabled(enabled: boolean): void {
   setDeckOption('ko', 'romanization', enabled)
 }
 
+// ---- Map Explorer labels ----
+
+/**
+ * Check if country label overlay is enabled for Map Explorer cards.
+ * Defaults to true — labels are on by default for discoverability.
+ *
+ * @returns true if map labels are enabled, false otherwise
+ */
+export function isMapLabelsEnabled(): boolean {
+  return getDeckOption('map_explorer', 'showLabels', true)
+}
+
+/**
+ * Set the country label overlay toggle for Map Explorer cards.
+ *
+ * @param enabled - Whether country labels should be shown on the map
+ */
+export function setMapLabelsEnabled(enabled: boolean): void {
+  setDeckOption('map_explorer', 'showLabels', enabled)
+}
+
 // ---- Always-write mode ---
 
 /**
