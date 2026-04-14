@@ -112,7 +112,7 @@ export function guideStyle(x: number, y: number, w: number, h: number): string {
  */
 export const GUIDE_STYLES = {
   apCost: guideStyle(18, 10, 164, 160),
-  mechanicName: guideStyle(205, 112, 478, 86),
+  mechanicName: guideStyle(205, 125, 478, 86),
   artWindow: guideStyle(194, 186, 498, 412),
   cardType: guideStyle(243, 608, 400, 70),
   /** Pill-shaped chain color indicator — matches the frame's small oval cutout exactly */

@@ -567,10 +567,6 @@ function assignRoomTypes(
     }
   }
 
-  // [TEMPORARY DEV OVERRIDE] Force ALL nodes to mystery for playtesting — remove before shipping
-  for (const n of Object.values(nodes)) {
-    if (n.type !== 'boss') n.type = 'mystery'
-  }
 }
 
 // ============================================================
