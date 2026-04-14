@@ -560,12 +560,12 @@
   {/if}
 
   {#if shopInventory && (shopInventory.relics.length > 0 || shopInventory.cards.length > 0)}
-    <!-- ─── MAIN AREA: relics top | cards center | bottom bar ────── -->
+    <!-- ─── MAIN AREA: relics left | cards right (side-by-side) ────── -->
     <div class="shop-main">
 
-      <!-- Top: Relics as horizontal strip -->
+      <!-- Left: Relics panel (~33% width) -->
       {#if shopInventory.relics.length > 0}
-        <div class="relics-row">
+        <div class="relics-panel">
           {#if relicSlotsFull}<span class="slots-full-badge">Relic slots full</span>{/if}
           {#each shopInventory.relics as item (item.relic.id)}
             {#if !purchasedRelicIds.has(item.relic.id)}
@@ -607,35 +607,34 @@
         </div>
       {/if}
 
-      <!-- Center: 2x4 card grid -->
-      {#if shopInventory.cards.length > 0}
-        <div class="cards-grid">
-          {#each shopInventory.cards as item, idx (item.card.id)}
-            {#if !purchasedCardIndices.has(idx)}
-              {@const canAfford = currency >= item.price}
-              <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
-              <article class="card-visual-item" class:unaffordable={!canAfford}
-                class:shake={shakeItemId === `card-${idx}`} class:purchased={purchasedItemId === 'card-' + idx}
-                onclick={(e) => !canAfford && handleUnaffordableTap(item.price, `card-${idx}`, e)}
-              >
-                {#if shopInventory.saleCardIndex === idx}<div class="sale-ribbon">SALE</div>{/if}
-                <div class="shop-card-visual-wrapper"
-                  style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1)); height: calc({SHOP_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"
-                ><CardVisual card={item.card} /></div>
-                <button type="button" class="card-price-buy" class:disabled={!canAfford} disabled={!canAfford}
-                  data-testid="shop-buy-card-{idx}"
-                  onclick={() => canAfford && openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()}` })}
-                >{#if shopInventory?.saleCardIndex === idx}<span class="original-price">{item.price * 2}g</span> {item.price}g{:else}{item.price}g{/if}</button>
-              </article>
-            {:else}
-              <div class="card-slot-empty" style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"></div>
-            {/if}
-          {/each}
-        </div>
-      {/if}
+      <!-- Right: Cards grid + services (~66% width) -->
+      <div class="cards-area">
+        {#if shopInventory.cards.length > 0}
+          <div class="cards-grid">
+            {#each shopInventory.cards as item, idx (item.card.id)}
+              {#if !purchasedCardIndices.has(idx)}
+                {@const canAfford = currency >= item.price}
+                <!-- svelte-ignore a11y_no_noninteractive_element_interactions a11y_click_events_have_key_events -->
+                <article class="card-visual-item" class:unaffordable={!canAfford}
+                  class:shake={shakeItemId === `card-${idx}`} class:purchased={purchasedItemId === 'card-' + idx}
+                  onclick={(e) => !canAfford && handleUnaffordableTap(item.price, `card-${idx}`, e)}
+                >
+                  {#if shopInventory.saleCardIndex === idx}<div class="sale-ribbon">SALE</div>{/if}
+                  <div class="shop-card-visual-wrapper"
+                    style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1)); height: calc({SHOP_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"
+                  ><CardVisual card={item.card} /></div>
+                  <button type="button" class="card-price-buy" class:disabled={!canAfford} disabled={!canAfford}
+                    data-testid="shop-buy-card-{idx}"
+                    onclick={() => canAfford && openPurchaseModal({ type: 'card', cardIndex: idx, price: item.price, name: `${item.card.mechanicName ?? item.card.cardType.toUpperCase()}` })}
+                  >{#if shopInventory?.saleCardIndex === idx}<span class="original-price">{item.price * 2}g</span> {item.price}g{:else}{item.price}g{/if}</button>
+                </article>
+              {:else}
+                <div class="card-slot-empty" style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"></div>
+              {/if}
+            {/each}
+          </div>
+        {/if}
 
-      <!-- Bottom: Services + Leave unified bar -->
-      <div class="shop-bottom-bar">
         {#if shopInventory.removalCost != null}
           <div class="services-row">
             <button type="button" class="service-btn service-removal"
@@ -662,10 +661,6 @@
             </button>
           </div>
         {/if}
-
-        <button type="button" class="service-btn leave-shop-btn" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">
-          Leave Shop
-        </button>
       </div>
 
     </div>
@@ -706,9 +701,12 @@
     </div>
   {/if}
 
-
 </section>
 
+<!-- Leave Shop: fixed bottom-right, outside shop-main flow -->
+<button type="button" class="leave-shop-btn" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">
+  Leave Shop
+</button>
 
 <!-- Purchase Modal -->
 {#if pendingPurchase}
@@ -1036,9 +1034,8 @@
         staggerPopIn({
           container: overlayEl,
           elements: [
-            '.relics-row',
-            '.cards-grid',
-            '.shop-bottom-bar',
+            '.relics-panel',
+            '.cards-area',
           ],
           totalDuration: 2800,
         })
@@ -1065,25 +1062,29 @@
     overflow: hidden;
   }
 
-  /* ── Main area: column layout (relics top, cards center, bottom bar) */
+  /* ── Main area: row layout (relics left, cards+services right) */
   .shop-main {
     position: relative;
     z-index: 1;
     display: flex;
-    flex-direction: column;
-    gap: calc(8px * var(--layout-scale, 1));
+    flex-direction: row;
+    gap: calc(20px * var(--layout-scale, 1));
     flex: 1;
     min-height: 0;
     align-items: stretch;
   }
 
-  /* ── Top row: relics as horizontal strip ───────────────────── */
-  .relics-row {
+  /* ── Left column: relics panel (~33% width) ────────────────── */
+  .relics-panel {
+    width: 33%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    gap: calc(8px * var(--layout-scale, 1));
+    gap: calc(10px * var(--layout-scale, 1));
+    background: rgba(13, 17, 23, 0.85);
+    border: 1px solid rgba(100, 116, 139, 0.25);
+    border-radius: calc(14px * var(--layout-scale, 1));
+    padding: calc(16px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
     flex-shrink: 0;
   }
 
@@ -1217,15 +1218,23 @@
     opacity: 0.75;
   }
 
-  /* ── Cards grid: 2×4 CSS grid ───────────────────────────── */
+  /* ── Right column: cards area (flex: 1, ~66%) ──────────────── */
+  .cards-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(12px * var(--layout-scale, 1));
+    min-height: 0;
+  }
+
+  /* ── Cards grid: 4-across CSS grid ─────────────────────────── */
   .cards-grid {
     display: grid;
     grid-template-columns: repeat(4, auto);
     justify-content: center;
-    align-content: center;
     gap: calc(10px * var(--layout-scale, 1));
-    flex: 1;
-    min-height: 0;
   }
 
   .card-visual-item {
@@ -1252,16 +1261,16 @@
     font-size: calc(11px * var(--text-scale, 1));
   }
 
-  /* Combined price + buy pill — the gold badge IS the buy button */
+  /* Combined price + buy pill — sized to match relic buy buttons */
   .card-price-buy {
     background: rgba(107, 79, 0, 0.9);
     border: 1px solid #f1c40f;
     border-radius: calc(6px * var(--layout-scale, 1));
     color: #f9d56e;
-    font-size: calc(11px * var(--text-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
     font-weight: 700;
-    padding: calc(4px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-    min-height: calc(32px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    min-height: calc(36px * var(--layout-scale, 1));
     white-space: nowrap;
     text-align: center;
     cursor: pointer;
@@ -1287,23 +1296,13 @@
     margin-right: calc(4px * var(--layout-scale, 1));
   }
 
-  /* ── Services row (inside bottom bar) ─────────────────────── */
+  /* ── Services row (below cards grid in right column) ──────── */
   .services-row {
     display: flex;
     gap: calc(24px * var(--layout-scale, 1));
     justify-content: center;
     flex-shrink: 0;
-  }
-
-  /* ── Bottom bar: services + leave in one row ───────────────── */
-  .shop-bottom-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: calc(16px * var(--layout-scale, 1));
-    flex-shrink: 0;
-    padding: calc(8px * var(--layout-scale, 1)) 0;
+    margin-top: calc(24px * var(--layout-scale, 1));
   }
 
   .service-btn {
@@ -1843,8 +1842,12 @@
     justify-content: center;
   }
 
-  /* ── Leave Shop button (inside bottom bar) ────────────────── */
+  /* ── Leave Shop button (fixed bottom-right) ────────────────── */
   .leave-shop-btn {
+    position: fixed;
+    bottom: calc(16px * var(--layout-scale, 1));
+    right: calc(20px * var(--layout-scale, 1));
+    z-index: 225;
     background: rgba(180, 30, 30, 0.85);
     border: calc(2px * var(--layout-scale, 1)) solid #ef4444;
     color: #fef2f2;
@@ -1891,9 +1894,9 @@
     box-sizing: border-box;
   }
 
-  /* Landscape: relics row fits more icons before wrapping */
-  .shop-overlay.landscape .relics-row {
-    flex-wrap: wrap;
+  /* Landscape: relics panel fills its column */
+  .shop-overlay.landscape .relics-panel {
+    min-width: 0;
   }
 
   /* ── Shopkeeper bark ────────────────────────────────────────── */
