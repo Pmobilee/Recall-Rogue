@@ -1892,7 +1892,7 @@ function openShopRoom(): void {
     run.selectedArchetype,
     run.floor.currentFloor,
   );
-  const shopCardCount = hasMerchantsFavor ? 7 : 6; // merchants_favor: +1 card option
+  const shopCardCount = hasMerchantsFavor ? 9 : 8; // merchants_favor: +1 card option
   const rawShopCards = priceShopCards(cardRewardOptions.slice(0, shopCardCount), run.floor.currentFloor);
 
   // 14.7 — Apply deck-mean-based mastery to each shop card so the UI shows mastery

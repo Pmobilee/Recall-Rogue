@@ -931,7 +931,7 @@ export const POST_MINI_BOSS_HEAL_PCT = 0.15;
 /** Number of relics available per shop visit. */
 export const SHOP_RELIC_COUNT = 3;
 /** Number of cards available per shop visit. */
-export const SHOP_CARD_COUNT = 6;
+export const SHOP_CARD_COUNT = 8;
 
 /**
  * Relic prices by rarity (v2 pricing — AR-59.15, updated T1.3 2026-04-11).

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getRelicIconPath, getGoldCoinIconPath } from '../utils/iconAssets'
+  import { getRelicIconPath } from '../utils/iconAssets'
   import { openRunDeckOverlay } from '../stores/runDeckOverlayStore'
   import { activeTurnState } from '../../services/encounterBridge'
   import { PERMANENT_DURATION_SENTINEL } from '../../data/statusEffects'
@@ -296,7 +296,7 @@
       onclick={() => { goldTooltipOpen = !goldTooltipOpen }}
       onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') goldTooltipOpen = !goldTooltipOpen }}
     >
-      <img class="gold-icon-img" src={getGoldCoinIconPath()} alt="" aria-hidden="true" />
+      <span class="gold-icon-emoji" aria-hidden="true">💰</span>
       <span class="gold-value">{currency}</span>
       {#if goldTooltipOpen}
         <div class="gold-tooltip">
@@ -747,10 +747,9 @@
     margin-left: calc(8px * var(--layout-scale, 1));
   }
 
-  .gold-icon-img {
-    width: calc(24px * var(--layout-scale, 1));
-    height: calc(24px * var(--layout-scale, 1));
-    object-fit: contain;
+  .gold-icon-emoji {
+    font-size: calc(16px * var(--text-scale, 1));
+    line-height: 1;
   }
 
   .gold-value {

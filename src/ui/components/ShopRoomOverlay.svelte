@@ -254,6 +254,10 @@
   let showTransformOptions = $state(false)
   let transformOptions = $state<Card[]>([])
 
+  // === Picker confirmation state ===
+  let confirmRemovalTarget = $state<Card | null>(null)
+  let confirmTransformTarget = $state<Card | null>(null)
+
   /** Subscribe to pendingTransformOptions store for replacement card choices */
   $effect(() => {
     const unsub = pendingTransformOptions.subscribe(opts => {
@@ -544,18 +548,9 @@
   })
 </script>
 
-<!-- BG image sits OUTSIDE the overlay so it's not clipped by overflow:hidden -->
-<img class="shop-screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
 
 <section class="shop-overlay" bind:this={overlayEl} class:landscape={$isLandscape} aria-label="Shop room">
 
-  <!-- Small back button top-left -->
-  <button type="button" class="leave-shop-btn" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">←</button>
-
-  <!-- Gold counter top-right -->
-  <div class="shop-gold" class:gold-gain={goldFlash === 'gain'} class:gold-loss={goldFlash === 'loss'}>
-    💰 {currency}g
-  </div>
 
   {#if currentBark}
     <div class="shopkeeper-bark" transition:fade={{ duration: 200 }}>
@@ -703,7 +698,13 @@
     </div>
   {/if}
 
+
 </section>
+
+<!-- Leave Shop button — OUTSIDE the shop-overlay to escape its width constraint -->
+<button type="button" class="leave-shop-btn-new" data-testid="btn-leave-shop" onclick={handleLeaveShop} aria-label="Leave shop">
+  Leave Shop
+</button>
 
 <!-- Purchase Modal -->
 {#if pendingPurchase}
@@ -826,8 +827,9 @@
 <!-- Card Removal Picker -->
 {#if showRemovalPicker}
   <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Choose card to remove">
-    <div class="modal modal-removal">
+    <div class="modal modal-card-picker">
       <div class="modal-title">Remove Which Card?</div>
+      <div class="modal-note">Select a card from your deck to permanently remove.</div>
       {#if chainComposition.length > 0}
         <div class="chain-composition">
           {#each chainComposition as entry}
@@ -838,24 +840,21 @@
           {/each}
         </div>
       {/if}
-      <div class="removal-list">
+      <div class="picker-cards-grid">
         {#each removableCards as card (card.id)}
           <button
             type="button"
-            class="removal-card-btn"
+            class="picker-card-btn"
             class:burning={burningCardId === card.id}
-            onclick={() => pickCardForRemoval(card.id)}
+            onclick={() => confirmRemovalTarget = card}
+            aria-label="Remove {card.mechanicName ?? card.cardType}"
           >
-            <span class="removal-card-info">
-              <span class="removal-card-name">{card.mechanicName ?? card.cardType.toUpperCase()}</span>
-              {#if card.chainType !== undefined}
-                <span class="removal-chain-badge" style="color: {getChainTypeColor(card.chainType)};">
-                  <ChainIcon chainType={card.chainType} size={10} />
-                  {getChainTypeName(card.chainType)}
-                </span>
-              {/if}
-            </span>
-            <span class="removal-card-power">{getEffectLabel(card)}</span>
+            <div
+              class="shop-card-visual-wrapper"
+              style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1)); height: calc({SHOP_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"
+            >
+              <CardVisual {card} />
+            </div>
           </button>
         {/each}
       </div>
@@ -866,12 +865,36 @@
   </div>
 {/if}
 
+{#if confirmRemovalTarget}
+  <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Confirm removal" style="z-index: 310;">
+    <div class="modal modal-confirm">
+      <div class="modal-title">Remove this card?</div>
+      <div class="confirm-card-preview">
+        <div
+          class="shop-card-visual-wrapper"
+          style="width: calc({MODAL_CARD_W}px * var(--layout-scale, 1)); height: calc({MODAL_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({MODAL_CARD_W}px * var(--layout-scale, 1));"
+        >
+          <CardVisual card={confirmRemovalTarget} />
+        </div>
+      </div>
+      <div class="modal-note">{confirmRemovalTarget.mechanicName ?? confirmRemovalTarget.cardType} will be permanently removed from your deck.</div>
+      <div class="confirm-btns">
+        <button type="button" class="modal-btn modal-btn-confirm" onclick={() => {
+          pickCardForRemoval(confirmRemovalTarget!.id)
+          confirmRemovalTarget = null
+        }}>Remove</button>
+        <button type="button" class="modal-btn modal-btn-cancel" onclick={() => { confirmRemovalTarget = null }}>Cancel</button>
+      </div>
+    </div>
+  </div>
+{/if}
+
 <!-- Card Transform Picker: choose which card to transform -->
 {#if showTransformPicker}
   <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Choose card to transform">
-    <div class="modal modal-removal">
+    <div class="modal modal-card-picker">
       <div class="modal-title">Transform Which Card?</div>
-      <div class="modal-note">Pick a card — it will be destroyed and you'll pick from 3 replacements.</div>
+      <div class="modal-note">Pick a card — it will be destroyed and you'll choose from 3 replacements.</div>
       {#if chainComposition.length > 0}
         <div class="chain-composition">
           {#each chainComposition as entry}
@@ -882,30 +905,51 @@
           {/each}
         </div>
       {/if}
-      <div class="removal-list">
+      <div class="picker-cards-grid">
         {#each removableCards as card (card.id)}
           <button
             type="button"
-            class="removal-card-btn"
+            class="picker-card-btn"
             class:burning={burningCardId === card.id}
-            onclick={() => pickCardForTransform(card.id)}
+            onclick={() => confirmTransformTarget = card}
+            aria-label="Transform {card.mechanicName ?? card.cardType}"
           >
-            <span class="removal-card-info">
-              <span class="removal-card-name">{card.mechanicName ?? card.cardType.toUpperCase()}</span>
-              {#if card.chainType !== undefined}
-                <span class="removal-chain-badge" style="color: {getChainTypeColor(card.chainType)};">
-                  <ChainIcon chainType={card.chainType} size={10} />
-                  {getChainTypeName(card.chainType)}
-                </span>
-              {/if}
-            </span>
-            <span class="removal-card-power">{getEffectLabel(card)}</span>
+            <div
+              class="shop-card-visual-wrapper"
+              style="width: calc({SHOP_CARD_W}px * var(--layout-scale, 1)); height: calc({SHOP_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({SHOP_CARD_W}px * var(--layout-scale, 1));"
+            >
+              <CardVisual {card} />
+            </div>
           </button>
         {/each}
       </div>
       <button type="button" class="modal-btn modal-btn-cancel" onclick={() => { showTransformPicker = false }}>
         Cancel
       </button>
+    </div>
+  </div>
+{/if}
+
+{#if confirmTransformTarget}
+  <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Confirm transform" style="z-index: 310;">
+    <div class="modal modal-confirm">
+      <div class="modal-title">Transform this card?</div>
+      <div class="confirm-card-preview">
+        <div
+          class="shop-card-visual-wrapper"
+          style="width: calc({MODAL_CARD_W}px * var(--layout-scale, 1)); height: calc({MODAL_CARD_H}px * var(--layout-scale, 1)); --card-w: calc({MODAL_CARD_W}px * var(--layout-scale, 1));"
+        >
+          <CardVisual card={confirmTransformTarget} />
+        </div>
+      </div>
+      <div class="modal-note">{confirmTransformTarget.mechanicName ?? confirmTransformTarget.cardType} will be destroyed and replaced with a new card.</div>
+      <div class="confirm-btns">
+        <button type="button" class="modal-btn modal-btn-confirm" onclick={() => {
+          pickCardForTransform(confirmTransformTarget!.id)
+          confirmTransformTarget = null
+        }}>Transform</button>
+        <button type="button" class="modal-btn modal-btn-cancel" onclick={() => { confirmTransformTarget = null }}>Cancel</button>
+      </div>
     </div>
   </div>
 {/if}
@@ -988,7 +1032,6 @@
         staggerPopIn({
           container: overlayEl,
           elements: [
-            '.leave-shop-btn',
             '.shop-main',
             '.services-row',
           ],
@@ -1001,18 +1044,6 @@
 {/if}
 
 <style>
-  .shop-screen-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    object-fit: cover;
-    object-position: center;
-    z-index: 149;
-    pointer-events: none;
-  }
-
   .shop-overlay {
     position: fixed;
     top: var(--run-viewport-top, 0px);
@@ -1027,27 +1058,6 @@
     flex-direction: column;
     gap: calc(6px * var(--layout-scale, 1));
     overflow: hidden;
-  }
-
-  /* ── Leave shop button — compact arrow pill ──────────────── */
-  .leave-shop-btn {
-    position: relative;
-    z-index: 2;
-    background: rgba(10, 15, 25, 0.75);
-    border: 1px solid rgba(194, 157, 72, 0.4);
-    color: #e6edf3;
-    font-size: calc(14px * var(--text-scale, 1));
-    font-weight: 700;
-    padding: calc(3px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
-    border-radius: calc(6px * var(--layout-scale, 1));
-    cursor: pointer;
-    align-self: flex-start;
-    flex-shrink: 0;
-    max-width: calc(40px * var(--layout-scale, 1));
-  }
-  .leave-shop-btn:hover {
-    background: rgba(30, 40, 55, 0.95);
-    border-color: rgba(194, 157, 72, 0.8);
   }
 
   /* ── Main area: relics left | cards right ──────────────────── */
@@ -1773,40 +1783,75 @@
   }
 
   /* ── Removal / Transform picker ─────────────────────────────── */
-  .removal-list {
-    display: grid;
-    gap: calc(6px * var(--layout-scale, 1));
-    max-height: 50vh;
+  /* ── Full-card picker grid ───────────────────────────────── */
+  .modal-card-picker {
+    max-width: calc(1100px * var(--layout-scale, 1));
+    max-height: 85vh;
     overflow-y: auto;
   }
 
-  .removal-card-btn {
+  .picker-cards-grid {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: calc(44px * var(--layout-scale, 1));
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(12px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) 0;
+  }
+
+  .picker-card-btn {
+    background: none;
+    border: calc(2px * var(--layout-scale, 1)) solid rgba(148, 163, 184, 0.3);
     border-radius: calc(10px * var(--layout-scale, 1));
-    background: #1a2a1a;
-    border: 1px solid #2f914f;
-    color: #e6edf3;
-    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    padding: calc(4px * var(--layout-scale, 1));
     cursor: pointer;
-    gap: calc(8px * var(--layout-scale, 1));
+    transition: border-color 150ms ease, box-shadow 150ms ease;
   }
 
-  .removal-card-btn:hover {
-    background: #1f3d1f;
+  .picker-card-btn:hover {
+    border-color: #f1c40f;
+    box-shadow: 0 0 calc(16px * var(--layout-scale, 1)) rgba(241, 196, 15, 0.3);
   }
 
-  .removal-card-name {
+  /* ── Confirmation modal ──────────────────────────────────── */
+  .modal-confirm {
+    max-width: calc(360px * var(--layout-scale, 1));
+    text-align: center;
+  }
+
+  .confirm-card-preview {
+    display: flex;
+    justify-content: center;
+    padding: calc(8px * var(--layout-scale, 1)) 0;
+  }
+
+  .confirm-btns {
+    display: flex;
+    gap: calc(10px * var(--layout-scale, 1));
+    justify-content: center;
+  }
+
+  /* ── Leave Shop button ───────────────────────────────────── */
+  .leave-shop-btn-new {
+    position: fixed;
+    bottom: calc(16px * var(--layout-scale, 1));
+    right: calc(20px * var(--layout-scale, 1));
+    z-index: 225;
+    background: rgba(180, 30, 30, 0.85);
+    border: calc(2px * var(--layout-scale, 1)) solid #ef4444;
+    color: #fef2f2;
+    font-size: calc(14px * var(--text-scale, 1));
     font-weight: 700;
-    font-size: calc(13px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    cursor: pointer;
+    min-height: calc(44px * var(--layout-scale, 1));
+    transition: background 150ms ease;
+    box-shadow: 0 0 calc(12px * var(--layout-scale, 1)) rgba(239, 68, 68, 0.3);
   }
 
-  .removal-card-power {
-    font-size: calc(12px * var(--layout-scale, 1));
-    color: #9ba4ad;
-    white-space: nowrap;
+  .leave-shop-btn-new:hover {
+    background: rgba(220, 40, 40, 0.95);
+    border-color: #f87171;
   }
 
   .chain-composition {
@@ -1820,22 +1865,6 @@
 
   .chain-comp-item {
     font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: calc(3px * var(--layout-scale, 1));
-  }
-
-  .removal-card-info {
-    display: flex;
-    flex-direction: column;
-    gap: calc(2px * var(--layout-scale, 1));
-  }
-
-  .removal-chain-badge {
-    font-size: calc(10px * var(--layout-scale, 1));
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
     display: inline-flex;
     align-items: center;
     gap: calc(3px * var(--layout-scale, 1));
@@ -1942,21 +1971,6 @@
     50% { filter: brightness(2) saturate(3) hue-rotate(-15deg); opacity: 0.8; }
     80% { transform: scale(0.95); filter: brightness(1.5) saturate(1.5) hue-rotate(-30deg); opacity: 0.4; }
     100% { transform: scale(0.8) translateY(calc(-10px * var(--layout-scale, 1))); opacity: 0; filter: brightness(0.5); }
-  }
-
-  /* ── G: Gold counter display ────────────────────────────────── */
-  .shop-gold {
-    position: absolute;
-    top: calc(8px * var(--layout-scale, 1));
-    right: calc(20px * var(--layout-scale, 1));
-    z-index: 2;
-    font-size: calc(18px * var(--text-scale, 1));
-    font-weight: 800;
-    color: #f59e0b;
-    background: rgba(10, 15, 25, 0.75);
-    border: 1px solid rgba(245, 158, 11, 0.4);
-    border-radius: calc(8px * var(--layout-scale, 1));
-    padding: calc(6px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
   }
 
   /* ── H: Empty purchased slot placeholders ───────────────────── */
