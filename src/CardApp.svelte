@@ -135,6 +135,7 @@
   import { layoutMode } from './stores/layoutStore'
   import { restoreRunRngState } from './services/seededRng'
   import { getLanguageCodeForDeck } from './services/deckOptionsService'
+  import { isTurboMode } from './utils/turboMode'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -1362,7 +1363,13 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       if (enemyId) {
         exitEnemyId = enemyId
         combatTransitionType = 'exit-forward'
-        // Show doorway zone instead of auto-triggering the transition.
+        // In turbo/bot mode, skip the doorway click gate — proceed immediately.
+        if (isTurboMode()) {
+          combatExitWaiting = false
+          combatTransitionActive = true
+          return
+        }
+        // Normal mode: show doorway zone instead of auto-triggering the transition.
         // After 5 seconds, reveal the hint text.
         combatExitWaiting = true
         const timer = setTimeout(() => {
