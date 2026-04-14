@@ -267,7 +267,7 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     screen: 'shopRoom',
     gold: 120,
     floor: 3,
-    shopRelics: ['whetstone', 'iron_shield', 'crit_lens'],
+    shopRelics: ['phoenix_feather', 'dragon_s_heart', 'paradox_engine'],
     // shopCards omitted → random 8 mechanics with random mastery levels
   },
 
