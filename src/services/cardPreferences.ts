@@ -9,6 +9,9 @@ export type TextSize = 'small' | 'medium' | 'large'
 export type FontChoice = 'rpg' | 'dyslexic' | 'system'
 export type ColorBlindMode = 'off' | 'deuteranopia' | 'protanopia' | 'tritanopia'
 
+/** Which game mode's ascension track to read/write. */
+export type AscensionMode = 'trivia' | 'study'
+
 export interface OnboardingState {
   hasCompletedOnboarding: boolean
   hasSeenCardTapTooltip: boolean
@@ -25,9 +28,20 @@ export interface OnboardingState {
   tutorialDismissedEarly: boolean
 }
 
-export interface AscensionProfile {
+/** Per-mode ascension progress: highest level ever unlocked and the player's current selection. */
+export interface AscensionModeTrack {
   highestUnlockedLevel: number
   selectedLevel: number
+}
+
+/**
+ * Ascension profile split into independent trivia and study tracks.
+ * Persisted as 'card:ascensionProfile'. Old single-track saves are
+ * migrated on first read via sanitizeAscensionProfile.
+ */
+export interface AscensionProfile {
+  trivia: AscensionModeTrack
+  study: AscensionModeTrack
 }
 
 const defaultOnboardingState: OnboardingState = {
@@ -44,8 +58,8 @@ const defaultOnboardingState: OnboardingState = {
 }
 
 const defaultAscensionProfile: AscensionProfile = {
-  highestUnlockedLevel: 0,
-  selectedLevel: 0,
+  trivia: { highestUnlockedLevel: 0, selectedLevel: 0 },
+  study: { highestUnlockedLevel: 0, selectedLevel: 0 },
 }
 
 function read<T>(key: string, fallback: T): T {
@@ -88,12 +102,33 @@ function clampAscensionLevel(level: number): number {
   return Math.max(0, Math.min(MAX_ASCENSION_LEVEL, Math.floor(level)))
 }
 
-function sanitizeAscensionProfile(profile: AscensionProfile): AscensionProfile {
-  const highestUnlockedLevel = clampAscensionLevel(profile?.highestUnlockedLevel ?? 0)
-  const selectedLevel = Math.min(highestUnlockedLevel, clampAscensionLevel(profile?.selectedLevel ?? 0))
+function sanitizeTrack(track: unknown): AscensionModeTrack {
+  if (!track || typeof track !== 'object') return { highestUnlockedLevel: 0, selectedLevel: 0 }
+  const t = track as Record<string, unknown>
+  const highestUnlockedLevel = clampAscensionLevel(Number(t.highestUnlockedLevel) || 0)
+  const selectedLevel = Math.min(highestUnlockedLevel, clampAscensionLevel(Number(t.selectedLevel) || 0))
+  return { highestUnlockedLevel, selectedLevel }
+}
+
+function sanitizeAscensionProfile(profile: unknown): AscensionProfile {
+  if (!profile || typeof profile !== 'object') return defaultAscensionProfile
+  const p = profile as Record<string, unknown>
+
+  // Migrate old single-track format: { highestUnlockedLevel: N, selectedLevel: M }
+  if ('highestUnlockedLevel' in p && !('trivia' in p)) {
+    const highestUnlockedLevel = clampAscensionLevel(Number(p.highestUnlockedLevel) || 0)
+    const selectedLevel = Math.min(
+      highestUnlockedLevel,
+      clampAscensionLevel(Number(p.selectedLevel) || 0),
+    )
+    const migratedTrack: AscensionModeTrack = { highestUnlockedLevel, selectedLevel }
+    return { trivia: { ...migratedTrack }, study: { ...migratedTrack } }
+  }
+
+  // New format — sanitize each track independently
   return {
-    highestUnlockedLevel,
-    selectedLevel,
+    trivia: sanitizeTrack(p.trivia),
+    study: sanitizeTrack(p.study),
   }
 }
 
@@ -169,36 +204,45 @@ export function resetTutorialFlags(): void {
   }))
 }
 
-export function getAscensionLevel(): number {
-  return sanitizeAscensionProfile(get(ascensionProfile)).selectedLevel
+/**
+ * Returns the player's currently selected ascension level for the given mode track.
+ */
+export function getAscensionLevel(mode: AscensionMode): number {
+  return sanitizeAscensionProfile(get(ascensionProfile))[mode].selectedLevel
 }
 
-export function setAscensionLevel(level: number): void {
+/**
+ * Sets the selected ascension level for a mode track, clamped to the highest unlocked level.
+ */
+export function setAscensionLevel(mode: AscensionMode, level: number): void {
   ascensionProfile.update((profile) => {
     const safe = sanitizeAscensionProfile(profile)
-    const selectedLevel = Math.min(safe.highestUnlockedLevel, clampAscensionLevel(level))
-    return {
-      ...safe,
-      selectedLevel,
-    }
+    const track = safe[mode]
+    const selectedLevel = Math.min(track.highestUnlockedLevel, clampAscensionLevel(level))
+    return { ...safe, [mode]: { ...track, selectedLevel } }
   })
 }
 
-export function unlockAscensionLevel(level: number): void {
+/**
+ * Unlocks the given ascension level for a mode track (raises highestUnlockedLevel if higher).
+ * Auto-selects level 1 if the player hasn't manually chosen a level yet.
+ */
+export function unlockAscensionLevel(mode: AscensionMode, level: number): void {
   ascensionProfile.update((profile) => {
     const safe = sanitizeAscensionProfile(profile)
-    const highestUnlockedLevel = Math.max(safe.highestUnlockedLevel, clampAscensionLevel(level))
+    const track = safe[mode]
+    const highestUnlockedLevel = Math.max(track.highestUnlockedLevel, clampAscensionLevel(level))
     const selectedLevel = Math.min(
       highestUnlockedLevel,
-      safe.selectedLevel > 0 ? safe.selectedLevel : highestUnlockedLevel > 0 ? 1 : 0,
+      track.selectedLevel > 0 ? track.selectedLevel : highestUnlockedLevel > 0 ? 1 : 0,
     )
-    return {
-      highestUnlockedLevel,
-      selectedLevel,
-    }
+    return { ...safe, [mode]: { highestUnlockedLevel, selectedLevel } }
   })
 }
 
-export function unlockNextAscensionLevel(currentLevel: number): void {
-  unlockAscensionLevel(currentLevel + 1)
+/**
+ * Convenience wrapper: unlocks the level after currentLevel for the given mode track.
+ */
+export function unlockNextAscensionLevel(mode: AscensionMode, currentLevel: number): void {
+  unlockAscensionLevel(mode, currentLevel + 1)
 }

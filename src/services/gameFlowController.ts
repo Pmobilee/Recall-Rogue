@@ -49,6 +49,7 @@ import {
   getAscensionLevel,
   unlockAscensionLevel,
   unlockNextAscensionLevel,
+  type AscensionMode,
 } from './cardPreferences';
 import { STORY_MODE_FORCED_RUNS, ARCHETYPE_UNLOCK_RUNS, START_AP_PER_TURN } from '../data/balance';
 import { updateBounties } from './bountyManager';
@@ -907,13 +908,13 @@ function isAscensionSuccess(run: RunState, result: 'retreat' | 'victory' | 'defe
   return false
 }
 
-function progressAscensionAfterSuccess(run: RunState): void {
+function progressAscensionAfterSuccess(run: RunState, ascensionMode: AscensionMode): void {
   const currentLevel = run.ascensionLevel ?? 0
   if (currentLevel <= 0) {
-    unlockAscensionLevel(1)
+    unlockAscensionLevel(ascensionMode, 1)
     return
   }
-  unlockNextAscensionLevel(currentLevel)
+  unlockNextAscensionLevel(ascensionMode, currentLevel)
 }
 
 export function onDomainsSelected(primary: FactDomain, secondary: FactDomain): void {
@@ -930,7 +931,14 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
   const save = get(playerSave);
   const runNumber = save ? getRunNumberForDomain(save, pending.primary) : 1;
   const earlyBoostActive = save ? isEarlyBoostActiveForDomain(save, pending.primary) : true;
-  const selectedAscensionLevel = getAscensionLevel();
+  // Derive ascension track from the deck mode: study/procedural use the study track.
+  const ascensionMode: AscensionMode =
+    pendingDeckMode?.type === 'study' ||
+    pendingDeckMode?.type === 'procedural' ||
+    pendingDeckMode?.type === 'study-multi'
+      ? 'study'
+      : 'trivia'
+  const selectedAscensionLevel = getAscensionLevel(ascensionMode);
   const ascensionModifiers = getAscensionModifiers(selectedAscensionLevel);
   // Starter deck size: ascension overrides take priority; default is 15.
   const starterDeckSize = ascensionModifiers.starterDeckSizeOverride ?? 15;
@@ -2299,7 +2307,13 @@ export function onRetreat(): void {
   applyRunCompletionBonuses(run);
   markRunCompleted();
   if (isAscensionSuccess(run, 'retreat')) {
-    progressAscensionAfterSuccess(run)
+    const retreatAscensionMode: AscensionMode =
+      run.deckMode?.type === 'study' ||
+      run.deckMode?.type === 'procedural' ||
+      run.deckMode?.type === 'study-multi'
+        ? 'study'
+        : 'trivia'
+    progressAscensionAfterSuccess(run, retreatAscensionMode)
   }
   // Boss kill review prompt (retreat always follows a boss floor)
   void checkBossKillTrigger();

@@ -4,6 +4,8 @@
   import { CHAIN_TYPES } from '../../data/chainTypes';
   import type { ChainDistribution, TopicGroup } from '../../services/chainDistribution';
   import { playCardAudio } from '../../services/cardAudioManager';
+  import { ascensionProfile, setAscensionLevel } from '../../services/cardPreferences';
+  import { getAscensionRule } from '../../services/ascension';
 
   /**
    * Props:
@@ -29,6 +31,16 @@
   /** The three chain type indices for this run, falling back to [0,1,2] as a safe default. */
   const runChainTypes = $derived(distribution?.runChainTypes ?? [0, 1, 2]);
 
+  /** Ascension rule for the current study track selection level. */
+  let ascensionRule = $derived(getAscensionRule($ascensionProfile.study.selectedLevel));
+
+  /** Human-readable unlock status text. */
+  let ascensionUnlockText = $derived(
+    $ascensionProfile.study.highestUnlockedLevel > 0
+      ? `Unlocked: ${$ascensionProfile.study.highestUnlockedLevel}`
+      : 'Win a run to unlock',
+  );
+
   /** Total fact count across all groups in a given chain slot. */
   function totalFacts(groups: TopicGroup[]): number {
     return groups.reduce((sum, g) => sum + g.factIds.length, 0);
@@ -53,6 +65,12 @@
   function handleBeginExpedition(): void {
     playCardAudio('run-start');
     onBeginExpedition();
+  }
+
+  function shiftAscension(delta: number): void {
+    const highest = Math.max(0, $ascensionProfile.study.highestUnlockedLevel ?? 0);
+    const next = Math.max(0, Math.min(highest, ($ascensionProfile.study.selectedLevel ?? 0) + delta));
+    setAscensionLevel('study', next);
   }
 </script>
 
@@ -108,9 +126,7 @@
 
   <footer class="screen-footer">
     <div class="footer-left">
-      <button class="btn-ghost" onclick={handleBack}>
-        ← Back
-      </button>
+      <button class="btn-ghost" onclick={handleBack}>← Back</button>
       <div class="fsrs-legend">
         <span class="legend-item legend-item--new">N = New</span>
         <span class="legend-item legend-item--learning">L = Learning</span>
@@ -119,13 +135,27 @@
       </div>
     </div>
 
+    <div class="ascension-selector" aria-label="Ascension level">
+      <button type="button" class="asc-step"
+        onclick={() => shiftAscension(-1)}
+        disabled={$ascensionProfile.study.selectedLevel <= 0}
+        aria-label="Decrease ascension">−</button>
+      <div class="asc-display">
+        <strong class="asc-level">Ascension {$ascensionProfile.study.selectedLevel}</strong>
+        <span class="asc-detail">
+          {#if ascensionRule}{ascensionRule.name}{:else}Off{/if}
+        </span>
+        <span class="asc-unlock">{ascensionUnlockText}</span>
+      </div>
+      <button type="button" class="asc-step"
+        onclick={() => shiftAscension(1)}
+        disabled={$ascensionProfile.study.selectedLevel >= $ascensionProfile.study.highestUnlockedLevel}
+        aria-label="Increase ascension">+</button>
+    </div>
+
     <div class="action-buttons">
-      <button class="btn-secondary" onclick={handleShuffle}>
-        Shuffle Chains
-      </button>
-      <button class="btn-primary" onclick={handleBeginExpedition} disabled={!distribution}>
-        Begin Expedition
-      </button>
+      <button class="btn-secondary" onclick={handleShuffle}>Shuffle Chains</button>
+      <button class="btn-primary" onclick={handleBeginExpedition} disabled={!distribution}>Begin Expedition</button>
     </div>
   </footer>
 </div>
@@ -364,6 +394,66 @@
   .legend-item--learning { color: #f59e0b; }
   .legend-item--review { color: #60a5fa; }
   .legend-item--mastered { color: #34d399; }
+
+  /* ── Ascension selector ──────────────────────────────── */
+
+  .ascension-selector {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    background: rgba(15, 23, 35, 0.5);
+  }
+
+  .asc-step {
+    width: calc(32px * var(--layout-scale, 1));
+    height: calc(32px * var(--layout-scale, 1));
+    border-radius: calc(6px * var(--layout-scale, 1));
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(31, 43, 58, 0.7);
+    color: #e2e8f0;
+    font-size: calc(16px * var(--text-scale, 1));
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+  }
+
+  .asc-step:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .asc-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(1px * var(--layout-scale, 1));
+    min-width: calc(120px * var(--layout-scale, 1));
+  }
+
+  .asc-level {
+    color: #facc15;
+    font-size: calc(13px * var(--text-scale, 1));
+    white-space: nowrap;
+  }
+
+  .asc-detail {
+    color: #cbd5e1;
+    font-size: calc(10px * var(--text-scale, 1));
+    white-space: nowrap;
+  }
+
+  .asc-unlock {
+    color: #64748b;
+    font-size: calc(9px * var(--text-scale, 1));
+    white-space: nowrap;
+  }
 
   /* ── Action buttons ──────────────────────────────────── */
 

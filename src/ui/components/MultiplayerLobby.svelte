@@ -25,6 +25,8 @@
     setMaxPlayers,
   } from '../../services/multiplayerLobbyService'
   import { hasSteam } from '../../services/platformService'
+  import { ascensionProfile } from '../../services/cardPreferences'
+  import { getAscensionRule, MAX_ASCENSION_LEVEL } from '../../services/ascension'
   import LobbyDeckPicker from './LobbyDeckPicker.svelte'
   import { canStartLobby, startButtonLabel } from '../utils/lobbyStartGate'
   import { describeSelection } from '../utils/lobbyDeckSelection'
@@ -70,6 +72,7 @@
   let myPlayer = $derived(lobby.players.find(p => p.id === localPlayerId))
   let isReady = $derived(myPlayer?.isReady ?? false)
   let canStart = $derived(canStartLobby(lobby, amHost))
+  let lobbyAscensionRule = $derived(getAscensionRule(lobby.houseRules.ascensionLevel))
 
   /** Empty slots to fill player list up to maxPlayers */
   let emptySlots = $derived(
@@ -174,6 +177,14 @@
   function handleMaxPlayersChange(n: number): void {
     if (!amHost) return
     setMaxPlayers(n)
+  }
+
+  function handleAscensionShift(delta: number): void {
+    if (!amHost) return
+    const highest = Math.max(0, Math.max($ascensionProfile.trivia.highestUnlockedLevel ?? 0, $ascensionProfile.study.highestUnlockedLevel ?? 0))
+    const current = lobby.houseRules.ascensionLevel ?? 0
+    const next = Math.max(0, Math.min(highest, current + delta))
+    setHouseRules({ ascensionLevel: next })
   }
 </script>
 
@@ -412,6 +423,37 @@
             <option value="easy">Easy</option>
             <option value="hard">Hard</option>
           </select>
+        </div>
+
+        <!-- Ascension Level -->
+        <div class="setting-row">
+          <span class="setting-name">Ascension</span>
+          <div class="ascension-inline">
+            <button
+              type="button"
+              class="asc-btn"
+              onclick={() => handleAscensionShift(-1)}
+              disabled={!amHost || lobby.houseRules.ascensionLevel <= 0}
+              aria-label="Decrease ascension"
+            >−</button>
+            <span class="asc-value">
+              {#if lobby.houseRules.ascensionLevel > 0}
+                Lv {lobby.houseRules.ascensionLevel}
+                {#if lobbyAscensionRule}
+                  <small class="asc-rule-name">({lobbyAscensionRule.name})</small>
+                {/if}
+              {:else}
+                Off
+              {/if}
+            </span>
+            <button
+              type="button"
+              class="asc-btn"
+              onclick={() => handleAscensionShift(1)}
+              disabled={!amHost || lobby.houseRules.ascensionLevel >= Math.max($ascensionProfile.trivia.highestUnlockedLevel ?? 0, $ascensionProfile.study.highestUnlockedLevel ?? 0)}
+              aria-label="Increase ascension"
+>+</button>
+          </div>
         </div>
       </section>
 
@@ -1413,5 +1455,48 @@
     font-style: italic;
     align-self: center;
     margin-left: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* Ascension Level control */
+  .ascension-inline {
+    display: flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  .asc-btn {
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    border-radius: calc(6px * var(--layout-scale, 1));
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: rgba(30, 41, 59, 0.7);
+    color: #e2e8f0;
+    font-size: calc(14px * var(--text-scale, 1));
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+  }
+
+  .asc-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .asc-value {
+    color: #facc15;
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 600;
+    min-width: calc(60px * var(--layout-scale, 1));
+    text-align: center;
+  }
+
+  .asc-rule-name {
+    color: #94a3b8;
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 400;
   }
 </style>

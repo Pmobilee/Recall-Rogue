@@ -1,7 +1,7 @@
 # Multiplayer Architecture
 
 > **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
-> **Last verified:** 2026-04-13 — MP-20260413-003941 E2E playtest; all 5 modes verified with two Docker containers
+> **Last verified:** 2026-04-14 — MP-20260413-003941 E2E playtest; all 5 modes verified with two Docker containers
 
 ---
 
@@ -127,7 +127,18 @@ interface EnemyTurnDelta {
   blockDealt: number    // block stripped from enemy
   statusEffectsAdded: StatusEffect[]
 }
+
+interface HouseRules {
+  turnTimerSecs: number          // 20 | 45 | 90
+  quizDifficulty: 'adaptive' | 'easy' | 'hard'
+  fairness: FairnessOptions      // chainNormalized, etc.
+  ascensionLevel: number         // 0 = off, 1-20 = ascension level for the run
+}
 ```
+
+### HouseRules — ascensionLevel (added 2026-04-14)
+
+`ascensionLevel` in `HouseRules` sets the ascension difficulty for all players in a multiplayer run. Default is 0 (no ascension). Host-only control in the lobby Settings panel, rendered under "Quiz Difficulty" in the House Rules section. The host's maximum selectable level is `max(trivia.highestUnlockedLevel, study.highestUnlockedLevel)` across both personal tracks. `DEFAULT_HOUSE_RULES.ascensionLevel = 0` in `src/data/multiplayerTypes.ts`.
 
 ---
 

@@ -1,7 +1,7 @@
 # Run Competitive & Meta Services
 
 > **Purpose:** Competitive modes (Daily Expedition, Endless Depths, Scholar Challenge), adaptive difficulty, player progression, lore unlocks, preference/boost systems, and reactive tutorial overlay.
-> **Last verified:** 2026-04-12
+> **Last verified:** 2026-04-14
 > **Source files:** bountyManager.ts, canaryService.ts, masteryChallengeService.ts, dailyExpeditionService.ts, endlessDepthsService.ts, scholarChallengeService.ts, characterLevel.ts, ascension.ts, loreService.ts, cardPreferences.ts, funnessBoost.ts, tutorialService.ts, src/data/tutorialSteps.ts
 
 > See also: [run.md](run.md) for core run lifecycle — runManager, floorManager, mapGenerator, gameFlowController, rewards, shop, and RNG utilities
@@ -77,8 +77,32 @@
 |---|---|
 | **File** | src/services/cardPreferences.ts |
 | **Purpose** | Persistent Svelte stores for all player preference flags — difficulty, text size, font, onboarding state, ascension profile |
-| **Key exports** | `difficultyMode`, `textSize`, `fontChoice`, `onboardingState`, `ascensionProfile` (stores); `markCombatTutorialSeen`, `markStudyTutorialSeen`, `markTutorialDismissedEarly`, `resetTutorialFlags` (tutorial helpers added 2026-04-12) |
+| **Key exports** | `difficultyMode`, `textSize`, `fontChoice`, `onboardingState`, `ascensionProfile` (stores); `getAscensionLevel(mode)`, `setAscensionLevel(mode, level)`, `unlockAscensionLevel(mode, level)`, `unlockNextAscensionLevel(mode, currentLevel)` (mode-aware ascension helpers); `markCombatTutorialSeen`, `markStudyTutorialSeen`, `markTutorialDismissedEarly`, `resetTutorialFlags` (tutorial helpers added 2026-04-12) |
 | **Key dependencies** | Svelte stores, localStorage |
+
+### AscensionProfile shape (updated 2026-04-14)
+
+`AscensionProfile` is now split into two independent per-mode tracks. Old single-track saves (`{ highestUnlockedLevel, selectedLevel }`) are auto-migrated on first read by `sanitizeAscensionProfile()` — both tracks receive the old values.
+
+```typescript
+type AscensionMode = 'trivia' | 'study'
+
+interface AscensionModeTrack {
+  highestUnlockedLevel: number   // highest level ever unlocked for this mode
+  selectedLevel: number          // currently active difficulty (0 = off)
+}
+
+interface AscensionProfile {
+  trivia: AscensionModeTrack   // Trivia Dungeon track
+  study: AscensionModeTrack    // Study Temple track
+}
+```
+
+**Mode routing in `gameFlowController.ts`:** at run start, the ascension mode is derived from the run's `deckMode`:
+- `deckMode.type === 'study'` or `'study-multi'` → `'study'`
+- everything else → `'trivia'`
+
+The selected level is read via `getAscensionLevel(ascensionMode)`. On run success, `unlockNextAscensionLevel(ascensionMode, currentLevel)` advances only the matching track.
 
 ## loreService
 
@@ -111,5 +135,5 @@ Step definitions live in `src/data/tutorialSteps.ts`: 13 combat steps + 5 study 
 
 Entry points:
 1. `CardApp.svelte` auto-triggers on first combat (`runsCompleted === 0` and `!hasSeenCombatTutorial` and `!tutorialDismissedEarly`)
-2. `NarrativeOverlay` "Tutorial" button (always visible in combat, via `showTutorialButton` prop)
+2. `NarrativeOverlay` "Tutorial" button (always visible in combat, via `showTutorialButton` prop). Shows "tutorial on ✓" with green tint after clicking; disabled to prevent double-click.
 3. `resetTutorialFlags()` in `cardPreferences.ts` for dev/replay

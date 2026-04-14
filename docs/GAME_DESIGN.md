@@ -4045,6 +4045,7 @@ Each ascension level pairs a difficulty increase with a strategic benefit:
 - **Rule lookup:** `getAscensionRule(level)` returns the level name and description for UI display
 - **Enemy adjustments:** `applyAscensionEnemyTemplateAdjustments()` handles mini-boss boss-tier attacks and final boss second phase
 - **Max level:** `MAX_ASCENSION_LEVEL = 20`
+- **Per-mode tracks (2026-04-14):** Ascension progress is split into independent `trivia` and `study` tracks in `AscensionProfile` (`cardPreferences.ts`). Each track has its own `highestUnlockedLevel` and `selectedLevel`. Mechanics at every level are identical — only progression is separate. Old single-track saves auto-migrate. `gameFlowController.ts` derives the active mode from the run's `deckMode` at run start.
 
 ---
 

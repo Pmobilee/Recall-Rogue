@@ -37,10 +37,10 @@
   let filterError = $state('')
 
   let canStart = $derived(primaryDomain !== null && secondaryDomain !== null)
-  let ascensionRule = $derived(getAscensionRule($ascensionProfile.selectedLevel))
+  let ascensionRule = $derived(getAscensionRule($ascensionProfile.trivia.selectedLevel))
   let ascensionUnlockText = $derived(
-    $ascensionProfile.highestUnlockedLevel > 0
-      ? `Unlocked: ${$ascensionProfile.highestUnlockedLevel}`
+    $ascensionProfile.trivia.highestUnlockedLevel > 0
+      ? `Unlocked: ${$ascensionProfile.trivia.highestUnlockedLevel}`
       : 'Win a run to unlock',
   )
 
@@ -150,9 +150,9 @@
   }
 
   function shiftAscension(delta: number): void {
-    const highest = Math.max(0, $ascensionProfile.highestUnlockedLevel ?? 0)
-    const next = Math.max(0, Math.min(highest, ($ascensionProfile.selectedLevel ?? 0) + delta))
-    setAscensionLevel(next)
+    const highest = Math.max(0, $ascensionProfile.trivia.highestUnlockedLevel ?? 0)
+    const next = Math.max(0, Math.min(highest, ($ascensionProfile.trivia.selectedLevel ?? 0) + delta))
+    setAscensionLevel('trivia', next)
   }
 </script>
 
@@ -173,10 +173,10 @@
         class="ascension-step"
         data-testid="ascension-decrease"
         onclick={() => shiftAscension(-1)}
-        disabled={$ascensionProfile.selectedLevel <= 0}
+        disabled={$ascensionProfile.trivia.selectedLevel <= 0}
       >-</button>
       <div class="ascension-level">
-        <strong>Level {$ascensionProfile.selectedLevel}</strong>
+        <strong>Level {$ascensionProfile.trivia.selectedLevel}</strong>
         <small>
           {#if ascensionRule}
             {ascensionRule.name}: {ascensionRule.effect}
@@ -190,7 +190,7 @@
         class="ascension-step"
         data-testid="ascension-increase"
         onclick={() => shiftAscension(1)}
-        disabled={$ascensionProfile.selectedLevel >= $ascensionProfile.highestUnlockedLevel}
+        disabled={$ascensionProfile.trivia.selectedLevel >= $ascensionProfile.trivia.highestUnlockedLevel}
       >+</button>
     </div>
   </section>

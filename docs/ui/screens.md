@@ -302,6 +302,20 @@ Topic group cards show a compact breakdown: `5N 8L 10R 3M` where:
 
 ---
 
+## Ascension Selectors (added 2026-04-14)
+
+Three screens expose a compact ascension selector (`-` / level / `+` row). Each reads/writes a different track or field.
+
+| Screen | Location | Track/Field | Notes |
+|--------|----------|-------------|-------|
+| `TriviaDungeonScreen` ("THE ARMORY") | Footer, between domain count and Start Run button | `ascensionProfile.trivia` via `getAscensionLevel('trivia')` / `setAscensionLevel('trivia', n)` | Only shown when `highestUnlockedLevel > 0` |
+| `RunPreviewScreen` ("YOUR KNOWLEDGE CHAINS") | Footer, between FSRS legend and action buttons | `ascensionProfile.study` via `getAscensionLevel('study')` / `setAscensionLevel('study', n)` | Only shown when `highestUnlockedLevel > 0` |
+| `MultiplayerLobby` Settings panel | Under "Quiz Difficulty" in House Rules | `lobby.houseRules.ascensionLevel` (single value, applies to all players) | Host-only; max selectable level = `max(trivia.highestUnlockedLevel, study.highestUnlockedLevel)` |
+
+All three use the same compact layout: a `-` button, a level number (or "OFF" at 0), and a `+` button. Buttons are disabled at boundaries (0 and `highestUnlockedLevel`).
+
+---
+
 ## Dev Bypass & Presets
 
 - `?skipOnboarding=true` — skip boot animation and onboarding, start at hub

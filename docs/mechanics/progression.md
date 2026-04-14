@@ -1,7 +1,7 @@
 # Progression & Run Structure
 
 > **Purpose:** Documents the run lifecycle, floor/room generation, map layout, room types, ascension system, and shop mechanics.
-> **Last verified:** 2026-04-09
+> **Last verified:** 2026-04-14
 > **Source files:** `src/services/runManager.ts`, `src/services/floorManager.ts`, `src/services/mapGenerator.ts`, `src/services/ascension.ts`, `src/data/balance.ts`, `src/services/shopService.ts`
 
 ---
@@ -207,6 +207,8 @@ When a vial does appear, `healAmount` comes from the encounter reward bundle (`a
 ## Ascension System (`ascension.ts`)
 
 `MAX_ASCENSION_LEVEL = 20`. Each level adds a cumulative challenge. Higher levels add compensating buffs. `getAscensionModifiers(level)` returns `AscensionModifiers`.
+
+**2026-04-14 per-mode tracks** — Ascension progress is now split into two independent tracks: `trivia` (Trivia Dungeon) and `study` (Study Temple). Each track has its own `highestUnlockedLevel` and `selectedLevel`. The mechanics at every level are identical — only the progression is separate. Old single-track saves auto-migrate (both tracks receive the old values). `gameFlowController.ts` derives the mode from the run's `deckMode` at run start: `study`/`study-multi` → study track; everything else → trivia track. All ascension helpers now take a mode parameter: `getAscensionLevel(mode)`, `setAscensionLevel(mode, level)`, `unlockAscensionLevel(mode, level)`, `unlockNextAscensionLevel(mode, currentLevel)`.
 
 **2026-04-05 redesign** — reverted progressive multipliers to stepped values, strengthened challenge bites, fixed broken field wiring, removed overcompensating buffs (STS philosophy: challenges stand alone).
 
