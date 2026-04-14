@@ -5,7 +5,7 @@
   import GrammarSentenceFurigana from './GrammarSentenceFurigana.svelte'
   import GrammarTypingInput from './GrammarTypingInput.svelte'
   import TypingInput from './TypingInput.svelte'
-  import { deckOptions } from '../../services/deckOptionsService'
+  import { deckOptions, isMapLabelsEnabled, setMapLabelsEnabled } from '../../services/deckOptionsService'
   import ChessBoard from './ChessBoard.svelte'
   import { getPlayerContext, gradeChessMove, isInCheck } from '../../services/chessGrader'
   import { updateChessElo } from '../../services/chessEloService'
@@ -197,6 +197,10 @@
 
   let mapDisabled = $state(false)
   let mapEloChange = $state<number | null>(null)
+  /** Reactive: whether country name labels are enabled on the map.
+   *  Reading $deckOptions here registers it as a reactive dependency so the
+   *  derived updates whenever the store changes. */
+  const mapLabelsEnabled = $derived((() => { void $deckOptions; return isMapLabelsEnabled() })())
 
   /**
    * Handle a pin placement from the MapPinDrop component.
@@ -344,6 +348,8 @@
               targetRegion={currentQuestion.mapRegion}
               masteryLevel={0}
               disabled={mapDisabled || selectedAnswer !== null}
+              showLabels={mapLabelsEnabled}
+              ontogglelabels={() => setMapLabelsEnabled(!mapLabelsEnabled)}
               onconfirm={handleMapPinConfirm}
             />
             {#if mapEloChange !== null}
@@ -621,7 +627,7 @@
     flex-direction: column;
     width: 100%;
     flex: 1;
-    min-height: calc(300px * var(--layout-scale, 1));
+    min-height: calc(360px * var(--layout-scale, 1));
     position: relative;
     align-items: center;
   }

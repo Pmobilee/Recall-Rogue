@@ -23,7 +23,7 @@
   import FuriganaText from '../FuriganaText.svelte'
   import WordHover from './WordHover.svelte'
   import GrammarSentenceFurigana from './GrammarSentenceFurigana.svelte'
-  import { deckOptions } from '../../services/deckOptionsService'
+  import { deckOptions, isMapLabelsEnabled, setMapLabelsEnabled } from '../../services/deckOptionsService'
   import DeckOptionsPanel from '../DeckOptionsPanel.svelte'
   import { getLanguageConfig } from '../../types/vocabulary'
   import { displayAnswer, isNumericalAnswer } from '../../services/numericalDistractorService'
@@ -219,6 +219,10 @@
   // --- Map pin drop state ---
   let mapDisabled = $state(false)
   let mapEloChange = $state<number | null>(null)
+  /** Reactive: whether country name labels are enabled on the map.
+   *  Reading $deckOptions here registers it as a reactive dependency so the
+   *  derived updates whenever the store changes. */
+  const mapLabelsEnabled = $derived((() => { void $deckOptions; return isMapLabelsEnabled() })())
 
   $effect(() => {
     if (chessContext) {
@@ -930,6 +934,8 @@
         targetRegion={mapRegion}
         masteryLevel={card.masteryLevel ?? 0}
         disabled={mapDisabled || answersDisabled}
+        showLabels={mapLabelsEnabled}
+        ontogglelabels={() => setMapLabelsEnabled(!mapLabelsEnabled)}
         onconfirm={handleMapPinConfirm}
       />
       {#if mapEloChange !== null}
@@ -2115,7 +2121,7 @@
     flex-direction: column;
     width: 100%;
     flex: 1;
-    min-height: calc(300px * var(--layout-scale, 1));
+    min-height: calc(360px * var(--layout-scale, 1));
     position: relative;
   }
 

@@ -11,6 +11,9 @@
    *
    * Rendering: d3-geo Mercator projection drawn onto an HiDPI-aware HTML canvas.
    * Interaction: pointer events for pan (drag) and tap-to-place, wheel for zoom.
+   *   Trackpad pinch-to-zoom is handled via touchstart/touchmove/touchend (two-finger
+   *   distance tracking). Ctrl+scroll (trackpad pinch on many systems) falls through
+   *   the existing wheel handler naturally.
    * Styling: mastery-progressive — labels + thick borders at low mastery fade to
    *   near-invisible coastlines only at mastery 5.
    */
@@ -41,6 +44,10 @@
     masteryLevel: number
     /** Lock interaction after answer confirmed. */
     disabled?: boolean
+    /** Whether to show country name labels on the map. */
+    showLabels?: boolean
+    /** Optional callback when the label toggle button is clicked. */
+    ontogglelabels?: () => void
     /** Callback when player confirms pin placement. */
     onconfirm: (pinCoordinates: [number, number], distanceKm: number, accuracy: number) => void
   }
@@ -59,6 +66,8 @@
     targetRegion,
     masteryLevel,
     disabled = false,
+    showLabels = true,
+    ontogglelabels,
     onconfirm,
   }: Props = $props()
 
@@ -90,6 +99,15 @@
   let panStartY = 0
   let panStartTransX = 0
   let panStartTransY = 0
+
+  // Touch pinch-to-zoom tracking (NOT reactive — mutated directly)
+  let pinchActive = false
+  let pinchStartDist = 0
+  let pinchStartScale = 0
+  let pinchStartTransX = 0
+  let pinchStartTransY = 0
+  let pinchMidX = 0
+  let pinchMidY = 0
 
   // rAF scheduling
   let rafHandle: number | null = null
@@ -294,8 +312,8 @@
       ctx.stroke()
     }
 
-    // --- Country labels (mastery 0-1) ---
-    if (masteryLevel <= 1) {
+    // --- Country labels (mastery 0-1, only when showLabels is enabled) ---
+    if (showLabels && masteryLevel <= 1) {
       drawCountryLabels(ctx, geoJson, projection, masteryLevel)
     }
 
@@ -431,6 +449,60 @@
   }
 
   // ---------------------------------------------------------------------------
+  // Touch pinch-to-zoom handlers
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Handle two-finger pinch for trackpad and touchscreen zoom.
+   * Zooms toward the midpoint between the two touch points.
+   */
+  function handleTouchStart(e: TouchEvent) {
+    if (e.touches.length === 2) {
+      e.preventDefault()
+      pinchActive = true
+      isPanning = false // cancel any active pan
+      const t0 = e.touches[0]
+      const t1 = e.touches[1]
+      pinchStartDist = Math.hypot(t1.clientX - t0.clientX, t1.clientY - t0.clientY)
+      pinchStartScale = scale
+      pinchStartTransX = translateX
+      pinchStartTransY = translateY
+      // Midpoint in page coords
+      pinchMidX = (t0.clientX + t1.clientX) / 2
+      pinchMidY = (t0.clientY + t1.clientY) / 2
+    }
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    if (!pinchActive || e.touches.length !== 2) return
+    e.preventDefault()
+    const t0 = e.touches[0]
+    const t1 = e.touches[1]
+    const dist = Math.hypot(t1.clientX - t0.clientX, t1.clientY - t0.clientY)
+    if (pinchStartDist === 0) return
+
+    const rawScale = pinchStartScale * (dist / pinchStartDist)
+    const newScale = Math.max(0.5, Math.min(20, rawScale))
+
+    // Zoom toward the original pinch midpoint (canvas-relative)
+    const canvasEl_ = canvasEl
+    if (!canvasEl_) return
+    const rect = canvasEl_.getBoundingClientRect()
+    const mx = pinchMidX - rect.left
+    const my = pinchMidY - rect.top
+    translateX = mx - (mx - pinchStartTransX) * (newScale / pinchStartScale)
+    translateY = my - (my - pinchStartTransY) * (newScale / pinchStartScale)
+    scale = newScale
+    requestRender()
+  }
+
+  function handleTouchEnd(e: TouchEvent) {
+    if (e.touches.length < 2) {
+      pinchActive = false
+    }
+  }
+
+  // ---------------------------------------------------------------------------
   // Confirm handler
   // ---------------------------------------------------------------------------
 
@@ -514,8 +586,23 @@
       onpointermove={handlePointerMove}
       onpointerup={handlePointerUp}
       onwheel={handleWheel}
+      ontouchstart={handleTouchStart}
+      ontouchmove={handleTouchMove}
+      ontouchend={handleTouchEnd}
       aria-label="Interactive world map — tap to place your pin"
     ></canvas>
+  {/if}
+
+  {#if !confirmed && ontogglelabels}
+    <button
+      class="map-label-toggle"
+      class:labels-off={!showLabels}
+      onclick={ontogglelabels}
+      aria-label={showLabels ? 'Hide country names' : 'Show country names'}
+      title={showLabels ? 'Hide country names' : 'Show country names'}
+    >
+      Aa
+    </button>
   {/if}
 
   {#if pinCoords && !confirmed}
@@ -547,7 +634,7 @@
     position: relative;
     width: 100%;
     flex: 1;
-    min-height: calc(300px * var(--layout-scale, 1));
+    min-height: calc(360px * var(--layout-scale, 1));
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -562,6 +649,45 @@
     border-radius: calc(4px * var(--layout-scale, 1));
     /* Crisp pixel output — avoid browser sub-pixel smoothing on map lines */
     image-rendering: crisp-edges;
+  }
+
+  /* ---- Label toggle button ---- */
+  .map-label-toggle {
+    position: absolute;
+    top: calc(10px * var(--layout-scale, 1));
+    left: calc(10px * var(--layout-scale, 1));
+    width: calc(36px * var(--layout-scale, 1));
+    height: calc(36px * var(--layout-scale, 1));
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    padding: 0;
+    font-size: calc(12px * var(--text-scale, 1));
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.55);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    cursor: pointer;
+    z-index: 10;
+    transition: background 120ms ease, opacity 120ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .map-label-toggle:hover {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  .map-label-toggle:active {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  /* Dimmed appearance when labels are hidden */
+  .map-label-toggle.labels-off {
+    opacity: 0.45;
+    text-decoration: line-through;
   }
 
   /* ---- Confirm button ---- */
