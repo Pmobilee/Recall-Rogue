@@ -1087,6 +1087,59 @@ async function loadNonCombatScenario(config: ScenarioConfig): Promise<ScenarioRe
   // -----------------------------------------------------------------------
   if (screen === 'mysteryEvent') {
     await bootstrapRun(config);
+
+    // Seed the run pool and activeDeck so mystery event effects that manipulate cards
+    // (upgradeRandomCard, removeRandomCard, transformCard, freeCard) have cards to work
+    // with. Without this, getActiveDeckCards() returns [] because no encounter has started
+    // and bootstrapRun() leaves activeRunPool empty. Mirrors the same fix in restStudy.
+    if (!factsDB.isReady()) {
+      try { await factsDB.init(); } catch { /* non-fatal for mystery events */ }
+    }
+    if (factsDB.isReady()) {
+      const { seedRunPool, hydrateEncounterSnapshot } = await import('../services/encounterBridge');
+      const triviaFacts = factsDB.getTriviaFacts().filter(f =>
+        f.quizQuestion && f.correctAnswer && (f.distractors ?? []).length >= 1
+      );
+      const shuffled = triviaFacts.sort(() => Math.random() - 0.5).slice(0, 30);
+      const mechanicCycle = ['strike', 'block', 'heavy_strike', 'multi_hit', 'heal'] as const;
+      const typeCycle = ['attack', 'shield', 'attack', 'attack', 'heal'] as const;
+      const seedCards = shuffled.map((f, i) => ({
+        id: `seed-mystery-${i}`,
+        factId: f.id,
+        domain: (f.categoryL1 ?? 'general_knowledge') as any,
+        mechanicId: mechanicCycle[i % mechanicCycle.length],
+        cardType: typeCycle[i % typeCycle.length] as any,
+        tier: '1' as const,
+        chainType: i % 6,
+        apCost: 1,
+        masteryLevel: Math.floor(Math.random() * 3),
+        baseEffectValue: 4,
+        effectMultiplier: 1.0,
+      }));
+      seedRunPool(seedCards as any);
+      // Hydrate activeDeck so getActiveDeckCards() can find cards across all piles.
+      // drawPile holds the bulk; hand and discardPile get a small slice each.
+      hydrateEncounterSnapshot({
+        activeDeck: {
+          drawPile: seedCards.slice(10) as any,
+          hand: seedCards.slice(0, 5) as any,
+          discardPile: seedCards.slice(5, 10) as any,
+          forgetPile: [],
+          currentFloor: config.floor ?? 1,
+          currentEncounter: 0,
+          playerHP: 60,
+          playerMaxHP: 60,
+          playerShield: 0,
+          hintsRemaining: 3,
+          currency: 0,
+          factPool: shuffled.map(f => f.id),
+          factCooldown: [],
+          consecutiveCursedDraws: 0,
+        },
+        activeRunPool: seedCards as any,
+      });
+    }
+
     const { activeMysteryEvent } = await import('../services/gameFlowController');
 
     let event;
