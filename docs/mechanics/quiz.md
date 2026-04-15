@@ -873,6 +873,19 @@ Callers that have the rendered question text available should pass it as the thi
 
 solar_system (percentage mass facts), AP Physics (measurement quantities), AP Chemistry (molar mass, concentration), any deck with facts where the answer is a bare number but the question clarifies the unit or domain.
 
+
+### Variant Answer Override — Critical Caller Requirement
+
+When a fact has **variants** (alternate formulations stored in `fact.variants[]`), the calling context may select one variant to present to the player. If the selected variant has its own `correctAnswer` (e.g., a brace-notation number like `{1,000}`), callers MUST pass the variant's `correctAnswer` — not the parent fact's `correctAnswer` — to `getNumericalDistractors` (and to any `factAdapter` object).
+
+Passing the parent fact's answer (e.g., the text string `"Persia"`) to `getNumericalDistractors` causes the function to find no brace-marked number and return an empty distractor list — the player sees only one answer choice.
+
+**Affected callers (fixed 2026-04-15):**
+- `CardCombatOverlay.svelte` line 1683 — `factAdapter` for variant quiz questions
+- `masteryChallengeService.ts` line 72 — same pattern
+
+**Pattern to follow:** Before building any `factAdapter` or calling `getNumericalDistractors`, check whether `selectedVariant` is set and substitute its `correctAnswer` (and `quizQuestion` if also variant-specific) instead of the parent fact's fields.
+
 ---
 
 ## Quiz Audit Engine (`scripts/quiz-audit-engine.ts`)

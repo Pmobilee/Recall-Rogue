@@ -4408,3 +4408,13 @@ This updates the Svelte store reactively, and the UI responds on the next render
 **Fix:** All four bugs fixed in commit 613222443. The relay now intercepts `mp:lobby:join` → `mp:lobby:player_joined` and `mp:lobby:leave` (removes connection server-side). The snapshot matches Fastify's `buildLobbySnapshot()` exactly.
 
 **Files:** `src-tauri/src/lan.rs`, `server/src/routes/mpLobbyWs.ts` (reference)
+
+### 2026-04-15 — Variant numerical distractors using wrong correctAnswer
+
+**What:** Quiz questions from seed knowledge fact variants showed only 1 answer option (the correct answer) with zero distractors. Affected 1,566 variants across all knowledge domains.
+
+**Why:** In `CardCombatOverlay.svelte` line 1683, the numerical distractor generator's `factAdapter` used `fact.correctAnswer` (the parent fact's text answer, e.g., "Persia") instead of the variant's `correctAnswer` (e.g., "About {1,000}"). `getNumericalDistractors` found no brace-marked number in "Persia" and returned `[]`. Same bug existed in `masteryChallengeService.ts` line 72.
+
+**Fix:** Both paths now use the variant's `correctAnswer` for the factAdapter. The runtime numerical distractor generator already produces correct distractors — it just needed the right input.
+
+**Lesson:** When creating a `factAdapter` or passing a fact to a service, always check whether the calling context has selected a variant — if so, the variant's fields (especially `correctAnswer`) must override the parent fact's fields.

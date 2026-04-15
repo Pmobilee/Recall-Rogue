@@ -895,6 +895,8 @@ Some answer type pools have too few real facts to produce varied distractors at 
 - Pool total **< 15** — add synthetics to reach **15+ total members** (recommended minimum for good variety)
 - Never use synthetics for numeric pools — use bracket notation (`{N}`) instead
 
+> **Variant caller requirement (2026-04-15):** When a fact has variants and the selected variant's `correctAnswer` is brace-notation (e.g., `{1,000}`), callers that invoke `getNumericalDistractors` or build a `factAdapter` MUST use the **variant's** `correctAnswer`, not the parent fact's. Passing the parent fact's text answer (e.g., `"Persia"`) causes `getNumericalDistractors` to find no numeric value and return zero distractors — leaving the player with only one choice. See `docs/mechanics/quiz.md` → "Variant Answer Override" and `docs/gotchas.md` 2026-04-15.
+
 **Runtime behavior:** Synthetic members enter the candidate pool at score 0.5 (vs 1.0 for real facts). Real members are always preferred. The pool viability check counts real + synthetic combined — if total ≥ 5, pool-based selection proceeds.
 
 **Pool size summary:**

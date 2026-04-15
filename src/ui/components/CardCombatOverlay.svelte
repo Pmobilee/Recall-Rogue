@@ -3198,10 +3198,10 @@
   />
 {/if}
 
-<!-- Phase Shift: choose Damage or Block (QP/CW) -->
+<!-- Phase: choose Damage or Block (QP/CW) -->
 {#if pendingChoicePopup?.mechanicId === 'phase_shift'}
   <MultiChoicePopup
-    prompt="Phase Shift — choose an effect:"
+    prompt="Phase — choose an effect:"
     choices={[
       { label: `Deal ${pendingChoicePopup.damageValue} Damage`, description: 'Attack the enemy' },
       { label: `Gain ${pendingChoicePopup.blockValue} Block`, description: 'Shield yourself' },
@@ -3211,10 +3211,10 @@
   />
 {/if}
 
-<!-- Unstable Flux CC: choose 1 of 4 effects at 1.5× -->
+<!-- Flux CC: choose 1 of 4 effects at 1.5× -->
 {#if pendingChoicePopup?.mechanicId === 'unstable_flux'}
   <MultiChoicePopup
-    prompt="Unstable Flux — choose an effect (1.5×):"
+    prompt="Flux — choose an effect (1.5×):"
     choices={[
       { label: `Deal ${pendingChoicePopup.damageValue} Damage` },
       { label: `Gain ${pendingChoicePopup.blockValue} Block` },

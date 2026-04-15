@@ -69,7 +69,8 @@ function buildDistractorPool(fact: Fact, variant: QuestionVariant | null, correc
   // that have no pre-generated distractors.
   const variantAnswer = variant?.correctAnswer ?? fact.correctAnswer
   if (pool.length === 0 && isNumericalAnswer(variantAnswer)) {
-    const numerical = getNumericalDistractors(fact, DISTRACTOR_COUNT)
+    const factAdapter = { ...fact, correctAnswer: variantAnswer } as Fact
+    const numerical = getNumericalDistractors(factAdapter, DISTRACTOR_COUNT)
     for (const d of numerical) push(d)
   }
 
