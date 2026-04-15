@@ -268,14 +268,14 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'scholars_gambit',
     name: "Scholar's Gambit",
-    description: '5 relic slots → 6. Wrong Charged answers deal 1 damage to you.',
+    description: '5 relic slots → 7. Wrong Charged answers deal 1 damage to you.',
     flavorText: 'Knowledge is power. Power has a price. The Gambit demands both.',
     visualDescription: 'A cracked obsidian tome bound with a golden chain, forbidden glyphs glowing on the cover. Wisps of dark energy seep from the spine. 32x32 pixel art, dark dungeon palette.',
     rarity: 'rare',
     category: 'cursed',
     trigger: 'permanent',
     effects: [
-      { effectId: 'relic_slot_bonus', description: '+1 relic slot (max becomes 6)', value: 1 },
+      { effectId: 'relic_slot_bonus', description: '+2 relic slots (max becomes 7)', value: 2 },
       { effectId: 'wrong_charge_self_damage', description: 'Wrong Charged answers deal 1 self-damage', value: 1 },
     ],
     icon: '📖',
@@ -639,7 +639,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
   {
     id: 'paradox_engine',
     name: 'Paradox Engine',
-    description: 'Wrong Charges resolve at 0.3× AND deal 5 piercing damage. Gain +1 AP every turn permanently.',
+    description: 'Wrong Charges resolve at 0.3× AND deal 5 piercing damage. +1 AP per turn.',
     flavorText: 'The engine demands that you learn from failure — and then makes failure cost more. The extra action point is not a gift. It is bait.',
     visualDescription: 'A perpetual-motion machine of interlocking gears, one half burning gold (AP gain) and one half shadowed red (wrong Charge penalty). It never stops. 32x32 pixel art, legendary cursed aura.',
     rarity: 'legendary',
@@ -648,7 +648,7 @@ export const UNLOCKABLE_RELICS: RelicDefinition[] = [
     effects: [
       { effectId: 'paradox_engine_wrong_mult', description: 'Wrong Charge resolves at 0.3×', value: 0.30 },
       { effectId: 'paradox_engine_piercing', description: 'Wrong Charge deals 5 piercing damage', value: 5 },
-      { effectId: 'paradox_engine_ap_per_turn', description: '+1 AP every turn (permanent)', value: 1 },
+      { effectId: 'paradox_engine_ap_per_turn', description: '+1 AP per turn', value: 1 },
     ],
     icon: '⚙️',
     unlockCost: 75,

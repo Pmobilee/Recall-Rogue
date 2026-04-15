@@ -16,7 +16,7 @@ import { playCardAudio } from './cardAudioManager';
 import { getRunRng, isRunRngActive } from './seededRng';
 import {
   MAX_RELIC_SLOTS,
-  SCHOLARS_GAMBIT_EXTRA_SLOT,
+  SCHOLARS_GAMBIT_EXTRA_SLOTS,
   RELIC_QUICKSILVER_QUILL_FAST_MS,
   RELIC_ADRENALINE_SHARD_FAST_MS,
   RELIC_CAPACITOR_MAX_STORED_AP,
@@ -28,14 +28,14 @@ import type { RunRelic } from '../data/relics/types';
 
 /**
  * Returns the maximum number of relic slots for the current run.
- * Scholar's Gambit (cursed relic) grants one extra slot (5 → 6).
+ * Scholar's Gambit (cursed relic) grants two extra slots (5 → 7).
  *
  * @param runRelics - The player's currently equipped relics.
- * @returns Max relic slots (5 normally, 6 with Scholar's Gambit).
+ * @returns Max relic slots (5 normally, 7 with Scholar's Gambit).
  */
 export function getMaxRelicSlots(runRelics: RunRelic[]): number {
   const hasScholarsGambit = runRelics.some(r => r.definitionId === 'scholars_gambit');
-  return MAX_RELIC_SLOTS + (hasScholarsGambit ? SCHOLARS_GAMBIT_EXTRA_SLOT : 0);
+  return MAX_RELIC_SLOTS + (hasScholarsGambit ? SCHOLARS_GAMBIT_EXTRA_SLOTS : 0);
 }
 
 /**

@@ -792,8 +792,8 @@ export const BOSS_QUIZ_PHASES: Record<string, BossQuizPhaseConfig[]> = {
 /** Maximum number of relics a player can equip simultaneously. */
 export const MAX_RELIC_SLOTS = 5;
 
-/** Extra slot granted by Scholar's Gambit (total becomes 6). */
-export const SCHOLARS_GAMBIT_EXTRA_SLOT = 1;
+/** Extra slots granted by Scholar's Gambit (total becomes 7). */
+export const SCHOLARS_GAMBIT_EXTRA_SLOTS = 2;
 
 /** Fraction of rarity-based shop price refunded when selling an equipped relic mid-run. */
 export const RELIC_SELL_REFUND_PCT = 0.40;

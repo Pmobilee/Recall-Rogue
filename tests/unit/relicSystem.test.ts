@@ -22,7 +22,7 @@ describe('Five-Slot Relic System — slot helpers', () => {
 
   it('getMaxRelicSlots returns 6 with Scholar\'s Gambit equipped', () => {
     const relics = makeRunRelics(['whetstone', 'scholars_gambit'])
-    expect(getMaxRelicSlots(relics)).toBe(6)
+    expect(getMaxRelicSlots(relics)).toBe(7)
   })
 
   it('isRelicSlotsFull returns false when under cap', () => {
@@ -53,6 +53,19 @@ describe('Five-Slot Relic System — slot helpers', () => {
       'lucky_coin',
       'vitality_ring',
       'scholars_gambit',
+    ])
+    expect(isRelicSlotsFull(relics)).toBe(false)
+  })
+
+  it("isRelicSlotsFull returns true at 7 relics (all slots used) with Scholar's Gambit", () => {
+    const relics = makeRunRelics([
+      'whetstone',
+      'iron_buckler',
+      'herbal_pouch',
+      'lucky_coin',
+      'vitality_ring',
+      'scholars_gambit',
+      'chain_reactor',
     ])
     expect(isRelicSlotsFull(relics)).toBe(true)
   })
@@ -121,7 +134,7 @@ describe("Scholar's Gambit relic", () => {
     const def = RELIC_BY_ID['scholars_gambit']
     const effect = def.effects.find(e => e.effectId === 'relic_slot_bonus')
     expect(effect).toBeDefined()
-    expect(effect?.value).toBe(1)
+    expect(effect?.value).toBe(2)
   })
 
   it('has wrong_charge_self_damage effect with value 1', () => {
