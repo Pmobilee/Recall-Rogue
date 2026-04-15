@@ -262,17 +262,20 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
     // ── Debuff mechanics ──────────────────────────────────────────────────────
     case 'weaken': {
       const weakenTurns = stats?.extras?.['turns'] ?? 1;
-      return `Apply ${power} Drawing Blanks for ${weakenTurns} turn${weakenTurns !== 1 ? 's' : ''}. Enemy deals less damage.` + apSuffix;
+      const weakenStacks = stats?.extras?.['stacks'] ?? 1;
+      return `Apply ${weakenStacks} Drawing Blanks for ${weakenTurns} turn${weakenTurns !== 1 ? 's' : ''}. Enemy deals less damage.` + apSuffix;
     }
     case 'expose': {
       const exposeTurns = stats?.extras?.['turns'] ?? 1;
-      return `Apply ${power} Exposed for ${exposeTurns} turn${exposeTurns !== 1 ? 's' : ''}. Enemy takes more damage.` + apSuffix;
+      const exposeStacks = stats?.extras?.['stacks'] ?? 1;
+      return `Apply ${exposeStacks} Exposed for ${exposeTurns} turn${exposeTurns !== 1 ? 's' : ''}. Enemy takes more damage.` + apSuffix;
     }
     case 'slow':
       return `Skip enemy's next defend or buff action.` + apSuffix;
     case 'hex': {
       const turns = stats?.extras?.['turns'] ?? secondary ?? 3;
-      return `Apply ${power} Doubt over ${turns} turns.` + apSuffix;
+      const hexStacks = stats?.extras?.['stacks'] ?? 3;
+      return `Apply ${hexStacks} Doubt over ${turns} turns.` + apSuffix;
     }
     case 'stagger':
       return `Skip the enemy's next action. Turn counter still advances. CC: same. L2+: also apply Drawing Blanks 1 turn.` + apSuffix;
@@ -552,10 +555,10 @@ export function getShortCardDescription(card: Card, powerOverride?: number): str
     case 'forge': return `Upgrade a card +${stats?.extras?.['amount'] ?? 1}`;
 
     // ── Debuff ───────────────────────────────────────────────────────────────
-    case 'weaken': return `Apply ${power} Weakness`;
-    case 'expose': return `Apply ${power} Exposed`;
+    case 'weaken': return `Apply ${stats?.extras?.['stacks'] ?? 1} Weakness`;
+    case 'expose': return `Apply ${stats?.extras?.['stacks'] ?? 1} Exposed`;
     case 'slow': return 'Skip enemy action';
-    case 'hex': return `Apply ${power} Drawing Blanks`;
+    case 'hex': return `Apply ${stats?.extras?.['stacks'] ?? 3} Drawing Blanks`;
     case 'stagger': return 'Skip enemy action';
     case 'corrode': return 'Strip block, apply Weakness';
     case 'curse_of_doubt': return `Charges deal +${stats?.extras?.['pctBonus'] ?? 15}%`;
@@ -895,17 +898,20 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     // ── Debuffs ───────────────────────────────────────────────────────────────
     case 'weaken': {
       const weakTurns = stats?.extras?.['turns'] ?? 1;
-      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Drawing Blanks', 'weakness'), txt('\n'), num(weakTurns), txt(' turn(s)')];
+      const weakStacks = stats?.extras?.['stacks'] ?? 1;
+      return [txt('Apply\n'), num(weakStacks), txt(' '), kw('Drawing Blanks', 'weakness'), txt('\n'), num(weakTurns), txt(' turn(s)')];
     }
     case 'expose': {
       const expTurns = stats?.extras?.['turns'] ?? 1;
-      return [txt('Apply\n'), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Exposed', 'vulnerable'), txt('\n'), num(expTurns), txt(' turn(s)')];
+      const expStacks = stats?.extras?.['stacks'] ?? 1;
+      return [txt('Apply\n'), num(expStacks), txt(' '), kw('Exposed', 'vulnerable'), txt('\n'), num(expTurns), txt(' turn(s)')];
     }
     case 'slow':
       return [txt("Skip enemy's\nnext action")];
     case 'hex': {
       const turns = stats?.extras?.['turns'] ?? secondary ?? 3;
-      return [txt('Apply '), ...numWithMastery(power, mechanic.id, masteryLevel), txt(' '), kw('Doubt', 'poison'), txt('\n'), num(turns), txt(' turns')];
+      const hexPartsStacks = stats?.extras?.['stacks'] ?? 3;
+      return [txt('Apply '), num(hexPartsStacks), txt(' '), kw('Doubt', 'poison'), txt('\n'), num(turns), txt(' turns')];
     }
     case 'stagger':
       return [txt("Skip enemy's\nnext action")];
