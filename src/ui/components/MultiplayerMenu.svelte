@@ -16,6 +16,7 @@
     startLanServer,
     stopLanServer,
     getLanServerStatus,
+    getLocalIps,
   } from '../../services/lanServerService'
   import type { DiscoveredLanServer } from '../../services/lanDiscoveryService'
   import {
@@ -214,7 +215,8 @@
       if (status.running && status.port !== null) {
         lanServerRunning = true
         lanServerPort = status.port
-        // IPs not returned by status; player will see port but not IPs until restart
+        // Fetch IPs separately — status doesn't include them.
+        lanServerIps = await getLocalIps()
       }
     }
     isConnectedToLan = isLanMode()
