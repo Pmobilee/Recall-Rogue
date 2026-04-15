@@ -2,6 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod filesave;
+mod lan;
 mod steam;
 
 use steam::SteamState;
@@ -40,6 +41,11 @@ fn main() {
             filesave::fs_write_save,
             filesave::fs_read_save,
             filesave::fs_delete_save,
+            // LAN Server (AR-MULTIPLAYER LAN)
+            lan::lan_start_server,
+            lan::lan_stop_server,
+            lan::lan_get_local_ips,
+            lan::lan_server_status,
         ])
         .run(tauri::generate_context!())
         .expect("error while running Recall Rogue");

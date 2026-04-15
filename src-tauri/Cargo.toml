@@ -10,5 +10,16 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 steamworks = "0.12"
 
+# LAN relay server (AR-MULTIPLAYER LAN)
+axum = { version = "0.8", features = ["ws"] }
+axum-extra = "0.10"
+tower-http = { version = "0.6", features = ["cors"] }
+tokio = { version = "1", features = ["full"] }
+uuid = { version = "1", features = ["v4"] }
+rand = "0.8"
+local-ip-address = "0.6"
+futures-util = "0.3"
+hostname = "0.4"
+
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
