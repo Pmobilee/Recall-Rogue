@@ -236,6 +236,17 @@ export function getCombatScene(): CombatScene | null {
   }
 }
 
+export function stopCombatScene(): void {
+  try {
+    const reg = globalThis as Record<symbol, unknown>;
+    const sym = Symbol.for('rr:cardGameManager');
+    const mgr = reg[sym] as { stopCombat(): void } | undefined;
+    mgr?.stopCombat();
+  } catch {
+    // ignore
+  }
+}
+
 function ensureCombatStarted(): void {
   try {
     const reg = globalThis as Record<symbol, unknown>;

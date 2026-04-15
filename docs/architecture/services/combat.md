@@ -1,7 +1,7 @@
 # Combat Services
 
 > **Purpose:** Turn management, card/relic effect resolution, encounter wiring, chain system, and player combat state.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-15
 > **Source files:** turnManager.ts, cardEffectResolver.ts, relicEffectResolver.ts, encounterBridge.ts, chainSystem.ts, chainVisuals.ts, playerCombatState.ts, surgeSystem.ts, knowledgeAuraSystem.ts, reviewQueueSystem.ts, enemyManager.ts, combatResumeService.ts, bossQuizPhase.ts, discoverySystem.ts, relicSynergyResolver.ts
 
 ## Overview
@@ -43,7 +43,7 @@ The combat layer is a pure-logic stack with no Phaser, Svelte, or DOM imports. `
 |---|---|
 | **File** | src/services/encounterBridge.ts |
 | **Purpose** | Bridges game-flow screen routing to combat systems; handles encounter start/end, deck building, and reward generation |
-| **Key exports** | `startEncounter`, `playCardAction`, `skipCard`, `endPlayerTurn`, `buildRunPool`, `recordRunFacts`, `addCardToDeck`, `getEncounterSeenFacts`, `serializeEncounterSnapshot`, `EncounterSnapshot` (interface) |
+| **Key exports** | `startEncounter`, `playCardAction`, `skipCard`, `endPlayerTurn`, `buildRunPool`, `recordRunFacts`, `addCardToDeck`, `getEncounterSeenFacts`, `serializeEncounterSnapshot`, `getCombatScene`, `stopCombatScene`, `EncounterSnapshot` (interface) |
 | **Key dependencies** | turnManager, deckManager, enemyManager, runManager, runPoolBuilder, floorManager, relicEffectResolver, analyticsService, bountyManager, juiceManager |
 
 ## chainSystem

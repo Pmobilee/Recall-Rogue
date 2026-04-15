@@ -156,7 +156,7 @@ export class CardGameManager {
       this.game.scene.stop('RewardRoom')
     }
     this.game.scene.start('RewardRoom', data)
-    // Bring RewardRoom above CombatScene, which may have been pushed to top by stopRewardRoom().
+    // Bring RewardRoom above CombatScene so rewards overlay the combat background.
     this.game.scene.bringToTop('RewardRoom')
   }
 
@@ -167,11 +167,10 @@ export class CardGameManager {
     if (scene && scene.scene.isActive()) {
       this.game.scene.stop('RewardRoom')
     }
-    // Ensure CombatScene renders above any stopped scene remnants
-    const combat = this.game.scene.getScene('CombatScene')
-    if (combat && combat.scene.isActive()) {
-      this.game.scene.bringToTop('CombatScene')
-    }
+    // Stop CombatScene — no longer needed after rewards are collected.
+    // Previously brought CombatScene to top, leaving it running in the background
+    // through all subsequent non-combat screens (dungeonMap, shop, rest).
+    this.stopCombat()
   }
 
   /** Destroy the Phaser game instance. */

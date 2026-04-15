@@ -39,6 +39,7 @@ import {
   clearNarrativeEncounterSnapshot,
   resolveNarrativeFact,
   getCombatScene,
+  stopCombatScene,
 } from './encounterBridge';
 import { activeRunState } from './runStateStore';
 import {
@@ -1656,6 +1657,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
     const summary = captureRunSummary(run, endData);
     recordRunComplete(run.floor.currentFloor, endData, summary);
     isProcessingEncounterResult = false;
+    stopCombatScene(); // CombatScene no longer needed — stop background rendering
     finishRunAndReturnToHub(run, endData, summary);
     return;
   }
