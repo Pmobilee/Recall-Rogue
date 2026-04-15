@@ -17,7 +17,8 @@
     "generate-batch": "tsx src/scripts/generate-batch.ts",
     "expand-distractors": "tsx src/scripts/expand-distractors.ts",
     "release-bundle": "tsx src/scripts/release-bundle.ts",
-    "smoke-test": "npx tsx scripts/smoke-test.ts"
+    "smoke-test": "npx tsx scripts/smoke-test.ts",
+    "lan": "tsx src/lan-server.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",

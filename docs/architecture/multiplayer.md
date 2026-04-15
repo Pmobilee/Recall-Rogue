@@ -1,7 +1,7 @@
 # Multiplayer Architecture
 
 > **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
-> **Last verified:** 2026-04-14 — MP-20260413-003941 E2E playtest; all 5 modes verified with two Docker containers
+> **Last verified:** 2026-04-15 — LAN co-op feature added (embedded server, discovery, runtime URL config, UI)
 
 ---
 
@@ -450,6 +450,59 @@ When `isLanMode()` is true:
 - `getWebApiBaseUrl()` returns `getLanServerUrls().apiUrl` instead of `VITE_MP_API_URL`.
 
 This gives LAN mode priority slot 2 in `pickBackend()` — after broadcast but before Steam — so it takes effect even on Tauri/Steam desktop builds.
+
+---
+
+## LAN Co-op System (2026-04-15)
+
+**Source files:** `src-tauri/src/lan.rs`, `src/services/lanServerService.ts`, `src/services/lanDiscoveryService.ts`, `src/services/lanConfigService.ts`, `server/src/lan-server.ts`, `src/ui/components/MultiplayerMenu.svelte`
+
+### Overview
+
+LAN co-op lets players on the same local network host and join multiplayer games without Steam or an external server. Two implementations exist:
+
+| Server | Platform | How to run |
+|--------|----------|------------|
+| **Embedded Rust relay** (`lan.rs`) | Tauri desktop | "Start LAN Server" button in game UI → `lan_start_server` Tauri command |
+| **Node.js LAN server** (`lan-server.ts`) | Any platform with Node | `cd server && npm run lan` |
+
+Both are API-compatible with the existing `/mp/*` endpoints — the client code works unchanged.
+
+### Embedded Rust Server (`src-tauri/src/lan.rs`)
+
+An axum-based HTTP + WebSocket server running inside the Tauri process on a tokio task.
+
+- **Port:** 19738 (default), configurable via `lan_start_server` command
+- **Lobby registry:** In-memory `Arc<RwLock<HashMap>>`, same lifecycle as the Fastify registry
+- **Stale pruning:** 60s interval, 10-minute TTL
+- **Password:** Constant-time comparison of SHA-256 hex hashes
+- **CORS:** All origins allowed (LAN-only, no auth boundary)
+
+**Tauri commands:**
+
+| Command | Args | Returns | Description |
+|---------|------|---------|-------------|
+| `lan_start_server` | `port?: u16` | `{ port, localIps }` | Start server on `0.0.0.0:port` |
+| `lan_stop_server` | — | `()` | Graceful shutdown via oneshot channel |
+| `lan_get_local_ips` | — | `string[]` | Non-loopback IPv4 addresses |
+| `lan_server_status` | — | `{ running, port }` | Current state |
+
+### LAN Discovery (`lanDiscoveryService.ts`)
+
+HTTP-based subnet scanner. Probes `GET /mp/discover` on port 19738 across /24 subnets.
+
+- **Subnet detection:** Tauri `lan_get_local_ips` → extract /24 prefix. Fallback: `192.168.0`, `192.168.1`, `10.0.0`, `10.0.1`.
+- **Batching:** 50 concurrent probes, 400ms timeout each.
+- **Validation:** Response must contain `{ game: "recall-rogue" }`.
+
+### UI Flow
+
+The MultiplayerMenu has three tabs: "Create Lobby", "Join Lobby", "LAN Play".
+
+LAN Play tab:
+1. **Host section** (desktop only): Start/Stop server, shows IP + port
+2. **Join section** (all platforms): Auto-scan results, manual IP entry, connect/disconnect
+3. After connecting → `setLanServerUrl()` → normal lobby flow (Browse/Create)
 
 ---
 
