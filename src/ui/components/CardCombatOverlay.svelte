@@ -84,6 +84,7 @@
   import { resolveWowFactorText } from '../../services/wowFactorService'
   import {
     tutorialActive,
+    tutorialEvalTrigger,
     evaluateTutorialStep,
   } from '../../services/tutorialService'
   import type { TutorialContext } from '../../data/tutorialSteps'
@@ -2738,6 +2739,8 @@
   // relevant state changes. The service handles debouncing / step sequencing.
   $effect(() => {
     if (!$tutorialActive) return
+    // Track the eval trigger so the effect re-runs after "Got it" advances steps
+    void $tutorialEvalTrigger
 
     const state = get(onboardingState)
     const ctx: TutorialContext = {
@@ -2773,7 +2776,7 @@
       enemyPassives: turnState?.enemy
         ? getEnemyPowers(turnState.enemy).map((p: { resolvedTooltip: string }) => p.resolvedTooltip)
         : [],
-      relicCount: 0,
+      relicCount: displayRelics?.length ?? 0,
       fogLevel: fogLevel ?? null,
       fogState: fogState ?? null,
       drawPileCount: drawPileCount ?? 0,
@@ -2829,7 +2832,7 @@
         <div class="enemy-name-header" role="heading" aria-level="2" aria-label="{enemyName}">
           {enemyName}
         </div>
-        <div data-tutorial-anchor="enemy-power-badges" style="display: contents;">
+        <div data-tutorial-anchor="enemy-power-badges" style="display: inline-flex; align-items: center;">
           <EnemyPowerBadges enemy={turnState?.enemy} />
         </div>
       </div>
@@ -2849,7 +2852,7 @@
       </div>
     {/if}
 
-    <div class="ap-orb" class:ap-active={apCurrent > 0} class:ap-empty={apCurrent === 0} aria-label="Action points: {apCurrent}" data-tutorial-anchor="ap-indicator">
+    <div class="ap-orb" class:ap-active={apCurrent > 0} class:ap-empty={apCurrent === 0} aria-label="Action points: {apCurrent}">
       <span class="ap-number">{apCurrent}</span>
       <span class="ap-label" aria-hidden="true">AP</span>
     </div>
@@ -3050,7 +3053,7 @@
     </div>
 
     <!-- AP indicator: positioned right of End Turn button (portrait) -->
-    <div class="player-ap-right" class:ap-active={apCurrent > 0} aria-label="Action Points">
+    <div class="player-ap-right" class:ap-active={apCurrent > 0} aria-label="Action Points" data-tutorial-anchor="ap-indicator">
       <span class="ap-num">{apCurrent}</span>
     </div>
 

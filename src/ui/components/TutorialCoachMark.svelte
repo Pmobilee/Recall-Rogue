@@ -115,7 +115,28 @@
     let left = 0
     let arrowDir: TooltipPos['arrowDir'] = 'none'
 
-    switch (pos) {
+    // Smart auto-placement: try the preferred direction first,
+    // fall back to the direction with most available space
+    const spaceAbove = rect.top
+    const spaceBelow = vh - rect.bottom
+    const spaceLeft = rect.left
+    const spaceRight = vw - rect.right
+
+    let bestPos = pos
+
+    if (pos === 'above' && spaceAbove < ttH + ANCHOR_GAP) {
+      // Not enough space above — try below
+      bestPos = spaceBelow >= ttH + ANCHOR_GAP ? 'below' : (spaceAbove >= spaceBelow ? 'above' : 'below')
+    } else if (pos === 'below' && spaceBelow < ttH + ANCHOR_GAP) {
+      // Not enough space below — try above
+      bestPos = spaceAbove >= ttH + ANCHOR_GAP ? 'above' : (spaceBelow >= spaceAbove ? 'below' : 'above')
+    } else if (pos === 'left' && spaceLeft < ttW + ANCHOR_GAP) {
+      bestPos = spaceRight >= ttW + ANCHOR_GAP ? 'right' : (spaceLeft >= spaceRight ? 'left' : 'right')
+    } else if (pos === 'right' && spaceRight < ttW + ANCHOR_GAP) {
+      bestPos = spaceLeft >= ttW + ANCHOR_GAP ? 'left' : (spaceRight >= spaceLeft ? 'right' : 'left')
+    }
+
+    switch (bestPos) {
       case 'above':
         top = rect.top - ttH - ANCHOR_GAP
         left = rect.left + rect.width / 2 - ttW / 2

@@ -61,6 +61,13 @@ export const tutorialSpotlight = writable<boolean>(false)
 /** Whether the current step blocks game input (proactive + spotlight or blockInput). */
 export const tutorialBlocksInput = writable<boolean>(false)
 
+/**
+ * Increments on every step advance — UI tracks this to re-trigger evaluation.
+ * Fixes the proactive-step chaining issue where the $effect in CardCombatOverlay
+ * wouldn't re-run after "Got it" because no game-state store changed.
+ */
+export const tutorialEvalTrigger = writable<number>(0)
+
 // ---------------------------------------------------------------------------
 // Internal state — not exported; mutated only by this module
 // ---------------------------------------------------------------------------
@@ -106,6 +113,7 @@ function markRelatedTooltips(stepId: string): void {
       markOnboardingTooltipSeen('hasSeenCardTapTooltip')
       break
     case 'card_selected':
+    case 'card_selected_qp':
       markOnboardingTooltipSeen('hasSeenCastTooltip')
       break
     case 'end_turn_prompt':
@@ -157,6 +165,8 @@ function completeCurrentStep(): void {
   clearMaxDisplayTimer()
   clearDisplayState()
   tutorialBlocksInput.set(false)
+  // Increment trigger so the UI $effect re-runs to pick up the next proactive step
+  tutorialEvalTrigger.update(n => n + 1)
 }
 
 // ---------------------------------------------------------------------------
@@ -178,6 +188,8 @@ export function startTutorial(mode: TutorialMode): void {
   tutorialMode.set(mode)
   tutorialBlocksInput.set(false)
   clearDisplayState()
+  // Trigger initial evaluation so proactive steps fire immediately
+  tutorialEvalTrigger.update(n => n + 1)
 }
 
 /**
@@ -276,7 +288,14 @@ export function evaluateTutorialStep(ctx: TutorialContext): void {
         stepCursor++
         continue
       }
-      // showWhen not yet true — pause cursor here, wait for condition
+      // showWhen not yet true — check if step's purpose is already fulfilled
+      if (step.doneWhen(ctx)) {
+        // Player already passed this point — skip the step
+        completedSteps.add(step.id)
+        stepCursor++
+        continue
+      }
+      // Wait for condition to become true
       return
     }
   }

@@ -194,6 +194,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     advanceStep,
     skipTutorial,
     startTutorial,
+    isTutorialActive,
   } from './services/tutorialService' 
   import { musicService } from './services/musicService'
   import { ambientAudio } from './services/ambientAudioService'
@@ -243,6 +244,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   // Auto-trigger combat tutorial on first-ever combat encounter
   $effect(() => {
     const screen = $currentScreen
+    if (isTutorialActive()) return  // Don't restart if already running
     const state = get(onboardingState)
     if (screen === 'combat' && state.runsCompleted === 0 && !state.hasSeenCombatTutorial && !state.tutorialDismissedEarly) {
       startTutorial('combat')
@@ -252,6 +254,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   // Auto-trigger study tutorial on first-ever study session
   $effect(() => {
     const screen = $currentScreen
+    if (isTutorialActive()) return  // Don't restart if already running
     const state = get(onboardingState)
     if (screen === 'restStudy' && !state.hasSeenStudyTutorial && !state.tutorialDismissedEarly) {
       startTutorial('study')

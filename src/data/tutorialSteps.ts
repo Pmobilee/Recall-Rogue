@@ -126,13 +126,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: false,
     minDisplayMs: 0,
     maxDisplayMs: 30000,
+    // enemy-sprite is a Phaser canvas element — no DOM node to spotlight
     spotlight: false,
   },
 
   {
     id: 'enemy_passive_intro',
     mode: 'combat',
-    anchor: { target: 'enemy-power-badges', position: 'below' },
+    anchor: { target: 'enemy-power-badges', position: 'above' },
     proactive: true,
     blockInput: true,
     getMessage: (ctx) => {
@@ -151,44 +152,28 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
   {
     id: 'enemy_intent_intro',
     mode: 'combat',
-    anchor: { target: 'enemy-intent', position: 'below' },
+    anchor: { target: 'enemy-intent', position: 'above' },
     proactive: true,
     blockInput: true,
     getMessage: (ctx) => {
       const intentMap: Record<string, string> = {
-        attack: `deal ${ctx.enemyIntentValue ?? '?'} damage to you`,
-        defend: `gain ${ctx.enemyIntentValue ?? '?'} block`,
-        buff: 'gain a stat boost',
-        debuff: 'weaken you with a status effect',
-        heal: 'recover HP',
-        charge: 'charge up a powerful attack',
-        multi_attack: `hit you multiple times for ${ctx.enemyIntentValue ?? '?'} each`,
+        attack: `deal ${ctx.enemyIntentValue ?? '?'} damage to you. Play Shield cards to block it`,
+        defend: `gain ${ctx.enemyIntentValue ?? '?'} block. Use Attack cards to deal damage while they turtle`,
+        buff: 'gain a stat boost. Hit hard with Attack cards before they power up',
+        debuff: 'weaken you with a status effect. Play Shield cards and strike back',
+        heal: 'recover HP. Push damage with Attack cards now',
+        charge: 'charge up a powerful attack. Play Shield cards to survive it',
+        multi_attack: `hit you multiple times for ${ctx.enemyIntentValue ?? '?'} each. Shield cards are critical here`,
       }
       const intentDesc = ctx.enemyIntentType
         ? (intentMap[ctx.enemyIntentType] ?? 'take an action')
         : 'take an action'
-      return `That icon shows the enemy's next move. Right now they intend to ${intentDesc}. Use this to plan your cards each turn.`
+      return `That icon shows the enemy's next move. They intend to ${intentDesc}.`
     },
     showWhen: (ctx) =>
       ctx.encounterTurnNumber === 1 &&
       ctx.phase === 'player_action' &&
       ctx.enemyIntentType != null,
-    doneWhen: () => true,
-    autoDismiss: false,
-    minDisplayMs: 0,
-    maxDisplayMs: 30000,
-    spotlight: true,
-  },
-
-  {
-    id: 'ap_intro',
-    mode: 'combat',
-    anchor: { target: 'ap-indicator', position: 'left' },
-    proactive: true,
-    blockInput: true,
-    getMessage: (ctx) =>
-      `This is your AP. You have ${ctx.apMax} Action Points to spend this turn. Each card costs AP to play. When you run out, end your turn.`,
-    showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
     doneWhen: () => true,
     autoDismiss: false,
     minDisplayMs: 0,
@@ -212,8 +197,24 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     spotlight: true,
   },
 
+  {
+    id: 'ap_intro',
+    mode: 'combat',
+    anchor: { target: 'ap-indicator', position: 'left' },
+    proactive: true,
+    blockInput: true,
+    getMessage: (ctx) =>
+      `This is your AP. You have ${ctx.apCurrent} Action Points to spend this turn. Each card costs AP to play. When you run out, end your turn.`,
+    showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
   // ═══════════════════════════════════════════════════════════
-  // PHASE 2 — First Card Play (reactive)
+  // PHASE 2 — First Card Play: Quick Play only
   // ═══════════════════════════════════════════════════════════
 
   {
@@ -230,28 +231,101 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 500,
     maxDisplayMs: 60000,
-    spotlight: false,
+    // card-hand is a DOM element — spotlight guides the player to the right area
+    spotlight: true,
   },
 
   {
-    id: 'card_selected',
+    id: 'card_selected_qp',
     mode: 'combat',
     anchor: { target: 'card-hand', position: 'above' },
     getMessage: (ctx) => {
       const type = ctx.selectedCardType ?? 'card'
       const cost = ctx.selectedCardApCost ?? 1
-      return `This ${type} costs ${cost} AP. Tap it AGAIN for Quick Play (base damage, no quiz). Or drag it UPWARD to Charge (answer a question for 1.5x power, costs +1 extra AP).`
+      return `You selected a ${type} card (${cost} AP). Tap it AGAIN to Quick Play — instant base damage, no quiz. Try it now.`
     },
     showWhen: (ctx) =>
       ctx.cardPlayStage === 'selected' &&
       !ctx.hasPlayedQuickPlay &&
       !ctx.hasPlayedCharge,
     doneWhen: (ctx) =>
-      ctx.cardPlayStage !== 'selected' || ctx.hasPlayedQuickPlay || ctx.hasPlayedCharge,
+      ctx.hasPlayedQuickPlay || ctx.hasPlayedCharge || ctx.cardsPlayedThisTurn > 0,
     autoDismiss: true,
     minDisplayMs: 1000,
     maxDisplayMs: 60000,
-    spotlight: false,
+    spotlight: true,
+  },
+
+  {
+    id: 'post_quick_play',
+    mode: 'combat',
+    anchor: { target: 'card-hand', position: 'above' },
+    proactive: true,
+    blockInput: true,
+    getMessage: (ctx) => {
+      if (ctx.hasPlayedCharge) {
+        // Player charged instead of QP — that's fine, adapt
+        return ctx.hasAnsweredWrong
+          ? 'You Charged and answered wrong — the card still played at reduced power. You are never stuck. Now try Quick Play on your next card — tap a card twice.'
+          : 'You Charged and answered correctly — 1.5x damage! Now try Quick Play on your next card — just tap a selected card again for instant base damage.'
+      }
+      return 'Quick Play dealt base damage instantly. Fast and reliable — no quiz needed. Now try something more powerful: select another card and drag it UPWARD to Charge.'
+    },
+    showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // PHASE 2b — Second Card Play: Charge
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 'select_for_charge',
+    mode: 'combat',
+    anchor: { target: 'card-hand', position: 'above' },
+    getMessage: (ctx) => {
+      if (ctx.hasPlayedCharge) {
+        // Already charged on first card — skip this, suggest QP instead
+        return 'Select another card and tap it again to try Quick Play this time.'
+      }
+      return 'Select a card, then drag it UPWARD toward the top of the screen to Charge it.'
+    },
+    showWhen: (ctx) =>
+      ctx.phase === 'player_action' &&
+      ctx.cardPlayStage === 'hand' &&
+      ctx.cardsPlayedThisTurn >= 1 &&
+      ctx.encounterTurnNumber === 1,
+    doneWhen: (ctx) => ctx.cardPlayStage === 'selected' || ctx.cardsPlayedThisTurn >= 2,
+    autoDismiss: true,
+    minDisplayMs: 500,
+    maxDisplayMs: 60000,
+    spotlight: true,
+  },
+
+  {
+    id: 'charge_prompt',
+    mode: 'combat',
+    anchor: { target: 'card-hand', position: 'above' },
+    getMessage: (ctx) => {
+      if (ctx.hasPlayedCharge) {
+        return 'Tap the card again for Quick Play.'
+      }
+      return 'Now drag this card UPWARD to the top half of the screen to initiate a Charge. It costs +1 extra AP but gives 1.5x power if you answer correctly.'
+    },
+    showWhen: (ctx) =>
+      ctx.cardPlayStage === 'selected' &&
+      ctx.cardsPlayedThisTurn >= 1 &&
+      ctx.encounterTurnNumber === 1,
+    doneWhen: (ctx) =>
+      ctx.cardPlayStage !== 'selected' || ctx.cardsPlayedThisTurn >= 2,
+    autoDismiss: true,
+    minDisplayMs: 1000,
+    maxDisplayMs: 60000,
+    spotlight: true,
   },
 
   {
@@ -259,44 +333,33 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'quiz-panel', position: 'left' },
     getMessage: () =>
-      'You initiated a Charge! Answer the question correctly for 1.5x damage. Wrong answers still play the card at reduced power — you are never stuck.',
-    showWhen: (ctx) => ctx.quizVisible && !ctx.hasPlayedCharge,
-    doneWhen: (ctx) => !ctx.quizVisible || ctx.hasPlayedCharge,
+      'You initiated a Charge! Answer the question. Correct = 1.5x damage. Wrong = reduced power, but the card still plays. You are never stuck.',
+    showWhen: (ctx) => ctx.quizVisible,
+    doneWhen: (ctx) => !ctx.quizVisible,
     autoDismiss: true,
     minDisplayMs: 1500,
     maxDisplayMs: 20000,
-    spotlight: false,
+    spotlight: true,
   },
 
-  // ═══════════════════════════════════════════════════════════
-  // PHASE 3 — After First Card Play (dynamic feedback)
-  // ═══════════════════════════════════════════════════════════
-
   {
-    id: 'post_first_play',
+    id: 'post_charge',
     mode: 'combat',
     anchor: { target: 'card-hand', position: 'above' },
+    proactive: true,
+    blockInput: true,
     getMessage: (ctx) => {
-      if (ctx.hasPlayedCharge && !ctx.hasAnsweredWrong) {
-        return 'Correct! You dealt 1.5x damage. You can also tap a selected card again for Quick Play — base damage, no quiz. Each approach has its place.'
+      if (ctx.hasAnsweredWrong) {
+        return 'Wrong answer — but the card still played at reduced power. You are never stuck. Now you know both Quick Play and Charge. Use whichever fits the situation.'
       }
-      if (ctx.hasPlayedCharge && ctx.hasAnsweredWrong) {
-        return 'Wrong answer, but the card still played at reduced power. You are never stuck. Wrong answers cost power, not your turn.'
-      }
-      if (ctx.hasPlayedQuickPlay) {
-        return 'Quick Play — base damage, no quiz. Fast and reliable. Next time try dragging a card upward to Charge for 1.5x power.'
-      }
-      return null
+      return 'Correct answer — 1.5x damage! Now you know both ways to play cards. Quick Play for speed, Charge for power. Choose based on the situation.'
     },
-    showWhen: (ctx) =>
-      ctx.cardsPlayedThisTurn === 1 &&
-      ctx.phase === 'player_action' &&
-      ctx.encounterTurnNumber === 1,
-    doneWhen: (ctx) => ctx.cardsPlayedThisTurn > 1 || ctx.encounterTurnNumber > 1,
-    autoDismiss: true,
-    minDisplayMs: 2000,
-    maxDisplayMs: 10000,
-    spotlight: false,
+    showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 2 && ctx.phase === 'player_action',
+    doneWhen: () => true,
+    autoDismiss: false,
+    minDisplayMs: 0,
+    maxDisplayMs: 30000,
+    spotlight: true,
   },
 
   // ═══════════════════════════════════════════════════════════
@@ -365,6 +428,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'ap-indicator', position: 'left' },
     proactive: true,
+    blockInput: true,
     getMessage: (ctx) =>
       `You have ${ctx.apCurrent} AP left. Play more cards or end your turn whenever you like — you do not have to spend every AP.`,
     showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
@@ -380,11 +444,12 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'end-turn-btn', position: 'above' },
     proactive: true,
+    blockInput: true,
     getMessage: () =>
       'When you are done playing cards, tap End Turn. The enemy takes their action, then you draw a fresh hand.',
     showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
     doneWhen: (ctx) => ctx.phase !== 'player_action',
-    autoDismiss: true,
+    autoDismiss: false,
     minDisplayMs: 1500,
     maxDisplayMs: 60000,
     spotlight: true,
@@ -405,6 +470,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2000,
     maxDisplayMs: 6000,
+    // enemy-sprite is a Phaser canvas element — no DOM node to spotlight
     spotlight: false,
   },
 
@@ -415,7 +481,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
   {
     id: 'intent_planning',
     mode: 'combat',
-    anchor: { target: 'enemy-intent', position: 'below' },
+    anchor: { target: 'enemy-intent', position: 'above' },
     getMessage: (ctx) => {
       if (!ctx.enemyIntentType) return null
       const intentDescMap: Record<string, string> = {
@@ -439,13 +505,13 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2000,
     maxDisplayMs: 12000,
-    spotlight: false,
+    spotlight: true,
   },
 
   {
     id: 'enemy_passive_reminder',
     mode: 'combat',
-    anchor: { target: 'enemy-power-badges', position: 'below' },
+    anchor: { target: 'enemy-power-badges', position: 'above' },
     getMessage: (ctx) => {
       if (!ctx.enemyPassives || ctx.enemyPassives.length === 0) return null
       return `Remember: ${ctx.enemyName ?? 'This enemy'} has a passive — ${ctx.enemyPassives[0]}. Factor this into your Quick Play vs Charge decisions.`
@@ -459,7 +525,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2000,
     maxDisplayMs: 10000,
-    spotlight: false,
+    spotlight: true,
   },
 
   // ═══════════════════════════════════════════════════════════
@@ -564,6 +630,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2500,
     maxDisplayMs: 8000,
+    // screen-center is a full-screen pseudo-anchor — no specific DOM element to spotlight
     spotlight: false,
   },
 
@@ -583,7 +650,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2000,
     maxDisplayMs: 8000,
-    spotlight: false,
+    spotlight: true,
   },
 
   {
@@ -597,7 +664,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2000,
     maxDisplayMs: 8000,
-    spotlight: false,
+    spotlight: true,
   },
 
   {
@@ -612,6 +679,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2000,
     maxDisplayMs: 6000,
+    // surge-border is a full-screen CSS effect, not a specific DOM element to highlight
     spotlight: false,
   },
 ]

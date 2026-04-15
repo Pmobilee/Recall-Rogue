@@ -479,9 +479,8 @@
   }
 
   .section-left {
-    flex: 1;
-    min-width: 0;
-    max-width: none;
+    flex: 0 0 auto;
+    width: 33%;
     overflow: visible;
   }
 
@@ -505,14 +504,15 @@
   .hp-group {
     display: flex;
     align-items: center;
-    flex: 1 0 auto;
+    flex: 1;
+    min-width: 0;
     flex-shrink: 0;
   }
 
   .hp-bar-track {
     position: relative;
     flex: 1;
-    min-width: calc(120px * var(--layout-scale, 1));
+    min-width: 0;
     height: calc(var(--topbar-height, 4.5vh) * 0.58);
     background: rgba(255, 255, 255, 0.08);
     border-radius: calc(3px * var(--layout-scale, 1));
