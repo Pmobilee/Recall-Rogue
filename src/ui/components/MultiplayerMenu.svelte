@@ -1,8 +1,9 @@
 <!-- MultiplayerMenu.svelte
      Full-screen multiplayer entry screen for Recall Rogue.
-     Two paths: Create a Lobby (with mode selection) or Join a Lobby (via 6-char code).
+     Three paths: Create a Lobby, Join a Lobby (via 6-char code), or LAN Play.
      Shown before the MultiplayerLobby screen. -->
 <script lang="ts">
+  import { onMount } from 'svelte'
   import type { MultiplayerMode } from '../../data/multiplayerTypes'
   import {
     MODE_DISPLAY_NAMES,
@@ -11,6 +12,20 @@
     MODE_MAX_PLAYERS,
   } from '../../data/multiplayerTypes'
   import { isBroadcastMode } from '../../services/multiplayerLobbyService'
+  import {
+    startLanServer,
+    stopLanServer,
+    getLanServerStatus,
+  } from '../../services/lanServerService'
+  import type { DiscoveredLanServer } from '../../services/lanDiscoveryService'
+  import {
+    setLanServerUrl,
+    clearLanServerUrl,
+    isLanMode,
+    getLanServerUrls,
+  } from '../../services/lanConfigService'
+  import { scanLanForServers, probeLanServer, LAN_DEFAULT_PORT } from '../../services/lanDiscoveryService'
+  import { isDesktop } from '../../services/platformService'
 
   interface Props {
     onBack: () => void
@@ -25,11 +40,39 @@
 
   let selectedMode = $state<MultiplayerMode>('race')
   let joinCode = $state('')
-  let activeTab = $state<'create' | 'join'>('create')
+  let activeTab = $state<'create' | 'join' | 'lan'>('create')
   let joinError = $state('')
 
   /** True when ?mp is in the URL — enables two-tab broadcast testing mode */
   let devMode = $derived(isBroadcastMode())
+
+  // ── LAN state ─────────────────────────────────────────────────────────────────
+  let lanServerRunning = $state(false)
+  let lanServerIps = $state<string[]>([])
+  let lanServerPort = $state<number | null>(null)
+  let lanServerStarting = $state(false)
+  let lanServerError = $state('')
+
+  let discoveredServers = $state<DiscoveredLanServer[]>([])
+  let isScanning = $state(false)
+  let scanRan = $state(false)
+
+  let manualIp = $state('')
+  let manualPort = $state(String(LAN_DEFAULT_PORT))
+  let connectError = $state('')
+  let isConnecting = $state(false)
+
+  let isConnectedToLan = $state(isLanMode())
+  let connectedLanUrls = $state(getLanServerUrls())
+
+  // ── Tab switch side-effect: kick off discovery on first LAN tab visit ─────────
+  $effect(() => {
+    if (activeTab === 'lan' && !scanRan && !isScanning) {
+      runScan()
+    }
+  })
+
+  // ── Helpers ───────────────────────────────────────────────────────────────────
 
   function handleModeSelect(mode: MultiplayerMode): void {
     selectedMode = mode
@@ -58,6 +101,125 @@
   }
 
   let canJoin = $derived(joinCode.length === 6)
+
+  // ── LAN: Server management ────────────────────────────────────────────────────
+
+  async function handleStartServer(): Promise<void> {
+    lanServerError = ''
+    lanServerStarting = true
+    try {
+      const result = await startLanServer()
+      if (result) {
+        lanServerRunning = true
+        lanServerPort = result.port
+        lanServerIps = result.localIps
+        if (result.localIps.length > 0) {
+          setLanServerUrl(result.localIps[0], result.port)
+          isConnectedToLan = true
+          connectedLanUrls = getLanServerUrls()
+        }
+      } else {
+        lanServerError = "Couldn't start the server. Try again."
+      }
+    } catch {
+      lanServerError = "Couldn't start the server. Try again."
+    } finally {
+      lanServerStarting = false
+    }
+  }
+
+  async function handleStopServer(): Promise<void> {
+    await stopLanServer()
+    lanServerRunning = false
+    lanServerIps = []
+    lanServerPort = null
+    clearLanServerUrl()
+    isConnectedToLan = false
+    connectedLanUrls = null
+  }
+
+  function handleLanCreateLobby(): void {
+    onCreateLobby(selectedMode)
+  }
+
+  // ── LAN: Discovery ────────────────────────────────────────────────────────────
+
+  async function runScan(): Promise<void> {
+    isScanning = true
+    scanRan = true
+    connectError = ''
+    try {
+      discoveredServers = await scanLanForServers()
+    } catch {
+      discoveredServers = []
+    } finally {
+      isScanning = false
+    }
+  }
+
+  function handleConnectToServer(server: DiscoveredLanServer): void {
+    setLanServerUrl(server.ip, server.port)
+    isConnectedToLan = true
+    connectedLanUrls = getLanServerUrls()
+    onBrowseLobbies()
+  }
+
+  async function handleManualConnect(): Promise<void> {
+    connectError = ''
+    const ip = manualIp.trim()
+    const portNum = parseInt(manualPort, 10)
+
+    if (!ip) {
+      connectError = 'Enter an IP address.'
+      return
+    }
+    if (isNaN(portNum) || portNum < 1 || portNum > 65535) {
+      connectError = 'Enter a valid port number.'
+      return
+    }
+
+    isConnecting = true
+    try {
+      const server = await probeLanServer(ip, portNum)
+      if (server) {
+        setLanServerUrl(ip, portNum)
+        isConnectedToLan = true
+        connectedLanUrls = getLanServerUrls()
+        onBrowseLobbies()
+      } else {
+        connectError = 'No server found at that address. Check the IP and port.'
+      }
+    } catch {
+      connectError = 'No server found at that address. Check the IP and port.'
+    } finally {
+      isConnecting = false
+    }
+  }
+
+  function handleDisconnect(): void {
+    clearLanServerUrl()
+    isConnectedToLan = false
+    connectedLanUrls = null
+  }
+
+  function handleManualPortKeydown(e: KeyboardEvent): void {
+    if (e.key === 'Enter') handleManualConnect()
+  }
+
+  // ── On mount: check if LAN server was already running from a previous session ─
+
+  onMount(async () => {
+    if (isDesktop) {
+      const status = await getLanServerStatus()
+      if (status.running && status.port !== null) {
+        lanServerRunning = true
+        lanServerPort = status.port
+        // IPs not returned by status; player will see port but not IPs until restart
+      }
+    }
+    isConnectedToLan = isLanMode()
+    connectedLanUrls = getLanServerUrls()
+  })
 </script>
 
 <div class="mp-menu" role="main" aria-label="Multiplayer Menu">
@@ -99,6 +261,16 @@
           onclick={() => { activeTab = 'join' }}
         >
           Join Lobby
+        </button>
+        <button
+          class="tab-btn"
+          class:active={activeTab === 'lan'}
+          data-testid="tab-lan"
+          role="tab"
+          aria-selected={activeTab === 'lan'}
+          onclick={() => { activeTab = 'lan' }}
+        >
+          LAN Play
         </button>
       </div>
 
@@ -172,6 +344,194 @@
               Join Lobby
             </button>
           </div>
+        </div>
+      {/if}
+
+      <!-- LAN Play tab -->
+      {#if activeTab === 'lan'}
+        <div class="tab-panel lan-panel" role="tabpanel" aria-label="LAN Play">
+
+          <!-- Connected banner -->
+          {#if isConnectedToLan && connectedLanUrls}
+            <div class="lan-connected-banner" role="status" aria-live="polite">
+              <span class="status-dot status-dot--green" aria-hidden="true"></span>
+              <span class="lan-connected-text">
+                Connected to LAN server at {connectedLanUrls.apiUrl.replace('http://', '')}
+              </span>
+              <button class="ghost-btn" onclick={handleDisconnect} data-testid="btn-lan-disconnect">
+                Disconnect
+              </button>
+            </div>
+          {/if}
+
+          <!-- ── Section 1: Host ──────────────────────────────────────────── -->
+          <section class="lan-section" aria-labelledby="lan-host-heading">
+            <h2 class="lan-section-title" id="lan-host-heading">Host a LAN Game</h2>
+
+            {#if !isDesktop}
+              <p class="lan-note">
+                Hosting only works in the desktop app. You can still join a game below.
+              </p>
+            {:else}
+              <!-- Server status row -->
+              {#if lanServerRunning}
+                <div class="server-status" role="status" aria-live="polite">
+                  <span class="status-dot status-dot--green" aria-hidden="true"></span>
+                  <span class="server-status-text">
+                    Server running at
+                    {#if lanServerIps.length > 0}
+                      <strong>{lanServerIps[0]}:{lanServerPort}</strong>
+                    {:else}
+                      <strong>port {lanServerPort}</strong>
+                    {/if}
+                  </span>
+                </div>
+                {#if lanServerIps.length > 1}
+                  <p class="server-also-reachable">
+                    Also reachable at: {lanServerIps.slice(1).join(', ')}
+                  </p>
+                {/if}
+              {/if}
+
+              {#if lanServerError}
+                <p class="lan-error" role="alert">{lanServerError}</p>
+              {/if}
+
+              <div class="host-actions">
+                {#if !lanServerRunning}
+                  <button
+                    class="primary-btn"
+                    data-testid="btn-start-lan-server"
+                    disabled={lanServerStarting}
+                    onclick={handleStartServer}
+                  >
+                    {lanServerStarting ? 'Starting…' : 'Start LAN Server'}
+                  </button>
+                {:else}
+                  <button
+                    class="danger-btn"
+                    data-testid="btn-stop-lan-server"
+                    onclick={handleStopServer}
+                  >
+                    Stop Server
+                  </button>
+                  <!-- Mode selector for creating a lobby on this LAN server -->
+                  <div class="host-mode-row">
+                    <label class="lan-label" for="lan-mode-select">Mode</label>
+                    <select
+                      id="lan-mode-select"
+                      class="lan-mode-select"
+                      value={selectedMode}
+                      onchange={(e) => handleModeSelect((e.target as HTMLSelectElement).value as MultiplayerMode)}
+                    >
+                      {#each MODES as mode}
+                        <option value={mode}>{MODE_DISPLAY_NAMES[mode]}</option>
+                      {/each}
+                    </select>
+                    <button
+                      class="primary-btn"
+                      data-testid="btn-lan-create-lobby"
+                      onclick={handleLanCreateLobby}
+                    >
+                      Create Lobby
+                    </button>
+                  </div>
+                {/if}
+              </div>
+            {/if}
+          </section>
+
+          <div class="lan-divider" role="separator" aria-hidden="true"></div>
+
+          <!-- ── Section 2: Join ──────────────────────────────────────────── -->
+          <section class="lan-section" aria-labelledby="lan-join-heading">
+            <h2 class="lan-section-title" id="lan-join-heading">Join a LAN Game</h2>
+
+            <!-- Scan results -->
+            <div class="scan-header">
+              <span class="scan-status-text" aria-live="polite" role="status">
+                {#if isScanning}
+                  Scanning your network…
+                {:else if scanRan && discoveredServers.length === 0}
+                  Nothing found. Ask the host to start their server first.
+                {:else if !scanRan}
+                  &nbsp;
+                {/if}
+              </span>
+              <button
+                class="ghost-btn"
+                data-testid="btn-rescan"
+                disabled={isScanning}
+                onclick={runScan}
+              >
+                {isScanning ? 'Scanning…' : 'Rescan Network'}
+              </button>
+            </div>
+
+            {#if discoveredServers.length > 0}
+              <ul class="server-list" aria-label="Discovered LAN servers">
+                {#each discoveredServers as server, i}
+                  <li class="server-row" data-testid="lan-server-{i}">
+                    <div class="server-info">
+                      <span class="server-hostname">
+                        {server.hostName ?? server.ip}
+                      </span>
+                      <span class="server-address">{server.ip}:{server.port}</span>
+                    </div>
+                    <button
+                      class="primary-btn server-connect-btn"
+                      data-testid="btn-connect-lan-{i}"
+                      onclick={() => handleConnectToServer(server)}
+                    >
+                      Connect
+                    </button>
+                  </li>
+                {/each}
+              </ul>
+            {/if}
+
+            <!-- Manual entry -->
+            <div class="manual-entry" aria-label="Manual server connection">
+              <label class="lan-label" for="lan-ip-input">IP Address</label>
+              <div class="manual-row">
+                <input
+                  id="lan-ip-input"
+                  data-testid="lan-ip-input"
+                  class="lan-input lan-input--ip"
+                  type="text"
+                  placeholder="192.168.1.x"
+                  value={manualIp}
+                  oninput={(e) => { manualIp = (e.target as HTMLInputElement).value; connectError = '' }}
+                  autocomplete="off"
+                  aria-label="Server IP address"
+                />
+                <input
+                  id="lan-port-input"
+                  data-testid="lan-port-input"
+                  class="lan-input lan-input--port"
+                  type="text"
+                  placeholder={String(LAN_DEFAULT_PORT)}
+                  value={manualPort}
+                  oninput={(e) => { manualPort = (e.target as HTMLInputElement).value; connectError = '' }}
+                  onkeydown={handleManualPortKeydown}
+                  autocomplete="off"
+                  aria-label="Server port"
+                />
+                <button
+                  class="primary-btn"
+                  data-testid="btn-manual-connect"
+                  disabled={isConnecting || !manualIp.trim()}
+                  onclick={handleManualConnect}
+                >
+                  {isConnecting ? 'Connecting…' : 'Connect'}
+                </button>
+              </div>
+              {#if connectError}
+                <p class="lan-error" role="alert">{connectError}</p>
+              {/if}
+            </div>
+          </section>
+
         </div>
       {/if}
 
@@ -514,5 +874,337 @@
   .browse-btn:hover {
     background: rgba(255, 215, 0, 0.20);
     border-color: rgba(255, 215, 0, 0.6);
+  }
+
+  /* ===== LAN Play tab ===== */
+  .lan-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .lan-connected-banner {
+    display: flex;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    background: rgba(80, 200, 120, 0.08);
+    border: 1px solid rgba(80, 200, 120, 0.3);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    margin-bottom: calc(16px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
+    flex-wrap: wrap;
+  }
+
+  .lan-connected-text {
+    flex: 1;
+    color: #7de0a0;
+    font-family: var(--font-body, 'Lora', serif);
+  }
+
+  .lan-section {
+    padding: calc(4px * var(--layout-scale, 1)) 0 calc(16px * var(--layout-scale, 1)) 0;
+  }
+
+  .lan-section-title {
+    font-family: var(--font-rpg, 'Cinzel', serif);
+    font-size: calc(14px * var(--text-scale, 1));
+    font-weight: 600;
+    color: #FFD700;
+    letter-spacing: 0.05em;
+    margin: 0 0 calc(12px * var(--layout-scale, 1)) 0;
+  }
+
+  .lan-divider {
+    height: 1px;
+    background: #2A2E38;
+    margin: calc(4px * var(--layout-scale, 1)) 0 calc(20px * var(--layout-scale, 1)) 0;
+  }
+
+  .lan-note {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #888;
+    margin: 0 0 calc(8px * var(--layout-scale, 1)) 0;
+    font-style: italic;
+  }
+
+  /* ===== Status dot ===== */
+  .status-dot {
+    display: inline-block;
+    width: calc(8px * var(--layout-scale, 1));
+    height: calc(8px * var(--layout-scale, 1));
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .status-dot--green {
+    background: #50C878;
+    box-shadow: 0 0 calc(4px * var(--layout-scale, 1)) rgba(80, 200, 120, 0.6);
+  }
+
+  /* ===== Server status ===== */
+  .server-status {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    background: rgba(80, 200, 120, 0.08);
+    border: 1px solid rgba(80, 200, 120, 0.25);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    margin-bottom: calc(6px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
+    font-family: var(--font-body, 'Lora', serif);
+    color: #7de0a0;
+  }
+
+  .server-status-text {
+    flex: 1;
+  }
+
+  .server-status-text strong {
+    font-family: 'Courier New', Courier, monospace;
+    color: #a0eebc;
+  }
+
+  .server-also-reachable {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #666;
+    margin: 0 0 calc(10px * var(--layout-scale, 1)) 0;
+    padding-left: calc(4px * var(--layout-scale, 1));
+    font-family: var(--font-body, 'Lora', serif);
+  }
+
+  .lan-error {
+    color: #e05c5c;
+    font-size: calc(13px * var(--text-scale, 1));
+    margin: calc(6px * var(--layout-scale, 1)) 0 calc(8px * var(--layout-scale, 1)) 0;
+    font-family: var(--font-body, 'Lora', serif);
+  }
+
+  /* ===== Host actions ===== */
+  .host-actions {
+    display: flex;
+    flex-direction: column;
+    gap: calc(12px * var(--layout-scale, 1));
+  }
+
+  .host-mode-row {
+    display: flex;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    padding: calc(12px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #2A2E38;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    flex-wrap: wrap;
+  }
+
+  .lan-label {
+    font-family: var(--font-rpg, 'Cinzel', serif);
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #888;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .lan-mode-select {
+    flex: 1;
+    min-width: calc(140px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #2A2E38;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    color: #e0e0e0;
+    font-family: var(--font-body, 'Lora', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    cursor: pointer;
+    min-height: calc(36px * var(--layout-scale, 1));
+    transition: border-color 0.15s;
+  }
+
+  .lan-mode-select:focus {
+    outline: none;
+    border-color: rgba(255, 215, 0, 0.5);
+  }
+
+  /* ===== Danger button ===== */
+  .danger-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(44px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    background: rgba(224, 92, 92, 0.15);
+    border: 1px solid rgba(224, 92, 92, 0.4);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    color: #e05c5c;
+    font-family: var(--font-rpg, 'Cinzel', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    align-self: flex-start;
+  }
+
+  .danger-btn:hover {
+    background: rgba(224, 92, 92, 0.28);
+    border-color: rgba(224, 92, 92, 0.65);
+  }
+
+  /* ===== Ghost button ===== */
+  .ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(32px * var(--layout-scale, 1));
+    padding: calc(5px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    background: transparent;
+    border: 1px solid #2A2E38;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    color: #888;
+    font-family: var(--font-body, 'Lora', serif);
+    font-size: calc(12px * var(--text-scale, 1));
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .ghost-btn:hover:not(:disabled) {
+    border-color: #aaa;
+    color: #e0e0e0;
+  }
+
+  .ghost-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* ===== Scan header ===== */
+  .scan-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: calc(10px * var(--layout-scale, 1));
+    min-height: calc(32px * var(--layout-scale, 1));
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .scan-status-text {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #666;
+    font-family: var(--font-body, 'Lora', serif);
+    font-style: italic;
+  }
+
+  /* ===== Server list ===== */
+  .server-list {
+    list-style: none;
+    margin: 0 0 calc(14px * var(--layout-scale, 1)) 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  .server-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #2A2E38;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    gap: calc(10px * var(--layout-scale, 1));
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .server-row:hover {
+    background: rgba(255, 215, 0, 0.04);
+    border-color: rgba(255, 215, 0, 0.2);
+  }
+
+  .server-info {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--layout-scale, 1));
+    flex: 1;
+    min-width: 0;
+  }
+
+  .server-hostname {
+    font-family: var(--font-rpg, 'Cinzel', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #e0e0e0;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .server-address {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #666;
+  }
+
+  .server-connect-btn {
+    padding: calc(8px * var(--layout-scale, 1)) calc(18px * var(--layout-scale, 1));
+    min-height: calc(36px * var(--layout-scale, 1));
+    flex-shrink: 0;
+    font-size: calc(12px * var(--text-scale, 1));
+  }
+
+  /* ===== Manual entry ===== */
+  .manual-entry {
+    padding: calc(12px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #2A2E38;
+    border-radius: calc(8px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .manual-row {
+    display: flex;
+    gap: calc(8px * var(--layout-scale, 1));
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .lan-input {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #2A2E38;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: calc(13px * var(--text-scale, 1));
+    padding: calc(9px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    min-height: calc(40px * var(--layout-scale, 1));
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+  }
+
+  .lan-input::placeholder {
+    color: #444;
+  }
+
+  .lan-input:focus {
+    outline: none;
+    border-color: rgba(255, 215, 0, 0.45);
+    background: rgba(255, 215, 0, 0.03);
+  }
+
+  .lan-input--ip {
+    flex: 2;
+    min-width: calc(130px * var(--layout-scale, 1));
+  }
+
+  .lan-input--port {
+    flex: 1;
+    min-width: calc(72px * var(--layout-scale, 1));
+    max-width: calc(90px * var(--layout-scale, 1));
   }
 </style>
