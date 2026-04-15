@@ -287,7 +287,7 @@ async fn list_lobbies(
         state.registry.read().await;
     let mut lobbies: Vec<LobbyBrowserEntry> = registry
         .values()
-        .filter(|l| l.visibility == "public")
+        .filter(|l| l.visibility != "friends_only")
         .filter(|l| {
             if let Some(ref mode) = query.mode {
                 if !mode.is_empty() && l.mode != *mode {
@@ -512,73 +512,132 @@ async fn handle_socket(socket: WebSocket, state: AppState, query: WsQuery) {
             Message::Ping(_) | Message::Pong(_) => continue,
         };
 
-        // Update activity timestamp and relay to others.
+        // Parse the message type so we can intercept lobby-lifecycle messages
+        // that need server-side transformation (matching Fastify behavior).
+        let maybe_parsed: Option<serde_json::Value> = serde_json::from_str(&raw).ok();
+        let msg_type = maybe_parsed
+            .as_ref()
+            .and_then(|v| v.get("type"))
+            .and_then(|t| t.as_str())
+            .unwrap_or("");
+
         let mut registry: tokio::sync::RwLockWriteGuard<HashMap<String, LanLobby>> =
             state.registry.write().await;
         if let Some(lobby) = registry.get_mut(&query.lobby_id) {
             lobby.last_activity = now_secs();
+
+            // Intercept lobby lifecycle messages that need server-side action
+            // (matching Fastify behavior — not just dumb relay).
+
+            // mp:lobby:leave — remove the connection before relaying.
+            if msg_type == "mp:lobby:leave" {
+                lobby.connections.remove(&query.player_id);
+                if lobby.connections.is_empty() {
+                    registry.remove(&query.lobby_id);
+                    break; // lobby gone, close this socket
+                }
+            }
+
+            // mp:lobby:join → rebroadcast as mp:lobby:player_joined
+            // (the client listens for player_joined, not join — see gotchas.md 2026-04-13).
+            let relay_msg = if msg_type == "mp:lobby:join" {
+                let payload = maybe_parsed
+                    .as_ref()
+                    .and_then(|v| v.get("payload"))
+                    .cloned()
+                    .unwrap_or(serde_json::json!({}));
+                serde_json::json!({
+                    "type": "mp:lobby:player_joined",
+                    "payload": payload,
+                    "senderId": "server",
+                    "timestamp": now_secs() * 1000,
+                })
+                .to_string()
+            } else {
+                raw.clone()
+            };
+
             for (pid, conn) in &lobby.connections {
                 if *pid != query.player_id {
                     if let Some(ref other_tx) = conn.tx {
-                        let _ = other_tx.send(raw.clone());
+                        let _ = other_tx.send(relay_msg.clone());
                     }
                 }
             }
         }
     }
 
-    // Connection closed — clean up.
+    // Connection closed — clean up (mirrors Fastify's leaveLobby behavior).
     {
         let mut registry: tokio::sync::RwLockWriteGuard<HashMap<String, LanLobby>> =
             state.registry.write().await;
         if let Some(lobby) = registry.get_mut(&query.lobby_id) {
-            if let Some(conn) = lobby.connections.get_mut(&query.player_id) {
-                conn.tx = None;
-            }
+            // Remove the connection entirely (like Fastify's leaveLobby).
+            lobby.connections.remove(&query.player_id);
 
-            // Notify remaining players that this player disconnected.
+            // Notify remaining players using the same format as Fastify's leaveLobby().
             let leave_msg = serde_json::json!({
-                "type": "player_left",
-                "playerId": query.player_id,
+                "type": "mp:lobby:leave",
+                "payload": {
+                    "playerId": query.player_id,
+                },
+                "senderId": "server",
+                "timestamp": now_secs() * 1000,
             })
             .to_string();
-            for (pid, conn) in &lobby.connections {
-                if *pid != query.player_id {
-                    if let Some(ref other_tx) = conn.tx {
-                        let _ = other_tx.send(leave_msg.clone());
-                    }
+            for conn in lobby.connections.values() {
+                if let Some(ref other_tx) = conn.tx {
+                    let _ = other_tx.send(leave_msg.clone());
                 }
             }
 
             lobby.last_activity = now_secs();
+
+            // If the lobby is now empty, remove it.
+            if lobby.connections.is_empty() {
+                registry.remove(&query.lobby_id);
+            }
         }
     }
 
     send_task.abort();
 }
 
-/// Build a JSON snapshot of the lobby's current player list, sent on WS connect.
+/// Build a JSON snapshot matching the Fastify `mp:lobby:settings` format.
+///
+/// The client listens for `mp:lobby:settings` messages (not a custom type)
+/// and expects the payload to contain `players` with `{ id, displayName,
+/// isHost, isReady }` — matching `LobbyPlayer` in the TypeScript types.
 fn build_lobby_snapshot(lobby: &LanLobby) -> String {
     let players: Vec<serde_json::Value> = lobby
         .connections
         .values()
         .map(|c| {
             serde_json::json!({
-                "playerId": c.player_id,
+                "id": c.player_id,
                 "displayName": c.display_name,
-                "connected": c.tx.is_some(),
+                "isHost": c.player_id == lobby.host_id,
+                "isReady": false,
             })
         })
         .collect();
 
     serde_json::json!({
-        "type": "lobby_snapshot",
-        "lobbyId": lobby.lobby_id,
-        "lobbyCode": lobby.lobby_code,
-        "hostId": lobby.host_id,
-        "mode": lobby.mode,
-        "maxPlayers": lobby.max_players,
-        "players": players,
+        "type": "mp:lobby:settings",
+        "payload": {
+            "lobbyId": lobby.lobby_id,
+            "lobbyCode": lobby.lobby_code,
+            "hostId": lobby.host_id,
+            "hostName": lobby.host_name,
+            "mode": lobby.mode,
+            "visibility": lobby.visibility,
+            "maxPlayers": lobby.max_players,
+            "currentPlayers": lobby.current_players(),
+            "status": "waiting",
+            "houseRules": null,
+            "contentSelection": null,
+            "players": players,
+        }
     })
     .to_string()
 }
