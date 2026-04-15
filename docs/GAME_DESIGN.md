@@ -2690,7 +2690,7 @@ The exact order of damage calculation for all attack cards. **The combo multipli
 
 ### Core Rules
 
-- **5 active relic slots** per run. Expandable to 6 via Scholar's Gambit (rare, cursed).
+- **5 active relic slots** per run. Expandable to 7 via Scholar's Gambit (rare, cursed).
 - **90 total relics** — 40 starter relics (available to all players, unlocked by level) + 50 unlockable relics (purchased in the Relic Archive via level gates).
 - **No starter relic selection** — all players start the run with no relics. First relic earned at Act 1 mini-boss.
 
@@ -3138,15 +3138,15 @@ When a card is forgotten: draw 2 cards.
 *Curse: −2 HP per turn. 4 AP is transformative. HP drain creates urgency.*
 
 **Scholar's Gambit** — Rare (Unlockable, Level 20) *(Cursed)*
-5 relic slots → 6. Wrong Charged answers deal 3 damage to you.
-*Curse: wrong Charges deal 3 self-damage. One extra relic slot.*
+5 relic slots → 7. Wrong Charged answers deal 3 damage to you.
+*Curse: wrong Charges deal 3 self-damage. Two extra relic slots.*
 
 **Volatile Manuscript** — Rare (Unlockable, Level 12) *(Cursed)*
 All Charge multipliers +0.5×. Every 3rd Charge applies 4 Burn to yourself.
 *Curse: every 3rd Charge gives you 4 Burn stacks. Powerful multiplier at a self-damage cost.*
 
 **Paradox Engine** — Legendary (Unlockable, Level 21) *(Cursed)*
-Wrong Charges resolve at 0.3× AND deal 5 piercing damage. Gain +1 AP every turn permanently.
+Wrong Charges resolve at 0.3× AND deal 5 piercing damage. +1 AP per turn.
 *Curse: wrong Charges resolve worse than Quick Play AND deal 5 piercing damage. The +1 AP/turn is not a gift — it is bait.*
 
 **Berserker's Focus** — Uncommon (Unlockable, Level 5) *(Tradeoff)*
@@ -4618,7 +4618,7 @@ Phaser canvas must not capture `Shift+Tab` (Steam Overlay toggle). Verified by e
 | Surge frequency | Every 4th turn, run-persistent counter (global turns 2, 6, 10, 14...) |
 | Free First Charge | REMOVED — all charges cost normal AP surcharge |
 | Chain 2/3/4/5 multipliers | 1.3× / 1.7× / 2.2× / 3.0× |
-| Relic slots | 5 (6 with Scholar's Gambit) |
+| Relic slots | 5 (7 with Scholar's Gambit) |
 | Run length | ~25–30 minutes |
 | Acts | 3 |
 | Rooms per path | ~16–18 |

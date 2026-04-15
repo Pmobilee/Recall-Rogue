@@ -7,7 +7,7 @@
 ## Relic Slots
 
 - Default maximum: `MAX_RELIC_SLOTS = 5`
-- With Scholar's Gambit: 6 slots (`SCHOLARS_GAMBIT_EXTRA_SLOT = 1`)
+- With Scholar's Gambit: 7 slots (`SCHOLARS_GAMBIT_EXTRA_SLOTS = 2`)
 - No swap mechanic exists — relics are permanent for the run once acquired
 - Sell refund: 40% of rarity-based shop price (`RELIC_SELL_REFUND_PCT = 0.40`)
 
@@ -173,7 +173,7 @@ All have `isStarter: false`, `startsUnlocked: false`. Eligible once `playerLevel
 
 | ID | Effect | Curse | unlockCost | unlockLevel |
 |---|---|---|---|---|
-| `scholars_gambit` | +1 relic slot (max 6) | Wrong Charge deals 1 self-damage | 60 | 20 |
+| `scholars_gambit` | +2 relic slots (max 7) | Wrong Charge deals 1 self-damage | 60 | 20 |
 | `phoenix_feather` | Once/run: resurrect at 15% HP; auto-Charge all cards free for 1 turn | — | 60 | 18 |
 | `mnemonic_scar` | Previously-correct facts: +25% CC damage. Wrong charges: draw 1 card | — | 0 | 10 |
 
@@ -192,7 +192,7 @@ Key resolved contexts:
 - `resolveShieldModifiers()` — worn_shield grants +1 flatBlockBonus on CHARGED shield cards only (nerf: Pass 7 removed QP bonus entirely). hollow_armor: shields work normally; `blockGainHalved` removed (Pass 7). Context field `wasCharged` required to get the worn_shield bonus. TurnEndEffects.blockDrain = 3 after turn 3.
 - `resolveForgetEffects()` — returns `bonusCardDraw` (exhaustion_engine +2, scavengers_eye +1) and `tempStrengthGain` (tattered_notebook +1 for 1 turn). Caller must apply strength status effect.
 - `resolveEncounterEndEffects()` — herbal_pouch heals 3 HP post-combat.
-- `getMaxRelicSlots()` — returns 5, or 6 if scholars_gambit held
+- `getMaxRelicSlots()` — returns 5, or 7 if scholars_gambit held
 
 ## 2026-04-09 Balance Pass
 
