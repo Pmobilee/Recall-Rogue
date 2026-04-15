@@ -445,14 +445,6 @@ export function startNewRun(options?: {
   // Always set deck mode from hub selector, even for onboarding flow
   const save = get(playerSave);
   pendingDeckMode = save?.activeDeckMode ?? { type: 'general' as const };
-  const onboarding = get(onboardingState);
-  // Skip onboarding for multiplayer races — both players should enter the dungeon
-  // simultaneously. Single-player onboarding is irrelevant in MP context.
-  if (!onboarding.hasCompletedOnboarding && activeRunMode !== 'multiplayer_race') {
-    gameFlowState.set('idle');
-    currentScreen.set('onboarding');
-    return;
-  }
   // Placeholder domains (pool builder uses deckMode, not these)
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
 
@@ -535,7 +527,7 @@ function submitCompetitiveScore(
 export async function startDailyExpeditionRun(): Promise<{ ok: true } | { ok: false; reason: string }> {
   const onboarding = get(onboardingState)
   if (!onboarding.hasCompletedOnboarding) {
-    currentScreen.set('onboarding')
+    currentScreen.set('hub')
     gameFlowState.set('idle')
     return { ok: false, reason: 'onboarding_required' }
   }
@@ -578,7 +570,7 @@ export async function startDailyExpeditionRun(): Promise<{ ok: true } | { ok: fa
 export async function startScholarChallengeRun(): Promise<{ ok: true } | { ok: false; reason: string }> {
   const onboarding = get(onboardingState)
   if (!onboarding.hasCompletedOnboarding) {
-    currentScreen.set('onboarding')
+    currentScreen.set('hub')
     gameFlowState.set('idle')
     return { ok: false, reason: 'onboarding_required' }
   }
@@ -616,7 +608,7 @@ export async function startScholarChallengeRun(): Promise<{ ok: true } | { ok: f
 export async function startEndlessDepthsRun(): Promise<{ ok: true } | { ok: false; reason: string }> {
   const onboarding = get(onboardingState)
   if (!onboarding.hasCompletedOnboarding) {
-    currentScreen.set('onboarding')
+    currentScreen.set('hub')
     gameFlowState.set('idle')
     return { ok: false, reason: 'onboarding_required' }
   }
