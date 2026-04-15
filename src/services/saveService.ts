@@ -125,10 +125,21 @@ export function snapshotUserSettings(): Record<string, string> {
   return snapshot
 }
 
+/**
+ * Keys that are snapshotted but skipped on restore.
+ * These are transient navigation/UI state that should not be imposed on a
+ * different machine or a fresh session after a Steam Cloud restore.
+ */
+const RESTORE_SKIP_KEYS = new Set<string>([
+  'card:currentScreen',
+])
+
 /** Restore user-facing localStorage keys from a snapshot object. */
 export function restoreUserSettings(snapshot: Record<string, string>): void {
   if (!snapshot || typeof snapshot !== 'object') return
+  const allowedKeys = new Set<string>(USER_FACING_LOCALSTORAGE_KEYS)
   for (const [key, val] of Object.entries(snapshot)) {
+    if (!allowedKeys.has(key) || RESTORE_SKIP_KEYS.has(key)) continue
     try {
       localStorage.setItem(key, val)
     } catch { /* ignore quota errors */ }
