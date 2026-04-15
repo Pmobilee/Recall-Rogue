@@ -371,7 +371,7 @@ interface LobbyBackend {
 }
 ```
 
-`pickBackend()` selects: `broadcastBackend` → `steamBackend` → `webBackend` (priority order). `?mp` is an explicit dev opt-in and therefore beats auto-detected Steam so devs running a Steam build can two-tab test the broadcast path without fighting the factory.
+`pickBackend()` selects: `broadcastBackend` → `webBackend` (LAN mode) → `steamBackend` → `webBackend` (default) (priority order). `?mp` is an explicit dev opt-in and therefore beats auto-detected Steam so devs running a Steam build can two-tab test the broadcast path without fighting the factory.
 
 ### Password handling
 
@@ -396,8 +396,9 @@ interface LobbyBackend {
 | Priority | Condition | Backend selected | Notes |
 |----------|-----------|-----------------|-------|
 | 1 | `isBroadcastMode()` — URL has `?mp` param | `broadcastBackend` | Dev two-tab mode; uses `localStorage` fake directory. Explicit opt-in beats auto-detected Steam. |
-| 2 | `hasSteam === true` | `steamBackend` | Tauri + Steam build; uses Steamworks matchmaking + P2P |
-| 3 | (default) | `webBackend` | Web / mobile / CI; uses Fastify REST + WebSocket |
+| 2 | `isLanMode()` — `rr-lan-server` key in `localStorage` | `webBackend` | LAN mode (set via `setLanServerUrl()`); routes to the stored Fastify host/port. Bypasses Steam P2P even on Steam builds. |
+| 3 | `hasSteam === true` | `steamBackend` | Tauri + Steam build; uses Steamworks matchmaking + P2P |
+| 4 | (default) | `webBackend` | Web / mobile / CI; uses Fastify REST + WebSocket |
 
 `hasSteam` is the existing Steam availability check from `steamService.ts`. `isBroadcastMode()` checks `new URLSearchParams(window.location.search).has('mp')`. The `?mp`-first order is load-bearing: a dev running a Steam build with `?mp` in the URL expects broadcast-mode two-tab testing, not Steam auto-routing — see commit `cc2e5b8bc`.
 
@@ -412,6 +413,43 @@ interface LobbyBackend {
 | `friends_only` | `SteamLobbyType::FriendsOnly`; Steam handles native friends-graph filter | **Excluded from browser list** — no friends graph on web/broadcast; code-join only; tooltip explains |
 
 **Degradation note:** `friends_only` on web degrades to "hidden from the lobby browser" (effectively code-join only). Steam friends can still receive a direct invite link. The lobby creation UI disables the Friends Only option on non-Steam builds with a tooltip: "Steam only — invite friends via code instead."
+
+---
+
+
+## LAN Config Service (2026-04-15)
+
+**Source file:** `src/services/lanConfigService.ts`
+
+Allows players (or devs) to point the game at a LAN Fastify MP server at runtime without requiring a build-time env variable. Useful for Windows VM builds, LAN parties, and local network testing where `VITE_MP_WS_URL`/`VITE_MP_API_URL` can't be set.
+
+### API
+
+| Export | Signature | Description |
+|--------|-----------|-------------|
+| `setLanServerUrl` | `(host: string, port: number) → void` | Persist LAN config to `localStorage['rr-lan-server']`. Strips scheme/trailing-slash from host. |
+| `getLanServerUrls` | `() → LanServerConfig \| null` | Return current LAN config, or null when not in LAN mode. |
+| `clearLanServerUrl` | `() → void` | Remove LAN config; revert to normal mode. |
+| `isLanMode` | `() → boolean` | True when a LAN config is stored. |
+
+### LanServerConfig shape
+
+```typescript
+interface LanServerConfig {
+  wsUrl: string;   // e.g. 'ws://192.168.1.5:19738/mp/ws'
+  apiUrl: string;  // e.g. 'http://192.168.1.5:19738'
+}
+```
+
+### Effect on transport and lobby selection
+
+When `isLanMode()` is true:
+- `createTransport()` returns `WebSocketTransport` even on Steam builds (skips `SteamP2PTransport`).
+- `WebSocketTransport.connect()` uses `getLanServerUrls().wsUrl` instead of `VITE_MP_WS_URL`.
+- `pickBackend()` returns `webBackend` instead of `steamBackend`.
+- `getWebApiBaseUrl()` returns `getLanServerUrls().apiUrl` instead of `VITE_MP_API_URL`.
+
+This gives LAN mode priority slot 2 in `pickBackend()` — after broadcast but before Steam — so it takes effect even on Tauri/Steam desktop builds.
 
 ---
 

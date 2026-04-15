@@ -18,6 +18,7 @@
  */
 
 import { hasSteam } from './platformService';
+import { getLanServerUrls, isLanMode } from './lanConfigService';
 import {
   acceptP2PSession,
   leaveSteamLobby,
@@ -218,9 +219,10 @@ export class WebSocketTransport implements MultiplayerTransport {
     // VITE_MP_WS_URL is set by the build environment; in dev it falls back to
     // DEFAULT_MP_WS_URL so developers can run the Fastify server locally without
     // any env setup.
-    const base =
-      (typeof import.meta !== 'undefined' && import.meta.env?.VITE_MP_WS_URL) ||
-      DEFAULT_MP_WS_URL;
+    const lanUrls = getLanServerUrls();
+    const base = lanUrls?.wsUrl ??
+      ((typeof import.meta !== 'undefined' && import.meta.env?.VITE_MP_WS_URL) ||
+      DEFAULT_MP_WS_URL);
 
     // Use opts.lobbyId if provided (joinLobbyById path), otherwise use the
     // target argument (createLobby / joinLobby paths pass the lobbyId directly).
@@ -668,6 +670,7 @@ export class BroadcastChannelTransport implements MultiplayerTransport {
 export function createTransport(mode?: 'auto' | 'local' | 'broadcast'): MultiplayerTransport {
   if (mode === 'local') return new LocalMultiplayerTransport();
   if (mode === 'broadcast') return new BroadcastChannelTransport();
+  if (isLanMode()) return new WebSocketTransport(); // LAN always uses WebSocket, even on Steam builds
   if (hasSteam) return new SteamP2PTransport();
   return new WebSocketTransport();
 }

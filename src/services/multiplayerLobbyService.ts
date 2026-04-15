@@ -32,6 +32,7 @@ import type {
 } from '../data/multiplayerTypes';
 import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS, MODE_MIN_PLAYERS } from '../data/multiplayerTypes';
 import { hasSteam } from './platformService';
+import { getLanServerUrls, isLanMode } from './lanConfigService';
 import {
   createSteamLobby,
   setLobbyData,
@@ -843,6 +844,7 @@ function pickBackend(): LobbyBackend {
   // This lets devs running a Steam build two-tab test the broadcast path without
   // uninstalling Steam or fighting the factory's auto-selection.
   if (isBroadcastMode()) return broadcastBackend;
+  if (isLanMode()) return webBackend; // LAN uses Fastify-style web backend, even on Steam builds
   if (hasSteam) return steamBackend;
   return webBackend;
 }
@@ -958,6 +960,8 @@ const broadcastBackend: LobbyBackend = {
 
 /** Fastify MP REST API base URL (VITE_MP_API_URL env var, fallback localhost). */
 function getWebApiBaseUrl(): string {
+  const lanUrls = getLanServerUrls();
+  if (lanUrls) return lanUrls.apiUrl;
   return (typeof import.meta !== 'undefined' && (import.meta.env as Record<string, string>)?.VITE_MP_API_URL) ||
     'http://localhost:3000';
 }
