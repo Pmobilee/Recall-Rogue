@@ -59,10 +59,101 @@ const EMPTY_STATS: PlayerStats = {
 }
 
 /**
+ * All localStorage keys that represent user-facing state.
+ * Snapshotted into the save on write and restored on load,
+ * ensuring Steam Cloud sync captures the full user experience.
+ *
+ * NOT included: analytics queues, auth tokens, migration flags, caches,
+ * dev tools, offline retry queues — these are ephemeral/internal.
+ */
+export const USER_FACING_LOCALSTORAGE_KEYS: readonly string[] = [
+  // Settings (settings.ts store)
+  'setting_musicVolume', 'setting_sfxVolume',
+  'setting_musicEnabled', 'setting_sfxEnabled',
+  'setting_highContrastQuiz', 'setting_reducedMotion',
+  'setting_screenShakeIntensity', 'setting_analyticsEnabled',
+  'setting_answerDisplaySpeed', 'setting_autoResumeAfterAnswer',
+  // Card-prefixed settings (settings.ts + cardAudioManager)
+  'card:ambientEnabled', 'card:ambientVolume',
+  'card:colorBlindMode', 'card:highContrastMode',
+  'card:reduceMotionMode', 'card:isSlowReader', 'card:textSize',
+  'card:musicEnabled', 'card:musicVolume', 'card:musicUserPaused',
+  'card:sfxEnabled', 'card:sfxVolume',
+  'card:difficultyMode', 'card:knowledgeLevelSelected',
+  'card:ascensionProfile', 'card:deckOptions',
+  'card:onboardingState', 'card:currentScreen',
+  // Recall Rogue prefixed
+  'recall-rogue-boot-anim-seen', 'recall-rogue-camp-state',
+  'recall-rogue-font-choice', 'recall-rogue-notifications',
+  'recall-rogue-ui-scale', 'recall-rogue-score-submission-status-v1',
+  'recall-rogue-scholar-challenge', 'recall-rogue-daily-expedition',
+  'recall-rogue-endless-depths', 'recall-rogue-lore',
+  // Companion
+  'gaia-mood', 'gaia-chattiness',
+  // Gameplay
+  'show-explanations',
+  // Language / locale
+  'rr_ui_locale', 'rr_lang_mode',
+  // Parental / age
+  'rr_parental_v1', 'rr_age_bracket',
+  // Game modes
+  'rr_review_prompt', 'rr-elo-ratings', 'rr-match-history',
+  // Keyboard shortcuts
+  'rr-keyboard-shortcuts',
+  // Tutorial flags
+  'tutorial:apShown', 'tutorial:chargeShown', 'tutorial:comparisonShown',
+  'hint:chargeDragSeen', 'rr_onboarding_complete',
+  // Legacy audio keys (AudioManager.ts)
+  'settingsMusicVolume', 'settingsSfxVolume',
+  // Announcements
+  'rr-dismissed-announcements',
+  // Music service prefs
+  'rr_music_prefs',
+  // Classroom
+  'rr_classroom',
+] as const
+
+/** Capture all user-facing localStorage keys into a plain object. */
+export function snapshotUserSettings(): Record<string, string> {
+  const snapshot: Record<string, string> = {}
+  for (const key of USER_FACING_LOCALSTORAGE_KEYS) {
+    try {
+      const val = localStorage.getItem(key)
+      if (val !== null) snapshot[key] = val
+    } catch { /* ignore */ }
+  }
+  return snapshot
+}
+
+/** Restore user-facing localStorage keys from a snapshot object. */
+export function restoreUserSettings(snapshot: Record<string, string>): void {
+  if (!snapshot || typeof snapshot !== 'object') return
+  for (const [key, val] of Object.entries(snapshot)) {
+    try {
+      localStorage.setItem(key, val)
+    } catch { /* ignore quota errors */ }
+  }
+}
+
+/** Clear all user-facing localStorage keys (used on save delete/reset). */
+export function clearUserSettings(): void {
+  for (const key of USER_FACING_LOCALSTORAGE_KEYS) {
+    try {
+      localStorage.removeItem(key)
+    } catch { /* ignore */ }
+  }
+}
+
+/**
  * Stores player save data in localStorage using the active profile's key.
  */
 export function save(data: PlayerSave): void {
-  getBackend().write(getActiveSaveKey(), JSON.stringify(data))
+  // Capture all user-facing localStorage settings into the save
+  const withSnapshot = {
+    ...data,
+    userSettingsSnapshot: snapshotUserSettings(),
+  }
+  getBackend().write(getActiveSaveKey(), JSON.stringify(withSnapshot))
 }
 
 /**
@@ -475,8 +566,8 @@ export function load(): PlayerSave | null {
     if (typeof parsedAny['characterLevel'] !== 'number') {
       parsedAny['characterLevel'] = 1
     }
-    // DEV: force max level + all relics unlocked for testing
-    if (import.meta.env.DEV) {
+    // DEV: force max level + all relics unlocked for testing (opt-in via ?devlevel URL param)
+    if (import.meta.env.DEV && new URLSearchParams(window.location.search).has('devlevel')) {
       parsedAny['characterLevel'] = 25;
       parsedAny['totalXP'] = 999999;
       // Unlock all relics in collection
@@ -484,7 +575,7 @@ export function load(): PlayerSave | null {
         const { FULL_RELIC_CATALOGUE } = require('../data/relics/index');
         parsedAny['unlockedRelicIds'] = FULL_RELIC_CATALOGUE.map((r: any) => r.id);
       } catch { /* relics not loaded yet */ }
-      console.log('[DEV] Forced characterLevel 25 + all relics unlocked');
+      console.log('[DEV] Forced characterLevel 25 + all relics unlocked (via ?devlevel)');
     }
     if (!('lastDailyBonusDate' in parsedAny) || (parsedAny['lastDailyBonusDate'] !== null && typeof parsedAny['lastDailyBonusDate'] !== 'string')) {
       parsedAny['lastDailyBonusDate'] = null
@@ -521,6 +612,15 @@ export function load(): PlayerSave | null {
     if (needsMigrationV2toV3(parsed as unknown as Record<string, unknown>)) {
       migrateV2toV3(parsed as unknown as Record<string, unknown>)
       getBackend().write(getActiveSaveKey(), JSON.stringify(parsed))
+    }
+
+    // User settings snapshot: first-load migration captures current localStorage state.
+    // On subsequent loads, restores the snapshot back to localStorage so settings
+    // survive save-file transfers (Steam Cloud, backup restore).
+    if (!parsedAny['userSettingsSnapshot'] || typeof parsedAny['userSettingsSnapshot'] !== 'object') {
+      parsedAny['userSettingsSnapshot'] = snapshotUserSettings()
+    } else {
+      restoreUserSettings(parsedAny['userSettingsSnapshot'] as Record<string, string>)
     }
 
     return parsed as PlayerSave
@@ -629,6 +729,8 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     // Journal/Profile history (v3)
     runHistory: [],
     lifetimeEnemyKillCounts: {},
+    // User settings snapshot (populated on first save-write)
+    userSettingsSnapshot: {},
   }
 }
 
@@ -637,6 +739,8 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
  */
 export function deleteSave(): void {
   getBackend().remove(getActiveSaveKey())
+  // Also clear all user-facing localStorage keys so nothing is orphaned
+  clearUserSettings()
 }
 
 // ============================================================

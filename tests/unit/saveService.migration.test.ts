@@ -220,3 +220,88 @@ describe('saveMigration V2 → V3', () => {
     expect(migrated?.runHistory).toHaveLength(1)
   })
 })
+
+import {
+  snapshotUserSettings,
+  restoreUserSettings,
+  clearUserSettings,
+  USER_FACING_LOCALSTORAGE_KEYS,
+  save,
+} from '../../src/services/saveService'
+
+describe('userSettingsSnapshot helpers', () => {
+  beforeEach(() => {
+    localStorage.clear()
+  })
+
+  it('snapshotUserSettings captures only keys present in localStorage', () => {
+    localStorage.setItem('setting_musicVolume', '0.8')
+    localStorage.setItem('card:sfxEnabled', 'true')
+    localStorage.setItem('some_internal_key', 'ignored')
+
+    const snapshot = snapshotUserSettings()
+    expect(snapshot['setting_musicVolume']).toBe('0.8')
+    expect(snapshot['card:sfxEnabled']).toBe('true')
+    expect('some_internal_key' in snapshot).toBe(false)
+  })
+
+  it('restoreUserSettings writes keys back to localStorage', () => {
+    const snapshot: Record<string, string> = {
+      'setting_musicVolume': '0.5',
+      'rr_ui_locale': 'en',
+    }
+    restoreUserSettings(snapshot)
+    expect(localStorage.getItem('setting_musicVolume')).toBe('0.5')
+    expect(localStorage.getItem('rr_ui_locale')).toBe('en')
+  })
+
+  it('clearUserSettings removes all known user-facing keys', () => {
+    for (const key of USER_FACING_LOCALSTORAGE_KEYS) {
+      localStorage.setItem(key, 'test_value')
+    }
+    clearUserSettings()
+    for (const key of USER_FACING_LOCALSTORAGE_KEYS) {
+      expect(localStorage.getItem(key)).toBeNull()
+    }
+  })
+
+  it('load restores snapshot on a save that has one', () => {
+    const base = createNewPlayer('teen') as unknown as Record<string, unknown>
+    base.userSettingsSnapshot = {
+      'setting_musicVolume': '0.3',
+      'card:colorBlindMode': 'true',
+    }
+    localStorage.setItem(activeSaveKey(), JSON.stringify(base))
+
+    // Clear localStorage to simulate fresh browser / save transfer
+    localStorage.removeItem('setting_musicVolume')
+    localStorage.removeItem('card:colorBlindMode')
+
+    load()
+
+    expect(localStorage.getItem('setting_musicVolume')).toBe('0.3')
+    expect(localStorage.getItem('card:colorBlindMode')).toBe('true')
+  })
+
+  it('load captures current localStorage into snapshot when save has none', () => {
+    const base = createNewPlayer('teen') as unknown as Record<string, unknown>
+    delete base.userSettingsSnapshot
+
+    localStorage.setItem('setting_musicVolume', '0.9')
+    localStorage.setItem(activeSaveKey(), JSON.stringify(base))
+
+    const loaded = load()
+    expect(loaded?.userSettingsSnapshot?.['setting_musicVolume']).toBe('0.9')
+  })
+
+  it('save() injects userSettingsSnapshot into persisted JSON', () => {
+    localStorage.setItem('setting_sfxVolume', '0.7')
+    const player = createNewPlayer('teen')
+    save(player)
+
+    const raw = localStorage.getItem(activeSaveKey())!
+    const stored = JSON.parse(raw)
+    expect(stored.userSettingsSnapshot).toBeDefined()
+    expect(stored.userSettingsSnapshot['setting_sfxVolume']).toBe('0.7')
+  })
+})

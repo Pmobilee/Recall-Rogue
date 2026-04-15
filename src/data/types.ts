@@ -724,6 +724,13 @@ export interface PlayerSave {
   geoRegionRatings?: Record<string, number>
   /** History of geography Elo changes (last 100 entries). */
   geoEloHistory?: Array<{ rating: number; accuracy: number; distanceKm: number; timestamp: number }>
+
+  /**
+   * Snapshot of all user-facing localStorage keys. Captured on every save,
+   * restored on load. Enables Steam Cloud sync of settings and complete
+   * save reset without orphaned localStorage keys.
+   */
+  userSettingsSnapshot?: Record<string, string>
 }
 
 /** Player statistics */

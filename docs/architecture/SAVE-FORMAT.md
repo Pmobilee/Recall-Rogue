@@ -127,10 +127,10 @@ Optional/late-phase extension fields are also part of `PlayerSave` (social, mone
 
 ### Full save path (`saveService`)
 
-- `save(data)` writes JSON via `getBackend().write()`.
-- `load()` reads via `getBackend().readSync()`; returns `null` if key missing or JSON parse fails.
+- `save(data)` writes JSON via `getBackend().write()`. Before writing, it calls `snapshotUserSettings()` to capture all user-facing localStorage keys into `userSettingsSnapshot`, ensuring the save file carries the full user experience for Steam Cloud sync.
+- `load()` reads via `getBackend().readSync()`; returns `null` if key missing or JSON parse fails. On a save that already has a `userSettingsSnapshot`, it calls `restoreUserSettings()` to write the snapshot back to localStorage (useful after a Steam Cloud restore). On a save without one (old save), it calls `snapshotUserSettings()` to capture the current state into the field.
 - `createNewPlayer(ageRating)` constructs a full default `PlayerSave`.
-- `deleteSave()` removes only active full-save key via `getBackend().remove()`.
+- `deleteSave()` removes the active full-save key via `getBackend().remove()` AND calls `clearUserSettings()` to remove all known user-facing localStorage keys, so a save reset leaves no orphaned settings.
 
 All reads/writes route through `storageBackend` — `LocalStorageBackend` on web/mobile,
 `FileStorageBackend` on desktop (Tauri). The file backend uses a write-through in-memory
@@ -238,3 +238,30 @@ that are updated (not newly inserted) never trigger pruning — only net-new pai
 
 `fromJSON` does not apply the cap; the cap only enforces on live writes. This avoids
 truncating historical data on load for saves that predate the cap.
+
+## User Settings Snapshot (2026-04-15)
+
+`PlayerSave.userSettingsSnapshot?: Record<string, string>` mirrors the subset of
+localStorage that represents user-facing settings. The complete key list is
+`USER_FACING_LOCALSTORAGE_KEYS` exported from `saveService.ts`.
+
+**On write (`save()`):** `snapshotUserSettings()` reads every known user-facing key
+from localStorage and writes them into `userSettingsSnapshot`. The mutation happens
+on the spread copy, never the original `data` object.
+
+**On load (`load()`):** If `userSettingsSnapshot` is present and non-empty,
+`restoreUserSettings()` pushes each key back to localStorage. This is the critical
+path for Steam Cloud restores — player imports a save from another machine and their
+settings (volume, locale, accessibility flags, etc.) come along automatically.
+If the snapshot is absent (old saves), `snapshotUserSettings()` captures the current
+state so the field is populated from the next `save()` call onward.
+
+**On delete (`deleteSave()`):** `clearUserSettings()` iterates `USER_FACING_LOCALSTORAGE_KEYS`
+and removes each one. This ensures a full save wipe leaves no orphaned settings.
+
+Helper functions: `snapshotUserSettings()`, `restoreUserSettings(snapshot)`,
+`clearUserSettings()` — all exported from `src/services/saveService.ts`.
+
+Keys intentionally NOT included: analytics queues, auth tokens, migration flags, caches,
+dev tools, offline retry queues — ephemeral/internal state that should not survive
+a restore.
