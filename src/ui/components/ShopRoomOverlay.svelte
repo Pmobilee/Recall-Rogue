@@ -2,7 +2,7 @@
   import type { Card } from '../../data/card-types'
   import type { Fact } from '../../data/types'
   import { getRandomRoomBg, getRoomDepthMap } from '../../data/backgroundManifest'
-  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { holdScreenTransition, dismissScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
   import { getCardTypeIconPath, getCardTypeEmoji, getRelicIconPath } from '../utils/iconAssets'
   import ParallaxTransition from './ParallaxTransition.svelte'
@@ -115,7 +115,7 @@
   const depthUrl = getRoomDepthMap('shop')
   let showRoomTransition = $state(true)
   holdScreenTransition()
-  preloadImages([bgUrl]).then(releaseScreenTransition)
+  preloadImages([bgUrl]).then(dismissScreenTransition)
 
   /** Emoji fallbacks */
   const TYPE_EMOJI: Record<string, string> = {
@@ -1248,7 +1248,7 @@
 
   /* D: Nudge name banner up so it sits at top of frame, not clipping art */
   .shop-card-visual-wrapper :global(.v2-mechanic-name) {
-    transform: translateY(calc(-3px * var(--layout-scale, 1)));
+    transform: translateY(calc(-8px * var(--layout-scale, 1)));
   }
 
   /* E: Card effect text — no shop override, uses CardVisual's own responsive sizing */
