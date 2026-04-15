@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getRandomRoomBg, getRoomDepthMap } from '../../data/backgroundManifest'
-  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { holdScreenTransition, dismissScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
   import { isLandscape } from '../../stores/layoutStore'
   import ParallaxTransition from './ParallaxTransition.svelte'
@@ -41,7 +41,7 @@
   const depthUrl = getRoomDepthMap('descent')
   let showRoomTransition = $state(true)
   holdScreenTransition()
-  preloadImages([bgUrl]).then(releaseScreenTransition)
+  preloadImages([bgUrl]).then(dismissScreenTransition)
 
   let overlayEl = $state<HTMLElement>(null!)
   let retainedOnDeath = $derived(Math.floor(currency * deathPenalty))

@@ -209,6 +209,30 @@ export function releaseScreenTransition(): void {
   }, 500)
 }
 
+/**
+ * Instantly clears the screen transition overlay without playing a reveal animation.
+ * Use this instead of releaseScreenTransition() when a ParallaxTransition component
+ * is handling the visual reveal — calling releaseScreenTransition() in those cases
+ * causes a double-flash (overlay briefly reveals, then ParallaxTransition covers and
+ * re-reveals from black).
+ *
+ * Safe to call even if holdScreenTransition() was not called.
+ */
+export function dismissScreenTransition(): void {
+  _transitionHeld = false
+  if (_holdSafetyTimer) {
+    clearTimeout(_holdSafetyTimer)
+    _holdSafetyTimer = null
+  }
+  if (_transitionTimer) {
+    clearTimeout(_transitionTimer)
+    _transitionTimer = null
+  }
+  // Clear both flags immediately — no reveal animation, ParallaxTransition owns the reveal
+  screenTransitionLoading.set(false)
+  screenTransitionActive.set(false)
+}
+
 function inferTransitionDirection(from: Screen, to: Screen): TransitionDirection {
   // Room entries get 3D zoom effect
   if (to === 'combat' || to === 'shopRoom' || to === 'restRoom' || to === 'mysteryEvent' || to === 'cardReward') return 'zoom'

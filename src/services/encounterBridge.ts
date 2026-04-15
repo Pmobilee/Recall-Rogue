@@ -40,7 +40,7 @@ import {
   applyAscensionEnemyTemplateAdjustments,
   getAscensionModifiers,
 } from './ascension';
-import { activeRewardBundle, releaseScreenTransition, combatExitEnemyId } from '../ui/stores/gameState';
+import { activeRewardBundle, dismissScreenTransition, combatExitEnemyId } from '../ui/stores/gameState';
 import {
   resolveEncounterStartEffects,
   resolveBaseDrawCount,
@@ -427,7 +427,7 @@ function syncCombatScene(turnState: TurnState): void {
       isBossFloor(turnState.deck.currentFloor),
       turnState.enemy.template.id,
     ).then(() => {
-      releaseScreenTransition();
+      dismissScreenTransition();
     });
     const run = get(activeRunState);
     scene.setRelics(
@@ -450,7 +450,7 @@ function syncCombatScene(turnState: TurnState): void {
       setTimeout(() => tryPush(retries - 1), 200);
     } else {
       // All retries failed — release transition to avoid permanent overlay
-      releaseScreenTransition();
+      dismissScreenTransition();
     }
   };
   tryPush(25);

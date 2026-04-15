@@ -1246,12 +1246,26 @@
     flex-shrink: 0;
   }
 
-  /* D: Nudge name banner up so it sits at top of frame, not clipping art */
+  /* D: Override title position for correct-ratio shop cards.
+     The shared GUIDE_STYLES uses top:10.945% tuned for CardHand's stretched 1.42 ratio.
+     Shop cards use the true 1.289 ratio so the banner sits higher — override top directly. */
   .shop-card-visual-wrapper :global(.v2-mechanic-name) {
-    transform: translateY(calc(-8px * var(--layout-scale, 1)));
+    top: 7.5% !important;
   }
 
-  /* E: Card effect text — no shop override, uses CardVisual's own responsive sizing */
+  /* E: Card effect text — ~19% smaller in shop to fit card previews */
+  .shop-card-visual-wrapper :global(.v2-effect-text) {
+    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.094) !important;
+  }
+  .shop-card-visual-wrapper :global(.v2-effect-text.effect-text-md) {
+    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.084) !important;
+  }
+  .shop-card-visual-wrapper :global(.v2-effect-text.effect-text-sm) {
+    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.077) !important;
+  }
+  .shop-card-visual-wrapper :global(.v2-effect-text.effect-text-xs) {
+    font-size: calc(var(--card-w, calc(160px * var(--layout-scale, 1))) * 0.062) !important;
+  }
 
   /* Combined price + buy pill — sized to match relic buy buttons */
   .card-price-buy {

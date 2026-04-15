@@ -207,3 +207,6 @@ data/audits/quiz-dumps/
 # Commit-attribution detector runtime logs — per-clone, never tracked
 .claude/staged-by.jsonl
 .claude/commit-attribution-log.jsonl
+
+# Room intro capture videos
+room-captures/

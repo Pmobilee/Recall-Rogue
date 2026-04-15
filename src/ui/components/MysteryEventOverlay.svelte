@@ -2,7 +2,7 @@
   import type { MysteryEvent, MysteryEffect } from '../../services/floorManager'
   import { getRandomRoomBg, getRoomDepthMap, getMysteryEventBg, getMysteryEventDepthMap } from '../../data/backgroundManifest'
   import { factsDB } from '../../services/factsDB'
-  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { holdScreenTransition, dismissScreenTransition } from '../stores/gameState'
   import { preloadImages } from '../utils/assetPreloader'
   import { getMysteryEventIconPath, getMysteryEventEmoji } from '../utils/iconAssets'
   import { isLandscape } from '../../stores/layoutStore'
@@ -37,7 +37,7 @@
   let showRoomTransition = $state(true)
   let transitionSettled = $state(false)
   holdScreenTransition()
-  preloadImages([genericBgUrl]).then(releaseScreenTransition)
+  preloadImages([genericBgUrl]).then(dismissScreenTransition)
 
   let effectIcon = $derived(getEffectIcon(event?.effect))
   // ——— Quiz / rival duel state ———
