@@ -4393,3 +4393,18 @@ This updates the Svelte store reactively, and the UI responds on the next render
 **Secondary effect on tests:** Tests that used wrong charges to set up state before a correct charge found their chain length was non-zero (off-colour wrong charges use partial-reset halving: `max(1, floor(length×0.5))`; from length 0 this gives 1). The old code masked this because `extendOrResetChain(null)` on the correct-charge card reset chain to 0 (return = 1.0). With the fix, the pre-extension read sees chain=1 → 1.2×. Tests with wrong-charge setups needed chain-state-matched baselines rather than fresh-encounter baselines.
 
 **Files:** `src/services/turnManager.ts` lines 1388-1395 and 1415-1417, `tests/unit/ar271-wiring-integration.test.ts`.
+
+### 2026-04-15 — Rust LAN relay server must match Fastify protocol exactly
+
+**What:** The embedded Rust LAN relay server (src-tauri/src/lan.rs) was initially built as a "dumb relay" that forwarded all WebSocket messages verbatim. Four protocol bugs were caught during audit:
+
+1. `list_lobbies` filtered `visibility == "public"` — excluded password-protected lobbies. Fastify excludes only `friends_only`.
+2. Initial WS snapshot used wrong message type (`lobby_snapshot` vs `mp:lobby:settings`), wrong shape (flat vs `{type, payload}`), and wrong player fields (`playerId`/`connected` vs `id`/`isHost`/`isReady`).
+3. Disconnect notification used `player_left` type instead of `mp:lobby:leave`.
+4. `mp:lobby:join` was relayed raw, but clients listen for `mp:lobby:player_joined` (gotcha 2026-04-13). The relay must intercept and transform.
+
+**Why it matters:** Any new server implementation (Rust, Go, etc.) that mirrors the Fastify MP API must match the EXACT message types and payload shapes. The client-side lobby service (`multiplayerLobbyService.ts`) listens for specific `type` strings and expects specific `payload` field names. The Fastify WS route (`mpLobbyWs.ts`) is the reference — read it line by line before implementing a new relay.
+
+**Fix:** All four bugs fixed in commit 613222443. The relay now intercepts `mp:lobby:join` → `mp:lobby:player_joined` and `mp:lobby:leave` (removes connection server-side). The snapshot matches Fastify's `buildLobbySnapshot()` exactly.
+
+**Files:** `src-tauri/src/lan.rs`, `server/src/routes/mpLobbyWs.ts` (reference)
