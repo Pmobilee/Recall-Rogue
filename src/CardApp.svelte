@@ -149,7 +149,6 @@
   import MeditateOverlay from './ui/components/MeditateOverlay.svelte'
   import RunEndScreen from './ui/components/RunEndScreen.svelte'
   import RetreatOrDelve from './ui/components/RetreatOrDelve.svelte'
-  import DungeonEntrance from './ui/components/DungeonEntrance.svelte'
   import HubScreen from './ui/components/HubScreen.svelte'
   import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
   import CampfirePause from './ui/components/CampfirePause.svelte'
@@ -630,7 +629,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     const screen = $currentScreen
     const mpScreens = new Set(['multiplayerMenu', 'multiplayerLobby', 'lobbyBrowser', 'raceResults'])
     // Game screens are active gameplay — do NOT clean up during a multiplayer run.
-    const gameScreens = new Set(['dungeonMap', 'combat', 'shop', 'rest', 'mystery', 'reward', 'runEnd', 'onboarding'])
+    const gameScreens = new Set(['dungeonMap', 'combat', 'shop', 'rest', 'mystery', 'reward', 'runEnd'])
 
     if (!mpScreens.has(screen) && !gameScreens.has(screen) && currentLobby) {
       // Navigated away from MP to a non-game screen (hub, settings, etc.) — clean up.
@@ -856,31 +855,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
   }
 
-  async function handleOnboardingBegin(slowReader: boolean, _languageCode: string | null): Promise<void> {
-    isSlowReader.set(slowReader)
-    // Use placeholder domains — the pool builder uses deckMode (set in startNewRun), not these
-    onDomainsSelected('general_knowledge', 'general_knowledge')
-    onArchetypeSelected('balanced')
-    // If run has a dungeon map, onArchetypeSelected already navigated to dungeonMap — no encounter to start
-    const run = get(activeRunState)
-    if (run?.floor.actMap) return
-    // Legacy path: start encounter directly (no map)
-    void ensurePhaserBooted()
-    try {
-      if (!(await startEncounterForRoom())) {
-        releaseScreenTransition()
-        currentScreen.set('hub')
-        activeRunState.set(null)
-      } else {
-        autoSaveRun('combat')
-      }
-    } catch (err) {
-      console.error('[CardApp] Failed to start onboarding encounter', err)
-      releaseScreenTransition()
-      currentScreen.set('hub')
-      activeRunState.set(null)
-    }
-  }
 
   async function handleRoomPick(index: number): Promise<void> {
     const room = get(activeRoomOptions)[index]
@@ -1659,11 +1633,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     </div>
   {/if}
 
-  {#if $currentScreen === 'onboarding'}
-    <div in:fly={{ y: 8, duration: 350 }}>
-      <DungeonEntrance onbegin={handleOnboardingBegin} onback={returnToMenu} />
-    </div>
-  {/if}
 
   {#if $currentScreen === 'combat'}
     <CardCombatOverlay

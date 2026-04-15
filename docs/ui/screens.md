@@ -1,7 +1,7 @@
 # Screen Flow & State Machine
 
 > **Purpose:** Complete list of all Screen values, routing logic, transition rules, and component mappings.
-> **Last verified:** 2026-04-12
+> **Last verified:** 2026-04-15
 > **Source files:** `src/ui/stores/gameState.ts`, `src/CardApp.svelte`, `src/services/screenController.ts`
 
 ---
@@ -15,7 +15,6 @@ Defined as a TypeScript union type in `src/ui/stores/gameState.ts`:
 | `hub` | Main base-camp / home screen |
 | `mainMenu` | Alias for hub (normalized to `hub` on load) |
 | `base` | Alias for hub (normalized to `hub` on load) |
-| `onboarding` | First-time dungeon entrance + tutorial |
 | `archetypeSelection` | **Dormant** — reserved for future archetype selection work. Auto-selects `balanced` at run start; this screen is never shown in the standard flow. Component exists in code but is not reached via `gameFlowController`. |
 | `deckSelectionHub` | **Dormant** — previously the entry-point for selecting trivia vs. study modes. The hub now drives deck selection directly. Screen component exists but is not reached in the standard run flow. |
 | `triviaDungeon` | **Dormant** — trivia domain selection. Previously shown before a general-knowledge run; domain selection is now handled internally. Screen component exists but is not reached in the standard run flow. |
@@ -82,7 +81,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | Screen | Primary Component | Notes |
 |--------|-------------------|-------|
 | `hub` / `mainMenu` / `base` | `HubScreen` | Always mounted when on hub alias screens |
-| `onboarding` | `DungeonEntrance` | Uses `handleOnboardingBegin` callback |
+| `onboarding` | *(removed)* | **Removed 2026-04-15.** First-run players now flow directly to `dungeonMap` via `startNewRun()`. `DungeonEntrance.svelte` is dead code (kept for history). |
 | `archetypeSelection` | `ArchetypeSelection` | **Dormant — not mounted in standard run flow.** `onArchetypeSelected('balanced')` is called automatically; no user-facing screen transition occurs. |
 | `deckSelectionHub` | `DeckSelectionHub` | **Dormant — not mounted in standard run flow.** |
 | `triviaDungeon` | `TriviaDungeonScreen` | **Dormant — not mounted in standard run flow.** |
@@ -170,8 +169,7 @@ Canonical entry point is `startNewRun()` in `gameFlowController.ts` (line ~392).
 never shown — `onArchetypeSelected('balanced')` is called automatically.
 
 ```
-hub → startNewRun() → onboarding (first run only)
-    → onArchetypeSelected('balanced') [auto, no screen shown]
+hub → startNewRun() → onArchetypeSelected('balanced') [auto, no screen shown]
         → runPreview (Study Temple runs only, when chainDistribution computed)
         → dungeonMap
     → [room nodes] → combat/shop/rest/mystery

@@ -23,7 +23,10 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte'
   import type { NarrativeLine } from '../../services/narrativeTypes'
-  import { startTutorial } from '../../services/tutorialService'
+  import { startTutorial, skipTutorial } from '../../services/tutorialService'
+
+  import { onboardingState } from '../../services/cardPreferences'
+  import { get } from 'svelte/store'
 
   // Props
   interface Props {
@@ -66,8 +69,11 @@
   /** Whether the hint prompt is visible. */
   let showHint = $state(false)
 
-  /** Whether the tutorial has been activated (prevents double-tap). */
-  let tutorialEnabled = $state(false)
+  /** Whether tutorial is currently enabled. Defaults to true for first-run players (auto-trigger fires on combat entry). */
+  const _onb = get(onboardingState)
+  let tutorialEnabled = $state(
+    _onb.runsCompleted === 0 && !_onb.hasSeenCombatTutorial && !_onb.tutorialDismissedEarly
+  )
 
   /** Inline style per line index for ash dissolve stagger. */
   let dissolveStyles = $state<string[]>([])
@@ -223,8 +229,15 @@
 
   function handleTutorialStart(e: MouseEvent): void {
     e.stopPropagation()
-    startTutorial('combat')
-    tutorialEnabled = true
+    if (tutorialEnabled) {
+      // Player is turning tutorial OFF before it fires
+      skipTutorial()
+      tutorialEnabled = false
+    } else {
+      // Player is turning tutorial ON
+      startTutorial('combat')
+      tutorialEnabled = true
+    }
     // Narration continues — tutorial evaluates once combat is rendering
   }
 
@@ -306,8 +319,7 @@
       class="tutorial-btn"
       class:enabled={tutorialEnabled}
       onclick={handleTutorialStart}
-      disabled={tutorialEnabled}
-      aria-label="Start tutorial"
+      aria-label={tutorialEnabled ? 'Disable tutorial' : 'Enable tutorial'}
     >
       {tutorialEnabled ? 'tutorial on ✓' : 'tutorial'}
     </button>
@@ -554,17 +566,15 @@
     pointer-events: auto;
   }
 
-  .tutorial-btn:hover:not(:disabled) {
+  .tutorial-btn:hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.35);
   }
 
-  .tutorial-btn.enabled,
-  .tutorial-btn:disabled {
+  .tutorial-btn.enabled {
     background: rgba(120, 200, 140, 0.15);
     border-color: rgba(120, 200, 140, 0.50);
     color: rgba(180, 240, 200, 0.95);
-    cursor: default;
   }
 
   /* Playwright animation pause hook */

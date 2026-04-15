@@ -30,7 +30,6 @@ export type Screen =
   | 'masteryChallenge'
   | 'relicSanctum'
   | 'relicReward' // deprecated: now handled by rewardRoom Phaser scene
-  | 'onboarding'
   | 'settings'
   | 'upgradeSelection'
   | 'postMiniBossRest'
@@ -75,7 +74,6 @@ const VALID_SCREENS: Screen[] = [
   'masteryChallenge',
   'relicSanctum',
   'relicReward',
-  'onboarding',
   'settings',
   'upgradeSelection',
   'postMiniBossRest',
