@@ -207,12 +207,11 @@
   let notEnoughApTimer = $state<ReturnType<typeof setTimeout> | null>(null)
 
   // AR-124: Tutorial tooltip state
-  let showApTutorial = $state(false)
   let showChargeTutorial = $state(false)
   let showComparisonBanner = $state(false)
   let activeTutorial = $derived(
     cardPlayStage === 'committed' ? null :
-    showApTutorial ? 'ap' : showChargeTutorial ? 'charge' : showComparisonBanner ? 'comparison' : null
+    showChargeTutorial ? 'charge' : showComparisonBanner ? 'comparison' : null
   )
   /** Whether the player has done a Quick Play this run (for comparison banner). */
   let hasQuickPlayed = $state(false)
@@ -224,7 +223,6 @@
   let tutorialHasPlayedCharge = $state(false)
   /** Tutorial tracking: has the player answered wrong this session (for tutorial eval). */
   let tutorialHasAnsweredWrong = $state(false)
-  let apTutorialTimer = $state<ReturnType<typeof setTimeout> | null>(null)
   let chargeTutorialTimer = $state<ReturnType<typeof setTimeout> | null>(null)
   let comparisonBannerTimer = $state<ReturnType<typeof setTimeout> | null>(null)
 
@@ -1018,9 +1016,6 @@
       return 'Tap End Turn when done'
     }
 
-    if ((turnState?.turnNumber ?? 0) >= 2 && !state.hasSeenAPTooltip) {
-      return 'You have AP — each cast uses AP'
-    }
 
     return null
   })
@@ -1030,7 +1025,6 @@
     if (cardPlayStage === 'selected') return 'tip-cast'
     if (cardPlayStage === 'committed') return 'tip-answer'
     if (answeredThisTurn > 0) return 'tip-endturn'
-    if ((turnState?.turnNumber ?? 0) >= 2) return 'tip-ap'
     return 'tip-hand'
   })
 
@@ -1680,7 +1674,7 @@
     // Runtime numerical distractor generation for brace-marked answers in trivia mode
     // Mirrors the logic in quizService.ts getQuizChoices()
     if (distractorSource.length === 0 && isNumericalAnswer(correctAnswer)) {
-      const factAdapter = { id: fact.id, correctAnswer: fact.correctAnswer } as Fact
+      const factAdapter = { id: fact.id, correctAnswer } as Fact
       distractorSource = getNumericalDistractors(factAdapter, distractorCount)
     }
 
@@ -1766,13 +1760,6 @@
         wowFactorCount = 0
       }
 
-      if (nextTurn >= 2) {
-        const state = get(onboardingState)
-        if (!state.hasCompletedOnboarding && !state.hasSeenAPTooltip) {
-          markOnboardingTooltipSeen('hasSeenAPTooltip')
-        }
-
-      }
     }
   })
 
@@ -1801,17 +1788,6 @@
 
   // AR-124: Tutorial tooltip triggers
 
-  /** Show the AP tutorial tooltip on first-ever card play. */
-  function maybeShowApTutorial(): void {
-    if (localStorage.getItem('tutorial:apShown')) return
-    localStorage.setItem('tutorial:apShown', 'true')
-    showApTutorial = true
-    if (apTutorialTimer !== null) clearTimeout(apTutorialTimer)
-    apTutorialTimer = setTimeout(() => {
-      showApTutorial = false
-      apTutorialTimer = null
-    }, 4000)
-  }
 
   /** Show the Charge cost tutorial tooltip on first non-free Charge play. */
   function maybeShowChargeTutorial(isFreeCharge: boolean): void {
@@ -1916,8 +1892,7 @@
     playCardAudio('card-cast')
     cardPlayStage = 'committed'
 
-    // AR-124: Tutorial — AP tooltip on first-ever play; comparison banner tracking
-    maybeShowApTutorial()
+    // AR-124: Tutorial — comparison banner tracking
     maybeShowComparisonBanner('quick')
     // Tutorial tracking
     tutorialHasPlayedQuickPlay = true
@@ -2056,7 +2031,6 @@
     // AR-124: Tutorial — charge cost tooltip (only if not free) and comparison banner tracking
     const chargingCard = handCards[selectedIndex ?? -1]
     const isFreeCharge = isSurgeActive || (chargeMomentumChainType !== null && chargingCard?.chainType === chargeMomentumChainType)
-    maybeShowApTutorial()
     maybeShowChargeTutorial(isFreeCharge)
     maybeShowComparisonBanner('charge')
     // Tutorial tracking
@@ -2948,12 +2922,6 @@
     {/if}
 
     <!-- AR-124: Tutorial tooltips (mutually exclusive — only the highest-priority one shows) -->
-    {#if activeTutorial === 'ap'}
-      <div class="tutorial-tooltip tutorial-ap-tooltip" transition:fade={{ duration: 200 }}>
-        You have {apMax} AP per turn. Each card costs AP to play.
-      </div>
-    {/if}
-
     {#if activeTutorial === 'charge'}
       <div class="tutorial-tooltip tutorial-charge-tooltip" transition:fade={{ duration: 200 }}>
         Charging costs +1 extra AP for the quiz power boost.
@@ -3773,10 +3741,6 @@
     transform: translateX(-50%);
   }
 
-  .tip-ap {
-    top: calc(60px * var(--layout-scale, 1));
-    left: calc(16px * var(--layout-scale, 1));
-  }
 
   .end-turn-btn {
     position: absolute;
@@ -4614,11 +4578,6 @@
     border: 1px solid rgba(240, 230, 210, 0.2);
   }
 
-  /* AP tutorial: near the AP orb (top-right of portrait layout) */
-  .tutorial-ap-tooltip {
-    top: calc(80px * var(--layout-scale, 1));
-    right: calc(12px * var(--layout-scale, 1));
-  }
 
   /* Charge tutorial: above the card hand */
   .tutorial-charge-tooltip {
@@ -4648,12 +4607,6 @@
   }
 
   /* Landscape adjustments for tutorial tooltips */
-  .layout-landscape .tutorial-ap-tooltip {
-    top: auto;
-    right: auto;
-    bottom: 44.8vh;
-    left: calc(12px * var(--layout-scale, 1));
-  }
 
   .layout-landscape .tutorial-charge-tooltip {
     bottom: 39.2vh;
