@@ -629,9 +629,9 @@
     min-width: calc(18px * var(--layout-scale, 1));
     height: calc(18px * var(--layout-scale, 1));
     border-radius: 50%;
-    font-size: calc(10px * var(--text-scale, 1));
+    font-size: calc(12.5px * var(--text-scale, 1));
     font-weight: 800;
-    color: #fff;
+    color: #000;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,0 +1,16 @@
+{
+  "batchId": "BATCH-2026-04-13-002",
+  "createdAt": "2026-04-13T14:12:00Z",
+  "testers": ["quiz-quality", "full-run"],
+  "args": {
+    "runs": 3,
+    "domain": "mixed",
+    "mode": "trivia"
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "reports": {
+    "quiz-quality": { "status": "complete", "verdict": "FAIL", "criticalCount": 1, "highCount": 3, "mediumCount": 3, "lowCount": 2 },
+    "full-run": { "status": "partial", "verdict": "ISSUES", "criticalCount": 0, "highCount": 0, "mediumCount": 0, "lowCount": 0, "note": "Tester ran combat loops and captured quiz data but did not write final report" }
+  }
+}

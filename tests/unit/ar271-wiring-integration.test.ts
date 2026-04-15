@@ -215,7 +215,7 @@ describe('AR-271 Card Mechanic: Knowledge Ward + Charges Counter', () => {
       factId: 'kw_fact_0',
       cardType: 'shield',
       mechanicId: 'knowledge_ward',
-      mechanicName: 'Knowledge Ward',
+      mechanicName: 'Mind Ward',
       apCost: 1,
       baseEffectValue: 6,
     });
@@ -240,7 +240,7 @@ describe('AR-271 Card Mechanic: Knowledge Ward + Charges Counter', () => {
       factId: 'kw_fact_3',
       cardType: 'shield',
       mechanicId: 'knowledge_ward',
-      mechanicName: 'Knowledge Ward',
+      mechanicName: 'Mind Ward',
       apCost: 1,
       baseEffectValue: 6,
     });
@@ -266,7 +266,7 @@ describe('AR-271 Card Mechanic: Knowledge Ward + Charges Counter', () => {
       factId: 'kw_cc_fact',
       cardType: 'shield',
       mechanicId: 'knowledge_ward',
-      mechanicName: 'Knowledge Ward',
+      mechanicName: 'Mind Ward',
       apCost: 1,
       baseEffectValue: 6,
     });
@@ -280,7 +280,7 @@ describe('AR-271 Card Mechanic: Knowledge Ward + Charges Counter', () => {
       factId: 'kw_qp_fact',
       cardType: 'shield',
       mechanicId: 'knowledge_ward',
-      mechanicName: 'Knowledge Ward',
+      mechanicName: 'Mind Ward',
       apCost: 1,
       baseEffectValue: 6,
     });
@@ -309,7 +309,7 @@ describe('AR-271 Card Mechanic: Precision Strike + Distractor Count', () => {
       factId: 'ps_fact',
       cardType: 'attack',
       mechanicId: 'precision_strike',
-      mechanicName: 'Precision Strike',
+      mechanicName: 'Precision',
       apCost: 1,
       baseEffectValue: 8,
     });
@@ -331,7 +331,7 @@ describe('AR-271 Card Mechanic: Precision Strike + Distractor Count', () => {
       factId: 'ps_4_fact',
       cardType: 'attack',
       mechanicId: 'precision_strike',
-      mechanicName: 'Precision Strike',
+      mechanicName: 'Precision',
       apCost: 1,
       baseEffectValue: 8,
     });
@@ -353,7 +353,7 @@ describe('AR-271 Card Mechanic: Precision Strike + Distractor Count', () => {
       factId: 'ps_fallback_fact',
       cardType: 'attack',
       mechanicId: 'precision_strike',
-      mechanicName: 'Precision Strike',
+      mechanicName: 'Precision',
       apCost: 1,
       baseEffectValue: 8,
     });

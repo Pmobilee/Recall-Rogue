@@ -1,0 +1,20 @@
+{
+  "batchId": "BATCH-2026-04-15-001",
+  "createdAt": "2026-04-15T00:00:00Z",
+  "testers": ["quiz-quality", "balance-curve", "fun-engagement", "study-temple", "full-run"],
+  "args": {
+    "runs": 3,
+    "domain": "mixed",
+    "floors": 2,
+    "focus": "difficulty-per-floor, boss-difficulty, mystery-rooms, shops, fun, major-bugs"
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "reports": {
+    "full-run": { "status": "complete", "verdict": "ISSUES", "criticalCount": 1, "highCount": 2, "mediumCount": 2, "lowCount": 2 },
+    "balance-curve": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 0, "mediumCount": 1, "lowCount": 2 },
+    "fun-engagement": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 2, "mediumCount": 1, "lowCount": 0 },
+    "quiz-quality": { "status": "complete", "verdict": "ISSUES", "criticalCount": 0, "highCount": 2, "mediumCount": 2, "lowCount": 2 },
+    "study-temple": { "status": "complete", "verdict": "PASS", "criticalCount": 0, "highCount": 0, "mediumCount": 0, "lowCount": 2 }
+  }
+}

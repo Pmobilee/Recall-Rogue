@@ -265,12 +265,18 @@ export default class BootAnimScene extends Phaser.Scene {
     }
     this.starSprites = []
 
-    // 2b) Destroy Part 1 background rectangle (depth 0)
+    // 2b) Fade Part 1 background rectangle (depth 0) over 600ms to match logo fadeout.
+    // Destroying it instantly reveals the transparent canvas → dark `.card-app` bg flash.
     const part1Bgs = this.sceneSprites.filter(obj => {
       const d = (obj as Phaser.GameObjects.Rectangle).depth
       return d === 0 && obj.active
     })
-    for (const bg of part1Bgs) { if (bg.active) bg.destroy() }
+    for (const bg of part1Bgs) {
+      this.tweens.add({
+        targets: bg, alpha: 0, duration: 600, ease: 'Quad.easeIn',
+        onComplete: () => { if (bg.active) bg.destroy() },
+      })
+    }
 
     // 3) Logo/title/studio disintegrate
     const logoTargets = this.sceneSprites.filter(obj => {
@@ -318,8 +324,14 @@ export default class BootAnimScene extends Phaser.Scene {
     )
     for (const ff of fireflies) { if (ff.active) ff.destroy() }
 
-    // 5) Signal hub to show blurred campsite BEHIND the canvas
-    this.game.events.emit('boot-anim-show-blurred')
+    // 5) Signal hub to show blurred campsite BEHIND the canvas.
+    // Delayed 100ms so the black background rectangle's fade tween renders at least
+    // one frame before Svelte swaps boot-bg-black (#000) → boot-bg-clear (transparent).
+    // Without the delay, the CSS class change exposes .card-app's default #0d1117
+    // for one frame — a visible navy flash in the recording.
+    this.time.delayedCall(100, () => {
+      this.game.events.emit('boot-anim-show-blurred')
+    })
 
     // 6) Deblur campsite and complete after disintegration settles
     this.time.delayedCall(400, () => {

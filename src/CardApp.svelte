@@ -15,6 +15,7 @@
     activeRewardRevealStep,
     combatExitRequested,
     combatExitEnemyId,
+    dismissScreenTransition,
   } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
   import { navigateToScreen } from './services/screenController'
@@ -467,6 +468,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         game.events.once('boot-anim-show-blurred', () => { hubShowBlurred = true })
         game.events.once('boot-anim-deblur', () => { hubDeblurring = true })
         game.events.once('boot-anim-complete', () => {
+          dismissScreenTransition()
           const el = document.getElementById('phaser-container')
           if (el) {
             el.style.transition = 'opacity 0.3s ease-out'
@@ -1309,6 +1311,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
               hubDeblurring = true
             })
             game.events.once('boot-anim-complete', () => {
+              dismissScreenTransition()
               const container = document.getElementById('phaser-container')
               if (container) {
                 container.style.transition = 'opacity 0.3s ease-out'

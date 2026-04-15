@@ -318,7 +318,7 @@ describe('cardUpgradeService', () => {
     })
 
     it('preview includes AP cost change for AP-reduction upgrades', () => {
-      const card = makeCard({ mechanicId: 'heavy_strike', apCost: 3, baseEffectValue: 20, mechanicName: 'Heavy Strike' })
+      const card = makeCard({ mechanicId: 'heavy_strike', apCost: 3, baseEffectValue: 20, mechanicName: 'Crush' })
       const preview = getUpgradePreview(card)
 
       expect(preview).not.toBeNull()

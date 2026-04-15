@@ -1,0 +1,20 @@
+{
+  "batchId": "BATCH-2026-04-13-001",
+  "createdAt": "2026-04-13T00:00:00Z",
+  "type": "grammar-deck-usability",
+  "testers": ["french-grammar", "japanese-grammar", "spanish-grammar"],
+  "decks": [
+    "french_a1_grammar", "french_a2_grammar", "french_b1_grammar", "french_b2_grammar",
+    "japanese_n5_grammar", "japanese_n4_grammar", "japanese_n3_grammar", "japanese_n2_grammar", "japanese_n1_grammar",
+    "spanish_a1_grammar", "spanish_a2_grammar", "spanish_b1_grammar", "spanish_b2_grammar"
+  ],
+  "args": {
+    "runs": 1,
+    "focus": "grammar-learning-usability",
+    "testModes": ["mcq", "alwaysWrite"],
+    "jaSettings": ["furigana", "romaji", "kanaOnly", "alwaysWrite"]
+  },
+  "status": "running",
+  "smokeTestPassed": false,
+  "reports": {}
+}
