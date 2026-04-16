@@ -4473,3 +4473,6 @@ This updates the Svelte store reactively, and the UI responds on the next render
 **Fix:** `scripts/steam-build.sh` now includes an auth-check wrapper that tests cached credentials (`steamcmd +login <user> +quit`) before attempting upload. If the check fails, it prompts the user to authenticate interactively. macOS-only deploys use `steam/app_build_4547570_macos.vdf` to avoid the Linux depot path error.
 
 **Rule:** For automated SteamPipe uploads, always quit the Steam desktop client first, OR run the auth check before the upload step. The Steam client and steamcmd are mutually exclusive users of the shared config directory.
+
+### 2026-04-16 — CombatScene.shutdown() crash on cameras.main being undefined
+When `acceptReward()` triggers the reward room → combat stop lifecycle, Phaser may have already torn down the camera manager by the time `shutdown()` runs. `this.cameras.main` returns undefined, crashing on `cam.zoom = 1.0`. Fixed with null guard (`this.cameras?.main` + `if (cam)` block). Same pattern in `onWake()`. Also added `this.scale?.off(...)` guard for the same teardown window.

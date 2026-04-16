@@ -2787,21 +2787,25 @@ export class CombatScene extends Phaser.Scene {
     this.depthLightingSystem?.stop()
     this.statusEffectVisuals?.destroy()
     this.weaponAnimations?.destroy()
-    this.scale.off('resize', this.onScaleResize, this)
-    const cam = this.cameras.main
-    cam.zoom = 1.0
-    cam.scrollX = 0
-    cam.scrollY = 0
+    this.scale?.off('resize', this.onScaleResize, this)
+    const cam = this.cameras?.main
+    if (cam) {
+      cam.zoom = 1.0
+      cam.scrollX = 0
+      cam.scrollY = 0
+    }
   }
 
   /** Re-sync display on wake/resume. */
   private onWake(): void {
     this.reduceMotion = isReduceMotionEnabled()
     // Reset camera state in case shutdown/sleep left stale offsets
-    const cam = this.cameras.main
-    cam.zoom = 1.0
-    cam.scrollX = 0
-    cam.scrollY = 0
+    const cam = this.cameras?.main
+    if (cam) {
+      cam.zoom = 1.0
+      cam.scrollX = 0
+      cam.scrollY = 0
+    }
 
     // Fix 1 (AR-97): Re-check layout mode on every wake — the scene may have
     // been sleeping when CardGameManager broadcast a layout change.
