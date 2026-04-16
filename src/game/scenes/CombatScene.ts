@@ -222,6 +222,8 @@ export class CombatScene extends Phaser.Scene {
   // ── Turn transition overlay ──────────────────────────
   /** Transient darkening rectangle created by playTurnTransitionToEnemy(); released by playTurnTransitionToPlayer(). */
   private _turnOverlay: Phaser.GameObjects.Rectangle | null = null
+  /** Retry counter for setEnemy() texture errors after scene restart (max 3). */
+  private _setEnemyRetries = 0
 
   // ── Charge telegraph ──────────────────────────────────
   private chargeParticleTimer: Phaser.Time.TimerEvent | null = null
@@ -1142,14 +1144,35 @@ export class CombatScene extends Phaser.Scene {
     this.statusEffectVisuals?.clearAll()
 
     // Setup enemy sprite/placeholder via EnemySpriteSystem
+    // Wrapped in try/catch because Phaser's WebGL texture pipeline may not have
+    // fully re-initialized when a scene restarts (e.g. after reward room → combat).
+    // Frame source image can be null immediately after scene.start(), causing
+    // 'drawImage' null crashes in Frame.updateUVs. Retry up to 3 times after 200ms.
     const texture = enemyTextureKey(this.currentEnemyId, 'idle')
     const hasSprite = hasTexture(this, texture)
 
-    if (hasSprite) {
-      this.enemySpriteSystem.setSprite(texture, size, enemyX, enemyY, category)
-    } else {
-      this.enemySpriteSystem.setPlaceholder(categoryColor(category), size, enemyX, enemyY, category)
+    try {
+      if (hasSprite) {
+        this.enemySpriteSystem.setSprite(texture, size, enemyX, enemyY, category)
+      } else {
+        this.enemySpriteSystem.setPlaceholder(categoryColor(category), size, enemyX, enemyY, category)
+      }
+    } catch (err) {
+      // Texture pipeline not yet ready after scene restart — schedule a retry.
+      if (this._setEnemyRetries < 3) {
+        this._setEnemyRetries++
+        console.warn(
+          `[CombatScene] setEnemy texture error, retry ${this._setEnemyRetries}/3:`,
+          err,
+        )
+        this.time.delayedCall(200, () =>
+          this.setEnemy(name, category, hp, maxHP, enemyId, animArchetype),
+        )
+        return
+      }
+      console.error('[CombatScene] setEnemy failed after 3 retries:', err)
     }
+    this._setEnemyRetries = 0
 
     // Apply animation archetype config
     this.enemySpriteSystem.setAnimConfig(animArchetype, this.currentEnemyId)

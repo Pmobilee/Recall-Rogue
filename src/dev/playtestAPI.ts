@@ -635,6 +635,15 @@ async function acceptReward(): Promise<PlayResult> {
     // Wait for checkAutoAdvance to fire (triggers sceneComplete when all items collected).
     await wait(turboDelay(1000));
 
+    // If the screen is still on rewardRoom, some items were not collected (e.g. extra card
+    // choices the bot skipped). Force the transition by emitting sceneComplete directly —
+    // this mirrors what clicking the Continue button does.
+    if (getScreen() === 'rewardRoom') {
+      const { triggerRewardRoomContinue } = await import('../services/rewardRoomBridge');
+      triggerRewardRoomContinue();
+      await wait(turboDelay(1000));
+    }
+
     return { ok: true, message: `Reward accepted via Phaser scene. Screen: ${getScreen()}` };
   });
 }

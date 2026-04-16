@@ -4500,3 +4500,35 @@ When `acceptReward()` triggers the reward room → combat stop lifecycle, Phaser
 **Workaround:** `window.__rrPlay.navigate('dungeonMap')` reliably exits the reward room from an LLM playtest context. The card reward selection is skipped.
 
 **Fix needed:** Either expose a `skipCardReward()` API in `playtestAPI.ts`, or ensure `acceptReward()` also handles the case where card rewards are still pending.
+
+### 2026-04-16 — drawImage null crash on combat entry after reward room (fixed)
+
+**What:** After collecting rewards and navigating back to dungeonMap, the next combat crashed with `TypeError: Cannot read properties of null (reading 'drawImage')` inside Phaser's `Frame.updateUVs`. `getCombatState()` worked (game logic fine), but the scene render path failed immediately.
+
+**Why:** When `stopRewardRoom()` stops CombatScene then `startCombat()` restarts it, Phaser's WebGL texture pipeline queues texture re-upload asynchronously. `sceneReady` is set in the `create()` finally block and is `true` before the GPU pipeline has decoded the textures. `EnemySpriteSystem.setSprite` calls `textures.getFrame()` which returns a frame whose `source.image` is still null.
+
+**Fix:** `CombatScene.setEnemy` now wraps the `enemySpriteSystem.setSprite/setPlaceholder` call in a try/catch. On error it increments `_setEnemyRetries` and schedules a `delayedCall(200ms)` re-invoke of the full `setEnemy` call. After 3 failed retries it logs a hard error and bails. On success it resets `_setEnemyRetries = 0`. Max total wait: ~600ms before giving up.
+
+**File:** `src/game/scenes/CombatScene.ts` — `setEnemy()` method, around line 1144.
+
+### 2026-04-16 — acceptReward() stalls on rewardRoom when card items remain uncollected (fixed)
+
+**What:** In ~1 in 3 playtests, `acceptReward()` returned `ok: true` but the screen stayed on `rewardRoom`. The bot had collected gold/vials and one card/relic, but additional card choices remained uncollected. `checkAutoAdvance()` only fires `sceneComplete` when ALL items are collected.
+
+**Why:** `acceptReward()` in `playtestAPI.ts` only processes the FIRST uncollected card and the FIRST relic. When multiple card reward choices exist (and the bot doesn't need them), they remain uncollected, blocking auto-advance.
+
+**Fix:** After the final `wait(1000ms)`, `acceptReward()` now checks `getScreen() === 'rewardRoom'`. If still on that screen, it calls `triggerRewardRoomContinue()` from `rewardRoomBridge` — which emits `sceneComplete` directly, matching what a real player clicking Continue would do.
+
+**File:** `src/dev/playtestAPI.ts` — end of `acceptReward()`, after the 1000ms wait.
+
+### 2026-04-16 — Mystery event off-domain distractors are a content issue, not a code bug
+
+**What:** Mystery events showed cross-domain distractors (e.g. "Jonathan Swift" and "Zinc" for a baking history question).
+
+**Why:** `getRandomTriviaQuestion()` in `MysteryEventOverlay.svelte` (line ~505) draws a random fact from `factsDB.getTriviaFacts()` and uses that fact's `fact.distractors` array directly. If those pre-baked distractors in the SQLite facts.db are bad (wrong domain, low coherence), they show up as-is. The quiz pipeline bakes distractors at facts.db build time (`src/services/factsDB.ts` seeding path). There is no runtime distractor re-selection for the mystery event code path.
+
+**Fix (not taken yet):** The correct long-term fix is a content pipeline pass to improve distractor quality in facts.db, or routing mystery event quizzes through `nonCombatQuizSelector.ts` / `curatedDistractorSelector.ts` which have domain-coherent selection. Runtime patching of bad distractors in the overlay would be fragile.
+
+**Priority:** LOW — the issue is cosmetic (awkward distractors) and does not cause crashes or incorrect scoring. Log this for the next facts.db quality pass.
+
+**Files:** `src/ui/components/MysteryEventOverlay.svelte` line ~505, `src/services/nonCombatQuizSelector.ts` (the better selector), facts.db content pipeline.
