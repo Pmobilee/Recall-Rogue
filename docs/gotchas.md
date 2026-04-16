@@ -4476,3 +4476,27 @@ This updates the Svelte store reactively, and the UI responds on the next render
 
 ### 2026-04-16 — CombatScene.shutdown() crash on cameras.main being undefined
 When `acceptReward()` triggers the reward room → combat stop lifecycle, Phaser may have already torn down the camera manager by the time `shutdown()` runs. `this.cameras.main` returns undefined, crashing on `cam.zoom = 1.0`. Fixed with null guard (`this.cameras?.main` + `if (cam)` block). Same pattern in `onWake()`. Also added `this.scale?.off(...)` guard for the same teardown window.
+
+### 2026-04-16 — Phaser drawImage null crash on combat entry after reward room transition
+
+**What:** `TypeError: Cannot read properties of null (reading 'drawImage')` at `Frame2.updateUVs` → `CombatScene.setEnemy` occurs intermittently when clicking a combat map node immediately after returning from a reward room. The error propagates through `encounterBridge.startEncounterForRoom`.
+
+**Frequency:** Observed in 2 of 3 combat transitions during BATCH-2026-04-16-003 playtest (always after acceptReward → dungeonMap → click combat node).
+
+**Symptom:** `getScreen()` still returns `dungeonMap` after the click, but `getCombatState()` returns valid combat data — meaning game logic loaded correctly while the Phaser visual scene failed to initialize.
+
+**Workaround:** Call `window.__rrPlay.navigate('combat')` after the failed click. The game logic is already running; forced navigation makes the UI show the combat screen and play proceeds normally.
+
+**Hypothesis:** The canvas context may be nullified or garbage-collected during the reward→map scene transition and not fully re-initialized by the time `setEnemy` fires on the next combat. `CombatScene.setEnemy` calls into Phaser texture/frame lookups that assume an active canvas context.
+
+**Fix needed:** Add a null guard in `CombatScene.setEnemy` (near line 917) before accessing Frame/Texture rendering, and/or add a readiness check in `encounterBridge.startEncounterForRoom` that waits for the scene's canvas context to be non-null before firing `setEnemy`.
+
+**Files:** `src/game/scenes/CombatScene.ts` (~line 917), `src/services/encounterBridge.ts` (~lines 272, 314, 321, 680).
+
+### 2026-04-16 — rewardRoom Continue button not clickable via canvas PointerEvent
+
+**What:** The "Continue" button in the RewardRoom scene is a Phaser `Container`/`Text` at approximate game-coordinates (960, 950). DOM `.click()` and canvas `PointerEvent` simulation both fail to trigger it. `acceptReward()` API marks the reward as accepted but the screen stays on `rewardRoom` if card rewards haven't been picked.
+
+**Workaround:** `window.__rrPlay.navigate('dungeonMap')` reliably exits the reward room from an LLM playtest context. The card reward selection is skipped.
+
+**Fix needed:** Either expose a `skipCardReward()` API in `playtestAPI.ts`, or ensure `acceptReward()` also handles the case where card rewards are still pending.
