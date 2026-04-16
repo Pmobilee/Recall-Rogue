@@ -4532,3 +4532,23 @@ When `acceptReward()` triggers the reward room → combat stop lifecycle, Phaser
 **Priority:** LOW — the issue is cosmetic (awkward distractors) and does not cause crashes or incorrect scoring. Log this for the next facts.db quality pass.
 
 **Files:** `src/ui/components/MysteryEventOverlay.svelte` line ~505, `src/services/nonCombatQuizSelector.ts` (the better selector), facts.db content pipeline.
+
+### 2026-04-16 — drawImage null crash fixed by moving GL guard into EnemySpriteSystem
+
+**What:** After reward room → stopCombat → map → startCombat → setEnemy, Phaser threw `TypeError: Cannot read properties of null (reading 'drawImage')` inside `Frame.updateUVs`. The v3 fix (try/catch retry in `CombatScene.setEnemy`) did not catch it because the crash arrived as an unhandled Promise rejection from Phaser's internal WebGL texture upload pipeline, which fires outside the synchronous try/catch boundary.
+
+**Why:** The retry in `setEnemy` wraps `scene.add.image()` synchronously, but Phaser's texture pipeline defers actual GL upload. The null dereference happens asynchronously inside `Frame.updateUVs` → `drawImage`, outside the try/catch scope.
+
+**Fix:** Moved the guard into `EnemySpriteSystem.setSprite()` — at the very top, before any `scene.add.image()` call. It checks `renderer.gl` directly. If null, defers the entire `setSprite` call via `delayedCall(250ms)`. Also added a texture existence guard that falls back to `setPlaceholder` if the texture key is missing. Removed the now-redundant `_setEnemyRetries` field and try/catch from `CombatScene.setEnemy`.
+
+**Files:** `src/game/systems/EnemySpriteSystem.ts` — top of `setSprite()`; `src/game/scenes/CombatScene.ts` — `setEnemy()` and field declaration.
+
+### 2026-04-16 — selectMysteryChoice fails for Continue-type mystery events
+
+**What:** `selectMysteryChoice(0)` returned "Mystery choice 0 not found (only 0 visible .choice-btn elements)" for mystery events that use a Continue button (`data-testid="mystery-continue"`) instead of multiple choice buttons.
+
+**Why:** Continue-type events render a single continue button, not `.choice-btn` elements. `selectMysteryChoice` only queried `.choice-btn`.
+
+**Fix:** Added a fallback in `selectMysteryChoice`: when no `.choice-btn` elements are found AND index lookup fails, it looks for `[data-testid="mystery-continue"]` and clicks it. `mysteryContinue()` function already handled the direct case; this makes `selectMysteryChoice` also handle it automatically.
+
+**File:** `src/dev/playtestAPI.ts` — `selectMysteryChoice()`.

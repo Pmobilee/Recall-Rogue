@@ -1071,7 +1071,17 @@ async function selectMysteryChoice(index: number): Promise<PlayResult> {
         return style.display !== 'none' && style.visibility !== 'hidden';
       });
     const btn = buttons[index] ?? null;
-    if (!btn) return { ok: false, message: `Mystery choice ${index} not found (only ${buttons.length} visible .choice-btn elements)` };
+    if (!btn) {
+      // No .choice-btn elements found — this may be a Continue-type mystery event.
+      // Fall back to the mystery-continue button if present.
+      const continueBtn = document.querySelector('[data-testid="mystery-continue"]') as HTMLElement | null;
+      if (continueBtn) {
+        continueBtn.click();
+        await wait(turboDelay(1000));
+        return { ok: true, message: `Mystery continue clicked (no choice buttons found). Screen: ${getScreen()}` };
+      }
+      return { ok: false, message: `Mystery choice ${index} not found (only ${buttons.length} visible .choice-btn elements)` };
+    }
     btn.click();
     await wait(turboDelay(1000));
     return { ok: true, message: `Selected mystery choice ${index}. Screen: ${getScreen()}` };

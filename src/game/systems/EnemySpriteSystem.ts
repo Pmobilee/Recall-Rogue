@@ -85,6 +85,29 @@ export class EnemySpriteSystem {
     y: number,
     category: EnemyCategory
   ): void {
+    // Guard: ensure WebGL context is available before creating GPU-backed sprites.
+    // After scene restart, Phaser may report the renderer exists but GL context is null
+    // for a frame or two, causing Frame.updateUVs null crashes in scene.add.image().
+    const renderer = this.scene.game?.renderer
+    if (renderer && 'gl' in renderer && !(renderer as any).gl) {
+      console.warn('[EnemySpriteSystem] GL context null, deferring setSprite')
+      if (this.scene.scene?.isActive()) {
+        this.scene.time.delayedCall(250, () => {
+          if (this.scene.scene?.isActive()) {
+            this.setSprite(textureKey, displaySize, x, y, category)
+          }
+        })
+      }
+      return
+    }
+
+    // Guard: texture missing — fall back to placeholder to avoid Frame.updateUVs null crash.
+    if (!this.scene.textures.exists(textureKey)) {
+      console.warn(`[EnemySpriteSystem] Texture '${textureKey}' not found, using placeholder`)
+      this.setPlaceholder(0x666666, displaySize, x, y, category)
+      return
+    }
+
     this.destroyChildren()
     this.baseX = x
     this.baseY = y
