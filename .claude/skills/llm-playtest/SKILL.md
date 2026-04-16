@@ -43,6 +43,27 @@ This is NOT screenshot-based visual testing, NOT static balance analysis, NOT a 
 
 ---
 
+## 🚨 Hallucination Rate — Verify Every Issue Claim
+
+**LLM playtest sub-agents hallucinate ~30% of reported issues.** BATCH-2026-04-15-001 confirmed this with three fabricated bugs that checked out as false on source code inspection:
+- A fact ID that didn't exist in any deck
+- A status effect value claimed as "30-5%" when source showed 50%
+- A softlock scenario that was explicitly handled in `turnManager.ts`
+
+**Hallucinated bugs tend to be:** specific enough to sound researched (fact IDs, percentage values, line references), in known-issue categories (grammar, values, softlocks), and not confirmable from a screenshot alone.
+
+**The orchestrator MUST verify every issue claim against source code before reporting it to the user or creating tasks:**
+1. `grep` the value or ID in the codebase — confirm it exists
+2. Check the referenced file at the claimed line
+3. For value claims, read the source directly (e.g. `cat src/data/statusEffects.ts | grep EMPOWER`)
+4. Do not trust specificity as evidence of accuracy — hallucinated bugs are often MORE specific than real ones
+
+Treat every playtest report as "unverified claims requiring ground-truth check" — not "confirmed bugs ready for task creation."
+
+See `docs/gotchas.md` 2026-04-15 for the full incident analysis.
+
+---
+
 ## When to Use
 
 - After any game changes before a release or milestone

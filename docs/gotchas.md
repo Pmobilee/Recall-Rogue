@@ -4418,3 +4418,58 @@ This updates the Svelte store reactively, and the UI responds on the next render
 **Fix:** Both paths now use the variant's `correctAnswer` for the factAdapter. The runtime numerical distractor generator already produces correct distractors — it just needed the right input.
 
 **Lesson:** When creating a `factAdapter` or passing a fact to a service, always check whether the calling context has selected a variant — if so, the variant's fields (especially `correctAnswer`) must override the parent fact's fields.
+
+### 2026-04-15 — LLM playtest sub-agents hallucinate ~30% of reported issues
+
+**What:** BATCH-2026-04-15-001 (full 5-tester run) produced multiple issue reports that were entirely fabricated. Three hallucinated claims verified against source code:
+- "Mochi broken grammar" — fact ID doesn't exist in any deck.
+- "EMPOWER status shows '+30-5%'" — source in `src/data/statusEffects.ts` clearly shows 50%, never 30%.
+- "0 HP + poison softlock" — `turnManager.ts:3428` has explicit handling for this case; it was never a softlock.
+
+**Why:** LLM sub-agents tasked with finding bugs apply pattern-matching to game concepts and generate plausible-sounding bugs that fit expected categories (grammar issues, off-by-one values, softlock states) without actually observing the code or game state that would confirm them.
+
+**Pattern:** Hallucinated bugs tend to be: (1) specific enough to sound researched (fact IDs, percentage values, line references), (2) in categories that are known issue areas (grammar, values, edge states), (3) not verifiable from the screenshot alone.
+
+**Real issues from same batch (verified against source):** `selectDomain` selector mismatch (`button.panel--trivia` vs `.panel--trivia`), CombatScene background rendering continuously outside combat, distractor pool era-mismatch in `apush_p4_garrison_liberator`.
+
+**Rule:** The orchestrator MUST verify every LLM playtest issue claim against source code before reporting it to the user or creating tasks. `grep` the value, check the file at the claimed line, confirm the element exists. Do not trust specificity as evidence of accuracy — hallucinated bugs are often more specific than real ones.
+
+### 2026-04-15 — CombatScene was running continuously through all non-combat screens
+
+**What:** CombatScene's `update()` loop kept running on the dungeonMap, shop, rest, and reward screens — any screen after combat ended. This caused the CombatScene background to render visibly under the Svelte UI on those screens.
+
+**Why:** `CardGameManager.stopCombat()` had zero callers. When `stopRewardRoom()` was triggered it called `bringToTop('RewardRoom')` instead of `stopCombat()`, meaning CombatScene was never stopped. `gameFlowController.onEncounterComplete()` defeat path also had no `stopCombatScene()` call.
+
+**Fix:** `CardGameManager.stopRewardRoom()` now calls `this.stopCombat()` instead of `bringToTop`. New `stopCombatScene()` helper added to `encounterBridge.ts` wraps `CardGameManager.stopCombat()` for use by non-combat callers. `gameFlowController.onEncounterComplete()` defeat path calls `stopCombatScene()`.
+
+**Lesson:** `stopCombat()` with zero callers is a dead code smell. After wiring a new scene-management method, grep for its callers immediately — if there are none, it's a functional dead-end. See `docs/architecture/scenes.md` for the current lifecycle table.
+
+**Files:** `src/game/CardGameManager.ts`, `src/services/encounterBridge.ts`, `src/services/gameFlowController.ts`
+
+### 2026-04-15 — selectDomain API selector used button tag for a div element
+
+**What:** The playtestAPI `selectDomain()` function queried `button.panel--trivia` but `DeckSelectionHub.svelte` renders the Trivia Dungeon panel as a `<div class="panel--trivia">`, not a `<button>`. The selector matched nothing, so the LLM playtest testers could never reach the trivia domain.
+
+**Fix:** Changed `button.panel--trivia` → `.panel--trivia` in `src/dev/playtestAPI.ts:135`.
+
+**Lesson:** When writing CSS selectors for DOM automation, prefer class-only selectors (`.class-name`) over tag+class selectors (`tag.class-name`) unless you specifically need to restrict by element type. Tag+class selectors silently fail when the implementation uses a semantically different but visually identical element. Always verify against the actual DOM rather than assumed element types.
+
+**File:** `src/dev/playtestAPI.ts` line 135. Commit: `f11555b64`.
+
+### 2026-04-15 — Steam launch options need explicit OS setting to avoid "32-bit game" warning
+
+**What:** Steam showed a "32-bit game" compatibility warning on macOS when launch options were not OS-specific. Steam inferred the wrong architecture from the generic launch option entry.
+
+**Fix:** Set launch options per OS explicitly in the Steamworks dashboard. For macOS: set OS field to "macOS" on the launch option entry. Do not use the generic/all-platforms option for architecture-sensitive binaries.
+
+**Lesson:** Steam launch options have an OS field that must be set to the specific platform (macOS, Windows) — not left blank or set to "All". Blank OS causes Steam to use the first matching launch option regardless of architecture, which can trigger the 32-bit warning or wrong binary selection on multi-depot apps.
+
+### 2026-04-15 — steamcmd auth tokens expire when Steam desktop client is running
+
+**What:** SteamPipe uploads via `steamcmd` failed with authentication errors even though the user had previously logged in successfully. Repeated `steamcmd +login <user> +quit` calls in a script would fail without prompting for Steam Guard.
+
+**Why:** steamcmd and the Steam desktop client share the same config directory (`~/Library/Application Support/Steam/`). When the Steam desktop client is running, it holds exclusive access to the auth token files, causing steamcmd to read stale/expired tokens. The interactive Steam Guard prompt is also suppressed in non-TTY script contexts.
+
+**Fix:** `scripts/steam-build.sh` now includes an auth-check wrapper that tests cached credentials (`steamcmd +login <user> +quit`) before attempting upload. If the check fails, it prompts the user to authenticate interactively. macOS-only deploys use `steam/app_build_4547570_macos.vdf` to avoid the Linux depot path error.
+
+**Rule:** For automated SteamPipe uploads, always quit the Steam desktop client first, OR run the auth check before the upload step. The Steam client and steamcmd are mutually exclusive users of the shared config directory.

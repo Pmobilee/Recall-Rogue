@@ -3,7 +3,7 @@
 > Navigation hub for all modular documentation. Each file is independently useful —
 > an agent reading just that file should understand that system.
 >
-> **Last rebuilt:** 2026-04-13
+> **Last rebuilt:** 2026-04-15
 
 ---
 
@@ -158,7 +158,7 @@
 
 | Doc | Summary |
 |-----|---------|
-| [gotchas](gotchas.md) | Append-only mistake log: Playwright pitfalls, visual regression incidents, Phaser canvas gotchas, deck quality bugs, multiplayer WebSocket protocol gotchas, and lessons learned. Last entry: 2026-04-13 Multiplayer lobby nav-away cleanup, WS message type mismatch, server snapshot player shape. |
+| [gotchas](gotchas.md) | Append-only mistake log: Playwright pitfalls, visual regression incidents, Phaser canvas gotchas, deck quality bugs, multiplayer WebSocket protocol gotchas, and lessons learned. Last entry: 2026-04-15 LLM playtest hallucination rate, CombatScene lifecycle fix, selectDomain selector, Steam launch options, steamcmd auth conflict. |
 | [SECURITY](SECURITY.md) | Security considerations, CSP, input sanitization, and credential rules |
 
 ---

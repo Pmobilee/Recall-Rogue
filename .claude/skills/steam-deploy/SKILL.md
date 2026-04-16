@@ -23,6 +23,7 @@ Parse the user's message for a subcommand:
 | `deploy` | Full build + upload to Steam via SteamPipe (auto-sets-live). `npm run steam:deploy` |
 | `deploy quick` | Upload existing build only (no rebuild). `npm run steam:deploy:quick` |
 | `deploy windows` | Cross-compile Windows + upload to Steam. `npm run steam:windows` |
+| `deploy linux` | SSH to Linux VM, cross-compile, pull artifacts, upload to Steam depot 4547573. `npm run steam:linux` |
 | `status` | Show last build info, git version, depot status |
 
 If no subcommand is given, default to `test` (local).
@@ -39,6 +40,7 @@ If no subcommand is given, default to `test` (local).
 | **Cloud quick** | `npm run steam:deploy:quick` | Upload existing macOS build to Steam cloud (no rebuild). |
 | **Windows build** | `npm run steam:windows:build` | Cross-compile Windows exe from macOS via cargo-xwin (~12s cached). |
 | **Windows deploy** | `npm run steam:windows` | Cross-compile Windows + upload to Steam depot 4547572. |
+| **Linux deploy** | `npm run steam:linux` | SSH to Linux VM, cross-compile, pull artifacts, upload to Steam depot 4547573. Use `--linux` flag on `steam-build.sh`. |
 
 When the user says "deploy", "push to steam", or "update steam" without specifying cloud/online, **always use local** (`test` or `test quick`). Only use cloud deploy when the user explicitly says "cloud", "online", "SteamPipe", or "upload".
 
@@ -56,6 +58,21 @@ Output: `steam/windows-build/recall-rogue.exe` + `steam_api64.dll` + `steam_appi
 
 GitHub Actions workflow (`.github/workflows/steam-build.yml`) also exists for CI builds on real Windows runners, but local cross-compilation is faster and doesn't require Steam Guard workarounds.
 
+## Linux Build Support (via SSH VM)
+
+Linux builds cross-compile from macOS by SSHing to a Linux VM, building there, and pulling artifacts back. Requirements:
+- Linux VM accessible via SSH (see `~/.claude-intelligents/projects/*/memory/reference_windows_vm.md` for VM setup patterns)
+- `--linux` flag on `scripts/steam-build.sh`: `./scripts/steam-build.sh --linux`
+- Output: pulled to `steam/linux-build/` before SteamPipe upload to depot 4547573
+
+```bash
+# Build Linux only
+./scripts/steam-build.sh --linux
+
+# Full deploy including Linux
+npm run steam:linux
+```
+
 ## Constants
 
 ```
@@ -71,6 +88,13 @@ STEAM_DIR=/Users/damion/CODE/Recall_Rogue/steam
 BUILD_OUTPUT_MAC=/Users/damion/CODE/Recall_Rogue/src-tauri/target/release/bundle/macos/
 BUILD_OUTPUT_DMG=/Users/damion/CODE/Recall_Rogue/src-tauri/target/release/bundle/dmg/
 ```
+
+## VDF Files
+
+| File | Purpose |
+|---|---|
+| `steam/app_build_4547570.vdf` | Full multi-platform build (macOS + Windows + Linux depots) |
+| `steam/app_build_4547570_macos.vdf` | macOS-only depot upload — use this when Linux build artifacts are not present to avoid Linux depot path errors |
 
 ## Steps by Subcommand
 
@@ -175,8 +199,14 @@ Upload the current build to Steam via SteamPipe:
 
 4. Run steamcmd upload:
    ```bash
+   # macOS-only depot (avoids Linux depot path error if Linux build not present):
+   steamcmd +login $(grep STEAM_USERNAME /Users/damion/CODE/Recall_Rogue/.env.local | cut -d= -f2) +run_app_build /Users/damion/CODE/Recall_Rogue/steam/app_build_4547570_macos.vdf +quit
+
+   # Full multi-platform upload:
    steamcmd +login $(grep STEAM_USERNAME /Users/damion/CODE/Recall_Rogue/.env.local | cut -d= -f2) +run_app_build /Users/damion/CODE/Recall_Rogue/steam/app_build_4547570.vdf +quit
    ```
+
+   **Auth gotcha:** steamcmd and the Steam desktop client share the same config directory. If the Steam client is running, cached tokens may be stale. Quit the Steam client before running SteamPipe uploads, or run `steam-build.sh` which includes an auth-check wrapper.
 
 5. Report: upload success/failure, build ID, branch.
 
@@ -274,9 +304,9 @@ Configure this under App Admin > Steam Cloud > Auto-Cloud in the Steamworks part
 
 ## Important Notes
 
-- **steamcmd authentication** is interactive (Steam Guard) — the first login must be done by the user in a terminal: `steamcmd +login <username> +quit`
+- **steamcmd authentication** is interactive (Steam Guard) — the first login must be done by the user in a terminal: `steamcmd +login <username> +quit`. The `steam-build.sh` script includes an auth-check wrapper that tests cached credentials before uploading. **Quit the Steam desktop client before running SteamPipe uploads** — it shares the config dir and can make tokens appear stale (see `docs/gotchas.md` 2026-04-15).
 - **Depot IDs** must match what's configured in the Steamworks dashboard: DEPOT_CONTENT=4547571, DEPOT_WINDOWS=4547572, DEPOT_LINUX=4547573, DEPOT_MACOS=4547574. Only Linux (4547573) and macOS (4547574) are active at launch.
-- **Cross-platform builds** (Windows/Linux) require GitHub Actions CI — see docs/deployment/steam.md
+- **Cross-platform builds:** Windows uses `cargo-xwin` (direct macOS cross-compilation, ~12s cached). Linux uses SSH to a Linux VM via `--linux` flag on `steam-build.sh`. GitHub Actions CI (`.github/workflows/steam-build.yml`) also exists for Windows builds on real Windows runners.
 - **Build size** is ~750MB for macOS (includes all game assets). This is normal for Steam.
 - **Version bumping**: Update `version` in both `package.json` and `src-tauri/tauri.conf.json` before release builds.
 - **Database obfuscation**: `dist/facts.db` and `dist/curated.db` are XOR-obfuscated by `obfuscate-db.mjs` as part of `npm run build`. They cannot be opened with the `sqlite3` CLI in production builds — this is expected.
@@ -287,7 +317,7 @@ Configure this under App Admin > Steam Cloud > Auto-Cloud in the Steamworks part
 
 Before first upload, the user must configure in partner.steamgames.com:
 - [ ] Create depots (4547571 Content, 4547572 Windows, 4547573 Linux, 4547574 macOS)
-- [ ] Set launch options per OS (macOS: `Recall Rogue.app/Contents/MacOS/Recall Rogue`)
+- [ ] Set launch options per OS (macOS: `Recall Rogue.app/Contents/MacOS/Recall Rogue`) — **OS field must be set explicitly** (macOS/Windows), NOT left blank. Blank OS causes Steam to misidentify architecture and show a "32-bit game" warning (see `docs/gotchas.md` 2026-04-15).
 - [ ] Create a `development` branch for testing
 - [ ] Set content descriptors and age ratings
 - [ ] Configure Steam Cloud — Auto-Cloud sync for saves/ directory (*.json, 10 files, 10MB each)
