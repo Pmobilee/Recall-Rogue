@@ -304,10 +304,23 @@ async function quickPlayCard(index: number): Promise<PlayResult> {
       const newHand = updated.deck?.hand;
       if (!newHand || newHand.length < prevHandSize || updated.apCurrent < turnState.apCurrent) break;
     }
+    const finalState = get(activeTurnState);
+    const combatResult = finalState ? {
+      apRemaining: finalState.apCurrent ?? 0,
+      apMax: finalState.apMax ?? 3,
+      playerHp: finalState.playerState?.hp ?? 0,
+      playerMaxHp: finalState.playerState?.maxHP ?? 0,
+      playerBlock: finalState.playerState?.shield ?? 0,
+      enemyHp: finalState.enemy?.currentHP ?? 0,
+      enemyMaxHp: finalState.enemy?.maxHP ?? 0,
+      handSize: finalState.deck?.hand?.length ?? 0,
+      turn: finalState.turnNumber ?? 0,
+      chainLength: finalState.chainLength ?? 0,
+    } : null;
     return {
       ok: true,
       message: `Quick-played card ${index} (${card.cardType}, "${(card as any).fact?.question ?? card.id}")`,
-      state: { cardId: card.id, cardType: card.cardType, playMode: 'quick' },
+      state: { cardId: card.id, cardType: card.cardType, playMode: 'quick', ...(combatResult ?? {}) },
     };
   });
 }
@@ -345,10 +358,23 @@ async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<
       const newHand = updated.deck?.hand;
       if (!newHand || newHand.length < prevHandSize || updated.apCurrent < turnState.apCurrent) break;
     }
+    const finalState = get(activeTurnState);
+    const combatResult = finalState ? {
+      apRemaining: finalState.apCurrent ?? 0,
+      apMax: finalState.apMax ?? 3,
+      playerHp: finalState.playerState?.hp ?? 0,
+      playerMaxHp: finalState.playerState?.maxHP ?? 0,
+      playerBlock: finalState.playerState?.shield ?? 0,
+      enemyHp: finalState.enemy?.currentHP ?? 0,
+      enemyMaxHp: finalState.enemy?.maxHP ?? 0,
+      handSize: finalState.deck?.hand?.length ?? 0,
+      turn: finalState.turnNumber ?? 0,
+      chainLength: finalState.chainLength ?? 0,
+    } : null;
     return {
       ok: true,
       message: `Charge-played card ${index} (${card.cardType}) — answered ${answerCorrectly ? 'correctly' : 'incorrectly'}`,
-      state: { cardId: card.id, cardType: card.cardType, playMode: 'charge', answerCorrectly },
+      state: { cardId: card.id, cardType: card.cardType, playMode: 'charge', answerCorrectly, ...(combatResult ?? {}) },
     };
   });
 }
@@ -424,7 +450,22 @@ async function endTurn(): Promise<PlayResult> {
       if (newBtn && !newBtn.disabled) break;
     }
 
-    return { ok: true, message: `Turn ended. Screen: ${getScreen()}` };
+    const { activeTurnState } = await import('../services/encounterBridge');
+    const { get } = await import('svelte/store');
+    const finalState = get(activeTurnState);
+    const combatResult = finalState ? {
+      apRemaining: finalState.apCurrent ?? 0,
+      apMax: finalState.apMax ?? 3,
+      playerHp: finalState.playerState?.hp ?? 0,
+      playerMaxHp: finalState.playerState?.maxHP ?? 0,
+      playerBlock: finalState.playerState?.shield ?? 0,
+      enemyHp: finalState.enemy?.currentHP ?? 0,
+      enemyMaxHp: finalState.enemy?.maxHP ?? 0,
+      handSize: finalState.deck?.hand?.length ?? 0,
+      turn: finalState.turnNumber ?? 0,
+      chainLength: finalState.chainLength ?? 0,
+    } : null;
+    return { ok: true, message: `Turn ended. Screen: ${getScreen()}`, state: combatResult ?? undefined };
   });
 }
 
