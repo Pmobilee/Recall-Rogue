@@ -167,6 +167,9 @@ async function selectArchetype(_archetype: string): Promise<PlayResult> {
 
 /** Get the current combat state. */
 function getCombatState(): Record<string, unknown> | null {
+  // Only return combat data when actually on the combat screen
+  const screen = getScreen();
+  if (screen !== 'combat') return null;
   const turnState = readStore<any>('rr:activeTurnState');
   if (!turnState) return null;
   // Guard: if combat has ended (enemy/player state cleared during transition), return null
@@ -881,11 +884,16 @@ async function restUpgrade(): Promise<PlayResult> {
 /** Continue past a mystery event. */
 async function mysteryContinue(): Promise<PlayResult> {
   return safeAction(async () => {
-    const btn = document.querySelector('[data-testid="mystery-continue"]') as HTMLButtonElement | null;
+    // Try the primary mystery continue button first
+    let btn = document.querySelector('[data-testid="mystery-continue"]') as HTMLButtonElement | null;
+    // Fallback: cardUpgradeReveal continue button (mystery events that trigger card upgrades)
+    if (!btn) btn = document.querySelector('[data-testid="btn-upgrade-reveal-continue"]') as HTMLButtonElement | null;
+    // Last resort: any visible continue button on the page
+    if (!btn) btn = document.querySelector('.continue-btn:not([disabled])') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'Mystery continue button not found' };
     btn.click();
     await wait(turboDelay(1000));
-    return { ok: true, message: `Mystery resolved. Screen: ${getScreen()}` };
+    return { ok: true, message: `Mystery continue clicked. Screen: ${getScreen()}` };
   });
 }
 
@@ -1036,6 +1044,47 @@ async function restMeditate(): Promise<PlayResult> {
     btn.click();
     await wait(turboDelay(1000));
     return { ok: true, message: `Meditating. Screen: ${getScreen()}` };
+  });
+}
+
+/** Leave the shop room and return to dungeon map. */
+async function shopLeave(): Promise<PlayResult> {
+  return safeAction(async () => {
+    // Try the shop leave/back button
+    let btn = document.querySelector('[data-testid="shop-leave"]') as HTMLButtonElement | null;
+    if (!btn) btn = document.querySelector('[data-testid="shop-back"]') as HTMLButtonElement | null;
+    if (!btn) btn = document.querySelector('[data-testid="btn-shop-leave"]') as HTMLButtonElement | null;
+    // Fallback: any back/leave button in the shop
+    if (!btn) btn = document.querySelector('.shop-leave-btn, .back-btn, [data-testid*="leave"], [data-testid*="back"]') as HTMLButtonElement | null;
+    if (!btn) {
+      // Force navigation as last resort
+      writeStore('rr:currentScreen', 'dungeonMap');
+      await wait(turboDelay(500));
+      return { ok: true, message: `Shop left via store write. Screen: ${getScreen()}` };
+    }
+    btn.click();
+    await wait(turboDelay(1000));
+    return { ok: true, message: `Left shop. Screen: ${getScreen()}` };
+  });
+}
+
+/** Continue past rest room after taking an action (heal/meditate/upgrade). */
+async function restContinue(): Promise<PlayResult> {
+  return safeAction(async () => {
+    // Try various continue/back buttons
+    let btn = document.querySelector('[data-testid="rest-continue"]') as HTMLButtonElement | null;
+    if (!btn) btn = document.querySelector('[data-testid="rest-back"]') as HTMLButtonElement | null;
+    if (!btn) btn = document.querySelector('[data-testid="btn-rest-continue"]') as HTMLButtonElement | null;
+    if (!btn) btn = document.querySelector('.rest-continue-btn, .back-btn, .continue-btn:not([disabled])') as HTMLButtonElement | null;
+    if (!btn) {
+      // Force navigation as last resort
+      writeStore('rr:currentScreen', 'dungeonMap');
+      await wait(turboDelay(500));
+      return { ok: true, message: `Rest left via store write. Screen: ${getScreen()}` };
+    }
+    btn.click();
+    await wait(turboDelay(1000));
+    return { ok: true, message: `Left rest room. Screen: ${getScreen()}` };
   });
 }
 
@@ -1679,8 +1728,10 @@ export function initPlaytestAPI(): void {
     restHeal,
     restUpgrade,
     restMeditate,
+    restContinue,
     mysteryContinue,
     getShopInventory,
+    shopLeave,
     shopBuyRelic,
     shopBuyCard,
     rerollReward,

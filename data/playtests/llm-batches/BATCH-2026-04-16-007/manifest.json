@@ -1,0 +1,20 @@
+{
+  "batchId": "BATCH-2026-04-16-007",
+  "createdAt": "2026-04-16T12:00:00Z",
+  "completedAt": "2026-04-16T14:30:00Z",
+  "testers": ["full-run"],
+  "args": {
+    "runs": 3,
+    "floors": 3,
+    "domain": "mixed",
+    "accuracy": 0.6
+  },
+  "status": "complete",
+  "smokeTestPassed": false,
+  "verdict": "FAIL",
+  "bugsFound": 7,
+  "criticalBugs": 2,
+  "reports": {
+    "full-run": "full-run.md"
+  }
+}
