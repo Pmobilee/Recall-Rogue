@@ -4552,3 +4552,13 @@ When `acceptReward()` triggers the reward room → combat stop lifecycle, Phaser
 **Fix:** Added a fallback in `selectMysteryChoice`: when no `.choice-btn` elements are found AND index lookup fails, it looks for `[data-testid="mystery-continue"]` and clicks it. `mysteryContinue()` function already handled the direct case; this makes `selectMysteryChoice` also handle it automatically.
 
 **File:** `src/dev/playtestAPI.ts` — `selectMysteryChoice()`.
+
+### 2026-04-16 — 0 HP soft-lock in playtest API endTurn
+
+**What:** When the player dies (HP=0) during enemy turn processing, `encounterBridge.handleEndTurn()` sets `turnState.result = 'defeat'` and fires a 5ms timeout to call `notifyEncounterComplete('defeat')`. In that 5ms window, the End Turn button becomes disabled. The playtest API's `endTurn()` returned `{ok: false, message: 'End turn button is disabled'}`. LLM bots interpreted this as "turn didn't end" and retried, creating an infinite loop that burned the entire session.
+
+**Why:** `endTurn()` only checked button disabled state without consulting `turnState.result`. A disabled button means either "enemy is taking their turn, wait" OR "combat is over" — the API didn't distinguish between them.
+
+**Fix:** Added an early turnState.result check at the TOP of `endTurn()` before any button inspection. If `result === 'defeat'` or `result === 'victory'`, return `{ok: true}` immediately with a `playerDefeated`/`enemyDefeated` state hint. Also added a secondary check inside the `btn.disabled` branch as a belt-and-suspenders guard for the race window. Added the same guard to `quickPlayCard()` and `chargePlayCard()` so bots don't try to play cards after combat resolves. Added `result` field to `getCombatState()` return so bots can poll combat status directly.
+
+**File:** `src/dev/playtestAPI.ts` — `endTurn()`, `quickPlayCard()`, `chargePlayCard()`, `getCombatState()`.

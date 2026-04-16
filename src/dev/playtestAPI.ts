@@ -260,6 +260,7 @@ function getCombatState(): Record<string, unknown> | null {
     floor: runState?.currentFloor,
     segment: runState?.currentSegment,
     gold: runState?.currency,
+    result: turnState.result ?? null,  // null = ongoing, 'defeat' = player dead, 'victory' = enemy dead
   };
 }
 
@@ -282,6 +283,10 @@ async function quickPlayCard(index: number): Promise<PlayResult> {
     const { get } = await import('svelte/store');
     const turnState = get(activeTurnState);
     if (!turnState) return { ok: false, message: 'No active turn state — are you in combat?' };
+    // Guard: combat already resolved (player/enemy died) — don't try to play cards
+    if (turnState.result !== null && turnState.result !== undefined) {
+      return { ok: false, message: `Combat already ended (result: ${turnState.result}). Screen: ${getScreen()}` };
+    }
 
     const hand = turnState.deck?.hand;
     if (!Array.isArray(hand) || index < 0 || index >= hand.length) {
@@ -333,6 +338,10 @@ async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<
     const { get } = await import('svelte/store');
     const turnState = get(activeTurnState);
     if (!turnState) return { ok: false, message: 'No active turn state — are you in combat?' };
+    // Guard: combat already resolved (player/enemy died) — don't try to play cards
+    if (turnState.result !== null && turnState.result !== undefined) {
+      return { ok: false, message: `Combat already ended (result: ${turnState.result}). Screen: ${getScreen()}` };
+    }
 
     const hand = turnState.deck?.hand;
     if (!Array.isArray(hand) || index < 0 || index >= hand.length) {
@@ -431,10 +440,39 @@ async function endTurn(): Promise<PlayResult> {
     const screen = getScreen();
     if (screen !== 'combat') return { ok: false, message: `Not in combat. Screen: ${screen}` };
 
+    // Early exit: check if combat already has a resolved result (player/enemy dead)
+    // This fires BEFORE the button check to avoid the soft-lock where btn.disabled=true
+    // because the player died on the enemy's turn (5ms defeat timeout hasn't fired yet).
+    const { activeTurnState: ats } = await import('../services/encounterBridge');
+    const { get: getStore } = await import('svelte/store');
+    const currentTurnState = getStore(ats);
+    if (currentTurnState?.result === 'defeat') {
+      return { ok: true, message: 'Player already defeated. Screen: ' + getScreen(), state: { playerDefeated: true, playerHp: 0 } };
+    }
+    if (currentTurnState?.result === 'victory') {
+      return { ok: true, message: 'Enemy already defeated. Screen: ' + getScreen(), state: { enemyDefeated: true } };
+    }
+    if (!currentTurnState && getScreen() !== 'combat') {
+      return { ok: true, message: 'Combat already ended. Screen: ' + getScreen() };
+    }
+
     const btn = document.querySelector('[data-testid="btn-end-turn"]') as HTMLButtonElement | null;
     // Button gone but still nominally in combat — enemy likely just died, treat as success
     if (!btn) return { ok: true, message: 'End turn button gone — combat likely ended' };
-    if (btn.disabled) return { ok: false, message: 'End turn button is disabled' };
+    if (btn.disabled) {
+      // Double-check: button may be disabled because combat ended while we were checking
+      const ts2 = getStore(ats);
+      if (ts2?.result === 'defeat') {
+        return { ok: true, message: 'Combat ended — player defeated. Screen: ' + getScreen(), state: { playerDefeated: true, playerHp: 0 } };
+      }
+      if (ts2?.result === 'victory') {
+        return { ok: true, message: 'Combat ended — enemy defeated. Screen: ' + getScreen(), state: { enemyDefeated: true } };
+      }
+      if (!ts2) {
+        return { ok: true, message: 'Combat ended. Screen: ' + getScreen() };
+      }
+      return { ok: false, message: 'End turn button is disabled' };
+    }
 
     // Read current screen before clicking
     const prevScreen = getScreen();
