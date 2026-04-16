@@ -1,7 +1,7 @@
 "DepotBuildConfig"
 {
 	"DepotID" "4547573"
-	"contentroot" "../src-tauri/target/x86_64-unknown-linux-gnu/release/bundle/appimage/"
+	"contentroot" "../steam/linux-build/"
 	"FileMapping"
 	{
 		"LocalPath" "*"

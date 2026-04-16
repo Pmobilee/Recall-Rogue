@@ -85,8 +85,18 @@ if [[ "$PLATFORM" == "windows" ]]; then
     if $DO_DEPLOY || $DO_TEST; then
         ENV_FILE="$PROJECT_ROOT/.env.local"
         STEAM_USER=$(grep STEAM_USERNAME "$ENV_FILE" | cut -d= -f2 | tr -d ' ')
+
+        echo "[steam] Checking Steam credentials..."
+        if steamcmd +login "$STEAM_USER" +quit 2>&1 | grep -q "ERROR"; then
+            echo "[steam] ⚠ Cached credentials expired. Re-authenticating..."
+            steamcmd +login "$STEAM_USER" +quit
+            if [ $? -ne 0 ]; then
+                echo "[steam] ERROR: Authentication failed. Aborting deploy."
+                exit 1
+            fi
+        fi
+
         echo "[steam] Uploading Windows build to Steam as $STEAM_USER..."
-        echo "[steam] You may be prompted for password + Steam Guard code."
         steamcmd +login "$STEAM_USER" +run_app_build "$WIN_VDF" +quit
         echo "[steam] Windows upload complete!"
     fi
@@ -94,6 +104,84 @@ if [[ "$PLATFORM" == "windows" ]]; then
     if ! $DO_BUILD && ! $DO_DEPLOY && ! $DO_TEST; then
         echo "[steam] Windows build ready at: $WIN_BUILD"
         ls -lh "$WIN_BUILD/"
+    fi
+    exit 0
+fi
+
+# ── Linux remote build (via SSH to Linux VM) ──
+if [[ "$PLATFORM" == "linux" ]]; then
+    LINUX_BUILD="$PROJECT_ROOT/steam/linux-build"
+    LINUX_VDF="$PROJECT_ROOT/steam/app_build_4547570_linux.vdf"
+    LINUX_STAGING="/Users/damion/CODE/LINUX_VM"
+
+    # Discover Linux VM IP
+    echo "[steam] Discovering Linux VM..."
+    LINUX_IP=""
+    for ip in $(arp -a | grep '192.168.11' | grep -oE '192\.168\.11\.[0-9]+' | grep -v '\.255$' | grep -v '\.1$'); do
+        result=$(ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no -o BatchMode=yes damion@$ip "hostname" 2>/dev/null)
+        if [ "$result" = "debian-vm" ]; then LINUX_IP="$ip"; break; fi
+    done
+    if [[ -z "$LINUX_IP" ]]; then
+        echo "[steam] ERROR: Linux VM not found on network. Is it running in UTM?"
+        exit 1
+    fi
+    echo "[steam] Found Linux VM at $LINUX_IP"
+
+    if $DO_BUILD; then
+        echo "[steam] Syncing source to Linux VM..."
+        rsync -avz --progress \
+          --exclude='src-tauri/target' --exclude='node_modules' --exclude='.git' \
+          --exclude='data' --exclude='dist' --exclude='.video-tmp' \
+          --exclude='.openclaude' --exclude='store-assets' --exclude='*.db' \
+          --exclude='_archived_assets' --exclude='steam/output' \
+          --exclude='steam/store-images' --exclude='steam/windows-build' \
+          -e ssh "$PROJECT_ROOT/" damion@"$LINUX_IP":~/recall-rogue/
+
+        echo "[steam] Installing npm deps on Linux VM..."
+        ssh -o ServerAliveInterval=30 damion@"$LINUX_IP" "cd ~/recall-rogue && npm install 2>&1" | tail -5
+
+        echo "[steam] Building Tauri on Linux VM (this will be slow — x86_64 emulated)..."
+        ssh -o ServerAliveInterval=30 damion@"$LINUX_IP" \
+          "cd ~/recall-rogue && . ~/.cargo/env && npm run build && cd src-tauri && cargo tauri build --bundles deb 2>&1"
+
+        echo "[steam] Staging Linux build artifacts..."
+        ssh damion@"$LINUX_IP" "mkdir -p ~/linux-build && cp ~/recall-rogue/src-tauri/target/release/recall-rogue ~/linux-build/ && cp ~/recall-rogue/src-tauri/steam_appid.txt ~/linux-build/"
+        # Copy libsteam_api.so if present
+        ssh damion@"$LINUX_IP" "STEAMSO=\$(find ~/recall-rogue/src-tauri/target/release/build -name 'libsteam_api.so' -path '*/steamworks-sys-*/out/*' 2>/dev/null | head -1); if [ -n \"\$STEAMSO\" ]; then cp \"\$STEAMSO\" ~/linux-build/; fi"
+
+        echo "[steam] Pulling artifacts back to Mac..."
+        mkdir -p "$LINUX_STAGING" "$LINUX_BUILD"
+        scp damion@"$LINUX_IP":~/linux-build/* "$LINUX_STAGING/"
+        cp "$LINUX_STAGING/recall-rogue" "$LINUX_BUILD/"
+        [ -f "$LINUX_STAGING/libsteam_api.so" ] && cp "$LINUX_STAGING/libsteam_api.so" "$LINUX_BUILD/"
+        cp "$LINUX_STAGING/steam_appid.txt" "$LINUX_BUILD/" 2>/dev/null || true
+
+        echo "[steam] Linux build staged:"
+        ls -lh "$LINUX_BUILD/"
+    fi
+
+    if $DO_DEPLOY || $DO_TEST; then
+        ENV_FILE="$PROJECT_ROOT/.env.local"
+        STEAM_USER=$(grep STEAM_USERNAME "$ENV_FILE" | cut -d= -f2 | tr -d ' ')
+
+        echo "[steam] Checking Steam credentials..."
+        if steamcmd +login "$STEAM_USER" +quit 2>&1 | grep -q "ERROR"; then
+            echo "[steam] ⚠ Cached credentials expired. Re-authenticating..."
+            steamcmd +login "$STEAM_USER" +quit
+            if [ $? -ne 0 ]; then
+                echo "[steam] ERROR: Authentication failed. Aborting deploy."
+                exit 1
+            fi
+        fi
+
+        echo "[steam] Uploading Linux build to Steam as $STEAM_USER..."
+        steamcmd +login "$STEAM_USER" +run_app_build "$LINUX_VDF" +quit
+        echo "[steam] Linux upload complete!"
+    fi
+
+    if ! $DO_BUILD && ! $DO_DEPLOY && ! $DO_TEST; then
+        echo "[steam] Linux build ready at: $LINUX_BUILD"
+        ls -lh "$LINUX_BUILD/"
     fi
     exit 0
 fi
@@ -158,7 +246,29 @@ if $DO_DEPLOY; then
         exit 1
     fi
 
-    VDF="$PROJECT_ROOT/steam/app_build_4547570_mac.vdf"
+    VDF="$PROJECT_ROOT/steam/app_build_4547570_macos.vdf"
+
+    # Pre-flight: test cached credentials before attempting upload.
+    # steamcmd and the Steam desktop client share ~/Library/Application Support/Steam/
+    # and fight over auth tokens, so cached creds go stale frequently with Steam Guard.
+    echo "[steam] Checking Steam credentials..."
+    if steamcmd +login "$STEAM_USER" +quit 2>&1 | grep -q "ERROR"; then
+        echo ""
+        echo "[steam] ⚠ Cached credentials expired. Re-authenticating..."
+        echo "[steam] You'll be prompted for password + Steam Guard code."
+        echo "[steam] (This happens because the Steam desktop client shares the token cache)"
+        echo ""
+        # Run in foreground so the user can enter password + Steam Guard interactively
+        steamcmd +login "$STEAM_USER" +quit
+        if [ $? -ne 0 ]; then
+            echo "[steam] ERROR: Authentication failed. Aborting deploy."
+            exit 1
+        fi
+        echo "[steam] ✓ Re-authenticated successfully."
+    else
+        echo "[steam] ✓ Cached credentials valid."
+    fi
+
     echo "[steam] Uploading to Steam as $STEAM_USER..."
     steamcmd +login "$STEAM_USER" +run_app_build "$VDF" +quit
     echo "[steam] Upload complete!"
