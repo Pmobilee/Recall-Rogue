@@ -407,9 +407,23 @@ Then read `result.json` and the screenshot to decide the next action.
 - 3 AP per turn (max 5), 5 cards drawn per turn
 - Quick Play: 1 AP, base damage, no quiz
 - Charge Play: 2 AP (+1 surcharge), 1.5× damage if correct, 0.5× if wrong, requires quiz
-- Surge turns (every 4th global turn): free charge surcharge
+- Surge turns (every 4th global turn): grant +1 bonus AP
 - Chain multipliers: 1.0× / 1.2× / 1.5× / 2.0× / 2.5× / 3.5× at lengths 0-5
 - Chain decays by 1 per turn (not full reset)
+
+**Charge Strategy — Critical for Smart Play**:
+
+Charging looks bad on pure damage math at low accuracy (0.55x damage/AP vs 1.0x for quick). But charging has THREE hidden benefits that make it essential:
+
+1. **Card mastery upgrades**: Correct charges level up cards mid-run (masteryLevel 0→1→2+). Higher mastery = higher base damage for ALL future plays. This is the primary power scaling axis — a card at mastery 2 deals roughly double a mastery 0 card.
+2. **Chain Momentum**: After a correct charge, the NEXT charge of the SAME chain type (`hand[i].chainType`) has its +1 AP surcharge WAIVED. This means: charge card A correctly → if card B has the same chainType, charge B for FREE (1 AP instead of 2). Read `getCombatState()` to check each card's `chainType` and look for matching pairs.
+3. **Chain multiplier**: Correct charges of the matching `activeChainColor` extend the chain multiplier, amplifying ALL subsequent damage.
+
+**Smart charge decision per card**:
+- If chain momentum is active AND this card's chainType matches → ALWAYS charge (free surcharge)
+- If you want mastery growth AND have AP to spare → charge
+- If HP is critical (<30%) → quick play for guaranteed damage/block
+- If accuracy is low AND no chain momentum → quick play to conserve AP
 
 **Win/Loss**: Enemy HP ≤ 0 = victory. Player HP ≤ 0 = defeat → runEnd. Last_breath/phoenix_feather relics can save from lethal once.
 

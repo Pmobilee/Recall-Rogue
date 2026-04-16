@@ -1,0 +1,15 @@
+{
+  "batchId": "BATCH-2026-04-16-002",
+  "createdAt": "2026-04-16T16:00:00Z",
+  "testers": ["full-run"],
+  "args": {
+    "runs": 99,
+    "domain": "mixed",
+    "floors": 3,
+    "accuracy": "~60% natural FSRS, chain-aware charging"
+  },
+  "status": "running",
+  "smokeTestPassed": false,
+  "notes": "v2: enriched API feedback, chain momentum strategy, golem nerf, 70% vial drops",
+  "reports": {}
+}

@@ -22,11 +22,19 @@ Seeing ~9 unique facts across 22 quiz charges is **expected Anki-faithful behavi
 
 This means in a 3-encounter session (~22 charges), the system intentionally drills ~8-10 facts repeatedly to cement them. This IS the spaced repetition model. Report it as a finding only if the repetition pattern is *wrong* (e.g., a graduated fact returning too early, or new facts never introduced).
 
-### 2. Quick Play IS Base Damage — Charge Is the Bonus
+### 2. Quick Play IS Base Damage — Charge Is the Bonus (But Charge Has Hidden Long-Term Value)
 
-- **Quick play** = `quickPlayValue` (this is the BASE, not a penalty)
-- **Charge correct** = `quickPlayValue × CHARGE_CORRECT_MULTIPLIER (1.5x)`
-- **Charge wrong (cursed)** = `quickPlayValue × 0.5`
+- **Quick play** = `quickPlayValue` (this is the BASE, not a penalty) — costs 1 AP
+- **Charge correct** = `quickPlayValue × CHARGE_CORRECT_MULTIPLIER (1.5x)` — costs 2 AP (1 base + 1 surcharge)
+- **Charge wrong (cursed)** = `quickPlayValue × 0.5` — still costs 2 AP
+
+**Immediate EV at 60% accuracy**: charge = 0.55x damage per AP vs quick = 1.0x. Charging looks bad on pure damage math. But charging has THREE hidden benefits that make it essential for run progression:
+
+1. **Card mastery upgrades**: Correct charges level up cards mid-run (masteryLevel 0→1→2+). Higher mastery = higher base damage for ALL future plays of that card. This is the primary power scaling axis.
+2. **Chain Momentum**: After a correct charge, the NEXT charge of the SAME chain type has its +1 AP surcharge WAIVED (free charge). Check `getCombatState().hand[i].chainType` — if it matches the card you just charged correctly, charge it for free.
+3. **Chain multiplier**: Correct charges build the chain multiplier (1.0x→1.2x→1.5x→2.0x→2.5x→3.5x at lengths 0-5). This multiplies ALL subsequent damage. The chain decays by 1 per turn, not full reset.
+
+**Smart charge strategy**: Charge when (a) chain momentum gives a free charge, (b) the chain multiplier is building, or (c) you want to invest in mastery upgrades. Quick play when AP is scarce, HP is critical, or the card's chain type doesn't match the active chain.
 
 Do NOT report "quick play damage is low compared to charge" — that's the intended 1:1.5 ratio. The `devpreset=post_tutorial` loads level 25 + all relics, which stack mastery and relic bonuses onto charge plays, making the ratio appear much larger (3-6x). To measure true base ratios, test without devpreset relics or account for relic effects in your analysis.
 
@@ -187,9 +195,9 @@ After `selectDomain`, expect `getScreen` to return `'dungeonMap'`. If `getScreen
   ```
 - `playCard(index)` — Click a card in the hand by index (opens card detail / triggers play). Returns `{ok: boolean}`. Use `quickPlayCard` or `chargePlayCard` for programmatic play.
 - `previewCardQuiz(index)` — Preview the quiz for a card WITHOUT playing it. Returns: `{ok, state: {question, choices[], correctAnswer, correctIndex, factId, domain, cardType}}`. Use this to see the question before deciding whether to answer correctly or incorrectly.
-- `quickPlayCard(index)` — Quick play (1 AP, base damage, no quiz). Returns `{ok, damage?, block?}`.
-- `chargePlayCard(index, answerCorrectly)` — Charge play with quiz (2 AP, 1.5× damage if correct, ~0.5× if wrong — FIZZLE_EFFECT_RATIO). `answerCorrectly` is a boolean. Returns `{ok, damage?, quizData?}`. NOTE: This bypasses the visual quiz UI — the quiz is answered programmatically.
-- `endTurn()` — End player turn. Returns `{ok: boolean}`. NOTE: Returns `{ok: true}` even after combat ends (graceful degradation — no longer errors when enemy is dead).
+- `quickPlayCard(index)` — Quick play (1 AP, base damage, no quiz). Returns `{ok, state: {apRemaining, playerHp, playerMaxHp, playerBlock, enemyHp, enemyMaxHp, handSize, chainLength, turn}}`.
+- `chargePlayCard(index, answerCorrectly)` — Charge play with quiz (2 AP, 1.5× damage if correct, ~0.5× if wrong — FIZZLE_EFFECT_RATIO). `answerCorrectly` is a boolean. Returns `{ok, state: {apRemaining, playerHp, playerMaxHp, playerBlock, enemyHp, enemyMaxHp, handSize, chainLength, turn, answerCorrectly}}`. NOTE: This bypasses the visual quiz UI — the quiz is answered programmatically.
+- `endTurn()` — End player turn (enemy attacks, status effects tick, new hand drawn). Returns `{ok, state: {apRemaining, playerHp, playerMaxHp, playerBlock, enemyHp, enemyMaxHp, handSize, chainLength, turn}}`. NOTE: Returns `{ok: true}` even after combat ends (graceful degradation — no longer errors when enemy is dead).
 - `getQuiz()` — Returns active quiz: `{question, choices: string[], correctIndex: number, mode: string}` or null.
 - `getRelicDetails()` — Returns: `[{id, name, description, rarity, trigger, acquiredAtFloor, triggerCount}]`
 
