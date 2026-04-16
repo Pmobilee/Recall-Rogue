@@ -22,7 +22,7 @@ import {
   shouldOfferEvent,
 } from './floorManager';
 import type { Card, FactDomain } from '../data/card-types';
-import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_HAGGLE_DISCOUNT, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST, RELIC_REROLL_MAX, RELIC_BOSS_CHOICES, RELIC_PITY_THRESHOLD, RELIC_RARITY_WEIGHTS, RELIC_BONUS_CHANCE_REWARD_ROOM, HEALTH_VIAL_DROP_CHANCE } from '../data/balance';
+import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_HAGGLE_DISCOUNT, RELIC_SELL_REFUND_PCT, RELIC_REROLL_COST, RELIC_REROLL_MAX, RELIC_BOSS_CHOICES, RELIC_PITY_THRESHOLD, RELIC_RARITY_WEIGHTS, RELIC_BONUS_CHANCE_REWARD_ROOM, HEALTH_VIAL_DROP_CHANCE, HEALTH_VIAL_DROP_CHANCE_BY_ACT } from '../data/balance';
 import { generateCardRewardOptionsByType, rerollRewardCardInType } from './rewardGenerator';
 import {
   addRewardCardToActiveDeck,
@@ -1299,10 +1299,12 @@ function openCardReward(): void {
   // Always include gold (minimum 5 from encounter)
   const displayGold = totalGold > 0 ? totalGold : 5;
   rewards.push({ type: 'gold', amount: displayGold });
-  // Include health vial: always for elite/boss, 10% chance for normal combat
+  // Include health vial: always for elite/boss, act-scaled chance for normal combat (70/60/50%)
   const isElevatedReward = pendingRewardIsEliteOrBoss;
   pendingRewardIsEliteOrBoss = false; // consume the flag
-  if (isElevatedReward || Math.random() < HEALTH_VIAL_DROP_CHANCE) {
+  const currentAct = (run.floor.currentFloor <= 2 ? 1 : run.floor.currentFloor <= 4 ? 2 : 3) as 1 | 2 | 3;
+  const vialChance = HEALTH_VIAL_DROP_CHANCE_BY_ACT[currentAct];
+  if (isElevatedReward || Math.random() < vialChance) {
     const displayHeal = healAmount > 0 ? healAmount : 8;
     rewards.push({ type: 'health_vial', size: displayHeal > 15 ? 'large' : 'small', healAmount: displayHeal });
   }

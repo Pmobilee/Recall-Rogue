@@ -44,6 +44,7 @@ import {
   SURGE_INTERVAL,
   REST_SITE_HEAL_PCT,
   HEALTH_VIAL_DROP_CHANCE,
+  HEALTH_VIAL_DROP_CHANCE_BY_ACT,
 } from '../../../src/data/balance.js';
 import { createCanaryState, recordCanaryAnswer, resetCanaryFloor, type CanaryState } from '../../../src/services/canaryService.js';
 import { MECHANIC_DEFINITIONS, type MechanicDefinition } from '../../../src/data/mechanics.js';
@@ -890,7 +891,7 @@ function handleCombatNode(
     // Bug 2: use HEALTH_VIAL_DROP_CHANCE from balance.ts (real rate is 10%, not 25%)
     // Elite and boss nodes always drop a vial; regular combat uses the random chance
     const alwaysDrop = nodeType === 'elite' || nodeType === 'boss';
-    if (alwaysDrop || Math.random() < HEALTH_VIAL_DROP_CHANCE) {
+    if (alwaysDrop || Math.random() < HEALTH_VIAL_DROP_CHANCE_BY_ACT[act]) {
       const isLarge = Math.random() < 0.3;
       const vialHeal = isLarge
         ? 20 + Math.floor(Math.random() * 16)  // 20-35 HP

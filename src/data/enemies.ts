@@ -910,9 +910,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     name: 'Overdue Golem',
     category: 'common',
     region: 'shallow_depths',
-    baseHP: 10, // rebalanced — HP reduced 40→15 (pass #4), further reduced 15→10, further reduced 10→7 (pass #7, 2026-04-03), raised 7→10 (pass #8, 2026-04-09, 6.0x multiplier)
+    baseHP: 8, // rebalanced — HP reduced 40→15 (pass #4), further reduced 15→10, further reduced 10→7 (pass #7, 2026-04-03), raised 7→10 (pass #8, 2026-04-09, 6.0x multiplier), nerfed 10→8 (BATCH-2026-04-16-001: 9+ turns at 60% accuracy, heal+weakness too brutal for Floor 1)
     intentPool: [
-      { type: 'heal', value: 5, weight: 1, telegraph: 'Bog absorption' },
+      { type: 'heal', value: 3, weight: 1, telegraph: 'Bog absorption' },
       { type: 'debuff', value: 1, weight: 1, telegraph: 'Peat decay', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
       { type: 'attack', value: 8, weight: 3, telegraph: 'Sludge swing' },
     ],

@@ -536,7 +536,7 @@ When `startEncounterForRoom` picks a common or elite enemy from an act pool, it 
 | `bookmark_vine` | 8 | uncommon | `chainVulnerable`; multi-hit 3×vine lash. **Phase 9**: Binding grip strips 8 player block (strip_block debuff) |
 | `margin_gremlin` | 8 | uncommon | Self-buffs Strength 1 for 2 turns; fast repeated jabs |
 | `index_weaver` | 9 | standard | `chainVulnerable`; multi-hit 4×3 fang barrage + Poison 2×3 turns |
-| `overdue_golem` | 10 | standard | Heals 5 HP per turn (reduced from 9, 2026-04-03) |
+| `overdue_golem` | 8 | standard | Heals 3 HP per turn (reduced: 9→5, 2026-04-03; HP 10→8 + heal 5→3, BATCH-2026-04-16-001) |
 | `ink_slug` | 10 | standard | Stacks Poison 2 per attack; slow attacker |
 | `staple_bug` | 11 | standard | `chargeResistant`; Mandible snap (7) + 2-hit Chittering strike (4 per hit). **Phase 9**: Pierce defense strips 10 player block (strip_block debuff) |
 

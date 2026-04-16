@@ -810,8 +810,15 @@ export const RELIC_DROP_CHANCE_REGULAR = 0.05;
 /** Chance of a bonus relic appearing alongside card choices in reward rooms (per floor). */
 export const RELIC_BONUS_CHANCE_REWARD_ROOM = 0.08;
 
-/** Chance of a health vial appearing in normal combat rewards. Elite/boss encounters always include a health vial. */
-export const HEALTH_VIAL_DROP_CHANCE = 0.10;
+/** Per-act health vial drop chance for normal combat rewards. Elite/boss always drop. */
+export const HEALTH_VIAL_DROP_CHANCE_BY_ACT: Record<1 | 2 | 3, number> = {
+  1: 0.70,
+  2: 0.60,
+  3: 0.50,
+};
+
+/** @deprecated Use HEALTH_VIAL_DROP_CHANCE_BY_ACT. Kept for backwards compat. */
+export const HEALTH_VIAL_DROP_CHANCE = 0.70;
 
 /** Number of relic choices presented at bosses and first mini-boss. */
 export const RELIC_BOSS_CHOICES = 3;

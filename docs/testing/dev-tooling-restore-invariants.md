@@ -133,6 +133,7 @@ Any new `__rrPlay` method that ships without all three is incomplete.
 | `getRewardChoices()` | Returns card reward choices as `Array<{ index, id, cardType, mechanicId, mechanicName, domain, tier, apCost, baseEffectValue, masteryLevel, chainType, factId, factQuestion, factAnswer }>` WITHOUT accepting. Checks `activeCardRewardOptions` Svelte store first; falls back to reading Phaser RewardRoomScene item list directly (H-004 fix 2026-04-12). Returns `[]` when no reward is pending. `baseEffectValue` reflects live mastery stats, not the static card snapshot. | Phase 5 new 2026-04-10; H-004 fix 2026-04-12 |
 | `getStudyPoolSize()` | Returns count of cards eligible for mastery upgrade from the active deck (falls back to run pool between encounters). Returns `0` when no active run or no upgradeable cards. Read-only, no side effects. | Phase 5 new 2026-04-10 |
 | `getScreen()` | Returns the current game screen as a string. H-016 fix (2026-04-12): when `rr:currentScreen` store still reports `'combat'` but Phaser RewardRoomScene is already active (async openRewardRoom() transition window), returns `'rewardRoom'` instead to report ground truth. | H-016 fix 2026-04-12 |
+| `getNarrativeText()` | Returns `{ active: true, lines: string[] }` when the narrative overlay is visible, or `null` when no narrative is showing. Reads `rr:narrativeDisplay` Symbol-registered store (registered on module init in `narrativeStore.ts`). Lines are mapped to `NarrativeLine.text` strings. | Added BATCH-2026-04-16-001 |
 
 ### Enforcement Lint Script
 

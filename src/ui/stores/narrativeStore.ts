@@ -24,6 +24,9 @@ export const narrativeDisplay = writable<NarrativeDisplayState>({
   active: false,
 });
 
+// Register with globalThis Symbol so playtestAPI.ts can read it via readStore().
+(globalThis as Record<symbol, unknown>)[Symbol.for('rr:narrativeDisplay')] = narrativeDisplay;
+
 /**
  * Activate the narrative overlay with the given lines and display mode.
  * - 'auto-fade': all lines shown at once, auto-dismiss after 3-4s

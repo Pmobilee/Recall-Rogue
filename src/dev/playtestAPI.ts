@@ -1533,6 +1533,16 @@ function getRecipes(id?: string): unknown {
   return scenario.recipes(id);
 }
 
+/** Get current narrative overlay text (if visible). Returns null when no narrative is showing. */
+function getNarrativeText(): { active: boolean; lines: string[] } | null {
+  const state = readStore<any>('rr:narrativeDisplay');
+  if (!state || !state.active) return null;
+  return {
+    active: true,
+    lines: (state.lines ?? []).map((l: any) => l.text ?? l.content ?? String(l)),
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Registration
 // ---------------------------------------------------------------------------
@@ -1611,6 +1621,8 @@ export function initPlaytestAPI(): void {
     restore: restoreState,
     schema: getSchema,
     recipes: getRecipes,
+    // Narrative
+    getNarrativeText,
     // Perception (from playtestDescriber)
     look,
     getAllText,

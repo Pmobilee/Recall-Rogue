@@ -192,13 +192,13 @@ After each combat encounter, `openCardReward()` assembles a `RewardItem[]` for t
 | Item | Normal Combat | Elite / Mini-Boss (first) / Boss |
 |------|--------------|----------------------------------|
 | Gold | Always (minimum 5g) | Always (minimum 5g) |
-| Health Vial | 10% chance (`HEALTH_VIAL_DROP_CHANCE = 0.10`) | Always |
+| Health Vial | Act-scaled chance: Act 1 70%, Act 2 60%, Act 3 50% (`HEALTH_VIAL_DROP_CHANCE_BY_ACT`) | Always |
 | Card choices | 3 options | 3 options |
 | Bonus relic | 8% per floor (`RELIC_BONUS_CHANCE_REWARD_ROOM = 0.08`) | N/A (gets relic choice instead) |
 
 Boss, elite, and first mini-boss encounters route through `openRelicChoiceRewardRoom()` first (relic choice screen), which chains to `openCardReward()`. A module-level flag `pendingRewardIsEliteOrBoss` is set before `openRelicChoiceRewardRoom()` is called so `openCardReward()` knows to guarantee the health vial.
 
-**Balance constant:** `HEALTH_VIAL_DROP_CHANCE = 0.10` (added 2026-04-09) in `src/data/balance.ts` near the other reward-room drop chance constants.
+**Balance constants:** `HEALTH_VIAL_DROP_CHANCE_BY_ACT = {1: 0.70, 2: 0.60, 3: 0.50}` (updated BATCH-2026-04-16-001 from flat 10% to act-scaled rates; floors 1–2 = Act 1, floors 3–4 = Act 2, floors 5+ = Act 3). Old `HEALTH_VIAL_DROP_CHANCE = 0.70` kept for backwards compat. Source: `src/data/balance.ts`.
 
 ### Health Vial Sizing
 
