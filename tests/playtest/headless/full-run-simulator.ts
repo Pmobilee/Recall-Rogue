@@ -437,6 +437,8 @@ function simulateSingleEncounter(
     maxTurns: number;
     /** Optional BotBrain for intelligent play. When absent, uses legacy dumb-bot logic. */
     brain?: BotBrain;
+    /** Optional BotSkills for discipline effects in the legacy dumb-bot path. */
+    botSkills?: BotSkills;
     /** Bug 3: Canary state from outer context, updated per-answer and returned. */
     canaryState: CanaryState;
   },
@@ -459,7 +461,7 @@ function simulateSingleEncounter(
   let apAvailable = 0;   // total AP available across all turns (sum of apMax per turn)
   const cardPlays: CardPlayRecord[] = [];
 
-  const { correctRate, chargeRate, maxTurns, brain } = opts;
+  const { correctRate, chargeRate, maxTurns, brain, botSkills: legacyBotSkills } = opts;
   // Bug 3: use proper Canary state (reset per floor by caller, persists streak across answers)
   let canaryState = opts.canaryState;
 
@@ -592,6 +594,10 @@ function simulateSingleEncounter(
         const minQuickCost = minCardCost;
         if (turnState.apCurrent < minQuickCost) break;
 
+        // apDiscipline: simulate players who end turns early without using all AP.
+        const apDisc = legacyBotSkills?.apDiscipline;
+        if (apDisc !== undefined && apDisc < 1.0 && Math.random() > apDisc * 1.5) break;
+
         const card = hand[0];
         const cardMinCost = card.apCost ?? 1;
 
@@ -599,7 +605,14 @@ function simulateSingleEncounter(
         const chargeSurcharge = CHARGE_AP_SURCHARGE;
         const chargeApCost = cardMinCost + chargeSurcharge;
         const canCharge = turnState.apCurrent >= chargeApCost;
-        const isCharge = canCharge && Math.random() < chargeRate;
+
+        // chargeDiscipline: low values make the bot charge recklessly regardless of EV.
+        const chargeDisc = legacyBotSkills?.chargeDiscipline;
+        let isCharge = canCharge && Math.random() < chargeRate;
+        if (canCharge && chargeDisc !== undefined && chargeDisc < 0.5) {
+          const recklessRate = 0.7 + (0.5 - chargeDisc) * 0.6;
+          isCharge = Math.random() < recklessRate;
+        }
 
         if (turnState.apCurrent < cardMinCost) {
           if (hand.length <= 1) break;
@@ -875,6 +888,7 @@ function handleCombatNode(
       chargeRate: opts.chargeRate,
       maxTurns: opts.maxTurnsPerEncounter,
       brain,
+      botSkills: opts.botSkills,
       canaryState: encounterCanaryState,
     },
     ascMods,

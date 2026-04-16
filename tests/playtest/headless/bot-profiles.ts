@@ -37,6 +37,8 @@ export const SKILL_AXES = [
   'shopSkill',
   'restSkill',
   'relicSkill',
+  'apDiscipline',
+  'chargeDiscipline',
 ] as const;
 
 export type SkillAxis = typeof SKILL_AXES[number];
@@ -54,18 +56,20 @@ export type SkillAxis = typeof SKILL_AXES[number];
  */
 export function makeSkills(overrides: Partial<BotSkills>, baseline: number = 0.5): BotSkills {
   const base: BotSkills = {
-    accuracy:       baseline,
-    cardSelection:  baseline,
-    chargeSkill:    baseline,
-    chainSkill:     baseline,
-    blockSkill:     baseline,
-    apEfficiency:   baseline,
-    surgeAwareness: baseline,
-    masteryHunting: baseline,
-    rewardSkill:    baseline,
-    shopSkill:      baseline,
-    restSkill:      baseline,
-    relicSkill:     baseline,
+    accuracy:        baseline,
+    cardSelection:   baseline,
+    chargeSkill:     baseline,
+    chainSkill:      baseline,
+    blockSkill:      baseline,
+    apEfficiency:    baseline,
+    surgeAwareness:  baseline,
+    masteryHunting:  baseline,
+    rewardSkill:     baseline,
+    shopSkill:       baseline,
+    restSkill:       baseline,
+    relicSkill:      baseline,
+    apDiscipline:    1.0,  // default: always uses all AP (backwards compat — existing profiles unaffected)
+    chargeDiscipline: 1.0, // default: optimal EV-positive charging (backwards compat)
   };
   return { ...base, ...overrides };
 }
@@ -404,6 +408,32 @@ export const PROGRESSION_PROFILES: Record<string, BotSkills> = {
     restSkill:      0.45,
     relicSkill:     0.40,
   }, 0),
+
+  /**
+   * Novice: struggling real player who wastes AP and charges recklessly.
+   * Models the player who understands the basic loop but makes costly execution errors —
+   * ending turns early without playing all cards, and charging compulsively without
+   * considering whether accuracy justifies the AP surcharge.
+   * Target survival: 40–70% (vs new_player 5–15% and developing 30–50%).
+   * Key difference from new_player: game knowledge is developing (0.2–0.4 axes) but
+   * execution is hobbled by apDiscipline=0.4 and chargeDiscipline=0.2.
+   */
+  novice: makeSkills({
+    accuracy:         0.55,
+    cardSelection:    0.20,
+    chargeSkill:      0.30,
+    chainSkill:       0.10,
+    blockSkill:       0.20,
+    apEfficiency:     0.30,
+    surgeAwareness:   0.10,
+    masteryHunting:   0.10,
+    rewardSkill:      0.30,
+    shopSkill:        0.20,
+    restSkill:        0.50,
+    relicSkill:       0.20,
+    apDiscipline:     0.40,  // wastes AP ~24% of turns (ends turn early, leaves cards unplayed)
+    chargeDiscipline: 0.20,  // charges recklessly ~80% of the time regardless of accuracy EV
+  }, 0),
 };
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -418,42 +448,42 @@ export const PROGRESSION_PROFILES: Record<string, BotSkills> = {
 export const BUILD_PROFILES: Record<string, { label: string; skills: BotSkills; buildPrefs: BuildPreferences }> = {
   build_poison: {
     label: 'Build: Poison/DoT',
-    skills: { accuracy: 0.76, cardSelection: 0.65, chargeSkill: 0.65, chainSkill: 0.5, blockSkill: 0.4, apEfficiency: 0.6, surgeAwareness: 0.5, masteryHunting: 0.8, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.6, relicSkill: 0.7 },
+    skills: { accuracy: 0.76, cardSelection: 0.65, chargeSkill: 0.65, chainSkill: 0.5, blockSkill: 0.4, apEfficiency: 0.6, surgeAwareness: 0.5, masteryHunting: 0.8, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.6, relicSkill: 0.7, apDiscipline: 1.0, chargeDiscipline: 1.0 },
     buildPrefs: { preferredMechanics: ['hex', 'lacerate', 'kindle', 'corroding_touch', 'corrode'], preferredRelicCategories: ['poison'], preferredRelicIds: ['herbal_pouch', 'plague_flask'] },
   },
   build_fortress: {
     label: 'Build: Fortress/Block',
-    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.6, chainSkill: 0.4, blockSkill: 1.0, apEfficiency: 0.7, surgeAwareness: 0.4, masteryHunting: 0.6, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.6, relicSkill: 0.7 },
+    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.6, chainSkill: 0.4, blockSkill: 1.0, apEfficiency: 0.7, surgeAwareness: 0.4, masteryHunting: 0.6, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.6, relicSkill: 0.7, apDiscipline: 1.0, chargeDiscipline: 1.0 },
     buildPrefs: { preferredMechanics: ['block', 'fortify', 'reinforce', 'absorb', 'thorns', 'bulwark', 'brace', 'guard'], preferredRelicCategories: ['defensive'], preferredRelicIds: ['iron_shield', 'aegis_stone', 'stone_wall'] },
   },
   build_strength: {
     label: 'Build: Strength/Power',
-    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.85, chainSkill: 0.5, blockSkill: 0.3, apEfficiency: 0.6, surgeAwareness: 0.6, masteryHunting: 0.7, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.5, relicSkill: 0.7 },
+    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.85, chainSkill: 0.5, blockSkill: 0.3, apEfficiency: 0.6, surgeAwareness: 0.6, masteryHunting: 0.7, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.5, relicSkill: 0.7, apDiscipline: 1.0, chargeDiscipline: 1.0 },
     buildPrefs: { preferredMechanics: ['power_strike', 'empower', 'iron_wave', 'reckless', 'heavy_strike', 'bash'], preferredRelicCategories: ['offensive'], preferredRelicIds: ['brass_knuckles', 'whetstone', 'volatile_core', 'berserker_band'] },
   },
   build_chain: {
     label: 'Build: Chain Master',
-    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.9, chainSkill: 1.0, blockSkill: 0.4, apEfficiency: 0.7, surgeAwareness: 0.9, masteryHunting: 0.6, rewardSkill: 0.6, shopSkill: 0.5, restSkill: 0.5, relicSkill: 0.7 },
+    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.9, chainSkill: 1.0, blockSkill: 0.4, apEfficiency: 0.7, surgeAwareness: 0.9, masteryHunting: 0.6, rewardSkill: 0.6, shopSkill: 0.5, restSkill: 0.5, relicSkill: 0.7, apDiscipline: 1.0, chargeDiscipline: 1.0 },
     buildPrefs: { preferredMechanics: ['chain_anchor', 'strike', 'twin_strike'], preferredRelicCategories: ['chain'], preferredRelicIds: ['chain_addict', 'obsidian_dice'] },
   },
   build_exhaust: {
     label: 'Build: Exhaust',
-    skills: { accuracy: 0.76, cardSelection: 0.8, chargeSkill: 0.7, chainSkill: 0.4, blockSkill: 0.5, apEfficiency: 0.7, surgeAwareness: 0.5, masteryHunting: 0.6, rewardSkill: 0.8, shopSkill: 0.6, restSkill: 0.6, relicSkill: 0.8 },
+    skills: { accuracy: 0.76, cardSelection: 0.8, chargeSkill: 0.7, chainSkill: 0.4, blockSkill: 0.5, apEfficiency: 0.7, surgeAwareness: 0.5, masteryHunting: 0.6, rewardSkill: 0.8, shopSkill: 0.6, restSkill: 0.6, relicSkill: 0.8, apDiscipline: 1.0, chargeDiscipline: 1.0 },
     buildPrefs: { preferredMechanics: ['sacrifice', 'volatile_slash', 'bulwark', 'catalyst'], preferredRelicCategories: ['tactical', 'knowledge'], preferredRelicIds: ['scavengers_eye', 'tattered_notebook'] },
   },
   build_tempo: {
     label: 'Build: Tempo/Draw',
-    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.5, chainSkill: 0.5, blockSkill: 0.4, apEfficiency: 0.95, surgeAwareness: 0.8, masteryHunting: 0.5, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.5, relicSkill: 0.6 },
+    skills: { accuracy: 0.76, cardSelection: 0.7, chargeSkill: 0.5, chainSkill: 0.5, blockSkill: 0.4, apEfficiency: 0.95, surgeAwareness: 0.8, masteryHunting: 0.5, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.5, relicSkill: 0.6, apDiscipline: 1.0, chargeDiscipline: 1.0 },
     buildPrefs: { preferredMechanics: ['swap', 'scout', 'quicken', 'foresight', 'sift', 'reflex'], preferredRelicCategories: ['speed', 'tactical'], preferredRelicIds: ['swift_boots', 'quicksilver_quill'] },
   },
   build_control: {
     label: 'Build: Control',
-    skills: { accuracy: 0.76, cardSelection: 0.85, chargeSkill: 0.7, chainSkill: 0.4, blockSkill: 0.6, apEfficiency: 0.7, surgeAwareness: 0.5, masteryHunting: 0.6, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.6, relicSkill: 0.7 },
+    skills: { accuracy: 0.76, cardSelection: 0.85, chargeSkill: 0.7, chainSkill: 0.4, blockSkill: 0.6, apEfficiency: 0.7, surgeAwareness: 0.5, masteryHunting: 0.6, rewardSkill: 0.7, shopSkill: 0.5, restSkill: 0.6, relicSkill: 0.7, apDiscipline: 1.0, chargeDiscipline: 1.0 },
     buildPrefs: { preferredMechanics: ['weaken', 'expose', 'slow', 'stagger', 'hex', 'sap'], preferredRelicCategories: ['tactical', 'poison'], preferredRelicIds: ['plague_flask', 'null_shard'] },
   },
   build_berserker: {
     label: 'Build: Berserker',
-    skills: { accuracy: 0.80, cardSelection: 0.6, chargeSkill: 0.9, chainSkill: 0.5, blockSkill: 0.35, apEfficiency: 0.6, surgeAwareness: 0.6, masteryHunting: 0.7, rewardSkill: 0.6, shopSkill: 0.4, restSkill: 0.5, relicSkill: 0.6 },
+    skills: { accuracy: 0.80, cardSelection: 0.6, chargeSkill: 0.9, chainSkill: 0.5, blockSkill: 0.35, apEfficiency: 0.6, surgeAwareness: 0.6, masteryHunting: 0.7, rewardSkill: 0.6, shopSkill: 0.4, restSkill: 0.5, relicSkill: 0.6, apDiscipline: 1.0, chargeDiscipline: 1.0 },
     buildPrefs: { preferredMechanics: ['reckless', 'lifetap', 'siphon_strike', 'execute', 'volatile_slash', 'heavy_strike'], preferredRelicCategories: ['glass_cannon', 'offensive'], preferredRelicIds: ['blood_price', 'berserkers_focus', 'reckless_resolve', 'berserker_s_oath'] },
   },
 };
@@ -564,8 +594,10 @@ function skillsEqual(a: BotSkills, b: BotSkills): boolean {
     Math.abs(a.masteryHunting - b.masteryHunting)  < eps &&
     Math.abs(a.rewardSkill    - b.rewardSkill)     < eps &&
     Math.abs(a.shopSkill      - b.shopSkill)       < eps &&
-    Math.abs(a.restSkill      - b.restSkill)       < eps &&
-    Math.abs(a.relicSkill     - b.relicSkill)      < eps
+    Math.abs(a.restSkill       - b.restSkill)        < eps &&
+    Math.abs(a.relicSkill      - b.relicSkill)       < eps &&
+    Math.abs((a.apDiscipline    ?? 1.0) - (b.apDiscipline    ?? 1.0)) < eps &&
+    Math.abs((a.chargeDiscipline ?? 1.0) - (b.chargeDiscipline ?? 1.0)) < eps
   );
 }
 

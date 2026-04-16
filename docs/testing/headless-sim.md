@@ -1,7 +1,7 @@
 # Headless Balance Simulator
 
 > **Purpose:** How to run the headless combat simulator for balance testing — profiles, output format, and key internals.
-> **Last verified:** 2026-04-11 (gym-server comboCount fix; analytics overhaul — 8 build profiles, BuildPreferences, 6 analytics reports, --analytics flag; data model expanded for survivorship-free analytics — RelicAcquisition, EncounterDetail, CardPlayRecord, NodeVisitRecord; card-coverage.md histogram + card-performance threshold 50→5)
+> **Last verified:** 2026-04-16 (apDiscipline + chargeDiscipline axes added to BotSkills; novice profile added to PROGRESSION_PROFILES; legacy bot loop discipline effects wired into simulator.ts + full-run-simulator.ts)
 > **Source files:** `tests/playtest/headless/simulator.ts`, `tests/playtest/headless/run-batch.ts`, `tests/playtest/headless/sim-worker.ts`, `tests/playtest/headless/browser-shim.ts`, `tests/playtest/headless/tsconfig.json`, `tests/playtest/headless/full-run-simulator.ts`, `tests/playtest/headless/bot-brain.ts`, `tests/playtest/headless/bot-profiles.ts`, `tests/playtest/headless/analytics-report.ts`, `tests/playtest/headless/gym-server.ts`
 
 ## What It Is
@@ -109,7 +109,7 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 
 ## BotBrain System
 
-`BotBrain` (`bot-brain.ts`) is the parameterized decision engine that replaced hardcoded bot logic. All decisions are driven by a `BotSkills` profile — 12 axes from 0 (worst) to 1 (optimal) — plus an optional `BuildPreferences` object that biases card reward and relic selection toward a specific playstyle.
+`BotBrain` (`bot-brain.ts`) is the parameterized decision engine that replaced hardcoded bot logic. All decisions are driven by a `BotSkills` profile — 14 axes from 0 (worst) to 1 (optimal) — plus an optional `BuildPreferences` object that biases card reward and relic selection toward a specific playstyle.
 
 ### BotSkills Interface
 
@@ -127,6 +127,10 @@ npx tsx --tsconfig tests/playtest/headless/tsconfig.json \
 | `shopSkill` | Shop purchase intelligence (removal, relics, food timing) |
 | `restSkill` | Rest site decision quality (heal vs study vs meditate based on HP% and deck size) |
 | `relicSkill` | Relic selection quality (tier awareness + context bonuses) |
+| `apDiscipline` | AP turn-end discipline. 0 = frequently ends turns early (wasting AP), 1 = always plays all affordable cards |
+| `chargeDiscipline` | Charge discipline. 0 = charges recklessly regardless of accuracy EV (compulsive charger), 1 = only charges when EV-positive |
+
+**Default for new axes:** `apDiscipline` and `chargeDiscipline` default to `1.0` when not specified via `makeSkills()`. All existing profiles are backwards compatible. Only `novice` sets these below 1.0.
 
 ### BuildPreferences Interface
 
@@ -234,6 +238,7 @@ Accuracy models 4-option MCQ on curated knowledge decks. Game skill axes model g
 | `experienced` | 76% | Runs 25–50 | ~60–75% | Strong deck knowledge, optimizes most decisions. |
 | `master` | 85% | Runs 50+ | ~80–90% | Near-perfect knowledge, near-optimal strategy. Aspirational ceiling. |
 | `language_learner` | 35% | Specialty | ~5–10% | Foreign language deck (JLPT/HSK/TOPIK/CEFR) with zero prior knowledge. Game-skilled but content-blind. |
+| `novice` | 55% | Special | ~45–65% | Struggling player with emerging knowledge but poor execution — wastes AP ~24% of turns and charges recklessly ~80% of the time regardless of accuracy EV. Models the execution-error failure mode distinct from the knowledge-gap failure mode. Uses `apDiscipline=0.4` and `chargeDiscipline=0.2`. |
 
 `language_learner` has competent-level game skills (0.25–0.50 axes) but only 35% accuracy — models a player who understands the roguelite systems but is in their first hours with a language deck.
 
@@ -583,7 +588,7 @@ In `--mode combat`, the batch runner also outputs `MechanicStats[]`:
 - `PROGRESSION_PROFILES` — 6 learning-curve profiles; default set when no `--profile` is given
 - `LEGACY_PROFILES` — 6 original profiles (@deprecated for balance work; still accessible via `--profile`)
 - `BUILD_PROFILES` — 8 build-archetype profiles with `BuildPreferences`; used by `--analytics` mode
-- `SKILL_AXES` — typed tuple of all 11 non-accuracy axis names (includes `relicSkill`)
+- `SKILL_AXES` — typed tuple of all 13 non-accuracy axis names (includes `relicSkill`, `apDiscipline`, `chargeDiscipline`)
 
 **`analytics-report.ts`:**
 - `generateAnalyticsReports(results, outputDir)` — entry point; generates all 6 report files into `outputDir`

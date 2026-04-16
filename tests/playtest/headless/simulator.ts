@@ -280,6 +280,8 @@ function simulateSingleEncounter(
     verbose: boolean;
     /** Optional BotBrain for intelligent play. When absent, uses legacy dumb-bot logic. */
     brain?: BotBrain;
+    /** Optional BotSkills for applying discipline effects in the legacy dumb-bot path. */
+    botSkills?: BotSkills;
     /** Canary state from the outer run context. Updated per-answer and returned. */
     canaryState: CanaryState;
   },
@@ -444,6 +446,11 @@ function simulateSingleEncounter(
         const minQuickCost = minCardCost;
         if (turnState.apCurrent < Math.min(minPlayCost, minQuickCost)) break;
 
+        // apDiscipline: simulate players who end turns early without using all AP.
+        // At apDiscipline=0.5: ~25% chance to stop even when cards are still affordable.
+        const apDisc = opts.botSkills?.apDiscipline;
+        if (apDisc !== undefined && apDisc < 1.0 && Math.random() > apDisc * 1.5) break;
+
         // Pick first card in hand (simple strategy — no AI needed)
         const card = hand[0];
         const cardMinCost = card.apCost ?? 1;
@@ -453,7 +460,15 @@ function simulateSingleEncounter(
         const chargeSurcharge = CHARGE_AP_SURCHARGE;
         const chargeApCost = cardMinCost + chargeSurcharge;
         const canCharge = turnState.apCurrent >= chargeApCost;
-        const isCharge = canCharge && Math.random() < chargeRate;
+
+        // chargeDiscipline: low values make the bot charge recklessly regardless of EV.
+        // At chargeDiscipline=0.2: ~80% chance to charge whenever possible.
+        const chargeDisc = opts.botSkills?.chargeDiscipline;
+        let isCharge = canCharge && Math.random() < chargeRate;
+        if (canCharge && chargeDisc !== undefined && chargeDisc < 0.5) {
+          const recklessRate = 0.7 + (0.5 - chargeDisc) * 0.6;
+          isCharge = Math.random() < recklessRate;
+        }
 
         // Skip this card if even quick play can't be afforded
         if (turnState.apCurrent < cardMinCost) {
@@ -833,6 +848,7 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
       maxTurns: options.maxTurnsPerEncounter,
       verbose: options.verbose,
       brain,
+      botSkills: options.botSkills,
       canaryState,
     }, ascMods);
 

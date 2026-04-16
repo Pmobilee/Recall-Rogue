@@ -76,6 +76,10 @@ export interface BotSkills {
   restSkill: number;
   /** 0–1: relic selection quality (tier awareness + context bonuses) */
   relicSkill: number;
+  /** 0–1: AP turn-end discipline. 0 = frequently ends turns early (wasting remaining AP), 1 = always plays all affordable cards */
+  apDiscipline: number;
+  /** 0–1: charge recklessness discipline. 0 = charges whenever possible regardless of accuracy EV, 1 = only charges when EV-positive */
+  chargeDiscipline: number;
 }
 
 /** A single planned card play (mode only — accuracy roll happens in simulator). */
@@ -255,6 +259,18 @@ export class BotBrain {
       apRemaining -= mode === 'charge' ? chargeApCost : apCost;
     }
 
+    // apDiscipline: simulate players who end turns early without using all AP.
+    // 0 = ~40% chance to drop last card(s), 1 = always plays all affordable cards.
+    if (skills.apDiscipline < 1.0 && plan.length > 1) {
+      // Probability of truncating = (1 - apDiscipline) * 0.4
+      // At apDiscipline=0.4: ~24% chance to drop last card(s)
+      if (Math.random() > skills.apDiscipline) {
+        // Drop between 1 and floor(plan.length/2) cards from the end
+        const dropCount = Math.floor(Math.random() * Math.ceil(plan.length / 2)) + 1;
+        plan.splice(plan.length - dropCount, dropCount);
+      }
+    }
+
     return plan;
   }
 
@@ -426,6 +442,16 @@ export class BotBrain {
 
     const { skills } = this;
     const acc = skills.accuracy;
+
+    // ── chargeDiscipline: reckless charge override ─────────────────────────
+    // chargeDiscipline=0: bot charges regardless of EV — ignores accuracy, charges compulsively.
+    // At chargeDiscipline=0: P(charge) ≈ 1.0 (70% base + 30% from discipline gap = 100%).
+    // At chargeDiscipline=0.3: P(charge) ≈ 70%.
+    // This models players who always mash charge without considering fizzle cost.
+    if (skills.chargeDiscipline < 0.3) {
+      const recklessProb = 0.7 + (0.3 - skills.chargeDiscipline);
+      if (Math.random() < recklessProb) return 'charge';
+    }
 
     // ── HP-aware override: survival takes priority over charge gains ────────
     // When HP is critically low, guarantee quick-play output rather than risking
