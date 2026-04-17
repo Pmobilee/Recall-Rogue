@@ -875,6 +875,14 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData, prebuiltSum
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
   pendingDomainSelection = null;
+  // Reset combat flow module-level state (prevents stale reward/exit flags from prior run)
+  pendingPostCombatAction = null;
+  isProcessingEncounterResult = false;
+  pendingRewardIsEliteOrBoss = false;
+  isMysteryRoomCombat = false;
+  isMysteryRoomCombatElite = false;
+  combatExitRequested.set(false);
+  combatExitEnemyId.set(null);
   gameFlowState.set('idle');
   // Navigate to runEnd screen first — player must see run summary before returning to hub.
   // Hub navigation happens when player clicks 'Play Again' or 'Return to Hub' on RunEndScreen.
@@ -1809,6 +1817,7 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   // Mystery-room combat: skip card reward and return to map
   if (isMysteryRoomCombat) {
     isMysteryRoomCombat = false;
+    isMysteryRoomCombatElite = false;
     pendingPostCombatAction = () => {
       const freshRun = get(activeRunState);
       if (freshRun) {
@@ -2982,6 +2991,8 @@ export function onMysteryResolved(): void {
 
 /** Flag: true when we're in a mystery-room combat so post-combat skips the card reward. */
 let isMysteryRoomCombat = false;
+/** Flag: true when the mystery-room combat was explicitly flagged as elite by the mystery event system. */
+let isMysteryRoomCombatElite = false;
 
 /**
  * Handle a mystery event effect and route to the appropriate next screen.
@@ -3005,6 +3016,7 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
     case 'combat': {
       // Trigger a mystery-room combat. No card reward after.
       isMysteryRoomCombat = true;
+      isMysteryRoomCombatElite = mysteryEventId === 'mystery_elite_combat';
       activeMysteryEvent.set(null);
       activeMasteryChallenge.set(null);
       activeRunState.set(run);
@@ -3235,6 +3247,7 @@ function applyMysteryEffect(effect: MysteryEffect, run: RunState): void {
 export function onMysteryRoomCombatComplete(): void {
   if (!isMysteryRoomCombat) return;
   isMysteryRoomCombat = false;
+  isMysteryRoomCombatElite = false;
   const run = get(activeRunState);
   if (!run) return;
   run.floor.lastSlotWasEvent = true;
@@ -3249,6 +3262,15 @@ export function onMysteryRoomCombatComplete(): void {
  */
 export function getIsMysteryRoomCombat(): boolean {
   return isMysteryRoomCombat;
+}
+
+/**
+ * Whether the current mystery-room combat was explicitly flagged as elite by the mystery event system.
+ * Used by encounterBridge to prevent the canary challenge 50% elite roll from overriding the mystery
+ * event's own elite decision.
+ */
+export function getIsMysteryRoomCombatElite(): boolean {
+  return isMysteryRoomCombatElite;
 }
 
 /**
@@ -3327,6 +3349,14 @@ export function playAgain(): void {
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
   pendingDomainSelection = null;
+  // Reset combat flow module-level state (prevents stale reward/exit flags from prior run)
+  pendingPostCombatAction = null;
+  isProcessingEncounterResult = false;
+  pendingRewardIsEliteOrBoss = false;
+  isMysteryRoomCombat = false;
+  isMysteryRoomCombatElite = false;
+  combatExitRequested.set(false);
+  combatExitEnemyId.set(null);
   // Always use deck mode from hub selector (defaults to "general" = all topics)
   const replaySave = get(playerSave);
   pendingDeckMode = replaySave?.activeDeckMode ?? { type: 'general' as const };

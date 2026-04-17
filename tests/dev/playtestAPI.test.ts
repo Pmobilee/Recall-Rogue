@@ -359,6 +359,7 @@ describe('getCombatState() enemyIntent.displayDamage — LOW-19', () => {
   }
 
   it('includes displayDamage in enemyIntent when intent is an attack', async () => {
+    setStore('rr:currentScreen', 'combat')
     setStore('rr:activeTurnState', buildTurnState())
     setStore('rr:activeRunState', { currentFloor: 1, currentSegment: 1, currency: 0 })
 
@@ -382,6 +383,7 @@ describe('getCombatState() enemyIntent.displayDamage — LOW-19', () => {
       ...baseEnemy,
       nextIntent: { type: 'defend', value: 8, telegraph: 'defend', hitCount: 1, statusEffect: null },
     }
+    setStore('rr:currentScreen', 'combat')
     setStore('rr:activeTurnState', buildTurnState({ enemy: defendEnemy }))
     setStore('rr:activeRunState', { currentFloor: 1 })
 
@@ -393,6 +395,7 @@ describe('getCombatState() enemyIntent.displayDamage — LOW-19', () => {
 
   it('returns null enemyIntent when enemy has no nextIntent', async () => {
     const noIntentEnemy = { ...baseEnemy, nextIntent: undefined }
+    setStore('rr:currentScreen', 'combat')
     setStore('rr:activeTurnState', buildTurnState({ enemy: noIntentEnemy }))
     setStore('rr:activeRunState', { currentFloor: 1 })
 
@@ -404,6 +407,7 @@ describe('getCombatState() enemyIntent.displayDamage — LOW-19', () => {
   it('displayDamage differs from raw value for multiplied attacks', async () => {
     // Raw: 10, display: 16 (×1.60 multiplier, floor scaling etc.)
     const api = await getAPI()
+    setStore('rr:currentScreen', 'combat')
     setStore('rr:activeTurnState', buildTurnState())
     setStore('rr:activeRunState', { currentFloor: 1 })
     const state = (api.getCombatState as () => Record<string, unknown> | null)()

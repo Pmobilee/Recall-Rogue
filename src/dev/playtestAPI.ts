@@ -264,6 +264,8 @@ function getCombatState(): Record<string, unknown> | null {
     segment: runState?.currentSegment,
     gold: runState?.currency,
     result: turnState.result ?? null,  // null = ongoing, 'defeat' = player dead, 'victory' = enemy dead
+    chainLength: turnState.chainLength ?? 0,
+    chainMultiplier: turnState.chainMultiplier ?? 1.0,
   };
 }
 
@@ -310,7 +312,10 @@ async function quickPlayCard(index: number): Promise<PlayResult> {
       const updated = get(activeTurnState);
       if (!updated) break; // Turn ended (encounter resolved)
       const newHand = updated.deck?.hand;
-      if (!newHand || newHand.length < prevHandSize || updated.apCurrent < turnState.apCurrent) break;
+      if (!newHand || newHand.length < prevHandSize || updated.apCurrent < turnState.apCurrent) {
+        await wait(10); // extra tick for chain state to settle
+        break;
+      }
     }
     const finalState = get(activeTurnState);
     const combatResult = finalState ? {
@@ -324,6 +329,7 @@ async function quickPlayCard(index: number): Promise<PlayResult> {
       handSize: finalState.deck?.hand?.length ?? 0,
       turn: finalState.turnNumber ?? 0,
       chainLength: finalState.chainLength ?? 0,
+      chainMultiplier: finalState.chainMultiplier ?? 1.0,
     } : null;
     return {
       ok: true,
@@ -368,7 +374,10 @@ async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<
       const updated = get(activeTurnState);
       if (!updated) break; // Turn ended (encounter resolved)
       const newHand = updated.deck?.hand;
-      if (!newHand || newHand.length < prevHandSize || updated.apCurrent < turnState.apCurrent) break;
+      if (!newHand || newHand.length < prevHandSize || updated.apCurrent < turnState.apCurrent) {
+        await wait(10); // extra tick for chain state to settle
+        break;
+      }
     }
     const finalState = get(activeTurnState);
     const combatResult = finalState ? {
@@ -382,6 +391,7 @@ async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<
       handSize: finalState.deck?.hand?.length ?? 0,
       turn: finalState.turnNumber ?? 0,
       chainLength: finalState.chainLength ?? 0,
+      chainMultiplier: finalState.chainMultiplier ?? 1.0,
     } : null;
     return {
       ok: true,
@@ -505,6 +515,7 @@ async function endTurn(): Promise<PlayResult> {
       handSize: finalState.deck?.hand?.length ?? 0,
       turn: finalState.turnNumber ?? 0,
       chainLength: finalState.chainLength ?? 0,
+      chainMultiplier: finalState.chainMultiplier ?? 1.0,
     } : null;
     return { ok: true, message: `Turn ended. Screen: ${getScreen()}`, state: combatResult ?? undefined };
   });

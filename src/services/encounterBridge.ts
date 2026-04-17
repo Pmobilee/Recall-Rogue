@@ -75,6 +75,7 @@ import {
 } from './masteryScalingService';
 import { computeCatchUpMastery } from './catchUpMasteryService';
 import { deepMerge } from '../dev/deepMerge';
+import { getIsMysteryRoomCombat, getIsMysteryRoomCombatElite } from './gameFlowController';
 
 export interface EncounterSnapshot {
   activeDeck: CardRunState | null
@@ -719,7 +720,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
         ? miniBossCandidates[Math.floor(poolRand() * miniBossCandidates.length)].id
         : getMiniBossForFloor(run.floor.currentFloor);
     } else {
-      if (run.canary.mode === 'challenge' && poolRand() < 0.50) {
+      // Respect mystery event's own elite decision — don't let canary override it.
+      // isMysteryRoomCombat is still true when startEncounterForRoom runs; the elite flag tracks
+      // whether the mystery event system already decided this should be elite.
+      const isMysteryNonElite = getIsMysteryRoomCombat() && !getIsMysteryRoomCombatElite();
+      if (run.canary.mode === 'challenge' && poolRand() < 0.50 && !isMysteryNonElite) {
         // V2: use act-based elite pool, fall back to region-based, no same elite twice on same floor
         const eliteCandidates = getEnemiesForFloorNode(run.floor.currentFloor, 'elite');
         if (eliteCandidates.length > 0) {
