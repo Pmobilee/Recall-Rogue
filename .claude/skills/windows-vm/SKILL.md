@@ -13,7 +13,7 @@ The project has a Windows 11 ARM64 VM running in UTM (bridged networking) for na
 - **Password (fallback):** chrx
 - **SSH key:** ed25519 key at `~/.ssh/id_ed25519` (already in VM's `administrators_authorized_keys`)
 - **Network:** Bridged mode on `192.168.11.x` subnet (IP may change on reboot)
-- **Hostname:** WIN-EIMPFNMPTNA
+- **Hostname:** WIN-0LQQEHDQT05
 - **VM app:** UTM (`/Applications/UTM.app`)
 
 ## Connecting — Always Start Here
@@ -78,7 +78,7 @@ The project is NOT cloned via git on the VM. It is rsynced from the Mac to avoid
 - **Mac source:** `/Users/damion/CODE/Recall_Rogue/`
 - **VM destination:** `C:\Users\damion\recall-rogue\`
 - **Mac artifact staging:** `/Users/damion/CODE/WINDOWS_VM/` (for pulling build artifacts back)
-- **VM shared drive:** `Z:\` exists (UTM VirtioFS) but is not used for builds — rsync is more reliable
+- **VM shared drive:** `Z:\` (UTM VirtioFS) maps to `/Users/damion/CODE/WINDOWS_VM/` on Mac. Preferred for file transfer — faster and more reliable than rsync over SSH (which fails due to Windows cmd.exe shell quirks)
 
 ### Sync Mac -> VM
 
@@ -133,3 +133,128 @@ ssh damion@<IP> "cd C:\Users\damion\recall-rogue && npm run dev"
 - **PATH not refreshed after install:** Prepend `$env:Path = [System.Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User');` to PowerShell commands
 - **Key auth fails:** Fix with `sshpass -p 'chrx' ssh damion@<IP> "powershell -Command \"Set-Content -Path 'C:\ProgramData\ssh\administrators_authorized_keys' -Value 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEH21agjJ+Rb9aCzEWOiXTSJj0C0QgVBvVr3yFan3muO mulda@IntelliDows'; icacls 'C:\ProgramData\ssh\administrators_authorized_keys' /inheritance:r /grant 'SYSTEM:(F)' /grant 'Administrators:(F)'; Restart-Service sshd\""
 - **rsync backslash issues:** Use single quotes around Windows paths in rsync/scp commands
+
+---
+
+# Linux VM — Connection & Management
+
+Debian 13 (trixie) x86_64 VM running in UTM (bridged networking) for native Linux builds. SSH key auth configured for both `damion` and `root`.
+
+## Connection Details
+
+- **Username:** damion (build user) / root (admin)
+- **Password (both):** chrx
+- **SSH key:** ed25519 key at `~/.ssh/id_ed25519` (installed in both `~damion/.ssh/authorized_keys` and `/root/.ssh/authorized_keys`)
+- **Network:** Bridged mode on `192.168.11.x` subnet (IP may change on reboot)
+- **Hostname:** debian-vm
+- **VM app:** UTM (`/Applications/UTM.app`)
+- **Architecture:** x86_64 (emulated on Apple Silicon — builds are slow, 1 vCPU)
+
+## Connecting — Always Start Here
+
+```bash
+# Step 1: Find the VM by scanning for SSH (same method as Windows VM)
+for ip in $(arp -a | grep '192.168.11' | grep -oE '192\.168\.11\.[0-9]+' | grep -v '\.255$' | grep -v '\.1$'); do
+  result=$(ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no -o BatchMode=yes damion@$ip "hostname" 2>/dev/null)
+  if [ "$result" = "debian-vm" ]; then echo "FOUND: $ip"; break; fi
+done
+
+# Step 2: Verify connection
+ssh damion@<IP> "uname -a && echo '---' && cat /etc/os-release | head -3"
+```
+
+## Installed Tools (verified 2026-04-16)
+
+| Tool | Version | Install method |
+|---|---|---|
+| Node.js | v22.22.2 | nodesource apt repo |
+| npm | 10.9.7 | bundled with Node |
+| Git | 2.47.3 | apt |
+| Rust | 1.94.1 (x86_64-unknown-linux-gnu) | rustup |
+| Cargo | 1.94.1 | rustup |
+| build-essential | gcc/g++ | apt |
+| WebKitGTK | 4.1 | apt (libwebkit2gtk-4.1-dev) |
+| GTK3 | 3.x | apt (libgtk-3-dev) |
+
+Tauri Linux dependencies installed: `libwebkit2gtk-4.1-dev`, `libgtk-3-dev`, `libayatana-appindicator3-dev`, `librsvg2-dev`, `patchelf`, `libssl-dev`, `pkg-config`.
+
+Check versions:
+```bash
+ssh damion@<IP> ". ~/.cargo/env && node --version && npm --version && rustc --version && cargo --version && git --version"
+```
+
+## Project Sync & File Layout
+
+- **Mac source:** `/Users/damion/CODE/Recall_Rogue/`
+- **VM destination:** `/home/damion/recall-rogue/`
+- **Mac artifact staging:** `/Users/damion/CODE/LINUX_VM/`
+- **Mac shared drive:** `/Users/damion/CODE/LINUX_VM/` (configure UTM VirtioFS share to map here)
+
+### Sync Mac -> VM (TARGETED — excludes 116GB data/ dir and macOS build artifacts)
+
+**CRITICAL:** The `data/` directory is 116GB and `src-tauri/target/` has macOS build artifacts. ALWAYS exclude both. A sync without these exclusions will exhaust the VM's 75GB disk and crash it. Use `--exclude` rules (not `--include` with a trailing `--exclude='*'`) because rsync's include/exclude ordering is tricky — includes take priority and can accidentally pull in `src-tauri/target/`.
+
+```bash
+# Exclude-based sync (safer — everything EXCEPT the big dirs)
+rsync -avz --progress \
+  --exclude='src-tauri/target' --exclude='node_modules' --exclude='.git' \
+  --exclude='data' --exclude='dist' --exclude='.video-tmp' \
+  --exclude='.openclaude' --exclude='store-assets' --exclude='*.db' \
+  --exclude='_archived_assets' --exclude='steam/output' \
+  --exclude='steam/store-images' --exclude='steam/windows-build' \
+  -e ssh /Users/damion/CODE/Recall_Rogue/ damion@<IP>:~/recall-rogue/
+```
+
+### Pull artifacts VM -> Mac
+
+```bash
+# Copy Linux AppImage back
+scp damion@<IP>:~/recall-rogue/src-tauri/target/release/bundle/appimage/*.AppImage /Users/damion/CODE/LINUX_VM/
+
+# Or copy the raw binary + libsteam_api.so
+scp damion@<IP>:~/recall-rogue/src-tauri/target/release/recall-rogue /Users/damion/CODE/LINUX_VM/
+```
+
+## Linux Build Workflow
+
+```bash
+# 1. Sync latest code from Mac (exclude-based — safe from target/ and data/)
+rsync -avz --progress \
+  --exclude='src-tauri/target' --exclude='node_modules' --exclude='.git' \
+  --exclude='data' --exclude='dist' --exclude='.video-tmp' \
+  --exclude='.openclaude' --exclude='store-assets' --exclude='*.db' \
+  --exclude='_archived_assets' --exclude='steam/output' \
+  --exclude='steam/store-images' --exclude='steam/windows-build' \
+  -e ssh /Users/damion/CODE/Recall_Rogue/ damion@<IP>:~/recall-rogue/
+
+# 2. Install npm deps (first time or after package.json changes)
+ssh damion@<IP> "cd ~/recall-rogue && npm install"
+
+# 3. Build Tauri Linux binary
+ssh -o ServerAliveInterval=30 damion@<IP> "cd ~/recall-rogue && . ~/.cargo/env && npm run build && cd src-tauri && cargo tauri build --bundles appimage 2>&1"
+
+# 4. Find and stage the libsteam_api.so alongside the binary
+ssh damion@<IP> "cd ~/recall-rogue && STEAMSO=\$(find src-tauri/target/release/build -name 'libsteam_api.so' -path '*/steamworks-sys-*/out/*' | head -1) && echo \$STEAMSO"
+
+# 5. Copy artifacts to staging dir on VM for pull-back
+ssh damion@<IP> "mkdir -p ~/linux-build && cp ~/recall-rogue/src-tauri/target/release/recall-rogue ~/linux-build/ && cp ~/recall-rogue/src-tauri/steam_appid.txt ~/linux-build/"
+
+# 6. Pull artifacts back to Mac
+scp damion@<IP>:~/linux-build/* /Users/damion/CODE/LINUX_VM/
+
+# 7. Stage for Steam depot
+cp /Users/damion/CODE/LINUX_VM/recall-rogue /Users/damion/CODE/Recall_Rogue/steam/linux-build/
+cp /Users/damion/CODE/LINUX_VM/libsteam_api.so /Users/damion/CODE/Recall_Rogue/steam/linux-build/
+cp /Users/damion/CODE/Recall_Rogue/src-tauri/steam_appid.txt /Users/damion/CODE/Recall_Rogue/steam/linux-build/
+```
+
+## Troubleshooting
+
+- **VM not found on network:** Make sure UTM VM is running and set to Bridged networking
+- **SSH timeout:** VM may be booting (slower than Windows VM). Wait 60s and retry
+- **Out of disk:** The VM has 75GB. NEVER rsync `data/` (116GB). Check with `df -h /`
+- **Out of memory:** VM has 4GB RAM. Cargo builds can OOM on 1 vCPU — if build fails, check `dmesg | tail`
+- **Rust PATH:** Always prefix commands with `. ~/.cargo/env &&` — Rust is installed via rustup, not apt
+- **sudo:** damion is in the sudo group. Use `sudo apt-get install ...` for system packages
+- **Root access:** `ssh root@<IP>` works with key auth for admin tasks
+- **Slow builds:** x86_64 emulated on ARM — Cargo builds take 10-30x longer than native. Be patient.
