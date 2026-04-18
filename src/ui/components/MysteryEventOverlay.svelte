@@ -59,6 +59,8 @@
       quizPhase = 'intro'
       pendingQuizEffects = []
       resultLines = []
+      // Reset study purchase gate so each new event starts at the offer phase
+      studyPurchased = false
     }
   })
 
@@ -244,6 +246,8 @@
   }
   let studyFacts: StudyFact[] = $state([])
   let studyComplete: boolean = $state(false)
+  /** True once the player has paid and committed to the study session. */
+  let studyPurchased: boolean = $state(false)
 
   /** Build the study fact list from curated deck (study mode) or trivia DB (trivia mode). */
   function buildStudyFacts(): void {
@@ -278,6 +282,13 @@
       }))
     }
     studyComplete = false
+  }
+
+  /** Player commits to the purchase — load facts and advance to study phase. */
+  function handleStudyPurchase(): void {
+    studyPurchased = true
+    buildStudyFacts()
+    playCardAudio('shop-purchase')
   }
 
   function handleStudyComplete(): void {
@@ -434,7 +445,9 @@
 
   // ——— Initialize custom handlers when event changes ———
   $effect(() => {
-    if (event?.effect.type === 'study') buildStudyFacts()
+    // NOTE: 'study' is intentionally NOT auto-initialized here.
+    // buildStudyFacts() is called only after the player accepts the purchase (handleStudyPurchase),
+    // so facts are never loaded until the player commits to paying 25 gold.
     if (event?.effect.type === 'reviewMuseum') buildMuseumEntries()
     if (event?.effect.type === 'meditation') buildThemeStats()
     if (event?.effect.type === 'doubleOrNothing') {
@@ -893,12 +906,33 @@
         </div>
 
       {:else if event.effect.type === 'study'}
-        <!-- Study Session (Flashcard Merchant) -->
-        <div class="study-header">Study Session — cost: 25 gold</div>
-        {#if studyFacts.length === 0}
-          <p class="study-empty">No facts available in study mode.</p>
-          <button class="continue-btn" onclick={() => onresolve({ type: 'nothing', message: 'Nothing to study here.' })}>Leave</button>
+        {#if !studyPurchased}
+          <!-- Phase 1: Offer — player decides before seeing facts or spending gold -->
+          {@const playerGold = get(activeRunState)?.currency ?? 0}
+          {@const canAfford = playerGold >= 25}
+          <p class="study-offer-text">Study 3 facts from your deck. Each studied fact deals +20% damage when Charged correctly.</p>
+          <div class="study-offer-buttons">
+            <button
+              class="continue-btn"
+              data-testid="mystery-continue"
+              disabled={!canAfford}
+              onclick={handleStudyPurchase}
+            >
+              {canAfford ? 'Pay 25 Gold' : 'Pay 25 Gold (not enough)'}
+            </button>
+            <button
+              class="choice-btn"
+              onclick={() => onresolve({ type: 'nothing', message: "You pass on the merchant's offer." })}
+            >
+              Leave
+            </button>
+          </div>
+        {:else if studyFacts.length === 0}
+          <!-- Edge case: no facts available after purchase (empty deck mode) -->
+          <p class="study-empty">No facts available to study.</p>
+          <button class="continue-btn" onclick={() => onresolve({ type: 'currency', amount: -25 })}>Leave</button>
         {:else if !studyComplete}
+          <!-- Phase 2: Study the facts -->
           <div class="study-facts">
             {#each studyFacts as sf (sf.factId)}
               <div class="study-fact-card">
@@ -911,8 +945,9 @@
             Complete Study (+20% damage bonus per fact)
           </button>
         {:else}
+          <!-- Phase 3: Done — gold already committed, no reminder needed on exit -->
           <p class="study-success">3 facts studied! Each deals +20% more damage when you Charge correctly.</p>
-          <button class="continue-btn" data-testid="mystery-continue" onclick={handleStudyDone}>Leave (–25 gold)</button>
+          <button class="continue-btn" data-testid="mystery-continue" onclick={handleStudyDone}>Leave</button>
         {/if}
 
       {:else if event.effect.type === 'reviewMuseum'}
@@ -1265,8 +1300,14 @@
     margin-top: calc(8px * var(--layout-scale, 1));
   }
 
-  .continue-btn:hover {
+  .continue-btn:hover:not(:disabled) {
     transform: scale(1.03);
+  }
+
+  .continue-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
   }
 
   .mystery-icon-img {
@@ -1303,11 +1344,20 @@
 
 
   /* ── Study Session (Flashcard Merchant) ─────────────────────────────────── */
-  .study-header {
+  .study-offer-text {
     font-size: calc(13px * var(--text-scale, 1));
-    color: #9B59B6;
-    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
     text-align: center;
+    line-height: 1.5;
+    margin-bottom: calc(16px * var(--layout-scale, 1));
+  }
+
+  .study-offer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: calc(10px * var(--layout-scale, 1));
+    align-items: center;
+    width: 100%;
   }
 
   .study-empty, .museum-empty, .meditation-empty {
