@@ -10,6 +10,8 @@
  *   audioManager.playSound('mine_dirt')
  */
 
+import { resolveAudioPath } from './audioCodecSupport'
+
 /** Valid sound names for the Recall Rogue audio catalog. */
 export type SoundName =
   | 'mine_dirt'
@@ -276,11 +278,11 @@ function sfxPath(name: SoundName): string {
     oxygen_low: '/assets/audio/sfx/legacy/oxygen_low.m4a',
     oxygen_critical: '/assets/audio/sfx/legacy/oxygen_critical.m4a',
   }
-  if (name in OVERRIDES) return OVERRIDES[name]!
+  if (name in OVERRIDES) return resolveAudioPath(OVERRIDES[name]!)
 
   // Auto-derive folder from first underscore segment
   const folder = name.split('_')[0]
-  return `/assets/audio/sfx/${folder}/${name}.m4a`
+  return resolveAudioPath(`/assets/audio/sfx/${folder}/${name}.m4a`)
 }
 
 /**

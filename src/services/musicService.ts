@@ -15,7 +15,7 @@
  * where connectAnalyser() failed and the element is NOT in the Web Audio graph.
  */
 
-import { type MusicCategory, type MusicTrack, getTracksByCategory, getPlayableTracks } from '../data/musicTracks'
+import { type MusicCategory, type MusicTrack, getTrackPath, getTracksByCategory, getPlayableTracks } from '../data/musicTracks'
 import { ambientAudio } from './ambientAudioService'
 import { musicVolume, musicEnabled, musicUserPaused } from './cardAudioManager'
 import { get } from 'svelte/store'
@@ -183,7 +183,7 @@ class MusicService {
         }
         audio.addEventListener('canplaythrough', onCanPlay, { once: true })
         audio.addEventListener('error', onError, { once: true })
-        audio.src = track.file
+        audio.src = getTrackPath(track)
         audio.load()
       })
 
@@ -461,7 +461,7 @@ class MusicService {
         }
         audio.addEventListener('canplaythrough', onCanPlay, { once: true })
         audio.addEventListener('error', onError, { once: true })
-        audio.src = track.file
+        audio.src = getTrackPath(track)
         audio.load()
       })
 

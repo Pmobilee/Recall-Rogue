@@ -100,6 +100,7 @@
       playMode?: 'charge' | 'quick',
       distractorCount?: number,
       wasQuizzed?: boolean,
+      previewValue?: { qpValue: number; ccValue: number },
     ) => {
       curedCursedFact: boolean
       damageDealt?: number
@@ -1951,7 +1952,7 @@
     // Fire the play immediately with playMode: 'quick'
     const _qpPreEnemy = snapshotEffects(turnState?.enemy?.statusEffects ?? [])
     const _qpPrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
-    const quickResult = onplaycard(cardId, true, false, undefined, undefined, 'quick', undefined, false)
+    const quickResult = onplaycard(cardId, true, false, undefined, undefined, 'quick', undefined, false, damagePreviews[cardId])
     spawnStatusFloaters(_qpPreEnemy, _qpPrePlayer)
 
     const actualDmg = quickResult?.damageDealt ?? 0
@@ -2011,7 +2012,7 @@
       cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
       const _soulPreEnemy = snapshotEffects(turnState?.enemy?.statusEffects ?? [])
       const _soulPrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
-      const chargeResult = onplaycard(cardId, true, false, undefined, undefined, 'charge', undefined, false)
+      const chargeResult = onplaycard(cardId, true, false, undefined, undefined, 'charge', undefined, false, damagePreviews[cardId])
       spawnStatusFloaters(_soulPreEnemy, _soulPrePlayer)
       if (chargeResult?.curedCursedFact) {
         cureFlashes = { ...cureFlashes, [cardId]: true }
@@ -2368,7 +2369,7 @@
       tutorialHasAnsweredWrong = true
       animatingCards = [...animatingCards, card]
       cardAnimations = { ...cardAnimations, [cardId]: 'fizzle' }
-      onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex, 'charge', undefined, true)
+      onplaycard(cardId, false, false, responseTimeMs, quizVariantIndex, 'charge', undefined, true, damagePreviews[cardId])
 
       // AR-113: Check for mastery downgrade after wrong answer
       // Use get(activeTurnState) not the `turnState` prop — the prop update is scheduled
@@ -2411,7 +2412,7 @@
       const _chargePrePlayer = snapshotEffects(turnState?.playerState?.statusEffects ?? [])
       // Pass distractorCount so card mechanics (precision_strike, etc.) know the quiz difficulty.
       const quizDistractorCount = committedQuizData ? committedQuizData.answers.length - 1 : undefined
-      const chargeResult = onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex, 'charge', quizDistractorCount, true)
+      const chargeResult = onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex, 'charge', quizDistractorCount, true, damagePreviews[cardId])
       // Only spawn status floaters when no pendingChoice/pendingCardPick — deferred choices apply effects later
       if (!chargeResult?.pendingChoice && !chargeResult?.pendingCardPick) {
         spawnStatusFloaters(_chargePreEnemy, _chargePrePlayer)

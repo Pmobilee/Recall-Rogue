@@ -11,6 +11,8 @@
  * are always available.
  */
 
+import { resolveAudioPath } from '../services/audioCodecSupport'
+
 export type MusicCategory = 'epic' | 'quiet'
 
 export interface MusicTrack {
@@ -135,6 +137,14 @@ export const MUSIC_TRACKS: MusicTrack[] = [
   { id: 'tidal-cave', title: 'Tidal Cave', category: 'quiet', file: '/assets/audio/music/quiet/tidal-cave.m4a', duration: 207, locked: true, price: 60 },
   { id: 'unmeasured-hours', title: 'Unmeasured Hours', category: 'quiet', file: '/assets/audio/music/quiet/unmeasured-hours.m4a', duration: 216, locked: true, price: 60 },
 ]
+
+/**
+ * Get the playable file path for a track, respecting codec support.
+ * Swaps .m4a → .ogg on platforms that do not support AAC (e.g. Linux WebKitGTK).
+ */
+export function getTrackPath(track: MusicTrack): string {
+  return resolveAudioPath(track.file)
+}
 
 /**
  * Returns all tracks for a given category.

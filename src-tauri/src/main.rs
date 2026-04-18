@@ -22,7 +22,9 @@ fn main() {
             steam::steam_clear_rich_presence,
             // Matchmaking — Lobbies (AR-MULTIPLAYER 1.1)
             steam::steam_create_lobby,
+            steam::steam_get_pending_lobby_id,
             steam::steam_join_lobby,
+            steam::steam_get_pending_join_lobby_id,
             steam::steam_leave_lobby,
             steam::steam_get_lobby_members,
             steam::steam_set_lobby_data,

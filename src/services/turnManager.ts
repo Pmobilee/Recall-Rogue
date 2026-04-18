@@ -29,8 +29,7 @@ import {
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
 import { playCardAudio } from './cardAudioManager';
 import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects, dispatchEnemyTurnStart } from './enemyManager';
-import { applyStatusEffect, triggerBurn, getBleedBonus, PERMANENT_DURATION_SENTINEL, isVulnerable, getStrengthModifier } from '../data/statusEffects';
-import { computeDamagePreview, type DamagePreviewContext } from './damagePreviewService';
+import { applyStatusEffect, triggerBurn, getBleedBonus, PERMANENT_DURATION_SENTINEL } from '../data/statusEffects';
 import type { EnemyReactContext } from '../data/enemies';
 import { hasSynergy, getMasteryAscensionBonus } from './relicSynergyResolver';
 import {
@@ -858,6 +857,7 @@ export function playCardAction(
   playMode: PlayMode = 'charge',
   distractorCount?: number,
   wasQuizzed?: boolean,
+  cardPreview?: { qpValue: number; ccValue: number },
 ): PlayCardResult {
   // AR-207: Battle Trance restriction — block all card plays and Charges after QP/CW
   if (turnState.battleTranceRestriction) {
@@ -1507,9 +1507,7 @@ export function playCardAction(
   const useOverclock = turnState.overclockReady;
   const isChargeCorrect = playMode === 'charge' || playMode === 'charge_correct';
 
-  // ── Card Preview Source-of-Truth: capture pre-play state ──────────────────
-  const prePlayFirstAttackUsed = turnState.firstAttackUsed;
-  const prePlayBuffNextCard = turnState.buffNextCard;
+  // ── Card Preview Source-of-Truth: skip flag for RNG/conditional bonuses ────
   let _skipPreviewOverride = false;
 
   // Compute deck domain counts for domain_mastery_sigil: count cards across draw + discard + hand.
@@ -1985,50 +1983,21 @@ export function playCardAction(
     effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
   }
 
-  // ── Card Preview as Source of Truth (mirrors enemy intent source-of-truth) ────
-  // The card face showed a specific damage/shield value to the player. The resolver
-  // independently computed the effect via a separate code path. When these drift
-  // apart, the player sees a lie. Compute the preview value here; apply it as the
-  // ABSOLUTE LAST step before shield/damage is committed to player state.
+  // ── Card Preview as Source of Truth ─────────────────────────────────────────
+  // The UI passed the EXACT value the card face showed. No recomputation — zero
+  // drift possible. Whatever the player saw is what they get.
   //
   // Skip conditions: charge-wrong (fizzle is intentional), multi-hit (per-hit
-  // structure differs), or when post-resolver RNG/bonus fired (lucky_coin, crit,
-  // mirror, etc. — preview intentionally doesn't model these).
+  // structure differs), RNG bonus fired, or no preview available (bot/test play).
   let _previewOverrideShield: number | null = null;
   let _previewOverrideDamage: number | null = null;
-  if (!_skipPreviewOverride && playMode !== 'charge_wrong' && (effect.hitCount ?? 1) <= 1) {
-    const _previewCtx: DamagePreviewContext = {
-      activeRelicIds: turnState.activeRelicIds,
-      buffNextCard: prePlayBuffNextCard,
-      overclockReady: useOverclock,
-      doubleStrikeReady: useDoubleStrike && card.cardType === 'attack',
-      firstAttackUsed: prePlayFirstAttackUsed,
-      playerHpPercent: playerState.maxHP > 0 ? playerState.hp / playerState.maxHP : 1,
-      enemyHpPercent: enemy.maxHP > 0 ? enemy.currentHP / enemy.maxHP : 1,
-      enemyPoisonStacks: (enemy.statusEffects ?? []).filter(s => s.type === 'poison').reduce((sum, s) => sum + (s.value ?? 0), 0),
-      enemyBurnStacks: (enemy.statusEffects ?? []).filter(s => s.type === 'burn').reduce((sum, s) => sum + (s.value ?? 0), 0),
-      enemyIsVulnerable: isVulnerable(enemy.statusEffects ?? []),
-      enemyQpDamageMultiplier: enemy._quickPlayDamageMultiplierOverride ?? enemy.template.quickPlayDamageMultiplier,
-      enemyQuickPlayImmune: !!enemy.template.quickPlayImmune,
-      enemyChargeResistant: !!enemy.template.chargeResistant,
-      enemyHardcover: enemy._hardcover ?? 0,
-      enemyHardcoverBroken: !!enemy._hardcoverBroken,
-      inscriptionFuryBonus,
-      cardsPlayedThisTurn: turnState.cardsPlayedThisTurn,
-      encounterTurnNumber: turnState.encounterTurnNumber,
-      scarTissueStacks: turnState.scarTissueStacks ?? 0,
-      playerStrengthModifier: getStrengthModifier(playerState.statusEffects),
-      chainMultiplier: currentChainMultiplier,
-      enemyChainVulnerable: !!enemy.template.chainVulnerable,
-    };
-    const _preview = computeDamagePreview(card, _previewCtx);
-    const _previewVal = isChargeCorrect ? _preview.ccValue : _preview.qpValue;
-
-    if (card.cardType === 'shield' && _previewVal > 0) {
-      _previewOverrideShield = _previewVal;
+  if (cardPreview && !_skipPreviewOverride && playMode !== 'charge_wrong' && (effect.hitCount ?? 1) <= 1) {
+    const displayedValue = isChargeCorrect ? cardPreview.ccValue : cardPreview.qpValue;
+    if (card.cardType === 'shield' && displayedValue > 0) {
+      _previewOverrideShield = displayedValue;
     }
-    if (card.cardType === 'attack' && _previewVal > 0 && card.mechanicId !== 'iron_wave') {
-      _previewOverrideDamage = _previewVal;
+    if (card.cardType === 'attack' && displayedValue > 0 && card.mechanicId !== 'iron_wave') {
+      _previewOverrideDamage = displayedValue;
     }
   }
 

@@ -64,7 +64,7 @@ if [[ "$PLATFORM" == "windows" ]]; then
         npm run build
 
         echo "[steam] Cross-compiling for Windows ($WIN_TARGET)..."
-        export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+        export PATH="${LLVM_BIN_DIR:-/opt/homebrew/opt/llvm/bin}:$PATH"
         cd "$TAURI_DIR"
         cargo xwin build --release --target "$WIN_TARGET"
 
@@ -112,14 +112,17 @@ fi
 if [[ "$PLATFORM" == "linux" ]]; then
     LINUX_BUILD="$PROJECT_ROOT/steam/linux-build"
     LINUX_VDF="$PROJECT_ROOT/steam/app_build_4547570_linux.vdf"
-    LINUX_STAGING="/Users/damion/CODE/LINUX_VM"
+    LINUX_STAGING="${LINUX_STAGING_DIR:-$PROJECT_ROOT/steam/linux-staging}"
 
     # Discover Linux VM IP
     echo "[steam] Discovering Linux VM..."
+    LINUX_VM_SUBNET="${LINUX_VM_SUBNET:-192.168.11}"
+    LINUX_VM_HOSTNAME="${LINUX_VM_HOSTNAME:-debian-vm}"
+    LINUX_VM_USER="${LINUX_VM_USER:-damion}"
     LINUX_IP=""
-    for ip in $(arp -a | grep '192.168.11' | grep -oE '192\.168\.11\.[0-9]+' | grep -v '\.255$' | grep -v '\.1$'); do
-        result=$(ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no -o BatchMode=yes damion@$ip "hostname" 2>/dev/null)
-        if [ "$result" = "debian-vm" ]; then LINUX_IP="$ip"; break; fi
+    for ip in $(arp -a | grep "$LINUX_VM_SUBNET" | grep -oE "${LINUX_VM_SUBNET//./\.}\.[0-9]+" | grep -v '\.255$' | grep -v '\.1$'); do
+        result=$(ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no -o BatchMode=yes "$LINUX_VM_USER@$ip" "hostname" 2>/dev/null)
+        if [ "$result" = "$LINUX_VM_HOSTNAME" ]; then LINUX_IP="$ip"; break; fi
     done
     if [[ -z "$LINUX_IP" ]]; then
         echo "[steam] ERROR: Linux VM not found on network. Is it running in UTM?"
@@ -135,23 +138,23 @@ if [[ "$PLATFORM" == "linux" ]]; then
           --exclude='.openclaude' --exclude='store-assets' --exclude='*.db' \
           --exclude='_archived_assets' --exclude='steam/output' \
           --exclude='steam/store-images' --exclude='steam/windows-build' \
-          -e ssh "$PROJECT_ROOT/" damion@"$LINUX_IP":~/recall-rogue/
+          -e ssh "$PROJECT_ROOT/" "$LINUX_VM_USER@$LINUX_IP":~/recall-rogue/
 
         echo "[steam] Installing npm deps on Linux VM..."
-        ssh -o ServerAliveInterval=30 damion@"$LINUX_IP" "cd ~/recall-rogue && npm install 2>&1" | tail -5
+        ssh -o ServerAliveInterval=30 "$LINUX_VM_USER@$LINUX_IP" "cd ~/recall-rogue && npm install 2>&1" | tail -5
 
         echo "[steam] Building Tauri on Linux VM (this will be slow — x86_64 emulated)..."
-        ssh -o ServerAliveInterval=30 damion@"$LINUX_IP" \
+        ssh -o ServerAliveInterval=30 "$LINUX_VM_USER@$LINUX_IP" \
           "cd ~/recall-rogue && . ~/.cargo/env && npm run build && cd src-tauri && cargo tauri build --bundles deb 2>&1"
 
         echo "[steam] Staging Linux build artifacts..."
-        ssh damion@"$LINUX_IP" "mkdir -p ~/linux-build && cp ~/recall-rogue/src-tauri/target/release/recall-rogue ~/linux-build/ && cp ~/recall-rogue/src-tauri/steam_appid.txt ~/linux-build/"
+        ssh "$LINUX_VM_USER@$LINUX_IP" "mkdir -p ~/linux-build && cp ~/recall-rogue/src-tauri/target/release/recall-rogue ~/linux-build/ && cp ~/recall-rogue/src-tauri/steam_appid.txt ~/linux-build/"
         # Copy libsteam_api.so if present
-        ssh damion@"$LINUX_IP" "STEAMSO=\$(find ~/recall-rogue/src-tauri/target/release/build -name 'libsteam_api.so' -path '*/steamworks-sys-*/out/*' 2>/dev/null | head -1); if [ -n \"\$STEAMSO\" ]; then cp \"\$STEAMSO\" ~/linux-build/; fi"
+        ssh "$LINUX_VM_USER@$LINUX_IP" "STEAMSO=\$(find ~/recall-rogue/src-tauri/target/release/build -name 'libsteam_api.so' -path '*/steamworks-sys-*/out/*' 2>/dev/null | head -1); if [ -n \"\$STEAMSO\" ]; then cp \"\$STEAMSO\" ~/linux-build/; fi"
 
         echo "[steam] Pulling artifacts back to Mac..."
         mkdir -p "$LINUX_STAGING" "$LINUX_BUILD"
-        scp damion@"$LINUX_IP":~/linux-build/* "$LINUX_STAGING/"
+        scp "$LINUX_VM_USER@$LINUX_IP":~/linux-build/* "$LINUX_STAGING/"
         cp "$LINUX_STAGING/recall-rogue" "$LINUX_BUILD/"
         [ -f "$LINUX_STAGING/libsteam_api.so" ] && cp "$LINUX_STAGING/libsteam_api.so" "$LINUX_BUILD/"
         cp "$LINUX_STAGING/steam_appid.txt" "$LINUX_BUILD/" 2>/dev/null || true

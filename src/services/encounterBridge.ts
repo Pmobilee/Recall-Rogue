@@ -1050,6 +1050,7 @@ export function handlePlayCard(
   playMode: PlayMode = 'charge',
   distractorCount?: number,
   wasQuizzed?: boolean,
+  previewValue?: { qpValue: number; ccValue: number },
 ): {
   curedCursedFact: boolean;
   damageDealt?: number;
@@ -1082,7 +1083,7 @@ export function handlePlayCard(
   const playedCard = turnState.deck.hand.find((card) => card.id === cardId);
   const previousReviewState = playedCard?.factId ? getReviewStateByFactId(playedCard.factId) : undefined;
   const previousTier = previousReviewState ? getCardTier(previousReviewState) : null;
-  const result = playCardAction(turnState, cardId, correct, speedBonus, playMode, distractorCount, wasQuizzed);
+  const result = playCardAction(turnState, cardId, correct, speedBonus, playMode, distractorCount, wasQuizzed, previewValue);
   const run = get(activeRunState);
 
   // AR-204: Inscription detection — if the played card is an Inscription, register it,

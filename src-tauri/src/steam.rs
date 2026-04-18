@@ -1,4 +1,4 @@
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 use steamworks::networking_types::{NetworkingIdentity, SendFlags};
 use steamworks::{Client, LobbyId, LobbyType, SteamId};
 use tauri::State;
@@ -11,6 +11,14 @@ use tauri::State;
 /// DONE (AR-80): App ID updated to 4547570 (Recall Rogue). Registered on Steam Partner.
 pub struct SteamState {
     pub client: Mutex<Option<Client>>,
+    /// Stores the lobby ID from the most recent `create_lobby` callback.
+    /// Uses `Arc` so the value can be cloned into the callback closure without holding
+    /// the `client` lock across the async boundary.
+    /// Consuming: `steam_get_pending_lobby_id` calls `take()` — one-shot read.
+    pub pending_lobby_id: Arc<Mutex<Option<u64>>>,
+    /// Stores the lobby ID from the most recent `join_lobby` callback.
+    /// Same one-shot semantics as `pending_lobby_id`.
+    pub pending_join_lobby_id: Arc<Mutex<Option<u64>>>,
 }
 
 impl SteamState {
@@ -31,12 +39,16 @@ impl SteamState {
                 println!("[Steam] Initialized successfully (App ID 4547570 — Recall Rogue)");
                 SteamState {
                     client: Mutex::new(Some(client)),
+                    pending_lobby_id: Arc::new(Mutex::new(None)),
+                    pending_join_lobby_id: Arc::new(Mutex::new(None)),
                 }
             }
             Err(e) => {
                 eprintln!("[Steam] Failed to initialize (Steam client may not be running): {:?}", e);
                 SteamState {
                     client: Mutex::new(None),
+                    pending_lobby_id: Arc::new(Mutex::new(None)),
+                    pending_join_lobby_id: Arc::new(Mutex::new(None)),
                 }
             }
         }
@@ -121,68 +133,109 @@ pub fn steam_clear_rich_presence(state: State<SteamState>) -> Result<(), String>
 
 // ── Matchmaking — Lobbies ──────────────────────────────────────────────────────
 
-/// Create a Steam lobby and return its ID as a decimal string.
+/// Create a Steam lobby. Lobby creation is asynchronous — the actual lobby ID is only available
+/// after the `LobbyCreated_t` callback fires via `steam_run_callbacks`.
 ///
-/// Lobby creation is asynchronous in the Steamworks API — the actual lobby ID is only available
-/// after the `LobbyCreated_t` callback fires. This command initiates the creation and immediately
-/// returns an empty string; the caller MUST poll `steam_run_callbacks` and then use
-/// `steam_get_lobby_data` (or a separate callback mechanism) to detect when creation completes.
+/// This command initiates creation, wires the callback to store the resulting lobby ID in
+/// `SteamState::pending_lobby_id`, and returns immediately. The JS caller must:
+/// 1. Poll `steam_run_callbacks` (e.g., every 100ms) until the callback fires.
+/// 2. Call `steam_get_pending_lobby_id` to retrieve the created lobby ID.
 ///
 /// # Parameters
 /// - `lobby_type`: One of "public", "private", "friends_only", "invisible"
 /// - `max_members`: Maximum number of members (1–250)
 ///
 /// # Returns
-/// `""` (creation is async — poll steam_run_callbacks; the LobbyCreated callback will fire)
-///
-/// TODO (AR-MULTIPLAYER 1.1): Wire a persistent callback via `client.register_callback` in
-///   `SteamState::new()` that writes the created LobbyId into a shared Arc<Mutex<Option<LobbyId>>>
-///   so that a follow-up `steam_get_pending_lobby_id` command can return it to JS.
+/// `""` always — result is async. Poll `steam_run_callbacks`, then call `steam_get_pending_lobby_id`.
 #[tauri::command]
 pub fn steam_create_lobby(
     state: State<SteamState>,
     lobby_type: String,
     max_members: u32,
 ) -> Result<String, String> {
+    // Clone the Arc before locking the client so the callback closure can own it
+    // without the client lock being held across the async boundary.
+    let pending = state.pending_lobby_id.clone();
+
     let lock = state.client.lock().map_err(|e| e.to_string())?;
     if let Some(client) = lock.as_ref() {
         let ty = parse_lobby_type(&lobby_type)?;
-        // create_lobby is callback-based; we kick it off and return immediately.
-        // The JS side must call steam_run_callbacks() repeatedly until LobbyCreated fires.
-        client.matchmaking().create_lobby(ty, max_members, |result| {
+        client.matchmaking().create_lobby(ty, max_members, move |result| {
             match result {
-                Ok(lobby_id) => println!("[Steam] Lobby created: {}", lobby_id.raw()),
+                Ok(lobby_id) => {
+                    println!("[Steam] Lobby created: {}", lobby_id.raw());
+                    if let Ok(mut slot) = pending.lock() {
+                        *slot = Some(lobby_id.raw());
+                    }
+                }
                 Err(e) => eprintln!("[Steam] Lobby creation failed: {:?}", e),
             }
         });
         println!("[Steam] Lobby creation initiated (type={}, max={})", lobby_type, max_members);
-        // Return empty — caller polls steam_run_callbacks and then inspects state via other commands.
         Ok(String::new())
     } else {
         Ok(String::new())
     }
 }
 
+/// Retrieve the lobby ID stored by the most recent `steam_create_lobby` callback.
+///
+/// Returns `None` if no lobby has been created yet or `steam_run_callbacks` has not been
+/// pumped enough for the callback to fire.
+///
+/// Consuming: clears the stored ID on read so this is a one-shot poll — calling it twice
+/// returns `None` on the second call unless another lobby is created.
+#[tauri::command]
+pub fn steam_get_pending_lobby_id(
+    state: State<SteamState>,
+) -> Result<Option<String>, String> {
+    let mut slot = state.pending_lobby_id.lock().map_err(|e| e.to_string())?;
+    // take() atomically reads and clears — one-shot semantics.
+    Ok(slot.take().map(|raw| raw.to_string()))
+}
+
 /// Join an existing Steam lobby by its ID (decimal string).
 ///
 /// Like `steam_create_lobby`, this is asynchronous — the join result arrives via the
-/// `LobbyEnter_t` callback after `steam_run_callbacks` is polled.
+/// `LobbyEnter_t` callback after `steam_run_callbacks` is polled. The resulting lobby ID
+/// is stored in `SteamState::pending_join_lobby_id` and can be retrieved via
+/// `steam_get_pending_join_lobby_id`.
 ///
 /// # Parameters
 /// - `lobby_id`: The lobby's 64-bit Steam ID as a decimal string
 #[tauri::command]
 pub fn steam_join_lobby(state: State<SteamState>, lobby_id: String) -> Result<(), String> {
+    // Clone the Arc before locking the client — same pattern as steam_create_lobby.
+    let pending_join = state.pending_join_lobby_id.clone();
+
     let lock = state.client.lock().map_err(|e| e.to_string())?;
     if let Some(client) = lock.as_ref() {
         let id = parse_lobby_id(&lobby_id)?;
         let lobby_id_clone = lobby_id.clone();
         client.matchmaking().join_lobby(id, move |result| match result {
-            Ok(joined_id) => println!("[Steam] Joined lobby: {}", joined_id.raw()),
+            Ok(joined_id) => {
+                println!("[Steam] Joined lobby: {}", joined_id.raw());
+                if let Ok(mut slot) = pending_join.lock() {
+                    *slot = Some(joined_id.raw());
+                }
+            }
             Err(_) => eprintln!("[Steam] Failed to join lobby {}", lobby_id_clone),
         });
         println!("[Steam] Join lobby initiated: {}", lobby_id);
     }
     Ok(())
+}
+
+/// Retrieve the lobby ID stored by the most recent `steam_join_lobby` callback.
+///
+/// Returns `None` if the join callback has not fired yet (keep polling `steam_run_callbacks`).
+/// Consuming: one-shot read — clears the stored ID after returning it.
+#[tauri::command]
+pub fn steam_get_pending_join_lobby_id(
+    state: State<SteamState>,
+) -> Result<Option<String>, String> {
+    let mut slot = state.pending_join_lobby_id.lock().map_err(|e| e.to_string())?;
+    Ok(slot.take().map(|raw| raw.to_string()))
 }
 
 /// Leave a Steam lobby.

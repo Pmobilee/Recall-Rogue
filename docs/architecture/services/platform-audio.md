@@ -2,7 +2,7 @@
 
 > **Purpose:** Audio synthesis, file-based SFX playback, card audio cues, ambient atmosphere layering, BGM music playback, and game-feel (juice) coordination services
 > **Last verified:** 2026-04-18
-> **Source files:** `src/services/audioService.ts`, `src/services/cardAudioManager.ts`, `src/services/juiceManager.ts`, `src/services/ambientAudioService.ts`, `src/services/musicService.ts`
+> **Source files:** `src/services/audioService.ts`, `src/services/audioCodecSupport.ts`, `src/services/cardAudioManager.ts`, `src/services/juiceManager.ts`, `src/services/ambientAudioService.ts`, `src/services/musicService.ts`, `src/data/musicTracks.ts`
 
 > **See also:** [`platform.md`](platform.md) — All other platform services: device detection, haptics, performance, analytics, input, accessibility, notifications, entitlements, and more.
 
@@ -11,6 +11,35 @@
 ## Overview
 
 These services form the audio and game-feel layer. They work together: `juiceManager` coordinates combat events → `cardAudioManager` maps cues to sound names → `audioService` plays the audio. `ambientAudioService` runs in parallel, layering looping atmosphere sounds for the current room/screen context. `hapticService` (in `platform.md`) is also called by `juiceManager` for mobile haptic feedback.
+
+---
+
+## audioCodecSupport
+
+| | |
+|---|---|
+| **File** | src/services/audioCodecSupport.ts |
+| **Purpose** | Codec capability detection and audio path resolution for cross-platform compatibility |
+| **Key exports** | `canPlayAAC()`, `resolveAudioPath(path)` |
+
+Linux Tauri (WebKitGTK) does not ship AAC/M4A decoders by default. This module detects AAC support at startup and swaps `.m4a` → `.ogg` in all audio paths when AAC is unavailable.
+
+### API
+
+```ts
+canPlayAAC(): boolean       // cached after first call; logs warning if AAC unsupported
+resolveAudioPath(path: string): string  // pass-through for non-m4a; swaps .m4a → .ogg when needed
+```
+
+### Integration Points
+
+| Service | Where applied | Coverage |
+|---------|--------------|----------|
+| `audioService.ts` | `sfxPath()` both return paths | All 229+ SFX files |
+| `ambientAudioService.ts` | `loadBuffer(path)` fetch call | All 27 ambient layer paths |
+| `musicService.ts` | `audio.src` for playback + preview | All 95 BGM tracks via `getTrackPath()` in `musicTracks.ts` |
+
+OGG Vorbis `.ogg` files must be transcoded alongside the `.m4a` originals and placed at the same paths with `.ogg` extension. The codec detection runs once per session and is cached.
 
 ---
 
@@ -401,7 +430,7 @@ All ambient loop files MUST be real recordings or professional sound design. Web
 | File size | ≥200KB | Ensures a real recording, not a synthesis export |
 | License | CC0 or equivalent | OpenGameArt, freesound (filter CC0), Pixabay Audio |
 | Loop points | Clean | No audible pop or click at the boundary |
-| Format | `.m4a` (AAC 128kbps+) | Never .ogg — Safari doesn't support it |
+| Format | `.m4a` (AAC 128kbps+) | Primary format. Pair with `.ogg` at identical path for Linux fallback (see `audioCodecSupport.ts`). Never serve `.ogg` as the primary path — Safari does not support OGG. |
 | Artstudio entry | Required | Add/update in `audio_loops` tab with source URL in concept field |
 | needsReplacement flag | Clear | Set to `false` in `artstudio-items.json` once replaced |
 

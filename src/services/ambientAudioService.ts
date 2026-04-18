@@ -26,6 +26,8 @@
  *   await ambientAudio.setContext('combat_dust')
  */
 
+import { resolveAudioPath } from './audioCodecSupport'
+
 // ─── Types ──────────────────────────────────────────────────────────────────
 
 /** A single layer in an ambient recipe */
@@ -432,7 +434,7 @@ class AmbientAudioService {
     if (!this.ctx) return null
 
     try {
-      const response = await fetch(path)
+      const response = await fetch(resolveAudioPath(path))
       if (!response.ok) {
         console.warn(`[ambientAudio] fetch failed for "${path}": ${response.status}`)
         this.bufferCache.set(path, null as unknown as AudioBuffer)

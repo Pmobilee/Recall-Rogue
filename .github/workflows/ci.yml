@@ -64,6 +64,18 @@ jobs:
       - name: Run full typecheck (app + node configs)
         run: npm run check
 
+      - name: Check version sync (package.json ↔ tauri.conf.json)
+        run: |
+          PKG_VERSION=$(node -e "console.log(require('./package.json').version)")
+          TAURI_VERSION=$(node -e "console.log(require('./src-tauri/tauri.conf.json').version)")
+          echo "package.json: $PKG_VERSION"
+          echo "tauri.conf.json: $TAURI_VERSION"
+          if [ "$PKG_VERSION" != "$TAURI_VERSION" ]; then
+            echo "ERROR: Version mismatch! package.json ($PKG_VERSION) != tauri.conf.json ($TAURI_VERSION)"
+            exit 1
+          fi
+          echo "Versions in sync: $PKG_VERSION"
+
   # ─── Unit Tests & Coverage ─────────────────────────────────────────────────
   unit-tests:
     name: Unit Tests
