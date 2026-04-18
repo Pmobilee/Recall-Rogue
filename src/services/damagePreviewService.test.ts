@@ -11,6 +11,11 @@
  * relic tests. Fixed flat-bonus ordering: flat added AFTER buff/overclock mult, not before.
  * Updated 2026-04-18 (cursed shield fix): added cursed shield QP penalty tests — mirrors
  * cardEffectResolver lines 616-631 which apply cursed multipliers to ALL card types.
+ * Updated 2026-04-18 (chain multiplier fix): QP preview no longer applies chain bonus.
+ * Quick Play breaks the chain (turnManager sets currentChainMultiplier=1.0 for QP),
+ * so the preview was incorrectly showing inflated QP values during an active chain.
+ * Tests added: chain 1.5x attack QP stays raw base, chain 1.5x shield QP stays raw base,
+ * chain 1.0x produces no change, classify reference for QP uses raw nakedQpBase.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -534,6 +539,107 @@ describe('computeDamagePreview — cursed shield + scar_tissue', () => {
     expect(result.qpValue).toBe(5);
     expect(result.ccValue).toBe(9);
     expect(result.qpModified).toBe('nerfed');
+    expect(result.ccModified).toBe('neutral');
+  });
+});
+
+// ── Chain multiplier tests (bug fix 2026-04-18) ───────────────────────────────
+//
+// Root cause: QP plays break the chain — turnManager.ts sets currentChainMultiplier=1.0
+// for QP plays (line ~1376), while CC plays use getChainMultiplier(getCurrentChainLength())
+// (line ~1394). The preview was incorrectly applying chainMult to BOTH qpBase and ccBase,
+// inflating the displayed QP value during an active chain. E.g. with 6-base and 1.2x chain,
+// the card face showed 7 but QP actually dealt 6.
+
+describe('computeDamagePreview — chain multiplier: attack card', () => {
+  it('chain 1.5x: QP stays at raw base (no chain), CC gets 1.5x', () => {
+    // strike stat table L0: nakedQpBase=4, nakedCcBase=6
+    // QP: no chain applied → qpFinal=4
+    // CC: round(6 * 1.5) = round(9) = 9 → ccFinal=9
+    const card = makeAttackCard();
+    const ctx = baseCtx({ chainMultiplier: 1.5 });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(9);
+    // QP at raw base → neutral (no chain inflation)
+    expect(result.qpModified).toBe('neutral');
+    // ccModified compares ccFinal against chain-adjusted reference (round(nakedCcBase*chainMult))
+    // — chain is baked into the reference, so no extra relic/buff means neutral
+    expect(result.ccModified).toBe('neutral');
+  });
+
+  it('chain 2.0x: QP stays at raw base, CC gets 2.0x', () => {
+    // nakedQpBase=4 → QP=4; nakedCcBase=6 → CC=round(6*2.0)=12
+    const card = makeAttackCard();
+    const ctx = baseCtx({ chainMultiplier: 2.0 });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(12);
+    expect(result.qpModified).toBe('neutral');
+    // ccModified reference is round(nakedCcBase*2.0)=12 — equals ccFinal=12 → neutral
+    expect(result.ccModified).toBe('neutral');
+  });
+
+  it('chain 1.0x (no active chain): both QP and CC at raw base, both neutral', () => {
+    // chain=1.0 is effectively no chain — same as omitting chainMultiplier
+    const card = makeAttackCard();
+    const ctx = baseCtx({ chainMultiplier: 1.0 });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(6);
+    expect(result.qpModified).toBe('neutral');
+    expect(result.ccModified).toBe('neutral');
+  });
+
+  it('chain 1.5x + chain-neutral modifiers (whetstone): QP still raw base', () => {
+    // QP: round(4*1.0*1.0*1.0) + 3 = 7 (whetstone flat; no chain on QP)
+    // CC: round(round(6*1.5) * 1.0 * 1.0 * 1.0) + 3 = round(9)+3 = 12
+    const card = makeAttackCard();
+    const ctx = baseCtx({ chainMultiplier: 1.5, activeRelicIds: new Set(['whetstone']) });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(7);
+    expect(result.ccValue).toBe(12);
+    // qpModified compares 7 vs nakedQpBase=4 → buffed (whetstone inflated QP, not chain)
+    expect(result.qpModified).toBe('buffed');
+    // ccModified compares 12 vs round(6*1.5)=9 → buffed (whetstone inflated CC above chain base)
+    expect(result.ccModified).toBe('buffed');
+  });
+});
+
+describe('computeDamagePreview — chain multiplier: shield card', () => {
+  it('chain 1.5x: QP stays at raw base (no chain), CC gets 1.5x', () => {
+    // block stat table L0: nakedQpBase=4, nakedCcBase=6
+    // QP: no chain applied → qpFinalShield=4
+    // CC: round(6 * 1.5) = round(9) = 9 → ccFinalShield=9
+    const card = makeShieldCard();
+    const ctx = baseCtx({ chainMultiplier: 1.5 });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(9);
+    expect(result.qpModified).toBe('neutral');
+    // ccModified: classify(9, round(6*1.5)=9) → neutral (chain is baked into reference)
+    expect(result.ccModified).toBe('neutral');
+  });
+
+  it('chain 2.0x: QP stays at raw base, CC gets 2.0x', () => {
+    // nakedQpBase=4 → QP=4; nakedCcBase=6 → CC=round(6*2.0)=12
+    const card = makeShieldCard();
+    const ctx = baseCtx({ chainMultiplier: 2.0 });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(12);
+    expect(result.qpModified).toBe('neutral');
+    // ccModified: classify(12, round(6*2.0)=12) → neutral
+    expect(result.ccModified).toBe('neutral');
+  });
+
+  it('chain 1.0x (no active chain): both QP and CC at raw base, both neutral', () => {
+    const card = makeShieldCard();
+    const ctx = baseCtx({ chainMultiplier: 1.0 });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(6);
+    expect(result.qpModified).toBe('neutral');
     expect(result.ccModified).toBe('neutral');
   });
 });

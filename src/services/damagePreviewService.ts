@@ -49,7 +49,12 @@ export interface DamagePreviewContext {
   scarTissueStacks: number;
   /** Player strength/weakness modifier (1.0 = neutral, 0.75 = weakness 1, 1.25 = strength 1). Defaults to 1.0 if omitted. */
   playerStrengthModifier?: number;
-  /** Knowledge Chain multiplier (1.0 = no chain, default). Applied at base only. */
+  /**
+   * Knowledge Chain multiplier (1.0 = no chain, default). Applied at base only.
+   * NOTE: chain only applies to Charge Correct plays — Quick Play breaks the chain
+   * (turnManager sets currentChainMultiplier = 1.0 for QP). The preview mirrors
+   * this: chainMult is applied to ccBase/ccShield only, never to qpBase/qpShield.
+   */
   chainMultiplier?: number;
 }
 
@@ -213,9 +218,10 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
       ccBase = Math.round(ccBase * CURSED_CHARGE_CORRECT_MULTIPLIER); // 1.0 — no change
     }
 
-    // AR-CHAIN-REWORK: chain adjusts base before other multipliers
+    // AR-CHAIN-REWORK: chain adjusts CC base before other multipliers.
+    // QP plays break the chain (turnManager sets currentChainMultiplier = 1.0 for QP),
+    // so the chain bonus is NOT applied to qpBase — only to ccBase.
     const chainMult = ctx.chainMultiplier ?? 1.0;
-    qpBase = Math.round(qpBase * chainMult);
     ccBase = Math.round(ccBase * chainMult);
 
     // Step 3: barbed_edge +3 (mirrors cardEffectResolver sharpenedEdgeBonus, not resolveAttackModifiers)
@@ -289,7 +295,8 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
     return {
       qpValue: qpFinal,
       ccValue: ccFinal,
-      qpModified: classify(qpFinal, Math.round(nakedQpBase * chainMult)),
+      // QP has no chain bonus — compare against raw naked base (no chainMult)
+      qpModified: classify(qpFinal, nakedQpBase),
       ccModified: classify(ccFinal, Math.round(nakedCcBase * chainMult)),
     };
   }
@@ -300,13 +307,14 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   let qpShield = nakedQpBase;
   let ccShield = nakedCcBase;
 
-  // AR-CHAIN-REWORK: chain adjusts shield base
+  // AR-CHAIN-REWORK: chain adjusts CC shield base before other multipliers.
+  // QP plays break the chain (turnManager sets currentChainMultiplier = 1.0 for QP),
+  // so the chain bonus is NOT applied to qpShield — only to ccShield.
   const chainMult = ctx.chainMultiplier ?? 1.0;
-  qpShield = Math.round(qpShield * chainMult);
   ccShield = Math.round(ccShield * chainMult);
 
   // Cursed QP penalty — mirrors cardEffectResolver lines 616-631.
-  // Applied after chain (base scaling) and before relic flat bonuses, matching attack card ordering.
+  // Applied before relic flat bonuses, matching attack card ordering.
   // CC: CURSED_CHARGE_CORRECT_MULTIPLIER is 1.0 (no change), so ccShield is unchanged.
   if (card.isCursed) {
     let cursedQpMult = CURSED_QP_MULTIPLIER; // 0.7
@@ -369,7 +377,8 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   return {
     qpValue: qpFinalShield,
     ccValue: ccFinalShield,
-    qpModified: classify(qpFinalShield, Math.round(nakedQpBase * chainMult)),
+    // QP has no chain bonus — compare against raw naked base (no chainMult)
+    qpModified: classify(qpFinalShield, nakedQpBase),
     ccModified: classify(ccFinalShield, Math.round(nakedCcBase * chainMult)),
   };
 }

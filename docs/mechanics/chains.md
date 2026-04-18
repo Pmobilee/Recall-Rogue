@@ -218,7 +218,11 @@ Debuffs use a 0.5× dampened chain scaling so a max-chain slow doesn't trivially
 
 ### Card Face Preview
 
-Card faces now display chain-adjusted values during combat. `damagePreviewService` receives `chainMultiplier` from the current turn state and applies the base-only formula before rendering the preview number. This means the number shown on a card face exactly matches what will be dealt when played.
+Card faces display chain-adjusted values during combat. `damagePreviewService` receives `chainMultiplier` from the current turn state and applies it before rendering the preview number. The displayed value exactly matches what will be dealt.
+
+**QP vs CC split (fixed 2026-04-18):** Chain applies only to **Charge Correct** plays. Quick Play breaks the chain — `turnManager.ts` sets `currentChainMultiplier = 1.0` for QP plays (line ~1376). The preview mirrors this correctly: `chainMult` is applied to `ccBase`/`ccShield` only, never to `qpBase`/`qpShield`. A card showing QP=6 during a 1.5× chain displays 6 (the raw base), while CC shows 9 (chain-boosted).
+
+The `qpModified` classify indicator compares the QP final value against `nakedQpBase` (raw, no chain). The `ccModified` indicator compares the CC final value against `round(nakedCcBase × chainMult)` — chain is baked into the CC reference, so a chain-only active card shows `ccModified: neutral` until relics/buffs further boost it.
 
 Chain Lightning (`chain_lightning` mechanic) is the only exception — its CC damage is `baseValue × chain length` rather than using `chainMultiplier` from the standard lookup.
 

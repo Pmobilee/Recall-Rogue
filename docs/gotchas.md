@@ -4663,3 +4663,17 @@ The merged `intentResult.damage` flows through the main damage pipeline once (en
 **Fix:** Added cursed QP multiplier logic to the shield card path in `damagePreviewService.ts`, placed after the chain multiplier (base scaling) and before relic flat bonuses — matching the attack card ordering. `scar_tissue` relic still overrides the multiplier to 0.85× in both paths.
 
 **Files:** `src/services/damagePreviewService.ts` — shield section after chain mult. `src/services/damagePreviewService.test.ts` — three new tests covering cursed shield QP penalty, cursed CC unchanged, and cursed + scar_tissue override.
+
+### 2026-04-18 — QP damage preview incorrectly applied chain multiplier
+
+**What:** During an active chain (e.g., 1.5×), the card face preview showed inflated Quick Play values. A strike card with QP base 6 displayed "9 damage" (6 × 1.5) but actually dealt 6 when played via Quick Play.
+
+**Why:** `damagePreviewService.ts` applied `chainMult` to BOTH `qpBase` and `ccBase` (attack path, lines ~218-219) and to both `qpShield` and `ccShield` (shield path, lines ~304-306). But Quick Play breaks the chain — `turnManager.ts` sets `currentChainMultiplier = 1.0` for QP plays (line ~1376), while CC plays use `getChainMultiplier(getCurrentChainLength())` (line ~1394). So chain only applies to Charge Correct, never to Quick Play.
+
+The `qpModified` classify call also compared against `Math.round(nakedQpBase * chainMult)` instead of the raw `nakedQpBase`, which further inflated the reference for the color indicator.
+
+**Fix:** Removed chain multiplication from `qpBase` and `qpShield` in `damagePreviewService.ts`. Chain now applied to `ccBase`/`ccShield` only. Changed `qpModified` classify reference from `Math.round(nakedQpBase * chainMult)` to `nakedQpBase` in both attack and shield return paths.
+
+**Files:** `src/services/damagePreviewService.ts`. Tests: `src/services/damagePreviewService.test.ts` — 7 new chain multiplier tests added.
+
+**Note on ccModified behavior:** `ccModified` classifier compares CC final against `round(nakedCcBase × chainMult)` — chain is baked into the CC reference. When chain is the only active modifier (no relic/buff), `ccModified` correctly shows `'neutral'`. It goes `'buffed'` only when relics/buffs additionally boost CC above the chain baseline.
