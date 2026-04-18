@@ -8,6 +8,11 @@
 // The multiplier persists across turns; only the active color rotates. This forces
 // variety — players cannot hoard a single color to build chains indefinitely.
 //
+// AR-310 hand-aware rotation:
+// rotateActiveChainColor accepts an optional handChainTypes parameter. When provided,
+// the rotation restricts candidates to chain types present in the drawn hand, so the
+// active color is always one the player can actually play this turn.
+//
 // 7.7: Weighted rotation (rotateActiveChainColorWeighted) biases toward chain types
 // with more cards in the deck, improving distribution fairness.
 //
@@ -115,31 +120,55 @@ export function decayChain(): void {
  * If no run chain types are configured (e.g. trivia/general runs before
  * initChainSystem is called), returns null and no rotation is applied.
  *
- * Call this at the start of each player turn (i.e. at the top of endPlayerTurn
- * after incrementing turnNumber, so the new turn already has the rotated color).
+ * Call this AFTER drawing the hand so handChainTypes can be passed to restrict
+ * the selection to colors actually present in the player's hand.
  *
- * @param turnNumber   - The global turn number for the coming turn.
- * @param excludeColor - Optional color to exclude from selection (used at turn
+ * @param turnNumber      - The global turn number for the coming turn.
+ * @param excludeColor    - Optional color to exclude from selection (used at turn
  *   boundaries to guarantee the color always rotates to something different).
  *   If only one chain type exists and it matches excludeColor, falls back to
  *   the full candidate list (no alternative available).
+ * @param handChainTypes  - Optional array of chainType values present in the drawn
+ *   hand (AR-310 hand-aware fix). When provided, further restricts candidates to
+ *   the intersection of runChainTypes and handChainTypes so the active color is
+ *   always one the player can actually play this turn.
+ *   Fallback priority:
+ *     1. Hand colors that differ from excludeColor (ideal)
+ *     2. Hand colors including excludeColor (only one color in hand)
+ *     3. All runChainTypes minus excludeColor (hand has no matching chain types)
+ *     4. All runChainTypes (absolute fallback)
  * @returns The newly active chain type index, or null if rotation is not configured.
  */
-export function rotateActiveChainColor(turnNumber: number, excludeColor?: number | null): number | null {
+export function rotateActiveChainColor(
+  turnNumber: number,
+  excludeColor?: number | null,
+  handChainTypes?: number[],
+): number | null {
   if (_runChainTypes.length === 0) {
     _activeChainColor = null;
     return null;
   }
 
-  // Filter out the excluded color (typically the previous turn's color).
-  let candidates = excludeColor != null
-    ? _runChainTypes.filter(c => c !== excludeColor)
-    : _runChainTypes;
-
-  // If only one chain type exists and it's excluded, fall back to all types.
-  if (candidates.length === 0) {
-    candidates = _runChainTypes;
+  // Start with all run chain types, optionally intersected with hand chain types.
+  // When handChainTypes is provided and non-empty, restrict to colors the player
+  // can actually play this turn (the hand-aware fix).
+  let pool: number[];
+  if (handChainTypes && handChainTypes.length > 0) {
+    const intersection = _runChainTypes.filter(c => handChainTypes.includes(c));
+    // If no intersection (hand has no run chain types), fall back to all run types.
+    pool = intersection.length > 0 ? intersection : _runChainTypes;
+  } else {
+    pool = _runChainTypes;
   }
+
+  // Exclude previous color for guaranteed rotation.
+  let candidates = excludeColor != null
+    ? pool.filter(c => c !== excludeColor)
+    : pool;
+
+  // If excluding the previous color leaves no candidates (e.g. only one hand color
+  // and it matches the previous turn's color), allow same color rather than breaking.
+  if (candidates.length === 0) candidates = pool;
 
   // Deterministic LCG: mix seed + turn number to pick an index.
   // Using the same LCG constants as chainDistribution.ts / chainTypes.ts.

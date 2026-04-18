@@ -774,10 +774,6 @@ export function startEncounter(
 
   // Reset chain at encounter start (clean slate)
   resetChain();
-  // AR-310: Set the active chain color for the first turn of this encounter.
-  // initChainSystem() is called from encounterBridge before startEncounter.
-  const firstTurnColor = rotateActiveChainColor(globalTurnCounter);
-  initialState.activeChainColor = firstTurnColor;
   // AR-261: Reset Knowledge Aura and Review Queue at encounter start
   resetAura();
   resetReviewQueue();
@@ -830,6 +826,13 @@ export function startEncounter(
       initialState.deck.drawPile[shieldInDrawIdx] = removed;
     }
   }
+
+  // AR-310: Set the active chain color AFTER drawing the first hand so we can restrict
+  // to chain types actually present in the opening hand (hand-aware fix).
+  // initChainSystem() is called from encounterBridge before startEncounter.
+  const firstHandColors = [...new Set(initialState.deck.hand.map(c => c.chainType).filter((ct): ct is number => ct != null))];
+  const firstTurnColor = rotateActiveChainColor(globalTurnCounter, null, firstHandColors);
+  initialState.activeChainColor = firstTurnColor;
 
   return initialState;
 }
@@ -3671,9 +3674,8 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.turnNumber += 1;
   turnState.encounterTurnNumber += 1;
   turnState.isSurge = isSurgeTurn(turnState.turnNumber);
-  // AR-310: Rotate the active chain color for the upcoming turn (exclude previous color for guaranteed rotation).
+  // AR-310: Capture previous color now (before discard/draw). Rotation fires AFTER drawHand.
   const previousColor = turnState.activeChainColor;
-  turnState.activeChainColor = rotateActiveChainColor(turnState.turnNumber, previousColor);
 
   const discardedAtTurnEnd = discardHand(deck);
   if (discardedAtTurnEnd.length > 0) {
@@ -3707,6 +3709,12 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     : undefined;
   drawHand(deck, drawCount + turnState.bonusDrawNextTurn, { tagMagnetBias });
   turnState.bonusDrawNextTurn = 0;
+
+  // AR-310: Rotate the active chain color AFTER drawing so we can restrict to colors
+  // present in the hand. This guarantees the active color is always one the player
+  // can actually play this turn (hand-aware fix).
+  const handColors = [...new Set(deck.hand.map(c => c.chainType).filter((ct): ct is number => ct != null))];
+  turnState.activeChainColor = rotateActiveChainColor(turnState.turnNumber, previousColor, handColors);
 
   // Failsafe: if no cards were drawn despite having cards available, log a warning.
   // This catches any future regression where drawHand silently no-ops without exhausting

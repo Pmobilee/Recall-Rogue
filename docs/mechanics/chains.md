@@ -1,7 +1,7 @@
 # Chain System
 
 > **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, break conditions, rotating chain color, and themed chain distribution.
-> **Last verified:** 2026-04-18 (proportional chain decay + always-different chain color rotation)
+> **Last verified:** 2026-04-18 (proportional chain decay + always-different chain color rotation + hand-aware color selection)
 > **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`, `src/ui/components/StudyTempleScreen.svelte`
 
 ---
@@ -20,7 +20,8 @@ Each turn, one of the 3 run chain types is deterministically selected as the **a
 
 This forces variety — players cannot hoard a single color to build chains indefinitely.
 
-- **Active color rotates** every turn via `rotateActiveChainColor(turnNumber)`
+- **Active color rotates** every turn via `rotateActiveChainColor(turnNumber, previousColor, handChainTypes)`
+- **Active color is always in the drawn hand** — rotation fires AFTER `drawHand()` and restricts candidates to chain types present in the player's hand (hand-aware fix, 2026-04-18). If no hand card matches any run chain type, falls back to all run chain types.
 - **Active color can switch mid-turn** via a correct off-colour Charge — see Mid-Turn Switch section below
 - **Chain multiplier persists** across turns regardless of which color is active
 - **Rotation is deterministic** — seeded from `RunState.runSeed` + turn number so it is predictable and reproducible
@@ -32,7 +33,9 @@ Must be called from `encounterBridge.ts` before `startEncounter()` for each new 
 
 ### 
 
-Called at encounter start and at the end of each player turn (in `endPlayerTurn()` after `turnState.turnNumber += 1`). Returns the active chain type index for the next turn and sets `_activeChainColor`. Returns `null` if no run chain types are configured.
+Called AFTER drawing the hand — at encounter start (after `drawHand()` + shield-bias swap in `startEncounter()`) and at the end of each player turn (in `endPlayerTurn()` after `drawHand()`). Returns the active chain type index for the next turn and sets `_activeChainColor`. The `handChainTypes` argument restricts the candidate pool so the active color is always one the player can actually play. Returns `null` if no run chain types are configured.
+
+**Call timing:** Prior to 2026-04-18, rotation fired BEFORE `drawHand()`. The selected color could be absent from the drawn hand, making chains structurally impossible that turn. Moving the call after draw and passing hand chain types eliminates this. `drawHand` does not read `activeChainColor` so the move is safe.
 
 ### Mid-Turn Active Color Switch (2026-04-09)
 
@@ -119,11 +122,19 @@ Called by `turnManager` on every Charge play:
   - If `chainType !== _chain.chainType` — resets to new chain with `length: 1`, returns `1.2`
 - `chainMultiplierOverride` — clamps the multiplier to a fixed value (used by The Nullifier enemy, AR-59.13)
 
-### `rotateActiveChainColor(turnNumber, excludeColor?)`
+### `rotateActiveChainColor(turnNumber, excludeColor?, handChainTypes?)`
 
 Selects active chain color for the given turn. LCG: `(seed * 1664525 + turnNumber * 1013904223) & 0xFFFFFFFF`. Returns one of the 3 run chain types or `null` if none configured. Uses **uniform** (1/3) distribution across the 3 run chain types.
 
 Accepts optional `excludeColor` parameter. At end of turn, the previous active color is passed as `excludeColor` to guarantee the color always rotates to something different. When only one chain type exists and it matches `excludeColor`, falls back to the full candidate list.
+
+Accepts optional `handChainTypes` parameter (array of `chainType` values from the drawn hand). When provided, the candidate pool is further restricted to the intersection of `runChainTypes` and `handChainTypes`. Fallback priority:
+1. Hand colors that differ from `excludeColor` (ideal)
+2. Hand colors including `excludeColor` (only one color in hand)
+3. All `runChainTypes` minus `excludeColor` (hand has no matching chain types)
+4. All `runChainTypes` (absolute fallback)
+
+Called in `turnManager.ts` AFTER `drawHand()` both at encounter start and at each turn boundary.
 
 ### `rotateActiveChainColorWeighted(turnNumber, deckComposition?, excludeColor?)` (AR-7.7)
 

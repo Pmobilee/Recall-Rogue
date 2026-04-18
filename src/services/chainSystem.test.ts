@@ -240,6 +240,56 @@ describe('rotateActiveChainColor – AR-310', () => {
     // Falls back to [7] since no other option exists.
     expect(color).toBe(7);
   });
+
+  // -------------------------------------------------------------------------
+  // hand-aware rotation (AR-310 fix): handChainTypes parameter
+  // -------------------------------------------------------------------------
+
+  it('handChainTypes: returned color is always in the hand array', () => {
+    // Hand contains only colors 0 and 4 — the rotation must pick one of these.
+    const handColors = [0, 4];
+    for (let t = 1; t <= 50; t++) {
+      const color = rotateActiveChainColor(t, null, handColors);
+      expect(color).not.toBeNull();
+      expect(handColors).toContain(color);
+    }
+  });
+
+  it('handChainTypes: excludeColor still applies within the hand pool', () => {
+    // Hand has all 3 run types. Exclude one — the result should not be that color.
+    const handColors = [0, 2, 4]; // same as RUN_CHAINS
+    const excludeColor = RUN_CHAINS[0]; // 0
+    for (let t = 1; t <= 50; t++) {
+      const color = rotateActiveChainColor(t, excludeColor, handColors);
+      expect(color).not.toBeNull();
+      expect(color).not.toBe(excludeColor);
+      expect(RUN_CHAINS).toContain(color);
+    }
+  });
+
+  it('handChainTypes: falls back to same color when only one hand color matches and it equals excludeColor', () => {
+    // Hand has only color 0, which is also the excluded color.
+    // The function must still return a valid color (same-color fallback).
+    const handColors = [0];
+    const color = rotateActiveChainColor(1, 0 /* excludeColor */, handColors);
+    expect(color).toBe(0);
+  });
+
+  it('handChainTypes: falls back to all runChainTypes when hand has no matching chain types', () => {
+    // Hand contains only color 99 (not in runChainTypes) — fallback to full run pool.
+    const handColors = [99];
+    const color = rotateActiveChainColor(1, null, handColors);
+    expect(color).not.toBeNull();
+    expect(RUN_CHAINS).toContain(color);
+  });
+
+  it('handChainTypes: empty array falls back to all runChainTypes (no restriction)', () => {
+    // Empty hand colors = no restriction — behaves like calling without the parameter.
+    const colorWithEmpty = rotateActiveChainColor(5, null, []);
+    initChainSystem(RUN_CHAINS, SEED);
+    const colorWithoutParam = rotateActiveChainColor(5);
+    expect(colorWithEmpty).toBe(colorWithoutParam);
+  });
 });
 
 // ---------------------------------------------------------------------------
