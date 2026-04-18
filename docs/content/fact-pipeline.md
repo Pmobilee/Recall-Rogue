@@ -174,7 +174,7 @@ Then decodes the buffer via `decodeDbBuffer()` before passing to sql.js, and bui
 | Method | Description |
 |---|---|
 | `getAll()` | All facts |
-| `getTriviaFacts()` | All facts excluding `categoryL1 === 'language'` and `type === 'vocabulary'` |
+| `getTriviaFacts()` | All facts excluding `categoryL1 === 'language'`, `type === 'vocabulary'`, and facts with a `bridge:{deckId}` tag (~5,872 excluded; ~7,164 native facts remain) |
 | `getById(id)` | Single fact by ID, O(1) |
 | `getByIds(ids[])` | Batch lookup, O(n) |
 | `getByType(type)` | Filter by `ContentType` |

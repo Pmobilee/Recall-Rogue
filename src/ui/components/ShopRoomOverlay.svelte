@@ -11,7 +11,7 @@
   import { updateReviewStateByButton } from '../stores/playerData'
   import { shuffled } from '../../services/randomUtils'
   import { recordHaggleAttempt, pendingTransformOptions, onShopTransformChoice } from '../../services/gameFlowController'
-  import { SHOP_HAGGLE_DISCOUNT } from '../../data/balance'
+  import { SHOP_HAGGLE_DISCOUNT, BALANCE } from '../../data/balance'
   import { get } from 'svelte/store'
   import { activeRunState } from '../../services/runStateStore'
   import { isRelicSlotsFull } from '../../services/relicEffectResolver'
@@ -447,7 +447,7 @@
       const fact = allFacts[Math.floor(Math.random() * allFacts.length)]
       const correct = fact.correctAnswer
       const distractors = fact.distractors ?? []
-      const options = shuffled([correct, ...distractors.slice(0, 2)])
+      const options = shuffled([correct, ...distractors.slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)])
       quizQuestion = fact
       quizAnswers = options
       hagglingState = 'quiz'

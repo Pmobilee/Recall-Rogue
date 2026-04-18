@@ -319,7 +319,7 @@ export function getDetailedCardDescription(card: Card, powerOverride?: number): 
       return `Draw ${power} cards. Forget: removed from combat after use.` + apSuffix;
     case 'transmute': {
       const transChoices = stats?.extras?.['transforms'] === 2 ? 2 : 1;
-      return `QP: Auto-transform into a random new card for this encounter. CC: Choose 1 of 3 new cards (${transChoices === 2 ? '2' : '1'} at L5) for this encounter. CW: Auto-transform into a random card.${transChoices === 2 ? ' L5: transform 2 cards.' : ''}` + apSuffix;
+      return `QP: Auto-transform into a random card, drawn immediately. CC: Choose 1 of 3 new cards (${transChoices === 2 ? '2' : '1'} at L5), drawn immediately. CW: Same as QP.${transChoices === 2 ? ' L5: transform 2 cards.' : ''}` + apSuffix;
     }
     case 'sift': {
       const scryCount = stats?.extras?.['scryCount'] ?? 2;
@@ -690,8 +690,11 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
   const _partsStatsForPower = mechanic ? getMasteryStats(mechanic.id, masteryLevel) : null;
   const _partsBasePower = powerOverride ?? (_partsStatsForPower?.qpValue != null ? _partsStatsForPower.qpValue : Math.round(card.baseEffectValue));
   // AR-CHAIN-REWORK: apply chain multiplier to power for attack/shield display.
+  // ONLY when powerOverride is NOT provided — if the caller passed a pre-computed
+  // value (e.g. from damagePreviewService), chain is already baked in. Applying it
+  // again caused the card to show 8 while the actual effect was 7 (double-chain bug).
   const _partsChainMult = gameState?.chainMultiplier ?? 1.0;
-  const power = (card.cardType === 'attack' || card.cardType === 'shield')
+  const power = (card.cardType === 'attack' || card.cardType === 'shield') && powerOverride == null
     ? Math.round(_partsBasePower * _partsChainMult)
     : _partsBasePower;
 

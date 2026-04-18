@@ -1619,13 +1619,18 @@
     const forceHardFormats = turnState?.ascensionForceHardQuestionFormats === true
     const variantPool = hasVariantsArray
       ? (() => {
-        const variants = fact.variants!
-        if (!forceHardFormats) return variants
-        // String variants have no type field — skip hard format filtering for them
-        const preferred = variants.filter((variant) => (
-          typeof variant !== 'string' && (variant.type === 'fill_blank' || variant.type === 'reverse' || variant.type === 'context')
-        ))
-        return preferred.length > 0 ? preferred : variants
+        // Filter out true_false variants — they produce broken quiz options:
+        // 1. Only 2 options (True/False) instead of 4
+        // 2. 83% bias toward "True" answer
+        // 3. Variants without own distractors fall back to content-based distractors
+        let variants = fact.variants!.filter((v: any) => typeof v === 'string' || v.type !== 'true_false')
+        if (forceHardFormats) {
+          const preferred = variants.filter((variant) => (
+            typeof variant !== 'string' && (variant.type === 'fill_blank' || variant.type === 'reverse' || variant.type === 'context')
+          ))
+          if (preferred.length > 0) variants = preferred
+        }
+        return variants.length > 0 ? variants : []
       })()
       : []
     const variantCount = getQuestionVariantCount(hasVariantsArray, variantPool.length)
@@ -1676,6 +1681,19 @@
         return entryQ === variantQuestion
       })
       if (sourceVariantIndex >= 0) variantIndex = sourceVariantIndex
+
+      // Safety net: if variant changed the answer but has no own distractors,
+      // fall back to base question to prevent answer/distractor type mismatch.
+      // Example: fill_blank variant answers "1994" but base distractors are ["Books", "Electronics"]
+      if (correctAnswer !== fact.correctAnswer) {
+        const variantHasOwnDistractors = typeof variant !== 'string' &&
+          Array.isArray(variant.distractors) && variant.distractors.length >= 2
+        if (!variantHasOwnDistractors) {
+          question = fact.quizQuestion
+          correctAnswer = fact.correctAnswer
+          distractorSource = fact.distractors
+        }
+      }
     } else {
       // Legacy system for vocab cards and facts without variants
       correctAnswer = fact.correctAnswer

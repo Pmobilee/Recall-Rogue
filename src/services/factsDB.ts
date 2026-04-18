@@ -148,12 +148,19 @@ class FactsDB {
   }
 
   /**
-   * Returns all facts EXCLUDING language/vocabulary facts.
+   * Returns all facts EXCLUDING language/vocabulary facts and bridged facts.
    * Use this for trivia run pool building — language facts belong in Study
-   * Temple curated decks only and must not leak into trivia runs.
+   * Temple curated decks only and must not leak into trivia runs. Bridged facts
+   * (tagged 'bridge:{deckId}') are excluded because their distractor pools are
+   * designed for the base question format and produce incoherent choices when
+   * fact variants change the question/answer type at runtime.
    */
   getTriviaFacts(): Fact[] {
-    return this.getAll().filter(f => f.categoryL1 !== 'language' && f.type !== 'vocabulary')
+    return this.getAll().filter(f =>
+      f.categoryL1 !== 'language' &&
+      f.type !== 'vocabulary' &&
+      !f.tags?.some(t => t.startsWith('bridge:'))
+    )
   }
 
   /**

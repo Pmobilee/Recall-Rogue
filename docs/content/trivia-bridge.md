@@ -21,7 +21,7 @@ The isolation meant a player could master T-Rex facts in Study Temple (dinosaurs
 
 The **trivia bridge** fixes this. It is a build-time script that reads curated knowledge deck JSONs, selects the single best trivia question per entity, maps `DeckFact` fields to the `Fact` schema, and outputs a seed file (`bridge-curated.json`) that is ingested into `facts.db` alongside regular trivia.
 
-**Impact:** ~5,800+ bridged trivia facts across 45+ knowledge decks, plus ~7,100 seed facts from Wikipedia/Wikidata — totaling ~11,300 trivia-eligible facts with shared FSRS states.
+**Impact:** ~5,872 bridged facts across 45+ knowledge decks, plus ~7,164 seed facts from Wikipedia/Wikidata — totaling ~13,036 facts in `facts.db`. Of these, bridged facts are **excluded from the trivia pool** (`getTriviaFacts()` filters on `bridge:` tag) due to distractor pool mismatch when fact variants change the question/answer type. FSRS state sharing still works — the IDs are shared across modes and the player's spaced-repetition history carries over. Only the trivia dungeon question pool is narrowed to ~7,164 native facts.
 
 ---
 

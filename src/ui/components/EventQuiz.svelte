@@ -9,6 +9,7 @@
   import { selectNonCombatStudyQuestion, selectNonCombatPlaylistQuestion } from '../../services/nonCombatQuizSelector'
   import { getConfusionMatrix } from '../../services/confusionMatrixStore'
   import { factsDB } from '../../services/factsDB'
+  import { BALANCE } from '../../data/balance'
 
   interface QuizQuestion {
     question: string
@@ -99,13 +100,13 @@
         // Distractors: pick 2 from pre-generated list or other facts
         let distractors: string[]
         if (fact.distractors && fact.distractors.length >= 2) {
-          distractors = shuffleArray(fact.distractors).slice(0, 2)
+          distractors = shuffleArray(fact.distractors).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
         } else {
           // Pull from other facts' correct answers as a last resort
           const others = allFacts
             .filter(f => f.id !== fact.id && f.correctAnswer !== fact.correctAnswer)
             .map(f => f.correctAnswer)
-          distractors = shuffleArray(others).slice(0, 2)
+          distractors = shuffleArray(others).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
         }
 
         const choices = shuffleArray([fact.correctAnswer, ...distractors])
