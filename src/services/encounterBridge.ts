@@ -1113,13 +1113,18 @@ export function handlePlayCard(
   if (correct && isChargeCorrectPlay) {
     const wisdomInscription = getActiveInscription(result.turnState, 'inscription_wisdom');
     if (wisdomInscription) {
-      // Draw 1 extra card
-      drawHand(result.turnState.deck, 1);
-      // CC inscription effect: also heal 1 HP
-      if (wisdomInscription.playMode === 'charge_correct' || wisdomInscription.playMode === 'charge') {
+      // Read mastery-scaled values from inscription extras (set by inscriptionWisdomActivated wiring)
+      const drawCount = wisdomInscription.extras?.extraDrawPerCC ?? 1;
+      const healAmount = wisdomInscription.extras?.healPerCC ?? 0;
+      // Draw mastery-scaled extra cards
+      if (drawCount > 0) {
+        drawHand(result.turnState.deck, drawCount);
+      }
+      // CC inscription effect: heal mastery-scaled HP
+      if (healAmount > 0 && (wisdomInscription.playMode === 'charge_correct' || wisdomInscription.playMode === 'charge')) {
         result.turnState.playerState.hp = Math.min(
           result.turnState.playerState.maxHP,
-          result.turnState.playerState.hp + 1,
+          result.turnState.playerState.hp + healAmount,
         );
       }
     }

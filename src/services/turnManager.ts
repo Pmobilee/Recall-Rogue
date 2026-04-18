@@ -160,6 +160,8 @@ export interface ActiveInscription {
   effectValue: number;
   /** The play mode used when the inscription was played. Stored for Cursed QP 0.7x. */
   playMode: PlayMode;
+  /** Optional per-mechanic extras (e.g. inscription_wisdom stores extraDrawPerCC, healPerCC). */
+  extras?: Record<string, number>;
 }
 
 export interface TurnLogEntry {
@@ -218,6 +220,8 @@ export interface TurnState {
   overclockReady: boolean;
   slowEnemyIntent: boolean;
   foresightTurnsRemaining: number;
+  /** Foresight: when > 0, UI shows the enemy's next-turn intent alongside the current one. */
+  foresightShowNextIntent: number;
   persistentShield: number;
   triggeredRelicId: string | null;
   canaryEnemyDamageMultiplier: number;
@@ -511,6 +515,8 @@ export interface TurnState {
    * Captured at chain break / wrong answer / encounter end; consumed by NarrativeEncounterSnapshot.
    */
   completedChainSequences: string[][];
+  /** Siphon Knowledge: seconds to preview the correct answer before the next quiz. 0 = no preview. */
+  siphonAnswerPreviewSeconds: number;
 }
 
 export interface PlayCardResult {
@@ -696,6 +702,7 @@ export function startEncounter(
     overclockReady: false,
     slowEnemyIntent: false,
     foresightTurnsRemaining: 0,
+    foresightShowNextIntent: 0,
     persistentShield: 0,
     triggeredRelicId: null,
     canaryEnemyDamageMultiplier: 1,
@@ -775,6 +782,7 @@ export function startEncounter(
     // Narrative chain tracking — reset each encounter
     currentChainAnswerFactIds: [],
     completedChainSequences: [],
+    siphonAnswerPreviewSeconds: 0,
   };
 
   // Reset chain at encounter start (clean slate)
@@ -2185,6 +2193,24 @@ export function playCardAction(
   if (effect.applyOverclock) turnState.overclockReady = true;
   if (effect.applySlow) turnState.slowEnemyIntent = true;
   if (effect.applyForesight) turnState.foresightTurnsRemaining = 2;
+  // Foresight: show enemy's next-turn intent for 2 turns
+  if (effect.showNextIntent) {
+    turnState.foresightShowNextIntent = 2;
+  }
+  // Siphon Knowledge: store answer preview duration for UI
+  if ((effect.siphonAnswerPreviewDuration ?? 0) > 0) {
+    turnState.siphonAnswerPreviewSeconds = effect.siphonAnswerPreviewDuration!;
+  }
+  // Inscription of Wisdom: store per-CC draw/heal values on the active inscription
+  if (effect.inscriptionWisdomActivated) {
+    const wisdomInsc = turnState.activeInscriptions.find(i => i.mechanicId === 'inscription_wisdom');
+    if (wisdomInsc) {
+      wisdomInsc.extras = {
+        extraDrawPerCC: effect.inscriptionWisdomActivated.extraDrawPerCC,
+        healPerCC: effect.inscriptionWisdomActivated.healPerCC,
+      };
+    }
+  }
   // applyTransmute removed — Transmute now uses CardPickerOverlay (pendingCardPick flow)
 
   // Transmute QP / Charge Wrong: auto-swap source card in-place with the selected candidate
@@ -3797,6 +3823,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.timerExtensionPct = 0;
   turnState.eliminateDistractors = 0;
   turnState.freePlayCharges = 0; // frenzy / focus_next2free charges don't carry over turns
+  turnState.siphonAnswerPreviewSeconds = 0;
 
   // Phase 2/3: Copy shieldsPlayedThisTurn → shieldsPlayedLastTurn, then reset for next turn.
   turnState.shieldsPlayedLastTurn = turnState.shieldsPlayedThisTurn;
@@ -3845,6 +3872,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
 
   rollNextIntent(enemy);
+  if (turnState.foresightShowNextIntent > 0) {
+    turnState.foresightShowNextIntent -= 1;
+  }
   // forcedAttackTurnsRemaining: guard_taunt1t tag — force enemy to attack next turn
   if ((turnState.forcedAttackTurnsRemaining ?? 0) > 0) {
     // Find an attack intent from the pool and override the rolled intent
