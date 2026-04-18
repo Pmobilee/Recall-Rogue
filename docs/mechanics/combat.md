@@ -308,10 +308,12 @@ Used by `computeIntentDisplayDamageWithPerHit()` (display pipeline) to apply rel
 
 The `act` parameter on `computeIntentHpImpact` is retained for call-site compatibility but is no longer used — no decay is applied.
 
-**UI wiring (complete, 2026-04-18):** `CardCombatOverlay.svelte` `displayImpact(intent, enemy)` helper uses `enemy.lockedDisplayDamage` (TOTAL for multi_attack) as raw, subtracts the full current block (no decay), and returns `{ raw, postDecayBlock, hpDamage }`. Multi-attack bubble shows total hpDamage directly — no `×hits` multiplication (the number already represents all hits combined). Intent detail line shows:
-- No block: "${hpDamage} HP damage, ${hits} hits"
-- Partial block: "${hpDamage} HP damage (${raw} total − ${block} block), ${hits} hits"
-- Fully blocked: "Fully blocked (${raw} absorbed, ${hits} hits)"
+**UI wiring (updated 2026-04-18):** `CardCombatOverlay.svelte` `displayImpact(intent, enemy)` helper uses `enemy.lockedDisplayDamage` (TOTAL for multi_attack) as raw, subtracts the full current block (no decay), and returns `{ raw, postDecayBlock, hpDamage }`. Multi-attack bubble now shows `hits×perHit` (raw pre-block damage) so the player can see the breakdown at a glance — e.g. `3×5` for 3 hits of 5 each. `enemy.lockedDisplayDamagePerHit` is the source of truth; falls back to `Math.round(raw / hits)`. Intent detail line shows:
+- No block: "${hits}×${perHit} = ${raw} HP damage"
+- Partial block: "${hits}×${perHit} = ${raw} − ${block} block = ${hpDamage} HP"
+- Fully blocked: "Fully blocked (${hits}×${perHit} = ${raw} absorbed)"
+
+Buff follow-up intent (multi_attack): bubble shows `hits×perHit`; detail shows "Buffs ${desc}, then ${hits}×${perHit} = ${raw} damage".
 
 **`EnemyInstance.lockedDisplayDamage` / `lockedDisplayDamagePerHit` fields:**
 Snapped at intent-roll time by `turnManager.ts` after every `rollNextIntent()` call.

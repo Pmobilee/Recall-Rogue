@@ -753,18 +753,23 @@
       const rawFollowUp = enemy?.lockedFollowUpDisplayDamage ?? followUpIntent.value ?? 0
       const followUpLabel = INTENT_LABELS[followUpIntent.type] ?? followUpIntent.type ?? 'Attack'
       const followUpHits = followUpIntent.hitCount ?? 1
-      // Bug 4 fix: lockedFollowUpDisplayDamage for multi_attack is TOTAL (not per-hit) after
-      // the computeIntentDisplayDamage Bug 1 fix. Show total directly — no ×hits needed.
-      const displayText = `${rawFollowUp}`
+      let displayText: string
+      if (followUpIntent.type === 'multi_attack' && followUpHits > 1) {
+        const followUpPerHit = enemy?.lockedFollowUpDisplayDamagePerHit ?? Math.round(rawFollowUp / followUpHits)
+        displayText = `${followUpHits}×${followUpPerHit}`
+      } else {
+        displayText = `${rawFollowUp}`
+      }
       return { icon, text: displayText, type: displayType, label: followUpLabel, color, borderColor, telegraph, fullyBlocked: false }
     }
 
     if (enemyIntent.type === 'multi_attack') {
       const impact = displayImpact(enemyIntent, enemy)
+      const hits = enemyIntent.hitCount ?? 2
+      const perHit = enemy?.lockedDisplayDamagePerHit ?? Math.round(impact.raw / hits)
       const fullyBlocked = impact.raw > 0 && impact.hpDamage === 0
-      // Bug 3 fix: impact.hpDamage is now TOTAL HP damage (raw is total, block subtracted once).
-      // Show the total HP the player will lose — no ×hits multiplication needed.
-      return { icon, text: `${impact.hpDamage}`, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked }
+      // Show hits×perHit format (pre-block raw damage) so the player can see how many hits land.
+      return { icon, text: `${hits}×${perHit}`, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked }
     }
     if (enemyIntent.type === 'attack') {
       const impact = displayImpact(enemyIntent, enemy)
@@ -801,7 +806,8 @@
       const rawFollowUp = turnState?.enemy?.lockedFollowUpDisplayDamage ?? followUpIntent.value ?? 0
       const followUpHits = followUpIntent.hitCount ?? 1
       if (followUpHits > 1) {
-        return `Buffs ${buffDesc}, then attacks for ${rawFollowUp} × ${followUpHits} hits`
+        const followUpPerHit = turnState?.enemy?.lockedFollowUpDisplayDamagePerHit ?? Math.round(rawFollowUp / followUpHits)
+        return `Buffs ${buffDesc}, then ${followUpHits}×${followUpPerHit} = ${rawFollowUp} damage`
       }
       return `Buffs ${buffDesc}, then attacks for ${rawFollowUp} damage`
     }
@@ -820,14 +826,14 @@
       case 'multi_attack': {
         const hits = enemyIntent.hitCount ?? 2
         const impact = displayImpact(enemyIntent, turnState?.enemy ?? null)
+        const perHit = turnState?.enemy?.lockedDisplayDamagePerHit ?? Math.round(impact.raw / hits)
         if (impact.hpDamage === 0 && impact.raw > 0) {
-          return `Fully blocked (${impact.raw} absorbed, ${hits} hits)`
+          return `Fully blocked (${hits}×${perHit} = ${impact.raw} absorbed)`
         }
         if (impact.postDecayBlock > 0 && impact.raw !== impact.hpDamage) {
-          // impact.raw is TOTAL across all hits; postDecayBlock is full current block
-          return `${impact.hpDamage} HP damage (${impact.raw} total − ${impact.postDecayBlock} block), ${hits} hits`
+          return `${hits}×${perHit} = ${impact.raw} − ${impact.postDecayBlock} block = ${impact.hpDamage} HP`
         }
-        return `${impact.hpDamage} HP damage, ${hits} hits`
+        return `${hits}×${perHit} = ${impact.raw} HP damage`
       }
       case 'defend':
         return `Gains ${val} Block`
@@ -4309,7 +4315,7 @@
   .forget-pile-indicator {
     position: absolute;
     right: calc(12px * var(--layout-scale, 1));
-    bottom: calc(calc(260px * var(--layout-scale, 1)) + 2vh);
+    bottom: calc(calc(260px * var(--layout-scale, 1)) + 7vh);
     display: flex;
     flex-direction: column;
     align-items: center;
