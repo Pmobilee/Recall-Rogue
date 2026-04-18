@@ -2000,11 +2000,24 @@ export function playCardAction(
       _previewOverrideDamage = displayedValue;
     }
   }
+  // ── DIAGNOSTIC: card preview source-of-truth trace ──────────────────────────
+  if (import.meta.env?.DEV) {
+    const resolverShield = effect.shieldApplied;
+    const resolverDamage = effect.damageDealt;
+    console.log(`[PreviewSOT] card=${card.mechanicId} type=${card.cardType} mode=${playMode} cc=${isChargeCorrect}` +
+      ` | preview=${cardPreview ? `qp=${cardPreview.qpValue} cc=${cardPreview.ccValue}` : 'NONE'}` +
+      ` | resolver: shield=${resolverShield} damage=${resolverDamage}` +
+      ` | override: shield=${_previewOverrideShield} damage=${_previewOverrideDamage}` +
+      ` | skip=${_skipPreviewOverride} chain=${currentChainMultiplier}`);
+  }
 
   // Card Preview Source-of-Truth: override base damage with preview value BEFORE
   // Burn/Bleed bonuses. Burn and Bleed are separate status effects on top of card
   // damage — they're not part of the card's displayed value.
   if (_previewOverrideDamage != null && effect.damageDealt > 0) {
+    if (import.meta.env?.DEV && effect.damageDealt !== _previewOverrideDamage) {
+      console.warn(`[PreviewSOT] DAMAGE MISMATCH: resolver=${effect.damageDealt} → preview=${_previewOverrideDamage} (delta=${_previewOverrideDamage - effect.damageDealt})`);
+    }
     effect.damageDealt = _previewOverrideDamage;
     effect.finalValue = _previewOverrideDamage;
     effect.enemyDefeated = _previewOverrideDamage >= enemy.currentHP;
@@ -2156,8 +2169,14 @@ export function playCardAction(
     // Card Preview Source-of-Truth: override shieldApplied with the preview value
     // as the ABSOLUTE LAST step. No modifier may touch this after the override.
     if (_previewOverrideShield != null && effect.shieldApplied > 0) {
+      if (import.meta.env?.DEV && effect.shieldApplied !== _previewOverrideShield) {
+        console.warn(`[PreviewSOT] SHIELD MISMATCH: resolver=${effect.shieldApplied} → preview=${_previewOverrideShield} (delta=${_previewOverrideShield - effect.shieldApplied})`);
+      }
       effect.shieldApplied = _previewOverrideShield;
       effect.finalValue = _previewOverrideShield;
+    }
+    if (import.meta.env?.DEV) {
+      console.log(`[PreviewSOT] APPLYING shield=${effect.shieldApplied} to playerState.shield=${playerState.shield} → ${playerState.shield + effect.shieldApplied}`);
     }
     playCardAudio('shield-gain');
     applyShield(playerState, effect.shieldApplied);
