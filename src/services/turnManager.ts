@@ -431,6 +431,10 @@ export interface TurnState {
    */
   archiveBlockBonus: number;
   /**
+   * Archive: number of cards to retain in hand at turn end. Accumulated from archiveRetainCount effects. Reset each turn.
+   */
+  archiveRetainSlots: number;
+  /**
    * AR-tag-wiring: Number of remaining Empower buff targets.
    * When > 1 (empower_2cards tag), buffNextCard persists until this many cards have consumed it.
    * 0 = inactive (default behavior: buff consumed after 1 card).
@@ -754,6 +758,7 @@ export function startEncounter(
     eliminateDistractors: 0,
     thornsPersistent: false,
     archiveBlockBonus: 0,
+    archiveRetainSlots: 0,
     empowerRemainingCount: 0,
     igniteRemainingAttacks: 0,
     forcedAttackTurnsRemaining: 0,
@@ -2643,6 +2648,11 @@ export function playCardAction(
     turnState.archiveBlockBonus = effect.archiveBlockBonus!;
   }
 
+  // Archive: accumulate retain slots from archiveRetainCount
+  if ((effect.archiveRetainCount ?? 0) > 0) {
+    turnState.archiveRetainSlots = (turnState.archiveRetainSlots ?? 0) + effect.archiveRetainCount!;
+  }
+
   // empowerTargetCount: buff next N cards instead of 1 (empower_2cards tag)
   // When set, buffNextCard will be held for multiple card plays; empowerRemainingCount tracks how many.
   if ((effect.empowerTargetCount ?? 0) > 1) {
@@ -3026,6 +3036,82 @@ export function playCardAction(
       }
     }
     turnState.turnLog.push({ type: 'play', message: `War Drum: +${effect.warDrumBonus} to all hand cards`, value: effect.warDrumBonus });
+  }
+
+
+  // Aftershock (Echo): re-resolve the target mechanic at reduced power after the main play.
+  // resolveCardEffect mutates enemy/playerState directly via applyAttackDamage — damage and
+  // shield are already applied when it returns. We only need to apply the side effects
+  // (statuses, burn, self-damage, heal) that turnManager normally handles separately.
+  if (effect.aftershockRepeat) {
+    const { mechanicId: repeatMechId, multiplier: repeatMult } = effect.aftershockRepeat;
+    const repeatMechDef = getMechanicDefinition(repeatMechId);
+    if (repeatMechDef && enemy.currentHP > 0) {
+      // Build a synthetic Card carrying the target mechanic for the resolver.
+      const repeatStats = getMasteryStats(repeatMechId, card.masteryLevel ?? 0);
+      const baseVal = repeatStats?.qpValue ?? repeatMechDef.quickPlayValue ?? repeatMechDef.baseValue ?? 5;
+      const synthCard: Card = {
+        ...card,
+        mechanicId: repeatMechId,
+        mechanicName: repeatMechDef.name,
+        cardType: repeatMechDef.type as Card['cardType'],
+        baseEffectValue: Math.floor(baseVal * repeatMult),
+        effectMultiplier: 1, // multiplier already baked into baseEffectValue
+      };
+      // Re-resolve at QP (no quiz for the repeat), chain multiplier 1.0 to avoid double-scaling.
+      const repeatEffect = resolveCardEffect(
+        synthCard,
+        playerState,
+        enemy,
+        0,   // speedBonus — not applicable for auto-repeat
+        0,   // buffNextCard — empower buff is not inherited
+        undefined,
+        undefined,
+        { playMode: 'quick', chainMultiplier: 1.0 },
+      );
+      // Damage and shield are already applied inside resolveCardEffect.
+      // Apply the remaining side effects that turnManager owns:
+
+      // Status effects from repeat
+      for (const status of repeatEffect.statusesApplied) {
+        const existing = enemy.statusEffects.find(s => s.type === status.type);
+        if (existing) {
+          existing.value += status.value;
+        } else {
+          enemy.statusEffects.push({ ...status });
+        }
+      }
+
+      // Burn stacks from repeat
+      if ((repeatEffect.applyBurnStacks ?? 0) > 0) {
+        const existingBurn = enemy.statusEffects.find(s => s.type === 'burn');
+        if (existingBurn) {
+          existingBurn.value += repeatEffect.applyBurnStacks!;
+        } else {
+          enemy.statusEffects.push({ type: 'burn', value: repeatEffect.applyBurnStacks!, turnsRemaining: PERMANENT_DURATION_SENTINEL });
+        }
+      }
+
+      // Self-damage from repeat (e.g. Gambit)
+      if ((repeatEffect.selfDamage ?? 0) > 0) {
+        playerState.hp = Math.max(0, playerState.hp - repeatEffect.selfDamage!);
+        turnState.selfDamageTakenThisEncounter += repeatEffect.selfDamage!;
+      }
+
+      // Heal from repeat
+      if ((repeatEffect.healApplied ?? 0) > 0) {
+        playerState.hp = Math.min(playerState.maxHP ?? 100, playerState.hp + repeatEffect.healApplied);
+      }
+
+      const repeatValueStr = repeatEffect.damageDealt > 0 ? `${repeatEffect.damageDealt} dmg`
+                           : repeatEffect.shieldApplied > 0 ? `${repeatEffect.shieldApplied} block`
+                           : 'effect';
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Echo: replayed ${repeatMechDef.name} at ${Math.round(repeatMult * 100)}% (${repeatValueStr})`,
+        value: repeatEffect.damageDealt || repeatEffect.shieldApplied || 0,
+      });
+    }
   }
 
   // ── End of AR-tag-wiring section ──────────────────────────────────────────────────────────
@@ -3707,6 +3793,7 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   // AR-tag-wiring: reset per-turn new fields
   turnState.empowerRemainingCount = 0;
   turnState.archiveBlockBonus = 0;
+  turnState.archiveRetainSlots = 0;
   turnState.timerExtensionPct = 0;
   turnState.eliminateDistractors = 0;
   turnState.freePlayCharges = 0; // frenzy / focus_next2free charges don't carry over turns
@@ -3791,6 +3878,28 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   // AR-310: Capture previous color now (before discard/draw). Rotation fires AFTER drawHand.
   const previousColor = turnState.activeChainColor;
 
+  // Archive retain: keep N cards in hand instead of discarding all
+  let retainedCards: Card[] = [];
+  if ((turnState.archiveRetainSlots ?? 0) > 0 && deck.hand.length > 0) {
+    const retainCount = Math.min(turnState.archiveRetainSlots, deck.hand.length);
+    // Auto-select: retain the LAST retainCount cards in hand (rightmost = most recently drawn)
+    retainedCards = deck.hand.splice(deck.hand.length - retainCount, retainCount);
+    // Apply archive block bonus to each retained card
+    if (turnState.archiveBlockBonus > 0) {
+      const totalBlockBonus = turnState.archiveBlockBonus * retainedCards.length;
+      turnState.playerState.shield = (turnState.playerState.shield ?? 0) + totalBlockBonus;
+      turnState.turnLog.push({
+        type: 'play',
+        message: `Archive: +${totalBlockBonus} block from ${retainedCards.length} retained card(s)`,
+        value: totalBlockBonus,
+      });
+    }
+    turnState.turnLog.push({
+      type: 'play',
+      message: `Archive: retained ${retainCount} card(s) in hand`,
+      value: retainCount,
+    });
+  }
   const discardedAtTurnEnd = discardHand(deck);
   if (discardedAtTurnEnd.length > 0) {
     turnState.turnLog.push({
@@ -3798,6 +3907,10 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       message: `Discarded ${discardedAtTurnEnd.length} unplayed card${discardedAtTurnEnd.length === 1 ? '' : 's'}`,
       value: discardedAtTurnEnd.length,
     });
+  }
+  // Put retained cards back into hand for next turn
+  if (retainedCards.length > 0) {
+    deck.hand.push(...retainedCards);
   }
 
   let drawCount = turnState.pendingDrawCountOverride ?? turnState.baseDrawCount;
