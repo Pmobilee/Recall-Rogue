@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-18 (reactive-damage victory path fix: thorns/pain_conduit/counterDamage kill during enemy phase now correctly completes encounter)
+> **Last verified:** 2026-04-18 (reactive-damage victory path fix, handleEndTurn reentrancy guard)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -109,6 +109,24 @@ activeTurnState.set(freshTurnState(result.turnState)); // restore real hand
 ```
 
 The empty-hand trick uses the current (pre-damage) `turnState` — it does not require `endPlayerTurn` to have run yet, which is why Beat 1 can safely hide cards before the enemy phase executes.
+
+## handleEndTurn Reentrancy Guard (2026-04-18)
+
+`handleEndTurn` is `async` with two 1-second `await` pauses. During these pauses, the function is suspended and the event loop can dispatch other events. Before this fix, the `preAnimTurnState` set at Beat 1 had `phase: 'player_action'` (from the spread of the current turn state), which left the End Turn button enabled — `endTurnDisabled` in CardCombatOverlay only checked `phase`. A second End Turn call during the enemy phase would:
+
+1. Both calls share references to the same `drawPile`/`discardPile` arrays
+2. Both calls run `endPlayerTurn()` which mutates these shared arrays
+3. The second call's result overwrites the first's in the store
+4. Deck state corrupts — double-draws, empty hands, AP anomalies
+5. Game freezes permanently
+
+**Fix:** Module-level `_endTurnInProgress` flag + exported `endTurnInProgress` writable store in `encounterBridge.ts`. The flag is set at the top of `handleEndTurn` and cleared in a `finally` block. The store is the reactive mirror consumed by `endTurnDisabled` in `CardCombatOverlay.svelte`.
+
+**Reset points:** `_endTurnInProgress` is reset to `false` in:
+- `startEncounterForRoom()` — new encounter begins
+- `resetEncounterBridge()` — new run / playAgain
+
+**UI wiring:** `endTurnDisabled` in `CardCombatOverlay.svelte` now includes `$endTurnInProgress`, so both the End Turn button and the keyboard Enter shortcut (which checks `endTurnDisabled`) are blocked during the enemy phase.
 
 
 ---

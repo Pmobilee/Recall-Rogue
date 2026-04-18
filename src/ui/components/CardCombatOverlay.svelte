@@ -30,7 +30,7 @@
   import { RELIC_BY_ID } from '../../data/relics/index'
   import { getMaxRelicSlots, resolveChargeButtonState } from '../../services/relicEffectResolver'
   import { juiceManager } from '../../services/juiceManager'
-  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent, coopWaitingForPartner, cancelEndTurnRequested, activeTurnState } from '../../services/encounterBridge'
+  import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent, coopWaitingForPartner, cancelEndTurnRequested, activeTurnState, endTurnInProgress } from '../../services/encounterBridge'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId, playerSave } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
@@ -949,7 +949,8 @@
   let endTurnDisabled = $derived(
     !turnState ||
       turnState.phase !== 'player_action' ||
-      cardPlayStage === 'committed',
+      cardPlayStage === 'committed' ||
+      $endTurnInProgress,
   )
 
   let timerEnabled = $derived(currentDifficulty !== 'relaxed')

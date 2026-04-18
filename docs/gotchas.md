@@ -1,3 +1,13 @@
+### 2026-04-18 — handleEndTurn reentrancy: double End Turn corrupts deck state
+
+**What:** Clicking End Turn (or pressing Enter) twice during the 2-second enemy phase window caused both calls to run `endPlayerTurn()` concurrently, mutating the same `drawPile`/`discardPile` arrays from both calls. The second call's result overwrote the first in the store. Result: cards double-drawn, AP incorrect, game frozen.
+
+**Why:** `handleEndTurn()` is `async` with two `await sleep(1000)` calls. At Beat 1, it sets `activeTurnState` to a `preAnimTurnState` with `deck.hand = []` but the phase is still `'player_action'` (spread from the current turn state). `endTurnDisabled` in CardCombatOverlay only checked `phase !== 'player_action'`, so the End Turn button and the keyboard Enter shortcut remained active during the entire 2-second window. There was no reentrancy guard.
+
+**Fix:** Added module-level `_endTurnInProgress` boolean guard in `encounterBridge.ts` (early-return at function top) plus exported `endTurnInProgress` writable store (reactive mirror for the UI). Added `$endTurnInProgress` to `endTurnDisabled` derived in `CardCombatOverlay.svelte`. Guard reset in `startEncounterForRoom()` and `resetEncounterBridge()`. The `try/finally` structure guarantees the flag clears even if the function throws.
+
+**Files:** `src/services/encounterBridge.ts`, `src/ui/components/CardCombatOverlay.svelte`, `src/services/encounterBridge.endTurnGuard.test.ts`.
+
 ### 2026-04-18 — chainVulnerable bonus missing from damage preview
 
 **What:** Attack cards showed lower CC damage against chain-vulnerable enemies than what the combat pipeline actually dealt. E.g. with chain 1.5x on a 4-base attack, the preview showed 9 CC but the resolver dealt 14 (9 + 50% chainVulnerable bonus).

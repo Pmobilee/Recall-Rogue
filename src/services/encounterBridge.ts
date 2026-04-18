@@ -273,6 +273,15 @@ export const enemyDamageEvent = writable<EnemyDamageEvent | null>(null);
 export const coopWaitingForPartner = writable<boolean>(false);
 
 /**
+ * Reentrancy guard — set to true while handleEndTurn is executing its async body.
+ * Prevents a second End Turn call from corrupting deck state during the 2-second
+ * enemy phase window. Module-level flag (fast path) + exported writable store (UI path).
+ */
+let _endTurnInProgress = false;
+/** Reactive mirror of _endTurnInProgress — read by CardCombatOverlay to disable the End Turn button. */
+export const endTurnInProgress = writable<boolean>(false);
+
+/**
  * Pre-turn enemy snapshot for coop delta computation.
  * Captured at the start of each new turn (after the enemy phase resolves) so
  * handleEndTurn can compute EnemyTurnDelta = (preTurnHP - postCardsHP).
@@ -469,6 +478,10 @@ function syncCombatScene(turnState: TurnState): void {
 }
 
 export async function startEncounterForRoom(enemyId?: string): Promise<boolean> {
+  // Reset reentrancy guard — a stale guard from a previous encounter (e.g. error during enemy phase)
+  // must not block the player from taking their first turn in the next encounter.
+  _endTurnInProgress = false;
+  endTurnInProgress.set(false);
   // Immediately invalidate any pending victory/defeat timers from the previous encounter
   encounterGeneration++;
   const existingTurn = get(activeTurnState);
@@ -1113,6 +1126,9 @@ export function handlePlayCard(
   }
 
   if (run && playedCard) {
+    if (!playedCard?.factId) {
+      console.warn(`[encounterBridge] handlePlayCard: card ${cardId} has no factId! playedCard exists: ${!!playedCard}`);
+    }
     recordCardPlay(run, correct, 0, playedCard.factId, playedCard.domain, playedCard.tier === '1');
     analyticsService.track({
       name: 'card_play',
@@ -1471,9 +1487,14 @@ export function consumeSoulJarCharge(): boolean {
 }
 
 export async function handleEndTurn(): Promise<void> {
+  if (_endTurnInProgress) return;
   const turnState = get(activeTurnState);
   if (!turnState) return;
 
+  _endTurnInProgress = true;
+  endTurnInProgress.set(true);
+
+  try {
   // Capture pre-turn HP so the UI stays at the old value during the animation delay
   const previousHp = turnState.playerState.hp;
 
@@ -1893,6 +1914,10 @@ export async function handleEndTurn(): Promise<void> {
       notifyEncounterComplete('defeat');
     }, turboDelay(550));
   }
+  } finally {
+    _endTurnInProgress = false;
+    endTurnInProgress.set(false);
+  }
 }
 
 /**
@@ -2008,6 +2033,9 @@ export function resetEncounterBridge(): void {
   activeDeck = null;
   activeRunPool = [];
   _lastNarrativeSnapshot = null;
+  // Clear reentrancy guard so a new run can end turns normally.
+  _endTurnInProgress = false;
+  endTurnInProgress.set(false);
   // Invalidate any pending victory/defeat timers from the previous run.
   encounterGeneration++;
   // AR-269: Clear Akashic Record fact-spacing history so it doesn't persist across runs.
