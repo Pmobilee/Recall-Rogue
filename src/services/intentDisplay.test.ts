@@ -49,7 +49,7 @@ vi.mock('../data/statusEffects', () => ({
 }));
 
 // ── Import AFTER mocks (vi.mock is hoisted but imports resolve after) ─────────
-import { computeIntentHpImpact, computeIntentDisplayDamage, computeIntentDisplayDamageSnapshot } from './intentDisplay';
+import { computeIntentHpImpact, computeIntentDisplayDamage, computeIntentDisplayDamageSnapshot, computeIntentDisplayDamageWithPerHit, computeIntentDisplayDamageWithPerHitSnapshot } from './intentDisplay';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -313,5 +313,104 @@ describe('computeIntentDisplayDamageSnapshot — pins TOTAL damage at lock time'
 
     const snapshot = computeIntentDisplayDamageSnapshot(intent, enemy, playerState);
     expect(snapshot).toBe(0);
+  });
+});
+
+// ── Tests: computeIntentDisplayDamageWithPerHit (per-hit breakdown) ──────────
+
+describe('computeIntentDisplayDamageWithPerHit — per-hit cap for multi_attack', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('regular attack: total === perHit (single hit, no per-hit concept)', () => {
+    const intent = makeIntent(11);
+    const enemy = makeEnemy();
+    const result = computeIntentDisplayDamageWithPerHit(intent, enemy);
+    expect(result.total).toBe(11);
+    expect(result.perHit).toBe(11);
+  });
+
+  it('non-attack intent: both total and perHit are 0', () => {
+    const intent = makeIntent(10, 'defend');
+    const enemy = makeEnemy();
+    const result = computeIntentDisplayDamageWithPerHit(intent, enemy);
+    expect(result.total).toBe(0);
+    expect(result.perHit).toBe(0);
+  });
+
+  it('multi_attack 3 hits, no cap: perHit=5, total=15', () => {
+    const intent = makeIntent(5, 'multi_attack', 3);
+    const enemy = makeEnemy();
+    const result = computeIntentDisplayDamageWithPerHit(intent, enemy);
+    expect(result.perHit).toBe(5);
+    expect(result.total).toBe(15);
+  });
+
+  it('multi_attack 2 hits, no cap: perHit=11, total=22', () => {
+    const intent = makeIntent(11, 'multi_attack', 2);
+    const enemy = makeEnemy();
+    const result = computeIntentDisplayDamageWithPerHit(intent, enemy);
+    expect(result.perHit).toBe(11);
+    expect(result.total).toBe(22);
+  });
+
+  it('multi_attack total always equals perHit × hitCount exactly', () => {
+    const intent = makeIntent(7, 'multi_attack', 3);
+    const enemy = makeEnemy();
+    const result = computeIntentDisplayDamageWithPerHit(intent, enemy);
+    expect(result.total).toBe(result.perHit * 3);
+  });
+
+  it('computeIntentDisplayDamage delegates to computeIntentDisplayDamageWithPerHit', () => {
+    const intent = makeIntent(11, 'multi_attack', 2);
+    const enemy = makeEnemy();
+    const withPerHit = computeIntentDisplayDamageWithPerHit(intent, enemy);
+    const legacy = computeIntentDisplayDamage(intent, enemy);
+    expect(legacy).toBe(withPerHit.total);
+  });
+});
+
+// ── Tests: computeIntentDisplayDamageWithPerHitSnapshot (lock time) ───────────
+
+describe('computeIntentDisplayDamageWithPerHitSnapshot — pins { total, perHit } at lock time', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('attack: snapshot total and perHit are equal (single hit)', () => {
+    const intent = makeIntent(15);
+    const enemy = makeEnemy();
+    const playerState = { shield: 5, statusEffects: [] };
+    const snap = computeIntentDisplayDamageWithPerHitSnapshot(intent, enemy, playerState);
+    expect(snap.total).toBe(15);
+    expect(snap.perHit).toBe(15);
+  });
+
+  it('multi_attack: snapshot has distinct total and perHit', () => {
+    const intent = makeIntent(8, 'multi_attack', 3);
+    const enemy = makeEnemy();
+    const playerState = { shield: 0, statusEffects: [] };
+    const snap = computeIntentDisplayDamageWithPerHitSnapshot(intent, enemy, playerState);
+    expect(snap.perHit).toBe(8);
+    expect(snap.total).toBe(24);
+    expect(snap.total).toBe(snap.perHit * 3);
+  });
+
+  it('snapshot is independent of shield value', () => {
+    const intent = makeIntent(10, 'multi_attack', 2);
+    const enemy = makeEnemy();
+    const snapLow = computeIntentDisplayDamageWithPerHitSnapshot(intent, enemy, { shield: 3, statusEffects: [] });
+    const snapHigh = computeIntentDisplayDamageWithPerHitSnapshot(intent, enemy, { shield: 100, statusEffects: [] });
+    expect(snapLow.total).toBe(snapHigh.total);
+    expect(snapLow.perHit).toBe(snapHigh.perHit);
+  });
+
+  it('non-attack: snapshot returns { total: 0, perHit: 0 }', () => {
+    const intent = makeIntent(12, 'defend');
+    const enemy = makeEnemy();
+    const snap = computeIntentDisplayDamageWithPerHitSnapshot(intent, enemy, { shield: 0, statusEffects: [] });
+    expect(snap.total).toBe(0);
+    expect(snap.perHit).toBe(0);
   });
 });

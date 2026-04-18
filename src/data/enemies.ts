@@ -302,6 +302,22 @@ export interface EnemyInstance {
    * This is intentional — the display is an estimate, not a guarantee.
    */
   lockedFollowUpDisplayDamage?: number;
+  /**
+   * Per-hit locked display damage for multi_attack follow-up intents.
+   * Snapped at intent-roll time alongside lockedDisplayDamage.
+   * Undefined for non-multi_attack intents.
+   *
+   * WHY: The UI needs to show "N hits × M damage" format so players know the
+   * total represents M per hit, not M per hit × N (which would be the wrong total).
+   * The per-hit value is computed at intent-roll time — not re-derived live —
+   * for the same stability reasons as lockedDisplayDamage.
+   */
+  lockedDisplayDamagePerHit?: number;
+  /**
+   * Per-hit locked display damage for multi_attack buff follow-up intents.
+   * Undefined for non-multi_attack follow-up intents.
+   */
+  lockedFollowUpDisplayDamagePerHit?: number;
 }
 
 // ============================================================

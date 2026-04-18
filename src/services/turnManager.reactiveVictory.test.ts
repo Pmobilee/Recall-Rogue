@@ -258,6 +258,7 @@ vi.mock('./relicEffectResolver', () => ({
 
 vi.mock('./intentDisplay', () => ({
   computeIntentDisplayDamageSnapshot: vi.fn(() => 0),
+  computeIntentDisplayDamageWithPerHitSnapshot: vi.fn(() => ({ total: 0, perHit: 0 })),
 }));
 
 vi.mock('../data/balance', () => ({

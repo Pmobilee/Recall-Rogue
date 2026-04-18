@@ -371,7 +371,21 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
     case 'multi_attack': {
       const hits = intent.hitCount ?? 1;
       const baseValue = intent.value + (enemy.enrageBonusDamage ?? 0);
-      damage = Math.round(baseValue * strengthMod * getFloorDamageScaling(enemy.floor) * GLOBAL_ENEMY_DAMAGE_MULTIPLIER) * hits;
+      let perHit = Math.round(baseValue * strengthMod * getFloorDamageScaling(enemy.floor) * GLOBAL_ENEMY_DAMAGE_MULTIPLIER);
+      // Per-hit cap for multi_attack: divide the segment cap by hit count so each
+      // individual hit is bounded, matching the display pipeline which also computes
+      // total from perHit. This prevents a 3-hit attack from exceeding the cap while
+      // each hit still individually feels meaningful.
+      if (!intent.bypassDamageCap) {
+        const seg = getSegmentForFloor(enemy.floor);
+        const capLookup = getBalanceValue('enemyTurnDamageCap', ENEMY_TURN_DAMAGE_CAP) as Record<1 | 2 | 3 | 4 | 'endless', number | null>;
+        const cap = capLookup[seg];
+        if (cap != null) {
+          const perHitCap = Math.floor(cap / hits);
+          perHit = Math.min(perHit, perHitCap);
+        }
+      }
+      damage = perHit * hits;
       break;
     }
     case 'defend': {
@@ -435,8 +449,9 @@ export function executeEnemyIntent(enemy: EnemyInstance): {
   }
 
   // Apply per-turn damage cap by segment (AR-32)
-  // Charged attacks (marked with bypassDamageCap) bypass the cap
-  if (damage > 0 && !intent.bypassDamageCap) {
+  // Charged attacks (marked with bypassDamageCap) bypass the cap.
+  // multi_attack is excluded — it was already capped per-hit inside its case branch.
+  if (damage > 0 && !intent.bypassDamageCap && intent.type !== 'multi_attack') {
     const seg = getSegmentForFloor(enemy.floor);
     const capLookup = getBalanceValue('enemyTurnDamageCap', ENEMY_TURN_DAMAGE_CAP) as Record<1 | 2 | 3 | 4 | 'endless', number | null>;
     const cap = capLookup[seg];

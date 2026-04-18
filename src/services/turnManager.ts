@@ -73,8 +73,7 @@ import {
   resolveForgetEffects,
   resolveChainBreakEffects,
 } from './relicEffectResolver';
-import { applyPostIntentDamageScaling } from './enemyDamageScaling';
-import { computeIntentDisplayDamageSnapshot } from './intentDisplay';
+import { computeIntentDisplayDamageSnapshot, computeIntentDisplayDamageWithPerHitSnapshot } from './intentDisplay';
 
 // ─── AR-269: Akashic Record — fact spacing tracker ──────────────────────────
 /**
@@ -2213,9 +2212,13 @@ export function playCardAction(
   }
   // applyTransmute removed — Transmute now uses CardPickerOverlay (pendingCardPick flow)
 
-  // Transmute QP / Charge Wrong: auto-swap source card in-place with the selected candidate
+  // Transmute QP / Charge Wrong: route through draw pile so the transformed card is drawn into hand immediately,
+  // mirroring the CC picker path — just without the player choosing.
   if (effect.applyTransmuteAuto) {
-    applyTransmuteSwap(turnState, effect.applyTransmuteAuto.sourceCardId, [effect.applyTransmuteAuto.selected]);
+    const pushed = applyTransmuteSwap(turnState, effect.applyTransmuteAuto.sourceCardId, [effect.applyTransmuteAuto.selected], true);
+    if (pushed.length > 0) {
+      drawHand(turnState.deck, pushed.length);
+    }
   }
 
   // cleanse: remove all debuff-type status effects from player
@@ -3351,18 +3354,44 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   // Buff combo: if the buff intent executed (not skipped) and a follow-up attack was
   // pre-rolled, execute it now. The buff has already applied (strength is live in
   // enemy.statusEffects), so the follow-up damage benefits from the new strength.
-  // We merge follow-up results into intentResult so the existing damage pipeline
-  // handles both in one pass (enrage, caps, scaling, block, thorns, etc. all apply).
+  // Damage is merged into intentResult; the source-of-truth override below may replace it.
   if (!intentSkipped && executedIntentType === 'buff' && enemy.buffFollowUpIntent) {
     const buffIntent = enemy.nextIntent;
     enemy.nextIntent = enemy.buffFollowUpIntent;
     const followUpResult = executeEnemyIntent(enemy);
+    // Collect follow-up damage as the executor computed it (fallback if no locked value).
     intentResult.damage += followUpResult.damage;
     intentResult.playerEffects.push(...followUpResult.playerEffects);
     intentResult.blockStripped += followUpResult.blockStripped;
     // Restore buff intent so telegraph logging and executedIntentType remain correct.
     enemy.nextIntent = buffIntent;
     enemy.buffFollowUpIntent = undefined;
+  }
+
+  // ── Intent is Source of Truth ──────────────────────────────────────────────
+  // lockedDisplayDamage was computed at intent-roll time with Layer 1 + Layer 2
+  // (strength, floor scaling, global mult, difficultyVariance, brain fog, segment cap,
+  // relaxed mode, ascension, canary). Using it here eliminates display drift where the
+  // UI shows 16 but the executor re-computes 11 because canary changed mid-turn.
+  //
+  // We still ADD enrage (runtime-only, excluded from display) and re-cap after enrage.
+  // We still APPLY player-side modifiers (glass cannon, self-burn) — player choices.
+  // We do NOT call applyPostIntentDamageScaling — Layer 2 is already baked in.
+  if (!intentSkipped) {
+    if (executedIntentType === 'buff') {
+      // Buff intent deals 0 damage. Use follow-up's locked display damage when available.
+      // lockedFollowUpDisplayDamage does NOT include the strength buff that just applied —
+      // it was snapped before the buff resolved. Actual damage is slightly higher.
+      // This is acceptable: the display is an estimate, not a guarantee.
+      if (enemy.lockedFollowUpDisplayDamage != null && enemy.lockedFollowUpDisplayDamage > 0) {
+        intentResult.damage = enemy.lockedFollowUpDisplayDamage;
+      }
+      // else: intentResult.damage already holds the executor's follow-up value (merged above).
+    } else if (enemy.lockedDisplayDamage != null && enemy.lockedDisplayDamage > 0) {
+      // Regular attack or multi_attack: replace executor's recomputed value with locked display.
+      intentResult.damage = enemy.lockedDisplayDamage;
+    }
+    // else: lockedDisplayDamage is undefined (pre-fix save compat) — executor value stands.
   }
 
   let damageDealt = 0;
@@ -3379,9 +3408,10 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       incomingDamage += enrageBonus;
     }
     // Re-apply damage cap AFTER enrage so enrage cannot bypass it (bug fixed 2026-04-04).
+    // Only needed when enrage actually fired — lockedDisplayDamage is already capped.
     // Must use enemy.floor (not deck currentFloor) to match the segment used in executeEnemyIntent.
     // Replicates the getSegmentForFloor logic from enemyManager (unexported helper).
-    if (!enemy.nextIntent.bypassDamageCap) {
+    if (enrageBonus > 0 && !enemy.nextIntent.bypassDamageCap) {
       const enemyFloor = enemy.floor;
       const capSeg: 1 | 2 | 3 | 4 | 'endless' =
         enemyFloor <= 6 ? 1 :
@@ -3394,12 +3424,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
         incomingDamage = Math.min(incomingDamage, cap);
       }
     }
-    // Use the shared helper so the pipeline stays in sync with computeIntentDisplayDamage.
-    incomingDamage = applyPostIntentDamageScaling(incomingDamage, {
-      difficultyMode: get(difficultyMode),
-      ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
-      canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
-    });
+    // NOTE: applyPostIntentDamageScaling is NOT called here because lockedDisplayDamage
+    // already includes relaxed/ascension/canary scaling (Layer 2). Calling it again would
+    // double-apply those multipliers. The enrage bonus above is the only runtime-added value.
 
     const damageTakenFx = resolveDamageTakenEffects(turnState.activeRelicIds, {
       playerHpPercent: playerState.hp / playerState.maxHP,
@@ -3500,19 +3527,29 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   if (turnState.result === 'victory') {
     turnState.turnLog.push({ type: 'victory', message: 'Enemy defeated by reactive damage!' });
     rollNextIntent(enemy);
-    enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+    {
+    // Intent is source of truth: snapshot total+perHit at intent-roll time.
+    const _displaySnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.nextIntent, enemy, playerState, {
       canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+    enemy.lockedDisplayDamage = _displaySnap.total;
+    enemy.lockedDisplayDamagePerHit = enemy.nextIntent.type === 'multi_attack' ? _displaySnap.perHit : undefined;
+  }
   // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
-  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
-    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+  if (enemy.buffFollowUpIntent) {
+    const _fuSnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
         canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
         ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
         difficultyMode: get(difficultyMode),
-      })
-    : undefined;
+      });
+    enemy.lockedFollowUpDisplayDamage = _fuSnap.total;
+    enemy.lockedFollowUpDisplayDamagePerHit = enemy.buffFollowUpIntent.type === 'multi_attack' ? _fuSnap.perHit : undefined;
+  } else {
+    enemy.lockedFollowUpDisplayDamage = undefined;
+    enemy.lockedFollowUpDisplayDamagePerHit = undefined;
+  }
     return {
       damageDealt,
       effectsApplied,
@@ -3596,19 +3633,29 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.turnLog.push({ type: 'defeat', message: 'Player defeated!' });
     rollNextIntent(enemy);
   // Pin display damage at intent-roll time so UI reads a stable snapshot (Bug 3 fix).
-  enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+  {
+    // Intent is source of truth: snapshot total+perHit at intent-roll time.
+    const _displaySnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.nextIntent, enemy, playerState, {
       canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+    enemy.lockedDisplayDamage = _displaySnap.total;
+    enemy.lockedDisplayDamagePerHit = enemy.nextIntent.type === 'multi_attack' ? _displaySnap.perHit : undefined;
+  }
   // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
-  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
-    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+  if (enemy.buffFollowUpIntent) {
+    const _fuSnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
         canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
         ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
         difficultyMode: get(difficultyMode),
-      })
-    : undefined;
+      });
+    enemy.lockedFollowUpDisplayDamage = _fuSnap.total;
+    enemy.lockedFollowUpDisplayDamagePerHit = enemy.buffFollowUpIntent.type === 'multi_attack' ? _fuSnap.perHit : undefined;
+  } else {
+    enemy.lockedFollowUpDisplayDamage = undefined;
+    enemy.lockedFollowUpDisplayDamagePerHit = undefined;
+  }
     return {
       damageDealt,
       effectsApplied,
@@ -3627,19 +3674,29 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.turnLog.push({ type: 'defeat', message: 'Player defeated by status effects!' });
     rollNextIntent(enemy);
   // Pin display damage at intent-roll time so UI reads a stable snapshot (Bug 3 fix).
-  enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+  {
+    // Intent is source of truth: snapshot total+perHit at intent-roll time.
+    const _displaySnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.nextIntent, enemy, playerState, {
       canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+    enemy.lockedDisplayDamage = _displaySnap.total;
+    enemy.lockedDisplayDamagePerHit = enemy.nextIntent.type === 'multi_attack' ? _displaySnap.perHit : undefined;
+  }
   // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
-  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
-    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+  if (enemy.buffFollowUpIntent) {
+    const _fuSnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
         canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
         ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
         difficultyMode: get(difficultyMode),
-      })
-    : undefined;
+      });
+    enemy.lockedFollowUpDisplayDamage = _fuSnap.total;
+    enemy.lockedFollowUpDisplayDamagePerHit = enemy.buffFollowUpIntent.type === 'multi_attack' ? _fuSnap.perHit : undefined;
+  } else {
+    enemy.lockedFollowUpDisplayDamage = undefined;
+    enemy.lockedFollowUpDisplayDamagePerHit = undefined;
+  }
     return {
       damageDealt,
       effectsApplied,
@@ -3676,19 +3733,29 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     turnState.turnLog.push({ type: 'victory', message: 'Enemy defeated by status effects!' });
     rollNextIntent(enemy);
   // Pin display damage at intent-roll time so UI reads a stable snapshot (Bug 3 fix).
-  enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+  {
+    // Intent is source of truth: snapshot total+perHit at intent-roll time.
+    const _displaySnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.nextIntent, enemy, playerState, {
       canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+    enemy.lockedDisplayDamage = _displaySnap.total;
+    enemy.lockedDisplayDamagePerHit = enemy.nextIntent.type === 'multi_attack' ? _displaySnap.perHit : undefined;
+  }
   // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
-  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
-    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+  if (enemy.buffFollowUpIntent) {
+    const _fuSnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
         canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
         ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
         difficultyMode: get(difficultyMode),
-      })
-    : undefined;
+      });
+    enemy.lockedFollowUpDisplayDamage = _fuSnap.total;
+    enemy.lockedFollowUpDisplayDamagePerHit = enemy.buffFollowUpIntent.type === 'multi_attack' ? _fuSnap.perHit : undefined;
+  } else {
+    enemy.lockedFollowUpDisplayDamage = undefined;
+    enemy.lockedFollowUpDisplayDamagePerHit = undefined;
+  }
     return {
       damageDealt,
       effectsApplied,
@@ -3889,19 +3956,29 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
   // Pin display damage after the final intent is locked (including forcedAttack override).
   // Pin display damage at intent-roll time so UI reads a stable snapshot (Bug 3 fix).
-  enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+  {
+    // Intent is source of truth: snapshot total+perHit at intent-roll time.
+    const _displaySnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.nextIntent, enemy, playerState, {
       canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+    enemy.lockedDisplayDamage = _displaySnap.total;
+    enemy.lockedDisplayDamagePerHit = enemy.nextIntent.type === 'multi_attack' ? _displaySnap.perHit : undefined;
+  }
   // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
-  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
-    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+  if (enemy.buffFollowUpIntent) {
+    const _fuSnap = computeIntentDisplayDamageWithPerHitSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
         canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
         ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
         difficultyMode: get(difficultyMode),
-      })
-    : undefined;
+      });
+    enemy.lockedFollowUpDisplayDamage = _fuSnap.total;
+    enemy.lockedFollowUpDisplayDamagePerHit = enemy.buffFollowUpIntent.type === 'multi_attack' ? _fuSnap.perHit : undefined;
+  } else {
+    enemy.lockedFollowUpDisplayDamage = undefined;
+    enemy.lockedFollowUpDisplayDamagePerHit = undefined;
+  }
   turnState.turnNumber += 1;
   turnState.encounterTurnNumber += 1;
   turnState.isSurge = isSurgeTurn(turnState.turnNumber);
@@ -4217,8 +4294,8 @@ export function applyPendingChoice(
  *   - Does NOT touch the shuffle RNG — push() on an already-built drawPile is order
  *     manipulation only; co-op seed safety is preserved.
  *
- * **routeThroughDrawPile = false** (auto/QP/CW path, no picker UI):
- *   - Mutates the source card in-place inside its pile (original behaviour).
+ * **routeThroughDrawPile = false** (legacy path, no longer used by game code):
+ *   - Mutates the source card in-place inside its pile.
  *   - Extra selections go directly into hand.
  *   - Returns [].
  *

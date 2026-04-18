@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-18 (reactive-damage victory path fix, handleEndTurn reentrancy guard)
+> **Last verified:** 2026-04-18 (reactive-damage victory path fix, handleEndTurn reentrancy guard, intent-source-of-truth + multi_attack per-hit cap)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -263,34 +263,43 @@ Enemy attack damage passes through two layers before `takeDamage()` is called:
 1. `intent.value × strengthMod × getFloorDamageScaling(floor) × GLOBAL_ENEMY_DAMAGE_MULTIPLIER`
 2. `enemy.difficultyVariance` (0.8–1.2× for common enemies, fixed at instance creation)
 3. Brain Fog aura (+20% if aura state is 'brain_fog')
-4. Segment damage cap (`ENEMY_TURN_DAMAGE_CAP[segment]` — floored to cap value, bypassed if `intent.bypassDamageCap`)
+4. Segment damage cap — **single hit**: `min(damage, ENEMY_TURN_DAMAGE_CAP[segment])`; **multi_attack**: per-hit cap `min(perHit, floor(cap / hits))` then `total = perHit × hits`. Bypassed if `intent.bypassDamageCap`.
 
 **Current tuned values (pass 2, 2026-04-09):**
 - `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.60` (tuned 2.0→1.5→1.60: raised back in Pass 4d — 1.40 was too easy base; run-level Canary provides asymmetric adjustment)
 - `ENEMY_TURN_DAMAGE_CAP = { 1: 16, 2: 22, 3: 32, 4: 56, endless: null }` (Act 2 capped 28→22, Act 3 capped 40→32)
 
-**Layer 2 — `turnManager.ts` §3094-3130 (applied to `intentResult.damage`):**
-5. Enrage bonus (runtime: added after layer 1, capped again — **excluded from intent display**)
-6. Segment cap re-applied after enrage
-7. Relaxed difficulty mode (×0.7)
-8. `ascensionEnemyDamageMultiplier` (ascension difficulty scaling)
-9. `canaryEnemyDamageMultiplier` (co-op scaling — often 0.6 in 2-player coop)
-10. Glass Cannon relic penalty (runtime: depends on player HP — **excluded from intent display**)
-11. Self-Burn bonus (runtime: depends on player burn stacks — **excluded from intent display**)
+**Layer 2 — `turnManager.ts` (applied to `intentResult.damage`):**
+5. Enrage bonus (runtime: added after layer 1, re-capped — **excluded from intent display**)
+6. Segment cap re-applied after enrage (only when enrage actually fired)
+7. Glass Cannon relic penalty (runtime: depends on player HP — **excluded from intent display**)
+8. Self-Burn bonus (runtime: depends on player burn stacks — **excluded from intent display**)
+
+> **Intent as Source of Truth (2026-04-18):** Items 7-9 of the old layer 2 (relaxed/ascension/canary) are NO LONGER re-applied at execution time. They are baked into `lockedDisplayDamage` at intent-roll time. `turnManager.ts` uses `lockedDisplayDamage` as the incoming damage value, then adds only enrage (runtime-only) and player-side modifiers. This eliminates display drift where the UI showed 16 but the executor dealt 11 because canary scaled differently between snapshot and execution.
 
 **Shared helper — `applyPostIntentDamageScaling(baseDamage, ctx)` in `src/services/enemyDamageScaling.ts`:**
-Both `turnManager.ts` layer 2 (items 7–9) AND `computeIntentDisplayDamage()` use this helper so the two paths can never silently diverge. Items 5, 10, 11 are runtime/HP-dependent and are not applied to the display value.
+Used by `computeIntentDisplayDamageWithPerHit()` (display pipeline) to apply relaxed/ascension/canary. NOT called in the execution path anymore — those multipliers are already baked into `lockedDisplayDamage`.
 
-**Intent display — `computeIntentDisplayDamage(intent, enemy, scalingCtx?)` in `src/services/intentDisplay.ts`:**
-Applies layer 1 inline (mirrors executeEnemyIntent math without side-effects), then calls `applyPostIntentDamageScaling` for layer 2 items 7–9. The optional `scalingCtx` parameter must be passed from the UI for canary/ascension multipliers to apply — if omitted, only layer 1 is applied (backward-compatible). This function is `@deprecated` for UI display — use `computeIntentHpImpact` instead.
+**Intent display pipeline — `src/services/intentDisplay.ts`:**
 
-**multi_attack total damage (Bug 1 fix, 2026-04-18):** `computeIntentDisplayDamage` for `multi_attack` now returns the TOTAL damage (`perHit × hitCount`) before applying the segment cap. Previously it returned the per-hit value, causing display "2×11" (22 implied) while `executeEnemyIntent()` capped the total at 16. Both paths now operate on the same total, so the segment cap produces the same result in display and in combat.
+`computeIntentDisplayDamageWithPerHit(intent, enemy, scalingCtx?)` — the canonical computation function:
+- Returns `{ total, perHit }` for multi_attack; `{ total, perHit }` where `total === perHit` for regular attack.
+- For multi_attack: applies per-hit cap (`floor(segmentCap / hits)`), then `total = perHit × hits`.
+- Ensures `total = perHit × hits` exactly — no rounding artifacts from hitting the total cap.
+- `computeIntentDisplayDamage()` delegates here and returns just `total`.
 
-**HP-impact display — `computeIntentHpImpact(intent, enemy, playerBlock, act, scalingCtx?)` in `src/services/intentDisplay.ts`:**
-Returns `{ raw, postDecayBlock, hpDamage }` where:
-- `raw` — the fully-scaled enemy damage (TOTAL for multi_attack, same as `computeIntentDisplayDamage`)
-- `postDecayBlock` — the player's full current block (block does NOT decay before the enemy attacks — see Bug 2 fix)
-- `hpDamage` — `Math.max(0, raw − postDecayBlock)` — the actual HP the player will lose
+`computeIntentDisplayDamageWithPerHitSnapshot(intent, enemy, playerState, scalingCtx?)` — snapshot variant:
+- Returns `{ total, perHit }` pinned to state at intent-roll time.
+- Called by `turnManager.ts` after every `rollNextIntent()`.
+- Stores `total` on `enemy.lockedDisplayDamage`, `perHit` on `enemy.lockedDisplayDamagePerHit`.
+
+`computeIntentHpImpact(intent, enemy, playerBlock, act, scalingCtx?)` — for UI display:
+- Returns `{ raw, postDecayBlock, hpDamage }`.
+- `raw` = TOTAL damage (same as `computeIntentDisplayDamage`).
+- `postDecayBlock` = full current block (no decay — see Bug 2 fix).
+- `hpDamage` = `Math.max(0, raw − postDecayBlock)`.
+
+**multi_attack per-hit cap (2026-04-18):** The executor (`executeEnemyIntent`) and display pipeline (`computeIntentDisplayDamageWithPerHit`) both use per-hit capping for multi_attack: `perHitCap = floor(segmentCap / hits)`, then `total = min(perHit, perHitCap) × hits`. This ensures `total = perHit × hits` is exact — no split between what the display shows and what the player takes. Previously the display applied the total cap to the computed total, while the executor multiplied hits after computing per-hit; this produced total-cap vs per-hit-cap mismatches when hits > 1.
 
 **Block does NOT decay before the enemy attacks (Bug 2 fix, 2026-04-18):** The previous implementation incorrectly applied act-aware block decay inside `computeIntentHpImpact` and in the `displayImpact` helper in `CardCombatOverlay.svelte`. The actual turn order in `endPlayerTurn()` is:
 - Step 4: `executeEnemyIntent()` — enemy attacks
@@ -304,15 +313,13 @@ The `act` parameter on `computeIntentHpImpact` is retained for call-site compati
 - Partial block: "${hpDamage} HP damage (${raw} total − ${block} block), ${hits} hits"
 - Fully blocked: "Fully blocked (${raw} absorbed, ${hits} hits)"
 
-**`EnemyInstance.lockedDisplayDamage` field (Bug 3, 2026-04-12 / extended 2026-04-18):**
-Intent display drift was observed in BATCH-2026-04-12-001 (H-score 8): the UI had a `$derived.by` that re-computed intent damage from live `turnState.playerState.shield`. Every card play mutated shield, retriggered the derived, and recomputed the displayed value mid-turn — the intent bubble would fluctuate as the player built block during their turn.
+**`EnemyInstance.lockedDisplayDamage` / `lockedDisplayDamagePerHit` fields:**
+Snapped at intent-roll time by `turnManager.ts` after every `rollNextIntent()` call.
+- `lockedDisplayDamage` — TOTAL damage (Layer 1 + Layer 2 fully applied). Used as source of truth in execution.
+- `lockedDisplayDamagePerHit` — per-hit value for multi_attack intents; `undefined` for single-hit intents.
+- `lockedFollowUpDisplayDamage` / `lockedFollowUpDisplayDamagePerHit` — same for buff follow-up intents.
 
-Fix: `turnManager.ts` calls `computeIntentDisplayDamageSnapshot(intent, enemy, playerState, scalingCtx)` immediately after every `rollNextIntent()` call and stores the result on `enemy.lockedDisplayDamage`. For `multi_attack`, this stores the TOTAL damage (after Bug 1 fix). The field is `undefined` on pre-fix saves (backward compat: fall back to `computeIntentDisplayDamage()`).
-
-`computeIntentDisplayDamageSnapshot(intent, enemy, playerState, scalingCtx?)` in `src/services/intentDisplay.ts`:
-- Identical formula to `computeIntentDisplayDamage` — returns raw scaled TOTAL damage, NOT block-adjusted.
-- Called at intent-roll time (not at render time).
-- Ensures the displayed value matches the damage that will actually be dealt regardless of mid-turn shield mutations.
+Backward compat: `undefined` on pre-fix saves — execution falls back to `executeEnemyIntent()` computed value.
 
 ---
 

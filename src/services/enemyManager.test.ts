@@ -250,3 +250,28 @@ describe('rollNextIntent — buff follow-up intent', () => {
     expect(strengthMod).toBeGreaterThan(1.0);
   });
 });
+
+// ── Tests: executeEnemyIntent multi_attack per-hit cap ───────────────────────
+
+describe('executeEnemyIntent — multi_attack per-hit cap', () => {
+  it('multi_attack with no cap: total = perHit * hits (uncapped)', () => {
+    const template: EnemyTemplate = {
+      id: 'test_multi',
+      name: 'Test Multi',
+      category: 'common',
+      region: 'shallow_depths',
+      baseHP: 20,
+      description: 'test',
+      intentPool: [
+        { type: 'multi_attack', value: 5, weight: 1, telegraph: 'Multi', hitCount: 3 },
+      ],
+    };
+    const enemy = createEnemy(template, 1);
+    enemy.nextIntent = template.intentPool[0];
+    // floor 1 = FLOOR_DAMAGE_SCALE_MID (1.0), GLOBAL_ENEMY_DAMAGE_MULTIPLIER = real value
+    // We just verify total = perHit * 3 (internal structure)
+    const result = executeEnemyIntent(enemy);
+    // With cap = null for segment 1 (floor 1): total = round(5 * 1.0 * 1.0 * multiplier) * 3
+    expect(result.damage % 3).toBe(0); // total must be divisible by hits (per-hit × hits)
+  });
+});
