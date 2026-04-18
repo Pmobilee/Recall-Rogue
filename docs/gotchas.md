@@ -1,3 +1,19 @@
+### 2026-04-18 — multi_attack intent display: three compounding bugs caused displayed damage to diverge from actual
+
+**What:** Player facing a 2-hit multi_attack enemy saw "2×11" (implying 22 HP damage) but only took 5 HP. The displayed number was wildly wrong in three independent ways that stacked.
+
+**Why (Bug 1 — cap applied per-hit in display, total in executor):** `computeIntentDisplayDamage()` returned the per-hit value (11) and applied the segment damage cap per-hit. The executor (`executeEnemyIntent`) computed total = `round(perHit * mods) * hits = 22` then capped the total to 16. With a cap of 16, per-hit 11 < 16 so the cap had no visible effect on the per-hit display, but it capped the total from 22 to 16 in combat. The UI then multiplied 11 × hits and displayed "2×11 = 22 implied". Fix: multiply by `hitCount` BEFORE the cap in `computeIntentDisplayDamage`.
+
+**Why (Bug 2 — block decay applied before enemy attack in display):** `computeIntentHpImpact()` and `displayImpact()` in CardCombatOverlay applied act-aware block decay before subtracting block from raw damage. The comment claimed "block decays BEFORE the enemy swings" but the actual turn order in `endPlayerTurn()` is: step 4 executeEnemyIntent → step 5 takeDamage (full block) → step 10 resetTurnState (block decays). Fix: remove block decay from both functions; use full current block.
+
+**Why (Bug 3 — multi_attack bubble multiplied already-correct total by hits):** After fixing Bug 1, `lockedDisplayDamage` stores TOTAL damage. But the bubble code was `${impact.hpDamage}×${hits}` — which multiplied total hpDamage by hits again, grossly overstating the damage. Fix: show `${impact.hpDamage}` directly (it is already the total).
+
+**With all three bugs active simultaneously:** For 2×11 attack, block=5, act=1: Bug 1 returned raw=11 (per-hit, not 22 total). Bug 2 decayed block: floor(5 × 0.85) = 4. hpDamage = max(0, 11-4) = 7. Bug 3 multiplied: 7 × 2 = 14. Bubble showed "14". Actual damage: min(11×2=22, cap=16) - 5 block = 11. A 3-point phantom in this example; worse with higher hit counts and caps.
+
+**Fix:** `computeIntentDisplayDamage` multiplies by `hitCount` before the cap for multi_attack; `computeIntentHpImpact` no longer decays block (the `act` param is kept for call-site compat but unused); `displayImpact` uses full `playerBlock`; multi_attack bubble shows total hpDamage without ×hits. Detail line updated to show total with hits as context.
+
+**Files:** `src/services/intentDisplay.ts`, `src/ui/components/CardCombatOverlay.svelte`, `src/services/intentDisplay.test.ts`, `docs/mechanics/combat.md`.
+
 ### 2026-04-18 — handleEndTurn reentrancy: double End Turn corrupts deck state
 
 **What:** Clicking End Turn (or pressing Enter) twice during the 2-second enemy phase window caused both calls to run `endPlayerTurn()` concurrently, mutating the same `drawPile`/`discardPile` arrays from both calls. The second call's result overwrote the first in the store. Result: cards double-drawn, AP incorrect, game frozen.

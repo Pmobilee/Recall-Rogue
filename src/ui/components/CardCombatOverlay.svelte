@@ -6,7 +6,7 @@
   import type { EnemyInstance, EnemyIntent } from '../../data/enemies'
   import type { TurnState } from '../../services/turnManager'
   import { isAnyCardPlayable, resolveTransmutePick } from '../../services/turnManager'
-  import { BALANCE, FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS, BLOCK_DECAY_PER_ACT, BLOCK_DECAY_RETAIN_RATE } from '../../data/balance'
+  import { BALANCE, FLOOR_TIMER, MASTERY_MAX_LEVEL, MASTERY_BASE_DISTRACTORS, MASTERY_UPGRADED_DISTRACTORS } from '../../data/balance'
   import { isSurgeTurn } from '../../services/surgeSystem'
   import { getQuestionPresentation } from '../../services/questionFormatter'
   import {
@@ -693,21 +693,23 @@
   }
 
   /**
-   * Compute the HP impact of an enemy attack intent, accounting for block decay.
-   * Uses `computeIntentHpImpact` from intentDisplay service so the displayed number
-   * reflects what the player will ACTUALLY lose — not the raw damage value.
+   * Compute the HP impact of an enemy attack intent against the player's current block.
    *
-   * Block decays at end-of-player-turn BEFORE the enemy swings. A player with
-   * 15 block facing 15 damage in Act 1 retains floor(15 × 0.85) = 12 block → 3 HP lost.
-   * This was Issue 11: showing "15" instead of "3" misled players who had block.
+   * Bug 2 fix: block does NOT decay before the enemy attacks. In endPlayerTurn(), the order is:
+   *   4. executeEnemyIntent() — enemy attacks
+   *   5. takeDamage(playerState) — uses the player's FULL current block
+   *   ...
+   *  10. resetTurnState(playerState, act) — block decays HERE, after the attack
+   *
+   * The previous implementation incorrectly applied act-aware block decay before comparing
+   * block to raw damage. This caused the preview to show more HP damage than would actually
+   * be taken (e.g. player with 5 block facing 11 damage would see "7 HP" instead of "6 HP").
    *
    * Bug 3 fix: when enemy.lockedDisplayDamage is set, use it as the raw value instead of
    * re-deriving via computeIntentDisplayDamage(). lockedDisplayDamage is pinned at intent-roll
    * time (start of player turn) by turnManager.ts, so it does NOT drift as the player stacks
-   * block mid-turn. We still apply block decay here because that is the UI's responsibility
-   * per the intentDisplay.ts contract (computeIntentDisplayDamageSnapshot intentionally excludes
-   * block decay). Falls back to the full computeIntentHpImpact() call for pre-fix saves
-   * (enemy.lockedDisplayDamage === undefined).
+   * block mid-turn. For multi_attack, lockedDisplayDamage holds the TOTAL (Bug 1 fix).
+   * Falls back to computeIntentHpImpact() for pre-fix saves (lockedDisplayDamage === undefined).
    */
   function displayImpact(intent: EnemyIntent, enemy: EnemyInstance | null): IntentHpImpact {
     const playerBlock = turnState?.playerState?.shield ?? 0
@@ -717,16 +719,12 @@
     }
     // Bug 3 fix: read the pinned raw value locked by turnManager at intent-roll time.
     // This prevents the displayed damage from drifting as the player builds block mid-turn.
+    // For multi_attack this value is TOTAL damage (Bug 1 fix in computeIntentDisplayDamage).
     if (enemy.lockedDisplayDamage !== undefined) {
       const raw = enemy.lockedDisplayDamage
-      // Apply the same block decay formula as computeIntentHpImpact() in intentDisplay.ts
-      const decayRate = currentAct !== undefined
-        ? (BLOCK_DECAY_PER_ACT[currentAct] ?? (1 - BLOCK_DECAY_RETAIN_RATE))
-        : (1 - BLOCK_DECAY_RETAIN_RATE)
-      const retainRate = 1 - decayRate
-      const postDecayBlock = Math.floor(playerBlock * retainRate)
-      const hpDamage = Math.max(0, raw - postDecayBlock)
-      return { raw, postDecayBlock, hpDamage }
+      // Bug 2 fix: use the full current block — block does not decay before the enemy attacks.
+      const hpDamage = Math.max(0, raw - playerBlock)
+      return { raw, postDecayBlock: playerBlock, hpDamage }
     }
     // Backward compat: pre-fix saves where lockedDisplayDamage was never set.
     return computeIntentHpImpact(intent, enemy, playerBlock, currentAct, turnState ?? undefined)
@@ -755,15 +753,18 @@
       const rawFollowUp = enemy?.lockedFollowUpDisplayDamage ?? followUpIntent.value ?? 0
       const followUpLabel = INTENT_LABELS[followUpIntent.type] ?? followUpIntent.type ?? 'Attack'
       const followUpHits = followUpIntent.hitCount ?? 1
-      const displayText = followUpHits > 1 ? `${rawFollowUp}×${followUpHits}` : `${rawFollowUp}`
+      // Bug 4 fix: lockedFollowUpDisplayDamage for multi_attack is TOTAL (not per-hit) after
+      // the computeIntentDisplayDamage Bug 1 fix. Show total directly — no ×hits needed.
+      const displayText = `${rawFollowUp}`
       return { icon, text: displayText, type: displayType, label: followUpLabel, color, borderColor, telegraph, fullyBlocked: false }
     }
 
     if (enemyIntent.type === 'multi_attack') {
-      const hits = enemyIntent.hitCount ?? 2
       const impact = displayImpact(enemyIntent, enemy)
       const fullyBlocked = impact.raw > 0 && impact.hpDamage === 0
-      return { icon, text: `${impact.hpDamage}×${hits}`, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked }
+      // Bug 3 fix: impact.hpDamage is now TOTAL HP damage (raw is total, block subtracted once).
+      // Show the total HP the player will lose — no ×hits multiplication needed.
+      return { icon, text: `${impact.hpDamage}`, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked }
     }
     if (enemyIntent.type === 'attack') {
       const impact = displayImpact(enemyIntent, enemy)
@@ -820,12 +821,13 @@
         const hits = enemyIntent.hitCount ?? 2
         const impact = displayImpact(enemyIntent, turnState?.enemy ?? null)
         if (impact.hpDamage === 0 && impact.raw > 0) {
-          return `Fully blocked (${impact.raw} × ${hits} absorbed)`
+          return `Fully blocked (${impact.raw} absorbed, ${hits} hits)`
         }
         if (impact.postDecayBlock > 0 && impact.raw !== impact.hpDamage) {
-          return `${impact.hpDamage} HP × ${hits} hits (${impact.raw} − ${impact.postDecayBlock} block)`
+          // impact.raw is TOTAL across all hits; postDecayBlock is full current block
+          return `${impact.hpDamage} HP damage (${impact.raw} total − ${impact.postDecayBlock} block), ${hits} hits`
         }
-        return `Attacking for ${impact.hpDamage} HP × ${hits} hits`
+        return `${impact.hpDamage} HP damage, ${hits} hits`
       }
       case 'defend':
         return `Gains ${val} Block`

@@ -284,28 +284,33 @@ Both `turnManager.ts` layer 2 (items 7–9) AND `computeIntentDisplayDamage()` u
 **Intent display — `computeIntentDisplayDamage(intent, enemy, scalingCtx?)` in `src/services/intentDisplay.ts`:**
 Applies layer 1 inline (mirrors executeEnemyIntent math without side-effects), then calls `applyPostIntentDamageScaling` for layer 2 items 7–9. The optional `scalingCtx` parameter must be passed from the UI for canary/ascension multipliers to apply — if omitted, only layer 1 is applied (backward-compatible). This function is `@deprecated` for UI display — use `computeIntentHpImpact` instead.
 
+**multi_attack total damage (Bug 1 fix, 2026-04-18):** `computeIntentDisplayDamage` for `multi_attack` now returns the TOTAL damage (`perHit × hitCount`) before applying the segment cap. Previously it returned the per-hit value, causing display "2×11" (22 implied) while `executeEnemyIntent()` capped the total at 16. Both paths now operate on the same total, so the segment cap produces the same result in display and in combat.
+
 **HP-impact display — `computeIntentHpImpact(intent, enemy, playerBlock, act, scalingCtx?)` in `src/services/intentDisplay.ts`:**
-Accounts for block decay applied at end-of-player-turn (before the enemy swings). Block decays per act (`BLOCK_DECAY_PER_ACT`: Act 1 = 15%, Act 2 = 25%, Act 3 = 35%) in `resetTurnState()`, so the block available when the enemy strikes is less than what the UI currently shows. Returns `{ raw, postDecayBlock, hpDamage }`:
-- `raw` — the fully-scaled enemy damage (same as `computeIntentDisplayDamage`)
-- `postDecayBlock` — `Math.floor(playerBlock × (1 − decayRate))` — block after decay
+Returns `{ raw, postDecayBlock, hpDamage }` where:
+- `raw` — the fully-scaled enemy damage (TOTAL for multi_attack, same as `computeIntentDisplayDamage`)
+- `postDecayBlock` — the player's full current block (block does NOT decay before the enemy attacks — see Bug 2 fix)
 - `hpDamage` — `Math.max(0, raw − postDecayBlock)` — the actual HP the player will lose
 
-**Example (Issue 11):** Player has 15 block, enemy intent shows "15 damage", act = 1. Without decay accounting, the player expects their block to fully cover the hit. But decay reduces block to `floor(15 × 0.85) = 12`, so the player actually takes 3 HP. `computeIntentHpImpact` returns `{ raw: 15, postDecayBlock: 12, hpDamage: 3 }` — the preview should show "3 HP damage" (or "0 HP damage" if block is sufficient after decay).
+**Block does NOT decay before the enemy attacks (Bug 2 fix, 2026-04-18):** The previous implementation incorrectly applied act-aware block decay inside `computeIntentHpImpact` and in the `displayImpact` helper in `CardCombatOverlay.svelte`. The actual turn order in `endPlayerTurn()` is:
+- Step 4: `executeEnemyIntent()` — enemy attacks
+- Step 5: `takeDamage(playerState)` — uses the FULL current block
+- Step 10: `resetTurnState(playerState, act)` — block decays HERE, after the attack
 
-**UI wiring (Issue 11 complete, 2026-04-11):** `CardCombatOverlay.svelte` now calls `computeIntentHpImpact` instead of `computeIntentDisplayDamage` for all attack/multi_attack intent display. The `displayImpact(intent, enemy)` helper derives `playerBlock` from `turnState.playerState.shield` and `act` from `currentFloor` (≤6 → Act 1, ≤12 → Act 2, 13+ → Act 3). The intent detail line shows:
-- No block: "Attacking for N HP damage"
-- Partial block: "N HP damage (raw − postDecayBlock block)"  
-- Fully blocked: "Fully blocked (raw absorbed)" — bubble gets `.intent-bubble-blocked` CSS class (muted colors) and `data-intent-blocked="true"` attribute
+The `act` parameter on `computeIntentHpImpact` is retained for call-site compatibility but is no longer used — no decay is applied.
 
-**Result:** The enemy intent display shows the same number that `takeDamage()` receives, including coop canary scaling. This fixes the AR-263 bug where coop intent showed 18 but only 11 was applied (canary multiplier 0.6 not reflected in display).
+**UI wiring (complete, 2026-04-18):** `CardCombatOverlay.svelte` `displayImpact(intent, enemy)` helper uses `enemy.lockedDisplayDamage` (TOTAL for multi_attack) as raw, subtracts the full current block (no decay), and returns `{ raw, postDecayBlock, hpDamage }`. Multi-attack bubble shows total hpDamage directly — no `×hits` multiplication (the number already represents all hits combined). Intent detail line shows:
+- No block: "${hpDamage} HP damage, ${hits} hits"
+- Partial block: "${hpDamage} HP damage (${raw} total − ${block} block), ${hits} hits"
+- Fully blocked: "Fully blocked (${raw} absorbed, ${hits} hits)"
 
-**`EnemyInstance.lockedDisplayDamage` field (Bug 3, 2026-04-12):**
+**`EnemyInstance.lockedDisplayDamage` field (Bug 3, 2026-04-12 / extended 2026-04-18):**
 Intent display drift was observed in BATCH-2026-04-12-001 (H-score 8): the UI had a `$derived.by` that re-computed intent damage from live `turnState.playerState.shield`. Every card play mutated shield, retriggered the derived, and recomputed the displayed value mid-turn — the intent bubble would fluctuate as the player built block during their turn.
 
-Fix: `turnManager.ts` now calls `computeIntentDisplayDamageSnapshot(intent, enemy, playerState, scalingCtx)` (exported from `intentDisplay.ts`) immediately after every `rollNextIntent()` call, and stores the result on `enemy.lockedDisplayDamage`. The UI agent's next pass should read `enemy.lockedDisplayDamage` instead of re-deriving. The field is `undefined` on pre-fix saves (backward compat: fall back to `computeIntentDisplayDamage()`).
+Fix: `turnManager.ts` calls `computeIntentDisplayDamageSnapshot(intent, enemy, playerState, scalingCtx)` immediately after every `rollNextIntent()` call and stores the result on `enemy.lockedDisplayDamage`. For `multi_attack`, this stores the TOTAL damage (after Bug 1 fix). The field is `undefined` on pre-fix saves (backward compat: fall back to `computeIntentDisplayDamage()`).
 
 `computeIntentDisplayDamageSnapshot(intent, enemy, playerState, scalingCtx?)` in `src/services/intentDisplay.ts`:
-- Identical formula to `computeIntentDisplayDamage` — returns raw scaled damage, NOT block-adjusted.
+- Identical formula to `computeIntentDisplayDamage` — returns raw scaled TOTAL damage, NOT block-adjusted.
 - Called at intent-roll time (not at render time).
 - Ensures the displayed value matches the damage that will actually be dealt regardless of mid-turn shield mutations.
 
