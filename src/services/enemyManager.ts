@@ -167,6 +167,16 @@ export function createEnemy(
  * If the enemy is in phase 2 and has a phase2IntentPool, uses that pool.
  * If the enemy is currently charging, returns a synthetic attack intent that fires the charged attack.
  *
+ * Block cannot follow block, buff, or debuff — prevents defensive stalling.
+ * When the just-executed intent was 'defend', 'buff', or 'debuff', the defend
+ * intent is filtered out of the candidate pool before selection. If the pool
+ * contains ONLY defend intents (degenerate case), the filter is skipped and a
+ * warning is logged so the encounter never deadlocks.
+ *
+ * NOTE: createEnemy() calls weightedRandomIntent() directly for the FIRST intent
+ * because there is no prior intent history — this restriction only applies to
+ * rollNextIntent() (turns 2+).
+ *
  * @param enemy - The enemy instance (mutated in place).
  * @returns The newly rolled intent.
  */
@@ -189,7 +199,25 @@ export function rollNextIntent(enemy: EnemyInstance): EnemyIntent {
   const pool = (enemy.phase === 2 && enemy.template.phase2IntentPool)
     ? enemy.template.phase2IntentPool
     : enemy.template.intentPool;
-  enemy.nextIntent = weightedRandomIntent(pool);
+
+  // Anti-stall rule: block cannot follow block, buff, or debuff.
+  // Read the intent that was JUST EXECUTED (nextIntent hasn't been overwritten yet).
+  const prevType = enemy.nextIntent.type;
+  let activePool: EnemyIntent[] = pool;
+  if (prevType === 'defend' || prevType === 'buff' || prevType === 'debuff') {
+    const filtered = pool.filter(intent => intent.type !== 'defend');
+    if (filtered.length > 0) {
+      activePool = filtered;
+    } else {
+      // Edge case: pool has ONLY defend intents — fall back to full pool to avoid deadlock.
+      console.warn(
+        `[enemyManager] rollNextIntent: pool for enemy "${enemy.template.id}" contains only` +
+        ` defend intents after filtering (prevType="${prevType}"). Falling back to full pool.`,
+      );
+    }
+  }
+
+  enemy.nextIntent = weightedRandomIntent(activePool);
   return enemy.nextIntent;
 }
 

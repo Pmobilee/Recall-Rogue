@@ -28,9 +28,9 @@ Anki-faithful four-priority system:
 1. **Due learning cards** — time-critical, always served first unless Priority 0 fires (`selectionReason: 'struggling'`)
 2. **Main queue** — Anki Intersperser: proportional mixing of due graduated reviews + new cards. New cards sorted by `difficulty` ascending (easier first). New cards only introduced when `canIntroduceNew()` returns true (`MAX_LEARNING = 8`). Calls `recordNewCardServed()` when a new card is served.
 3. **Ahead learning** — cards in learning but not yet due, only when nothing else available
-4. **Fallback** — any card except the immediately previous fact (avoids consecutive repeats)
+4. **Fallback** — any card not in the recent-fact cooldown window
 
-**Dedup rule:** The ONLY dedup is `lastFactId` — prevents back-to-back repetition of the same fact. Learning cards CAN and SHOULD come back within the same encounter — that is correct Anki behavior. The longer step delays ([4, 10] charges) provide natural in-encounter spacing.
+**Dedup rule:** A rolling `RECENT_FACT_WINDOW = 3` cooldown window of recently-shown fact IDs is maintained in `InRunFactTracker.recentFactIds`. Any fact whose ID is in this window is excluded from selection at Priorities 0, 2, 3, and Fallback. Priority 1 (due learning cards) uses single-fact exclusion (`lastFactId` only) — step delays ([4, 10] charges) already provide adequate spacing for time-critical reviews. If the pool is too small to apply the full window without starvation (pool size ≤ window size + 1), the selector falls back to single-fact exclusion. Learning cards CAN and SHOULD resurface within the same encounter — that is correct Anki behavior.
 
 **Multi-question batch dedup** (`nonCombatQuizSelector.ts`):
 `selectNonCombatStudyQuestion` accepts an optional `excludeFactIds: ReadonlySet<string>` parameter.

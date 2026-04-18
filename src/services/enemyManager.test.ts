@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { createEnemy, rollNextIntent } from './enemyManager';
 import { initRunRng, destroyRunRng } from './seededRng';
 import { ENEMY_TEMPLATES } from '../data/enemies';
+import type { EnemyTemplate, EnemyInstance, EnemyIntent } from '../data/enemies';
 
 const MARGIN_GREMLIN_TEMPLATE = ENEMY_TEMPLATES.find(t => t.id === 'margin_gremlin')!;
 
@@ -60,5 +61,106 @@ describe('enemy intent RNG determinism', () => {
       const enemy = createEnemy(MARGIN_GREMLIN_TEMPLATE, 1);
       rollNextIntent(enemy);
     }).not.toThrow();
+  });
+});
+
+// ── Anti-stall intent filtering ───────────────────────────────────────────────
+// Verifies the rule: defend cannot follow defend, buff, or debuff.
+
+/** Minimal EnemyTemplate factory for test-only use. */
+function makeTestTemplate(pool: EnemyIntent[]): EnemyTemplate {
+  return {
+    id: 'test_enemy',
+    name: 'Test Enemy',
+    description: 'Unit-test only enemy',
+    category: 'common',
+    region: 'shallow_depths',
+    baseHP: 5,
+    intentPool: pool,
+    animArchetype: 'crawler',
+  } as EnemyTemplate;
+}
+
+/** Minimal EnemyInstance factory for test-only use — sets a specific prevIntent. */
+function makeTestEnemy(pool: EnemyIntent[], prevIntentType: EnemyIntent['type']): EnemyInstance {
+  const template = makeTestTemplate(pool);
+  const enemy = createEnemy(template, 1);
+  // Override nextIntent to simulate the intent that was just executed
+  enemy.nextIntent = { type: prevIntentType, value: 5, weight: 1, telegraph: 'test' };
+  return enemy;
+}
+
+describe('rollNextIntent — anti-stall defend filtering', () => {
+  beforeEach(() => {
+    destroyRunRng();
+  });
+
+  const mixedPool: EnemyIntent[] = [
+    { type: 'attack', value: 5, weight: 1, telegraph: 'Attacking!' },
+    { type: 'defend', value: 5, weight: 1, telegraph: 'Defending!' },
+  ];
+
+  it('defend is never selected after a defend intent (100-roll statistical test)', () => {
+    const enemy = makeTestEnemy(mixedPool, 'defend');
+
+    for (let i = 0; i < 100; i++) {
+      rollNextIntent(enemy);
+      expect(enemy.nextIntent.type).not.toBe('defend');
+      // Reset to defend to keep the previous-intent condition active each roll
+      enemy.nextIntent = { type: 'defend', value: 5, weight: 1, telegraph: 'test' };
+    }
+  });
+
+  it('defend is never selected after a buff intent (100-roll statistical test)', () => {
+    const enemy = makeTestEnemy(mixedPool, 'buff');
+
+    for (let i = 0; i < 100; i++) {
+      rollNextIntent(enemy);
+      expect(enemy.nextIntent.type).not.toBe('defend');
+      // Reset to buff to keep the previous-intent condition active each roll
+      enemy.nextIntent = { type: 'buff', value: 0, weight: 1, telegraph: 'test' };
+    }
+  });
+
+  it('defend is never selected after a debuff intent (100-roll statistical test)', () => {
+    const enemy = makeTestEnemy(mixedPool, 'debuff');
+
+    for (let i = 0; i < 100; i++) {
+      rollNextIntent(enemy);
+      expect(enemy.nextIntent.type).not.toBe('defend');
+      // Reset to debuff to keep the previous-intent condition active each roll
+      enemy.nextIntent = { type: 'debuff', value: 0, weight: 1, telegraph: 'test' };
+    }
+  });
+
+  it('defend IS selectable after an attack intent', () => {
+    const enemy = makeTestEnemy(mixedPool, 'attack');
+
+    let sawDefend = false;
+    for (let i = 0; i < 200; i++) {
+      rollNextIntent(enemy);
+      if (enemy.nextIntent.type === 'defend') {
+        sawDefend = true;
+        break;
+      }
+      // Keep previous-intent as attack so the filter never activates
+      enemy.nextIntent = { type: 'attack', value: 5, weight: 1, telegraph: 'test' };
+    }
+
+    // With 50% weight each and 200 rolls, the probability of never seeing defend
+    // is (0.5)^200 — effectively impossible.
+    expect(sawDefend).toBe(true);
+  });
+
+  it('edge case: pool with ONLY defend intents falls back to full pool (no deadlock)', () => {
+    const defendOnlyPool: EnemyIntent[] = [
+      { type: 'defend', value: 5, weight: 1, telegraph: 'Defending!' },
+      { type: 'defend', value: 8, weight: 1, telegraph: 'Defending more!' },
+    ];
+    const enemy = makeTestEnemy(defendOnlyPool, 'defend');
+
+    // Should not throw and should return a defend intent (fallback to full pool)
+    expect(() => rollNextIntent(enemy)).not.toThrow();
+    expect(enemy.nextIntent.type).toBe('defend');
   });
 });

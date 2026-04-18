@@ -588,6 +588,15 @@ Enemies telegraph next action via `EnemyIntent.telegraph`. Selected by `weighted
 | `heal` | Restores `value` HP, capped at maxHP |
 | `charge` | Winds up; next turn fires auto-attack with `bypassDamageCap: true` |
 
+### Intent Selection Rule — Anti-Stall
+
+**Defend cannot follow defend, buff, or debuff.** When `rollNextIntent()` is called and the just-executed intent was any of these three types, `defend` intents are filtered out of the candidate pool before weighted-random selection. This prevents enemies from parking in a defensive loop and ensures they stay threatening after non-attack turns.
+
+- Applies to turns 2+ only — the first intent rolled by `createEnemy()` is unrestricted.
+- Charging intents are exempt (the charging path bypasses pool selection entirely).
+- Edge case: if a pool contains *only* `defend` intents, the filter is skipped with a console warning so the encounter never deadlocks.
+- Implemented in `rollNextIntent()` in `src/services/enemyManager.ts`.
+
 ## Quiz-Reactive Hooks
 
 | Callback | When it fires |
