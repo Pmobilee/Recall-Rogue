@@ -92,6 +92,7 @@ interface SerializedRunState extends Omit<
   | 'chainDistribution'
   | 'inRunFactTracker'
   | 'reviewStateSnapshot'
+  | 'lastResumedAt'
   | 'firstTimeFactIds'
   | 'tierAdvancedFactIds'
   | 'masteredThisRunFactIds'
@@ -137,6 +138,13 @@ function serializeRunState(run: RunState): SerializedRunState {
   // Destructure to explicitly exclude in-memory-only Set/Map/class fields.
   // DO NOT use `...run` alone — it would spread Sets/Maps into the output as
   // `{}` (JSON.stringify strips their contents), breaking `.has()` on resume.
+  // Accumulate current session's play time before serializing.
+  // This ensures playDurationMs is up-to-date when the save is written.
+  // The mutation is intentional — updates in-memory state so subsequent saves
+  // within the same session don't double-count.
+  run.playDurationMs = (run.playDurationMs ?? 0) + (Date.now() - (run.lastResumedAt ?? run.startedAt));
+  run.lastResumedAt = Date.now();
+
   const {
     // excluded — serialized via explicit array fields below:
     consumedRewardFactIds: _c,
@@ -155,6 +163,8 @@ function serializeRunState(run: RunState): SerializedRunState {
     masteredThisRunFactIds: _mtr,
     // excluded — class instance, not persisted:
     chainDistribution: _cd,
+    // excluded — in-memory only (set to Date.now() on resume):
+    lastResumedAt: _lra,
     // everything else passes through:
     ...rest
   } = run;
@@ -281,6 +291,14 @@ function deserializeRunState(saved: SerializedRunState): RunState {
     firstTimeFactIds: new Set<string>(),
     tierAdvancedFactIds: new Set<string>(),
     masteredThisRunFactIds: new Set<string>(),
+    // Resume timestamp: always set to now (this is a new play session).
+    // lastResumedAt is excluded from SerializedRunState and must be reset here.
+    lastResumedAt: Date.now(),
+    // playDurationMs persists from the serialized state (it comes through ...saved).
+    // Add a fallback for old saves created before this field existed.
+    playDurationMs: typeof (saved as unknown as Record<string,unknown>)['playDurationMs'] === 'number'
+      ? (saved as unknown as Record<string,number>)['playDurationMs']
+      : 0,
   };
 }
 
@@ -348,6 +366,8 @@ export function loadActiveRun(): {
   rewardRevealStep?: RewardRevealStep;
   encounterSnapshot?: EncounterSnapshot | null;
   rngState?: { seed: number; forks: Record<string, number> } | null;
+  /** ISO timestamp of when this save was written. Used by legacy fallback for play time estimation. */
+  savedAt?: string | null;
 } | null {
   try {
     const raw = getBackend().readSync(SAVE_KEY);
@@ -368,6 +388,7 @@ export function loadActiveRun(): {
       cardRewardOptions: parsed.cardRewardOptions ?? [],
       activeRewardBundle: parsed.activeRewardBundle ?? null,
       rewardRevealStep: parsed.rewardRevealStep ?? 'gold',
+      savedAt: parsed.savedAt ?? null,
       encounterSnapshot: parsed.encounterSnapshot
         ? (() => {
             const eDeck = parsed.encounterSnapshot!.activeDeck as (Record<string, unknown> | null);

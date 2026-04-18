@@ -265,3 +265,24 @@ Helper functions: `snapshotUserSettings()`, `restoreUserSettings(snapshot)`,
 Keys intentionally NOT included: analytics queues, auth tokens, migration flags, caches,
 dev tools, offline retry queues — ephemeral/internal state that should not survive
 a restore.
+
+## Play Time Tracking (2026-04-18)
+
+`RunState` carries two fields for accurate play-time accounting:
+
+| Field | Type | Persisted | Purpose |
+|-------|------|-----------|---------|
+| `playDurationMs` | `number` | Yes (via `...rest` spread in `SerializedRunState`) | Accumulated play time from all completed save cycles |
+| `lastResumedAt` | `number` | **No** (excluded from `SerializedRunState` via `Omit<>`) | Timestamp of the current play session start |
+
+**How it works:**
+
+- `createRunState()` initializes `playDurationMs: 0` and `lastResumedAt: Date.now()`.
+- `serializeRunState()` accumulates elapsed time into `playDurationMs` before serializing:  
+  `run.playDurationMs += Date.now() - run.lastResumedAt` then resets `lastResumedAt`.
+- `deserializeRunState()` sets `lastResumedAt: Date.now()` (new session starts now).
+- `endRun()` computes: `duration = playDurationMs + (Date.now() - lastResumedAt)`.
+
+**Why this matters:** Before this fix, `endRun()` used `Date.now() - startedAt`, which counted all idle time when the game was closed. A run played for 15 minutes but abandoned 3 hours later showed 3:00:00 instead of ~0:15:00.
+
+**Old-save compatibility:** `deserializeRunState()` defaults `playDurationMs` to `0` if absent. `abandonActiveRun()` in `gameFlowController.ts` has a legacy fallback: for old saves with `playDurationMs === 0`, it estimates elapsed time as `savedAt - startedAt` (better than the abandon-time clock).

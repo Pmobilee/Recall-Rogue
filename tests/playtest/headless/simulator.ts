@@ -732,6 +732,8 @@ export function runSimulation(opts: SimOptions = {}): SimRunResult {
     bounties: [],
     canary: createCanaryState(),
     startedAt: Date.now(),
+    playDurationMs: 0,
+    lastResumedAt: Date.now(),
     firstChargeFreeFactIds: new Set<string>(),
     attemptedFactIds: new Set<string>(),
     cursedFactIds: new Set<string>(),

@@ -56,6 +56,13 @@ export interface RunState {
   bounties: ActiveBounty[];
   canary: CanaryState;
   startedAt: number;
+  /** Accumulated play time in ms from previous save/load cycles. Persisted. */
+  playDurationMs: number;
+  /**
+   * Timestamp when the current play session started (run creation or resume).
+   * In-memory only — not persisted.
+   */
+  lastResumedAt: number;
   /**
    * Fact IDs for which the player has already used their one free first Charge this run.
    * Once a factId is in this set, that fact uses the normal FIZZLE_EFFECT_RATIO on wrong answers.
@@ -307,6 +314,8 @@ export function createRunState(
     bounties: selectRunBounties(primary, secondary, bountyCount),
     canary: createCanaryState(),
     startedAt: Date.now(),
+    playDurationMs: 0,
+    lastResumedAt: Date.now(),
     firstChargeFreeFactIds: new Set<string>(),
     attemptedFactIds: new Set<string>(),
     cursedFactIds: new Set<string>(),
@@ -504,7 +513,11 @@ export function isDefeated(state: RunState): boolean {
 export function endRun(state: RunState, reason: 'victory' | 'defeat' | 'retreat' | 'abandon'): RunEndData {
   state.isActive = false;
 
-  const duration = Date.now() - state.startedAt;
+  // Use accumulated play time if available (handles save/resume correctly).
+  // For fresh runs (no save/load), playDurationMs is 0 and lastResumedAt === startedAt,
+  // so this gives the same result as the old Date.now() - startedAt.
+  const currentSessionMs = Date.now() - (state.lastResumedAt ?? state.startedAt);
+  const duration = (state.playDurationMs ?? 0) + currentSessionMs;
   const accuracy = state.factsAnswered > 0
     ? Math.round((state.factsCorrect / state.factsAnswered) * 100)
     : 0;

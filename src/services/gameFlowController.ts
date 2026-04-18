@@ -2599,6 +2599,15 @@ export function abandonActiveRun(returnScreen?: Screen): void {
   activeRunMode = saved!.runMode ?? 'standard';
   activeDailySeed = saved!.dailySeed ?? null;
 
+  // Legacy fallback: old saves without playDurationMs tracking.
+  // Use the save's savedAt timestamp as a rough end-of-play marker (better than
+  // Date.now() which includes all idle time since the game was closed).
+  if (!savedRun.playDurationMs && saved!.savedAt) {
+    const savedAtMs = new Date(saved!.savedAt).getTime();
+    savedRun.playDurationMs = Math.max(0, savedAtMs - savedRun.startedAt);
+    savedRun.lastResumedAt = Date.now();
+  }
+
   // Only apply accuracy-based completion bonuses when the player actually answered
   // questions (encountersWon >= 1). Zero-encounter runs have nothing to evaluate.
   if (savedRun.encountersWon >= 1) {

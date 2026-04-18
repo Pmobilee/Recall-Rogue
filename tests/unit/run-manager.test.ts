@@ -188,8 +188,10 @@ describe('RunManager', () => {
 
     it('returns duration > 0', () => {
       const state = createRunState('science', 'history')
-      // small delay to ensure duration > 0
+      // Simulate 1 second of play: set both startedAt and lastResumedAt in the past.
+      // endRun computes duration as playDurationMs + (now - lastResumedAt).
       state.startedAt = Date.now() - 1000
+      state.lastResumedAt = Date.now() - 1000
       const endData = endRun(state, 'victory')
       expect(endData.duration).toBeGreaterThan(0)
       expect(endData.rewardMultiplier).toBe(1)

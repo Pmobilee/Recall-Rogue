@@ -148,6 +148,8 @@ function makeRunState(categoryL2Accuracy?: Map<string, { correct: number; total:
     bounties: [],
     canary: {} as RunState['canary'],
     startedAt: Date.now(),
+    playDurationMs: 0,
+    lastResumedAt: Date.now(),
     firstChargeFreeFactIds: new Set(),
     attemptedFactIds: new Set(),
     cursedFactIds: new Set(),

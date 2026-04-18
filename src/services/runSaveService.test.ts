@@ -111,6 +111,8 @@ function makeRunState(overrides?: Partial<RunState>): RunState {
     bounties: [],
     canary: { answers: [], isValid: true } as unknown as RunState['canary'],
     startedAt: Date.now(),
+    playDurationMs: 0,
+    lastResumedAt: Date.now(),
     // The critical Set fields — populated with real values to prove round-trip
     firstChargeFreeFactIds: new Set(['fact-1']),
     attemptedFactIds: new Set(['fact-1', 'fact-2']),
@@ -535,5 +537,82 @@ describe('runSaveService — CRITICAL-3 encounterSnapshot.activeDeck Set rehydra
 
     // undefined is the valid pre-encounter state; deckManager.ts:311 guards for it
     expect(restoredDeck.currentEncounterSeenFacts).toBeUndefined();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Play time accumulation (2026-04-18): playDurationMs persists across save/load
+// cycles so abandoned runs show actual play time, not wall-clock time since run
+// creation.
+// ---------------------------------------------------------------------------
+
+describe('runSaveService — play time accumulation', () => {
+  it('playDurationMs is 0 and lastResumedAt is set on a fresh run (no save/load yet)', () => {
+    const run = makeRunState();
+    // Simulate a brand-new run: playDurationMs = 0, lastResumedAt = Date.now()
+    run.playDurationMs = 0;
+    run.lastResumedAt = run.startedAt;
+
+    saveActiveRun(makeMinimalSavePayload(run));
+    const loaded = loadActiveRun();
+    const rs = loaded!.runState;
+
+    // On resume, lastResumedAt is reset to current time (new session).
+    expect(typeof rs.lastResumedAt).toBe('number');
+    expect(rs.lastResumedAt).toBeGreaterThanOrEqual(run.startedAt);
+    // playDurationMs comes from what was accumulated before the save.
+    // For a brand-new run the first serialize will accumulate ~0ms.
+    expect(typeof rs.playDurationMs).toBe('number');
+    expect(rs.playDurationMs).toBeGreaterThanOrEqual(0);
+  });
+
+  it('playDurationMs accumulates across multiple save/load cycles', () => {
+    const run = makeRunState();
+    run.playDurationMs = 0;
+    run.lastResumedAt = run.startedAt - 5000; // simulate 5s of play before first save
+
+    saveActiveRun(makeMinimalSavePayload(run));
+    // After serialize: playDurationMs should be approximately 5000ms
+    const loaded1 = loadActiveRun();
+    const rs1 = loaded1!.runState;
+    expect(rs1.playDurationMs).toBeGreaterThanOrEqual(4000); // at least 4s (clock tolerance)
+
+    // Second save cycle: simulate another 3s of play
+    rs1.lastResumedAt = Date.now() - 3000;
+    saveActiveRun(makeMinimalSavePayload(rs1));
+    const loaded2 = loadActiveRun();
+    const rs2 = loaded2!.runState;
+
+    // Total should be approximately 5000 + 3000 = 8000ms
+    expect(rs2.playDurationMs).toBeGreaterThanOrEqual(7000);
+  });
+
+  it('lastResumedAt is reset to now on deserialization (not persisted)', () => {
+    const before = Date.now();
+    const run = makeRunState();
+    run.lastResumedAt = run.startedAt - 99999; // old value, should not survive round-trip
+
+    saveActiveRun(makeMinimalSavePayload(run));
+    const loaded = loadActiveRun();
+    const after = Date.now();
+
+    // lastResumedAt must be a timestamp from this session (between before/after)
+    expect(loaded!.runState.lastResumedAt).toBeGreaterThanOrEqual(before);
+    expect(loaded!.runState.lastResumedAt).toBeLessThanOrEqual(after + 10);
+  });
+
+  it('playDurationMs defaults to 0 for old saves that lack the field', () => {
+    const run = makeRunState();
+    saveActiveRun(makeMinimalSavePayload(run));
+
+    // Corrupt the saved JSON to simulate an old save without playDurationMs
+    const raw = getBackend().readSync('recall-rogue-active-run')!;
+    const parsed = JSON.parse(raw);
+    delete parsed.runState.playDurationMs;
+    getBackend().write('recall-rogue-active-run', JSON.stringify(parsed));
+
+    const loaded = loadActiveRun();
+    expect(typeof loaded!.runState.playDurationMs).toBe('number');
+    expect(loaded!.runState.playDurationMs).toBe(0);
   });
 });
