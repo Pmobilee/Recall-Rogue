@@ -4696,3 +4696,13 @@ The `qpModified` classify call also compared against `Math.round(nakedQpBase * c
 **Files:** `src/services/damagePreviewService.ts`. Tests: `src/services/damagePreviewService.test.ts` — 7 new chain multiplier tests added.
 
 **Note on ccModified behavior:** `ccModified` classifier compares CC final against `round(nakedCcBase × chainMult)` — chain is baked into the CC reference. When chain is the only active modifier (no relic/buff), `ccModified` correctly shows `'neutral'`. It goes `'buffed'` only when relics/buffs additionally boost CC above the chain baseline.
+
+### 2026-04-18 — QP damage preview showed nonzero damage against quickPlayImmune enemies
+
+**What:** Against The Librarian (`quickPlayImmune: true`), attack card faces in the card hand showed normal Quick Play damage values (e.g. "4") instead of 0. Players had no visual indication that Quick Playing against The Librarian was wasted AP.
+
+**Why:** `turnManager.ts` (lines 1920-1924) sets `damageDealt = 0` when `playMode === 'quick' && enemy.template.quickPlayImmune`, but `damagePreviewService.ts` had no equivalent check. The preview service mirrored every other enemy-side QP modifier (chargeResistant, hardcover, quickPlayDamageMultiplier) but was missing this one.
+
+**Fix:** Added `enemyQuickPlayImmune?: boolean` to `DamagePreviewContext`. In the attack card branch, after all other QP reductions (Steps qpDamageMultiplier, hardcover, chargeResistant), set `qpFinal = 0` when `ctx.enemyQuickPlayImmune` is true. `CardCombatOverlay.svelte` now passes `!!enemy.template.quickPlayImmune`. Shield cards are intentionally not affected (immunity is damage-only). CC remains unaffected (Charge Correct plays bypass the immunity in the real resolver).
+
+**Files:** `src/services/damagePreviewService.ts`, `src/ui/components/CardCombatOverlay.svelte`. Tests in `src/services/damagePreviewService.test.ts`.

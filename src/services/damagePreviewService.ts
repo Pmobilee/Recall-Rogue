@@ -33,6 +33,8 @@ export interface DamagePreviewContext {
   enemyIsVulnerable: boolean;
   /** e.g. 0.3 for Core Harbinger — applied to QP only */
   enemyQpDamageMultiplier?: number;
+  /** True if enemy absorbs all Quick Play damage (e.g. The Librarian). Mirrors turnManager lines 1920-1924. */
+  enemyQuickPlayImmune?: boolean;
   /** Charge-resistant enemies take 50% QP damage */
   enemyChargeResistant: boolean;
   /** Flat armor on QP attacks; 0 if none */
@@ -273,6 +275,12 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
     if (ctx.enemyChargeResistant) {
       qpFinal = Math.max(1, Math.round(qpFinal * 0.5));
     }
+    // quickPlayImmune — QP damage fully absorbed (The Librarian). Mirrors turnManager lines 1920-1924.
+    // Checked after all other QP reductions: the result is 0 regardless of order, but placing it
+    // last makes it obvious that no other QP modifier can override the immunity.
+    if (ctx.enemyQuickPlayImmune) {
+      qpFinal = 0;
+    }
 
     // Step 11: vulnerable (both QP and CC)
     if (ctx.enemyIsVulnerable) {
@@ -384,6 +392,7 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   // scholars_crown — tier-based % bonus; context-dependent (Review Queue vs normal), skipped
   // lucky_coin — +50% on next CC after 3 wrong Charges; RNG/stateful, skipped in deterministic preview
   // chainVulnerable does NOT apply to shield cards — the turnManager guard is damageDealt > 0.
+  // quickPlayImmune does NOT apply to shield cards — immunity is damage-only, blocking is unaffected.
 
   qpFinalShield = Math.max(0, qpFinalShield);
   ccFinalShield = Math.max(0, ccFinalShield);

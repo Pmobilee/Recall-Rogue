@@ -16,6 +16,8 @@
  * so the preview was incorrectly showing inflated QP values during an active chain.
  * Tests added: chain 1.5x attack QP stays raw base, chain 1.5x shield QP stays raw base,
  * chain 1.0x produces no change, classify reference for QP uses raw nakedQpBase.
+ * Updated 2026-04-18 (quickPlayImmune fix): added tests confirming QP=0 against immune enemies
+ * (The Librarian). Mirrors turnManager lines 1920-1924. CC is unaffected. Shield cards unaffected.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -703,6 +705,56 @@ describe('computeDamagePreview — chainVulnerable: shield cards unaffected', ()
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(4);
     expect(result.ccValue).toBe(9);
+    expect(result.qpModified).toBe('neutral');
+    expect(result.ccModified).toBe('neutral');
+  });
+});
+
+// ── quickPlayImmune enemy flag tests (bug fix 2026-04-18) ────────────────────
+//
+// Root cause: turnManager lines 1920-1924 set damageDealt=0 when
+// enemy.template.quickPlayImmune is true and playMode === 'quick', but
+// damagePreviewService had no equivalent check. Against The Librarian,
+// attack card faces showed normal QP damage instead of 0.
+
+describe('computeDamagePreview — quickPlayImmune: attack card shows QP=0', () => {
+  it('qpFinal=0 when enemyQuickPlayImmune is true; CC is unaffected', () => {
+    // strike stat table L0: nakedQpBase=4, nakedCcBase=6
+    // quickPlayImmune zeroes qpFinal entirely; CC pipeline not touched
+    const card = makeAttackCard();
+    const ctx = baseCtx({ enemyQuickPlayImmune: true });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(0);
+    expect(result.ccValue).toBe(6);
+    expect(result.qpModified).toBe('nerfed');
+    expect(result.ccModified).toBe('neutral');
+  });
+
+  it('qpFinal=0 even when other QP buffs are active (relic, buff)', () => {
+    // whetstone would normally push QP to 7; immune still zeroes it
+    // CC: round(6 * 1.0 * 1.0 * 1.0) + 3 = 9
+    const card = makeAttackCard();
+    const ctx = baseCtx({
+      enemyQuickPlayImmune: true,
+      activeRelicIds: new Set(['whetstone']),
+    });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(0);
+    expect(result.ccValue).toBe(9);
+    expect(result.qpModified).toBe('nerfed');
+    expect(result.ccModified).toBe('buffed');
+  });
+});
+
+describe('computeDamagePreview — quickPlayImmune: shield card is unaffected', () => {
+  it('shield card QP block is unchanged when enemyQuickPlayImmune is true', () => {
+    // quickPlayImmune is a damage immunity — it has no effect on block cards.
+    // block stat table L0: QP=4, CC=6
+    const card = makeShieldCard();
+    const ctx = baseCtx({ enemyQuickPlayImmune: true });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(6);
     expect(result.qpModified).toBe('neutral');
     expect(result.ccModified).toBe('neutral');
   });

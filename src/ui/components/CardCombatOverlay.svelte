@@ -528,6 +528,7 @@
       enemyBurnStacks: burnStacks,
       enemyIsVulnerable: isVulnerable(enemy.statusEffects ?? []),
       enemyQpDamageMultiplier: enemy._quickPlayDamageMultiplierOverride ?? enemy.template.quickPlayDamageMultiplier,
+      enemyQuickPlayImmune: !!enemy.template.quickPlayImmune,
       enemyChargeResistant: !!enemy.template.chargeResistant,
       enemyHardcover: enemy._hardcover ?? 0,
       enemyHardcoverBroken: !!enemy._hardcoverBroken,

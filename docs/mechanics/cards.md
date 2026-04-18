@@ -192,6 +192,7 @@ Cards in hand display **effective** QP and CC values rather than raw base values
 | Double strike ready | 2× effective damage |
 | Enemy vulnerable | 1.5× damage |
 | Enemy `quickPlayDamageMultiplier` | Partial QP reduction (e.g. Core Harbinger 0.3×) |
+| Enemy `quickPlayImmune` | QP damage forced to 0 (e.g. The Librarian); CC unaffected |
 | Enemy charge-resistant | 50% QP damage |
 | Enemy hardcover | Flat QP damage reduction |
 | Relics: inscription_fury, bastion's_will, stone_wall, worn_shield, hollow_armor | Inline computation |
