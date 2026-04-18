@@ -1,7 +1,7 @@
 # Quiz Engine Mechanics
 
 > **Purpose:** Documents how quiz questions are selected, formatted, graded, and how the FSRS spaced repetition algorithm schedules fact reviews.
-> **Last verified:** 2026-04-10
+> **Last verified:** 2026-04-18
 > **Source files:** `src/services/quizService.ts`, `src/services/fsrsScheduler.ts`, `src/services/questionFormatter.ts`, `src/services/questionTemplateSelector.ts`, `src/services/curatedFactSelector.ts`, `src/services/accuracyGradeSystem.ts`, `src/services/curatedDistractorSelector.ts`, `src/services/typedAnswerChecker.ts`, `src/services/synonymService.ts`, `src/services/chessGrader.ts`, `src/services/chessEloService.ts`
 
 ---
@@ -30,7 +30,9 @@ Anki-faithful four-priority system:
 3. **Ahead learning** — cards in learning but not yet due, only when nothing else available
 4. **Fallback** — any card not in the recent-fact cooldown window
 
-**Dedup rule:** A rolling `RECENT_FACT_WINDOW = 3` cooldown window of recently-shown fact IDs is maintained in `InRunFactTracker.recentFactIds`. Any fact whose ID is in this window is excluded from selection at Priorities 0, 2, 3, and Fallback. Priority 1 (due learning cards) uses single-fact exclusion (`lastFactId` only) — step delays ([4, 10] charges) already provide adequate spacing for time-critical reviews. If the pool is too small to apply the full window without starvation (pool size ≤ window size + 1), the selector falls back to single-fact exclusion. Learning cards CAN and SHOULD resurface within the same encounter — that is correct Anki behavior.
+**Dedup rule — cross-charge window:** A rolling `RECENT_FACT_WINDOW = 3` cooldown window of recently-shown fact IDs is maintained in `InRunFactTracker.recentFactIds`. Any fact whose ID is in this window is excluded from selection at Priorities 0, 2, 3, and Fallback. Priority 1 (due learning cards) uses single-fact exclusion (`lastFactId` only) — step delays ([4, 10] charges) already provide adequate spacing for time-critical reviews. If the pool is too small to apply the full window without starvation (pool size ≤ window size + 1), the selector falls back to single-fact exclusion. Learning cards CAN and SHOULD resurface within the same encounter — that is correct Anki behavior.
+
+**Dedup rule — per-turn cooldown:** A separate `isOnTurnCooldown(factId, currentTurn)` guard in `InRunFactTracker` prevents the same fact from appearing twice within the same turn. A `lastShownTurn` Map records which turn each fact was last served. `MIN_TURN_GAP = 1` means a fact shown on turn N is excluded from selection until turn N+1. This is orthogonal to the cross-charge window: the turn cooldown prevents same-turn repeats regardless of window exhaustion, while the charge window prevents same-run-segment repetition across turns. Both guards are evaluated together in the `shouldExclude` predicate in `curatedFactSelector.ts`.
 
 **Multi-question batch dedup** (`nonCombatQuizSelector.ts`):
 `selectNonCombatStudyQuestion` accepts an optional `excludeFactIds: ReadonlySet<string>` parameter.

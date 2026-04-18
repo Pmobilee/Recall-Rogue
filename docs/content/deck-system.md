@@ -1,7 +1,7 @@
 # Curated Deck System
 
 > **Purpose:** Explains what curated decks are, how they are structured, loaded, registered, and how player progression is tracked against them.
-> **Last verified:** 2026-04-11
+> **Last verified:** 2026-04-18
 > **Source files:** `src/data/curatedDeckStore.ts`, `src/data/curatedDeckSchema.ts`, `src/data/deckRegistry.ts`, `src/data/deckFactIndex.ts`, `src/data/curatedDeckTypes.ts`, `src/services/deckManager.ts`, `src/services/deckOptionsService.ts`, `src/services/deckProgressService.ts`, `src/services/dbDecoder.ts`, `src/services/chessPuzzleService.ts`, `public/curated.db`, `public/chess-puzzles.db`
 
 ---
@@ -1198,7 +1198,7 @@ interface DeckProgress {
   factsEncountered: number   // facts with any ReviewState
   factsMastered: number      // facts with stability >= 21 days
   averageStability: number   // days (encountered facts only)
-  progressPercent: number    // Math.round((mastered / total) * 100)
+  progressPercent: number    // Math.round((encountered / total) * 100)
 }
 ```
 

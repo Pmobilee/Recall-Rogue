@@ -1,7 +1,7 @@
 # Progression & Run Structure
 
 > **Purpose:** Documents the run lifecycle, floor/room generation, map layout, room types, ascension system, and shop mechanics.
-> **Last verified:** 2026-04-14
+> **Last verified:** 2026-04-18
 > **Source files:** `src/services/runManager.ts`, `src/services/floorManager.ts`, `src/services/mapGenerator.ts`, `src/services/ascension.ts`, `src/data/balance.ts`, `src/services/shopService.ts`
 
 ---
@@ -55,7 +55,7 @@ Event chance after combat by segment (`EVENT_CHANCE_BY_SEGMENT`): 80% / 75% / 65
 `generateRoomOptions` always ensures at least 1 combat room in each 3-room selection.
 
 ### Mystery Events
-`generateMysteryEvent(floor)` uses act-aware distribution via `MYSTERY_DISTRIBUTION_BY_ACT`:
+`generateMysteryEvent(floor?, isStudyMode?)` uses act-aware distribution via `MYSTERY_DISTRIBUTION_BY_ACT`:
 | Act | Narrative | Card Reward | Combat |
 |-----|-----------|-------------|--------|
 | 1 (floors 1–4) | 80% | 5% | 15% |
@@ -66,9 +66,9 @@ Act 3 combat ambushes are always elite-tier. Act 2 ambushes are 50/50 regular/el
 
 Tier pools (added per act):
 - `TIER_1_EVENTS` (Act 1+): 7 events — reading nook, inscription (quiz), tutor (quiz), whispering shelf, lost notebook, flashcard merchant, lost and found
-- `TIER_2_EVENTS` (Act 2+): 8 events — strict librarian, wrong answer museum, copyist's workshop, strange mushrooms (hidden 50/50), ambush, donation box, rival student (lose = 15 damage), **the knowing skull** (knowledgeShop: pay HP for gold/upgrade/card, leave costs 5 HP)
+- `TIER_2_EVENTS` (Act 2+): 8 events — strict librarian, wrong answer museum (**requiresStudyMode**), copyist's workshop, strange mushrooms (hidden 50/50), ambush, donation box, rival student (lose = 15 damage), **the knowing skull** (knowledgeShop: pay HP for gold/upgrade/card, leave costs 5 HP)
 - `TIER_3_EVENTS` (Act 2+): 7 events — burning library (quiz, wrong = 8 damage), mirror scholar, merchant of memories, cache of contraband, wishing well, study group (quiz-gated), **the forbidden section** (3 hard Qs; upgrade per correct, curseRandomCards(1) per wrong)
-- `TIER_4_EVENTS` (Act 3+): 8 events — knowledge gamble (3 hard Qs), the purge, meditation chamber, the purification (eraser_storm id, remove 2 + heal 15%), elite ambush, desperate bargain, the breakthrough (upgrade + heal 10%), **the epiphany** (4-option choice: upgradeAllCards+3 curses / remove 3+lose 20% maxHP / quiz 5 hard for 15g+heal5% each / turn away 5g)
+- `TIER_4_EVENTS` (Act 3+): 8 events — knowledge gamble (3 hard Qs), the purge (compound: removeRandomCard + upgradeRandomCard), meditation chamber (**requiresStudyMode**), the purification (eraser_storm id, remove 2 + heal 15%), elite ambush, desperate bargain, the breakthrough (upgrade + heal 10%), **the epiphany** (4-option choice: upgradeAllCards+3 curses / remove 3+lose 20% maxHP / quiz 5 hard for 15g+heal5% each / turn away 5g)
 
 **Phase 2 redesign changes (2026-04-01):**
 - All "nothing/Ignore/Decline" outcomes replaced with minimum 3–5g consolation

@@ -190,7 +190,7 @@ Final damage: `applyDamageToEnemy(enemy, damageDealt)`. Enemy HP ≤ 0 → `resu
 **Tier multipliers (@deprecated):** `card.effectMultiplier` is set by `TIER_MULTIPLIER[tier]` in `cardFactory.ts` but has no gameplay effect for active tiers — T1/T2a/T2b all = 1.0, making it a no-op multiplier. Tiers drive quiz difficulty ONLY. T3 = 0× (card becomes a passive and leaves the active hand). Power scaling is governed exclusively by mastery stat tables.
 
 **Knowledge Chain multipliers** (`CHAIN_MULTIPLIERS`): [1.0, 1.2, 1.5, 2.0, 2.5, 3.5] at chain lengths 0–5.
-Chains **decay by 1** per turn end (`CHAIN_DECAY_PER_TURN=1`) instead of fully resetting, preserving momentum into the next turn.
+Chains decay **proportionally** per turn end (`CHAIN_DECAY_RATE=0.5`): `ceil(length × 0.5)` points removed each turn, so higher chains lose more absolute length while retaining partial momentum. Source: `chainSystem.ts: decayChain()`.
 Chain applies at step 6 to the mechanic base value only — overclockMultiplier and buffMultiplier are separate pipeline steps applied to the chain-adjusted base (rework 2026-04-13). See docs/mechanics/chains.md.
 
 ---
