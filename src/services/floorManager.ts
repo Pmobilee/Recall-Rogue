@@ -39,6 +39,8 @@ export interface MysteryEvent {
   name: string
   description: string
   effect: MysteryEffect
+  /** If true, this event is skipped from the pool when not in Study Temple mode. */
+  requiresStudyMode?: boolean
 }
 
 export type MysteryEffect =
@@ -210,6 +212,7 @@ const TIER_2_EVENTS: MysteryEvent[] = [
     name: 'The Wrong Answer Museum',
     description: "Your mistakes line the walls. Study them to grow stronger.",
     effect: { type: 'reviewMuseum' },
+    requiresStudyMode: true,
   },
   {
     id: 'copyists_workshop',
@@ -371,7 +374,8 @@ const TIER_3_EVENTS: MysteryEvent[] = [
     effect: {
       type: 'choice',
       options: [
-        { label: 'Read them (gain card, take 10 dmg)', effect: { type: 'compound', effects: [{ type: 'damage', amount: 10 }, { type: 'freeCard' }] } },
+        // Fix 1: Option 1 now gives card + upgrade to justify the 10 HP cost vs. safe "take one"
+        { label: 'Read the banned texts (card + upgrade, take 10 dmg)', effect: { type: 'compound', effects: [{ type: 'damage', amount: 10 }, { type: 'freeCard' }, { type: 'upgradeRandomCard' }] } },
         { label: 'Take one safely', effect: { type: 'freeCard' } },
         { label: 'Report them (gain 30 gold)', effect: { type: 'currency', amount: 30 } },
       ],
@@ -462,14 +466,16 @@ const TIER_4_EVENTS: MysteryEvent[] = [
   {
     id: 'the_purge',
     name: 'The Purge',
-    description: 'A stone altar with a sacrificial flame. The fire burns away your weakest knowledge — and something stronger fills the gap.',
-    effect: { type: 'removeRandomCard' },
+    // Fix 3: Description promised something stronger fills the gap — now it does.
+    description: 'A stone altar with a sacrificial flame. One card burns — another grows stronger.',
+    effect: { type: 'compound', effects: [{ type: 'removeRandomCard' }, { type: 'upgradeRandomCard' }] },
   },
   {
     id: 'meditation_chamber',
     name: 'The Meditation Chamber',
     description: "Silence. Your mind reflects on what you know — and what you don't.",
     effect: { type: 'meditation' },
+    requiresStudyMode: true,
   },
   {
     id: 'eraser_storm',
@@ -839,8 +845,12 @@ const MYSTERY_DISTRIBUTION_BY_ACT: Record<1 | 2 | 3, { combat: number; cardRewar
  * - Act 1 (floors 1-4): low combat, quiz-gate introduction
  * - Act 2 (floors 5-8): ramped combat risk, meaningful rewards
  * - Act 3 (floors 9-12): maximum tension, elite ambushes
+ *
+ * @param floor - The current floor number (default 1).
+ * @param isStudyMode - When false (Trivia Dungeon), events requiring Study Temple
+ *   (reviewMuseum, meditation) are filtered out of the pool to avoid empty rooms.
  */
-export function generateMysteryEvent(floor?: number): MysteryEvent {
+export function generateMysteryEvent(floor?: number, isStudyMode?: boolean): MysteryEvent {
   const f = floor ?? 1
   const act = getActForFloor(f)
   const dist = MYSTERY_DISTRIBUTION_BY_ACT[act]
@@ -878,8 +888,11 @@ export function generateMysteryEvent(floor?: number): MysteryEvent {
   if (act >= 2) pool.push(...TIER_3_EVENTS)
   if (act >= 3) pool.push(...TIER_4_EVENTS)
 
-  const idx = Math.floor((rng ? rng.next() : Math.random()) * pool.length)
-  return { ...pool[idx] }
+  // Filter out study-mode-only events when not in Study Temple — prevents always-empty wasted rooms
+  const filteredPool = isStudyMode ? pool : pool.filter(e => !e.requiresStudyMode)
+
+  const idx = Math.floor((rng ? rng.next() : Math.random()) * filteredPool.length)
+  return { ...filteredPool[idx] }
 }
 
 /** Find a mystery event by its ID from all tiers. Dev use only. */

@@ -323,6 +323,26 @@ describe('FloorManager', () => {
       expect(seenIds.has('mystery_combat')).toBe(true)
       expect(seenIds.has('mystery_reward')).toBe(true)
     })
+
+    it('filters study-mode-only events when isStudyMode is false', () => {
+      const seenIds = new Set<string>()
+      for (let i = 0; i < 5000; i++) {
+        const event = generateMysteryEvent(9, false)
+        seenIds.add(event.id)
+      }
+      expect(seenIds.has('wrong_answer_museum')).toBe(false)
+      expect(seenIds.has('meditation_chamber')).toBe(false)
+    })
+
+    it('includes study-mode events when isStudyMode is true', () => {
+      const seenIds = new Set<string>()
+      for (let i = 0; i < 5000; i++) {
+        const event = generateMysteryEvent(9, true)
+        seenIds.add(event.id)
+      }
+      expect(seenIds.has('wrong_answer_museum')).toBe(true)
+      expect(seenIds.has('meditation_chamber')).toBe(true)
+    })
   })
 
   describe('createFloorState', () => {

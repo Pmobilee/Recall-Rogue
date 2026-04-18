@@ -2487,7 +2487,8 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
           break
         }
       }
-      activeMysteryEvent.set(generateMysteryEvent(run?.floor.currentFloor ?? 1));
+      const isStudy = run?.deckMode?.type === 'study'
+      activeMysteryEvent.set(generateMysteryEvent(run?.floor.currentFloor ?? 1, isStudy));
       gameFlowState.set('mysteryEvent');
       currentScreen.set('mysteryEvent');
       break;
