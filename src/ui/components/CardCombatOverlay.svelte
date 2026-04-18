@@ -537,6 +537,7 @@
       scarTissueStacks: turnState.scarTissueStacks ?? 0,
       playerStrengthModifier: getStrengthModifier(ps.statusEffects),
       chainMultiplier: turnState.chainMultiplier ?? 1.0,
+      enemyChainVulnerable: !!enemy.template.chainVulnerable,
     };
 
     const result: Record<string, DamagePreview> = {};

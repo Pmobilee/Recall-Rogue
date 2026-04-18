@@ -56,6 +56,12 @@ export interface DamagePreviewContext {
    * this: chainMult is applied to ccBase/ccShield only, never to qpBase/qpShield.
    */
   chainMultiplier?: number;
+  /**
+   * True if the enemy has the chainVulnerable flag — CC attack plays with an active
+   * chain (chainMultiplier > 1.0) deal +50% bonus damage. Mirrors turnManager lines 1956-1963.
+   * Attack-only: this bonus never applies to QP or shield cards.
+   */
+  enemyChainVulnerable?: boolean;
 }
 
 export interface DamagePreview {
@@ -292,6 +298,13 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
     // scholars_crown — tier-based % bonus; context-dependent (Review Queue vs normal), skipped
     // lucky_coin — +50% on next CC after 3 wrong Charges; RNG/stateful, skipped in deterministic preview
 
+    // Step 14: chainVulnerable — CC attack plays with active chain (> 1.0) deal +50% bonus damage.
+    // Mirrors turnManager lines 1956-1963. Attack-only (mirrors the damageDealt > 0 guard).
+    // QP is excluded because QP breaks the chain (turnManager sets currentChainMultiplier=1.0 for QP).
+    if (ctx.enemyChainVulnerable && chainMult > 1.0 && ccFinal > 0) {
+      ccFinal = ccFinal + Math.round(ccFinal * 0.5);
+    }
+
     return {
       qpValue: qpFinal,
       ccValue: ccFinal,
@@ -370,6 +383,7 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   }
   // scholars_crown — tier-based % bonus; context-dependent (Review Queue vs normal), skipped
   // lucky_coin — +50% on next CC after 3 wrong Charges; RNG/stateful, skipped in deterministic preview
+  // chainVulnerable does NOT apply to shield cards — the turnManager guard is damageDealt > 0.
 
   qpFinalShield = Math.max(0, qpFinalShield);
   ccFinalShield = Math.max(0, ccFinalShield);

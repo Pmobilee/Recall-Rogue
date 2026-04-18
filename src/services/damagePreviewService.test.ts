@@ -643,3 +643,67 @@ describe('computeDamagePreview — chain multiplier: shield card', () => {
     expect(result.ccModified).toBe('neutral');
   });
 });
+// ── chainVulnerable enemy flag tests (bug fix 2026-04-18) ────────────────────
+//
+// Root cause: the turnManager applies +50% CC damage to attack cards when
+// currentChainMultiplier > 1.0 and enemy.template.chainVulnerable is set
+// (turnManager lines 1956-1963), but the preview had no equivalent logic.
+// Against chain-vulnerable enemies during an active chain, the card face
+// showed lower CC damage than what would actually be dealt.
+
+describe('computeDamagePreview — chainVulnerable: attack with active chain', () => {
+  it('chain 1.5x + chainVulnerable: CC gets an additional +50% on top of chain bonus', () => {
+    // strike stat table L0: nakedQpBase=4, nakedCcBase=6
+    // ccBase = round(6 * 1.5) = 9
+    // ccFinal before step 14 = 9 (no other modifiers)
+    // step 14: 9 + round(9 * 0.5) = 9 + 5 = 14
+    // ccModified reference = round(6 * 1.5) = 9; 14 > 9 → buffed
+    const card = makeAttackCard();
+    const ctx = baseCtx({ chainMultiplier: 1.5, enemyChainVulnerable: true });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);  // QP unaffected — QP breaks chain
+    expect(result.ccValue).toBe(14);
+    expect(result.qpModified).toBe('neutral');
+    expect(result.ccModified).toBe('buffed');
+  });
+
+  it('chain 1.0x + chainVulnerable: no bonus because chain must be > 1.0', () => {
+    // chain=1.0 → chainVulnerable guard never fires
+    // ccFinal = round(6 * 1.0) = 6 (no bonus)
+    const card = makeAttackCard();
+    const ctx = baseCtx({ chainMultiplier: 1.0, enemyChainVulnerable: true });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(6);
+    expect(result.qpModified).toBe('neutral');
+    expect(result.ccModified).toBe('neutral');
+  });
+});
+
+describe('computeDamagePreview — chainVulnerable: attack QP is unaffected', () => {
+  it('chain 1.5x + chainVulnerable: QP stays at raw base (attack QP never gets chain bonus)', () => {
+    // QP breaks the chain — turnManager sets currentChainMultiplier=1.0 for QP,
+    // so both the chain scaling AND chainVulnerable bonus must not apply.
+    const card = makeAttackCard();
+    const ctx = baseCtx({ chainMultiplier: 1.5, enemyChainVulnerable: true });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.qpModified).toBe('neutral');
+  });
+});
+
+describe('computeDamagePreview — chainVulnerable: shield cards unaffected', () => {
+  it('chain 1.5x + chainVulnerable on a shield card: no bonus (attack-only rule)', () => {
+    // The turnManager chainVulnerable guard is on damageDealt > 0 — shields produce
+    // block, not damage. chainVulnerable ONLY applies to attack cards.
+    // block stat table L0: nakedQpBase=4, nakedCcBase=6
+    // ccFinalShield = round(6 * 1.5) = 9 (chain only; no vuln bonus)
+    const card = makeShieldCard();
+    const ctx = baseCtx({ chainMultiplier: 1.5, enemyChainVulnerable: true });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(9);
+    expect(result.qpModified).toBe('neutral');
+    expect(result.ccModified).toBe('neutral');
+  });
+});

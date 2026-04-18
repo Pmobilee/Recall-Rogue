@@ -1,3 +1,12 @@
+### 2026-04-18 — chainVulnerable bonus missing from damage preview
+
+**What:** Attack cards showed lower CC damage against chain-vulnerable enemies than what the combat pipeline actually dealt. E.g. with chain 1.5x on a 4-base attack, the preview showed 9 CC but the resolver dealt 14 (9 + 50% chainVulnerable bonus).
+
+**Why:** `turnManager.ts` lines 1956–1963 apply +50% to `effect.damageDealt` when `currentChainMultiplier > 1.0` and `enemy.template.chainVulnerable` is set. The `damagePreviewService.ts` had no equivalent step, so the displayed CC value was always the pre-bonus amount. The card face was lying to the player about chain power against chain-weak enemies.
+
+**Fix:** Added Step 14 to the attack branch of `computeDamagePreview`: when `ctx.enemyChainVulnerable && chainMult > 1.0 && ccFinal > 0`, apply `ccFinal += Math.round(ccFinal * 0.5)`. Added `enemyChainVulnerable` field to `DamagePreviewContext` (optional boolean). Wired from `CardCombatOverlay.svelte` via `!!enemy.template.chainVulnerable`. Shield cards and QP are unaffected — the guard mirrors the `damageDealt > 0` condition in turnManager (shields produce block, not damage; QP always has `currentChainMultiplier = 1.0`). Four new unit tests added.
+
+**Files:** `src/services/damagePreviewService.ts`, `src/ui/components/CardCombatOverlay.svelte`, `src/services/damagePreviewService.test.ts`, `docs/mechanics/cards.md`.
 
 ### 2026-04-18 — Hand Composition Guard and Tag Magnet Bias silently replaced Transmute CC pick
 
