@@ -962,7 +962,7 @@
   )
 
   let castDisabled = $derived(
-    !selectedCard || !turnState || getEffectiveApCost(selectedCard) > turnState.apCurrent,
+    !selectedCard || !turnState || Math.max(0, getEffectiveApCost(selectedCard) - focusDiscount) > turnState.apCurrent,
   )
 
   /** True on Surge turns — Charge Play costs +0 AP instead of +1. */
@@ -1828,7 +1828,7 @@
     // Check AP: Charge costs +1 surcharge (waived by chain momentum match OR active chain color match).
     // Surge does NOT waive the surcharge (Balance Pass 3) — it grants +1 AP at turn-start instead.
     const isOnColourMatch = activeChainColor !== null && card.chainType === activeChainColor
-    const chargeCost = getEffectiveApCost(card) + ((chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType) || isOnColourMatch ? 0 : 1)
+    const chargeCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + ((chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType) || isOnColourMatch ? 0 : 1)
     if (chargeCost > (turnState?.apCurrent ?? 0)) return
 
     selectedIndex = index
@@ -1847,7 +1847,7 @@
     if (!card) return
 
     // M-19: Show "Not enough AP" tooltip when tapping an unaffordable card
-    if (getEffectiveApCost(card) > (turnState?.apCurrent ?? 0)) {
+    if (Math.max(0, getEffectiveApCost(card) - focusDiscount) > (turnState?.apCurrent ?? 0)) {
       showNotEnoughAp = true
       if (notEnoughApTimer !== null) clearTimeout(notEnoughApTimer)
       notEnoughApTimer = setTimeout(() => {
@@ -1886,7 +1886,7 @@
 
     const card = handCards[index]
     if (!card) return
-    if (getEffectiveApCost(card) > (turnState?.apCurrent ?? 0)) return
+    if (Math.max(0, getEffectiveApCost(card) - focusDiscount) > (turnState?.apCurrent ?? 0)) return
 
     // Quick Play: bypass quiz entirely — play card immediately as correct (no quiz shown)
     const cardId = card.id

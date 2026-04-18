@@ -635,7 +635,7 @@
       // Check affordability: if charge can't be paid, return card to hand (no silent Quick Play)
       const card = cards[index]
       const isActiveChainMatchForDrag = activeChainColor !== null && card?.chainType === activeChainColor
-      const chargeApCost = getEffectiveApCost(card) + ((chargeMomentumChainType !== null && card?.chainType === chargeMomentumChainType) || isActiveChainMatchForDrag ? 0 : 1)
+      const chargeApCost = Math.max(0, getEffectiveApCost(card) - focusDiscount) + ((chargeMomentumChainType !== null && card?.chainType === chargeMomentumChainType) || isActiveChainMatchForDrag ? 0 : 1)
       const canAffordCharge = card && card.tier !== '3' && chargeApCost <= apCurrent
       if (canAffordCharge && onchargeplay) {
         markChargeDragSeen()
