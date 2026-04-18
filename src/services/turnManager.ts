@@ -3179,6 +3179,23 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
   const executedIntentType = intentSkipped ? 'none' as const : enemy.nextIntent.type;
 
+  // Buff combo: if the buff intent executed (not skipped) and a follow-up attack was
+  // pre-rolled, execute it now. The buff has already applied (strength is live in
+  // enemy.statusEffects), so the follow-up damage benefits from the new strength.
+  // We merge follow-up results into intentResult so the existing damage pipeline
+  // handles both in one pass (enrage, caps, scaling, block, thorns, etc. all apply).
+  if (!intentSkipped && executedIntentType === 'buff' && enemy.buffFollowUpIntent) {
+    const buffIntent = enemy.nextIntent;
+    enemy.nextIntent = enemy.buffFollowUpIntent;
+    const followUpResult = executeEnemyIntent(enemy);
+    intentResult.damage += followUpResult.damage;
+    intentResult.playerEffects.push(...followUpResult.playerEffects);
+    intentResult.blockStripped += followUpResult.blockStripped;
+    // Restore buff intent so telegraph logging and executedIntentType remain correct.
+    enemy.nextIntent = buffIntent;
+    enemy.buffFollowUpIntent = undefined;
+  }
+
   let damageDealt = 0;
   let blockAbsorbedAll = false;
   let playerDefeated = false;
@@ -3319,6 +3336,14 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+  // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
+  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
+    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+        canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+        ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+        difficultyMode: get(difficultyMode),
+      })
+    : undefined;
     return {
       damageDealt,
       effectsApplied,
@@ -3407,6 +3432,14 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+  // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
+  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
+    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+        canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+        ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+        difficultyMode: get(difficultyMode),
+      })
+    : undefined;
     return {
       damageDealt,
       effectsApplied,
@@ -3430,6 +3463,14 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+  // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
+  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
+    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+        canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+        ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+        difficultyMode: get(difficultyMode),
+      })
+    : undefined;
     return {
       damageDealt,
       effectsApplied,
@@ -3471,6 +3512,14 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+  // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
+  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
+    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+        canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+        ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+        difficultyMode: get(difficultyMode),
+      })
+    : undefined;
     return {
       damageDealt,
       effectsApplied,
@@ -3671,6 +3720,14 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
       difficultyMode: get(difficultyMode),
     });
+  // Buff combo follow-up: snapshot follow-up attack display damage so UI can show both.
+  enemy.lockedFollowUpDisplayDamage = enemy.buffFollowUpIntent
+    ? computeIntentDisplayDamageSnapshot(enemy.buffFollowUpIntent, enemy, playerState, {
+        canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+        ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+        difficultyMode: get(difficultyMode),
+      })
+    : undefined;
   turnState.turnNumber += 1;
   turnState.encounterTurnNumber += 1;
   turnState.isSurge = isSurgeTurn(turnState.turnNumber);

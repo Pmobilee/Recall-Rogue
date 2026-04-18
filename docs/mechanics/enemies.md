@@ -597,6 +597,22 @@ Enemies telegraph next action via `EnemyIntent.telegraph`. Selected by `weighted
 - Edge case: if a pool contains *only* `defend` intents, the filter is skipped with a console warning so the encounter never deadlocks.
 - Implemented in `rollNextIntent()` in `src/services/enemyManager.ts`.
 
+### Buff Combo — Follow-Up Attack (2026-04-18)
+
+**When an enemy rolls a buff intent, it also pre-rolls a follow-up attack that fires in the same turn.** The buff applies first (strength is live), so the follow-up benefits from the new strength immediately. This makes buff-heavy enemies feel threatening rather than wasting a full turn.
+
+**Mechanics:**
+- `rollNextIntent()` checks if the newly rolled intent is `buff`. If yes, it filters the pool for `attack` or `multi_attack` intents and randomly selects one, storing it on `enemy.buffFollowUpIntent`.
+- If the pool has no attack intents, `buffFollowUpIntent` stays `undefined` and the buff-only behavior is preserved.
+- In `endPlayerTurn()`, after `executeEnemyIntent()` resolves the buff (applying strength to `enemy.statusEffects`), the code swaps `enemy.nextIntent` to the follow-up, calls `executeEnemyIntent()` again, then merges the results (damage, player effects, blockStripped) into the main `intentResult`.
+- The merged `intentResult` flows through the single damage pipeline (enrage, caps, ascension scaling, block, thorns, etc.) as a unified value.
+- `enemy.nextIntent` is restored to the buff after the follow-up fires, so `executedIntentType` and telegraph logging correctly reflect the buff turn.
+- `enemy.lockedFollowUpDisplayDamage` is snapped at intent-roll time (alongside `lockedDisplayDamage`) for the UI to preview both actions. Note: the preview does not include the pending strength buff (it hasn't applied yet), so actual follow-up damage will be slightly higher.
+
+**Skipped-turn interaction:** If the buff turn is skipped (Slow, Stagger, Stun), the follow-up is also skipped — the guard `!intentSkipped && executedIntentType === 'buff'` prevents execution.
+
+**Anti-stall interaction:** The buff → follow-up combo counts as a `buff` for the anti-stall rule. The NEXT roll after a buff+attack combo still cannot be `defend`.
+
 ## Quiz-Reactive Hooks
 
 | Callback | When it fires |

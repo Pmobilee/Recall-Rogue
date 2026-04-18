@@ -1,7 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { createEnemy, rollNextIntent } from './enemyManager';
+import { createEnemy, rollNextIntent, executeEnemyIntent } from './enemyManager';
 import { initRunRng, destroyRunRng } from './seededRng';
 import { ENEMY_TEMPLATES } from '../data/enemies';
+import { getStrengthModifier } from '../data/statusEffects';
 import type { EnemyTemplate, EnemyInstance, EnemyIntent } from '../data/enemies';
 
 const MARGIN_GREMLIN_TEMPLATE = ENEMY_TEMPLATES.find(t => t.id === 'margin_gremlin')!;
@@ -162,5 +163,90 @@ describe('rollNextIntent — anti-stall defend filtering', () => {
     // Should not throw and should return a defend intent (fallback to full pool)
     expect(() => rollNextIntent(enemy)).not.toThrow();
     expect(enemy.nextIntent.type).toBe('defend');
+  });
+});
+
+// ── Buff combo follow-up ──────────────────────────────────────────────────────
+// Verifies that rollNextIntent sets buffFollowUpIntent when rolling a buff,
+// and that executeEnemyIntent correctly applies the buff then returns 0 damage
+// (so the caller can separately execute the follow-up).
+
+describe('rollNextIntent — buff follow-up intent', () => {
+  beforeEach(() => {
+    destroyRunRng();
+  });
+
+  it('sets buffFollowUpIntent (attack) when rolling a buff intent from a pool with attacks', () => {
+    const buffOnlyPool: EnemyIntent[] = [
+      { type: 'attack', value: 5, weight: 0, telegraph: 'Attacking!' },
+      { type: 'buff', value: 0, weight: 1, telegraph: 'Buffing!', statusEffect: { type: 'strength', value: 1, turns: 0 } },
+    ];
+    const template = makeTestTemplate(buffOnlyPool);
+    const enemy = createEnemy(template, 1);
+    // Simulate prev intent as attack so buff is eligible
+    enemy.nextIntent = { type: 'attack', value: 5, weight: 1, telegraph: 'prev' };
+
+    rollNextIntent(enemy);
+
+    expect(enemy.nextIntent.type).toBe('buff');
+    expect(enemy.buffFollowUpIntent).toBeDefined();
+    expect(enemy.buffFollowUpIntent!.type).toMatch(/^(attack|multi_attack)$/);
+  });
+
+  it('clears buffFollowUpIntent when rolling a non-buff intent', () => {
+    const attackOnlyPool: EnemyIntent[] = [
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Attacking!' },
+    ];
+    const template = makeTestTemplate(attackOnlyPool);
+    const enemy = createEnemy(template, 1);
+    // Pre-set a stale follow-up to confirm it gets cleared
+    enemy.buffFollowUpIntent = { type: 'attack', value: 5, weight: 1, telegraph: 'stale' };
+    enemy.nextIntent = { type: 'attack', value: 5, weight: 1, telegraph: 'prev' };
+
+    rollNextIntent(enemy);
+
+    expect(enemy.nextIntent.type).toBe('attack');
+    expect(enemy.buffFollowUpIntent).toBeUndefined();
+  });
+
+  it('buffFollowUpIntent is undefined when pool has no attacks or multi_attacks', () => {
+    const buffDebuffPool: EnemyIntent[] = [
+      { type: 'buff', value: 0, weight: 1, telegraph: 'Buffing!', statusEffect: { type: 'strength', value: 1, turns: 0 } },
+      { type: 'defend', value: 5, weight: 0, telegraph: 'Defending!' },
+    ];
+    const template = makeTestTemplate(buffDebuffPool);
+    const enemy = createEnemy(template, 1);
+    // prev=attack so buff isn't excluded by anti-stall
+    enemy.nextIntent = { type: 'attack', value: 5, weight: 1, telegraph: 'prev' };
+
+    rollNextIntent(enemy);
+
+    expect(enemy.nextIntent.type).toBe('buff');
+    expect(enemy.buffFollowUpIntent).toBeUndefined();
+  });
+
+  it('buff intent applies strength to enemy status effects before follow-up fires', () => {
+    const buffOnlyPool: EnemyIntent[] = [
+      { type: 'attack', value: 5, weight: 0, telegraph: 'Attacking!' },
+      { type: 'buff', value: 0, weight: 1, telegraph: 'Buffing!', statusEffect: { type: 'strength', value: 2, turns: 0 } },
+    ];
+    const template = makeTestTemplate(buffOnlyPool);
+    const enemy = createEnemy(template, 1);
+    enemy.nextIntent = { type: 'attack', value: 5, weight: 1, telegraph: 'prev' };
+
+    rollNextIntent(enemy);
+
+    expect(enemy.nextIntent.type).toBe('buff');
+    expect(enemy.buffFollowUpIntent).toBeDefined();
+
+    // Execute the buff — applies +2 strength
+    const buffResult = executeEnemyIntent(enemy);
+    // Buff itself deals 0 damage
+    expect(buffResult.damage).toBe(0);
+
+    // After executing buff, strength is live on enemy
+    const strengthMod = getStrengthModifier(enemy.statusEffects);
+    // +2 strength → modifier is 1 + 0.2 = 1.2 (or similar depending on implementation)
+    expect(strengthMod).toBeGreaterThan(1.0);
   });
 });

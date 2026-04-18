@@ -50,7 +50,7 @@ export function getFloorDamageScaling(floor: number): number {
  * @param pool - The intent pool to select from.
  * @returns The selected EnemyIntent.
  */
-function weightedRandomIntent(pool: EnemyIntent[]): EnemyIntent {
+export function weightedRandomIntent(pool: EnemyIntent[]): EnemyIntent {
   const totalWeight = pool.reduce((sum, intent) => sum + intent.weight, 0);
   const intentRng = isRunRngActive() ? getRunRng('enemyIntents') : null;
   let roll = (intentRng ? intentRng.next() : Math.random()) * totalWeight;
@@ -218,6 +218,25 @@ export function rollNextIntent(enemy: EnemyInstance): EnemyIntent {
   }
 
   enemy.nextIntent = weightedRandomIntent(activePool);
+
+  // Buff combo: when the rolled intent is a buff, pre-roll a follow-up attack that
+  // fires in the same enemy turn (AFTER the buff applies, so new strength is live).
+  // This makes buff-heavy enemies feel more threatening — they cannot simply waste
+  // a full turn buffsing without also pressing the player.
+  if (enemy.nextIntent.type === 'buff') {
+    const phasePool = (enemy.phase === 2 && enemy.template.phase2IntentPool)
+      ? enemy.template.phase2IntentPool
+      : enemy.template.intentPool;
+    const attackPool = phasePool.filter(i => i.type === 'attack' || i.type === 'multi_attack');
+    if (attackPool.length > 0) {
+      enemy.buffFollowUpIntent = weightedRandomIntent(attackPool);
+    } else {
+      enemy.buffFollowUpIntent = undefined;
+    }
+  } else {
+    enemy.buffFollowUpIntent = undefined;
+  }
+
   return enemy.nextIntent;
 }
 

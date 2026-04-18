@@ -4641,3 +4641,15 @@ startEncounter: () => startEncounterForRoom(resumeEnemyId),
 **File:** `src/CardApp.svelte` — `handleResumeActiveRun()`.
 
 **Note:** `actMap.currentNodeId` is set by `onMapNodeSelected()` when the player enters the combat node, so it is always populated when the run was saved mid-combat. The `enemyId` field on `MapNode` is `string | undefined` — only combat/elite/boss nodes carry it, which is exactly the node types that lead to a combat save screen.
+
+### 2026-04-18 — Buff follow-up execution order: buff applies BEFORE follow-up fires
+
+When implementing the buff+follow-up attack combo, the critical ordering constraint is that `executeEnemyIntent()` must run for the buff intent first so `enemy.statusEffects` contains the new strength. Only then should the follow-up `executeEnemyIntent()` call fire (with `enemy.nextIntent` swapped to the follow-up intent).
+
+Wrong approach: compute follow-up damage before executing the buff. The strength modifier wouldn't be live yet, so the preview and the actual damage would disagree by `strengthMod` factor.
+
+Correct: `executeEnemyIntent(buff)` → mutates statusEffects → `enemy.nextIntent = buffFollowUpIntent` → `executeEnemyIntent(follow-up)` → merge results → restore `enemy.nextIntent = buffIntent`.
+
+The merged `intentResult.damage` flows through the main damage pipeline once (enrage, cap, ascension scaling, block). Do not double-apply caps or scale the follow-up separately.
+
+`lockedFollowUpDisplayDamage` intentionally does NOT include the pending strength buff in its snapshot (it's computed before execution). Actual damage will be slightly higher than the preview — this is acceptable and avoids complex "simulate buff before snapshot" logic.

@@ -282,6 +282,26 @@ export interface EnemyInstance {
    * saves). The UI falls back to `computeIntentDisplayDamage()` when the field is absent.
    */
   lockedDisplayDamage?: number;
+  /**
+   * Buff follow-up: when the next intent is a buff, this holds a pre-rolled attack
+   * intent that will execute in the same turn AFTER the buff applies. The buff takes
+   * effect first (strength is live), so the follow-up attack benefits from the new
+   * strength immediately.
+   *
+   * Set by rollNextIntent() whenever it rolls a buff intent. Cleared to undefined
+   * when the intent is not a buff, or after the follow-up fires in endPlayerTurn().
+   */
+  buffFollowUpIntent?: EnemyIntent;
+  /**
+   * Locked display damage for the buff follow-up attack — snapped at the same time
+   * as lockedDisplayDamage. The UI can show both the buff and the expected follow-up
+   * attack damage on the intent banner.
+   *
+   * NOTE: This preview does NOT include the pending strength buff because the buff
+   * hasn't applied yet at snapshot time. The actual damage will be slightly higher.
+   * This is intentional — the display is an estimate, not a guarantee.
+   */
+  lockedFollowUpDisplayDamage?: number;
 }
 
 // ============================================================
