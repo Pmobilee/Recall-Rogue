@@ -2970,7 +2970,8 @@ export function playCardAction(
 
   // ── End of AR-tag-wiring section ──────────────────────────────────────────────────────────
 
-  if (card.cardType === 'buff' && !effect.applyDoubleStrikeBuff && !effect.applyFocusBuff && !effect.applyOverclock && !(effect.applyIgniteBuff ?? 0)) {
+  // Only empower sets buffNextCard — other buff-type cards have their own handling paths
+  if (card.mechanicId === 'empower') {
     turnState.buffNextCard = effect.finalValue;
     // empowerTargetCount is handled above in the AR-tag-wiring section (sets empowerRemainingCount)
   } else if (!effect.applyIgniteBuff) {

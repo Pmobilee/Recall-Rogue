@@ -4562,3 +4562,33 @@ When `acceptReward()` triggers the reward room → combat stop lifecycle, Phaser
 **Fix:** Added an early turnState.result check at the TOP of `endTurn()` before any button inspection. If `result === 'defeat'` or `result === 'victory'`, return `{ok: true}` immediately with a `playerDefeated`/`enemyDefeated` state hint. Also added a secondary check inside the `btn.disabled` branch as a belt-and-suspenders guard for the race window. Added the same guard to `quickPlayCard()` and `chargePlayCard()` so bots don't try to play cards after combat resolves. Added `result` field to `getCombatState()` return so bots can poll combat status directly.
 
 **File:** `src/dev/playtestAPI.ts` — `endTurn()`, `quickPlayCard()`, `chargePlayCard()`, `getCombatState()`.
+
+### 2026-04-17 — macOS depot missing libsteam_api.dylib
+
+**What:** The latest macOS depot upload (depot 4547574, BuildID 22828700) shows `Removed: libsteam_api.dylib` in the upload log. The Tauri build does not automatically include it; `scripts/steam-build.sh` copies it post-build. If `--deploy-only` is used without a preceding `--build` (or if the build step failed silently), the dylib won't be in the .app bundle.
+
+**Why:** `steam-build.sh` copies the dylib into `Recall Rogue.app/Contents/MacOS/` only during the build phase. The deploy phase uploads whatever is in the bundle directory. If the bundle was rebuilt without running the full script (e.g., `cargo tauri build` directly), the dylib copy step is skipped.
+
+**Fix:** Always use `npm run steam:build` (which runs `steam-build.sh`) before deploying. Verify with: `ls "src-tauri/target/release/bundle/macos/Recall Rogue.app/Contents/MacOS/libsteam_api.dylib"`. Re-upload after confirming the dylib is present.
+
+**Impact:** Game launches but all Steamworks features silently fail — no achievements, no overlay, no Rich Presence, no Cloud Save, no multiplayer lobby discovery.
+
+### 2026-04-17 — Linux build directory empty before launch
+
+**What:** `steam/linux-build/` is empty despite depot 4547573 (Linux + SteamOS) being listed as "active at launch." No Linux binary has been built or uploaded.
+
+**Why:** The Linux build requires SSH to a running Debian VM (`scripts/steam-build.sh --linux`). The VM must be booted in UTM and reachable on the local network. The build has never been run to completion.
+
+**Fix:** Boot the Debian VM in UTM, then run `npm run steam:linux` (builds on VM + uploads to depot 4547573). Verify `steam/linux-build/` contains `recall-rogue`, `libsteam_api.so`, and `steam_appid.txt`.
+
+### 2026-04-18 — Buff-type cards incorrectly setting buffNextCard (empower leak)
+
+**What:** 10 buff-type card mechanics (inscription_iron, inscription_fury, inscription_wisdom, quicken, forge, warcry, battle_trance, frenzy, mastery_surge, war_drum) were incorrectly setting `turnState.buffNextCard` when played. This caused a phantom "Empower" status icon in `CardCombatOverlay` and actually applied a `buffMultiplier = 1 + buffNextCard / 100` to the next card played.
+
+**Why:** The condition at `turnManager.ts` line 2973 used a BLACKLIST approach — it matched ALL `card.cardType === 'buff'` cards and excluded only 3 specific mechanics (double_strike, focus, ignite, overclock). Any new buff-type card added to the game would silently fall into this path and also set buffNextCard.
+
+**Fix:** Changed the condition to a WHITELIST: `if (card.mechanicId === 'empower')`. Only the empower mechanic should ever set `buffNextCard`. The else branch already correctly handles empower-consumption for all non-empower cards (including other buff types), so the logic flow is unchanged for those.
+
+**File:** `src/services/turnManager.ts` — around line 2973.
+
+**Lesson:** When gating a side-effect by card type, prefer whitelisting the specific mechanic IDs that need the effect rather than blacklisting exceptions. A blacklist grows silently as new mechanics are added.
