@@ -18,6 +18,7 @@ export interface InRunFactTrackerSnapshot {
   recentTemplateIds: string[];
   chargeCount: number;
   chargesSinceLastNew: number;
+  lastShownTurn?: Array<[string, number]>;
 }
 
 export interface InRunFactState {
@@ -79,6 +80,12 @@ export class InRunFactTracker {
    * from selection (unless the pool is too small to avoid it).
    */
   private static readonly RECENT_FACT_WINDOW = 3;
+
+  /** Turn number when each fact was last shown — for per-turn cooldown. */
+  private lastShownTurn: Map<string, number> = new Map();
+
+  /** Minimum full turns between repeated showings of the same fact. */
+  private static readonly MIN_TURN_GAP = 1;
 
   /**
    * Seed from global FSRS at run start (§4.3):
@@ -177,8 +184,12 @@ export class InRunFactTracker {
    * - LEARNING step 1 + correct → GRADUATED, due in 15 charges
    * - GRADUATED + correct → stays GRADUATED, due in 15 charges
    * - ANY + wrong → LEARNING step 0, due in 4 charges (Anki "Again")
+   *
+   * @param turnNumber - Optional global turn number for per-turn cooldown tracking.
+   *   When provided, stamps lastShownTurn[factId] so isOnTurnCooldown can filter
+   *   facts that appeared too recently in turn terms.
    */
-  recordCharge(factId: string, correct: boolean): void {
+  recordCharge(factId: string, correct: boolean, turnNumber?: number): void {
     // Push to rolling recent window (replaces single lastFactId dedup)
     this.recentFactIds.push(factId);
     if (this.recentFactIds.length > InRunFactTracker.RECENT_FACT_WINDOW) {
@@ -186,6 +197,11 @@ export class InRunFactTracker {
     }
     this.totalCharges++;
     this.chargesSinceLastNew++;
+
+    // Track turn for per-turn cooldown
+    if (turnNumber !== undefined) {
+      this.lastShownTurn.set(factId, turnNumber);
+    }
 
     if (correct) {
       const learning = this.learningCards.get(factId);
@@ -374,6 +390,20 @@ export class InRunFactTracker {
   }
 
   /**
+   * True if the fact was shown too recently in turn terms (within MIN_TURN_GAP turns).
+   * A fact shown on turn N cannot reappear until turn N + MIN_TURN_GAP + 1.
+   * Returns false if no turn data exists for the fact.
+   *
+   * @param factId - The fact to check.
+   * @param currentTurn - The current global turn number.
+   */
+  isOnTurnCooldown(factId: string, currentTurn: number): boolean {
+    const lastTurn = this.lastShownTurn.get(factId);
+    if (lastTurn === undefined) return false;
+    return currentTurn - lastTurn <= InRunFactTracker.MIN_TURN_GAP;
+  }
+
+  /**
    * Serialize the tracker to a plain object for JSON storage.
    * Named `toJSON` so `JSON.stringify` invokes it automatically — every
    * `RunState` autosave path therefore captures the full tracker state
@@ -390,6 +420,7 @@ export class InRunFactTracker {
       recentTemplateIds: [...this.recentTemplateIds],
       chargeCount: this.chargeCount,
       chargesSinceLastNew: this.chargesSinceLastNew,
+      lastShownTurn: [...this.lastShownTurn],
     };
   }
 
@@ -425,6 +456,7 @@ export class InRunFactTracker {
     tracker.recentTemplateIds = Array.isArray(snapshot.recentTemplateIds) ? [...snapshot.recentTemplateIds] : [];
     tracker.chargeCount = typeof snapshot.chargeCount === 'number' ? snapshot.chargeCount : 0;
     tracker.chargesSinceLastNew = typeof snapshot.chargesSinceLastNew === 'number' ? snapshot.chargesSinceLastNew : 0;
+    tracker.lastShownTurn = Array.isArray(snapshot.lastShownTurn) ? new Map(snapshot.lastShownTurn) : new Map();
     return tracker;
   }
 }

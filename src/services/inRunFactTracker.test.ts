@@ -239,6 +239,49 @@ describe('InRunFactTracker — state machine transitions', () => {
   });
 });
 
+describe('InRunFactTracker — turn cooldown', () => {
+  let tracker: InRunFactTracker;
+
+  beforeEach(() => {
+    tracker = new InRunFactTracker();
+  });
+
+  it('isOnTurnCooldown returns false for unseen fact', () => {
+    expect(tracker.isOnTurnCooldown('fact-a', 5)).toBe(false);
+  });
+
+  it('isOnTurnCooldown returns true when fact was shown on the same turn', () => {
+    tracker.recordCharge('fact-a', true, 5);
+    expect(tracker.isOnTurnCooldown('fact-a', 5)).toBe(true);
+  });
+
+  it('isOnTurnCooldown returns true when gap is exactly MIN_TURN_GAP (1)', () => {
+    tracker.recordCharge('fact-a', true, 3);
+    // turn 4 → gap = 4 - 3 = 1 ≤ MIN_TURN_GAP → still on cooldown
+    expect(tracker.isOnTurnCooldown('fact-a', 4)).toBe(true);
+  });
+
+  it('isOnTurnCooldown returns false when gap exceeds MIN_TURN_GAP', () => {
+    tracker.recordCharge('fact-a', true, 3);
+    // turn 5 → gap = 5 - 3 = 2 > MIN_TURN_GAP → eligible again
+    expect(tracker.isOnTurnCooldown('fact-a', 5)).toBe(false);
+  });
+
+  it('recordCharge without turnNumber does not set turn data', () => {
+    tracker.recordCharge('fact-a', true); // no turnNumber
+    expect(tracker.isOnTurnCooldown('fact-a', 1)).toBe(false);
+  });
+
+  it('later recordCharge overwrites earlier turn stamp', () => {
+    tracker.recordCharge('fact-a', true, 2);
+    tracker.recordCharge('fact-a', true, 6);
+    // Stamped at turn 6 — turn 7 gap=1, still on cooldown
+    expect(tracker.isOnTurnCooldown('fact-a', 7)).toBe(true);
+    // Turn 8 gap=2, eligible again
+    expect(tracker.isOnTurnCooldown('fact-a', 8)).toBe(false);
+  });
+});
+
 describe('InRunFactTracker — JSON round-trip', () => {
   it('preserves all internal state across JSON.stringify/parse', () => {
     const tracker = new InRunFactTracker();
@@ -270,6 +313,23 @@ describe('InRunFactTracker — JSON round-trip', () => {
     expect(factAState).toBeDefined();
     expect(factAState!.wrongCount).toBe(1);
     expect(factAState!.confusedWith).toContain('fact-b');
+  });
+
+  it('preserves lastShownTurn across JSON.stringify/parse', () => {
+    const tracker = new InRunFactTracker();
+    tracker.recordCharge('fact-a', true, 7);
+    tracker.recordCharge('fact-b', false, 9);
+
+    const restored = InRunFactTracker.fromJSON(JSON.parse(JSON.stringify(tracker)));
+
+    // fact-a stamped at turn 7: gap to turn 8 = 1 ≤ MIN_TURN_GAP → on cooldown
+    expect(restored.isOnTurnCooldown('fact-a', 8)).toBe(true);
+    // gap to turn 9 = 2 → eligible
+    expect(restored.isOnTurnCooldown('fact-a', 9)).toBe(false);
+    // fact-b stamped at turn 9: gap to turn 10 = 1 → on cooldown
+    expect(restored.isOnTurnCooldown('fact-b', 10)).toBe(true);
+    // gap to turn 11 = 2 → eligible
+    expect(restored.isOnTurnCooldown('fact-b', 11)).toBe(false);
   });
 
   it('continues to function correctly after restore', () => {
@@ -322,5 +382,23 @@ describe('InRunFactTracker — JSON round-trip', () => {
     expect(tracker.getLastFactId()).toBe('fact-z');
     expect(tracker.getRecentFactIds()).toEqual(['fact-z']);
     expect(tracker.getTotalCharges()).toBe(5);
+  });
+
+  it('fromJSON with absent lastShownTurn (old save) produces empty map — no cooldown errors', () => {
+    const oldSnapshot: InRunFactTrackerSnapshot = {
+      states: [],
+      learningCards: [],
+      graduatedCards: [],
+      recentFactIds: [],
+      totalCharges: 10,
+      currentEncounter: 2,
+      recentTemplateIds: [],
+      chargeCount: 10,
+      chargesSinceLastNew: 1,
+      // lastShownTurn intentionally absent
+    };
+    const tracker = InRunFactTracker.fromJSON(oldSnapshot);
+    // No crash; fact unseen in turn map → not on cooldown
+    expect(tracker.isOnTurnCooldown('anything', 5)).toBe(false);
   });
 });

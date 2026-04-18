@@ -1363,7 +1363,7 @@
 
     // 1. Select a fact dynamically
     const cardMastery = card.masteryLevel ?? 0
-    const { fact } = selectFactForCharge(factPool, tracker, cardMastery, runState.runSeed)
+    const { fact } = selectFactForCharge(factPool, tracker, cardMastery, runState.runSeed, turnState?.turnNumber)
 
     // 2. Select a question template
     const recentTemplates = tracker.getRecentTemplateIds()
@@ -2343,7 +2343,7 @@
           studyRunState.inRunFactTracker.getCurrentEncounter(),
           confusedFactId,
         )
-        studyRunState.inRunFactTracker.recordCharge(studyFactId, isCorrect)
+        studyRunState.inRunFactTracker.recordCharge(studyFactId, isCorrect, turnState?.turnNumber)
 
         if (!isCorrect && confusedFactId) {
           const matrix = getConfusionMatrix()

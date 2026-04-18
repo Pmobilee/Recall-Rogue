@@ -275,6 +275,70 @@ describe('selectFactForCharge — Priority 3: ahead learning fallback', () => {
   });
 });
 
+describe('selectFactForCharge — turn cooldown', () => {
+  /**
+   * MIN_TURN_GAP = 1: a fact shown on turn N cannot reappear until turn N+2.
+   * Shown on turn 1 → blocked on turns 1 and 2 → eligible from turn 3 onward.
+   */
+
+  it('fact shown on turn 1 is NOT selected on turn 1 (same-turn block)', () => {
+    // Large pool so there are always alternatives.
+    const bigPool = [
+      makeFact('a'), makeFact('b'), makeFact('c'), makeFact('d'), makeFact('e'),
+      makeFact('f'), makeFact('g'), makeFact('h'), makeFact('i'), makeFact('j'),
+    ];
+    const localTracker = new InRunFactTracker();
+    localTracker.recordCharge('a', true, 1); // stamp fact-a at turn 1
+
+    for (let i = 0; i < 5; i++) {
+      const result = selectFactForCharge(bigPool, localTracker, 0, RUN_SEED + i, 1);
+      expect(result.fact.id).not.toBe('a');
+    }
+  });
+
+  it('fact shown on turn 1 is NOT selected on turn 2 (within MIN_TURN_GAP)', () => {
+    const bigPool = [
+      makeFact('a'), makeFact('b'), makeFact('c'), makeFact('d'), makeFact('e'),
+      makeFact('f'), makeFact('g'), makeFact('h'), makeFact('i'), makeFact('j'),
+    ];
+    const localTracker = new InRunFactTracker();
+    localTracker.recordCharge('a', true, 1);
+
+    for (let i = 0; i < 5; i++) {
+      const result = selectFactForCharge(bigPool, localTracker, 0, RUN_SEED + i, 2);
+      expect(result.fact.id).not.toBe('a');
+    }
+  });
+
+  it('fact shown on turn 1 CAN be selected on turn 3 (gap > MIN_TURN_GAP)', () => {
+    // Reduce pool to only 'a' so the selector is forced to pick it once eligible.
+    const onlyA = [makeFact('a')];
+    const localTracker = new InRunFactTracker();
+    localTracker.recordCharge('a', true, 1);
+
+    // Turn 3: gap = 3 - 1 = 2 > MIN_TURN_GAP → eligible
+    const result = selectFactForCharge(onlyA, localTracker, 0, RUN_SEED, 3);
+    expect(result.fact.id).toBe('a');
+  });
+
+  it('turn cooldown does not interfere when currentTurn is not provided', () => {
+    const bigPool = [
+      makeFact('a'), makeFact('b'), makeFact('c'), makeFact('d'), makeFact('e'),
+    ];
+    const localTracker = new InRunFactTracker();
+    // Stamp fact-a at turn 2 via recordCharge
+    localTracker.recordCharge('a', true, 2);
+
+    // Call selectFactForCharge WITHOUT currentTurn — turn cooldown must not apply
+    // (the only exclusion is the charge-window dedup)
+    // With a large enough pool and no currentTurn arg, 'a' is blocked only by the
+    // charge window (3 slots). After the window rolls, 'a' could return.
+    // We just verify no crash and that the result is always a valid fact.
+    const result = selectFactForCharge(bigPool, localTracker, 0, RUN_SEED);
+    expect(result.fact).toBeDefined();
+  });
+});
+
 describe('selectFactForCharge — interleaved pool diversity', () => {
   /**
    * Verifies that when facts from multiple decks are interleaved (round-robin),

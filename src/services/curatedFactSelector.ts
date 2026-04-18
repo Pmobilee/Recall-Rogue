@@ -45,10 +45,18 @@ function seededRandom(seed: number): () => number {
  * lastFactId exclusion — step delays ([4, 10] charges) already provide adequate spacing
  * for learning cards, and blocking a time-critical card from serving could delay its review.
  *
+ * **Turn cooldown rule:** When `currentTurn` is provided, any fact shown on turn N is
+ * additionally excluded until turn N + MIN_TURN_GAP + 1 (currently N+2). This applies
+ * to ALL priorities including priority 1 (due learning), since turn-based repetition is
+ * a UX concern that overrides scheduling. Falls through to the normal starvation
+ * handling (single-fact or no exclusion) when the full pool would be wiped by the
+ * combined filters.
+ *
  * @param factPool - Chain theme subset (knowledge decks) or full pool (vocabulary decks)
  * @param tracker - In-run fact tracker (Anki learning step state machine)
  * @param cardMasteryLevel - Current card slot mastery (0-5) — reserved for future use
  * @param runSeed - Deterministic seed for random selection
+ * @param currentTurn - Optional global turn number for per-turn cooldown filtering
  * @returns Selected fact and reason
  */
 export function selectFactForCharge(
@@ -56,6 +64,7 @@ export function selectFactForCharge(
   tracker: InRunFactTracker,
   cardMasteryLevel: number,
   runSeed: number,
+  currentTurn?: number,
 ): FactSelectionResult {
   const rand = seededRandom(runSeed + tracker.getTotalCharges() + tracker.getAndIncrementChargeCount());
   const lastFactId = tracker.getLastFactId();
@@ -64,9 +73,15 @@ export function selectFactForCharge(
   // For pools smaller than the window + 1, fall back to single-fact exclusion to prevent starvation.
   // Example: a 3-fact pool with a 3-entry window would exclude all facts if one was just shown.
   const useFullWindow = factPool.length > recentFactIds.size + 1;
+
+  // Build the combined exclusion predicate: charge-window dedup + per-turn cooldown.
+  // Turn cooldown applies to all priorities — it's a UX guard, not a scheduling concern.
+  const onTurnCooldown = (factId: string): boolean =>
+    currentTurn !== undefined && tracker.isOnTurnCooldown(factId, currentTurn);
+
   const shouldExclude = useFullWindow
-    ? (factId: string) => recentFactIds.has(factId)
-    : (factId: string) => factId === lastFactId;
+    ? (factId: string) => recentFactIds.has(factId) || onTurnCooldown(factId)
+    : (factId: string) => factId === lastFactId || onTurnCooldown(factId);
 
   // === PRIORITY 0: Forced new card introduction (Anki-style even spacing) ===
   // Every NEW_CARD_INTERVAL charges, introduce a new card if available.
@@ -92,11 +107,11 @@ export function selectFactForCharge(
   }
 
   // === PRIORITY 1: Due learning cards (Anki: learning cards are time-critical) ===
-  // Use single-fact exclusion (lastFactId only) for due learning cards — step delays
-  // ([4, 10] charges) already provide adequate spacing, and blocking a time-critical
-  // card from serving could delay an important review.
+  // Apply turn cooldown even here — per-turn repetition is a UX concern that outweighs
+  // scheduling priority. The charge-window dedup still uses single-fact (lastFactId) for
+  // due learning cards, since step delays ([4, 10] charges) already space them adequately.
   const dueLearning = tracker.getDueLearningCards()
-    .filter(id => id !== lastFactId)
+    .filter(id => id !== lastFactId && !onTurnCooldown(id))
     .map(id => factPool.find(f => f.id === id))
     .filter((f): f is DeckFact => f !== undefined);
 
