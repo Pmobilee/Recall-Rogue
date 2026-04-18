@@ -200,19 +200,26 @@ export function rollNextIntent(enemy: EnemyInstance): EnemyIntent {
     ? enemy.template.phase2IntentPool
     : enemy.template.intentPool;
 
-  // Anti-stall rule: block cannot follow block, buff, or debuff.
+  // Anti-stall rules — prevent tedious non-damage sequences.
   // Read the intent that was JUST EXECUTED (nextIntent hasn't been overwritten yet).
   const prevType = enemy.nextIntent.type;
   let activePool: EnemyIntent[] = pool;
   if (prevType === 'defend' || prevType === 'buff' || prevType === 'debuff') {
-    const filtered = pool.filter(intent => intent.type !== 'defend');
+    // After defend/buff/debuff: always block defend.
+    // After debuff: also block buff and debuff — force a damage action next turn.
+    const blocked = new Set<string>(['defend']);
+    if (prevType === 'debuff') {
+      blocked.add('buff');
+      blocked.add('debuff');
+    }
+    const filtered = pool.filter(intent => !blocked.has(intent.type));
     if (filtered.length > 0) {
       activePool = filtered;
     } else {
-      // Edge case: pool has ONLY defend intents — fall back to full pool to avoid deadlock.
+      // Edge case: pool has ONLY blocked intent types — fall back to full pool.
       console.warn(
-        `[enemyManager] rollNextIntent: pool for enemy "${enemy.template.id}" contains only` +
-        ` defend intents after filtering (prevType="${prevType}"). Falling back to full pool.`,
+        `[enemyManager] rollNextIntent: pool for enemy "${enemy.template.id}" has no` +
+        ` valid intents after anti-stall filter (prevType="${prevType}"). Falling back to full pool.`,
       );
     }
   }
