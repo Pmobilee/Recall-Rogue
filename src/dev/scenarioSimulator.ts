@@ -206,6 +206,23 @@ const SCENARIOS: Record<string, ScenarioConfig> = {
     handSize: 8,
     relics: ['scavengers_eye'],
   },
+  // Audit scenario: all cards with recently fixed/wired effects
+  'combat-audit-all': {
+    screen: 'combat',
+    enemy: 'thesis_construct',
+    playerHp: 200,
+    playerMaxHp: 200,
+    hand: [
+      // Wave 1 stat fixes
+      'reckless', 'execute', 'gambit', 'sacrifice', 'foresight',
+      // Wave 2 wired effects
+      'archive', 'conversion', 'hemorrhage', 'ironhide', 'bulwark',
+      'war_drum', 'aftershock', 'tutor', 'inscription_wisdom',
+      // Extra stat fixes
+      'lacerate', 'kindle', 'thorns', 'riposte', 'parry', 'slow',
+    ],
+    relics: ['whetstone'],
+  },
 
   // === Room / navigation scenarios ===
   'reward-room': {

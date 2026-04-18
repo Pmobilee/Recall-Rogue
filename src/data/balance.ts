@@ -425,6 +425,7 @@ export const CURSED_AUTO_CURE_COUNT = 1;
 // Player defaults
 export const PLAYER_START_HP = 100;
 export const PLAYER_MAX_HP = 100;
+export const STARTING_CURRENCY = 50;
 export const HINTS_PER_ENCOUNTER = 1;
 export const START_AP_PER_TURN = 3;
 export const MAX_AP_PER_TURN = 5;

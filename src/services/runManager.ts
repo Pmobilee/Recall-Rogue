@@ -7,7 +7,7 @@ import type { FactDomain } from '../data/card-types';
 import type { ChainDistribution } from './chainDistribution';
 import type { FloorState } from './floorManager';
 import { createFloorState, getSegment } from './floorManager';
-import { PLAYER_START_HP, PLAYER_MAX_HP, DEATH_PENALTY, DIFFICULTY_REWARD_MULTIPLIER } from '../data/balance';
+import { PLAYER_START_HP, PLAYER_MAX_HP, DEATH_PENALTY, DIFFICULTY_REWARD_MULTIPLIER, STARTING_CURRENCY } from '../data/balance';
 import { difficultyMode } from './cardPreferences';
 import { get } from 'svelte/store';
 import type { ActiveBounty } from './bountyManager';
@@ -296,7 +296,7 @@ export function createRunState(
     floor: createFloorState(),
     playerHp: maxHp,
     playerMaxHp: maxHp,
-    currency: 0,
+    currency: STARTING_CURRENCY,
     cardsEarned: 0,
     factsAnswered: 0,
     factsCorrect: 0,

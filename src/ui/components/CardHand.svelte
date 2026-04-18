@@ -1709,6 +1709,13 @@
     animation: ap-pulse-red 1.5s ease-in-out infinite;
   }
 
+  /* Title position override for hand cards only — hand uses a stretched 1.42 aspect ratio
+     so the shared GUIDE_STYLES.mechanicName (top:8.757%) sits too high on the banner ribbon.
+     Push it down to align with the ribbon center. Does NOT affect shop, rewards, or other views. */
+  .card-in-hand :global(.v2-mechanic-name) {
+    top: 11.5% !important;
+  }
+
   @keyframes ap-pulse-red {
     0%, 100% { opacity: 0.6; }
     50% { opacity: 1; }
