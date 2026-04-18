@@ -36,11 +36,14 @@ function seededRandom(seed: number): () => number {
  *    MAX_LEARNING (8). Due reviews take the remaining share proportionally.
  * 3. Ahead learning — cards in learning whose timer has NOT yet expired, served
  *    only when nothing else is available (rare edge case at small pool sizes).
- * Fallback: any card except the immediately previous fact (prevents all repetition).
+ * Fallback: any card not in the recent-fact cooldown window.
  *
- * The ONLY dedup is lastFactId — prevents back-to-back repetition of the same fact.
- * Learning cards CAN and SHOULD come back within the same encounter — that is correct
- * Anki behavior. The longer step delays ([4, 10] charges) provide natural spacing.
+ * **Dedup rule:** A rolling window of RECENT_FACT_WINDOW (3) fact IDs is maintained.
+ * Any fact in this window is excluded from selection (unless the pool is smaller than
+ * the window + 1, in which case only the immediately previous fact is excluded to
+ * prevent starvation). Priority 1 (due learning cards) retains the single-fact
+ * lastFactId exclusion — step delays ([4, 10] charges) already provide adequate spacing
+ * for learning cards, and blocking a time-critical card from serving could delay its review.
  *
  * @param factPool - Chain theme subset (knowledge decks) or full pool (vocabulary decks)
  * @param tracker - In-run fact tracker (Anki learning step state machine)
@@ -56,13 +59,21 @@ export function selectFactForCharge(
 ): FactSelectionResult {
   const rand = seededRandom(runSeed + tracker.getTotalCharges() + tracker.getAndIncrementChargeCount());
   const lastFactId = tracker.getLastFactId();
+  const recentFactIds = new Set(tracker.getRecentFactIds());
+
+  // For pools smaller than the window + 1, fall back to single-fact exclusion to prevent starvation.
+  // Example: a 3-fact pool with a 3-entry window would exclude all facts if one was just shown.
+  const useFullWindow = factPool.length > recentFactIds.size + 1;
+  const shouldExclude = useFullWindow
+    ? (factId: string) => recentFactIds.has(factId)
+    : (factId: string) => factId === lastFactId;
 
   // === PRIORITY 0: Forced new card introduction (Anki-style even spacing) ===
   // Every NEW_CARD_INTERVAL charges, introduce a new card if available.
   // This prevents learning/review cards from starving new card introduction.
   if (tracker.shouldForceNewCard() && tracker.canIntroduceNew()) {
     const forcedNew = factPool.filter(f =>
-      f.id !== lastFactId &&
+      !shouldExclude(f.id) &&
       !tracker.isInLearning(f.id) &&
       !tracker.isGraduated(f.id)
     );
@@ -81,6 +92,9 @@ export function selectFactForCharge(
   }
 
   // === PRIORITY 1: Due learning cards (Anki: learning cards are time-critical) ===
+  // Use single-fact exclusion (lastFactId only) for due learning cards — step delays
+  // ([4, 10] charges) already provide adequate spacing, and blocking a time-critical
+  // card from serving could delay an important review.
   const dueLearning = tracker.getDueLearningCards()
     .filter(id => id !== lastFactId)
     .map(id => factPool.find(f => f.id === id))
@@ -98,7 +112,7 @@ export function selectFactForCharge(
   const newCards: DeckFact[] = [];
 
   for (const fact of factPool) {
-    if (fact.id === lastFactId) continue;
+    if (shouldExclude(fact.id)) continue;
 
     if (tracker.isGraduated(fact.id)) {
       // Only include if due for review
@@ -148,15 +162,15 @@ export function selectFactForCharge(
 
   // === PRIORITY 3: Ahead learning (not yet due, but nothing else available) ===
   const aheadLearning = factPool.filter(f =>
-    f.id !== lastFactId && tracker.isInLearning(f.id) && !tracker.getDueLearningCards().includes(f.id)
+    !shouldExclude(f.id) && tracker.isInLearning(f.id) && !tracker.getDueLearningCards().includes(f.id)
   );
 
   if (aheadLearning.length > 0) {
     return { fact: aheadLearning[Math.floor(rand() * aheadLearning.length)], selectionReason: 'struggling' };
   }
 
-  // === FALLBACK: anything except last fact ===
-  const any = factPool.filter(f => f.id !== lastFactId);
+  // === FALLBACK: anything not in the recent-fact cooldown window ===
+  const any = factPool.filter(f => !shouldExclude(f.id));
   return {
     fact: any.length > 0 ? any[Math.floor(rand() * any.length)] : factPool[0],
     selectionReason: 'random',

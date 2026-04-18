@@ -10,7 +10,9 @@ export interface InRunFactTrackerSnapshot {
   states: Array<[string, InRunFactState]>;
   learningCards: Array<[string, { step: number; dueAtCharge: number }]>;
   graduatedCards: Array<[string, number]>;
-  lastFactId: string | null;
+  /** @deprecated use recentFactIds — kept for backward-compat save loading */
+  lastFactId?: string | null;
+  recentFactIds?: string[];
   totalCharges: number;
   currentEncounter: number;
   recentTemplateIds: string[];
@@ -48,7 +50,8 @@ export interface InRunFactState {
  */
 export class InRunFactTracker {
   private states: Map<string, InRunFactState> = new Map();
-  private lastFactId: string | null = null;
+  /** Rolling window of recently-shown fact IDs (last RECENT_FACT_WINDOW charges). */
+  private recentFactIds: string[] = [];
   private totalCharges = 0;
   private currentEncounter = 1;
   private recentTemplateIds: string[] = [];  // Last 3 template IDs (for variety tracking)
@@ -69,6 +72,13 @@ export class InRunFactTracker {
   private static readonly GRADUATE_DELAY = 15;
   /** Max cards allowed in learning state simultaneously */
   private static readonly MAX_LEARNING = 8;
+
+  /**
+   * How many recent fact IDs to keep in the cooldown window.
+   * A fact shown within the last RECENT_FACT_WINDOW charges will be excluded
+   * from selection (unless the pool is too small to avoid it).
+   */
+  private static readonly RECENT_FACT_WINDOW = 3;
 
   /**
    * Seed from global FSRS at run start (§4.3):
@@ -169,7 +179,11 @@ export class InRunFactTracker {
    * - ANY + wrong → LEARNING step 0, due in 4 charges (Anki "Again")
    */
   recordCharge(factId: string, correct: boolean): void {
-    this.lastFactId = factId;
+    // Push to rolling recent window (replaces single lastFactId dedup)
+    this.recentFactIds.push(factId);
+    if (this.recentFactIds.length > InRunFactTracker.RECENT_FACT_WINDOW) {
+      this.recentFactIds.shift();
+    }
     this.totalCharges++;
     this.chargesSinceLastNew++;
 
@@ -256,8 +270,22 @@ export class InRunFactTracker {
     this.chargesSinceLastNew = 0;
   }
 
+  /**
+   * Returns the rolling window of recently-shown fact IDs (up to RECENT_FACT_WINDOW entries).
+   * The selector uses this to prevent a fact from reappearing within the window.
+   */
+  getRecentFactIds(): string[] {
+    return this.recentFactIds;
+  }
+
+  /**
+   * Returns the most recently shown fact ID, or null if no charges have been recorded.
+   * Kept for backward compatibility — prefer getRecentFactIds() for full window access.
+   */
   getLastFactId(): string | null {
-    return this.lastFactId;
+    return this.recentFactIds.length > 0
+      ? this.recentFactIds[this.recentFactIds.length - 1]
+      : null;
   }
 
   getTotalCharges(): number {
@@ -356,7 +384,7 @@ export class InRunFactTracker {
       states: [...this.states],
       learningCards: [...this.learningCards],
       graduatedCards: [...this.graduatedCards],
-      lastFactId: this.lastFactId,
+      recentFactIds: [...this.recentFactIds],
       totalCharges: this.totalCharges,
       currentEncounter: this.currentEncounter,
       recentTemplateIds: [...this.recentTemplateIds],
@@ -370,6 +398,9 @@ export class InRunFactTracker {
    * Defensive against missing/malformed fields so legacy and partially
    * corrupt saves still load — the runSaveService deserializer relies on
    * this for forward/backward compatibility.
+   *
+   * Migration: if `recentFactIds` is absent but `lastFactId` is present (old save),
+   * seeds the window with `[lastFactId]` to preserve single-fact dedup on resume.
    */
   static fromJSON(snapshot: InRunFactTrackerSnapshot | null | undefined): InRunFactTracker {
     const tracker = new InRunFactTracker();
@@ -379,7 +410,16 @@ export class InRunFactTracker {
     tracker.states = Array.isArray(snapshot.states) ? new Map(snapshot.states) : new Map();
     tracker.learningCards = Array.isArray(snapshot.learningCards) ? new Map(snapshot.learningCards) : new Map();
     tracker.graduatedCards = Array.isArray(snapshot.graduatedCards) ? new Map(snapshot.graduatedCards) : new Map();
-    tracker.lastFactId = typeof snapshot.lastFactId === 'string' ? snapshot.lastFactId : null;
+
+    // Migrate old saves: recentFactIds takes priority; fall back to lastFactId singleton; else empty.
+    if (Array.isArray(snapshot.recentFactIds)) {
+      tracker.recentFactIds = [...snapshot.recentFactIds];
+    } else if (typeof snapshot.lastFactId === 'string') {
+      tracker.recentFactIds = [snapshot.lastFactId];
+    } else {
+      tracker.recentFactIds = [];
+    }
+
     tracker.totalCharges = typeof snapshot.totalCharges === 'number' ? snapshot.totalCharges : 0;
     tracker.currentEncounter = typeof snapshot.currentEncounter === 'number' ? snapshot.currentEncounter : 1;
     tracker.recentTemplateIds = Array.isArray(snapshot.recentTemplateIds) ? [...snapshot.recentTemplateIds] : [];

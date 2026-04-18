@@ -123,19 +123,48 @@ describe('InRunFactTracker — new card guarantee', () => {
   });
 });
 
-describe('InRunFactTracker — lastFactId dedup (no encounter-scoped dedup)', () => {
+describe('InRunFactTracker — recent fact window dedup', () => {
   let tracker: InRunFactTracker;
 
   beforeEach(() => {
     tracker = new InRunFactTracker();
   });
 
-  it('lastFactId is updated on each charge', () => {
+  it('getLastFactId returns null initially', () => {
     expect(tracker.getLastFactId()).toBeNull();
+  });
+
+  it('getLastFactId returns the most recently recorded charge', () => {
     tracker.recordCharge('fact-a', true);
     expect(tracker.getLastFactId()).toBe('fact-a');
     tracker.recordCharge('fact-b', false);
     expect(tracker.getLastFactId()).toBe('fact-b');
+  });
+
+  it('getRecentFactIds starts empty', () => {
+    expect(tracker.getRecentFactIds()).toEqual([]);
+  });
+
+  it('getRecentFactIds grows up to RECENT_FACT_WINDOW (3) and then rolls', () => {
+    tracker.recordCharge('a', true);
+    expect(tracker.getRecentFactIds()).toEqual(['a']);
+
+    tracker.recordCharge('b', true);
+    expect(tracker.getRecentFactIds()).toEqual(['a', 'b']);
+
+    tracker.recordCharge('c', true);
+    expect(tracker.getRecentFactIds()).toEqual(['a', 'b', 'c']);
+
+    // Window is full — oldest entry ('a') should drop when 'd' is recorded
+    tracker.recordCharge('d', true);
+    expect(tracker.getRecentFactIds()).toEqual(['b', 'c', 'd']);
+  });
+
+  it('getLastFactId is always the last element of getRecentFactIds', () => {
+    tracker.recordCharge('x', true);
+    tracker.recordCharge('y', true);
+    const recent = tracker.getRecentFactIds();
+    expect(tracker.getLastFactId()).toBe(recent[recent.length - 1]);
   });
 
   it('advanceEncounter increments currentEncounter', () => {
@@ -144,11 +173,11 @@ describe('InRunFactTracker — lastFactId dedup (no encounter-scoped dedup)', ()
     expect(tracker.getCurrentEncounter()).toBe(2);
   });
 
-  it('lastFactId persists across advanceEncounter', () => {
+  it('recentFactIds persists across advanceEncounter', () => {
     tracker.recordCharge('fact-a', true);
     tracker.advanceEncounter();
-    // lastFactId should still be 'fact-a' — encounter-scoped dedup is gone
     expect(tracker.getLastFactId()).toBe('fact-a');
+    expect(tracker.getRecentFactIds()).toContain('fact-a');
   });
 
   it('learning card CAN become due within same encounter (no encounter-scoped dedup)', () => {
@@ -228,7 +257,10 @@ describe('InRunFactTracker — JSON round-trip', () => {
     const restored = InRunFactTracker.fromJSON(parsed);
 
     expect(restored.getTotalCharges()).toBe(tracker.getTotalCharges());
+    // recentFactIds window: charges were fact-a, fact-b, fact-a → window = ['fact-a', 'fact-b', 'fact-a']
+    // lastFactId should be the last element of that window
     expect(restored.getLastFactId()).toBe('fact-a');
+    expect(restored.getRecentFactIds()).toEqual(['fact-a', 'fact-b', 'fact-a']);
     expect(restored.isInLearning('fact-a')).toBe(true);
     expect(restored.isInLearning('fact-b')).toBe(true);
     expect(restored.getRecentTemplateIds()).toEqual(['forward', 'reverse']);
@@ -257,6 +289,7 @@ describe('InRunFactTracker — JSON round-trip', () => {
     const tracker = InRunFactTracker.fromJSON(undefined);
     expect(tracker.getTotalCharges()).toBe(0);
     expect(tracker.getLastFactId()).toBeNull();
+    expect(tracker.getRecentFactIds()).toEqual([]);
     expect(tracker.getCurrentEncounter()).toBe(1);
     expect(tracker.getRecentTemplateIds()).toEqual([]);
     expect(tracker.canIntroduceNew()).toBe(true);
@@ -267,6 +300,27 @@ describe('InRunFactTracker — JSON round-trip', () => {
     const tracker = InRunFactTracker.fromJSON({} as unknown as InRunFactTrackerSnapshot);
     expect(tracker.getTotalCharges()).toBe(0);
     expect(tracker.getLastFactId()).toBeNull();
+    expect(tracker.getRecentFactIds()).toEqual([]);
     expect(tracker.getCurrentEncounter()).toBe(1);
+  });
+
+  it('migrates old save with lastFactId (no recentFactIds) to a single-entry window', () => {
+    // Simulate a snapshot from before the window was introduced.
+    const oldSnapshot: InRunFactTrackerSnapshot = {
+      states: [],
+      learningCards: [],
+      graduatedCards: [],
+      lastFactId: 'fact-z',
+      // recentFactIds intentionally absent
+      totalCharges: 5,
+      currentEncounter: 1,
+      recentTemplateIds: [],
+      chargeCount: 5,
+      chargesSinceLastNew: 2,
+    };
+    const tracker = InRunFactTracker.fromJSON(oldSnapshot);
+    expect(tracker.getLastFactId()).toBe('fact-z');
+    expect(tracker.getRecentFactIds()).toEqual(['fact-z']);
+    expect(tracker.getTotalCharges()).toBe(5);
   });
 });

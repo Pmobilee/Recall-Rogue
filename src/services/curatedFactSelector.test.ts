@@ -21,7 +21,7 @@ const RUN_SEED = 42;
 
 const POOL_5 = [makeFact('a'), makeFact('b'), makeFact('c'), makeFact('d'), makeFact('e')];
 
-describe('selectFactForCharge — lastFactId dedup', () => {
+describe('selectFactForCharge — recent fact cooldown window dedup', () => {
   let tracker: InRunFactTracker;
 
   beforeEach(() => {
@@ -36,7 +36,7 @@ describe('selectFactForCharge — lastFactId dedup', () => {
     }
   });
 
-  it('lastFactId dedup persists across advanceEncounter', () => {
+  it('dedup persists across advanceEncounter', () => {
     tracker.recordCharge('a', true);
     tracker.advanceEncounter();
     const result = selectFactForCharge(POOL_5, tracker, 0, RUN_SEED);
@@ -48,6 +48,45 @@ describe('selectFactForCharge — lastFactId dedup', () => {
     tracker.recordCharge('only', true);
     const result = selectFactForCharge(singlePool, tracker, 0, RUN_SEED);
     expect(result.fact.id).toBe('only');
+  });
+
+  it('fact shown at charge N does not appear within RECENT_FACT_WINDOW (3) charges on large pool', () => {
+    // Pool large enough (10 facts) to always have non-recent alternatives.
+    const bigPool = [
+      makeFact('a'), makeFact('b'), makeFact('c'), makeFact('d'), makeFact('e'),
+      makeFact('f'), makeFact('g'), makeFact('h'), makeFact('i'), makeFact('j'),
+    ];
+    const localTracker = new InRunFactTracker();
+
+    // Record fact-a being shown, then verify it is excluded for the next 3 charges.
+    localTracker.recordCharge('a', true);
+
+    for (let i = 0; i < 3; i++) {
+      const result = selectFactForCharge(bigPool, localTracker, 0, RUN_SEED + i);
+      expect(result.fact.id).not.toBe('a');
+      // Record the selected fact so the window advances naturally.
+      localTracker.recordCharge(result.fact.id, true);
+    }
+
+    // After 3 more charges the window has rolled past 'a' — it is eligible again.
+    // (We simply verify the selector doesn't throw; deterministic eligibility depends on
+    // learning state, so we don't assert a specific ID here.)
+    const afterWindow = selectFactForCharge(bigPool, localTracker, 0, RUN_SEED + 100);
+    expect(afterWindow.fact).toBeDefined();
+  });
+
+  it('falls back to single-fact exclusion when pool is too small to apply full window', () => {
+    // A 2-fact pool with a 3-entry window would exclude everything if full window applied.
+    const tinyPool = [makeFact('x'), makeFact('y')];
+    const localTracker = new InRunFactTracker();
+    // Fill window with x, y, x (all 3 slots used)
+    localTracker.recordCharge('x', true);
+    localTracker.recordCharge('y', true);
+    localTracker.recordCharge('x', true); // lastFactId = x, window = [x, y, x]
+    // Full window would exclude both x and y → starvation. Selector should fall back and serve y.
+    const result = selectFactForCharge(tinyPool, localTracker, 0, RUN_SEED);
+    // lastFactId is x, so only x is excluded — y should be returned
+    expect(result.fact.id).toBe('y');
   });
 });
 
