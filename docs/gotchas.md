@@ -4722,3 +4722,19 @@ The `qpModified` classify call also compared against `Math.round(nakedQpBase * c
 **Fix:** Added `enemyQuickPlayImmune?: boolean` to `DamagePreviewContext`. In the attack card branch, after all other QP reductions (Steps qpDamageMultiplier, hardcover, chargeResistant), set `qpFinal = 0` when `ctx.enemyQuickPlayImmune` is true. `CardCombatOverlay.svelte` now passes `!!enemy.template.quickPlayImmune`. Shield cards are intentionally not affected (immunity is damage-only). CC remains unaffected (Charge Correct plays bypass the immunity in the real resolver).
 
 **Files:** `src/services/damagePreviewService.ts`, `src/ui/components/CardCombatOverlay.svelte`. Tests in `src/services/damagePreviewService.test.ts`.
+
+### 2026-04-18 — Cross-platform build infrastructure gaps
+
+**What:** Three cross-platform build issues found during CI pipeline audit:
+
+1. `package.json` `postinstall` used Unix `cp` to copy `sql-wasm.wasm` — breaks on Windows (no `cp` in CMD/PowerShell). Fixed with `node -e "require('fs').copyFileSync(...)"`.
+
+2. `vite.config.ts` `devScreenshotEndpoint` plugin hardcoded `/tmp/rr-screenshot.${ext}` as the screenshot path — breaks on Windows where temp is `%TEMP%`. Fixed with `import { tmpdir } from 'node:os'` + `join(tmpdir(), ...)`.
+
+3. `.github/workflows/steam-build.yml` Linux CI job built the AppImage but never bundled `libsteam_api.so` + `steam_appid.txt` next to the binary, and had no SteamPipe upload steps at all. Fixed by adding SO copy, verify, raw binary artifact upload, and full SteamCMD auth + VDF generation + upload steps modeled on the Windows job.
+
+4. macOS CI job produced a single-arch binary instead of a universal binary. Fixed by splitting into ARM64 + x86_64 builds and merging with `lipo`. dylib search path updated from `target/release/build` to `target/aarch64-apple-darwin/release/build`.
+
+**Why:** CI was written initially for Windows-only and macOS was added later. Linux was added as a structural placeholder without the steamcmd deployment leg. The `/tmp` hardcode is a common macOS dev habit that silently breaks Windows.
+
+**Fix:** See `package.json` line 118, `vite.config.ts` line 13 + 122, `.github/workflows/steam-build.yml` macOS + Linux jobs.

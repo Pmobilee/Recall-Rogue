@@ -10,6 +10,7 @@ import { defineConfig, type Plugin } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import { readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
+import { tmpdir } from 'node:os'
 
 // Read package.json for version injection.
 // __RR_VERSION__ is consumed by src/services/dbDecoder.ts at runtime.
@@ -118,7 +119,7 @@ function devScreenshotEndpoint(): Plugin {
           const mime = mimeMatch?.[1] ?? 'image/png'
           const ext = mime === 'image/jpeg' ? 'jpg' : 'png'
           const base64 = dataUrl.replace(/^data:image\/[a-z]+;base64,/, '')
-          const filePath = `/tmp/rr-screenshot.${ext}`
+          const filePath = join(tmpdir(), `rr-screenshot.${ext}`)
           const { writeFile } = await import('fs/promises')
           await writeFile(filePath, Buffer.from(base64, 'base64'))
           res.setHeader('Content-Type', 'application/json')

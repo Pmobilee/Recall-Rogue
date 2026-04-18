@@ -1988,12 +1988,14 @@ export function playCardAction(
   // ── Card Preview as Source of Truth (mirrors enemy intent source-of-truth) ────
   // The card face showed a specific damage/shield value to the player. The resolver
   // independently computed the effect via a separate code path. When these drift
-  // apart, the player sees a lie. Override the resolver's value with the preview's
-  // value so display = execution, always.
+  // apart, the player sees a lie. Compute the preview value here; apply it as the
+  // ABSOLUTE LAST step before shield/damage is committed to player state.
   //
   // Skip conditions: charge-wrong (fizzle is intentional), multi-hit (per-hit
   // structure differs), or when post-resolver RNG/bonus fired (lucky_coin, crit,
   // mirror, etc. — preview intentionally doesn't model these).
+  let _previewOverrideShield: number | null = null;
+  let _previewOverrideDamage: number | null = null;
   if (!_skipPreviewOverride && playMode !== 'charge_wrong' && (effect.hitCount ?? 1) <= 1) {
     const _previewCtx: DamagePreviewContext = {
       activeRelicIds: turnState.activeRelicIds,
@@ -2022,18 +2024,21 @@ export function playCardAction(
     const _preview = computeDamagePreview(card, _previewCtx);
     const _previewVal = isChargeCorrect ? _preview.ccValue : _preview.qpValue;
 
-    // Override shield for pure shield cards
-    if (card.cardType === 'shield' && effect.shieldApplied > 0 && _previewVal > 0) {
-      effect.shieldApplied = _previewVal;
-      effect.finalValue = _previewVal;
+    if (card.cardType === 'shield' && _previewVal > 0) {
+      _previewOverrideShield = _previewVal;
     }
-    // Override damage for pure attack cards (not multi-effect mechanics like iron_wave)
-    if (card.cardType === 'attack' && effect.damageDealt > 0 && _previewVal > 0
-        && card.mechanicId !== 'iron_wave') {
-      effect.damageDealt = _previewVal;
-      effect.finalValue = _previewVal;
-      effect.enemyDefeated = _previewVal >= enemy.currentHP;
+    if (card.cardType === 'attack' && _previewVal > 0 && card.mechanicId !== 'iron_wave') {
+      _previewOverrideDamage = _previewVal;
     }
+  }
+
+  // Card Preview Source-of-Truth: override base damage with preview value BEFORE
+  // Burn/Bleed bonuses. Burn and Bleed are separate status effects on top of card
+  // damage — they're not part of the card's displayed value.
+  if (_previewOverrideDamage != null && effect.damageDealt > 0) {
+    effect.damageDealt = _previewOverrideDamage;
+    effect.finalValue = _previewOverrideDamage;
+    effect.enemyDefeated = _previewOverrideDamage >= enemy.currentHP;
   }
 
   // AR-203 Step 11-12: Burn and Bleed bonuses — card-play attacks only (not Thorns/reflect).
@@ -2178,6 +2183,12 @@ export function playCardAction(
       if (enemyIsWeakened) {
         effect.shieldApplied = Math.round(effect.shieldApplied * (1 + turnState.weakShieldBonusPercent / 100));
       }
+    }
+    // Card Preview Source-of-Truth: override shieldApplied with the preview value
+    // as the ABSOLUTE LAST step. No modifier may touch this after the override.
+    if (_previewOverrideShield != null && effect.shieldApplied > 0) {
+      effect.shieldApplied = _previewOverrideShield;
+      effect.finalValue = _previewOverrideShield;
     }
     playCardAudio('shield-gain');
     applyShield(playerState, effect.shieldApplied);

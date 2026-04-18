@@ -246,17 +246,46 @@ jobs:
       - name: Install Tauri CLI
         run: cargo install tauri-cli --version "^2" --locked
 
-      - name: Build Tauri (macOS .app bundle)
+      - name: Add Rust targets for universal binary
+        run: |
+          rustup target add aarch64-apple-darwin
+          rustup target add x86_64-apple-darwin
+
+      - name: Build Tauri (macOS — ARM64)
         run: |
           cd src-tauri
-          cargo tauri build --bundles app
+          cargo tauri build --bundles app --target aarch64-apple-darwin
+
+      - name: Build Tauri (macOS — x86_64)
+        run: |
+          cd src-tauri
+          cargo tauri build --bundles app --target x86_64-apple-darwin
+
+      - name: Create universal binary
+        run: |
+          ARM_APP="src-tauri/target/aarch64-apple-darwin/release/bundle/macos/Recall Rogue.app"
+          X86_APP="src-tauri/target/x86_64-apple-darwin/release/bundle/macos/Recall Rogue.app"
+          UNIVERSAL_APP="src-tauri/target/release/bundle/macos/Recall Rogue.app"
+
+          # Start with ARM64 app as base
+          mkdir -p "$(dirname "$UNIVERSAL_APP")"
+          cp -R "$ARM_APP" "$UNIVERSAL_APP"
+
+          # Merge binaries with lipo
+          lipo -create \
+            "$ARM_APP/Contents/MacOS/Recall Rogue" \
+            "$X86_APP/Contents/MacOS/Recall Rogue" \
+            -output "$UNIVERSAL_APP/Contents/MacOS/Recall Rogue"
+
+          echo "Universal binary architectures:"
+          lipo -archs "$UNIVERSAL_APP/Contents/MacOS/Recall Rogue"
 
       - name: Copy libsteam_api.dylib into .app bundle
-        # steamworks-sys builds the dylib under target/release/build/steamworks-sys-*/out/.
+        # steamworks-sys builds the dylib under the aarch64 build path.
         # The binary links against @loader_path/libsteam_api.dylib, so it must be
-        # co-located with the recall-rogue binary inside the .app's MacOS/ directory.
+        # co-located with the recall-rogue binary inside the universal .app's MacOS/ directory.
         run: |
-          DYLIB=$(find src-tauri/target/release/build -name "libsteam_api.dylib" \
+          DYLIB=$(find src-tauri/target/aarch64-apple-darwin/release/build -name "libsteam_api.dylib" \
             -path "*/steamworks-sys-*/out/*" | head -1)
           if [[ -z "$DYLIB" ]]; then
             echo "ERROR: libsteam_api.dylib not found"
@@ -334,6 +363,116 @@ jobs:
           name: linux-build
           path: src-tauri/target/release/bundle/appimage/
           retention-days: 7
+
+      - name: Copy libsteam_api.so into release directory
+        run: |
+          SO=$(find src-tauri/target/release/build -name "libsteam_api.so" \
+            -path "*/steamworks-sys-*/out/*" | head -1)
+          if [[ -z "$SO" ]]; then
+            echo "ERROR: libsteam_api.so not found"
+            exit 1
+          fi
+          echo "Found SO at: $SO"
+          cp "$SO" src-tauri/target/release/
+          echo "Copied libsteam_api.so to src-tauri/target/release/"
+
+      - name: Copy steam_appid.txt into release directory
+        run: |
+          cp src-tauri/steam_appid.txt src-tauri/target/release/
+          echo "Copied steam_appid.txt (app ID: $(cat src-tauri/steam_appid.txt))"
+
+      - name: Verify Linux release contents
+        run: |
+          ls -la src-tauri/target/release/recall-rogue src-tauri/target/release/libsteam_api.so src-tauri/target/release/steam_appid.txt
+          file src-tauri/target/release/recall-rogue
+          echo "All required files present."
+
+      - name: Upload Linux Steam build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-steam-build
+          path: |
+            src-tauri/target/release/recall-rogue
+            src-tauri/target/release/libsteam_api.so
+            src-tauri/target/release/steam_appid.txt
+          retention-days: 7
+
+      - name: Install SteamCMD (Linux)
+        run: |
+          sudo apt-get install -y steamcmd || {
+            mkdir -p steamcmd
+            cd steamcmd
+            curl -sSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar xz
+            cd ..
+          }
+
+      - name: Authenticate SteamCMD
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+        run: |
+          steamcmd +login "$STEAM_USERNAME" "$STEAM_PASSWORD" +quit || \
+          ./steamcmd/steamcmd.sh +login "$STEAM_USERNAME" "$STEAM_PASSWORD" +quit
+
+      - name: Generate Linux depot VDF
+        env:
+          STEAM_BRANCH: ${{ inputs.branch }}
+        run: |
+          CONTENT_ROOT="$(pwd)/src-tauri/target/release"
+          OUTPUT_DIR="$(pwd)/steamcmd/output"
+          mkdir -p "$OUTPUT_DIR"
+
+          cat > steamcmd/depot_4547573.vdf << DVDF
+          "DepotBuildConfig"
+          {
+            "DepotID" "4547573"
+            "contentroot" "$CONTENT_ROOT"
+            "FileMapping"
+            {
+              "LocalPath" "recall-rogue"
+              "DepotPath" "."
+            }
+            "FileMapping"
+            {
+              "LocalPath" "libsteam_api.so"
+              "DepotPath" "."
+            }
+            "FileMapping"
+            {
+              "LocalPath" "steam_appid.txt"
+              "DepotPath" "."
+            }
+          }
+          DVDF
+
+          DEPOT_VDF="$(pwd)/steamcmd/depot_4547573.vdf"
+          cat > steamcmd/app_build.vdf << AVDF
+          "appbuild"
+          {
+            "appid" "4547570"
+            "desc" "Recall Rogue Linux build (CI)"
+            "buildoutput" "$OUTPUT_DIR"
+            "contentroot" ""
+            "setlive" "$STEAM_BRANCH"
+            "depots"
+            {
+              "4547573" "$DEPOT_VDF"
+            }
+          }
+          AVDF
+
+          echo "Depot VDF:"
+          cat steamcmd/depot_4547573.vdf
+          echo "App build VDF:"
+          cat steamcmd/app_build.vdf
+
+      - name: Upload to Steam via SteamCMD
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        run: |
+          APP_BUILD="$(pwd)/steamcmd/app_build.vdf"
+          steamcmd +login "$STEAM_USERNAME" +run_app_build "$APP_BUILD" +quit || \
+          ./steamcmd/steamcmd.sh +login "$STEAM_USERNAME" +run_app_build "$APP_BUILD" +quit
 
 # ─── Steam Deploy ─────────────────────────────────────────────────────────────
 # Deploy now happens directly in each platform's build job (above).

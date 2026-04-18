@@ -115,7 +115,7 @@
     "i18n:validate": "node src/i18n/scripts/validate-locale.mjs",
     "i18n:export-facts": "node src/i18n/scripts/export-facts-for-translation.mjs",
     "analyze": "ANALYZE=true npm run build",
-    "postinstall": "cp node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm.wasm",
+    "postinstall": "node -e \"require('fs').copyFileSync('node_modules/sql.js/dist/sql-wasm.wasm','public/sql-wasm.wasm')\"",
     "verify:stability": "node scripts/critical-loop.mjs",
     "security:audit": "node scripts/security-audit.mjs",
     "verify:ship": "node scripts/verify-ship.mjs",

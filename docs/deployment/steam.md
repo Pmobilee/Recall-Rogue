@@ -391,13 +391,19 @@ Triage of all Phase 1–6 items against current codebase state. Last verified ag
 
 ## Cross-Platform CI (Planned)
 
-GitHub Actions workflow `.github/workflows/steam-build.yml` will:
-1. Build on macOS, Windows, Linux runners in parallel
-2. Upload Linux (4547573) and macOS (4547574) depots via steamcmd
-3. Set live on staging branch
-4. Manual promotion to default via dashboard
+GitHub Actions workflow `.github/workflows/steam-build.yml`:
+1. Builds on macOS, Windows, Linux runners in parallel (triggered by `workflow_dispatch`)
+2. Windows: builds raw exe, copies `steam_api64.dll`, uploads to depot 4547572 via steamcmd
+3. Linux: builds AppImage + raw binary, copies `libsteam_api.so`, uploads to depot 4547573 via steamcmd
+4. macOS: builds universal binary (ARM64 + x86\_64 via `lipo`), copies `libsteam_api.dylib`, artifact stored (no auto-upload yet — SteamPipe macOS upload pending)
+5. Sets live on the `branch` input (default: `development`)
+6. Manual promotion to default via Steamworks dashboard
 
-Not yet implemented — local macOS builds are the current workflow.
+**Status (2026-04-18):** Windows + Linux CI fully implemented with SteamPipe upload. macOS CI produces a universal binary artifact; auto-upload is a future step.
+
+### Cross-platform notes
+- `postinstall` in `package.json` uses `node -e "require('fs').copyFileSync(...)"` (not `cp`) for Windows compatibility.
+- `vite.config.ts` dev screenshot endpoint uses `os.tmpdir()` (not `/tmp`) for Windows compatibility.
 
 ## Version Management
 
