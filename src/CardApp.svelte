@@ -1088,13 +1088,17 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       targetScreen = mapOrRoom
     }
     if (screen === 'combat') {
+      // Look up enemy from saved map node so resume doesn't pick a random one.
+      const actMap = saved.runState.floor.actMap
+      const resumeNodeId = actMap?.currentNodeId
+      const resumeEnemyId = resumeNodeId ? actMap?.nodes?.[resumeNodeId]?.enemyId : undefined
       // Make Phaser container visible before combat re-init.
       currentScreen.set('combat')
       await tick()
       targetScreen = await resumeCombatWithFallback({
         floor: saved.runState.floor.currentFloor,
         ensurePhaserBooted,
-        startEncounter: () => startEncounterForRoom(),
+        startEncounter: () => startEncounterForRoom(resumeEnemyId),
         hasTurnState: () => get(activeTurnState) !== null,
         onCombatResumed: () => {
           autoSaveRun('combat')

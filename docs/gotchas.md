@@ -4612,3 +4612,22 @@ When `acceptReward()` triggers the reward room → combat stop lifecycle, Phaser
 **Tests:** `src/services/turnManager.reactiveVictory.test.ts` — 10 unit tests covering all four reactive-damage victory sources.
 
 **Lesson:** When a multi-step function has victory/defeat side-channels (reactive damage, status ticks), each side-channel that can terminate the encounter must (a) set the result AND (b) return immediately. Callers must check ALL terminal result states, not just the ones present at the time the caller was written.
+
+### 2026-04-18 — Combat resume always picked a random enemy instead of the saved node's enemy
+
+**What:** Resuming a saved run that was paused mid-combat spawned a random enemy instead of the exact enemy assigned to the current map node. The correct enemy type was always available in the saved actMap — it just wasn't being read.
+
+**Why:** `handleResumeActiveRun()` in `CardApp.svelte` called `startEncounterForRoom()` with no arguments. `startEncounterForRoom(enemyId?: string)` accepts an optional enemy ID — when omitted, it calls `pickCombatEnemy()` which selects randomly by floor range. The normal node-selection path (`commitMapNodeSelection`) correctly passes `node.enemyId`, but the resume path never did.
+
+**Fix:** Before calling `resumeCombatWithFallback`, look up the current node's enemy ID from the saved actMap:
+```typescript
+const actMap = saved.runState.floor.actMap
+const resumeNodeId = actMap?.currentNodeId
+const resumeEnemyId = resumeNodeId ? actMap?.nodes?.[resumeNodeId]?.enemyId : undefined
+// then:
+startEncounter: () => startEncounterForRoom(resumeEnemyId),
+```
+
+**File:** `src/CardApp.svelte` — `handleResumeActiveRun()`.
+
+**Note:** `actMap.currentNodeId` is set by `onMapNodeSelected()` when the player enters the combat node, so it is always populated when the run was saved mid-combat. The `enemyId` field on `MapNode` is `string | undefined` — only combat/elite/boss nodes carry it, which is exactly the node types that lead to a combat save screen.
