@@ -6,6 +6,9 @@
  * cardUpgradeService.ts stat table bump (3→5 for 2AP viability). No barbed_edge gate change
  * needed — the gate was always correct (isStrikeTagged check at line 196/215); test expectation
  * was simply stale from the stat table update.
+ * Updated 2026-04-18: bastions_will CC expectation updated 6→11 after adding +75% CC bonus
+ * to preview (mirrors turnManager line 1822-1829). Also added glass_lens and knowledge_tax CC
+ * relic tests. Fixed flat-bonus ordering: flat added AFTER buff/overclock mult, not before.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -232,9 +235,11 @@ describe('computeDamagePreview — empower buff', () => {
 });
 
 describe('computeDamagePreview — shield + stone_wall', () => {
-  it('adds +3 flat block to both QP and CC, both buffed', () => {
+  it('adds +3 flat block to both QP and CC after mult, both buffed', () => {
     // block stat table L0 QP=4, CC=round(4*1.50)=6
-    // With stone_wall: QP: round((4+3)*1.0)=7; CC: round((6+3)*1.0)=9
+    // New ordering: multiply base first, then add flat.
+    // QP: round(round(4*1.0*1)*1.0) + 3 = 4 + 3 = 7
+    // CC: round(6*1.0*1) + 3 = 6 + 3 = 9
     const card = makeShieldCard();
     const ctx = baseCtx({ activeRelicIds: new Set(['stone_wall']) });
     const result = computeDamagePreview(card, ctx);
@@ -246,15 +251,78 @@ describe('computeDamagePreview — shield + stone_wall', () => {
 });
 
 describe('computeDamagePreview — shield + bastions_will', () => {
-  it('applies +25% to QP only, CC is neutral', () => {
-    // block stat table L0 QP=4: round(4*1.25)=round(5)=5; CC=6 (no bastions_will bonus on CC)
+  it('applies +25% to QP and +75% to CC (both buffed)', () => {
+    // block stat table L0 QP=4, CC=6
+    // QP: round(round(4*1.0*1)*1.25) + 0 = round(4*1.25) = 5
+    // CC: round(6*1.0*1) + 0 + 0 = 6, then round(6*1.75) = round(10.5) = 11
+    // (bastions_will CC+75% mirrors turnManager line 1822-1829)
     const card = makeShieldCard();
     const ctx = baseCtx({ activeRelicIds: new Set(['bastions_will']) });
     const result = computeDamagePreview(card, ctx);
     expect(result.qpValue).toBe(5);
-    expect(result.ccValue).toBe(6);
+    expect(result.ccValue).toBe(11);
     expect(result.qpModified).toBe('buffed');
-    expect(result.ccModified).toBe('neutral');
+    expect(result.ccModified).toBe('buffed');
+  });
+});
+
+describe('computeDamagePreview — shield + glass_lens', () => {
+  it('applies +50% to CC only, QP is neutral', () => {
+    // block stat table L0 QP=4, CC=6
+    // QP: round(round(4*1.0*1)*1.0) + 0 = 4
+    // CC: round(6*1.0*1) + 0 = 6, then round(6*1.5) = 9
+    const card = makeShieldCard();
+    const ctx = baseCtx({ activeRelicIds: new Set(['glass_lens']) });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(9);
+    expect(result.qpModified).toBe('neutral');
+    expect(result.ccModified).toBe('buffed');
+  });
+});
+
+describe('computeDamagePreview — shield + knowledge_tax', () => {
+  it('applies -10% to CC only, QP is neutral', () => {
+    // block stat table L0 QP=4, CC=6
+    // QP: round(round(4*1.0*1)*1.0) + 0 = 4
+    // CC: round(6*1.0*1) + 0 = 6, then max(0, round(6*0.9)) = round(5.4) = 5
+    const card = makeShieldCard();
+    const ctx = baseCtx({ activeRelicIds: new Set(['knowledge_tax']) });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(5);
+    expect(result.qpModified).toBe('neutral');
+    expect(result.ccModified).toBe('nerfed');
+  });
+});
+
+describe('computeDamagePreview — attack + glass_lens (CC only)', () => {
+  it('applies +50% to CC only, QP is neutral', () => {
+    // strike stat table L0 QP=4, CC=6
+    // QP: round(4*1.0*1.0*1.0) + 0 = 4 (glass_lens not in attack relic bonuses)
+    // CC: round(6*1.0*1.0*1.0) + 0 = 6, then round(6*1.5) = 9
+    const card = makeAttackCard();
+    const ctx = baseCtx({ activeRelicIds: new Set(['glass_lens']) });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(9);
+    expect(result.qpModified).toBe('neutral');
+    expect(result.ccModified).toBe('buffed');
+  });
+});
+
+describe('computeDamagePreview — attack + knowledge_tax (CC only)', () => {
+  it('applies -10% to CC only, QP is neutral', () => {
+    // strike stat table L0 QP=4, CC=6
+    // QP: 4 (knowledge_tax not in attack relic bonuses)
+    // CC: round(6*1.0) = 6, then max(0, round(6*0.9)) = round(5.4) = 5 (but round(5.4)=5)
+    const card = makeAttackCard();
+    const ctx = baseCtx({ activeRelicIds: new Set(['knowledge_tax']) });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(5);
+    expect(result.qpModified).toBe('neutral');
+    expect(result.ccModified).toBe('nerfed');
   });
 });
 

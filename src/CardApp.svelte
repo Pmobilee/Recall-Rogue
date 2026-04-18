@@ -1639,39 +1639,41 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
 
   {#if $currentScreen === 'combat'}
-    <CardCombatOverlay
-      turnState={$activeTurnState}
-      onplaycard={handlePlayCard}
-      onskipcard={handleSkipCard}
-      onendturn={handleEndTurn}
-      onusehint={handleUseHint}
-      onreturnhub={() => { currentScreen.set('hub'); activeRunState.set(null); }}
-      fogLevel={$activeTurnState != null ? getAuraLevel() : 0}
-      fogState={$activeTurnState != null ? getAuraState() : undefined}
-    />
-    <button
-      type="button"
-      class="pause-btn"
-      data-testid="btn-pause"
-      onclick={handlePause}
-      aria-label="Pause"
-    ><span class="pause-icon" aria-hidden="true"></span></button>
-    <!-- Dev skip button disabled — use __rrScenario.load() from console instead -->
-    <!-- {#if $devMode}
+    {#if !combatExitWaiting}
+      <CardCombatOverlay
+        turnState={$activeTurnState}
+        onplaycard={handlePlayCard}
+        onskipcard={handleSkipCard}
+        onendturn={handleEndTurn}
+        onusehint={handleUseHint}
+        onreturnhub={() => { currentScreen.set('hub'); activeRunState.set(null); }}
+        fogLevel={$activeTurnState != null ? getAuraLevel() : 0}
+        fogState={$activeTurnState != null ? getAuraState() : undefined}
+      />
       <button
         type="button"
-        class="dev-skip-btn"
-        data-dev-only="true"
-        onclick={() => devForceEncounterVictory()}
-      >&#x23ED; Skip</button>
-    {/if} -->
-    {#if isMultiplayerRun}
-      <MultiplayerHUD
-        progress={opponentProgress}
-        displayName={opponentDisplayName}
-        mode={currentLobby?.mode ?? 'race'}
-        quizVisible={$quizPanelVisible}
-      />
+        class="pause-btn"
+        data-testid="btn-pause"
+        onclick={handlePause}
+        aria-label="Pause"
+      ><span class="pause-icon" aria-hidden="true"></span></button>
+      <!-- Dev skip button disabled — use __rrScenario.load() from console instead -->
+      <!-- {#if $devMode}
+        <button
+          type="button"
+          class="dev-skip-btn"
+          data-dev-only="true"
+          onclick={() => devForceEncounterVictory()}
+        >&#x23ED; Skip</button>
+      {/if} -->
+      {#if isMultiplayerRun}
+        <MultiplayerHUD
+          progress={opponentProgress}
+          displayName={opponentDisplayName}
+          mode={currentLobby?.mode ?? 'race'}
+          quizVisible={$quizPanelVisible}
+        />
+      {/if}
     {/if}
     {#if combatExitWaiting}
       <!-- Doorway exit zone: player clicks this to leave after combat victory -->
@@ -2742,8 +2744,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(200px * var(--layout-scale, 1));
-    height: calc(220px * var(--layout-scale, 1));
+    width: calc(140px * var(--layout-scale, 1));
+    height: calc(340px * var(--layout-scale, 1));
     /* Above Phaser canvas (z-index 1), below full-screen overlays */
     z-index: 100;
     cursor: pointer;
@@ -2764,18 +2766,16 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   /* Subtle pulsing glow — visible enough to be a hint, subtle enough not to break immersion */
   .doorway-glow {
-    width: calc(160px * var(--layout-scale, 1));
-    height: calc(180px * var(--layout-scale, 1));
-    border-radius: calc(8px * var(--layout-scale, 1));
+    width: calc(120px * var(--layout-scale, 1));
+    height: calc(300px * var(--layout-scale, 1));
+    border-radius: calc(60px * var(--layout-scale, 1)) calc(60px * var(--layout-scale, 1)) 0 0;
     background: radial-gradient(ellipse at 50% 40%, rgba(255, 245, 200, 0.08) 0%, rgba(255, 245, 200, 0) 70%);
-    border: 1px solid rgba(255, 245, 200, 0.12);
     animation: doorway-pulse 2.5s ease-in-out infinite;
-    transition: background 0.3s ease, border-color 0.3s ease;
+    transition: background 0.3s ease;
   }
 
   .doorway-exit-zone:hover .doorway-glow {
     background: radial-gradient(ellipse at 50% 40%, rgba(255, 245, 200, 0.15) 0%, rgba(255, 245, 200, 0) 70%);
-    border-color: rgba(255, 245, 200, 0.28);
   }
 
   @keyframes doorway-pulse {

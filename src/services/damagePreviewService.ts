@@ -274,6 +274,18 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
       ccFinal *= 2;
     }
 
+    // Step 13: CC relic bonuses that turnManager applies post-resolver (mirrors turnManager lines 1862-1890)
+    // glass_lens — +50% Charge Correct effect value
+    if (ctx.activeRelicIds.has('glass_lens')) {
+      ccFinal = Math.round(ccFinal * 1.5);
+    }
+    // knowledge_tax — -10% Charge Correct effect value
+    if (ctx.activeRelicIds.has('knowledge_tax')) {
+      ccFinal = Math.max(0, Math.round(ccFinal * 0.9));
+    }
+    // scholars_crown — tier-based % bonus; context-dependent (Review Queue vs normal), skipped
+    // lucky_coin — +50% on next CC after 3 wrong Charges; RNG/stateful, skipped in deterministic preview
+
     return {
       qpValue: qpFinal,
       ccValue: ccFinal,
@@ -312,14 +324,34 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
     };
   }
 
-  // bastions_will: +25% on QP only (CC path gets +75% in turnManager; preview uses +25%)
+  // bastions_will: +25% on QP shield; +75% on CC shield (mirrors turnManager line 1822-1829)
+  // QP mult wraps the base (applied before flat bonuses to match resolver applyShieldRelics order)
   const bastionsWillQpMult = relicIds.has('bastions_will') ? 1.25 : 1.0;
 
   const buffMult = 1 + ctx.buffNextCard / 100;
   const overclockMult = ctx.overclockReady ? 2 : 1;
 
-  let qpFinalShield = Math.round((qpShield + shieldFlatBonus) * bastionsWillQpMult * buffMult * overclockMult);
-  let ccFinalShield = Math.round((ccShield + shieldFlatBonus + wornShieldCcFlat) * buffMult * overclockMult);
+  // Resolver ordering: multiply base by buff/overclock first, then add flat bonuses.
+  // QP: bastions_will wraps the already-scaled base (matches applyShieldRelics in cardEffectResolver).
+  let qpFinalShield = Math.round(Math.round(qpShield * buffMult * overclockMult) * bastionsWillQpMult) + shieldFlatBonus;
+  // CC: multiply base first, then add flat bonuses (stone_wall, worn_shield).
+  let ccFinalShield = Math.round(ccShield * buffMult * overclockMult) + shieldFlatBonus + wornShieldCcFlat;
+
+  // CC relic bonuses that turnManager applies post-resolver (mirrors turnManager lines 1822-1890)
+  // bastions_will — +75% block for Charged shield cards (mirrors turnManager line 1822-1829)
+  if (relicIds.has('bastions_will')) {
+    ccFinalShield = Math.round(ccFinalShield * 1.75);
+  }
+  // glass_lens — +50% Charge Correct effect value (mirrors turnManager line 1862-1871)
+  if (relicIds.has('glass_lens')) {
+    ccFinalShield = Math.round(ccFinalShield * 1.5);
+  }
+  // knowledge_tax — -10% Charge Correct effect value (mirrors turnManager line 1879-1886)
+  if (relicIds.has('knowledge_tax')) {
+    ccFinalShield = Math.max(0, Math.round(ccFinalShield * 0.9));
+  }
+  // scholars_crown — tier-based % bonus; context-dependent (Review Queue vs normal), skipped
+  // lucky_coin — +50% on next CC after 3 wrong Charges; RNG/stateful, skipped in deterministic preview
 
   qpFinalShield = Math.max(0, qpFinalShield);
   ccFinalShield = Math.max(0, ccFinalShield);
