@@ -61,7 +61,7 @@
   import { ENEMY_DIALOGUE } from '../../data/enemyDialogue'
   import { getMasteryStats, getEffectiveApCost } from '../../services/cardUpgradeService'
   import { getMechanicDefinition } from '../../data/mechanics'
-  import ForgetPileViewer from './ForgetPileViewer.svelte'
+  import { openRunDeckOverlay } from '../stores/runDeckOverlayStore'
   import MultiChoicePopup from './MultiChoicePopup.svelte'
   import CardPickerOverlay from './CardPickerOverlay.svelte'
   import { getCuratedDeck, getCuratedDeckFact, getCuratedDeckFacts } from '../../data/curatedDeckStore'
@@ -480,8 +480,6 @@
   let drawStackCount = $derived(Math.max(1, Math.min(5, Math.ceil(drawPileCount / 3))))
   let discardStackCount = $derived(Math.max(0, Math.min(5, Math.ceil(discardPileCount / 3))))
 
-  // AR-204: Forget pile viewer state
-  let showForgetViewer = $state(false)
 
   const run = $derived($activeRunState)
   const maxRelicSlots = $derived(run ? getMaxRelicSlots(run.runRelics) : 5)
@@ -2866,11 +2864,11 @@
       <span class="pile-count-label">{discardPileCount}</span>
     </div>
 
-    <!-- AR-204: Forget pile indicator — tap to open ForgetPileViewer -->
+    <!-- AR-204: Forget pile indicator — tap to open RunDeckOverlay filtered to exhaust pile -->
     {#if forgetPileCount > 0}
       <button
         class="forget-pile-indicator"
-        onclick={() => { showForgetViewer = true }}
+        onclick={() => { openRunDeckOverlay('exhaust') }}
         aria-label="Forget pile: {forgetPileCount} cards"
         title="Forgotten cards"
         data-testid="forget-pile-indicator"
@@ -3180,13 +3178,6 @@
 <SurgeBorderOverlay active={isSurgeActive} />
 </div>
 
-<!-- AR-204: Forget pile viewer overlay -->
-{#if showForgetViewer && turnState}
-  <ForgetPileViewer
-    forgottenCards={turnState.deck.forgetPile}
-    onDismiss={() => { showForgetViewer = false }}
-  />
-{/if}
 
 <!-- CardPickerOverlay: Transmute, Adapt, Conjure, Scavenge, Forge, Mimic -->
 {#if pendingCardPickState}
@@ -4235,11 +4226,11 @@
     bottom: calc(calc(200px * var(--layout-scale, 1)) + 2vh);
   }
 
-  /* AR-204: Forget pile indicator */
+  /* AR-204: Forget pile indicator — sits above the discard pile indicator */
   .forget-pile-indicator {
-    position: fixed;
+    position: absolute;
     right: calc(12px * var(--layout-scale, 1));
-    bottom: calc(calc(270px * var(--layout-scale, 1)) + 2vh);
+    bottom: calc(calc(260px * var(--layout-scale, 1)) + 2vh);
     display: flex;
     flex-direction: column;
     align-items: center;

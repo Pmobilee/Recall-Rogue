@@ -11,7 +11,7 @@
    * Opened via `openRunDeckOverlay()` from runDeckOverlayStore.ts.
    * Rendered centrally in CardApp.svelte when IN_RUN_SCREENS is active.
    */
-  import { closeRunDeckOverlay } from '../stores/runDeckOverlayStore'
+  import { closeRunDeckOverlay, runDeckOverlayInitialFilter } from '../stores/runDeckOverlayStore'
   import CardVisual from './CardVisual.svelte'
   import { activeTurnState } from '../../services/encounterBridge'
   import type { Card } from '../../data/card-types'
@@ -113,6 +113,14 @@
   type SortKey = 'pile' | 'type' | 'name' | 'mastery'
   let sortKey = $state<SortKey>('pile')
   let filterPile = $state<PileId | 'all'>('all')
+
+  // Apply initial filter when the overlay is opened pre-filtered (e.g. from forget pile indicator).
+  $effect(() => {
+    const initial = $runDeckOverlayInitialFilter
+    if (initial === 'hand' || initial === 'draw' || initial === 'discard' || initial === 'exhaust') {
+      filterPile = initial as PileId
+    }
+  })
 
   const sortedFilteredCards = $derived((): PiledCard[] => {
     let cards = allCards()
@@ -252,7 +260,7 @@
     <!-- Header -->
     <div class="rdo-header">
       <div class="rdo-title-row">
-        <span class="rdo-title">Run Deck</span>
+        <span class="rdo-title">{$runDeckOverlayInitialFilter === 'exhaust' ? 'Forgotten Cards' : 'Run Deck'}</span>
         <span class="rdo-total">({totalCount} cards)</span>
       </div>
 

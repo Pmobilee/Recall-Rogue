@@ -353,7 +353,7 @@
       class="deck-btn"
       data-tutorial-anchor="deck-btn"
       aria-label="View current deck ({deckTotalCards()} cards)"
-      onclick={openRunDeckOverlay}
+      onclick={() => { openRunDeckOverlay() }}
       type="button"
     >
       <div class="deck-stack-icon" aria-hidden="true">

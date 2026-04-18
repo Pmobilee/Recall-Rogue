@@ -23,7 +23,8 @@ Each card is a runtime instance linked to a Fact. Key fields:
 | `mechanicId` | string? | Mechanic from the mechanic pool |
 | `masteryLevel` | number? | In-run mastery level 0–5 (AR-113) |
 | `apCost` | number? | AP cost to play |
-| `isInscription` | bool? | Forgets on play, persists for combat |
+| `isInscription` | bool? | Forgets on play, moves to forgetPile for the combat duration |
+| `isRemovedFromGame` | bool? | Set by Inscription system when permanently consumed; card stays in forgetPile across encounters (never returned) |
 | `isCursed` | bool? | Cursed fact penalty applies |
 | `isLocked` | bool? | Locked by Trick Question enemy (AR-268) |
 
@@ -496,6 +497,10 @@ This routing reuses the existing draw animation for free — the player sees the
 - Extra card (second pick) uses sentinel `originalCard.id` (`transmute_extra_remove_*`) so `revertTransmutedCards()` removes it entirely at encounter end.
 - `revertTransmutedCards(deck)` walks hand/draw/discard piles. Cards with `isTransmuted && originalCard` are restored; those with sentinel ids are dropped.
 - RNG safety: `push()` on an already-built drawPile is order manipulation only — it does NOT invoke `reshuffleDiscard()` or advance any RNG seed. Co-op seed is safe.
+
+**Forget pile end-of-encounter lifecycle:**
+
+At encounter end (`encounterBridge.ts` — all three victory paths and the defeat path), before `activeTurnState.set(null)` is called, all non-inscription cards in `deck.forgetPile` are moved to `deck.discardPile`. Cards with `isRemovedFromGame === true` (permanently consumed Inscriptions) remain in the forget pile indefinitely. This means forget-on-play cards (e.g. burnout mechanics, volatile at lower mastery) are returned to the player's deck at the end of every encounter.
 
 ---
 

@@ -1374,6 +1374,12 @@ export function handlePlayCard(
           chainCompletions: ts.completedChainSequences.map(seq => [...seq]),
         };
       }
+      // Return non-inscription forgotten cards to discard pile at end of encounter
+      if (ts) {
+        const returnCards = ts.deck.forgetPile.filter(c => !c.isRemovedFromGame);
+        ts.deck.discardPile.push(...returnCards);
+        ts.deck.forgetPile = ts.deck.forgetPile.filter(c => c.isRemovedFromGame);
+      }
       activeTurnState.set(null);
       notifyEncounterComplete('victory');
     }, turboDelay(550));
@@ -1822,6 +1828,12 @@ export async function handleEndTurn(): Promise<void> {
           chainCompletions: ts.completedChainSequences.map(seq => [...seq]),
         };
       }
+      // Return non-inscription forgotten cards to discard pile at end of encounter
+      if (ts) {
+        const returnCards = ts.deck.forgetPile.filter(c => !c.isRemovedFromGame);
+        ts.deck.discardPile.push(...returnCards);
+        ts.deck.forgetPile = ts.deck.forgetPile.filter(c => c.isRemovedFromGame);
+      }
       activeTurnState.set(null);
       notifyEncounterComplete('victory');
     }, turboDelay(550));
@@ -1869,6 +1881,13 @@ export async function handleEndTurn(): Promise<void> {
         return;
       }
       playCardAudio('encounter-defeat');
+      // Return non-inscription forgotten cards to discard pile at end of encounter
+      const tsDefeat = get(activeTurnState);
+      if (tsDefeat) {
+        const returnCards = tsDefeat.deck.forgetPile.filter(c => !c.isRemovedFromGame);
+        tsDefeat.deck.discardPile.push(...returnCards);
+        tsDefeat.deck.forgetPile = tsDefeat.deck.forgetPile.filter(c => c.isRemovedFromGame);
+      }
       activeTurnState.set(null);
       activeDeck = null;
       notifyEncounterComplete('defeat');
@@ -2047,6 +2066,12 @@ export function devForceEncounterVictory(): void {
     streakAtEnd: ts.consecutiveCorrectThisEncounter,
     chainCompletions: ts.completedChainSequences.map(seq => [...seq]),
   };
+  // Return non-inscription forgotten cards to discard pile at end of encounter
+  if (ts) {
+    const returnCards = ts.deck.forgetPile.filter(c => !c.isRemovedFromGame);
+    ts.deck.discardPile.push(...returnCards);
+    ts.deck.forgetPile = ts.deck.forgetPile.filter(c => c.isRemovedFromGame);
+  }
   // Clear turn state BEFORE notifying (matches normal victory flow)
   activeTurnState.set(null);
   notifyEncounterComplete('victory');
