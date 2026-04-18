@@ -1,7 +1,7 @@
 # Platform Services — Audio & Game Feel
 
 > **Purpose:** Audio synthesis, file-based SFX playback, card audio cues, ambient atmosphere layering, BGM music playback, and game-feel (juice) coordination services
-> **Last verified:** 2026-04-07
+> **Last verified:** 2026-04-18
 > **Source files:** `src/services/audioService.ts`, `src/services/cardAudioManager.ts`, `src/services/juiceManager.ts`, `src/services/ambientAudioService.ts`, `src/services/musicService.ts`
 
 > **See also:** [`platform.md`](platform.md) — All other platform services: device detection, haptics, performance, analytics, input, accessibility, notifications, entitlements, and more.
@@ -268,20 +268,20 @@ When `ambientEnabled` is toggled `false`, `ambientAudio.setEnabled(false)` stops
 ### Audio Graph
 
 ```
-HTMLAudioElement → createMediaElementSource() → masterGain → AnalyserNode(fftSize=64) → destination
+HTMLAudioElement → MediaElementSourceNode → GainNode → AnalyserNode(fftSize=64) → destination
 ```
 
-AnalyserNode is connected after `element.play()` starts (Safari compatibility — must not connect before playback begins).
+The GainNode and AnalyserNode are created in `init()` and wired permanently (`gainNode → analyser → destination`). The MediaElementSourceNode is created per-track in `connectAnalyser()` (called after `element.play()` — Safari compatibility) and connects to `gainNode`. Volume control goes through the GainNode so it works reliably in all browsers including Safari/WKWebView, where `audio.volume` does not reliably control output in a Web Audio graph.
 
 ### Features
 
 - **Two categories**: Epic (combat) and Lo-Fi/Quiet (ambient) — user toggles via MusicWidget. Category label shown as EPIC / LO-FI in the widget; internal key is `'quiet'` for the Lo-Fi category.
-- **Crossfade**: Sequential 1.5s fade-out → 1.5s fade-in (no overlap). `HTMLAudioElement.volume` ramped via `requestAnimationFrame`. The crossfade interval is stored as a class field (`_crossfadeInterval`) and cancelled immediately when `musicVolume`/`musicEnabled` stores change, so settings adjustments during a fade take instant effect.
+- **Crossfade**: Sequential 1.5s fade-out → 1.5s fade-in (no overlap). Volume ramped via `GainNode.gain.value` (Web Audio path, primary) with `audio.volume` fallback for when `connectAnalyser()` failed. The crossfade interval is stored as a class field (`_crossfadeInterval`) and cancelled immediately when `musicVolume`/`musicEnabled` stores change, so settings adjustments during a fade take instant effect.
 - **Run start fade-in**: `startWithFadeIn(5000)` provides a 5-second gentle fade-in when entering a run.
 - **User-pause persistence (updated 2026-04-12)**: `togglePlayPause()` writes to a `musicUserPaused` persisted store in `cardAudioManager.ts` (localStorage key `card:musicUserPaused`). `musicService` reads/writes this store instead of an in-memory `_userPaused` flag — pause preference now survives page reload, new runs, and session restarts. `resetUserPause()` call removed from `CardApp.svelte` run-start effect: the player's pause preference is no longer cleared when starting a new run.
 - **Shuffle queue**: Fisher-Yates with back-to-back repeat avoidance. Only playable tracks enter the queue (see Jukebox below).
 - **AnalyserNode**: 32 frequency bins at 60fps for spectrogram visualiser in MusicWidget
-- **Volume / mute**: Single source of truth is `musicVolume` / `musicEnabled` Svelte stores from `cardAudioManager`. `musicService` subscribes to these — never duplicates its own mute state. Both subscriptions cancel any active `_crossfadeInterval` before applying the new volume/enabled value.
+- **Volume / mute**: Single source of truth is `musicVolume` / `musicEnabled` Svelte stores from `cardAudioManager`. `musicService` subscribes to these — never duplicates its own mute state. Both subscriptions cancel any active `_crossfadeInterval` before applying the new volume/enabled value. Volume is applied via `GainNode.gain.value` (primary — reliable in Safari/WKWebView) with `audio.volume` as a fallback when the element is not in the Web Audio graph (`this.currentMediaSource === null`).
 - **Persistence**: Volume, mute, category saved to `localStorage` key `music_prefs`
 - **User gesture gating**: AudioContext created lazily; `startIfNotPlaying()` is a no-op until `unlock()` is called from a user gesture handler
 - **Ambient coexistence**: Calls `ambientAudio.setMusicCoexistence(true/false)` to duck ambient layers when music plays

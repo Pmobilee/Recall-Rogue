@@ -8,7 +8,11 @@
  * Web Audio graph via createMediaElementSource for the spectrogram visualiser.
  *
  * Audio graph:
- *   HTMLAudioElement → MediaElementSourceNode → gainNode → AnalyserNode → destination
+ *   HTMLAudioElement → MediaElementSourceNode → GainNode → AnalyserNode → destination
+ *
+ * Volume control is handled via GainNode (primary path, reliable in all browsers
+ * including Safari/WKWebView). audio.volume is kept as fallback for the rare case
+ * where connectAnalyser() failed and the element is NOT in the Web Audio graph.
  */
 
 import { type MusicCategory, type MusicTrack, getTracksByCategory, getPlayableTracks } from '../data/musicTracks'
@@ -28,6 +32,7 @@ interface MusicPrefs {
 class MusicService {
   private ctx: AudioContext | null = null
   private analyser: AnalyserNode | null = null
+  private gainNode: GainNode | null = null
 
   /** The currently active audio element. */
   private currentAudio: HTMLAudioElement | null = null
@@ -71,13 +76,17 @@ class MusicService {
 
   // ─── Initialisation ───────────────────────────────────────────────────────
 
-  /** Create AudioContext + AnalyserNode lazily. Safe to call multiple times. */
+  /** Create AudioContext + GainNode + AnalyserNode lazily. Safe to call multiple times. */
   init(): void {
     if (this.ctx) return
     this.ctx = new AudioContext()
+    this.gainNode = this.ctx.createGain()
     this.analyser = this.ctx.createAnalyser()
     this.analyser.fftSize = 64
     this.analyser.smoothingTimeConstant = 0.75
+    // Wire the graph: source → gainNode → analyser → destination
+    // Sources connect to gainNode in connectAnalyser(); gainNode is always non-null after init.
+    this.gainNode.connect(this.analyser)
     this.analyser.connect(this.ctx.destination)
 
     // Sync volume from settings stores.
@@ -88,8 +97,13 @@ class MusicService {
         clearInterval(this._crossfadeInterval)
         this._crossfadeInterval = null
       }
-      if (this.currentAudio && get(musicEnabled)) {
-        this.currentAudio.volume = vol
+      // GainNode path (primary — Web Audio graph)
+      if (this.gainNode) {
+        this.gainNode.gain.value = get(musicEnabled) ? vol : 0
+      }
+      // audio.volume fallback — only when audio is NOT routed through Web Audio
+      if (this.currentAudio && !this.currentMediaSource) {
+        this.currentAudio.volume = get(musicEnabled) ? vol : 0
       }
     })
     musicEnabled.subscribe(enabled => {
@@ -97,8 +111,14 @@ class MusicService {
         clearInterval(this._crossfadeInterval)
         this._crossfadeInterval = null
       }
-      if (this.currentAudio) {
-        this.currentAudio.volume = enabled ? get(musicVolume) : 0
+      const vol = enabled ? get(musicVolume) : 0
+      // GainNode path (primary)
+      if (this.gainNode) {
+        this.gainNode.gain.value = vol
+      }
+      // audio.volume fallback — only when audio is NOT routed through Web Audio
+      if (this.currentAudio && !this.currentMediaSource) {
+        this.currentAudio.volume = vol
       }
     })
 
@@ -147,7 +167,7 @@ class MusicService {
       const audio = new Audio()
       audio.loop = true
       audio.preload = 'auto'
-      audio.volume = 0  // start silent for crossfade-in
+      audio.volume = 0  // start silent (pre-connect fallback)
 
       // Wait for loadable state before playing
       await new Promise<void>((resolve, reject) => {
@@ -167,7 +187,7 @@ class MusicService {
         audio.load()
       })
 
-      // Start playback — volume crossfade via element.volume (not Web Audio gain)
+      // Start playback — gain will be faded from 0 via crossfadeIn
       await audio.play()
 
       // Epic tracks: skip 5-second intro (intros sound too similar)
@@ -175,6 +195,10 @@ class MusicService {
         audio.currentTime = 5
       }
 
+      // Ensure gainNode starts silent before the crossfade ramps it up
+      if (this.gainNode) {
+        this.gainNode.gain.value = 0
+      }
       this.crossfadeIn(audio)
 
       // Now connect to Web Audio analyser (after playback started)
@@ -193,7 +217,7 @@ class MusicService {
     }
   }
 
-  /** Crossfade audio.volume from 0 → target over _fadeInDuration ms (then resets to default). */
+  /** Crossfade gain from 0 → target over _fadeInDuration ms (then resets to default). */
   private crossfadeIn(audio: HTMLAudioElement): void {
     // Cancel any in-progress crossfade before starting a new one
     if (this._crossfadeInterval) {
@@ -208,7 +232,14 @@ class MusicService {
     let step = 0
     this._crossfadeInterval = setInterval(() => {
       step++
-      audio.volume = Math.min(1, (step / steps) * target)
+      const vol = Math.min(1, (step / steps) * target)
+      if (this.gainNode) {
+        this.gainNode.gain.value = vol
+      }
+      // Fallback: audio.volume for when the element is not in the Web Audio graph
+      if (!this.currentMediaSource) {
+        audio.volume = vol
+      }
       if (step >= steps) {
         clearInterval(this._crossfadeInterval!)
         this._crossfadeInterval = null
@@ -222,13 +253,20 @@ class MusicService {
    */
   private fadeOutAndDispose(audio: HTMLAudioElement): Promise<void> {
     return new Promise(resolve => {
-      const startVol = audio.volume
+      // Read starting volume from gainNode if available, else from audio.volume
+      const startVol = this.gainNode ? this.gainNode.gain.value : audio.volume
       const steps = 20
       const stepMs = CROSSFADE_MS / steps
       let step = 0
       const interval = setInterval(() => {
         step++
-        audio.volume = Math.max(0, startVol * (1 - step / steps))
+        const vol = Math.max(0, startVol * (1 - step / steps))
+        if (this.gainNode) {
+          this.gainNode.gain.value = vol
+        }
+        // Always set audio.volume on dispose — handles both paths and ensures
+        // the element is silent regardless of whether it was in the Web Audio graph
+        audio.volume = vol
         if (step >= steps) {
           clearInterval(interval)
           audio.pause()
@@ -242,15 +280,16 @@ class MusicService {
 
   /** Try to connect audio element to Web Audio analyser for spectrogram data. */
   private connectAnalyser(audio: HTMLAudioElement): void {
-    if (!this.ctx || !this.analyser) return
+    if (!this.ctx || !this.gainNode || !this.analyser) return
     try {
       // Resume context if needed
       if (this.ctx.state === 'suspended') void this.ctx.resume()
       const source = this.ctx.createMediaElementSource(audio)
-      source.connect(this.analyser)
+      // Connect source → gainNode (gainNode is already wired to analyser → destination in init())
+      source.connect(this.gainNode)
       this.currentMediaSource = source
     } catch (err) {
-      // Non-fatal — spectrogram just won't animate from real data
+      // Non-fatal — spectrogram just won't animate from real data; audio.volume fallback is active
       console.warn('[Music] Could not connect analyser (spectrogram will use idle animation):', err)
     }
   }
@@ -315,16 +354,21 @@ class MusicService {
 
   /** Toggle mute by toggling the shared musicEnabled store.
    * Calls init() first so subscriptions are active even before the first track plays.
-   * Also immediately applies the new mute state to currentAudio as belt-and-suspenders
-   * (the store subscription handles this too, but only if init() already ran).
+   * Also immediately applies the new mute state via gainNode (and audio.volume fallback)
+   * as belt-and-suspenders (the store subscription handles this too, but only if init()
+   * already ran).
    */
   toggleMute(): void {
     this.init()
     musicEnabled.update(v => !v)
-    // Immediately apply to currentAudio in case the subscription fires before
-    // currentAudio is set (race condition on init)
-    if (this.currentAudio) {
-      this.currentAudio.volume = get(musicEnabled) ? get(musicVolume) : 0
+    const vol = get(musicEnabled) ? get(musicVolume) : 0
+    // GainNode path (primary)
+    if (this.gainNode) {
+      this.gainNode.gain.value = vol
+    }
+    // audio.volume fallback — only when audio is NOT routed through Web Audio
+    if (this.currentAudio && !this.currentMediaSource) {
+      this.currentAudio.volume = vol
     }
     this.notify()
   }
@@ -429,12 +473,14 @@ class MusicService {
       this.previewAudio = audio
       this._isPreviewing = true
 
-      // Duck main BGM to 20%
-      if (this.currentAudio) {
+      // Duck main BGM to 20% via gainNode (primary) or audio.volume fallback
+      if (this.gainNode) {
+        this.gainNode.gain.value = get(musicVolume) * 0.2
+      } else if (this.currentAudio) {
         this.currentAudio.volume = get(musicVolume) * 0.2
       }
 
-      // Fade in preview over 500ms
+      // Fade in preview over 500ms (previewAudio is NOT in the Web Audio graph — use audio.volume)
       this.fadePreviewVolume(audio, 0, get(musicVolume), 500)
 
       // Auto-stop after 15 seconds (with 500ms fade-out at end)
@@ -463,9 +509,14 @@ class MusicService {
       this.previewAudio.load()
       this.previewAudio = null
     }
-    // Restore main BGM volume
+    // Restore main BGM volume via gainNode (primary) or audio.volume fallback
     if (this.currentAudio && get(musicEnabled)) {
-      this.currentAudio.volume = get(musicVolume)
+      if (this.gainNode) {
+        this.gainNode.gain.value = get(musicVolume)
+      }
+      if (!this.currentMediaSource) {
+        this.currentAudio.volume = get(musicVolume)
+      }
     }
     this._isPreviewing = false
     this.notify()
@@ -492,7 +543,9 @@ class MusicService {
     return get(playerSave)?.unlockedTracks ?? []
   }
 
-  /** Fade an audio element's volume from -> to over durationMs. */
+  /** Fade an audio element's volume from -> to over durationMs.
+   * Used ONLY for the preview audio element which is NOT connected to Web Audio.
+   */
   private fadePreviewVolume(audio: HTMLAudioElement, from: number, to: number, durationMs: number, onComplete?: () => void): void {
     const steps = 20
     const stepMs = durationMs / steps
