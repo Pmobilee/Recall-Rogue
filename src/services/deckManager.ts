@@ -185,9 +185,13 @@ export function drawHand(
   }
 
   // === Tag Magnet Bias (tag_magnet relic) ===
+  // Only apply for start-of-turn draws (count === undefined).
+  // Mid-turn draws (explicit count) may have placed specific cards on top of the
+  // draw pile (e.g. Transmute pick, Scavenge, relic-triggered draws). Swapping them
+  // out defeats the purpose of placing those specific cards on top.
   // For each drawn card that doesn't match the target chainType, roll for swap
   // with a matching card from the draw pile.
-  if (options?.tagMagnetBias && drawn.length > 0) {
+  if (count === undefined && options?.tagMagnetBias && drawn.length > 0) {
     const { chainType: targetChainType, chance } = options.tagMagnetBias;
     for (let i = 0; i < drawn.length; i++) {
       const card = drawn[i];
@@ -207,22 +211,27 @@ export function drawHand(
   }
 
   // === Hand Composition Guard ===
-  // Guarantee at least 1 attack-type card to prevent 0-DPS dead turns
-  const hasAttack = drawn.some(c => c.cardType === 'attack');
-  if (!hasAttack && drawn.length > 0) {
-    // Find an attack card in the draw pile
-    const attackIdx = deck.drawPile.findIndex(c => c.cardType === 'attack');
-    if (attackIdx >= 0) {
-      // Swap the last drawn non-attack card with the attack card from draw pile
-      const swapTarget = drawn[drawn.length - 1];
-      const [attackCard] = deck.drawPile.splice(attackIdx, 1);
-      // Put the swapped card back in draw pile
-      deck.drawPile.push(swapTarget);
-      // Replace in hand
-      const handIdx = deck.hand.indexOf(swapTarget);
-      if (handIdx >= 0) {
-        deck.hand[handIdx] = attackCard;
-        drawn[drawn.length - 1] = attackCard;
+  // Guarantee at least 1 attack-type card to prevent 0-DPS dead turns.
+  // Only apply for start-of-turn draws (count === undefined).
+  // Mid-turn draws from card effects (Transmute CC pick, Conjure, relic draws, scout, etc.)
+  // place a specific card on top of the draw pile — swapping it out defeats the intent.
+  if (count === undefined) {
+    const hasAttack = drawn.some(c => c.cardType === 'attack');
+    if (!hasAttack && drawn.length > 0) {
+      // Find an attack card in the draw pile
+      const attackIdx = deck.drawPile.findIndex(c => c.cardType === 'attack');
+      if (attackIdx >= 0) {
+        // Swap the last drawn non-attack card with the attack card from draw pile
+        const swapTarget = drawn[drawn.length - 1];
+        const [attackCard] = deck.drawPile.splice(attackIdx, 1);
+        // Put the swapped card back in draw pile
+        deck.drawPile.push(swapTarget);
+        // Replace in hand
+        const handIdx = deck.hand.indexOf(swapTarget);
+        if (handIdx >= 0) {
+          deck.hand[handIdx] = attackCard;
+          drawn[drawn.length - 1] = attackCard;
+        }
       }
     }
   }

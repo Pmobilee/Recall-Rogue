@@ -1,4 +1,14 @@
 
+### 2026-04-18 — Hand Composition Guard and Tag Magnet Bias silently replaced Transmute CC pick
+
+**What:** When the player used Transmute's Charge Correct path, picked a non-attack card (e.g. Shield or Utility) from the CardPickerOverlay, and the card was pushed to the draw pile top and immediately drawn with `drawHand(deck, 1)`, the player's chosen card was swapped out for an attack card from deeper in the draw pile. The player's pick was silently discarded.
+
+**Why:** The Hand Composition Guard in `drawHand()` ran unconditionally after every draw, including mid-turn explicit draws. It checked whether any drawn card was of type `attack`; if not, it swapped the last drawn card with an attack card from the draw pile. Since `drawHand(deck, 1)` is how the Transmute CC path delivers the chosen card, any non-attack choice triggered the guard and replaced it. The Tag Magnet Bias relic effect had the same problem — it could also swap out an intentionally placed top-of-pile card.
+
+**Fix:** Both the Hand Composition Guard (lines ~218–237) and Tag Magnet Bias block (lines ~194–211) in `src/services/deckManager.ts` are now gated by `count === undefined`. They only run for start-of-turn draws (no explicit count). Mid-turn explicit draws from card effects (Transmute, Conjure, Scout, relic draws) bypass both guards, preserving the card the caller placed on top of the draw pile.
+
+**Tests:** `src/services/deckManager.drawGuard.test.ts` — 6 tests covering start-of-turn vs mid-turn scoping for both guards.
+
 ### 2026-04-12 — Cross-category distractor contamination in broad chainTheme pools
 
 **What:** Hindu/Buddhist city names appeared as Christianity distractors; animal speed values appeared as mammal weight distractors; feudal terms appeared as printing-date distractors. Playtest BATCH-2026-04-12-002 Track 3 (HIGH).

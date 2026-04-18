@@ -482,7 +482,7 @@ After the player selects a card in the CardPickerOverlay, `resolveTransmutePick(
 4. **Pushes** the new card onto the TOP of `drawPile` (`push()` = top because drawPile is a stack — `pop()` draws from the end).
 5. Returns the pushed card(s) as `Card[]` (`pickResolvedCards`).
 
-The UI (CardCombatOverlay) then calls `drawHand(deck, 1)` once per element in `pickResolvedCards` to trigger the normal draw animation into hand. `drawHand` with an explicit count bypasses the hand-size cap (`count !== undefined` skips the HAND_SIZE clamp in deckManager.ts), so the draw succeeds even when the hand is full.
+The UI (CardCombatOverlay) then calls `drawHand(deck, 1)` once per element in `pickResolvedCards` to trigger the normal draw animation into hand. `drawHand` with an explicit count bypasses the hand-size cap (`count !== undefined` skips the HAND_SIZE clamp in deckManager.ts), so the draw succeeds even when the hand is full. Additionally, the **Hand Composition Guard** and **Tag Magnet Bias** in `drawHand` are scoped to `count === undefined` (start-of-turn only) — they must not fire for mid-turn explicit draws or the player's chosen card would be silently replaced. See `deckManager.ts` lines ~218–237.
 
 This routing reuses the existing draw animation for free — the player sees their chosen card fly into their hand rather than teleporting.
 
