@@ -105,14 +105,14 @@ export function guideStyle(x: number, y: number, w: number, h: number): string {
  *
  * Manifest pixel values:
  *   apCost       { x:18,  y:10,  w:164, h:160 }  — shifted higher + taller for AP number visibility
- *   mechanicName { x:205, y:112, w:478, h:86  }  — lowered title to sit centered on ribbon
+ *   mechanicName { x:205, y:100, w:478, h:86  }  — title centered on ribbon
  *   artWindow    { x:194, y:186, w:498, h:412 }
  *   cardType     { x:352, y:615, w:182, h:54  }
  *   effectText   { x:134, y:672, w:640, h:366 }  — shifted down slightly for better spacing below art
  */
 export const GUIDE_STYLES = {
   apCost: guideStyle(18, 10, 164, 160),
-  mechanicName: guideStyle(205, 125, 478, 86),
+  mechanicName: guideStyle(205, 100, 478, 86),
   artWindow: guideStyle(194, 186, 498, 412),
   cardType: guideStyle(243, 608, 400, 70),
   /** Pill-shaped chain color indicator — matches the frame's small oval cutout exactly */
