@@ -4738,3 +4738,37 @@ The `qpModified` classify call also compared against `Math.round(nakedQpBase * c
 **Why:** CI was written initially for Windows-only and macOS was added later. Linux was added as a structural placeholder without the steamcmd deployment leg. The `/tmp` hardcode is a common macOS dev habit that silently breaks Windows.
 
 **Fix:** See `package.json` line 118, `vite.config.ts` line 13 + 122, `.github/workflows/steam-build.yml` macOS + Linux jobs.
+
+### 2026-04-18 -- Chain multiplier double-applied on card text display (powerOverride guard)
+
+**What:** Card faces showed inflated CC values whenever a chain was active. A shield card that should display "Gain 7 Block" showed "Gain 8 Block" at chain 1.2x, but the actual shield applied was 7. This affected every chained shield and attack card -- a systematic off-by-one across all mechanic descriptions.
+
+**Why:** `getCardDescriptionParts()` in `src/services/cardDescriptionService.ts` applied `chainMultiplier` to `power` unconditionally, including when `powerOverride` was provided by the caller. `powerOverride` comes from `computeDamagePreview()` (the `ccValue` field), which already has chain baked in. The description service then multiplied it again: `round(7 * 1.2) = 8` displayed, but the resolver (reading the same stat-table value pre-chain) produced 7.
+
+**Fix:** Added a guard in the chain-multiplication block: skip chain multiplication when `powerOverride` is provided. When `powerOverride` is present, the caller already computed the chain-adjusted value -- do not double-apply.
+
+**File:** `src/services/cardDescriptionService.ts` -- the chain mult block inside `getCardDescriptionParts()`.
+
+**Lesson:** Any function that accepts an "override" parameter must document whether the override is pre-multiplied or raw. `powerOverride` in `cardDescriptionService` is always pre-multiplied (comes from `computeDamagePreview`). The chain guard is now the invariant that enforces this contract.
+
+### 2026-04-18 -- Intent display drift: canary multiplier changing during player turn
+
+**What:** The enemy attack bubble showed one damage value at the start of the player turn but a different value was actually applied during the enemy turn. This occurred when the canary adaptive-difficulty multiplier changed between intent-roll time and execution time -- for example, if the player answered several questions correctly during their turn, shifting the canary from neutral to challenge mode mid-turn.
+
+**Why:** `computeIntentDisplayDamage()` was called live during rendering with the current `scalingCtx` (which includes the live canary multiplier). The executor `executeEnemyIntent()` independently called the same function with the then-current context. If the canary tier shifted during the player turn (due to correct answers accumulating), the two calls used different multipliers.
+
+**Fix:** Intent display is now snapshotted at intent-roll time. `computeIntentDisplayDamageWithPerHitSnapshot()` is called in `turnManager.ts` immediately after every `rollNextIntent()`, and the result is stored in `enemy.lockedDisplayDamage`. The executor reads `lockedDisplayDamage` directly instead of recomputing. The canary multiplier cannot shift the displayed or executed value after the snapshot.
+
+**Files:** `src/services/intentDisplay.ts`, `src/services/turnManager.ts`, `src/data/enemies.ts` (new `EnemyInstance` fields).
+
+### 2026-04-18 -- Card preview recomputation drift (state timing: chain extended, cardsPlayed incremented before recompute)
+
+**What:** The original card preview SOT implementation (ea74c7380) recomputed the preview inside `turnManager.playCardAction()` using the current turn state. This produced 0-1 point drift from the card face value: the preview showed 7, but recomputation inside `playCardAction` produced 8 because the chain had already been extended by the current correct answer (adding one more chain step), and `cardsPlayedThisTurn` had already been incremented.
+
+**Why:** By the time `playCardAction` runs the preview recomputation, it has already mutated `TurnState`: chain is extended for correct answers, `cardsPlayedThisTurn` is bumped for streak-bonus mechanics, and buff flags may have been consumed. The `DamagePreviewContext` built from this mutated state produces a different value than what `CardCombatOverlay` computed from the pre-play state.
+
+**Fix (1d233c935):** Removed the 30-line `DamagePreviewContext` recomputation block from `turnManager.playCardAction()` entirely. Instead, the ACTUAL displayed value is passed from the UI through the callback chain at play time: `CardCombatOverlay` passes `damagePreviews[cardId]` (the literal card face number) to `encounterBridge.handlePlayCard()`, which forwards `previewValue` to `turnManager.playCardAction(cardPreview)`. Zero recomputation, zero drift.
+
+**Files:** `src/services/turnManager.ts`, `src/services/encounterBridge.ts`, `src/ui/components/CardCombatOverlay.svelte`.
+
+**Lesson:** Any "recompute at execution time" pattern for display values is fragile -- state has mutated by the time execution runs. Pass the actual displayed value instead.

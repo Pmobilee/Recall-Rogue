@@ -96,9 +96,18 @@ Deck management is split by run mode: `runPoolBuilder` handles standard domain r
 | | |
 |---|---|
 | **File** | src/services/cardDescriptionService.ts |
-| **Purpose** | Generates human-readable mechanic descriptions with actual damage/shield values for card reward/inspect screens |
-| **Key exports** | `getDetailedCardDescription`, `getShortCardDescription` |
+| **Purpose** | Generates human-readable mechanic descriptions with actual damage/shield values for card reward/inspect panels and in-hand display |
+| **Key exports** | `getDetailedCardDescription`, `getShortCardDescription`, `getCardDescriptionParts` |
 | **Key dependencies** | cardUpgradeService, mechanics.ts |
+
+### Key Invariant: powerOverride is pre-multiplied (2026-04-18 fix)
+
+`getCardDescriptionParts()` accepts an optional `powerOverride` parameter. When provided, this value comes from `computeDamagePreview()` (the `ccValue` field) and already has chain multiplier baked in. The chain-multiplication block inside `getCardDescriptionParts()` must skip chain multiplication when `powerOverride` is provided — otherwise chain is applied twice, producing inflated card text.
+
+**Before fix:** `round(7 * 1.2) = 8` displayed when chain was 1.2x, but actual effect was 7.
+**After fix:** guard `if (!powerOverride)` wraps the chain multiplication block.
+
+See `docs/gotchas.md` 2026-04-18 "Chain multiplier double-applied on card text display".
 
 ### Mastery Bonus Display
 

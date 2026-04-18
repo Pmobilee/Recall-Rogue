@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-18 (reactive-damage victory path fix, handleEndTurn reentrancy guard, intent-source-of-truth + multi_attack per-hit cap)
+> **Last verified:** 2026-04-18 (reactive-damage victory path fix, handleEndTurn reentrancy guard, intent-source-of-truth + multi_attack per-hit cap, card-preview source-of-truth)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -322,6 +322,54 @@ Snapped at intent-roll time by `turnManager.ts` after every `rollNextIntent()` c
 - `lockedFollowUpDisplayDamage` / `lockedFollowUpDisplayDamagePerHit` — same for buff follow-up intents.
 
 Backward compat: `undefined` on pre-fix saves — execution falls back to `executeEnemyIntent()` computed value.
+
+---
+
+## Card Preview Source of Truth (2026-04-18)
+
+The card face shows the exact value the execution pipeline will apply -- no drift between display and effect.
+
+### Architectural Principle
+
+Two parallel "what you see is what you get" systems were introduced in the 2026-04-18 session:
+
+1. **Enemy Intent SOT** -- enemy attack display is locked at intent-roll time (`lockedDisplayDamage`); executor reads this field directly.
+2. **Card Preview SOT** -- after `resolveCardEffect()` and all post-resolver bonuses, the preview computed from the card face overrides `effect.shieldApplied` / `effect.damageDealt`.
+
+Both systems eliminate the failure mode where two independent computation paths (display pipeline and execution pipeline) drift apart as card state changes between when the card is rendered and when it is played.
+
+### Card Preview Pipeline
+
+**Flow (commits ea74c7380, 2cb712323, 1d233c935):**
+
+1. `CardCombatOverlay.svelte` computes `damagePreviews[cardId]` via `computeDamagePreview(card, ctx)` for every card in hand. This map holds `{ qpValue, ccValue }` -- the exact numbers shown on each card face.
+2. When a card is played, the UI passes `damagePreviews[cardId]` (the ACTUAL displayed value) through the callback chain: `CardCombatOverlay` -> `encounterBridge.handlePlayCard()` -> `turnManager.playCardAction(cardPreview)`.
+3. In `playCardAction`, the preview value is stored early for later use.
+4. After `resolveCardEffect()` fires and all post-resolver bonuses apply, the preview override fires:
+   - **Shield override** -- applied right before `applyShield()` so no subsequent modifier can mutate it.
+   - **Damage override** -- applied right before Burn/Bleed bonuses, which are separate status effects that the preview intentionally excludes.
+
+**Why pass the UI value instead of recomputing?** The state at play time has already changed: chain may have extended (adding one more correct answer), `cardsPlayedThisTurn` was incremented, buffs may have been consumed. Recomputing inside `turnManager` produces 0-1 value drift from what the player saw. Passing the UI value directly gives zero-drift.
+
+### Skip Conditions (`_skipPreviewOverride` flag)
+
+The preview override is suppressed in these cases -- the resolver value is used as-is:
+
+| Condition | Reason |
+|-----------|--------|
+| Charge Wrong (fizzle) | Fizzle is intentional underperformance; preview shows CC value, not CW |
+| Multi-hit cards | Per-hit structure differs; preview total does not map to a single override |
+| `iron_wave` | Dual effect (damage + shield); single preview value cannot represent both |
+| RNG bonus relics fired (`lucky_coin`, `crit_lens`, `mirror`, `scholars_crown`, `double_down`) | Preview correctly omits these surprise bonuses; they should land on top |
+
+### Source Files
+
+| File | Role |
+|------|------|
+| `src/services/damagePreviewService.ts` | `computeDamagePreview(card, ctx)` -- computes QP and CC preview values shown on card faces. Canonical source of truth for card display values. |
+| `src/services/turnManager.ts` | `playCardAction(card, playMode, answeredCorrectly, cardPreview)` -- accepts preview from UI, applies override after resolver. `_skipPreviewOverride` flag controls suppression. |
+| `src/services/encounterBridge.ts` | `handlePlayCard()` -- bridges UI callbacks to turnManager, forwards `previewValue`. |
+| `src/ui/components/CardCombatOverlay.svelte` | Computes `damagePreviews` for all cards in hand. Passes preview at all 4 `onplaycard` call sites. |
 
 ---
 
