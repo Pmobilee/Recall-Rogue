@@ -9,6 +9,8 @@
  * Updated 2026-04-18: bastions_will CC expectation updated 6→11 after adding +75% CC bonus
  * to preview (mirrors turnManager line 1822-1829). Also added glass_lens and knowledge_tax CC
  * relic tests. Fixed flat-bonus ordering: flat added AFTER buff/overclock mult, not before.
+ * Updated 2026-04-18 (cursed shield fix): added cursed shield QP penalty tests — mirrors
+ * cardEffectResolver lines 616-631 which apply cursed multipliers to ALL card types.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -490,5 +492,48 @@ describe('computeDamagePreview — barbed_edge synergy (strike-tagged)', () => {
     // lifetap QP=5, no strike tag → no sharpenedEdge, no relic flat bonus from barbed_edge
     expect(result.qpValue).toBe(5);
     expect(result.qpModified).toBe('neutral');
+  });
+});
+
+// ── Cursed shield tests (bug fix 2026-04-18) ──────────────────────────────────
+//
+// Root cause: damagePreviewService was applying cursed multipliers to attack cards
+// but not shield cards. The actual resolver (cardEffectResolver.ts lines 616-631)
+// applies cursed multipliers to ALL card types via mechanicBaseValue scaling.
+
+describe('computeDamagePreview — cursed shield QP penalty', () => {
+  it('reduces QP by 0.7x for a cursed shield at L3 (qpValue=6 → 4)', () => {
+    // block stat table L3: QP=6, CC=round(6*1.50)=9
+    // cursed QP: round(6 * 0.7) = round(4.2) = 4
+    // cursed CC: round(9 * 1.0) = 9 (CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0, no change)
+    const card = makeShieldCard({ masteryLevel: 3, isCursed: true });
+    const result = computeDamagePreview(card, baseCtx());
+    expect(result.qpValue).toBe(4);
+    expect(result.ccValue).toBe(9);
+    expect(result.qpModified).toBe('nerfed');
+    expect(result.ccModified).toBe('neutral');
+  });
+
+  it('leaves CC unchanged (CURSED_CHARGE_CORRECT_MULTIPLIER = 1.0)', () => {
+    // block stat table L0: QP=4, CC=6; cursed penalty only on QP
+    const card = makeShieldCard({ isCursed: true });
+    const result = computeDamagePreview(card, baseCtx());
+    expect(result.ccValue).toBe(6);
+    expect(result.ccModified).toBe('neutral');
+  });
+});
+
+describe('computeDamagePreview — cursed shield + scar_tissue', () => {
+  it('uses 0.85x QP multiplier instead of 0.7x with scar_tissue relic (L3, qpValue=6 → 5)', () => {
+    // block stat table L3: QP=6
+    // scar_tissue overrides cursed QP mult to 0.85: round(6 * 0.85) = round(5.1) = 5
+    // CC: round(9 * 1.0) = 9
+    const card = makeShieldCard({ masteryLevel: 3, isCursed: true });
+    const ctx = baseCtx({ activeRelicIds: new Set(['scar_tissue']), scarTissueStacks: 0 });
+    const result = computeDamagePreview(card, ctx);
+    expect(result.qpValue).toBe(5);
+    expect(result.ccValue).toBe(9);
+    expect(result.qpModified).toBe('nerfed');
+    expect(result.ccModified).toBe('neutral');
   });
 });

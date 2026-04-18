@@ -4653,3 +4653,13 @@ Correct: `executeEnemyIntent(buff)` → mutates statusEffects → `enemy.nextInt
 The merged `intentResult.damage` flows through the main damage pipeline once (enrage, cap, ascension scaling, block). Do not double-apply caps or scale the follow-up separately.
 
 `lockedFollowUpDisplayDamage` intentionally does NOT include the pending strength buff in its snapshot (it's computed before execution). Actual damage will be slightly higher than the preview — this is acceptable and avoids complex "simulate buff before snapshot" logic.
+
+### 2026-04-18 — Cursed shield cards showed incorrect block preview (QP penalty missing)
+
+**What:** A cursed shield card at mastery L3 (qpValue=6) displayed "6 block" in the card preview UI but actually applied `round(6 * 0.7) = 4` block when played on Quick Play. The Charge Correct preview was correct (no penalty at 1.0×).
+
+**Why:** `damagePreviewService.ts` applied the `CURSED_QP_MULTIPLIER` (0.7×) only inside the attack card branch. The shield card branch had no corresponding cursed penalty. The actual resolver (`cardEffectResolver.ts` lines 616-631) applies cursed multipliers to ALL card types via `mechanicBaseValue` scaling, so the preview was silently out of sync for shield cards.
+
+**Fix:** Added cursed QP multiplier logic to the shield card path in `damagePreviewService.ts`, placed after the chain multiplier (base scaling) and before relic flat bonuses — matching the attack card ordering. `scar_tissue` relic still overrides the multiplier to 0.85× in both paths.
+
+**Files:** `src/services/damagePreviewService.ts` — shield section after chain mult. `src/services/damagePreviewService.test.ts` — three new tests covering cursed shield QP penalty, cursed CC unchanged, and cursed + scar_tissue override.

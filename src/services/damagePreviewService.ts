@@ -305,6 +305,16 @@ export function computeDamagePreview(card: Card, ctx: DamagePreviewContext): Dam
   qpShield = Math.round(qpShield * chainMult);
   ccShield = Math.round(ccShield * chainMult);
 
+  // Cursed QP penalty — mirrors cardEffectResolver lines 616-631.
+  // Applied after chain (base scaling) and before relic flat bonuses, matching attack card ordering.
+  // CC: CURSED_CHARGE_CORRECT_MULTIPLIER is 1.0 (no change), so ccShield is unchanged.
+  if (card.isCursed) {
+    let cursedQpMult = CURSED_QP_MULTIPLIER; // 0.7
+    if (relicIds.has('scar_tissue')) cursedQpMult = 0.85;
+    qpShield = Math.round(qpShield * cursedQpMult);
+    ccShield = Math.round(ccShield * CURSED_CHARGE_CORRECT_MULTIPLIER); // 1.0 — no change
+  }
+
   // stone_wall: +3 flat
   const stoneWallFlat = relicIds.has('stone_wall') ? 3 : 0;
   // whetstone: -1 flat penalty on shields
