@@ -3582,10 +3582,10 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   const chainTypeBeforeReset = turnState.chainType;
 
   // Decay (not fully reset) Knowledge Chain at end of each player turn.
-  // Chain length drops by CHAIN_DECAY_PER_TURN; momentum carries partially into next turn.
+  // Chain decays proportionally — higher chains lose more but retain partial momentum.
   decayChain();
   const decayedChain = getChainState();
-  turnState.chainMultiplier = decayedChain.length > 0 ? 1.0 : 1.0; // will be recalculated on next card play
+  turnState.chainMultiplier = decayedChain.length > 0 ? getChainMultiplier(decayedChain.length) : 1.0;
   turnState.chainLength = decayedChain.length;
   turnState.chainType = decayedChain.chainType;
 
@@ -3640,8 +3640,9 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   turnState.turnNumber += 1;
   turnState.encounterTurnNumber += 1;
   turnState.isSurge = isSurgeTurn(turnState.turnNumber);
-  // AR-310: Rotate the active chain color for the upcoming turn.
-  turnState.activeChainColor = rotateActiveChainColor(turnState.turnNumber);
+  // AR-310: Rotate the active chain color for the upcoming turn (exclude previous color for guaranteed rotation).
+  const previousColor = turnState.activeChainColor;
+  turnState.activeChainColor = rotateActiveChainColor(turnState.turnNumber, previousColor);
 
   const discardedAtTurnEnd = discardHand(deck);
   if (discardedAtTurnEnd.length > 0) {

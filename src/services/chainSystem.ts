@@ -19,7 +19,7 @@
 // the new color becomes surcharge-free, and the chain length is preserved (the pivot
 // was earned by answering correctly). The turn-boundary rotation is unchanged.
 
-import { CHAIN_MULTIPLIERS, MAX_CHAIN_LENGTH, CHAIN_DECAY_PER_TURN } from '../data/balance';
+import { CHAIN_MULTIPLIERS, MAX_CHAIN_LENGTH, CHAIN_DECAY_RATE } from '../data/balance';
 
 export interface ChainState {
   /** The chainType index of the current chain, or null if no chain is active. */
@@ -82,14 +82,24 @@ export function resetChain(): void {
 }
 
 /**
- * Decays the chain by CHAIN_DECAY_PER_TURN at the end of each player turn.
- * Instead of fully resetting, the chain length decreases by 1 so players carry
- * partial momentum into the next turn. If length reaches 0, chain type clears.
+ * Decays the chain proportionally at the end of each player turn.
+ * Instead of a flat reduction, loses `ceil(length × CHAIN_DECAY_RATE)` length points.
+ * Higher chains lose more absolute length but still retain partial momentum.
+ * If length reaches 0, chain type clears.
+ *
+ * Decay table at CHAIN_DECAY_RATE = 0.5:
+ *   length 1 → 0 (decay 1)
+ *   length 2 → 1 (decay 1)
+ *   length 3 → 1 (decay 2)
+ *   length 4 → 2 (decay 2)
+ *   length 5 → 2 (decay 3)
  *
  * Call this at end-of-turn (instead of resetChain) in turnManager.
  */
 export function decayChain(): void {
-  const newLength = Math.max(0, _chain.length - CHAIN_DECAY_PER_TURN);
+  if (_chain.length <= 0) return;
+  const decay = Math.max(1, Math.ceil(_chain.length * CHAIN_DECAY_RATE));
+  const newLength = Math.max(0, _chain.length - decay);
   if (newLength === 0) {
     _chain = { chainType: null, length: 0 };
   } else {
@@ -108,19 +118,34 @@ export function decayChain(): void {
  * Call this at the start of each player turn (i.e. at the top of endPlayerTurn
  * after incrementing turnNumber, so the new turn already has the rotated color).
  *
- * @param turnNumber - The global turn number for the coming turn.
+ * @param turnNumber   - The global turn number for the coming turn.
+ * @param excludeColor - Optional color to exclude from selection (used at turn
+ *   boundaries to guarantee the color always rotates to something different).
+ *   If only one chain type exists and it matches excludeColor, falls back to
+ *   the full candidate list (no alternative available).
  * @returns The newly active chain type index, or null if rotation is not configured.
  */
-export function rotateActiveChainColor(turnNumber: number): number | null {
+export function rotateActiveChainColor(turnNumber: number, excludeColor?: number | null): number | null {
   if (_runChainTypes.length === 0) {
     _activeChainColor = null;
     return null;
   }
+
+  // Filter out the excluded color (typically the previous turn's color).
+  let candidates = excludeColor != null
+    ? _runChainTypes.filter(c => c !== excludeColor)
+    : _runChainTypes;
+
+  // If only one chain type exists and it's excluded, fall back to all types.
+  if (candidates.length === 0) {
+    candidates = _runChainTypes;
+  }
+
   // Deterministic LCG: mix seed + turn number to pick an index.
   // Using the same LCG constants as chainDistribution.ts / chainTypes.ts.
   const mixed = ((_chainRotationSeed * 1664525 + turnNumber * 1013904223) & 0xFFFFFFFF) >>> 0;
-  const idx = mixed % _runChainTypes.length;
-  _activeChainColor = _runChainTypes[idx];
+  const idx = mixed % candidates.length;
+  _activeChainColor = candidates[idx];
   return _activeChainColor;
 }
 
@@ -135,20 +160,32 @@ export function rotateActiveChainColor(turnNumber: number): number | null {
  *
  * @param turnNumber      - The global turn number (used as RNG seed input).
  * @param deckComposition - chainTypeIndex → card count (can override the stored one).
+ * @param excludeColor    - Optional color to exclude from selection (same semantics
+ *   as rotateActiveChainColor's excludeColor).
  * @returns The newly active chain type index, or null if rotation is not configured.
  */
-export function rotateActiveChainColorWeighted(turnNumber: number, deckComposition?: Map<number, number>): number | null {
+export function rotateActiveChainColorWeighted(turnNumber: number, deckComposition?: Map<number, number>, excludeColor?: number | null): number | null {
   if (_runChainTypes.length === 0) {
     _activeChainColor = null;
     return null;
   }
 
   const composition = deckComposition ?? _deckComposition;
-  const totalCards = _runChainTypes.reduce((sum, ct) => sum + (composition.get(ct) ?? 0), 0);
+
+  // Filter out the excluded color.
+  let candidates = excludeColor != null
+    ? _runChainTypes.filter(c => c !== excludeColor)
+    : _runChainTypes;
+  if (candidates.length === 0) candidates = _runChainTypes;
+
+  const totalCards = candidates.reduce((sum, ct) => sum + (composition.get(ct) ?? 0), 0);
 
   if (totalCards === 0) {
-    // No deck composition data — fall back to uniform rotation.
-    return rotateActiveChainColor(turnNumber);
+    // No deck composition data for candidates — fall back to uniform among candidates.
+    const mixed = ((_chainRotationSeed * 1664525 + turnNumber * 1013904223) & 0xFFFFFFFF) >>> 0;
+    const idx = mixed % candidates.length;
+    _activeChainColor = candidates[idx];
+    return _activeChainColor;
   }
 
   // Deterministic LCG: same constants as rotateActiveChainColor for reproducibility.
@@ -158,7 +195,7 @@ export function rotateActiveChainColorWeighted(turnNumber: number, deckCompositi
 
   // Walk cumulative buckets to find which chain type was rolled.
   let cumulative = 0;
-  for (const ct of _runChainTypes) {
+  for (const ct of candidates) {
     cumulative += composition.get(ct) ?? 0;
     if (roll < cumulative) {
       _activeChainColor = ct;
@@ -166,8 +203,8 @@ export function rotateActiveChainColorWeighted(turnNumber: number, deckCompositi
     }
   }
 
-  // Fallback: last chain type (should never reach here if totalCards > 0).
-  _activeChainColor = _runChainTypes[_runChainTypes.length - 1];
+  // Fallback: last candidate (should never reach here if totalCards > 0).
+  _activeChainColor = candidates[candidates.length - 1];
   return _activeChainColor;
 }
 

@@ -113,23 +113,44 @@ describe('chainSystem – legacy mode (no runChainTypes)', () => {
 });
 
 // ---------------------------------------------------------------------------
-// 3. Chain decay
+// 3. Chain decay — proportional (CHAIN_DECAY_RATE = 0.5)
 // ---------------------------------------------------------------------------
 
 describe('decayChain', () => {
   beforeEach(cleanState);
 
-  it('reduces length by 1 each decay', () => {
+  it('proportional decay: length 3 → 1 (ceil(3 * 0.5) = 2 decay)', () => {
     extendOrResetChain(0);
     extendOrResetChain(0);
     extendOrResetChain(0); // length 3
+    decayChain();
+    expect(getCurrentChainLength()).toBe(1);
+  });
+
+  it('proportional decay: length 5 → 2 (ceil(5 * 0.5) = 3 decay)', () => {
+    for (let i = 0; i < 5; i++) extendOrResetChain(0);
+    expect(getCurrentChainLength()).toBe(5);
+    decayChain();
+    expect(getCurrentChainLength()).toBe(2);
+  });
+
+  it('proportional decay: length 2 → 1 (ceil(2 * 0.5) = 1 decay)', () => {
+    extendOrResetChain(0);
+    extendOrResetChain(0); // length 2
+    decayChain();
+    expect(getCurrentChainLength()).toBe(1);
+  });
+
+  it('proportional decay: length 4 → 2 (ceil(4 * 0.5) = 2 decay)', () => {
+    for (let i = 0; i < 4; i++) extendOrResetChain(0);
+    expect(getCurrentChainLength()).toBe(4);
     decayChain();
     expect(getCurrentChainLength()).toBe(2);
   });
 
   it('clears chain type when length reaches 0', () => {
     extendOrResetChain(1); // length 1
-    decayChain();
+    decayChain(); // decay 1 → 0
     const s = getChainState();
     expect(s.length).toBe(0);
     expect(s.chainType).toBeNull();
@@ -187,6 +208,37 @@ describe('rotateActiveChainColor – AR-310', () => {
     const color = rotateActiveChainColor(1);
     expect(color).toBeNull();
     expect(getActiveChainColor()).toBeNull();
+  });
+
+  it('with excludeColor: never returns the excluded color (100 turns)', () => {
+    // With 3 chain types, excluding one should always produce one of the other two.
+    const excludeColor = RUN_CHAINS[0];
+    let neverReturnsExcluded = true;
+    for (let t = 1; t <= 100; t++) {
+      const color = rotateActiveChainColor(t, excludeColor);
+      if (color === excludeColor) {
+        neverReturnsExcluded = false;
+        break;
+      }
+    }
+    expect(neverReturnsExcluded).toBe(true);
+  });
+
+  it('with excludeColor: still returns a valid chain type', () => {
+    const excludeColor = RUN_CHAINS[0];
+    for (let t = 1; t <= 20; t++) {
+      const color = rotateActiveChainColor(t, excludeColor);
+      expect(color).not.toBeNull();
+      expect(RUN_CHAINS).toContain(color);
+    }
+  });
+
+  it('with excludeColor: falls back to full list when only 1 chain type exists', () => {
+    // Only one chain type — cannot avoid the excluded color.
+    initChainSystem([7], SEED);
+    const color = rotateActiveChainColor(1, 7);
+    // Falls back to [7] since no other option exists.
+    expect(color).toBe(7);
   });
 });
 
@@ -269,7 +321,7 @@ describe('chain multiplier persistence across turn rotations', () => {
     resetChain();
   });
 
-  it('chain length carries across different active colors each turn', () => {
+  it('chain length carries across different active colors each turn (proportional decay)', () => {
     // Turn 1: build chain to length 3 with active color
     const color1 = rotateActiveChainColor(1)!;
     extendOrResetChain(color1);
@@ -277,14 +329,14 @@ describe('chain multiplier persistence across turn rotations', () => {
     extendOrResetChain(color1);
     expect(getCurrentChainLength()).toBe(3);
 
-    // Simulate turn transition (decay then rotate)
-    decayChain(); // length → 2
-    expect(getCurrentChainLength()).toBe(2);
+    // Simulate turn transition (proportional decay: ceil(3 * 0.5) = 2 decay → length 1)
+    decayChain();
+    expect(getCurrentChainLength()).toBe(1);
 
     // Turn 2: rotate to new color, then extend
-    const color2 = rotateActiveChainColor(2)!;
-    extendOrResetChain(color2); // extends from 2 → 3
-    expect(getCurrentChainLength()).toBe(3);
+    const color2 = rotateActiveChainColor(2, color1)!;
+    extendOrResetChain(color2); // extends from 1 → 2
+    expect(getCurrentChainLength()).toBe(2);
   });
 });
 
@@ -342,6 +394,17 @@ describe('rotateActiveChainColorWeighted – AR-7.7', () => {
     const composition = new Map<number, number>([[10, 5], [20, 5], [30, 5]]);
     const color = rotateActiveChainColorWeighted(3, composition);
     expect(getActiveChainColor()).toBe(color);
+  });
+
+  it('with excludeColor: never returns the excluded color across multiple turns', () => {
+    initChainSystem(RUN_CHAINS, SEED);
+    const composition = new Map<number, number>([[10, 5], [20, 5], [30, 5]]);
+    const excludeColor = RUN_CHAINS[0]; // 10
+    for (let t = 1; t <= 50; t++) {
+      const color = rotateActiveChainColorWeighted(t, composition, excludeColor);
+      expect(color).not.toBe(excludeColor);
+      expect(RUN_CHAINS).toContain(color);
+    }
   });
 });
 

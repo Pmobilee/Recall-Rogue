@@ -1,14 +1,14 @@
 # Chain System
 
 > **Purpose:** How the Knowledge Chain system works — consecutive correct answers, multiplier scaling, chain types, break conditions, rotating chain color, and themed chain distribution.
-> **Last verified:** 2026-04-14 (chain multiplier order-of-operations fix: pre-extension value passed to resolveCardEffect)
+> **Last verified:** 2026-04-18 (proportional chain decay + always-different chain color rotation)
 > **Source files:** `src/services/chainSystem.ts`, `src/data/chainTypes.ts`, `src/services/chainVisuals.ts`, `src/data/balance.ts`, `src/services/chainDistribution.ts`, `src/services/presetPoolBuilder.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`, `src/ui/components/StudyTempleScreen.svelte`
 
 ---
 
 ## What Chains Are
 
-A **Knowledge Chain** forms when a player plays cards via Charge Correct that match the **active chain color** for the current turn. Each matching card extends the chain and applies a higher damage multiplier. The chain decays at the end of each player turn (not a full reset — `decayChain()` reduces length by 1 each turn so momentum carries forward).
+A **Knowledge Chain** forms when a player plays cards via Charge Correct that match the **active chain color** for the current turn. Each matching card extends the chain and applies a higher damage multiplier. The chain decays at the end of each player turn (not a full reset — `decayChain()` reduces length proportionally each turn so momentum carries forward; see decayChain below).
 
 Chains only form through **Charge Correct** plays — Quick Play and Charge Wrong do not extend a chain. A card with no `chainType` (undefined/null) resets the chain to 0.
 
@@ -119,11 +119,13 @@ Called by `turnManager` on every Charge play:
   - If `chainType !== _chain.chainType` — resets to new chain with `length: 1`, returns `1.2`
 - `chainMultiplierOverride` — clamps the multiplier to a fixed value (used by The Nullifier enemy, AR-59.13)
 
-### `rotateActiveChainColor(turnNumber)`
+### `rotateActiveChainColor(turnNumber, excludeColor?)`
 
 Selects active chain color for the given turn. LCG: `(seed * 1664525 + turnNumber * 1013904223) & 0xFFFFFFFF`. Returns one of the 3 run chain types or `null` if none configured. Uses **uniform** (1/3) distribution across the 3 run chain types.
 
-### `rotateActiveChainColorWeighted(turnNumber, deckComposition?)` (AR-7.7)
+Accepts optional `excludeColor` parameter. At end of turn, the previous active color is passed as `excludeColor` to guarantee the color always rotates to something different. When only one chain type exists and it matches `excludeColor`, falls back to the full candidate list.
+
+### `rotateActiveChainColorWeighted(turnNumber, deckComposition?, excludeColor?)` (AR-7.7)
 
 Like `rotateActiveChainColor` but **weighted** by deck composition. A chain type with 13 cards out of 24 total appears as the active color ~54% of turns rather than a uniform 33%. Falls back to uniform rotation when `deckComposition` is empty or all counts are zero.
 
@@ -137,7 +139,14 @@ Fully resets chain to `{ chainType: null, length: 0 }`. Called at encounter star
 
 ### `decayChain()`
 
-Called at end of each player turn. Reduces chain length by `CHAIN_DECAY_PER_TURN` (1). If length reaches 0, clears chain type. Partial momentum carries into the next turn.
+Called at end of each player turn. Reduces chain length proportionally — `ceil(length × CHAIN_DECAY_RATE)` where `CHAIN_DECAY_RATE = 0.5`. Higher chains lose more absolute length but retain partial momentum. If length reaches 0, clears chain type.
+
+Decay table:
+- length 1 → 0 (decay 1)
+- length 2 → 1 (decay 1)
+- length 3 → 1 (decay 2)
+- length 4 → 2 (decay 2)
+- length 5 → 2 (decay 3)
 
 ### `getChainMultiplier(length)`
 
@@ -210,7 +219,7 @@ The chain **fully resets** in these cases:
 
 1. **Encounter start** — `resetChain()` is called by `startEncounter()` for a clean slate
 2. **Wrong on-colour charge** — `extendOrResetChain(null, undefined, false)` (default `isOffColourWrong=false`) resets chain to 0
-3. **Turn decay** — `decayChain()` at end of each turn reduces length by 1 (not a full reset)
+3. **Turn decay** — `decayChain()` at end of each turn applies proportional decay — higher chains lose more (see decayChain). Not a full reset.
 
 The chain is **partially reduced** (7.8) when:
 
@@ -247,7 +256,7 @@ As the player builds a chain, the environment visually escalates at four thresho
 
 **Integration wiring** (`encounterBridge.ts`):
 - `scene.onChainUpdated(chainLength, chainType)` — called after every card play resolution (uses `result.turnState.chainLength` / `.chainType`). Also called after turn-end so the UI reflects chain decay.
-- Chain decay happens inside `endPlayerTurn()` (`decayChain()` reduces length by 1), so the post-turn-end call correctly shows the decayed chain.
+- Chain decay happens inside `endPlayerTurn()` (`decayChain()` proportionally reduces length), so the post-turn-end call correctly shows the decayed chain.
 
 **`CombatScene` API:**
 - `onChainUpdated(chainCount, chainType)` — coordinates particles, point lights, vignette, tint overlay, depth breathing. Handles `reduceMotion` path (lights only) and `isTurboMode()` (full skip).

@@ -339,11 +339,12 @@ export const CHAIN_MULTIPLIERS: number[] = [1.0, 1.2, 1.5, 2.0, 2.5, 3.5];
 export const MAX_CHAIN_LENGTH = 5;
 
 /**
- * How many chain length points are lost per turn instead of full reset.
- * 1 = chains decay by 1 each turn end (instead of resetting to 0).
- * This rewards building chains across turns rather than fully losing momentum.
+ * Proportion of chain length lost per turn end (rounded up).
+ * Higher chains lose more absolute length but retain partial momentum.
+ * E.g. at 0.5: length 5 loses 3, length 3 loses 2, length 2 loses 1.
+ * Decay table: length 1->0, 2->1, 3->1, 4->2, 5->2.
  */
-export const CHAIN_DECAY_PER_TURN = 1;
+export const CHAIN_DECAY_RATE = 0.5;
 
 // Knowledge Surge system (AR-59.4)
 /** Turn number of the first Surge turn per encounter. */
