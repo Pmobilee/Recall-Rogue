@@ -2359,6 +2359,12 @@ export function playCardAction(
     effect.chainLightningChainLength = clChainLen;
   }
 
+  // Inscription of Wisdom CW fizzle: mark card as permanently removed before forgetOnResolve moves it
+  if (effect.inscriptionFizzled) {
+    const fizzledCard = turnState.deck.discardPile.find(c => c.id === cardId);
+    if (fizzledCard) fizzledCard.isRemovedFromGame = true;
+  }
+
   // Volatile Slash / Burnout Shield — forget after resolve
   if (effect.forgetOnResolve) {
     // Move card from discard pile to forget pile
@@ -2969,6 +2975,57 @@ export function playCardAction(
       value: turnState.empowerWeakPending,
     });
     turnState.empowerWeakPending = 0;
+  }
+
+  // Conversion (Redirect): consume player block after dealing block-based damage
+  if ((effect.blockConsumed ?? 0) > 0) {
+    turnState.playerState.shield = Math.max(0, (turnState.playerState.shield ?? 0) - effect.blockConsumed!);
+    turnState.turnLog.push({ type: 'play', message: `Redirect consumed ${effect.blockConsumed} block`, value: effect.blockConsumed });
+  }
+
+  // Hemorrhage (Rupture): consume all Bleed stacks from enemy after burst damage
+  if (effect.consumeAllBleed) {
+    const bleedBefore = enemy.statusEffects.find(s => s.type === 'bleed');
+    if (bleedBefore) {
+      enemy.statusEffects = enemy.statusEffects.filter(s => s.type !== 'bleed');
+      turnState.turnLog.push({ type: 'play', message: `Rupture consumed ${bleedBefore.value} Bleed`, value: bleedBefore.value });
+    }
+  }
+
+  // Sacrifice: gain AP from HP sacrifice (can exceed MAX_AP_PER_TURN per Appendix F)
+  if ((effect.sacrificeApGain ?? 0) > 0) {
+    turnState.apCurrent += effect.sacrificeApGain!;
+    turnState.turnLog.push({ type: 'play', message: `Sacrifice: +${effect.sacrificeApGain} AP`, value: effect.sacrificeApGain });
+  }
+
+  // Ironhide: apply Strength status (permanent or temporary based on play mode)
+  if (effect.ironhideStrength) {
+    const { amount, permanent } = effect.ironhideStrength;
+    const existingStr = playerState.statusEffects.find(s => s.type === 'strength');
+    if (existingStr) {
+      existingStr.value += amount;
+      if (permanent) existingStr.turnsRemaining = PERMANENT_DURATION_SENTINEL;
+    } else {
+      playerState.statusEffects.push({ type: 'strength', value: amount, turnsRemaining: permanent ? PERMANENT_DURATION_SENTINEL : 1 });
+    }
+    turnState.turnLog.push({ type: 'play', message: `Ironhide: +${amount} Strength${permanent ? ' (permanent)' : ''}`, value: amount });
+  }
+
+  // Tutor CC: grant a free-play charge for the next card
+  if (effect.tutoredCardFree) {
+    turnState.freePlayCharges = (turnState.freePlayCharges ?? 0) + 1;
+    turnState.turnLog.push({ type: 'play', message: 'Tutor: next play costs 0 AP' });
+  }
+
+  // War Drum: buff all hand cards' base effect value (permanent on card objects this turn;
+  // fresh copies from draw pile are unaffected — cards discard at turn end)
+  if ((effect.warDrumBonus ?? 0) > 0) {
+    for (const handCard of turnState.deck.hand) {
+      if (handCard.id !== cardId) {
+        handCard.baseEffectValue += effect.warDrumBonus!;
+      }
+    }
+    turnState.turnLog.push({ type: 'play', message: `War Drum: +${effect.warDrumBonus} to all hand cards`, value: effect.warDrumBonus });
   }
 
   // ── End of AR-tag-wiring section ──────────────────────────────────────────────────────────

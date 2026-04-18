@@ -1904,7 +1904,7 @@ export function resolveCardEffect(
       result.shieldApplied = bulwarkBlock;
       // CC forgets normally; L5 bulwark_no_forget tag skips this
       if (isChargeCorrect && !hasTag('bulwark_no_forget')) {
-        result.forgetAfterPlay = true;
+        result.forgetOnResolve = true;
       }
       return result;
     }

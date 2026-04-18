@@ -115,10 +115,10 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Reckless: high damage, self-damage decreases as you master it. L5: qp=10, selfDmg=0, scales self-damage with chain length instead (reckless_selfdmg_scale3 — takes 3 self-damage per chain tier). */
   reckless: {
     levels: [
-      { qpValue: 4,  extras: { selfDmg: 4 } },                             // L0 — Hurts you a lot
-      { qpValue: 5,  extras: { selfDmg: 4 } },                             // L1
-      { qpValue: 6,  extras: { selfDmg: 3 } },                             // L2 — Self-damage drops!
-      { qpValue: 8,  extras: { selfDmg: 3 } },                             // L3
+      { qpValue: 6,  extras: { selfDmg: 2 } },                             // L0 — Risky but viable
+      { qpValue: 7,  extras: { selfDmg: 2 } },                             // L1
+      { qpValue: 6,  extras: { selfDmg: 2 } },                             // L2 — Self-damage drops!
+      { qpValue: 8,  extras: { selfDmg: 1 } },                             // L3
       { qpValue: 10, extras: { selfDmg: 2 } },                             // L4 — Mastering the recklessness
       { qpValue: 10, extras: { selfDmg: 0 }, tags: ['reckless_selfdmg_scale3'] }, // L5 — 0 flat self-dmg, chain-scaled
     ],
@@ -127,7 +127,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Execute: bonus damage below HP threshold. L3 widens to 40%, L5 to 50%. */
   execute: {
     levels: [
-      { qpValue: 2, extras: { execBonus: 8 } },                            // L0 — execBonus 4→8 to match resolver runtime (was reading mechanic.bonusValue=8)
+      { qpValue: 2, extras: { execBonus: 4 } },                            // L0 — execBonus fixed to 4 (was inflated to 8)
       { qpValue: 3, extras: { execBonus: 5 } },                            // L1
       { qpValue: 3, extras: { execBonus: 6 } },                            // L2
       { qpValue: 4, extras: { execBonus: 8,  execThreshold: 0.4 } },      // L3 — triggers at 40% HP!
@@ -214,7 +214,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   lacerate: {
     levels: [
       { qpValue: 1, secondaryValue: 4 },                                     // L0 — 1 dmg + 4 Bleed — secondaryValue 3→4 to match resolver runtime (was falling back to mechanic.secondaryValue=4)
-      { qpValue: 2, secondaryValue: 3 },                                     // L1
+      { qpValue: 2, secondaryValue: 4 },                                     // L1
       { qpValue: 2, secondaryValue: 4 },                                     // L2
       { qpValue: 2, secondaryValue: 5 },                                     // L3 — Bleed specialist
       { qpValue: 3, secondaryValue: 5 },                                     // L4
@@ -226,7 +226,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   kindle: {
     levels: [
       { qpValue: 1, secondaryValue: 4 },                                     // L0 — 1 dmg + 4 Burn (trigger) — secondaryValue 2→4 to match resolver runtime (was falling back to mechanic.secondaryValue=4)
-      { qpValue: 2, secondaryValue: 3 },                                     // L1
+      { qpValue: 2, secondaryValue: 4 },                                     // L1
       { qpValue: 2, secondaryValue: 4 },                                     // L2
       { qpValue: 3, secondaryValue: 4 },                                     // L3
       { qpValue: 3, secondaryValue: 5 },                                     // L4
@@ -251,8 +251,8 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** Gambit: QP deals damage + self-damage; CC heals. Risk falls as mastery rises. */
   gambit: {
     levels: [
-      { qpValue: 4,  extras: { selfDmg: 4, healOnCC: 3 } },               // L0 — Risky
-      { qpValue: 5,  extras: { selfDmg: 4, healOnCC: 4 } },               // L1
+      { qpValue: 5,  extras: { selfDmg: 3, healOnCC: 3 } },               // L0 — Risky but viable
+      { qpValue: 5,  extras: { selfDmg: 3, healOnCC: 4 } },               // L1
       { qpValue: 6,  extras: { selfDmg: 3, healOnCC: 4 } },               // L2 — Less self-damage
       { qpValue: 7,  extras: { selfDmg: 3, healOnCC: 5 } },               // L3
       { qpValue: 8,  extras: { selfDmg: 2, healOnCC: 6 } },               // L4
@@ -300,7 +300,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   riposte: {
     levels: [
       { qpValue: 2, secondaryValue: 4 },                                     // L0 — 2 dmg + 4 block — secondaryValue 3→4 to match resolver runtime (was falling back to mechanic.secondaryValue=4)
-      { qpValue: 3, secondaryValue: 3 },                                     // L1
+      { qpValue: 3, secondaryValue: 4 },                                     // L1
       { qpValue: 3, secondaryValue: 4 },                                     // L2
       { qpValue: 4, secondaryValue: 5 },                                     // L3
       { qpValue: 4, secondaryValue: 6 },                                     // L4
@@ -391,7 +391,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   thorns: {
     levels: [
       { qpValue: 2, secondaryValue: 3 },                       // L0: 2 block + 3 reflect — secondaryValue 1→3 to match resolver runtime (was reading hardcoded 3)
-      { qpValue: 3, secondaryValue: 2 },                       // L1
+      { qpValue: 3, secondaryValue: 3 },                       // L1
       { qpValue: 3, secondaryValue: 2 },                       // L2
       { qpValue: 4, secondaryValue: 3 },                       // L3: real reflect damage
       { qpValue: 5, secondaryValue: 3 },                       // L4
@@ -450,7 +450,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   /** parry: block + draw if enemy attacks — sec=drawCount on enemy attack */
   parry: {
     levels: [
-      { qpValue: 1, secondaryValue: 1 },                       // L0: 1 block + draw 1 on enemy atk
+      { qpValue: 2, secondaryValue: 1 },                       // L0: 2 block + draw 1 on enemy atk
       { qpValue: 2, secondaryValue: 1 },                       // L1
       { qpValue: 3, secondaryValue: 1 },                       // L2
       { qpValue: 3, secondaryValue: 2 },                       // L3: draws 2 on enemy attack!
@@ -744,7 +744,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
       { qpValue: 0, apCost: 2 },                                 // L1
       { qpValue: 0, apCost: 2, tags: ['slow_any_action'] },      // L2: can skip ANY action, not just defend/buff!
       { qpValue: 0, apCost: 1, tags: ['slow_any_action'] },      // L3: costs 1 AP!
-      { qpValue: 0, apCost: 1 },                                 // L4
+      { qpValue: 0, apCost: 1, tags: ['slow_any_action'] },      // L4: retains any-action from L3
       { qpValue: 0, apCost: 1, tags: ['slow_any_action', 'slow_weak1t'] }, // L5: also applies Weakness 1t
     ],
   },
@@ -857,7 +857,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
     // The 'forget' tag in mechanic.tags is NOT read by hasTag() — it reads _masteryStats.tags.
     levels: [
       { qpValue: 0, drawCount: 1, apCost: 0, tags: ['forget'] },                            // L0: Free draw 1 — zero-cost for new players
-      { qpValue: 0, drawCount: 1, apCost: 1, tags: ['forget'] },                            // L1: Draw 1, now costs 1 AP
+      { qpValue: 0, drawCount: 2, apCost: 1, tags: ['forget'] },                            // L1: Draw 2, costs 1 AP
       { qpValue: 0, drawCount: 2, apCost: 1, tags: ['forget'] },                            // L2: Draw 2!
       { qpValue: 0, drawCount: 2, apCost: 1, tags: ['foresight_intent', 'forget'] },        // L3: see enemy's NEXT intent too
       { qpValue: 0, drawCount: 2, apCost: 1, tags: ['forget'] },                            // L4
@@ -1100,8 +1100,8 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
 
   sacrifice: {
     levels: [
-      { qpValue: 0, apCost: 0, extras: { hpCost: 6, draw: 1, apGain: 1 } },  // L0
-      { qpValue: 0, apCost: 0, extras: { hpCost: 5, draw: 2, apGain: 1 } },  // L1: Less HP cost, draw 2
+      { qpValue: 0, apCost: 0, extras: { hpCost: 4, draw: 2, apGain: 1 } },  // L0
+      { qpValue: 0, apCost: 0, extras: { hpCost: 4, draw: 2, apGain: 1 } },  // L1: draw 2 + 1 AP
       { qpValue: 0, apCost: 0, extras: { hpCost: 5, draw: 2, apGain: 1 } },  // L2
       { qpValue: 0, apCost: 0, extras: { hpCost: 4, draw: 2, apGain: 2 } },  // L3: +2 AP!
       { qpValue: 0, apCost: 0, extras: { hpCost: 3, draw: 3, apGain: 2 } },  // L4
