@@ -29,7 +29,8 @@ import {
 import { resolveCardEffect, isCardBlocked } from './cardEffectResolver';
 import { playCardAudio } from './cardAudioManager';
 import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatusEffects, dispatchEnemyTurnStart } from './enemyManager';
-import { applyStatusEffect, triggerBurn, getBleedBonus, PERMANENT_DURATION_SENTINEL } from '../data/statusEffects';
+import { applyStatusEffect, triggerBurn, getBleedBonus, PERMANENT_DURATION_SENTINEL, isVulnerable, getStrengthModifier } from '../data/statusEffects';
+import { computeDamagePreview, type DamagePreviewContext } from './damagePreviewService';
 import type { EnemyReactContext } from '../data/enemies';
 import { hasSynergy, getMasteryAscensionBonus } from './relicSynergyResolver';
 import {
@@ -1506,6 +1507,11 @@ export function playCardAction(
   const useOverclock = turnState.overclockReady;
   const isChargeCorrect = playMode === 'charge' || playMode === 'charge_correct';
 
+  // ── Card Preview Source-of-Truth: capture pre-play state ──────────────────
+  const prePlayFirstAttackUsed = turnState.firstAttackUsed;
+  const prePlayBuffNextCard = turnState.buffNextCard;
+  let _skipPreviewOverride = false;
+
   // Compute deck domain counts for domain_mastery_sigil: count cards across draw + discard + hand.
   // Forget pile is excluded — those cards are permanently removed from the run.
   const deckDomainCounts: Record<string, number> = {};
@@ -1793,6 +1799,7 @@ export function playCardAction(
     // AR-271: Apply extraMultiplier (lucky_coin +50%, obsidian_dice, akashic_record, etc.)
     // This multiplier is returned by resolveChargeCorrectEffects and applies to the primary effect.
     if ((chargeFx.extraMultiplier ?? 1.0) > 1.0) {
+      _skipPreviewOverride = true;
       const em = chargeFx.extraMultiplier;
       if (effect.damageDealt > 0) {
         effect.damageDealt = Math.round(effect.damageDealt * em);
@@ -1809,6 +1816,7 @@ export function playCardAction(
 
     // scholars_crown: apply tier-based % bonus to the primary effect value
     if (chargeFx.scholarsCrownBonus > 0) {
+      _skipPreviewOverride = true;
       const crownMult = 1 + chargeFx.scholarsCrownBonus / 100;
       if (effect.damageDealt > 0) {
         effect.damageDealt = Math.round(effect.damageDealt * crownMult);
@@ -1825,6 +1833,7 @@ export function playCardAction(
 
     // crit_lens: 25% chance to double final damage on charge correct
     if (chargeFx.isCrit && effect.damageDealt > 0) {
+      _skipPreviewOverride = true;
       effect.damageDealt = Math.round(effect.damageDealt * 2);
       effect.finalValue = Math.round(effect.finalValue * 2);
       effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
@@ -1843,6 +1852,7 @@ export function playCardAction(
     // mirror_of_knowledge — once per encounter: after correct Charge, replay the card effect at 1.5×
     // The replay has no AP cost and requires no quiz answer.
     if (chargeFx.mirrorAvailable) {
+      _skipPreviewOverride = true;
       const MIRROR_MULT = 1.5;
       if (effect.damageDealt > 0) {
         const mirrorDamage = Math.round(effect.damageDealt * MIRROR_MULT);
@@ -1920,6 +1930,7 @@ export function playCardAction(
   if (isChargeCorrect && effect.damageDealt > 0) {
     const ddBonus = resolveDoubleDownBonus(turnState.activeRelicIds, turnState.doubleDownUsedThisEncounter, true);
     if (ddBonus.active) {
+      _skipPreviewOverride = true;
       effect.damageDealt = Math.round(effect.damageDealt * ddBonus.damageMultiplier);
       effect.finalValue = Math.round(effect.finalValue * ddBonus.damageMultiplier);
       effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
@@ -1972,6 +1983,57 @@ export function playCardAction(
     effect.damageDealt += chainBonus;
     effect.finalValue += chainBonus;
     effect.enemyDefeated = effect.damageDealt >= enemy.currentHP;
+  }
+
+  // ── Card Preview as Source of Truth (mirrors enemy intent source-of-truth) ────
+  // The card face showed a specific damage/shield value to the player. The resolver
+  // independently computed the effect via a separate code path. When these drift
+  // apart, the player sees a lie. Override the resolver's value with the preview's
+  // value so display = execution, always.
+  //
+  // Skip conditions: charge-wrong (fizzle is intentional), multi-hit (per-hit
+  // structure differs), or when post-resolver RNG/bonus fired (lucky_coin, crit,
+  // mirror, etc. — preview intentionally doesn't model these).
+  if (!_skipPreviewOverride && playMode !== 'charge_wrong' && (effect.hitCount ?? 1) <= 1) {
+    const _previewCtx: DamagePreviewContext = {
+      activeRelicIds: turnState.activeRelicIds,
+      buffNextCard: prePlayBuffNextCard,
+      overclockReady: useOverclock,
+      doubleStrikeReady: useDoubleStrike && card.cardType === 'attack',
+      firstAttackUsed: prePlayFirstAttackUsed,
+      playerHpPercent: playerState.maxHP > 0 ? playerState.hp / playerState.maxHP : 1,
+      enemyHpPercent: enemy.maxHP > 0 ? enemy.currentHP / enemy.maxHP : 1,
+      enemyPoisonStacks: (enemy.statusEffects ?? []).filter(s => s.type === 'poison').reduce((sum, s) => sum + (s.value ?? 0), 0),
+      enemyBurnStacks: (enemy.statusEffects ?? []).filter(s => s.type === 'burn').reduce((sum, s) => sum + (s.value ?? 0), 0),
+      enemyIsVulnerable: isVulnerable(enemy.statusEffects ?? []),
+      enemyQpDamageMultiplier: enemy._quickPlayDamageMultiplierOverride ?? enemy.template.quickPlayDamageMultiplier,
+      enemyQuickPlayImmune: !!enemy.template.quickPlayImmune,
+      enemyChargeResistant: !!enemy.template.chargeResistant,
+      enemyHardcover: enemy._hardcover ?? 0,
+      enemyHardcoverBroken: !!enemy._hardcoverBroken,
+      inscriptionFuryBonus,
+      cardsPlayedThisTurn: turnState.cardsPlayedThisTurn,
+      encounterTurnNumber: turnState.encounterTurnNumber,
+      scarTissueStacks: turnState.scarTissueStacks ?? 0,
+      playerStrengthModifier: getStrengthModifier(playerState.statusEffects),
+      chainMultiplier: currentChainMultiplier,
+      enemyChainVulnerable: !!enemy.template.chainVulnerable,
+    };
+    const _preview = computeDamagePreview(card, _previewCtx);
+    const _previewVal = isChargeCorrect ? _preview.ccValue : _preview.qpValue;
+
+    // Override shield for pure shield cards
+    if (card.cardType === 'shield' && effect.shieldApplied > 0 && _previewVal > 0) {
+      effect.shieldApplied = _previewVal;
+      effect.finalValue = _previewVal;
+    }
+    // Override damage for pure attack cards (not multi-effect mechanics like iron_wave)
+    if (card.cardType === 'attack' && effect.damageDealt > 0 && _previewVal > 0
+        && card.mechanicId !== 'iron_wave') {
+      effect.damageDealt = _previewVal;
+      effect.finalValue = _previewVal;
+      effect.enemyDefeated = _previewVal >= enemy.currentHP;
+    }
   }
 
   // AR-203 Step 11-12: Burn and Bleed bonuses — card-play attacks only (not Thorns/reflect).
