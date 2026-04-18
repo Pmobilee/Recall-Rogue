@@ -41,7 +41,6 @@ function makeCtx(overrides: Partial<ChargeContext> = {}): ChargeContext {
   return {
     apCurrent: 1,
     focusDiscount: 0,
-    isSurgeActive: false,
     isMomentumMatch: false,
     isActiveChainMatch: false,
     ...overrides,
@@ -82,18 +81,17 @@ describe('canChargeCard — table-driven cases', () => {
     apCurrent: number
     baseCost: number
     isActiveChainMatch: boolean
-    isSurgeActive: boolean
     isMomentumMatch: boolean
     expected: boolean
     label: string
   }> = [
-    { apCurrent: 1, baseCost: 1, isActiveChainMatch: true,  isSurgeActive: false, isMomentumMatch: false, expected: true,  label: 'Issue 6: chain match, exact AP' },
-    { apCurrent: 1, baseCost: 1, isActiveChainMatch: false, isSurgeActive: false, isMomentumMatch: false, expected: false, label: 'Issue 6: no waiver, 1AP not enough for cost=2' },
-    { apCurrent: 0, baseCost: 1, isActiveChainMatch: true,  isSurgeActive: false, isMomentumMatch: false, expected: false, label: 'Issue 10: chain match, 0 AP < cost=1' },
-    { apCurrent: 0, baseCost: 0, isActiveChainMatch: true,  isSurgeActive: false, isMomentumMatch: false, expected: true,  label: '0 cost + 0 surcharge = 0 ≤ 0 AP' },
-    { apCurrent: 2, baseCost: 1, isActiveChainMatch: false, isSurgeActive: false, isMomentumMatch: false, expected: true,  label: '2 AP ≥ cost=1+1=2, no waiver' },
-    { apCurrent: 1, baseCost: 0, isActiveChainMatch: false, isSurgeActive: true,  isMomentumMatch: false, expected: true,  label: 'surge waives surcharge, cost=0+0=0 ≤ 1' },
-    { apCurrent: 1, baseCost: 0, isActiveChainMatch: false, isSurgeActive: false, isMomentumMatch: true,  expected: true,  label: 'momentum waives surcharge, cost=0 ≤ 1' },
+    { apCurrent: 1, baseCost: 1, isActiveChainMatch: true,  isMomentumMatch: false, expected: true,  label: 'Issue 6: chain match, exact AP' },
+    { apCurrent: 1, baseCost: 1, isActiveChainMatch: false, isMomentumMatch: false, expected: false, label: 'Issue 6: no waiver, 1AP not enough for cost=2' },
+    { apCurrent: 0, baseCost: 1, isActiveChainMatch: true,  isMomentumMatch: false, expected: false, label: 'Issue 10: chain match, 0 AP < cost=1' },
+    { apCurrent: 0, baseCost: 0, isActiveChainMatch: true,  isMomentumMatch: false, expected: true,  label: '0 cost + 0 surcharge = 0 ≤ 0 AP' },
+    { apCurrent: 2, baseCost: 1, isActiveChainMatch: false, isMomentumMatch: false, expected: true,  label: '2 AP ≥ cost=1+1=2, no waiver' },
+    { apCurrent: 1, baseCost: 0, isActiveChainMatch: false, isMomentumMatch: false, expected: true,  label: 'surge does NOT waive (Pass 3): base=0, cost=0+1=1 ≤ 1 AP' },
+    { apCurrent: 1, baseCost: 0, isActiveChainMatch: false, isMomentumMatch: true,  expected: true,  label: 'momentum waives surcharge, cost=0 ≤ 1' },
   ]
 
   for (const c of cases) {
@@ -102,7 +100,6 @@ describe('canChargeCard — table-driven cases', () => {
       const ctx = makeCtx({
         apCurrent: c.apCurrent,
         isActiveChainMatch: c.isActiveChainMatch,
-        isSurgeActive: c.isSurgeActive,
         isMomentumMatch: c.isMomentumMatch,
       })
       expect(canChargeCard(card, ctx)).toBe(c.expected)
@@ -114,8 +111,9 @@ describe('getChargeApCost', () => {
   it('baseCost=1, no waiver → cost=2', () => {
     expect(getChargeApCost(makeCard(1), makeCtx())).toBe(2)
   })
-  it('baseCost=1, surge waiver → cost=1', () => {
-    expect(getChargeApCost(makeCard(1), makeCtx({ isSurgeActive: true }))).toBe(1)
+  it('baseCost=1, surge does NOT waive (Pass 3) → cost=2', () => {
+    // Surge grants +1 AP at turn-start; it does not waive the surcharge
+    expect(getChargeApCost(makeCard(1), makeCtx())).toBe(2)
   })
   it('baseCost=1, chain match → cost=1', () => {
     expect(getChargeApCost(makeCard(1), makeCtx({ isActiveChainMatch: true }))).toBe(1)

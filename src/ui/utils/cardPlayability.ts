@@ -8,7 +8,7 @@
  * ## The Bug (Issues 6+10)
  * - `hasEnoughAp` (visual gate) only checked Quick Play cost: `max(0, effectiveCost - focusDiscount) <= apCurrent`
  * - `chargeAffordable` (button disabled gate) checked the REAL charge cost: QP cost + 1 surcharge
- *   (waived on surge / momentum match / active chain match)
+ *   (waived on momentum match / active chain match)
  * - Gap: apCurrent=1, baseCost=1, NO chain match → QP shows "playable" (1<=1), charge cost=2 → button disabled
  *   The card appeared playable but clicking did nothing (Issue 6).
  * - apCurrent=0, baseCost=1, chain match → QP cost=1, charge cost=1+0=1 > 0 → card should NOT be playable
@@ -18,6 +18,10 @@
  * Single source of truth: `canChargeCard` computes the real charge cost with all waivers.
  * `isCardPlayable` = QP-affordable OR charge-affordable.
  * Both the visual `.card-playable` class and the button `disabled` prop use these functions.
+ *
+ * ## Balance Pass 3 Note
+ * Surge turns no longer waive the charge surcharge — they grant +1 bonus AP at turn-start
+ * (SURGE_BONUS_AP in turnManager.ts). isSurgeActive is intentionally NOT a waiver here.
  */
 
 import type { Card } from '../../data/card-types'
@@ -29,8 +33,6 @@ export interface ChargeContext {
   apCurrent: number
   /** AP discount from Focus status: 1 when active, 0 otherwise. */
   focusDiscount: number
-  /** True when a Surge turn is active (surcharge waived). */
-  isSurgeActive: boolean
   /** True when the card's chain type matches the momentum chain type. */
   isMomentumMatch: boolean
   /** True when the card's chain type matches the active chain color for this turn. */
@@ -40,11 +42,12 @@ export interface ChargeContext {
 /**
  * Returns the effective charge AP cost for a card given the current combat context.
  * Charge cost = max(0, effectiveCost − focusDiscount) + 1 surcharge.
- * Surcharge is waived when: isSurgeActive OR isMomentumMatch OR isActiveChainMatch.
+ * Surcharge is waived when: isMomentumMatch OR isActiveChainMatch.
+ * NOTE: Surge turns do NOT waive the surcharge (Balance Pass 3) — they grant +1 AP at turn-start instead.
  */
 export function getChargeApCost(card: Card, ctx: ChargeContext): number {
   const base = Math.max(0, getEffectiveApCost(card) - ctx.focusDiscount)
-  const surchargeWaived = ctx.isSurgeActive || ctx.isMomentumMatch || ctx.isActiveChainMatch
+  const surchargeWaived = ctx.isMomentumMatch || ctx.isActiveChainMatch
   return base + (surchargeWaived ? 0 : 1)
 }
 

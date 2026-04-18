@@ -64,7 +64,6 @@
   import ForgetPileViewer from './ForgetPileViewer.svelte'
   import MultiChoicePopup from './MultiChoicePopup.svelte'
   import CardPickerOverlay from './CardPickerOverlay.svelte'
-  import { getChainTypeName, getChainTypeColor } from '../../data/chainTypes'
   import { getCuratedDeck, getCuratedDeckFact, getCuratedDeckFacts } from '../../data/curatedDeckStore'
   import { getDeckById } from '../../data/deckRegistry'
   import { selectFactForCharge } from '../../services/curatedFactSelector'
@@ -1826,8 +1825,10 @@
     const card = handCards[index]
     if (!card) return
 
-    // Check AP: Charge costs +1 (or +0 on Surge / Chain Momentum for matching chain type)
-    const chargeCost = getEffectiveApCost(card) + (isSurgeActive || (chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType) ? 0 : 1)
+    // Check AP: Charge costs +1 surcharge (waived by chain momentum match OR active chain color match).
+    // Surge does NOT waive the surcharge (Balance Pass 3) — it grants +1 AP at turn-start instead.
+    const isOnColourMatch = activeChainColor !== null && card.chainType === activeChainColor
+    const chargeCost = getEffectiveApCost(card) + ((chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType) || isOnColourMatch ? 0 : 1)
     if (chargeCost > (turnState?.apCurrent ?? 0)) return
 
     selectedIndex = index
@@ -2030,7 +2031,10 @@
 
     // AR-124: Tutorial — charge cost tooltip (only if not free) and comparison banner tracking
     const chargingCard = handCards[selectedIndex ?? -1]
-    const isFreeCharge = isSurgeActive || (chargeMomentumChainType !== null && chargingCard?.chainType === chargeMomentumChainType)
+    // Surge no longer makes charge free (Balance Pass 3); check momentum + on-colour waivers only
+    const isChargeFreeViaMomentum = chargeMomentumChainType !== null && chargingCard?.chainType === chargeMomentumChainType
+    const isChargeFreeViaOnColour = activeChainColor !== null && chargingCard?.chainType === activeChainColor
+    const isFreeCharge = isChargeFreeViaMomentum || isChargeFreeViaOnColour
     maybeShowChargeTutorial(isFreeCharge)
     maybeShowComparisonBanner('charge')
     // Tutorial tracking
@@ -2231,6 +2235,19 @@
           turnState.deck.discardPile.splice(mimicDiscardIdx, 1)
           turnState.deck.hand.push(copy)
         }
+      }
+
+      // Force store re-emit so handCards $derived re-computes immediately.
+      // All the type-specific blocks above mutate turnState.deck.hand via .push() /
+      // .splice() — in-place mutations that do NOT notify Svelte store subscribers.
+      // Re-emitting the store gives CardApp's $activeTurnState a new reference,
+      // which propagates a fresh turnState prop into this component and causes
+      // handCards to re-derive without waiting for the next card play.
+      if (turnState) {
+        activeTurnState.update(s => s ? {
+          ...s,
+          deck: { ...s.deck, hand: [...s.deck.hand] },
+        } : s)
       }
     } else {
       // More picks needed — remove selected card from candidates to prevent double-pick
@@ -3151,22 +3168,6 @@
   {#if $isLandscape && turnState}
     <div class="landscape-stats-bar" aria-label="Player status">
     </div>
-
-    <!-- Chain indicator: to the right of the card hand, vertically centered with cards.
-         Bug 4 fix: uses {#key chainMultiplier} on the count span so it gets a pop animation
-         each time the multiplier increases, making the chain mechanic visible to the player. -->
-    {#if chainLength >= 2 && chainType !== null && chainType !== undefined}
-      {@const chainDisplayColor = getChainTypeColor(chainType)}
-      <div
-        class="lsb-chain-indicator"
-        style="color: {chainDisplayColor}; border-color: {chainDisplayColor}4d;"
-      >
-        <span class="lsb-chain-label">{getChainTypeName(chainType)}</span>
-        {#key chainMultiplier}
-          <span class="lsb-chain-count lsb-chain-count-pop">{chainMultiplier.toFixed(1)}x</span>
-        {/key}
-      </div>
-    {/if}
 
   {/if}
 </div>
@@ -4633,62 +4634,6 @@
     padding: 0;
     background: transparent;
     z-index: 15;
-  }
-
-  /* ── Landscape chain indicator: right of card hand ──── */
-  .lsb-chain-indicator {
-    display: none; /* hidden in portrait */
-  }
-
-  .layout-landscape .lsb-chain-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    right: calc(16px * var(--layout-scale, 1));
-    bottom: 23.5vh;
-    transform: translateY(50%);
-    gap: calc(2px * var(--layout-scale, 1));
-    z-index: 12;
-    pointer-events: none;
-    background: rgba(10, 10, 26, 0.85);
-    border: calc(2px * var(--layout-scale, 1)) solid currentColor;
-    border-radius: calc(8px * var(--layout-scale, 1));
-    padding: calc(6px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .lsb-chain-label {
-    font-size: calc(10px * var(--text-scale, 1));
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    opacity: 1;
-  }
-
-  .lsb-chain-count {
-    font-size: calc(18px * var(--text-scale, 1));
-    font-family: 'Cinzel', 'Georgia', serif;
-    font-weight: 900;
-    line-height: 1;
-  }
-
-  /* Bug 4 fix: pop animation for landscape chain multiplier — fires on each {#key chainMultiplier} remount */
-  .lsb-chain-count-pop {
-    display: inline-block;
-    animation: lsbChainPop 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  @keyframes lsbChainPop {
-    0%   { transform: scale(1.0); }
-    40%  { transform: scale(1.45); }
-    100% { transform: scale(1.0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .lsb-chain-count-pop {
-      animation: none;
-    }
   }
 
   /* Quiz backdrop scrim — dims the Phaser canvas behind the quiz panel */

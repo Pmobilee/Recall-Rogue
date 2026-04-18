@@ -251,9 +251,10 @@
    */
   function getDisplayedChargeApCost(card: Card, isMomentumMatch: boolean, isActiveChainMatch: boolean): number {
     const base = Math.max(0, getEffectiveApCost(card) - focusDiscount)
-    // Surcharge is waived by: surge, chain momentum match, on-colour match.
+    // Surcharge is waived by: chain momentum match, on-colour match.
+    // Surge no longer waives surcharge (Balance Pass 3) — it grants +1 AP at turn-start instead.
     // Free First Charge was removed in Pass 8.
-    const surchargeWaived = isSurgeActive || isMomentumMatch || isActiveChainMatch
+    const surchargeWaived = isMomentumMatch || isActiveChainMatch
     return base + (surchargeWaived ? 0 : 1)
   }
 
@@ -634,7 +635,7 @@
       // Check affordability: if charge can't be paid, return card to hand (no silent Quick Play)
       const card = cards[index]
       const isActiveChainMatchForDrag = activeChainColor !== null && card?.chainType === activeChainColor
-      const chargeApCost = getEffectiveApCost(card) + (isSurgeActive || (chargeMomentumChainType !== null && card?.chainType === chargeMomentumChainType) || isActiveChainMatchForDrag ? 0 : 1)
+      const chargeApCost = getEffectiveApCost(card) + ((chargeMomentumChainType !== null && card?.chainType === chargeMomentumChainType) || isActiveChainMatchForDrag ? 0 : 1)
       const canAffordCharge = card && card.tier !== '3' && chargeApCost <= apCurrent
       if (canAffordCharge && onchargeplay) {
         markChargeDragSeen()
@@ -829,7 +830,7 @@
     {@const isMastered = card.tier === '3'}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
     {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
-    {@const chargeApCostForDrag = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
+    {@const chargeApCostForDrag = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isMomentumMatch || isActiveChainMatch ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
@@ -1102,7 +1103,7 @@
     {@const isImpact = cardAnim === 'impact'}
     {@const isAnimating = isRevealing || isTierUp || isSwoosh || isImpact}
     {@const isHovered = hoveredIndex === i && !isSelected && !isOther && selectedIndex === null}
-    {@const hoverLift = isHovered ? 18 : 0}
+    {@const hoverLift = isHovered ? Math.round(resolvedCardH * 0.30) : 0}
     {@const hoverScale = isHovered ? 1.15 : 1}
     {@const isDraggingThis = dragState?.cardIndex === i}
     {@const cardDragX = isDraggingThis ? dragDeltaX : 0}
@@ -1112,7 +1113,7 @@
     {@const isMastered = card.tier === '3'}
     {@const isMomentumMatch = chargeMomentumChainType !== null && card.chainType === chargeMomentumChainType}
     {@const isActiveChainMatch = activeChainColor !== null && card.chainType === activeChainColor}
-    {@const chargeApCostForDrag = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isSurgeActive || isMomentumMatch || isActiveChainMatch ? 0 : 1)}
+    {@const chargeApCostForDrag = Math.max(0, getEffectiveApCost(card) - focusDiscount) + (isMomentumMatch || isActiveChainMatch ? 0 : 1)}
     {@const chargeAffordableForDrag = chargeApCostForDrag <= apCurrent}
     {@const showChargeZoneIndicator = isDraggingThis && isInChargeZone && !isMastered && !!onchargeplay}
     {@const isDragInChargeZone = isDraggingThis && isInChargeZone && !isMastered}
