@@ -1190,8 +1190,8 @@
     /* isolation: isolate creates a containing block for absolute children (badge)
        without overriding position: fixed — position: relative would break top/bottom pinning */
     padding: calc(12px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
-    /* Layout overrides */
-    overflow: hidden;
+    /* Layout overrides — allow vertical scroll when content exceeds fixed height */
+    overflow-y: auto;
     overflow-x: hidden;
     /* Override portrait transform/centering */
     transform: none;
@@ -1293,14 +1293,14 @@
     font-size: calc(16px * var(--text-scale, 1));
   }
 
-  /* Image question max-height in landscape */
+  /* Image question max-height in landscape — reduced to leave room for question text + 5 answers */
   .card-expanded-landscape .quiz-asset-image {
-    max-height: 40vh;
+    max-height: 25vh;
   }
 
   /* Prevent question images from blowing out the container in landscape */
   .card-expanded-landscape .question-image {
-    max-height: 30vh;
+    max-height: 20vh;
   }
 
   /* AR-76: Keyboard shortcut badge on answer buttons — gold-toned game style */
@@ -1590,11 +1590,11 @@
     grid-template-columns: 1fr;
   }
 
-  /* Landscape: larger answer buttons to fill space with only 3-4 answers visible */
+  /* Landscape: compact answer buttons to accommodate 5 options with image quizzes */
   .card-expanded-landscape .answer-btn {
-    min-height: calc(56px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
     font-size: calc(22px * var(--text-scale, 1));
-    padding: calc(14px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
   }
 
   .grammar-blank {

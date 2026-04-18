@@ -547,6 +547,11 @@
   });
 
   let enemyIntent = $derived(turnState?.enemy.nextIntent ?? null)
+  /**
+   * When the enemy has a buffFollowUpIntent set (by game-logic), this derived
+   * captures it so the intent bubble can show a combined buff+attack display.
+   */
+  let followUpIntent = $derived(turnState?.enemy?.buffFollowUpIntent ?? null)
   let enemyName = $derived(turnState?.enemy.template.name ?? '')
   let enemyCategory = $derived(turnState?.enemy.template.category ?? 'common')
   let currentFloor = $derived(turnState?.deck.currentFloor ?? 0)
@@ -730,18 +735,36 @@
     const icon = INTENT_EMOJI[enemyIntent.type] ?? '❓'
     const val = enemyIntent.value
     const label = INTENT_LABELS[enemyIntent.type] ?? ''
-    const color = INTENT_COLORS[enemyIntent.type] ?? 'rgba(100, 116, 139, 0.2)'
-    const borderColor = INTENT_BORDER_COLORS[enemyIntent.type] ?? 'rgba(100, 116, 139, 0.4)'
-    const telegraph = enemyIntent.telegraph ?? ''
+
+    // When a buffFollowUpIntent is present, the enemy will buff then attack.
+    // Override colors/label/telegraph to reflect the attack (primary threat).
+    const enemy = turnState?.enemy ?? null
+    const hasFollowUp = followUpIntent !== null
+    const displayType = hasFollowUp ? (followUpIntent.type as string) : enemyIntent.type
+    const color = INTENT_COLORS[displayType] ?? INTENT_COLORS[enemyIntent.type] ?? 'rgba(100, 116, 139, 0.2)'
+    const borderColor = INTENT_BORDER_COLORS[displayType] ?? INTENT_BORDER_COLORS[enemyIntent.type] ?? 'rgba(100, 116, 139, 0.4)'
+    const telegraph = hasFollowUp
+      ? (followUpIntent.telegraph ?? followUpIntent.type ?? '')
+      : (enemyIntent.telegraph ?? '')
+
+    if (hasFollowUp) {
+      // Combined buff+attack: show the follow-up attack as primary, buff as prefix line.
+      // Damage uses lockedFollowUpDisplayDamage (pinned at intent-roll time) when available.
+      const rawFollowUp = enemy?.lockedFollowUpDisplayDamage ?? followUpIntent.value ?? 0
+      const followUpLabel = INTENT_LABELS[followUpIntent.type] ?? followUpIntent.type ?? 'Attack'
+      const followUpHits = followUpIntent.hitCount ?? 1
+      const displayText = followUpHits > 1 ? `${rawFollowUp}×${followUpHits}` : `${rawFollowUp}`
+      return { icon, text: displayText, type: displayType, label: followUpLabel, color, borderColor, telegraph, fullyBlocked: false }
+    }
 
     if (enemyIntent.type === 'multi_attack') {
       const hits = enemyIntent.hitCount ?? 2
-      const impact = displayImpact(enemyIntent, turnState?.enemy ?? null)
+      const impact = displayImpact(enemyIntent, enemy)
       const fullyBlocked = impact.raw > 0 && impact.hpDamage === 0
       return { icon, text: `${impact.hpDamage}×${hits}`, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked }
     }
     if (enemyIntent.type === 'attack') {
-      const impact = displayImpact(enemyIntent, turnState?.enemy ?? null)
+      const impact = displayImpact(enemyIntent, enemy)
       const fullyBlocked = impact.raw > 0 && impact.hpDamage === 0
       return { icon, text: `${impact.hpDamage}`, type: enemyIntent.type, label, color, borderColor, telegraph, fullyBlocked }
     }
@@ -767,15 +790,26 @@
   let intentDetailText = $derived.by(() => {
     if (!enemyIntent) return 'Preparing...'
     const val = enemyIntent.value
+
+    // Combined buff+attack: show a single summary describing both actions.
+    if (followUpIntent !== null) {
+      const buffSe = enemyIntent.statusEffect
+      const buffDesc = buffSe ? `${buffSe.type}` : 'self'
+      const rawFollowUp = turnState?.enemy?.lockedFollowUpDisplayDamage ?? followUpIntent.value ?? 0
+      const followUpHits = followUpIntent.hitCount ?? 1
+      if (followUpHits > 1) {
+        return `Buffs ${buffDesc}, then attacks for ${rawFollowUp} × ${followUpHits} hits`
+      }
+      return `Buffs ${buffDesc}, then attacks for ${rawFollowUp} damage`
+    }
+
     switch (enemyIntent.type) {
       case 'attack': {
         const impact = displayImpact(enemyIntent, turnState?.enemy ?? null)
         if (impact.hpDamage === 0 && impact.raw > 0) {
-          // Fully blocked — communicate to player their shield absorbs all damage
           return `Fully blocked (${impact.raw} absorbed)`
         }
         if (impact.postDecayBlock > 0 && impact.raw !== impact.hpDamage) {
-          // Partially blocked — show HP loss and how much block absorbs
           return `${impact.hpDamage} HP damage (${impact.raw} − ${impact.postDecayBlock} block)`
         }
         return `Attacking for ${impact.hpDamage} HP damage`
@@ -1165,7 +1199,10 @@
 
   $effect(() => {
     juiceManager.setCallbacks({
-      onDamageNumber: (value, isCritical) => spawnDamageNumber(value, isCritical),
+      onDamageNumber: (value, isCritical, cardType) => {
+        const type = cardType === 'shield' ? 'block' : cardType === 'heal' ? 'heal' : 'damage'
+        spawnDamageNumber(value, isCritical, type, 'enemy')
+      },
       onScreenFlash: (intensity) => {
         const scene = getCombatScene()
         scene?.playScreenFlash(intensity)
@@ -2904,8 +2941,20 @@
           data-intent-blocked={intentDisplay.fullyBlocked ? 'true' : undefined}
           data-tutorial-anchor="enemy-intent"
         >
+          {#if followUpIntent}
+            <!-- Buff prefix line: subdued first-row showing the buff that precedes the attack -->
+            <div class="intent-buff-prefix">
+              <img
+                class="intent-prefix-icon"
+                src={getIntentIconPath('buff', {})}
+                alt=""
+                onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+              />
+              <span class="intent-prefix-text">{enemyIntent?.telegraph ?? 'Buff'}</span>
+            </div>
+          {/if}
           <div class="intent-bubble-name">
-            <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type, { statusEffect: enemyIntent.statusEffect?.type, value: enemyIntent.value, hitCount: enemyIntent.hitCount }) : ''} alt=""
+            <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(followUpIntent ? (followUpIntent.type as string) : enemyIntent.type, { statusEffect: enemyIntent.statusEffect?.type, value: enemyIntent.value, hitCount: enemyIntent.hitCount }) : ''} alt=""
               onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
             <span class="intent-icon-fallback" style="display:none">{enemyIntent ? INTENT_EMOJI[enemyIntent.type] ?? '❓' : '❓'}</span>
             <strong class="intent-attack-name">{intentDisplay.telegraph || intentDisplay.label}</strong>
@@ -3151,8 +3200,8 @@
     </div>
   {/if}
 
-  <!-- AR-74: Keyboard help button (landscape only, shown only after keyboard usage detected) -->
-  {#if $isLandscape && keyboardDetected}
+  <!-- AR-74: Help button — always visible during battle -->
+  {#if $isLandscape}
     <button
       class="kbd-help-trigger"
       type="button"
@@ -3548,6 +3597,31 @@
 
   .intent-icon-fallback {
     vertical-align: middle;
+  }
+
+  /* Combined buff+attack: subdued first row showing the buff that precedes the main attack. */
+  .intent-buff-prefix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(4px * var(--layout-scale, 1));
+    font-size: calc(13px * var(--text-scale, 1));
+    opacity: 0.75;
+    margin-bottom: calc(2px * var(--layout-scale, 1));
+  }
+
+  .intent-prefix-icon {
+    width: calc(20px * var(--layout-scale, 1));
+    height: calc(20px * var(--layout-scale, 1));
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .intent-prefix-text {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
   }
 
   .intent-value {
