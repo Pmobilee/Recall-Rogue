@@ -4592,3 +4592,23 @@ When `acceptReward()` triggers the reward room → combat stop lifecycle, Phaser
 **File:** `src/services/turnManager.ts` — around line 2973.
 
 **Lesson:** When gating a side-effect by card type, prefer whitelisting the specific mechanic IDs that need the effect rather than blacklisting exceptions. A blacklist grows silently as new mechanics are added.
+
+### 2026-04-18 — Enemy-phase reactive damage killed enemy without early return → game freeze
+
+**What:** The game freezes permanently when the enemy is killed during the enemy turn by reactive damage: `pain_conduit` HP-reflect, `thorned_vest` thornReflect, `thorns` card mechanic, or `counterDamage` (parry_counter3 tag). After the freeze, every subsequent "End Turn" click silently no-ops.
+
+**Why:** Two bugs conspired:
+1. `thornReflect` path in `endPlayerTurn()` called `applyDamageToEnemy()` but discarded the return value, so killing the enemy via `thorned_vest` never set `result='victory'`.
+2. Even when other reactive paths (thorns, counterDamage, pain_conduit) correctly set `result='victory'`, `endPlayerTurn()` had no early-return guard after the reactive-damage block. The function fell through to `resetTurnState()` + `drawHand()`, overwriting `phase` back to `'player_action'`. On the next `handleEndTurn()` call, the guard at the top of `endPlayerTurn()` — `if (phase !== 'player_action' || result !== null)` — fired because `result` was still `'victory'`, returning an empty stub. Game frozen.
+3. `handleEndTurn()` in `encounterBridge.ts` only checked `result.playerDefeated`, never `result.turnState.result === 'victory'`, so even with the turnManager fix alone the encounter would not complete.
+
+**Fix (three-part):**
+- `turnManager.ts` — capture `applyDamageToEnemy()` return for thornReflect; check `thornReflectResult.defeated` to set `result='victory'`/`phase='encounter_end'`.
+- `turnManager.ts` — add early-return block after the reactive-damage section: `if (turnState.result === 'victory') { ... return EnemyTurnResult; }`.
+- `encounterBridge.ts` — add victory check in `handleEndTurn()` between the 1s post-turn pause and "Player turn begins". Replicates the full card-play victory cleanup: audio, kill confirmation, cooldown, auto-cure, healing, currency, accuracy grade, reward bundle, `revertTransmutedCards`, generation-guarded `setTimeout` with narrative snapshot + `notifyEncounterComplete('victory')`.
+
+**Files:** `src/services/turnManager.ts`, `src/services/encounterBridge.ts`.
+
+**Tests:** `src/services/turnManager.reactiveVictory.test.ts` — 10 unit tests covering all four reactive-damage victory sources.
+
+**Lesson:** When a multi-step function has victory/defeat side-channels (reactive damage, status ticks), each side-channel that can terminate the encounter must (a) set the result AND (b) return immediately. Callers must check ALL terminal result states, not just the ones present at the time the caller was written.

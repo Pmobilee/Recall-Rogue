@@ -3260,7 +3260,11 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     }
 
     if (damageTakenFx.thornReflect > 0) {
-      applyDamageToEnemy(enemy, damageTakenFx.thornReflect);
+      const thornReflectResult = applyDamageToEnemy(enemy, damageTakenFx.thornReflect);
+      if (thornReflectResult.defeated) {
+        turnState.result = 'victory';
+        turnState.phase = 'encounter_end';
+      }
       turnState.triggeredRelicId = 'thorned_vest';
     }
 
@@ -3296,6 +3300,32 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
   }
   // counterDamage: parry_counter3 tag — reset after each enemy attack phase
   turnState.counterDamagePerHit = 0;
+
+  // ── Reactive-damage victory check ─────────────────────────────────────────
+  // If any of the reactive damage paths above (pain_conduit reflect, thornReflect,
+  // thorns, counterDamage) killed the enemy, return a victory result immediately.
+  // Without this early return the function falls through, overwrites phase back to
+  // 'player_action', resets AP, and draws cards — leaving result='victory' stuck
+  // in a live player turn. The next endPlayerTurn call then hits the guard at line
+  // 3107 and returns an empty stub, freezing the game permanently.
+  if (turnState.result === 'victory') {
+    turnState.turnLog.push({ type: 'victory', message: 'Enemy defeated by reactive damage!' });
+    rollNextIntent(enemy);
+    enemy.lockedDisplayDamage = computeIntentDisplayDamageSnapshot(enemy.nextIntent, enemy, playerState, {
+      canaryEnemyDamageMultiplier: turnState.canaryEnemyDamageMultiplier,
+      ascensionEnemyDamageMultiplier: turnState.ascensionEnemyDamageMultiplier,
+      difficultyMode: get(difficultyMode),
+    });
+    return {
+      damageDealt,
+      effectsApplied,
+      playerDefeated: false,
+      nextEnemyIntent: enemy.nextIntent.telegraph,
+      executedIntentType,
+      blockAbsorbedAll,
+      turnState,
+    };
+  }
 
   turnState.turnLog.push({
     type: 'enemy_action',
@@ -3677,6 +3707,14 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
     : undefined;
   drawHand(deck, drawCount + turnState.bonusDrawNextTurn, { tagMagnetBias });
   turnState.bonusDrawNextTurn = 0;
+
+  // Failsafe: if no cards were drawn despite having cards available, log a warning.
+  // This catches any future regression where drawHand silently no-ops without exhausting
+  // the piles — the player would be stuck with 0 cards and no way to proceed.
+  if (deck.hand.length === 0 && (deck.drawPile.length > 0 || deck.discardPile.length > 0)) {
+    console.warn('[turnManager] Zero cards drawn despite available cards — forcing redraw');
+    drawHand(deck, turnState.baseDrawCount);
+  }
 
   // AR-268: Trick Question lock — apply lock to a random hand card if _lockedFactId is set
   if (enemy._lockedFactId && (enemy._lockTurnsRemaining ?? 0) > 0) {

@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-13 (chain multiplier rework: base-only scaling at step 6; per-card-type behavior in chains.md)
+> **Last verified:** 2026-04-18 (reactive-damage victory path fix: thorns/pain_conduit/counterDamage kill during enemy phase now correctly completes encounter)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -296,6 +296,8 @@ Fix: `turnManager.ts` now calls `computeIntentDisplayDamageSnapshot(intent, enem
 ## Win/Lose Conditions
 
 **Victory:** `enemy.currentHP <= 0` via `applyDamageToEnemy()` or status ticks. Sets `result = 'victory'`, `phase = 'encounter_end'`.
+
+**Reactive-damage victory (2026-04-18 fix):** The enemy can die during the *enemy turn* via reactive-damage sources — `pain_conduit` HP-reflect, `thorned_vest` thornReflect, `thorns` card mechanic, or `counterDamage` (parry_counter3). `endPlayerTurn()` now checks `result === 'victory'` immediately after all reactive-damage paths resolve and returns early (before resetting AP or drawing the next hand). `handleEndTurn()` in `encounterBridge.ts` checks the same flag after the post-combat 1s pause and executes the full victory cleanup path (cooldown, auto-cure, healing, currency, accuracy grade, `notifyEncounterComplete('victory')`) instead of reactivating the player turn. Without both guards the game freezes permanently: the guard at the top of `endPlayerTurn()` (`if (result !== null)`) fires on every subsequent call and returns an empty stub.
 
 **Defeat:** `playerState.hp <= 0` after `takeDamage()` or poison ticks. `resolveLethalEffects()` checked first — `last_breath` relic saves to 1 HP (once per encounter); `phoenix_feather` saves to a % of maxHP and grants 1 turn of auto-Charge. If no save: `result = 'defeat'`, `phase = 'encounter_end'`.
 

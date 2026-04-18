@@ -1690,6 +1690,145 @@ export async function handleEndTurn(): Promise<void> {
   // Pause 1s so the damage visually settles before the player turn begins.
   await new Promise<void>((r) => setTimeout(r, turboDelay(1000)));
 
+  // ── Reactive-damage victory check ────────────────────────────────────────
+  // pain_conduit reflect, thornReflect, thorns, or counterDamage may have killed
+  // the enemy during endPlayerTurn.  turnManager now sets result='victory' and
+  // returns early (no new hand is drawn), but handleEndTurn previously ignored
+  // that flag and fell through to "Player turn begins" — reactivating the player
+  // turn with a won encounter, causing a permanent freeze on the NEXT end-turn.
+  if (result.turnState.result === 'victory') {
+    const runForVictory = get(activeRunState);
+    const isBossVictory =
+      runForVictory &&
+      isBossFloor(runForVictory.floor.currentFloor) &&
+      runForVictory.floor.currentEncounter === runForVictory.floor.encountersPerFloor;
+    if (isBossVictory) {
+      playCardAudio('boss-defeated');
+    } else {
+      playCardAudio('encounter-victory');
+    }
+    playCardAudio('enemy-death');
+    juiceManager.fireKillConfirmation();
+    scene?.playKillConfirmation().then(() => {
+      scene?.playEnemyDeathAnimation();
+      scene?.playPlayerVictoryAnimation();
+    });
+
+    // Record ALL facts seen this encounter for cooldown (not just answered ones)
+    if (activeDeck) {
+      const seenFacts = getEncounterSeenFacts(activeDeck);
+      if (seenFacts.length > 0) addFactsToCooldown(activeDeck, seenFacts);
+
+      // AR-202: Auto-cure safety valve
+      if (activeDeck.pendingAutoCure) {
+        const runForCure = get(activeRunState);
+        if (runForCure && runForCure.cursedFactIds.size > 0) {
+          const oldest = runForCure.cursedFactIds.values().next().value as string;
+          runForCure.cursedFactIds.delete(oldest);
+          console.log('[cursed] auto-cure safety valve (reactive victory): removed oldest cursed fact', oldest);
+          activeRunState.set(runForCure);
+        }
+        activeDeck.pendingAutoCure = false;
+        activeDeck.consecutiveCursedDraws = 0;
+      }
+    }
+
+    if (runForVictory) {
+      const isRelaxedMode = get(difficultyMode) === 'relaxed';
+      const enemyCategory = result.turnState.enemy.template.category;
+      const isBossOrMiniBoss = enemyCategory === 'boss' || enemyCategory === 'mini_boss';
+      const healPct =
+        getBalanceValue('postEncounterHealPct', POST_ENCOUNTER_HEAL_PCT) +
+        (isRelaxedMode ? getBalanceValue('relaxedPostEncounterHealBonus', RELAXED_POST_ENCOUNTER_HEAL_BONUS) : 0) +
+        (isBossOrMiniBoss ? getBalanceValue('postBossEncounterHealBonus', POST_BOSS_ENCOUNTER_HEAL_BONUS) : 0);
+      const healAmt = Math.round(runForVictory.playerMaxHp * healPct);
+      const hpBefore = runForVictory.playerHp;
+      let hpAfterHeal = Math.min(runForVictory.playerMaxHp, runForVictory.playerHp + healAmt);
+
+      const segment = runForVictory.floor.currentFloor <= 6 ? 1
+        : runForVictory.floor.currentFloor <= 12 ? 2
+        : runForVictory.floor.currentFloor <= 18 ? 3
+        : 4;
+      const healCapLookup = getBalanceValue('postEncounterHealCap', POST_ENCOUNTER_HEAL_CAP) as Record<1 | 2 | 3 | 4, number>;
+      const healCap = healCapLookup[segment] ?? 1.0;
+      const maxAllowedHp = Math.round(runForVictory.playerMaxHp * healCap);
+      runForVictory.playerHp = Math.min(hpAfterHeal, maxAllowedHp);
+      const actualHeal = runForVictory.playerHp - hpBefore;
+
+      const currencyReward = generateCurrencyReward(
+        runForVictory.floor.currentFloor,
+        result.turnState.enemy.template.category,
+      );
+      runForVictory.currency += currencyReward;
+
+      const gradeResult = calculateAccuracyGrade(
+        result.turnState.encounterChargesTotal,
+        result.turnState.chargesCorrectThisEncounter,
+      );
+
+      activeRewardBundle.set({
+        goldEarned: currencyReward,
+        healAmount: actualHeal,
+        accuracyGrade: gradeResult.grade,
+        accuracyPct: gradeResult.accuracy,
+      });
+
+      activeRunState.set(runForVictory);
+    }
+
+    if (activeDeck) revertTransmutedCards(activeDeck);
+
+    const reactiveVictoryGeneration = encounterGeneration;
+    setTimeout(() => {
+      if (encounterGeneration !== reactiveVictoryGeneration) {
+        if (import.meta.env.DEV)
+          console.debug('[encounterBridge] Stale reactive-victory timer discarded (generation mismatch)');
+        return;
+      }
+      const ts = get(activeTurnState);
+      if (ts?.enemy?.template?.id) {
+        combatExitEnemyId.set(ts.enemy.template.id);
+      }
+      if (ts) {
+        const allDeckCards = [
+          ...ts.deck.hand,
+          ...ts.deck.drawPile,
+          ...ts.deck.discardPile,
+          ...(ts.deck.forgetPile ?? []),
+        ];
+        const cardIdToFactId = new Map<string, string>(
+          allDeckCards.filter(c => c.factId).map(c => [c.id, c.factId]),
+        );
+        const fizzledFactIds = ts.turnLog
+          .filter(e => e.type === 'fizzle' && e.cardId)
+          .map(e => cardIdToFactId.get(e.cardId!) ?? '')
+          .filter(Boolean);
+        const run = get(activeRunState);
+        const currentNode = run?.floor?.actMap?.nodes[run?.floor?.actMap?.currentNodeId ?? ''];
+        if (ts.currentChainAnswerFactIds.length >= 3) {
+          ts.completedChainSequences.push([...ts.currentChainAnswerFactIds]);
+          ts.currentChainAnswerFactIds = [];
+        }
+        _lastNarrativeSnapshot = {
+          answeredFactIds: [...ts.encounterQuizzedFacts],
+          fizzledFactIds,
+          cardIdToFactId,
+          isBoss:
+            (run ? (isBossFloor(run.floor.currentFloor) && run.floor.currentEncounter >= run.floor.encountersPerFloor) : false)
+            || currentNode?.type === 'boss',
+          isElite: currentNode?.type === 'elite',
+          enemyId: ts.enemy?.template?.id,
+          streakAtEnd: ts.consecutiveCorrectThisEncounter,
+          chainCompletions: ts.completedChainSequences.map(seq => [...seq]),
+        };
+      }
+      activeTurnState.set(null);
+      notifyEncounterComplete('victory');
+    }, turboDelay(550));
+
+    return;
+  }
+
   // ── Player turn begins ────────────────────────────────────────────────────
   // Restore the real post-turn state with the full new hand — this is the
   // moment the player regains control.
