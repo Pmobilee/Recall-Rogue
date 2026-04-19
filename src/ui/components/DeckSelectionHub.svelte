@@ -1,6 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { playCardAudio } from '../../services/cardAudioManager';
+  import { factsDB } from '../../services/factsDB';
+  import { getKnowledgeDomains, getDomainMetadata } from '../../data/domainMetadata';
+  import { getAllDecks } from '../../data/deckRegistry';
 
   interface Props {
     onback: () => void;
@@ -31,6 +34,33 @@
   let studyHovering = $state(false);
   let studyHasImage = $state(false);
   let studyRafId = 0;
+
+  // --- Runtime stats state ---
+  // dbReady drives re-derivation once factsDB finishes loading.
+  let dbReady = $state(factsDB.isReady());
+
+  // Trivia panel stats — derived reactively from dbReady so they update once the DB loads.
+  const totalTriviaDomains = $derived(
+    getKnowledgeDomains().filter(id => !getDomainMetadata(id).comingSoon).length
+  );
+  const totalTriviaFacts = $derived(
+    dbReady ? factsDB.getTriviaFacts().length : 0
+  );
+  const triviaStatsText = $derived(
+    dbReady
+      ? `${totalTriviaDomains} knowledge domains · ${totalTriviaFacts.toLocaleString()}+ facts`
+      : `${totalTriviaDomains} knowledge domains · Loading facts…`
+  );
+
+  // Study panel stats — getAllDecks() is synchronously populated at app startup.
+  const availableStudyDecks = $derived(getAllDecks().filter(d => d.status === 'available'));
+  const totalStudyDecks = $derived(availableStudyDecks.length);
+  const totalStudyFacts = $derived(availableStudyDecks.reduce((sum, d) => sum + d.factCount, 0));
+  const studyStatsText = $derived(
+    totalStudyDecks > 0
+      ? `${totalStudyDecks} curated decks · ${totalStudyFacts.toLocaleString()}+ facts`
+      : 'Loading decks…'
+  );
 
   // Pre-check image availability
   $effect(() => {
@@ -116,6 +146,23 @@
 
   onMount(() => {
     playCardAudio('modal-open');
+
+    // If factsDB is already initialized (warm path), nothing to do.
+    if (factsDB.isReady()) {
+      dbReady = true;
+      return;
+    }
+
+    // Cold path: initiate load so the stat line can update once the DB is ready.
+    // We do not block the screen render on this — the loading placeholder covers the gap.
+    let active = true;
+    factsDB.init().then(() => {
+      if (active) dbReady = true;
+    }).catch(() => {
+      // DB failed to load — stat line stays as "Loading facts…" rather than "0 facts".
+    });
+
+    return () => { active = false; };
   });
 
   function handleBack() {
@@ -176,7 +223,7 @@
           <div class="panel-tagline">
             Battle with knowledge.<br />Multi-domain combat.
           </div>
-          <div class="panel-stats">4 knowledge domains · 3,500+ facts</div>
+          <div class="panel-stats">{triviaStatsText}</div>
         </div>
 
         <div class="shine-overlay"></div>
@@ -217,7 +264,7 @@
           <div class="panel-tagline">
             Master your decks.<br />Focused learning.
           </div>
-          <div class="panel-stats">48 curated decks · 46,000+ facts</div>
+          <div class="panel-stats">{studyStatsText}</div>
         </div>
 
         <div class="shine-overlay"></div>

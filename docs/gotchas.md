@@ -4790,3 +4790,13 @@ The `qpModified` classify call also compared against `Math.round(nakedQpBase * c
 **Fix:** (1) Replaced all fullwidth digits with half-width ASCII `0-9` across `targetLanguageWord`, `quizQuestion`, and `explanation` for all 12 facts. `ja-jlpt-37` targetLanguageWord changed to `ゼロ`. (2) Created new pool `day_of_month_kana` with the 10 date-reading facts and 21 synthetic distractors (all valid Japanese day readings: ついたち through さんじゅういちにち). Removed those 10 fact IDs from `english_meanings_nouns`. `ja-jlpt-37` (ゼロ/zero) and `ja-jlpt-39` (20歳/20 years old) stay in `english_meanings_nouns`.
 
 **Files:** `data/decks/japanese_n5.json`.
+
+### 2026-04-19 — DeckSelectionHub shipped hardcoded marketing stats 2 years behind reality
+
+**What:** `DeckSelectionHub.svelte` line 179 hardcoded `"4 knowledge domains · 3,500+ facts"` for the Trivia panel, and line 220 hardcoded `"48 curated decks · 46,000+ facts"` for the Study panel. The real runtime values (visible on `TriviaDungeonScreen`) were 12 domains and ~7,000+ trivia facts. The study deck count was also stale.
+
+**Why:** The hub was built early in development with approximate marketing copy that was never wired to live data. As the content library grew, the hardcoded strings fell further behind.
+
+**Fix:** Both `.panel-stats` strings are now `$derived` expressions from live services. Trivia: `factsDB.getTriviaFacts().length` (excludes language/vocab/bridge facts) with `dbReady` reactive state; loading placeholder prevents "0 facts" flash while DB initializes. Study: `getAllDecks().filter(d => d.status === 'available')` count + summed `factCount` (synchronous — registered at app startup).
+
+**Lesson:** Any player-visible stat on a selection screen should be wired to the same service the game actually uses — not written as copy and forgotten. If a stat needs a loading state, use a `$state` + `onMount` async pattern matching `KnowledgeLibrary.svelte`.
