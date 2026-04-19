@@ -4780,3 +4780,13 @@ The `qpModified` classify call also compared against `Math.round(nakedQpBase * c
 **Why:** `STUDY_TUTORIAL_STEPS` in `src/data/tutorialSteps.ts` had `spotlight: false` on every step and no `blockInput` field. `TutorialCoachMark.svelte` only renders the dim backdrop when `spotlight: true` (for a cutout around a DOM anchor) or `blockInput: true` (full-screen dim with no cutout). Without either flag, the tooltip bubble at z-index 960 paints directly over whatever is behind it — the combat tutorial steps all had these flags correctly set but the study steps did not.
 
 **Fix:** Set `spotlight: true` and `blockInput: true` on all 5 `STUDY_TUTORIAL_STEPS` entries. Steps anchored to `screen-center` (no DOM element) fall through to the full-screen `.tutorial-block-overlay` dim; steps anchored to real DOM elements (`study-card`, `study-answers`) get dim + cutout.
+
+### 2026-04-19 — JLPT N5 date readings contaminated english_meanings_nouns pool
+
+**What:** 10 day-of-month reading facts (`ja-jlpt-38`, `ja-jlpt-40` through `ja-jlpt-48` — `2日/ふつか` through `20日/はつか`) were in the `english_meanings_nouns` pool alongside コーヒー, しんぶん, いま, and ~360 unrelated nouns. This caused cross-category POOL-CONTAM: a quiz about "20日 (はつか)" could draw "coffee" or "newspaper" as distractors, making the correct answer trivially eliminable by category recognition (Anti-Pattern 13).
+
+**Also:** `targetLanguageWord` for all 12 facts used fullwidth digits (U+FF10–U+FF19: `０`–`９`). Fullwidth digit glyphs have wide advance width. In the `２ ０日` glyph sequence the renderer inserted a visual gap between `２` and `０`, making `２ ０日` read as broken. `ja-jlpt-37` (zero) used `０` as the target word when `ゼロ` is the natural learner form.
+
+**Fix:** (1) Replaced all fullwidth digits with half-width ASCII `0-9` across `targetLanguageWord`, `quizQuestion`, and `explanation` for all 12 facts. `ja-jlpt-37` targetLanguageWord changed to `ゼロ`. (2) Created new pool `day_of_month_kana` with the 10 date-reading facts and 21 synthetic distractors (all valid Japanese day readings: ついたち through さんじゅういちにち). Removed those 10 fact IDs from `english_meanings_nouns`. `ja-jlpt-37` (ゼロ/zero) and `ja-jlpt-39` (20歳/20 years old) stay in `english_meanings_nouns`.
+
+**Files:** `data/decks/japanese_n5.json`.
