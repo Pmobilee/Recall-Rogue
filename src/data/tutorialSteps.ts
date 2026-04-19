@@ -701,7 +701,8 @@ export const STUDY_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2500,
     maxDisplayMs: 12000,
-    spotlight: false,
+    spotlight: true,
+    blockInput: true,
   },
   // 2. Study card — direct player to the question card
   {
@@ -714,7 +715,8 @@ export const STUDY_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 1500,
     maxDisplayMs: 20000,
-    spotlight: false,
+    spotlight: true,
+    blockInput: true,
   },
   // 3. Study answer explanation — after the first correct or wrong answer
   {
@@ -728,7 +730,8 @@ export const STUDY_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2500,
     maxDisplayMs: 10000,
-    spotlight: false,
+    spotlight: true,
+    blockInput: true,
   },
   // 4. FSRS explanation — spaced repetition adapts to the player
   {
@@ -742,7 +745,8 @@ export const STUDY_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 2500,
     maxDisplayMs: 10000,
-    spotlight: false,
+    spotlight: true,
+    blockInput: true,
   },
   // 5. Session complete — wrap-up message
   {
@@ -755,6 +759,7 @@ export const STUDY_TUTORIAL_STEPS: TutorialStep[] = [
     autoDismiss: true,
     minDisplayMs: 3000,
     maxDisplayMs: 8000,
-    spotlight: false,
+    spotlight: true,
+    blockInput: true,
   },
 ]

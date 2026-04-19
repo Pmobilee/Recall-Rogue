@@ -4772,3 +4772,11 @@ The `qpModified` classify call also compared against `Math.round(nakedQpBase * c
 **Files:** `src/services/turnManager.ts`, `src/services/encounterBridge.ts`, `src/ui/components/CardCombatOverlay.svelte`.
 
 **Lesson:** Any "recompute at execution time" pattern for display values is fragile -- state has mutated by the time execution runs. Pass the actual displayed value instead.
+
+### 2026-04-19 — Study tutorial rendered without dim backdrop or input blocking
+
+**What:** The Study Temple tutorial overlay (all 5 steps: `study_intro`, `study_card`, `study_answer`, `study_fsrs`, `study_done`) rendered the tooltip bubble on top of the quiz panel with no dim backdrop and no pointer-event blocking. Answer buttons were partially visible and clickable behind the "Got it" modal, and the quiz question text was clipped. Visual evidence: `/tmp/rr-docker-visual/rr-xcheck_*/14a-study-paintings.png`.
+
+**Why:** `STUDY_TUTORIAL_STEPS` in `src/data/tutorialSteps.ts` had `spotlight: false` on every step and no `blockInput` field. `TutorialCoachMark.svelte` only renders the dim backdrop when `spotlight: true` (for a cutout around a DOM anchor) or `blockInput: true` (full-screen dim with no cutout). Without either flag, the tooltip bubble at z-index 960 paints directly over whatever is behind it — the combat tutorial steps all had these flags correctly set but the study steps did not.
+
+**Fix:** Set `spotlight: true` and `blockInput: true` on all 5 `STUDY_TUTORIAL_STEPS` entries. Steps anchored to `screen-center` (no DOM element) fall through to the full-screen `.tutorial-block-overlay` dim; steps anchored to real DOM elements (`study-card`, `study-answers`) get dim + cutout.
