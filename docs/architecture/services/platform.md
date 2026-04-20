@@ -1,7 +1,7 @@
 # Platform & Device Services
 
 > **Purpose:** Device detection, haptics, performance monitoring, analytics, error reporting, input handling, accessibility, notifications, entitlements, Steam integration, Steam P2P networking, and browser compatibility.
-> **Last verified:** 2026-04-20 — Tauri v2 desktop detection fix (`__TAURI_INTERNALS__`); Steam lobby async-callback polling added
+> **Last verified:** 2026-04-20 — Tauri v2 desktop detection fix (`__TAURI_INTERNALS__`); Steam lobby async-callback polling added; `tauriInvoke` and all public guards in steamNetworkingService switched to live `isTauriRuntime()` check
 > **Source files:** platformService.ts, hapticService.ts, perfService.ts, analyticsService.ts, errorReporting.ts, inputService.ts, keyboardInput.ts, shortcutService.ts, accessibilityManager.ts, notificationService.ts, entitlementService.ts, steamService.ts, steamNetworkingService.ts, reviewPromptService.ts, browserCompat.ts, deviceTierService.ts, kidModeService.ts, legalConstants.ts, sessionTimer.ts, multiplayerTransport.ts
 
 > **See also:** [`platform-audio.md`](platform-audio.md) — audioService, cardAudioManager, and juiceManager (audio synthesis and game-feel coordination).
@@ -131,7 +131,8 @@ Platform services form the bridge between web-standard APIs and the three deploy
 | **Purpose** | Wraps Steamworks P2P Networking and Lobby API via Tauri IPC — lobby create/join/leave, lobby metadata, P2P send/receive, callback pump; no-ops on non-Steam platforms |
 | **Key exports** | `createSteamLobby`, `joinSteamLobby`, `leaveSteamLobby`, `getLobbyMembers`, `setLobbyData`, `getLobbyData`, `sendP2PMessage`, `readP2PMessages`, `acceptP2PSession`, `runSteamCallbacks`, `startMessagePollLoop` |
 | **Key types** | `SteamLobbyType`, `SteamLobbyMember`, `SteamP2PMessage` |
-| **Key dependencies** | platformService (@tauri-apps/api/core dynamic import) |
+| **Key dependencies** | @tauri-apps/api/core (dynamic import only) — does NOT import platformService |
+| **Platform guard** | All public functions and the internal `tauriInvoke` helper use `isTauriRuntime()` — a local live check (`window.__TAURI_INTERNALS__ || window.__TAURI__`) rather than the module-load-time `hasSteam` snapshot. This prevents silent no-ops when `__TAURI_INTERNALS__` is injected after module evaluation (Tauri v2 default). |
 | **Poll loop** | `startMessagePollLoop(onMessage, channel?, intervalMs?)` — starts a 16 ms setInterval that pumps Steam callbacks then reads P2P messages; returns cleanup function |
 | **Async lobby ops** | `createSteamLobby` and `joinSteamLobby` use an internal `pollPendingResult(pendingCmd, timeoutMs, intervalMs)` helper to bridge Steamworks' async callback model. They kick the Tauri command (returns immediately), then spin `steam_run_callbacks` + `steam_get_pending_lobby_id` / `steam_get_pending_join_lobby_id` at 100 ms intervals until the callback fires (up to 5 s). Both resolve with the lobby ID / true on success, or null / false on timeout. |
 | **Tauri commands** | `steam_create_lobby`, `steam_join_lobby`, `steam_leave_lobby`, `steam_get_lobby_members`, `steam_set_lobby_data`, `steam_get_lobby_data`, `steam_send_p2p_message`, `steam_read_p2p_messages`, `steam_accept_p2p_session`, `steam_run_callbacks`, `steam_get_pending_lobby_id`, `steam_get_pending_join_lobby_id` |

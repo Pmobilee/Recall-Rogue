@@ -1,3 +1,16 @@
+### 2026-04-20 — tauriInvoke stale-snapshot guard + devtools diagnostic flag
+
+**What (Bug 3 — tauriInvoke stale guard):** Even after `pickBackend()` was fixed to use a live Tauri v2 check, every actual Steamworks IPC call went through `tauriInvoke()` in `steamNetworkingService.ts`, which still guarded on the module-load-time `hasSteam` snapshot (`if (!hasSteam) return null`). On Steam release builds where `window.__TAURI_INTERNALS__` is injected after the module was evaluated, `hasSteam` was `false` at load time and `tauriInvoke` silently returned `null` for every IPC call — bypassing the fix in `pickBackend()` entirely.
+
+The same stale-snapshot pattern applied to every public export (`createSteamLobby`, `joinSteamLobby`, `leaveSteamLobby`, etc.) which all had their own `if (!hasSteam)` fast-path guards.
+
+**Fix:** Replaced all `if (!hasSteam)` guards in `steamNetworkingService.ts` with calls to a new local `isTauriRuntime()` helper that performs a live check — `typeof window !== 'undefined' && !!(window.__TAURI_INTERNALS__ || window.__TAURI__)`. Removed the now-unused `import { hasSteam } from './platformService'`. The `hasSteam` constant in `platformService.ts` is intentionally left in place — other services still use it.
+
+**Diagnostic flag (temporary):** Added `"devtools": true` to the main window config in `src-tauri/tauri.conf.json`. This enables right-click → Inspect in packaged release builds so the `[pickBackend]` / `[SteamNetworking]` console logs are visible without needing a debug build. **This flag must be removed before the next public-branch promotion** — it gives players unrestricted DevTools access to the packaged game.
+
+**Files:** `src/services/steamNetworkingService.ts`, `src-tauri/tauri.conf.json`.
+
+
 ### 2026-04-20 — Steam builds: Create Lobby silently broken on Steam release builds
 
 **What:** Clicking "Create Lobby" in `MultiplayerMenu` did nothing on macOS and Windows Steam builds. No error shown, no lobby created.
