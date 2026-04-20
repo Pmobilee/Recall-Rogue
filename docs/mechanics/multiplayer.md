@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-21 — Previous: 9 race/duel fixes + `multiplayerElo.ts`. Latest: 9 lobby robustness fixes (L2 code retry, M4 TTL 15s, M16 hash reset, M22 player-count guard, H13 ready-version, H5 seed ACK, H10 reconnect grace, C4 LAN hook, M20 solo-start hook). See changelog section below.
+> **Last verified:** 2026-04-20 (H6/H10/M18-wiring) — Previous: M19-profile-wire. Latest: H6 FSRS wiring in encounterBridge, H10 peer-presence monitor + union types, M18 lobby ascension level wired into encounter difficulty. See changelog section below.
 
 ## Modes
 
@@ -182,7 +182,9 @@ Race quiz answers now update the local FSRS scheduler. `recordRaceAnswer()` accu
 
 Race results DO update the FSRS scheduler — answers count toward long-term learning, batch-written on race finish.
 
-TODO(H6-fsrs-wire): If the import path `../ui/stores/playerData` changes, update `_applyRaceFsrsBatch()` accordingly.
+**Wiring site (H6, 2026-04-20):** `handlePlayCard()` in `encounterBridge.ts` now routes through `recordRaceAnswer(factId, correct)` instead of `updateReviewStateByButton()` when `run.multiplayerMode === 'race'` or `'same_cards'`. Single-write semantics: the per-answer `updateReviewStateByButton` path (which carries timing and speed-bonus metadata) is skipped entirely in race modes; FSRS is written once at race end by `_applyRaceFsrsBatch()`. The richer metadata is not available at batch time — acceptable per the H6 design intent.
+
+Note: if the import path `../ui/stores/playerData` changes, update `_applyRaceFsrsBatch()` accordingly.
 
 ### H12 — Scene-lifecycle cleanup guard
 
@@ -197,6 +199,34 @@ TODO(H6-fsrs-wire): If the import path `../ui/stores/playerData` changes, update
 | `race` / `same_cards` / `coop` | `floors*100 + damage + chain*50 + correct*10 - wrong*5 + perfectEncounters*200` |
 | `trivia_night` | `correctCount*100 + speedBonusTotal - wrongCount*25` |
 | `duel` | `(survived ? 1000 : 0) + damageDealt - damageTaken + correctCount*50` |
+
+### H10 — Message type union + peer-presence monitoring (2026-04-20)
+
+**Union additions.** Five message types were missing from `MultiplayerMessageType` in `multiplayerTransport.ts`, requiring `as MultiplayerMessageType` casts at every call site. They are now first-class members:
+
+| Type | Used by |
+|------|---------|
+| `mp:lobby:peer_left` | `multiplayerLobbyService.ts` — marks player `connectionState='reconnecting'`, starts 60s grace timer |
+| `mp:lobby:peer_rejoined` | `multiplayerLobbyService.ts` — cancels grace timer |
+| `mp:lobby:start_ack` | Guest clients ACK the game-start event (H5) |
+| `mp:workshop:deck_check` | `multiplayerWorkshopService.ts` — host verifies all players have the workshop deck |
+| `mp:workshop:deck_check_ack` | Workshop deck-check response |
+
+**`initPeerPresenceMonitor(localPlayerId, getPeerIds, transport): () => void`** — exported from `multiplayerTransport.ts`. Implements a JS-only fallback for detecting disconnected peers without server-side or Rust callback involvement:
+
+1. Every `PEER_PING_INTERVAL_MS` (15 s), sends `mp:ping` to all known peers.
+2. Auto-responds to incoming `mp:ping` with `mp:pong` (so the remote side's monitor sees us as alive).
+3. Updates `_peerLastSeen` Map on each `mp:pong` received.
+4. On each interval tick, any peer whose last-seen timestamp is `> PEER_PONG_TIMEOUT_MS` (30 s) stale gets a locally-emitted `mp:lobby:peer_left` — triggering the lobby service's grace timer.
+
+Returns a cleanup function — call it when leaving the lobby to cancel the interval and clear peer state.
+
+**`updatePeerLastSeen(peerId)`** — call this whenever the lobby service receives any message from a peer to reset the stale-timer (e.g. on `mp:lobby:peer_rejoined`).
+
+```
+TODO(H10-transport): Replace with Fastify server-side broadcast on WS onclose and
+Rust P2PSessionConnectFail_t callback once those plumbing changes ship.
+```
 
 ## gameFlowController Race Mode Wiring
 
@@ -216,8 +246,15 @@ let stopRaceBroadcastFn: (() => void) | null = null
 | `perfectEncountersCount` | `onEncounterComplete()` after flawless check | Incremented whenever encounter ends with 0 wrong answers |
 | Race finish send | `finishRunAndReturnToHub()` before cleanup | `updateLocalProgress({ isFinished: true, result })` broadcasts final state |
 | Cleanup | `finishRunAndReturnToHub()` | `stopRaceBroadcastFn?.()`, then `multiplayerSeed = null`, `multiplayerModeState = null` |
+| **M18: ascension level** | `onArchetypeSelected()` | When `multiplayerModeState !== null`, reads `getCurrentLobby()?.houseRules?.ascensionLevel` (clamped to [0, 20]) instead of the local player's saved ascension level. Falls back to `getAscensionLevel(ascensionMode)` for solo runs. |
 
 `stopRaceProgressBroadcast` is exported from `multiplayerGameService.ts` (was previously module-private).
+
+### M18 — Lobby ascension level (2026-04-20)
+
+In multiplayer, ascension difficulty is set by the host in `HouseRules.ascensionLevel` (0 = off, 1–20). `onArchetypeSelected()` in `gameFlowController.ts` now reads this when `multiplayerModeState !== null` and a lobby is active, clamping to [0, 20] and using it as `selectedAscensionLevel` for `createRunState()`. Solo runs continue to use `getAscensionLevel(ascensionMode)` unchanged.
+
+This ensures all players in the same lobby run identical ascension modifiers regardless of their local solo settings.
 
 `restoreRunMode()` in `gameFlowController.ts` also accepts `'multiplayer_race'` as a valid `runMode` parameter. `runSaveService.ts` includes `'multiplayer_race'` in all three `runMode` type annotations.
 
@@ -423,9 +460,10 @@ Simple per-match Elo for applying deltas at race/duel end. `DEFAULT_RATING = 150
 API:
 - `computeEloDelta(localRating, opponentRating, outcome)` — signed integer delta
 - `applyEloResult(localRating, opponentRating, outcome)` — `{ newLocal, newOpponent, localDelta, opponentDelta }`
-- `getLocalMultiplayerRating()` / `persistLocalMultiplayerRating(rating)` — profile integration stubs
+- `getLocalMultiplayerRating()` — reads `ProfileService.getActiveProfile().multiplayerRating`; returns `DEFAULT_RATING` (1500) when no profile is active.
+- `persistLocalMultiplayerRating(rating)` — writes via `profileService.updateProfile(id, { multiplayerRating })` and persists immediately; no-op when no profile is active.
 
-TODO(M19-profile-wire): `PlayerProfile` needs a `multiplayerRating: number` field before persistence works. Current stubs return `DEFAULT_RATING` and log a debug message.
+Ratings persist in `PlayerProfile.multiplayerRating` (default 1500). Profiles created before this field was added auto-migrate to 1500 on next load via `migrateProfile()` in `profileService.ts`.
 
 When `lobby.isRanked === true`, apply Elo delta at race/duel end by calling `applyEloResult()`.
 

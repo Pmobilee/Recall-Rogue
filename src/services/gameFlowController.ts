@@ -939,7 +939,17 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
     pendingDeckMode?.type === 'study-multi'
       ? 'study'
       : 'trivia'
-  const selectedAscensionLevel = getAscensionLevel(ascensionMode);
+  // M18: When in a multiplayer lobby, use the host-configured houseRules.ascensionLevel
+  // so all players run the same difficulty. Clamped to [0, 20]. Falls back to the
+  // local player's saved ascension level for solo runs.
+  const lobbyAscensionLevel = (() => {
+    const lobby = getCurrentLobby();
+    if (multiplayerModeState !== null && lobby !== null) {
+      return Math.max(0, Math.min(20, lobby.houseRules.ascensionLevel ?? 0));
+    }
+    return null;
+  })();
+  const selectedAscensionLevel = lobbyAscensionLevel ?? getAscensionLevel(ascensionMode);
   const ascensionModifiers = getAscensionModifiers(selectedAscensionLevel);
   // Starter deck size: ascension overrides take priority; default is 15.
   const starterDeckSize = ascensionModifiers.starterDeckSizeOverride ?? 15;

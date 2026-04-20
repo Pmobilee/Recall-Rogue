@@ -7,16 +7,41 @@
  * - draw at equal ratings gives ~0 delta
  * - large upset gives large delta
  * - ratings floored at 0
+ * - getLocalMultiplayerRating / persistLocalMultiplayerRating profile integration
  */
 
-import { describe, it, expect } from 'vitest';
+// @vitest-environment node
+
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import {
   DEFAULT_RATING,
   K_FACTOR,
   computeEloDelta,
   applyEloResult,
   expectedWinProbability,
+  getLocalMultiplayerRating,
+  persistLocalMultiplayerRating,
 } from './multiplayerElo';
+
+// ── Mock profileService ───────────────────────────────────────────────────────
+
+// We mock ./profileService so the profile integration tests can run without
+// the full localStorage / StorageBackend stack.
+const mockGetActiveProfile = vi.fn();
+const mockGetActiveId = vi.fn();
+const mockUpdateProfile = vi.fn();
+
+vi.mock('./profileService', () => ({
+  profileService: {
+    getActiveProfile: () => mockGetActiveProfile(),
+    getActiveId: () => mockGetActiveId(),
+    updateProfile: (...args: unknown[]) => mockUpdateProfile(...args),
+  },
+}));
+
+beforeEach(() => {
+  vi.clearAllMocks();
+});
 
 // ── expectedWinProbability ────────────────────────────────────────────────────
 
@@ -147,5 +172,50 @@ describe('applyEloResult', () => {
     expect(result.localDelta).toBeGreaterThan(0);
     // Favourite drew — worse than expected → negative delta
     expect(result.opponentDelta).toBeLessThan(0);
+  });
+});
+
+// ── Profile Integration ───────────────────────────────────────────────────────
+
+describe('getLocalMultiplayerRating', () => {
+  it('returns the rating from the active profile when one exists', () => {
+    mockGetActiveProfile.mockReturnValue({ multiplayerRating: 1750 });
+    expect(getLocalMultiplayerRating()).toBe(1750);
+  });
+
+  it('returns DEFAULT_RATING when no active profile exists', () => {
+    mockGetActiveProfile.mockReturnValue(null);
+    expect(getLocalMultiplayerRating()).toBe(DEFAULT_RATING);
+  });
+
+  it('returns DEFAULT_RATING when active profile has no multiplayerRating (migration guard)', () => {
+    // Simulates a pre-migration profile that somehow bypassed migrateProfile
+    mockGetActiveProfile.mockReturnValue({ multiplayerRating: undefined });
+    expect(getLocalMultiplayerRating()).toBe(DEFAULT_RATING);
+  });
+});
+
+describe('persistLocalMultiplayerRating', () => {
+  it('calls updateProfile with the new rating when an active profile exists', () => {
+    mockGetActiveId.mockReturnValue('profile-abc');
+    persistLocalMultiplayerRating(1620);
+    expect(mockUpdateProfile).toHaveBeenCalledWith('profile-abc', { multiplayerRating: 1620 });
+  });
+
+  it('does NOT call updateProfile when no active profile exists', () => {
+    mockGetActiveId.mockReturnValue(null);
+    persistLocalMultiplayerRating(1620);
+    expect(mockUpdateProfile).not.toHaveBeenCalled();
+  });
+
+  it('round-trip: persist then read returns the persisted value', () => {
+    // Simulate a persist followed by a read of the same value via profile mock
+    mockGetActiveId.mockReturnValue('profile-xyz');
+    persistLocalMultiplayerRating(1800);
+    expect(mockUpdateProfile).toHaveBeenCalledWith('profile-xyz', { multiplayerRating: 1800 });
+
+    // Simulate profileService returning the updated profile on next read
+    mockGetActiveProfile.mockReturnValue({ multiplayerRating: 1800 });
+    expect(getLocalMultiplayerRating()).toBe(1800);
   });
 });

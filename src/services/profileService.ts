@@ -9,6 +9,31 @@ const MAX_PROFILES = 4
 const AVATAR_OPTIONS = ['⛏', '🪨', '💎', '🦕', '🌋', '🔭', '🧬', '🌿']
 
 /**
+ * Default Elo rating assigned to new and migrated profiles.
+ * Must stay in sync with DEFAULT_RATING in multiplayerElo.ts (currently 1500).
+ * Defined here as a local constant to avoid a circular import
+ * (multiplayerElo.ts imports profileService).
+ */
+const DEFAULT_MULTIPLAYER_RATING = 1500;
+
+/**
+ * Applies forward migrations to a raw persisted PlayerProfile object.
+ *
+ * Migration history:
+ *   v2 (2026-04-20): Added `multiplayerRating`. Old profiles without the field
+ *                    default to 1500 (DEFAULT_RATING in multiplayerElo.ts).
+ */
+function migrateProfile(raw: Record<string, unknown>): PlayerProfile {
+  return {
+    ...(raw as unknown as PlayerProfile),
+    multiplayerRating:
+      typeof raw['multiplayerRating'] === 'number'
+        ? (raw['multiplayerRating'] as number)
+        : DEFAULT_MULTIPLAYER_RATING,
+  }
+}
+
+/**
  * Manages multiple player profiles stored in localStorage.
  * Each profile has its own namespaced save key (rr_save_<id>).
  */
@@ -22,7 +47,11 @@ export class ProfileService {
   private loadStore(): ProfilesStore {
     try {
       const raw = getBackend().readSync(PROFILES_KEY)
-      return raw ? (JSON.parse(raw) as ProfilesStore) : { profiles: [], activeProfileId: null }
+      if (!raw) return { profiles: [], activeProfileId: null }
+      const parsed = JSON.parse(raw) as { profiles: Record<string, unknown>[]; activeProfileId: string | null }
+      // Apply forward migrations to every persisted profile.
+      const profiles = parsed.profiles.map(migrateProfile)
+      return { profiles, activeProfileId: parsed.activeProfileId }
     } catch {
       return { profiles: [], activeProfileId: null }
     }
@@ -91,6 +120,7 @@ export class ProfileService {
       lastPlayedAt: new Date().toISOString(),
       level: 0,
       cloudSaveId: null,
+      multiplayerRating: DEFAULT_MULTIPLAYER_RATING,
     }
     this.store.profiles.push(profile)
     this.store.activeProfileId = profile.id
@@ -113,11 +143,11 @@ export class ProfileService {
   }
 
   /**
-   * Updates mutable fields on an existing profile.
+   * Updates mutable fields on an existing profile and persists immediately.
    */
   updateProfile(
     id: string,
-    updates: Partial<Pick<PlayerProfile, 'name' | 'avatarKey' | 'lastPlayedAt' | 'level'>>,
+    updates: Partial<Pick<PlayerProfile, 'name' | 'avatarKey' | 'lastPlayedAt' | 'level' | 'multiplayerRating'>>,
   ): void {
     const profile = this.store.profiles.find(p => p.id === id)
     if (!profile) return

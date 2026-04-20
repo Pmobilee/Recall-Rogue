@@ -64,6 +64,7 @@ import {
   getCollectedDeltas,
 } from './multiplayerCoopSync'
 import { computeRaceScore } from './multiplayerScoring'
+import { recordRaceAnswer } from './multiplayerGameService'
 import { isHost as mpIsHost } from './multiplayerLobbyService'
 import { calculateFunnessBoostFactor } from './funnessBoost';
 import { calculateAccuracyGrade } from './accuracyGradeSystem';
@@ -1178,14 +1179,25 @@ export function handlePlayCard(
   }
 
   if (playedCard?.factId) {
-    const button = !correct ? 'again' : speedBonus ? 'good' : 'okay';
-    updateReviewStateByButton(playedCard.factId, button, undefined, {
-      responseTimeMs,
-      variantIndex,
-      earlyBoostActive: run?.earlyBoostActive,
-      speedBonus,
-      runNumber: run?.primaryDomainRunNumber,
-    });
+    // H6: In MP race modes (race / same_cards), FSRS updates are batched at race-end
+    // by multiplayerGameService._applyRaceFsrsBatch() via recordRaceAnswer().
+    // Skipping the per-answer updateReviewStateByButton here ensures single-write
+    // semantics — the richer per-answer metadata (timing, speed bonus) is not available
+    // at batch time, but the batch write is the canonical FSRS record for races.
+    const isRaceMode =
+      run?.multiplayerMode === 'race' || run?.multiplayerMode === 'same_cards';
+    if (isRaceMode) {
+      recordRaceAnswer(playedCard.factId, correct);
+    } else {
+      const button = !correct ? 'again' : speedBonus ? 'good' : 'okay';
+      updateReviewStateByButton(playedCard.factId, button, undefined, {
+        responseTimeMs,
+        variantIndex,
+        earlyBoostActive: run?.earlyBoostActive,
+        speedBonus,
+        runNumber: run?.primaryDomainRunNumber,
+      });
+    }
 
     const updatedReviewState = getReviewStateByFactId(playedCard.factId);
     if (run && updatedReviewState) {

@@ -10,9 +10,11 @@
  * is simpler and intentionally separate — it focuses on per-match delta computation
  * that can be applied at race/duel end without needing full match history.
  *
- * Profile persistence: if the profileService exposes a `multiplayerRating` field,
- * `applyEloResult` can be wired to it at the call site. See TODO(M19-profile-wire).
+ * Profile persistence: ratings are stored in PlayerProfile.multiplayerRating and
+ * accessed via profileService. See getLocalMultiplayerRating / persistLocalMultiplayerRating.
  */
+
+import { profileService } from './profileService';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -103,35 +105,26 @@ export function applyEloResult(
 // ── Profile Integration ───────────────────────────────────────────────────────
 
 /**
- * Read the local player's multiplayer Elo rating from the profile store.
+ * Read the local player's multiplayer Elo rating from the active profile.
  *
- * TODO(M19-profile-wire): PlayerProfile in profileTypes.ts does not yet have
- * a `multiplayerRating` field. When it is added, implement this function to read:
- *   profileService.getActiveProfile()?.multiplayerRating ?? DEFAULT_RATING
- *
- * Until then, returns DEFAULT_RATING as a safe fallback.
+ * Returns DEFAULT_RATING (1500) when no profile is active.
  */
 export function getLocalMultiplayerRating(): number {
-  // TODO(M19-profile-wire): read from profileService.getActiveProfile().multiplayerRating
-  return DEFAULT_RATING;
+  return profileService.getActiveProfile()?.multiplayerRating ?? DEFAULT_RATING;
 }
 
 /**
- * Persist the local player's new multiplayer Elo rating to the profile store.
+ * Persist the local player's new multiplayer Elo rating to the active profile.
  *
- * TODO(M19-profile-wire): PlayerProfile in profileTypes.ts does not yet have
- * a `multiplayerRating` field. When it is added, implement this function to call:
- *   profileService.updateProfile(id, { multiplayerRating: newRating })
+ * No-op when no profile is active (guest/unauthenticated session).
  *
- * Until then, this is a no-op with a logged warning.
- *
- * @param _newRating - The new Elo rating to persist.
+ * @param newRating - The new Elo rating to persist.
  */
-export function persistLocalMultiplayerRating(_newRating: number): void {
-  // TODO(M19-profile-wire): uncomment when multiplayerRating field added to PlayerProfile
-  // const id = profileService.getActiveId()
-  // if (id) profileService.updateProfile(id, { multiplayerRating: _newRating })
-  console.debug(
-    `[multiplayerElo] persistLocalMultiplayerRating: ${_newRating} — no-op until M19-profile-wire`,
-  );
+export function persistLocalMultiplayerRating(newRating: number): void {
+  const id = profileService.getActiveId();
+  if (id) {
+    profileService.updateProfile(id, { multiplayerRating: newRating });
+  } else {
+    console.debug('[multiplayerElo] persistLocalMultiplayerRating: no active profile — rating not saved');
+  }
 }

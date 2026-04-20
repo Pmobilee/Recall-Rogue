@@ -22,23 +22,25 @@ Parse the user's message for a subcommand:
 
 ## Current Implementation Status
 
-### Complete (Phases 1-5, 6 commits, ~11K lines)
+### Complete (Phases 1-5 + Hardening Waves, ~14K lines)
 
 | Layer | Files | Status |
 |-------|-------|--------|
-| **Rust/Tauri** | `src-tauri/src/steam.rs` (+12 networking commands, +2 lobby browser) | DONE |
+| **Rust/Tauri** | `src-tauri/src/steam.rs` (+12 networking cmds, +2 lobby browser, +1 force-leave-lobby); `src-tauri/src/main.rs` (RunEvent::Exit cleanup); `src-tauri/src/lan.rs` (bound-addr + IPv6) | DONE |
 | **Steam P2P Bridge** | `src/services/steamNetworkingService.ts` | DONE |
-| **Transport** | `src/services/multiplayerTransport.ts` (WS + P2P + Local) | DONE |
-| **Types** | `src/data/multiplayerTypes.ts` | DONE |
-| **Lobby** | `src/services/multiplayerLobbyService.ts` | DONE |
-| **Game Sync** | `src/services/multiplayerGameService.ts` | DONE |
-| **Scoring** | `src/services/multiplayerScoring.ts` | DONE |
-| **ELO** | `src/services/eloMatchmakingService.ts` | DONE |
+| **Transport** | `src/services/multiplayerTransport.ts` — WS reconnect (30s cap, 12 attempts, manual `reconnect()`), Steam P2P handshake buffer, `reestablishSteamP2PSession` | DONE + hardened |
+| **Types** | `src/data/multiplayerTypes.ts` — `finishedAt`, `correctCount`, `wrongCount`, `winnerId \| null`, `connectionState`, `readyVersion`, `multiplayerRating` | DONE |
+| **Lobby** | `src/services/multiplayerLobbyService.ts` — seed-ACK, 60s reconnect grace, timestamped ready-merge, 15s broadcast TTL, password-hash reset, player-count revalidation, collision-retry codes, LAN/solo hooks | DONE + hardened |
+| **Game Sync** | `src/services/multiplayerGameService.ts` — deterministic tie-breaker, null-winner tie, fork-seed resync, scene-lifecycle cleanup, mode-specific scoring, damage clamping, FSRS batch on race end | DONE + hardened |
+| **Scoring** | `src/services/multiplayerScoring.ts` (legacy — `calculateScoreForMode` in gameService is the new path) | DONE |
+| **ELO** | `src/services/multiplayerElo.ts` (new — K=32, DEFAULT=1500, persist via PlayerProfile.multiplayerRating); `src/services/eloMatchmakingService.ts` (queue) | DONE |
+| **Co-op Sync** | `src/services/multiplayerCoopSync.ts` — 45s barrier timeout, transport-disconnect detection, `handleCoopPlayerDeath`, 90s AFK detector, `partnerStateToRaceProgressShape` | DONE + hardened |
 | **Co-op Effects** | `src/services/coopEffects.ts` | DONE |
-| **Trivia Night** | `src/services/triviaNightService.ts` | DONE |
-| **Workshop MP** | `src/services/multiplayerWorkshopService.ts` | DONE |
+| **Trivia Night** | `src/services/triviaNightService.ts` — empty-pool guard, per-game dedupe set, timing clamp w/ 2s grace, `allIncorrect` flag | DONE + hardened |
+| **Workshop MP** | `src/services/multiplayerWorkshopService.ts` — `checkAllPlayersHaveWorkshopDeck` preflight, `validateWorkshopDeckMetadata` w/ HTML rejection, wired handlers | DONE + hardened |
+| **LAN** | `src/services/lan{Server,Discovery,Config}Service.ts` — RFC1918 whitelist, IPv6 subnet parsing, 254→~60 probe reduction, bound-addr reporting | DONE + hardened |
 | **Fairness** | `src/services/fairnessService.ts` | DONE |
-| **Lobby UI** | `src/ui/components/MultiplayerLobby.svelte` | DONE |
+| **Lobby UI** | `src/ui/components/MultiplayerLobby.svelte` — subscriber cleanup on destroy, ready debounce, per-player deck picks, copy-code timeout fix | DONE + hardened |
 | **Race HUD** | `src/ui/components/MultiplayerHUD.svelte` | DONE (live wired) |
 | **Duel Panel** | `src/ui/components/DuelOpponentPanel.svelte` | DONE (not wired) |
 | **Results** | `src/ui/components/RaceResultsScreen.svelte` | DONE (not wired) |
@@ -69,21 +71,29 @@ StS/Balatro-style public/private lobby browsing — visibility tri-state (Public
 ### Race Mode Flow (End-to-End)
 Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared seed → play with live opponent HUD → run end → race finish broadcast
 
-### Next Steps (Prioritized)
+### Hardening Wave (2026-04-21) — 42 audit findings resolved
 
-| Priority | Task | Complexity |
-|----------|------|-----------|
-| **HIGH** | Test lobby browser with 2 Steam accounts on LAN — user-executed environmental test (Red-zone); all other backends verified | Low |
-| **DONE** | Two-container Fastify E2E playtest via `/multiplayer-playtest` skill (2 Docker warm containers + Fastify webBackend) | — |
-| **HIGH** | Wire RaceResultsScreen into run end flow | Low |
-| **HIGH** | Wire Duel mode (shared enemy, simultaneous turns) into gameplay | Medium |
-| **MEDIUM** | Server-side matchmaking queue (replace client simulation) | Medium |
-| **MEDIUM** | Wire Co-op mode into gameplay (co-op effects active) | Medium |
-| **MEDIUM** | Wire Trivia Night into gameplay (question flow) | Medium |
-| **LOW** | ELO updates after match completion | Low |
-| **LOW** | Tournament bracket system | Medium |
-| **LOW** | Spectator mode | Medium |
-| **LOW** | Real Steam ID integration (replace 'local_player') | Low |
+Commits `ec9e86626` (wave 1: coop/race/trivia/LAN + Elo/FSRS) and `b8b7c1b0b` (wave 2: lobby service + workshop + lobby UI) landed 42 distinct fixes across transport, coop, race, trivia, workshop, LAN, and lobby-UI layers. See `docs/mechanics/multiplayer.md` hardening sections for per-fix detail.
+
+**Remaining Work (blockers + nice-to-haves)**
+
+| Task | Blocker? | Notes |
+|------|----------|-------|
+| Transport emission of `mp:lobby:peer_left` / `mp:lobby:peer_rejoined` | Soft | Lobby-service handlers ready; transport still needs to fire on WS close + P2P drop. Pragmatic path: JS-side ping/pong fallback. |
+| Wire `recordRaceAnswer` in `gameFlowController.ts` | Soft | Primitive exists; call-site for quiz-answer handler in race mode not yet added. |
+| `ascensionLevel` wire into MP encounter setup (`runManager` / `encounterBridge`) | Soft | `HouseRules.ascensionLevel` currently ignored for MP runs. |
+| Workshop host self-check + `lobbyStartGate` integration | Soft | `checkAllPlayersHaveWorkshopDeck` ready; host needs own-deck check + gate needs 5th condition. |
+| `clearLanModeOnHubEntry()` UI call in CardApp Hub nav | Soft | Primitive exported; UI wire-up in `CardApp.svelte`. |
+| `leaveMultiplayerLobbyForSoloStart()` UI call in solo-start path | Soft | Same pattern. |
+| L5 client-side lobby-code format validation in `MultiplayerMenu.svelte` | Soft | Input lives in MP menu; deferred pending menu-owner wave. |
+| `hasPassword` denormalization removal (M6 deferred) | No | 10+ consumers; needs dedicated atomic refactor. |
+| `mp:lobby:start_ack`, `mp:workshop:deck_check[_ack]`, `mp:lobby:peer_{left,rejoined}` → add to `MultiplayerMessageType` union | No | Currently string-cast. Low-risk one-liner next time transport is edited. |
+| Live `/multiplayer-playtest` E2E run | No | Unit + typecheck green; live Docker session scheduled. |
+| RaceResultsScreen wiring | No | Component exists, not hooked to run-end. |
+| Duel mode end-to-end wire | No | `DuelOpponentPanel.svelte` + gameService primitives ready. |
+| Real Steam ID (replace `'local_player'`) | No | Works in live Steam build; dev placeholder. |
+| Server-side matchmaking queue | No | Client stub via `eloMatchmakingService.ts`. |
+| Tournament bracket / spectator | No | Post-MVP. |
 
 ### Key References
 - **AR Spec:** `docs/roadmap/AR-MULTIPLAYER.md`

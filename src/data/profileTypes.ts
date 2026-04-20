@@ -18,6 +18,8 @@ export interface PlayerProfile {
   level: number
   /** Cloud sync: this profile's cloud save ID (if logged in). */
   cloudSaveId: string | null
+  /** ELO rating for ranked multiplayer matches. Default 1500. Added schema v2. */
+  multiplayerRating: number
 }
 
 /** Container stored in localStorage under PROFILES_STORAGE_KEY. */

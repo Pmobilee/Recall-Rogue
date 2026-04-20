@@ -95,6 +95,14 @@ export type MultiplayerMessageType =
   // Workshop
   | 'mp:workshop:vote_submit'
   | 'mp:workshop:vote_result'
+  // Peer connection lifecycle (H10)
+  | 'mp:lobby:peer_left'
+  | 'mp:lobby:peer_rejoined'
+  // Lobby start ACK (H5)
+  | 'mp:lobby:start_ack'
+  // Workshop deck check (H16)
+  | 'mp:workshop:deck_check'
+  | 'mp:workshop:deck_check_ack'
   // System
   | 'mp:ping'
   | 'mp:pong'
@@ -901,4 +909,124 @@ export async function reestablishSteamP2PSession(
     console.warn('[SteamP2PTransport] reestablishSteamP2PSession failed:', e);
     return false;
   }
+}
+
+
+// ── H10: JS-side peer-left ping fallback ─────────────────────────────────────
+
+/**
+ * How often to send a ping to all known peers (ms).
+ * Pragmatic fallback for detecting peer disconnection without server-side
+ * or Rust-callback involvement. See docs/mechanics/multiplayer.md — H10.
+ */
+const PEER_PING_INTERVAL_MS = 15_000;
+
+/**
+ * How long without a pong response before declaring a peer as disconnected.
+ * Must be > PEER_PING_INTERVAL_MS to allow at least one missed pong before firing.
+ */
+const PEER_PONG_TIMEOUT_MS = 30_000;
+
+/** Map from playerId → last-seen timestamp (epoch ms). */
+const _peerLastSeen = new Map<string, number>();
+
+/** Interval handle for the ping loop. */
+let _peerPingInterval: ReturnType<typeof setInterval> | null = null;
+
+/**
+ * Start a JS-side peer-presence monitoring loop.
+ *
+ * H10 PRAGMATIC FALLBACK: The correct architecture emits mp:lobby:peer_left from
+ * the Fastify server (WebSocket onclose) or from a Rust P2PSessionConnectFail_t
+ * callback. Both require invasive changes outside the JS layer. This fallback
+ * implements the same observable behaviour entirely in JS:
+ *
+ *   1. Every PEER_PING_INTERVAL_MS (15s), we send mp:ping to all known peers.
+ *   2. Each peer responds with mp:pong (wired by initPeerPresenceMonitor's pong handler).
+ *   3. If a peer hasn't sent mp:pong within PEER_PONG_TIMEOUT_MS (30s) of our last
+ *      ping, we emit mp:lobby:peer_left locally so multiplayerLobbyService can start
+ *      the 60s reconnect grace timer.
+ *   4. When a peer reconnects and sends any message (pong or otherwise), call
+ *      updatePeerLastSeen(peerId) so the grace timer is cancelled by the lobby service.
+ *
+ * TODO(H10-transport): Replace with Fastify server-side broadcast on WS onclose and
+ * Rust P2PSessionConnectFail_t callback once those plumbing changes ship.
+ *
+ * @param localPlayerId  - This player's ID (sender field on outgoing pings).
+ * @param getPeerIds     - Callback returning the current list of peer player IDs.
+ * @param transport      - The active transport to use for ping/pong messages.
+ * @returns Cleanup function — call when leaving the lobby.
+ */
+export function initPeerPresenceMonitor(
+  localPlayerId: string,
+  getPeerIds: () => string[],
+  transport: MultiplayerTransport,
+): () => void {
+  // Initialise last-seen for all current peers
+  for (const peerId of getPeerIds()) {
+    if (!_peerLastSeen.has(peerId)) {
+      _peerLastSeen.set(peerId, Date.now());
+    }
+  }
+
+  // Auto-respond to incoming pings so the remote peer's monitor can track us as alive.
+  const unsubPing = transport.on('mp:ping', (msg) => {
+    _peerLastSeen.set(msg.senderId, Date.now());
+    transport.send('mp:pong', { to: msg.senderId });
+  });
+
+  // Update last-seen on receiving any pong from a peer.
+  const unsubPong = transport.on('mp:pong', (msg) => {
+    _peerLastSeen.set(msg.senderId, Date.now());
+  });
+
+  // Stop any pre-existing ping loop before starting a new one
+  if (_peerPingInterval !== null) {
+    clearInterval(_peerPingInterval);
+    _peerPingInterval = null;
+  }
+
+  _peerPingInterval = setInterval(() => {
+    const now = Date.now();
+    const peers = getPeerIds();
+
+    // Ping all known peers
+    transport.send('mp:ping', { from: localPlayerId });
+
+    // Check for stale peers (no pong within PEER_PONG_TIMEOUT_MS)
+    for (const peerId of peers) {
+      const lastSeen = _peerLastSeen.get(peerId) ?? now;
+      if (now - lastSeen > PEER_PONG_TIMEOUT_MS) {
+        // Peer hasn't responded — declare them disconnected.
+        // Emit locally so the lobby service starts the 60s grace timer.
+        console.warn(
+          `[peerPresenceMonitor] No pong from ${peerId} in ${PEER_PONG_TIMEOUT_MS}ms — emitting peer_left`,
+        );
+        transport.send('mp:lobby:peer_left', { playerId: peerId });
+        // Remove from last-seen so we don't spam peer_left every 15s.
+        _peerLastSeen.delete(peerId);
+      }
+    }
+  }, PEER_PING_INTERVAL_MS);
+
+  return () => {
+    unsubPing();
+    unsubPong();
+    if (_peerPingInterval !== null) {
+      clearInterval(_peerPingInterval);
+      _peerPingInterval = null;
+    }
+    _peerLastSeen.clear();
+  };
+}
+
+/**
+ * Update the last-seen timestamp for a peer.
+ * Call this whenever the lobby service receives any message from the peer,
+ * including mp:lobby:peer_rejoined, to cancel a pending grace expiry.
+ *
+ * @param peerId - The peer's player ID.
+ */
+export function updatePeerLastSeen(peerId: string): void {
+  _peerLastSeen.set(peerId, Date.now());
 }
