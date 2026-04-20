@@ -20,13 +20,25 @@
   let glowEffect: HubGlowEffect | null = null
   let resizeObserver: ResizeObserver | null = null
 
-  /** Sync canvas pixel dimensions to match the viewport. */
+  /**
+   * Backing-store scale factor.
+   *
+   * Both canvases are sized at 0.5× the viewport dimensions while the CSS
+   * keeps them stretched to full viewport via `position: fixed; inset: 0`.
+   * Radial gradients upscale imperceptibly — this halves the texture-upload
+   * cost per frame (~8 MB → ~2 MB per canvas on a 1920×1080 viewport) and
+   * eliminates the Chromium/Windows compositor bottleneck caused by
+   * full-viewport mix-blend-mode: screen at full resolution.
+   */
+  const BACKING_SCALE = 0.5
+
+  /** Sync canvas pixel dimensions to the backing-store resolution (0.5× viewport). */
   function syncSize(): void {
     if (!canvasEl || !vignetteCanvasEl) return
-    canvasEl.width = window.innerWidth
-    canvasEl.height = window.innerHeight
-    vignetteCanvasEl.width = window.innerWidth
-    vignetteCanvasEl.height = window.innerHeight
+    canvasEl.width = Math.round(window.innerWidth * BACKING_SCALE)
+    canvasEl.height = Math.round(window.innerHeight * BACKING_SCALE)
+    vignetteCanvasEl.width = Math.round(window.innerWidth * BACKING_SCALE)
+    vignetteCanvasEl.height = Math.round(window.innerHeight * BACKING_SCALE)
   }
 
   // Forward mouse position to the glow effect for secondary light pass
@@ -60,7 +72,9 @@
   })
 </script>
 
-<!-- Layer 1: Warm glow canvas (mix-blend-mode: screen) — additive orange radial glow -->
+<!-- Layer 1: Warm glow canvas (mix-blend-mode: screen) — additive orange radial glow.
+     Canvas pixel size is 0.5× viewport; CSS inset: 0 stretches it to full viewport.
+     Smooth radial gradients are imperceptible at 2× upscale — halves texture-upload cost. -->
 <canvas
   bind:this={canvasEl}
   class="hub-glow-canvas"

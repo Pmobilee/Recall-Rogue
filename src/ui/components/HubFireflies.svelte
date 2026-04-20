@@ -98,8 +98,11 @@
       state: 'fadingIn',
       x: pos.x,
       y: pos.y,
-      px: 0,
-      py: 0,
+      // Initialize px/py from spawn position so the first rendered frame
+      // shows the firefly at its correct location rather than at (0, 0).
+      // Fixes a one-frame corner-clump visible on slow/laggy paths (e.g. Windows/Chromium).
+      px: pos.x * _vw / 100,
+      py: pos.y * _vh / 100,
       alpha: 0,
     }
   }
@@ -199,6 +202,9 @@
         fly.alpha = 0.5
         fly.x = fly.baseX
         fly.y = fly.baseY
+        // Re-derive px/py after x/y are explicitly set
+        fly.px = fly.x * _vw / 100
+        fly.py = fly.y * _vh / 100
         _flies.push(fly)
       }
       tick++
@@ -211,12 +217,16 @@
       // Stagger: some start mid-fadein, some already alive
       if (i < 3) {
         fly.elapsed = Math.random() * fly.fadeIn
+        // x/y unchanged from spawnFirefly; px/py already initialized correctly there
       } else {
         fly.elapsed = fly.fadeIn + Math.random() * (fly.lifespan * 0.6)
         fly.state = 'alive'
         fly.alpha = 0.4 + fly.depthLayer * 0.4
         fly.x = fly.baseX
         fly.y = fly.baseY
+        // Re-derive px/py after x/y are explicitly reassigned
+        fly.px = fly.x * _vw / 100
+        fly.py = fly.y * _vh / 100
       }
       _flies.push(fly)
     }

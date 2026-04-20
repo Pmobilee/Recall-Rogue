@@ -16,6 +16,15 @@
  *
  * Uses the shared 30fps loop from hubAnimationLoop.ts (no own RAF).
  *
+ * Performance notes (2026-04-20):
+ *  - Both canvases use a 0.5× backing store (set in HubGlowCanvas.svelte). All
+ *    draw coordinates are scaled from viewport-space to canvas-space via
+ *    `scaleX = canvas.width / window.innerWidth` before use.
+ *  - Intensity is quantized to 20 discrete steps and a per-frame cache key is
+ *    computed from intensity + campfire/mouse coords. If the key matches the
+ *    previous frame the draw is skipped entirely — the previous pixels persist,
+ *    which is visually identical for an unchanged frame.
+ *
  * @module HubGlowEffect
  */
 
@@ -45,6 +54,14 @@ export class HubGlowEffect {
   /** Current mouse position in viewport pixels, or null when outside hub. */
   private mouseX: number | null = null
   private mouseY: number | null = null
+
+  /**
+   * Cache key from the last rendered frame.
+   * Encodes quantized intensity + campfire/mouse positions.
+   * If a new frame produces an identical key the draw is skipped.
+   * Reset to '' in start() and destroy() so a fresh mount always draws.
+   */
+  private lastKey: string = ''
 
   /** Bound frame callback for registration with the shared loop. */
   private _boundOnFrame: FrameCallback
@@ -102,11 +119,48 @@ export class HubGlowEffect {
    *   pulse with fire brightness. Drawing to canvas instead of rebuilding
    *   a CSS gradient string eliminates the browser's CSS gradient reparse cost.
    *
+   * All canvas draw coordinates are scaled from viewport-space to canvas-space
+   * because HubGlowCanvas.svelte sets the backing store at 0.5× viewport size
+   * while CSS stretches the canvas to fill the full viewport.
+   *
+   * Frame-skip: if intensity and campfire/mouse positions are unchanged (within
+   * quantization) the previous pixels persist and this method returns early.
+   *
    * @param intensityOverride - When set, bypasses getSnapshot() (for static reduce-motion frame).
    */
   private drawFrame(intensityOverride?: number): void {
     const snap = getSnapshot()
-    const intensity = intensityOverride !== undefined ? intensityOverride : snap.intensity
+    const intensityRaw = intensityOverride !== undefined ? intensityOverride : snap.intensity
+
+    // Quantize intensity to 20 discrete steps (imperceptible visual difference).
+    // This allows frame-skipping when the flicker lands on the same bucket.
+    const intensity = Math.round(intensityRaw * 20) / 20
+
+    // Read campfire center in viewport-space BEFORE the early-return check,
+    // because cx/cy are part of the cache key.
+    const center = this.campfireCenterFn()
+    const cx = center.x
+    const cy = center.y
+
+    // Mouse coords (null → encode as 'N' in the key)
+    const mx = this.mouseX
+    const my = this.mouseY
+
+    // Build cache key from quantized values (1-decimal precision for coords)
+    const key = `${intensity}|${cx.toFixed(1)},${cy.toFixed(1)}|${mx === null ? 'N' : mx.toFixed(1)},${my === null ? 'N' : my.toFixed(1)}|${this.canvas.width},${this.canvas.height}`
+
+    // Frame-skip: previous pixels persist — identical to what we would draw.
+    if (key === this.lastKey) return
+    this.lastKey = key
+
+    // Scale factors: canvas backing store is smaller than the viewport.
+    // All viewport-space coords must be projected into canvas-space before drawing.
+    const scaleX = this.canvas.width / window.innerWidth
+    const scaleY = this.canvas.height / window.innerHeight
+
+    // Canvas-space campfire center
+    const ccx = cx * scaleX
+    const ccy = cy * scaleY
 
     // -------------------------------------------------------------------------
     // Canvas 1: Warm glow (mix-blend-mode: screen on CSS)
@@ -116,9 +170,8 @@ export class HubGlowEffect {
       const h = this.canvas.height
       this.ctx.clearRect(0, 0, w, h)
 
-      const center = this.campfireCenterFn()
-      const cx = center.x
-      const cy = center.y
+      // diagonal and max(w,h) operate on canvas pixels — automatically correct
+      // at the new half-resolution; the CSS upscale restores on-screen appearance.
       const diagonal = Math.sqrt(w * w + h * h)
 
       // Glow radius: 55–65% of diagonal, modulated slightly by intensity
@@ -126,7 +179,7 @@ export class HubGlowEffect {
 
       // Pass 1: Warm orange radial glow
       this.ctx.globalCompositeOperation = 'source-over'
-      const glowGrad = this.ctx.createRadialGradient(cx, cy, 0, cx, cy, glowRadius)
+      const glowGrad = this.ctx.createRadialGradient(ccx, ccy, 0, ccx, ccy, glowRadius)
       glowGrad.addColorStop(0, `rgba(255, 140, 40, ${intensity * 0.25})`)   // warm core
       glowGrad.addColorStop(0.3, `rgba(255, 100, 20, ${intensity * 0.12})`) // mid-range warmth
       glowGrad.addColorStop(1, 'rgba(255, 80, 10, 0)')
@@ -134,11 +187,14 @@ export class HubGlowEffect {
       this.ctx.fillRect(0, 0, w, h)
 
       // Pass 2: Secondary mouse-following light (when mouse is in the hub)
-      if (this.mouseX !== null && this.mouseY !== null) {
+      if (mx !== null && my !== null) {
+        // Scale mouse viewport coords into canvas-space
+        const cmx = mx * scaleX
+        const cmy = my * scaleY
         const mouseGlowRadius = diagonal * 0.15
         const mouseGrad = this.ctx.createRadialGradient(
-          this.mouseX, this.mouseY, 0,
-          this.mouseX, this.mouseY, mouseGlowRadius
+          cmx, cmy, 0,
+          cmx, cmy, mouseGlowRadius
         )
         mouseGrad.addColorStop(0, `rgba(255, 220, 160, ${intensity * 0.10})`)
         mouseGrad.addColorStop(0.4, `rgba(255, 200, 140, ${intensity * 0.04})`)
@@ -159,10 +215,12 @@ export class HubGlowEffect {
       const vh = this.vignetteCanvas.height
       this.vignetteCtx.clearRect(0, 0, vw, vh)
 
-      // Campfire center in canvas pixels (same fn as glow canvas)
-      const center = this.campfireCenterFn()
-      const vcx = center.x
-      const vcy = center.y
+      // Campfire center in vignette canvas-space (read scale independently in case
+      // the two canvases ever diverge, though currently they match).
+      const vScaleX = this.vignetteCanvas.width / window.innerWidth
+      const vScaleY = this.vignetteCanvas.height / window.innerHeight
+      const vcx = cx * vScaleX
+      const vcy = cy * vScaleY
 
       // Intensity-driven expansion factor: at max intensity, stops shift outward ~12%
       const s = intensity * 0.12
@@ -206,6 +264,7 @@ export class HubGlowEffect {
    * frame at middle intensity and does not register with the shared loop.
    */
   start(): void {
+    this.lastKey = ''  // ensure first frame always draws
     if (isReduceMotionEnabled()) {
       // Single static frame — no ongoing animation
       this.drawFrame(0.5)
@@ -229,6 +288,7 @@ export class HubGlowEffect {
    * Stop the loop and release references.
    */
   destroy(): void {
+    this.lastKey = ''  // reset so a fresh mount after re-use always draws
     this.stop()
     this.ctx = null
     this.vignetteCtx = null
