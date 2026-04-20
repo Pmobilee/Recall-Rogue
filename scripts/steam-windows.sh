@@ -129,8 +129,7 @@ if $DO_BUILD; then
         --exclude='src-tauri/target' --exclude='node_modules' --exclude='.DS_Store' \
         --exclude='._*' --exclude='public/data/narratives/*.bak' \
         -cf "$STAGING_DIR/rr-sync.tar" \
-        public src src-tauri \
-        scripts/vm-build-windows.ps1 \
+        public src src-tauri scripts \
         package.json package-lock.json vite.config.ts \
         tsconfig.json tsconfig.node.json index.html svelte.config.js 2>&1 | head -5
     TAR_SIZE=$(du -h "$STAGING_DIR/rr-sync.tar" | cut -f1)
@@ -159,6 +158,13 @@ if $DO_BUILD; then
     if [[ "$VM_EXIT" -ne 0 ]]; then
         red "    VM build failed (exit $VM_EXIT). Full log: $BUILD_LOG"
         exit $VM_EXIT
+    fi
+    # Belt-and-suspenders: PowerShell 'exit 1' inside Check-Exit doesn't always propagate
+    # through SSH + cmd.exe + redirection, so trust the BUILD_OK marker instead.
+    if ! grep -q "BUILD_OK" "$BUILD_LOG" 2>/dev/null; then
+        red "    VM build failed — BUILD_OK marker missing. Likely STEP FAILED earlier. Full log: $BUILD_LOG"
+        grep -E "STEP FAILED|error\[|rustc-LLVM|MODULE_NOT_FOUND" "$BUILD_LOG" 2>/dev/null | head -10 | sed 's/^/    /'
+        exit 1
     fi
     step_end
 
