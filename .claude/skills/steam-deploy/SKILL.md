@@ -8,6 +8,24 @@ user_invocable: true
 
 Build the desktop app via Tauri and upload to Steam via SteamPipe. Manages development, staging, and production branches.
 
+## 🚨 RULE: Claude NEVER kills the Steam desktop client. The USER does.
+
+steamcmd and the Steam desktop client share `~/Library/Application Support/Steam/config/config.vdf`. When Claude force-quits Steam via `pkill`, `pkill -9`, `killall`, or `kill -9` — especially against the `ipcserver` or `Steam.AppBundle` family — the shared config gets written mid-flush and the cached steamcmd credentials are invalidated. The next steamcmd login then reports `Cached credentials not found` → empty password prompt in non-interactive shell → `ERROR (Invalid Password)` → exit 5. Every upload fails until the USER does a fresh interactive login. This was observed repeatedly on 2026-04-20 (at least four failed upload cycles traced to Claude-initiated `pkill`).
+
+**The rule, no exceptions:**
+
+- **Never** run `pkill`, `pkill -9`, `killall`, `osascript -e 'quit app "Steam"'`, or any variant that touches `Steam`, `Steam Helper`, `Steam.AppBundle`, `steam_osx`, `ipcserver`, or the Steam process family. Not even the "clean" AppleScript quit — Steam's watchdog reacts by rewriting config on the way down, and the race is the same.
+- **If the Steam client must be quit** (because its running instance is rewriting `config.vdf` and invalidating steamcmd's cache mid-upload), ask the USER to quit it via **Steam menu → Quit** in the macOS menu bar, then wait for them to confirm.
+- **After any auth failure**, ask the user to run interactive login themselves:
+  ```bash
+  steamcmd +login bramblegate_games
+  # password, Steam Guard code, "Waiting for user info...OK", then: quit
+  ```
+  Then ask them NOT to relaunch Steam until the upload finishes.
+
+This is a session-scoped rule the user re-stated explicitly on 2026-04-20 after Claude cost multiple upload cycles by force-killing Steam trying to "help" with auth. Don't repeat the mistake.
+
+
 ## Arguments
 
 Parse the user's message for a subcommand:
@@ -223,7 +241,7 @@ Upload the current build to Steam via SteamPipe:
    steamcmd +login $(grep STEAM_USERNAME /Users/damion/CODE/Recall_Rogue/.env.local | cut -d= -f2) +run_app_build /Users/damion/CODE/Recall_Rogue/steam/app_build_4547570.vdf +quit
    ```
 
-   **Auth gotcha:** steamcmd and the Steam desktop client share the same config directory. If the Steam client is running, cached tokens may be stale. Quit the Steam client before running SteamPipe uploads, or run `steam-build.sh` which includes an auth-check wrapper.
+   **Auth gotcha:** steamcmd and the Steam desktop client share `config.vdf`. If the Steam client is running during an upload, it can rewrite the config mid-flight and the cached steamcmd token appears invalid (pre-flight says `Cached credentials valid`, actual steamcmd invocation says `Cached credentials not found`). When this happens, ASK THE USER to quit Steam via Steam menu → Quit, then do an interactive `steamcmd +login`. Do NOT `pkill` Steam yourself — see the 🚨 RULE at the top of this file.
 
 5. Report: upload success/failure, build ID, branch.
 
@@ -321,7 +339,7 @@ Configure this under App Admin > Steam Cloud > Auto-Cloud in the Steamworks part
 
 ## Important Notes
 
-- **steamcmd authentication** is interactive (Steam Guard) — the first login must be done by the user in a terminal: `steamcmd +login <username> +quit`. The `steam-build.sh` script includes an auth-check wrapper that tests cached credentials before uploading. **Quit the Steam desktop client before running SteamPipe uploads** — it shares the config dir and can make tokens appear stale (see `docs/gotchas.md` 2026-04-15).
+- **steamcmd authentication** is interactive (Steam Guard) — the first login must be done by the user in a terminal: `steamcmd +login <username> +quit`. The `steam-build.sh` script includes an auth-check wrapper that tests cached credentials before uploading. **When the Steam desktop client is running and interfering with steamcmd auth, ASK THE USER to quit Steam via Steam menu → Quit** — never `pkill`, `killall`, or force-quit from Claude. See the 🚨 RULE at the top of this file (2026-04-20 session incident).
 - **Depot IDs** must match what's configured in the Steamworks dashboard: DEPOT_CONTENT=4547571, DEPOT_WINDOWS=4547572, DEPOT_LINUX=4547573, DEPOT_MACOS=4547574. Only Linux (4547573) and macOS (4547574) are active at launch.
 - **Cross-platform builds:** Windows uses `cargo-xwin` (direct macOS cross-compilation, ~12s cached). Linux uses SSH to a Linux VM via `--linux` flag on `steam-build.sh`. GitHub Actions CI (`.github/workflows/steam-build.yml`) also exists for Windows builds on real Windows runners.
 - **Build size** is ~750MB for macOS (includes all game assets). This is normal for Steam.
