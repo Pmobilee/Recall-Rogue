@@ -4842,3 +4842,15 @@ Restart-Computer -Force
 With a 36 GB commit limit, link took 4m 07s and produced a 1.35 GB exe. VM disk must have ≥50 GB free for the larger pagefile.
 
 **Lesson:** LLVM OOMs on resource-embedded Rust binaries are a commit-limit problem, not an opt-level problem. When the resource is large (>500 MB), budget pagefile ≥ 10× the resource size. Do this once, not per-build.
+
+### 2026-04-20 — Steam "missing game executable" caused by trailing whitespace in Launch Option
+
+**Symptom:** Steam client Play button shows "An error occurred while launching this game: missing game executable = C:\Program Files (x86)\Steam\steamapps\common\Recall Rogue\recall-rogue.exe" even though the file exists at that exact path, double-click launches it fine, and `verify integrity of game files` passes. Zero Event Viewer entries (Steam never attempts CreateProcess — the pre-launch existence check fails first).
+
+**Ruled out before finding it:** package depot bindings, install directory, StateFlags, SmartScreen / MOTW, Windows Defender, ARM emulation (we also briefly suspected that, but user was on a real x86_64 laptop). Verify integrity passing but Play failing is the key signature.
+
+**Root cause:** Steamworks → Installation → Launch Options → Launch Option 0 → **Executable field had a trailing space** after `recall-rogue.exe`. Invisible in the UI. Steam constructs `<installdir>\<executable>` verbatim, calls GetFileAttributes on the trailing-space path, gets "not found," shows the dialog.
+
+**Fix:** Edit the launch option, click in the Executable field, press End, delete any trailing whitespace. Save. **Publish changes (top of App Admin).**
+
+**Lesson:** When Steam's Play button reports missing executable for a path that demonstrably exists, suspect invisible whitespace in the Launch Options Executable field OR in the Install Folder value — BEFORE chasing antivirus, emulation, or depot theories. Definitive test: right-click the game → Manage → Browse local files. If Steam opens the correct folder with the exe inside, then Steam knows the files are there and the Play path is constructed from a different (corrupted) field — that's the Launch Option. The steamworks UI strips leading/trailing whitespace visually but stores it verbatim.

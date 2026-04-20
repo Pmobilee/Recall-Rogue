@@ -32,19 +32,19 @@ The sections below document the manual primitives (tar/scp sync, MSVC cross tool
 - **Username:** damion
 - **Password (fallback):** chrx
 - **SSH key:** ed25519 key at `~/.ssh/id_ed25519` (already in VM's `administrators_authorized_keys`)
-- **Network:** Bridged mode on `192.168.11.x` subnet (IP may change on reboot)
+- **Network:** Bridged mode. Subnet varies by environment — has been seen on `192.168.11.x` and `192.168.128.x`. Always discover dynamically; never hard-code the subnet.
 - **Hostname:** WIN-0LQQEHDQT05
 - **VM app:** UTM (`/Applications/UTM.app`)
 
 ## Connecting — Always Start Here
 
-The VM's IP can change between boots. Always discover it first:
+The VM's IP and subnet can change between boots / networks. Discover from the current ARP table instead of assuming a fixed subnet:
 
 ```bash
-# Step 1: Find the VM by scanning for SSH on the local subnet
-for ip in $(arp -a | grep '192.168.11' | grep -oE '192\.168\.11\.[0-9]+' | grep -v '\.255$' | grep -v '\.1$'); do
+# Step 1: Find the VM by probing every recent ARP neighbor for SSH
+for ip in $(arp -a | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}' | sort -u | grep -v '\.255$' | grep -v '\.1$'); do
   result=$(ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no -o BatchMode=yes damion@$ip "hostname" 2>/dev/null)
-  if [ $? -eq 0 ]; then echo "FOUND: $ip ($result)"; break; fi
+  if [ "$result" = "WIN-0LQQEHDQT05" ]; then echo "FOUND: $ip"; break; fi
 done
 
 # Step 2: Verify connection

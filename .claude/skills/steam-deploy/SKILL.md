@@ -94,6 +94,12 @@ BUILD_OUTPUT_MAC=/Users/damion/CODE/Recall_Rogue/src-tauri/target/release/bundle
 BUILD_OUTPUT_DMG=/Users/damion/CODE/Recall_Rogue/src-tauri/target/release/bundle/dmg/
 ```
 
+## ⚠️ Launch Options: NEVER allow trailing whitespace in Executable field
+
+Steamworks → Installation → Launch Options stores leading/trailing whitespace verbatim, but the UI hides it. A single trailing space after `recall-rogue.exe` causes Steam's Play button to error with "missing game executable = C:\...\recall-rogue.exe" even though the file exists at that exact path, verify integrity passes, and double-click works. Event Viewer logs nothing because Steam's pre-launch existence check fails before any CreateProcess attempt. See `docs/gotchas.md` 2026-04-20 for the full case study.
+
+Whenever editing a Launch Option: click into the Executable field → press End → confirm the cursor sits flush against the last character → Save → **Publish changes (top of App Admin).** Same rule for the Install Folder field — invisible trailing whitespace there has the same effect.
+
 ## Canonical Build Icon
 
 The executable icon embedded into every build (Windows taskbar/exe, macOS dock, Linux desktop) is sourced from **`marketing/steam/capsules/Library Logo.ico`** (Windows) and **`marketing/steam/capsules/Library Logo.png`** (source PNG). Those are copied into `src-tauri/icons/icon.ico` + `src-tauri/icons/icon.png`, which `tauri.conf.json → bundle.icon` references at build time.
