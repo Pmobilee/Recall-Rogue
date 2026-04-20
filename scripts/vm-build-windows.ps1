@@ -1,4 +1,4 @@
-# Recall Rogue — Windows VM build orchestrator
+# Recall Rogue -- Windows VM build orchestrator
 #
 # Runs on the Windows 11 ARM64 UTM VM. Invoked from Mac via scripts/steam-windows.sh.
 # Produces a release x86_64-pc-windows-msvc .exe with embedded Tauri frontend
@@ -6,12 +6,12 @@
 #
 # Pre-reqs (one-time, already provisioned on this VM):
 #   - Node.js LTS, Git, Rust (rustup), MSVC BuildTools with Hostarm64/x64 cross tools
-#   - Windows pagefile bumped to 32 GB fixed / 48 GB max (required — see docs/gotchas.md 2026-04-20)
+#   - Windows pagefile bumped to 32 GB fixed / 48 GB max (required -- see docs/gotchas.md 2026-04-20)
 #   - C:\Users\damion\recall-rogue\ populated via tar -xf
 #
 # Steps:
 #   1. Refresh PATH and load MSVC x64 cross tools (Hostarm64 -> x64)
-#   2. npm install (no scripts — avoids the prebuild hook)
+#   2. npm install (no scripts -- avoids the prebuild hook)
 #   3. Inline frontend build (strip/audit/convert-webp/narratives/facts/curated/vite/obfuscate)
 #   4. cargo tauri build --target x86_64-pc-windows-msvc --no-bundle
 #   5. Stage recall-rogue.exe + steam_api64.dll + steam_appid.txt to C:\Users\damion\win-build-artifacts\
@@ -22,7 +22,7 @@
 
 param(
     [switch]$SkipNpmInstall,    # skip if package-lock.json didn't change
-    [switch]$FrontendOnly       # stop after vite build (skip cargo — useful for frontend iteration)
+    [switch]$FrontendOnly       # stop after vite build (skip cargo -- useful for frontend iteration)
 )
 
 $ErrorActionPreference = "Continue"
@@ -85,11 +85,11 @@ cmd /c "node scripts/obfuscate-db.mjs 2>&1";                 Check-Exit "obfusca
 $distSize = (Get-ChildItem dist -Recurse -File | Measure-Object -Property Length -Sum).Sum / 1MB
 Write-Host ("dist size: {0:N1} MB" -f $distSize)
 if ($distSize -lt 1000) {
-    Write-Host "dist/ suspiciously small — expected >1 GB" -ForegroundColor Red; exit 3
+    Write-Host "dist/ suspiciously small -- expected >1 GB" -ForegroundColor Red; exit 3
 }
 
 if ($FrontendOnly) {
-    Write-Host "=== FrontendOnly — stopping before cargo ===" -ForegroundColor Yellow
+    Write-Host "=== FrontendOnly -- stopping before cargo ===" -ForegroundColor Yellow
     exit 0
 }
 
@@ -114,11 +114,11 @@ if (-Not (Test-Path $exePath)) {
 $exeSize = (Get-Item $exePath).Length / 1MB
 Write-Host ("exe size: {0:N1} MB" -f $exeSize)
 if ($exeSize -lt 500) {
-    Write-Host "exe too small ($exeSize MB) — frontend did not embed" -ForegroundColor Red; exit 5
+    Write-Host "exe too small ($exeSize MB) -- frontend did not embed" -ForegroundColor Red; exit 5
 }
 Copy-Item $exePath "$stageDir\recall-rogue.exe"
 
-# steam_api64.dll — try src-tauri/ first, then fallback to steamworks-sys build output
+# steam_api64.dll -- try src-tauri/ first, then fallback to steamworks-sys build output
 $dllSrc = "$vmRoot\src-tauri\steam_api64.dll"
 if (-Not (Test-Path $dllSrc)) {
     $dllSrc = (Get-ChildItem "$vmRoot\src-tauri\target\x86_64-pc-windows-msvc\release" -Filter "steam_api64.dll" -Recurse | Select-Object -First 1).FullName
@@ -126,7 +126,7 @@ if (-Not (Test-Path $dllSrc)) {
 if ($dllSrc -and (Test-Path $dllSrc)) {
     Copy-Item $dllSrc "$stageDir\steam_api64.dll"
 } else {
-    Write-Host "steam_api64.dll not found — Steam init will fail at runtime" -ForegroundColor Yellow
+    Write-Host "steam_api64.dll not found -- Steam init will fail at runtime" -ForegroundColor Yellow
 }
 
 Copy-Item "$vmRoot\src-tauri\steam_appid.txt" "$stageDir\steam_appid.txt" -ErrorAction SilentlyContinue
