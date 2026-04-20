@@ -4800,3 +4800,45 @@ The `qpModified` classify call also compared against `Math.round(nakedQpBase * c
 **Fix:** Both `.panel-stats` strings are now `$derived` expressions from live services. Trivia: `factsDB.getTriviaFacts().length` (excludes language/vocab/bridge facts) with `dbReady` reactive state; loading placeholder prevents "0 facts" flash while DB initializes. Study: `getAllDecks().filter(d => d.status === 'available')` count + summed `factCount` (synchronous — registered at app startup).
 
 **Lesson:** Any player-visible stat on a selection screen should be wired to the same service the game actually uses — not written as copy and forgotten. If a stat needs a loading state, use a `$state` + `onMount` async pattern matching `KnowledgeLibrary.svelte`.
+
+### 2026-04-20 — Windows cross-compile (cargo-xwin on Mac) silently ships broken 11 MB exe
+
+**What:** The Steam depot at `steam/windows-build/recall-rogue.exe` was 12 MB, but a working release should be ~1.3 GB — Tauri's `frontendDist: "../dist"` embeds the 1.6 GB `dist/` folder into the binary at compile time via `tauri::generate_context!()` / `EmbeddedAssets`. The 12 MB exe was missing the embedded frontend and would crash on launch with a blank window looking for asset files that aren't there.
+
+**Why:** `scripts/steam-build.sh --windows` runs `cargo xwin build --release --target x86_64-pc-windows-msvc` from the Mac. For reasons not yet fully diagnosed, this cross-compile path does not include the `EmbeddedAssets` codegen that `cargo tauri build` produces — even though `npm run build` ran first and `dist/` exists. The output is a Rust binary with no embedded frontend.
+
+**Fix:** Build on the actual Windows 11 ARM64 UTM VM using `cargo tauri build --target x86_64-pc-windows-msvc --no-bundle` with the MSVC `Hostarm64\x64` cross tools on PATH. Produces the expected ~1.35 GB exe with embedded frontend. See `.claude/skills/windows-vm/SKILL.md` → "Windows Build Workflow" for the full command.
+
+**Related:** `--bundles none` is NOT a valid Tauri 2 flag value — only `msi` and `nsis` are. Use `--no-bundle` to produce the raw exe without an installer. For Steam depot uploads the raw exe is what you want (Steam IS the installer).
+
+**Lesson:** Always check exe size after any Windows build: a functioning Tauri release with embedded frontend is on the order of the `dist/` folder size. An exe <50 MB means the frontend did not embed — do not ship it.
+
+### 2026-04-20 — LLVM OOM linking Tauri release binary on 4 GB VM
+
+**What:** On the Windows ARM64 VM (4 GB RAM, default 12 GB system-managed pagefile), `cargo tauri build --release` for the recall-rogue crate failed repeatedly with:
+
+```
+rustc-LLVM ERROR: out of memory
+Allocation failed
+error: could not compile `recall-rogue` (bin "recall-rogue")
+... (exit code: 0xc0000409, STATUS_STACK_BUFFER_OVERRUN)
+```
+
+All dependencies compiled fine; only the final linking of `recall-rogue` (which embeds 1.6 GB of `dist/` via Tauri's `EmbeddedAssets`) OOMed.
+
+**Why:** LLVM's codegen + link pass holds the entire resource blob in memory along with its symbol table. With a 1.6 GB embedded dist, peak working set is ~20–25 GB, which exceeds the system commit limit (4 GB RAM + 12 GB pagefile = 16 GB).
+
+**Fix that didn't work:** Lowering `opt-level` from 3 → 1 on the `recall-rogue` package (via `[profile.release.package.recall-rogue]` in `src-tauri/Cargo.toml`). LLVM still OOMed in the same place — the memory demand is from linking the resource blob, not optimization passes. The profile override is kept anyway as belt-and-braces.
+
+**Fix that worked:** Bump Windows pagefile to 32 GB fixed / 48 GB max via registry, reboot:
+
+```powershell
+$c = Get-CimInstance Win32_ComputerSystem; $c.AutomaticManagedPagefile = $false; $c | Set-CimInstance
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" `
+  -Name "PagingFiles" -Value "C:\pagefile.sys 32768 49152" -Type MultiString
+Restart-Computer -Force
+```
+
+With a 36 GB commit limit, link took 4m 07s and produced a 1.35 GB exe. VM disk must have ≥50 GB free for the larger pagefile.
+
+**Lesson:** LLVM OOMs on resource-embedded Rust binaries are a commit-limit problem, not an opt-level problem. When the resource is large (>500 MB), budget pagefile ≥ 10× the resource size. Do this once, not per-build.

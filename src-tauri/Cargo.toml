@@ -23,3 +23,12 @@ hostname = "0.4"
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
+
+# Lower opt-level only for the top-level binary. Deps keep opt-level=3 (cached).
+# Rationale: LLVM codegen for recall-rogue's release binary includes the full 1.6GB
+# embedded frontend via `frontendDist: "../dist"` — this OOMs LLVM on memory-constrained
+# build machines (e.g. the 4GB Windows ARM64 VM used for x86_64 cross-compile). Lowering
+# just the final crate avoids a full dep rebuild while fitting in ~3GB of LLVM working set.
+[profile.release.package.recall-rogue]
+opt-level = 1
+codegen-units = 16

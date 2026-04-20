@@ -80,22 +80,65 @@ The project is NOT cloned via git on the VM. It is rsynced from the Mac to avoid
 - **Mac artifact staging:** `/Users/damion/CODE/WINDOWS_VM/` (for pulling build artifacts back)
 - **VM shared drive:** `Z:\` (UTM VirtioFS) maps to `/Users/damion/CODE/WINDOWS_VM/` on Mac. Preferred for file transfer — faster and more reliable than rsync over SSH (which fails due to Windows cmd.exe shell quirks)
 
-### Sync Mac -> VM
+### Sync Mac -> VM — tar + scp, NOT rsync or VirtioFS
+
+**The tested-and-working path is: single tar on Mac → `scp` to VM → `tar.exe -xf` on VM's C:.** Do not use rsync (not installed on Windows), do not use robocopy over `Z:\` (per-file VirtioFS overhead is catastrophic — 30+ min for 4000 small files), and do not rely on reading large files from `Z:\` (UTM VirtioFS on Windows silently caps reads at ~2 GB with `"The file size exceeds the limit allowed"` — PowerShell `Copy-Item` and `Expand-Archive` both fail on anything bigger).
+
+Confirmed 2026-04-20 on an 8 Gbps virtual link:
+- `tar -cf` of `public/` + `src/` + `src-tauri/` (excl target) + root configs (~1.7 GB, 4700+ files): **~4 s**
+- `scp -C` of the 1.7 GB tar over SSH: **~30–60 s** depending on dev traffic
+- `tar -xf` on the VM from local `C:\`: **~20 s**
+- Total end-to-end: **~90 s**
+- Robocopy on the same payload: **hung at 80% after 30+ minutes, never completed**
+
+**Canonical sync workflow:**
 
 ```bash
-# Full sync (excludes heavy build artifacts)
-rsync -avz --progress \
-  --exclude='node_modules' --exclude='.git' --exclude='dist' \
-  --exclude='src-tauri/target' --exclude='*.db' \
-  -e ssh /Users/damion/CODE/Recall_Rogue/ damion@<IP>:'C:\Users\damion\recall-rogue\'
+# 1. Mac: tar the source tree to /Users/damion/CODE/WINDOWS_VM/ (scratch dir, NOT a transfer — tar is local)
+# COPYFILE_DISABLE=1 prevents macOS from embedding ._AppleDouble resource-fork files.
+# Without it, the VM ends up with 5k+ ._*.json files that crash Node when a build script
+# tries to JSON.parse them (e.g. build-facts-db.mjs hits `._bridge-curated.json` and
+# segfaults libuv with `Assertion failed: UV_HANDLE_CLOSING, src\win\async.c`).
+cd /Users/damion/CODE/Recall_Rogue
+time COPYFILE_DISABLE=1 tar \
+  --exclude='src-tauri/target' --exclude='node_modules' --exclude='.DS_Store' \
+  --exclude='._*' --exclude='public/data/narratives/*.bak' \
+  -cf /Users/damion/CODE/WINDOWS_VM/rr-sync.tar \
+  public src src-tauri \
+  package.json package-lock.json vite.config.ts tsconfig.json tsconfig.node.json index.html svelte.config.js
 
-# Quick sync (only changed source files)
-rsync -avz --progress \
-  --include='src/***' --include='src-tauri/***' --include='package.json' \
-  --include='package-lock.json' --include='vite.config.ts' --include='tsconfig*.json' \
-  --include='index.html' --include='public/***' \
-  --exclude='src-tauri/target' --exclude='node_modules' --exclude='*' \
-  -e ssh /Users/damion/CODE/Recall_Rogue/ damion@<IP>:'C:\Users\damion\recall-rogue\'
+# 2. Mac: scp the tar to the VM's C: drive (bypasses the VirtioFS 2 GB read limit)
+time scp -C /Users/damion/CODE/WINDOWS_VM/rr-sync.tar damion@<IP>:'C:\Users\damion\rr-sync.tar'
+
+# 3. VM: wipe stale dirs, then tar -xf from C:\ (Windows 11 ships tar.exe from libarchive — handles any size)
+ssh damion@<IP> "powershell -Command \"cd C:\Users\damion\recall-rogue; Remove-Item -Recurse -Force public -ErrorAction SilentlyContinue; Remove-Item -Recurse -Force src -ErrorAction SilentlyContinue; Remove-Item -Recurse -Force src-tauri\src -ErrorAction SilentlyContinue; tar -xf C:\Users\damion\rr-sync.tar; Get-ChildItem public -Recurse -File | Measure-Object | Select-Object Count\""
+```
+
+**Why not plain zip:** PowerShell's `Expand-Archive` uses `System.IO.Compression.ZipFile` which errors on zip64 and archives near 2 GB with `"The file size exceeds the limit allowed and cannot be saved."` Tar has no such limit and is 1:1 as fast on store-only archives.
+
+**Why not rsync:** No rsync binary on Windows 11 ARM. The `cwRsync` winget package does not exist in the public winget source (verified 2026-04-20). Installing Cygwin just for rsync adds a maintenance burden for a problem that tar+scp already solves.
+
+**Why not VirtioFS for big files:** UTM's VirtioFS driver on Windows has a ~2 GB single-file read cap — confirmed 2026-04-20 when both `Copy-Item Z:\rr-sync.tar C:\` and `tar -xf Z:\rr-sync.tar` failed with `"The file size exceeds the limit allowed and cannot be saved."` The file *shows up* in `dir Z:\` with the correct size, but reads past the cap fail. Below ~1 GB it works fine; above, switch to scp. If this ever needs to be crossed, split the tar: `split -b 900m rr-sync.tar rr-sync.tar.part-` on Mac, reassemble on VM with `cmd /c "copy /b rr-sync.tar.part-* rr-sync.tar"`.
+
+**Rules:**
+- Always wipe the target dirs with `Remove-Item -Recurse -Force` before `tar -xf`. Tar merges, it does not mirror — stale files would pile up otherwise.
+- Keep the tar at `/Users/damion/CODE/WINDOWS_VM/rr-sync.tar` (and its VM copy at `C:\Users\damion\rr-sync.tar`) so subsequent diffs are easy to reason about. Delete both after a build cycle if disk pressure matters.
+- For selective updates (only config files changed), tar just those paths — creation time scales with file count.
+
+### Pulling artifacts back VM -> Mac
+
+For build outputs (exe + DLLs + small set of files), plain `scp` is fine — it's a handful of files, not thousands:
+
+```bash
+scp damion@<IP>:'C:\Users\damion\recall-rogue\win-build-out\*' /Users/damion/CODE/WINDOWS_VM/build-artifacts/
+```
+
+If you ever need to pull back a whole `target/release/` tree, tar on the VM first and scp the tar (same reasoning as Mac → VM):
+
+```bash
+ssh damion@<IP> "powershell -Command \"tar -cf C:\Users\damion\rr-build-out.tar -C C:\Users\damion\recall-rogue\win-build-out .\""
+scp damion@<IP>:'C:\Users\damion\rr-build-out.tar' /Users/damion/CODE/WINDOWS_VM/
+tar -xf /Users/damion/CODE/WINDOWS_VM/rr-build-out.tar -C /Users/damion/CODE/Recall_Rogue/steam/windows-build/
 ```
 
 ### Pull artifacts VM -> Mac
@@ -107,22 +150,58 @@ scp damion@<IP>:'C:\Users\damion\recall-rogue\src-tauri\target\release\bundle\ns
 
 ## Windows Build Workflow
 
+See the canonical tar+scp sync above. The build step itself uses `cargo tauri build --target x86_64-pc-windows-msvc --no-bundle` — **`--no-bundle`**, not `--bundles none`. The latter has been invalid since Tauri 2.x (only `msi` and `nsis` are valid `--bundles` values). For Steam depot uploads the raw exe is what you want — no installer wrapper, since Steam is the installer.
+
+Also: `cargo tauri build` passes through to `cargo build` and triggers `tauri.conf.json`'s `beforeBuildCommand` (`npm run build`). When the frontend has ALREADY been built in the sync step, pass `--config "{\"build\":{\"beforeBuildCommand\":\"\"}}"` to skip the duplicate frontend build on the VM.
+
 ```bash
-# 1. Sync latest code from Mac
-rsync -avz --progress --exclude='node_modules' --exclude='.git' --exclude='dist' --exclude='src-tauri/target' --exclude='*.db' -e ssh /Users/damion/CODE/Recall_Rogue/ damion@<IP>:'C:\Users\damion\recall-rogue\'
+# 1. Sync latest code from Mac (canonical tar+scp — see Sync section above)
+COPYFILE_DISABLE=1 tar --exclude='src-tauri/target' --exclude='node_modules' --exclude='.DS_Store' --exclude='._*' -cf /Users/damion/CODE/WINDOWS_VM/rr-sync.tar public src src-tauri package.json package-lock.json vite.config.ts tsconfig.json tsconfig.node.json index.html svelte.config.js
+scp -C /Users/damion/CODE/WINDOWS_VM/rr-sync.tar damion@<IP>:'C:\Users\damion\rr-sync.tar'
+ssh damion@<IP> "powershell -Command \"cd C:\Users\damion\recall-rogue; Remove-Item -Recurse -Force public,src,src-tauri\src -ErrorAction SilentlyContinue; tar -xf C:\Users\damion\rr-sync.tar\""
 
 # 2. Install/update npm deps (first time or after package.json changes)
-ssh damion@<IP> "cd C:\Users\damion\recall-rogue && npm install"
+ssh damion@<IP> "cd C:\Users\damion\recall-rogue && npm install --no-fund --no-audit --ignore-scripts"
 
-# 3. Build Tauri Windows exe
-ssh -o ServerAliveInterval=30 damion@<IP> "cd C:\Users\damion\recall-rogue && npm run steam:build 2>&1"
+# 3. Build frontend on VM (prebuild scripts + vite) — see build script template for exact sequence
 
-# 4. Copy artifact back to Mac
-scp damion@<IP>:'C:\Users\damion\recall-rogue\src-tauri\target\release\bundle\nsis\*.exe' /Users/damion/CODE/WINDOWS_VM/
+# 4. Build Tauri x86_64 exe (NO installer, frontend already built)
+#    Load MSVC cross tools FIRST: $vsBase\VC\Tools\MSVC\<ver>\bin\Hostarm64\x64 on PATH
+ssh -o ServerAliveInterval=30 damion@<IP> "cd C:\Users\damion\recall-rogue\src-tauri && cargo tauri build --target x86_64-pc-windows-msvc --no-bundle --config `"{\`"build\`":{\`"beforeBuildCommand\`":\`"\`"}}`""
 
-# 5. Test — launch dev server on VM
-ssh damion@<IP> "cd C:\Users\damion\recall-rogue && npm run dev"
+# 5. Copy artifact back to Mac
+scp damion@<IP>:'C:\Users\damion\recall-rogue\src-tauri\target\x86_64-pc-windows-msvc\release\recall-rogue.exe' /Users/damion/CODE/WINDOWS_VM/build-artifacts/
 ```
+
+### Memory pressure during link (LLVM OOM on 4 GB VM)
+
+The release binary embeds the ~1.6 GB `dist/` folder via Tauri's `frontendDist` codegen. Linking it requires ~20–25 GB of committed memory for a brief window, which overflows the default system-managed 12 GB pagefile on a 4 GB VM. Symptom:
+
+```
+rustc-LLVM ERROR: out of memory
+Allocation failed
+error: could not compile `recall-rogue` (bin "recall-rogue")
+... (exit code: 0xc0000409, STATUS_STACK_BUFFER_OVERRUN)
+```
+
+Lowering `opt-level` does NOT help — the memory demand is from linking the embedded resource blob, not LLVM optimization passes. Tested opt-level=3 → 1 on 2026-04-20, same OOM.
+
+**Fix: bump the pagefile to 32 GB fixed (48 GB max) and reboot.** Once, not per-build:
+
+```powershell
+# On the VM:
+$c = Get-CimInstance Win32_ComputerSystem; $c.AutomaticManagedPagefile = $false; $c | Set-CimInstance
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" `
+  -Name "PagingFiles" -Value "C:\pagefile.sys 32768 49152" -Type MultiString
+Restart-Computer -Force
+# After reboot, verify:
+Get-CimInstance Win32_PageFileUsage | Select-Object Name,AllocatedBaseSize
+# Should show: C:\pagefile.sys  32768
+```
+
+VM disk must have ≥50 GB free for this pagefile size. Once set, the link takes ~4 min and produces a ~1.35 GB exe.
+
+**Do NOT use `cargo xwin build` from the Mac as the primary Windows path.** It produces an 11 MB exe that's missing the embedded frontend — the resulting Steam build is broken. The VM path above is the working path; see `docs/gotchas.md` 2026-04-20 "Windows cross-compile vs VM build".
 
 ## Troubleshooting
 
@@ -132,7 +211,10 @@ ssh damion@<IP> "cd C:\Users\damion\recall-rogue && npm run dev"
 - **msstore certificate errors:** Always add `--source winget` to winget install commands
 - **PATH not refreshed after install:** Prepend `$env:Path = [System.Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [System.Environment]::GetEnvironmentVariable('Path','User');` to PowerShell commands
 - **Key auth fails:** Fix with `sshpass -p 'chrx' ssh damion@<IP> "powershell -Command \"Set-Content -Path 'C:\ProgramData\ssh\administrators_authorized_keys' -Value 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEH21agjJ+Rb9aCzEWOiXTSJj0C0QgVBvVr3yFan3muO mulda@IntelliDows'; icacls 'C:\ProgramData\ssh\administrators_authorized_keys' /inheritance:r /grant 'SYSTEM:(F)' /grant 'Administrators:(F)'; Restart-Service sshd\""
-- **rsync backslash issues:** Use single quotes around Windows paths in rsync/scp commands
+- **rsync backslash issues:** N/A — do not use rsync on Windows. See canonical tar+scp workflow.
+- **"invalid value 'none' for '--bundles'"**: Use `--no-bundle` instead. Valid `--bundles` values in Tauri 2 are `msi` and `nsis` only.
+- **PowerShell `$ErrorActionPreference = "Stop"` trapping native stderr as terminating errors**: Remove it from build scripts. Use `cmd /c "... 2>&1"` and check `$LASTEXITCODE` explicitly — Node scripts that print warnings to stderr (e.g. `audit-fact-sprites.mjs` printing `"facts.db not found at ..."`) would otherwise kill the entire build.
+- **Node `Assertion failed: UV_HANDLE_CLOSING, src\win\async.c`** during a data build on the VM: you have macOS AppleDouble files (`._*.json`) in your synced tree. `build-facts-db.mjs` / `build-curated-db.mjs` call `JSON.parse` on every file matching the glob, and the 4-byte AppleDouble header crashes libuv when the error bubbles up. Always sync with `COPYFILE_DISABLE=1 tar ... --exclude='._*'`. If already present, purge with `Get-ChildItem public -Recurse -Filter '._*' | Remove-Item -Force`.
 
 ---
 
