@@ -1,18 +1,36 @@
 /**
  * LAN Discovery Service — HTTP-based scanner for Recall Rogue LAN servers.
  *
- * Probes every host in one or more /24 subnets via GET /mp/discover.
+ * Probes hosts in the local subnet via GET /mp/discover.
  * Works on both Tauri and web platforms.
  *
  * The /mp/discover endpoint returns:
  *   { game: "recall-rogue", version: "...", hostName: "...", port: N }
  *
  * Only responses where `game === "recall-rogue"` are accepted.
+ *
+ * # Scan Strategy (M3)
+ *
+ * Probing all 254 hosts in a /24 takes 50+ parallel fetches and may exhaust
+ * browser socket pools. The optimised strategy is:
+ *
+ * Default scan (fullScan: false):
+ *   1. Quick probe to `.1` (gateway heuristic) at 300ms.
+ *      If it responds, short-circuit immediately.
+ *   2. Otherwise, probe a compact set: .2..32, .100..110, .200..210, .254
+ *      (≤55 IPs per subnet, well within browser socket limits).
+ *
+ * Full scan (fullScan: true):
+ *   Probe all 254 hosts (.1–.254) directly — no separate gateway step.
+ *   Use for background polling where latency is less critical.
+ *
+ * TODO: Consider Tauri mDNS/Bonjour via `mdns-sd` or `zeroconf` Rust crate for
+ * O(1) zero-config discovery once Tauri plugin support is confirmed.
  */
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
-/** Default LAN server port. Matches LAN_DEFAULT_PORT in lan-server.ts. */
+/** Default LAN server port. Matches DEFAULT_PORT in lan.rs. */
 export const LAN_DEFAULT_PORT = 19738;
 
 /** Maximum concurrent probe fetch requests per batch pass. */
@@ -21,12 +39,28 @@ const PROBE_BATCH_SIZE = 50;
 /** Per-probe timeout default in milliseconds. */
 const DEFAULT_PROBE_TIMEOUT_MS = 400;
 
+/** Timeout for the quick gateway probe (M3 step 1). */
+const GATEWAY_PROBE_TIMEOUT_MS = 300;
+
 /**
  * Subnets to fall back to when Tauri's `getLocalIps` is unavailable
  * (web builds, non-Tauri contexts). Covers the most common home/office
  * router ranges.
  */
 const FALLBACK_SUBNETS = ['192.168.0', '192.168.1', '10.0.0', '10.0.1'];
+
+/**
+ * M3: Compact host-octet ranges for the default (non-fullScan) second pass.
+ *
+ * Starts at .2 — .1 is covered by the separate gateway quick probe.
+ * Covers ≤54 IPs per subnet after the gateway probe (total ≤55 with .1).
+ */
+const COMPACT_RANGES: ReadonlyArray<[number, number]> = [
+  [2, 32],    // DHCP pool start — most home routers hand out .2–.32
+  [100, 110], // Common static reservation band
+  [200, 210], // Alternate static band
+  [254, 254], // Gateway alternate (common on ISP-provided routers)
+];
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -53,21 +87,49 @@ interface DiscoverResponse {
 // ── Internal helpers ──────────────────────────────────────────────────────────
 
 /**
- * Extract the /24 subnet prefix from an IPv4 address.
- * e.g. `"192.168.1.42"` → `"192.168.1"`
+ * M2: Extract the subnet prefix from an IP address, with IPv6 awareness.
+ *
+ * IPv4:  `"192.168.1.42"` → `"192.168.1"`  (first three octets)
+ * IPv6 link-local (fe80::/10): returns `null` — skip probing (address space too large).
+ * IPv6 ULA (fc00::/7):  returns the /64 prefix (first 4 hextets).
+ * IPv6 other / malformed: returns `null`.
+ * Empty string: returns `null`.
  */
-function toSubnetPrefix(ip: string): string {
+export function toSubnetPrefix(ip: string): string | null {
+  if (!ip) return null;
+
+  // IPv6 — detected by presence of ':'
+  if (ip.includes(':')) {
+    const lower = ip.toLowerCase();
+    // Link-local: fe80::/10 — skip (too many addresses, link-local is non-routable anyway)
+    if (lower.startsWith('fe80')) return null;
+    // ULA: fc00::/7 — includes fc00:: and fd00:: prefixes
+    if (lower.startsWith('fc') || lower.startsWith('fd')) {
+      // Return the /64 prefix: first 4 hextets
+      const hextets = lower.split(':');
+      if (hextets.length < 4) return null;
+      return hextets.slice(0, 4).join(':');
+    }
+    // Any other IPv6 (global unicast, etc.) — don't probe
+    return null;
+  }
+
+  // IPv4 — split on '.' and take first three octets
   const parts = ip.split('.');
+  if (parts.length < 3) return null;
   return parts.slice(0, 3).join('.');
 }
 
 /**
- * Resolve the list of /24 subnet prefixes to scan.
+ * Resolve the list of subnet prefixes to scan.
  *
  * Priority:
  * 1. Caller-supplied `subnets` option (used as-is).
  * 2. Subnets derived from `getLocalIps()` on Tauri desktop.
  * 3. Hardcoded FALLBACK_SUBNETS for web/mobile builds.
+ *
+ * M2: IPv6 link-local addresses from `getLocalIps()` are silently skipped.
+ *     IPv6 ULA addresses yield /64 prefixes.
  */
 async function resolveSubnets(callerSubnets?: string[]): Promise<string[]> {
   if (callerSubnets && callerSubnets.length > 0) {
@@ -80,9 +142,11 @@ async function resolveSubnets(callerSubnets?: string[]): Promise<string[]> {
     const { getLocalIps } = await import('./lanServerService');
     const ips = await getLocalIps();
     if (ips.length > 0) {
-      // Deduplicate subnet prefixes derived from each local IP.
-      const prefixSet = new Set<string>(ips.map(toSubnetPrefix));
-      return Array.from(prefixSet);
+      // Deduplicate subnet prefixes derived from each local IP (M2: null = skip).
+      const prefixSet = new Set<string>(
+        ips.map(toSubnetPrefix).filter((p): p is string => p !== null),
+      );
+      if (prefixSet.size > 0) return Array.from(prefixSet);
     }
   } catch {
     // getLocalIps not available (non-Tauri build) — fall through to defaults.
@@ -111,6 +175,27 @@ async function runInBatches<T>(
   }
 
   return results;
+}
+
+/**
+ * M3: Build the compact set of host octets to probe for a given prefix.
+ *
+ * For fullScan: all octets 1..254 (exhaustive /24 sweep).
+ * For compact (default): COMPACT_RANGES, starting at 2 (.1 is covered by the
+ * gateway quick probe that runs before this step).
+ */
+function buildOctetList(fullScan: boolean): number[] {
+  if (fullScan) {
+    // Full /24 — used by background refresh path (no gateway pre-probe)
+    return Array.from({ length: 254 }, (_, i) => i + 1);
+  }
+  const octets: number[] = [];
+  for (const [start, end] of COMPACT_RANGES) {
+    for (let n = start; n <= end; n++) {
+      if (!octets.includes(n)) octets.push(n);
+    }
+  }
+  return octets;
 }
 
 // ── Public API ────────────────────────────────────────────────────────────────
@@ -166,42 +251,76 @@ export async function probeLanServer(
 /**
  * Scan the local network for Recall Rogue LAN servers.
  *
- * Probes each host in the /24 address space of the detected local subnets.
- * Hosts `.0` (network address) and `.255` (broadcast) are skipped.
- * Probes run in batches of 50 to avoid exhausting browser socket limits.
+ * M3 scan strategy:
  *
- * @param opts.timeout  - Per-IP probe timeout in ms (default: 400).
- * @param opts.port     - Port to probe on each host (default: `LAN_DEFAULT_PORT`).
- * @param opts.subnets  - Explicit /24 prefixes to scan, e.g. `['192.168.1']`.
- *                        When omitted, subnets are derived from local IP addresses
- *                        via `getLocalIps()` (Tauri) or hardcoded fallback list.
+ * Default (fullScan: false):
+ *   Step 1 — Quick probe to `.1` per subnet (gateway heuristic, 300ms timeout).
+ *             If a valid server responds, return immediately.
+ *   Step 2 — Compact scan: octets 2–32, 100–110, 200–210, 254 (≤54 IPs/subnet).
+ *
+ * Full scan (fullScan: true):
+ *   Probe all 254 hosts (.1–.254) directly. No separate gateway step.
+ *   Use for background refresh polling where latency is not critical.
+ *
+ * @param opts.timeout   - Per-IP probe timeout in ms (default: 400).
+ * @param opts.port      - Port to probe on each host (default: `LAN_DEFAULT_PORT`).
+ * @param opts.subnets   - Explicit subnet prefixes to scan, e.g. `['192.168.1']`.
+ *                         When omitted, subnets are derived from local IPs (Tauri)
+ *                         or from FALLBACK_SUBNETS (web builds).
+ * @param opts.fullScan  - When true, probe all 254 hosts in each /24. Default false.
  * @returns Discovered servers sorted ascending by IP address string.
  */
 export async function scanLanForServers(opts?: {
   timeout?: number;
   port?: number;
   subnets?: string[];
+  fullScan?: boolean;
 }): Promise<DiscoveredLanServer[]> {
   const timeout = opts?.timeout ?? DEFAULT_PROBE_TIMEOUT_MS;
   const port = opts?.port ?? LAN_DEFAULT_PORT;
+  const fullScan = opts?.fullScan ?? false;
   const subnets = await resolveSubnets(opts?.subnets);
 
-  // Build one probe task per host across all subnets.
-  const tasks: Array<() => Promise<DiscoveredLanServer | null>> = [];
+  if (fullScan) {
+    // M3 full-scan path: probe all 254 hosts directly (no separate gateway step).
+    const octetList = buildOctetList(true);
+    const tasks: Array<() => Promise<DiscoveredLanServer | null>> = [];
+    for (const prefix of subnets) {
+      for (const octet of octetList) {
+        tasks.push(() => probeLanServer(`${prefix}.${octet}`, port, timeout));
+      }
+    }
+    const raw = await runInBatches(tasks, PROBE_BATCH_SIZE);
+    const found = raw.filter((r): r is DiscoveredLanServer => r !== null);
+    found.sort((a, b) => a.ip.localeCompare(b.ip));
+    return found;
+  }
 
+  // M3 default path:
+
+  // Step 1: Quick probe — gateway (.1) per subnet at shorter timeout.
+  // If any subnet's gateway responds with a valid server, short-circuit.
+  const quickHits = await Promise.all(
+    subnets.map(prefix => probeLanServer(`${prefix}.1`, port, GATEWAY_PROBE_TIMEOUT_MS)),
+  );
+  const quickFound = quickHits.filter((r): r is DiscoveredLanServer => r !== null);
+  if (quickFound.length > 0) {
+    quickFound.sort((a, b) => a.ip.localeCompare(b.ip));
+    return quickFound;
+  }
+
+  // Step 2: Compact scan (octets 2–32, 100–110, 200–210, 254).
+  // .1 was already probed above; COMPACT_RANGES starts at 2 to avoid redundancy.
+  const octetList = buildOctetList(false);
+  const tasks: Array<() => Promise<DiscoveredLanServer | null>> = [];
   for (const prefix of subnets) {
-    // .1 through .254 — skip .0 (network) and .255 (broadcast)
-    for (let octet = 1; octet <= 254; octet++) {
-      const ip = `${prefix}.${octet}`;
-      tasks.push(() => probeLanServer(ip, port, timeout));
+    for (const octet of octetList) {
+      tasks.push(() => probeLanServer(`${prefix}.${octet}`, port, timeout));
     }
   }
 
   const raw = await runInBatches(tasks, PROBE_BATCH_SIZE);
-
-  // Filter nulls, sort by IP (lexicographic on the string — adequate for /24 ranges).
   const found = raw.filter((r): r is DiscoveredLanServer => r !== null);
   found.sort((a, b) => a.ip.localeCompare(b.ip));
-
   return found;
 }

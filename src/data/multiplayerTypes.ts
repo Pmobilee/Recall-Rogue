@@ -157,6 +157,22 @@ export interface RaceProgress {
   encountersWon: number;
   isFinished: boolean;
   result?: 'victory' | 'defeat' | 'retreat';
+  /**
+   * Epoch ms when this player finished the race.
+   * Set at the moment isFinished flips to true — used for accurate duration computation
+   * on the results screen. Undefined for in-progress broadcasts.
+   */
+  finishedAt?: number;
+  /**
+   * Total correct quiz answers answered during this race.
+   * Replaces the encountersWon * 3 heuristic when provided.
+   */
+  correctCount?: number;
+  /**
+   * Total wrong quiz answers answered during this race.
+   * Replaces the derived wrong-count formula when provided.
+   */
+  wrongCount?: number;
 }
 
 /** Race mode final results */
@@ -172,7 +188,10 @@ export interface RaceResults {
     duration: number;
     result: 'victory' | 'defeat' | 'retreat';
   }>;
-  winnerId: string;
+  /**
+   * ID of the winning player, or null when the race ends in a tie.
+   */
+  winnerId: string | null;
   seed: number;
 }
 

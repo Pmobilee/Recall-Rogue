@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-07 — co-op enemy attacks now hit ALL players for full damage (was round-robin single target). `targetPlayerId` in `DuelTurnResolution` and `SharedEnemyState` intents is now `string | 'all'`.
+> **Last verified:** 2026-04-20 — 9 logic fixes: race tie-breaker, both-defeated null winner, fork resend on late join, broadcast isActive guard, finishedAt timestamp, real quiz counts, duel action clamping, mode-specific scoring, FSRS batch on race finish. New `multiplayerElo.ts`. See changelog below.
 
 ## Modes
 
@@ -152,6 +152,52 @@ Two optional fields added to the `options` argument of `createRunState()`:
 | `providedSeed` | `number?` | If present, used as `runSeed` instead of `crypto.getRandomValues()`. Required for Race and Same Cards modes to ensure all players share the same seed. |
 | `multiplayerMode` | `MultiplayerMode?` | Stored on `RunState.multiplayerMode`. |
 
+## Race Mode Fixes & Improvements (2026-04-20)
+
+### H1 — Deterministic tie-breaker
+
+`determineRaceWinner(a, b, startMs)` in `multiplayerGameService.ts` replaces the old `localScore >= opponentScore ? localId : opponentId` one-liner. Hierarchy (both clients produce identical results):
+
+1. Higher `score`
+2. Higher `floor`
+3. Higher `accuracy`
+4. Lower duration (`finishedAt - startMs`), lower is better
+5. Lexicographic `playerId` (tiebreaker of last resort)
+
+Returns `null` only when every axis is identical (true tie — astronomically unlikely).
+
+### M8 — Opponent finishedAt timestamp
+
+`RaceProgress` now carries `finishedAt?: number` (epoch ms). Set at the exact moment `isFinished` flips `true` — both the interval tick path and the `updateLocalProgress()` path stamp it. `_tryEmitRaceResults()` uses `opponentProgress.finishedAt` for the opponent's duration (not local clock), giving an accurate wall-clock measurement.
+
+### M9 — Real correct/wrong counts
+
+`RaceProgress` now carries `correctCount?: number` and `wrongCount?: number`. `_tryEmitRaceResults()` uses these when present; falls back to the `encountersWon * 3` proxy only for old peers that don't send counts.
+
+Call `recordRaceAnswer(factId, correct)` on each quiz answer during a race run to populate the tracker.
+
+### H6 — FSRS batch update on race finish
+
+Race quiz answers now update the local FSRS scheduler. `recordRaceAnswer()` accumulates correct/wrong fact IDs during the run. On race finish (when `isFinished` flips true), `_applyRaceFsrsBatch()` calls `updateReviewState()` from `playerData.ts` for each fact — one shot, not per-answer.
+
+Race results DO update the FSRS scheduler — answers count toward long-term learning, batch-written on race finish.
+
+TODO(H6-fsrs-wire): If the import path `../ui/stores/playerData` changes, update `_applyRaceFsrsBatch()` accordingly.
+
+### H12 — Scene-lifecycle cleanup guard
+
+`startRaceProgressBroadcast()` now returns `{ stop, isActive }` (plus backward-compat callable). An `_raceProgressActive` flag is checked inside each interval tick — if `stop()` was called before the tick fires, the tick is a no-op instead of calling `getProgress()` on a destroyed object.
+
+### M11 — Mode-specific scoring
+
+`calculateScoreForMode(mode, stats)` computes scores per mode:
+
+| Mode | Formula |
+|------|---------|
+| `race` / `same_cards` / `coop` | `floors*100 + damage + chain*50 + correct*10 - wrong*5 + perfectEncounters*200` |
+| `trivia_night` | `correctCount*100 + speedBonusTotal - wrongCount*25` |
+| `duel` | `(survived ? 1000 : 0) + damageDealt - damageTaken + correctCount*50` |
+
 ## gameFlowController Race Mode Wiring
 
 Race mode is wired into `src/services/gameFlowController.ts`. The `ActiveRunMode` union includes `'multiplayer_race'`. Module-level state:
@@ -285,6 +331,26 @@ Host-authoritative model prevents desync. Both players submit actions each turn;
 
 Source: `src/services/multiplayerGameService.ts`.
 
+### H2 — Both-defeated outcome
+
+When both players die simultaneously from the same enemy attack, `DuelTurnResolution.winnerId` is `null` (was: arbitrary tie-break using total damage). `reason` is `'both_defeated'`. Result consumers (UI, scoring) must treat `null` winner as **"Tie"**.
+
+`DuelTurnResolution.winnerId` type is now `string | null`.
+
+### M10 — Duel action validation
+
+`submitDuelTurnAction()` and the `mp:duel:cards_played` incoming handler both clamp:
+- `damageDealt = Math.max(0, action.damageDealt)`
+- `blockGained = Math.max(0, action.blockGained)`
+
+A `console.warn` is logged if the original value was negative. Prevents bad network payloads from corrupting the host's accumulated damage totals.
+
+### H7 — Fork seed resend on late guest join
+
+`onPlayerJoinMidGame(playerId)` re-broadcasts the current fork seeds to all players. Guests that already applied the seeds treat the re-broadcast as idempotent (same fork positions overwrite with same values — no divergence).
+
+`applyReceivedForkSeeds()` is safe to call multiple times with the same seeds.
+
 ## Co-op Partner State Broadcasting
 
 **Source:** `src/services/multiplayerCoopSync.ts`, `src/CardApp.svelte`
@@ -344,6 +410,27 @@ case 'boss':   node.enemyId = pickBossForFloor(bossFloor, rng()); break
 
 ## ELO System
 
+Two ELO implementations co-exist:
+
+### eloMatchmakingService.ts (matchmaking)
+
+Starting rating 1000, K-factor split at 20 games. Manages match history and rank tiers. Used for pre-game matchmaking queue.
+
+### multiplayerElo.ts (per-match deltas)
+
+Simple per-match Elo for applying deltas at race/duel end. `DEFAULT_RATING = 1500`, `K_FACTOR = 32` (fixed, no split).
+
+API:
+- `computeEloDelta(localRating, opponentRating, outcome)` — signed integer delta
+- `applyEloResult(localRating, opponentRating, outcome)` — `{ newLocal, newOpponent, localDelta, opponentDelta }`
+- `getLocalMultiplayerRating()` / `persistLocalMultiplayerRating(rating)` — profile integration stubs
+
+TODO(M19-profile-wire): `PlayerProfile` needs a `multiplayerRating: number` field before persistence works. Current stubs return `DEFAULT_RATING` and log a debug message.
+
+When `lobby.isRanked === true`, apply Elo delta at race/duel end by calling `applyEloResult()`.
+
+### eloMatchmakingService.ts rank tiers (for ranked lobby display)
+
 Starting rating 1000. Standard ELO formula: `E = 1 / (1 + 10^((Rb - Ra) / 400))`.
 
 | Constant | Value |
@@ -386,11 +473,32 @@ No combat, no cards. Pure quiz party mode for 2-8 players.
 |----------|-------|
 | Base points (correct) | 1000 |
 | Max speed bonus | 500 |
-| Speed bonus formula | `round(500 * (1 - timingMs / timeLimitMs))` |
+| Speed bonus formula | `round(500 * max(0, 1 - clamp(timingMs,1,timeLimitMs+2000) / timeLimitMs))` |
 | Total max per question | 1500 |
 | Default rounds | 15 (range: 5-30) |
 | Default time limit | 15s per question |
 | Reveal delay | 3s between rounds |
+| Late-answer grace window | 2s beyond time limit (`ANSWER_GRACE_MS`) |
+
+### Fact pool deduplication
+
+When the host calls `initTriviaGame(players, rounds, true, factPool)` with a non-undefined
+`factPool`, the service tracks used fact IDs per game and refuses to repeat any fact. If all
+facts have been asked and the host requests another question, `onTriviaPoolExhausted` fires
+and the game transitions to `finished` with `reason: 'empty_pool'` in the broadcast.
+
+`factPool = undefined` (default) disables the guard entirely.
+
+### allIncorrect flag
+
+`TriviaRoundResult.allIncorrect` is `true` when every player timed out or answered wrong.
+Included in the `mp:trivia:scores` broadcast for UI feedback (e.g. "Nobody knew that one!").
+
+### Late-answer handling
+
+Answers with `timingMs > timeLimitMs + ANSWER_GRACE_MS (2000ms)` are forced to `selectedIndex = -1`
+(timeout, 0 points). `calculateTriviaPoints` clamps timing before computing the speed bonus to
+prevent bogus values from 0ms, negative, or over-limit inputs.
 
 Source: `src/services/triviaNightService.ts`.
 
@@ -730,6 +838,76 @@ Enemy intent rolls use a named fork `'enemyIntents'` of the run RNG via `getRunR
 
 ---
 
+## Co-op Sync Primitives (2026-04-20)
+
+New helpers in `src/services/multiplayerCoopSync.ts` providing barrier guards, solo-survivor enforcement, AFK detection, and HUD shape bridging.
+
+### hasPendingBarrier
+
+```typescript
+export function hasPendingBarrier(): boolean
+```
+
+Returns `true` when a turn-end barrier promise is in flight. Equivalent to `isLocalTurnEndPending()` — exposed for test assertions and diagnostic UI.
+
+### H18 — Solo-survivor rule and handleCoopPlayerDeath
+
+**Rule:** When any player's HP reaches 0 mid-encounter in co-op, the encounter ends for ALL players immediately. Both players receive a loss. There is no solo-survivor path.
+
+```typescript
+export function handleCoopPlayerDeath(playerId: string): void
+```
+
+(a) Broadcasts `mp:coop:player_died` so peers see the event.
+(b) Resolves any in-flight barrier with `'cancelled'` immediately so the encounter-end path is unblocked.
+
+**Wiring (TODO):** Call `handleCoopPlayerDeath(_localPlayerId)` from `encounterBridge.ts` at the HP-commit site inside `handleEndTurn` when `run.multiplayerMode === 'coop' && newHp <= 0`.
+
+Message type `mp:coop:player_died` is registered in `MultiplayerMessageType` union.
+
+### H19/M5 — AFK / unresponsive partner detection
+
+```typescript
+export function onPartnerUnresponsive(cb: (playerId: string) => void): () => void
+export function markPartnerUnresponsive(playerId: string): void
+```
+
+`onPartnerUnresponsive` subscribes to partner-AFK events. The callback receives the unresponsive `playerId`. Returns an unsubscribe function.
+
+`markPartnerUnresponsive` fires all callbacks immediately (e.g. triggered by a lobby-disconnect event from upstream).
+
+The sync module runs a heartbeat poll every 5 seconds. If no `mp:coop:partner_state` is received from a known partner for 90 seconds, `onPartnerUnresponsive` callbacks fire. This does NOT kick the player — upstream decides the action (show warning, auto-resolve, etc.).
+
+| Constant | Value | Purpose |
+|---|---|---|
+| `PARTNER_HEARTBEAT_POLL_MS` | 5 000 ms | How often the poll checks heartbeat ages |
+| `PARTNER_UNRESPONSIVE_TIMEOUT_MS` | 90 000 ms | Absence duration before declaring unresponsive |
+
+### M17 — partnerStateToRaceProgressShape
+
+```typescript
+export function partnerStateToRaceProgressShape(state: PartnerState): Partial<RaceProgress>
+```
+
+Maps a `PartnerState` (transport layer) into the `Partial<RaceProgress>` shape the `MultiplayerHUD` consumes:
+
+| PartnerState field | RaceProgress field |
+|---|---|
+| `playerId` | `playerId` |
+| `hp` | `playerHp` |
+| `maxHp` | `playerMaxHp` |
+| `block` | `playerBlock` |
+| `score` (default 0) | `score` |
+| `accuracy` (default 0) | `accuracy` |
+
+`floor`, `encountersWon`, `isFinished`, `result` are NOT populated — the caller (`CardApp.svelte`) fills those from its own run-progress tracking. HUD wire-up is a UI-wave task.
+
+### Message types added (2026-04-20)
+
+- `mp:coop:player_died` — broadcast by `handleCoopPlayerDeath(playerId)`. Signals encounter-end to all peers. Registered in `MultiplayerMessageType` union.
+
+---
+
 ## Known Placeholders (2026-04-09)
 
 ### Player Display Names
@@ -830,3 +1008,132 @@ When creating a lobby, the host configures:
 The selector is floored at `MODE_MIN_PLAYERS[mode]` (always 2) and capped at `MODE_MAX_PLAYERS[mode]`. Non-host players see the settings as read-only badges.
 
 **Password UX:** When "Password" is selected, a password input appears with a show/hide eye toggle. The host's plaintext password is never sent over the network — only the SHA-256 hash reaches the backend.
+
+---
+
+## LAN Multiplayer (Embedded Server) — 2026-04-20
+
+LAN play uses an embedded Fastify-equivalent HTTP+WebSocket server started from the Tauri desktop process. Players on the same network can find and connect to a host's game without Steam or the cloud backend.
+
+### Key source files
+
+| File | Role |
+|------|------|
+| `src-tauri/src/lan.rs` | Rust embedded server (axum), Tauri commands |
+| `src-tauri/src/main.rs` | Tauri app setup, exit hook (C5) |
+| `src-tauri/src/steam.rs` | SteamState with active_lobby_id tracking (C5) |
+| `src/services/lanServerService.ts` | Tauri IPC wrappers (`startLanServer`, `stopLanServer`, `getLanServerStatus`, `getLocalIps`) |
+| `src/services/lanDiscoveryService.ts` | Subnet scanner (`scanLanForServers`, `probeLanServer`, `toSubnetPrefix`) |
+| `src/services/lanConfigService.ts` | localStorage persistence (`setLanServerUrl`, `getLanServerUrls`, `isLanMode`, `validatePrivateNetworkAddress`) |
+
+### C5 — Steam lobby cleanup on app exit
+
+`SteamState` in `steam.rs` carries an `active_lobby_id: Arc<Mutex<Option<u64>>>` field. It is set by the `steam_create_lobby` and `steam_join_lobby` Steamworks callbacks, and cleared by `steam_leave_lobby` or `steam_force_leave_active_lobby`.
+
+`main.rs` uses the Tauri v2 `.build(...).run(|app_handle, event| {...})` pattern to register a `RunEvent::Exit` handler. On exit:
+1. Locks `active_lobby_id` and calls `slot.take()`.
+2. If a lobby ID was present, calls `client.matchmaking().leave_lobby(lobby_id)` via the Steamworks client.
+3. The Steamworks SDK issues the leave message to Steam before the process terminates.
+
+A JS-callable command `steam_force_leave_active_lobby` is also exported for graceful shutdown paths (e.g. "Quit to Desktop" flow in the UI). It returns `true` when a lobby was left, `false` when none was active.
+
+Both paths guard against poisoned mutexes — the exit path logs a warning and skips the leave rather than panicking.
+
+### M1 — LAN bound-address reporting
+
+`lan_start_server` in `lan.rs` returns `LanStartResult`:
+
+```rust
+pub struct LanStartResult {
+    pub port: u16,
+    pub local_ips: Vec<String>,
+    pub lan_server_url: String,           // "http://192.168.1.42:19738"
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub warning: Option<String>,          // "local-only" when no LAN NIC found
+}
+```
+
+Bind behaviour:
+- `collect_local_ips()` returns routable interfaces → bind to `0.0.0.0:port`; `lan_server_url` uses the first routable IP; `warning` is absent.
+- No routable interfaces → bind to `127.0.0.1:port`; `lan_server_url` is `"http://127.0.0.1:<port>"`; `warning = "local-only"`.
+
+The TypeScript `LanStartResult` interface in `lanServerService.ts` mirrors this:
+
+```typescript
+export interface LanStartResult {
+  port: number;
+  localIps: string[];
+  lanServerUrl: string;
+  warning?: 'local-only' | string;
+}
+```
+
+`startLanServer()` logs a console warning when `result.warning === 'local-only'` so developers notice immediately.
+
+### M2 — IPv6 subnet parsing in `toSubnetPrefix()`
+
+`toSubnetPrefix(ip: string): string | null` (exported from `lanDiscoveryService.ts`):
+
+| Input | Output | Notes |
+|-------|--------|-------|
+| `"192.168.1.42"` | `"192.168.1"` | IPv4 /24 prefix |
+| `"10.0.0.5"` | `"10.0.0"` | IPv4 /24 prefix |
+| `"192.168"` | `null` | Malformed IPv4 — too few parts |
+| `""` | `null` | Empty |
+| `"fe80::1"` | `null` | IPv6 link-local (fe80::/10) — skip, non-routable |
+| `"fd12:3456:789a:0001::1"` | `"fd12:3456:789a:0001"` | IPv6 ULA fd prefix — /64 prefix |
+| `"fc00:0:0:1::1"` | `"fc00:0:0:1"` | IPv6 ULA fc prefix — /64 prefix |
+| `"2001:db8::1"` | `null` | Global unicast IPv6 — skip |
+| `"::1"` | `null` | Loopback — skip |
+
+`resolveSubnets()` calls `toSubnetPrefix()` on each IP returned by `getLocalIps()` and filters nulls, so link-local and non-ULA IPv6 addresses are silently skipped.
+
+### M3 — Reduced LAN probe fan-out
+
+`scanLanForServers(opts?)` in `lanDiscoveryService.ts` uses a two-phase strategy by default:
+
+**Phase 1 — Gateway quick probe (300ms timeout):**
+Probes `<subnet>.1` for each subnet concurrently. If any subnet returns a valid server, the full list is returned immediately without continuing to Phase 2.
+
+**Phase 2 — Compact scan:**
+If Phase 1 finds nothing, probes the compact range (`COMPACT_RANGES`):
+
+| Range | Octets | Rationale |
+|-------|--------|-----------|
+| `.2–.32` | 31 | DHCP pool start — most home routers |
+| `.100–.110` | 11 | Common static reservation band |
+| `.200–.210` | 11 | Alternate static band |
+| `.254` | 1 | ISP-router gateway alternate |
+
+Total: ≤55 probes per subnet (including the Phase 1 `.1` probe), well within browser socket pool limits. `COMPACT_RANGES` starts at `.2` — `.1` is already covered by Phase 1, preventing double-probing.
+
+**`fullScan: true` option:**
+Probes all 254 hosts (`.1–.254`) directly with no gateway pre-probe. Use for background refresh where latency is not critical.
+
+**Result:** Sorted ascending by IP string.
+
+### M21 — RFC1918 whitelist for LAN config
+
+`validatePrivateNetworkAddress(ip: string): AddressValidationResult` (exported from `lanConfigService.ts`) rejects public IPs before they can be stored. `setLanServerUrl()` calls it and throws if the address is not private.
+
+Accepted addresses:
+
+| Range | Type |
+|-------|------|
+| `127.0.0.0/8` | IPv4 loopback |
+| `10.0.0.0/8` | RFC1918 Class A private |
+| `172.16.0.0/12` | RFC1918 Class B private (172.16–172.31) |
+| `192.168.0.0/16` | RFC1918 Class C private |
+| `169.254.0.0/16` | IPv4 link-local (APIPA) |
+| `::1` | IPv6 loopback |
+| `fe80::/10` | IPv6 link-local |
+| `fc00::/7` | IPv6 ULA (fc/fd prefix) |
+
+Public IPv4 and global unicast IPv6 are rejected with a descriptive error string containing `"private-network"`. Malformed input is also rejected. Port validation is the caller's responsibility.
+
+```typescript
+export type AddressValidationResult =
+  | { ok: true }
+  | { ok: false; reason: string };
+```
+

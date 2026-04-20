@@ -72,7 +72,11 @@ export interface DuelTurnResolution {
   /** Running totals of damage contributed per player across all turns. */
   totalDamageByPlayer: Record<string, number>;
   isOver: boolean;
-  winnerId?: string;
+  /**
+   * ID of the winning player, or null when both players are defeated simultaneously
+   * (reason === 'both_defeated'). Result consumers must treat null as "Tie".
+   */
+  winnerId: string | null;
   reason?: 'enemy_defeated' | 'player_defeated' | 'both_defeated' | 'timeout';
 }
 
@@ -95,6 +99,9 @@ export interface SharedEnemyState {
 /** Interval handle for the 0.5 Hz progress broadcast loop. */
 let _raceProgressInterval: ReturnType<typeof setInterval> | null = null;
 
+/** Whether the broadcast loop is still logically active. */
+let _raceProgressActive = false;
+
 /** Latest snapshot received from the opponent. */
 let _opponentProgress: RaceProgress | null = null;
 
@@ -109,22 +116,47 @@ let _onRaceComplete: ((r: RaceResults) => void) | null = null;
 
 /** Whether the local race completion has already been handled. */
 let _localFinished = false;
-/** Timestamp when local player finished, used to compute duration. */
+/** Timestamp when local player started the race. */
 let _localStartMs = 0;
+
+/**
+ * Correct fact IDs collected during the race for FSRS batch update on finish.
+ * Populated by recordRaceAnswer().
+ */
+let _raceCorrectFactIds: string[] = [];
+
+/**
+ * Wrong fact IDs collected during the race for FSRS batch update on finish.
+ * Populated by recordRaceAnswer().
+ */
+let _raceWrongFactIds: string[] = [];
 
 /**
  * Start broadcasting race progress at 0.5 Hz (every 2 seconds).
  *
+ * Returns an object with a `stop()` cleanup method and an `isActive` getter.
+ * The returned `stop()` function (backward-compat: also callable directly as a fn)
+ * flips `isActive` to false immediately — interval ticks that fire after cleanup
+ * become no-ops instead of calling getProgress() on a destroyed object.
+ *
  * @param getProgress - Called each interval to snapshot the current state.
- * @returns Cleanup function — call it when the encounter ends.
+ * @returns `{ stop, isActive }` — call stop() when the encounter ends.
  */
-export function startRaceProgressBroadcast(getProgress: () => RaceProgress): () => void {
+export function startRaceProgressBroadcast(
+  getProgress: () => RaceProgress,
+): { stop: () => void; isActive: () => boolean } & (() => void) {
   _localStartMs = Date.now();
   _localFinished = false;
+  _raceCorrectFactIds = [];
+  _raceWrongFactIds = [];
 
   stopRaceProgressBroadcast();
+  _raceProgressActive = true;
 
   _raceProgressInterval = setInterval(() => {
+    // Guard: if active flag was flipped before this tick fires, become a no-op.
+    if (!_raceProgressActive) return;
+
     const progress = getProgress();
     _localProgress = progress;
 
@@ -134,16 +166,28 @@ export function startRaceProgressBroadcast(getProgress: () => RaceProgress): () 
     // Detect local finish and potentially emit race results
     if (progress.isFinished && !_localFinished) {
       _localFinished = true;
-      transport.send('mp:race:finish', progress as unknown as Record<string, unknown>);
+      // Stamp finishedAt at the moment isFinished flips true
+      const finishedProgress: RaceProgress = { ...progress, finishedAt: Date.now() };
+      _localProgress = finishedProgress;
+      transport.send('mp:race:finish', finishedProgress as unknown as Record<string, unknown>);
+      _applyRaceFsrsBatch();
       _tryEmitRaceResults();
     }
   }, 2000);
 
-  return stopRaceProgressBroadcast;
+  const stop = stopRaceProgressBroadcast;
+
+  // Return a callable function (backward compat) that also exposes .stop / .isActive
+  const result = Object.assign(stop, {
+    stop,
+    isActive: () => _raceProgressActive,
+  });
+  return result;
 }
 
 /** Stop the broadcast loop without destroying other state. */
 export function stopRaceProgressBroadcast(): void {
+  _raceProgressActive = false;
   if (_raceProgressInterval !== null) {
     clearInterval(_raceProgressInterval);
     _raceProgressInterval = null;
@@ -159,9 +203,69 @@ export function updateLocalProgress(progress: RaceProgress): void {
 
   if (progress.isFinished && !_localFinished) {
     _localFinished = true;
+    // Stamp finishedAt at the moment isFinished flips true
+    const finishedProgress: RaceProgress = { ...progress, finishedAt: Date.now() };
+    _localProgress = finishedProgress;
     const transport = getMultiplayerTransport();
-    transport.send('mp:race:finish', progress as unknown as Record<string, unknown>);
+    transport.send('mp:race:finish', finishedProgress as unknown as Record<string, unknown>);
+    _applyRaceFsrsBatch();
     _tryEmitRaceResults();
+  }
+}
+
+/**
+ * Record a quiz answer during a race run.
+ * Call this on each quiz answer so that FSRS can be batch-updated on race finish.
+ *
+ * @param factId  - The fact ID that was answered.
+ * @param correct - Whether the answer was correct.
+ */
+export function recordRaceAnswer(factId: string, correct: boolean): void {
+  if (correct) {
+    _raceCorrectFactIds.push(factId);
+    // Remove from wrong list if previously wrong (last answer wins)
+    _raceWrongFactIds = _raceWrongFactIds.filter(id => id !== factId);
+  } else {
+    _raceWrongFactIds.push(factId);
+    // Remove from correct list if previously correct
+    _raceCorrectFactIds = _raceCorrectFactIds.filter(id => id !== factId);
+  }
+}
+
+/**
+ * Apply a one-shot FSRS batch update when the race finishes.
+ *
+ * Calls the playerData store's updateReviewState (via dynamic import to avoid circular
+ * deps since gameFlowController already imports from playerData). This mirrors how the
+ * single-player run applies FSRS updates at answer-time — but we batch them here
+ * because race answers happen concurrently with broadcast and we want a single
+ * write at race-end.
+ *
+ * TODO(H6-fsrs-wire): If the dynamic import path changes, update the import below.
+ * Current path: src/ui/stores/playerData.ts — exports `updateReviewState(factId, correct)`.
+ */
+async function _applyRaceFsrsBatch(): Promise<void> {
+  const correctIds = [..._raceCorrectFactIds];
+  const wrongIds = [..._raceWrongFactIds];
+
+  if (correctIds.length === 0 && wrongIds.length === 0) return;
+
+  try {
+    // Dynamic import to avoid circular dependency (multiplayerGameService ← gameFlowController ← playerData)
+    const { updateReviewState } = await import('../ui/stores/playerData');
+    for (const factId of correctIds) {
+      updateReviewState(factId, true);
+    }
+    for (const factId of wrongIds) {
+      updateReviewState(factId, false);
+    }
+  } catch (err) {
+    // Non-fatal: FSRS batch update failed. Log but don't crash the race results flow.
+    console.warn(
+      `[multiplayerGameService] FSRS batch update failed — race results unaffected.` +
+      ` correct=${correctIds.length} wrong=${wrongIds.length}`,
+      err,
+    );
   }
 }
 
@@ -189,23 +293,134 @@ export function onRaceComplete(cb: (r: RaceResults) => void): () => void {
 }
 
 /**
+ * Input stats for mode-specific score computation.
+ * All fields are optional so callers can pass only what's available for their mode.
+ */
+export interface ModeScoreStats {
+  floors?: number;
+  damage?: number;
+  chainMultiplier?: number;
+  correctCount?: number;
+  wrongCount?: number;
+  perfectEncounters?: number;
+  /** Trivia Night only — sum of per-question speed bonuses. */
+  speedBonusTotal?: number;
+  /** Duel only — whether the player survived. */
+  survived?: boolean;
+  /** Duel only — total damage dealt across all turns. */
+  damageDealt?: number;
+  /** Duel only — total damage taken across all turns. */
+  damageTaken?: number;
+}
+
+/**
+ * Compute the score for a given mode and stats.
+ *
+ * - race / same_cards: floors*100 + damage + chain*50 + correct*10 - wrong*5 + perfectEncounters*200
+ * - trivia_night: correctCount*100 + speedBonusTotal - wrongCount*25
+ * - duel: (survived ? 1000 : 0) + damageDealt - damageTaken + correctCount*50
+ * - coop: uses same formula as race (floor progression is the primary axis)
+ *
+ * @param mode  - The multiplayer mode.
+ * @param stats - Stats to feed into the formula.
+ * @returns     Numeric score (may be negative if penalties dominate).
+ */
+export function calculateScoreForMode(mode: MultiplayerMode, stats: ModeScoreStats): number {
+  const correct = stats.correctCount ?? 0;
+  const wrong = stats.wrongCount ?? 0;
+
+  switch (mode) {
+    case 'race':
+    case 'same_cards':
+    case 'coop': {
+      const floors = stats.floors ?? 0;
+      const damage = stats.damage ?? 0;
+      const chain = stats.chainMultiplier ?? 0;
+      const perfect = stats.perfectEncounters ?? 0;
+      return (
+        floors * 100 +
+        damage +
+        chain * 50 +
+        correct * 10 -
+        wrong * 5 +
+        perfect * 200
+      );
+    }
+    case 'trivia_night': {
+      const speedBonus = stats.speedBonusTotal ?? 0;
+      return correct * 100 + speedBonus - wrong * 25;
+    }
+    case 'duel': {
+      const survivedBonus = stats.survived ? 1000 : 0;
+      const damageDealt = stats.damageDealt ?? 0;
+      const damageTaken = stats.damageTaken ?? 0;
+      return survivedBonus + damageDealt - damageTaken + correct * 50;
+    }
+    default: {
+      // Exhaustive check — TypeScript will catch unhandled modes at compile time.
+      const _exhaustive: never = mode;
+      console.warn(`[multiplayerGameService] calculateScoreForMode: unhandled mode "${_exhaustive as string}"`);
+      return 0;
+    }
+  }
+}
+
+/**
+ * Determine the winner of a race given two progress snapshots.
+ *
+ * Tie-breaker hierarchy (deterministic on both clients):
+ *   1. Higher score
+ *   2. Higher floor reached
+ *   3. Higher accuracy (0-1)
+ *   4. Lower duration (finishedAt - startMs); both clients use the remote finishedAt timestamp
+ *   5. Lexicographic playerId (last resort — guarantees identical result on both sides)
+ *
+ * Returns null only when both players have identical values on every axis —
+ * an astronomically unlikely but theoretically possible scenario.
+ *
+ * @param a        - Progress snapshot for player A.
+ * @param b        - Progress snapshot for player B.
+ * @param startMs  - Epoch ms when the race started (used to compute duration when finishedAt present).
+ * @returns The winning playerId, or null for a true tie.
+ */
+export function determineRaceWinner(
+  a: RaceProgress,
+  b: RaceProgress,
+  startMs: number,
+): string | null {
+  // 1. Score
+  if (a.score !== b.score) return a.score > b.score ? a.playerId : b.playerId;
+
+  // 2. Floor
+  if (a.floor !== b.floor) return a.floor > b.floor ? a.playerId : b.playerId;
+
+  // 3. Accuracy
+  if (a.accuracy !== b.accuracy) return a.accuracy > b.accuracy ? a.playerId : b.playerId;
+
+  // 4. Duration — lower is better. Use finishedAt if available; fall back to now.
+  const durationA = (a.finishedAt ?? Date.now()) - startMs;
+  const durationB = (b.finishedAt ?? Date.now()) - startMs;
+  if (durationA !== durationB) return durationA < durationB ? a.playerId : b.playerId;
+
+  // 5. Lexicographic playerId
+  if (a.playerId !== b.playerId) return a.playerId < b.playerId ? a.playerId : b.playerId;
+
+  // True tie (all axes identical)
+  return null;
+}
+
+/**
  * Compute and emit RaceResults when both players have finished.
  *
- * Scoring formula (AR-86):
- *   score = (floors * 100) + (damage * 1) + (chainMultiplier * 50)
- *         + (correct * 10) - (wrong * 5) + (perfectEncounters * 200)
- *
- * The `score` field on RaceProgress already incorporates this formula
- * (computed by the caller's game loop). We use it directly.
+ * Uses determineRaceWinner() for a deterministic tie-breaker hierarchy.
+ * Uses actual correctCount/wrongCount from RaceProgress when available;
+ * falls back to the encountersWon * 3 proxy for old peers that don't send counts.
  */
 function _tryEmitRaceResults(): void {
   if (!_localProgress?.isFinished || !_opponentProgress?.isFinished) return;
   if (!_onRaceComplete) return;
 
   const lobby = getCurrentLobby();
-  const localScore = _localProgress.score;
-  const opponentScore = _opponentProgress.score;
-
   const localId = _localProgress.playerId;
   const opponentId = _opponentProgress.playerId;
 
@@ -213,41 +428,66 @@ function _tryEmitRaceResults(): void {
   const localPlayer = lobby?.players.find(p => p.id === localId);
   const opponentPlayer = lobby?.players.find(p => p.id === opponentId);
 
-  // Total facts derived from accuracy and encountersWon as a proxy
-  // (real counts come from RaceProgress fields if provided)
-  const localCorrect = _localProgress.encountersWon * 3; // rough proxy
-  const localWrong = Math.round((1 - _localProgress.accuracy) / Math.max(_localProgress.accuracy, 0.01) * localCorrect);
-  const opponentCorrect = _opponentProgress.encountersWon * 3;
-  const opponentWrong = Math.round((1 - _opponentProgress.accuracy) / Math.max(_opponentProgress.accuracy, 0.01) * opponentCorrect);
+  // Use real correct/wrong counts when available; proxy for backward-compat with old peers.
+  let localCorrect: number;
+  let localWrong: number;
+  if (_localProgress.correctCount !== undefined && _localProgress.wrongCount !== undefined) {
+    localCorrect = _localProgress.correctCount;
+    localWrong = _localProgress.wrongCount;
+  } else {
+    // Proxy: estimating from accuracy and encountersWon (old peers only)
+    localCorrect = _localProgress.encountersWon * 3;
+    localWrong = Math.round(
+      (1 - _localProgress.accuracy) / Math.max(_localProgress.accuracy, 0.01) * localCorrect,
+    );
+  }
 
-  const durationMs = Date.now() - _localStartMs;
+  let opponentCorrect: number;
+  let opponentWrong: number;
+  if (_opponentProgress.correctCount !== undefined && _opponentProgress.wrongCount !== undefined) {
+    opponentCorrect = _opponentProgress.correctCount;
+    opponentWrong = _opponentProgress.wrongCount;
+  } else {
+    opponentCorrect = _opponentProgress.encountersWon * 3;
+    opponentWrong = Math.round(
+      (1 - _opponentProgress.accuracy) / Math.max(_opponentProgress.accuracy, 0.01) * opponentCorrect,
+    );
+  }
+
+  // Use opponent's finishedAt timestamp for their duration (not local clock)
+  const localDurationMs = (_localProgress.finishedAt ?? Date.now()) - _localStartMs;
+  const opponentDurationMs = _opponentProgress.finishedAt !== undefined
+    ? _opponentProgress.finishedAt - _localStartMs
+    : localDurationMs; // last resort: use same value (old peer without finishedAt)
+
+  const winnerId = determineRaceWinner(_localProgress, _opponentProgress, _localStartMs);
 
   const results: RaceResults = {
     players: [
       {
         playerId: localId,
         displayName: localPlayer?.displayName ?? localId,
-        score: localScore,
+        score: _localProgress.score,
         floorReached: _localProgress.floor,
         accuracy: _localProgress.accuracy,
         factsAnswered: localCorrect + localWrong,
         correctAnswers: localCorrect,
-        duration: durationMs,
+        duration: localDurationMs,
         result: _localProgress.result ?? 'defeat',
       },
       {
         playerId: opponentId,
         displayName: opponentPlayer?.displayName ?? opponentId,
-        score: opponentScore,
+        score: _opponentProgress.score,
         floorReached: _opponentProgress.floor,
         accuracy: _opponentProgress.accuracy,
         factsAnswered: opponentCorrect + opponentWrong,
         correctAnswers: opponentCorrect,
-        duration: durationMs, // opponent duration not directly available
+        duration: opponentDurationMs,
         result: _opponentProgress.result ?? 'defeat',
       },
     ],
-    winnerId: localScore >= opponentScore ? localId : opponentId,
+    winnerId,
     seed: lobby?.seed ?? 0,
   };
 
@@ -284,6 +524,9 @@ export function broadcastForkSeeds(seeds: Record<string, number>): void {
  * Apply fork seeds received from the host so this client's RNG matches.
  * Restores the named forks at the exact PRNG positions the host had.
  *
+ * Idempotent: applying the same seeds twice is a no-op from a game-state
+ * perspective because restoreRunRngState overwrites to the exact same positions.
+ *
  * @param seeds - Record mapping fork label → internal PRNG state number.
  */
 export function applyReceivedForkSeeds(seeds: Record<string, number>): void {
@@ -306,6 +549,22 @@ export function collectForkSeeds(): Record<string, number> {
     seeds[label] = getRunRng(label).getState();
   }
   return seeds;
+}
+
+/**
+ * Handle a late guest joining mid-game: re-broadcast fork seeds to that player.
+ *
+ * If the transport has no direct-to-one primitive, broadcasts to all — clients
+ * that already have seeds treat the re-broadcast as idempotent (applying the same
+ * fork positions is a no-op from the game-state perspective).
+ *
+ * @param _playerId - The late-joining player's ID (reserved for future direct-send).
+ */
+export function onPlayerJoinMidGame(_playerId: string): void {
+  // Re-broadcast current seeds to everyone; guests who already applied them
+  // will call applyReceivedForkSeeds with identical values — idempotent.
+  const seeds = collectForkSeeds();
+  broadcastForkSeeds(seeds);
 }
 
 // ── Real-Time Duel ────────────────────────────────────────────────────────────
@@ -393,15 +652,36 @@ export function hostCreateSharedEnemy(templateId: string, floor: number, playerC
  * Submit the local player's turn action.
  * If host and both actions are now ready, resolves the turn automatically.
  *
+ * Values are clamped to prevent negative damage/block from bad network payloads:
+ * - damageDealt: clamped to [0, ∞)
+ * - blockGained: clamped to [0, ∞)
+ *
  * @param action - The local player's aggregated turn results.
  */
 export function submitDuelTurnAction(action: DuelTurnAction): void {
   if (!_duelState) return;
 
-  _duelState.localAction = action;
+  // Clamp action values to prevent negative inputs corrupting host state (M10)
+  const sanitized: DuelTurnAction = {
+    ...action,
+    damageDealt: Math.max(0, action.damageDealt),
+    blockGained: Math.max(0, action.blockGained),
+  };
+  if (action.damageDealt < 0) {
+    console.warn(
+      `[multiplayerGameService] submitDuelTurnAction: negative damageDealt ${action.damageDealt} clamped to 0`,
+    );
+  }
+  if (action.blockGained < 0) {
+    console.warn(
+      `[multiplayerGameService] submitDuelTurnAction: negative blockGained ${action.blockGained} clamped to 0`,
+    );
+  }
+
+  _duelState.localAction = sanitized;
 
   const transport = getMultiplayerTransport();
-  transport.send('mp:duel:cards_played', action as unknown as Record<string, unknown>);
+  transport.send('mp:duel:cards_played', sanitized as unknown as Record<string, unknown>);
 
   // Host resolves as soon as both sides have submitted
   if (_duelState.isHost && _duelState.opponentAction) {
@@ -415,6 +695,9 @@ export function submitDuelTurnAction(action: DuelTurnAction): void {
  * Combines damage from both players, applies to enemy (block first → HP),
  * rolls the next enemy intent with round-robin targeting, updates player HP
  * from enemy attack, checks win/lose conditions, and broadcasts the resolution.
+ *
+ * Both-defeated scenario: winnerId is set to null, reason is 'both_defeated'.
+ * Result consumers must handle null winner as a "Tie".
  *
  * @returns The DuelTurnResolution, or null if preconditions not met.
  */
@@ -437,7 +720,7 @@ export function hostResolveTurn(): DuelTurnResolution | null {
   _duelState.turnNumber++;
 
   let isOver = false;
-  let winnerId: string | undefined;
+  let winnerId: string | null = null;
   let reason: DuelTurnResolution['reason'];
 
   if (defeated) {
@@ -470,11 +753,11 @@ export function hostResolveTurn(): DuelTurnResolution | null {
     if (p1Dead || p2Dead) {
       isOver = true;
       if (p1Dead && p2Dead) {
+        // Both fall simultaneously — winnerId is null (tie).
+        // Higher total damage is NOT used as a tiebreaker here because
+        // simultaneous defeat is semantically a draw — not a victory for anyone.
         reason = 'both_defeated';
-        // Both fall simultaneously — higher total damage contribution wins
-        const p1Total = _duelState.totalDamage[localPlayerId] ?? 0;
-        const p2Total = _duelState.totalDamage[opponentId] ?? 0;
-        winnerId = p1Total >= p2Total ? localPlayerId : opponentId;
+        winnerId = null;
       } else if (p1Dead) {
         reason = 'player_defeated';
         winnerId = opponentId;
@@ -618,10 +901,29 @@ export function initGameMessageHandlers(mode: MultiplayerMode): () => void {
       }
     }));
 
-    // Opponent submitted their cards_played — host stores and may resolve
+    // Opponent submitted their cards_played — host stores, clamps, and may resolve
     cleanups.push(transport.on('mp:duel:cards_played', (msg) => {
       if (!_duelState) return;
-      const action = msg.payload as unknown as DuelTurnAction;
+      const raw = msg.payload as unknown as DuelTurnAction;
+
+      // Clamp incoming opponent action to prevent negative values from
+      // bad network payloads corrupting the host's accumulated damage totals (M10)
+      const action: DuelTurnAction = {
+        ...raw,
+        damageDealt: Math.max(0, raw.damageDealt),
+        blockGained: Math.max(0, raw.blockGained),
+      };
+      if (raw.damageDealt < 0) {
+        console.warn(
+          `[multiplayerGameService] mp:duel:cards_played: negative damageDealt ${raw.damageDealt} from "${raw.playerId}" clamped to 0`,
+        );
+      }
+      if (raw.blockGained < 0) {
+        console.warn(
+          `[multiplayerGameService] mp:duel:cards_played: negative blockGained ${raw.blockGained} from "${raw.playerId}" clamped to 0`,
+        );
+      }
+
       _duelState.opponentAction = action;
 
       // Host resolves once both sides have submitted
@@ -672,6 +974,8 @@ export function destroyMultiplayerGame(): void {
   _localProgress = null;
   _localFinished = false;
   _localStartMs = 0;
+  _raceCorrectFactIds = [];
+  _raceWrongFactIds = [];
   _onOpponentProgress = null;
   _onRaceComplete = null;
 

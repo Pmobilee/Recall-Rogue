@@ -18,8 +18,21 @@
 export interface LanStartResult {
   /** Actual port the server is bound to. */
   port: number;
-  /** All non-loopback IPv4 addresses on this machine. */
+  /** Routable local addresses the server is reachable on (never 0.0.0.0). */
   localIps: string[];
+  /**
+   * M1: The actual URL other players should use to connect, e.g.
+   * `"http://192.168.1.42:19738"`. Derived from the first routable NIC.
+   * Falls back to `"http://127.0.0.1:<port>"` when no LAN NIC is found.
+   */
+  lanServerUrl: string;
+  /**
+   * M1: Set to `"local-only"` when the server fell back to 127.0.0.1 because
+   * no routable network interface was available. When present, the UI should
+   * warn the player that remote peers cannot connect.
+   * Absent (undefined) for normal LAN binds.
+   */
+  warning?: 'local-only' | string;
 }
 
 /** Returned by `getLanServerStatus`. */
@@ -91,9 +104,9 @@ const LAN_START_TIMEOUT_MS = 10_000;
 /**
  * Start the embedded LAN server (Tauri desktop only).
  *
- * Returns the port the server is bound to and all local IPv4 addresses
- * the server is reachable on. Other players on the same LAN can connect
- * to any of those IPs on the returned port.
+ * M1: Returns `lanServerUrl` — the actual URL derived from the first routable NIC,
+ * not 0.0.0.0. When `warning === "local-only"` the server is only reachable on this
+ * machine (no LAN NIC found) and the UI should inform the player.
  *
  * Returns null on non-Tauri platforms. Safe to call from any context.
  *
@@ -115,6 +128,8 @@ export async function startLanServer(port?: number): Promise<LanStartResult | nu
   const result = await Promise.race([invokePromise, timeoutPromise]);
   if (result === null) {
     console.warn('[LanServer] startLanServer timed out or returned null — isTauriRuntime():', isTauriRuntime());
+  } else if (result.warning === 'local-only') {
+    console.warn('[LanServer] Server bound to localhost only — remote players cannot connect. lanServerUrl:', result.lanServerUrl);
   }
   return result;
 }

@@ -29,6 +29,106 @@ export interface LanServerConfig {
   apiUrl: string;
 }
 
+/** Result of `validatePrivateNetworkAddress`. */
+export type AddressValidationResult =
+  | { ok: true }
+  | { ok: false; reason: string };
+
+// ── Private-network validation (M21) ─────────────────────────────────────────
+
+/**
+ * Validate that `ip` is a private-network address acceptable as a LAN server host.
+ *
+ * Accepted ranges:
+ *   IPv4:
+ *     127.0.0.0/8    — loopback (localhost dev)
+ *     10.0.0.0/8     — RFC1918 Class A private
+ *     172.16.0.0/12  — RFC1918 Class B private (172.16–172.31)
+ *     192.168.0.0/16 — RFC1918 Class C private
+ *     169.254.0.0/16 — link-local (APIPA / Zeroconf)
+ *   IPv6:
+ *     ::1            — loopback
+ *     fe80::/10      — link-local
+ *     fc00::/7       — ULA (fc00:: and fd00:: prefixes)
+ *
+ * Rejected:
+ *   - Public IPv4 addresses
+ *   - Global unicast IPv6 addresses
+ *   - Malformed input
+ *
+ * The function does NOT validate the port — port validation is the caller's
+ * responsibility (1–65535 range).
+ */
+export function validatePrivateNetworkAddress(ip: string): AddressValidationResult {
+  if (!ip || typeof ip !== 'string') {
+    return { ok: false, reason: 'IP address must be a non-empty string' };
+  }
+
+  const cleaned = ip.trim();
+  if (!cleaned) {
+    return { ok: false, reason: 'IP address must not be blank' };
+  }
+
+  // ── IPv6 ──────────────────────────────────────────────────────────────────
+
+  if (cleaned.includes(':')) {
+    const lower = cleaned.toLowerCase();
+
+    // ::1 — IPv6 loopback
+    if (lower === '::1') return { ok: true };
+
+    // fe80::/10 — link-local (first hextet fe80..febf)
+    const firstHextet = parseInt(lower.split(':')[0] || 'ffff', 16);
+    if (!isNaN(firstHextet) && firstHextet >= 0xfe80 && firstHextet <= 0xfebf) {
+      return { ok: true };
+    }
+
+    // fc00::/7 — ULA (fc00:: through fdff::)
+    if (lower.startsWith('fc') || lower.startsWith('fd')) {
+      return { ok: true };
+    }
+
+    return {
+      ok: false,
+      reason: 'LAN server IP must be a private-network address (use 192.168.x.x, 10.x.x.x, 172.16-31.x.x, or IPv6 ULA/link-local)',
+    };
+  }
+
+  // ── IPv4 ──────────────────────────────────────────────────────────────────
+
+  const parts = cleaned.split('.');
+  if (parts.length !== 4) {
+    return { ok: false, reason: `Malformed IPv4 address: "${cleaned}"` };
+  }
+
+  const octets = parts.map(p => parseInt(p, 10));
+  if (octets.some(o => isNaN(o) || o < 0 || o > 255)) {
+    return { ok: false, reason: `Malformed IPv4 address: "${cleaned}"` };
+  }
+
+  const [a, b] = octets;
+
+  // 127.x.x.x — loopback
+  if (a === 127) return { ok: true };
+
+  // 10.x.x.x — RFC1918 Class A
+  if (a === 10) return { ok: true };
+
+  // 172.16.x.x – 172.31.x.x — RFC1918 Class B
+  if (a === 172 && b >= 16 && b <= 31) return { ok: true };
+
+  // 192.168.x.x — RFC1918 Class C
+  if (a === 192 && b === 168) return { ok: true };
+
+  // 169.254.x.x — link-local (APIPA)
+  if (a === 169 && b === 254) return { ok: true };
+
+  return {
+    ok: false,
+    reason: 'LAN server IP must be a private-network address (use 192.168.x.x, 10.x.x.x, 172.16-31.x.x, or 169.254.x.x)',
+  };
+}
+
 // ── Internal helpers ──────────────────────────────────────────────────────────
 
 /** True when localStorage is available (server-side / Node test guard). */
@@ -52,14 +152,26 @@ function buildConfig(host: string, port: number): LanServerConfig {
 /**
  * Persist a LAN server URL derived from the given host and port.
  *
+ * M21: Validates that `host` is a private-network address before storing.
+ * Throws if a public IP is provided so callers surface the error promptly.
+ *
  * After calling this, `isLanMode()` returns true and both transport and lobby
  * service will route traffic to the specified server on next connection.
  *
  * @param host - IP address or hostname of the LAN server (no scheme needed).
  * @param port - Port the Fastify MP server is listening on.
+ * @throws Error if `host` is not a private-network address.
  */
 export function setLanServerUrl(host: string, port: number): void {
   if (!hasStorage()) return;
+
+  // M21: Strip scheme for validation (caller may pass "http://192.168.1.5").
+  const cleanHost = host.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  const validation = validatePrivateNetworkAddress(cleanHost);
+  if (!validation.ok) {
+    throw new Error(validation.reason);
+  }
+
   const config = buildConfig(host, port);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
 }

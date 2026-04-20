@@ -7,7 +7,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { probeLanServer, scanLanForServers, LAN_DEFAULT_PORT } from './lanDiscoveryService';
+import { probeLanServer, scanLanForServers, toSubnetPrefix, LAN_DEFAULT_PORT } from './lanDiscoveryService';
 
 // ── Mock fetch ────────────────────────────────────────────────────────────────
 
@@ -38,6 +38,67 @@ function makeDiscoverResponse(overrides: Record<string, unknown> = {}): Response
     headers: { 'Content-Type': 'application/json' },
   });
 }
+
+/** Extract the host IP from a discover URL like "http://192.168.1.5:19738/mp/discover" */
+function extractIpFromUrl(url: string): string {
+  const match = url.match(/http:\/\/([^:]+):/);
+  return match ? match[1] : '';
+}
+
+// ── toSubnetPrefix (M2) ───────────────────────────────────────────────────────
+
+describe('toSubnetPrefix (M2 — IPv6 awareness)', () => {
+  // IPv4 — existing behaviour preserved
+
+  it('extracts /24 prefix from a standard IPv4 address', () => {
+    expect(toSubnetPrefix('192.168.1.42')).toBe('192.168.1');
+  });
+
+  it('works for 10.x.x.x addresses', () => {
+    expect(toSubnetPrefix('10.0.0.1')).toBe('10.0.0');
+  });
+
+  it('returns null for empty string', () => {
+    expect(toSubnetPrefix('')).toBeNull();
+  });
+
+  it('returns null for malformed IPv4 (too few parts)', () => {
+    expect(toSubnetPrefix('192.168')).toBeNull();
+  });
+
+  // IPv6 link-local — skip
+
+  it('returns null for IPv6 link-local (fe80::/10)', () => {
+    expect(toSubnetPrefix('fe80::1')).toBeNull();
+    expect(toSubnetPrefix('FE80::cafe:dead')).toBeNull();
+  });
+
+  it('returns null for fe80:: expanded addresses', () => {
+    expect(toSubnetPrefix('fe80:0000:0000:0000:0202:b3ff:fe1e:8329')).toBeNull();
+  });
+
+  // IPv6 ULA — return /64 prefix
+
+  it('returns /64 prefix for IPv6 ULA fd::/8', () => {
+    const prefix = toSubnetPrefix('fd12:3456:789a:0001::1');
+    expect(prefix).toBe('fd12:3456:789a:0001');
+  });
+
+  it('returns /64 prefix for IPv6 ULA fc::/8', () => {
+    const prefix = toSubnetPrefix('fc00:0:0:1::1');
+    expect(prefix).toBe('fc00:0:0:1');
+  });
+
+  // IPv6 other — reject
+
+  it('returns null for global unicast IPv6', () => {
+    expect(toSubnetPrefix('2001:db8::1')).toBeNull();
+  });
+
+  it('returns null for ::1 (loopback — not a scannable subnet)', () => {
+    expect(toSubnetPrefix('::1')).toBeNull();
+  });
+});
 
 // ── probeLanServer ────────────────────────────────────────────────────────────
 
@@ -121,38 +182,80 @@ describe('probeLanServer', () => {
 // ── scanLanForServers ─────────────────────────────────────────────────────────
 
 describe('scanLanForServers', () => {
-  it('skips .0 and .255 addresses and probes the rest of the /24', async () => {
-    // Return null for most probes, one success at .42
+  it('M3: short-circuits when gateway (.1) responds', async () => {
+    let fetchCount = 0;
     mockFetch.mockImplementation(async (input: RequestInfo | URL) => {
-      const url = String(input);
-      if (url.includes('192.168.99.42')) {
-        return makeDiscoverResponse({ hostName: 'Found One' });
-      }
-      return new Response('{}', { status: 200, headers: { 'Content-Type': 'application/json' } });
+      fetchCount++;
+      const ip = extractIpFromUrl(String(input));
+      if (ip === '192.168.99.1') return makeDiscoverResponse({ hostName: 'Gateway Found' });
+      throw new Error('refused');
     });
 
     const results = await scanLanForServers({ subnets: ['192.168.99'], timeout: 50 });
 
-    // Verify .0 was never probed (would be the first call target if not skipped)
-    const allUrls = mockFetch.mock.calls.map(c => String(c[0]));
-    expect(allUrls.some(u => u.includes('192.168.99.0/'))).toBe(false);
-    expect(allUrls.some(u => u.includes('192.168.99.255/'))).toBe(false);
+    // Should have stopped after finding the gateway — exactly 1 probe (the .1 quick probe)
+    expect(fetchCount).toBe(1);
+    expect(results).toHaveLength(1);
+    expect(results[0].hostName).toBe('Gateway Found');
+    expect(results[0].ip).toBe('192.168.99.1');
+  });
 
-    // Should have exactly 254 probes (1..254)
-    expect(allUrls.filter(u => u.includes('192.168.99.')).length).toBe(254);
+  it('M3: falls back to compact scan when gateway misses', async () => {
+    mockFetch.mockImplementation(async (input: RequestInfo | URL) => {
+      const ip = extractIpFromUrl(String(input));
+      // .25 is within the compact range [2, 32]
+      if (ip === '192.168.55.25') return makeDiscoverResponse({ hostName: 'Found In Compact' });
+      throw new Error('refused');
+    });
 
-    // The found server is in the results
+    const results = await scanLanForServers({ subnets: ['192.168.55'], timeout: 50 });
+
+    expect(results).toHaveLength(1);
+    expect(results[0].ip).toBe('192.168.55.25');
+    expect(results[0].hostName).toBe('Found In Compact');
+  });
+
+  it('M3: fullScan probes all 254 hosts (1..254) with no separate gateway step', async () => {
+    mockFetch.mockImplementation(async (input: RequestInfo | URL) => {
+      const ip = extractIpFromUrl(String(input));
+      if (ip === '192.168.99.42') return makeDiscoverResponse({ hostName: 'Found One' });
+      return new Response('{}', { status: 200, headers: { 'Content-Type': 'application/json' } });
+    });
+
+    const results = await scanLanForServers({ subnets: ['192.168.99'], timeout: 50, fullScan: true });
+
+    const allIps = mockFetch.mock.calls.map(c => extractIpFromUrl(String(c[0])));
+
+    // Exactly 254 probes — .1 through .254, no .0 or .255
+    expect(allIps).not.toContain('192.168.99.0');
+    expect(allIps).not.toContain('192.168.99.255');
+    const subnetIps = allIps.filter(ip => ip.startsWith('192.168.99.'));
+    expect(subnetIps.length).toBe(254);
+
     const found = results.find(r => r.ip === '192.168.99.42');
     expect(found?.hostName).toBe('Found One');
   });
 
-  it('returns results sorted ascending by IP string', async () => {
-    // Two servers at .10 and .5
+  it('M3: compact scan does not re-probe .1 (already covered by quick probe)', async () => {
+    // Quick probe will fail on .1 (throw), compact scan should start at .2
     mockFetch.mockImplementation(async (input: RequestInfo | URL) => {
-      const url = String(input);
-      if (url.includes('192.168.1.10') || url.includes('192.168.1.5')) {
-        return makeDiscoverResponse();
-      }
+      throw new Error('refused');
+    });
+
+    await scanLanForServers({ subnets: ['10.0.0'], timeout: 20 });
+
+    const allIps = mockFetch.mock.calls.map(c => extractIpFromUrl(String(c[0])));
+
+    // .1 should appear exactly once (the gateway quick probe), not twice
+    const dotOneProbes = allIps.filter(ip => ip === '10.0.0.1');
+    expect(dotOneProbes.length).toBe(1);
+  });
+
+  it('returns results sorted ascending by IP string', async () => {
+    // Two servers at .10 and .5 — both within the compact range [2, 32]
+    mockFetch.mockImplementation(async (input: RequestInfo | URL) => {
+      const ip = extractIpFromUrl(String(input));
+      if (ip === '192.168.1.10' || ip === '192.168.1.5') return makeDiscoverResponse();
       throw new Error('refused');
     });
 

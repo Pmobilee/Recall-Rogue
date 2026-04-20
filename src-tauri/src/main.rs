@@ -6,6 +6,7 @@ mod lan;
 mod steam;
 
 use steam::SteamState;
+use tauri::Manager;
 
 fn main() {
     // Initialize Steamworks SDK (non-fatal — fails gracefully if Steam isn't running).
@@ -39,6 +40,8 @@ fn main() {
             steam::steam_accept_p2p_session,
             // Callback pump (required for async lobby ops)
             steam::steam_run_callbacks,
+            // Steam lobby exit cleanup (C5 — best-effort leave on JS-side graceful shutdown)
+            steam::steam_force_leave_active_lobby,
             // File system save (filesave.rs)
             filesave::fs_get_save_dir,
             filesave::fs_write_save,
@@ -50,6 +53,37 @@ fn main() {
             lan::lan_get_local_ips,
             lan::lan_server_status,
         ])
-        .run(tauri::generate_context!())
-        .expect("error while running Recall Rogue");
+        .build(tauri::generate_context!())
+        .expect("error while building Recall Rogue")
+        // C5: Exit hook — leave the active Steam lobby on app close.
+        //
+        // RunEvent::Exit fires once before the process terminates. The leave_lobby
+        // call is synchronous (microseconds) so the 500ms budget is easily met.
+        // Safe when Steam is unavailable — the client Mutex holds None and we skip.
+        .run(|app_handle, event| {
+            if let tauri::RunEvent::Exit = event {
+                let state = app_handle.state::<SteamState>();
+
+                // Read and clear the active lobby ID atomically.
+                let active_id: Option<u64> = match state.active_lobby_id.lock() {
+                    Ok(mut slot) => slot.take(),
+                    Err(_) => None, // Poisoned lock — skip cleanup safely.
+                };
+
+                if let Some(raw_id) = active_id {
+                    match state.client.lock() {
+                        Ok(guard) => {
+                            if let Some(client) = guard.as_ref() {
+                                let lobby_id = steamworks::LobbyId::from_raw(raw_id);
+                                client.matchmaking().leave_lobby(lobby_id);
+                                eprintln!("[Steam] Exit hook: left lobby {}", raw_id);
+                            }
+                        }
+                        Err(_) => {
+                            eprintln!("[Steam] Exit hook: client lock poisoned — skipping lobby leave");
+                        }
+                    }
+                }
+            }
+        });
 }

@@ -688,11 +688,24 @@ fn build_router(state: AppState) -> Router {
 
 // ── Tauri command types ───────────────────────────────────────────────────────
 
+/// M1: Result returned by `lan_start_server`.
+///
+/// `localIps` contains only addresses traffic will actually route to:
+/// - On a normal LAN bind: all non-loopback IPv4 addresses on this machine.
+/// - On a localhost-only fallback: `["127.0.0.1"]` — and `warning` is set to
+///   `"local-only"` so the UI can warn the player that remote peers cannot reach them.
 #[derive(Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct LanStartResult {
     pub port: u16,
     pub local_ips: Vec<String>,
+    /// The actual URL other players should use to connect, e.g. `"http://192.168.1.42:19738"`.
+    /// Reflects the first routable IP (not 0.0.0.0). Falls back to `"http://127.0.0.1:<port>"`.
+    pub lan_server_url: String,
+    /// Set to `"local-only"` when the server is only reachable from this machine
+    /// (all NICs unavailable and we fell back to 127.0.0.1). `None` for normal LAN binds.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub warning: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -719,7 +732,10 @@ static LAN_SERVER: std::sync::Mutex<Option<LanServerHandle>> =
 /// Start the LAN relay server.
 ///
 /// If already running, returns an error. Default port is 19738.
-/// Returns the bound port and a list of local IPv4 addresses players can use.
+///
+/// M1: Returns the actually-bound SocketAddr (not 0.0.0.0). If no routable NIC
+/// is available and we fall back to 127.0.0.1, `localIps` contains only that
+/// address and `warning` is set to `"local-only"`.
 #[tauri::command]
 pub async fn lan_start_server(port: Option<u16>) -> Result<LanStartResult, String> {
     let port = port.unwrap_or(DEFAULT_PORT);
@@ -732,7 +748,24 @@ pub async fn lan_start_server(port: Option<u16>) -> Result<LanStartResult, Strin
         }
     }
 
-    let local_ips = collect_local_ips();
+    // M1: Collect routable IPs first, then decide what to bind and what to report.
+    let routable_ips = collect_local_ips();
+    let (bind_addr_str, reported_ips, warning) = if routable_ips.is_empty() {
+        // No routable NIC found — fall back to loopback only.
+        eprintln!("[LAN] No routable NIC found, falling back to 127.0.0.1 (local-only)");
+        (
+            format!("127.0.0.1:{}", port),
+            vec!["127.0.0.1".to_string()],
+            Some("local-only".to_string()),
+        )
+    } else {
+        (
+            format!("0.0.0.0:{}", port),
+            routable_ips.clone(),
+            None,
+        )
+    };
+
     let host_name = hostname::get()
         .ok()
         .and_then(|h| h.into_string().ok())
@@ -748,17 +781,22 @@ pub async fn lan_start_server(port: Option<u16>) -> Result<LanStartResult, Strin
     };
 
     let router = build_router(app_state);
-    let addr: SocketAddr = format!("0.0.0.0:{}", port)
+    let addr: SocketAddr = bind_addr_str
         .parse()
         .map_err(|e: std::net::AddrParseError| e.to_string())?;
     let listener: tokio::net::TcpListener = tokio::net::TcpListener::bind(addr)
         .await
         .map_err(|e| format!("Failed to bind port {}: {}", port, e))?;
 
-    let actual_port = listener
+    // M1: Read the actually-bound address from the OS (handles port=0 wildcard too).
+    let actual_addr: SocketAddr = listener
         .local_addr()
-        .map(|a: SocketAddr| a.port())
-        .unwrap_or(port);
+        .map_err(|e| format!("Could not read bound address: {}", e))?;
+    let actual_port = actual_addr.port();
+
+    // M1: Build the UI-visible URL using the first routable IP (not 0.0.0.0).
+    let display_ip = reported_ips.first().map(|s| s.as_str()).unwrap_or("127.0.0.1");
+    let lan_server_url = format!("http://{}:{}", display_ip, actual_port);
 
     let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
 
@@ -781,11 +819,17 @@ pub async fn lan_start_server(port: Option<u16>) -> Result<LanStartResult, Strin
         });
     }
 
-    eprintln!("[LAN] Server listening on 0.0.0.0:{}", actual_port);
+    eprintln!("[LAN] Server listening on {} (url: {}{})",
+        actual_addr,
+        lan_server_url,
+        warning.as_deref().map(|w| format!(" [WARNING: {}]", w)).unwrap_or_default(),
+    );
 
     Ok(LanStartResult {
         port: actual_port,
-        local_ips,
+        local_ips: reported_ips,
+        lan_server_url,
+        warning,
     })
 }
 
@@ -835,7 +879,7 @@ pub fn lan_server_status() -> LanServerStatus {
 
 // ── Network interface helpers ─────────────────────────────────────────────────
 
-/// Enumerate non-loopback IPv4 addresses.
+/// Enumerate non-loopback, non-link-local IPv4 addresses (routable LAN IPs).
 fn collect_local_ips() -> Vec<String> {
     let mut ips: Vec<String> = Vec::new();
 

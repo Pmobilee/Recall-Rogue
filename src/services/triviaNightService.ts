@@ -38,6 +38,8 @@ export interface TriviaRoundResult {
   question: string;
   correctIndex: number;
   correctAnswer: string;
+  /** True when every player either timed out or answered incorrectly. */
+  allIncorrect: boolean;
   playerAnswers: Array<{
     playerId: string;
     displayName: string;
@@ -79,6 +81,13 @@ export const SPEED_BONUS_MAX = 500; // max points for fastest answer
 export const CORRECT_POINTS = 1000; // base points for correct answer
 export const REVEAL_DELAY_MS = 3000; // time to show answer before next question
 
+/**
+ * Margin beyond the declared time limit within which a submission is still
+ * treated as valid (accounts for network lag). Submissions arriving after
+ * this grace period are treated as late and scored as timed-out.
+ */
+export const ANSWER_GRACE_MS = 2000;
+
 // ── Scoring ───────────────────────────────────────────────────────────────────
 
 /**
@@ -93,7 +102,9 @@ export function calculateTriviaPoints(
   timeLimitMs: number,
 ): number {
   if (!correct) return 0;
-  const timeRatio = Math.max(0, 1 - timingMs / timeLimitMs);
+  // M12 — clamp timing before computing speed bonus
+  const clampedTiming = Math.max(1, Math.min(timingMs, timeLimitMs + ANSWER_GRACE_MS));
+  const timeRatio = Math.max(0, 1 - clampedTiming / timeLimitMs);
   const speedBonus = Math.round(SPEED_BONUS_MAX * timeRatio);
   return CORRECT_POINTS + speedBonus;
 }
@@ -120,12 +131,27 @@ let _answeredCounts: Map<string, number> = new Map();
 /** Auto-resolve timer handle */
 let _roundTimer: ReturnType<typeof setTimeout> | null = null;
 
+/**
+ * H4 — All fact IDs available for this game, set at init time by the host.
+ * Non-host players leave this empty (they receive questions from the host).
+ */
+let _factPool: string[] | null = null;
+
+/**
+ * H4 — Fact IDs that have already been asked this game.
+ * Cleared on each initTriviaGame call.
+ */
+let _usedFactIds: Set<string> = new Set();
+
 // ── Callbacks ─────────────────────────────────────────────────────────────────
 
 let _onQuestionReceived: ((q: TriviaQuestion) => void) | null = null;
 let _onRoundResult: ((r: TriviaRoundResult) => void) | null = null;
 let _onGameOver: ((standings: TriviaStanding[]) => void) | null = null;
 let _onStateChange: ((state: TriviaGameState) => void) | null = null;
+
+/** H3 — Callback invoked when the host's fact pool runs dry mid-game. */
+let _onPoolExhausted: (() => void) | null = null;
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -193,6 +219,7 @@ export function initTriviaGame(
   players: Array<{ id: string; displayName: string }>,
   totalRounds: number,
   isHost: boolean,
+  factPool?: string[],
 ): void {
   const clampedRounds = Math.min(MAX_ROUNDS, Math.max(MIN_ROUNDS, totalRounds));
 
@@ -201,6 +228,11 @@ export function initTriviaGame(
   _correctCounts = new Map(players.map(p => [p.id, 0]));
   _timingSums = new Map(players.map(p => [p.id, 0]));
   _answeredCounts = new Map(players.map(p => [p.id, 0]));
+
+  // H4 — reset dedup state for the new game
+  // null means "no pool provided" (guard disabled); [] means "explicitly empty" (guard active)
+  _factPool = factPool !== undefined ? [...factPool] : null;
+  _usedFactIds = new Set();
 
   _gameState = {
     totalRounds: clampedRounds,
@@ -260,6 +292,16 @@ export function hostNextQuestion(
     return;
   }
 
+  // H3 + H4 — Pool-exhausted guard.
+  // If a factPool was provided at init time and every fact in it has already
+  // been used (or the pool was empty to begin with), we cannot ask another
+  // unique question. Transition to finished and notify listeners.
+  if (_factPool !== null && _usedFactIds.size >= _factPool.length) {
+    console.warn('[triviaNightService] fact pool exhausted — ending game early');
+    _triggerPoolExhausted();
+    return;
+  }
+
   // Clear answers from previous round
   _answers.clear();
 
@@ -273,6 +315,9 @@ export function hostNextQuestion(
     difficulty,
     timeLimit: DEFAULT_TIME_LIMIT,
   };
+
+  // H4 — mark this fact as used
+  _usedFactIds.add(factId);
 
   _gameState.currentRound = nextRound;
   _gameState.currentQuestion = q;
@@ -291,6 +336,29 @@ export function hostNextQuestion(
   _roundTimer = setTimeout(() => {
     hostResolveRound();
   }, DEFAULT_TIME_LIMIT * 1000 + 500); // 500 ms grace period for network lag
+}
+
+/**
+ * Internal: transition game to 'finished' because the pool ran dry.
+ * Broadcasts the end event so all clients know the game is over.
+ */
+function _triggerPoolExhausted(): void {
+  if (!_gameState) return;
+
+  const finalStandings = computeStandings(_gameState.players);
+  _gameState.standings = finalStandings;
+  _gameState.phase = 'finished';
+  emitState();
+
+  // Broadcast game-over with exhausted reason so clients can show appropriate UI
+  const transport = getMultiplayerTransport();
+  transport.send('mp:trivia:end', {
+    standings: finalStandings as unknown as Record<string, unknown>[],
+    reason: 'empty_pool',
+  });
+
+  if (_onGameOver) _onGameOver(finalStandings);
+  if (_onPoolExhausted) _onPoolExhausted();
 }
 
 /**
@@ -383,6 +451,9 @@ export function hostResolveRound(): TriviaRoundResult | null {
     };
   });
 
+  // M13 — flag rounds where nobody got it right
+  const allIncorrect = playerAnswers.every(a => !a.correct);
+
   const standings = computeStandings(_gameState.players);
 
   const result: TriviaRoundResult = {
@@ -390,6 +461,7 @@ export function hostResolveRound(): TriviaRoundResult | null {
     question: q.question,
     correctIndex: q.correctIndex,
     correctAnswer: q.options[q.correctIndex] ?? '',
+    allIncorrect,
     playerAnswers,
     standings,
   };
@@ -451,10 +523,13 @@ export function destroyTriviaGame(): void {
   _correctCounts.clear();
   _timingSums.clear();
   _answeredCounts.clear();
+  _factPool = null;
+  _usedFactIds = new Set();
   _onQuestionReceived = null;
   _onRoundResult = null;
   _onGameOver = null;
   _onStateChange = null;
+  _onPoolExhausted = null;
 }
 
 // ── Callbacks ─────────────────────────────────────────────────────────────────
@@ -493,6 +568,16 @@ export function onTriviaGameOver(cb: (standings: TriviaStanding[]) => void): () 
 export function onTriviaStateChange(cb: (state: TriviaGameState) => void): () => void {
   _onStateChange = cb;
   return () => { if (_onStateChange === cb) _onStateChange = null; };
+}
+
+/**
+ * H3 — Register a callback invoked when the host's fact pool is exhausted.
+ * Fires immediately before the game transitions to 'finished' with reason
+ * 'empty_pool'. Returns an unsubscribe function.
+ */
+export function onTriviaPoolExhausted(cb: () => void): () => void {
+  _onPoolExhausted = cb;
+  return () => { if (_onPoolExhausted === cb) _onPoolExhausted = null; };
 }
 
 // ── Message Handlers ──────────────────────────────────────────────────────────
@@ -537,11 +622,22 @@ export function initTriviaMessageHandlers(): () => void {
     if (!_gameState) return;
     if (!_gameState.isHost) return; // only host resolves
 
+    const rawTimingMs = (msg.payload.timingMs as number) ?? 0;
+    const timeLimitMs = ((_gameState.currentQuestion?.timeLimit ?? DEFAULT_TIME_LIMIT) * 1000);
+
+    // M12 — reject answers that arrived too late to be valid
+    const isLate = rawTimingMs > timeLimitMs + ANSWER_GRACE_MS;
+    if (isLate) {
+      console.warn(
+        `[triviaNightService] late answer from ${msg.senderId} (${rawTimingMs}ms > limit ${timeLimitMs + ANSWER_GRACE_MS}ms) — treating as timeout`,
+      );
+    }
+
     const ans: TriviaAnswer = {
       playerId: msg.senderId,
       roundNumber: (msg.payload.roundNumber as number) ?? 0,
-      selectedIndex: (msg.payload.selectedIndex as number) ?? -1,
-      timingMs: (msg.payload.timingMs as number) ?? 0,
+      selectedIndex: isLate ? -1 : ((msg.payload.selectedIndex as number) ?? -1),
+      timingMs: rawTimingMs,
     };
 
     // Ignore late answers for previous rounds
@@ -592,6 +688,11 @@ export function initTriviaMessageHandlers(): () => void {
     emitState();
 
     if (_onGameOver) _onGameOver(standings);
+
+    // H3 — notify non-host clients if the game ended due to pool exhaustion
+    if (msg.payload.reason === 'empty_pool' && _onPoolExhausted) {
+      _onPoolExhausted();
+    }
   }));
 
   return () => cleanups.forEach(fn => fn());
