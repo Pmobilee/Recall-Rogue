@@ -1,3 +1,14 @@
+### 2026-04-20 — Hub cursor lag on macOS after brightness/outline filter split — missing will-change layer promotion
+
+**What:** After commit `f97a1297b` ("perf(hub): fix Chrome campsite slowdown"), the hub campsite became laggy on macOS/WebKit while moving the cursor. Chrome was fine (the fix targeted Chrome). The fix had split brightness off the sprite outline filter chain — a correct architectural decision — but the CSS comment in `.camp-sprite-layer` said *"Chromium GPU-caches the outlined image (via will-change below)"* while zero `will-change` or layer-promotion hints were ever actually present in the file.
+
+**Why:** Without `will-change: filter` on `.camp-sprite-layer`, every brightness bucket change (triggered ~60 Hz by the RAF pointer handler) caused the compositor to re-rasterize the parent layer. Without `will-change: filter` + `backface-visibility: hidden` on `.sprite-img.rpg-outline`, WebKit/Safari re-ran the SVG `feMorphology` filter on every parent repaint. With 10 full-scene WebPs (1536×2784 each), the effective re-rasterization rate on cursor movement was extremely high — strictly worse than the original single 8-chain filter on Safari, which was GPU-cached.
+
+**Fix:** Added `will-change: filter` to `.camp-sprite-layer` and `will-change: filter` + `backface-visibility: hidden` to `.sprite-img.rpg-outline` in `CampSpriteButton.svelte`. `backface-visibility: hidden` is used instead of `transform: translateZ(0)` because the latter would fight arbitrary inline `transform: translate(...)` values from `buildSpriteStyle` for sprites with `spriteOffsetX/Y`.
+
+**Rule:** Whenever a CSS comment promises a layer-caching behavior ("GPU-caches via will-change", "compositor-promoted"), verify the actual layer-promotion hint (`will-change`, `translate3d`, `backface-visibility`) is present in the CSS — comments are not guarantees. If the hint is missing, the comment is a lie and the perf contract is not fulfilled.
+
+
 ### 2026-04-20 — Tauri v2 IPC snake_case args silently break Steam commands
 
 **What:** `createSteamLobby` (and every other multi-word Steam IPC call) returned `null` instantly — not after the 5-second poll timeout — when invoked from a packaged Steam build. The multiplayer banner showed "Steam may be unavailable" with no further detail.

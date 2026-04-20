@@ -122,13 +122,14 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    /* Brightness lives HERE (not on .sprite-img) so the expensive 8-chained
-       drop-shadow filter on .rpg-outline is not re-rasterized when brightness
-       changes. Chromium GPU-caches the outlined image (via will-change below)
-       and just re-applies this cheap brightness filter per bucket change.
+    /* Brightness lives HERE (not on .sprite-img) so the SVG feMorphology
+       outline on .rpg-outline is not re-rasterized when brightness changes.
+       will-change promotes this layer so the compositor handles brightness
+       flips without re-rasterizing the child outline layer.
        Before splitting this, brightness + 8 drop-shadows were one filter
        chain → every bucket change re-ran all 8 drop-shadows on CPU. */
     filter: brightness(var(--sprite-brightness, 1));
+    will-change: filter;
   }
 
   .sprite-img {
@@ -149,6 +150,13 @@
        The #rpg-outline-filter <svg> definition lives at the bottom of this
        component so it ships alongside the consumers. */
     filter: url(#rpg-outline-filter);
+    /* Layer-promotion hints so WebKit/Safari caches the feMorphology output
+       and does not re-rasterize on parent brightness changes (2026-04-20).
+       backface-visibility: hidden is used instead of translateZ(0) so it
+       does not fight arbitrary inline transform: translate(...) values set
+       by buildSpriteStyle for spriteOffsetX/Y. */
+    will-change: filter;
+    backface-visibility: hidden;
   }
 
   .sprite-hitbox {
