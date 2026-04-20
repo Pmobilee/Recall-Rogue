@@ -1011,6 +1011,11 @@
         : 'default',
   )
 
+  /** Focus AP discount: 1 when Focus is active with charges, 0 otherwise. */
+  let focusDiscount = $derived(
+    (turnState?.focusReady && (turnState?.focusCharges ?? 0) > 0) ? 1 : 0
+  )
+
   let castDisabled = $derived(
     !selectedCard || !turnState || Math.max(0, getEffectiveApCost(selectedCard) - focusDiscount) > turnState.apCurrent,
   )
@@ -1020,11 +1025,6 @@
 
   /** AR-122: Chain Momentum — next Charge of matching chain type costs +0 AP (color-specific). */
   let chargeMomentumChainType = $derived(turnState?.nextChargeFreeForChainType ?? null)
-
-  /** Focus AP discount: 1 when Focus is active with charges, 0 otherwise. */
-  let focusDiscount = $derived(
-    (turnState?.focusReady && (turnState?.focusCharges ?? 0) > 0) ? 1 : 0
-  )
 
   let playerHpCurrent = $derived(turnState?.playerState.hp ?? 0)
   let playerHpMax = $derived(turnState?.playerState.maxHP ?? 1)
@@ -1217,9 +1217,10 @@
 
   $effect(() => {
     juiceManager.setCallbacks({
-      onDamageNumber: (value, isCritical, cardType) => {
-        const type = cardType === 'shield' ? 'block' : cardType === 'heal' ? 'heal' : 'damage'
-        spawnDamageNumber(value, isCritical, type, 'enemy')
+      onDamageNumber: (value, isCritical) => {
+        // cardType was always undefined at runtime — juiceManager.ts never passes it.
+        // Dead branches for 'shield'/'heal' removed in typecheck fix 2026-04-20.
+        spawnDamageNumber(value, isCritical, 'damage', 'enemy')
       },
       onScreenFlash: (intensity) => {
         const scene = getCombatScene()

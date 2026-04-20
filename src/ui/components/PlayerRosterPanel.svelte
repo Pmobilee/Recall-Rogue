@@ -35,7 +35,7 @@
           displayName: lobbyEntry?.displayName ?? `Player`,
         }
       })
-      .sort((a, b) => (b.hp / Math.max(b.maxHp, 1)) - (a.hp / Math.max(a.maxHp, 1)))
+      .sort((a, b) => (a.maxHp === 0 ? 1 : a.hp / a.maxHp) - (b.maxHp === 0 ? 1 : b.hp / b.maxHp))
   })
 
   function handleKeydown(e: KeyboardEvent): void {

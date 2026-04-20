@@ -5022,3 +5022,17 @@ Additionally, there was no timeout on the `lan_start_server` Tauri command. A po
 - `steamBackend.resolveByCode` now does the same list request and scans `lobby_code` metadata per lobby.
 
 **Rule:** Every `pending_*` slot in `SteamState` follows the same one-shot Arc+Mutex pattern. When adding new async Steamworks operations, always add a corresponding `pending_` slot and drain command — never print-and-discard in the callback.
+
+### 2026-04-20 — CardCombatOverlay JuiceCallbacks signature drift
+
+**What:** `CardCombatOverlay.svelte` had two typecheck errors from mismatched data flow:
+1. `castDisabled` (line 1014) referenced `focusDiscount` which was declared 10 lines later (line 1025). Svelte 5 `$derived` has no hoisting — the reference was a use-before-declaration error.
+2. The `juiceManager.setCallbacks` call declared `onDamageNumber: (value, isCritical, cardType)` with a third `cardType` parameter, but `JuiceCallbacks.onDamageNumber` is typed as `(value: string, isCritical: boolean) => void`. The callback then branched on `cardType === 'shield'` and `cardType === 'heal'` — branches that were always dead because `juiceManager.ts` call sites (lines 154 and 219) pass only 2 args.
+
+**Why:** The `focusDiscount` declaration was added after `castDisabled` during AR-122 focus implementation without noticing the forward reference. The `cardType` param was likely a speculative extension of the callback that was never wired through the juice pipeline — `JuiceEvent.cardType` exists but `fireCorrect` uses it only to gate `onEnemyHit`/`onParticleBurst`, never passes it to `onDamageNumber`.
+
+**Fix:**
+- Reordered `focusDiscount` to appear before `castDisabled`.
+- Removed the phantom `cardType` param from the `onDamageNumber` callback and hardcoded `'damage'` (the only value that was ever reachable at runtime). The shield/heal damage number distinction, if ever needed, requires threading `cardType` through `JuiceManager.onDamageNumber` in `juiceManager.ts` first — not a dead overlay branch.
+
+**Rule:** When extending `JuiceCallbacks` interface in the future, also update all `onXxx?.()` call sites in `juiceManager.ts` to pass the new argument — otherwise UI callbacks that depend on it will silently receive `undefined`.
