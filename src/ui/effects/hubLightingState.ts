@@ -193,14 +193,21 @@ const _onFrame: FrameCallback = (now: number): void => {
     computeSnapshot(now, _streak)
   }
 
-  // Throttle reactive store to ~10fps (every 3rd frame).
+  // Throttle reactive store to ~5fps (every 6th frame at 30fps source).
   // Canvas consumers (CampfireEffect, HubGlowEffect) call getSnapshot() directly
   // and still get full 30fps data. Only Svelte DOM bindings need the store.
-  if (_frameCount % 3 === 0) {
+  // Why 5fps not 10fps: each store tick triggers 12 sprite-brightness derives in
+  // HubScreen, and each downstream CSS change re-runs an 8-chained drop-shadow
+  // filter on Chromium (CPU-bound, not GPU-accelerated). Halving the rate cut
+  // CPU filter cost by ~50% with no perceptible visual difference — campfire
+  // pulse remains lively because the canvas glow runs at full 30fps.
+  // Quantizing intensity here further reduces downstream CSS variable churn:
+  // identical buckets short-circuit at the $derived level via Svelte's === check.
+  if (_frameCount % 6 === 0) {
     _reactiveStore.set({
       spriteBrightness: computeSpriteBrightnessFromSnapshot(_snapshot.intensity),
       warmth: _snapshot.warmth,
-      intensity: _snapshot.intensity,
+      intensity: Math.round(_snapshot.intensity * 8) / 8,
     })
   }
 }

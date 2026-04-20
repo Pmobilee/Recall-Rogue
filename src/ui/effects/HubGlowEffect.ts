@@ -56,12 +56,18 @@ export class HubGlowEffect {
   private mouseY: number | null = null
 
   /**
-   * Cache key from the last rendered frame.
-   * Encodes quantized intensity + campfire/mouse positions.
-   * If a new frame produces an identical key the draw is skipped.
-   * Reset to '' in start() and destroy() so a fresh mount always draws.
+   * Cache key for the warm-glow canvas (depends on intensity + campfire + mouse).
+   * Mouse coords are quantized to ~50px buckets so cursor wiggles don't trigger
+   * full canvas redraws — the secondary mouse glow has a soft 15%-diagonal radius
+   * so 50px shifts are imperceptible. Reset to '' in start()/destroy().
    */
-  private lastKey: string = ''
+  private lastGlowKey: string = ''
+  /**
+   * Cache key for the vignette canvas (depends on intensity + campfire ONLY).
+   * Vignette is mouse-independent, so its redraw is skipped on every mouse move.
+   * Splitting from lastGlowKey halves canvas work during cursor movement.
+   */
+  private lastVignetteKey: string = ''
 
   /** Bound frame callback for registration with the shared loop. */
   private _boundOnFrame: FrameCallback
@@ -142,16 +148,33 @@ export class HubGlowEffect {
     const cx = center.x
     const cy = center.y
 
-    // Mouse coords (null → encode as 'N' in the key)
+    // Mouse coords (null → encode as 'N' in the key).
+    // Quantize to 50px buckets so cursor wiggles don't trigger full canvas redraws.
+    // Secondary mouse glow has a 15%-diagonal radius (~300px), so 50px shifts are
+    // imperceptible.
     const mx = this.mouseX
     const my = this.mouseY
+    const mxBucket = mx === null ? 'N' : Math.round(mx / 50)
+    const myBucket = my === null ? 'N' : Math.round(my / 50)
 
-    // Build cache key from quantized values (1-decimal precision for coords)
-    const key = `${intensity}|${cx.toFixed(1)},${cy.toFixed(1)}|${mx === null ? 'N' : mx.toFixed(1)},${my === null ? 'N' : my.toFixed(1)}|${this.canvas.width},${this.canvas.height}`
+    // Glow key: depends on intensity, campfire, AND mouse (because the warm-glow
+    // canvas redraws the secondary mouse-following light).
+    const glowKey = `${intensity}|${cx.toFixed(1)},${cy.toFixed(1)}|${mxBucket},${myBucket}|${this.canvas.width},${this.canvas.height}`
 
-    // Frame-skip: previous pixels persist — identical to what we would draw.
-    if (key === this.lastKey) return
-    this.lastKey = key
+    // Vignette key: depends on intensity + campfire ONLY (mouse-independent).
+    // This is why splitting the keys halves canvas work during cursor movement —
+    // the vignette canvas can stay stale while the glow canvas redraws.
+    const vignetteKey = `${intensity}|${cx.toFixed(1)},${cy.toFixed(1)}|${this.vignetteCanvas.width},${this.vignetteCanvas.height}`
+
+    const glowDirty = glowKey !== this.lastGlowKey
+    const vignetteDirty = vignetteKey !== this.lastVignetteKey
+
+    // If neither canvas is dirty, the previous pixels persist — identical to
+    // what we would draw.
+    if (!glowDirty && !vignetteDirty) return
+
+    if (glowDirty) this.lastGlowKey = glowKey
+    if (vignetteDirty) this.lastVignetteKey = vignetteKey
 
     // Scale factors: canvas backing store is smaller than the viewport.
     // All viewport-space coords must be projected into canvas-space before drawing.
@@ -165,7 +188,7 @@ export class HubGlowEffect {
     // -------------------------------------------------------------------------
     // Canvas 1: Warm glow (mix-blend-mode: screen on CSS)
     // -------------------------------------------------------------------------
-    if (this.ctx) {
+    if (glowDirty && this.ctx) {
       const w = this.canvas.width
       const h = this.canvas.height
       this.ctx.clearRect(0, 0, w, h)
@@ -210,7 +233,7 @@ export class HubGlowEffect {
     // This avoids the browser having to reparse a gradient CSS string each frame,
     // which Chrome does even when the string is quantized to 20 discrete values.
     // -------------------------------------------------------------------------
-    if (this.vignetteCtx) {
+    if (vignetteDirty && this.vignetteCtx) {
       const vw = this.vignetteCanvas.width
       const vh = this.vignetteCanvas.height
       this.vignetteCtx.clearRect(0, 0, vw, vh)
@@ -264,7 +287,9 @@ export class HubGlowEffect {
    * frame at middle intensity and does not register with the shared loop.
    */
   start(): void {
-    this.lastKey = ''  // ensure first frame always draws
+    // Reset both keys so the first frame always draws both canvases.
+    this.lastGlowKey = ''
+    this.lastVignetteKey = ''
     if (isReduceMotionEnabled()) {
       // Single static frame — no ongoing animation
       this.drawFrame(0.5)
@@ -288,7 +313,9 @@ export class HubGlowEffect {
    * Stop the loop and release references.
    */
   destroy(): void {
-    this.lastKey = ''  // reset so a fresh mount after re-use always draws
+    // Reset both keys so a fresh mount after re-use always draws both canvases.
+    this.lastGlowKey = ''
+    this.lastVignetteKey = ''
     this.stop()
     this.ctx = null
     this.vignetteCtx = null

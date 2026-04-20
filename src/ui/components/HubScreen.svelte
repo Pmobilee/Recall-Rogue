@@ -79,6 +79,20 @@
   let mouseX = $state<number | undefined>(undefined)
   let mouseY = $state<number | undefined>(undefined)
   let mouseInHub = $state(false)
+  // Mouse position in container-percentage space — computed ONCE per pointermove
+  // from a cached bounding rect, so per-sprite brightness derives don't each call
+  // getBoundingClientRect() (which forced a synchronous layout 10× per pointer event).
+  // mousePctX/Y are container-percent (0-100) for whichever element is active
+  // (hubCenterEl in landscape, campHubEl in portrait).
+  let mousePctX = $state<number | undefined>(undefined)
+  let mousePctY = $state<number | undefined>(undefined)
+  // Cached container rects — refreshed on resize. Avoids 10× per-pointermove layout queries.
+  let _hubCenterRect: DOMRect | null = null
+  let _campHubRect: DOMRect | null = null
+  // RAF-throttle pointer updates — collapses bursts of 100+ pointermove events/sec
+  // into one update per frame (~60Hz max), eliminating reactive-cascade thrash.
+  let _pendingPointer: { x: number; y: number } | null = null
+  let _pointerRaf = 0
 
   // Hub lighting reactive store
   const hubLighting = getHubLightingStore()
@@ -113,86 +127,118 @@
 
   /**
    * Compute brightness bonus (0–0.15) based on mouse proximity to a sprite's hitbox center.
-   * Converts mouse viewport coords to container-percentage space for comparison with
-   * the hitbox percent values used throughout this file.
+   * Reads pre-computed container-percentage mouse coords (mousePctX/mousePctY) so
+   * derives don't trigger a synchronous layout via getBoundingClientRect(). The pct
+   * conversion happens once per RAF in handleHubPointerMove.
    *
    * @param hitTop   - Hitbox top as % of container height
    * @param hitLeft  - Hitbox left as % of container width
    * @param hitWidth - Hitbox width as % of container width
    * @param hitHeight - Hitbox height as % of container height
-   * @param mx - Mouse viewport X (clientX), or undefined when outside hub
-   * @param my - Mouse viewport Y (clientY), or undefined when outside hub
-   * @param containerEl - Hub container element for bounding rect conversion
+   * @param mPctX - Pre-computed mouse X as % of container width (undefined when outside hub)
+   * @param mPctY - Pre-computed mouse Y as % of container height
    */
   function getMouseProximityBonus(
     hitTop: number, hitLeft: number, hitWidth: number, hitHeight: number,
-    mx: number | undefined, my: number | undefined,
-    containerEl: HTMLElement | undefined
+    mPctX: number | undefined, mPctY: number | undefined
   ): number {
-    if (mx === undefined || my === undefined || !containerEl) return 0
-    const rect = containerEl.getBoundingClientRect()
-    // Convert mouse viewport coords to percentage of container
-    const mousePctX = ((mx - rect.left) / rect.width) * 100
-    const mousePctY = ((my - rect.top) / rect.height) * 100
+    if (mPctX === undefined || mPctY === undefined) return 0
     // Sprite center in percentage
     const cx = hitLeft + hitWidth / 2
     const cy = hitTop + hitHeight / 2
-    const dx = mousePctX - cx
-    const dy = mousePctY - cy
+    const dx = mPctX - cx
+    const dy = mPctY - cy
     const dist = Math.sqrt(dx * dx + dy * dy)
     // Bonus fades from 0.15 at dist=0 to 0 at dist=25
     return Math.max(0, 0.15 * (1 - dist / 25))
   }
 
-  // Reactive per-sprite brightness: campfire distance falloff + mouse proximity bonus
-  let doorwayBright = $derived(disableEffects ? 1.0 :
+  /**
+   * Quantize sprite brightness to 8 discrete buckets (0.05 step). Each sprite uses an
+   * 8-chained drop-shadow + brightness filter chain (.rpg-outline in CampSpriteButton),
+   * and Chromium re-runs the entire chain on every --sprite-brightness change. Without
+   * quantization the value updates 10×/sec from the lighting store + every pointer move
+   * from proximity, costing 800-2400ms/sec of CPU drop-shadow rasterization across all
+   * 10 sprites. With quantization most micro-fluctuations land in the same bucket → no
+   * CSS variable change → no filter recompute. The 0.05 visual delta is invisible.
+   */
+  function quantizeBrightness(b: number): number {
+    return Math.round(b * 20) / 20
+  }
+
+  // Reactive per-sprite brightness: campfire distance falloff + mouse proximity bonus.
+  // Reads mousePctX/mousePctY (computed once per RAF in handleHubPointerMove) so the
+  // derives don't each call getBoundingClientRect — see perf gotcha 2026-04-20.
+  let doorwayBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(11, 28, 44, 27, $hubLighting.intensity) +
-    getMouseProximityBonus(11, 28, 44, 27, mouseX, mouseY, hubCenterEl)))
-  let libraryBright = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(11, 28, 44, 27, mousePctX, mousePctY))))
+  let libraryBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(31, 2, 32, 23, $hubLighting.intensity) +
-    getMouseProximityBonus(31, 2, 32, 23, mouseX, mouseY, hubCenterEl)))
-  let settingsBright = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(31, 2, 32, 23, mousePctX, mousePctY))))
+  let settingsBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(29, 76, 16, 18, $hubLighting.intensity) +
-    getMouseProximityBonus(29, 76, 16, 18, mouseX, mouseY, hubCenterEl)))
-  let questboardBright = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(29, 76, 16, 18, mousePctX, mousePctY))))
+  let questboardBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(75, 72, 26, 20, $hubLighting.intensity) +
-    getMouseProximityBonus(75, 72, 26, 20, mouseX, mouseY, hubCenterEl)))
-  let journalBright = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(75, 72, 26, 20, mousePctX, mousePctY))))
+  let journalBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(76, 5, 23, 9, $hubLighting.intensity) +
-    getMouseProximityBonus(76, 5, 23, 9, mouseX, mouseY, hubCenterEl)))
-  let shopBright = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(76, 5, 23, 9, mousePctX, mousePctY))))
+  let shopBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(61, -21, 19, 11, $hubLighting.intensity) +
-    getMouseProximityBonus(61, -21, 19, 11, mouseX, mouseY, hubCenterEl)))
-  let tentBright = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(61, -21, 19, 11, mousePctX, mousePctY))))
+  let tentBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(40, 90, 30, 20, $hubLighting.intensity) +
-    getMouseProximityBonus(40, 90, 30, 20, mouseX, mouseY, hubCenterEl)))
-  let campfireBright = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(40, 90, 30, 20, mousePctX, mousePctY))))
+  let campfireBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(55, 38, 24, 18, $hubLighting.intensity) +
-    getMouseProximityBonus(55, 38, 24, 18, mouseX, mouseY, hubCenterEl)))
-  let characterBright = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(55, 38, 24, 18, mousePctX, mousePctY))))
+  let characterBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(58, 54, 21, 11, $hubLighting.intensity) +
-    getMouseProximityBonus(58, 54, 21, 11, mouseX, mouseY, hubCenterEl)))
-  let petBright = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(58, 54, 21, 11, mousePctX, mousePctY))))
+  let petBright = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(69, 66, 11, 6, $hubLighting.intensity) +
-    getMouseProximityBonus(69, 66, 11, 6, mouseX, mouseY, hubCenterEl)))
+    getMouseProximityBonus(69, 66, 11, 6, mousePctX, mousePctY))))
 
   // Portrait-specific brightness for sprites at different positions in portrait layout
-  let shopBrightPortrait = $derived(disableEffects ? 1.0 :
+  let shopBrightPortrait = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(87, 52, 19, 11, $hubLighting.intensity) +
-    getMouseProximityBonus(87, 52, 19, 11, mouseX, mouseY, campHubEl)))
-  let tentBrightPortrait = $derived(disableEffects ? 1.0 :
+    getMouseProximityBonus(87, 52, 19, 11, mousePctX, mousePctY))))
+  let tentBrightPortrait = $derived(disableEffects ? 1.0 : quantizeBrightness(
     Math.min(1.0, getSpriteBrightness(44, 66, 36, 22, $hubLighting.intensity) +
-    getMouseProximityBonus(44, 66, 36, 22, mouseX, mouseY, campHubEl)))
+    getMouseProximityBonus(44, 66, 36, 22, mousePctX, mousePctY))))
 
-  // Background warmth filter: subtle sepia+saturation shift driven by warmth value
-  let bgWarmthFilter = $derived(disableEffects ? '' : `sepia(${(0.03 + $hubLighting.warmth * 0.05).toFixed(3)}) saturate(${(1.0 + $hubLighting.warmth * 0.1).toFixed(3)})`)
+  // Background warmth filter REMOVED 2026-04-20. A `filter: sepia() saturate()`
+  // applied to the fullscreen `.camp-bg` <img> dominated the Chrome frame budget
+  // — Chromium re-rasterizes a filtered fullscreen replaced element on every
+  // repaint even when the filter string is static, while WebKit/Safari doesn't.
+  // The warm tone is already provided by the HubGlowCanvas orange glow overlay.
+  // If a subtle base warmth is wanted back, add it via a semi-transparent tinted
+  // overlay <div> (single composited layer, near-zero paint cost) instead of a
+  // CSS filter on the <img>. See docs/gotchas.md 2026-04-20.
+
+  /** Refresh cached container rects. Called on mount, on resize, and lazily when null. */
+  function refreshHubRects(): void {
+    _hubCenterRect = hubCenterEl?.getBoundingClientRect() ?? null
+    _campHubRect = campHubEl?.getBoundingClientRect() ?? null
+  }
 
   onMount(() => {
     if (!disableEffects) startLighting(streak)
+    // Cache container rects once, refresh on resize. Eliminates per-pointermove
+    // getBoundingClientRect() calls (was 10 per move = ~1000 layout queries/sec when
+    // moving the cursor). Refresh on next frame so layout has settled.
+    requestAnimationFrame(refreshHubRects)
+    window.addEventListener('resize', refreshHubRects)
   })
 
   onDestroy(() => {
     stopLighting()
+    window.removeEventListener('resize', refreshHubRects)
+    if (_pointerRaf) {
+      cancelAnimationFrame(_pointerRaf)
+      _pointerRaf = 0
+    }
   })
 
   // Keep streak amplitude in sync
@@ -219,17 +265,53 @@
     }
   }
 
+  /**
+   * RAF-coalesced pointer state flush. Pointer events fire at 100-200 Hz on modern
+   * trackpads/mice — without throttling, each event triggered ALL 12 sprite-brightness
+   * derives (which previously each called getBoundingClientRect → 10× synchronous
+   * layout per event = 1000-2000 layout queries/sec). This collapses bursts to ~60 Hz max.
+   */
+  function flushPointer(): void {
+    _pointerRaf = 0
+    if (!_pendingPointer) return
+    const { x, y } = _pendingPointer
+    _pendingPointer = null
+    mouseX = x
+    mouseY = y
+    // Use whichever container rect is active for this layout. Refresh lazily if null.
+    const rect = $isLandscape ? _hubCenterRect : _campHubRect
+    if (!rect || rect.width === 0) {
+      refreshHubRects()
+      const fresh = $isLandscape ? _hubCenterRect : _campHubRect
+      if (!fresh || fresh.width === 0) return
+      mousePctX = ((x - fresh.left) / fresh.width) * 100
+      mousePctY = ((y - fresh.top) / fresh.height) * 100
+    } else {
+      mousePctX = ((x - rect.left) / rect.width) * 100
+      mousePctY = ((y - rect.top) / rect.height) * 100
+    }
+  }
+
   /** Track mouse position for cursor light, glow canvas secondary pass, and sprite proximity. */
   function handleHubPointerMove(e: PointerEvent): void {
-    mouseX = e.clientX
-    mouseY = e.clientY
+    _pendingPointer = { x: e.clientX, y: e.clientY }
     mouseInHub = true
+    if (!_pointerRaf) {
+      _pointerRaf = requestAnimationFrame(flushPointer)
+    }
   }
 
   /** Clear mouse state when pointer leaves the hub area. */
   function handleHubPointerLeave(): void {
+    if (_pointerRaf) {
+      cancelAnimationFrame(_pointerRaf)
+      _pointerRaf = 0
+    }
+    _pendingPointer = null
     mouseX = undefined
     mouseY = undefined
+    mousePctX = undefined
+    mousePctY = undefined
     mouseInHub = false
   }
 
@@ -443,7 +525,6 @@
       aria-hidden="true"
       loading="eager"
       decoding="async"
-      style:filter={bgWarmthFilter}
     />
 
     <!-- Warm campfire glow + vignette canvas overlay -->
@@ -706,7 +787,6 @@
       aria-hidden="true"
       loading="lazy"
       decoding="async"
-      style:filter={bgWarmthFilter}
     />
 
     <!-- Warm campfire glow + vignette canvas overlay -->

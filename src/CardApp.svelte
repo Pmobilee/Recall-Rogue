@@ -241,6 +241,32 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     updateRichPresence($currentScreen)
   })
 
+  /**
+   * Pause Phaser's RAF loop on non-Phaser screens (2026-04-20).
+   *
+   * The Phaser canvas is hidden via `visibility: hidden` (NOT display:none) on
+   * the hub so it stays mounted for fast re-entry into combat. But Phaser's
+   * game loop keeps ticking 60fps update + WebGL render to the hidden canvas
+   * unless we explicitly sleep it. Safari's compositor handles a hidden
+   * WebGL canvas for free; Chrome's does not — it costs 30–50% of frame
+   * budget on the hub even though the canvas isn't visible.
+   *
+   * `game.loop.sleep()` halts the loop entirely; `wake()` resumes it. We sleep
+   * whenever the phaser-container is not in its `.visible` state (matching the
+   * CSS class predicate used in the markup).
+   */
+  $effect(() => {
+    const screen = $currentScreen
+    const phaserVisible = showBootAnimation || screen === 'combat' || screen === 'rewardRoom'
+    if (!phaserBooted) return
+    void import('./game/CardGameManager').then(({ CardGameManager }) => {
+      const game = CardGameManager.getInstance().getGame()
+      if (!game?.loop) return
+      if (phaserVisible) game.loop.wake()
+      else game.loop.sleep()
+    })
+  })
+
   // Auto-trigger combat tutorial on first-ever combat encounter
   $effect(() => {
     const screen = $currentScreen
@@ -1510,6 +1536,35 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
   })
 </script>
+
+<!-- Global SVG filter defs (single source of truth, shared across all consumers).
+     #rpg-outline-filter renders a 2px black outline around any image's alpha channel
+     using a single GPU-accelerated feMorphology dilate + flood + composite. Used by
+     CampSpriteButton.svelte's .rpg-outline class to replace what was previously an
+     8-chained CSS drop-shadow() filter — that chain forced ~50 MB of per-frame
+     compositor work on Chrome with ~10 fullscreen-sized camp sprites. See
+     docs/gotchas.md 2026-04-20. -->
+<svg
+  width="0"
+  height="0"
+  style="position: absolute; pointer-events: none;"
+  aria-hidden="true"
+>
+  <defs>
+    <filter id="rpg-outline-filter" x="-10%" y="-10%" width="120%" height="120%">
+      <!-- Step 1: dilate the source alpha channel by 2px to make a fattened mask -->
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="dilated" />
+      <!-- Step 2: flood with solid black, masked by the dilated alpha -->
+      <feFlood flood-color="#000" flood-opacity="1" result="black" />
+      <feComposite in="black" in2="dilated" operator="in" result="outline" />
+      <!-- Step 3: paint the original sprite on top of the black outline -->
+      <feMerge>
+        <feMergeNode in="outline" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+</svg>
 
 <div class:hidden-during-boot={showBootAnimation}>
   <FireflyBackground />

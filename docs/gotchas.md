@@ -1,3 +1,21 @@
+### 2026-04-20 — `filter:` on a fullscreen `<img>` is the dominant Chrome campsite cost
+
+**What:** The campsite screen was painfully slow in Chrome while fine on Safari/macOS. After disabling the warm glow canvas, cursor light, fireflies, sparkles, campfire canvas, Phaser loop sleep on non-combat screens, and splitting the 8-chained drop-shadow outline from the brightness filter, the campsite was still lagging. The sole remaining `style:filter={bgWarmthFilter}` on the fullscreen `.camp-bg` `<img>` — where `bgWarmthFilter` was the STATIC string `'sepia(0.055) saturate(1.05)'` — was the culprit. Removing that one line made the entire hub fluid.
+
+**Why:** Chromium re-rasterizes a `filter`'d fullscreen replaced element (`<img>`, `<video>`) on every repaint, even when the filter value has not changed. A full-viewport image pixel blit through a color-matrix filter is 10–30 ms per repaint on a 1920×1080 canvas. Any repaint happening elsewhere in the viewport (cursor movement, CSS animations on other elements, Svelte re-renders for reactive state) drags the fullscreen image re-rasterization with it. WebKit/Safari caches the filtered result in its compositor and doesn't re-run the filter when the value is unchanged, which is why it was invisible on macOS.
+
+**Fix:** Removed the `style:filter={bgWarmthFilter}` binding on both landscape and portrait `.camp-bg` `<img>`s in `HubScreen.svelte`. The `bgWarmthFilter` derive + `STATIC_BG_WARMTH_FILTER` constant are gone. The warm hub tone is still provided by the `HubGlowCanvas` orange glow overlay.
+
+**Rule for future work:** Never apply a CSS `filter` to a fullscreen replaced element (`<img>`, `<video>`, `<canvas>`) unless you have confirmed Chrome doesn't re-rasterize it on every repaint. Cheap replacements:
+- Pre-bake the tone into the source PNG
+- Semi-transparent tinted `<div>` overlay (`background: rgba(...)` + `mix-blend-mode`) — single composited layer
+- Canvas with `globalCompositeOperation: 'source-atop'` if dynamic
+
+**Diagnostic lesson:** When a screen is slow only on Chrome and fine on Safari, suspect fullscreen-filter re-rasterization BEFORE suspecting compositor costs (`mix-blend-mode`), drop-shadow chains, or RAF loops. Those three were all optimised in this debug session with near-zero Chrome-side impact. The single-line filter removal delivered all the win.
+
+**Files:** `src/ui/components/HubScreen.svelte`.
+
+
 ### 2026-04-20 — tauriInvoke stale-snapshot guard + devtools diagnostic flag
 
 **What (Bug 3 — tauriInvoke stale guard):** Even after `pickBackend()` was fixed to use a live Tauri v2 check, every actual Steamworks IPC call went through `tauriInvoke()` in `steamNetworkingService.ts`, which still guarded on the module-load-time `hasSteam` snapshot (`if (!hasSteam) return null`). On Steam release builds where `window.__TAURI_INTERNALS__` is injected after the module was evaluated, `hasSteam` was `false` at load time and `tauriInvoke` silently returned `null` for every IPC call — bypassing the fix in `pickBackend()` entirely.

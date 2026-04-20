@@ -377,9 +377,9 @@ Historical note — **Refactored 2026-04-03:** The landscape quiz overlay uses a
 **`CampSpriteButton` props:**
 - `brightness?: number` (default 1.0) — set as `--sprite-brightness` CSS custom property inline
 - `fireShadow` prop REMOVED 2026-04-01: full-frame sprites (`inset: 0; width/height: 100%`) mean `drop-shadow` follows the entire image alpha channel, creating visible dark blob halos rather than subtle directional shadows. Incompatible with this sprite architecture.
-- `.sprite-img` base rule: `filter: brightness(var(--sprite-brightness, 1))`
-- `.sprite-img.rpg-outline`: brightness then outline drop-shadows (no fire shadow)
-- `:has(.sprite-hitbox:active)` press flash: hardcoded `brightness(1.4)` with warm glow drop-shadow
+- `.camp-sprite-layer` (parent): `filter: brightness(var(--sprite-brightness, 1))` — moved here 2026-04-20 from `.sprite-img` so brightness re-rasterizations don't flow into the outline filter chain below.
+- `.sprite-img.rpg-outline`: `filter: url(#rpg-outline-filter)` — single SVG `feMorphology` dilate + flood + composite that replaces the previous 8-chained CSS `drop-shadow()` rule. Defined once globally in `CardApp.svelte`. One GPU-accelerated SVG filter op per sprite instead of eight CPU rasterizations. Required because each camp sprite is a 1536×2784 full-scene WebP (~4.3 MP) and ~10 of them stack — the old chain dominated the Chrome campsite frame budget.
+- `:has(.sprite-hitbox:active)` press flash: hardcoded `brightness(1.4)` on `.camp-sprite-layer`. The active-state warm-glow halo was removed 2026-04-20 alongside the outline chain rewrite.
 
 ### HubScreen Integration (Batch 3)
 

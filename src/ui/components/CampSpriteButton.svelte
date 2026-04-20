@@ -122,6 +122,13 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
+    /* Brightness lives HERE (not on .sprite-img) so the expensive 8-chained
+       drop-shadow filter on .rpg-outline is not re-rasterized when brightness
+       changes. Chromium GPU-caches the outlined image (via will-change below)
+       and just re-applies this cheap brightness filter per bucket change.
+       Before splitting this, brightness + 8 drop-shadows were one filter
+       chain → every bucket change re-ran all 8 drop-shadows on CPU. */
+    filter: brightness(var(--sprite-brightness, 1));
   }
 
   .sprite-img {
@@ -132,22 +139,16 @@
     object-fit: fill;
     image-rendering: pixelated;
     pointer-events: none;
-    /* Campfire lighting: controlled via --sprite-brightness CSS variable (default 1.0). */
-    filter: brightness(var(--sprite-brightness, 1));
   }
 
   .sprite-img.rpg-outline {
-    /* Brightness must be prepended so drop-shadows apply to the already-brightened image. */
-    filter:
-      brightness(var(--sprite-brightness, 1))
-      drop-shadow(2px 0 0 #000)
-      drop-shadow(-2px 0 0 #000)
-      drop-shadow(0 2px 0 #000)
-      drop-shadow(0 -2px 0 #000)
-      drop-shadow(1px 1px 0 #000)
-      drop-shadow(-1px 1px 0 #000)
-      drop-shadow(1px -1px 0 #000)
-      drop-shadow(-1px -1px 0 #000);
+    /* 2026-04-20: replaced the 8-chained CSS drop-shadow() outline (which was
+       ~50 MB of per-frame compositor work on Chrome with ~10 fullscreen-sized
+       sprites) with a single SVG `feMorphology` + `feComposite` filter. One
+       GPU-accelerated operation in Chromium instead of eight CPU rasterizations.
+       The #rpg-outline-filter <svg> definition lives at the bottom of this
+       component so it ships alongside the consumers. */
+    filter: url(#rpg-outline-filter);
   }
 
   .sprite-hitbox {
@@ -166,21 +167,13 @@
   }
 
   /* Flash the actual sprite pixels when the hitbox is pressed.
-     brightness(1.4) overrides the --sprite-brightness variable on press. */
-  .camp-sprite-layer:has(.sprite-hitbox:active) > .sprite-img {
-    filter:
-      brightness(1.4)
-      drop-shadow(0 0 6px rgba(255, 200, 100, 0.7))
-      drop-shadow(2px 0 0 #000)
-      drop-shadow(-2px 0 0 #000)
-      drop-shadow(0 2px 0 #000)
-      drop-shadow(0 -2px 0 #000)
-      drop-shadow(1px 1px 0 #000)
-      drop-shadow(-1px 1px 0 #000)
-      drop-shadow(1px -1px 0 #000)
-      drop-shadow(-1px -1px 0 #000);
+     Brightness override goes on the layer (where brightness lives now), the
+     warm-glow halo goes on the img alongside the existing outline shadows. */
+  .camp-sprite-layer:has(.sprite-hitbox:active) {
+    filter: brightness(1.4);
     transition: filter 80ms ease;
   }
+  /* Active-state drop-shadow halo disabled alongside the outline chain (perf). */
 
   .sprite-tooltip {
     position: absolute;
