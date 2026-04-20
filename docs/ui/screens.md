@@ -1,7 +1,7 @@
 # Screen Flow & State Machine
 
 > **Purpose:** Complete list of all Screen values, routing logic, transition rules, and component mappings.
-> **Last verified:** 2026-04-15
+> **Last verified:** 2026-04-20 (Error surfacing added for lobby create/join failures)
 > **Source files:** `src/ui/stores/gameState.ts`, `src/CardApp.svelte`, `src/services/screenController.ts`
 
 ---
@@ -106,7 +106,7 @@ The template uses `{#if $currentScreen === 'screenName'}` blocks — **no router
 | `profile` | `ProfileScreen` | |
 | `journal` | `JournalScreen` | |
 | `leaderboards` | `LeaderboardsScreen` | |
-| `multiplayerMenu` | `MultiplayerMenu` | Two-tab entry screen. Create tab: 5 mode cards (race/same_cards/duel/coop/trivia_night) + "Create Lobby" button. Join tab: monospace 6-char code input + "Join Lobby" button. **Browse Lobbies button (2026-04-11):** gold button in the Create tab footer calls `onBrowseLobbies` → transitions to `lobbyBrowser`. Props: `onBack`, `onCreateLobby(mode)`, `onJoinLobby(code)`, `onBrowseLobbies`. `onBack` returns to hub; creating transitions to `multiplayerLobby` with new lobby; joining transitions to `multiplayerLobby` (lobby syncs via onLobbyUpdate). |
+| `multiplayerMenu` | `MultiplayerMenu` | Two-tab entry screen. Create tab: 5 mode cards (race/same_cards/duel/coop/trivia_night) + "Create Lobby" button. Join tab: monospace 6-char code input + "Join Lobby" button. **Browse Lobbies button (2026-04-11):** gold button in the Create tab footer calls `onBrowseLobbies` → transitions to `lobbyBrowser`. Props: `onBack`, `onCreateLobby(mode)`, `onJoinLobby(code)`, `onBrowseLobbies`. `onBack` returns to hub; creating transitions to `multiplayerLobby` with new lobby; joining transitions to `multiplayerLobby` (lobby syncs via onLobbyUpdate). **Error banner (2026-04-20):** `handleCreateLobby` and `handleJoinLobby` in `CardApp.svelte` are wrapped in try/catch; on failure they set `multiplayerError` (shown as `.mp-error-banner` at top of screen) and `console.error('[CardApp] createLobby/joinLobby failed:', error)`. Error clears on dismiss, back, tab switch, or re-attempt. |
 | `lobbyBrowser` | `LobbyBrowserScreen` | Public lobby browser. Props: `localPlayerId`, `localDisplayName`, `onBack` (→ `multiplayerMenu`), `onJoined` (→ `multiplayerLobby`). Auto-refresh every 5 s. Mode + fullness filter bar. 3-column lobby card grid. Password modal for protected lobbies. Empty state shown when no lobbies match filters. **Added 2026-04-11.** |
 | `multiplayerLobby` | `MultiplayerLobby` | Only mounts when `currentLobby !== null`; Props: `lobby`, `localPlayerId`, `onBack`. `MultiplayerHUD` also overlaid during `combat` when `isMultiplayerRun` is true. |
 | `settings` | `SettingsPanel` | |

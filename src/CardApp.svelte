@@ -533,6 +533,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   /** Live map node picks across all players, refreshed via multiplayerMapSync. */
   let mapNodePicks = $state<Record<string, string | null>>({})
 
+  /** Non-null when a lobby entry call (create/join) fails — shown as a banner in multiplayerMenu. */
+  let multiplayerError = $state<string | null>(null)
+
   /** Stable distinct colors per player slot used for the map node pick badges. */
   const PLAYER_PICK_COLORS = ['#3b82f6', '#ef4444', '#22c55e', '#eab308'] as const
 
@@ -575,6 +578,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   function handleOpenMultiplayer(): void {
     // Navigate to the multiplayer menu for mode selection before creating a lobby.
+    multiplayerError = null
     transitionScreen('multiplayerMenu')
   }
 
@@ -595,18 +599,31 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   // TODO(multiplayer): Replace placeholder display names with real Steam usernames when Steam integration lands. See docs/roadmap/AR-MULTIPLAYER.md.
   async function handleCreateLobby(mode: MultiplayerMode): Promise<void> {
-    const lobby = await createLobby(localPlayerId, 'Player 1', mode)
-    currentLobby = lobby
-    transitionScreen('multiplayerLobby')
+    multiplayerError = null
+    try {
+      const lobby = await createLobby(localPlayerId, 'Player 1', mode)
+      currentLobby = lobby
+      transitionScreen('multiplayerLobby')
+    } catch (error) {
+      console.error('[CardApp] createLobby failed:', error)
+      multiplayerError = "Couldn't create lobby. Steam or network unavailable."
+    }
   }
 
   async function handleJoinLobby(code: string): Promise<void> {
-    const lobby = await joinLobby(code, localPlayerId, 'Player 2')
-    currentLobby = lobby
-    transitionScreen('multiplayerLobby')
+    multiplayerError = null
+    try {
+      const lobby = await joinLobby(code, localPlayerId, 'Player 2')
+      currentLobby = lobby
+      transitionScreen('multiplayerLobby')
+    } catch (error) {
+      console.error('[CardApp] joinLobby failed:', error)
+      multiplayerError = "Couldn't join that lobby. Check the code and try again."
+    }
   }
 
   function handleBrowseLobbies(): void {
+    multiplayerError = null
     transitionScreen('lobbyBrowser')
   }
 
@@ -2041,9 +2058,19 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   {/if}
 
   {#if $currentScreen === 'multiplayerMenu'}
-    <div in:fly={{ y: 8, duration: 350 }}>
+    <div in:fly={{ y: 8, duration: 350 }} class="mp-screen-wrapper">
+      {#if multiplayerError}
+        <div class="mp-error-banner" role="alert" data-testid="mp-error-banner">
+          <span class="mp-error-text">{multiplayerError}</span>
+          <button
+            class="mp-error-dismiss"
+            aria-label="Dismiss error"
+            onclick={() => { multiplayerError = null }}
+          >✕</button>
+        </div>
+      {/if}
       <MultiplayerMenu
-        onBack={() => transitionScreen('hub')}
+        onBack={() => { multiplayerError = null; transitionScreen('hub') }}
         onCreateLobby={handleCreateLobby}
         onJoinLobby={handleJoinLobby}
         onBrowseLobbies={handleBrowseLobbies}
@@ -2550,6 +2577,63 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     color: #e74c3c;
     font-size: 14px;
     cursor: pointer;
+  }
+
+  /* Multiplayer error banner — shown at top of multiplayerMenu when lobby create/join fails. */
+  .mp-screen-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mp-error-banner {
+    position: absolute;
+    top: calc(12px * var(--layout-scale, 1));
+    left: calc(16px * var(--layout-scale, 1));
+    right: calc(16px * var(--layout-scale, 1));
+    z-index: 600;
+    display: flex;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    background: rgba(127, 29, 29, 0.92);
+    border: 1px solid rgba(252, 165, 165, 0.4);
+    border-radius: calc(8px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    animation: mp-banner-in 0.25s ease-out;
+  }
+
+  .mp-error-text {
+    flex: 1;
+    font-size: calc(14px * var(--text-scale, 1));
+    color: #fecaca;
+    line-height: 1.4;
+  }
+
+  .mp-error-dismiss {
+    flex-shrink: 0;
+    width: calc(28px * var(--layout-scale, 1));
+    height: calc(28px * var(--layout-scale, 1));
+    min-width: calc(44px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #fca5a5;
+    font-size: calc(14px * var(--text-scale, 1));
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.15s;
+  }
+
+  .mp-error-dismiss:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  @keyframes mp-banner-in {
+    from { opacity: 0; transform: translateY(calc(-6px * var(--layout-scale, 1))); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .fact-gained-toast {
