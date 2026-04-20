@@ -201,6 +201,15 @@ _archived_assets/
 # Steam
 steam/output/*
 !steam/output/.gitkeep
+
+# Steam depot build artifacts — the exe and Linux binary are ~1.3 GB each,
+# rebuilt from source by the VM pipelines (see .claude/skills/windows-vm
+# and .claude/skills/steam-deploy). Never commit the binaries.
+steam/windows-build/recall-rogue.exe
+steam/linux-build/recall-rogue
+steam/linux-build/libsteam_api.so
+# Keep steam_api64.dll and steam_appid.txt tracked — they are small and
+# required for local dev + CI.
 .env.local
 data/audits/quiz-dumps/
 
