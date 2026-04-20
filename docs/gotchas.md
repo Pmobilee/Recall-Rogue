@@ -8,7 +8,9 @@ The same stale-snapshot pattern applied to every public export (`createSteamLobb
 
 **Diagnostic flag (temporary):** Added `"devtools": true` to the main window config in `src-tauri/tauri.conf.json`. This enables right-click → Inspect in packaged release builds so the `[pickBackend]` / `[SteamNetworking]` console logs are visible without needing a debug build. **This flag must be removed before the next public-branch promotion** — it gives players unrestricted DevTools access to the packaged game.
 
-**Files:** `src/services/steamNetworkingService.ts`, `src-tauri/tauri.conf.json`.
+**Follow-up (same pattern, transport layer):** `createTransport()` in `multiplayerTransport.ts` selected the transport backend using the same stale `hasSteam` snapshot — meaning a Steam desktop build where the snapshot raced to `false` would fall through to `WebSocketTransport` even after `pickBackend()` correctly returned `steamBackend`. Applied identical local `isTauriRuntime()` helper; removed the `hasSteam` import from that file.
+
+**Files:** `src/services/steamNetworkingService.ts`, `src/services/multiplayerTransport.ts`, `src-tauri/tauri.conf.json`.
 
 
 ### 2026-04-20 — Steam builds: Create Lobby silently broken on Steam release builds

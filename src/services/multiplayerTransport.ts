@@ -9,15 +9,14 @@
  * Platform selection at factory time:
  *   mode === 'local'     → LocalMultiplayerTransport (in-memory, no networking)
  *   mode === 'broadcast' → BroadcastChannelTransport (two-tab, same origin)
- *   hasSteam === true    → SteamP2PTransport (Tauri IPC → Steamworks relay)
- *   hasSteam === false   → WebSocketTransport (Fastify server)
+ *   isTauriRuntime()     → SteamP2PTransport (Tauri IPC → Steamworks relay)
+ *   otherwise            → WebSocketTransport (Fastify server)
  *
  * Singleton lifecycle:
  *   getMultiplayerTransport()   — creates lazily on first call
  *   destroyMultiplayerTransport() — disconnect + null the instance
  */
 
-import { hasSteam } from './platformService';
 import { getLanServerUrls, isLanMode } from './lanConfigService';
 import {
   acceptP2PSession,
@@ -25,6 +24,23 @@ import {
   sendP2PMessage,
   startMessagePollLoop,
 } from './steamNetworkingService';
+
+// ── Platform helper ───────────────────────────────────────────────────────────
+
+/**
+ * Returns true if we are running inside a Tauri runtime.
+ *
+ * Uses a live check against window globals rather than the module-load-time
+ * hasSteam snapshot from platformService so the result is always accurate at
+ * call time. Mirrors the identical helper in steamNetworkingService.ts — kept
+ * local intentionally while the live-check pattern is being validated in the
+ * diagnostic build. Will consolidate into platformService once confirmed.
+ */
+function isTauriRuntime(): boolean {
+  if (typeof window === 'undefined') return false;
+  const w = window as any;
+  return !!(w.__TAURI_INTERNALS__ || w.__TAURI__);
+}
 
 // ── WebSocket URL Configuration ───────────────────────────────────────────────
 
@@ -671,7 +687,7 @@ export function createTransport(mode?: 'auto' | 'local' | 'broadcast'): Multipla
   if (mode === 'local') return new LocalMultiplayerTransport();
   if (mode === 'broadcast') return new BroadcastChannelTransport();
   if (isLanMode()) return new WebSocketTransport(); // LAN always uses WebSocket, even on Steam builds
-  if (hasSteam) return new SteamP2PTransport();
+  if (isTauriRuntime()) return new SteamP2PTransport();
   return new WebSocketTransport();
 }
 
