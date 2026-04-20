@@ -98,6 +98,13 @@
   .hub-glow-canvas {
     position: fixed;
     inset: 0;
+    /* width/height: 100% are REQUIRED. <canvas> is a replaced element — its
+       intrinsic width/height HTML attributes (set to 0.5× viewport for the
+       backing-store optimization) win over `inset: 0` unless CSS explicitly
+       stretches it. Without these, the canvas displays at 960×540 in the
+       top-left instead of filling the viewport. */
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     /* mix-blend-mode: screen makes the warm glow additive — adds light without
        washing out bright areas. Dark colors become transparent in screen mode,
@@ -108,6 +115,8 @@
   .hub-vignette-canvas {
     position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     /* Normal blend mode — can actually darken edges unlike the screen canvas above */
     mix-blend-mode: normal;
