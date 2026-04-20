@@ -5,7 +5,27 @@ description: Connect to the Windows 11 ARM64 VM (UTM) for building, testing, and
 
 # Windows VM — Connection & Management
 
-The project has a Windows 11 ARM64 VM running in UTM (bridged networking) for native Windows builds and testing. SSH key auth is configured. The project lives on the VM at `C:\Users\damion\recall-rogue` and is synced from the Mac via rsync over SSH.
+The project has a Windows 11 ARM64 VM running in UTM (bridged networking) for native Windows builds and testing. SSH key auth is configured. The project lives on the VM at `C:\Users\damion\recall-rogue` and is synced from the Mac via tar+scp over SSH.
+
+## 🚀 One-Command Build — `./scripts/steam-windows.sh`
+
+For 99% of Windows builds, just run:
+
+```bash
+./scripts/steam-windows.sh                              # build + stage (no upload)
+./scripts/steam-windows.sh --deploy                     # build + stage + upload to Steam (auto-promotes to default branch via VDF setlive)
+./scripts/steam-windows.sh --deploy --setlive=beta      # upload and override branch
+./scripts/steam-windows.sh --deploy-only                # re-upload staged build (no rebuild)
+./scripts/steam-windows.sh --skip-npm                   # skip npm install (deps unchanged)
+./scripts/steam-windows.sh --frontend-only              # build dist/ on VM only, skip cargo
+./scripts/steam-windows.sh --vm-ip=192.168.128.102      # pin VM IP (skip discovery)
+```
+
+The script is the canonical Windows path. It auto-discovers the VM IP, pre-flights the pagefile (must be ≥30 GB — fix below if not), tars the source, `scp`s to the VM, runs `scripts/vm-build-windows.ps1` on the VM, pulls back the ~1.35 GB exe, stages it into `steam/windows-build/`, validates size, and optionally uploads via `steamcmd`. Total time with warm caches: ~7 min build, ~25 min deploy.
+
+`scripts/steam-build.sh --windows [flags]` delegates to this script — both entrypoints land on the same path.
+
+The sections below document the manual primitives (tar/scp sync, MSVC cross tools, pagefile recipe) for when you need to debug or extend the script. Don't run them by hand unless the script is broken.
 
 ## Connection Details
 

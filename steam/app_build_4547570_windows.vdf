@@ -4,7 +4,7 @@
 	"desc" "Recall Rogue Windows build"
 	"buildoutput" "./output/"
 	"contentroot" ""
-	"setlive" ""
+	"setlive" "default"
 	"depots"
 	{
 		"4547572" "depot_build_4547572.vdf"

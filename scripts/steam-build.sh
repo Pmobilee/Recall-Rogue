@@ -52,60 +52,19 @@ fi
 
 APP_BUNDLE="$TAURI_DIR/target/$MODE/bundle/macos/Recall Rogue.app"
 
-# ── Windows cross-compile ──
+# ── Windows build (delegates to VM orchestrator) ──
+# The Mac cargo-xwin path produced a broken 11 MB exe (missing embedded frontend).
+# All Windows builds now go through scripts/steam-windows.sh → Windows VM → scp back.
+# See docs/gotchas.md 2026-04-20 for the full story.
 if [[ "$PLATFORM" == "windows" ]]; then
-    WIN_TARGET="x86_64-pc-windows-msvc"
-    WIN_BUILD="$PROJECT_ROOT/steam/windows-build"
-    WIN_VDF="$PROJECT_ROOT/steam/app_build_4547570_windows.vdf"
-
-    if $DO_BUILD; then
-        echo "[steam] Building frontend..."
-        cd "$PROJECT_ROOT"
-        npm run build
-
-        echo "[steam] Cross-compiling for Windows ($WIN_TARGET)..."
-        export PATH="${LLVM_BIN_DIR:-/opt/homebrew/opt/llvm/bin}:$PATH"
-        cd "$TAURI_DIR"
-        cargo xwin build --release --target "$WIN_TARGET"
-
-        echo "[steam] Staging Windows build..."
-        mkdir -p "$WIN_BUILD"
-        cp "$TAURI_DIR/target/$WIN_TARGET/release/recall-rogue.exe" "$WIN_BUILD/"
-        WINDLL=$(find "$TAURI_DIR/target/$WIN_TARGET/release/build" -name "steam_api64.dll" -path "*/steamworks-sys-*/out/*" | head -1)
-        if [[ -z "$WINDLL" ]]; then
-            echo "[steam] ERROR: steam_api64.dll not found!"
-            exit 1
-        fi
-        cp "$WINDLL" "$WIN_BUILD/"
-        cp "$TAURI_DIR/steam_appid.txt" "$WIN_BUILD/"
-        echo "[steam] Windows build staged:"
-        ls -lh "$WIN_BUILD/"
+    WIN_ARGS=()
+    $DO_BUILD   || WIN_ARGS+=(--deploy-only)
+    $DO_DEPLOY  && WIN_ARGS+=(--deploy)
+    if $DO_TEST; then
+        echo "[steam] --test is not supported for Windows (no local .app to launch)."
+        exit 1
     fi
-
-    if $DO_DEPLOY || $DO_TEST; then
-        ENV_FILE="$PROJECT_ROOT/.env.local"
-        STEAM_USER=$(grep STEAM_USERNAME "$ENV_FILE" | cut -d= -f2 | tr -d ' ')
-
-        echo "[steam] Checking Steam credentials..."
-        if steamcmd +login "$STEAM_USER" +quit 2>&1 | grep -q "ERROR"; then
-            echo "[steam] ⚠ Cached credentials expired. Re-authenticating..."
-            steamcmd +login "$STEAM_USER" +quit
-            if [ $? -ne 0 ]; then
-                echo "[steam] ERROR: Authentication failed. Aborting deploy."
-                exit 1
-            fi
-        fi
-
-        echo "[steam] Uploading Windows build to Steam as $STEAM_USER..."
-        steamcmd +login "$STEAM_USER" +run_app_build "$WIN_VDF" +quit
-        echo "[steam] Windows upload complete!"
-    fi
-
-    if ! $DO_BUILD && ! $DO_DEPLOY && ! $DO_TEST; then
-        echo "[steam] Windows build ready at: $WIN_BUILD"
-        ls -lh "$WIN_BUILD/"
-    fi
-    exit 0
+    exec "$SCRIPT_DIR/steam-windows.sh" "${WIN_ARGS[@]}"
 fi
 
 # ── Linux remote build (via SSH to Linux VM) ──

@@ -4,7 +4,7 @@
 	"desc" "Recall Rogue build"
 	"buildoutput" "./output/"
 	"contentroot" ""
-	"setlive" ""
+	"setlive" "default"
 	"depots"
 	{
 		"4547573" "depot_build_4547573.vdf"

@@ -17,12 +17,12 @@ Parse the user's message for a subcommand:
 | `setup` | Verify toolchain (Rust, Tauri CLI, steamcmd, cargo-xwin), check auth, validate VDFs |
 | `build` | Build Tauri app for macOS (local). Runs `./scripts/steam-build.sh` |
 | `build debug` | Build debug variant (faster, larger) |
-| `build windows` | Cross-compile Windows exe from macOS via cargo-xwin. `npm run steam:windows:build` |
+| `build windows` | Build Windows exe on UTM VM via `./scripts/steam-windows.sh` (no deploy) |
 | `test` | Full build + copy to local Steam install + launch. `npm run steam:test` |
 | `test quick` | Copy existing build to Steam install + launch (no rebuild, ~10s). `npm run steam:test:quick` |
 | `deploy` | Full build + upload to Steam via SteamPipe (auto-sets-live). `npm run steam:deploy` |
 | `deploy quick` | Upload existing build only (no rebuild). `npm run steam:deploy:quick` |
-| `deploy windows` | Cross-compile Windows + upload to Steam. `npm run steam:windows` |
+| `deploy windows` | Build Windows on VM + upload to Steam. `./scripts/steam-windows.sh --deploy` |
 | `deploy linux` | SSH to Linux VM, cross-compile, pull artifacts, upload to Steam depot 4547573. `npm run steam:linux` |
 | `status` | Show last build info, git version, depot status |
 
@@ -38,25 +38,30 @@ If no subcommand is given, default to `test` (local).
 | **Local quick** | `npm run steam:test:quick` | Copy existing build to local Steam install + launch (no rebuild, ~10s). |
 | **Cloud macOS** | `npm run steam:deploy` | Build macOS + upload to Steam cloud via SteamPipe. Requires steamcmd auth. |
 | **Cloud quick** | `npm run steam:deploy:quick` | Upload existing macOS build to Steam cloud (no rebuild). |
-| **Windows build** | `npm run steam:windows:build` | Cross-compile Windows exe from macOS via cargo-xwin (~12s cached). |
-| **Windows deploy** | `npm run steam:windows` | Cross-compile Windows + upload to Steam depot 4547572. |
+| **Windows build** | `./scripts/steam-windows.sh` | Build on UTM Win VM — tar+scp sync, cargo x86_64, produces ~1.35 GB exe (~7 min). |
+| **Windows deploy** | `./scripts/steam-windows.sh --deploy` | Build + upload to Steam depot 4547572 (setlive=default in VDF). |
 | **Linux deploy** | `npm run steam:linux` | SSH to Linux VM, cross-compile, pull artifacts, upload to Steam depot 4547573. Use `--linux` flag on `steam-build.sh`. |
 
 When the user says "deploy", "push to steam", or "update steam" without specifying cloud/online, **always use local** (`test` or `test quick`). Only use cloud deploy when the user explicitly says "cloud", "online", "SteamPipe", or "upload".
 
-## Windows Cross-Compilation (cargo-xwin)
+## Windows Build — UTM VM via `steam-windows.sh`
 
-Windows builds are cross-compiled directly on macOS — no VMs, no CI, no cloud. Requirements:
-- `cargo-xwin` — `cargo install cargo-xwin`
-- `x86_64-pc-windows-msvc` Rust target — `rustup target add x86_64-pc-windows-msvc`
-- `llvm` (for llvm-rc resource compiler) — `brew install llvm`
-- PATH must include `/opt/homebrew/opt/llvm/bin` (the build script handles this)
+Windows builds run on the Windows 11 ARM64 VM (UTM, bridged networking). The Mac `cargo-xwin` cross-compile path is **deprecated and broken** — it produces an 11 MB exe missing the embedded Tauri frontend. See `docs/gotchas.md` 2026-04-20.
 
-First build downloads the Windows MSVC SDK (~1GB, cached after). Subsequent builds take ~12s.
+**Canonical command:**
+```bash
+./scripts/steam-windows.sh [flags]
+```
 
-Output: `steam/windows-build/recall-rogue.exe` + `steam_api64.dll` + `steam_appid.txt`
+Flags: `--deploy` (upload after build), `--deploy-only` (upload existing staged exe), `--setlive=<branch>` (override VDF branch), `--skip-npm` (deps unchanged), `--frontend-only` (skip cargo), `--vm-ip=<ip>` (pin IP).
 
-GitHub Actions workflow (`.github/workflows/steam-build.yml`) also exists for CI builds on real Windows runners, but local cross-compilation is faster and doesn't require Steam Guard workarounds.
+The script: auto-discovers the VM, pre-flights the pagefile (must be ≥30 GB), tars the source (~1.7 GB), `scp`s to the VM, runs `scripts/vm-build-windows.ps1`, pulls back the ~1.35 GB exe, stages into `steam/windows-build/`, and optionally uploads via `steamcmd`. `steam-build.sh --windows` delegates to this script.
+
+Output: `steam/windows-build/recall-rogue.exe` (~1.35 GB) + `steam_api64.dll` + `steam_appid.txt`
+
+Total time (measured 2026-04-20): ~7 min build with cached cargo deps, +25 min steamcmd upload.
+
+See `.claude/skills/windows-vm/SKILL.md` for VM setup, pagefile recipe, and troubleshooting.
 
 ## Linux Build Support (via SSH VM)
 
