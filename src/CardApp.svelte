@@ -606,7 +606,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       transitionScreen('multiplayerLobby')
     } catch (error) {
       console.error('[CardApp] createLobby failed:', error)
-      multiplayerError = "Couldn't create lobby. Steam or network unavailable."
+      const detail = error instanceof Error ? error.message : String(error)
+      multiplayerError = `Couldn't create lobby. ${detail}`
     }
   }
 
@@ -618,7 +619,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       transitionScreen('multiplayerLobby')
     } catch (error) {
       console.error('[CardApp] joinLobby failed:', error)
-      multiplayerError = "Couldn't join that lobby. Check the code and try again."
+      const detail = error instanceof Error ? error.message : String(error)
+      multiplayerError = `Couldn't join that lobby. ${detail}`
     }
   }
 
@@ -2607,6 +2609,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     font-size: calc(14px * var(--text-scale, 1));
     color: #fecaca;
     line-height: 1.4;
+    overflow-wrap: anywhere;
   }
 
   .mp-error-dismiss {
