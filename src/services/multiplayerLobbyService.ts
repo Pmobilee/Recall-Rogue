@@ -845,7 +845,18 @@ function pickBackend(): LobbyBackend {
   // uninstalling Steam or fighting the factory's auto-selection.
   if (isBroadcastMode()) return broadcastBackend;
   if (isLanMode()) return webBackend; // LAN uses Fastify-style web backend, even on Steam builds
-  if (hasSteam) return steamBackend;
+  // Live call-time check — avoids the module-load IIFE snapshot in platformService being stale
+  // when Tauri's global injection lands after the bundle evaluates (ordering issue in packaged builds).
+  // We still log hasSteam so we can see in DevTools whether the static snapshot was stale.
+  const tauriPresent = typeof window !== 'undefined' &&
+    !!((window as any).__TAURI_INTERNALS__ || (window as any).__TAURI__);
+  console.log('[pickBackend]', {
+    hasTauriInternals: typeof window !== 'undefined' && !!(window as any).__TAURI_INTERNALS__,
+    hasTauriGlobal: typeof window !== 'undefined' && !!(window as any).__TAURI__,
+    hasSteamStatic: hasSteam,
+    tauriPresentLive: tauriPresent,
+  });
+  if (tauriPresent) return steamBackend;
   return webBackend;
 }
 

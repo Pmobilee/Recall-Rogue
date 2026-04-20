@@ -61,7 +61,11 @@ async function tauriInvoke<T = unknown>(
     const { invoke } = await import('@tauri-apps/api/core');
     return await invoke<T>(cmd, args);
   } catch (e) {
-    console.warn(`[SteamNetworking] invoke '${cmd}' failed:`, e);
+    const err = e as Error;
+    console.warn(`[SteamNetworking] invoke '${cmd}' threw:`, {
+      name: err?.name ?? 'unknown',
+      message: err?.message ?? String(e),
+    });
     return null;
   }
 }

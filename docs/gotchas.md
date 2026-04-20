@@ -4892,3 +4892,15 @@ With a 36 GB commit limit, link took 4m 07s and produced a 1.35 GB exe. VM disk 
 **Fix:** Add `width: 100%; height: 100%` to both `.hub-glow-canvas` and `.hub-vignette-canvas` rules in `src/ui/components/HubGlowCanvas.svelte`. Percentages are exempt from the no-hardcoded-px rule (`.claude/rules/ui-layout.md`).
 
 **Lesson:** Whenever you change a `<canvas>`, `<img>`, `<video>`, `<svg>`, `<iframe>`, or `<object>` to have intrinsic dimensions different from the displayed size, audit every CSS rule that targets it. `inset: 0` alone is enough for plain divs but NOT for replaced elements. The lint can't catch this — replaced-element intrinsic-vs-display mismatch is a runtime visual regression. Always re-check the actual screenshot at the actual viewport after a backing-store change.
+
+### 2026-04-20 — Tauri v2 platform detection: module-load IIFE snapshot stale in packaged Steam builds
+
+**Symptom:** In the shipped Windows Steam build, clicking "Create Lobby" shows the error banner instantly — no ~5 s delay. This instant-error signal distinguishes the bug: a genuine timeout from `createSteamLobby` would take 5 s; instant means `pickBackend()` returned `webBackend`, so it never reached Steam at all.
+
+**Root cause:** `src/services/platformService.ts` exports `hasSteam` as a module-level constant computed in an IIFE at bundle parse time. If Tauri's global injection (`__TAURI_INTERNALS__`) lands even a hair after the bundle evaluates, `hasSteam` is permanently `false` for the session — this is a timing race in packaged builds between the Tauri runtime bootstrap and Vite's eagerly-evaluated ESM graph.
+
+**Fix (diagnostic):** `pickBackend()` in `multiplayerLobbyService.ts` now performs a live call-time check against `window.__TAURI_INTERNALS__ || window.__TAURI__` each time it runs, bypassing the cached `hasSteam` snapshot. The static `hasSteam` import is retained only in the `console.log` diagnostic so DevTools can reveal whether the snapshot was already stale at call time. `platformService.ts` itself was not modified — other callers may depend on its module-load-time semantics and the blast radius needs to stay minimal for this diagnostic pass.
+
+**Open question:** Whether the inline live check is sufficient, or whether the injection race also affects call sites in `steamNetworkingService.ts` that gate on the cached `hasSteam` (`if (!hasSteam) return null` in `tauriInvoke`). The `console.log` output in the next build will show `hasSteamStatic: false, tauriPresentLive: true` if the race is the sole cause.
+
+**Files:** `src/services/multiplayerLobbyService.ts`, `docs/architecture/multiplayer.md`.

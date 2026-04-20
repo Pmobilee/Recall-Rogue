@@ -274,6 +274,14 @@ JavaScript retrieves these via one-shot consuming reads:
 
 **Why this matters:** The old implementation of `createSteamLobby` returned the empty string from the Tauri command directly. The `steamBackend.createLobby` caller in `multiplayerLobbyService.ts` checked `if (!lobbyId) throw ...` — so every Steam lobby creation silently threw, the UI caught it and did nothing, and the player saw the "Create Lobby" button do nothing.
 
+### Steam Backend — pickBackend() Live Tauri Detection (2026-04-20)
+
+`pickBackend()` in `multiplayerLobbyService.ts` no longer relies solely on the module-load-time `hasSteam` constant imported from `platformService.ts`. Instead it performs a live call-time check against both Tauri v2 globals (`__TAURI_INTERNALS__` and `__TAURI__`) at the moment the function executes.
+
+This addresses a packaging-order issue seen in the shipped Windows Steam build: the `hasSteam` IIFE in `platformService.ts` evaluates when the module bundle is first parsed, but Tauri's global injection may land slightly later. If that race is lost, `hasSteam` stays `false` for the session — `pickBackend()` returns `webBackend` and the "Create Lobby" error banner fires instantly (the `fetch` to `http://localhost:3000` fails immediately, no 5 s delay).
+
+The `hasSteam` import is retained in the diagnostic `console.log` so DevTools can show whether the static snapshot was stale vs. the live check. The open question: whether inlining the live check is sufficient, or whether the injection race also affects other callers that depend on the cached `hasSteam` value.
+
 ### Web Backend — Fastify Registry
 
 `mpLobbyRegistry.ts` maintains an in-memory `Map<lobbyId, MpLobby>`. Key properties:
