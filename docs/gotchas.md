@@ -4970,3 +4970,26 @@ With a 36 GB commit limit, link took 4m 07s and produced a 1.35 GB exe. VM disk 
 **Open question:** Whether the inline live check is sufficient, or whether the injection race also affects call sites in `steamNetworkingService.ts` that gate on the cached `hasSteam` (`if (!hasSteam) return null` in `tauriInvoke`). The `console.log` output in the next build will show `hasSteamStatic: false, tauriPresentLive: true` if the race is the sole cause.
 
 **Files:** `src/services/multiplayerLobbyService.ts`, `docs/architecture/multiplayer.md`.
+### 2026-04-20 — joinLobby silently entered ghost lobbies when resolveByCode returned null
+
+**What:** Typing any 6-character code in the "Join Lobby" screen navigated the player into a ghost lobby (an empty BroadcastChannel with no host, or a WebSocket connection on an empty channel key). The UI showed the lobby waiting screen but no host ever appeared.
+
+**Why:** `joinLobby()` in `multiplayerLobbyService.ts` called `backend.resolveByCode(code)` and immediately proceeded regardless of the result. When `resolvedId` was `null` (unknown code on webBackend, Steam backend has no resolver, etc.), the code fell through to `lobbyId: resolvedId ?? ''` — producing an empty string lobby ID. The transport connected using `lobbyCode` as the channel name (line 272 fallback), putting the player in a valid-looking but uninhabited channel.
+
+**Why broadcast mode is exempt:** `broadcastBackend.resolveByCode` intentionally returns `null` because BroadcastChannel mode uses the raw lobbyCode as the channel rendezvous key. There is no server-side code → ID mapping in two-tab dev mode. The pre-existing line 272 fallback `(_currentLobby.lobbyId || lobbyCode)` is the correct behavior for this path.
+
+**Fix:** After `resolveByCode`, `joinLobby` now checks `if (resolvedId === null && !isBroadcastMode())` and throws `'Lobby not found. Check the code and try again.'`. The `CardApp.svelte` catch block already displays this via the `multiplayerError` banner. BroadcastChannel path is unchanged. Bonus: `webBackend.joinLobbyById` now maps 404 responses to `'Lobby not found or has ended.'` instead of the raw status text.
+
+**Rule:** Any function that resolves a user-supplied code or ID to a backend resource MUST validate the result before proceeding. A null/empty ID silently connecting to a ghost channel is worse than a clear error.
+
+### 2026-04-20 — lanServerService used stale isDesktop snapshot, causing "Start LAN Server" to hang indefinitely
+
+**What:** The "Start LAN Server" button in the LAN Play tab showed "Starting…" indefinitely and never transitioned. On the UI side, the button state was controlled by `startLanServer()` returning `null` — null meant "skip", and the UI never received the success signal to reset the button.
+
+**Why:** `lanServerService.ts` gated all Tauri IPC calls on `isDesktop` — a module-load-time constant from `platformService.ts`. In packaged Steam builds, `__TAURI_INTERNALS__` can be injected by the Tauri runtime after the ESM bundle evaluates. If that race is lost, `isDesktop` stays `false` for the session and every `tauriInvoke` returns `null` immediately before even trying the IPC call. The same race affected `pickBackend()` (fixed 2026-04-20 for multiplayerLobbyService) but `lanServerService` was not updated at the same time.
+
+Additionally, there was no timeout on the `lan_start_server` Tauri command. A port bind failure or tokio task deadlock in the Rust backend would cause the JS Promise to hang forever with no recovery path.
+
+**Fix:** `lanServerService.ts` now uses a local `isTauriRuntime()` function (live check of `window.__TAURI_INTERNALS__ || window.__TAURI__`) identical to the pattern already used in `steamNetworkingService.ts`. The `isDesktop` import was removed. A 10-second timeout (`LAN_START_TIMEOUT_MS`) was added to `startLanServer()` via `Promise.race` — on timeout, `null` is returned and the caller's existing error path fires. The warn log now includes whether `isTauriRuntime()` was true, making it easy to distinguish "Tauri globals not injected" from "Rust command timed out" in DevTools.
+
+**Rule:** Services that call Tauri IPC must use a live `isTauriRuntime()` check, not the module-load-time `isDesktop` snapshot. Any command that can hang indefinitely must have a timeout in the JS wrapper.

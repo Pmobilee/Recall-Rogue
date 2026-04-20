@@ -770,6 +770,85 @@ describe('joinLobbyById — webBackend error paths', () => {
 });
 
 // ---------------------------------------------------------------------------
+// Tests — joinLobby rejects unknown codes (Bug 2 fix, 2026-04-20)
+// ---------------------------------------------------------------------------
+
+describe('joinLobby — rejects unknown codes when not in broadcast mode', () => {
+  const mockFetch = vi.mocked(global.fetch);
+
+  beforeEach(() => {
+    resetMockTransport();
+    // No ?mp param → webBackend is selected, resolveByCode makes a fetch call
+    Object.defineProperty(window, 'location', {
+      value: { search: '', href: 'http://localhost:5173' },
+      writable: true,
+    });
+  });
+
+  afterEach(() => {
+    Object.defineProperty(window, 'location', {
+      value: { search: '', href: 'http://localhost:5173' },
+      writable: true,
+    });
+  });
+
+  it('throws "Lobby not found" when resolveByCode returns null (unknown code)', async () => {
+    // Simulate /mp/lobbies/code/:code returning 404 → resolveByCode returns null
+    mockFetch.mockResolvedValueOnce({
+      ok: false,
+      status: 404,
+      statusText: 'Not Found',
+      json: () => Promise.resolve({}),
+    } as Response);
+
+    await expect(
+      joinLobby('ZZZZZZ', 'player-1', 'Alice'),
+    ).rejects.toThrow('Lobby not found');
+  });
+
+  it('does NOT throw when resolveByCode returns null in broadcast mode (code IS the channel)', async () => {
+    // In broadcast mode, resolveByCode intentionally returns null —
+    // the lobbyCode is used directly as the BroadcastChannel key.
+    Object.defineProperty(window, 'location', {
+      value: { search: '?mp', href: 'http://localhost:5173?mp' },
+      writable: true,
+    });
+
+    // broadcastBackend.resolveByCode always returns null — no fetch needed.
+    // joinLobby should proceed without throwing.
+    const lobby = await joinLobby('ABCDEF', 'player-bc', 'BroadcastPlayer');
+    expect(lobby).not.toBeNull();
+    expect(lobby.lobbyCode).toBe('ABCDEF');
+  });
+
+  it('throws "Lobby not found" when the server returns 200 with no lobbyId', async () => {
+    // resolveByCode gets a 200 but the body has no lobbyId → returns null
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: () => Promise.resolve({}), // no lobbyId field
+    } as Response);
+
+    await expect(
+      joinLobby('AABBCC', 'player-2', 'Bob'),
+    ).rejects.toThrow('Lobby not found');
+  });
+
+  it('joinLobbyById 404 produces user-friendly error message', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: false,
+      status: 404,
+      statusText: 'Not Found',
+      json: () => Promise.resolve({ error: 'lobby not found' }),
+    } as Response);
+
+    await expect(
+      joinLobbyById('dead-lobby', 'p1', 'Player'),
+    ).rejects.toThrow('Lobby not found or has ended.');
+  });
+});
+
+// ---------------------------------------------------------------------------
 // Tests — backend pick logic
 // ---------------------------------------------------------------------------
 

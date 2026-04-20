@@ -383,8 +383,8 @@ CORS_ORIGIN=http://localhost:5173            # Fastify CORS allow-origin (set to
 | Export | Signature | Description |
 |--------|-----------|-------------|
 | `createLobby` | `async (playerId, displayName, mode, opts?)` | Host creates a lobby via the active backend. Now async. `opts.password` is SHA-256 hashed client-side. |
-| `joinLobby` | `async (lobbyCode, playerId, displayName, password?)` | Join by invite code. Now async; hashes password and resolves code via backend. |
-| `joinLobbyById` | `async (lobbyId, playerId, displayName, password?)` | Join directly by backend lobby ID (used by the browser screen). |
+| `joinLobby` | `async (lobbyCode, playerId, displayName, password?)` | Join by invite code. Now async; hashes password and resolves code via backend. **Throws `"Lobby not found. Check the code and try again."` if `resolveByCode` returns null and the backend is not BroadcastChannel.** BroadcastChannel mode uses the code directly as the channel key (returns null intentionally) — that path does not throw. |
+| `joinLobbyById` | `async (lobbyId, playerId, displayName, password?)` | Join directly by backend lobby ID (used by the browser screen). On 404 the thrown error message reads `"Lobby not found or has ended."` (user-friendly). |
 | `setVisibility` | `(visibility: LobbyVisibility)` | Host-only. Co-updates `visibility` and `hasPassword` atomically. |
 | `setPassword` | `async (password: string \| null)` | Host-only. Hashes plaintext, stores in `_passwordHash`. Clears if null. |
 | `setMaxPlayers` | `(n: number)` | Host-only. Clamped to `[MODE_MIN_PLAYERS[mode], MODE_MAX_PLAYERS[mode]]`. |
@@ -522,6 +522,12 @@ An axum-based HTTP + WebSocket server running inside the Tauri process on a toki
 | `lan_stop_server` | — | `()` | Graceful shutdown via oneshot channel |
 | `lan_get_local_ips` | — | `string[]` | Non-loopback IPv4 addresses |
 | `lan_server_status` | — | `{ running, port }` | Current state |
+
+### `lanServerService.ts` — Live Tauri Detection (2026-04-20)
+
+`lanServerService.ts` previously used the module-load-time `isDesktop` constant from `platformService.ts` to gate all Tauri `invoke` calls. This suffered the same packaging-order race documented in the `pickBackend()` section above: if `__TAURI_INTERNALS__` lands after the bundle evaluates, `isDesktop` stays `false` and every `tauriInvoke` returns `null` instantly — causing the "Start LAN Server" button to show "Starting…" indefinitely (the null result is silently dropped by the UI, which never transitions out of the loading state).
+
+**Fix:** `lanServerService.ts` now uses a local `isTauriRuntime()` function (live check of `window.__TAURI_INTERNALS__ || window.__TAURI__`) identical to the pattern in `steamNetworkingService.ts`. The `isDesktop` import was removed. A 10-second timeout (`LAN_START_TIMEOUT_MS = 10_000`) was also added to `startLanServer()` so a Rust-side tokio hang does not block the UI indefinitely. On timeout, `null` is returned and the caller's existing error path fires.
 
 ### LAN Discovery (`lanDiscoveryService.ts`)
 

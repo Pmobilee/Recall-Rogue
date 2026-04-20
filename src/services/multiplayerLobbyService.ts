@@ -232,8 +232,16 @@ export async function joinLobby(
   const passwordHash = password ? await hashPassword(password) : undefined;
   const backend = pickBackend();
 
-  // Resolve the code to a backend lobbyId (null in broadcast mode — code IS the key)
+  // Resolve the code to a backend lobbyId.
+  // BroadcastChannel mode returns null intentionally — the code IS the channel key.
+  // All other backends (Steam, web) return null for unknown/expired codes, which
+  // must be treated as a hard error: proceeding with an empty lobbyId connects the
+  // player to a ghost lobby (empty channel with no host).
   const resolvedId = await backend.resolveByCode(lobbyCode);
+
+  if (resolvedId === null && !isBroadcastMode()) {
+    throw new Error('Lobby not found. Check the code and try again.');
+  }
 
   _currentLobby = {
     lobbyId: resolvedId ?? '',
@@ -1030,7 +1038,8 @@ const webBackend: LobbyBackend = {
     });
     if (!res.ok) {
       const err = await res.json().catch(() => ({ error: res.statusText })) as { error?: string };
-      throw new Error(`[webBackend] joinLobbyById ${res.status}: ${err.error ?? res.statusText}`);
+      const userMsg = res.status === 404 ? 'Lobby not found or has ended.' : (err.error ?? res.statusText);
+      throw new Error(`[webBackend] joinLobbyById ${res.status}: ${userMsg}`);
     }
     const data = await res.json() as { lobbyId: string; lobbyCode?: string; joinToken?: string };
     return { lobbyId: data.lobbyId, lobbyCode: data.lobbyCode, joinToken: data.joinToken };
