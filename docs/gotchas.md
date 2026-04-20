@@ -4993,3 +4993,13 @@ Additionally, there was no timeout on the `lan_start_server` Tauri command. A po
 **Fix:** `lanServerService.ts` now uses a local `isTauriRuntime()` function (live check of `window.__TAURI_INTERNALS__ || window.__TAURI__`) identical to the pattern already used in `steamNetworkingService.ts`. The `isDesktop` import was removed. A 10-second timeout (`LAN_START_TIMEOUT_MS`) was added to `startLanServer()` via `Promise.race` — on timeout, `null` is returned and the caller's existing error path fires. The warn log now includes whether `isTauriRuntime()` was true, making it easy to distinguish "Tauri globals not injected" from "Rust command timed out" in DevTools.
 
 **Rule:** Services that call Tauri IPC must use a live `isTauriRuntime()` check, not the module-load-time `isDesktop` snapshot. Any command that can hang indefinitely must have a timeout in the JS wrapper.
+
+### 2026-04-20 — MultiplayerHUD doesn't scale past 2 opponents; roster panel added for trivia_night / race 3-4+
+
+**What:** `MultiplayerHUD` was unconditionally rendered whenever `isMultiplayerRun` was true. For modes with up to 8 players (`trivia_night`) or 4 players (`race`), showing a single-opponent HUD is either wrong or confusing.
+
+**Why:** The HUD was designed and wired only for 2-player sessions (1v1 duel, co-op, race). No consideration was made for modes where `MODE_MAX_PLAYERS[mode] > 2`.
+
+**Fix:** Added `isManyPlayerMode` derived state (`currentLobby.mode === 'trivia_night' || currentLobby.maxPlayers > 2`). `MultiplayerHUD` is now gated on `!isManyPlayerMode`. For many-player modes, a `.roster-trigger-pill` button on the local HP bar in `CardCombatOverlay` opens `PlayerRosterPanel.svelte` — a scrollable overlay with HP/block/score/accuracy for each other player. Data flows from the existing `onPartnerStateUpdate` subscription into a new `partnerStates` state in `CardApp`.
+
+**Also (same commit):** `MultiplayerMenu` Create tab now shows a visibility picker (Public / Password / Friends Only) before lobby creation, matching the tri-state system already present in `MultiplayerLobby`. `onCreateLobby` prop signature changed from `(mode)` to `(mode, opts: { visibility, password? })`.

@@ -4,7 +4,7 @@
      Shown before the MultiplayerLobby screen. -->
 <script lang="ts">
   import { onMount } from 'svelte'
-  import type { MultiplayerMode } from '../../data/multiplayerTypes'
+  import type { MultiplayerMode, LobbyVisibility } from '../../data/multiplayerTypes'
   import {
     MODE_DISPLAY_NAMES,
     MODE_DESCRIPTIONS,
@@ -26,11 +26,11 @@
     getLanServerUrls,
   } from '../../services/lanConfigService'
   import { scanLanForServers, probeLanServer, LAN_DEFAULT_PORT } from '../../services/lanDiscoveryService'
-  import { isDesktop } from '../../services/platformService'
+  import { isDesktop, hasSteam } from '../../services/platformService'
 
   interface Props {
     onBack: () => void
-    onCreateLobby: (mode: MultiplayerMode) => void
+    onCreateLobby: (mode: MultiplayerMode, opts: { visibility: LobbyVisibility; password?: string }) => void
     onJoinLobby: (code: string) => void
     onBrowseLobbies: () => void
   }
@@ -43,6 +43,12 @@
   let joinCode = $state('')
   let activeTab = $state<'create' | 'join' | 'lan'>('create')
   let joinError = $state('')
+
+  // ── Visibility & password state (Create tab) ──────────────────────────────
+  let selectedVisibility = $state<LobbyVisibility>('public')
+  let passwordValue = $state('')
+  let passwordError = $state('')
+  let showPasswordText = $state(false)
 
   /** True when ?mp is in the URL — enables two-tab broadcast testing mode */
   let devMode = $derived(isBroadcastMode())
@@ -79,8 +85,27 @@
     selectedMode = mode
   }
 
+  function handleVisibilitySelect(vis: LobbyVisibility): void {
+    selectedVisibility = vis
+    passwordError = ''
+    if (vis !== 'password') passwordValue = ''
+  }
+
   function handleCreateLobby(): void {
-    onCreateLobby(selectedMode)
+    if (selectedVisibility === 'password') {
+      if (!passwordValue) {
+        passwordError = 'Required'
+        return
+      }
+      if (passwordValue.length < 4) {
+        passwordError = 'Min 4 characters'
+        return
+      }
+    }
+    onCreateLobby(selectedMode, {
+      visibility: selectedVisibility,
+      password: selectedVisibility === 'password' ? passwordValue : undefined,
+    })
   }
 
   function handleJoinCodeInput(e: Event): void {
@@ -140,7 +165,7 @@
   }
 
   function handleLanCreateLobby(): void {
-    onCreateLobby(selectedMode)
+    onCreateLobby(selectedMode, { visibility: 'public' })
   }
 
   // ── LAN: Discovery ────────────────────────────────────────────────────────────
@@ -302,6 +327,62 @@
               </li>
             {/each}
           </ul>
+
+          <!-- Visibility picker -->
+          <div class="visibility-section" data-testid="create-visibility">
+            <span class="visibility-label">Who can join</span>
+            <div class="radio-pills" role="radiogroup" aria-label="Lobby visibility">
+              {#each (['public', 'password', 'friends_only'] as LobbyVisibility[]) as vis}
+                {@const visLabels: Record<LobbyVisibility, string> = { public: 'Public', password: 'Password', friends_only: 'Friends Only' }}
+                {@const isFriendsDisabled = vis === 'friends_only' && !hasSteam}
+                <label
+                  class="pill-label"
+                  class:active={selectedVisibility === vis}
+                  class:pill-disabled={isFriendsDisabled}
+                  title={isFriendsDisabled ? 'Steam only — invite friends via code instead.' : undefined}
+                >
+                  <input
+                    type="radio"
+                    name="create-visibility"
+                    value={vis}
+                    checked={selectedVisibility === vis}
+                    disabled={isFriendsDisabled}
+                    onchange={() => handleVisibilitySelect(vis)}
+                  />
+                  {visLabels[vis]}
+                </label>
+              {/each}
+            </div>
+            {#if selectedVisibility === 'password'}
+              <div class="password-row">
+                <div class="password-input-wrap">
+                  <input
+                    class="password-input"
+                    class:password-input--error={!!passwordError}
+                    data-testid="create-password-input"
+                    type={showPasswordText ? 'text' : 'password'}
+                    placeholder="Lobby password"
+                    minlength={4}
+                    maxlength={32}
+                    bind:value={passwordValue}
+                    oninput={() => { if (passwordError) passwordError = '' }}
+                    aria-label="Lobby password"
+                    aria-describedby={passwordError ? 'create-password-error' : undefined}
+                  />
+                  <button
+                    class="eye-btn"
+                    type="button"
+                    onclick={() => { showPasswordText = !showPasswordText }}
+                    aria-label={showPasswordText ? 'Hide password' : 'Show password'}
+                    title={showPasswordText ? 'Hide' : 'Show'}
+                  >{showPasswordText ? '&#128064;' : '&#128065;'}</button>
+                </div>
+                {#if passwordError}
+                  <p id="create-password-error" class="password-error" role="alert">{passwordError}</p>
+                {/if}
+              </div>
+            {/if}
+          </div>
 
           <div class="create-footer">
             <button class="primary-btn" data-testid="btn-create-lobby" onclick={handleCreateLobby}>
@@ -752,6 +833,135 @@
     font-size: calc(12px * var(--text-scale, 1));
     color: #666;
     line-height: 1.45;
+  }
+
+  /* ===== Visibility picker (Create tab) ===== */
+  .visibility-section {
+    margin-bottom: calc(16px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .visibility-label {
+    font-family: var(--font-rpg, 'Cinzel', serif);
+    font-size: calc(12px * var(--text-scale, 1));
+    color: #888;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== Radio pills (shared pattern from MultiplayerLobby) ===== */
+  .radio-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  .pill-label {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+    padding: calc(7px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border: 1px solid #2A2E38;
+    border-radius: calc(20px * var(--layout-scale, 1));
+    font-family: var(--font-body, 'Lora', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #aaa;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+    min-height: calc(36px * var(--layout-scale, 1));
+    user-select: none;
+  }
+
+  .pill-label input[type='radio'] {
+    display: none;
+  }
+
+  .pill-label:hover:not(.pill-disabled) {
+    border-color: rgba(255, 215, 0, 0.4);
+    color: #e0e0e0;
+    background: rgba(255, 215, 0, 0.05);
+  }
+
+  .pill-label.active {
+    border-color: #FFD700;
+    background: rgba(255, 215, 0, 0.12);
+    color: #FFD700;
+    font-weight: 600;
+  }
+
+  .pill-label.pill-disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+  }
+
+  /* ===== Password row (Create tab) ===== */
+  .password-row {
+    display: flex;
+    flex-direction: column;
+    gap: calc(4px * var(--layout-scale, 1));
+  }
+
+  .password-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: calc(6px * var(--layout-scale, 1));
+  }
+
+  .password-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #2A2E38;
+    border-radius: calc(5px * var(--layout-scale, 1));
+    color: #e0e0e0;
+    font-family: var(--font-body, 'Lora', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    padding: calc(9px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    min-height: calc(40px * var(--layout-scale, 1));
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+  }
+
+  .password-input::placeholder {
+    color: #444;
+  }
+
+  .password-input:focus {
+    outline: none;
+    border-color: rgba(255, 215, 0, 0.5);
+    background: rgba(255, 215, 0, 0.03);
+  }
+
+  .password-input--error {
+    border-color: rgba(224, 92, 92, 0.6);
+  }
+
+  .password-error {
+    color: #e05c5c;
+    font-size: calc(12px * var(--text-scale, 1));
+    margin: 0;
+    font-family: var(--font-body, 'Lora', serif);
+  }
+
+  .eye-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(36px * var(--layout-scale, 1));
+    height: calc(36px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #2A2E38;
+    border-radius: calc(4px * var(--layout-scale, 1));
+    color: #888;
+    cursor: pointer;
+    font-size: calc(16px * var(--text-scale, 1));
+    flex-shrink: 0;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .eye-btn:hover {
+    border-color: #aaa;
+    color: #e0e0e0;
   }
 
   /* ===== Create footer ===== */

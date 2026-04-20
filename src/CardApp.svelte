@@ -207,6 +207,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import LobbyBrowserScreen from './ui/components/LobbyBrowserScreen.svelte'
   import TriviaRoundScreen from './ui/components/TriviaRoundScreen.svelte'
   import RaceResultsScreen from './ui/components/RaceResultsScreen.svelte'
+  import PlayerRosterPanel from './ui/components/PlayerRosterPanel.svelte'
   import {
     createLobby,
     joinLobby,
@@ -233,7 +234,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     broadcastPartnerState,
     type PartnerState,
   } from './services/multiplayerCoopSync'
-  import type { LobbyState, RaceProgress, RaceResults, MultiplayerMode, LobbyContentSelection } from './data/multiplayerTypes'
+  import type { LobbyState, RaceProgress, RaceResults, MultiplayerMode, LobbyContentSelection, LobbyVisibility } from './data/multiplayerTypes'
   import { computeRaceScore } from './services/multiplayerScoring'
 
   // Update Steam Rich Presence whenever the active screen changes.
@@ -553,6 +554,15 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   /** True while an active multiplayer lobby exists (race progress HUD visible in combat). */
   let isMultiplayerRun = $derived(currentLobby !== null)
 
+  /** True for modes with more than 2 max players (trivia_night, race with 3-4). Roster panel replaces MultiplayerHUD. */
+  let isManyPlayerMode = $derived(currentLobby !== null && (currentLobby.mode === 'trivia_night' || currentLobby.maxPlayers > 2))
+
+  /** Whether the PlayerRosterPanel overlay is open. */
+  let rosterPanelOpen = $state(false)
+
+  /** Live partner states for the roster panel. */
+  let partnerStates = $state<Record<string, import('./services/multiplayerCoopSync').PartnerState>>({})
+
   /** Race/duel results received from onRaceComplete — shown on raceResults screen. */
   let activeRaceResults = $state<RaceResults | null>(null)
 
@@ -624,10 +634,10 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
   // TODO(multiplayer): Replace placeholder display names with real Steam usernames when Steam integration lands. See docs/roadmap/AR-MULTIPLAYER.md.
-  async function handleCreateLobby(mode: MultiplayerMode): Promise<void> {
+  async function handleCreateLobby(mode: MultiplayerMode, opts: { visibility: LobbyVisibility; password?: string }): Promise<void> {
     multiplayerError = null
     try {
-      const lobby = await createLobby(localPlayerId, 'Player 1', mode)
+      const lobby = await createLobby(localPlayerId, 'Player 1', mode, opts)
       currentLobby = lobby
       transitionScreen('multiplayerLobby')
     } catch (error) {
@@ -759,6 +769,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       void commitMapNodeSelection(nodeId)
     })
     const unsubPartner = onPartnerStateUpdate((states) => {
+      // Update roster panel data for all partner states.
+      partnerStates = { ...states }
       // Pipe the first available partner's HP (and score/accuracy in co-op) into
       // opponentProgress so the existing MultiplayerHUD renders it during co-op combat.
       const ids = Object.keys(states)
@@ -1723,6 +1735,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         onreturnhub={() => { currentScreen.set('hub'); activeRunState.set(null); }}
         fogLevel={$activeTurnState != null ? getAuraLevel() : 0}
         fogState={$activeTurnState != null ? getAuraState() : undefined}
+        showRosterTrigger={isMultiplayerRun && isManyPlayerMode}
+        otherPlayerCount={Object.keys(partnerStates).length}
+        onopenroster={() => { rosterPanelOpen = true }}
       />
       <button
         type="button"
@@ -1740,12 +1755,21 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
           onclick={() => devForceEncounterVictory()}
         >&#x23ED; Skip</button>
       {/if} -->
-      {#if isMultiplayerRun}
+      {#if isMultiplayerRun && !isManyPlayerMode}
         <MultiplayerHUD
           progress={opponentProgress}
           displayName={opponentDisplayName}
           mode={currentLobby?.mode ?? 'race'}
           quizVisible={$quizPanelVisible}
+        />
+      {/if}
+      {#if isMultiplayerRun && isManyPlayerMode}
+        <PlayerRosterPanel
+          open={rosterPanelOpen}
+          players={partnerStates}
+          lobbyPlayers={currentLobby?.players ?? []}
+          localPlayerId={localPlayerId}
+          onclose={() => { rosterPanelOpen = false }}
         />
       {/if}
     {/if}

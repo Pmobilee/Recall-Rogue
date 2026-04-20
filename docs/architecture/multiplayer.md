@@ -1,7 +1,7 @@
 # Multiplayer Architecture
 
 > **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
-> **Last verified:** 2026-04-20 — Tauri v2 desktop detection fix + Steam lobby async-callback polling
+> **Last verified:** 2026-04-20 — Visibility picker on create screen + PlayerRosterPanel for 3+ player modes
 
 ---
 
@@ -449,6 +449,25 @@ interface LobbyBackend {
 | `friends_only` | `SteamLobbyType::FriendsOnly`; Steam handles native friends-graph filter | **Excluded from browser list** — no friends graph on web/broadcast; code-join only; tooltip explains |
 
 **Degradation note:** `friends_only` on web degrades to "hidden from the lobby browser" (effectively code-join only). Steam friends can still receive a direct invite link. The lobby creation UI disables the Friends Only option on non-Steam builds with a tooltip: "Steam only — invite friends via code instead."
+
+**Visibility picker (2026-04-20):** The tri-state picker is now present on **both** screens: `MultiplayerMenu.svelte` Create tab (pre-creation, default `'public'`) and `MultiplayerLobby.svelte` settings section (post-creation, host-only). This ensures visibility is set at creation time. `onCreateLobby` prop signature updated to `(mode: MultiplayerMode, opts: { visibility: LobbyVisibility; password?: string })`. `CardApp.handleCreateLobby` forwards opts to `createLobby(playerId, name, mode, opts)`.
+
+---
+
+
+---
+
+## Player Roster Panel — Many-Player Modes (2026-04-20)
+
+For modes with `MODE_MAX_PLAYERS[mode] > 2` (`trivia_night`, `race` 3-4+), the `MultiplayerHUD` single-opponent view is insufficient. Instead:
+
+- `MultiplayerHUD` is **hidden** (gated on `!isManyPlayerMode` in `CardApp.svelte`).
+- A `.roster-trigger-pill` button (👥 icon + count) appears on the local player's HP bar in `CardCombatOverlay.svelte`.
+- Clicking the pill opens `PlayerRosterPanel.svelte` — a full-viewport backdrop with a `360px` card listing all other players' HP, block, score, and accuracy.
+- Data source: `partnerStates` state in `CardApp.svelte`, populated by the existing `onPartnerStateUpdate` callback from `multiplayerCoopSync.ts`.
+- Display names resolved by cross-referencing `currentLobby.players[]`.
+
+`isManyPlayerMode` is derived: `currentLobby !== null && (currentLobby.mode === 'trivia_night' || currentLobby.maxPlayers > 2)`.
 
 ---
 

@@ -133,6 +133,12 @@
     onreturnhub?: () => void
     fogLevel?: number
     fogState?: 'brain_fog' | 'neutral' | 'flow_state'
+    /** Show a clickable "N others" pill on the HP bar to open the roster panel (many-player modes). */
+    showRosterTrigger?: boolean
+    /** Number of other players in the game (shown in the pill). */
+    otherPlayerCount?: number
+    /** Called when the player clicks the roster trigger pill. */
+    onopenroster?: () => void
   }
 
   type CardPlayStage = 'hand' | 'selected' | 'committed'
@@ -187,7 +193,7 @@
     mapDifficultyTier?: number
   }
 
-  let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub, fogLevel, fogState }: Props = $props()
+  let { turnState, onplaycard, onskipcard, onendturn, onusehint, onreturnhub, fogLevel, fogState, showRosterTrigger = false, otherPlayerCount = 0, onopenroster }: Props = $props()
 
   let cardPlayStage = $state<CardPlayStage>('hand')
   let selectedIndex = $state<number | null>(null)
@@ -3112,6 +3118,18 @@
         ></div>
         <span class="player-hp-text" class:hp-critical-text={isHpCritical}>{playerHpCurrent}/{playerHpMax}</span>
       </div>
+      {#if showRosterTrigger}
+        <button
+          class="roster-trigger-pill"
+          data-testid="btn-open-roster"
+          title="See other players"
+          aria-label="See {otherPlayerCount > 0 ? otherPlayerCount : 'other'} other player{otherPlayerCount !== 1 ? 's' : ''}"
+          onclick={onopenroster}
+        >
+          <span class="roster-pill-icon" aria-hidden="true">&#128101;</span>
+          {#if otherPlayerCount > 0}<span class="roster-pill-count">{otherPlayerCount}</span>{/if}
+        </button>
+      {/if}
     </div>
 
     <!-- AP indicator: positioned right of End Turn button (portrait) -->
@@ -4173,6 +4191,40 @@
     50% { opacity: 0.7; box-shadow: 0 0 12px rgba(239, 68, 68, 0.9); }
   }
 
+  /* ===== Roster trigger pill ===== */
+  .roster-trigger-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(3px * var(--layout-scale, 1));
+    padding: calc(3px * var(--layout-scale, 1)) calc(7px * var(--layout-scale, 1));
+    min-width: calc(32px * var(--layout-scale, 1));
+    min-height: calc(22px * var(--layout-scale, 1));
+    background: rgba(255, 215, 0, 0.10);
+    border: 1px solid rgba(255, 215, 0, 0.30);
+    border-radius: 999px;
+    color: #FFD700;
+    font-family: var(--font-body, 'Lora', serif);
+    font-size: calc(11px * var(--text-scale, 1));
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .roster-trigger-pill:hover {
+    background: rgba(255, 215, 0, 0.22);
+    border-color: rgba(255, 215, 0, 0.6);
+  }
+
+  .roster-pill-icon {
+    font-size: calc(12px * var(--text-scale, 1));
+    line-height: 1;
+  }
+
+  .roster-pill-count {
+    line-height: 1;
+  }
 
   .wow-factor-overlay {
     position: absolute;
