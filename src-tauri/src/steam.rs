@@ -22,6 +22,10 @@ pub struct SteamState {
     /// Stores the lobby IDs from the most recent `request_lobby_list` callback.
     /// One-shot: filled when the Matchmaking callback fires, drained by steam_get_lobby_list_result.
     pub pending_lobby_list: Arc<Mutex<Option<Vec<u64>>>>,
+    /// Currently active lobby ID — set when create_lobby or join_lobby callback fires,
+    /// cleared when steam_leave_lobby is called or steam_force_leave_active_lobby runs.
+    /// Used by the on_exit handler in main.rs to clean up the lobby on app close.
+    pub active_lobby_id: Arc<Mutex<Option<u64>>>,
 }
 
 impl SteamState {
@@ -45,6 +49,7 @@ impl SteamState {
                     pending_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_lobby_id: Arc::new(Mutex::new(None)),
                     pending_lobby_list: Arc::new(Mutex::new(None)),
+                    active_lobby_id: Arc::new(Mutex::new(None)),
                 }
             }
             Err(e) => {
@@ -54,6 +59,7 @@ impl SteamState {
                     pending_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_lobby_id: Arc::new(Mutex::new(None)),
                     pending_lobby_list: Arc::new(Mutex::new(None)),
+                    active_lobby_id: Arc::new(Mutex::new(None)),
                 }
             }
         }
@@ -142,7 +148,8 @@ pub fn steam_clear_rich_presence(state: State<SteamState>) -> Result<(), String>
 /// after the `LobbyCreated_t` callback fires via `steam_run_callbacks`.
 ///
 /// This command initiates creation, wires the callback to store the resulting lobby ID in
-/// `SteamState::pending_lobby_id`, and returns immediately. The JS caller must:
+/// `SteamState::pending_lobby_id` AND `SteamState::active_lobby_id`, and returns immediately.
+/// The JS caller must:
 /// 1. Poll `steam_run_callbacks` (e.g., every 100ms) until the callback fires.
 /// 2. Call `steam_get_pending_lobby_id` to retrieve the created lobby ID.
 ///
@@ -158,9 +165,10 @@ pub fn steam_create_lobby(
     lobby_type: String,
     max_members: u32,
 ) -> Result<String, String> {
-    // Clone the Arc before locking the client so the callback closure can own it
+    // Clone the Arcs before locking the client so the callback closure can own them
     // without the client lock being held across the async boundary.
     let pending = state.pending_lobby_id.clone();
+    let active = state.active_lobby_id.clone();
 
     let lock = state.client.lock().map_err(|e| e.to_string())?;
     if let Some(client) = lock.as_ref() {
@@ -170,6 +178,10 @@ pub fn steam_create_lobby(
                 Ok(lobby_id) => {
                     println!("[Steam] Lobby created: {}", lobby_id.raw());
                     if let Ok(mut slot) = pending.lock() {
+                        *slot = Some(lobby_id.raw());
+                    }
+                    // Track as the active lobby so the exit handler can clean it up.
+                    if let Ok(mut slot) = active.lock() {
                         *slot = Some(lobby_id.raw());
                     }
                 }
@@ -203,15 +215,16 @@ pub fn steam_get_pending_lobby_id(
 ///
 /// Like `steam_create_lobby`, this is asynchronous — the join result arrives via the
 /// `LobbyEnter_t` callback after `steam_run_callbacks` is polled. The resulting lobby ID
-/// is stored in `SteamState::pending_join_lobby_id` and can be retrieved via
-/// `steam_get_pending_join_lobby_id`.
+/// is stored in `SteamState::pending_join_lobby_id` AND `SteamState::active_lobby_id` and
+/// can be retrieved via `steam_get_pending_join_lobby_id`.
 ///
 /// # Parameters
 /// - `lobby_id`: The lobby's 64-bit Steam ID as a decimal string
 #[tauri::command]
 pub fn steam_join_lobby(state: State<SteamState>, lobby_id: String) -> Result<(), String> {
-    // Clone the Arc before locking the client — same pattern as steam_create_lobby.
+    // Clone the Arcs before locking the client — same pattern as steam_create_lobby.
     let pending_join = state.pending_join_lobby_id.clone();
+    let active = state.active_lobby_id.clone();
 
     let lock = state.client.lock().map_err(|e| e.to_string())?;
     if let Some(client) = lock.as_ref() {
@@ -221,6 +234,10 @@ pub fn steam_join_lobby(state: State<SteamState>, lobby_id: String) -> Result<()
             Ok(joined_id) => {
                 println!("[Steam] Joined lobby: {}", joined_id.raw());
                 if let Ok(mut slot) = pending_join.lock() {
+                    *slot = Some(joined_id.raw());
+                }
+                // Track as the active lobby so the exit handler can clean it up.
+                if let Ok(mut slot) = active.lock() {
                     *slot = Some(joined_id.raw());
                 }
             }
@@ -246,6 +263,7 @@ pub fn steam_get_pending_join_lobby_id(
 /// Leave a Steam lobby.
 ///
 /// This is synchronous — the leave takes effect immediately.
+/// Also clears the active_lobby_id tracker so the exit handler doesn't redundantly leave.
 ///
 /// # Parameters
 /// - `lobby_id`: The lobby's 64-bit Steam ID as a decimal string
@@ -257,7 +275,54 @@ pub fn steam_leave_lobby(state: State<SteamState>, lobby_id: String) -> Result<(
         client.matchmaking().leave_lobby(id);
         println!("[Steam] Left lobby: {}", lobby_id);
     }
+    drop(lock);
+
+    // Clear the active lobby tracker — we've explicitly left.
+    if let Ok(mut slot) = state.active_lobby_id.lock() {
+        if slot.as_ref().map(|raw| raw.to_string()) == Some(lobby_id.clone()) {
+            *slot = None;
+        }
+    }
+
     Ok(())
+}
+
+/// Best-effort leave of the currently active Steam lobby.
+///
+/// Called from the JS-side graceful shutdown path (e.g., on `beforeunload` or
+/// when the user navigates away from a multiplayer screen) and from the Tauri
+/// exit hook in `main.rs`. Non-blocking — the leave is synchronous but the
+/// whole call completes in microseconds.
+///
+/// Safe to call when Steam is unavailable or when no lobby is active — it is
+/// a no-op in both cases. Clears `active_lobby_id` on completion so the
+/// app-exit handler does not double-leave.
+#[tauri::command]
+pub fn steam_force_leave_active_lobby(state: State<SteamState>) -> Result<bool, String> {
+    let active_id = {
+        let slot = state.active_lobby_id.lock().map_err(|e| e.to_string())?;
+        *slot
+    };
+
+    let Some(raw_id) = active_id else {
+        // No active lobby — nothing to do.
+        return Ok(false);
+    };
+
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(client) = lock.as_ref() {
+        let lobby_id = LobbyId::from_raw(raw_id);
+        client.matchmaking().leave_lobby(lobby_id);
+        println!("[Steam] Force-left active lobby: {}", raw_id);
+    }
+    drop(lock);
+
+    // Clear the tracker regardless of whether Steam was available.
+    if let Ok(mut slot) = state.active_lobby_id.lock() {
+        *slot = None;
+    }
+
+    Ok(true)
 }
 
 /// Get all current members of a Steam lobby.
@@ -624,3 +689,43 @@ fn parse_steam_id(s: &str) -> Result<SteamId, String> {
 //   - steam_get_leaderboard_entries(board: String) -> Result<Vec<LeaderboardEntry>, String>
 //     Fetch the top-N global entries for display in the in-game leaderboard screen.
 //   Both require the callbacks pump (client.run_callbacks) running on a background timer thread.
+
+// ── Session Reestablishment (H9) ──────────────────────────────────────────────
+
+/// Check whether a given Steam user is currently a member of the specified lobby.
+///
+/// Used by `reestablishSteamP2PSession` in `multiplayerTransport.ts` on app restart:
+/// after loading persisted lobby state, we check whether the peer is still present
+/// before attempting to resume the P2P session. Avoids reconnecting into a lobby that
+/// has already disbanded.
+///
+/// # Parameters
+/// - `lobby_id`: The lobby's 64-bit Steam ID as a decimal string
+/// - `steam_id`: The peer's 64-bit Steam ID as a decimal string to search for
+///
+/// # Returns
+/// `true` if the Steam ID is found in the current member list, `false` otherwise.
+///
+/// TODO(reconnect): Wire this command into `src-tauri/src/main.rs`
+/// `.invoke_handler(tauri::generate_handler![..., steam_check_lobby_membership])`.
+/// The JS-side `reestablishSteamP2PSession` currently falls back to iterating
+/// `getLobbyMembers()` which is correct but fetches all member data. Once wired,
+/// the TS caller can use the dedicated `steam_check_lobby_membership` IPC command
+/// for a lighter membership check — particularly relevant when lobbies grow beyond
+/// the current 2-player V1 cap.
+#[tauri::command]
+pub fn steam_check_lobby_membership(
+    state: State<SteamState>,
+    lobby_id: String,
+    steam_id: String,
+) -> Result<bool, String> {
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(client) = lock.as_ref() {
+        let lid = parse_lobby_id(&lobby_id)?;
+        let target = parse_steam_id(&steam_id)?;
+        let members = client.matchmaking().lobby_members(lid);
+        Ok(members.into_iter().any(|m| m.raw() == target.raw()))
+    } else {
+        Ok(false)
+    }
+}

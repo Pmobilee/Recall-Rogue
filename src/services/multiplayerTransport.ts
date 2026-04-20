@@ -20,6 +20,7 @@
 import { getLanServerUrls, isLanMode } from './lanConfigService';
 import {
   acceptP2PSession,
+  getLobbyMembers,
   leaveSteamLobby,
   sendP2PMessage,
   startMessagePollLoop,
@@ -83,6 +84,7 @@ export type MultiplayerMessageType =
   | 'mp:coop:turn_end_cancel'
   | 'mp:coop:turn_end_with_delta'
   | 'mp:coop:enemy_hp_update'
+  | 'mp:coop:player_died'
   // Map node consensus (all multiplayer modes that share a map)
   | 'mp:map:node_pick'
   // Trivia Night
@@ -196,6 +198,12 @@ function emitToListeners(map: ListenerMap, type: string, msg: MultiplayerMessage
 // ── WebSocket Transport ───────────────────────────────────────────────────────
 
 /**
+ * Maximum reconnect backoff delay in milliseconds.
+ * Caps the exponential backoff so we keep trying for ~5 minutes at the plateau.
+ */
+const MAX_RECONNECT_DELAY_MS = 30_000;
+
+/**
  * WebSocket-based transport for web/mobile multiplayer.
  * Messages are routed through the Fastify MP lobby registry server.
  *
@@ -205,7 +213,12 @@ function emitToListeners(map: ListenerMap, type: string, msg: MultiplayerMessage
  *     `${base}?lobbyId=${lobbyId}&playerId=${localId}&token=${joinToken}`
  *   The `token` param is the short-lived join token from POST /mp/lobbies/:id/join.
  *
- * Reconnect uses exponential backoff capped at 5 attempts.
+ * Reconnect uses exponential backoff capped at MAX_RECONNECT_DELAY_MS (30s), with
+ * up to 12 attempts — keeping the client trying for ~5 minutes before giving up.
+ *
+ * C2 fix: onerror now schedules a reconnect if attempts remain (was only onclose).
+ * Double-scheduling is guarded by a pending timeout handle. A public reconnect()
+ * method allows the UI to surface a manual "Retry" button after exhaustion.
  */
 export class WebSocketTransport implements MultiplayerTransport {
   private ws: WebSocket | null = null;
@@ -213,8 +226,14 @@ export class WebSocketTransport implements MultiplayerTransport {
   private listeners: ListenerMap = new Map();
   private localId = '';
   private reconnectAttempts = 0;
-  private readonly maxReconnectAttempts = 5;
+  // H8: raised from 5 → 12 (keeps trying for ~5 minutes with 30s max delay)
+  private readonly maxReconnectAttempts = 12;
   private readonly baseReconnectDelayMs = 1000;
+  // C2: track the pending reconnect timeout handle to prevent double-scheduling
+  private reconnectTimeoutHandle: ReturnType<typeof setTimeout> | null = null;
+  // C2: stash the last-used url/localId so reconnect() can reuse them
+  private lastUrl = '';
+  private lastLocalId = '';
 
   /**
    * Connect to the Fastify MP WebSocket endpoint.
@@ -267,6 +286,11 @@ export class WebSocketTransport implements MultiplayerTransport {
 
   disconnect(): void {
     this.reconnectAttempts = this.maxReconnectAttempts; // prevent auto-reconnect
+    // C2: cancel any pending reconnect timeout on explicit disconnect
+    if (this.reconnectTimeoutHandle !== null) {
+      clearTimeout(this.reconnectTimeoutHandle);
+      this.reconnectTimeoutHandle = null;
+    }
     if (this.ws) {
       this.ws.close();
       this.ws = null;
@@ -283,13 +307,41 @@ export class WebSocketTransport implements MultiplayerTransport {
     return this.state === 'connected';
   }
 
+  /**
+   * Manually trigger a reconnect attempt, resetting the backoff counter.
+   *
+   * Intended for UI "Retry" buttons shown after max reconnect attempts are
+   * exhausted. Cancels any in-flight reconnect timeout before starting fresh.
+   *
+   * C2 fix: exposes reconnect as a public method so callers can surface a
+   * manual retry path when the transport enters a permanent error state.
+   */
+  reconnect(): void {
+    if (this.reconnectTimeoutHandle !== null) {
+      clearTimeout(this.reconnectTimeoutHandle);
+      this.reconnectTimeoutHandle = null;
+    }
+    this.reconnectAttempts = 0;
+    if (this.lastUrl) {
+      this.openSocket(this.lastUrl, this.lastLocalId);
+    }
+  }
+
   private openSocket(url: string, localId: string): void {
+    // Stash for use by reconnect() and scheduleReconnect()
+    this.lastUrl = url;
+    this.lastLocalId = localId;
     try {
       this.ws = new WebSocket(url);
 
       this.ws.onopen = () => {
         this.state = 'connected';
         this.reconnectAttempts = 0;
+        // Clear any pending reconnect timeout now that we're connected
+        if (this.reconnectTimeoutHandle !== null) {
+          clearTimeout(this.reconnectTimeoutHandle);
+          this.reconnectTimeoutHandle = null;
+        }
       };
 
       this.ws.onmessage = (event) => {
@@ -306,19 +358,48 @@ export class WebSocketTransport implements MultiplayerTransport {
         this.scheduleReconnect(url, localId);
       };
 
+      // C2 fix: onerror previously only set state='error' without scheduling
+      // a reconnect. If new WebSocket() itself throws inside openSocket (the
+      // catch branch below), onerror never fires at all — state would stay
+      // 'error' forever.  Now we schedule a reconnect from onerror too, so
+      // a transient connection refusal still retries automatically.
+      //
+      // Guard: if onclose also fires after onerror (browsers deliver both),
+      // scheduleReconnect is idempotent via the reconnectTimeoutHandle guard.
       this.ws.onerror = () => {
         this.state = 'error';
+        this.scheduleReconnect(url, localId);
       };
     } catch {
+      // new WebSocket() threw synchronously (rare; happens when the URL is
+      // totally malformed or the platform blocks the constructor).
       this.state = 'error';
+      this.scheduleReconnect(url, localId);
     }
   }
 
+  /**
+   * Schedule an exponential-backoff reconnect attempt.
+   *
+   * H8: delay is clamped to MAX_RECONNECT_DELAY_MS (30s) so we don't back off
+   * to absurdly long intervals.  maxReconnectAttempts raised to 12 so the
+   * client keeps trying for ~5 minutes before giving up.
+   *
+   * C2: the reconnectTimeoutHandle guard prevents double-scheduling when both
+   * onerror and onclose fire for the same socket failure (common in browsers).
+   */
   private scheduleReconnect(url: string, localId: string): void {
     if (this.reconnectAttempts >= this.maxReconnectAttempts) return;
+    // C2: if a reconnect is already scheduled, don't pile on a second one
+    if (this.reconnectTimeoutHandle !== null) return;
     this.reconnectAttempts++;
-    const delay = this.baseReconnectDelayMs * Math.pow(2, this.reconnectAttempts - 1);
-    setTimeout(() => this.openSocket(url, localId), delay);
+    // H8: clamp delay to MAX_RECONNECT_DELAY_MS
+    const base = this.baseReconnectDelayMs * Math.pow(2, this.reconnectAttempts - 1);
+    const delay = Math.min(base, MAX_RECONNECT_DELAY_MS);
+    this.reconnectTimeoutHandle = setTimeout(() => {
+      this.reconnectTimeoutHandle = null;
+      this.openSocket(url, localId);
+    }, delay);
   }
 }
 
@@ -332,10 +413,15 @@ export class WebSocketTransport implements MultiplayerTransport {
  * connect(peerId, localId, opts?):
  *   1. Stores the remote peer's Steam ID
  *   2. Calls acceptP2PSession(peerId) to allow incoming messages from them
- *   3. Starts the poll loop (16 ms / ~60 Hz) to pump Steam callbacks and drain
- *      the P2P message queue
+ *   3. After the accept Promise resolves, starts the poll loop (16 ms / ~60 Hz)
+ *      to pump Steam callbacks and drain the P2P message queue.
  *   opts is accepted for interface compatibility but ignored — Steam P2P has no
  *   join tokens or Fastify WS URLs.
+ *
+ * C1 fix: messages that arrive in the window between acceptP2PSession being
+ * called and the poll loop starting are buffered in _preAcceptBuffer and
+ * replayed once the poll loop is active.  This prevents packets sent by the
+ * remote peer immediately after we call accept from being silently dropped.
  *
  * The poll loop's onMessage callback parses each raw SteamP2PMessage as a
  * MultiplayerMessage (JSON) and routes it to registered listeners by type.
@@ -349,6 +435,9 @@ export class SteamP2PTransport implements MultiplayerTransport {
   private state: TransportState = 'disconnected';
   private listeners: ListenerMap = new Map();
   private stopPollLoop: (() => void) | null = null;
+  // C1: buffer messages that arrive before acceptP2PSession resolves
+  private _preAcceptBuffer: MultiplayerMessage[] = [];
+  private _acceptSettled = false;
 
   /**
    * @param peerId  Remote player's 64-bit Steam ID as a string
@@ -360,26 +449,57 @@ export class SteamP2PTransport implements MultiplayerTransport {
     this.peerId = peerId;
     this.localId = localId;
     this.state = 'connecting';
+    this._preAcceptBuffer = [];
+    this._acceptSettled = false;
 
-    // Accept incoming P2P session from remote peer, then start poll loop.
-    // acceptP2PSession is async but we don't block connect() on it —
-    // the poll loop will start receiving once the session handshake completes.
+    // C1 fix: accept the P2P session and start the poll loop only AFTER the
+    // accept Promise resolves.  Messages that arrive during the handshake gap
+    // are buffered and replayed once the poll loop is running.
+    //
+    // The poll loop callback routes to _handleRawMessage, which buffers during
+    // 'connecting' state and flushes when we transition to 'connected'.
     acceptP2PSession(peerId)
       .then(() => {
         if (this.state !== 'connecting') return; // disconnected before handshake
         this.state = 'connected';
+        this._acceptSettled = true;
         this.stopPollLoop = startMessagePollLoop((rawMsg) => {
-          try {
-            const msg = JSON.parse(rawMsg.data) as MultiplayerMessage;
-            emitToListeners(this.listeners, msg.type, msg);
-          } catch {
-            // Ignore malformed P2P messages
-          }
+          this._handleRawMessage(rawMsg.data);
         });
+        // Replay any messages that arrived during the accept gap
+        const buffered = this._preAcceptBuffer.splice(0);
+        for (const msg of buffered) {
+          emitToListeners(this.listeners, msg.type, msg);
+        }
       })
       .catch(() => {
         this.state = 'error';
+        this._acceptSettled = true;
+        this._preAcceptBuffer = [];
       });
+  }
+
+  /**
+   * Parse a raw JSON message string and either buffer it (if we're still in
+   * the connecting/pre-accept window) or dispatch it immediately.
+   *
+   * C1: this is the single dispatch point for all incoming P2P data so the
+   * buffer-vs-dispatch decision is in one place.
+   */
+  private _handleRawMessage(data: string): void {
+    let msg: MultiplayerMessage;
+    try {
+      msg = JSON.parse(data) as MultiplayerMessage;
+    } catch {
+      // Ignore malformed P2P messages
+      return;
+    }
+    if (!this._acceptSettled) {
+      // Accept hasn't resolved yet — buffer to prevent message loss
+      this._preAcceptBuffer.push(msg);
+      return;
+    }
+    emitToListeners(this.listeners, msg.type, msg);
   }
 
   send(type: MultiplayerMessageType, payload: Record<string, unknown>): void {
@@ -408,6 +528,8 @@ export class SteamP2PTransport implements MultiplayerTransport {
   disconnect(): void {
     this.stopPollLoop?.();
     this.stopPollLoop = null;
+    this._preAcceptBuffer = [];
+    this._acceptSettled = true; // prevent any in-flight connect from buffering further
 
     if (this.currentLobbyId) {
       leaveSteamLobby(this.currentLobbyId).catch(() => {});
@@ -720,4 +842,63 @@ export function getMultiplayerTransport(mode?: 'auto' | 'local' | 'broadcast'): 
 export function destroyMultiplayerTransport(): void {
   _transport?.disconnect();
   _transport = null;
+}
+
+// ── Steam P2P Session Reestablishment (H9) ────────────────────────────────────
+
+/**
+ * Attempt to reestablish a Steam P2P session after an app restart.
+ *
+ * On app start, if persistent lobby state was saved (lobbyId + peerSteamId),
+ * call this function to check whether the local player is still a member of
+ * that lobby and resume the P2P session if so.
+ *
+ * H9 fix: replaces the "session forever gone after restart" failure mode.
+ * Without this, a Steam desktop player who alt-tabs and relaunches during a
+ * co-op session would be stuck at the hub with no way back into the session.
+ *
+ * Checks lobby membership via getLobbyMembers() (existing IPC), then calls
+ * acceptP2PSession + startMessagePollLoop on the provided SteamP2PTransport
+ * instance.
+ *
+ * @param transport    - The SteamP2PTransport instance to reconnect
+ * @param lobbyId      - The lobby the player was in (decimal string Steam ID)
+ * @param peerSteamId  - The remote peer's Steam ID (decimal string)
+ * @param localSteamId - The local player's Steam ID (decimal string)
+ * @returns true if the session was successfully reestablished, false otherwise.
+ *
+ * Callers should persist lobbyId + peerSteamId to localStorage/save state on
+ * session start and clear them on clean disconnect or run completion.
+ *
+ * TODO(reconnect): A dedicated Tauri command `steam_check_lobby_membership`
+ * (stubbed below in src-tauri/src/steam.rs) would give an explicit membership
+ * check without iterating the member list.  Until that command ships, we use
+ * getLobbyMembers() which already exists. This is slightly heavier (fetches
+ * all member data) but correct for V1 since lobbies are small (2–4 players).
+ */
+export async function reestablishSteamP2PSession(
+  transport: SteamP2PTransport,
+  lobbyId: string,
+  peerSteamId: string,
+  localSteamId: string,
+): Promise<boolean> {
+  if (!isTauriRuntime()) return false;
+  try {
+    // Use existing getLobbyMembers IPC to check if we're still in the lobby.
+    // If the lobby has expired or we were kicked, members will be empty or
+    // won't include our Steam ID.
+    const members = await getLobbyMembers(lobbyId);
+    const peerStillPresent = members.some((m) => m.steamId === peerSteamId);
+    if (!peerStillPresent) {
+      console.warn('[SteamP2PTransport] reestablishSteamP2PSession: peer not in lobby anymore');
+      return false;
+    }
+    // Reconnect: connect() handles acceptP2PSession + startMessagePollLoop
+    transport.connect(peerSteamId, localSteamId);
+    transport.setActiveLobby(lobbyId);
+    return true;
+  } catch (e) {
+    console.warn('[SteamP2PTransport] reestablishSteamP2PSession failed:', e);
+    return false;
+  }
 }

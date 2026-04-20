@@ -1152,19 +1152,19 @@ const steamBackend: LobbyBackend = {
     }
     const entries: LobbyBrowserEntry[] = [];
     for (const lobbyId of ids) {
-      const [mode, visibility, lobbyCode, hostName, maxPlayersStr, createdAtStr] = await Promise.all([
+      const [mode, visibility, lobbyCode, hostName, maxPlayersStr, createdAtStr, currentPlayers] = await Promise.all([
         getLobbyData(lobbyId, 'mode'),
         getLobbyData(lobbyId, 'visibility'),
         getLobbyData(lobbyId, 'lobby_code'),
         getLobbyData(lobbyId, 'host_name'),
         getLobbyData(lobbyId, 'max_players'),
         getLobbyData(lobbyId, 'created_at'),
+        getLobbyMemberCount(lobbyId),
       ]);
       // Skip lobbies lacking required metadata — they may be stale or from a different game layout.
       if (!mode || !visibility || !lobbyCode) continue;
       // friends_only lobbies excluded from browser: Steam handles that filter natively.
       if (visibility === 'friends_only') continue;
-      const currentPlayers = await getLobbyMemberCount(lobbyId);
       const maxPlayers = Number(maxPlayersStr ?? '4');
       // Apply filter if provided.
       if (filter?.mode && mode !== filter.mode) continue;
