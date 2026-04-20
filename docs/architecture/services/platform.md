@@ -1,7 +1,7 @@
 # Platform & Device Services
 
 > **Purpose:** Device detection, haptics, performance monitoring, analytics, error reporting, input handling, accessibility, notifications, entitlements, Steam integration, Steam P2P networking, and browser compatibility.
-> **Last verified:** 2026-04-20 — Tauri v2 desktop detection fix (`__TAURI_INTERNALS__`); Steam lobby async-callback polling added; `tauriInvoke` and all public guards in steamNetworkingService switched to live `isTauriRuntime()` check
+> **Last verified:** 2026-04-20 — Tauri v2 desktop detection fix (`__TAURI_INTERNALS__`); Steam lobby async-callback polling added; `tauriInvoke` and all public guards in steamNetworkingService switched to live `isTauriRuntime()` check; all multi-word IPC arg keys converted from snake_case to camelCase (Tauri v2 convention); `getLastSteamInvokeError()` diagnostic slot added
 > **Source files:** platformService.ts, hapticService.ts, perfService.ts, analyticsService.ts, errorReporting.ts, inputService.ts, keyboardInput.ts, shortcutService.ts, accessibilityManager.ts, notificationService.ts, entitlementService.ts, steamService.ts, steamNetworkingService.ts, reviewPromptService.ts, browserCompat.ts, deviceTierService.ts, kidModeService.ts, legalConstants.ts, sessionTimer.ts, multiplayerTransport.ts
 
 > **See also:** [`platform-audio.md`](platform-audio.md) — audioService, cardAudioManager, and juiceManager (audio synthesis and game-feel coordination).
@@ -136,7 +136,7 @@ Platform services form the bridge between web-standard APIs and the three deploy
 | **Poll loop** | `startMessagePollLoop(onMessage, channel?, intervalMs?)` — starts a 16 ms setInterval that pumps Steam callbacks then reads P2P messages; returns cleanup function |
 | **Async lobby ops** | `createSteamLobby` and `joinSteamLobby` use an internal `pollPendingResult(pendingCmd, timeoutMs, intervalMs)` helper to bridge Steamworks' async callback model. They kick the Tauri command (returns immediately), then spin `steam_run_callbacks` + `steam_get_pending_lobby_id` / `steam_get_pending_join_lobby_id` at 100 ms intervals until the callback fires (up to 5 s). Both resolve with the lobby ID / true on success, or null / false on timeout. |
 | **Tauri commands** | `steam_create_lobby`, `steam_join_lobby`, `steam_leave_lobby`, `steam_get_lobby_members`, `steam_set_lobby_data`, `steam_get_lobby_data`, `steam_send_p2p_message`, `steam_read_p2p_messages`, `steam_accept_p2p_session`, `steam_run_callbacks`, `steam_get_pending_lobby_id`, `steam_get_pending_join_lobby_id` |
-| **Arg convention** | All Tauri IPC args use snake_case to match Rust side (`lobby_id`, `lobby_type`, `max_members`, `steam_id`, etc.) |
+| **Arg convention** | JS callers MUST use camelCase keys (`lobbyId`, `lobbyType`, `maxMembers`, `steamId`, etc.). Tauri v2 translates camelCase → snake_case automatically before dispatching to Rust. Passing snake_case JS keys causes a silent `"missing required key"` rejection because Tauri expects camelCase from the JS side. Single-word params (`channel`, `key`, `value`, `data`) are unaffected. See `docs/gotchas.md` 2026-04-20 "Tauri v2 IPC snake_case args". |
 
 ## reviewPromptService
 

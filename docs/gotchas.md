@@ -1,3 +1,25 @@
+### 2026-04-20 — Tauri v2 IPC snake_case args silently break Steam commands
+
+**What:** `createSteamLobby` (and every other multi-word Steam IPC call) returned `null` instantly — not after the 5-second poll timeout — when invoked from a packaged Steam build. The multiplayer banner showed "Steam may be unavailable" with no further detail.
+
+**Why:** Tauri v2's default IPC argument convention is camelCase on the JS side, snake_case on the Rust side. Tauri performs the translation automatically at the boundary. `steamNetworkingService.ts` was passing snake_case JS keys (`lobby_type`, `max_members`, `lobby_id`, `steam_id`, etc.). Tauri rejected the call with `"Command steam_create_lobby missing required key 'lobbyType'"`, `tauriInvoke` caught the exception, stored nothing (just logged a console.warn), and returned `null`. The caller saw an instant null and threw "Steam may be unavailable" — losing the actual error message entirely.
+
+This bug never surfaced on non-Steam commands (`steamService.ts` uses single-word params like `filename`, `data`, `port` where camelCase and snake_case are identical).
+
+**Fix:** Converted all multi-word IPC arg keys in `steamNetworkingService.ts` from snake_case to camelCase:
+- `lobby_type` → `lobbyType`, `max_members` → `maxMembers` (steam_create_lobby)
+- `lobby_id` → `lobbyId` (steam_join_lobby, steam_leave_lobby, steam_get_lobby_members, steam_get_lobby_member_count, steam_set_lobby_data, steam_get_lobby_data)
+- `steam_id` → `steamId` (steam_send_p2p_message, steam_accept_p2p_session)
+
+The Rust side (`src-tauri/src/steam.rs`) was NOT touched — Tauri handles the translation. This keeps the fix to the JS bundle only, avoiding a cargo recompile.
+
+**Diagnostic improvement:** Added `lastInvokeError` module-level slot in `steamNetworkingService.ts` and `getLastSteamInvokeError()` export. `tauriInvoke` now stores the actual exception message before returning null. `steamBackend.createLobby` reads this slot and appends the real IPC error text to the thrown Error, so the multiplayer banner shows something actionable (e.g. "IPC: Command steam_create_lobby missing required key 'lobbyType'") instead of "Steam may be unavailable".
+
+**Rule:** When adding multi-word params to any new Tauri command, always pass camelCase keys from JS. The Tauri v2 convention is documented at the top of `steamNetworkingService.ts`.
+
+**Files:** `src/services/steamNetworkingService.ts`, `src/services/multiplayerLobbyService.ts`, `docs/architecture/services/platform.md`.
+
+
 ### 2026-04-20 — `filter:` on a fullscreen `<img>` is the dominant Chrome campsite cost
 
 **What:** The campsite screen was painfully slow in Chrome while fine on Safari/macOS. After disabling the warm glow canvas, cursor light, fireflies, sparkles, campfire canvas, Phaser loop sleep on non-combat screens, and splitting the 8-chained drop-shadow outline from the brightness filter, the campsite was still lagging. The sole remaining `style:filter={bgWarmthFilter}` on the fullscreen `.camp-bg` `<img>` — where `bgWarmthFilter` was the STATIC string `'sepia(0.055) saturate(1.05)'` — was the culprit. Removing that one line made the entire hub fluid.

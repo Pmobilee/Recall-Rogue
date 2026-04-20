@@ -23,6 +23,14 @@
  *   steam_run_callbacks       → runSteamCallbacks
  *   steam_get_pending_lobby_id      → (internal, used by pollPendingResult in createSteamLobby)
  *   steam_get_pending_join_lobby_id → (internal, used by pollPendingResult in joinSteamLobby)
+ *
+ * Tauri v2 IPC arg naming convention:
+ *   JS callers MUST pass camelCase keys (e.g. `lobbyId`, `lobbyType`, `maxMembers`, `steamId`).
+ *   Tauri v2 automatically translates camelCase → snake_case before dispatching to Rust.
+ *   Passing snake_case JS keys causes Tauri to reject the call with "missing required key
+ *   'lobbyType'" — the command throws, `tauriInvoke` catches it and returns null, and the
+ *   caller sees an instant null (looks like "Steam unavailable") with no stack trace.
+ *   See docs/gotchas.md 2026-04-20 "Tauri v2 IPC snake_case args silently break Steam commands".
  */
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -63,6 +71,28 @@ function isTauriRuntime(): boolean {
   return !!(w.__TAURI_INTERNALS__ || w.__TAURI__);
 }
 
+// ── Last-invoke-error diagnostic slot ────────────────────────────────────────
+
+/**
+ * Carries the most recent IPC failure from `tauriInvoke`.
+ * Cleared at the start of every `tauriInvoke` call so it always reflects
+ * the last attempt only. Null when no failure has occurred yet or the last
+ * call succeeded.
+ */
+let lastInvokeError: { cmd: string; message: string } | null = null;
+
+/**
+ * Return the error detail from the most recent failed `tauriInvoke` call,
+ * or null if the last call succeeded (or no call has been made yet).
+ *
+ * Callers (e.g. `steamBackend.createLobby`) use this to surface the real IPC
+ * failure text in thrown errors instead of the generic "Steam may be unavailable"
+ * message, making the multiplayer error banner actionable.
+ */
+export function getLastSteamInvokeError(): { cmd: string; message: string } | null {
+  return lastInvokeError;
+}
+
 // ── Internal Tauri IPC helper ─────────────────────────────────────────────────
 
 /**
@@ -70,25 +100,34 @@ function isTauriRuntime(): boolean {
  *  - Dynamically imports `@tauri-apps/api/core` (safe in non-Tauri builds)
  *  - Returns `null` and logs a warning on any failure
  *  - Short-circuits on non-Tauri platforms via a live runtime check
+ *  - Stores the last failure in `lastInvokeError` for callers to surface
  *
  * The guard uses a live check (`isTauriRuntime()`) rather than the module-load-time
  * `hasSteam` snapshot. Without this, a Steam build where `__TAURI_INTERNALS__` was
  * injected after module evaluation would still short-circuit to null on every call
  * even though `pickBackend()` correctly routed to `steamBackend`.
+ *
+ * IMPORTANT — arg naming: always pass camelCase keys in `args`. Tauri v2 translates
+ * camelCase → snake_case automatically before dispatching to Rust. Passing snake_case
+ * keys causes a silent "missing required key" rejection.
  */
 async function tauriInvoke<T = unknown>(
   cmd: string,
   args?: Record<string, unknown>,
 ): Promise<T | null> {
+  // Reset diagnostic slot before each call so it only reflects this attempt.
+  lastInvokeError = null;
   if (!isTauriRuntime()) return null;
   try {
     const { invoke } = await import('@tauri-apps/api/core');
     return await invoke<T>(cmd, args);
   } catch (e) {
     const err = e as Error;
+    const message = err?.message ?? String(e);
+    lastInvokeError = { cmd, message };
     console.warn(`[SteamNetworking] invoke '${cmd}' threw:`, {
       name: err?.name ?? 'unknown',
-      message: err?.message ?? String(e),
+      message,
     });
     return null;
   }
@@ -143,9 +182,10 @@ export async function createSteamLobby(
 ): Promise<string | null> {
   if (!isTauriRuntime()) return null;
   // Kick off lobby creation — returns "" immediately; real ID delivered via callback.
+  // Args are camelCase — Tauri v2 translates to snake_case for Rust automatically.
   const kickoff = await tauriInvoke<string>('steam_create_lobby', {
-    lobby_type: lobbyType,
-    max_members: maxMembers,
+    lobbyType,
+    maxMembers,
   });
   if (kickoff === null) return null; // IPC call itself failed (Steamworks not running, etc.)
   // Poll until the LobbyCreated_t callback fires and stores the ID.
@@ -164,7 +204,8 @@ export async function createSteamLobby(
 export async function joinSteamLobby(lobbyId: string): Promise<boolean> {
   if (!isTauriRuntime()) return false;
   // Kick off join — returns () immediately; result delivered via LobbyEnter_t callback.
-  const kickoff = await tauriInvoke('steam_join_lobby', { lobby_id: lobbyId });
+  // Args are camelCase — Tauri v2 translates to snake_case for Rust automatically.
+  const kickoff = await tauriInvoke('steam_join_lobby', { lobbyId });
   if (kickoff === null) return false; // IPC call itself failed
   // Poll until the LobbyEnter_t callback fires and stores the joined lobby ID.
   const result = await pollPendingResult('steam_get_pending_join_lobby_id');
@@ -177,7 +218,7 @@ export async function joinSteamLobby(lobbyId: string): Promise<boolean> {
  */
 export async function leaveSteamLobby(lobbyId: string): Promise<void> {
   if (!isTauriRuntime()) return;
-  await tauriInvoke('steam_leave_lobby', { lobby_id: lobbyId });
+  await tauriInvoke('steam_leave_lobby', { lobbyId });
 }
 
 /**
@@ -187,7 +228,7 @@ export async function leaveSteamLobby(lobbyId: string): Promise<void> {
 export async function getLobbyMembers(lobbyId: string): Promise<SteamLobbyMember[]> {
   if (!isTauriRuntime()) return [];
   return (await tauriInvoke<SteamLobbyMember[]>('steam_get_lobby_members', {
-    lobby_id: lobbyId,
+    lobbyId,
   })) ?? [];
 }
 
@@ -221,7 +262,7 @@ export async function requestSteamLobbyList(): Promise<boolean> {
  */
 export async function getLobbyMemberCount(lobbyId: string): Promise<number> {
   if (!isTauriRuntime()) return 0;
-  return (await tauriInvoke<number>('steam_get_lobby_member_count', { lobby_id: lobbyId })) ?? 0;
+  return (await tauriInvoke<number>('steam_get_lobby_member_count', { lobbyId })) ?? 0;
 }
 
 // ── Lobby Metadata ────────────────────────────────────────────────────────────
@@ -233,7 +274,7 @@ export async function getLobbyMemberCount(lobbyId: string): Promise<number> {
  */
 export async function setLobbyData(lobbyId: string, key: string, value: string): Promise<void> {
   if (!isTauriRuntime()) return;
-  await tauriInvoke('steam_set_lobby_data', { lobby_id: lobbyId, key, value });
+  await tauriInvoke('steam_set_lobby_data', { lobbyId, key, value });
 }
 
 /**
@@ -242,7 +283,7 @@ export async function setLobbyData(lobbyId: string, key: string, value: string):
  */
 export async function getLobbyData(lobbyId: string, key: string): Promise<string | null> {
   if (!isTauriRuntime()) return null;
-  return tauriInvoke<string>('steam_get_lobby_data', { lobby_id: lobbyId, key });
+  return tauriInvoke<string>('steam_get_lobby_data', { lobbyId, key });
 }
 
 // ── P2P Messaging ─────────────────────────────────────────────────────────────
@@ -262,7 +303,7 @@ export async function sendP2PMessage(
   channel: number = 0,
 ): Promise<void> {
   if (!isTauriRuntime()) return;
-  await tauriInvoke('steam_send_p2p_message', { steam_id: steamId, data, channel });
+  await tauriInvoke('steam_send_p2p_message', { steamId, data, channel });
 }
 
 /**
@@ -285,7 +326,7 @@ export async function readP2PMessages(channel: number = 0): Promise<SteamP2PMess
  */
 export async function acceptP2PSession(steamId: string): Promise<void> {
   if (!isTauriRuntime()) return;
-  await tauriInvoke('steam_accept_p2p_session', { steam_id: steamId });
+  await tauriInvoke('steam_accept_p2p_session', { steamId });
 }
 
 // ── Callback Pump ─────────────────────────────────────────────────────────────

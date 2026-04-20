@@ -40,6 +40,7 @@ import {
   joinSteamLobby,
   requestSteamLobbyList,
   getLobbyMemberCount,
+  getLastSteamInvokeError,
 } from './steamNetworkingService';
 import type { SteamLobbyType } from './steamNetworkingService';
 
@@ -1078,7 +1079,9 @@ const steamBackend: LobbyBackend = {
     const steamType = visibilityToSteamType(opts.visibility);
     const lobbyId = await createSteamLobby(steamType, opts.maxPlayers);
     if (!lobbyId) {
-      throw new Error('[steamBackend] createSteamLobby returned null — Steam may be unavailable');
+      const ipcErr = getLastSteamInvokeError();
+      const detail = ipcErr ? ` (IPC: ${ipcErr.message})` : ' — Steam may be unavailable';
+      throw new Error(`[steamBackend] createSteamLobby returned null${detail}`);
     }
 
     // Write metadata for the lobby browser
