@@ -235,12 +235,23 @@ export function broadcastWorkshopDeckSelection(deck: WorkshopDeckPreview): void 
 export async function checkAllPlayersHaveWorkshopDeck(
   workshopItemId: string,
   playerIds: string[],
+  localPlayerId?: string,
 ): Promise<WorkshopDeckCheckResult> {
   const transport = getMultiplayerTransport();
   const requestId = `deckcheck_${workshopItemId}_${Date.now()}`;
 
   // Track which players have confirmed installation.
   const confirmed = new Set<string>();
+
+  // #71 Host self-check fix: transport messages don't loop back to the sender,
+  // so the host will never receive its own deck_check_ack. Pre-populate confirmed
+  // with the host's own ID if the host has the deck installed locally.
+  if (localPlayerId && playerIds.includes(localPlayerId)) {
+    const hostHasDeck = getInstalledWorkshopDecks().some(d => d.workshopId === workshopItemId);
+    if (hostHasDeck) {
+      confirmed.add(localPlayerId);
+    }
+  }
 
   return new Promise<WorkshopDeckCheckResult>((resolve) => {
     // Subscribe to ACKs before sending the request to avoid a race.

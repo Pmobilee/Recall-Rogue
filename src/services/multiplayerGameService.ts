@@ -25,6 +25,11 @@ import { getCurrentLobby } from './multiplayerLobbyService';
 import { getRunRng, restoreRunRngState } from './seededRng';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { createEnemy, applyDamageToEnemy, rollNextIntent } from './enemyManager';
+import {
+  applyEloResult,
+  getLocalMultiplayerRating,
+  persistLocalMultiplayerRating,
+} from './multiplayerElo';
 import type { MultiplayerMode, RaceProgress, RaceResults } from '../data/multiplayerTypes';
 
 // ── Re-exported Types ─────────────────────────────────────────────────────────
@@ -120,6 +125,12 @@ let _localFinished = false;
 let _localStartMs = 0;
 
 /**
+ * Local player ID for the current race/duel session.
+ * Set by initRaceMode() so _tryEmitRaceResults() knows which side "we" are.
+ */
+let _raceLocalPlayerId: string = '';
+
+/**
  * Correct fact IDs collected during the race for FSRS batch update on finish.
  * Populated by recordRaceAnswer().
  */
@@ -130,6 +141,29 @@ let _raceCorrectFactIds: string[] = [];
  * Populated by recordRaceAnswer().
  */
 let _raceWrongFactIds: string[] = [];
+
+/**
+ * Initialise race-mode accumulators.
+ *
+ * MUST be called before beginning a new race run (createLobby / joinLobby
+ * start path, before the countdown ends). Clears _raceCorrectFactIds and
+ * _raceWrongFactIds so back-to-back races do not leak fact answers from the
+ * previous run into the next FSRS batch.
+ *
+ * Also stores the local player ID so _tryEmitRaceResults() can determine the
+ * Elo outcome direction at race end.
+ *
+ * @param localPlayerId - The local player's ID for this race session.
+ */
+export function initRaceMode(localPlayerId: string): void {
+  _raceLocalPlayerId = localPlayerId;
+  _raceCorrectFactIds = [];
+  _raceWrongFactIds = [];
+  _opponentProgress = null;
+  _localProgress = null;
+  _localFinished = false;
+  _localStartMs = 0;
+}
 
 /**
  * Start broadcasting race progress at 0.5 Hz (every 2 seconds).
@@ -415,6 +449,11 @@ export function determineRaceWinner(
  * Uses determineRaceWinner() for a deterministic tie-breaker hierarchy.
  * Uses actual correctCount/wrongCount from RaceProgress when available;
  * falls back to the encountersWon * 3 proxy for old peers that don't send counts.
+ *
+ * #73: When the lobby is ranked, applies an Elo delta using the local rating and a
+ * default opponent rating of 1500 (opponent's actual rating is not broadcast in V1).
+ * TODO(opp-rating-broadcast): broadcast opponent rating in mp:race:finish so ranked
+ * Elo uses real opponent strength rather than the 1500 default.
  */
 function _tryEmitRaceResults(): void {
   if (!_localProgress?.isFinished || !_opponentProgress?.isFinished) return;
@@ -490,6 +529,18 @@ function _tryEmitRaceResults(): void {
     winnerId,
     seed: lobby?.seed ?? 0,
   };
+
+  // #73: Apply Elo for ranked races.
+  // _raceLocalPlayerId is set by initRaceMode(); fall back to localId from progress if not set.
+  const eloLocalId = _raceLocalPlayerId || localId;
+  if (lobby?.isRanked && eloLocalId) {
+    const localRating = getLocalMultiplayerRating();
+    // TODO(opp-rating-broadcast): use real opponent rating once mp:race:finish broadcasts it.
+    const oppRating = 1500;
+    const outcome = winnerId === eloLocalId ? 'win' : (winnerId === null ? 'tie' : 'loss');
+    const { newLocal } = applyEloResult(localRating, oppRating, outcome);
+    persistLocalMultiplayerRating(newLocal);
+  }
 
   _onRaceComplete(results);
 }
@@ -801,6 +852,18 @@ export function hostResolveTurn(): DuelTurnResolution | null {
   if (isOver) {
     transport.send('mp:duel:end', resolution as unknown as Record<string, unknown>);
     _onDuelEnd?.(resolution);
+
+    // #73: Apply Elo for ranked duels at game end (host-side only, to avoid double-update).
+    const lobby = getCurrentLobby();
+    if (lobby?.isRanked) {
+      const eloLocalId = _duelState.localPlayerId;
+      const localRating = getLocalMultiplayerRating();
+      // TODO(opp-rating-broadcast): use real opponent rating once broadcast in duel payload.
+      const oppRating = 1500;
+      const outcome = winnerId === eloLocalId ? 'win' : (winnerId === null ? 'tie' : 'loss');
+      const { newLocal } = applyEloResult(localRating, oppRating, outcome);
+      persistLocalMultiplayerRating(newLocal);
+    }
   }
 
   _onTurnResolved?.(resolution);
@@ -951,12 +1014,25 @@ export function initGameMessageHandlers(mode: MultiplayerMode): () => void {
       _onEnemyStateUpdate?.(enemyState);
     }));
 
-    // Duel ended
+    // Duel ended — client side applies Elo for ranked games
     cleanups.push(transport.on('mp:duel:end', (msg) => {
       const resolution = msg.payload as unknown as DuelTurnResolution;
       if (!_duelState?.isHost) {
         // Client receives final resolution from host
         _onDuelEnd?.(resolution);
+
+        // #73: Non-host applies Elo for ranked duels using the received winnerId.
+        const lobby = getCurrentLobby();
+        if (lobby?.isRanked && _duelState) {
+          const eloLocalId = _duelState.localPlayerId;
+          const localRating = getLocalMultiplayerRating();
+          // TODO(opp-rating-broadcast): use real opponent rating once broadcast.
+          const oppRating = 1500;
+          const outcome = resolution.winnerId === eloLocalId ? 'win'
+            : (resolution.winnerId === null ? 'tie' : 'loss');
+          const { newLocal } = applyEloResult(localRating, oppRating, outcome);
+          persistLocalMultiplayerRating(newLocal);
+        }
       }
     }));
   }
@@ -976,6 +1052,7 @@ export function destroyMultiplayerGame(): void {
   _localStartMs = 0;
   _raceCorrectFactIds = [];
   _raceWrongFactIds = [];
+  _raceLocalPlayerId = '';
   _onOpponentProgress = null;
   _onRaceComplete = null;
 

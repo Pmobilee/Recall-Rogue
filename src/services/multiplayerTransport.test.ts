@@ -208,3 +208,46 @@ describe('H10: initPeerPresenceMonitor', () => {
     expect(pingsAfterCleanup).toBe(0);
   });
 });
+
+// ── #75: double-init guard ────────────────────────────────────────────────────
+
+describe('#75: initPeerPresenceMonitor — double-init guard', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it('tears down first monitor when initPeerPresenceMonitor is called a second time', () => {
+    const transport1 = createMockTransport();
+    const cleanup1 = initPeerPresenceMonitor('p1', () => ['peer_A'], transport1);
+
+    // Advance to first ping so we know the first monitor is active.
+    vi.advanceTimersByTime(15_001);
+    const pingsAfterFirst = transport1.sent.filter(m => m.type === 'mp:ping').length;
+    expect(pingsAfterFirst).toBeGreaterThanOrEqual(1);
+
+    // Init a second monitor — this should tear down the first.
+    const transport2 = createMockTransport();
+    const cleanup2 = initPeerPresenceMonitor('p2', () => ['peer_B'], transport2);
+
+    // Clear the first transport's sent list.
+    transport1.sent.length = 0;
+
+    // Advance another interval — only the second monitor should ping.
+    vi.advanceTimersByTime(15_001);
+
+    // First transport should receive NO new pings (its interval was cancelled).
+    const pingsFromFirst = transport1.sent.filter(m => m.type === 'mp:ping').length;
+    expect(pingsFromFirst).toBe(0);
+
+    // Second transport should have received pings.
+    const pingsFromSecond = transport2.sent.filter(m => m.type === 'mp:ping').length;
+    expect(pingsFromSecond).toBeGreaterThanOrEqual(1);
+
+    cleanup1(); // safe to call even after double-init superseded it
+    cleanup2();
+  });
+});

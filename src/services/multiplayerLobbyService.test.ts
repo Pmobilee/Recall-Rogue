@@ -100,6 +100,8 @@ vi.mock('./multiplayerTransport', () => {
     destroyMultiplayerTransport: vi.fn(),
     createLocalTransportPair: vi.fn(() => [createMockTransport(), createMockTransport()]),
     LocalMultiplayerTransport: class {},
+    // #76: spy on initPeerPresenceMonitor so lobby tests can verify wiring
+    initPeerPresenceMonitor: vi.fn(() => vi.fn()),
   };
 });
 
@@ -1215,5 +1217,39 @@ describe('M20: leaveMultiplayerLobbyForSoloStart — solo-start hook', () => {
     await leaveMultiplayerLobbyForSoloStart();
 
     expect(getCurrentLobby()).toBeNull();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Tests — #76: peer presence monitor wired from createLobby / leaveLobby
+// ---------------------------------------------------------------------------
+
+const transportMock76 = await import('./multiplayerTransport');
+
+describe('#76: initPeerPresenceMonitor wired in createLobby and torn down in leaveLobby', () => {
+  beforeEach(() => {
+    resetMockTransport();
+    vi.mocked(transportMock76.initPeerPresenceMonitor).mockClear();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+  });
+
+  it('calls initPeerPresenceMonitor after createLobby connects transport', async () => {
+    await createLobby('host_76', 'Host76', 'race');
+    expect(vi.mocked(transportMock76.initPeerPresenceMonitor)).toHaveBeenCalledTimes(1);
+    // Verify it receives the local player ID as the first arg.
+    expect(vi.mocked(transportMock76.initPeerPresenceMonitor).mock.calls[0][0]).toBe('host_76');
+  });
+
+  it('cleanup returned by initPeerPresenceMonitor is called on leaveLobby', async () => {
+    const mockCleanup = vi.fn();
+    vi.mocked(transportMock76.initPeerPresenceMonitor).mockReturnValueOnce(mockCleanup);
+
+    await createLobby('host_76b', 'Host76b', 'race');
+    leaveLobby();
+
+    expect(mockCleanup).toHaveBeenCalledTimes(1);
   });
 });

@@ -934,6 +934,17 @@ const _peerLastSeen = new Map<string, number>();
 let _peerPingInterval: ReturnType<typeof setInterval> | null = null;
 
 /**
+ * Stored cleanup function from the most recent initPeerPresenceMonitor() call.
+ *
+ * #75 double-init guard: when initPeerPresenceMonitor is called a second time
+ * (e.g. a second createLobby / joinLobby on the same session), we call the
+ * previous cleanup first so old ping/pong listeners are removed before new ones
+ * are registered. Without this, each re-init accumulates duplicate listeners
+ * and the pong handler fires multiple times per message.
+ */
+let _peerMonitorCleanup: (() => void) | null = null;
+
+/**
  * Start a JS-side peer-presence monitoring loop.
  *
  * H10 PRAGMATIC FALLBACK: The correct architecture emits mp:lobby:peer_left from
@@ -949,6 +960,10 @@ let _peerPingInterval: ReturnType<typeof setInterval> | null = null;
  *   4. When a peer reconnects and sends any message (pong or otherwise), call
  *      updatePeerLastSeen(peerId) so the grace timer is cancelled by the lobby service.
  *
+ * #75 double-init guard: if a previous monitor is running, its cleanup is called
+ * first so ping/pong listeners do not accumulate across multiple inits. The new
+ * cleanup is stored in _peerMonitorCleanup for subsequent re-inits.
+ *
  * TODO(H10-transport): Replace with Fastify server-side broadcast on WS onclose and
  * Rust P2PSessionConnectFail_t callback once those plumbing changes ship.
  *
@@ -962,6 +977,12 @@ export function initPeerPresenceMonitor(
   getPeerIds: () => string[],
   transport: MultiplayerTransport,
 ): () => void {
+  // #75 double-init guard: tear down any previous monitor before registering new listeners.
+  if (_peerMonitorCleanup !== null) {
+    _peerMonitorCleanup();
+    _peerMonitorCleanup = null;
+  }
+
   // Initialise last-seen for all current peers
   for (const peerId of getPeerIds()) {
     if (!_peerLastSeen.has(peerId)) {
@@ -980,7 +1001,7 @@ export function initPeerPresenceMonitor(
     _peerLastSeen.set(msg.senderId, Date.now());
   });
 
-  // Stop any pre-existing ping loop before starting a new one
+  // Stop any pre-existing ping loop before starting a new one (interval guard).
   if (_peerPingInterval !== null) {
     clearInterval(_peerPingInterval);
     _peerPingInterval = null;
@@ -1009,7 +1030,7 @@ export function initPeerPresenceMonitor(
     }
   }, PEER_PING_INTERVAL_MS);
 
-  return () => {
+  const cleanup = () => {
     unsubPing();
     unsubPong();
     if (_peerPingInterval !== null) {
@@ -1017,7 +1038,16 @@ export function initPeerPresenceMonitor(
       _peerPingInterval = null;
     }
     _peerLastSeen.clear();
+    // Clear the stored reference so subsequent calls know there is no active monitor.
+    if (_peerMonitorCleanup === cleanup) {
+      _peerMonitorCleanup = null;
+    }
   };
+
+  // Store so the next initPeerPresenceMonitor call can tear this one down first.
+  _peerMonitorCleanup = cleanup;
+
+  return cleanup;
 }
 
 /**

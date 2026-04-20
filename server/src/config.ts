@@ -121,7 +121,13 @@ function readDockerSecret(envKey: string, secretName: string): string {
   }
 }
 
-const rawCors = env("CORS_ORIGIN", "http://localhost:5173");
+// Default includes host.docker.internal so Docker-based multiplayer playtests
+// and dev containers reach the server without a preflight rejection. Override
+// via CORS_ORIGIN env var in production.
+const rawCors = env(
+  "CORS_ORIGIN",
+  "http://localhost:5173,http://127.0.0.1:5173,http://host.docker.internal:5173",
+);
 
 /** Singleton configuration object populated from environment variables. */
 export const config: Config = {

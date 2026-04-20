@@ -23,7 +23,7 @@
  *   directory for two-tab dev testing). pickBackend() selects at call time.
  */
 
-import { getMultiplayerTransport, destroyMultiplayerTransport, createLocalTransportPair, LocalMultiplayerTransport } from "./multiplayerTransport";
+import { getMultiplayerTransport, destroyMultiplayerTransport, createLocalTransportPair, LocalMultiplayerTransport, initPeerPresenceMonitor } from "./multiplayerTransport";
 import type { ConnectOpts, MultiplayerMessageType } from "./multiplayerTransport";
 import type {
   LobbyState, LobbyPlayer, MultiplayerMode, DeckSelectionMode,
@@ -110,6 +110,15 @@ let _botTransport: LocalMultiplayerTransport | null = null;
  * toggles getting overwritten). Reset in leaveLobby().
  */
 let _handlersAttached = false;
+
+// ── H10: Peer presence monitor teardown ─────────────────────────────────────────
+/**
+ * Cleanup returned by initPeerPresenceMonitor(). Stored so leaveLobby() can
+ * stop the ping loop and unsubscribe transport listeners without the caller
+ * needing to hold a reference.
+ * #76: Wired in createLobby(), joinLobby(), joinLobbyById(); torn down in leaveLobby().
+ */
+let _peerMonitorTeardown: (() => void) | null = null;
 
 // ── L2: Lobby code collision registry ────────────────────────────────────────
 /**
@@ -249,6 +258,12 @@ export async function createLobby(
     playerId,
     connectOpts,
   );
+  // #76: Start peer presence monitor after transport is connected.
+  _peerMonitorTeardown = initPeerPresenceMonitor(
+    playerId,
+    () => (_currentLobby?.players ?? []).filter(p => p.id !== playerId).map(p => p.id),
+    transport,
+  );
   setupMessageHandlers();
 
   return _currentLobby;
@@ -328,6 +343,12 @@ export async function joinLobby(
     connectOpts,
   );
   transport.send('mp:lobby:join', { playerId, displayName, lobbyCode });
+  // #76: Start peer presence monitor after transport is connected.
+  _peerMonitorTeardown = initPeerPresenceMonitor(
+    playerId,
+    () => (_currentLobby?.players ?? []).filter(p => p.id !== playerId).map(p => p.id),
+    transport,
+  );
   setupMessageHandlers();
 
   return _currentLobby;
@@ -383,6 +404,12 @@ export async function joinLobbyById(
     connectOpts,
   );
   transport.send('mp:lobby:join', { playerId, displayName });
+  // #76: Start peer presence monitor after transport is connected.
+  _peerMonitorTeardown = initPeerPresenceMonitor(
+    playerId,
+    () => (_currentLobby?.players ?? []).filter(p => p.id !== playerId).map(p => p.id),
+    transport,
+  );
   setupMessageHandlers();
 
   return _currentLobby;
@@ -421,6 +448,12 @@ export function leaveLobby(): void {
 
   _currentLobby = null;
   _passwordHash = null;
+  // #76: Stop peer presence monitor.
+  if (_peerMonitorTeardown !== null) {
+    _peerMonitorTeardown();
+    _peerMonitorTeardown = null;
+  }
+
   _handlersAttached = false;
   _localReadyVersion = 0;
 }

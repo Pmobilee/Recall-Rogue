@@ -566,3 +566,91 @@ describe('M14 — initWorkshopMessageHandlers deck_select validation', () => {
     }).not.toThrow();
   });
 });
+
+// ---------------------------------------------------------------------------
+// #71 — checkAllPlayersHaveWorkshopDeck: host self-check fix
+// ---------------------------------------------------------------------------
+
+describe('#71 — host self-check fix: host pre-confirmed when deck is installed', () => {
+  beforeEach(() => {
+    _localStore = {};
+    mockTransport = createMockTransport();
+    destroyWorkshopMultiplayer();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    destroyWorkshopMultiplayer();
+  });
+
+  it('does NOT list host as missing when host has the deck and localPlayerId is provided', async () => {
+    // Seed host's installed decks
+    seedInstalledDeck('ws_host_deck');
+
+    const hostId = 'host_player';
+    const players = [hostId, 'guest_1', 'guest_2'];
+    const promise = checkAllPlayersHaveWorkshopDeck('ws_host_deck', players, hostId);
+
+    // Guest 1 and 2 ACK, but host never receives its own mp:workshop:deck_check (no loopback)
+    const checkMsg = mockTransport.sent.find(m => m.type === 'mp:workshop:deck_check');
+    const { requestId } = checkMsg!.payload as { requestId: string };
+
+    mockTransport.simulateReceive('mp:workshop:deck_check_ack', {
+      requestId, playerId: 'guest_1', installed: true,
+    });
+    mockTransport.simulateReceive('mp:workshop:deck_check_ack', {
+      requestId, playerId: 'guest_2', installed: true,
+    });
+
+    vi.advanceTimersByTime(2001);
+    const result = await promise;
+
+    // Host should NOT be in missing — pre-confirmed via local check.
+    expect(result.missing).not.toContain(hostId);
+    expect(result.missing).toHaveLength(0);
+  });
+
+  it('lists host as missing when host does NOT have the deck installed', async () => {
+    // No deck seeded for host
+    const hostId = 'host_no_deck';
+    const players = [hostId, 'guest_1'];
+    const promise = checkAllPlayersHaveWorkshopDeck('ws_not_installed', players, hostId);
+
+    const checkMsg = mockTransport.sent.find(m => m.type === 'mp:workshop:deck_check');
+    const { requestId } = checkMsg!.payload as { requestId: string };
+
+    // Guest responds, host does not (and host doesn't have the deck locally).
+    mockTransport.simulateReceive('mp:workshop:deck_check_ack', {
+      requestId, playerId: 'guest_1', installed: true,
+    });
+
+    vi.advanceTimersByTime(2001);
+    const result = await promise;
+
+    // Host should be missing since it doesn't have the deck.
+    expect(result.missing).toContain(hostId);
+    expect(result.missing).not.toContain('guest_1');
+  });
+
+  it('behaves identically to original when localPlayerId is not provided (backward-compat)', async () => {
+    const players = ['p1', 'p2'];
+    // No localPlayerId — old behavior: host is treated like any other player (no pre-confirm)
+    const promise = checkAllPlayersHaveWorkshopDeck('ws_compat', players);
+
+    const checkMsg = mockTransport.sent.find(m => m.type === 'mp:workshop:deck_check');
+    const { requestId } = checkMsg!.payload as { requestId: string };
+
+    mockTransport.simulateReceive('mp:workshop:deck_check_ack', {
+      requestId, playerId: 'p1', installed: true,
+    });
+    // p2 does not respond
+
+    vi.advanceTimersByTime(2001);
+    const result = await promise;
+
+    // Without localPlayerId, no pre-confirm — p2 is missing, p1 is not.
+    expect(result.missing).not.toContain('p1');
+    expect(result.missing).toContain('p2');
+  });
+});

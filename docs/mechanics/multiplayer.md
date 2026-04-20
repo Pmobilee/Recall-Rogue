@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-20 (H6/H10/M18-wiring) — Previous: M19-profile-wire. Latest: H6 FSRS wiring in encounterBridge, H10 peer-presence monitor + union types, M18 lobby ascension level wired into encounter difficulty. See changelog section below.
+> **Last verified:** 2026-04-20 (#71/#73/#74/#75/#76 wave-4 fixes) — Previous: H6/H10/M18-wiring. Latest: #74 initRaceMode, #75 double-init guard, #76 peer monitor lobby wiring, #73 Elo at race/duel end, #71 workshopDecksReady gate + host self-check fix. See changelog section below.
 
 ## Modes
 
@@ -227,6 +227,83 @@ Returns a cleanup function — call it when leaving the lobby to cancel the inte
 TODO(H10-transport): Replace with Fastify server-side broadcast on WS onclose and
 Rust P2PSessionConnectFail_t callback once those plumbing changes ship.
 ```
+
+## Wave-4 Bug Fixes (2026-04-20)
+
+### #74 — initRaceMode: prevent fact leakage between races
+
+`initRaceMode(localPlayerId: string): void` — new export from `multiplayerGameService.ts`. Clears all
+race-session accumulators before a race starts:
+- `_raceLocalPlayerId` ← `localPlayerId`
+- `_raceCorrectFactIds` ← `[]`
+- `_raceWrongFactIds` ← `[]`
+- `_opponentProgress` ← `null`
+- `_localProgress` ← `null`
+- `_localFinished` ← `false`
+- `_localStartMs` ← `0`
+
+Previously, if a player ran two back-to-back races in the same session, fact IDs from the first race
+accumulated in `_raceCorrectFactIds` / `_raceWrongFactIds`. The FSRS batch at the end of the second
+race would double-count those facts. Call `initRaceMode()` before the race starts (not `startRaceProgressBroadcast`,
+which also resets some state but is called later in the flow).
+
+### #75 — Double-init guard for initPeerPresenceMonitor
+
+`initPeerPresenceMonitor()` in `multiplayerTransport.ts` now stores its cleanup in module-level
+`_peerMonitorCleanup`. On each new call, the previous cleanup is invoked first — preventing duplicate
+ping intervals and listener accumulation if `initPeerPresenceMonitor` is called more than once
+(e.g. on lobby rejoin or transport re-init).
+
+The returned cleanup function self-nulls `_peerMonitorCleanup` only when the reference matches the
+current cleanup (avoids nulling a newer monitor if re-init raced).
+
+### #76 — Peer presence monitor wired from multiplayerLobbyService
+
+`initPeerPresenceMonitor(localPlayerId, getPeerIds, transport)` is now called from all three
+lobby entry points in `multiplayerLobbyService.ts` immediately after `transport.connect()`:
+
+- `createLobby()` — host side
+- `joinLobby()` — join by code
+- `joinLobbyById()` — join by browser entry
+
+The returned cleanup is stored in module-level `_peerMonitorTeardown`. `leaveLobby()` calls
+`_peerMonitorTeardown()` before clearing transport state.
+
+The `getPeerIds` callback reads `_currentLobby.players`, filtering out the local player ID, so the
+monitor always has an up-to-date peer list even as players join/leave.
+
+### #73 — Elo rating applied at race and duel end
+
+When `getCurrentLobby()?.isRanked === true`, Elo is now applied at the end of each match:
+
+| Location | Applies to |
+|---|---|
+| `_tryEmitRaceResults()` | Race mode (both local and opponent finish) |
+| `hostResolveTurn()` (inside `if (isOver)`) | Duel — host path |
+| `mp:duel:end` handler (inside `!_duelState?.isHost` guard) | Duel — client path |
+
+Uses `applyEloResult(localRating, 1500, outcome)` from `multiplayerElo.ts`. Opponent rating is
+currently hardcoded to `1500` pending `TODO(opp-rating-broadcast)` — opponent rating will be
+included in lobby metadata once the backend broadcasts it.
+
+Outcome mapping: `winnerId === localId` → `'win'`; `winnerId === null` → `'tie'`; else → `'loss'`.
+
+### #71 — Workshop deck gate + host self-check fix
+
+**`canStartLobby` / `startButtonLabel` — `workshopDecksReady` parameter:**
+Both functions in `src/ui/utils/lobbyStartGate.ts` now accept an optional third parameter
+`workshopDecksReady: boolean = true`. When `false`, `canStartLobby` returns `false` and
+`startButtonLabel` returns `"Waiting for Workshop deck..."`. Callers without the third argument
+are fully backward-compatible.
+
+**`checkAllPlayersHaveWorkshopDeck` host self-check fix:**
+`checkAllPlayersHaveWorkshopDeck(workshopItemId, playerIds, localPlayerId?)` in
+`multiplayerWorkshopService.ts` now accepts an optional third parameter `localPlayerId`. When
+provided:
+- If `localPlayerId` is in `playerIds` AND `getInstalledWorkshopDecks()` finds the deck locally,
+  the host is pre-added to `confirmed` before broadcasting `mp:workshop:deck_check`.
+- This fixes the bug where the host was always listed as `missing` because transport messages
+  don't loop back to the sender — the host never received its own `deck_check_ack`.
 
 ## gameFlowController Race Mode Wiring
 
@@ -660,16 +737,20 @@ The "Start Game" button in `MultiplayerLobby.svelte` is disabled until **all thr
 3. All players have marked themselves ready (`lobby.players.every(p => p.isReady)`).
 4. Content has been selected (`lobby.contentSelection !== null`).
 
-The gate is implemented as a pure exported function `canStartLobby(lobby, amHost)` in
+The gate is implemented as a pure exported function `canStartLobby(lobby, amHost, workshopDecksReady?)` in
 `src/ui/utils/lobbyStartGate.ts`. This allows unit testing without mounting the Svelte component.
 
-The button label uses a companion function `startButtonLabel(lobby, amHost)` that reflects gate state:
+`workshopDecksReady` defaults to `true` so non-Workshop lobbies are unaffected. Pass `false` while
+`checkAllPlayersHaveWorkshopDeck()` is running or returned a non-empty `missing` array (#71).
+
+The button label uses a companion function `startButtonLabel(lobby, amHost, workshopDecksReady?)` that reflects gate state:
 
 | Gate state | Label |
 |---|---|
 | Local player is not host | `"Waiting for host..."` |
-| No content selected | `"Select Content"` |
+| No content selected | `"Choose Content First"` |
 | Not all players ready | `"Waiting for players..."` |
+| `workshopDecksReady === false` | `"Waiting for Workshop deck..."` |
 | All gates pass | `"Start Game"` |
 
 Lobby lifecycle managed by `src/services/multiplayerLobbyService.ts`.

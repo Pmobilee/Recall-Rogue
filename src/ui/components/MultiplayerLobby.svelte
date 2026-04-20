@@ -407,7 +407,14 @@
 
     <!-- RIGHT: Settings -->
     <aside class="mp-panel settings-panel" aria-label="Lobby settings">
-      <h2 class="panel-title">Settings</h2>
+      <div class="panel-title-row">
+        <h2 class="panel-title">Settings</h2>
+        {#if lobby.houseRules.ascensionLevel > 0}
+          <span class="asc-badge" data-testid="ascension-badge" aria-label="Ascension {lobby.houseRules.ascensionLevel} active">
+            Ascension {lobby.houseRules.ascensionLevel}
+          </span>
+        {/if}
+      </div>
 
       <!-- Content Selection -->
       <section class="settings-section">
@@ -1606,5 +1613,34 @@
     color: #94a3b8;
     font-size: calc(10px * var(--text-scale, 1));
     font-weight: 400;
+  }
+
+  /* Settings panel header row (title + optional ascension badge) */
+  .panel-title-row {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    flex-shrink: 0;
+    margin-bottom: calc(4px * var(--layout-scale, 1));
+  }
+
+  /* Remove the bottom margin from panel-title when inside the row — row provides it */
+  .panel-title-row .panel-title {
+    margin-bottom: 0;
+  }
+
+  /* Ascension active badge in settings panel header */
+  .asc-badge {
+    font-size: calc(10px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #facc15;
+    background: rgba(250, 204, 21, 0.14);
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1)) calc(7px * var(--layout-scale, 1));
+    text-transform: uppercase;
+    letter-spacing: calc(0.5px * var(--layout-scale, 1));
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 </style>

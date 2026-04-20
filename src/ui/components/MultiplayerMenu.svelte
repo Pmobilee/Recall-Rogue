@@ -108,15 +108,24 @@
     })
   }
 
+  /** Regex for valid lobby code characters (generator alphabet: excludes ambiguous O/0/I/1). */
+  const JOIN_CODE_RE = /^[A-HJ-NP-Z2-9]{6}$/i
+
   function handleJoinCodeInput(e: Event): void {
     const val = (e.target as HTMLInputElement).value.toUpperCase().slice(0, 6)
     joinCode = val
-    if (joinError) joinError = ''
+    // Clear error as soon as the code becomes valid; set it once a full 6-char
+    // entry is present but contains invalid characters.
+    if (val.length === 6 && !JOIN_CODE_RE.test(val)) {
+      joinError = '6 characters. No O, 0, I, or 1.'
+    } else {
+      joinError = ''
+    }
   }
 
   function handleJoinLobby(): void {
-    if (joinCode.length !== 6) {
-      joinError = 'Code must be 6 characters'
+    if (!JOIN_CODE_RE.test(joinCode)) {
+      joinError = '6 characters. No O, 0, I, or 1.'
       return
     }
     onJoinLobby(joinCode)
@@ -126,7 +135,7 @@
     if (e.key === 'Enter') handleJoinLobby()
   }
 
-  let canJoin = $derived(joinCode.length === 6)
+  let canJoin = $derived(JOIN_CODE_RE.test(joinCode))
 
   // ── LAN: Server management ────────────────────────────────────────────────────
 
@@ -404,6 +413,7 @@
               id="join-code-input"
               data-testid="join-code-input"
               class="join-input"
+              class:join-input--error={!!joinError}
               type="text"
               maxlength="6"
               placeholder="XXXXXX"
@@ -1027,6 +1037,10 @@
     outline: none;
     border-color: rgba(255, 215, 0, 0.5);
     background: rgba(255, 215, 0, 0.04);
+  }
+
+  .join-input--error {
+    border-color: rgba(224, 92, 92, 0.6);
   }
 
   .join-error {
