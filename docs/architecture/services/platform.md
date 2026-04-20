@@ -1,7 +1,7 @@
 # Platform & Device Services
 
 > **Purpose:** Device detection, haptics, performance monitoring, analytics, error reporting, input handling, accessibility, notifications, entitlements, Steam integration, Steam P2P networking, and browser compatibility.
-> **Last verified:** 2026-04-12
+> **Last verified:** 2026-04-20 — Tauri v2 desktop detection fix (`__TAURI_INTERNALS__`); Steam lobby async-callback polling added
 > **Source files:** platformService.ts, hapticService.ts, perfService.ts, analyticsService.ts, errorReporting.ts, inputService.ts, keyboardInput.ts, shortcutService.ts, accessibilityManager.ts, notificationService.ts, entitlementService.ts, steamService.ts, steamNetworkingService.ts, reviewPromptService.ts, browserCompat.ts, deviceTierService.ts, kidModeService.ts, legalConstants.ts, sessionTimer.ts, multiplayerTransport.ts
 
 > **See also:** [`platform-audio.md`](platform-audio.md) — audioService, cardAudioManager, and juiceManager (audio synthesis and game-feel coordination).
@@ -20,6 +20,7 @@ Platform services form the bridge between web-standard APIs and the three deploy
 | **Purpose** | Detects active native wrapper (Tauri/Capacitor/web) at module load time; provides platform constants |
 | **Key exports** | `platform`, `isDesktop`, `isMobile`, `isWeb`, `hasSteam`, `Platform` (type) |
 | **Key dependencies** | None (window globals only) |
+| **Tauri v2 detection** | Checks `window.__TAURI_INTERNALS__` first (always present in Tauri v2 — `invoke` depends on it), then falls back to `window.__TAURI__` (Tauri v1, and v2 with `withGlobalTauri: true`). In production Steam builds that do NOT set `withGlobalTauri: true`, only `__TAURI_INTERNALS__` is injected — the old `__TAURI__`-only check returned `'web'` and broke all Steam features. |
 
 ## hapticService
 
@@ -132,7 +133,8 @@ Platform services form the bridge between web-standard APIs and the three deploy
 | **Key types** | `SteamLobbyType`, `SteamLobbyMember`, `SteamP2PMessage` |
 | **Key dependencies** | platformService (@tauri-apps/api/core dynamic import) |
 | **Poll loop** | `startMessagePollLoop(onMessage, channel?, intervalMs?)` — starts a 16 ms setInterval that pumps Steam callbacks then reads P2P messages; returns cleanup function |
-| **Tauri commands** | `steam_create_lobby`, `steam_join_lobby`, `steam_leave_lobby`, `steam_get_lobby_members`, `steam_set_lobby_data`, `steam_get_lobby_data`, `steam_send_p2p_message`, `steam_read_p2p_messages`, `steam_accept_p2p_session`, `steam_run_callbacks` |
+| **Async lobby ops** | `createSteamLobby` and `joinSteamLobby` use an internal `pollPendingResult(pendingCmd, timeoutMs, intervalMs)` helper to bridge Steamworks' async callback model. They kick the Tauri command (returns immediately), then spin `steam_run_callbacks` + `steam_get_pending_lobby_id` / `steam_get_pending_join_lobby_id` at 100 ms intervals until the callback fires (up to 5 s). Both resolve with the lobby ID / true on success, or null / false on timeout. |
+| **Tauri commands** | `steam_create_lobby`, `steam_join_lobby`, `steam_leave_lobby`, `steam_get_lobby_members`, `steam_set_lobby_data`, `steam_get_lobby_data`, `steam_send_p2p_message`, `steam_read_p2p_messages`, `steam_accept_p2p_session`, `steam_run_callbacks`, `steam_get_pending_lobby_id`, `steam_get_pending_join_lobby_id` |
 | **Arg convention** | All Tauri IPC args use snake_case to match Rust side (`lobby_id`, `lobby_type`, `max_members`, `steam_id`, etc.) |
 
 ## reviewPromptService

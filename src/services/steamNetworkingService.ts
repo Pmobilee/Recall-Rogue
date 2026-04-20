@@ -21,6 +21,8 @@
  *   steam_read_p2p_messages   → readP2PMessages
  *   steam_accept_p2p_session  → acceptP2PSession
  *   steam_run_callbacks       → runSteamCallbacks
+ *   steam_get_pending_lobby_id      → (internal, used by pollPendingResult in createSteamLobby)
+ *   steam_get_pending_join_lobby_id → (internal, used by pollPendingResult in joinSteamLobby)
  */
 
 import { hasSteam } from './platformService';
@@ -64,33 +66,81 @@ async function tauriInvoke<T = unknown>(
   }
 }
 
+// ── Async-callback polling bridge ─────────────────────────────────────────────
+
+/**
+ * Poll a Tauri "pending result" command until it returns a non-null string,
+ * pumping Steam callbacks each tick. Used to bridge Steamworks' async callback
+ * model into a synchronous-looking Promise for createLobby/joinLobby.
+ *
+ * Steamworks lobby operations (create, join) return immediately at the IPC
+ * boundary but deliver their results via a callback that fires later when
+ * `steam_run_callbacks` is pumped. This helper spins the pump loop until
+ * the pending-result slot is populated, then returns it.
+ *
+ * Resolves with the pending value, or null on timeout.
+ */
+async function pollPendingResult(
+  pendingCmd: string,
+  timeoutMs: number = 5000,
+  intervalMs: number = 100,
+): Promise<string | null> {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    // Pump the Steamworks callback queue so the lobby callback can fire.
+    await tauriInvoke('steam_run_callbacks');
+    const value = await tauriInvoke<string | null>(pendingCmd);
+    if (value) return value;
+    await new Promise((r) => setTimeout(r, intervalMs));
+  }
+  return null;
+}
+
 // ── Lobby Management ──────────────────────────────────────────────────────────
 
 /**
  * Create a Steam lobby with the given visibility and member cap.
- * Returns the lobby ID string on success, or null if unavailable.
  *
- * On non-Steam platforms returns null — caller should fall back to
- * WebSocket-based room creation.
+ * Steamworks lobby creation is asynchronous — the Rust command returns immediately
+ * and the real lobby ID arrives via a callback after `steam_run_callbacks` is pumped.
+ * This function polls until the callback fires (up to 5 s), then returns the ID.
+ *
+ * Returns the lobby ID string on success, or null if unavailable or timed out.
+ * On non-Steam platforms returns null — caller should fall back to WebSocket-based
+ * room creation.
  */
 export async function createSteamLobby(
   lobbyType: SteamLobbyType,
   maxMembers: number,
 ): Promise<string | null> {
   if (!hasSteam) return null;
-  return tauriInvoke<string>('steam_create_lobby', {
+  // Kick off lobby creation — returns "" immediately; real ID delivered via callback.
+  const kickoff = await tauriInvoke<string>('steam_create_lobby', {
     lobby_type: lobbyType,
     max_members: maxMembers,
   });
+  if (kickoff === null) return null; // IPC call itself failed (Steamworks not running, etc.)
+  // Poll until the LobbyCreated_t callback fires and stores the ID.
+  return pollPendingResult('steam_get_pending_lobby_id');
 }
 
 /**
  * Join an existing Steam lobby by its lobby ID.
- * Returns true on success, false if the join failed or on non-Steam platforms.
+ *
+ * Steamworks join is asynchronous — the Rust command returns immediately and the
+ * LobbyEnter_t callback fires after `steam_run_callbacks` is pumped. This function
+ * polls until the callback fires (up to 5 s).
+ *
+ * Returns true on success, false if the join timed out or on non-Steam platforms.
  */
 export async function joinSteamLobby(lobbyId: string): Promise<boolean> {
   if (!hasSteam) return false;
-  return (await tauriInvoke<boolean>('steam_join_lobby', { lobby_id: lobbyId })) ?? false;
+  // Kick off join — returns () immediately; result delivered via LobbyEnter_t callback.
+  const kickoff = await tauriInvoke('steam_join_lobby', { lobby_id: lobbyId });
+  if (kickoff === null) return false; // IPC call itself failed
+  // Poll until the LobbyEnter_t callback fires and stores the joined lobby ID.
+  const result = await pollPendingResult('steam_get_pending_join_lobby_id');
+  return result !== null;
 }
 
 /**

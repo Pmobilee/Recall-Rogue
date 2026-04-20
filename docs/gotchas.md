@@ -1,3 +1,21 @@
+### 2026-04-20 — Steam builds: Create Lobby silently broken on Steam release builds
+
+**What:** Clicking "Create Lobby" in `MultiplayerMenu` did nothing on macOS and Windows Steam builds. No error shown, no lobby created.
+
+**Why (Bug 1 — Tauri v2 desktop detection):** `src/services/platformService.ts` checked `window.__TAURI__` to decide whether the runtime is Tauri. In Tauri v2, `window.__TAURI__` is only injected when `app.withGlobalTauri: true` is set in `tauri.conf.json`. The project does not set this flag. So in production Steam builds, `__TAURI__` was `undefined`, `platform` evaluated to `'web'`, `isDesktop` was `false`, `hasSteam` was `false`, and `pickBackend()` in `multiplayerLobbyService.ts` fell through to `webBackend`, which called `fetch('http://localhost:3000/mp/lobbies')`, failed silently, and the UI swallowed the error.
+
+The reliable Tauri v2 marker is `window.__TAURI_INTERNALS__` — always injected by the Tauri runtime because `invoke` depends on it. The fix checks `__TAURI_INTERNALS__ || __TAURI__` to cover Tauri v2 (both with and without `withGlobalTauri`), Tauri v1, and all non-Tauri environments correctly.
+
+**Why (Bug 2 — Steamworks async-callback not bridged):** Even with correct platform detection, `createSteamLobby` in `steamNetworkingService.ts` called `steam_create_lobby` via Tauri IPC and returned the result directly. The Rust command returns `""` immediately — the real lobby ID arrives later via a `LobbyCreated_t` Steamworks callback that fires only after `steam_run_callbacks` is pumped. The `steamBackend.createLobby` caller checked `if (!lobbyId) throw ...` — so every Steam lobby creation silently threw, the UI caught it without displaying an error, and the button appeared to do nothing.
+
+The same pattern applies to `steam_join_lobby` → `steam_get_pending_join_lobby_id`.
+
+**Fix:** Added `pollPendingResult(pendingCmd, timeoutMs, intervalMs)` helper in `steamNetworkingService.ts` that pumps `steam_run_callbacks` at 100 ms intervals until the Rust pending-result slot is populated (up to 5 s). `createSteamLobby` and `joinSteamLobby` now use this bridge and resolve only when the Steamworks callback has actually fired.
+
+**Compound effect:** Both bugs together produced a completely silent failure chain: wrong platform → wrong backend → `fetch` error (no server) → swallowed exception → button does nothing. Neither bug produced a visible error or console warning in a release build.
+
+**Files:** `src/services/platformService.ts`, `src/services/steamNetworkingService.ts`, `docs/architecture/multiplayer.md`, `docs/architecture/services/platform.md`.
+
 ### 2026-04-18 — multi_attack intent display: three compounding bugs caused displayed damage to diverge from actual
 
 **What:** Player facing a 2-hit multi_attack enemy saw "2×11" (implying 22 HP damage) but only took 5 HP. The displayed number was wildly wrong in three independent ways that stacked.

@@ -6,7 +6,14 @@
  * on viewport shape, not which native wrapper is active.
  *
  * Detection order:
- *  1. Tauri  — `window.__TAURI__` is injected by the Tauri runtime
+ *  1. Tauri  — checked via `window.__TAURI_INTERNALS__` (always present in Tauri v2,
+ *              since `invoke` depends on it) OR `window.__TAURI__` (present in Tauri v1
+ *              and in Tauri v2 when `app.withGlobalTauri: true` is set).
+ *              Checking both ensures compatibility across Tauri v1 and v2 regardless of
+ *              the `withGlobalTauri` config flag. In production Steam builds that do NOT
+ *              set `withGlobalTauri: true`, only `__TAURI_INTERNALS__` is injected —
+ *              relying solely on `__TAURI__` causes `isDesktop` to be false and silently
+ *              routes multiplayer through the web backend instead of Steam.
  *  2. Capacitor — `window.Capacitor` is injected by the Capacitor runtime
  *  3. Web    — fallback for plain browser or SSR
  */
@@ -21,8 +28,12 @@ export type Platform = 'mobile' | 'desktop' | 'web';
  * - `'web'`      — plain browser, no native wrapper
  */
 export const platform: Platform = (() => {
-  if (typeof window !== 'undefined' && (window as any).__TAURI__) return 'desktop';
-  if (typeof window !== 'undefined' && (window as any).Capacitor) return 'mobile';
+  if (typeof window !== 'undefined') {
+    // __TAURI_INTERNALS__ is the reliable Tauri v2 marker (always injected; invoke depends on it).
+    // __TAURI__ is the Tauri v1 / v2-withGlobalTauri marker. Check both for full compatibility.
+    if ((window as any).__TAURI_INTERNALS__ || (window as any).__TAURI__) return 'desktop';
+    if ((window as any).Capacitor) return 'mobile';
+  }
   return 'web';
 })();
 

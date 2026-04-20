@@ -1,7 +1,7 @@
 # Multiplayer Architecture
 
 > **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
-> **Last verified:** 2026-04-15 — LAN co-op feature added (embedded server, discovery, runtime URL config, UI)
+> **Last verified:** 2026-04-20 — Tauri v2 desktop detection fix + Steam lobby async-callback polling
 
 ---
 
@@ -245,6 +245,34 @@ Two TypeScript wrappers bridge the Phase-1 Rust commands to the `steamBackend`. 
 | `getLobbyMemberCount(lobbyId)` | `steam_get_lobby_member_count` | `Promise<number>` | `0` | Read current member count for a lobby ID without joining — enables the "2/4" display in the browser grid. |
 
 `requestSteamLobbyList` is fire-and-forget: Steam's async callback mechanism delivers the actual list later. The `steamBackend` in `multiplayerLobbyService.ts` must pump `runSteamCallbacks` after calling this, then loop over returned lobby IDs via `getLobbyData` to construct `LobbyBrowserEntry` objects.
+
+### Steam Backend — Async-Callback Polling for createLobby / joinLobby (2026-04-20)
+
+Steamworks lobby creation and join operations are **two-phase**: the Rust Tauri command returns immediately (with an empty string or `()`) and the actual result arrives later via a Steamworks callback after `steam_run_callbacks` is pumped.
+
+The Rust side stores the callback result in a `Mutex<Option<u64>>` slot:
+- `steam_create_lobby` → callback stores result in `SteamState::pending_lobby_id`
+- `steam_join_lobby` → callback stores result in `SteamState::pending_join_lobby_id`
+
+JavaScript retrieves these via one-shot consuming reads:
+- `steam_get_pending_lobby_id` — returns `string | null`, clears the slot on read
+- `steam_get_pending_join_lobby_id` — same pattern
+
+`steamNetworkingService.ts` bridges this with the internal `pollPendingResult(pendingCmd, timeoutMs, intervalMs)` helper:
+
+```
+1. Kick off the Tauri command (returns immediately)
+2. Loop until deadline (5 s default):
+   a. await tauriInvoke('steam_run_callbacks')   // pump Steamworks callbacks
+   b. await tauriInvoke(pendingCmd)              // check if callback has fired
+   c. if result is non-null, return it
+   d. await sleep(100ms)
+3. Return null on timeout
+```
+
+`createSteamLobby` and `joinSteamLobby` both use this pattern. They resolve when the callback fires — not at IPC call time. If the Steam client is not running or the lobby creation fails, they return `null` / `false` after the 5 s timeout.
+
+**Why this matters:** The old implementation of `createSteamLobby` returned the empty string from the Tauri command directly. The `steamBackend.createLobby` caller in `multiplayerLobbyService.ts` checked `if (!lobbyId) throw ...` — so every Steam lobby creation silently threw, the UI caught it and did nothing, and the player saw the "Create Lobby" button do nothing.
 
 ### Web Backend — Fastify Registry
 
