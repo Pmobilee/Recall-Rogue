@@ -25,6 +25,28 @@ steamcmd and the Steam desktop client share `~/Library/Application Support/Steam
 
 This is a session-scoped rule the user re-stated explicitly on 2026-04-20 after Claude cost multiple upload cycles by force-killing Steam trying to "help" with auth. Don't repeat the mistake.
 
+## 🚨 RULE: Never push a content-identical build to any depot. Prove the build is NEW before claiming success.
+
+On 2026-04-20 the Windows pipeline silently shipped the same stale exe (BuildID 22863831 from 1:27am) six consecutive times across the session. Every Windows "upload" claimed a new BuildID (22865375 → 22865669 → 22867059 → 22867651 → 22867790), but each one had byte-identical depot content to the 1:27am build — so the Steamworks merge UI kept pointing at 22863831 for Windows and kept reporting "no changes" whenever the user tried to promote a newer one.
+
+Root causes, all independent, all silent:
+1. `vm-build-windows.ps1` had em-dashes (U+2014) in comments. PowerShell 5.1 reads files without BOM using the system's ANSI codepage (Windows-1252). The em-dash's UTF-8 byte 0x94 is Right Double Quotation Mark in cp1252, which opens an unclosed string literal — the whole script fails to parse before step 1 runs.
+2. The Mac `tar` that ships source to the VM included only `scripts/vm-build-windows.ps1` by name, not the whole `scripts/` dir. Once the PS parse error was fixed, step 3 failed because all the inline build helpers (`strip-asset-metadata.mjs`, `build-facts-db.mjs`, etc.) were absent on the VM.
+3. PowerShell's `exit $LASTEXITCODE` inside `Check-Exit` does NOT reliably propagate through SSH → cmd.exe → `powershell -File` + redirection. The remote shell reports exit 0 even after the PS script printed `STEP FAILED` and called `exit 1`. `steam-windows.sh`'s `$VM_EXIT` check passes, the stage step scp's the stale pre-existing `recall-rogue.exe` from `target/x86_64-pc-windows-msvc/release/` back to the Mac, and the upload proceeds.
+4. SteamPipe's chunk-level dedup then reports "Uploading content... done in 9 seconds" because the content hashes all match. Looks like a normal fast-cached upload.
+
+**The rule, no exceptions:**
+
+Before claiming a build was pushed, prove it is actually new content. Three cross-checks; any one of them failing means do NOT report success — report the failure and diagnose.
+
+1. **Build-log marker.** The VM script must print `BUILD_OK` at the very end. `steam-windows.sh` now grep-bails if that marker is missing — do not remove or weaken that check. For macOS (native) trust `cargo tauri build`'s `Finished release profile` line in the log plus the `.app` mtime.
+2. **Wall-clock sanity.** A fresh Windows VM build from cold cargo cache is 6–8 min; from warm cache it's 3–5 min; a "build" that finishes in under 2 min end-to-end (tar → scp → VM → pull → stage) is almost certainly a stale-exe reuse. If the `Done in Ns` report shows N < 120, dig into the VM log before reporting success.
+3. **Upload-byte sanity.** SteamPipe's output under `Uploading content...` shows actual megabytes transferred. A fresh build with real TypeScript changes normally transfers 100–900 MB of new chunks (the embedded `dist/` varies, cargo's linker output varies). An upload that goes straight from `Uploading content...` to `Successfully finished` with no MB lines is a 100% chunk-dedup cache hit — the depot content is identical to the last upload. Cross-check against the source diff: if there were source changes since the last successful upload on this depot, a zero-byte upload is a bug, not an optimization. Call it out.
+
+When any of the three trips, do NOT tell the user the build was pushed. Say: "Upload succeeded on SteamPipe but the content is identical to BuildID &lt;prev&gt; — the staged exe is likely stale. Investigating." Then inspect `/Users/damion/CODE/WINDOWS_VM/vm-build-*.log` (latest), look for `STEP FAILED`, `MODULE_NOT_FOUND`, `rustc-LLVM ERROR`, and report specifically.
+
+This rule applies to **all three depots** — Windows (4547572), macOS (4547574), Linux (4547573). macOS has never had the problem historically because it's a native local build, but the same sanity checks apply.
+
 
 ## Arguments
 
