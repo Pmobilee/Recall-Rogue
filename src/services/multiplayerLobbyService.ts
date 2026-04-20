@@ -24,7 +24,7 @@
  */
 
 import { getMultiplayerTransport, destroyMultiplayerTransport, createLocalTransportPair, LocalMultiplayerTransport } from "./multiplayerTransport";
-import type { ConnectOpts } from "./multiplayerTransport";
+import type { ConnectOpts, MultiplayerMessageType } from "./multiplayerTransport";
 import type {
   LobbyState, LobbyPlayer, MultiplayerMode, DeckSelectionMode,
   HouseRules, RaceProgress, RaceResults, LobbyContentSelection,
@@ -32,7 +32,7 @@ import type {
 } from '../data/multiplayerTypes';
 import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS, MODE_MIN_PLAYERS } from '../data/multiplayerTypes';
 import { hasSteam } from './platformService';
-import { getLanServerUrls, isLanMode } from './lanConfigService';
+import { getLanServerUrls, isLanMode, clearLanServerUrl } from './lanConfigService';
 import {
   createSteamLobby,
   setLobbyData,
@@ -94,7 +94,7 @@ let _passwordHash: string | null = null;
 
 /**
  * setInterval handle for the broadcast-mode lobby directory heartbeat.
- * The host writes its LobbyBrowserEntry to localStorage every 5 s.
+ * The host writes its LobbyBrowserEntry to localStorage every BC_HEARTBEAT_MS.
  * Cleared in leaveLobby() so the entry expires when the host disconnects.
  */
 let _broadcastHeartbeat: ReturnType<typeof setInterval> | null = null;
@@ -110,6 +110,45 @@ let _botTransport: LocalMultiplayerTransport | null = null;
  * toggles getting overwritten). Reset in leaveLobby().
  */
 let _handlersAttached = false;
+
+// ── L2: Lobby code collision registry ────────────────────────────────────────
+/**
+ * Recently-generated lobby codes — prevents accidental collisions during a session.
+ * Module-level Set; cleared when the entry TTL window means codes can safely recycle.
+ * In practice, with 32^6 = ~1B combinations at BC_ENTRY_TTL_MS = 15s, collisions
+ * are astronomically rare. The Set is purely a last-resort safety net.
+ */
+const _recentLobbyCodes = new Set<string>();
+
+// ── H13: Per-player ready version counter ────────────────────────────────────
+/**
+ * Incremented on each local setReady() call. Broadcast with mp:lobby:ready so the
+ * settings-merge handler can detect stale incoming ready states and keep the
+ * more-recent local value. Prevents late-arriving settings broadcasts from
+ * overwriting a fresh toggle-off.
+ */
+let _localReadyVersion = 0;
+
+// ── H5: Seed ACK state (host-only) ───────────────────────────────────────────
+/**
+ * Set of player IDs that have not yet ACKed the mp:lobby:start seed.
+ * Null when no start is in progress. Cleared when all ACKs arrive or timeout fires.
+ */
+let _pendingStartAcks: Set<string> | null = null;
+let _startAckRetryTimer: ReturnType<typeof setInterval> | null = null;
+let _startAckTimeoutTimer: ReturnType<typeof setTimeout> | null = null;
+/** Captured start payload for retry broadcasts. */
+let _lastStartPayload: Record<string, unknown> | null = null;
+
+// ── H10: Reconnect grace timers ───────────────────────────────────────────────
+/**
+ * Map from player ID to their pending reconnect-expiry timer handle.
+ * When a peer disconnects, we mark them 'reconnecting' and set a 60s grace timer.
+ * On rejoin, the timer is cancelled. On expiry, they are removed from the lobby.
+ */
+const _reconnectTimers = new Map<string, ReturnType<typeof setTimeout>>();
+/** Grace period before a disconnected player is removed (ms). */
+const RECONNECT_GRACE_MS = 60_000;
 
 /** Get the current lobby state (null if not in a lobby) */
 export function getCurrentLobby(): LobbyState | null { return _currentLobby; }
@@ -157,6 +196,9 @@ export async function createLobby(
   opts?: { visibility?: LobbyVisibility; password?: string; maxPlayers?: number },
 ): Promise<LobbyState> {
   _localPlayerId = playerId;
+
+  // M16: Reset password hash before any mutation to prevent cross-session leaks.
+  _passwordHash = null;
 
   const visibility: LobbyVisibility = opts?.visibility ?? 'public';
   const maxPlayers = opts?.maxPlayers
@@ -229,6 +271,9 @@ export async function joinLobby(
   password?: string,
 ): Promise<LobbyState> {
   _localPlayerId = playerId;
+
+  // M16: Reset password hash before any mutation to prevent cross-session leaks.
+  _passwordHash = null;
 
   const passwordHash = password ? await hashPassword(password) : undefined;
   const backend = pickBackend();
@@ -305,6 +350,9 @@ export async function joinLobbyById(
 ): Promise<LobbyState> {
   _localPlayerId = playerId;
 
+  // M16: Reset password hash before any mutation to prevent cross-session leaks.
+  _passwordHash = null;
+
   const passwordHash = password ? await hashPassword(password) : undefined;
   const backend = pickBackend();
   const result = await backend.joinLobbyById(lobbyId, playerId, displayName, passwordHash);
@@ -364,9 +412,17 @@ export function leaveLobby(): void {
     _broadcastHeartbeat = null;
   }
 
+  // Clean up H5 seed-ACK timers
+  _cancelStartAckHandshake();
+
+  // Clean up H10 reconnect timers
+  for (const timer of _reconnectTimers.values()) clearTimeout(timer);
+  _reconnectTimers.clear();
+
   _currentLobby = null;
   _passwordHash = null;
   _handlersAttached = false;
+  _localReadyVersion = 0;
 }
 
 // ── Lobby Settings (host only) ───────────────────────────────────────────────
@@ -552,15 +608,24 @@ export function removeLocalBot(): void {
 
 // ── Ready & Start ────────────────────────────────────────────────────────────
 
-/** Toggle local player's ready state */
+/**
+ * Toggle local player's ready state.
+ * H13: Increments _localReadyVersion so that late-arriving settings broadcasts
+ * can detect stale incoming ready states and preserve the local one.
+ */
 export function setReady(ready: boolean): void {
   if (!_currentLobby) return;
   const player = _currentLobby.players.find(p => p.id === _localPlayerId);
   console.log(`[MP:LobbyService] setReady(${ready}) for player=${_localPlayerId}, found=${!!player}`);
   if (player) {
     player.isReady = ready;
+    _localReadyVersion++;
     const transport = getMultiplayerTransport();
-    transport.send('mp:lobby:ready', { playerId: _localPlayerId, ready });
+    transport.send('mp:lobby:ready', {
+      playerId: _localPlayerId,
+      ready,
+      readyVersion: _localReadyVersion,
+    });
     notifyLobbyUpdate();
   }
 }
@@ -577,17 +642,25 @@ export function allReady(): boolean {
  *
  * Fix 2026-04-09: contentSelection is now included in the mp:lobby:start payload
  * so guest clients receive the same content selection the host configured.
- * Previously only mp:lobby:settings carried contentSelection — guests who received
- * the start message before a late-arriving settings broadcast would silently fall
- * back to general mode, causing host/guest pool divergence.
+ *
+ * M22: Re-validates player count immediately before broadcasting start.
+ * H5: Initiates a seed ACK handshake — waits up to 3s for all guests to ACK
+ * before firing onGameStart. Falls back to firing without full ACK on timeout.
  */
 export function startGame(): void {
   if (!_currentLobby || !isHost() || !allReady()) return;
+
+  // M22: Re-check player count immediately before broadcast — a player may have
+  // left between allReady() passing and this line executing.
+  if (_currentLobby.players.length < 2) {
+    throw new Error('Cannot start game — not enough players ready.');
+  }
+
   const seed = Math.floor(Math.random() * 2147483647);
   _currentLobby.seed = seed;
   _currentLobby.status = 'starting';
-  const transport = getMultiplayerTransport();
-  transport.send('mp:lobby:start', {
+
+  const payload: Record<string, unknown> = {
     seed,
     mode: _currentLobby.mode,
     deckId: _currentLobby.selectedDeckId,
@@ -595,8 +668,45 @@ export function startGame(): void {
     // contentSelection is always sent so guests have the definitive value at game-start
     // time, even if mp:lobby:settings arrived late or was lost due to packet drop.
     contentSelection: _currentLobby.contentSelection as unknown as Record<string, unknown> | undefined,
-  });
-  _onGameStart?.(seed, _currentLobby);
+  };
+
+  // H5: Set up pending ACK tracking for all guests (everyone except the host).
+  const guestIds = _currentLobby.players
+    .filter(p => p.id !== _localPlayerId)
+    .map(p => p.id);
+
+  _pendingStartAcks = new Set(guestIds);
+  _lastStartPayload = payload;
+
+  const transport = getMultiplayerTransport();
+  transport.send('mp:lobby:start', payload);
+
+  if (guestIds.length === 0) {
+    // No guests — fire immediately (solo testing / edge case).
+    _cancelStartAckHandshake();
+    _onGameStart?.(seed, _currentLobby!);
+    return;
+  }
+
+  // Retry broadcast every 750ms until all guests ACK or 3s timeout fires.
+  _startAckRetryTimer = setInterval(() => {
+    if (!_currentLobby || !_pendingStartAcks || _pendingStartAcks.size === 0) {
+      _cancelStartAckHandshake();
+      return;
+    }
+    console.log('[MP:LobbyService] Retrying mp:lobby:start for pending ACKs:', [..._pendingStartAcks]);
+    getMultiplayerTransport().send('mp:lobby:start', _lastStartPayload!);
+  }, 750);
+
+  // Timeout fallback — fire onGameStart anyway if not all guests ACK within 3s.
+  _startAckTimeoutTimer = setTimeout(() => {
+    if (!_currentLobby || _pendingStartAcks === null) return;
+    if (_pendingStartAcks.size > 0) {
+      console.warn('[MP:LobbyService] mp:lobby:start ACK timeout — proceeding with pending ACKs:', [..._pendingStartAcks]);
+    }
+    _cancelStartAckHandshake();
+    _onGameStart?.(seed, _currentLobby);
+  }, 3000);
 }
 
 // ── Race Mode ────────────────────────────────────────────────────────────────
@@ -639,6 +749,40 @@ export function onRaceResults(cb: (results: RaceResults) => void): () => void {
   return () => { _onRaceResults = null; };
 }
 
+// ── C4: LAN mode clear hook ───────────────────────────────────────────────────
+
+/**
+ * Clear LAN mode state when the player navigates back to the Hub.
+ * Exposed as a primitive — the UI wave wires it to the Hub navigation callback.
+ * Calling this when LAN mode is inactive is a no-op (no harm).
+ *
+ * Wiring point: CardApp.svelte Hub entry path (owned by ui-agent).
+ */
+export function clearLanModeOnHubEntry(): void {
+  if (isLanMode()) {
+    console.info('[MP:LobbyService] Clearing LAN mode on Hub entry.');
+    clearLanServerUrl();
+  }
+}
+
+// ── M20: Solo-start hook ─────────────────────────────────────────────────────
+
+/**
+ * Leave the current multiplayer lobby before starting a solo run.
+ * Called by the CardApp.svelte solo-start path to ensure clean state.
+ *
+ * Contract:
+ *   - If in a lobby, calls leaveLobby() which sends mp:lobby:leave, destroys the
+ *     transport, and clears all lobby state.
+ *   - Safe to call when not in a lobby — no-op.
+ *   - Always resolves (never rejects): transport send errors are caught inside leaveLobby().
+ */
+export async function leaveMultiplayerLobbyForSoloStart(): Promise<void> {
+  if (getCurrentLobby() !== null) {
+    leaveLobby();
+  }
+}
+
 // ── Internal ─────────────────────────────────────────────────────────────────
 
 /** Notify the UI of a lobby state change. Spreads a new object so Svelte
@@ -647,6 +791,23 @@ function notifyLobbyUpdate(): void {
   if (_currentLobby && _onLobbyUpdate) {
     _onLobbyUpdate({ ..._currentLobby, players: _currentLobby.players.map(p => ({ ...p })) });
   }
+}
+
+/**
+ * Cancel all H5 seed-ACK handshake timers and clear pending state.
+ * Safe to call multiple times.
+ */
+function _cancelStartAckHandshake(): void {
+  if (_startAckRetryTimer !== null) {
+    clearInterval(_startAckRetryTimer);
+    _startAckRetryTimer = null;
+  }
+  if (_startAckTimeoutTimer !== null) {
+    clearTimeout(_startAckTimeoutTimer);
+    _startAckTimeoutTimer = null;
+  }
+  _pendingStartAcks = null;
+  _lastStartPayload = null;
 }
 
 function setupMessageHandlers(): void {
@@ -675,6 +836,12 @@ function setupMessageHandlers(): void {
     if (!_currentLobby) return;
     const { playerId } = msg.payload as { playerId: string };
     _currentLobby.players = _currentLobby.players.filter(p => p.id !== playerId);
+    // Cancel any reconnect timer for this player (they explicitly left).
+    const timer = _reconnectTimers.get(playerId);
+    if (timer !== undefined) {
+      clearTimeout(timer);
+      _reconnectTimers.delete(playerId);
+    }
     notifyLobbyUpdate();
   });
 
@@ -686,13 +853,61 @@ function setupMessageHandlers(): void {
     notifyLobbyUpdate();
   });
 
+  // H10: Handle peer disconnection — start reconnect grace timer.
+  transport.on('mp:lobby:peer_left', (msg) => {
+    if (!_currentLobby) return;
+    const { playerId } = msg.payload as { playerId: string };
+    const playerIdx = _currentLobby.players.findIndex(p => p.id === playerId);
+    if (playerIdx === -1) return;
+
+    // Mark as reconnecting rather than removing immediately.
+    (_currentLobby.players[playerIdx] as LobbyPlayer & { connectionState?: string }).connectionState = 'reconnecting';
+    notifyLobbyUpdate();
+
+    // Cancel any existing timer for this player before setting a new one.
+    const existing = _reconnectTimers.get(playerId);
+    if (existing !== undefined) clearTimeout(existing);
+
+    const timer = setTimeout(() => {
+      if (!_currentLobby) return;
+      _reconnectTimers.delete(playerId);
+      // Remove the player if still in reconnecting state after grace period.
+      const p = _currentLobby.players.find(pl => pl.id === playerId) as (LobbyPlayer & { connectionState?: string }) | undefined;
+      if (p && p.connectionState === 'reconnecting') {
+        _currentLobby.players = _currentLobby.players.filter(pl => pl.id !== playerId);
+        console.info(`[MP:LobbyService] Player ${playerId} removed after reconnect grace period expired.`);
+        notifyLobbyUpdate();
+      }
+    }, RECONNECT_GRACE_MS);
+    _reconnectTimers.set(playerId, timer);
+  });
+
+  // H10: Handle peer reconnection within grace window.
+  transport.on('mp:lobby:peer_rejoined', (msg) => {
+    if (!_currentLobby) return;
+    const { playerId } = msg.payload as { playerId: string };
+    const player = _currentLobby.players.find(p => p.id === playerId) as (LobbyPlayer & { connectionState?: string }) | undefined;
+    if (player && player.connectionState === 'reconnecting') {
+      player.connectionState = 'connected';
+      const timer = _reconnectTimers.get(playerId);
+      if (timer !== undefined) {
+        clearTimeout(timer);
+        _reconnectTimers.delete(playerId);
+      }
+      console.info(`[MP:LobbyService] Player ${playerId} reconnected within grace window.`);
+      notifyLobbyUpdate();
+    }
+  });
+
   transport.on('mp:lobby:settings', (msg) => {
     if (!_currentLobby || isHost()) return; // Host already has correct state
     const settings = msg.payload as Partial<LobbyState>;
-    // Snapshot the local player ready states BEFORE Object.assign merges the
-    // host's players array over ours. We use this to restore the local player's
-    // ready state afterward (see MP-004 fix below).
+    // Snapshot the local player ready states AND readyVersions BEFORE Object.assign
+    // merges the host's players array over ours (MP-004 fix).
     const readyMap = new Map(_currentLobby.players.map(p => [p.id, p.isReady]));
+    // H13: Snapshot local ready version so we can detect stale incoming states.
+    const localReadyVersion = _localReadyVersion;
+
     // Preserve ALL players' ready states in the incoming array — settings broadcasts
     // can arrive after ready messages due to network latency.
     if (settings.players) {
@@ -703,14 +918,18 @@ function setupMessageHandlers(): void {
     }
     Object.assign(_currentLobby, settings);
     // Re-apply the local player's ready state after Object.assign.
-    // The host's settings broadcast carries its own copy of the players array
-    // where the guest is isReady:false (host doesn't know the guest toggled).
-    // Without this, a settings broadcast arriving after a ready toggle reverts
-    // the guest's ready state — this is the root cause of MP-004.
+    // H13: If our local readyVersion is greater than what came in (i.e., we toggled
+    // after the host's settings snapshot was captured), keep our local value.
     const localPlayer = _currentLobby.players.find(p => p.id === _localPlayerId);
     const localReady = readyMap.get(_localPlayerId);
     if (localPlayer && localReady !== undefined) {
-      localPlayer.isReady = localReady;
+      // H13: The incoming payload may carry a readyVersion for this player;
+      // if ours is newer, our local ready state wins.
+      const incomingReadyVersion = (settings.players as Array<LobbyPlayer & { readyVersion?: number }> | undefined)
+        ?.find(p => p.id === _localPlayerId)?.readyVersion ?? 0;
+      if (localReadyVersion > incomingReadyVersion) {
+        localPlayer.isReady = localReady;
+      }
     }
     notifyLobbyUpdate();
   });
@@ -730,7 +949,37 @@ function setupMessageHandlers(): void {
     }
     _currentLobby.seed = payload.seed;
     _currentLobby.status = 'in_game';
+
+    // H5: Guest sends ACK back to host so host knows seed was received.
+    if (!isHost()) {
+      // mp:lobby:start_ack is not in the transport union (multiplayerTransport.ts is
+      // owned by another agent). Cast is intentional — on() uses string, send() uses
+      // the union. This cast is safe: all transport impls route unknown message types
+      // without special handling. TODO: add 'mp:lobby:start_ack' to MultiplayerMessageType
+      // when multiplayerTransport.ts is next updated.
+      getMultiplayerTransport().send(
+        'mp:lobby:start_ack' as MultiplayerMessageType,
+        { seed: payload.seed, playerId: _localPlayerId },
+      );
+    }
+
     _onGameStart?.(payload.seed, _currentLobby);
+  });
+
+  // H5: Host handles guest ACKs.
+  transport.on('mp:lobby:start_ack', (msg) => {
+    if (!isHost() || !_pendingStartAcks) return;
+    const { playerId } = msg.payload as { playerId: string };
+    _pendingStartAcks.delete(playerId);
+    console.log(`[MP:LobbyService] mp:lobby:start_ack from ${playerId}, remaining:`, _pendingStartAcks.size);
+
+    if (_pendingStartAcks.size === 0) {
+      // All guests ACKed — fire onGameStart and cancel timers.
+      _cancelStartAckHandshake();
+      if (_currentLobby) {
+        _onGameStart?.(_currentLobby.seed!, _currentLobby);
+      }
+    }
   });
 
   transport.on('mp:race:progress', (msg) => {
@@ -765,14 +1014,35 @@ function generateLobbyId(): string {
   return `lobby_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 }
 
+/**
+ * Generate a unique 6-character lobby code.
+ *
+ * L2: Maintains a module-level Set of recently-generated codes and retries up to
+ * 5 times on collision. On the 6th collision (astronomically unlikely), logs a
+ * warning and returns the code anyway. The Set grows with active sessions and is
+ * never explicitly cleared (entries are short-lived on the scale of a session).
+ */
 function generateLobbyCode(): string {
   // 6-character uppercase alphanumeric code, no I/O/0/1 to avoid visual confusion
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let code = '';
-  for (let i = 0; i < 6; i++) {
-    code += chars[Math.floor(Math.random() * chars.length)];
+  const MAX_RETRIES = 5;
+
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    let code = '';
+    for (let i = 0; i < 6; i++) {
+      code += chars[Math.floor(Math.random() * chars.length)];
+    }
+    if (!_recentLobbyCodes.has(code)) {
+      _recentLobbyCodes.add(code);
+      return code;
+    }
+    if (attempt === MAX_RETRIES) {
+      console.warn('[MP:LobbyService] generateLobbyCode: 6 consecutive collisions — returning duplicate code. Active codes:', _recentLobbyCodes.size);
+      return code;
+    }
   }
-  return code;
+  // TypeScript narrowing fallback — unreachable.
+  return 'AAAAAA';
 }
 
 // ── LobbyBackend Interface ────────────────────────────────────────────────────
@@ -874,9 +1144,13 @@ function pickBackend(): LobbyBackend {
 
 /** localStorage key for the broadcast-mode fake lobby directory. */
 const BC_DIRECTORY_KEY = 'rr-mp:directory';
-/** Stale-entry TTL: entries older than this are pruned on read. */
-const BC_ENTRY_TTL_MS = 30_000;
-/** How often the host refreshes its directory entry (ms). */
+/**
+ * Stale-entry TTL: entries older than this are pruned on read.
+ * M4: Reduced from 30_000 to 15_000 — aligns with ~3× heartbeat cadence
+ * (BC_HEARTBEAT_MS = 5_000, TTL = 3× = 15_000) to halve ghost-lobby window.
+ */
+const BC_ENTRY_TTL_MS = 15_000;
+/** How often the host refreshes its directory entry (ms). TTL = 3× this value. */
 const BC_HEARTBEAT_MS = 5_000;
 
 /** Read, prune stale entries, and return the current broadcast directory. */
@@ -942,8 +1216,8 @@ const broadcastBackend: LobbyBackend = {
 
     upsertBroadcastEntry(entry);
 
-    // Start (or restart) the heartbeat — rewrites the entry every 5 s with the
-    // current player count so the browser reflects join activity.
+    // Start (or restart) the heartbeat — rewrites the entry every BC_HEARTBEAT_MS with
+    // the current player count so the browser reflects join activity.
     if (_broadcastHeartbeat !== null) clearInterval(_broadcastHeartbeat);
     _broadcastHeartbeat = setInterval(() => {
       upsertBroadcastEntry({

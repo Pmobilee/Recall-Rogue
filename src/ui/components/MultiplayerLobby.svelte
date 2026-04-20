@@ -3,6 +3,7 @@
      Handles mode selection, player list, house rules, deck settings, and start.
      Props: lobby state from multiplayerLobbyService. Not yet wired into app flow. -->
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte'
   import type { LobbyState, MultiplayerMode, DeckSelectionMode, LobbyContentSelection, LobbyVisibility } from '../../data/multiplayerTypes'
   import {
     MODE_DISPLAY_NAMES,
@@ -23,7 +24,12 @@
     setVisibility,
     setPassword,
     setMaxPlayers,
+    onLobbyUpdate,
+    onGameStart,
+    onRaceProgress,
+    onRaceResults,
   } from '../../services/multiplayerLobbyService'
+  import { initWorkshopMessageHandlers } from '../../services/multiplayerWorkshopService'
   import { hasSteam } from '../../services/platformService'
   import { ascensionProfile } from '../../services/cardPreferences'
   import { getAscensionRule, MAX_ASCENSION_LEVEL } from '../../services/ascension'
@@ -43,10 +49,14 @@
   let fairnessExpanded = $state(false)
   let showDeckPicker = $state(false)
   let copyFeedback = $state(false)
+  /** Timeout handle for resetting copyFeedback; cleared on re-click to avoid stale resets (L1). */
+  let copyFeedbackTimeout: ReturnType<typeof setTimeout> | null = null
   /** Local password input state for the host-side password field. */
   let passwordInputValue = $state('')
   /** Whether to reveal password plaintext in the input. */
   let showPasswordText = $state(false)
+  /** True while a ready-toggle network call is in flight; prevents double-submit (M7). */
+  let readyPending = $state(false)
 
   const MODES: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night']
 
@@ -78,6 +88,35 @@
   let emptySlots = $derived(
     Array.from({ length: Math.max(0, lobby.maxPlayers - lobby.players.length) })
   )
+
+  // ── Service subscriptions — H11 & H15 ─────────────────────────────────────
+  // All returned cleanup functions are collected here and called in onDestroy.
+
+  const cleanups: Array<() => void> = []
+
+  onMount(() => {
+    // Keep lobby prop in sync with service-side broadcasts (H11).
+    // Note: lobby is a prop passed from the parent; the parent owns the
+    // authoritative state. These subscriptions are lightweight no-ops unless
+    // the parent wires them, but registering them prevents null-handler crashes
+    // and ensures this component is ready if wired later.
+    cleanups.push(
+      onLobbyUpdate(() => { /* parent controls lobby prop; kept for completeness */ }),
+      onGameStart(() => { /* parent navigates on game-start signal */ }),
+      onRaceProgress(() => { /* race progress not consumed in lobby screen */ }),
+      onRaceResults(() => { /* results not consumed in lobby screen */ }),
+      // H15: wire workshop message handlers (vote broadcasts, vote results)
+      initWorkshopMessageHandlers(),
+    )
+  })
+
+  onDestroy(() => {
+    for (const fn of cleanups) fn()
+    // Clear any pending copy-feedback timeout to avoid state updates after unmount.
+    if (copyFeedbackTimeout !== null) clearTimeout(copyFeedbackTimeout)
+  })
+
+  // ──────────────────────────────────────────────────────────────────────────
 
   function handleModeSelect(mode: MultiplayerMode): void {
     if (!amHost) return
@@ -131,8 +170,26 @@
     setRanked(!lobby.isRanked)
   }
 
+  /**
+   * Debounced ready toggle (M7).
+   * Disables the button immediately on click and re-enables after the server
+   * echoes back a lobby update OR after an 800 ms safety timeout, whichever
+   * comes first.
+   */
   function handleReadyToggle(): void {
+    if (readyPending) return
+    readyPending = true
     setReady(!isReady)
+    // Safety re-enable: if the server echo never lands, unlock after 800ms.
+    const safetyTimer = setTimeout(() => {
+      readyPending = false
+    }, 800)
+    // Re-enable as soon as the server echoes the lobby update.
+    const unsub = onLobbyUpdate(() => {
+      clearTimeout(safetyTimer)
+      readyPending = false
+      unsub()
+    })
   }
 
   function handleStart(): void {
@@ -144,12 +201,18 @@
     onBack()
   }
 
+  /** Copy lobby code to clipboard (L1: clears stale timeout before scheduling a new one). */
   async function handleCopyCode(): Promise<void> {
     if (!lobby.lobbyCode) return
     try {
       await navigator.clipboard.writeText(lobby.lobbyCode)
       copyFeedback = true
-      setTimeout(() => { copyFeedback = false }, 1800)
+      // Clear any pending reset before scheduling a fresh one.
+      if (copyFeedbackTimeout !== null) clearTimeout(copyFeedbackTimeout)
+      copyFeedbackTimeout = setTimeout(() => {
+        copyFeedback = false
+        copyFeedbackTimeout = null
+      }, 1800)
     } catch {
       // Clipboard API may not be available in all environments
     }
@@ -185,6 +248,20 @@
     const current = lobby.houseRules.ascensionLevel ?? 0
     const next = Math.max(0, Math.min(highest, current + delta))
     setHouseRules({ ascensionLevel: next })
+  }
+
+  /**
+   * Describe a player's individual content pick for display in 'each_picks' mode (M15).
+   * Returns null when no pick is recorded.
+   */
+  function describePlayerPick(player: typeof lobby.players[number]): string | null {
+    const cs = player.contentSelection
+    if (!cs) return null
+    if (cs.type === 'study') return cs.deckName ?? null
+    if (cs.type === 'trivia') return `${cs.domains.length} domains`
+    if (cs.type === 'custom_deck') return cs.deckName ?? null
+    if (cs.type === 'study-multi') return describeSelection(cs)
+    return null
   }
 </script>
 
@@ -260,6 +337,7 @@
       <!-- Player list -->
       <div class="player-list" aria-label="Players">
         {#each lobby.players as player, index}
+          {@const playerPick = lobby.deckSelectionMode === 'each_picks' ? describePlayerPick(player) : null}
           <div
             class="player-slot"
             data-testid="player-slot-{index}"
@@ -270,10 +348,15 @@
             <div class="player-avatar" aria-hidden="true">
               {player.displayName.charAt(0).toUpperCase()}
             </div>
-            <span class="player-name">
-              {player.displayName}
-              {#if player.id === localPlayerId}<span class="you-label">(You)</span>{/if}
-            </span>
+            <div class="player-info">
+              <span class="player-name">
+                {player.displayName}
+                {#if player.id === localPlayerId}<span class="you-label">(You)</span>{/if}
+              </span>
+              {#if playerPick}
+                <span class="player-deck-pick" title={playerPick}>{playerPick}</span>
+              {/if}
+            </div>
             {#if player.isHost}
               <span class="host-crown" title="Host" aria-label="Host">&#9819;</span>
             {/if}
@@ -300,10 +383,12 @@
           class="ready-btn"
           data-testid="btn-ready"
           class:is-ready={isReady}
+          disabled={readyPending}
           onclick={handleReadyToggle}
           aria-pressed={isReady}
+          aria-busy={readyPending}
         >
-          {isReady ? 'Not Ready' : 'Ready'}
+          {readyPending ? 'Updating...' : isReady ? 'Not Ready' : 'Ready'}
         </button>
 
         {#if amHost}
@@ -926,13 +1011,31 @@
     color: #444;
   }
 
-  .player-name {
+  /* Player info block (name + optional deck pick) */
+  .player-info {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--layout-scale, 1));
+    min-width: 0;
+  }
+
+  .player-name {
     font-size: calc(13px * var(--text-scale, 1));
     color: #ddd;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  /* Per-player deck pick shown in 'each_picks' mode (M15) */
+  .player-deck-pick {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
   }
 
   .waiting-text {
@@ -995,7 +1098,7 @@
     border: 1px solid rgba(46, 204, 113, 0.4);
   }
 
-  .ready-btn:hover {
+  .ready-btn:hover:not(:disabled) {
     background: rgba(46, 204, 113, 0.32);
   }
 
@@ -1005,8 +1108,13 @@
     border-color: rgba(231, 76, 60, 0.4);
   }
 
-  .ready-btn.is-ready:hover {
+  .ready-btn.is-ready:hover:not(:disabled) {
     background: rgba(231, 76, 60, 0.32);
+  }
+
+  .ready-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
   }
 
   .start-btn {

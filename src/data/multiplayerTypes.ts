@@ -86,6 +86,18 @@ export interface LobbyPlayer {
   selectedDeckId?: string;      // For 'each_picks' mode
   contentSelection?: LobbyContentSelection;
   elo?: number;                 // For ranked modes
+  /**
+   * H10 (reconnect grace): connection state of this player. 'connected' is the
+   * default; 'reconnecting' means the peer dropped and the 60s grace timer is running.
+   * Primitive only — UI reads this to show a reconnecting badge.
+   */
+  connectionState?: 'connected' | 'reconnecting';
+  /**
+   * H13 (ready-version merge): monotonic counter incremented on each setReady() call.
+   * Broadcast with mp:lobby:ready so settings-merge logic can detect stale incoming
+   * ready states and preserve the fresher local value.
+   */
+  readyVersion?: number;
 }
 
 /** Full lobby state */

@@ -1,8 +1,8 @@
 # Multiplayer Mechanics
 
-> **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`
+> **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-20 — 9 logic fixes: race tie-breaker, both-defeated null winner, fork resend on late join, broadcast isActive guard, finishedAt timestamp, real quiz counts, duel action clamping, mode-specific scoring, FSRS batch on race finish. New `multiplayerElo.ts`. See changelog below.
+> **Last verified:** 2026-04-21 — Previous: 9 race/duel fixes + `multiplayerElo.ts`. Latest: 9 lobby robustness fixes (L2 code retry, M4 TTL 15s, M16 hash reset, M22 player-count guard, H13 ready-version, H5 seed ACK, H10 reconnect grace, C4 LAN hook, M20 solo-start hook). See changelog section below.
 
 ## Modes
 
@@ -650,7 +650,7 @@ hub → multiplayerMenu → (mode selected) → multiplayerLobby → (game start
 |------|------|
 | `src/data/multiplayerTypes.ts` | All shared types, constants, `MultiplayerMode` union, lobby/fairness/race types, `LobbyContentSelection`, `MODE_DESCRIPTIONS`, `MODE_TAGLINES` |
 | `src/services/multiplayerScoring.ts` | `computeRaceScore()` — pure race score formula (AR-86 v1) |
-| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting; `addLocalBot()` / `removeLocalBot()` for same-machine dev testing; `generatePlayerId()` for unique tab IDs; `isBroadcastMode()` (exported) for two-tab transport selection and UI indicator |
+| `src/services/multiplayerLobbyService.ts` | Lobby lifecycle: create, join, configure, start; `setContentSelection()` for rich content targeting; `addLocalBot()` / `removeLocalBot()` for same-machine dev testing; `generatePlayerId()` for unique tab IDs; `isBroadcastMode()` (exported) for two-tab transport selection and UI indicator; `clearLanModeOnHubEntry()` (C4); `leaveMultiplayerLobbyForSoloStart()` (M20) |
 | `src/ui/utils/lobbyStartGate.ts` | Pure predicates `canStartLobby(lobby, amHost)` and `startButtonLabel(lobby, amHost)` — gate for "Start Game" button; unit-tested in `src/ui/utils/lobbyStartGate.test.ts` |
 | `src/services/multiplayerTransport.ts` | Transport abstraction (WebSocket + Steam P2P + Local + BroadcastChannel) |
 | `src/services/multiplayerGameService.ts` | Race / Duel / Same Cards game sync + `DuelTurnAction` / `DuelTurnResolution` |
@@ -661,6 +661,7 @@ hub → multiplayerMenu → (mode selected) → multiplayerLobby → (game start
 | `src/services/steamNetworkingService.ts` | Tauri bridge for Steam P2P (10 Tauri commands) |
 | `src/services/enemyManager.ts` | `getCoopHpMultiplier()`, `getCoopBlockMultiplier()`, `getCoopDamageCapMultiplier()` |
 | `src/services/gameFlowController.ts` | Race mode wiring: `startNewRun()` options, broadcast lifecycle, `perfectEncountersCount` tracking |
+| `src/services/multiplayerWorkshopService.ts` | Workshop deck browsing, voting, Deck of the Day, post-match ratings; `checkAllPlayersHaveWorkshopDeck()` pre-flight (H16); `validateWorkshopDeckMetadata()` (M14); `initWorkshopMessageHandlers()` transport listener wiring |
 
 ## Implementation Status
 
@@ -1137,3 +1138,156 @@ export type AddressValidationResult =
   | { ok: false; reason: string };
 ```
 
+
+## Workshop Integration
+
+**Source:** `src/services/multiplayerWorkshopService.ts`
+
+Enables Workshop-backed deck selection, deck voting, Deck of the Day, and post-match ratings in multiplayer lobbies.
+
+### H16 — Deck Install Pre-Flight Check
+
+Before the host can start a game with a Workshop deck, every player must have that deck installed locally. The `checkAllPlayersHaveWorkshopDeck()` function implements a 2-second ACK protocol:
+
+**Protocol:**
+
+1. Host calls `checkAllPlayersHaveWorkshopDeck(workshopItemId, playerIds)`.
+2. Function sends `mp:workshop:deck_check { workshopItemId, requestId }` to all peers.
+3. Each client's `initWorkshopMessageHandlers()` listener responds with `mp:workshop:deck_check_ack { requestId, playerId, installed }`.
+4. After 2 seconds, any player who did not respond with `installed: true` is counted as missing.
+
+**Return type:**
+
+```typescript
+interface WorkshopDeckCheckResult {
+  missing: string[]; // player IDs who lack the deck or did not ACK in time
+}
+```
+
+**UI contract:** If `missing.length > 0`, the lobby UI must block game start and name the missing players. The service returns structured data only — the player-visible message is the UI agent's responsibility.
+
+**New message types** (string-typed; not yet in `MultiplayerMessageType` union — transport `on()` accepts `string`):
+- `mp:workshop:deck_check` — host → all clients
+- `mp:workshop:deck_check_ack` — client → host
+
+**ACK timeout:** `DECK_CHECK_ACK_TIMEOUT_MS = 2000` ms.
+
+### M14 — Metadata Validation
+
+`validateWorkshopDeckMetadata(meta)` validates all deck metadata received over the wire before it is applied to local lobby state. Called from the `mp:lobby:deck_select` handler inside `initWorkshopMessageHandlers()`.
+
+**Constraints:**
+
+| Field | Type | Constraint |
+|-------|------|-----------|
+| `title` | string | Required; 1–100 chars; no HTML tags |
+| `description` | string | Optional; ≤500 chars; no HTML tags |
+| `factCount` | integer | Required; 1–5000 |
+| `author` | string | Optional; ≤64 chars |
+
+HTML detection: `/<[^>]+>/` regex. Any `<…>` sequence causes the whole payload to be dropped.
+
+**Return type:**
+
+```typescript
+type WorkshopMetaValidationResult =
+  | { ok: true }
+  | { ok: false; reason: string };
+```
+
+**Drop behavior:** Invalid payloads are logged at `console.warn` level and silently discarded. The `onDeckSelect` callback is not invoked. The reason string is dev-facing (not shown to the player verbatim).
+
+### initWorkshopMessageHandlers — Signature Update
+
+The function now accepts two optional parameters:
+
+```typescript
+initWorkshopMessageHandlers(
+  localPlayerId?: string,        // used when replying to deck_check requests
+  onDeckSelect?: (deck: WorkshopDeckPreview) => void  // fired after validation passes
+): () => void
+```
+
+Callers that previously called `initWorkshopMessageHandlers()` with no arguments still compile and work — the new params are optional.
+
+### Message Types Summary
+
+| Message | Direction | Purpose |
+|---------|-----------|---------|
+| `mp:lobby:deck_select` | host → all | Host selected a Workshop deck; receivers validate metadata (M14) |
+| `mp:workshop:vote_submit` | any → all | Player nominates a deck in a vote round |
+| `mp:workshop:vote_result` | host → all | Vote resolved; winner announced |
+| `mp:workshop:deck_check` | host → all | Pre-flight: do you have this deck? (H16) |
+| `mp:workshop:deck_check_ack` | client → host | Pre-flight response: installed true/false (H16) |
+
+## Lobby Service Robustness Fixes (2026-04-21)
+
+Source: `src/services/multiplayerLobbyService.ts`, `src/data/multiplayerTypes.ts`.
+
+### L2 — Lobby code collision retry
+
+`generateLobbyCode()` now maintains a module-level `_recentLobbyCodes: Set<string>`. On each call it retries up to 5 times before returning a code not in the set. On the 6th consecutive collision (astronomically rare — 32^6 ≈ 1B combinations), it logs a warning and returns the code anyway. The set grows with active sessions and is not explicitly cleared (entries have session lifetime).
+
+### M4 — Broadcast directory TTL tightened
+
+`BC_ENTRY_TTL_MS` reduced from 30 000 ms to 15 000 ms. This halves the ghost-lobby window for entries whose host disconnects without sending `mp:lobby:leave`. The heartbeat cadence `BC_HEARTBEAT_MS` stays at 5 000 ms — the TTL remains 3× the heartbeat, which is the minimum ratio that tolerates one missed heartbeat without pruning live entries.
+
+### M6 — hasPassword derivation — DEFERRED
+
+Removing the denormalized `hasPassword` field from `LobbyState` requires touching > 10 call sites across tests and UI. Deferred to a dedicated refactor wave. `hasPassword` is always co-set with `visibility` via `setVisibility()` and `setPassword()` — never mutate directly.
+
+### M16 — Reset `_passwordHash` on lobby entry
+
+`createLobby()`, `joinLobby()`, and `joinLobbyById()` now reset `_passwordHash = null` before any other mutation. Prevents a stale hash from a prior session leaking into a new one when the module is long-lived (e.g. HMR or SPA navigation without a full reload).
+
+### M22 — Player count re-validation in startGame
+
+`startGame()` re-checks `players.length >= 2` after `allReady()` returns true. In single-threaded JS this check is unreachable via a real race, but it serves as a defensive assertion and documents the contract. If triggered, throws `'Cannot start game — not enough players ready.'`.
+
+### H13 — Timestamped ready-state merge
+
+`setReady()` now increments `_localReadyVersion` and broadcasts it alongside the ready flag in `mp:lobby:ready`. The `mp:lobby:settings` handler compares the incoming player's `readyVersion` against the local version: if local is newer, the local ready state is preserved. Prevents a late-arriving settings broadcast from overwriting a fresh toggle-off.
+
+`LobbyPlayer` gains an optional `readyVersion?: number` field (default absent / 0).
+
+### H5 — Race seed ACK handshake
+
+`startGame()` now initiates an ACK handshake after broadcasting `mp:lobby:start`:
+
+1. Host stores a `_pendingStartAcks: Set<playerId>` of all guests.
+2. Host retries the broadcast every 750 ms as long as any ACK is pending.
+3. When all guests ACK via `mp:lobby:start_ack`, host cancels timers and fires `_onGameStart`.
+4. After 3 000 ms, host fires `_onGameStart` anyway with a `console.warn` listing the unresponsive players.
+
+Guest path: on receiving `mp:lobby:start`, guest immediately sends `mp:lobby:start_ack { playerId, seed }`.
+
+Note: `mp:lobby:start_ack` is not yet in the `MultiplayerMessageType` union in `multiplayerTransport.ts`. The lobby service casts it as `MultiplayerMessageType` — this is safe because all transport `on()` callbacks accept `string` and `send()` routes unknown types without special handling. The type should be added to the union when `multiplayerTransport.ts` is next edited.
+
+### H10 — Reconnect grace timer
+
+On `mp:lobby:peer_left`, the player is NOT immediately removed. Instead:
+
+1. `player.connectionState` is set to `'reconnecting'` (new optional field on `LobbyPlayer`).
+2. A 60-second timer (`RECONNECT_GRACE_MS = 60_000`) is started.
+3. On `mp:lobby:peer_rejoined`, `connectionState` flips back to `'connected'` and the timer is cancelled.
+4. On timer expiry (still `'reconnecting'`), the player is removed from `players` and a `console.info` is logged.
+
+UI consumption (showing a reconnecting badge) is a downstream task for `ui-agent`.
+
+`LobbyPlayer` gains an optional `connectionState?: 'connected' | 'reconnecting'` field (default absent / `'connected'`).
+
+### C4 — LAN mode clear hook
+
+`clearLanModeOnHubEntry()` is exported from `multiplayerLobbyService.ts`. It calls `clearLanServerUrl()` from `lanConfigService` if LAN mode is active. Wiring point: the `ui-agent` will call this from `CardApp.svelte` on Hub navigation.
+
+### M20 — Solo-start hook
+
+`leaveMultiplayerLobbyForSoloStart(): Promise<void>` is exported from `multiplayerLobbyService.ts`. It calls `leaveLobby()` if a lobby is active, otherwise is a no-op. Wiring point: `CardApp.svelte` solo-start path (owned by `ui-agent`).
+
+### New message types (H5, H10)
+
+| Message | Direction | Purpose |
+|---------|-----------|---------|
+| `mp:lobby:start_ack` | guest → host | Guest acknowledges receipt of seed in `mp:lobby:start` (H5) |
+| `mp:lobby:peer_left` | transport → lobby service | Peer connection dropped; starts reconnect grace timer (H10) |
+| `mp:lobby:peer_rejoined` | transport → lobby service | Peer reconnected within grace window (H10) |

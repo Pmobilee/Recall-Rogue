@@ -7,11 +7,16 @@
  * - Deck voting in 4-player lobbies
  * - "Deck of the Day" community events
  * - Post-match deck rating
+ * - Pre-flight check that all players have a required Workshop deck installed (H16)
+ * - Metadata validation for Workshop deck updates received via mp:lobby:deck_select (M14)
  *
  * Transport message types used here:
- *   mp:workshop:deck_selected  — host broadcasts chosen Workshop deck to all lobby members
- *   mp:workshop:vote_submit    — player submits a deck vote
- *   mp:workshop:vote_result    — host broadcasts the winning workshopId
+ *   mp:lobby:deck_select         — host broadcasts chosen Workshop deck to all lobby members
+ *   mp:workshop:deck_selected    — (legacy alias) same as above
+ *   mp:workshop:vote_submit      — player submits a deck vote
+ *   mp:workshop:vote_result      — host broadcasts the winning workshopId
+ *   mp:workshop:deck_check       — host asks all clients if a Workshop deck is installed
+ *   mp:workshop:deck_check_ack   — client responds with installed status
  *
  * See docs/architecture/services/index.md for service catalog entry.
  */
@@ -19,6 +24,7 @@
 import { getMultiplayerTransport } from './multiplayerTransport';
 import { isWorkshopAvailable } from './workshopService';
 import type { WorkshopDeck } from './workshopService';
+import type { MultiplayerMessageType } from './multiplayerTransport';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -67,6 +73,29 @@ export interface DeckRating {
   timestamp: number;
 }
 
+/**
+ * Result of the pre-flight deck-check before the host starts a Workshop game.
+ *
+ * `missing` holds the player IDs of any players who either do not have the
+ * deck installed or did not respond within the ACK timeout window.
+ * An empty `missing` array means all players are ready to play.
+ */
+export interface WorkshopDeckCheckResult {
+  missing: string[];
+}
+
+/**
+ * Validation result for Workshop deck metadata received over the wire.
+ *
+ * On success, `ok` is `true`.
+ * On failure, `ok` is `false` and `reason` is a short dev-facing description
+ * of the constraint that was violated (not displayed verbatim to the player —
+ * the UI layer owns the player-facing message).
+ */
+export type WorkshopMetaValidationResult =
+  | { ok: true }
+  | { ok: false; reason: string };
+
 // ── Module-level state ────────────────────────────────────────────────────────
 
 /** Current vote round: maps playerId → their nominated workshopId. */
@@ -77,6 +106,17 @@ let _onVoteResultCb: ((winnerId: string) => void) | null = null;
 
 /** Pending message-handler unsubscribe functions (cleared on destroy). */
 const _cleanupFns: (() => void)[] = [];
+
+// ── Constants ─────────────────────────────────────────────────────────────────
+
+/**
+ * How long (ms) the host waits for deck-check ACKs before treating non-ACKing
+ * players as "deck not installed / unknown."
+ */
+const DECK_CHECK_ACK_TIMEOUT_MS = 2000;
+
+// HTML-like tag pattern: any `<…>` sequence is rejected.
+const HTML_TAG_PATTERN = /<[^>]+>/;
 
 // ── Deck Browsing ─────────────────────────────────────────────────────────────
 
@@ -167,6 +207,143 @@ export async function subscribeAllToWorkshopDeck(
 export function broadcastWorkshopDeckSelection(deck: WorkshopDeckPreview): void {
   const transport = getMultiplayerTransport();
   transport.send('mp:lobby:deck_select', deck as unknown as Record<string, unknown>);
+}
+
+// ── H16 — Workshop Deck Install Pre-Flight ────────────────────────────────────
+
+/**
+ * Ask every player in `playerIds` whether they have `workshopItemId` installed,
+ * then return the IDs of any players who either answered "no" or did not
+ * respond within DECK_CHECK_ACK_TIMEOUT_MS (2 s).
+ *
+ * Host calls this before allowing `startGame()`. If the returned `missing`
+ * array is non-empty, the lobby start must be blocked until every player has
+ * installed the deck. The UI layer is responsible for rendering the block
+ * message — this function returns structured data only.
+ *
+ * Protocol:
+ *   1. Host sends `mp:workshop:deck_check { workshopItemId, requestId }` to all peers.
+ *   2. Each client receives the message, checks localStorage for the deck, and
+ *      replies with `mp:workshop:deck_check_ack { requestId, playerId, installed }`.
+ *   3. Host waits up to 2 s; any player that has not ACK'd with `installed: true`
+ *      is counted as missing.
+ *
+ * @param workshopItemId - Steam Workshop item ID to check.
+ * @param playerIds      - All player IDs in the lobby (host included).
+ * @returns `{ missing }` — IDs of players who do not have the deck.
+ */
+export async function checkAllPlayersHaveWorkshopDeck(
+  workshopItemId: string,
+  playerIds: string[],
+): Promise<WorkshopDeckCheckResult> {
+  const transport = getMultiplayerTransport();
+  const requestId = `deckcheck_${workshopItemId}_${Date.now()}`;
+
+  // Track which players have confirmed installation.
+  const confirmed = new Set<string>();
+
+  return new Promise<WorkshopDeckCheckResult>((resolve) => {
+    // Subscribe to ACKs before sending the request to avoid a race.
+    const unsub = transport.on(
+      'mp:workshop:deck_check_ack' as MultiplayerMessageType,
+      (msg) => {
+        const { requestId: ackRequestId, playerId, installed } = msg.payload as {
+          requestId: string;
+          playerId: string;
+          installed: boolean;
+        };
+        if (ackRequestId !== requestId) return;
+        if (installed && playerId) {
+          confirmed.add(playerId);
+        }
+      },
+    );
+
+    // Broadcast the check request to all peers.
+    transport.send(
+      'mp:workshop:deck_check' as MultiplayerMessageType,
+      { workshopItemId, requestId },
+    );
+
+    // Resolve after the ACK window closes.
+    setTimeout(() => {
+      unsub();
+      const missing = playerIds.filter(id => !confirmed.has(id));
+      resolve({ missing });
+    }, DECK_CHECK_ACK_TIMEOUT_MS);
+  });
+}
+
+// ── M14 — Workshop Deck Metadata Validation ───────────────────────────────────
+
+/**
+ * Validate Workshop deck metadata received over the wire before applying it
+ * to local lobby state.
+ *
+ * Constraints:
+ *   - `title`:       1–100 characters, no HTML-like tags
+ *   - `description`: 0–500 characters, no HTML-like tags
+ *   - `factCount`:   1–5000
+ *   - `author`:      0–64 characters
+ *
+ * Returns `{ ok: true }` on success.
+ * Returns `{ ok: false, reason }` on failure — `reason` is dev-facing (e.g.
+ * for logging); the UI layer owns the player-visible error message.
+ *
+ * @param meta - Partial deck metadata object (fields that are missing or of
+ *               wrong type are treated as constraint violations).
+ */
+export function validateWorkshopDeckMetadata(
+  meta: Partial<WorkshopDeckPreview>,
+): WorkshopMetaValidationResult {
+  const { title, description, factCount, author } = meta;
+
+  // title: required, 1-100 chars, no HTML tags
+  if (typeof title !== 'string' || title.length === 0) {
+    return { ok: false, reason: 'title is required and must be a non-empty string' };
+  }
+  if (title.length > 100) {
+    return { ok: false, reason: `title too long: ${title.length} > 100 characters` };
+  }
+  if (HTML_TAG_PATTERN.test(title)) {
+    return { ok: false, reason: 'title contains HTML-like markup' };
+  }
+
+  // description: optional but if present must be ≤500 chars and no HTML tags
+  if (description !== undefined) {
+    if (typeof description !== 'string') {
+      return { ok: false, reason: 'description must be a string' };
+    }
+    if (description.length > 500) {
+      return { ok: false, reason: `description too long: ${description.length} > 500 characters` };
+    }
+    if (HTML_TAG_PATTERN.test(description)) {
+      return { ok: false, reason: 'description contains HTML-like markup' };
+    }
+  }
+
+  // factCount: required, 1-5000
+  if (typeof factCount !== 'number' || !Number.isInteger(factCount)) {
+    return { ok: false, reason: 'factCount must be an integer' };
+  }
+  if (factCount < 1) {
+    return { ok: false, reason: `factCount too small: ${factCount} < 1` };
+  }
+  if (factCount > 5000) {
+    return { ok: false, reason: `factCount too large: ${factCount} > 5000` };
+  }
+
+  // author: optional but if present must be ≤64 chars
+  if (author !== undefined) {
+    if (typeof author !== 'string') {
+      return { ok: false, reason: 'author must be a string' };
+    }
+    if (author.length > 64) {
+      return { ok: false, reason: `author too long: ${author.length} > 64 characters` };
+    }
+  }
+
+  return { ok: true };
 }
 
 // ── Deck Voting ───────────────────────────────────────────────────────────────
@@ -351,16 +528,26 @@ export function getLocalRatings(): DeckRating[] {
  * Wire transport listeners for Workshop multiplayer messages.
  *
  * Messages handled:
- *   mp:workshop:vote_submit  — a peer submitted a vote; merge into local tally
- *   mp:workshop:vote_result  — host resolved the vote; fire callback with winner
+ *   mp:workshop:vote_submit      — a peer submitted a vote; merge into local tally
+ *   mp:workshop:vote_result      — host resolved the vote; fire callback with winner
+ *   mp:workshop:deck_check       — host is asking if we have a Workshop deck installed;
+ *                                  reply with mp:workshop:deck_check_ack
+ *   mp:lobby:deck_select         — host broadcast a Workshop deck selection; validate
+ *                                  metadata (M14) before forwarding to onDeckSelect cb
  *
- * (mp:lobby:deck_select is handled by multiplayerLobbyService; Workshop service
- * only needs to track votes and results.)
+ * (mp:lobby:deck_select metadata validation is performed here; lobby service
+ * may also consume this event for its own state — they coexist safely.)
  *
+ * @param localPlayerId - This client's player ID, used when replying to deck checks.
+ * @param onDeckSelect  - Optional callback invoked with validated deck metadata;
+ *                        called only when the incoming deck passes validation.
  * @returns Cleanup function — call to remove all listeners (use on unmount or
  *          lobby leave).
  */
-export function initWorkshopMessageHandlers(): () => void {
+export function initWorkshopMessageHandlers(
+  localPlayerId?: string,
+  onDeckSelect?: (deck: WorkshopDeckPreview) => void,
+): () => void {
   const transport = getMultiplayerTransport();
 
   const unsubVoteSubmit = transport.on('mp:workshop:vote_submit', (msg) => {
@@ -378,11 +565,55 @@ export function initWorkshopMessageHandlers(): () => void {
     }
   });
 
-  _cleanupFns.push(unsubVoteSubmit, unsubVoteResult);
+  // H16 — respond to host's deck-check broadcast
+  const unsubDeckCheck = transport.on(
+    'mp:workshop:deck_check' as MultiplayerMessageType,
+    (msg) => {
+      const { workshopItemId, requestId } = msg.payload as {
+        workshopItemId: string;
+        requestId: string;
+      };
+      if (!workshopItemId || !requestId) return;
+
+      const installed = getInstalledWorkshopDecks().some(
+        d => d.workshopId === workshopItemId,
+      );
+
+      const playerId = localPlayerId ?? '';
+      transport.send(
+        'mp:workshop:deck_check_ack' as MultiplayerMessageType,
+        { requestId, playerId, installed },
+      );
+    },
+  );
+
+  // M14 — validate metadata on incoming deck selections
+  const unsubDeckSelect = transport.on('mp:lobby:deck_select', (msg) => {
+    const raw = msg.payload as Partial<WorkshopDeckPreview>;
+
+    // Only validate when payload looks like a Workshop deck (has workshopId).
+    if (!raw.workshopId) return;
+
+    const validation = validateWorkshopDeckMetadata(raw);
+    if (!validation.ok) {
+      console.warn(
+        '[multiplayerWorkshopService] Dropping mp:lobby:deck_select — invalid metadata:',
+        validation.reason,
+        '| workshopId:', raw.workshopId,
+      );
+      return;
+    }
+
+    onDeckSelect?.(raw as WorkshopDeckPreview);
+  });
+
+  _cleanupFns.push(unsubVoteSubmit, unsubVoteResult, unsubDeckCheck, unsubDeckSelect);
 
   return () => {
     unsubVoteSubmit();
     unsubVoteResult();
+    unsubDeckCheck();
+    unsubDeckSelect();
   };
 }
 

@@ -53,7 +53,7 @@ type MessageHandler = (msg: MultiplayerMessage) => void;
 
 function createMockTransport(): MultiplayerTransport & {
   sent: Array<{ type: MultiplayerMessageType; payload: Record<string, unknown> }>;
-  simulateReceive(type: MultiplayerMessageType, payload: Record<string, unknown>): void;
+  simulateReceive(type: MultiplayerMessageType | string, payload: Record<string, unknown>): void;
 } {
   const sent: Array<{ type: MultiplayerMessageType; payload: Record<string, unknown> }> = [];
   const handlers = new Map<string, MessageHandler[]>();
@@ -78,10 +78,10 @@ function createMockTransport(): MultiplayerTransport & {
         }
       };
     },
-    simulateReceive(type: MultiplayerMessageType, payload: Record<string, unknown>) {
+    simulateReceive(type: MultiplayerMessageType | string, payload: Record<string, unknown>) {
       const list = handlers.get(type);
       if (list) {
-        const msg: MultiplayerMessage = { type, payload, timestamp: Date.now(), senderId: 'remote' };
+        const msg: MultiplayerMessage = { type: type as MultiplayerMessageType, payload, timestamp: Date.now(), senderId: 'remote' };
         list.forEach(cb => cb(msg));
       }
     },
@@ -108,6 +108,13 @@ vi.mock('./platformService', () => ({
   hasSteam: false,
 }));
 
+// Also mock lanConfigService so clearLanServerUrl / isLanMode don't need real config
+vi.mock('./lanConfigService', () => ({
+  getLanServerUrls: vi.fn(() => null),
+  isLanMode: vi.fn(() => false),
+  clearLanServerUrl: vi.fn(),
+}));
+
 // ---------------------------------------------------------------------------
 // Import after mocks
 // ---------------------------------------------------------------------------
@@ -120,6 +127,7 @@ const {
   startGame,
   onGameStart,
   getCurrentLobby,
+  leaveLobby,
 } = await import('./multiplayerLobbyService');
 
 // ---------------------------------------------------------------------------
@@ -148,8 +156,9 @@ describe('startGame() — includes contentSelection in mp:lobby:start payload', 
   });
 
   afterEach(() => {
-    // Reset module state by leaving the lobby
-    // (leaveLobby imports destroyMultiplayerTransport which is mocked)
+    // Reset module state by leaving the lobby — clears _handlersAttached so
+    // the next describe block's joinLobby/createLobby re-registers handlers.
+    leaveLobby();
     vi.restoreAllMocks();
   });
 
@@ -228,6 +237,11 @@ describe('mp:lobby:start handler — assigns contentSelection before onGameStart
     vi.clearAllMocks();
   });
 
+  afterEach(() => {
+    leaveLobby();
+    vi.restoreAllMocks();
+  });
+
   it('applies contentSelection from payload before onGameStart fires on guest', async () => {
     // Simulate a guest joining (not host) — isHost() will be false
     await joinLobby('ABCDEF', 'guest_player', 'Guest');
@@ -291,10 +305,11 @@ const {
   setVisibility,
   setPassword,
   setMaxPlayers,
-  leaveLobby,
   listPublicLobbies,
   joinLobbyById,
   isBroadcastMode,
+  clearLanModeOnHubEntry,
+  leaveMultiplayerLobbyForSoloStart,
 } = await import('./multiplayerLobbyService');
 
 // ---------------------------------------------------------------------------
@@ -327,6 +342,10 @@ async function makeHostLobbyPhase10(
 describe('setVisibility — lobby privacy transitions', () => {
   beforeEach(() => {
     resetMockTransport();
+  });
+
+  afterEach(() => {
+    leaveLobby();
   });
 
   it('public → password: sets hasPassword to true and visibility to "password"', async () => {
@@ -398,6 +417,10 @@ describe('setPassword — hash storage and visibility co-update', () => {
     resetMockTransport();
   });
 
+  afterEach(() => {
+    leaveLobby();
+  });
+
   it('setPassword("foo"): co-updates visibility to "password" and hasPassword to true', async () => {
     await makeHostLobbyPhase10('race', { visibility: 'public' });
     await setPassword('foo');
@@ -457,6 +480,10 @@ describe('setPassword — hash storage and visibility co-update', () => {
 describe('setMaxPlayers — clamps to mode bounds', () => {
   beforeEach(() => {
     resetMockTransport();
+  });
+
+  afterEach(() => {
+    leaveLobby();
   });
 
   it('clamps below MODE_MIN_PLAYERS to the min (race min=2)', async () => {
@@ -601,8 +628,9 @@ describe('listPublicLobbies — broadcastBackend (localStorage)', () => {
     expect(result).toEqual([]);
   });
 
-  it('prunes entries older than 30 s TTL on read', async () => {
-    const staleAt = Date.now() - 31_000;
+  // M4: TTL is now 15s — entries older than 15s are pruned.
+  it('prunes entries older than 15 s TTL on read (M4: reduced from 30s)', async () => {
+    const staleAt = Date.now() - 16_000; // 16s ago — older than 15s TTL
     writeFakeDirectory([
       makeFakeEntry({ lobbyId: 'stale', createdAt: staleAt }),
       makeFakeEntry({ lobbyId: 'fresh', createdAt: Date.now() }),
@@ -611,6 +639,16 @@ describe('listPublicLobbies — broadcastBackend (localStorage)', () => {
     const ids = result.map(e => e.lobbyId);
     expect(ids).not.toContain('stale');
     expect(ids).toContain('fresh');
+  });
+
+  // M4: Entries 14s old should still appear (within TTL).
+  it('retains entries within the 15 s TTL window', async () => {
+    const recentAt = Date.now() - 14_000; // 14s ago — still within 15s TTL
+    writeFakeDirectory([
+      makeFakeEntry({ lobbyId: 'recent', createdAt: recentAt }),
+    ]);
+    const result = await listPublicLobbies();
+    expect(result.map(e => e.lobbyId)).toContain('recent');
   });
 });
 
@@ -723,6 +761,7 @@ describe('joinLobbyById — webBackend error paths', () => {
   });
 
   afterEach(() => {
+    leaveLobby();
     Object.defineProperty(window, 'location', {
       value: { search: '', href: 'http://localhost:5173' },
       writable: true,
@@ -786,6 +825,7 @@ describe('joinLobby — rejects unknown codes when not in broadcast mode', () =>
   });
 
   afterEach(() => {
+    leaveLobby();
     Object.defineProperty(window, 'location', {
       value: { search: '', href: 'http://localhost:5173' },
       writable: true,
@@ -858,6 +898,7 @@ describe('pickBackend — backend selection logic', () => {
   });
 
   afterEach(() => {
+    leaveLobby();
     Object.defineProperty(window, 'location', {
       value: { search: '', href: 'http://localhost:5173' },
       writable: true,
@@ -909,5 +950,270 @@ describe('pickBackend — backend selection logic', () => {
       writable: true,
     });
     expect(isBroadcastMode()).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Tests — M22: player count re-validation before startGame broadcasts
+// ---------------------------------------------------------------------------
+
+describe('startGame() — M22: player count re-validation', () => {
+  beforeEach(() => {
+    resetMockTransport();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.restoreAllMocks();
+  });
+
+  it('does not broadcast when only 1 player remains (allReady guard + M22 check)', async () => {
+    // M22: the explicit players.length < 2 check is a secondary defence after allReady().
+    // In normal single-threaded flow allReady() prevents reaching it, so we verify the
+    // observable contract: with only 1 player, startGame() must not send mp:lobby:start.
+    const lobby = await createLobby('host_m22', 'Host', 'race');
+    lobby.players[0].isReady = true; // only the host — no second player
+
+    startGame(); // allReady() returns false (length < 2) → early return, no throw, no send
+
+    const msg = mockTransport.sent.find(m => m.type === 'mp:lobby:start');
+    expect(msg).toBeUndefined();
+  });
+
+  it('sends mp:lobby:start when 2 or more players are present at start time', async () => {
+    const lobby = await createLobby('host_m22b', 'Host', 'race');
+    lobby.players.push({ id: 'guest_m22b', displayName: 'Guest', isHost: false, isReady: true });
+    lobby.players[0].isReady = true;
+
+    startGame();
+
+    const msg = mockTransport.sent.find(m => m.type === 'mp:lobby:start');
+    expect(msg).toBeDefined();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Tests — H13: timestamped ready-state merge
+// ---------------------------------------------------------------------------
+
+describe('H13: ready-version merge — late settings cannot overwrite fresh toggle-off', () => {
+  beforeEach(() => {
+    resetMockTransport();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.restoreAllMocks();
+  });
+
+  it('includes readyVersion in mp:lobby:ready message', async () => {
+    await joinLobby('ABCDEF', 'guest_h13', 'Guest');
+
+    // First ready toggle
+    setReady(true);
+
+    const readyMsg = mockTransport.sent.find(m => m.type === 'mp:lobby:ready');
+    expect(readyMsg).toBeDefined();
+    expect(typeof readyMsg!.payload.readyVersion).toBe('number');
+    expect(readyMsg!.payload.readyVersion).toBeGreaterThan(0);
+  });
+
+  it('readyVersion increments on each setReady call', async () => {
+    await joinLobby('ABCDEF', 'guest_h13b', 'Guest');
+
+    setReady(true);
+    setReady(false);
+    setReady(true);
+
+    const msgs = mockTransport.sent.filter(m => m.type === 'mp:lobby:ready');
+    expect(msgs.length).toBe(3);
+    const versions = msgs.map(m => m.payload.readyVersion as number);
+    expect(versions[0]).toBeLessThan(versions[1]);
+    expect(versions[1]).toBeLessThan(versions[2]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Tests — H5: seed ACK handshake
+// ---------------------------------------------------------------------------
+
+describe('H5: seed ACK handshake', () => {
+  beforeEach(() => {
+    resetMockTransport();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
+
+  it('ACK happy path: host fires onGameStart after all guests ACK', async () => {
+    const lobby = await createLobby('host_h5', 'Host', 'race');
+    lobby.players.push({ id: 'guest_h5', displayName: 'Guest', isHost: false, isReady: true });
+    lobby.players[0].isReady = true;
+
+    let startFired = false;
+    onGameStart(() => { startFired = true; });
+
+    startGame();
+
+    // onGameStart should NOT fire yet — waiting for guest ACK
+    expect(startFired).toBe(false);
+
+    // Simulate guest sending ACK
+    mockTransport.simulateReceive('mp:lobby:start_ack', {
+      playerId: 'guest_h5',
+      seed: lobby.seed ?? 0,
+    });
+
+    // ACK received — onGameStart should now fire
+    expect(startFired).toBe(true);
+  });
+
+  it('ACK timeout fallback: host fires onGameStart after 3s even without ACK', async () => {
+    const lobby = await createLobby('host_h5b', 'Host', 'race');
+    lobby.players.push({ id: 'slowguest_h5', displayName: 'Slow', isHost: false, isReady: true });
+    lobby.players[0].isReady = true;
+
+    let startFired = false;
+    onGameStart(() => { startFired = true; });
+
+    startGame();
+    expect(startFired).toBe(false);
+
+    // Advance fake timers past the 3s timeout
+    vi.advanceTimersByTime(3100);
+
+    expect(startFired).toBe(true);
+  });
+
+  it('guest sends mp:lobby:start_ack in response to mp:lobby:start', async () => {
+    // Join as guest
+    await joinLobby('ABCDEF', 'guest_h5c', 'GuestUser');
+
+    // Simulate host broadcasting mp:lobby:start
+    mockTransport.simulateReceive('mp:lobby:start', { seed: 55555 });
+
+    // Guest should have sent an ACK back
+    const ackMsg = mockTransport.sent.find(m => m.type === ('mp:lobby:start_ack' as any));
+    expect(ackMsg).toBeDefined();
+    expect(ackMsg!.payload.playerId).toBe('guest_h5c');
+  });
+
+  it('retry: host re-broadcasts mp:lobby:start every 750ms until ACK', async () => {
+    const lobby = await createLobby('host_h5d', 'Host', 'race');
+    lobby.players.push({ id: 'guest_h5d', displayName: 'Guest', isHost: false, isReady: true });
+    lobby.players[0].isReady = true;
+
+    startGame();
+
+    // After 750ms, a retry should have been sent
+    const countBefore = mockTransport.sent.filter(m => m.type === 'mp:lobby:start').length;
+    vi.advanceTimersByTime(800);
+    const countAfter = mockTransport.sent.filter(m => m.type === 'mp:lobby:start').length;
+    expect(countAfter).toBeGreaterThan(countBefore);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Tests — H10: reconnect grace timer
+// ---------------------------------------------------------------------------
+
+describe('H10: reconnect grace timer — peer_left and peer_rejoined', () => {
+  beforeEach(() => {
+    resetMockTransport();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
+
+  it('marks disconnected player as reconnecting instead of removing immediately', async () => {
+    const lobby = await createLobby('host_h10', 'Host', 'race');
+    lobby.players.push({ id: 'peer_h10', displayName: 'Peer', isHost: false, isReady: false });
+
+    // Simulate peer dropping
+    mockTransport.simulateReceive('mp:lobby:peer_left', { playerId: 'peer_h10' });
+
+    const peer = getCurrentLobby()!.players.find(p => p.id === 'peer_h10') as any;
+    expect(peer).toBeDefined();
+    expect(peer.connectionState).toBe('reconnecting');
+  });
+
+  it('removes player after 60s grace period expires', async () => {
+    const lobby = await createLobby('host_h10b', 'Host', 'race');
+    lobby.players.push({ id: 'peer_h10b', displayName: 'Peer', isHost: false, isReady: false });
+
+    mockTransport.simulateReceive('mp:lobby:peer_left', { playerId: 'peer_h10b' });
+    expect(getCurrentLobby()!.players.find(p => p.id === 'peer_h10b')).toBeDefined();
+
+    // Advance past 60s grace
+    vi.advanceTimersByTime(61_000);
+
+    expect(getCurrentLobby()!.players.find(p => p.id === 'peer_h10b')).toBeUndefined();
+  });
+
+  it('player rejoins within grace period — connectionState flips back to connected', async () => {
+    const lobby = await createLobby('host_h10c', 'Host', 'race');
+    lobby.players.push({ id: 'peer_h10c', displayName: 'Peer', isHost: false, isReady: false });
+
+    mockTransport.simulateReceive('mp:lobby:peer_left', { playerId: 'peer_h10c' });
+
+    // Rejoin within 60s
+    vi.advanceTimersByTime(10_000);
+    mockTransport.simulateReceive('mp:lobby:peer_rejoined', { playerId: 'peer_h10c' });
+
+    const peer = getCurrentLobby()!.players.find(p => p.id === 'peer_h10c') as any;
+    expect(peer).toBeDefined();
+    expect(peer.connectionState).toBe('connected');
+
+    // Advance past original 60s — player should still be in lobby
+    vi.advanceTimersByTime(55_000);
+    expect(getCurrentLobby()!.players.find(p => p.id === 'peer_h10c')).toBeDefined();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Tests — C4: clearLanModeOnHubEntry
+// ---------------------------------------------------------------------------
+
+describe('C4: clearLanModeOnHubEntry — LAN mode clear hook', () => {
+  it('clearLanModeOnHubEntry is exported and callable', () => {
+    expect(typeof clearLanModeOnHubEntry).toBe('function');
+    // Safe to call when not in LAN mode (isLanMode mocked to return false)
+    expect(() => clearLanModeOnHubEntry()).not.toThrow();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Tests — M20: leaveMultiplayerLobbyForSoloStart
+// ---------------------------------------------------------------------------
+
+describe('M20: leaveMultiplayerLobbyForSoloStart — solo-start hook', () => {
+  beforeEach(() => {
+    resetMockTransport();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+  });
+
+  it('is a no-op when not in a lobby', async () => {
+    // Should not throw and should return a resolved promise
+    await expect(leaveMultiplayerLobbyForSoloStart()).resolves.toBeUndefined();
+  });
+
+  it('leaves lobby when in one', async () => {
+    await createLobby('host_m20', 'Host', 'race');
+    expect(getCurrentLobby()).not.toBeNull();
+
+    await leaveMultiplayerLobbyForSoloStart();
+
+    expect(getCurrentLobby()).toBeNull();
   });
 });
