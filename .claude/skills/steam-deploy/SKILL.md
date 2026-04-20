@@ -83,7 +83,7 @@ npm run steam:linux
 ```
 APP_ID=4547570
 PARTNER_ID=385085
-DEPOT_CONTENT=4547571
+DEPOT_CONTENT=4547571          # DEPRECATED — being removed from packages; do not upload to
 DEPOT_WINDOWS=4547572
 DEPOT_LINUX=4547573
 DEPOT_MACOS=4547574
@@ -93,6 +93,12 @@ STEAM_DIR=/Users/damion/CODE/Recall_Rogue/steam
 BUILD_OUTPUT_MAC=/Users/damion/CODE/Recall_Rogue/src-tauri/target/release/bundle/macos/
 BUILD_OUTPUT_DMG=/Users/damion/CODE/Recall_Rogue/src-tauri/target/release/bundle/dmg/
 ```
+
+## Canonical Build Icon
+
+The executable icon embedded into every build (Windows taskbar/exe, macOS dock, Linux desktop) is sourced from **`marketing/steam/capsules/Library Logo.ico`** (Windows) and **`marketing/steam/capsules/Library Logo.png`** (source PNG). Those are copied into `src-tauri/icons/icon.ico` + `src-tauri/icons/icon.png`, which `tauri.conf.json → bundle.icon` references at build time.
+
+**Rule:** if the Library Logo changes in `marketing/steam/capsules/`, re-copy both files into `src-tauri/icons/` before the next build. If all Tauri icon sizes (32x32.png, 128x128.png, etc.) need refreshing, run `npx tauri icon "marketing/steam/capsules/Library Logo.png"` from the project root — that regenerates every size + the iOS/Android sets in one pass.
 
 ## VDF Files
 
