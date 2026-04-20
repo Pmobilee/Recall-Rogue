@@ -143,8 +143,8 @@ import { preloadNarrativeData } from './narrativeLoader'
 import { showNarrative } from '../ui/stores/narrativeStore'
 import { CHAIN_TYPES } from '../data/chainTypes'
 import { unlockAchievement } from './steamService'
-import { startRaceProgressBroadcast, updateLocalProgress, stopRaceProgressBroadcast } from './multiplayerGameService'
-import { getCurrentLobby } from './multiplayerLobbyService'
+import { startRaceProgressBroadcast, updateLocalProgress, stopRaceProgressBroadcast, initRaceMode } from './multiplayerGameService'
+import { getCurrentLobby, getLocalMultiplayerPlayerId } from './multiplayerLobbyService'
 import { computeRaceScore } from './multiplayerScoring'
 import type { MultiplayerMode } from '../data/multiplayerTypes'
 import { ensureCuratedDeckLoaded } from '../data/curatedDeckStore'
@@ -1087,6 +1087,10 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
 
   // Start multiplayer race progress broadcast
   if (activeRunMode === 'multiplayer_race') {
+    // #79: Reset race-mode accumulators and store localPlayerId BEFORE the broadcast
+    // loop starts. Without this, back-to-back races leak fact accumulators from the
+    // previous run into the next FSRS batch. Must fire before startRaceProgressBroadcast.
+    initRaceMode(getLocalMultiplayerPlayerId());
     stopRaceBroadcastFn = startRaceProgressBroadcast(() => {
       const r = get(activeRunState);
       if (!r) {

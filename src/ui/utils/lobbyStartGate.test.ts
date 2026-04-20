@@ -137,3 +137,46 @@ describe('startButtonLabel — three-state label', () => {
     expect(startButtonLabel(lobby, false)).toBe('Waiting for host...')
   })
 })
+
+// ---------------------------------------------------------------------------
+// #71 — workshopDecksReady gate
+// ---------------------------------------------------------------------------
+
+describe('#71: canStartLobby — workshopDecksReady gate', () => {
+  const readyLobby = {
+    players: [makeReadyPlayer('host', true), makeReadyPlayer('guest')],
+    contentSelection: STUDY_SELECTION,
+  }
+
+  it('returns false when workshopDecksReady is false (Workshop deck not yet available)', () => {
+    expect(canStartLobby(readyLobby, true, false)).toBe(false)
+  })
+
+  it('returns true when workshopDecksReady is true (explicit)', () => {
+    expect(canStartLobby(readyLobby, true, true)).toBe(true)
+  })
+
+  it('defaults workshopDecksReady to true — existing callers without the param are unaffected', () => {
+    // canStartLobby(lobby, amHost) — no third arg — should still return true
+    expect(canStartLobby(readyLobby, true)).toBe(true)
+  })
+})
+
+describe('#71: startButtonLabel — workshopDecksReady label', () => {
+  const readyLobby = {
+    players: [makeReadyPlayer('host', true), makeReadyPlayer('guest')],
+    contentSelection: STUDY_SELECTION,
+  }
+
+  it('returns "Waiting for Workshop deck..." when workshopDecksReady is false', () => {
+    expect(startButtonLabel(readyLobby, true, false)).toBe('Waiting for Workshop deck...')
+  })
+
+  it('returns "Start Game" when workshopDecksReady is true', () => {
+    expect(startButtonLabel(readyLobby, true, true)).toBe('Start Game')
+  })
+
+  it('defaults to "Start Game" when third arg omitted (backward-compat)', () => {
+    expect(startButtonLabel(readyLobby, true)).toBe('Start Game')
+  })
+})

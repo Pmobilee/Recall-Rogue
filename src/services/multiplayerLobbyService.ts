@@ -32,6 +32,7 @@ import type {
 } from '../data/multiplayerTypes';
 import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS, MODE_MIN_PLAYERS } from '../data/multiplayerTypes';
 import { hasSteam } from './platformService';
+import { getLocalMultiplayerRating } from './multiplayerElo';
 import { getLanServerUrls, isLanMode, clearLanServerUrl } from './lanConfigService';
 import {
   createSteamLobby,
@@ -167,6 +168,15 @@ export function isHost(): boolean {
   return _currentLobby?.hostId === _localPlayerId;
 }
 
+/**
+ * Return the local player ID for the current session.
+ * Empty string when not in a lobby.
+ * Used by gameFlowController to pass the correct ID to initRaceMode (#79).
+ */
+export function getLocalMultiplayerPlayerId(): string {
+  return _localPlayerId;
+}
+
 // ── Password Hashing ──────────────────────────────────────────────────────────
 
 /**
@@ -237,6 +247,7 @@ export async function createLobby(
       displayName,
       isHost: true,
       isReady: false,
+      multiplayerRating: getLocalMultiplayerRating(),
     }],
     maxPlayers,
     isRanked: false,
@@ -310,7 +321,7 @@ export async function joinLobby(
     mode: 'race',
     deckSelectionMode: 'host_picks',
     houseRules: { ...DEFAULT_HOUSE_RULES },
-    players: [{ id: playerId, displayName, isHost: false, isReady: false }],
+    players: [{ id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() }],
     maxPlayers: 4,
     isRanked: false,
     lobbyCode,
@@ -384,7 +395,7 @@ export async function joinLobbyById(
     mode: 'race',
     deckSelectionMode: 'host_picks',
     houseRules: { ...DEFAULT_HOUSE_RULES },
-    players: [{ id: playerId, displayName, isHost: false, isReady: false }],
+    players: [{ id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() }],
     maxPlayers: 4,
     isRanked: false,
     lobbyCode: result.lobbyCode,

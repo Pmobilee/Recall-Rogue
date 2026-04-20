@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-20 (#71/#73/#74/#75/#76 wave-4 fixes) — Previous: H6/H10/M18-wiring. Latest: #74 initRaceMode, #75 double-init guard, #76 peer monitor lobby wiring, #73 Elo at race/duel end, #71 workshopDecksReady gate + host self-check fix. See changelog section below.
+> **Last verified:** 2026-04-20 (#79/#80/#81 wave-5 fixes) — Previous: #71/#73/#74/#75/#76 wave-4. Latest: #79 initRaceMode wired into gameFlowController, #80 real opponent Elo rating from lobby, #81 workshop deck gate wired in MultiplayerLobby.svelte. See changelog section below.
 
 ## Modes
 
@@ -282,9 +282,9 @@ When `getCurrentLobby()?.isRanked === true`, Elo is now applied at the end of ea
 | `hostResolveTurn()` (inside `if (isOver)`) | Duel — host path |
 | `mp:duel:end` handler (inside `!_duelState?.isHost` guard) | Duel — client path |
 
-Uses `applyEloResult(localRating, 1500, outcome)` from `multiplayerElo.ts`. Opponent rating is
-currently hardcoded to `1500` pending `TODO(opp-rating-broadcast)` — opponent rating will be
-included in lobby metadata once the backend broadcasts it.
+Uses `applyEloResult(localRating, oppRating, outcome)` from `multiplayerElo.ts`. Opponent rating
+is read from `lobby.players.find(p => p.id === opponentId)?.multiplayerRating ?? 1500` (resolved
+by fix #80 — see Wave-5 section below).
 
 Outcome mapping: `winnerId === localId` → `'win'`; `winnerId === null` → `'tie'`; else → `'loss'`.
 
@@ -305,6 +305,83 @@ provided:
 - This fixes the bug where the host was always listed as `missing` because transport messages
   don't loop back to the sender — the host never received its own `deck_check_ack`.
 
+## Wave-5 Bug Fixes (2026-04-20)
+
+### #79 — initRaceMode wired into gameFlowController before broadcast
+
+Previously `initRaceMode()` was an exported function in `multiplayerGameService.ts` (added in #74) but was never called from `gameFlowController.ts`. The START path of `onArchetypeSelected()` entered `startRaceProgressBroadcast()` without first clearing the fact accumulators, so back-to-back races in the same session leaked `_raceCorrectFactIds` / `_raceWrongFactIds` from the previous run into the FSRS batch at the end of the new run.
+
+**Fix:** Inside the `if (activeRunMode === 'multiplayer_race')` block in `onArchetypeSelected()`, `initRaceMode(getLocalMultiplayerPlayerId())` is now called **before** `stopRaceBroadcastFn = startRaceProgressBroadcast(...)`. This ensures accumulators and the stored `_raceLocalPlayerId` are fresh for every new race.
+
+Two new imports in `gameFlowController.ts`:
+- `initRaceMode` added to the named import from `./multiplayerGameService`
+- `getLocalMultiplayerPlayerId` added to the named import from `./multiplayerLobbyService`
+
+**Test coverage:** `src/services/gameFlowController.race-init.test.ts` — 5 source-invariant assertions:
+1. `initRaceMode` is in the named import from `multiplayerGameService`
+2. `getLocalMultiplayerPlayerId` is in the named import from `multiplayerLobbyService`
+3. `initRaceMode(getLocalMultiplayerPlayerId())` is present in source
+4. `initRaceMode` call appears before `startRaceProgressBroadcast` in source order
+5. Both calls are inside the same `if (activeRunMode === 'multiplayer_race')` conditional
+
+### #80 — Real opponent Elo rating broadcast in LobbyPlayer
+
+Elo deltas at match end were computed with a hardcoded opponent rating of `1500` at all three apply
+sites (`_tryEmitRaceResults`, `hostResolveTurn`, `mp:duel:end` handler). All `TODO(opp-rating-broadcast)`
+comments are removed.
+
+**`LobbyPlayer` — new optional field:**
+```typescript
+multiplayerRating?: number;  // populated from getLocalMultiplayerRating() on join
+```
+Back-compat: field is optional; peers that have not updated omit it and the `?? 1500` fallback applies.
+
+**`multiplayerLobbyService.ts` — populated on join:**
+`getLocalMultiplayerRating()` (from `multiplayerElo.ts`) is written into `multiplayerRating` on the
+local player object in `createLobby()`, `joinLobby()`, and `joinLobbyById()`. All three lobby-entry
+paths populate the field so every peer broadcasts their real rating immediately on join.
+
+**`multiplayerGameService.ts` — three hardcoded `1500` values replaced:**
+```typescript
+// before
+const oppRating = 1500;
+
+// after
+const oppRating = lobby.players.find(p => p.id === opponentId)?.multiplayerRating ?? 1500;
+```
+Applied in `_tryEmitRaceResults()`, `hostResolveTurn()` (duel-end block), and the `mp:duel:end`
+message handler.
+
+**Test coverage:** `src/services/multiplayerGameService.test.ts` — `describe('#80: ...)`:
+- Fallback expression returns `1500` when `multiplayerRating` field is absent
+- Returns real rating when field is present (e.g. 1750)
+- `getCurrentLobby` mock returns `multiplayerRating: 1800` when configured
+
+### #81 — Workshop deck gate wired in MultiplayerLobby.svelte
+
+Previously `canStartLobby` accepted a `workshopDecksReady` parameter (#71) but `MultiplayerLobby.svelte`
+never passed it — always defaulting to `true`, so the gate was silently bypassed.
+
+**`src/ui/components/MultiplayerLobby.svelte` — new state and effect:**
+```svelte
+let workshopDecksReady = $state(true)
+let workshopMissingPlayerIds = $state<string[]>([])
+
+$effect(() => {
+  // Re-fires when lobby.players.length or contentSelection.workshopItemId changes
+  // Calls checkAllPlayersHaveWorkshopDeck(), sets both state vars
+})
+```
+
+The `$effect` fires whenever `lobby.players.length` or `contentSelection.workshopItemId` changes.
+For non-workshop content types the effect short-circuits, leaving `workshopDecksReady = true`.
+
+`canStart` derived value and both `startButtonLabel()` call-sites now pass `workshopDecksReady`.
+
+**Warning text:** When `workshopMissingPlayerIds.length > 0`, an orange warning block renders below
+the Start button listing which players still need to install the Workshop deck by display name.
+
+
 ## gameFlowController Race Mode Wiring
 
 Race mode is wired into `src/services/gameFlowController.ts`. The `ActiveRunMode` union includes `'multiplayer_race'`. Module-level state:
@@ -319,7 +396,7 @@ let stopRaceBroadcastFn: (() => void) | null = null
 |------|----------|----------|
 | `startNewRun()` options | Expanded with `multiplayerSeed?` and `multiplayerMode?` | Sets `activeRunMode = 'multiplayer_race'` when `multiplayerMode` is provided |
 | `createRunState()` call | `onArchetypeSelected()` | Passes `providedSeed` and `multiplayerMode` from module state |
-| Race broadcast start | After `initRunRng()` in `onArchetypeSelected()` | `startRaceProgressBroadcast()` called; cleanup stored in `stopRaceBroadcastFn` |
+| Race broadcast start | After `initRunRng()` in `onArchetypeSelected()` | `initRaceMode(getLocalMultiplayerPlayerId())` first (#79), then `startRaceProgressBroadcast()`; cleanup stored in `stopRaceBroadcastFn` |
 | `perfectEncountersCount` | `onEncounterComplete()` after flawless check | Incremented whenever encounter ends with 0 wrong answers |
 | Race finish send | `finishRunAndReturnToHub()` before cleanup | `updateLocalProgress({ isFinished: true, result })` broadcasts final state |
 | Cleanup | `finishRunAndReturnToHub()` | `stopRaceBroadcastFn?.()`, then `multiplayerSeed = null`, `multiplayerModeState = null` |

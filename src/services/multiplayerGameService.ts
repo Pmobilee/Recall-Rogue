@@ -450,10 +450,9 @@ export function determineRaceWinner(
  * Uses actual correctCount/wrongCount from RaceProgress when available;
  * falls back to the encountersWon * 3 proxy for old peers that don't send counts.
  *
- * #73: When the lobby is ranked, applies an Elo delta using the local rating and a
- * default opponent rating of 1500 (opponent's actual rating is not broadcast in V1).
- * TODO(opp-rating-broadcast): broadcast opponent rating in mp:race:finish so ranked
- * Elo uses real opponent strength rather than the 1500 default.
+ * #73: When the lobby is ranked, applies an Elo delta using local and opponent ratings.
+ * #80: Opponent rating is read from LobbyPlayer.multiplayerRating (broadcast on join) rather
+ * than the previous 1500 default. Falls back to 1500 when the field is absent (old peers).
  */
 function _tryEmitRaceResults(): void {
   if (!_localProgress?.isFinished || !_opponentProgress?.isFinished) return;
@@ -535,8 +534,8 @@ function _tryEmitRaceResults(): void {
   const eloLocalId = _raceLocalPlayerId || localId;
   if (lobby?.isRanked && eloLocalId) {
     const localRating = getLocalMultiplayerRating();
-    // TODO(opp-rating-broadcast): use real opponent rating once mp:race:finish broadcasts it.
-    const oppRating = 1500;
+    // #80: Read opponent's real Elo from lobby state instead of defaulting to 1500.
+    const oppRating = lobby.players.find(p => p.id === opponentId)?.multiplayerRating ?? 1500;
     const outcome = winnerId === eloLocalId ? 'win' : (winnerId === null ? 'tie' : 'loss');
     const { newLocal } = applyEloResult(localRating, oppRating, outcome);
     persistLocalMultiplayerRating(newLocal);
@@ -857,9 +856,10 @@ export function hostResolveTurn(): DuelTurnResolution | null {
     const lobby = getCurrentLobby();
     if (lobby?.isRanked) {
       const eloLocalId = _duelState.localPlayerId;
+      const opponentId = _duelState.opponentId;
       const localRating = getLocalMultiplayerRating();
-      // TODO(opp-rating-broadcast): use real opponent rating once broadcast in duel payload.
-      const oppRating = 1500;
+      // #80: Read opponent's real Elo from lobby state instead of defaulting to 1500.
+      const oppRating = lobby.players.find(p => p.id === opponentId)?.multiplayerRating ?? 1500;
       const outcome = winnerId === eloLocalId ? 'win' : (winnerId === null ? 'tie' : 'loss');
       const { newLocal } = applyEloResult(localRating, oppRating, outcome);
       persistLocalMultiplayerRating(newLocal);
@@ -1025,9 +1025,10 @@ export function initGameMessageHandlers(mode: MultiplayerMode): () => void {
         const lobby = getCurrentLobby();
         if (lobby?.isRanked && _duelState) {
           const eloLocalId = _duelState.localPlayerId;
+          const opponentId = _duelState.opponentId;
           const localRating = getLocalMultiplayerRating();
-          // TODO(opp-rating-broadcast): use real opponent rating once broadcast.
-          const oppRating = 1500;
+          // #80: Read opponent's real Elo from lobby state instead of defaulting to 1500.
+          const oppRating = lobby.players.find(p => p.id === opponentId)?.multiplayerRating ?? 1500;
           const outcome = resolution.winnerId === eloLocalId ? 'win'
             : (resolution.winnerId === null ? 'tie' : 'loss');
           const { newLocal } = applyEloResult(localRating, oppRating, outcome);

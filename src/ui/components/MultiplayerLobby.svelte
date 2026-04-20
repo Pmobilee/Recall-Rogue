@@ -29,7 +29,7 @@
     onRaceProgress,
     onRaceResults,
   } from '../../services/multiplayerLobbyService'
-  import { initWorkshopMessageHandlers } from '../../services/multiplayerWorkshopService'
+  import { initWorkshopMessageHandlers, checkAllPlayersHaveWorkshopDeck } from '../../services/multiplayerWorkshopService'
   import { hasSteam } from '../../services/platformService'
   import { ascensionProfile } from '../../services/cardPreferences'
   import { getAscensionRule, MAX_ASCENSION_LEVEL } from '../../services/ascension'
@@ -57,6 +57,14 @@
   let showPasswordText = $state(false)
   /** True while a ready-toggle network call is in flight; prevents double-submit (M7). */
   let readyPending = $state(false)
+  /**
+   * #81: Whether all players have the required Workshop deck installed.
+   * true by default so non-Workshop lobbies are unaffected.
+   * Set to false while checkAllPlayersHaveWorkshopDeck() is in-flight or returned missing players.
+   */
+  let workshopDecksReady = $state(true)
+  /** IDs of players still missing the Workshop deck (populated by the deck-check effect). */
+  let workshopMissingPlayerIds = $state<string[]>([])
 
   const MODES: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night']
 
@@ -81,13 +89,38 @@
   /** Local player's ready state */
   let myPlayer = $derived(lobby.players.find(p => p.id === localPlayerId))
   let isReady = $derived(myPlayer?.isReady ?? false)
-  let canStart = $derived(canStartLobby(lobby, amHost))
+  let canStart = $derived(canStartLobby(lobby, amHost, workshopDecksReady))
   let lobbyAscensionRule = $derived(getAscensionRule(lobby.houseRules.ascensionLevel))
 
   /** Empty slots to fill player list up to maxPlayers */
   let emptySlots = $derived(
     Array.from({ length: Math.max(0, lobby.maxPlayers - lobby.players.length) })
   )
+
+  // ── #81: Workshop deck pre-flight check ──────────────────────────────────────
+  // Re-runs when player count or workshopItemId changes. Resets to true for non-workshop lobbies.
+  $effect(() => {
+    if (lobby.contentSelection?.type !== 'workshop' as unknown) {
+      workshopDecksReady = true
+      workshopMissingPlayerIds = []
+      return
+    }
+    const workshopItemId = (lobby.contentSelection as unknown as { workshopItemId?: string }).workshopItemId
+    if (!workshopItemId) {
+      workshopDecksReady = true
+      workshopMissingPlayerIds = []
+      return
+    }
+    // Subscribe to player count and workshopItemId changes
+    const playerIds = lobby.players.map(p => p.id)
+    // Mark not-ready while check is in-flight
+    workshopDecksReady = false
+    workshopMissingPlayerIds = []
+    void checkAllPlayersHaveWorkshopDeck(workshopItemId, playerIds, localPlayerId).then(result => {
+      workshopMissingPlayerIds = result.missing
+      workshopDecksReady = result.missing.length === 0
+    })
+  })
 
   // ── Service subscriptions — H11 & H15 ─────────────────────────────────────
   // All returned cleanup functions are collected here and called in onDestroy.
@@ -397,12 +430,21 @@
             data-testid="btn-start-game"
             disabled={!canStart}
             onclick={handleStart}
-            aria-label={startButtonLabel(lobby, amHost)}
+            aria-label={startButtonLabel(lobby, amHost, workshopDecksReady)}
           >
-            {startButtonLabel(lobby, amHost)}
+            {startButtonLabel(lobby, amHost, workshopDecksReady)}
           </button>
         {/if}
       </div>
+
+      {#if workshopMissingPlayerIds.length > 0}
+        <p class="workshop-missing-warning" role="alert" aria-live="polite">
+          {#each workshopMissingPlayerIds as missingId}
+            {@const missingPlayer = lobby.players.find(p => p.id === missingId)}
+            {missingPlayer?.displayName ?? missingId} still needs to install the Workshop deck.
+          {/each}
+        </p>
+      {/if}
     </main>
 
     <!-- RIGHT: Settings -->
@@ -1461,6 +1503,18 @@
     font-style: italic;
     margin: 0;
     margin-top: auto;
+  }
+
+  /* #81: Workshop deck pre-flight warning shown below the Start button */
+  .workshop-missing-warning {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #e67e22;
+    background: rgba(230, 126, 34, 0.08);
+    border: 1px solid rgba(230, 126, 34, 0.3);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(10px * var(--layout-scale, 1));
+    margin: 0;
+    line-height: 1.5;
   }
 
   /* ── Footer ── */

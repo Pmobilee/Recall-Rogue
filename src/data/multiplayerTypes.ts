@@ -98,6 +98,12 @@ export interface LobbyPlayer {
    * ready states and preserve the fresher local value.
    */
   readyVersion?: number;
+  /**
+   * #80: Real Elo rating of this player, populated on join from getLocalMultiplayerRating().
+   * Optional for back-compat with peers that have not yet updated.
+   * Used at race/duel end to compute accurate Elo deltas instead of the 1500 default.
+   */
+  multiplayerRating?: number;
 }
 
 /** Full lobby state */
