@@ -19,6 +19,9 @@ pub struct SteamState {
     /// Stores the lobby ID from the most recent `join_lobby` callback.
     /// Same one-shot semantics as `pending_lobby_id`.
     pub pending_join_lobby_id: Arc<Mutex<Option<u64>>>,
+    /// Stores the lobby IDs from the most recent `request_lobby_list` callback.
+    /// One-shot: filled when the Matchmaking callback fires, drained by steam_get_lobby_list_result.
+    pub pending_lobby_list: Arc<Mutex<Option<Vec<u64>>>>,
 }
 
 impl SteamState {
@@ -41,6 +44,7 @@ impl SteamState {
                     client: Mutex::new(Some(client)),
                     pending_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_lobby_id: Arc::new(Mutex::new(None)),
+                    pending_lobby_list: Arc::new(Mutex::new(None)),
                 }
             }
             Err(e) => {
@@ -49,6 +53,7 @@ impl SteamState {
                     client: Mutex::new(None),
                     pending_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_lobby_id: Arc::new(Mutex::new(None)),
+                    pending_lobby_list: Arc::new(Mutex::new(None)),
                 }
             }
         }
@@ -349,9 +354,9 @@ pub fn steam_get_lobby_data(
 ///
 /// This is asynchronous via Steam callback — the actual lobby IDs arrive later via
 /// `LobbyMatchList_t`. The pattern mirrors `steam_create_lobby`: we kick off the request,
-/// print results inside the closure, and return immediately. The JS layer polls
-/// `steam_run_callbacks` to drive completion and then calls `steam_get_lobby_list_result`
-/// to retrieve the IDs.
+/// store results inside the closure in `SteamState::pending_lobby_list`, and return immediately.
+/// The JS layer polls `steam_run_callbacks` to drive completion and then calls
+/// `steam_get_lobby_list_result` to retrieve the IDs.
 ///
 /// In V1, filtering is client-side — all public lobbies come back and the TS wrapper
 /// filters by mode / fullness. A dedicated `steam_add_lobby_list_filter` command can
@@ -361,15 +366,48 @@ pub fn steam_get_lobby_data(
 /// `""` always — result is async. Caller polls steam_run_callbacks + steam_get_lobby_list_result.
 #[tauri::command]
 pub fn steam_request_lobby_list(state: State<SteamState>) -> Result<String, String> {
+    // Clone the Arc before locking the client so the callback closure can own it
+    // without the client lock being held across the async boundary.
+    let pending = state.pending_lobby_list.clone();
+
     let lock = state.client.lock().map_err(|e| e.to_string())?;
     if let Some(client) = lock.as_ref() {
-        client.matchmaking().request_lobby_list(|result| match result {
-            Ok(lobbies) => println!("[Steam] Lobby list returned: {} lobbies", lobbies.len()),
-            Err(e) => eprintln!("[Steam] Lobby list request failed: {:?}", e),
+        client.matchmaking().request_lobby_list(move |result| match result {
+            Ok(lobbies) => {
+                let ids: Vec<u64> = lobbies.iter().map(|lid| lid.raw()).collect();
+                println!("[Steam] Lobby list returned: {} lobbies", ids.len());
+                if let Ok(mut slot) = pending.lock() {
+                    *slot = Some(ids);
+                }
+            }
+            Err(e) => {
+                eprintln!("[Steam] Lobby list request failed: {:?}", e);
+                if let Ok(mut slot) = pending.lock() {
+                    // Empty list signals "callback fired, no results" — distinguishable from
+                    // None which means "callback has not fired yet".
+                    *slot = Some(Vec::new());
+                }
+            }
         });
         println!("[Steam] Lobby list request initiated");
     }
     Ok(String::new())
+}
+
+/// Retrieve lobby IDs stored by the most recent `request_lobby_list` callback.
+///
+/// Returns `None` if the callback has not yet fired (still pending).
+/// Returns `Some([])` if the callback fired but no lobbies matched.
+/// Returns `Some([id, ...])` when lobbies are available.
+///
+/// Consuming: `take()` drains the slot — a second call returns `None` until the next request.
+/// Decimal 64-bit IDs are returned as strings to avoid JS integer precision loss.
+#[tauri::command]
+pub fn steam_get_lobby_list_result(
+    state: State<SteamState>,
+) -> Result<Option<Vec<String>>, String> {
+    let mut slot = state.pending_lobby_list.lock().map_err(|e| e.to_string())?;
+    Ok(slot.take().map(|ids| ids.iter().map(|id| id.to_string()).collect()))
 }
 
 /// Get the number of current members in a Steam lobby by ID.

@@ -31,6 +31,7 @@ fn main() {
             steam::steam_get_lobby_data,
             // Matchmaking — Lobby Browser (AR-MULTIPLAYER Phase 1)
             steam::steam_request_lobby_list,
+            steam::steam_get_lobby_list_result,
             steam::steam_get_lobby_member_count,
             // P2P Networking — ISteamNetworkingMessages (AR-MULTIPLAYER 1.1)
             steam::steam_send_p2p_message,

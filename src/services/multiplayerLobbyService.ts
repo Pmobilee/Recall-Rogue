@@ -39,6 +39,7 @@ import {
   getLobbyData,
   joinSteamLobby,
   requestSteamLobbyList,
+  getSteamLobbyListResult,
   getLobbyMemberCount,
   getLastSteamInvokeError,
 } from './steamNetworkingService';
@@ -1111,12 +1112,17 @@ const steamBackend: LobbyBackend = {
   },
 
   async resolveByCode(code: string): Promise<string | null> {
-    // Steam has no server-side code->id resolver. For Steam builds the lobby browser
-    // provides lobbyId directly. Warn and return null; callers fall back to the
-    // code-as-channel-key path (not applicable on Steam, but graceful).
-    console.warn(
-      `[steamBackend] resolveByCode('${code}') not wired — use joinLobbyById with the lobbyId from the browser screen`,
-    );
+    // Scan all visible Steam lobbies for one whose lobby_code metadata matches.
+    // This mirrors the web backend's GET /mp/lobbies/code/:code but does it client-side
+    // by requesting the lobby list and checking metadata on each returned lobby.
+    const requested = await requestSteamLobbyList();
+    if (!requested) return null;
+    const ids = await getSteamLobbyListResult(3000);
+    if (!ids) return null;
+    for (const lobbyId of ids) {
+      const storedCode = await getLobbyData(lobbyId, 'lobby_code');
+      if (storedCode === code) return lobbyId;
+    }
     return null;
   },
 
@@ -1136,12 +1142,44 @@ const steamBackend: LobbyBackend = {
     return { lobbyId, lobbyCode };
   },
 
-  async listPublicLobbies(_filter?: LobbyListFilter): Promise<LobbyBrowserEntry[]> {
-    // V1 STUB — waiting for Phase 1 Rust binding to expose lobby IDs from callback.
-    console.warn('[steamBackend] listPublicLobbies not yet wired — awaiting Phase 1 Rust binding completion');
-    // These imports are referenced here to signal intent; wired in the follow-up.
-    void requestSteamLobbyList;
-    void getLobbyMemberCount;
-    return [];
+  async listPublicLobbies(filter?: LobbyListFilter): Promise<LobbyBrowserEntry[]> {
+    const requested = await requestSteamLobbyList();
+    if (!requested) return [];
+    const ids = await getSteamLobbyListResult(3000);
+    if (ids === null) {
+      console.warn('[steamBackend] listPublicLobbies: lobby list callback did not fire within 3s');
+      return [];
+    }
+    const entries: LobbyBrowserEntry[] = [];
+    for (const lobbyId of ids) {
+      const [mode, visibility, lobbyCode, hostName, maxPlayersStr, createdAtStr] = await Promise.all([
+        getLobbyData(lobbyId, 'mode'),
+        getLobbyData(lobbyId, 'visibility'),
+        getLobbyData(lobbyId, 'lobby_code'),
+        getLobbyData(lobbyId, 'host_name'),
+        getLobbyData(lobbyId, 'max_players'),
+        getLobbyData(lobbyId, 'created_at'),
+      ]);
+      // Skip lobbies lacking required metadata — they may be stale or from a different game layout.
+      if (!mode || !visibility || !lobbyCode) continue;
+      // friends_only lobbies excluded from browser: Steam handles that filter natively.
+      if (visibility === 'friends_only') continue;
+      const currentPlayers = await getLobbyMemberCount(lobbyId);
+      const maxPlayers = Number(maxPlayersStr ?? '4');
+      // Apply filter if provided.
+      if (filter?.mode && mode !== filter.mode) continue;
+      if (filter?.fullness === 'open' && currentPlayers >= maxPlayers) continue;
+      entries.push({
+        lobbyId,
+        hostName: hostName ?? 'Unknown',
+        mode: mode as MultiplayerMode,
+        visibility: visibility as LobbyVisibility,
+        currentPlayers,
+        maxPlayers,
+        createdAt: Number(createdAtStr ?? Date.now()),
+        source: 'steam',
+      });
+    }
+    return entries;
   },
 };

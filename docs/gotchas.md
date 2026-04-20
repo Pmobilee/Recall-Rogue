@@ -5003,3 +5003,22 @@ Additionally, there was no timeout on the `lan_start_server` Tauri command. A po
 **Fix:** Added `isManyPlayerMode` derived state (`currentLobby.mode === 'trivia_night' || currentLobby.maxPlayers > 2`). `MultiplayerHUD` is now gated on `!isManyPlayerMode`. For many-player modes, a `.roster-trigger-pill` button on the local HP bar in `CardCombatOverlay` opens `PlayerRosterPanel.svelte` — a scrollable overlay with HP/block/score/accuracy for each other player. Data flows from the existing `onPartnerStateUpdate` subscription into a new `partnerStates` state in `CardApp`.
 
 **Also (same commit):** `MultiplayerMenu` Create tab now shows a visibility picker (Public / Password / Friends Only) before lobby creation, matching the tri-state system already present in `MultiplayerLobby`. `onCreateLobby` prop signature changed from `(mode)` to `(mode, opts: { visibility, password? })`.
+
+### 2026-04-20 — Steam lobby discovery was entirely stubbed (silent empty browser + null code resolution)
+
+**What:** Steam-built players could not find each other's lobbies via the lobby browser or by invite code. The lobby browser grid always showed empty even when public Steam lobbies existed. Code-based joining logged a warning and returned null (matching nothing), so `joinLobby` either threw "Lobby not found" (web builds) or silently connected to a ghost channel (broadcast fallback).
+
+**Why:** Three pieces were missing:
+1. `steam_request_lobby_list` in `steam.rs` kicked off the Steamworks request but the callback just `println!`'d the count and discarded the lobby IDs — no state was stored for JS to read.
+2. `steamBackend.listPublicLobbies` in `multiplayerLobbyService.ts` was a V1 stub returning `[]` unconditionally with a "awaiting Phase 1 Rust binding" comment.
+3. `steamBackend.resolveByCode` just logged a warning and returned null with no attempt to scan lobby metadata.
+
+**Fix:**
+- `SteamState` gained a third `Arc<Mutex<Option<Vec<u64>>>>` slot: `pending_lobby_list`.
+- `steam_request_lobby_list` now stores the lobby IDs in that slot when the LobbyMatchList_t callback fires. An empty `Some(vec![])` is stored on error to distinguish "fired, no results" from "not yet fired".
+- New Tauri command `steam_get_lobby_list_result` drains the slot (one-shot semantics, returns `Option<Vec<String>>`). Registered in `main.rs`.
+- New `getSteamLobbyListResult(timeoutMs, intervalMs)` in `steamNetworkingService.ts` polls the slot with callback pumping, mirroring the `pollPendingResult` pattern.
+- `steamBackend.listPublicLobbies` now calls `requestSteamLobbyList` → polls `getSteamLobbyListResult` → reads `getLobbyData` + `getLobbyMemberCount` per lobby to build `LobbyBrowserEntry[]`. Skips lobbies with missing required metadata (stale). Excludes `friends_only` (Steam handles natively). Applies `filter.mode` and `filter.fullness` filters.
+- `steamBackend.resolveByCode` now does the same list request and scans `lobby_code` metadata per lobby.
+
+**Rule:** Every `pending_*` slot in `SteamState` follows the same one-shot Arc+Mutex pattern. When adding new async Steamworks operations, always add a corresponding `pending_` slot and drain command — never print-and-discard in the callback.

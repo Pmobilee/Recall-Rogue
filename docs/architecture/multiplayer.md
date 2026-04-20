@@ -232,19 +232,36 @@ The client routes discovery / create / join through a `lobbyBackend` abstraction
 | `webBackend` | Fastify REST + WebSocket | `GET /mp/lobbies` | Web / mobile builds |
 | `broadcastBackend` | BroadcastChannel + `localStorage` directory | `localStorage['rr-mp:directory']` | Dev two-tab mode |
 
-### Steam Backend — Lobby List Wrappers (Phase 3)
+### Steam Backend — Lobby List Wrappers (Phase 3 + 2026-04-20)
 
 **Source file:** `src/services/steamNetworkingService.ts`
-**Added:** 2026-04-11 — Phase 3 of the public/private lobby browsing feature
+**Added:** 2026-04-11 (Phase 3), updated 2026-04-20 (lobby list result polling wired)
 
-Two TypeScript wrappers bridge the Phase-1 Rust commands to the `steamBackend`. Both are guarded by `hasSteam` and return safe defaults on non-Steam platforms (browser, mobile):
+Three TypeScript wrappers bridge the Rust commands to the `steamBackend`. All are guarded by `isTauriRuntime()` and return safe defaults on non-Steam platforms (browser, mobile):
 
 | Function | Tauri command | Return | Off-Steam default | Purpose |
 |----------|---------------|--------|-------------------|---------|
-| `requestSteamLobbyList()` | `steam_request_lobby_list` | `Promise<boolean>` | `false` | Fire-and-forget kick; Steam callback delivers lobby IDs asynchronously. Callers pump `runSteamCallbacks` then query `getLobbyData` per lobby to build browser entries. Returns `true` if the IPC call was accepted. |
+| `requestSteamLobbyList()` | `steam_request_lobby_list` | `Promise<boolean>` | `false` | Fire-and-forget kick; stores result in `SteamState::pending_lobby_list` when LobbyMatchList_t fires. Returns `true` if IPC call accepted. |
+| `getSteamLobbyListResult(timeoutMs?, intervalMs?)` | `steam_get_lobby_list_result` | `Promise<string[] | null>` | `null` | Polls the pending slot with callback pumping. Returns lobby IDs when callback fires, `[]` when none matched, `null` on timeout. One-shot drain semantics. |
 | `getLobbyMemberCount(lobbyId)` | `steam_get_lobby_member_count` | `Promise<number>` | `0` | Read current member count for a lobby ID without joining — enables the "2/4" display in the browser grid. |
 
-`requestSteamLobbyList` is fire-and-forget: Steam's async callback mechanism delivers the actual list later. The `steamBackend` in `multiplayerLobbyService.ts` must pump `runSteamCallbacks` after calling this, then loop over returned lobby IDs via `getLobbyData` to construct `LobbyBrowserEntry` objects.
+### Steam Backend — Discovery Flow (2026-04-20)
+
+`steamBackend.listPublicLobbies` and `steamBackend.resolveByCode` are now fully wired (no longer stubs):
+
+**listPublicLobbies:**
+1. Call `requestSteamLobbyList()` — kicks off the async Steam request.
+2. Call `getSteamLobbyListResult(3000)` — pumps callbacks, waits up to 3 s for LobbyMatchList_t.
+3. For each returned lobby ID, call `getLobbyData` in parallel (mode, visibility, lobby_code, host_name, max_players, created_at).
+4. Skip lobbies missing required metadata. Skip `friends_only` (Steam filter handles natively).
+5. Call `getLobbyMemberCount` per lobby for the live `currentPlayers` count.
+6. Apply `filter.mode` and `filter.fullness === 'open'` if provided.
+7. Return `LobbyBrowserEntry[]` with `source: 'steam'`.
+
+**resolveByCode:**
+1. Same steps 1–2 as above.
+2. For each lobby ID, read `lobby_code` metadata.
+3. Return the first matching lobby ID, or `null` if none found.
 
 ### Steam Backend — Async-Callback Polling for createLobby / joinLobby (2026-04-20)
 

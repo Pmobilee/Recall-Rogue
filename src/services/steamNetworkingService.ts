@@ -14,6 +14,7 @@
  *   steam_leave_lobby         → leaveSteamLobby
  *   steam_get_lobby_members   → getLobbyMembers
  *   steam_request_lobby_list  → requestSteamLobbyList
+ *   steam_get_lobby_list_result  → getSteamLobbyListResult
  *   steam_get_lobby_member_count → getLobbyMemberCount
  *   steam_set_lobby_data      → setLobbyData
  *   steam_get_lobby_data      → getLobbyData
@@ -235,13 +236,10 @@ export async function getLobbyMembers(lobbyId: string): Promise<SteamLobbyMember
 /**
  * Request a list of public Steam lobbies for this app (async via Steam callback).
  *
- * This is a fire-and-forget kick. The actual lobby IDs arrive later; callers must
- * poll `runSteamCallbacks` after invoking this, then query individual lobbies via
- * `getLobbyData` to build browser entries.
- *
- * For V1 the Rust side does the request and prints the count to the console. Future
- * enhancement: add `steam_get_lobby_list_result` that reads a cached `Vec<String>`
- * back into JS so the browser doesn't re-request on every poll.
+ * This is a fire-and-forget kick. The actual lobby IDs arrive later via the
+ * Steamworks LobbyMatchList_t callback. Callers must pump `runSteamCallbacks` after
+ * invoking this and then call `getSteamLobbyListResult` to retrieve the IDs once
+ * the callback fires.
  *
  * Returns `false` on non-Steam platforms (browser/mobile) — caller should fall back
  * to the web or broadcast backend.
@@ -250,6 +248,36 @@ export async function requestSteamLobbyList(): Promise<boolean> {
   if (!isTauriRuntime()) return false;
   const result = await tauriInvoke<string>('steam_request_lobby_list');
   return result !== null;
+}
+
+/**
+ * Poll the Matchmaking callback slot for the most recent request_lobby_list result.
+ *
+ * Returns the list of 64-bit lobby IDs (decimal strings) once the LobbyMatchList_t
+ * callback fires, or null on timeout. Pumps `steam_run_callbacks` between polls so
+ * the callback can fire.
+ *
+ * Distinguishes two non-error states:
+ *  - null   = callback has not fired yet (timed out waiting)
+ *  - []     = callback fired, no lobbies matched (valid result, not an error)
+ *
+ * @param timeoutMs  Maximum milliseconds to wait for the callback (default 3000)
+ * @param intervalMs Polling interval in milliseconds (default 100)
+ */
+export async function getSteamLobbyListResult(
+  timeoutMs: number = 3000,
+  intervalMs: number = 100,
+): Promise<string[] | null> {
+  if (!isTauriRuntime()) return null;
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    await tauriInvoke('steam_run_callbacks');
+    const value = await tauriInvoke<string[] | null>('steam_get_lobby_list_result');
+    // value is non-null (including []) when the callback has fired.
+    if (value !== null && value !== undefined) return value;
+    await new Promise((r) => setTimeout(r, intervalMs));
+  }
+  return null;
 }
 
 /**
