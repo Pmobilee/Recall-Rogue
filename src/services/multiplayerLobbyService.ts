@@ -46,6 +46,8 @@ import {
   leaveSteamLobby,
   getLastSteamInvokeError,
   requestSteamLobbyData,
+  getLobbyMembers,
+  getLocalSteamId,
 } from './steamNetworkingService';
 import type { SteamLobbyType } from './steamNetworkingService';
 
@@ -134,6 +136,14 @@ let _handlersAttached = false;
  */
 let _peerMonitorTeardown: (() => void) | null = null;
 
+/**
+ * Host-side Steam peer-detection poll cancellation handle. Set in createLobby()
+ * when Steam is the active backend (host has no remote peer until someone
+ * joins). Cleared when the peer is found (transport connects) or when
+ * leaveLobby() runs while still waiting.
+ */
+let _steamHostPeerPollCancel: (() => void) | null = null;
+
 // ── L2: Lobby code collision registry ────────────────────────────────────────
 /**
  * Recently-generated lobby codes — prevents accidental collisions during a session.
@@ -205,6 +215,67 @@ async function hashPassword(plaintext: string): Promise<string> {
   const enc = new TextEncoder().encode(plaintext);
   const buf = await crypto.subtle.digest('SHA-256', enc);
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+/**
+ * For the Steam P2P transport, resolve the remote peer's 64-bit Steam ID by
+ * reading the lobby's member list and filtering out the local user.
+ *
+ * Returns `null` if Steam is unavailable, the members call fails, or no remote
+ * peer is present in the lobby yet (e.g., host just created it).
+ *
+ * Background: Steam's P2P messaging (SteamNetworkingMessages) addresses peers
+ * by their individual SteamID, NOT by lobby ID. Passing the lobby ID to
+ * `AcceptSessionWithUser` / `SendMessageToUser` causes ConnectFailed because
+ * there's no peer at that ID — the lobby is a chat room, not an endpoint.
+ */
+async function resolveSteamPeerId(lobbyId: string): Promise<string | null> {
+  try {
+    const [localId, members] = await Promise.all([
+      getLocalSteamId(),
+      getLobbyMembers(lobbyId),
+    ]);
+    if (!localId) return null;
+    const peer = members.find(m => m.steamId !== localId);
+    return peer?.steamId ?? null;
+  } catch (e) {
+    console.warn('[multiplayerLobbyService] resolveSteamPeerId failed:', e);
+    return null;
+  }
+}
+
+/**
+ * Poll the lobby's member list every 2s looking for a remote peer to connect to.
+ *
+ * Used on the host side after `createLobby` since no peer exists at creation
+ * time. When the first remote member appears, `onFound` fires once with their
+ * Steam ID and the poll stops.
+ *
+ * Returns a cancellation function — call it from `leaveLobby` to stop polling
+ * if the host leaves before anyone joins.
+ */
+function startSteamHostPeerPoll(
+  lobbyId: string,
+  onFound: (peerSteamId: string) => void,
+): () => void {
+  let cancelled = false;
+  let timer: ReturnType<typeof setTimeout> | null = null;
+  const tick = async (): Promise<void> => {
+    if (cancelled) return;
+    const peer = await resolveSteamPeerId(lobbyId);
+    if (cancelled) return;
+    if (peer) {
+      console.log('[multiplayerLobbyService] host detected peer joined:', peer);
+      onFound(peer);
+      return; // one-shot
+    }
+    timer = setTimeout(() => void tick(), 2000);
+  };
+  timer = setTimeout(() => void tick(), 2000);
+  return () => {
+    cancelled = true;
+    if (timer) clearTimeout(timer);
+  };
 }
 
 // ── Lobby Lifecycle ──────────────────────────────────────────────────────────
@@ -281,11 +352,26 @@ export async function createLobby(
   const connectOpts: ConnectOpts | undefined = result.joinToken
     ? { lobbyId: result.lobbyId, joinToken: result.joinToken }
     : undefined;
-  transport.connect(
-    broadcast ? (result.lobbyCode ?? result.lobbyId) : result.lobbyId,
-    playerId,
-    connectOpts,
-  );
+
+  // Steam P2P addresses peers by individual SteamID — the host has no remote
+  // peer at creation time, so defer transport.connect and start a poll that
+  // waits for someone to join. Non-Steam transports (broadcast / web) address
+  // by lobby ID / code and can connect immediately.
+  const useSteamHostDefer = hasSteam && !broadcast && !isLanMode();
+  if (useSteamHostDefer) {
+    console.log('[multiplayerLobbyService] host waiting for Steam peer to join lobby', result.lobbyId);
+    _steamHostPeerPollCancel = startSteamHostPeerPoll(result.lobbyId, (peerSteamId) => {
+      console.log('[multiplayerLobbyService] host connecting transport to peer', peerSteamId);
+      transport.connect(peerSteamId, playerId, connectOpts);
+      _steamHostPeerPollCancel = null;
+    });
+  } else {
+    transport.connect(
+      broadcast ? (result.lobbyCode ?? result.lobbyId) : result.lobbyId,
+      playerId,
+      connectOpts,
+    );
+  }
   // #76: Start peer presence monitor after transport is connected.
   _peerMonitorTeardown = initPeerPresenceMonitor(
     playerId,
@@ -362,11 +448,18 @@ export async function joinLobby(
   const connectOpts: ConnectOpts | undefined = result.joinToken
     ? { lobbyId: _currentLobby.lobbyId, joinToken: result.joinToken }
     : undefined;
-  transport.connect(
-    broadcast ? lobbyCode : (_currentLobby.lobbyId || lobbyCode),
-    playerId,
-    connectOpts,
-  );
+
+  // For Steam P2P, the transport needs the HOST's Steam ID — NOT the lobby ID.
+  // Read the lobby's member list (which now includes us + the host) and filter
+  // self out. On non-Steam transports, fall back to lobby ID / code as before.
+  const useSteamPeer = hasSteam && !broadcast && !isLanMode() && _currentLobby.lobbyId;
+  const steamPeerId = useSteamPeer ? await resolveSteamPeerId(_currentLobby.lobbyId) : null;
+  const transportTarget = steamPeerId
+    ?? (broadcast ? lobbyCode : (_currentLobby.lobbyId || lobbyCode));
+  if (useSteamPeer && !steamPeerId) {
+    console.warn('[multiplayerLobbyService] no Steam peer found in lobby members — falling back to lobby ID (may fail P2P)');
+  }
+  transport.connect(transportTarget, playerId, connectOpts);
   transport.send('mp:lobby:join', { playerId, displayName, lobbyCode });
   // #76: Start peer presence monitor after transport is connected.
   _peerMonitorTeardown = initPeerPresenceMonitor(
@@ -422,11 +515,17 @@ export async function joinLobbyById(
   const connectOpts: ConnectOpts | undefined = result.joinToken
     ? { lobbyId: result.lobbyId, joinToken: result.joinToken }
     : undefined;
-  transport.connect(
-    broadcast ? (result.lobbyCode ?? result.lobbyId) : result.lobbyId,
-    playerId,
-    connectOpts,
-  );
+
+  // Steam P2P needs the HOST's Steam ID as the peer — not the lobby ID. Filter
+  // the local Steam ID out of the lobby's members to find the host.
+  const useSteamPeer = hasSteam && !broadcast && !isLanMode();
+  const steamPeerId = useSteamPeer ? await resolveSteamPeerId(result.lobbyId) : null;
+  const transportTarget = steamPeerId
+    ?? (broadcast ? (result.lobbyCode ?? result.lobbyId) : result.lobbyId);
+  if (useSteamPeer && !steamPeerId) {
+    console.warn('[multiplayerLobbyService] no Steam peer found in lobby members — falling back to lobby ID (may fail P2P)');
+  }
+  transport.connect(transportTarget, playerId, connectOpts);
   transport.send('mp:lobby:join', { playerId, displayName });
   // #76: Start peer presence monitor after transport is connected.
   _peerMonitorTeardown = initPeerPresenceMonitor(
@@ -517,6 +616,11 @@ export function leaveLobby(): void {
   if (_peerMonitorTeardown !== null) {
     _peerMonitorTeardown();
     _peerMonitorTeardown = null;
+  }
+  // Stop Steam host peer-detection poll if we leave before a peer connects.
+  if (_steamHostPeerPollCancel !== null) {
+    _steamHostPeerPollCancel();
+    _steamHostPeerPollCancel = null;
   }
 
   _handlersAttached = false;

@@ -340,6 +340,26 @@ pub fn steam_overlay_status(state: State<SteamState>) -> Result<SteamOverlayStat
     })
 }
 
+/// Return the local user's 64-bit Steam ID as a decimal string.
+///
+/// Used by the multiplayer layer to filter the local player out of
+/// `steam_get_lobby_members` results so we can find the REMOTE peer's Steam ID —
+/// Steam P2P messaging needs the remote user's SteamID as the peer, not the
+/// lobby ID.
+///
+/// Returns `None` when Steam is unavailable.
+#[tauri::command]
+pub fn steam_get_local_steam_id(
+    state: State<SteamState>,
+) -> Result<Option<String>, String> {
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(client) = lock.as_ref() {
+        Ok(Some(client.user().steam_id().raw().to_string()))
+    } else {
+        Ok(None)
+    }
+}
+
 // ── Achievements ──────────────────────────────────────────────────────────────
 
 /// Unlock a Steam achievement by its Steamworks API name (e.g., "ACH_FIRST_WIN").

@@ -50,6 +50,8 @@ fn main() {
             steam::steam_force_leave_active_lobby,
             // D1: Overlay diagnostic — returns overlay_enabled / launched_via_steam / steam_initialized
             steam::steam_overlay_status,
+            // Local Steam ID — used by MP to filter self from lobby members when finding peer for P2P
+            steam::steam_get_local_steam_id,
             // File system save (filesave.rs)
             filesave::fs_get_save_dir,
             filesave::fs_write_save,

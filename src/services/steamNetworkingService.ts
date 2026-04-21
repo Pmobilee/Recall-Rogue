@@ -102,6 +102,8 @@ export interface SteamCommandArgs {
   steam_check_lobby_membership: { lobbyId: string; steamId: string };
   /** C2: Get the local user's Steam persona name. Synchronous (no callback needed). */
   steam_get_persona_name: Record<string, never>;
+  /** Get the local user's 64-bit Steam ID as a decimal string. Used to find the remote peer in lobby_members. */
+  steam_get_local_steam_id: Record<string, never>;
   /** Internal polling commands — no args, accessed via pollPendingResult / pollJoinResult. */
   steam_get_pending_lobby_id: Record<string, never>;
   steam_get_pending_join_lobby_id: Record<string, never>;
@@ -137,6 +139,8 @@ export interface SteamCommandReturn {
   steam_check_lobby_membership: boolean;
   /** C2: Returns the Steam persona name string, or null if Steam unavailable. */
   steam_get_persona_name: string | null;
+  /** Local user's 64-bit Steam ID as decimal string, or null if Steam unavailable. */
+  steam_get_local_steam_id: string | null;
   steam_get_pending_lobby_id: string | null;
   steam_get_pending_join_lobby_id: string | null;
   /** A3: string when a join error is pending; null when no error (or error already consumed). */
@@ -508,6 +512,21 @@ export async function getLobbyData(lobbyId: string, key: string): Promise<string
 export async function getLocalPersonaName(): Promise<string | null> {
   if (!isTauriRuntime()) return null;
   const result = await invokeSteam('steam_get_persona_name');
+  return result ?? null;
+}
+
+/**
+ * Return the local user's 64-bit Steam ID as a decimal string, or null if Steam
+ * is unavailable (non-Tauri runtime, Steam client not running, etc.).
+ *
+ * Used by the multiplayer lobby layer to filter the local player out of
+ * `getLobbyMembers` results so the remaining entry is the remote peer's Steam
+ * ID — required for Steam P2P messaging, which addresses users by SteamID
+ * rather than lobby ID.
+ */
+export async function getLocalSteamId(): Promise<string | null> {
+  if (!isTauriRuntime()) return null;
+  const result = await invokeSteam('steam_get_local_steam_id');
   return result ?? null;
 }
 
