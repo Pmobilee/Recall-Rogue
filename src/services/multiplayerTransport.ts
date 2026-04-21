@@ -103,6 +103,10 @@ export type MultiplayerMessageType =
   // Workshop deck check (H16)
   | 'mp:workshop:deck_check'
   | 'mp:workshop:deck_check_ack'
+  // Host moderation (L4)
+  | 'mp:lobby:kick'
+  | 'mp:lobby:vote_kick_start'
+  | 'mp:lobby:vote_kick_vote'
   // System
   | 'mp:ping'
   | 'mp:pong'
@@ -114,6 +118,53 @@ export interface MultiplayerMessage {
   payload: Record<string, unknown>;
   timestamp: number;
   senderId: string;
+}
+
+// ── L4: Host-moderation payload types ────────────────────────────────────────
+
+/**
+ * Payload for `mp:lobby:kick`.
+ *
+ * Broadcast by the host to remove a specific player from the lobby.
+ * The targeted player calls `leaveLobby()` on receipt if `targetPlayerId`
+ * matches their own local player ID. Non-targeted peers update their local
+ * lobby state to remove the player.
+ *
+ * Security: receivers MUST verify `issuedBy === host_player_id` before
+ * acting — spoofed kicks from non-host peers are silently rejected.
+ *
+ * UI is post-MVP. See docs/mechanics/multiplayer.md "Host Moderation".
+ */
+export interface KickPayload {
+  /** Steam ID / player UUID of the player being removed. */
+  targetPlayerId: string;
+  /** Human-readable reason shown to the kicked player (optional). */
+  reason?: string;
+  /** Player ID of the host who issued the kick — used for spoof-rejection. */
+  issuedBy: string;
+}
+
+/**
+ * Payload for `mp:lobby:vote_kick_start`.
+ *
+ * Stub — reserved for future vote-to-kick feature. No logic is wired.
+ * A host or eligible player broadcasts this to open a vote against a target.
+ */
+export interface VoteKickStartPayload {
+  targetPlayerId: string;
+  initiatedBy: string;
+}
+
+/**
+ * Payload for `mp:lobby:vote_kick_vote`.
+ *
+ * Stub — reserved for future vote-to-kick feature. No logic is wired.
+ * Each eligible player casts their vote after a `vote_kick_start`.
+ */
+export interface VoteKickVotePayload {
+  targetPlayerId: string;
+  vote: 'yes' | 'no';
+  voterId: string;
 }
 
 // ── Transport State ───────────────────────────────────────────────────────────

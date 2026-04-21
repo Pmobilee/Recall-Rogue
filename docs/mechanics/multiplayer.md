@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-20 (#79/#80/#81 wave-5 fixes) — Previous: #71/#73/#74/#75/#76 wave-4. Latest: #79 initRaceMode wired into gameFlowController, #80 real opponent Elo rating from lobby, #81 workshop deck gate wired in MultiplayerLobby.svelte. See changelog section below.
+> **Last verified:** 2026-04-20 (#79/#80/#81 wave-5 fixes + M23 typed IPC + L4 kick scaffolding) — Previous: #71/#73/#74/#75/#76 wave-4. Latest: #79 initRaceMode wired into gameFlowController, #80 real opponent Elo rating from lobby, #81 workshop deck gate wired in MultiplayerLobby.svelte. M23: typed invokeSteam IPC wrapper. L4: kickPlayer + vote-kick stubs + onLobbyError callback. See changelog section below.
 
 ## Modes
 
@@ -1487,3 +1487,102 @@ UI consumption (showing a reconnecting badge) is a downstream task for `ui-agent
 | `mp:lobby:start_ack` | guest → host | Guest acknowledges receipt of seed in `mp:lobby:start` (H5) |
 | `mp:lobby:peer_left` | transport → lobby service | Peer connection dropped; starts reconnect grace timer (H10) |
 | `mp:lobby:peer_rejoined` | transport → lobby service | Peer reconnected within grace window (H10) |
+
+## M23 — Typed IPC contract (2026-04-20)
+
+`steamNetworkingService.ts` now exposes a compile-time-safe IPC wrapper that eliminates the silent arg-mismatch failure mode (camelCase vs. snake_case keys) discovered in `docs/gotchas.md 2026-04-20`.
+
+### SteamCommandArgs interface
+
+Maps every known Tauri command to its expected argument shape. All keys are camelCase — Tauri v2 translates automatically to snake_case before dispatching to Rust.
+
+```typescript
+interface SteamCommandArgs {
+  steam_create_lobby:        { lobbyType: SteamLobbyType; maxMembers: number };
+  steam_join_lobby:          { lobbyId: string };
+  steam_leave_lobby:         { lobbyId: string };
+  steam_set_lobby_data:      { lobbyId: string; key: string; value: string };
+  steam_get_lobby_data:      { lobbyId: string; key: string };
+  steam_get_lobby_members:   { lobbyId: string };
+  steam_send_p2p_message:    { steamId: string; data: string; channel?: number };
+  steam_accept_p2p_session:  { steamId: string };
+  steam_request_lobby_list:  Record<string, never>;
+  steam_get_lobby_member_count: { lobbyId: string };
+  steam_force_leave_active_lobby: Record<string, never>;
+  steam_check_lobby_membership:  { lobbyId: string; steamId: string };
+  // … plus polling/internal commands
+}
+```
+
+A matching `SteamCommandReturn` interface maps each command to its return type.
+
+### invokeSteam\<K\>(cmd, args?)
+
+```typescript
+export async function invokeSteam<K extends keyof SteamCommandArgs>(
+  cmd: K,
+  args?: SteamCommandArgs[K],
+): Promise<SteamCommandReturn[K] | null>
+```
+
+- TypeScript will error at compile time if args don't match the expected shape for `cmd`.
+- All internal call sites in `steamNetworkingService.ts` (formerly `tauriInvoke(...)`) now use `invokeSteam(...)`.
+- `tauriInvoke` remains as the internal implementation but is no longer the public API.
+
+### Adding new Steam commands
+
+1. Add an entry to `SteamCommandArgs` with the command name and camelCase arg shape.
+2. Add an entry to `SteamCommandReturn` with the expected return type.
+3. Call via `invokeSteam('steam_new_command', { ... })`.
+
+---
+
+## L4 — Host Moderation / Kick scaffolding (2026-04-20)
+
+Reserves the transport infrastructure for host-initiated player removal. **UI is post-MVP** — the service primitives are shipped so future UI work can light them up without touching the transport or lobby service.
+
+### New message types
+
+| Message | Payload | Direction | Purpose |
+|---------|---------|-----------|---------|
+| `mp:lobby:kick` | `{ targetPlayerId, reason?, issuedBy }` | host → all peers | Host removes a player. Receivers must verify `issuedBy === hostId`. |
+| `mp:lobby:vote_kick_start` | `{ targetPlayerId, initiatedBy }` | TBD | Stub — future vote-to-kick open. |
+| `mp:lobby:vote_kick_vote` | `{ targetPlayerId, vote, voterId }` | TBD | Stub — future per-player vote. |
+
+### Payload interfaces (multiplayerTransport.ts)
+
+`KickPayload`, `VoteKickStartPayload`, `VoteKickVotePayload` — exported for type-safe message construction.
+
+### kickPlayer(targetPlayerId, reason?) — multiplayerLobbyService.ts
+
+Host-only. Throws if:
+- Not in a lobby (`[kickPlayer] Not in a lobby.`)
+- Local player is not host (`[kickPlayer] Only the host can kick players.`)
+- Target is self (`[kickPlayer] Host cannot kick themselves.`)
+
+Behavior on success:
+1. Broadcasts `mp:lobby:kick` with `issuedBy = _localPlayerId`.
+2. Removes the player from local lobby state immediately.
+3. Cancels any pending reconnect grace timer for that player.
+4. Calls `notifyLobbyUpdate()`.
+
+### onLobbyError(cb) — multiplayerLobbyService.ts
+
+Registers a callback that fires when the **local** player is kicked. The error key is currently only `'kicked_by_host'`. Cleared in `leaveLobby()`.
+
+```typescript
+const unsub = onLobbyError((error) => {
+  if (error === 'kicked_by_host') showKickedDialog();
+});
+```
+
+### Receiver logic (setupMessageHandlers)
+
+On `mp:lobby:kick`:
+1. **Spoof guard:** if `issuedBy !== _currentLobby.hostId` → log warning and return.
+2. **Self-targeted:** if `targetPlayerId === _localPlayerId` → fire `_onLobbyError('kicked_by_host')`, call `leaveLobby()`.
+3. **Other player targeted:** remove from `_currentLobby.players`, cancel reconnect timer, call `notifyLobbyUpdate()`.
+
+### vote_kick_start / vote_kick_vote
+
+Stubs only. Message types are in the union and payload interfaces are defined, but no logic is wired. Reserved for a future vote-to-kick feature (requires UI, quorum logic, and timer state).

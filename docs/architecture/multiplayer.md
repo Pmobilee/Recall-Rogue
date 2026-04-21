@@ -1,13 +1,13 @@
 # Multiplayer Architecture
 
-> **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
-> **Last verified:** 2026-04-20 — Visibility picker on create screen + PlayerRosterPanel for 3+ player modes
+> **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/services/multiplayerElo.ts`, `src/services/multiplayerWorkshopService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
+> **Last verified:** 2026-04-21 — Hardening wave (co-op barrier, duel protocol, reconnect/presence, ranked Elo, workshop gate, seed-ACK)
 
 ---
 
 ## E2E Verification Status (2026-04-13)
 
-All five multiplayer modes were tested end-to-end in batch MP-20260413-003941 using two real Docker containers connected via Fastify `webBackend`. No bots were involved — both containers were full WebSocket clients.
+All five multiplayer modes tested end-to-end in batch MP-20260413-003941 using two real Docker containers connected via Fastify `webBackend`. Both containers were full WebSocket clients — no bots.
 
 | Mode | Result | Notes |
 |------|--------|-------|
@@ -21,27 +21,20 @@ All five multiplayer modes were tested end-to-end in batch MP-20260413-003941 us
 
 ---
 
-## Coop Mode — Shared Enemy (Authoritative HP)
+## Co-op Mode — Shared Enemy (Authoritative HP)
 
-### Overview
-
-In co-op mode, both players fight **one shared enemy** with scaled HP. The host is authoritative — all enemy HP changes are merged and broadcast by the host at end-of-turn. Each client applies damage optimistically during their turn; at turn end, the host reconciles and both clients converge to the same state.
+Both players fight **one shared enemy** with scaled HP. The host is authoritative — HP changes are merged and broadcast at end-of-turn. Each client applies damage optimistically during their turn; the host reconciles and both clients converge.
 
 ### HP Scaling
 
-`getCoopHpMultiplier(playerCount)` in `enemyManager.ts` applies a sublinear curve:
-- 1 player: 1.0× (solo)
-- 2 players: 1.6×
-- 3 players: 2.2×
-- 4 players: 2.3× (capped)
+`getCoopHpMultiplier(playerCount)` in `enemyManager.ts` — sublinear curve:
+- 1 player: 1.0× / 2 players: 1.6× / 3 players: 2.2× / 4 players: 2.3× (capped)
 
 Applied once at `createEnemy()`. Do not apply twice.
 
 ### Canary System — Disabled in Coop
 
-`canaryEnemyDamageMultiplier` is forced to `1.0` in coop mode (via a gate in `encounterBridge.ts`). The shared-enemy model makes per-player adaptive assist meaningless. Solo and race modes retain normal canary behavior.
-
-`canary.enemyHpMultiplier` is also excluded from `enemyHpMultiplier` computation in coop — the coop HP scaling is handled entirely by `getCoopHpMultiplier()`.
+`canaryEnemyDamageMultiplier` forced to `1.0` in co-op (gate in `encounterBridge.ts`). `canary.enemyHpMultiplier` excluded from `enemyHpMultiplier` computation — co-op HP scaling handled entirely by `getCoopHpMultiplier()`.
 
 ---
 
@@ -54,14 +47,14 @@ createEnemy(template, floor, opts)
 broadcastSharedEnemyState(snapshot)  →  awaitCoopEnemyReconcile()
                                         hydrateEnemyFromSnapshot(enemy, snapshot)
 activeTurnState.set(...)                activeTurnState.set(...)
-[combat visible to both]                [combat visible to both]
+[combat visible to both]
 ```
 
 Both clients capture `_coopPreTurnEnemySnapshot = snapshotEnemy(enemy)` at encounter start. This is the baseline for delta computation on turn 1.
 
 ---
 
-## Turn Flow — Optimistic Local + End-of-Turn Reconciliation
+## Turn Flow — Co-op Barrier Checkpoint
 
 ```
 Both clients (simultaneous turns)
@@ -70,7 +63,9 @@ Both clients (simultaneous turns)
 
 Player ends turn → handleEndTurn()
    Compute delta: { damageDealt, blockDealt, statusEffectsAdded }
-   awaitCoopTurnEndWithDelta(delta)  ← barrier: waits for all players
+   awaitCoopTurnEndWithDelta(delta)  ← BARRIER: waits for ALL players
+                                        45s hard timeout; resolves 'cancelled' on
+                                        transport disconnect or peer leaving lobby
 
 [Barrier releases when all players have signaled]
 
@@ -88,12 +83,10 @@ broadcastSharedEnemyState(snapshot)  →  hydrateEnemyFromSnapshot(enemy, snapsh
 
 ### Delta Computation
 
-`EnemyTurnDelta` captures what one player did to the enemy during their turn:
-- `damageDealt` = `preTurnSnapshot.currentHP - enemy.currentHP` (after card plays)
-- `blockDealt` = `preTurnSnapshot.block - enemy.block` (stripped block)
-- `statusEffectsAdded` = status effects not present in the pre-turn snapshot
-
-The pre-turn snapshot is stored in `_coopPreTurnEnemySnapshot` (module-level in `encounterBridge.ts`), captured at encounter start and updated after each reconciliation.
+`EnemyTurnDelta` fields:
+- `damageDealt` = `preTurnSnapshot.currentHP - enemy.currentHP`
+- `blockDealt` = `preTurnSnapshot.block - enemy.block`
+- `statusEffectsAdded` = status effects not present in pre-turn snapshot
 
 ### Merge Function
 
@@ -101,9 +94,197 @@ The pre-turn snapshot is stored in `_coopPreTurnEnemySnapshot` (module-level in 
 1. Sorts deltas by `playerId` for deterministic order
 2. Applies `blockDealt` to strip block
 3. Applies `damageDealt` to HP (clamped at 0)
-4. Merges `statusEffectsAdded` (sums magnitudes for duplicate types)
+4. Merges `statusEffectsAdded` (sums magnitudes for duplicates)
 5. Checks phase transition
-6. Returns a new `SharedEnemySnapshot` without mutating the input
+6. Returns a new `SharedEnemySnapshot` without mutating input
+
+---
+
+## Knowledge Duel Protocol
+
+**Source file:** `src/services/multiplayerGameService.ts`
+
+Both players fight a shared enemy simultaneously. The host is authoritative for enemy state; damage is attributed per player.
+
+### Setup
+
+```typescript
+// Host calls once per encounter
+hostCreateSharedEnemy(templateId: string, floor: number, playerCount: number): void
+// → creates enemy via enemyManager.createEnemy, broadcasts mp:duel:enemy_state
+```
+
+### Turn Cycle
+
+1. Host sends `mp:duel:turn_start { turnNumber }` — both players begin playing cards independently.
+2. Each player submits via `submitDuelTurnAction(action: DuelTurnAction)`:
+   ```typescript
+   interface DuelTurnAction {
+     playerId: string;
+     damageDealt: number;   // clamped to Math.max(0, ...) on receive (M10)
+     blockGained: number;   // clamped to Math.max(0, ...) on receive (M10)
+     cardId: string;
+   }
+   ```
+3. Host collects both actions; `hostResolveTurn(actions[])` fires when the second arrives.
+4. `hostResolveTurn()` — host-authoritative resolution:
+   - Applies combined damage to shared enemy HP
+   - Rotates target (round-robin between players for enemy attacks)
+   - Broadcasts `mp:duel:turn_resolve` with full state delta + per-player damage attribution
+   - If enemy HP ≤ 0 or either player HP ≤ 0: broadcasts `mp:duel:end`
+5. Non-host applies received resolution via `applyDuelTurnResolution()`.
+
+### Both-Defeated Outcome
+
+When both players reach 0 HP in the same turn resolution:
+- `DuelTurnResolution.winnerId = null`
+- `DuelTurnResolution.reason = 'both_defeated'`
+- Result consumers must treat `null` winnerId as a tie (no Elo delta when ratings are equal).
+
+### Duel vs. Co-op Differences
+
+| Aspect | Knowledge Duel | Co-op |
+|--------|---------------|-------|
+| Turn structure | Simultaneous submission | Simultaneous play + barrier |
+| Reconciliation | Full `DuelTurnAction` per player | Delta-based merge |
+| Enemy attacks | Round-robin target rotation | All players take full damage |
+
+---
+
+## Reconnect + Presence
+
+**Source files:** `src/services/multiplayerTransport.ts`, `src/services/multiplayerLobbyService.ts`
+
+### Peer Presence Monitor
+
+`initPeerPresenceMonitor(localId, getPeerIds, transport)` — called after lobby join on both host and non-host.
+
+- Every **15s**: sends `mp:ping` to all known peers.
+- Each peer replies with `mp:pong` (wired automatically by `initPeerPresenceMonitor`'s handler).
+- If no `mp:pong` received within **30s** of the last ping: emits `mp:lobby:peer_left { playerId }` locally.
+
+The 30s pong timeout is intentionally > 15s interval to allow one missed pong before firing.
+
+### Lobby-Service Grace Period (H10)
+
+When `mp:lobby:peer_left` fires, `multiplayerLobbyService.ts` marks the player as `connectionState: 'reconnecting'` rather than removing them immediately. A **60-second grace timer** starts. If the player sends `mp:lobby:peer_rejoined` within the window, `connectionState` resets to `'connected'`. If the timer expires and `connectionState` is still `'reconnecting'`, the player is removed from the lobby.
+
+### Co-op Barrier — Disconnect Handling (C3)
+
+`awaitCoopTurnEndWithDelta(delta)` also watches `_currentLobby.players.length`. If it drops below the expected count mid-barrier, the barrier resolves `'cancelled'` immediately. The **45s hard timeout** is a separate backstop for cases where the disconnect is not signaled via lobby state.
+
+### Steam P2P Session Recovery (H9)
+
+After a network interruption on Steam P2P, use `reestablishSteamP2PSession(transport, lobbyId, peerSteamId, localSteamId)` in `multiplayerTransport.ts`. This:
+1. Calls `steam_accept_p2p_session` on the peer's Steam ID.
+2. Verifies the peer is still in the lobby before attempting.
+3. Returns `false` (logs warn) if the peer has left or if IPC fails.
+
+---
+
+## Ranked Mode + Elo
+
+**Source file:** `src/services/multiplayerElo.ts`
+
+### Constants
+
+| Constant | Value | Notes |
+|----------|-------|-------|
+| `DEFAULT_RATING` | 1500 | Starting rating for all new profiles |
+| `K_FACTOR` | 32 | Fixed for v1; differs from `eloMatchmakingService.ts` (K=32/16 split) |
+
+### Persistence
+
+- `PlayerProfile.multiplayerRating?: number` — stored and loaded via `profileService`.
+- `LobbyPlayer.multiplayerRating?: number` — broadcast in lobby player records so each player knows the opponent's rating at match end.
+- `HouseRules.isRanked: boolean` — host-only toggle; default `false`.
+
+### Application
+
+`applyEloResult(localRating, oppRating, outcome)` fires at:
+- **Race end** — inside `_tryEmitRaceResults()` when `lobby.isRanked === true`.
+- **Duel end** — in `hostResolveTurn()` (host) and on `mp:duel:end` receipt (non-host).
+
+Opponent rating is read from `lobby.players.find(p => p.id === opponentId)?.multiplayerRating ?? 1500` — graceful fallback when the rating is absent.
+
+**Tie behavior:** When both players have identical ratings, a tie produces 0 Elo delta. At a skill gap, the winning underdog gains `K * (1 - expected)` and the losing favorite loses the mirror.
+
+---
+
+## Workshop Deck Gate
+
+**Source file:** `src/services/multiplayerWorkshopService.ts`
+
+Before a match starts with a Workshop deck, the host verifies all players have the deck installed.
+
+1. Host sends `mp:workshop:deck_check { workshopItemId, requestId }` to all peers.
+2. Each non-host client responds with `mp:workshop:deck_check_ack { requestId, playerId, installed: boolean }`.
+3. Host pre-populates its own entry as `installed: true` (never sends to itself).
+4. If any player responds `installed: false`, the host can block game start and prompt the missing player.
+
+The `requestId` is a UUID per check round — prevents stale ACKs from a prior check resolving a new one.
+
+---
+
+## Messages
+
+### Co-op Messages
+
+| Message | Sender | Payload | Purpose |
+|---------|--------|---------|---------|
+| `mp:coop:enemy_state` | Host | `SharedEnemySnapshot` | Initial anchor + authoritative state after each turn merge |
+| `mp:coop:turn_end_with_delta` | Any client | `{ playerId, delta: EnemyTurnDelta }` | Per-player turn-end signal with damage delta |
+| `mp:coop:turn_end` | Any client | `{ playerId }` | Legacy barrier signal (still active, used internally) |
+| `mp:coop:turn_end_cancel` | Any client | `{ playerId }` | Cancel a pending turn-end signal |
+| `mp:coop:partner_state` | Any client | `PartnerState` | Partner HP/block/score for HUD after enemy phase |
+| `mp:coop:player_died` | Any client | `{ playerId }` | Broadcast when a player's HP reaches 0 mid-encounter |
+
+### Duel Messages
+
+| Message | Sender | Payload | Purpose |
+|---------|--------|---------|---------|
+| `mp:duel:turn_start` | Host | `{ turnNumber }` | Begin new turn; both players start playing |
+| `mp:duel:cards_played` | Any client | `DuelTurnAction` | Submit turn action (damage + block); host resolves when both arrive |
+| `mp:duel:turn_resolve` | Host | `DuelTurnResolution` | Authoritative state delta for non-host |
+| `mp:duel:enemy_state` | Host | `SharedEnemySnapshot` | Enemy state broadcast after resolution |
+| `mp:duel:end` | Host | `DuelTurnResolution` | Match over (enemy defeated, player defeated, or both_defeated) |
+
+### Lobby + Presence Messages
+
+| Message | Sender | Payload | Purpose |
+|---------|--------|---------|---------|
+| `mp:lobby:peer_left` | Transport / local | `{ playerId }` | Peer pong timeout or transport disconnect |
+| `mp:lobby:peer_rejoined` | Transport | `{ playerId }` | Peer reconnected within grace window |
+| `mp:lobby:start_ack` | Non-host | `{ playerId }` | Guest ACKs `mp:lobby:start` seed receipt |
+
+### Workshop Messages
+
+| Message | Sender | Payload | Purpose |
+|---------|--------|---------|---------|
+| `mp:workshop:deck_check` | Host | `{ workshopItemId, requestId }` | Ask all clients if Workshop deck is installed |
+| `mp:workshop:deck_check_ack` | Non-host | `{ requestId, playerId, installed }` | Client responds with install status |
+
+### Lobby Message Type Mapping (gotcha)
+
+| Direction | Message type | Notes |
+|-----------|-------------|-------|
+| Client → Server (join intent) | `mp:lobby:join` | Sent when client initiates a join |
+| Server → All (broadcast) | `mp:lobby:player_joined` | What server broadcasts on successful join |
+
+Confusing these two causes the host's player list to never update. See `docs/gotchas.md` 2026-04-13.
+
+---
+
+## Lobby Start — Seed-ACK Handshake (H5)
+
+When the host clicks Start, `multiplayerLobbyService.ts` does not fire `onGameStart` immediately. Instead:
+
+1. Host sends `mp:lobby:start` with the shared seed.
+2. Each non-host guest ACKs with `mp:lobby:start_ack { playerId }`.
+3. Host retries `mp:lobby:start` every **750ms** for up to **3s** for any guest that hasn't ACKed.
+4. After 3s, `onGameStart` fires regardless (logs a warning for any remaining unACKed guests).
+
+This ensures all clients have received and processed the seed before the host's `onGameStart` callback triggers match initialization.
 
 ---
 
@@ -113,12 +294,8 @@ The pre-turn snapshot is stored in `_coopPreTurnEnemySnapshot` (module-level in 
 // src/data/multiplayerTypes.ts
 
 interface SharedEnemySnapshot {
-  currentHP: number
-  maxHP: number
-  block: number
-  phase: 1 | 2
-  nextIntent: EnemyIntent
-  statusEffects: StatusEffect[]
+  currentHP: number; maxHP: number; block: number
+  phase: 1 | 2; nextIntent: EnemyIntent; statusEffects: StatusEffect[]
 }
 
 interface EnemyTurnDelta {
@@ -128,40 +305,23 @@ interface EnemyTurnDelta {
   statusEffectsAdded: StatusEffect[]
 }
 
+interface DuelTurnAction {
+  playerId: string; damageDealt: number; blockGained: number; cardId: string
+}
+
 interface HouseRules {
   turnTimerSecs: number          // 20 | 45 | 90
   quizDifficulty: 'adaptive' | 'easy' | 'hard'
-  fairness: FairnessOptions      // chainNormalized, etc.
-  ascensionLevel: number         // 0 = off, 1-20 = ascension level for the run
+  fairness: FairnessOptions
+  ascensionLevel: number         // 0 = off, 1-20 ascension for the run
+  isRanked: boolean              // enables Elo delta at match end
+}
+
+interface LobbyPlayer {
+  id: string; displayName: string; isHost: boolean; isReady: boolean
+  multiplayerRating?: number     // broadcast so opponent rating known at match end
 }
 ```
-
-### HouseRules — ascensionLevel (added 2026-04-14)
-
-`ascensionLevel` in `HouseRules` sets the ascension difficulty for all players in a multiplayer run. Default is 0 (no ascension). Host-only control in the lobby Settings panel, rendered under "Quiz Difficulty" in the House Rules section. The host's maximum selectable level is `max(trivia.highestUnlockedLevel, study.highestUnlockedLevel)` across both personal tracks. `DEFAULT_HOUSE_RULES.ascensionLevel = 0` in `src/data/multiplayerTypes.ts`.
-
----
-
-## Messages
-
-| Message | Sender | Payload | Purpose |
-|---------|--------|---------|---------|
-| `mp:coop:enemy_state` | Host | `SharedEnemySnapshot` | Initial anchor at encounter start + authoritative state after each turn merge |
-| `mp:coop:turn_end_with_delta` | Any client | `{ playerId, delta: EnemyTurnDelta }` | Per-player turn-end signal with damage delta |
-| `mp:coop:turn_end` | Any client | `{ playerId }` | Legacy barrier signal (still active, used internally) |
-| `mp:coop:turn_end_cancel` | Any client | `{ playerId }` | Cancel a pending turn-end signal |
-| `mp:coop:partner_state` | Any client | `PartnerState` | Partner HP/block/score for HUD after enemy phase |
-
-### Lobby Message Type Mapping
-
-The client outbound type and server broadcast type for player-join events differ:
-
-| Direction | Message type | Notes |
-|-----------|-------------|-------|
-| Client → Server (outbound join intent) | `mp:lobby:join` | Sent when the client initiates a join via the lobby service |
-| Server → All clients (broadcast) | `mp:lobby:player_joined` | What the server broadcasts when a player successfully joins |
-
-**This is a known gotcha.** The client listens for `mp:lobby:player_joined` (not `mp:lobby:join`) to learn about new players entering the lobby. Confusing these two names causes the host's player list to never update. See `docs/gotchas.md` 2026-04-13.
 
 ---
 
@@ -172,8 +332,8 @@ The client outbound type and server broadcast type for player-join events differ
 | Function | Description |
 |----------|-------------|
 | `snapshotEnemy(enemy)` | Extract `SharedEnemySnapshot` from a live `EnemyInstance` |
-| `hydrateEnemyFromSnapshot(enemy, snapshot)` | Overwrite mutable fields of `EnemyInstance` from snapshot |
-| `applyEnemyDeltaToState(snapshot, deltas, phaseAt?)` | Pure merge: apply deltas to pre-turn snapshot → new snapshot |
+| `hydrateEnemyFromSnapshot(enemy, snapshot)` | Overwrite mutable fields from snapshot |
+| `applyEnemyDeltaToState(snapshot, deltas, phaseAt?)` | Pure merge: apply deltas → new snapshot |
 
 ### `multiplayerCoopSync.ts`
 
@@ -182,410 +342,166 @@ The client outbound type and server broadcast type for player-join events differ
 | `broadcastSharedEnemyState(snapshot)` | Host sends `mp:coop:enemy_state` |
 | `onSharedEnemyState(cb)` | Subscribe to incoming enemy state broadcasts |
 | `awaitCoopTurnEndWithDelta(delta)` | Barrier + delta send; resolves when all players signal |
-| `getCollectedDeltas()` | Returns all deltas for the current barrier, sorted by playerId |
+| `getCollectedDeltas()` | All deltas for current barrier, sorted by playerId |
 | `awaitCoopEnemyReconcile()` | One-shot Promise resolving on next `mp:coop:enemy_state` |
+
+### `multiplayerGameService.ts` (Duel)
+
+| Function | Description |
+|----------|-------------|
+| `hostCreateSharedEnemy(templateId, floor, playerCount)` | Host creates and broadcasts shared enemy |
+| `submitDuelTurnAction(action)` | Submit turn damage/block; triggers host resolve when both arrive |
+| `hostResolveTurn()` | Host-authoritative: applies damage, rotates target, broadcasts resolution |
+| `initDuelMode(localPlayerId, isHost)` | Must be called before `hostCreateSharedEnemy` or `submitDuelTurnAction` |
+| `initRaceMode(localPlayerId)` | Called at race-encounter start; sets local player ID for race result tracking |
+
+### `multiplayerTransport.ts`
+
+| Function | Description |
+|----------|-------------|
+| `initPeerPresenceMonitor(localId, getPeerIds, transport)` | 15s ping / 30s pong timeout → emits `mp:lobby:peer_left` |
+| `reestablishSteamP2PSession(transport, lobbyId, peerSteamId, localSteamId)` | Steam P2P session recovery after interruption |
 
 ---
 
 ## Enemy Intent Determinism
 
-Enemy intents are deterministic across co-op clients via a **seeded RNG fork** named `enemy-intent` (fork of the run RNG initialized via `initRunRng(seed)` in `seededRng.ts`).
-
-- `weightedRandomIntent()` in `enemyManager.ts` calls `getRunRng('enemyIntents')` when `isRunRngActive()` is true. Both host and non-host advance the same fork in the same sequence, so both compute identical intents independently.
-- The host is still authoritative: after the barrier, the host rolls via `rollNextIntent`, snapshots (including `nextIntent`), and broadcasts. The `SharedEnemySnapshot.nextIntent` field carries the rolled intent to non-host clients.
-- **Non-host drift detection** (`encounterBridge.ts`): before calling `hydrateEnemyFromSnapshot`, the non-host rolls locally and compares with the host's `nextIntent`. A mismatch triggers `console.warn('[coop-sync] intent drift', { local, host })`. The host value is adopted regardless.
-- Solo/test contexts without an active run seed fall back to `Math.random()` (the `isRunRngActive()` guard preserves this path).
-
-**RNG fork label:** `getRunRng('enemyIntents')` in `enemyManager.ts`.
+Enemy intents are deterministic via a **seeded RNG fork** named `enemy-intent`:
+- Both host and non-host call `getRunRng('enemyIntents')` in the same sequence → identical intents.
+- Host is still authoritative: after barrier, rolls via `rollNextIntent`, broadcasts in `SharedEnemySnapshot.nextIntent`.
+- Non-host drift detection: before `hydrateEnemyFromSnapshot`, rolls locally and compares. Mismatch → `console.warn('[coop-sync] intent drift')`. Host value adopted regardless.
 
 ---
 
 ## Known Acceptable Drift
 
-During a turn, P1's local enemy may show a different HP than P2's (each sees only their own damage). This is cosmetic and resolves at end-of-turn. Both clients converge to the host-authoritative state after each turn barrier.
-
-If one player overkills the enemy mid-turn locally (HP → 0) but the other player's client still shows it alive, the encounter ends on both clients once the host's merged state shows HP ≤ 0.
+During a turn, P1 and P2 may see different enemy HP (each sees only their own damage applied). This resolves at end-of-turn when the host broadcasts the merged state. If one player overkills the enemy locally, the encounter ends on both clients once the host's merged state shows HP ≤ 0.
 
 ---
 
-## Duel Mode Reference
+## Three-Backend Architecture
 
-Duel mode has a similar host-authoritative pattern (see `multiplayerGameService.ts:312-525`). Coop differs in:
-- Simultaneous turns (not alternating)
-- Enemy attacks hit ALL players for full damage (not round-robin targeted)
-- Delta-based reconciliation (not full action submission per duel's `DuelTurnAction`)
-
----
-
-## Lobby Discovery & Privacy — Phase 4 Web Backend
-
-**Source files:** `server/src/services/mpLobbyRegistry.ts`, `server/src/routes/mpLobby.ts`, `server/src/routes/mpLobbyWs.ts`
-**Added:** 2026-04-11 — Phase 4 of the public/private lobby browsing feature
-
-### Three-Backend Architecture
-
-The client routes discovery / create / join through a `lobbyBackend` abstraction in `multiplayerLobbyService.ts`. Three backends exist:
+`multiplayerLobbyService.ts` routes discovery/create/join through a `lobbyBackend` abstraction:
 
 | Backend | Transport | Discovery | Scope |
 |---------|-----------|-----------|-------|
-| `steamBackend` | Steam P2P + Steamworks matchmaking | `steam_request_lobby_list` → metadata loop | Steam builds (primary) |
-| `webBackend` | Fastify REST + WebSocket | `GET /mp/lobbies` | Web / mobile builds |
-| `broadcastBackend` | BroadcastChannel + `localStorage` directory | `localStorage['rr-mp:directory']` | Dev two-tab mode |
+| `steamBackend` | Steam P2P + Steamworks | `steam_request_lobby_list` → metadata loop | Steam builds |
+| `webBackend` | Fastify REST + WebSocket | `GET /mp/lobbies` | Web / mobile / CI |
+| `broadcastBackend` | BroadcastChannel + `localStorage` | `localStorage['rr-mp:directory']` | Dev two-tab mode |
 
-### Steam Backend — Lobby List Wrappers (Phase 3 + 2026-04-20)
+### Backend Selection (`pickBackend()`)
 
-**Source file:** `src/services/steamNetworkingService.ts`
-**Added:** 2026-04-11 (Phase 3), updated 2026-04-20 (lobby list result polling wired)
+| Priority | Condition | Backend | Notes |
+|----------|-----------|---------|-------|
+| 1 | `isBroadcastMode()` — URL has `?mp` | `broadcastBackend` | Explicit opt-in beats auto-detected Steam |
+| 2 | `isLanMode()` — `rr-lan-server` in localStorage | `webBackend` | LAN mode overrides Steam |
+| 3 | `isTauriRuntime()` (live check) | `steamBackend` | Tauri + Steam builds |
+| 4 | (default) | `webBackend` | Web / mobile / CI |
 
-Three TypeScript wrappers bridge the Rust commands to the `steamBackend`. All are guarded by `isTauriRuntime()` and return safe defaults on non-Steam platforms (browser, mobile):
+`pickBackend()` uses a live `isTauriRuntime()` check (not the module-load-time `hasSteam` constant) to avoid a packaging-order race on Steam builds. See `docs/gotchas.md` 2026-04-20 "Tauri v2 platform detection."
 
-| Function | Tauri command | Return | Off-Steam default | Purpose |
-|----------|---------------|--------|-------------------|---------|
-| `requestSteamLobbyList()` | `steam_request_lobby_list` | `Promise<boolean>` | `false` | Fire-and-forget kick; stores result in `SteamState::pending_lobby_list` when LobbyMatchList_t fires. Returns `true` if IPC call accepted. |
-| `getSteamLobbyListResult(timeoutMs?, intervalMs?)` | `steam_get_lobby_list_result` | `Promise<string[] | null>` | `null` | Polls the pending slot with callback pumping. Returns lobby IDs when callback fires, `[]` when none matched, `null` on timeout. One-shot drain semantics. |
-| `getLobbyMemberCount(lobbyId)` | `steam_get_lobby_member_count` | `Promise<number>` | `0` | Read current member count for a lobby ID without joining — enables the "2/4" display in the browser grid. |
+---
 
-### Steam Backend — Discovery Flow (2026-04-20)
+## Fastify Web Backend
 
-`steamBackend.listPublicLobbies` and `steamBackend.resolveByCode` are now fully wired (no longer stubs):
+**Source files:** `server/src/services/mpLobbyRegistry.ts`, `server/src/routes/mpLobby.ts`, `server/src/routes/mpLobbyWs.ts`
 
-**listPublicLobbies:**
-1. Call `requestSteamLobbyList()` — kicks off the async Steam request.
-2. Call `getSteamLobbyListResult(3000)` — pumps callbacks, waits up to 3 s for LobbyMatchList_t.
-3. For each returned lobby ID, call `getLobbyData` in parallel (mode, visibility, lobby_code, host_name, max_players, created_at).
-4. Skip lobbies missing required metadata. Skip `friends_only` (Steam filter handles natively).
-5. Call `getLobbyMemberCount` per lobby for the live `currentPlayers` count.
-6. Apply `filter.mode` and `filter.fullness === 'open'` if provided.
-7. Return `LobbyBrowserEntry[]` with `source: 'steam'`.
-
-**resolveByCode:**
-1. Same steps 1–2 as above.
-2. For each lobby ID, read `lobby_code` metadata.
-3. Return the first matching lobby ID, or `null` if none found.
-
-### Steam Backend — Async-Callback Polling for createLobby / joinLobby (2026-04-20)
-
-Steamworks lobby creation and join operations are **two-phase**: the Rust Tauri command returns immediately (with an empty string or `()`) and the actual result arrives later via a Steamworks callback after `steam_run_callbacks` is pumped.
-
-The Rust side stores the callback result in a `Mutex<Option<u64>>` slot:
-- `steam_create_lobby` → callback stores result in `SteamState::pending_lobby_id`
-- `steam_join_lobby` → callback stores result in `SteamState::pending_join_lobby_id`
-
-JavaScript retrieves these via one-shot consuming reads:
-- `steam_get_pending_lobby_id` — returns `string | null`, clears the slot on read
-- `steam_get_pending_join_lobby_id` — same pattern
-
-`steamNetworkingService.ts` bridges this with the internal `pollPendingResult(pendingCmd, timeoutMs, intervalMs)` helper:
-
-```
-1. Kick off the Tauri command (returns immediately)
-2. Loop until deadline (5 s default):
-   a. await tauriInvoke('steam_run_callbacks')   // pump Steamworks callbacks
-   b. await tauriInvoke(pendingCmd)              // check if callback has fired
-   c. if result is non-null, return it
-   d. await sleep(100ms)
-3. Return null on timeout
-```
-
-`createSteamLobby` and `joinSteamLobby` both use this pattern. They resolve when the callback fires — not at IPC call time. If the Steam client is not running or the lobby creation fails, they return `null` / `false` after the 5 s timeout.
-
-**Why this matters:** The old implementation of `createSteamLobby` returned the empty string from the Tauri command directly. The `steamBackend.createLobby` caller in `multiplayerLobbyService.ts` checked `if (!lobbyId) throw ...` — so every Steam lobby creation silently threw, the UI caught it and did nothing, and the player saw the "Create Lobby" button do nothing.
-
-### Steam Backend — pickBackend() Live Tauri Detection (2026-04-20)
-
-`pickBackend()` in `multiplayerLobbyService.ts` no longer relies solely on the module-load-time `hasSteam` constant imported from `platformService.ts`. Instead it performs a live call-time check against both Tauri v2 globals (`__TAURI_INTERNALS__` and `__TAURI__`) at the moment the function executes.
-
-This addresses a packaging-order issue seen in the shipped Windows Steam build: the `hasSteam` IIFE in `platformService.ts` evaluates when the module bundle is first parsed, but Tauri's global injection may land slightly later. If that race is lost, `hasSteam` stays `false` for the session — `pickBackend()` returns `webBackend` and the "Create Lobby" error banner fires instantly (the `fetch` to `http://localhost:3000` fails immediately, no 5 s delay).
-
-The `hasSteam` import is retained in the diagnostic `console.log` so DevTools can show whether the static snapshot was stale vs. the live check. The open question: whether inlining the live check is sufficient, or whether the injection race also affects other callers that depend on the cached `hasSteam` value.
-
-### Web Backend — Fastify Registry
-
-`mpLobbyRegistry.ts` maintains an in-memory `Map<lobbyId, MpLobby>`. Key properties:
-
-- **In-memory only** — a server restart drops all lobbies. This is documented and accepted for V1 (matches Among Us / L4D lifecycle). SQLite persistence is a deferred follow-up.
-- **10-minute TTL** — `pruneStale()` runs every 60 s and drops lobbies with `lastActivity < Date.now() - 10 min`. All sockets are closed before deletion.
-- **Password convention** — client hashes the raw password with SHA-256 before sending. Server stores and compares the hash only. `timingSafeEqual` prevents timing-oracle attacks. This is a UX gate, not a crypto auth boundary.
-- **Friends-only degradation** — `friends_only` lobbies are excluded from `GET /mp/lobbies` because the web backend has no friends graph. On Steam, `SteamLobbyType::FriendsOnly` is used natively. On web, friends-only lobbies are code-join only (no browser entry).
-- **CORS_ORIGIN for Docker testing** — The Fastify server reads `CORS_ORIGIN` env var to allow cross-origin WS upgrades. When running two Docker containers against a host-machine Fastify instance, set `CORS_ORIGIN=http://host.docker.internal:5173`. Without this, WS connections fail at the HTTP upgrade step with no visible client error.
-
-### Server Snapshot Player Shape
-
-When the server broadcasts a lobby snapshot (on join, ready-state change, or settings change), each entry in the `players` array has this shape:
-
-```typescript
-{
-  id: string;          // canonical player identifier (NOT playerId — that was a bug, fixed 2026-04-13)
-  displayName: string;
-  isHost: boolean;
-  isReady: boolean;
-}
-```
-
-**Gotcha:** Early versions of the server snapshot used `playerId` instead of `id`. The client's `readyMap` lookups key on `player.id`. Using `player.playerId` silently returns `undefined` for every player — all players appear not-ready. See `docs/gotchas.md` 2026-04-13.
+- **In-memory** — server restart drops all lobbies (accepted for V1).
+- **10-minute TTL** — `pruneStale()` runs every 60s.
+- **Password** — client SHA-256 hashes before sending; server uses `timingSafeEqual`.
+- **CORS** — `CORS_ORIGIN` env var. Default covers `localhost:5173`, `127.0.0.1:5173`, and `host.docker.internal:5173`. Extend for Docker multi-container playtests.
 
 ### REST Routes (under `/mp` prefix)
 
-| Method | Path | Body / Query | Description |
-|--------|------|-------------|-------------|
-| `POST` | `/mp/lobbies` | `{ hostId, hostName, mode, visibility, passwordHash?, maxPlayers, … }` | Create lobby, returns `{ lobbyId, lobbyCode, joinToken }` |
-| `GET` | `/mp/lobbies` | `?mode=&fullness=` | List public + password lobbies for browser |
-| `GET` | `/mp/lobbies/code/:code` | — | Resolve 6-char code → lobby info |
-| `POST` | `/mp/lobbies/:id/join` | `{ playerId, displayName, password? }` | Join + receive `joinToken` for WS upgrade |
-| `POST` | `/mp/lobbies/:id/leave` | `{ playerId }` | REST leave (before WS connected or after drop) |
+| Method | Path | Description |
+|--------|------|-------------|
+| `POST` | `/mp/lobbies` | Create lobby → `{ lobbyId, lobbyCode, joinToken }` |
+| `GET` | `/mp/lobbies` | List public + password lobbies |
+| `GET` | `/mp/lobbies/code/:code` | Resolve 6-char code → lobby info |
+| `POST` | `/mp/lobbies/:id/join` | Join → `joinToken` for WS upgrade |
+| `POST` | `/mp/lobbies/:id/leave` | REST leave |
 
 ### WebSocket Protocol (`/mp/ws?lobbyId=&playerId=&token=`)
 
-1. Server validates `joinToken` (issued by prior REST join).
-2. On success: `attachWebSocket()` + sends `mp:lobby:settings` snapshot.
-3. **Inbound message routing:**
-   - `mp:lobby:ready` — broadcast to all players.
-   - `mp:lobby:leave` — `leaveLobby()` + close.
-   - `mp:lobby:settings` — host-only; apply patch + rebroadcast snapshot.
-   - `mp:lobby:start` — host-only; set `status=in_game` + broadcast.
-   - `mp:race:*`, `mp:coop:*`, `mp:duel:*`, `mp:trivia:*` — forwarded verbatim to other players.
-4. On close: `leaveLobby()` → broadcast `mp:lobby:leave` to remaining players.
+Server validates `joinToken`, sends `mp:lobby:settings` snapshot, then routes:
+- `mp:lobby:ready` — rebroadcast
+- `mp:lobby:leave` — `leaveLobby()` + close
+- `mp:lobby:settings` — host-only; patch + rebroadcast
+- `mp:lobby:start` — host-only; `status=in_game` + broadcast
+- `mp:race:*`, `mp:coop:*`, `mp:duel:*`, `mp:trivia:*` — forwarded verbatim
+
+### Server Snapshot Player Shape
+
+```typescript
+{ id: string; displayName: string; isHost: boolean; isReady: boolean }
+```
+
+Early versions used `playerId` instead of `id` — caused all ready-state lookups to return `undefined`. See `docs/gotchas.md` 2026-04-13.
 
 ### Lobby Code Alphabet
 
-Both client (`multiplayerLobbyService.ts:465`) and server (`mpLobbyRegistry.ts`) use exactly:
-```
-ABCDEFGHJKLMNPQRSTUVWXYZ23456789
-```
-No I, O, 0, or 1 (visual confusion). Codes are 6 characters, uppercase only.
+Both client and server use exactly: `ABCDEFGHJKLMNPQRSTUVWXYZ23456789` (no I, O, 0, 1). 6 characters, uppercase.
 
 ---
 
-## Phase 5 — WebSocket Transport URL Construction (2026-04-11)
-
-**Source file:** `src/services/multiplayerTransport.ts`
-
-### `ConnectOpts` interface
-
-A new optional third parameter on `MultiplayerTransport.connect()`:
-
-```typescript
-interface ConnectOpts {
-  lobbyId?: string;     // Lobby ID to include in the WS upgrade query params
-  joinToken?: string;   // Short-lived token from POST /mp/lobbies/:id/join
-}
-```
-
-All four transports accept `opts` for interface compatibility. Only `WebSocketTransport` uses it.
-
-### `WebSocketTransport.connect` URL building
-
-The transport no longer uses `target` as a raw WS URL. Instead:
-
-1. Reads the base URL from `import.meta.env.VITE_MP_WS_URL` (fallback: `ws://localhost:3000/mp/ws` via the `DEFAULT_MP_WS_URL` module-level const).
-2. Appends `?lobbyId=<resolvedLobbyId>&playerId=<localId>&token=<joinToken>` to form the full WS upgrade URL.
-3. `resolvedLobbyId` prefers `opts.lobbyId` over `target` so callers using the `joinLobbyById` path can supply the canonical backend ID.
-
-### Environment variables (`.env.example`)
-
-```
-VITE_MP_WS_URL=ws://localhost:3000/mp/ws    # WebSocket URL for WS upgrade
-VITE_MP_API_URL=http://localhost:3000        # REST base URL for webBackend
-CORS_ORIGIN=http://localhost:5173            # Fastify CORS allow-origin (set to Docker bridge for container testing)
-```
-
----
-
-## Phase 6/8 — Unified LobbyBackend abstraction (2026-04-11)
-
-**Source file:** `src/services/multiplayerLobbyService.ts`
-
-### New public API surface
-
-| Export | Signature | Description |
-|--------|-----------|-------------|
-| `createLobby` | `async (playerId, displayName, mode, opts?)` | Host creates a lobby via the active backend. Now async. `opts.password` is SHA-256 hashed client-side. |
-| `joinLobby` | `async (lobbyCode, playerId, displayName, password?)` | Join by invite code. Now async; hashes password and resolves code via backend. **Throws `"Lobby not found. Check the code and try again."` if `resolveByCode` returns null and the backend is not BroadcastChannel.** BroadcastChannel mode uses the code directly as the channel key (returns null intentionally) — that path does not throw. |
-| `joinLobbyById` | `async (lobbyId, playerId, displayName, password?)` | Join directly by backend lobby ID (used by the browser screen). On 404 the thrown error message reads `"Lobby not found or has ended."` (user-friendly). |
-| `setVisibility` | `(visibility: LobbyVisibility)` | Host-only. Co-updates `visibility` and `hasPassword` atomically. |
-| `setPassword` | `async (password: string \| null)` | Host-only. Hashes plaintext, stores in `_passwordHash`. Clears if null. |
-| `setMaxPlayers` | `(n: number)` | Host-only. Clamped to `[MODE_MIN_PLAYERS[mode], MODE_MAX_PLAYERS[mode]]`. |
-| `listPublicLobbies` | `async (filter?)` | Delegates to active backend. Returns `LobbyBrowserEntry[]`. |
-
-### Defensive Cleanup — `leaveLobby()` and Navigation Hooks
-
-`leaveLobby()` wraps all transport operations in `try/catch`. Navigation-triggered cleanup must not throw — a failed disconnect should be logged and ignored, not surfaced to the player.
-
-`CardApp.svelte` has a `$effect` that watches `currentScreen`. When the screen changes away from any MP screen (`multiplayerMenu`, `multiplayerLobby`, `multiplayerGame`, `raceResults`, `lobbyBrowser`), it calls `leaveLobby()` automatically. This prevents orphaned server-side lobby entries when a player presses Back or navigates away without explicitly clicking Leave.
-
-### `LobbyBackend` interface
-
-```typescript
-interface LobbyBackend {
-  createLobby(opts: CreateLobbyBackendOpts): Promise<{ lobbyId, lobbyCode, joinToken? }>;
-  resolveByCode(code: string): Promise<string | null>;
-  joinLobbyById(lobbyId, playerId, displayName, passwordHash?): Promise<JoinLobbyResult>;
-  listPublicLobbies(filter?): Promise<LobbyBrowserEntry[]>;
-}
-```
-
-`pickBackend()` selects: `broadcastBackend` → `webBackend` (LAN mode) → `steamBackend` → `webBackend` (default) (priority order). `?mp` is an explicit dev opt-in and therefore beats auto-detected Steam so devs running a Steam build can two-tab test the broadcast path without fighting the factory.
-
-### Password handling
-
-- Client hashes plaintext with SHA-256 (`crypto.subtle.digest`) before any backend call.
-- Hash stored in module-level `_passwordHash` (never in `LobbyState` — not serialized over the wire).
-- Backend receives only the hash. Fastify uses `timingSafeEqual`; Steam stores it in lobby metadata.
-- `_passwordHash` cleared in `leaveLobby()`.
-
-### `broadcastBackend` — localStorage fake directory (Phase 8)
-
-- `localStorage['rr-mp:directory']` — JSON array of `LobbyBrowserEntry`.
-- Host heartbeat: `setInterval(() => upsertBroadcastEntry(...), 5000)`. Interval stored in `_broadcastHeartbeat`; cleared in `leaveLobby()`.
-- Read-side pruning: entries with `createdAt < Date.now() - 30_000` dropped on every read.
-- Write-side dedup: `upsertBroadcastEntry` removes existing entry with the same `lobbyId` before inserting.
-- `resolveByCode` returns `null` — broadcast mode uses the lobbyCode directly as the `BroadcastChannel` channel name.
-- `friends_only` lobbies excluded from `listPublicLobbies` (no friends graph in localStorage).
-
-### Backend Selection Logic
-
-`pickBackend()` uses a priority cascade. The conditions are checked in order — the first matching condition wins:
-
-| Priority | Condition | Backend selected | Notes |
-|----------|-----------|-----------------|-------|
-| 1 | `isBroadcastMode()` — URL has `?mp` param | `broadcastBackend` | Dev two-tab mode; uses `localStorage` fake directory. Explicit opt-in beats auto-detected Steam. |
-| 2 | `isLanMode()` — `rr-lan-server` key in `localStorage` | `webBackend` | LAN mode (set via `setLanServerUrl()`); routes to the stored Fastify host/port. Bypasses Steam P2P even on Steam builds. |
-| 3 | `hasSteam === true` | `steamBackend` | Tauri + Steam build; uses Steamworks matchmaking + P2P |
-| 4 | (default) | `webBackend` | Web / mobile / CI; uses Fastify REST + WebSocket |
-
-`hasSteam` is the existing Steam availability check from `steamService.ts`. `isBroadcastMode()` checks `new URLSearchParams(window.location.search).has('mp')`. The `?mp`-first order is load-bearing: a dev running a Steam build with `?mp` in the URL expects broadcast-mode two-tab testing, not Steam auto-routing — see commit `cc2e5b8bc`.
-
-### Lobby Visibility — Tri-State
-
-`LobbyVisibility` is `'public' | 'password' | 'friends_only'`. Behavior per state:
-
-| Visibility | Steam behavior | Web/Broadcast behavior |
-|------------|---------------|------------------------|
-| `public` | `SteamLobbyType::Public`; appears in `steam_request_lobby_list` results | `GET /mp/lobbies` returns the entry; no icon |
-| `password` | `SteamLobbyType::Public` + `password_hash` in lobby metadata; appears in list with 🔒 icon | Listed by `GET /mp/lobbies`; join validates hash; 🔒 icon |
-| `friends_only` | `SteamLobbyType::FriendsOnly`; Steam handles native friends-graph filter | **Excluded from browser list** — no friends graph on web/broadcast; code-join only; tooltip explains |
-
-**Degradation note:** `friends_only` on web degrades to "hidden from the lobby browser" (effectively code-join only). Steam friends can still receive a direct invite link. The lobby creation UI disables the Friends Only option on non-Steam builds with a tooltip: "Steam only — invite friends via code instead."
-
-**Visibility picker (2026-04-20):** The tri-state picker is now present on **both** screens: `MultiplayerMenu.svelte` Create tab (pre-creation, default `'public'`) and `MultiplayerLobby.svelte` settings section (post-creation, host-only). This ensures visibility is set at creation time. `onCreateLobby` prop signature updated to `(mode: MultiplayerMode, opts: { visibility: LobbyVisibility; password?: string })`. `CardApp.handleCreateLobby` forwards opts to `createLobby(playerId, name, mode, opts)`.
-
----
-
-
----
-
-## Player Roster Panel — Many-Player Modes (2026-04-20)
-
-For modes with `MODE_MAX_PLAYERS[mode] > 2` (`trivia_night`, `race` 3-4+), the `MultiplayerHUD` single-opponent view is insufficient. Instead:
-
-- `MultiplayerHUD` is **hidden** (gated on `!isManyPlayerMode` in `CardApp.svelte`).
-- A `.roster-trigger-pill` button (👥 icon + count) appears on the local player's HP bar in `CardCombatOverlay.svelte`.
-- Clicking the pill opens `PlayerRosterPanel.svelte` — a full-viewport backdrop with a `360px` card listing all other players' HP, block, score, and accuracy.
-- Data source: `partnerStates` state in `CardApp.svelte`, populated by the existing `onPartnerStateUpdate` callback from `multiplayerCoopSync.ts`.
-- Display names resolved by cross-referencing `currentLobby.players[]`.
-
-`isManyPlayerMode` is derived: `currentLobby !== null && (currentLobby.mode === 'trivia_night' || currentLobby.maxPlayers > 2)`.
-
----
-
-
-## LAN Config Service (2026-04-15)
+## LAN Config Service
 
 **Source file:** `src/services/lanConfigService.ts`
 
-Allows players (or devs) to point the game at a LAN Fastify MP server at runtime without requiring a build-time env variable. Useful for Windows VM builds, LAN parties, and local network testing where `VITE_MP_WS_URL`/`VITE_MP_API_URL` can't be set.
+Allows runtime pointing to a LAN Fastify server without a build-time env var.
 
-### API
+| Export | Description |
+|--------|-------------|
+| `setLanServerUrl(host, port)` | Persist LAN config to `localStorage['rr-lan-server']` |
+| `getLanServerUrls()` | `LanServerConfig \| null` |
+| `clearLanServerUrl()` | Remove; revert to normal mode |
+| `isLanMode()` | True when LAN config is stored |
 
-| Export | Signature | Description |
-|--------|-----------|-------------|
-| `setLanServerUrl` | `(host: string, port: number) → void` | Persist LAN config to `localStorage['rr-lan-server']`. Strips scheme/trailing-slash from host. |
-| `getLanServerUrls` | `() → LanServerConfig \| null` | Return current LAN config, or null when not in LAN mode. |
-| `clearLanServerUrl` | `() → void` | Remove LAN config; revert to normal mode. |
-| `isLanMode` | `() → boolean` | True when a LAN config is stored. |
-
-### LanServerConfig shape
-
-```typescript
-interface LanServerConfig {
-  wsUrl: string;   // e.g. 'ws://192.168.1.5:19738/mp/ws'
-  apiUrl: string;  // e.g. 'http://192.168.1.5:19738'
-}
-```
-
-### Effect on transport and lobby selection
-
-When `isLanMode()` is true:
-- `createTransport()` returns `WebSocketTransport` even on Steam builds (skips `SteamP2PTransport`).
-- `WebSocketTransport.connect()` uses `getLanServerUrls().wsUrl` instead of `VITE_MP_WS_URL`.
-- `pickBackend()` returns `webBackend` instead of `steamBackend`.
-- `getWebApiBaseUrl()` returns `getLanServerUrls().apiUrl` instead of `VITE_MP_API_URL`.
-
-This gives LAN mode priority slot 2 in `pickBackend()` — after broadcast but before Steam — so it takes effect even on Tauri/Steam desktop builds.
+When `isLanMode()` is true: `createTransport()` returns `WebSocketTransport` even on Steam builds; `pickBackend()` returns `webBackend`.
 
 ---
 
-## LAN Co-op System (2026-04-15)
+## LAN Co-op System
 
-**Source files:** `src-tauri/src/lan.rs`, `src/services/lanServerService.ts`, `src/services/lanDiscoveryService.ts`, `src/services/lanConfigService.ts`, `server/src/lan-server.ts`, `src/ui/components/MultiplayerMenu.svelte`
+**Source files:** `src-tauri/src/lan.rs`, `src/services/lanServerService.ts`, `src/services/lanDiscoveryService.ts`
 
-### Overview
+Two API-compatible server implementations:
 
-LAN co-op lets players on the same local network host and join multiplayer games without Steam or an external server. Two implementations exist:
+| Server | Platform | How |
+|--------|----------|-----|
+| Embedded Rust relay (`lan.rs`) | Tauri desktop | "Start LAN Server" button → `lan_start_server` Tauri command |
+| Node.js LAN server (`lan-server.ts`) | Any with Node | `cd server && npm run lan` |
 
-| Server | Platform | How to run |
-|--------|----------|------------|
-| **Embedded Rust relay** (`lan.rs`) | Tauri desktop | "Start LAN Server" button in game UI → `lan_start_server` Tauri command |
-| **Node.js LAN server** (`lan-server.ts`) | Any platform with Node | `cd server && npm run lan` |
+Both expose the same `/mp/*` endpoints. Port 19738 default.
 
-Both are API-compatible with the existing `/mp/*` endpoints — the client code works unchanged.
+`lanServerService.ts` uses live `isTauriRuntime()` check (not stale `isDesktop`). `startLanServer()` has a 10s timeout — Rust-side hangs do not block the UI indefinitely.
 
-### Embedded Rust Server (`src-tauri/src/lan.rs`)
+---
 
-An axum-based HTTP + WebSocket server running inside the Tauri process on a tokio task.
+## Player Roster Panel
 
-- **Port:** 19738 (default), configurable via `lan_start_server` command
-- **Lobby registry:** In-memory `Arc<RwLock<HashMap>>`, same lifecycle as the Fastify registry
-- **Stale pruning:** 60s interval, 10-minute TTL
-- **Password:** Constant-time comparison of SHA-256 hex hashes
-- **CORS:** All origins allowed (LAN-only, no auth boundary)
+For modes with `MODE_MAX_PLAYERS[mode] > 2` (`trivia_night`, `race` 3-4+):
+- `MultiplayerHUD` is hidden (gated on `!isManyPlayerMode`).
+- `.roster-trigger-pill` button (👥 + count) on the local HP bar opens `PlayerRosterPanel.svelte`.
+- Panel shows HP/block/score/accuracy for all other players.
+- Data source: `partnerStates` in `CardApp.svelte` via `onPartnerStateUpdate`.
 
-**Tauri commands:**
-
-| Command | Args | Returns | Description |
-|---------|------|---------|-------------|
-| `lan_start_server` | `port?: u16` | `{ port, localIps }` | Start server on `0.0.0.0:port` |
-| `lan_stop_server` | — | `()` | Graceful shutdown via oneshot channel |
-| `lan_get_local_ips` | — | `string[]` | Non-loopback IPv4 addresses |
-| `lan_server_status` | — | `{ running, port }` | Current state |
-
-### `lanServerService.ts` — Live Tauri Detection (2026-04-20)
-
-`lanServerService.ts` previously used the module-load-time `isDesktop` constant from `platformService.ts` to gate all Tauri `invoke` calls. This suffered the same packaging-order race documented in the `pickBackend()` section above: if `__TAURI_INTERNALS__` lands after the bundle evaluates, `isDesktop` stays `false` and every `tauriInvoke` returns `null` instantly — causing the "Start LAN Server" button to show "Starting…" indefinitely (the null result is silently dropped by the UI, which never transitions out of the loading state).
-
-**Fix:** `lanServerService.ts` now uses a local `isTauriRuntime()` function (live check of `window.__TAURI_INTERNALS__ || window.__TAURI__`) identical to the pattern in `steamNetworkingService.ts`. The `isDesktop` import was removed. A 10-second timeout (`LAN_START_TIMEOUT_MS = 10_000`) was also added to `startLanServer()` so a Rust-side tokio hang does not block the UI indefinitely. On timeout, `null` is returned and the caller's existing error path fires.
-
-### LAN Discovery (`lanDiscoveryService.ts`)
-
-HTTP-based subnet scanner. Probes `GET /mp/discover` on port 19738 across /24 subnets.
-
-- **Subnet detection:** Tauri `lan_get_local_ips` → extract /24 prefix. Fallback: `192.168.0`, `192.168.1`, `10.0.0`, `10.0.1`.
-- **Batching:** 50 concurrent probes, 400ms timeout each.
-- **Validation:** Response must contain `{ game: "recall-rogue" }`.
-
-### UI Flow
-
-The MultiplayerMenu has three tabs: "Create Lobby", "Join Lobby", "LAN Play".
-
-LAN Play tab:
-1. **Host section** (desktop only): Start/Stop server, shows IP + port
-2. **Join section** (all platforms): Auto-scan results, manual IP entry, connect/disconnect
-3. After connecting → `setLanServerUrl()` → normal lobby flow (Browse/Create)
+`isManyPlayerMode` = `currentLobby.mode === 'trivia_night' || currentLobby.maxPlayers > 2`.
 
 ---
 
 ## Bot Feature — Removed from UI (2026-04-13)
 
-The "Add Bot" button was removed from the lobby UI in commit `74fad47`. Bot-related exports remain in `multiplayerLobbyService.ts` at the service layer for potential future use, but no UI surface exposes them. All multiplayer testing should use two real containers (or two browser tabs in broadcast mode) rather than bots.
+"Add Bot" button removed from lobby UI (commit `74fad47`). Bot-related exports remain at the service layer. **Do not test with bots** — they do not participate in map node consensus barriers, causing encounter start to deadlock. See `docs/gotchas.md` 2026-04-13.
 
-**Reason:** Bot players do not participate in map node consensus barriers, causing encounter start to deadlock. See `docs/gotchas.md` 2026-04-13 "Map node consensus blocks both players when one is a bot."
+---
+
+## CHANGELOG (abbreviated)
+
+| Date | Commits | What |
+|------|---------|------|
+| 2026-04-21 | `ec9e86626`–`60f260fe0` | Hardening wave: co-op/race/trivia/LAN + Elo/FSRS, lobby service + workshop + lobby UI, wiring + PlayerProfile schema v2, Elo wire + CORS default, final wiring (initRaceMode, opp-rating, workshop gate) |
+| 2026-04-20 | `3afcf0500`, `b332c3d96`, `4a1135194`, `3faa62a95`, `b06820ea8` | Visibility toggle + roster panel, Steam lobby discovery wiring, transport + Steam C1/C2/H8/H9, roster sort + CardCombatOverlay typecheck, lobby code rejection + live Tauri check |
+| 2026-04-15 | — | LAN co-op system: `lan.rs`, `lanServerService.ts`, `lanDiscoveryService.ts`, `lanConfigService.ts` |
+| 2026-04-13 | — | E2E verification batch MP-20260413-003941; lobby snapshot `id` vs `playerId` fix; bot removal |
+| 2026-04-11 | `cc2e5b8bc` | Phase 4: public/private lobby browsing, `lobbyBackend` abstraction, `?mp`-first backend priority |

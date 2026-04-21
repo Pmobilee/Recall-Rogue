@@ -32,6 +32,12 @@
  *   'lobbyType'" — the command throws, `tauriInvoke` catches it and returns null, and the
  *   caller sees an instant null (looks like "Steam unavailable") with no stack trace.
  *   See docs/gotchas.md 2026-04-20 "Tauri v2 IPC snake_case args silently break Steam commands".
+ *
+ * Typed IPC contract (M23, 2026-04-20):
+ *   `invokeSteam<K>(cmd, args)` is the public typed wrapper. It constrains both the
+ *   command name and argument shape at compile time via `SteamCommandArgs`. TypeScript
+ *   will catch camelCase-vs-snake_case mismatches or incorrect arg shapes before runtime.
+ *   See docs/mechanics/multiplayer.md "Typed IPC contract" for the full rationale.
  */
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -49,6 +55,96 @@ export interface SteamLobbyMember {
 export interface SteamP2PMessage {
   senderId: string;
   data: string;
+}
+
+// ── M23: Typed IPC contract ───────────────────────────────────────────────────
+
+/**
+ * Compile-time mapping from Tauri command name → expected argument shape.
+ *
+ * All keys are camelCase — Tauri v2 translates to snake_case automatically.
+ * Commands that take no args use `Record<string, never>` (an empty-object type
+ * that rejects any key at compile time).
+ *
+ * NOTE: This interface is the single source of truth for IPC arg shapes.
+ * When a new Rust command is added:
+ *  1. Add an entry here.
+ *  2. Call it via `invokeSteam()` rather than the raw `tauriInvoke()`.
+ *  3. Add a return-type entry to `SteamCommandReturn` below.
+ */
+export interface SteamCommandArgs {
+  steam_create_lobby: { lobbyType: SteamLobbyType; maxMembers: number };
+  steam_join_lobby: { lobbyId: string };
+  steam_leave_lobby: { lobbyId: string };
+  steam_set_lobby_data: { lobbyId: string; key: string; value: string };
+  steam_get_lobby_data: { lobbyId: string; key: string };
+  steam_get_lobby_members: { lobbyId: string };
+  steam_send_p2p_message: { steamId: string; data: string; channel?: number };
+  steam_accept_p2p_session: { steamId: string };
+  steam_request_lobby_list: Record<string, never>;
+  steam_get_lobby_member_count: { lobbyId: string };
+  steam_force_leave_active_lobby: Record<string, never>;
+  steam_check_lobby_membership: { lobbyId: string; steamId: string };
+  /** Internal polling commands — no args, accessed via pollPendingResult. */
+  steam_get_pending_lobby_id: Record<string, never>;
+  steam_get_pending_join_lobby_id: Record<string, never>;
+  steam_get_lobby_list_result: Record<string, never>;
+  steam_read_p2p_messages: { channel: number };
+  steam_run_callbacks: Record<string, never>;
+}
+
+/**
+ * Compile-time mapping from Tauri command name → expected return type.
+ *
+ * `unknown` is used when the return is not consumed or when the result
+ * varies per call (e.g. polling commands that return a pending value or null).
+ */
+export interface SteamCommandReturn {
+  steam_create_lobby: string;
+  steam_join_lobby: unknown;
+  steam_leave_lobby: void;
+  steam_set_lobby_data: void;
+  steam_get_lobby_data: string;
+  steam_get_lobby_members: SteamLobbyMember[];
+  steam_send_p2p_message: void;
+  steam_accept_p2p_session: void;
+  steam_request_lobby_list: string;
+  steam_get_lobby_member_count: number;
+  steam_force_leave_active_lobby: void;
+  steam_check_lobby_membership: boolean;
+  steam_get_pending_lobby_id: string | null;
+  steam_get_pending_join_lobby_id: string | null;
+  steam_get_lobby_list_result: string[] | null;
+  steam_read_p2p_messages: SteamP2PMessage[];
+  steam_run_callbacks: void;
+}
+
+/**
+ * Typed wrapper for Tauri IPC calls to Steam commands.
+ *
+ * Constrains both the command name (`K extends keyof SteamCommandArgs`) and
+ * the argument shape (`SteamCommandArgs[K]`) at compile time. TypeScript will
+ * catch mismatched arg keys or wrong types before the code runs.
+ *
+ * For `Record<string, never>` commands (no args), omit the `args` parameter
+ * or pass `{}` — both are safe because `Record<string, never>` accepts `{}`.
+ *
+ * Internally delegates to `tauriInvoke` — platform guard and error logging
+ * are handled there.
+ *
+ * @example
+ * // Typed — TypeScript errors if args don't match SteamCommandArgs['steam_create_lobby']
+ * const id = await invokeSteam('steam_create_lobby', { lobbyType: 'public', maxMembers: 4 });
+ *
+ * @example
+ * // No-args command — omit args entirely
+ * await invokeSteam('steam_request_lobby_list');
+ */
+export async function invokeSteam<K extends keyof SteamCommandArgs>(
+  cmd: K,
+  args?: SteamCommandArgs[K],
+): Promise<SteamCommandReturn[K] | null> {
+  return tauriInvoke<SteamCommandReturn[K]>(cmd, args as Record<string, unknown> | undefined);
 }
 
 // ── Internal helpers ──────────────────────────────────────────────────────────
@@ -111,6 +207,9 @@ export function getLastSteamInvokeError(): { cmd: string; message: string } | nu
  * IMPORTANT — arg naming: always pass camelCase keys in `args`. Tauri v2 translates
  * camelCase → snake_case automatically before dispatching to Rust. Passing snake_case
  * keys causes a silent "missing required key" rejection.
+ *
+ * Prefer `invokeSteam()` over calling this function directly — it enforces the
+ * typed contract at compile time.
  */
 async function tauriInvoke<T = unknown>(
   cmd: string,
@@ -184,10 +283,7 @@ export async function createSteamLobby(
   if (!isTauriRuntime()) return null;
   // Kick off lobby creation — returns "" immediately; real ID delivered via callback.
   // Args are camelCase — Tauri v2 translates to snake_case for Rust automatically.
-  const kickoff = await tauriInvoke<string>('steam_create_lobby', {
-    lobbyType,
-    maxMembers,
-  });
+  const kickoff = await invokeSteam('steam_create_lobby', { lobbyType, maxMembers });
   if (kickoff === null) return null; // IPC call itself failed (Steamworks not running, etc.)
   // Poll until the LobbyCreated_t callback fires and stores the ID.
   return pollPendingResult('steam_get_pending_lobby_id');
@@ -206,7 +302,7 @@ export async function joinSteamLobby(lobbyId: string): Promise<boolean> {
   if (!isTauriRuntime()) return false;
   // Kick off join — returns () immediately; result delivered via LobbyEnter_t callback.
   // Args are camelCase — Tauri v2 translates to snake_case for Rust automatically.
-  const kickoff = await tauriInvoke('steam_join_lobby', { lobbyId });
+  const kickoff = await invokeSteam('steam_join_lobby', { lobbyId });
   if (kickoff === null) return false; // IPC call itself failed
   // Poll until the LobbyEnter_t callback fires and stores the joined lobby ID.
   const result = await pollPendingResult('steam_get_pending_join_lobby_id');
@@ -219,7 +315,7 @@ export async function joinSteamLobby(lobbyId: string): Promise<boolean> {
  */
 export async function leaveSteamLobby(lobbyId: string): Promise<void> {
   if (!isTauriRuntime()) return;
-  await tauriInvoke('steam_leave_lobby', { lobbyId });
+  await invokeSteam('steam_leave_lobby', { lobbyId });
 }
 
 /**
@@ -228,9 +324,7 @@ export async function leaveSteamLobby(lobbyId: string): Promise<void> {
  */
 export async function getLobbyMembers(lobbyId: string): Promise<SteamLobbyMember[]> {
   if (!isTauriRuntime()) return [];
-  return (await tauriInvoke<SteamLobbyMember[]>('steam_get_lobby_members', {
-    lobbyId,
-  })) ?? [];
+  return (await invokeSteam('steam_get_lobby_members', { lobbyId })) ?? [];
 }
 
 /**
@@ -246,7 +340,7 @@ export async function getLobbyMembers(lobbyId: string): Promise<SteamLobbyMember
  */
 export async function requestSteamLobbyList(): Promise<boolean> {
   if (!isTauriRuntime()) return false;
-  const result = await tauriInvoke<string>('steam_request_lobby_list');
+  const result = await invokeSteam('steam_request_lobby_list');
   return result !== null;
 }
 
@@ -271,10 +365,10 @@ export async function getSteamLobbyListResult(
   if (!isTauriRuntime()) return null;
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
-    await tauriInvoke('steam_run_callbacks');
-    const value = await tauriInvoke<string[] | null>('steam_get_lobby_list_result');
+    await invokeSteam('steam_run_callbacks');
+    const value = await invokeSteam('steam_get_lobby_list_result');
     // value is non-null (including []) when the callback has fired.
-    if (value !== null && value !== undefined) return value;
+    if (value !== null && value !== undefined) return value as string[];
     await new Promise((r) => setTimeout(r, intervalMs));
   }
   return null;
@@ -290,7 +384,7 @@ export async function getSteamLobbyListResult(
  */
 export async function getLobbyMemberCount(lobbyId: string): Promise<number> {
   if (!isTauriRuntime()) return 0;
-  return (await tauriInvoke<number>('steam_get_lobby_member_count', { lobbyId })) ?? 0;
+  return (await invokeSteam('steam_get_lobby_member_count', { lobbyId })) ?? 0;
 }
 
 // ── Lobby Metadata ────────────────────────────────────────────────────────────
@@ -302,7 +396,7 @@ export async function getLobbyMemberCount(lobbyId: string): Promise<number> {
  */
 export async function setLobbyData(lobbyId: string, key: string, value: string): Promise<void> {
   if (!isTauriRuntime()) return;
-  await tauriInvoke('steam_set_lobby_data', { lobbyId, key, value });
+  await invokeSteam('steam_set_lobby_data', { lobbyId, key, value });
 }
 
 /**
@@ -311,7 +405,7 @@ export async function setLobbyData(lobbyId: string, key: string, value: string):
  */
 export async function getLobbyData(lobbyId: string, key: string): Promise<string | null> {
   if (!isTauriRuntime()) return null;
-  return tauriInvoke<string>('steam_get_lobby_data', { lobbyId, key });
+  return invokeSteam('steam_get_lobby_data', { lobbyId, key });
 }
 
 // ── P2P Messaging ─────────────────────────────────────────────────────────────
@@ -331,7 +425,7 @@ export async function sendP2PMessage(
   channel: number = 0,
 ): Promise<void> {
   if (!isTauriRuntime()) return;
-  await tauriInvoke('steam_send_p2p_message', { steamId, data, channel });
+  await invokeSteam('steam_send_p2p_message', { steamId, data, channel });
 }
 
 /**
@@ -342,7 +436,7 @@ export async function sendP2PMessage(
  */
 export async function readP2PMessages(channel: number = 0): Promise<SteamP2PMessage[]> {
   if (!isTauriRuntime()) return [];
-  return (await tauriInvoke<SteamP2PMessage[]>('steam_read_p2p_messages', { channel })) ?? [];
+  return (await invokeSteam('steam_read_p2p_messages', { channel })) ?? [];
 }
 
 /**
@@ -354,7 +448,7 @@ export async function readP2PMessages(channel: number = 0): Promise<SteamP2PMess
  */
 export async function acceptP2PSession(steamId: string): Promise<void> {
   if (!isTauriRuntime()) return;
-  await tauriInvoke('steam_accept_p2p_session', { steamId });
+  await invokeSteam('steam_accept_p2p_session', { steamId });
 }
 
 // ── Callback Pump ─────────────────────────────────────────────────────────────
@@ -369,7 +463,7 @@ export async function acceptP2PSession(steamId: string): Promise<void> {
  */
 export async function runSteamCallbacks(): Promise<void> {
   if (!isTauriRuntime()) return;
-  await tauriInvoke('steam_run_callbacks');
+  await invokeSteam('steam_run_callbacks');
 }
 
 // ── Poll Loop ─────────────────────────────────────────────────────────────────

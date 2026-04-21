@@ -124,14 +124,9 @@ export interface LobbyState {
   status: 'waiting' | 'ready' | 'starting' | 'in_game';
   /**
    * Visibility in the public browser. Default 'public'.
-   * Always co-updated with `hasPassword` via `setVisibility()` — never mutate directly.
+   * Use `lobbyHasPassword(lobby)` from multiplayerLobbyService to derive the boolean — do not store a copy.
    */
   visibility: LobbyVisibility;
-  /**
-   * Derived UI flag: true when `visibility === 'password'`. Always co-set with `visibility`.
-   * Kept as a denormalized field so UI templates can read a plain boolean.
-   */
-  hasPassword: boolean;
 }
 
 /**

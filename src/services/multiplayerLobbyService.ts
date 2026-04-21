@@ -86,6 +86,16 @@ let _onRaceProgress: ((progress: RaceProgress) => void) | null = null;
 let _onRaceResults: ((results: RaceResults) => void) | null = null;
 
 /**
+ * L4: Callback fired when the local player receives an `mp:lobby:kick` message
+ * from the host targeting their own player ID. Passes an error key so the UI
+ * can display an appropriate message (e.g. "You were removed by the host.").
+ *
+ * Wiring: register before calling `joinLobby()`. Cleared in `leaveLobby()`.
+ * UI is post-MVP — the primitive is shipped so future UI work can light it up.
+ */
+let _onLobbyError: ((error: string) => void) | null = null;
+
+/**
  * Host-side password hash (SHA-256 hex of the plaintext).
  * Stored only in memory on the host — never serialised into LobbyState.
  * Forwarded to the backend on create/setPassword calls.
@@ -254,7 +264,6 @@ export async function createLobby(
     lobbyCode: result.lobbyCode,
     status: 'waiting',
     visibility,
-    hasPassword: visibility === 'password',
   };
 
   // Use BroadcastChannel transport when ?mp param is present (two-tab dev testing),
@@ -327,7 +336,6 @@ export async function joinLobby(
     lobbyCode,
     status: 'waiting',
     visibility: 'public',
-    hasPassword: false,
   };
 
   const broadcast = isBroadcastMode();
@@ -401,7 +409,6 @@ export async function joinLobbyById(
     lobbyCode: result.lobbyCode,
     status: 'waiting',
     visibility: 'public',
-    hasPassword: false,
   };
 
   const broadcast = isBroadcastMode();
@@ -467,6 +474,7 @@ export function leaveLobby(): void {
 
   _handlersAttached = false;
   _localReadyVersion = 0;
+  _onLobbyError = null;
 }
 
 // ── Lobby Settings (host only) ───────────────────────────────────────────────
@@ -519,6 +527,15 @@ export function setContentSelection(selection: LobbyContentSelection): void {
   }
 }
 
+/**
+ * Derive whether a lobby is password-protected from its visibility field.
+ * Replaces the removed denormalized `hasPassword` field on LobbyState.
+ * Use this everywhere a boolean password check is needed.
+ */
+export function lobbyHasPassword(lobby: { visibility: string }): boolean {
+  return lobby.visibility === 'password';
+}
+
 /** Update house rules (host only) */
 export function setHouseRules(rules: Partial<HouseRules>): void {
   if (!_currentLobby || !isHost()) return;
@@ -535,7 +552,7 @@ export function setRanked(ranked: boolean): void {
 
 /**
  * Set lobby visibility (host only).
- * Co-updates `visibility` and `hasPassword` atomically, then broadcasts settings.
+ * Updates lobby visibility (visibility is the single source of truth; hasPassword field removed).
  * Clearing to 'public' or 'friends_only' also clears the stored password hash.
  *
  * @param visibility  New visibility level.
@@ -543,7 +560,6 @@ export function setRanked(ranked: boolean): void {
 export function setVisibility(visibility: LobbyVisibility): void {
   if (!_currentLobby || !isHost()) return;
   _currentLobby.visibility = visibility;
-  _currentLobby.hasPassword = visibility === 'password';
   if (visibility !== 'password') _passwordHash = null;
   broadcastSettings();
 }
@@ -562,12 +578,10 @@ export async function setPassword(password: string | null): Promise<void> {
     _passwordHash = null;
     if (_currentLobby.visibility === 'password') {
       _currentLobby.visibility = 'public';
-      _currentLobby.hasPassword = false;
     }
   } else {
     _passwordHash = await hashPassword(password);
     _currentLobby.visibility = 'password';
-    _currentLobby.hasPassword = true;
   }
   broadcastSettings();
 }
@@ -647,6 +661,51 @@ export function removeLocalBot(): void {
     _botTransport.disconnect();
     _botTransport = null;
   }
+  notifyLobbyUpdate();
+}
+
+// ── L4: Host Moderation ───────────────────────────────────────────────────────
+
+/**
+ * Kick a player from the lobby (host only).
+ *
+ * Broadcasts `mp:lobby:kick` to all peers with the target's ID and an optional
+ * reason. Removes the player from local lobby state immediately so the host's
+ * view updates without waiting for the target to acknowledge.
+ *
+ * Security model:
+ *  - Only the host may call this function — throws if the local player is not host.
+ *  - Receivers verify `issuedBy === host_player_id` before acting (see message
+ *    handler in `setupMessageHandlers()`).
+ *  - The host can never kick themselves — throws if `targetPlayerId === _localPlayerId`.
+ *
+ * UI is post-MVP. See docs/mechanics/multiplayer.md "Host Moderation".
+ *
+ * @param targetPlayerId - Player ID (Steam ID / UUID) of the player to remove.
+ * @param reason         - Optional human-readable reason (displayed to kicked player).
+ * @throws Error if the local player is not the host, or if targeting self.
+ */
+export function kickPlayer(targetPlayerId: string, reason?: string): void {
+  if (!_currentLobby) throw new Error('[kickPlayer] Not in a lobby.');
+  if (!isHost()) throw new Error('[kickPlayer] Only the host can kick players.');
+  if (targetPlayerId === _localPlayerId) throw new Error('[kickPlayer] Host cannot kick themselves.');
+
+  const transport = getMultiplayerTransport();
+  transport.send('mp:lobby:kick', {
+    targetPlayerId,
+    reason,
+    issuedBy: _localPlayerId,
+  });
+
+  // Remove immediately from local state — don't wait for the peer to leave.
+  _currentLobby.players = _currentLobby.players.filter(p => p.id !== targetPlayerId);
+  // Cancel any pending reconnect grace timer for this player.
+  const timer = _reconnectTimers.get(targetPlayerId);
+  if (timer !== undefined) {
+    clearTimeout(timer);
+    _reconnectTimers.delete(targetPlayerId);
+  }
+  console.info(`[MP:LobbyService] Host kicked player ${targetPlayerId}${reason ? ` (reason: ${reason})` : ''}`);
   notifyLobbyUpdate();
 }
 
@@ -791,6 +850,18 @@ export function onRaceProgress(cb: (progress: RaceProgress) => void): () => void
 export function onRaceResults(cb: (results: RaceResults) => void): () => void {
   _onRaceResults = cb;
   return () => { _onRaceResults = null; };
+}
+
+/**
+ * Register callback for lobby errors experienced by the local player
+ * (e.g. being kicked by the host). The error string is a machine-readable key —
+ * currently only `'kicked_by_host'` is defined.
+ *
+ * L4 primitive — UI is post-MVP.
+ */
+export function onLobbyError(cb: (error: string) => void): () => void {
+  _onLobbyError = cb;
+  return () => { _onLobbyError = null; };
 }
 
 // ── C4: LAN mode clear hook ───────────────────────────────────────────────────
@@ -1026,6 +1097,43 @@ function setupMessageHandlers(): void {
     }
   });
 
+  // L4: Handle host kick — either remove the targeted peer from local state,
+  // or (if we are the target) fire _onLobbyError and leave the lobby.
+  transport.on('mp:lobby:kick', (msg) => {
+    if (!_currentLobby) return;
+    const { targetPlayerId, reason, issuedBy } = msg.payload as {
+      targetPlayerId: string;
+      reason?: string;
+      issuedBy: string;
+    };
+
+    // Security: only honour kicks issued by the host.
+    // Reject spoofed kicks from non-host peers.
+    if (issuedBy !== _currentLobby.hostId) {
+      console.warn(
+        `[MP:LobbyService] Rejected spoofed kick for ${targetPlayerId} — issuedBy=${issuedBy} is not host=${_currentLobby.hostId}`,
+      );
+      return;
+    }
+
+    if (targetPlayerId === _localPlayerId) {
+      // We are the kicked player — fire error callback then leave cleanly.
+      console.info(`[MP:LobbyService] Kicked by host.${reason ? ` Reason: ${reason}` : ''}`);
+      _onLobbyError?.('kicked_by_host');
+      leaveLobby();
+      return;
+    }
+
+    // Remove the kicked player from our local lobby state.
+    _currentLobby.players = _currentLobby.players.filter(p => p.id !== targetPlayerId);
+    const timer = _reconnectTimers.get(targetPlayerId);
+    if (timer !== undefined) {
+      clearTimeout(timer);
+      _reconnectTimers.delete(targetPlayerId);
+    }
+    notifyLobbyUpdate();
+  });
+
   transport.on('mp:race:progress', (msg) => {
     _onRaceProgress?.(msg.payload as unknown as RaceProgress);
   });
@@ -1049,7 +1157,6 @@ function broadcastSettings(): void {
     isRanked: _currentLobby.isRanked,
     status: _currentLobby.status,
     visibility: _currentLobby.visibility,
-    hasPassword: _currentLobby.hasPassword,
   });
   notifyLobbyUpdate();
 }

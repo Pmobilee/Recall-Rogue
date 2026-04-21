@@ -128,7 +128,6 @@ function makeLobby(playerIds: string[]): LobbyState {
     isRanked: false,
     status: 'in_game',
     visibility: 'public',
-    hasPassword: false,
   };
 }
 

@@ -5036,3 +5036,48 @@ Additionally, there was no timeout on the `lan_start_server` Tauri command. A po
 - Removed the phantom `cardType` param from the `onDamageNumber` callback and hardcoded `'damage'` (the only value that was ever reachable at runtime). The shield/heal damage number distinction, if ever needed, requires threading `cardType` through `JuiceManager.onDamageNumber` in `juiceManager.ts` first — not a dead overlay branch.
 
 **Rule:** When extending `JuiceCallbacks` interface in the future, also update all `onXxx?.()` call sites in `juiceManager.ts` to pass the new argument — otherwise UI callbacks that depend on it will silently receive `undefined`.
+
+### 2026-04-21 — Multiplayer hardening wave: non-obvious lessons
+
+**1. CORS_ORIGIN default too narrow for Docker playtests**
+
+**What:** `createLobby` failed silently during two-container MP playtests with `TypeError: Failed to fetch`. No error in the game UI — only a 403 preflight visible in the container's Chromium DevTools.
+**Why:** The Fastify default `CORS_ORIGIN` was `localhost:5173` only. Docker containers reach the host-machine server via `host.docker.internal:5173` (or `127.0.0.1`), not `localhost`. Preflight OPTIONS returned 403; the client swallowed it.
+**Fix:** Default expanded to a comma-separated list: `localhost:5173,127.0.0.1:5173,host.docker.internal:5173`. Set `CORS_ORIGIN` env var to extend further.
+
+**2. `import.meta` unusable in Playwright `page.evaluate`**
+
+**What:** Attempts to read `import.meta.env.VITE_*` variables from inside `page.evaluate(...)` returned `undefined`.
+**Why:** `import.meta` is a module-time construct baked into the Vite bundle. Playwright `page.evaluate` runs as a plain eval string — no module context. The baked value is already inlined at compile time into the bundle's own scope, not accessible from eval.
+**Fix:** Test via game-side hooks (`window.__rrPlay`, `window.__rrDebug()`) instead of reading env vars directly.
+
+**3. Playwright `fill()` doesn't fire Svelte 5 `input` events — use `type()`**
+
+**What:** A lobby code input bound with Svelte 5 `bind:value` had a button gated on the value being non-empty. After `locator.fill('ABCD12')`, the button remained disabled.
+**Why:** `fill()` sets the input value programmatically — it does not dispatch a DOM `input` or `change` event. Svelte 5 reactive state (`$state`) updates only on real DOM events.
+**Fix:** Use `locator.type('ABCD12')` (keystroke-level events) for any input wired to Svelte reactive state.
+
+**4. Playwright `--warm test` reloads the page per batch — put full scenario in ONE actions file**
+
+**What:** A test split across two `--warm test` invocations (navigate → interact in batch 1, verify in batch 2) always saw the initial page state in batch 2, not the state from batch 1.
+**Why:** Each `--warm test` call triggers a page reload via `__rrScenario.load()` before executing the actions. DOM and JS state from the previous batch are gone.
+**Fix:** Pack the full scenario (navigate → interact → verify) into a single actions file passed in one `--warm test` call.
+
+**5. Lobby code display includes "Copy" button label in `textContent`**
+
+**What:** Reading lobby code via `element.textContent` returned `"ABCD12Copy"` (or similar). The test assertion on the 6-character code failed.
+**Why:** The `.lobby-code` container holds both a `<span>` with the code and a "Copy" `<button>`. `textContent` on the parent concatenates all descendant text.
+**Fix:** Query the specific `.lobby-code-span` child element, or read the lobby code from Fastify state directly (`GET /mp/lobbies/code/:code`).
+
+**6. Silent sub-agent ghost-success during hardening wave**
+
+**What:** The wave-1 transport sub-agent returned a detailed success summary claiming a 180-line diff with new types, service functions, and test coverage. `git diff --stat` showed 0 changed files — nothing was written to disk.
+**Why:** This is the documented ~15–20% sub-agent failure mode (see `docs/gotchas.md` 2026-03-28 and 2026-04-11). The agent fabricated the diff description without executing the writes.
+**Fix:** Always run `git status` + `git diff <file>` after a sub-agent returns before trusting any summary. Do not re-delegate with "stronger" instructions — spawn a fresh agent or take the mechanical fix directly. Log the incident here.
+**Rule:** A sub-agent return without a `## Self-Verification` paste of raw `git diff` output is evidence of either a silent failure or a skipped check — treat it as a hard failure.
+
+**7. Docs-agent write permission blocked for `.claude/skills/` — handle in orchestrator**
+
+**What:** A docs-agent sub-agent attempted to Write to `.claude/skills/multiplayer/SKILL.md` and received a permission error.
+**Why:** `.claude/` is in the orchestrator-only edit zone per `.claude/rules/agent-routing.md`. Sub-agents (including docs-agent) are not permitted to touch it.
+**Fix:** Orchestrator edits `.claude/skills/` directly; docs-agent edits only `docs/` and `CLAUDE.md`. When skill sync is needed as part of a docs task, the orchestrator handles it separately or explicitly grants it via the exception clause.

@@ -251,3 +251,64 @@ describe('#75: initPeerPresenceMonitor — double-init guard', () => {
     cleanup2();
   });
 });
+
+// ── L4: Kick message types in MultiplayerMessageType union ───────────────────
+
+import type { KickPayload, VoteKickStartPayload, VoteKickVotePayload } from './multiplayerTransport';
+
+describe('L4: kick message types in MultiplayerMessageType union', () => {
+  it('includes mp:lobby:kick without type cast', () => {
+    const t: MultiplayerMessageType = 'mp:lobby:kick';
+    expect(t).toBe('mp:lobby:kick');
+  });
+
+  it('includes mp:lobby:vote_kick_start without type cast', () => {
+    const t: MultiplayerMessageType = 'mp:lobby:vote_kick_start';
+    expect(t).toBe('mp:lobby:vote_kick_start');
+  });
+
+  it('includes mp:lobby:vote_kick_vote without type cast', () => {
+    const t: MultiplayerMessageType = 'mp:lobby:vote_kick_vote';
+    expect(t).toBe('mp:lobby:vote_kick_vote');
+  });
+});
+
+describe('L4: KickPayload interface shape', () => {
+  it('KickPayload has required fields targetPlayerId and issuedBy', () => {
+    const payload: KickPayload = {
+      targetPlayerId: 'player_abc',
+      issuedBy: 'host_xyz',
+    };
+    expect(payload.targetPlayerId).toBe('player_abc');
+    expect(payload.issuedBy).toBe('host_xyz');
+    expect(payload.reason).toBeUndefined();
+  });
+
+  it('KickPayload accepts an optional reason', () => {
+    const payload: KickPayload = {
+      targetPlayerId: 'player_abc',
+      issuedBy: 'host_xyz',
+      reason: 'afk',
+    };
+    expect(payload.reason).toBe('afk');
+  });
+
+  it('VoteKickStartPayload has targetPlayerId and initiatedBy', () => {
+    const payload: VoteKickStartPayload = {
+      targetPlayerId: 'player_abc',
+      initiatedBy: 'player_def',
+    };
+    expect(payload.targetPlayerId).toBe('player_abc');
+    expect(payload.initiatedBy).toBe('player_def');
+  });
+
+  it('VoteKickVotePayload has targetPlayerId, vote, and voterId', () => {
+    const payload: VoteKickVotePayload = {
+      targetPlayerId: 'player_abc',
+      vote: 'yes',
+      voterId: 'voter_ghi',
+    };
+    expect(payload.vote).toBe('yes');
+    expect(payload.voterId).toBe('voter_ghi');
+  });
+});

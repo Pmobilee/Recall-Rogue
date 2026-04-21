@@ -130,6 +130,10 @@ const {
   onGameStart,
   getCurrentLobby,
   leaveLobby,
+  kickPlayer,
+  onLobbyError,
+  isHost: isHostFn,
+  getLocalMultiplayerPlayerId,
 } = await import('./multiplayerLobbyService');
 
 // ---------------------------------------------------------------------------
@@ -350,42 +354,38 @@ describe('setVisibility — lobby privacy transitions', () => {
     leaveLobby();
   });
 
-  it('public → password: sets hasPassword to true and visibility to "password"', async () => {
+  it('public → password: sets visibility to "password"', async () => {
     await makeHostLobbyPhase10('race', { visibility: 'public' });
     setVisibility('password');
     const lobby = getCurrentLobby();
     expect(lobby).not.toBeNull();
     expect(lobby!.visibility).toBe('password');
-    expect(lobby!.hasPassword).toBe(true);
   });
 
-  it('password → public: resets hasPassword to false and visibility to "public"', async () => {
+  it('password → public: resets visibility to "public"', async () => {
     await makeHostLobbyPhase10('race', { visibility: 'public' });
     setVisibility('password');
     setVisibility('public');
     const lobby = getCurrentLobby();
     expect(lobby).not.toBeNull();
     expect(lobby!.visibility).toBe('public');
-    expect(lobby!.hasPassword).toBe(false);
   });
 
-  it('public → friends_only: does not touch hasPassword (stays false)', async () => {
+  it('public → friends_only: sets visibility to "friends_only"', async () => {
     await makeHostLobbyPhase10('race', { visibility: 'public' });
     setVisibility('friends_only');
     const lobby = getCurrentLobby();
     expect(lobby).not.toBeNull();
     expect(lobby!.visibility).toBe('friends_only');
-    expect(lobby!.hasPassword).toBe(false);
   });
 
-  it('friends_only → password: sets hasPassword to true', async () => {
+  it('friends_only → password: sets visibility to "password"', async () => {
     await makeHostLobbyPhase10('race', { visibility: 'public' });
     setVisibility('friends_only');
     setVisibility('password');
     const lobby = getCurrentLobby();
     expect(lobby).not.toBeNull();
     expect(lobby!.visibility).toBe('password');
-    expect(lobby!.hasPassword).toBe(true);
   });
 
   it('setVisibility is a no-op for non-host players', async () => {
@@ -406,7 +406,7 @@ describe('setVisibility — lobby privacy transitions', () => {
     const settingsMsgs = mockTransport.sent.slice(sentBefore).filter(m => m.type === 'mp:lobby:settings');
     expect(settingsMsgs.length).toBeGreaterThan(0);
     expect(settingsMsgs[0].payload.visibility).toBe('password');
-    expect(settingsMsgs[0].payload.hasPassword).toBe(true);
+    expect(settingsMsgs[0].payload.visibility).toBe('password'); // derived: lobbyHasPassword(lobby) would return true
   });
 });
 
@@ -423,13 +423,12 @@ describe('setPassword — hash storage and visibility co-update', () => {
     leaveLobby();
   });
 
-  it('setPassword("foo"): co-updates visibility to "password" and hasPassword to true', async () => {
+  it('setPassword("foo"): co-updates visibility to "password"', async () => {
     await makeHostLobbyPhase10('race', { visibility: 'public' });
     await setPassword('foo');
     const lobby = getCurrentLobby();
     expect(lobby).not.toBeNull();
     expect(lobby!.visibility).toBe('password');
-    expect(lobby!.hasPassword).toBe(true);
   });
 
   it('setPassword("foo"): setting a new password replaces the old one (no re-hash of prior)', async () => {
@@ -438,7 +437,6 @@ describe('setPassword — hash storage and visibility co-update', () => {
     await setPassword('second');
     const lobby = getCurrentLobby();
     expect(lobby!.visibility).toBe('password');
-    expect(lobby!.hasPassword).toBe(true);
   });
 
   it('setPassword(null): clears the password and resets visibility to "public" when it was "password"', async () => {
@@ -448,7 +446,6 @@ describe('setPassword — hash storage and visibility co-update', () => {
     const lobby = getCurrentLobby();
     expect(lobby).not.toBeNull();
     expect(lobby!.visibility).toBe('public');
-    expect(lobby!.hasPassword).toBe(false);
   });
 
   it('setPassword(null): does not change visibility when it was not "password"', async () => {
@@ -1251,5 +1248,163 @@ describe('#76: initPeerPresenceMonitor wired in createLobby and torn down in lea
     leaveLobby();
 
     expect(mockCleanup).toHaveBeenCalledTimes(1);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Tests — L4: kickPlayer and mp:lobby:kick handler
+// ---------------------------------------------------------------------------
+
+// kickPlayer and onLobbyError are destructured from the first import block above
+
+describe('L4: kickPlayer — host-only kick primitive', () => {
+  beforeEach(() => {
+    resetMockTransport();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.restoreAllMocks();
+  });
+
+  it('broadcasts mp:lobby:kick with correct payload when host kicks a player', async () => {
+    const lobby = await createLobby('host_kick', 'Host', 'race');
+    lobby.players.push({ id: 'guest_kick', displayName: 'Guest', isHost: false, isReady: false });
+
+    kickPlayer('guest_kick', 'afk');
+
+    const kickMsg = mockTransport.sent.find(m => m.type === 'mp:lobby:kick');
+    expect(kickMsg).toBeDefined();
+    expect(kickMsg!.payload.targetPlayerId).toBe('guest_kick');
+    expect(kickMsg!.payload.reason).toBe('afk');
+    expect(kickMsg!.payload.issuedBy).toBe('host_kick');
+  });
+
+  it('removes the kicked player from local lobby state immediately', async () => {
+    const lobby = await createLobby('host_kick2', 'Host', 'race');
+    lobby.players.push({ id: 'target_kick2', displayName: 'Target', isHost: false, isReady: false });
+
+    kickPlayer('target_kick2');
+
+    const currentLobby = getCurrentLobby();
+    expect(currentLobby).not.toBeNull();
+    expect(currentLobby!.players.find(p => p.id === 'target_kick2')).toBeUndefined();
+  });
+
+  it('throws when the local player is not the host', async () => {
+    // Join as a guest — _localPlayerId becomes a non-host
+    await joinLobby('ABCDEF', 'guest_cant_kick', 'Guest');
+
+    expect(() => kickPlayer('someone')).toThrow(/Only the host/);
+  });
+
+  it('throws when not in a lobby', () => {
+    // Not in a lobby at all
+    expect(() => kickPlayer('anyone')).toThrow(/Not in a lobby/);
+  });
+
+  it('throws when the host tries to kick themselves', async () => {
+    await createLobby('self_kick_host', 'Host', 'race');
+
+    expect(() => kickPlayer('self_kick_host')).toThrow(/Host cannot kick themselves/);
+  });
+
+  it('works without a reason (reason is optional)', async () => {
+    const lobby = await createLobby('host_noreason', 'Host', 'race');
+    lobby.players.push({ id: 'target_noreason', displayName: 'Target', isHost: false, isReady: false });
+
+    expect(() => kickPlayer('target_noreason')).not.toThrow();
+
+    const kickMsg = mockTransport.sent.find(m => m.type === 'mp:lobby:kick');
+    expect(kickMsg).toBeDefined();
+    expect(kickMsg!.payload.reason).toBeUndefined();
+  });
+});
+
+describe('L4: mp:lobby:kick message handler', () => {
+  beforeEach(() => {
+    resetMockTransport();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.restoreAllMocks();
+  });
+
+  it('happy path: receiver removes kicked player from lobby state', async () => {
+    const lobby = await createLobby('host_recv', 'Host', 'race');
+    // Inject a second player to simulate a peer that gets kicked
+    lobby.players.push({ id: 'kicked_peer', displayName: 'KickedPeer', isHost: false, isReady: false });
+
+    // Simulate receiving the kick from ourselves (host) — issuedBy must match hostId
+    mockTransport.simulateReceive('mp:lobby:kick', {
+      targetPlayerId: 'kicked_peer',
+      issuedBy: 'host_recv',
+    });
+
+    const currentLobby = getCurrentLobby();
+    expect(currentLobby).not.toBeNull();
+    expect(currentLobby!.players.find(p => p.id === 'kicked_peer')).toBeUndefined();
+  });
+
+  it('receiver calls leaveLobby and fires onLobbyError when local player is targeted', async () => {
+    // Join as guest — local player ID is the target
+    await joinLobby('ABCDEF', 'target_local', 'TargetPlayer');
+
+    // We need to simulate knowing the host ID — lobby state from joinLobby starts with empty hostId.
+    // Set the lobby host so the spoof check passes.
+    const lobby = getCurrentLobby();
+    expect(lobby).not.toBeNull();
+    lobby!.hostId = 'remote_host';
+
+    let errorReceived: string | null = null;
+    onLobbyError((err: string) => { errorReceived = err; });
+
+    // Host kicks us
+    mockTransport.simulateReceive('mp:lobby:kick', {
+      targetPlayerId: 'target_local',
+      issuedBy: 'remote_host',
+    });
+
+    // onLobbyError should have fired with 'kicked_by_host'
+    expect(errorReceived).toBe('kicked_by_host');
+    // We should have left the lobby
+    expect(getCurrentLobby()).toBeNull();
+  });
+
+  it('spoofed kick rejected: non-host issuedBy is ignored', async () => {
+    const lobby = await createLobby('host_spoof', 'Host', 'race');
+    lobby.players.push({ id: 'victim', displayName: 'Victim', isHost: false, isReady: false });
+
+    // Simulate a kick from a non-host player (spoof attempt)
+    mockTransport.simulateReceive('mp:lobby:kick', {
+      targetPlayerId: 'victim',
+      issuedBy: 'evil_nonhost', // NOT the host
+    });
+
+    // Victim should still be in the lobby — spoofed kick rejected
+    const currentLobby = getCurrentLobby();
+    expect(currentLobby).not.toBeNull();
+    expect(currentLobby!.players.find(p => p.id === 'victim')).toBeDefined();
+  });
+
+  it('spoofed kick: local player ignores kick when issuedBy is not the host', async () => {
+    await joinLobby('ABCDEF', 'local_spoof_target', 'LocalPlayer');
+
+    const lobby = getCurrentLobby();
+    expect(lobby).not.toBeNull();
+    lobby!.hostId = 'real_host';
+
+    let errorFired = false;
+    onLobbyError(() => { errorFired = true; });
+
+    // Receive a kick supposedly targeting us but issued by a non-host — reject it
+    mockTransport.simulateReceive('mp:lobby:kick', {
+      targetPlayerId: 'local_spoof_target',
+      issuedBy: 'not_the_real_host',
+    });
+
+    expect(errorFired).toBe(false);
+    expect(getCurrentLobby()).not.toBeNull();
   });
 });
