@@ -547,3 +547,15 @@ CardApp.svelte :650-661
 | 2026-04-15 | — | LAN co-op system: `lan.rs`, `lanServerService.ts`, `lanDiscoveryService.ts`, `lanConfigService.ts` |
 | 2026-04-13 | — | E2E verification batch MP-20260413-003941; lobby snapshot `id` vs `playerId` fix; bot removal |
 | 2026-04-11 | `cc2e5b8bc` | Phase 4: public/private lobby browsing, `lobbyBackend` abstraction, `?mp`-first backend priority |
+
+
+---
+
+## C2 — Real Steam Persona Name (2026-04-21)
+
+**New Tauri command:** `steam_get_persona_name` in `src-tauri/src/steam.rs`.  
+**Registered in:** `src-tauri/src/main.rs` invoke handler.  
+**TypeScript bridge:** `getLocalPersonaName()` export in `steamNetworkingService.ts`.  
+**Typed IPC entries** added to `SteamCommandArgs` (`steam_get_persona_name: Record<string, never>`) and `SteamCommandReturn` (`steam_get_persona_name: string | null`).  
+
+`CardApp.svelte` resolves the real Steam name on `onMount` and uses it for both `handleCreateLobby` and `handleJoinLobby` instead of the former `'Player 1'` / `'Player 2'` hardcoded strings.

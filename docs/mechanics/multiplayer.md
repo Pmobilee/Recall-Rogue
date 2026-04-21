@@ -1108,7 +1108,9 @@ Maps a `PartnerState` (transport layer) into the `Partial<RaceProgress>` shape t
 ## Known Placeholders (2026-04-09)
 
 ### Player Display Names
-`createLobby()` is called with `'Player 1'` and `joinLobby()` with `'Player 2'` as placeholder display names in `CardApp.svelte`. These will be replaced with real Steam usernames when Steam integration lands. See `docs/roadmap/AR-MULTIPLAYER.md` for the planned integration point.
+~~`createLobby()` is called with `'Player 1'` and `joinLobby()` with `'Player 2'` as placeholder display names in `CardApp.svelte`.~~
+
+**Resolved (C2, 2026-04-21):** `CardApp.svelte` now calls `getLocalPersonaName()` from `steamNetworkingService.ts` before creating or joining a lobby. The display name resolves in priority order: Steam persona name → `authStore.displayName` → `'Player'`. See the C2 section below.
 
 ---
 
@@ -1586,3 +1588,80 @@ On `mp:lobby:kick`:
 ### vote_kick_start / vote_kick_vote
 
 Stubs only. Message types are in the union and payload interfaces are defined, but no logic is wired. Reserved for a future vote-to-kick feature (requires UI, quorum logic, and timer state).
+
+
+---
+
+## B1 — LAN Bind Error Surfacing + Auto-Port-Retry (2026-04-21)
+
+**Source files:** `src-tauri/src/lan.rs`, `src/services/lanServerService.ts`, `src/ui/components/MultiplayerMenu.svelte`
+
+### Problem (pre-B1)
+
+`lan_start_server` in `lan.rs` returned a formatted string error on `TcpListener::bind` failure, but the TypeScript-side `tauriInvoke` swallowed all IPC errors into `null`. `startLanServer()` returned `null`, and `handleStartServer` in `MultiplayerMenu.svelte` showed a generic "Couldn't start the server. Try again." regardless of the actual cause.
+
+### Fix
+
+1. **`lan.rs` auto-port-retry:** When `TcpListener::bind` fails with `AddrInUse`, the server retries once with `port=0` so the OS assigns a free port. Any other error (permission denied, no NIC) is returned immediately without retry.
+
+2. **`lanServerService.ts` throwing invoke:** `startLanServer()` now uses `tauriInvokeOrThrow` — a direct `invoke` call that does NOT catch the rejection. Bind failures propagate as thrown `Error` instances with the real Rust error string.
+
+3. **`MultiplayerMenu.svelte` error surface:** The `catch (err)` block now shows `Server failed to start: ${detail}` where `detail` is `err.message`. Players see the real cause rather than the generic fallback.
+
+### Error strings a player might see
+
+- `Port 19738 is already in use and auto-assign also failed: ...` — rare; means the OS couldn't find ANY free port
+- `Failed to bind port 19738: permission denied` — macOS firewall or system policy is blocking the bind
+
+### macOS local-network permission
+
+On first launch, macOS shows an "Allow 'Recall Rogue' to find and connect to devices on your local network?" dialog. The LAN server bind succeeds; the OS blocks outbound discovery packets until the user approves. If a player dismisses the dialog:
+
+- The server binds and starts (localhost reachable).
+- Guests on other machines cannot connect via LAN discovery.
+- The player must re-enable in System Settings → Privacy & Security → Local Network.
+
+No code change is needed — this is an OS-level policy. Document this to players in the FAQ.
+
+---
+
+## C2 — Real Steam Persona Name (2026-04-21)
+
+**Source files:** `src-tauri/src/steam.rs`, `src-tauri/src/main.rs`, `src/services/steamNetworkingService.ts`, `src/CardApp.svelte`
+
+### New Rust command: `steam_get_persona_name`
+
+```rust
+#[tauri::command]
+pub fn steam_get_persona_name(state: State<SteamState>) -> Result<Option<String>, String>
+```
+
+Returns the Steam display name of the locally signed-in user via `ISteamFriends::GetFriendPersonaName`. Synchronous — no callback or polling required. Returns `None` when Steam is unavailable.
+
+Registered in `main.rs` `.invoke_handler`.
+
+### TypeScript bridge: `getLocalPersonaName()`
+
+Added to `SteamCommandArgs` and `SteamCommandReturn` typed IPC contract in `steamNetworkingService.ts`:
+
+```typescript
+// SteamCommandArgs
+steam_get_persona_name: Record<string, never>;
+
+// SteamCommandReturn
+steam_get_persona_name: string | null;
+```
+
+New export:
+
+```typescript
+export async function getLocalPersonaName(): Promise<string | null>
+```
+
+Returns null on non-Tauri builds (web, mobile, CI).
+
+### CardApp.svelte wiring
+
+`getLocalPersonaName` is imported in `CardApp.svelte`. A module-level `localDisplayName` state variable is populated in `onMount`. Both `handleCreateLobby` and `handleJoinLobby` call `getLocalDisplayName()` before creating or joining, which resolves: Steam persona name → `authStore.displayName` → `'Player'`.
+
+The `localDisplayName` state variable is also passed as the prop to `LobbyBrowserScreen` so the browser shows the real name when the player joins by browsing.

@@ -116,19 +116,37 @@ const LAN_START_TIMEOUT_MS = 10_000;
  *
  * @param port - Port to bind on (default chosen by Rust backend, typically 19738)
  */
+/**
+ * B1: Internal invoke that throws with the real Rust error string rather than
+ * returning null. Used only by startLanServer so bind failures (port in use,
+ * permission denied) reach the UI instead of collapsing to a generic message.
+ */
+async function tauriInvokeOrThrow<T = unknown>(
+  cmd: string,
+  args?: Record<string, unknown>,
+): Promise<T> {
+  if (!isTauriRuntime()) {
+    throw new Error('LAN server requires the desktop app (Tauri runtime not detected).');
+  }
+  const { invoke } = await import('@tauri-apps/api/core');
+  return invoke<T>(cmd, args);
+}
+
 export async function startLanServer(port?: number): Promise<LanStartResult | null> {
+  if (!isTauriRuntime()) return null;
   const args: Record<string, unknown> = {};
   if (port !== undefined) args['port'] = port;
 
-  const invokePromise = tauriInvoke<LanStartResult>('lan_start_server', args);
-  const timeoutPromise = new Promise<null>(resolve =>
-    setTimeout(() => resolve(null), LAN_START_TIMEOUT_MS),
+  // B1: Use a throwing invoke so bind errors (port in use, permission denied)
+  // propagate up to the caller instead of collapsing to null. The Promise.race
+  // timeout guard is preserved — a hang still surfaces as a rejection.
+  const invokePromise = tauriInvokeOrThrow<LanStartResult>('lan_start_server', args);
+  const timeoutPromise = new Promise<never>((_, reject) =>
+    setTimeout(() => reject(new Error('LAN server start timed out after 10 seconds')), LAN_START_TIMEOUT_MS),
   );
 
   const result = await Promise.race([invokePromise, timeoutPromise]);
-  if (result === null) {
-    console.warn('[LanServer] startLanServer timed out or returned null — isTauriRuntime():', isTauriRuntime());
-  } else if (result.warning === 'local-only') {
+  if (result.warning === 'local-only') {
     console.warn('[LanServer] Server bound to localhost only — remote players cannot connect. lanServerUrl:', result.lanServerUrl);
   }
   return result;

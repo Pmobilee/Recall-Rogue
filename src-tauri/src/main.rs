@@ -42,6 +42,8 @@ fn main() {
             steam::steam_accept_p2p_session,
             // Callback pump (required for async lobby ops)
             steam::steam_run_callbacks,
+            // C2: Local user persona name (real Steam display name for lobby)
+            steam::steam_get_persona_name,
             // Steam lobby exit cleanup (C5 — best-effort leave on JS-side graceful shutdown)
             steam::steam_force_leave_active_lobby,
             // File system save (filesave.rs)

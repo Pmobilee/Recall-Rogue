@@ -86,6 +86,8 @@ export interface SteamCommandArgs {
   steam_get_lobby_member_count: { lobbyId: string };
   steam_force_leave_active_lobby: Record<string, never>;
   steam_check_lobby_membership: { lobbyId: string; steamId: string };
+  /** C2: Get the local user's Steam persona name. Synchronous (no callback needed). */
+  steam_get_persona_name: Record<string, never>;
   /** Internal polling commands — no args, accessed via pollPendingResult / pollJoinResult. */
   steam_get_pending_lobby_id: Record<string, never>;
   steam_get_pending_join_lobby_id: Record<string, never>;
@@ -115,6 +117,8 @@ export interface SteamCommandReturn {
   steam_get_lobby_member_count: number;
   steam_force_leave_active_lobby: void;
   steam_check_lobby_membership: boolean;
+  /** C2: Returns the Steam persona name string, or null if Steam unavailable. */
+  steam_get_persona_name: string | null;
   steam_get_pending_lobby_id: string | null;
   steam_get_pending_join_lobby_id: string | null;
   /** A3: string when a join error is pending; null when no error (or error already consumed). */
@@ -455,6 +459,26 @@ export async function setLobbyData(lobbyId: string, key: string, value: string):
 export async function getLobbyData(lobbyId: string, key: string): Promise<string | null> {
   if (!isTauriRuntime()) return null;
   return invokeSteam('steam_get_lobby_data', { lobbyId, key });
+}
+
+// ── C2: Local user identity ──────────────────────────────────────────────────
+
+/**
+ * Get the Steam persona name (display name) of the locally signed-in player.
+ *
+ * Returns the name Steam shows in the overlay and friends list — the same name
+ * other players see in lobbies. Synchronous on the Rust side (no callback).
+ *
+ * Returns null on non-Tauri builds (web, mobile, CI) or when Steam is unavailable.
+ * Callers should fall back to authStore.displayName when this returns null.
+ *
+ * @example
+ *   const name = await getLocalPersonaName() ?? authStore.displayName ?? 'Player';
+ */
+export async function getLocalPersonaName(): Promise<string | null> {
+  if (!isTauriRuntime()) return null;
+  const result = await invokeSteam('steam_get_persona_name');
+  return result ?? null;
 }
 
 // ── P2P Messaging ─────────────────────────────────────────────────────────────

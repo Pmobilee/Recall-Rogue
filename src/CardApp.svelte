@@ -177,6 +177,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import { rewardCardDetail, getCardDetailCallbacks } from './services/rewardRoomBridge'
   import RewardRoomOverlay from './ui/components/RewardRoomOverlay.svelte'
   import { updateRichPresence } from './services/steamService'
+  import { getLocalPersonaName } from './services/steamNetworkingService'
   import { getCombatBgForEnemy, getCombatDepthMap } from './data/backgroundManifest'
   import ParallaxTransition from './ui/components/ParallaxTransition.svelte'
   import InRunTopBar from './ui/components/InRunTopBar.svelte'
@@ -548,6 +549,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   })
   let opponentDisplayName = $state('Opponent')
 
+  /**
+   * C2: The local player's resolved display name — Steam persona name when available,
+   * falling back to auth profile name. Populated in onMount.
+   */
+  let localDisplayName = $state($authStore.displayName ?? $authStore.email ?? 'Player')
+
   /** Unique player ID for this tab session (stable across lobby create/join). */
   const localPlayerId = generatePlayerId()
 
@@ -633,11 +640,22 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     }
   }
 
-  // TODO(multiplayer): Replace placeholder display names with real Steam usernames when Steam integration lands. See docs/roadmap/AR-MULTIPLAYER.md.
+  /**
+   * C2: Resolve the best available display name for the local player.
+   * Tries Steam persona name first (works on Tauri/Steam builds), falls back
+   * to the auth profile display name, then a generic fallback.
+   */
+  async function getLocalDisplayName(): Promise<string> {
+    const steamName = await getLocalPersonaName()
+    if (steamName && steamName.trim()) return steamName.trim()
+    return $authStore.displayName ?? 'Player'
+  }
+
   async function handleCreateLobby(mode: MultiplayerMode, opts: { visibility: LobbyVisibility; password?: string }): Promise<void> {
     multiplayerError = null
     try {
-      const lobby = await createLobby(localPlayerId, 'Player 1', mode, opts)
+      const displayName = await getLocalDisplayName()
+      const lobby = await createLobby(localPlayerId, displayName, mode, opts)
       currentLobby = lobby
       transitionScreen('multiplayerLobby')
     } catch (error) {
@@ -650,7 +668,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   async function handleJoinLobby(code: string): Promise<void> {
     multiplayerError = null
     try {
-      const lobby = await joinLobby(code, localPlayerId, 'Player 2')
+      const displayName = await getLocalDisplayName()
+      const lobby = await joinLobby(code, localPlayerId, displayName)
       currentLobby = lobby
       transitionScreen('multiplayerLobby')
     } catch (error) {
@@ -1497,6 +1516,14 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
   onMount(() => {
+    // C2: Resolve the real Steam persona name as early as possible so that lobby
+    // creates/joins (which also call getLocalDisplayName) have it cached in state.
+    void getLocalPersonaName().then((steamName) => {
+      if (steamName && steamName.trim()) {
+        localDisplayName = steamName.trim()
+      }
+    })
+
     const onInteraction = (): void => {
       handleUserInteraction()
       window.removeEventListener('pointerdown', onInteraction)
@@ -2163,7 +2190,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     <div in:fly={{ y: 8, duration: 350 }}>
       <LobbyBrowserScreen
         localPlayerId={localPlayerId}
-        localDisplayName={$authStore.displayName ?? $authStore.email ?? 'Player'}
+        localDisplayName={localDisplayName}
         onBack={() => transitionScreen('multiplayerMenu')}
         onJoined={handleLobbyJoined}
       />

@@ -771,3 +771,27 @@ pub fn steam_check_lobby_membership(
         Ok(false)
     }
 }
+
+// ── C2: Local player persona name ────────────────────────────────────────────
+
+/// Return the Steam display name (persona name) of the locally signed-in user.
+///
+/// This is the same name shown in the Steam overlay and friends list — it is what
+/// other players see. Returns  when Steam is unavailable (non-Tauri builds,
+/// Steam client not running, etc.).
+///
+/// Uses `ISteamFriends::GetFriendPersonaName` with the local user's own Steam ID.
+/// The name is always available for the local user (Steam loads it on init) so this
+/// call is synchronous — no callback or polling required.
+#[tauri::command]
+pub fn steam_get_persona_name(state: State<SteamState>) -> Result<Option<String>, String> {
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(client) = lock.as_ref() {
+        let id = client.user().steam_id();
+        let name = client.friends().get_friend(id).name();
+        println!("[Steam] Persona name: {}", name);
+        Ok(Some(name))
+    } else {
+        Ok(None)
+    }
+}

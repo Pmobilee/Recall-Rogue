@@ -784,9 +784,31 @@ pub async fn lan_start_server(port: Option<u16>) -> Result<LanStartResult, Strin
     let addr: SocketAddr = bind_addr_str
         .parse()
         .map_err(|e: std::net::AddrParseError| e.to_string())?;
-    let listener: tokio::net::TcpListener = tokio::net::TcpListener::bind(addr)
-        .await
-        .map_err(|e| format!("Failed to bind port {}: {}", port, e))?;
+
+    // B1: Try the requested port first. On AddrInUse, retry once with port=0 so the
+    // OS assigns a free port. Any other error (permission denied, no NIC) is returned
+    // as-is — the TS side surfaces the full string in the error toast.
+    let listener: tokio::net::TcpListener = match tokio::net::TcpListener::bind(addr).await {
+        Ok(l) => {
+            eprintln!("[LAN] Bound on {}", addr);
+            l
+        }
+        Err(e) if e.kind() == std::io::ErrorKind::AddrInUse => {
+            eprintln!("[LAN] Port {} in use — retrying with OS-assigned port", port);
+            // Build a fallback addr using the same host but port=0.
+            let host = addr.ip();
+            let fallback: SocketAddr = (host, 0u16).into();
+            tokio::net::TcpListener::bind(fallback).await.map_err(|e2| {
+                format!(
+                    "Port {} is already in use and auto-assign also failed: {}",
+                    port, e2
+                )
+            })?
+        }
+        Err(e) => {
+            return Err(format!("Failed to bind port {}: {}", port, e));
+        }
+    };
 
     // M1: Read the actually-bound address from the OS (handles port=0 wildcard too).
     let actual_addr: SocketAddr = listener

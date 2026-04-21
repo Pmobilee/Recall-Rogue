@@ -154,10 +154,14 @@
           connectedLanUrls = getLanServerUrls()
         }
       } else {
-        lanServerError = "Couldn't start the server. Try again."
+        // Non-Tauri platform — LAN hosting not available here.
+        lanServerError = "LAN hosting requires the desktop app."
       }
-    } catch {
-      lanServerError = "Couldn't start the server. Try again."
+    } catch (err) {
+      // B1: startLanServer now throws with the real Rust error string (e.g.
+      // "Port 19738 is already in use") so the player knows what to fix.
+      const detail = err instanceof Error ? err.message : String(err)
+      lanServerError = `Server failed to start: ${detail}`
     } finally {
       lanServerStarting = false
     }
