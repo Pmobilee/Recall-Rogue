@@ -1,6 +1,6 @@
 use std::sync::{Arc, Mutex};
 use steamworks::networking_types::{NetworkingIdentity, SendFlags};
-use steamworks::{CallbackHandle, Client, LobbyId, LobbyType, SteamId};
+use steamworks::{CallbackHandle, Client, DistanceFilter, LobbyEnter, LobbyId, LobbyType, SteamId};
 use tauri::State;
 
 // D1: Wrap CallbackHandle so it can be stored in SteamState across threads.
@@ -41,11 +41,22 @@ pub struct SteamState {
     /// calls `take()` so the error is consumed after being read.
     /// Used by the TS-side `pollJoinResult` to surface the real Steam rejection reason (lobby full,
     /// no access, banned, etc.) instead of a generic timeout.
+    ///
+    /// A5: The raw `LobbyEnter` callback (registered in `new()`) is the source of truth for the
+    /// `ChatRoomEnterResponse` code. The `join_lobby` closure only yields `Result<LobbyId, ()>`,
+    /// discarding the actual response code. The raw callback fires first and writes the human-readable
+    /// error string here; the closure's `Err(())` arm is a lower-priority fallback that only writes
+    /// if the slot is still empty.
     pub pending_join_error: Arc<Mutex<Option<String>>>,
     /// D1: Keeps the GameOverlayActivated callback handle alive for the process lifetime.
     /// When this handle is dropped the callback de-registers. We hold it here so it is never
     /// dropped while the app is running. None when Steam failed to initialize.
     _overlay_callback: Option<SendableCallbackHandle>,
+    /// A5: Keeps the raw LobbyEnter callback handle alive for the process lifetime.
+    /// This callback fires on every lobby join attempt (ours and the host's own join on create)
+    /// and provides the real `m_EChatRoomEnterResponse` code that `join_lobby`'s closure discards.
+    /// Stored here so it is never dropped while the app is running.
+    _lobby_enter_callback: Option<SendableCallbackHandle>,
     /// AR-80 follow-up: Shutdown signal for the background callback pump thread.
     ///
     /// The pump thread calls `client.run_callbacks()` every ~16 ms so that async Steam
@@ -74,6 +85,11 @@ impl SteamState {
     /// every ~16 ms. This ensures async Steam callbacks (LobbyEnter_t, LobbyCreated_t,
     /// leaderboard, cloud sync) fire promptly without depending on the JS polling cadence.
     /// The `steam_run_callbacks` Tauri command is kept as a harmless safety net.
+    ///
+    /// A5: Registers a raw `LobbyEnter` callback to capture the full `ChatRoomEnterResponse`
+    /// code that `join_lobby`'s closure discards. This is the source of truth for join errors,
+    /// especially the `Limited` response (code 7) that indicates a Steam account without a
+    /// qualifying purchase.
     pub fn new() -> Self {
         // App ID 4547570 = Recall Rogue (production app ID).
         match Client::init_app(4547570) {
@@ -92,6 +108,83 @@ impl SteamState {
                         );
                     },
                 );
+
+                // A5: Register a raw LobbyEnter callback to capture the real ChatRoomEnterResponse.
+                //
+                // The `join_lobby` closure only exposes `Result<LobbyId, ()>` — it discards
+                // `m_EChatRoomEnterResponse`. This callback fires on *every* LobbyEnter_t event
+                // (both join and create), so we only act on non-success responses.
+                //
+                // Priority design: this callback writes `pending_join_error` first. When the
+                // `join_lobby` closure's `Err(())` arm also fires, it checks whether the slot is
+                // already populated and skips writing if so. The raw callback is the source of
+                // truth; the closure fallback is a safety net for future Steam API changes.
+                //
+                // Thread safety: `pending_join_error` is `Arc<Mutex<Option<String>>>`. This
+                // callback and the join_lobby closure are both called from the thread running
+                // `run_callbacks()` (the background pump), so no real concurrency concern.
+                // The raw callback fires before the call-result closure for the same tick.
+                let pending_error_for_enter = Arc::new(Mutex::new(None::<String>));
+                let pending_error_ref = pending_error_for_enter.clone();
+                let lobby_enter_handle = client.register_callback(move |val: LobbyEnter| {
+                    use steamworks::ChatRoomEnterResponse;
+                    match val.chat_room_enter_response {
+                        ChatRoomEnterResponse::Success => {
+                            // Success path — clear any stale error from a prior failed attempt.
+                            // The join_lobby Ok closure handles populating pending_join_lobby_id.
+                            if let Ok(mut slot) = pending_error_ref.lock() {
+                                *slot = None;
+                            }
+                        }
+                        response => {
+                            let msg = match response {
+                                ChatRoomEnterResponse::DoesntExist => {
+                                    "Lobby no longer exists".to_string()
+                                }
+                                ChatRoomEnterResponse::NotAllowed => {
+                                    "Lobby join not allowed".to_string()
+                                }
+                                ChatRoomEnterResponse::Full => {
+                                    "Lobby is full".to_string()
+                                }
+                                ChatRoomEnterResponse::Error => {
+                                    "Generic Steam error joining lobby".to_string()
+                                }
+                                ChatRoomEnterResponse::Banned => {
+                                    "You are banned from this lobby".to_string()
+                                }
+                                ChatRoomEnterResponse::Limited => {
+                                    "Your Steam account is Limited — spend $5 or more on the Steam Store to join multiplayer lobbies".to_string()
+                                }
+                                ChatRoomEnterResponse::ClanDisabled => {
+                                    "Clan chat is disabled for this lobby".to_string()
+                                }
+                                ChatRoomEnterResponse::CommunityBan => {
+                                    "A community ban prevents joining".to_string()
+                                }
+                                ChatRoomEnterResponse::MemberBlockedYou => {
+                                    "A lobby member has blocked you".to_string()
+                                }
+                                ChatRoomEnterResponse::YouBlockedMember => {
+                                    "You have blocked a lobby member".to_string()
+                                }
+                                ChatRoomEnterResponse::RatelimitExceeded => {
+                                    "Steam rate limit hit — try again in a moment".to_string()
+                                }
+                                // Success is handled in the outer match arm above.
+                                ChatRoomEnterResponse::Success => unreachable!(),
+                            };
+                            eprintln!("[Steam] LobbyEnter error: {}", msg);
+                            // Only write if the slot is still empty — raw callback wins over
+                            // the join_lobby closure fallback.
+                            if let Ok(mut slot) = pending_error_ref.lock() {
+                                if slot.is_none() {
+                                    *slot = Some(msg);
+                                }
+                            }
+                        }
+                    }
+                });
 
                 // AR-80 follow-up: Spawn a background thread that pumps Steam callbacks
                 // at ~16 ms intervals.
@@ -129,8 +222,9 @@ impl SteamState {
                     pending_join_lobby_id: Arc::new(Mutex::new(None)),
                     pending_lobby_list: Arc::new(Mutex::new(None)),
                     active_lobby_id: Arc::new(Mutex::new(None)),
-                    pending_join_error: Arc::new(Mutex::new(None)),
+                    pending_join_error: pending_error_for_enter,
                     _overlay_callback: Some(SendableCallbackHandle(overlay_handle)),
+                    _lobby_enter_callback: Some(SendableCallbackHandle(lobby_enter_handle)),
                     _pump_shutdown: Some(tx),
                 }
             }
@@ -144,6 +238,7 @@ impl SteamState {
                     active_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_error: Arc::new(Mutex::new(None)),
                     _overlay_callback: None,
+                    _lobby_enter_callback: None,
                     _pump_shutdown: None,
                 }
             }
@@ -312,6 +407,10 @@ pub fn steam_clear_rich_presence(state: State<SteamState>) -> Result<(), String>
 /// 1. Poll `steam_run_callbacks` (e.g., every 100ms) until the callback fires.
 /// 2. Call `steam_get_pending_lobby_id` to retrieve the created lobby ID.
 ///
+/// A5: After storing the lobby ID, calls `set_lobby_joinable(true)` explicitly. Steam
+/// documents this as the default but the explicit call is defensive — it avoids any edge
+/// case where a lobby created in invisible mode or after a permissions change is unjoinable.
+///
 /// # Parameters
 /// - `lobby_type`: One of "public", "private", "friends_only", "invisible"
 /// - `max_members`: Maximum number of members (1–250)
@@ -332,6 +431,9 @@ pub fn steam_create_lobby(
     let lock = state.client.lock().map_err(|e| e.to_string())?;
     if let Some(client) = lock.as_ref() {
         let ty = parse_lobby_type(&lobby_type)?;
+        // A5: Clone the client Arc into the closure so we can call set_lobby_joinable after
+        // the lobby is created. This is the same pattern used for pending_lobby_id.
+        let client_for_cb = client.clone();
         client.matchmaking().create_lobby(ty, max_members, move |result| {
             match result {
                 Ok(lobby_id) => {
@@ -343,6 +445,10 @@ pub fn steam_create_lobby(
                     if let Ok(mut slot) = active.lock() {
                         *slot = Some(lobby_id.raw());
                     }
+                    // A5: Explicitly mark the lobby as joinable. Documented as default-on
+                    // but defensive — cheap call, prevents silent lockout edge cases.
+                    let ok = client_for_cb.matchmaking().set_lobby_joinable(lobby_id, true);
+                    println!("[Steam] set_lobby_joinable(true): {}", ok);
                 }
                 Err(e) => eprintln!("[Steam] Lobby creation failed: {:?}", e),
             }
@@ -381,6 +487,11 @@ pub fn steam_get_pending_lobby_id(
 /// retrieved via `steam_get_pending_join_error`. The error slot is cleared at the start of
 /// each call so it only reflects the current attempt.
 ///
+/// A5: The raw `LobbyEnter` callback registered in `SteamState::new()` is the primary
+/// source of error data — it writes a human-readable message for every non-success
+/// `ChatRoomEnterResponse` code. This closure's `Err(())` arm is a lower-priority fallback
+/// that only writes to `pending_join_error` if the raw callback hasn't already.
+///
 /// # Parameters
 /// - `lobby_id`: The lobby's 64-bit Steam ID as a decimal string
 #[tauri::command]
@@ -409,13 +520,22 @@ pub fn steam_join_lobby(state: State<SteamState>, lobby_id: String) -> Result<()
                 if let Ok(mut slot) = active.lock() {
                     *slot = Some(joined_id.raw());
                 }
+                // A5: Clear any stale error from a prior failed attempt on this slot.
+                if let Ok(mut slot) = pending_error.lock() {
+                    *slot = None;
+                }
             }
             Err(e) => {
-                let msg = format!("{:?}", e);
+                // A5: The raw LobbyEnter callback (registered in SteamState::new()) fires before
+                // this closure for the same LobbyEnter_t event and writes the real error message.
+                // Only populate the error slot if the raw callback hasn't already done so —
+                // this closure's error is a last-resort fallback.
+                let msg = format!("steam: join_lobby closure returned {:?}", e);
                 eprintln!("[Steam] Failed to join lobby {}: {}", lobby_id_clone, msg);
-                // A3: Store the error so pollJoinResult on the TS side can surface it.
                 if let Ok(mut slot) = pending_error.lock() {
-                    *slot = Some(msg);
+                    if slot.is_none() {
+                        *slot = Some(msg);
+                    }
                 }
             }
         });
@@ -445,6 +565,11 @@ pub fn steam_get_pending_join_lobby_id(
 /// Whichever returns a non-null value first wins:
 ///   - error returned → `joinSteamLobby` throws with the Steam reason.
 ///   - id returned    → join succeeded; resolve with the id.
+///
+/// A5: The error message is now sourced from the raw `LobbyEnter` callback (registered in
+/// `SteamState::new()`), which maps `ChatRoomEnterResponse` codes to human-readable strings.
+/// The most actionable code is `Limited` (7) — Steam accounts without a qualifying purchase
+/// cannot join matchmaking lobbies; the user must spend $5+ on the Steam Store.
 #[tauri::command]
 pub fn steam_get_pending_join_error(
     state: State<SteamState>,
@@ -616,9 +741,10 @@ pub fn steam_get_lobby_data(
 /// The JS layer polls `steam_run_callbacks` to drive completion and then calls
 /// `steam_get_lobby_list_result` to retrieve the IDs.
 ///
-/// In V1, filtering is client-side — all public lobbies come back and the TS wrapper
-/// filters by mode / fullness. A dedicated `steam_add_lobby_list_filter` command can
-/// be added later if crate API supports it.
+/// A5: Sets `DistanceFilter::Worldwide` before the request. The default filter is
+/// `k_ELobbyDistanceFilterDefault` (nearby), which can exclude two accounts on the same
+/// LAN but in different Steam-assigned regions. Worldwide ensures both players always see
+/// each other's lobbies regardless of region.
 ///
 /// # Returns
 /// `""` always — result is async. Caller polls steam_run_callbacks + steam_get_lobby_list_result.
@@ -630,6 +756,9 @@ pub fn steam_request_lobby_list(state: State<SteamState>) -> Result<String, Stri
 
     let lock = state.client.lock().map_err(|e| e.to_string())?;
     if let Some(client) = lock.as_ref() {
+        // A5: Worldwide distance filter — the Steam default (nearby) silently excludes lobbies
+        // from accounts in different Steam-assigned regions, even on the same physical LAN.
+        client.matchmaking().set_request_lobby_list_distance_filter(DistanceFilter::Worldwide);
         client.matchmaking().request_lobby_list(move |result| match result {
             Ok(lobbies) => {
                 let ids: Vec<u64> = lobbies.iter().map(|lid| lid.raw()).collect();
@@ -647,7 +776,7 @@ pub fn steam_request_lobby_list(state: State<SteamState>) -> Result<String, Stri
                 }
             }
         });
-        println!("[Steam] Lobby list request initiated");
+        println!("[Steam] Lobby list request initiated (distance=Worldwide)");
     }
     Ok(String::new())
 }

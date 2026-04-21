@@ -377,7 +377,15 @@ export async function joinSteamLobby(lobbyId: string): Promise<string | null> {
   const kickoff = await invokeSteam('steam_join_lobby', { lobbyId });
   if (kickoff === null) return null; // IPC call itself failed
   // A3: Poll both success and error slots — throws on error, returns id on success.
-  return pollJoinResult();
+  // A5: Log result for browser-console diagnostics (visible via window.__rrLog).
+  try {
+    const result = await pollJoinResult();
+    console.log('[steamNetworking] joinSteamLobby result', { lobbyId, result, error: null });
+    return result;
+  } catch (error) {
+    console.log('[steamNetworking] joinSteamLobby result', { lobbyId, result: null, error: String(error) });
+    throw error;
+  }
 }
 
 /**

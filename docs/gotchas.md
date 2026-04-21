@@ -1,3 +1,16 @@
+### 2026-04-21 — Steam Limited User accounts block lobby join (code 7)
+
+**What:** A Steam account that has never spent $5+ on the Steam Store is a "Limited User". These accounts receive `k_EChatRoomEnterResponseLimited` (code 7) on every lobby join attempt. The game previously showed a generic timeout rather than the actual reason.
+
+**Why:** steamworks-rs 0.12 `join_lobby` closure signature is `FnOnce(Result<LobbyId, ()>)` — the error type is the unit `()`. `format!("{:?}", ())` produces the string `"()"`, which is meaningless. The actual response code lives in the raw `LobbyEnter_t` struct field `m_EChatRoomEnterResponse` and is only accessible by registering a separate callback via `client.register_callback::<LobbyEnter>(...)`.
+
+**Fix:** Register a raw `LobbyEnter` callback in `SteamState::new()`. Map all `ChatRoomEnterResponse` enum variants to human-readable strings. Store the handle in `_lobby_enter_callback` field. The raw callback fires before the `join_lobby` call-result closure, so it wins on priority.
+
+**Workaround for test accounts:** The second Steam test account must spend $5+ on the Steam Store to unlock multiplayer lobby join. There is no client-side bypass — this is a Steam server-side restriction.
+
+**Related:** Also fixed lobby list distance filter (was 'nearby' by default, silently excluding cross-region accounts on the same LAN — now Worldwide). See A5 in `docs/architecture/multiplayer.md`.
+
+
 ### 2026-04-21 — Ghost lobby on join failure + silent Steam join errors
 
 **What:** Entering a bad join code (or a lobby whose host had left) created a new race-mode lobby for the player instead of showing an error. Additionally, real Steam join failure reasons ("lobby full", "no access") never reached the UI — only a generic timeout was shown.

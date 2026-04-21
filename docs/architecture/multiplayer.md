@@ -509,38 +509,90 @@ For modes with `MODE_MAX_PLAYERS[mode] > 2` (`trivia_night`, `race` 3-4+):
 ### Fix
 
 1. `SteamState` has a new field `pending_join_error: Arc<Mutex<Option<String>>>`.
-2. `steam_join_lobby` clears the error slot at call-start and fills it in the callback `Err(e)` branch via `format!("{:?}", e)`.
+2. `steam_join_lobby` clears the error slot at call-start and fills it in the callback `Err(e)` branch. **Note:** steamworks-rs 0.12 `join_lobby` closure signature is `FnOnce(Result<LobbyId, ()>)` — the error is the unit type `()`, so the pre-A5 message was the useless string `"()"`. A5 replaces this with the raw `LobbyEnter` callback approach (see below).
 3. New Tauri command `steam_get_pending_join_error` reads and takes the error slot (one-shot).
 4. `pollJoinResult` in `steamNetworkingService.ts` polls both `steam_get_pending_join_lobby_id` and `steam_get_pending_join_error` in parallel each tick. On error slot populated: throws `Error(message)`. On ID populated: resolves with lobby ID.
 5. Poll timeout bumped from 5s to 10s for the join path (slow callbacks on cold lobbies).
 6. `joinSteamLobby` now returns `string | null` (lobby ID) instead of `boolean` — callers that used the boolean return need updating.
 
-### Error flow: Steam callback → UI
+### Error flow: Steam callback → UI (post-A5)
 
 ```
-steam_join_lobby (Rust)
-  → LobbyEnter_t callback Err(e)
-  → pending_join_error.lock() = Some(format!("{:?}", e))
+steam_join_lobby (Rust) → kicks off join
+  ↓
+LobbyEnter_t fires (processed by background pump ~16ms)
+  ↓ (two paths simultaneously)
+  [Path 1 — raw callback (A5 — SOURCE OF TRUTH)]
+    LobbyEnter.chat_room_enter_response → ChatRoomEnterResponse enum
+    Mapped to human-readable string (e.g. "Lobby is full",
+      "Your Steam account is Limited — spend +...")
+    pending_join_error.lock() = Some(msg)
 
+  [Path 2 — join_lobby closure (A3 fallback)]
+    Result<LobbyId, ()> — error type is () (useless)
+    Only writes "steam: join_lobby closure returned ()" if Path 1 didn't write first
+  ↓
 pollJoinResult (TS, every 100ms)
-  → tauriInvoke('steam_get_pending_join_error') returns error string
+  → tauriInvoke('steam_get_pending_join_error') returns human-readable string
   → throws Error(errorString)
-
-steamBackend.joinLobbyById
-  → error propagates up (no catch)
-
-joinLobby / joinLobbyById (multiplayerLobbyService.ts)
-  → error propagates up (A2 fix: no swallowing try/catch)
-
-CardApp.svelte :650-661
-  → catch block sets multiplayerError
-  → UI banner shows the error
+  ↓
+steamBackend.joinLobbyById → error propagates up (no catch)
+  ↓
+joinLobby / joinLobbyById (multiplayerLobbyService.ts) → error propagates up (A2 fix)
+  ↓
+CardApp.svelte catch block → sets multiplayerError → UI banner shows the error
 ```
+
+**Key codes mapped by the raw LobbyEnter callback:**
+
+| Code | Enum | Message shown to player |
+|------|------|------------------------|
+| 1 | Success | (no error — join succeeded) |
+| 2 | DoesntExist | Lobby no longer exists |
+| 3 | NotAllowed | Lobby join not allowed |
+| 4 | Full | Lobby is full |
+| 5 | Error | Generic Steam error joining lobby |
+| 6 | Banned | You are banned from this lobby |
+| 7 | **Limited** | **Your Steam account is Limited — spend $5 or more on the Steam Store to join multiplayer lobbies** |
+| 8 | ClanDisabled | Clan chat is disabled for this lobby |
+| 9 | CommunityBan | A community ban prevents joining |
+| 10 | MemberBlockedYou | A lobby member has blocked you |
+| 11 | YouBlockedMember | You have blocked a lobby member |
+| 12 | RatelimitExceeded | Steam rate limit hit — try again in a moment |
+
+**Limited account note:** Steam accounts that have never spent $5+ on the Steam Store receive code 7 (`k_EChatRoomEnterResponseLimited`) on every lobby join. The game surfaces the exact message. There is no client-side workaround — the second test account needs a qualifying Steam purchase.
+
+---
+
+## Steam Join Hardening (A5 — 2026-04-21)
+
+**Source file:** `src-tauri/src/steam.rs`, `src/services/steamNetworkingService.ts`
+
+### Three fixes in one commit
+
+**1. Raw `LobbyEnter` callback for real error codes**
+
+steamworks-rs 0.12 `join_lobby` closure yields `Result<LobbyId, ()>`. The unit error type means `format!("{:?}", e)` produced the string `"()"` — useless as a diagnostic. The real `m_EChatRoomEnterResponse` value is available via the `LobbyEnter` callback type registered with `client.register_callback`. A5 registers this callback in `SteamState::new()`, maps all `ChatRoomEnterResponse` variants to human-readable strings, and writes the result to `pending_join_error`. The old `join_lobby` closure fallback still fires but only writes if the raw callback hasn't already. The raw callback handle is stored in `SteamState::_lobby_enter_callback`.
+
+**2. Worldwide distance filter for lobby discovery**
+
+Steam's default lobby list distance filter is `k_ELobbyDistanceFilterDefault` (nearby). Two Steam accounts on the same physical LAN but assigned to different Steam regions will NOT see each other's lobbies with the default filter. `steam_request_lobby_list` now calls `set_request_lobby_list_distance_filter(DistanceFilter::Worldwide)` before `request_lobby_list`. API confirmed in steamworks-rs 0.12 matchmaking.rs.
+
+**3. Explicit `set_lobby_joinable(true)` after create**
+
+Steam documents lobbies as joinable by default, but the explicit call is defensive — it costs nothing and prevents a class of silent lockout edge cases (e.g., invisible lobbies, lobbies created after permission changes). Called in the `create_lobby` callback Ok arm after storing the lobby ID, using a cloned client Arc.
+
+**Diagnostic logging**
+
+`joinSteamLobby` in `steamNetworkingService.ts` now logs both success and error paths to the browser console under `[steamNetworking] joinSteamLobby result`. This gives us visibility without needing a Tauri stdout tap.
+
+---
 
 ## CHANGELOG (abbreviated)
 
 | Date | Commits | What |
 |------|---------|------|
+| 2026-04-21 | (A5 hardening) | Raw LobbyEnter callback for real ChatRoomEnterResponse codes (Limited user = code 7 with actionable message), Worldwide distance filter on lobby list, explicit set_lobby_joinable(true), joinSteamLobby diagnostic console.log |
 | 2026-04-21 | (A2–A4 fix wave) | Ghost lobby prevention (joinLobby: _currentLobby set after join), Steam join error surfacing (pending_join_error slot, pollJoinResult, 10s timeout), stale lobby filtering (currentPlayers=0, >2h), host metadata clear on leave |
 | 2026-04-21 | (AR-80 pump) | Background `run_callbacks` pump thread in `SteamState::new()` — fixes intermittent lobby join failures on cold Steam backends |
 | 2026-04-21 | `ec9e86626`–`60f260fe0` | Hardening wave: co-op/race/trivia/LAN + Elo/FSRS, lobby service + workshop + lobby UI, wiring + PlayerProfile schema v2, Elo wire + CORS default, final wiring (initRaceMode, opp-rating, workshop gate) |
