@@ -129,9 +129,9 @@ if $DO_BUILD; then
         --exclude='src-tauri/target' --exclude='node_modules' --exclude='.DS_Store' \
         --exclude='._*' --exclude='public/data/narratives/*.bak' \
         -cf "$STAGING_DIR/rr-sync.tar" \
-        public src src-tauri scripts \
+        public src src-tauri scripts data/narratives data/decks \
         package.json package-lock.json vite.config.ts \
-        tsconfig.json tsconfig.node.json index.html svelte.config.js 2>&1 | head -5
+        tsconfig.json tsconfig.app.json tsconfig.node.json index.html svelte.config.js 2>&1 | head -5
     TAR_SIZE=$(du -h "$STAGING_DIR/rr-sync.tar" | cut -f1)
     dim "    tar size: $TAR_SIZE"
     step_end
