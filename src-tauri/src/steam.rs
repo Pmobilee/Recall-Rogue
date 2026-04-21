@@ -553,7 +553,10 @@ pub fn steam_get_pending_join_lobby_id(
     state: State<SteamState>,
 ) -> Result<Option<String>, String> {
     let mut slot = state.pending_join_lobby_id.lock().map_err(|e| e.to_string())?;
-    Ok(slot.take().map(|raw| raw.to_string()))
+    let result = slot.take().map(|raw| raw.to_string());
+    // DIAG: log every read so we can see what the pollJoinResult loop sees.
+    println!("[Steam] steam_get_pending_join_lobby_id -> {:?}", result);
+    Ok(result)
 }
 
 /// A3: Retrieve the error string stored by the most recent failed `steam_join_lobby` callback.

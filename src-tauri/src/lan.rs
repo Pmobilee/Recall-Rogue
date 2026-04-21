@@ -677,9 +677,9 @@ fn build_router(state: AppState) -> Router {
         // Lobby REST
         .route("/mp/lobbies", post(create_lobby))
         .route("/mp/lobbies", get(list_lobbies))
-        .route("/mp/lobbies/code/:code", get(resolve_code))
-        .route("/mp/lobbies/:lobbyId/join", post(join_lobby))
-        .route("/mp/lobbies/:lobbyId/leave", post(leave_lobby))
+        .route("/mp/lobbies/code/{code}", get(resolve_code))
+        .route("/mp/lobbies/{lobbyId}/join", post(join_lobby))
+        .route("/mp/lobbies/{lobbyId}/leave", post(leave_lobby))
         // WebSocket relay
         .route("/mp/ws", get(ws_handler))
         .layer(cors)
