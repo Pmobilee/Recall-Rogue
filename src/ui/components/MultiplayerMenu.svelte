@@ -27,10 +27,11 @@
   } from '../../services/lanConfigService'
   import { scanLanForServers, probeLanServer, LAN_DEFAULT_PORT } from '../../services/lanDiscoveryService'
   import { isDesktop, hasSteam } from '../../services/platformService'
+  import { sanitizeLobbyTitle } from '../../services/profanityService'
 
   interface Props {
     onBack: () => void
-    onCreateLobby: (mode: MultiplayerMode, opts: { visibility: LobbyVisibility; password?: string }) => void
+    onCreateLobby: (mode: MultiplayerMode, opts: { visibility: LobbyVisibility; password?: string; title?: string }) => void
     onJoinLobby: (code: string) => void
     onBrowseLobbies: () => void
   }
@@ -49,6 +50,10 @@
   let passwordValue = $state('')
   let passwordError = $state('')
   let showPasswordText = $state(false)
+
+  // ── Lobby title state (Create tab, C1) ────────────────────────────────────
+  /** Optional display name for the lobby shown in the browser. Max 40 chars. */
+  let titleValue = $state('')
 
   /** True when ?mp is in the URL — enables two-tab broadcast testing mode */
   let devMode = $derived(isBroadcastMode())
@@ -102,9 +107,11 @@
         return
       }
     }
+    const sanitizedTitle = titleValue.trim() ? sanitizeLobbyTitle(titleValue.trim()) : undefined
     onCreateLobby(selectedMode, {
       visibility: selectedVisibility,
       password: selectedVisibility === 'password' ? passwordValue : undefined,
+      title: sanitizedTitle || undefined,
     })
   }
 
@@ -395,6 +402,21 @@
                 {/if}
               </div>
             {/if}
+          </div>
+
+          <!-- Lobby title (C1) — optional custom name shown in the browser -->
+          <div class="title-section" data-testid="create-title">
+            <label class="visibility-label" for="lobby-title-input">Lobby name</label>
+            <input
+              id="lobby-title-input"
+              data-testid="lobby-title-input"
+              class="title-input"
+              type="text"
+              maxlength="40"
+              placeholder="Name this lobby (optional)"
+              bind:value={titleValue}
+              aria-label="Lobby name, optional"
+            />
           </div>
 
           <div class="create-footer">
@@ -976,6 +998,38 @@
   .eye-btn:hover {
     border-color: #aaa;
     color: #e0e0e0;
+  }
+
+  /* ===== Lobby title section (C1) ===== */
+  .title-section {
+    margin-bottom: calc(16px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .title-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #2A2E38;
+    border-radius: calc(5px * var(--layout-scale, 1));
+    color: #e0e0e0;
+    font-family: var(--font-body, 'Lora', serif);
+    font-size: calc(13px * var(--text-scale, 1));
+    padding: calc(9px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    min-height: calc(40px * var(--layout-scale, 1));
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+  }
+
+  .title-input::placeholder {
+    color: #444;
+  }
+
+  .title-input:focus {
+    outline: none;
+    border-color: rgba(255, 215, 0, 0.5);
+    background: rgba(255, 215, 0, 0.03);
   }
 
   /* ===== Create footer ===== */

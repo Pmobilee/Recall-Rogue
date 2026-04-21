@@ -120,6 +120,12 @@ export interface LobbyState {
   maxPlayers: number;
   isRanked: boolean;
   lobbyCode?: string;           // 6-char join code
+  /**
+   * Optional host-supplied title for the lobby, shown in the browser as the
+   * primary label. When absent the browser falls back to hostName.
+   * Max 40 chars — enforced by sanitizeLobbyTitle() at creation time.
+   */
+  title?: string;
   seed?: number;                // Shared run seed (set when game starts)
   status: 'waiting' | 'ready' | 'starting' | 'in_game';
   /**
@@ -146,6 +152,12 @@ export interface LobbyBrowserEntry {
   fairnessRating?: number;
   /** Epoch ms of lobby creation — drives the "new" pulse on recently-created tiles. */
   createdAt: number;
+  /**
+   * Optional host-supplied lobby title. When present, shown as the primary label
+   * in the browser card; hostName is rendered as secondary text below.
+   * Max 40 chars (sanitizeLobbyTitle enforced). Absent when no title was set.
+   */
+  title?: string;
   /** Which backend served this entry. Shown as a badge in the browser header. */
   source: 'steam' | 'web' | 'broadcast';
 }

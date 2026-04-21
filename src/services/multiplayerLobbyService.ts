@@ -32,6 +32,7 @@ import type {
 } from '../data/multiplayerTypes';
 import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS, MODE_MIN_PLAYERS } from '../data/multiplayerTypes';
 import { hasSteam } from './platformService';
+import { sanitizeLobbyTitle } from './profanityService';
 import { getLocalMultiplayerRating } from './multiplayerElo';
 import { getLanServerUrls, isLanMode, clearLanServerUrl } from './lanConfigService';
 import {
@@ -223,7 +224,7 @@ export async function createLobby(
   playerId: string,
   displayName: string,
   mode: MultiplayerMode,
-  opts?: { visibility?: LobbyVisibility; password?: string; maxPlayers?: number },
+  opts?: { visibility?: LobbyVisibility; password?: string; maxPlayers?: number; title?: string },
 ): Promise<LobbyState> {
   _localPlayerId = playerId;
 
@@ -237,6 +238,9 @@ export async function createLobby(
 
   _passwordHash = opts?.password ? await hashPassword(opts.password) : null;
 
+  // C1: Sanitize title at client time; backend also sanitizes server-side.
+  const sanitizedTitle = opts?.title ? sanitizeLobbyTitle(opts.title) : undefined;
+
   const backend = pickBackend();
   const result = await backend.createLobby({
     hostId: playerId,
@@ -245,6 +249,7 @@ export async function createLobby(
     visibility,
     passwordHash: _passwordHash ?? undefined,
     maxPlayers,
+    title: sanitizedTitle || undefined,
   });
 
   _currentLobby = {
@@ -265,6 +270,7 @@ export async function createLobby(
     lobbyCode: result.lobbyCode,
     status: 'waiting',
     visibility,
+    title: sanitizedTitle || undefined,
   };
 
   // Use BroadcastChannel transport when ?mp param is present (two-tab dev testing),
@@ -456,12 +462,26 @@ export function leaveLobby(): void {
     _broadcastHeartbeat = null;
   }
 
+  // B2: When the host leaves in broadcast mode, immediately delete our lobby's
+  // directory entry from localStorage. Without this, the entry persists for up to
+  // BC_ENTRY_TTL_MS (15s) after the host leaves — other tabs see a ghost lobby.
+  // Only the host owns the entry (non-hosts never write to the directory), so we
+  // only delete when we are the host.
+  const leavingLobbyId = _currentLobby?.lobbyId;
+  const leavingAsHost = _currentLobby?.hostId === _localPlayerId;
+  if (leavingLobbyId && leavingAsHost && isBroadcastMode()) {
+    try {
+      const existing = readBroadcastDirectory().filter(e => e.lobbyId !== leavingLobbyId);
+      writeBroadcastDirectory(existing);
+    } catch {
+      // Non-fatal — entry will expire via TTL
+    }
+  }
+
   // A4: When the host leaves a Steam lobby, clear key metadata fields so the entry
   // doesn't round-trip in other clients' next listPublicLobbies request.
   // Fire-and-forget — we don't await because leaveLobby is synchronous and the IPC
   // call completes in milliseconds even if the result is discarded.
-  const leavingLobbyId = _currentLobby?.lobbyId;
-  const leavingAsHost = _currentLobby?.hostId === _localPlayerId;
   if (leavingLobbyId && leavingAsHost) {
     // Calling setLobbyData with empty values tells other Steam clients the slot is gone.
     // The lobby itself is left via steam_force_leave_active_lobby on app exit or via
@@ -469,6 +489,18 @@ export function leaveLobby(): void {
     void leaveSteamLobby(leavingLobbyId).catch(() => {}); // explicit Steam API leave
     void setLobbyData(leavingLobbyId, 'lobby_code', '').catch(() => {});
     void setLobbyData(leavingLobbyId, 'mode', '').catch(() => {});
+  }
+
+  // B3: Explicitly call steam_force_leave_active_lobby so Steam matchmaking
+  // removes us immediately — not just on app exit. This ensures mid-session
+  // leaves are visible to other players browsing the lobby list.
+  // Fire-and-forget (leaveLobby is synchronous); non-fatal if Steam is unavailable.
+  if (hasSteam) {
+    import('./steamNetworkingService').then(({ invokeSteam }) => {
+      void invokeSteam('steam_force_leave_active_lobby').catch((err: unknown) => {
+        console.warn('[MP:LobbyService] steam_force_leave_active_lobby failed:', err);
+      });
+    }).catch(() => {});
   }
 
   // Clean up H5 seed-ACK timers
@@ -1221,6 +1253,11 @@ interface CreateLobbyBackendOpts {
   /** SHA-256 hex hash of the host's chosen password. Absent when visibility !== 'password'. */
   passwordHash?: string;
   maxPlayers: number;
+  /**
+   * Optional host-supplied lobby title (already sanitized via sanitizeLobbyTitle).
+   * Backends store it for the browser; absent when no title was entered.
+   */
+  title?: string;
 }
 
 /** Result from a backend's createLobby call. */
@@ -1377,6 +1414,7 @@ const broadcastBackend: LobbyBackend = {
       visibility: opts.visibility,
       createdAt: Date.now(),
       source: 'broadcast',
+      title: opts.title || undefined,
     };
 
     upsertBroadcastEntry(entry);
@@ -1547,6 +1585,11 @@ const steamBackend: LobbyBackend = {
     const lobbyCode = generateLobbyCode();
     await setLobbyData(lobbyId, 'lobby_code', lobbyCode);
 
+    // C1: Store optional title in Steam metadata so other clients can read it in the browser.
+    if (opts.title) {
+      await setLobbyData(lobbyId, 'title', opts.title);
+    }
+
     return { lobbyId, lobbyCode };
   },
 
@@ -1594,7 +1637,7 @@ const steamBackend: LobbyBackend = {
     }
     const entries: LobbyBrowserEntry[] = [];
     for (const lobbyId of ids) {
-      const [mode, visibility, lobbyCode, hostName, maxPlayersStr, createdAtStr, currentPlayers] = await Promise.all([
+      const [mode, visibility, lobbyCode, hostName, maxPlayersStr, createdAtStr, currentPlayers, title] = await Promise.all([
         getLobbyData(lobbyId, 'mode'),
         getLobbyData(lobbyId, 'visibility'),
         getLobbyData(lobbyId, 'lobby_code'),
@@ -1602,6 +1645,7 @@ const steamBackend: LobbyBackend = {
         getLobbyData(lobbyId, 'max_players'),
         getLobbyData(lobbyId, 'created_at'),
         getLobbyMemberCount(lobbyId),
+        getLobbyData(lobbyId, 'title'),
       ]);
       // Skip lobbies lacking required metadata — they may be stale or from a different game layout.
       if (!mode || !visibility || !lobbyCode) continue;
@@ -1625,6 +1669,7 @@ const steamBackend: LobbyBackend = {
         maxPlayers,
         createdAt: Number(createdAtStr ?? Date.now()),
         source: 'steam',
+        title: title || undefined,
       });
     }
     return entries;

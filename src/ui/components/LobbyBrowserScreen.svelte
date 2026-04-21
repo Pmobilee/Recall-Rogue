@@ -11,6 +11,7 @@
     joinLobbyById,
     isBroadcastMode,
   } from '../../services/multiplayerLobbyService'
+  import { maskProfanity } from '../../services/profanityService'
   import { hasSteam } from '../../services/platformService'
 
   interface Props {
@@ -137,6 +138,24 @@
   function isFull(entry: LobbyBrowserEntry): boolean {
     return entry.currentPlayers >= entry.maxPlayers
   }
+
+  /**
+   * C1: Primary label for the lobby card.
+   * When a title is set, shows the masked title; falls back to masked hostName.
+   */
+  function getLobbyPrimaryLabel(entry: LobbyBrowserEntry): string {
+    return (entry.title && entry.title.trim())
+      ? maskProfanity(entry.title)
+      : maskProfanity(entry.hostName)
+  }
+
+  /**
+   * C1: Whether to show "by {hostName}" below the primary label.
+   * Only rendered when a title is set — hostName is the primary label otherwise.
+   */
+  function showHostByLine(entry: LobbyBrowserEntry): boolean {
+    return !!(entry.title && entry.title.trim())
+  }
 </script>
 
 <div class="lobby-browser" role="main" aria-label="Browse Lobbies">
@@ -212,7 +231,14 @@
           {@const fresh = isNew(entry)}
           <li class="lobby-card" data-testid="lobby-row-{index}" class:full={full} class:fresh={fresh}>
             <div class="card-top">
-              <span class="host-name" title={entry.hostName}>{entry.hostName}</span>
+              <!-- C1: Primary label is title (when set) or hostName (fallback).
+                   When a title is set, show "by {hostName}" as a secondary line. -->
+              <div class="card-title-block" title={entry.hostName}>
+                <span class="lobby-primary-label">{getLobbyPrimaryLabel(entry)}</span>
+                {#if showHostByLine(entry)}
+                  <span class="host-by-line">by {maskProfanity(entry.hostName)}</span>
+                {/if}
+              </div>
               <div class="card-badges">
                 {#if fresh}
                   <span class="badge badge--new" aria-label="New lobby">&#10024; NEW</span>
@@ -557,20 +583,36 @@
 
   .card-top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: calc(8px * var(--layout-scale, 1));
   }
 
-  .host-name {
+  /* C1: Title block — stacks primary label over secondary "by {host}" line */
+  .card-title-block {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--layout-scale, 1));
+    flex: 1;
+    min-width: 0;
+  }
+
+  .lobby-primary-label {
     font-size: calc(14px * var(--text-scale, 1));
     font-weight: 700;
     color: #e8e8e8;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    flex: 1;
-    min-width: 0;
+  }
+
+  /* Secondary "by hostName" line shown when a title overrides the primary label */
+  .host-by-line {
+    font-size: calc(10px * var(--text-scale, 1));
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .card-badges {

@@ -73,6 +73,11 @@ export interface MpLobby {
   houseRules?: Record<string, unknown>
   contentSelection?: Record<string, unknown>
   fairnessRating?: number
+  /**
+   * Optional host-supplied lobby title. Already sanitized via sanitizeLobbyTitle()
+   * before insertion. Max 40 chars. Absent when the host left the field blank.
+   */
+  title?: string
   createdAt: number
   lastActivity: number
   status: 'waiting' | 'ready' | 'starting' | 'in_game'
@@ -89,6 +94,8 @@ export interface CreateLobbyOpts {
   houseRules?: Record<string, unknown>
   contentSelection?: Record<string, unknown>
   fairnessRating?: number
+  /** Optional host-supplied title (sanitized by caller). Max 40 chars. */
+  title?: string
 }
 
 /** Shape sent back to the lobby browser — no server-only secrets. */
@@ -100,6 +107,8 @@ export interface LobbyBrowserEntry {
   maxPlayers: number
   visibility: LobbyVisibility
   fairnessRating?: number
+  /** Optional lobby title from host, absent when blank. */
+  title?: string
   createdAt: number
   source: 'web'
 }
@@ -202,6 +211,7 @@ export function createLobby(opts: CreateLobbyOpts): MpLobby {
     houseRules: opts.houseRules,
     contentSelection: opts.contentSelection,
     fairnessRating: opts.fairnessRating,
+    title: opts.title,
     createdAt: now,
     lastActivity: now,
     status: 'waiting',

@@ -559,3 +559,51 @@ CardApp.svelte :650-661
 **Typed IPC entries** added to `SteamCommandArgs` (`steam_get_persona_name: Record<string, never>`) and `SteamCommandReturn` (`steam_get_persona_name: string | null`).  
 
 `CardApp.svelte` resolves the real Steam name on `onMount` and uses it for both `handleCreateLobby` and `handleJoinLobby` instead of the former `'Player 1'` / `'Player 2'` hardcoded strings.
+
+
+---
+
+## B2 — Broadcast Directory Cleanup on Host Leave (2026-04-21)
+
+**Source file:** `src/services/multiplayerLobbyService.ts` — `leaveLobby()`
+
+When the host leaves a broadcast-mode lobby, `leaveLobby()` now immediately deletes their entry from `localStorage['rr-mp:directory']` rather than waiting for the 15s TTL to expire. The cleanup block reads the directory, filters out the departing lobby ID, and writes back. This is fire-and-forget with a silent catch; if it fails the TTL still handles eventual removal.
+
+---
+
+## B3 — Steam Force-Leave on Any Lobby Exit (2026-04-21)
+
+**Source file:** `src/services/multiplayerLobbyService.ts` — `leaveLobby()`
+
+On Steam builds, `leaveLobby()` now calls `invokeSteam('steam_force_leave_active_lobby')` (fire-and-forget, dynamic import to avoid circular imports). This cleans up Steam matchmaking state immediately on departure instead of waiting for app exit. The call is gated on `hasSteam` and its failure is a logged warning only — never blocks the local leave.
+
+---
+
+## C1 — Lobby Titles (2026-04-21)
+
+**Source files:** `src/data/multiplayerTypes.ts`, `src/services/multiplayerLobbyService.ts`, `src/ui/components/MultiplayerMenu.svelte`, `src/ui/components/LobbyBrowserScreen.svelte`, `server/src/services/mpLobbyRegistry.ts`, `server/src/routes/mpLobby.ts`
+
+Optional `title?: string` field plumbed end-to-end:
+
+- `multiplayerTypes.ts` — added `title?: string` to `LobbyState` and `LobbyBrowserEntry`
+- `multiplayerLobbyService.ts` — `createLobby()` accepts `title` in opts, sanitizes via `sanitizeLobbyTitle()`, passes through all three backends; `broadcastBackend` writes to directory entry; `steamBackend` writes via `setLobbyData`; `webBackend` POSTs to server
+- `MultiplayerMenu.svelte` — optional text input in Create tab; max 40 chars; sanitized at creation
+- `LobbyBrowserScreen.svelte` — title shown as primary label when set; host name shown as `"by {hostName}"` secondary line when title is set
+- `mpLobbyRegistry.ts` — `MpLobby`, `CreateLobbyOpts`, and `LobbyBrowserEntry` types include `title?`
+- `mpLobby.ts` — server-side `sanitizeLobbyTitle()` applied to all incoming titles; `toEntry()` serializer includes title
+
+---
+
+## C3 — Profanity Service (2026-04-21)
+
+**Source files:** `src/services/profanityService.ts`, `src/services/profanityService.test.ts`
+
+New `profanityService` module:
+
+- `sanitizeLobbyTitle(title)` — creation-time sanitization: strips control chars, trims, collapses whitespace, clamps to 40 chars. Mirrored server-side in `mpLobby.ts`.
+- `maskProfanity(input)` — render-time masking: applies leet-speak normalization (0→o, 1→i, 3→e, 4→a, 5→s, 7→t, @→a, $→s) then matches `\b...\b` against a curated English word list. Matched spans replaced with `*` × span length. Masking is client-only presentation logic; stored text is unchanged.
+- `TITLE_MAX_LENGTH = 40` — exported constant.
+
+Leet normalization only applies when the leet char is adjacent to at least one alpha character on either side (prevents sentence-terminal punctuation like `cunt!` from corrupting word boundaries).
+
+16 unit tests cover `sanitizeLobbyTitle` (6 cases) and `maskProfanity` (10 cases including leet variants, punctuation, case-insensitivity, length preservation).

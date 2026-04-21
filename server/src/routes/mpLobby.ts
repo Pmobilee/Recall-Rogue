@@ -28,6 +28,27 @@ import {
   type MpLobby,
 } from '../services/mpLobbyRegistry.js'
 
+// ── Title sanitisation ───────────────────────────────────────────────────────
+
+/** Max length for lobby title (mirrors TITLE_MAX_LENGTH in profanityService.ts). */
+const TITLE_MAX_LENGTH = 40
+
+/**
+ * Sanitize a lobby title server-side.
+ * Mirrors profanityService.sanitizeLobbyTitle on the client — both enforce
+ * the same invariants so the server guarantees clean storage even against
+ * modded clients that skip client-side sanitization.
+ */
+function sanitizeLobbyTitle(title: string): string {
+  if (!title) return ''
+  // eslint-disable-next-line no-control-regex
+  return title
+    .replace(/[\x00-\x1F\x7F]/g, '')  // strip control characters
+    .trim()
+    .replace(/\s+/g, ' ')              // collapse internal whitespace
+    .slice(0, TITLE_MAX_LENGTH)
+}
+
 // ── Serialisation helpers ─────────────────────────────────────────────────────
 
 /**
@@ -43,6 +64,7 @@ function toEntry(lobby: MpLobby): LobbyBrowserEntry {
     maxPlayers: lobby.maxPlayers,
     visibility: lobby.visibility,
     fairnessRating: lobby.fairnessRating,
+    title: lobby.title || undefined,
     createdAt: lobby.createdAt,
     source: 'web',
   }
@@ -58,7 +80,7 @@ export async function mpLobbyRoutes(app: FastifyInstance): Promise<void> {
   /**
    * Create a new lobby.
    * Body: { hostId, hostName, mode, visibility, passwordHash?, maxPlayers,
-   *         houseRules?, contentSelection?, fairnessRating? }
+   *         houseRules?, contentSelection?, fairnessRating?, title? }
    * Returns: { lobbyId, lobbyCode, joinToken, hostConnection: { playerId, displayName } }
    */
   app.post('/lobbies', async (req, reply) => {
@@ -72,6 +94,7 @@ export async function mpLobbyRoutes(app: FastifyInstance): Promise<void> {
       houseRules?: Record<string, unknown>
       contentSelection?: Record<string, unknown>
       fairnessRating?: number
+      title?: string
     }
 
     if (!body.hostId || !body.hostName || !body.mode || !body.visibility || !body.maxPlayers) {
@@ -96,6 +119,10 @@ export async function mpLobbyRoutes(app: FastifyInstance): Promise<void> {
       return reply.status(400).send({ error: 'passwordHash required when visibility is "password"' })
     }
 
+    // C1: Sanitize title server-side — length clamp + control-char strip.
+    // Protects against modded clients that skip client-side sanitization.
+    const sanitizedTitle = body.title ? sanitizeLobbyTitle(body.title) : undefined
+
     const lobby = createLobby({
       hostId: body.hostId,
       hostName: body.hostName,
@@ -106,6 +133,7 @@ export async function mpLobbyRoutes(app: FastifyInstance): Promise<void> {
       houseRules: body.houseRules,
       contentSelection: body.contentSelection,
       fairnessRating: body.fairnessRating,
+      title: sanitizedTitle || undefined,
     })
 
     const hostConn = lobby.connections.get(body.hostId)!
