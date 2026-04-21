@@ -36,6 +36,8 @@ fn main() {
             steam::steam_request_lobby_list,
             steam::steam_get_lobby_list_result,
             steam::steam_get_lobby_member_count,
+            // Lobby metadata warm-up — call before GetLobbyData on cold lobbies
+            steam::steam_request_lobby_data,
             // P2P Networking — ISteamNetworkingMessages (AR-MULTIPLAYER 1.1)
             steam::steam_send_p2p_message,
             steam::steam_read_p2p_messages,

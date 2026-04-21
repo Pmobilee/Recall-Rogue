@@ -45,6 +45,7 @@ import {
   getLobbyMemberCount,
   leaveSteamLobby,
   getLastSteamInvokeError,
+  requestSteamLobbyData,
 } from './steamNetworkingService';
 import type { SteamLobbyType } from './steamNetworkingService';
 
@@ -1601,6 +1602,14 @@ const steamBackend: LobbyBackend = {
     if (!requested) return null;
     const ids = await getSteamLobbyListResult(3000);
     if (!ids) return null;
+    // Kick off metadata requests for all lobbies in parallel.
+    // Steam's GetLobbyData returns "" until LobbyDataUpdate_t fires for a cold lobby
+    // discovered via RequestLobbyList (not yet in the local cache).
+    await Promise.all(ids.map(lid => requestSteamLobbyData(lid).catch(() => false)));
+    // Brief wait for the background callback pump to process LobbyDataUpdate_t.
+    // 200 ms is empirically enough on warm Steam backends; worst case GetLobbyData still
+    // returns "" and this call returns null (guest retries or tries manual code entry).
+    await new Promise(r => setTimeout(r, 200));
     for (const lobbyId of ids) {
       const storedCode = await getLobbyData(lobbyId, 'lobby_code');
       if (storedCode === code) return lobbyId;
@@ -1635,6 +1644,15 @@ const steamBackend: LobbyBackend = {
       console.warn('[steamBackend] listPublicLobbies: lobby list callback did not fire within 3s');
       return [];
     }
+    // Kick off metadata requests for all lobbies in parallel before reading any.
+    // Steam's GetLobbyData returns "" until LobbyDataUpdate_t fires for cold lobbies
+    // discovered via RequestLobbyList. Without this warm-up, browsers may see entries
+    // with blank mode/visibility/lobby_code and skip them via the guard below.
+    await Promise.all(ids.map(lid => requestSteamLobbyData(lid).catch(() => false)));
+    // Brief wait for the background callback pump to process LobbyDataUpdate_t.
+    // 200 ms is enough on warm Steam backends; the existing guard
+    //  handles any remaining misses.
+    await new Promise(r => setTimeout(r, 200));
     const entries: LobbyBrowserEntry[] = [];
     for (const lobbyId of ids) {
       const [mode, visibility, lobbyCode, hostName, maxPlayersStr, createdAtStr, currentPlayers, title] = await Promise.all([

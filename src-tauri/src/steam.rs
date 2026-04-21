@@ -819,6 +819,57 @@ pub fn steam_get_lobby_member_count(
     }
 }
 
+
+/// Request that Steam fetch fresh metadata for a lobby we don't own.
+///
+/// When a client discovers a lobby via `RequestLobbyList` (not by creating/joining it),
+/// Steam's local cache may not yet hold the lobby's metadata. `GetLobbyData` would then
+/// return "" until `LobbyDataUpdate_t` fires.
+///
+/// This command kicks off the request. Callers should wait briefly (50–200 ms is usually
+/// enough on warm Steam backends) before calling `steam_get_lobby_data`. There is no
+/// explicit callback delivered through this Tauri command — the background callback pump
+/// processes `LobbyDataUpdate_t` events automatically, and `GetLobbyData` will start
+/// returning real values after that.
+///
+/// # Returns
+/// `true` if the request was submitted (Steam considers the data not yet cached locally).
+/// `false` means the data is already cached (no request needed) OR Steam is unavailable.
+///
+/// # Note on steamworks-rs 0.12 API gap
+/// steamworks-rs 0.12 does not expose a `request_lobby_data` method on `Matchmaking`.
+/// We call the underlying `SteamAPI_ISteamMatchmaking_RequestLobbyData` flat API directly
+/// via `steamworks::sys`. This is the same pattern used by `Matchmaking::lobby_data`
+/// internally (it calls `SteamAPI_ISteamMatchmaking_GetLobbyData`). The sys bindings are
+/// part of the public `steamworks` crate re-export so this does not require a private
+/// field access or any unsafe pattern beyond what steamworks-rs already uses internally.
+#[tauri::command]
+pub fn steam_request_lobby_data(
+    state: State<SteamState>,
+    lobby_id: String,
+) -> Result<bool, String> {
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(_client) = lock.as_ref() {
+        let id = parse_lobby_id(&lobby_id)?;
+        // SAFETY: SteamAPI_SteamMatchmaking_v009() returns the same pointer that
+        // client.matchmaking() uses internally. The pointer is valid for the lifetime
+        // of the Steam client, which is held alive by _client in this scope.
+        // This unsafe block mirrors the pattern in steamworks-rs Matchmaking::lobby_data.
+        let submitted = unsafe {
+            let mm = steamworks::sys::SteamAPI_SteamMatchmaking_v009();
+            if mm.is_null() {
+                false
+            } else {
+                steamworks::sys::SteamAPI_ISteamMatchmaking_RequestLobbyData(mm, id.raw())
+            }
+        };
+        println!("[Steam] Requested fresh lobby data for {} (submitted={})", lobby_id, submitted);
+        Ok(submitted)
+    } else {
+        Ok(false)
+    }
+}
+
 // ── P2P Networking — ISteamNetworkingMessages ─────────────────────────────────
 
 /// Send a P2P message to a peer using Steam Networking Messages (ISteamNetworkingMessages).

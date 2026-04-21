@@ -596,10 +596,47 @@ Steam documents lobbies as joinable by default, but the explicit call is defensi
 
 ---
 
+## Steam Lobby Metadata Warm-up (Wave 12 — 2026-04-21)
+
+**Source files:** `src-tauri/src/steam.rs`, `src/services/steamNetworkingService.ts`, `src/services/multiplayerLobbyService.ts`
+
+### Problem
+
+Steam's `GetLobbyData(lobbyId, key)` returns `""` for lobbies whose metadata the local Steam client has not yet cached. Lobbies discovered via `RequestLobbyList` (not created or joined by the local player) start cold — the cache is populated only after `RequestLobbyData(lobbyId)` fires and `LobbyDataUpdate_t` completes.
+
+**Symptom:** Guest scanning via code sees lobby list entries with blank `mode`/`lobby_code`/`host_name` and skips them (or `resolveByCode` returns null for a lobby that exists).
+
+### Fix
+
+**New Rust command:** `steam_request_lobby_data(lobby_id: String) -> Result<bool, String>`
+
+Calls `SteamAPI_ISteamMatchmaking_RequestLobbyData` via the `steamworks::sys` flat API. steamworks-rs 0.12 does not expose this as a `Matchmaking` method, so we call the raw flat API directly using the pointer from `SteamAPI_SteamMatchmaking_v009()`. Both are public exports of the crate.
+
+Returns `true` when the request was submitted, `false` when data is already cached (safe to proceed) or Steam is unavailable.
+
+**New TS helper:** `requestSteamLobbyData(lobbyId: string): Promise<boolean>` in `steamNetworkingService.ts`.
+
+### Warm-up pattern in steamBackend
+
+Before ANY per-lobby `getLobbyData` call:
+
+```ts
+// Kick off metadata requests for all lobbies in parallel.
+// Steam's GetLobbyData returns "" until LobbyDataUpdate_t fires for a cold lobby.
+await Promise.all(ids.map(lid => requestSteamLobbyData(lid).catch(() => false)));
+// Brief wait for the background callback pump to process LobbyDataUpdate_t.
+await new Promise(r => setTimeout(r, 200));
+```
+
+Applied in both `steamBackend.resolveByCode` and `steamBackend.listPublicLobbies`. The existing `if (!mode || !visibility || !lobbyCode) continue` guard remains as a backstop for any remaining misses.
+
+---
+
 ## CHANGELOG (abbreviated)
 
 | Date | Commits | What |
 |------|---------|------|
+| 2026-04-21 | (Wave 12) | Steam lobby metadata warm-up: `steam_request_lobby_data` Rust command (raw sys flat API), `requestSteamLobbyData` TS helper, warm-up pass in `listPublicLobbies` + `resolveByCode` — fixes cold-cache "" from `GetLobbyData` |
 | 2026-04-21 | (C4 fix) | Outbound pre-connect buffer in SteamP2PTransport — send() during 'connecting' state now buffers to _preSendBuffer (cap 64); flushed after acceptP2PSession resolves. Silent-drop warns added. Malformed P2P message catch now logs. 6 new unit tests. |
 | 2026-04-21 | (A5 hardening) | Raw LobbyEnter callback for real ChatRoomEnterResponse codes (Limited user = code 7 with actionable message), Worldwide distance filter on lobby list, explicit set_lobby_joinable(true), joinSteamLobby diagnostic console.log |
 | 2026-04-21 | (A2–A4 fix wave) | Ghost lobby prevention (joinLobby: _currentLobby set after join), Steam join error surfacing (pending_join_error slot, pollJoinResult, 10s timeout), stale lobby filtering (currentPlayers=0, >2h), host metadata clear on leave |

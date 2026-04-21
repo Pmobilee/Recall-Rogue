@@ -112,6 +112,8 @@ export interface SteamCommandArgs {
   steam_run_callbacks: Record<string, never>;
   /** D1: Overlay + launch-source diagnostic (no args). */
   steam_overlay_status: Record<string, never>;
+  /** Lobby metadata warm-up — call before GetLobbyData on lobbies discovered via RequestLobbyList. */
+  steam_request_lobby_data: { lobbyId: string };
 }
 
 /**
@@ -144,6 +146,8 @@ export interface SteamCommandReturn {
   steam_run_callbacks: void;
   /** D1: Returns the overlay diagnostic struct, or null when Tauri unavailable. */
   steam_overlay_status: SteamOverlayStatus;
+  /** true when the request was submitted; false when data already cached or Steam unavailable. */
+  steam_request_lobby_data: boolean;
 }
 
 /**
@@ -527,6 +531,33 @@ export async function getSteamOverlayStatus(): Promise<SteamOverlayStatus | null
   if (!isTauriRuntime()) return null;
   return (await invokeSteam('steam_overlay_status')) ?? null;
 }
+// ── Lobby Metadata Warm-up ────────────────────────────────────────────────────
+
+/**
+ * Request that Steam fetch fresh metadata for a lobby discovered via RequestLobbyList.
+ *
+ * Steam's GetLobbyData returns "" for lobbies whose metadata the local client hasn't
+ * yet cached. For lobbies you are NOT a member of (i.e. lobbies returned by
+ * RequestLobbyList), you must call RequestLobbyData first and wait for the
+ * LobbyDataUpdate_t callback before GetLobbyData is guaranteed to return real values.
+ *
+ * The background callback pump in SteamState::new() processes LobbyDataUpdate_t
+ * automatically — callers just need to wait ~50–200 ms after this call before reading
+ * metadata with getLobbyData.
+ *
+ * Returns true when the request was submitted (metadata not yet cached).
+ * Returns false when data is already cached locally (no request needed) or Steam is
+ * unavailable. In both cases it is safe to proceed — the false/cached case means
+ * GetLobbyData will already return real values.
+ *
+ * @param lobbyId - 64-bit Steam lobby ID as a decimal string
+ */
+export async function requestSteamLobbyData(lobbyId: string): Promise<boolean> {
+  if (!isTauriRuntime()) return false;
+  const result = await invokeSteam('steam_request_lobby_data', { lobbyId });
+  return result === true;
+}
+
 // ── P2P Messaging ─────────────────────────────────────────────────────────────
 
 /**

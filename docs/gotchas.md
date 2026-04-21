@@ -1,3 +1,13 @@
+### 2026-04-21 — Steam GetLobbyData returns empty string for cold lobbies without RequestLobbyData first
+
+**What:** After discovering lobbies via `RequestLobbyList`, `GetLobbyData(lobbyId, key)` returns `""` for lobbies whose metadata the local Steam client has not yet cached. This causes `resolveByCode` to miss a valid lobby (returns null), and `listPublicLobbies` to see entries with blank `mode`/`visibility`/`lobby_code` and skip them.
+
+**Why:** Steam's local lobby metadata cache is populated lazily. For lobbies you ARE a member of (created or joined), metadata is always present. For lobbies returned by `RequestLobbyList` that you are NOT a member of, the cache may be cold — especially on the first query after launch or after a long idle. `RequestLobbyData(lobbyId)` triggers a network fetch; the result fires as `LobbyDataUpdate_t`, after which `GetLobbyData` returns real values.
+
+**Fix:** In `steamBackend.resolveByCode` and `steamBackend.listPublicLobbies`, call `requestSteamLobbyData` for all discovered lobby IDs in parallel before reading any metadata, then wait 200 ms for the background callback pump (`SteamState._pump_shutdown`) to process the `LobbyDataUpdate_t` events. The new `steam_request_lobby_data` Rust command calls the raw `SteamAPI_ISteamMatchmaking_RequestLobbyData` flat API directly since steamworks-rs 0.12 does not wrap this method.
+
+**steamworks-rs note:** `SteamAPI_ISteamMatchmaking_RequestLobbyData` is in the `steamworks-sys` bindings but NOT exposed as a method on `Matchmaking`. We call it via `steamworks::sys` directly using the pointer from `SteamAPI_SteamMatchmaking_v009()`. Both are public exports of the crate.
+
 ### 2026-04-21 — Steam Limited User accounts block lobby join (code 7)
 
 **What:** A Steam account that has never spent $5+ on the Steam Store is a "Limited User". These accounts receive `k_EChatRoomEnterResponseLimited` (code 7) on every lobby join attempt. The game previously showed a generic timeout rather than the actual reason.
