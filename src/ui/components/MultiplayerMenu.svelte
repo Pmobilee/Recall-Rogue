@@ -365,6 +365,14 @@
         >
           LAN Play
         </button>
+        <button
+          class="tab-btn tab-btn--action"
+          data-testid="btn-browse-lobbies"
+          aria-label="Browse public lobbies"
+          onclick={onBrowseLobbies}
+        >
+          &#127760; Browse
+        </button>
       </div>
 
       <!-- Create tab -->
@@ -468,9 +476,6 @@
           <div class="create-footer">
             <button class="primary-btn" data-testid="btn-create-lobby" onclick={handleCreateLobby}>
               Create Lobby
-            </button>
-            <button class="browse-btn" data-testid="btn-browse-lobbies" onclick={onBrowseLobbies}>
-              &#127760; Browse Lobbies
             </button>
           </div>
         </div>
@@ -834,6 +839,19 @@
     background: rgba(255, 215, 0, 0.06);
   }
 
+  /* Action button in tab-bar — nav action, not a selectable tab */
+  .tab-btn--action {
+    color: #FFD700;
+    background: rgba(255, 215, 0, 0.08);
+    border-bottom-color: transparent;
+  }
+
+  .tab-btn--action:hover {
+    color: #FFE85A;
+    background: rgba(255, 215, 0, 0.18);
+    border-bottom-color: transparent;
+  }
+
   /* ===== Tab panels ===== */
   .tab-panel {
     padding: calc(20px * var(--layout-scale, 1));
@@ -1185,25 +1203,6 @@
   .primary-btn:disabled {
     opacity: 0.38;
     cursor: not-allowed;
-  }
-
-  .browse-btn {
-    background: rgba(255, 215, 0, 0.10);
-    border: 1px solid rgba(255, 215, 0, 0.35);
-    border-radius: calc(8px * var(--layout-scale, 1));
-    color: #FFD700;
-    font-family: var(--font-body, 'Lora', serif);
-    font-size: calc(13px * var(--text-scale, 1));
-    font-weight: 600;
-    cursor: pointer;
-    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
-    min-height: calc(44px * var(--layout-scale, 1));
-    transition: background 0.15s, border-color 0.15s;
-  }
-
-  .browse-btn:hover {
-    background: rgba(255, 215, 0, 0.20);
-    border-color: rgba(255, 215, 0, 0.6);
   }
 
   /* ===== LAN Play tab ===== */
