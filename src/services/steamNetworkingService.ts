@@ -380,12 +380,18 @@ export async function createSteamLobby(
  */
 export async function joinSteamLobby(lobbyId: string): Promise<string | null> {
   if (!isTauriRuntime()) return null;
-  // Kick off join — returns () immediately; result delivered via LobbyEnter_t callback.
-  // Args are camelCase — Tauri v2 translates to snake_case for Rust automatically.
-  const kickoff = await invokeSteam('steam_join_lobby', { lobbyId });
-  if (kickoff === null) return null; // IPC call itself failed
+  // Kick off join — Rust returns Ok(()) which Tauri serialises to null.
+  // `kickoff` is always null here whether the IPC failed OR succeeded — we
+  // can't distinguish from the return alone. Use getLastSteamInvokeError()
+  // to tell the two apart: a thrown invoke clears, then sets, the slot.
+  const errorBefore = getLastSteamInvokeError();
+  await invokeSteam('steam_join_lobby', { lobbyId });
+  const errorAfter = getLastSteamInvokeError();
+  if (errorAfter && errorAfter !== errorBefore) {
+    console.warn('[steamNetworking] steam_join_lobby IPC failed:', errorAfter);
+    return null;
+  }
   // A3: Poll both success and error slots — throws on error, returns id on success.
-  // A5: Log result for browser-console diagnostics (visible via window.__rrLog).
   try {
     const result = await pollJoinResult();
     console.log('[steamNetworking] joinSteamLobby result', { lobbyId, result, error: null });

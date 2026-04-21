@@ -112,16 +112,22 @@
         return
       }
     }
-    // Auto-stop the LAN server before starting a Steam/web lobby. Running the
-    // LAN HTTP server pins pickBackend() to webBackend via isLanMode() — which
-    // would route a "Steam lobby" through the Fastify code path and never
-    // create a real Steam matchmaking lobby.
+    // Auto-stop the LAN server AND clear any persisted LAN URL before starting
+    // a Steam/web lobby. isLanMode() is true whenever a LAN URL is stored —
+    // whether this session is hosting or just carried the URL over from a
+    // prior session. Either state pins pickBackend() → webBackend and
+    // routes a "Steam lobby" through the Fastify code path, breaking Steam MP.
     if (lanServerRunning) {
       try {
         await handleStopServer()
       } catch (e) {
         console.warn('[MultiplayerMenu] auto-stop LAN before Steam lobby failed:', e)
       }
+    }
+    if (isConnectedToLan) {
+      clearLanServerUrl()
+      isConnectedToLan = false
+      connectedLanUrls = null
     }
     const sanitizedTitle = titleValue.trim() ? sanitizeLobbyTitle(titleValue.trim()) : undefined
     onCreateLobby(selectedMode, {
@@ -157,6 +163,11 @@
       } catch (e) {
         console.warn('[MultiplayerMenu] auto-stop LAN before join failed:', e)
       }
+    }
+    if (isConnectedToLan) {
+      clearLanServerUrl()
+      isConnectedToLan = false
+      connectedLanUrls = null
     }
     onJoinLobby(joinCode)
   }
