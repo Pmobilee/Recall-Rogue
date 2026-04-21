@@ -1,7 +1,17 @@
 use std::sync::{Arc, Mutex};
 use steamworks::networking_types::{NetworkingIdentity, SendFlags};
-use steamworks::{Client, LobbyId, LobbyType, SteamId};
+use steamworks::{CallbackHandle, Client, LobbyId, LobbyType, SteamId};
 use tauri::State;
+
+// D1: Wrap CallbackHandle so it can be stored in SteamState across threads.
+// CallbackHandle holds a Weak<Inner> (Mutex-backed) and only de-registers on drop.
+// Steam callbacks are always dispatched from the thread that calls run_callbacks,
+// so there are no real data-race concerns here — the wrapper is Send-safe in practice.
+struct SendableCallbackHandle(CallbackHandle);
+// SAFETY: CallbackHandle is a thin wrapper around Weak<Inner> (Mutex-backed Arc). The only
+// operations on it are read (Weak::upgrade) and drop (callback de-registration via the Mutex).
+// Both are thread-safe. steamworks-rs simply doesn't add the Send impl itself.
+unsafe impl Send for SendableCallbackHandle {}
 
 /// Holds the initialized Steamworks client, or None if Steam is not running / SDK unavailable.
 ///
@@ -32,11 +42,21 @@ pub struct SteamState {
     /// Used by the TS-side `pollJoinResult` to surface the real Steam rejection reason (lobby full,
     /// no access, banned, etc.) instead of a generic timeout.
     pub pending_join_error: Arc<Mutex<Option<String>>>,
+    /// D1: Keeps the GameOverlayActivated callback handle alive for the process lifetime.
+    /// When this handle is dropped the callback de-registers. We hold it here so it is never
+    /// dropped while the app is running. None when Steam failed to initialize.
+    _overlay_callback: Option<SendableCallbackHandle>,
 }
 
 impl SteamState {
     /// Try to initialize the Steamworks SDK on app startup.
     /// Failure is non-fatal — all commands silently no-op when Steam is unavailable.
+    ///
+    /// D1: On successful init, registers a `GameOverlayActivated` callback that logs
+    /// to stdout when the Steam overlay opens or closes. This gives us a positive signal
+    /// that the overlay is actually hooked — without this log line appearing, the overlay
+    /// is not reaching our process (see docs/mechanics/multiplayer.md "Steam Overlay
+    /// Requirements" for the full troubleshooting guide).
     ///
     /// Note: `Client::run_callbacks()` should be called periodically (e.g. via a background thread)
     /// to process async Steam events. This is required for Leaderboard, Cloud Save, and lobby
@@ -50,6 +70,20 @@ impl SteamState {
         match Client::init_app(4547570) {
             Ok(client) => {
                 println!("[Steam] Initialized successfully (App ID 4547570 — Recall Rogue)");
+
+                // D1: Register the GameOverlayActivated callback.
+                // This fires when the user presses Shift+Tab (or the overlay is triggered
+                // programmatically). If this println never appears during a session, the
+                // overlay is not hooked — see docs/mechanics/multiplayer.md §Steam Overlay.
+                let overlay_handle = client.register_callback(
+                    |val: steamworks::GameOverlayActivated| {
+                        println!(
+                            "[Steam] GameOverlayActivated: active={}",
+                            val.active
+                        );
+                    },
+                );
+
                 SteamState {
                     client: Mutex::new(Some(client)),
                     pending_lobby_id: Arc::new(Mutex::new(None)),
@@ -57,6 +91,7 @@ impl SteamState {
                     pending_lobby_list: Arc::new(Mutex::new(None)),
                     active_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_error: Arc::new(Mutex::new(None)),
+                    _overlay_callback: Some(SendableCallbackHandle(overlay_handle)),
                 }
             }
             Err(e) => {
@@ -68,6 +103,7 @@ impl SteamState {
                     pending_lobby_list: Arc::new(Mutex::new(None)),
                     active_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_error: Arc::new(Mutex::new(None)),
+                    _overlay_callback: None,
                 }
             }
         }
@@ -92,6 +128,80 @@ pub struct SteamP2PMessage {
     pub sender_id: String,
     /// The raw message payload decoded as a UTF-8 string (game messages are JSON).
     pub data: String,
+}
+
+// ── D1: Steam overlay diagnostic ─────────────────────────────────────────────
+
+/// Diagnostic status for the Steam overlay.
+///
+/// Returned by `steam_overlay_status`. Use this in the dev diagnostic panel
+/// (visible under `?dev=true`) to verify that the overlay is configured and
+/// the process was launched through Steam.
+///
+/// Note: the `overlay_enabled` field reflects `ISteamUtils::BIsOverlayEnabled()`,
+/// which returns true only when Steam client has "Enable the Steam Overlay while
+/// in-game" checked AND steamworks successfully initialized. It does NOT guarantee
+/// that the overlay will actually render — on Tauri/WebView2 builds the overlay
+/// renderer may fail to hook even when this returns true (known upstream limitation).
+/// Watch for the `[Steam] GameOverlayActivated: active=true` log line as the
+/// definitive positive signal that the overlay is hooked.
+#[derive(serde::Serialize)]
+pub struct SteamOverlayStatus {
+    /// True if Steam reports the overlay is enabled. Requires:
+    ///   (a) Steam client "Enable Steam Overlay while in-game" is checked, AND
+    ///   (b) steamworks initialized for this app.
+    /// None should never occur in practice (steamworks-rs 0.12 exposes the API),
+    /// but is kept as Option for future-compatibility and graceful degradation.
+    pub overlay_enabled: Option<bool>,
+    /// True if the process env contains `SteamAppId=4547570` or `SteamGameId=4547570`,
+    /// which the Steam launcher injects automatically when the game is launched via
+    /// the Steam library. Launching the Tauri exe directly will NOT set these vars —
+    /// and the overlay injector will not hook our process without them.
+    pub launched_via_steam: bool,
+    /// True if the Steamworks client initialized successfully on startup.
+    /// False means Steam client was not running at launch, or the SDK failed for
+    /// another reason (wrong app ID, DRM mismatch, etc.).
+    pub steam_initialized: bool,
+}
+
+/// Return overlay + launch-source diagnostic status.
+///
+/// Designed for the dev diagnostic panel (`?dev=true`) and for gathering info
+/// when players report that Shift+Tab doesn't open the Steam overlay.
+///
+/// The most actionable fields:
+/// - `launched_via_steam: false` → player launched the exe directly; overlay cannot hook.
+/// - `overlay_enabled: Some(false)` → overlay is disabled in Steam client settings.
+/// - `steam_initialized: false` → Steam client wasn't running at game launch.
+///
+/// Even when all three look correct the overlay may still not render on
+/// WebView2/WKWebView — this is a known upstream limitation. If the
+/// `[Steam] GameOverlayActivated: active=true` log line never appears in
+/// stdout, the overlay is not hooked by our process regardless of these flags.
+#[tauri::command]
+pub fn steam_overlay_status(state: State<SteamState>) -> Result<SteamOverlayStatus, String> {
+    // Check env vars the Steam client injects on launch.
+    let steam_app_id = std::env::var("SteamAppId").ok();
+    let steam_game_id = std::env::var("SteamGameId").ok();
+    let launched_via_steam = matches!(steam_app_id.as_deref(), Some("4547570"))
+        || matches!(steam_game_id.as_deref(), Some("4547570"));
+
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    let steam_initialized = lock.is_some();
+
+    let overlay_enabled = if let Some(client) = lock.as_ref() {
+        // ISteamUtils::BIsOverlayEnabled — available in steamworks-rs 0.12 via utils().
+        Some(client.utils().is_overlay_enabled())
+    } else {
+        // Steam not initialized — overlay cannot be enabled.
+        None
+    };
+
+    Ok(SteamOverlayStatus {
+        overlay_enabled,
+        launched_via_steam,
+        steam_initialized,
+    })
 }
 
 // ── Achievements ──────────────────────────────────────────────────────────────

@@ -28,6 +28,11 @@
   import { scanLanForServers, probeLanServer, LAN_DEFAULT_PORT } from '../../services/lanDiscoveryService'
   import { isDesktop, hasSteam } from '../../services/platformService'
   import { sanitizeLobbyTitle } from '../../services/profanityService'
+  import { devMode as isDevToolsMode } from '../stores/devMode'
+  import {
+    getSteamOverlayStatus,
+    type SteamOverlayStatus,
+  } from '../../services/steamNetworkingService'
 
   interface Props {
     onBack: () => void
@@ -254,6 +259,9 @@
 
   // ── On mount: check if LAN server was already running from a previous session ─
 
+  // ── D1: Dev overlay diagnostic state ─────────────────────────────────────────
+  let overlayStatus = $state<SteamOverlayStatus | null>(null)
+
   onMount(async () => {
     if (isDesktop) {
       const status = await getLanServerStatus()
@@ -266,6 +274,10 @@
     }
     isConnectedToLan = isLanMode()
     connectedLanUrls = getLanServerUrls()
+    // D1: Load overlay status for the dev diagnostic panel.
+    if (hasSteam) {
+      overlayStatus = await getSteamOverlayStatus()
+    }
   })
 </script>
 
@@ -282,6 +294,40 @@
     {/if}
     <div class="header-spacer"></div>
   </header>
+
+  <!-- D1: Dev-only Steam overlay diagnostic panel (visible only with ?dev=true) -->
+  {#if $isDevToolsMode}
+    <div class="dev-overlay-panel" data-dev-only="true" aria-label="Steam Overlay Diagnostic">
+      <span class="dev-overlay-title">Steam Overlay</span>
+      <span class="dev-overlay-row">
+        <span class="dev-overlay-label">Client init:</span>
+        <span class="dev-overlay-value" class:dev-val-ok={overlayStatus?.steamInitialized} class:dev-val-fail={overlayStatus !== null && !overlayStatus.steamInitialized}>
+          {overlayStatus === null ? '…' : overlayStatus.steamInitialized ? '✓' : '✗'}
+        </span>
+      </span>
+      <span class="dev-overlay-row">
+        <span class="dev-overlay-label">Launched via Steam:</span>
+        <span class="dev-overlay-value" class:dev-val-ok={overlayStatus?.launchedViaSteam} class:dev-val-fail={overlayStatus !== null && !overlayStatus.launchedViaSteam}>
+          {overlayStatus === null ? '…' : overlayStatus.launchedViaSteam ? '✓' : '✗'}
+        </span>
+      </span>
+      <span class="dev-overlay-row">
+        <span class="dev-overlay-label">Overlay reports enabled:</span>
+        <span class="dev-overlay-value"
+          class:dev-val-ok={overlayStatus?.overlayEnabled === true}
+          class:dev-val-fail={overlayStatus?.overlayEnabled === false}
+        >
+          {#if overlayStatus === null}
+            …
+          {:else if overlayStatus.overlayEnabled === null}
+            unknown
+          {:else}
+            {overlayStatus.overlayEnabled ? '✓' : '✗'}
+          {/if}
+        </span>
+      </span>
+    </div>
+  {/if}
 
   <!-- Centered content area -->
   <div class="mp-body">
@@ -1490,5 +1536,49 @@
     flex: 1;
     min-width: calc(72px * var(--layout-scale, 1));
     max-width: calc(90px * var(--layout-scale, 1));
+  }
+
+  /* ===== D1: Dev overlay diagnostic panel ===== */
+  .dev-overlay-panel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(12px * var(--layout-scale, 1));
+    padding: calc(6px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    background: rgba(100, 60, 180, 0.15);
+    border-bottom: 1px solid rgba(150, 80, 255, 0.25);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #bb99ee;
+  }
+
+  .dev-overlay-title {
+    font-weight: 700;
+    color: #cc99ff;
+    margin-right: calc(4px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .dev-overlay-row {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(4px * var(--layout-scale, 1));
+  }
+
+  .dev-overlay-label {
+    color: #9977bb;
+  }
+
+  .dev-overlay-value {
+    font-weight: 700;
+    color: #aaa;
+  }
+
+  .dev-val-ok {
+    color: #50C878;
+  }
+
+  .dev-val-fail {
+    color: #e05c5c;
   }
 </style>

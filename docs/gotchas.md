@@ -5096,3 +5096,23 @@ Additionally, there was no timeout on the `lan_start_server` Tauri command. A po
 **What:** A docs-agent sub-agent attempted to Write to `.claude/skills/multiplayer/SKILL.md` and received a permission error.
 **Why:** `.claude/` is in the orchestrator-only edit zone per `.claude/rules/agent-routing.md`. Sub-agents (including docs-agent) are not permitted to touch it.
 **Fix:** Orchestrator edits `.claude/skills/` directly; docs-agent edits only `docs/` and `CLAUDE.md`. When skill sync is needed as part of a docs task, the orchestrator handles it separately or explicitly grants it via the exception clause.
+
+### 2026-04-21 — Steam overlay not appearing on Tauri (WebView2/WKWebView) builds
+
+**What:** Players and QA report that Shift+Tab does not open the Steam overlay while in-game on the shipped Steam build.
+
+**Why:** Steam's overlay works by hooking into a DirectX/Vulkan/OpenGL render surface. Tauri desktop apps render through WebView2 (Windows) or WKWebView (macOS), both of which use their own GPU compositor that Steam's overlay injector does not hook. This is a known upstream limitation — the overlay may partially work on some Windows GPU/driver combinations but fail on others.
+
+**Additional causes that compound the issue:**
+- Player launched the `.exe` directly instead of via the Steam library. The Steam client only injects `SteamAppId` / `SteamGameId` env vars (which the overlay injector reads to identify the process) when launched from within Steam. Direct execution bypasses this entirely.
+- Player has "Enable the Steam Overlay while in-game" unchecked in Steam Settings → In-Game.
+
+**Diagnostic added (D1, 2026-04-21):**
+- `steam_overlay_status` Tauri command (in `src-tauri/src/steam.rs`) returns `{ overlayEnabled, launchedViaSteam, steamInitialized }`.
+- `getSteamOverlayStatus()` in `src/services/steamNetworkingService.ts` is the TS wrapper.
+- The multiplayer menu dev panel (`?dev=true`) shows all three fields.
+- A `GameOverlayActivated` callback fires a `[Steam] GameOverlayActivated: active=true/false` stdout log whenever the overlay opens/closes — if this log line never appears, the hook is not working.
+
+**Positive detection:** watch for `[Steam] GameOverlayActivated: active=true` in stdout/stderr when pressing Shift+Tab. No log line = overlay not hooked.
+
+**Current status:** Known limitation. No code fix is available without a native-window Tauri plugin. Document this to players via in-game error messaging if/when needed.

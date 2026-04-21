@@ -1665,3 +1665,36 @@ Returns null on non-Tauri builds (web, mobile, CI).
 `getLocalPersonaName` is imported in `CardApp.svelte`. A module-level `localDisplayName` state variable is populated in `onMount`. Both `handleCreateLobby` and `handleJoinLobby` call `getLocalDisplayName()` before creating or joining, which resolves: Steam persona name → `authStore.displayName` → `'Player'`.
 
 The `localDisplayName` state variable is also passed as the prop to `LobbyBrowserScreen` so the browser shows the real name when the player joins by browsing.
+
+## Steam Overlay Requirements
+
+The Steam overlay (Shift+Tab) requires all of the following conditions to be met:
+
+1. **Launch via Steam client.** Run the game from the Steam library — do not launch the bundled `.exe` directly. The Steam client injects `SteamAppId=4547570` (or `SteamGameId`) into the process environment when launching from the library. The overlay injector uses these vars to identify the process. Direct exe execution bypasses this injection.
+
+2. **Overlay enabled in Steam settings.** Steam Settings → In-Game → "Enable the Steam Overlay while in-game" must be checked. Per-game overrides also apply (right-click the game in Steam library → Properties → General → "Enable the Steam Overlay while in-game").
+
+3. **Tauri/WebView known limitation.** Tauri desktop apps render through WebView2 (Windows) or WKWebView (macOS). Steam's overlay traditionally hooks DirectX/Vulkan/OpenGL render surfaces, not browser compositors. Overlay support on this stack is best-effort — it may work on some Windows GPU/driver combinations but fail on others. If it cannot hook our compositor, that is a known upstream limitation, not a bug in our wiring.
+
+### Dev diagnostic
+
+Enable `?dev=true` and open the Multiplayer menu to see the Steam Overlay status panel. It shows:
+
+| Field | Meaning |
+|-------|---------|
+| Client init | `steam_initialized` — was Steam running at app launch? |
+| Launched via Steam | `launched_via_steam` — `SteamAppId`/`SteamGameId` env present? |
+| Overlay reports enabled | `overlay_enabled` — does `ISteamUtils::BIsOverlayEnabled()` return true? |
+
+**Definitive hook test:** The `GameOverlayActivated` callback (wired in `SteamState::new()`) fires a `[Steam] GameOverlayActivated: active=true` stdout line when the user presses Shift+Tab. If this line never appears in stdout, the overlay is not hooked — no amount of config change will fix it on the current build.
+
+### IPC
+
+```typescript
+// Returns the status struct, or null on non-Tauri builds.
+import { getSteamOverlayStatus } from 'src/services/steamNetworkingService'
+const status = await getSteamOverlayStatus()
+// status: { overlayEnabled: boolean|null, launchedViaSteam: boolean, steamInitialized: boolean }
+```
+
+Rust command: `steam_overlay_status` in `src-tauri/src/steam.rs`.

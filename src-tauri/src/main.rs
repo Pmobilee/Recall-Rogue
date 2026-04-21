@@ -46,6 +46,8 @@ fn main() {
             steam::steam_get_persona_name,
             // Steam lobby exit cleanup (C5 — best-effort leave on JS-side graceful shutdown)
             steam::steam_force_leave_active_lobby,
+            // D1: Overlay diagnostic — returns overlay_enabled / launched_via_steam / steam_initialized
+            steam::steam_overlay_status,
             // File system save (filesave.rs)
             filesave::fs_get_save_dir,
             filesave::fs_write_save,

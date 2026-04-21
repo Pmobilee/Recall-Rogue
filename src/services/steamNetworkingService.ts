@@ -58,6 +58,20 @@ export interface SteamP2PMessage {
   data: string;
 }
 
+/** D1: Overlay + launch-source diagnostic status returned by steam_overlay_status. */
+export interface SteamOverlayStatus {
+  /** True when ISteamUtils::BIsOverlayEnabled() reports the overlay is on. */
+  overlayEnabled: boolean | null;
+  /**
+   * True when SteamAppId=4547570 or SteamGameId=4547570 is set in the process env —
+   * the Steam client injects this only when the game is launched via the Steam library.
+   * Launching the exe directly will NOT set these vars, and the overlay cannot hook.
+   */
+  launchedViaSteam: boolean;
+  /** True when the Steamworks client initialized on startup (Steam client was running). */
+  steamInitialized: boolean;
+}
+
 // ── M23: Typed IPC contract ───────────────────────────────────────────────────
 
 /**
@@ -96,6 +110,8 @@ export interface SteamCommandArgs {
   steam_get_lobby_list_result: Record<string, never>;
   steam_read_p2p_messages: { channel: number };
   steam_run_callbacks: Record<string, never>;
+  /** D1: Overlay + launch-source diagnostic (no args). */
+  steam_overlay_status: Record<string, never>;
 }
 
 /**
@@ -126,6 +142,8 @@ export interface SteamCommandReturn {
   steam_get_lobby_list_result: string[] | null;
   steam_read_p2p_messages: SteamP2PMessage[];
   steam_run_callbacks: void;
+  /** D1: Returns the overlay diagnostic struct, or null when Tauri unavailable. */
+  steam_overlay_status: SteamOverlayStatus;
 }
 
 /**
@@ -481,6 +499,26 @@ export async function getLocalPersonaName(): Promise<string | null> {
   return result ?? null;
 }
 
+
+// ── D1: Steam overlay diagnostic ─────────────────────────────────────────────
+
+/**
+ * Return the Steam overlay + launch-source diagnostic status.
+ *
+ * Use this in the dev diagnostic panel (?dev=true) to surface whether the overlay
+ * is configured and whether the process was launched through the Steam client.
+ *
+ * Even when all fields look correct the overlay may not render on
+ * WebView2/WKWebView — this is a known upstream limitation. The definitive
+ * positive signal is the \ line
+ * in stdout when the user presses Shift+Tab.
+ *
+ * Returns null on non-Tauri builds (web, mobile, CI) or on IPC failure.
+ */
+export async function getSteamOverlayStatus(): Promise<SteamOverlayStatus | null> {
+  if (!isTauriRuntime()) return null;
+  return (await invokeSteam('steam_overlay_status')) ?? null;
+}
 // ── P2P Messaging ─────────────────────────────────────────────────────────────
 
 /**
