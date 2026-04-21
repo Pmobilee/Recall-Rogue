@@ -837,37 +837,26 @@ pub fn steam_get_lobby_member_count(
 /// `false` means the data is already cached (no request needed) OR Steam is unavailable.
 ///
 /// # Note on steamworks-rs 0.12 API gap
-/// steamworks-rs 0.12 does not expose a `request_lobby_data` method on `Matchmaking`.
-/// We call the underlying `SteamAPI_ISteamMatchmaking_RequestLobbyData` flat API directly
-/// via `steamworks::sys`. This is the same pattern used by `Matchmaking::lobby_data`
-/// internally (it calls `SteamAPI_ISteamMatchmaking_GetLobbyData`). The sys bindings are
-/// part of the public `steamworks` crate re-export so this does not require a private
-/// field access or any unsafe pattern beyond what steamworks-rs already uses internally.
+/// steamworks-rs 0.12 does not expose a `request_lobby_data` method on `Matchmaking`,
+/// and the `steamworks::sys` re-export is crate-private. Calling the flat C API would
+/// require adding `steamworks-sys` as a direct dependency. For now this command is a
+/// no-op — the 200ms sleep in the TS warm-up gives the background callback pump time
+/// to process any `LobbyDataUpdate_t` events Steam dispatches on its own when the list
+/// response arrives. `GetLobbyData` still returns cached data if Steam has it, and the
+/// existing `if (!mode || !visibility || !lobbyCode) continue` guard in the TS list
+/// handler skips entries whose data is still blank.
 #[tauri::command]
 pub fn steam_request_lobby_data(
     state: State<SteamState>,
     lobby_id: String,
 ) -> Result<bool, String> {
     let lock = state.client.lock().map_err(|e| e.to_string())?;
-    if let Some(_client) = lock.as_ref() {
-        let id = parse_lobby_id(&lobby_id)?;
-        // SAFETY: SteamAPI_SteamMatchmaking_v009() returns the same pointer that
-        // client.matchmaking() uses internally. The pointer is valid for the lifetime
-        // of the Steam client, which is held alive by _client in this scope.
-        // This unsafe block mirrors the pattern in steamworks-rs Matchmaking::lobby_data.
-        let submitted = unsafe {
-            let mm = steamworks::sys::SteamAPI_SteamMatchmaking_v009();
-            if mm.is_null() {
-                false
-            } else {
-                steamworks::sys::SteamAPI_ISteamMatchmaking_RequestLobbyData(mm, id.raw())
-            }
-        };
-        println!("[Steam] Requested fresh lobby data for {} (submitted={})", lobby_id, submitted);
-        Ok(submitted)
-    } else {
-        Ok(false)
+    if lock.is_some() {
+        // Parse validates the ID format even though we can't call Steam's request_lobby_data.
+        let _ = parse_lobby_id(&lobby_id)?;
+        println!("[Steam] steam_request_lobby_data (no-op — steamworks-rs 0.12 gap): {}", lobby_id);
     }
+    Ok(false)
 }
 
 // ── P2P Networking — ISteamNetworkingMessages ─────────────────────────────────
