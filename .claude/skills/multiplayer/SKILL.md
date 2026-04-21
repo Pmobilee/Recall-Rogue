@@ -71,29 +71,31 @@ StS/Balatro-style public/private lobby browsing — visibility tri-state (Public
 ### Race Mode Flow (End-to-End)
 Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared seed → play with live opponent HUD → run end → race finish broadcast
 
-### Hardening Wave (2026-04-21) — 42 audit findings resolved
+### Hardening Wave (2026-04-21) — 81 audit findings resolved across 6 commits
 
-Commits `ec9e86626` (wave 1: coop/race/trivia/LAN + Elo/FSRS) and `b8b7c1b0b` (wave 2: lobby service + workshop + lobby UI) landed 42 distinct fixes across transport, coop, race, trivia, workshop, LAN, and lobby-UI layers. See `docs/mechanics/multiplayer.md` hardening sections for per-fix detail.
+| Commit | Wave | Scope |
+|---|---|---|
+| `ec9e86626` | 1 | coop/race/trivia/LAN + Elo/FSRS (42 core fixes) |
+| `b8b7c1b0b` | 2 | lobby service + workshop + lobby UI |
+| `2824e08d3` | 3 | wiring + PlayerProfile schema v2 |
+| `c80c99e55` | 4 | polish + Elo wire + CORS default |
+| `60f260fe0` | 5 | final wiring (initRaceMode, opp-rating, workshop gate) |
+| `564111f12` | 6 | M6 hasPassword cleanup + M23 typed IPC + L4 kick scaffold + docs |
 
-**Remaining Work (blockers + nice-to-haves)**
+See `docs/mechanics/multiplayer.md` and `docs/architecture/multiplayer.md` for per-fix detail. All C1–C5 criticals, H1–H19 highs, M1–M23 mediums, L1–L5 lows closed.
 
-| Task | Blocker? | Notes |
-|------|----------|-------|
-| Transport emission of `mp:lobby:peer_left` / `mp:lobby:peer_rejoined` | Soft | Lobby-service handlers ready; transport still needs to fire on WS close + P2P drop. Pragmatic path: JS-side ping/pong fallback. |
-| Wire `recordRaceAnswer` in `gameFlowController.ts` | Soft | Primitive exists; call-site for quiz-answer handler in race mode not yet added. |
-| `ascensionLevel` wire into MP encounter setup (`runManager` / `encounterBridge`) | Soft | `HouseRules.ascensionLevel` currently ignored for MP runs. |
-| Workshop host self-check + `lobbyStartGate` integration | Soft | `checkAllPlayersHaveWorkshopDeck` ready; host needs own-deck check + gate needs 5th condition. |
-| `clearLanModeOnHubEntry()` UI call in CardApp Hub nav | Soft | Primitive exported; UI wire-up in `CardApp.svelte`. |
-| `leaveMultiplayerLobbyForSoloStart()` UI call in solo-start path | Soft | Same pattern. |
-| L5 client-side lobby-code format validation in `MultiplayerMenu.svelte` | Soft | Input lives in MP menu; deferred pending menu-owner wave. |
-| `hasPassword` denormalization removal (M6 deferred) | No | 10+ consumers; needs dedicated atomic refactor. |
-| `mp:lobby:start_ack`, `mp:workshop:deck_check[_ack]`, `mp:lobby:peer_{left,rejoined}` → add to `MultiplayerMessageType` union | No | Currently string-cast. Low-risk one-liner next time transport is edited. |
-| Live `/multiplayer-playtest` E2E run | No | Unit + typecheck green; live Docker session scheduled. |
-| RaceResultsScreen wiring | No | Component exists, not hooked to run-end. |
-| Duel mode end-to-end wire | No | `DuelOpponentPanel.svelte` + gameService primitives ready. |
-| Real Steam ID (replace `'local_player'`) | No | Works in live Steam build; dev placeholder. |
-| Server-side matchmaking queue | No | Client stub via `eloMatchmakingService.ts`. |
-| Tournament bracket / spectator | No | Post-MVP. |
+**Remaining Work (all nice-to-haves; no ship blockers)**
+
+| Task | Notes |
+|------|-------|
+| Transport-side emission of `mp:lobby:peer_left` / `mp:lobby:peer_rejoined` via Fastify ws.on('close') + Rust P2PSessionConnectFail_t callback | JS-side ping/pong fallback active. Upgrading would drop detection latency from 30s to instant. |
+| RaceResultsScreen wiring into run-end flow | Component exists, not hooked. |
+| Duel mode end-to-end UI wire | `DuelOpponentPanel.svelte` + gameService primitives ready; needs in-game UI integration. |
+| Vote-kick quorum logic | L4 scaffolding ships messages + `kickPlayer` host-only; vote counting not yet implemented. |
+| UI dialog for `onLobbyError('kicked_by_host')` | L4 fires the error event; UI just needs a dismissible modal + hub nav. |
+| Real Steam ID (replace `'local_player'`) | Works in live Steam build; dev placeholder only. |
+| Server-side matchmaking queue | Client stub via `eloMatchmakingService.ts`. |
+| Tournament bracket / spectator | Post-MVP. |
 
 ### Key References
 - **AR Spec:** `docs/roadmap/AR-MULTIPLAYER.md`
