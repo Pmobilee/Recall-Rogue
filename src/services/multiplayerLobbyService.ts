@@ -318,7 +318,7 @@ function startSteamHostPeerPoll(
       onFound(peer);
       return; // one-shot
     }
-    timer = setTimeout(() => void tick(), 2000);
+    timer = setTimeout(() => void tick(), 300);
   };
   timer = setTimeout(() => void tick(), 2000);
   return () => {

@@ -690,9 +690,15 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
   // Keep currentLobby in sync when the lobby service updates state (other players join/leave).
+  // Shallow-spread on every update so Svelte sees a new object reference and re-fires
+  // all `$derived` computations downstream (amHost, canStart, etc.). Without the spread,
+  // the service mutates _currentLobby in-place, notifyLobbyUpdate hands back the same
+  // reference, and Svelte's `$state` skips the change — UI looks frozen. Deck selection
+  // was the visible symptom: setContentSelection mutated contentSelection, notified,
+  // but CardApp saw the same ref and MultiplayerLobby never re-rendered.
   $effect(() => {
     const unsub = onLobbyUpdate((lobby) => {
-      currentLobby = lobby
+      currentLobby = lobby ? { ...lobby, players: [...lobby.players] } : null
     })
     return unsub
   })
