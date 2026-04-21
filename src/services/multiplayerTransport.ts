@@ -482,6 +482,13 @@ export class WebSocketTransport implements MultiplayerTransport {
  * replayed once the poll loop is active.  This prevents packets sent by the
  * remote peer immediately after we call accept from being silently dropped.
  *
+ * C4 fix: outbound messages sent while state is 'connecting' (before
+ * acceptP2PSession resolves) are buffered in _preSendBuffer and flushed in the
+ * same .then() handler that flushes the inbound buffer.  Before this fix, any
+ * send() call during the connecting window was silently dropped — symmetric
+ * with the inbound problem C1 solved.  The buffer is capped at 64 messages to
+ * match Steam's internal per-channel queue size.
+ *
  * The poll loop's onMessage callback parses each raw SteamP2PMessage as a
  * MultiplayerMessage (JSON) and routes it to registered listeners by type.
  *
@@ -497,6 +504,9 @@ export class SteamP2PTransport implements MultiplayerTransport {
   // C1: buffer messages that arrive before acceptP2PSession resolves
   private _preAcceptBuffer: MultiplayerMessage[] = [];
   private _acceptSettled = false;
+  // C4: buffer outbound messages sent while state is 'connecting' (before acceptP2PSession resolves)
+  private _preSendBuffer: MultiplayerMessage[] = [];
+  private static readonly _PRESEND_BUFFER_CAP = 64;
 
   /**
    * @param peerId  Remote player's 64-bit Steam ID as a string
@@ -509,6 +519,7 @@ export class SteamP2PTransport implements MultiplayerTransport {
     this.localId = localId;
     this.state = 'connecting';
     this._preAcceptBuffer = [];
+    this._preSendBuffer = [];
     this._acceptSettled = false;
 
     // C1 fix: accept the P2P session and start the poll loop only AFTER the
@@ -530,11 +541,23 @@ export class SteamP2PTransport implements MultiplayerTransport {
         for (const msg of buffered) {
           emitToListeners(this.listeners, msg.type, msg);
         }
+        // C4: flush outbound messages that were queued while we were connecting
+        const pendingSends = this._preSendBuffer.splice(0);
+        for (const pendingMsg of pendingSends) {
+          sendP2PMessage(this.peerId!, JSON.stringify(pendingMsg)).catch((e) => {
+            console.warn('[SteamP2PTransport] pre-connect send failed:', pendingMsg.type, e);
+          });
+        }
       })
       .catch(() => {
         this.state = 'error';
         this._acceptSettled = true;
         this._preAcceptBuffer = [];
+        // C4: drop pending outbound sends on connect failure
+        if (this._preSendBuffer.length > 0) {
+          console.warn('[SteamP2PTransport] connect failed — dropping', this._preSendBuffer.length, 'pending sends');
+          this._preSendBuffer = [];
+        }
       });
   }
 
@@ -549,8 +572,8 @@ export class SteamP2PTransport implements MultiplayerTransport {
     let msg: MultiplayerMessage;
     try {
       msg = JSON.parse(data) as MultiplayerMessage;
-    } catch {
-      // Ignore malformed P2P messages
+    } catch (e) {
+      console.warn('[SteamP2PTransport] malformed P2P message, dropping:', e, data.slice(0, 200));
       return;
     }
     if (!this._acceptSettled) {
@@ -562,17 +585,30 @@ export class SteamP2PTransport implements MultiplayerTransport {
   }
 
   send(type: MultiplayerMessageType, payload: Record<string, unknown>): void {
-    if (this.state !== 'connected' || !this.peerId) return;
+    if (!this.peerId) return; // no peer target — truly nothing to do
     const msg: MultiplayerMessage = {
       type,
       payload,
       timestamp: Date.now(),
       senderId: this.localId,
     };
+    if (this.state === 'connecting') {
+      // C4: buffer the message until acceptP2PSession resolves, then flush
+      if (this._preSendBuffer.length >= SteamP2PTransport._PRESEND_BUFFER_CAP) {
+        console.warn('[SteamP2PTransport] _preSendBuffer overflow, dropping oldest');
+        this._preSendBuffer.shift();
+      }
+      this._preSendBuffer.push(msg);
+      return;
+    }
+    if (this.state !== 'connected') {
+      console.warn('[SteamP2PTransport] send dropped — transport not connected:', type, this.state);
+      return;
+    }
     // sendP2PMessage is fire-and-forget at the transport level.
     // Callers that need delivery guarantees must implement their own ACK logic.
     sendP2PMessage(this.peerId, JSON.stringify(msg)).catch((e) => {
-      console.warn('[SteamP2PTransport] sendP2PMessage failed:', e);
+      console.warn('[SteamP2PTransport] sendP2PMessage failed for', type, e);
     });
   }
 
@@ -588,6 +624,7 @@ export class SteamP2PTransport implements MultiplayerTransport {
     this.stopPollLoop?.();
     this.stopPollLoop = null;
     this._preAcceptBuffer = [];
+    this._preSendBuffer = []; // C4: drop any pending outbound sends on disconnect
     this._acceptSettled = true; // prevent any in-flight connect from buffering further
 
     if (this.currentLobbyId) {

@@ -312,3 +312,209 @@ describe('L4: KickPayload interface shape', () => {
     expect(payload.voterId).toBe('voter_ghi');
   });
 });
+
+// ── C4: SteamP2PTransport — outbound pre-connect buffer ──────────────────────
+//
+// Tests the _preSendBuffer fix: send() calls during state==='connecting' must be
+// buffered and flushed after acceptP2PSession resolves.
+
+import { SteamP2PTransport } from './multiplayerTransport';
+
+// Mock steamNetworkingService at module level — Vitest hoists vi.mock() calls.
+vi.mock('./steamNetworkingService', async () => {
+  return {
+    acceptP2PSession: vi.fn(),
+    sendP2PMessage: vi.fn(),
+    startMessagePollLoop: vi.fn(),
+    leaveSteamLobby: vi.fn(),
+    getLobbyMembers: vi.fn(),
+  };
+});
+
+// Typed accessor so tests can control mock behavior
+async function getSteamMocks() {
+  const mod = await import('./steamNetworkingService');
+  return {
+    acceptP2PSession: mod.acceptP2PSession as ReturnType<typeof vi.fn>,
+    sendP2PMessage: mod.sendP2PMessage as ReturnType<typeof vi.fn>,
+    startMessagePollLoop: mod.startMessagePollLoop as ReturnType<typeof vi.fn>,
+    leaveSteamLobby: mod.leaveSteamLobby as ReturnType<typeof vi.fn>,
+  };
+}
+
+describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
+  beforeEach(async () => {
+    const m = await getSteamMocks();
+    m.acceptP2PSession.mockReset();
+    m.sendP2PMessage.mockReset();
+    m.startMessagePollLoop.mockReset();
+    m.leaveSteamLobby.mockReset();
+    // Default: accept resolves immediately, sendP2PMessage resolves, poll loop is a no-op
+    m.sendP2PMessage.mockResolvedValue(undefined);
+    m.startMessagePollLoop.mockReturnValue(() => {});
+  });
+
+  it('buffers send() calls while state is connecting, flushes after accept resolves', async () => {
+    const m = await getSteamMocks();
+    let resolveAccept!: () => void;
+    m.acceptP2PSession.mockReturnValue(new Promise<void>((res) => { resolveAccept = res; }));
+
+    const transport = new SteamP2PTransport();
+    transport.connect('peer_steam_id', 'local_steam_id');
+
+    // State is now 'connecting' — send should buffer, not call sendP2PMessage
+    transport.send('mp:ping', { from: 'local_steam_id' });
+    transport.send('mp:pong', { to: 'peer_steam_id' });
+
+    expect(m.sendP2PMessage).not.toHaveBeenCalled();
+
+    // Now resolve the accept — the .then() handler should flush _preSendBuffer
+    resolveAccept();
+    // Let the microtask queue drain
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(m.sendP2PMessage).toHaveBeenCalledTimes(2);
+    // Verify payloads contain the buffered message types
+    const calls = m.sendP2PMessage.mock.calls;
+    const parsedFirst = JSON.parse(calls[0][1] as string);
+    const parsedSecond = JSON.parse(calls[1][1] as string);
+    expect(parsedFirst.type).toBe('mp:ping');
+    expect(parsedSecond.type).toBe('mp:pong');
+  });
+
+  it('a single send() while connecting buffers one message', async () => {
+    const m = await getSteamMocks();
+    let resolveAccept!: () => void;
+    m.acceptP2PSession.mockReturnValue(new Promise<void>((res) => { resolveAccept = res; }));
+
+    const transport = new SteamP2PTransport();
+    transport.connect('peer_steam_id', 'local_steam_id');
+
+    transport.send('mp:lobby:ready', { playerId: 'local_steam_id' });
+    expect(m.sendP2PMessage).not.toHaveBeenCalled();
+
+    resolveAccept();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(m.sendP2PMessage).toHaveBeenCalledTimes(1);
+    const parsed = JSON.parse(m.sendP2PMessage.mock.calls[0][1] as string);
+    expect(parsed.type).toBe('mp:lobby:ready');
+  });
+
+  it('send() while state is error logs a warning and does not buffer', async () => {
+    const m = await getSteamMocks();
+    // Make accept fail immediately
+    m.acceptP2PSession.mockRejectedValue(new Error('steam reject'));
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const transport = new SteamP2PTransport();
+    transport.connect('peer_steam_id', 'local_steam_id');
+
+    // Drain the microtask queue so .catch() fires and sets state='error'
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(transport.getState()).toBe('error');
+
+    transport.send('mp:ping', {});
+    expect(m.sendP2PMessage).not.toHaveBeenCalled();
+    // A warning must have been logged with the message type
+    const warnCalls = warnSpy.mock.calls.flat().join(' ');
+    expect(warnCalls).toContain('mp:ping');
+
+    warnSpy.mockRestore();
+  });
+
+  it('buffer cap: 65 sends during connecting keeps 64 messages, oldest dropped, warns', async () => {
+    const m = await getSteamMocks();
+    let resolveAccept!: () => void;
+    m.acceptP2PSession.mockReturnValue(new Promise<void>((res) => { resolveAccept = res; }));
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const transport = new SteamP2PTransport();
+    transport.connect('peer_steam_id', 'local_steam_id');
+
+    // Queue 65 messages — first is 'mp:ping' (the one that should be dropped)
+    transport.send('mp:ping', { seq: 0 }); // oldest — should be dropped at cap
+    for (let i = 1; i <= 64; i++) {
+      transport.send('mp:pong', { seq: i });
+    }
+
+    // Overflow warning must have fired
+    const warnCalls = warnSpy.mock.calls.flat().join(' ');
+    expect(warnCalls).toContain('_preSendBuffer overflow');
+
+    // Flush
+    resolveAccept();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    // Exactly 64 sends should have been flushed (the 65th buffered, the 1st dropped)
+    expect(m.sendP2PMessage).toHaveBeenCalledTimes(64);
+    // All flushed messages should be 'mp:pong', not 'mp:ping'
+    for (const call of m.sendP2PMessage.mock.calls) {
+      const parsed = JSON.parse(call[1] as string);
+      expect(parsed.type).toBe('mp:pong');
+    }
+
+    warnSpy.mockRestore();
+  });
+
+  it('disconnect() clears both _preAcceptBuffer and _preSendBuffer', async () => {
+    const m = await getSteamMocks();
+    let resolveAccept!: () => void;
+    m.acceptP2PSession.mockReturnValue(new Promise<void>((res) => { resolveAccept = res; }));
+
+    const transport = new SteamP2PTransport();
+    transport.connect('peer_steam_id', 'local_steam_id');
+
+    // Queue an outbound message before disconnect
+    transport.send('mp:ping', {});
+
+    // Disconnect before accept resolves
+    transport.disconnect();
+
+    expect(transport.getState()).toBe('disconnected');
+
+    // Now resolve the accept — the .then() guard checks state !== 'connecting' so it returns early
+    resolveAccept();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    // Nothing should have been sent — buffer was cleared on disconnect
+    expect(m.sendP2PMessage).not.toHaveBeenCalled();
+  });
+
+  it('connect failure (.catch) clears _preSendBuffer and logs the count', async () => {
+    const m = await getSteamMocks();
+    m.acceptP2PSession.mockRejectedValue(new Error('steam reject'));
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const transport = new SteamP2PTransport();
+    transport.connect('peer_steam_id', 'local_steam_id');
+
+    // Send 3 messages during connecting
+    transport.send('mp:ping', {});
+    transport.send('mp:pong', {});
+    transport.send('mp:lobby:ready', {});
+
+    // Let .catch() fire
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(transport.getState()).toBe('error');
+    expect(m.sendP2PMessage).not.toHaveBeenCalled();
+
+    // Warning should mention how many pending sends were dropped
+    const warnCalls = warnSpy.mock.calls.flat().join(' ');
+    expect(warnCalls).toContain('3');
+    expect(warnCalls).toContain('pending sends');
+
+    warnSpy.mockRestore();
+  });
+});

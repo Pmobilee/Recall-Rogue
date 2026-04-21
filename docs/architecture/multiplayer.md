@@ -600,6 +600,7 @@ Steam documents lobbies as joinable by default, but the explicit call is defensi
 
 | Date | Commits | What |
 |------|---------|------|
+| 2026-04-21 | (C4 fix) | Outbound pre-connect buffer in SteamP2PTransport — send() during 'connecting' state now buffers to _preSendBuffer (cap 64); flushed after acceptP2PSession resolves. Silent-drop warns added. Malformed P2P message catch now logs. 6 new unit tests. |
 | 2026-04-21 | (A5 hardening) | Raw LobbyEnter callback for real ChatRoomEnterResponse codes (Limited user = code 7 with actionable message), Worldwide distance filter on lobby list, explicit set_lobby_joinable(true), joinSteamLobby diagnostic console.log |
 | 2026-04-21 | (A2–A4 fix wave) | Ghost lobby prevention (joinLobby: _currentLobby set after join), Steam join error surfacing (pending_join_error slot, pollJoinResult, 10s timeout), stale lobby filtering (currentPlayers=0, >2h), host metadata clear on leave |
 | 2026-04-21 | (AR-80 pump) | Background `run_callbacks` pump thread in `SteamState::new()` — fixes intermittent lobby join failures on cold Steam backends |
@@ -668,6 +669,45 @@ New `profanityService` module:
 Leet normalization only applies when the leet char is adjacent to at least one alpha character on either side (prevents sentence-terminal punctuation like `cunt!` from corrupting word boundaries).
 
 16 unit tests cover `sanitizeLobbyTitle` (6 cases) and `maskProfanity` (10 cases including leet variants, punctuation, case-insensitivity, length preservation).
+
+---
+
+## C4 — Outbound Pre-Connect Buffer (2026-04-21)
+
+**Source file:** `src/services/multiplayerTransport.ts` — `SteamP2PTransport`
+
+### Problem (pre-C4)
+
+`SteamP2PTransport.send()` checked `if (this.state !== 'connected') return` as its first guard. This was correct for fully disconnected or error states, but it silently dropped any message sent while state was `'connecting'` — the window between `transport.connect()` being called and `acceptP2PSession()` resolving.
+
+C1 (landed in a prior commit) already solved the symmetric inbound problem: messages arriving from the remote peer during this window were buffered in `_preAcceptBuffer` and replayed once connected. Outbound messages had no equivalent.
+
+**Race scenario:** joiner calls `transport.connect()` → state = `'connecting'` → lobby service immediately calls `transport.send('mp:lobby:player_joined', {...})` → the send returns early → host never learns the joiner arrived → joiner is stuck in the lobby.
+
+### Fix
+
+New private field `_preSendBuffer: MultiplayerMessage[]` on `SteamP2PTransport`:
+
+- `send()` when state is `'connecting'`: constructs the message and pushes to `_preSendBuffer`. Buffer is capped at 64 entries (matching Steam's internal per-channel queue size); if the cap is exceeded, the oldest message is dropped with a `console.warn`.
+- `send()` when state is `'error'` or `'disconnected'`: logs `console.warn` with the message type (no buffer — these states are terminal/unrecoverable without a new `connect()`).
+- `.then()` in `connect()` after the inbound replay loop: splices and sends all `_preSendBuffer` entries via `sendP2PMessage`. Each send is individually caught with a warn that includes the message type.
+- `.catch()` in `connect()`: clears `_preSendBuffer` and logs how many pending sends were dropped.
+- `disconnect()`: clears `_preSendBuffer` to prevent replay on a subsequent `connect()` to a different peer.
+
+### Symmetry with C1
+
+| Side | Buffer | Flushed in | Cap |
+|------|--------|-----------|-----|
+| Inbound (C1) | `_preAcceptBuffer` | `.then()` — poll loop start | none |
+| Outbound (C4) | `_preSendBuffer` | `.then()` — after inbound flush | 64 msgs |
+
+### Diagnostic improvements (same commit)
+
+- `_handleRawMessage` catch: now logs the raw data prefix (`data.slice(0, 200)`) and the error instead of a silent return. Malformed P2P messages were previously invisible in bug reports.
+- `sendP2PMessage` catch in the connected `send()` path: now includes `msg.type` in the warning so failed sends identify which message was lost.
+- `send()` when `state === 'error'` or `'disconnected'`: now emits a named `console.warn` instead of a silent return.
+
+6 unit tests in `src/services/multiplayerTransport.test.ts` cover the buffer, flush, cap, overflow warning, `disconnect()` clear, and connect-failure clear paths.
 
 ---
 

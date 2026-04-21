@@ -5156,3 +5156,17 @@ Additionally, there was no timeout on the `lan_start_server` Tauri command. A po
 **Why `resources[]` alone is not enough:** Tauri places resources in `Contents/Resources/`, but the binary's CWD at Tauri launch is the app bundle root, not `Contents/MacOS/`. steamworks-rs resolves `steam_appid.txt` relative to `argv[0]`'s directory, which is `Contents/MacOS/`. Putting it in `Contents/Resources/` alone means it is never found. The explicit `cp` in the build script is the authoritative fix; `resources[]` is a fallback.
 
 **Why `NSBonjourServices` is not needed:** LAN discovery in `lanDiscoveryService.ts` uses plain HTTP probing across RFC1918 subnets — not mDNS/Bonjour. `NSBonjourServices` is only required for Bonjour service type registration. A TODO in `lanDiscoveryService.ts` notes mDNS as a future option; if that is ever implemented, this key will need to be added.
+
+### 2026-04-21 — SteamP2PTransport silently dropped all outbound messages during connecting handshake (C4)
+
+**What:** On Steam builds, when the joiner clicked Ready in the lobby, the host never saw them arrive. The joiner was stuck in the lobby forever. Only happens on first connection (race window is a few milliseconds), so it was intermittent.
+
+**Why:** `SteamP2PTransport.send()` guarded with `if (this.state !== 'connected') return`. State is `'connecting'` from `connect()` call until `acceptP2PSession()` resolves. Any `send()` call during that window — including the `mp:lobby:player_joined` message the lobby service fires immediately after `connect()` — returned silently with no buffer, no warning, no trace.
+
+C1 (inbound side) was already fixed: messages arriving from the remote peer during this window were buffered in `_preAcceptBuffer` and replayed on connect. The outbound side had no symmetric fix.
+
+**Fix (C4):** Added `_preSendBuffer: MultiplayerMessage[]` (cap 64). `send()` when `state === 'connecting'` pushes to the buffer instead of returning. The `.then()` handler in `connect()` — right after the inbound replay loop — splices and sends all buffered outbound messages. `.catch()` and `disconnect()` clear the buffer and log counts. `send()` in `'error'`/`'disconnected'` states now emits a named `console.warn` with the message type instead of a silent return.
+
+**Key lesson:** When you fix one half of an asymmetric I/O race (inbound buffering during connect), always ask "what's the outbound equivalent?" C1 and C4 are mirror images of the same bug.
+
+**Files:** `src/services/multiplayerTransport.ts` (SteamP2PTransport class), `src/services/multiplayerTransport.test.ts` (6 new C4 tests).
