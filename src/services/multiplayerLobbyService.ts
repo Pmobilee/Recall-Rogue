@@ -763,8 +763,24 @@ export function selectDeck(deckId: string): void {
 
 /** Set the content selection for the lobby (replaces selectDeck for rich content types) */
 export function setContentSelection(selection: LobbyContentSelection): void {
+  // Capture the full payload — an empty study-multi (no decks, no domains)
+  // was rendering as the literal string "No content" in the UI, which the
+  // player was reading as "deck selection doesn't work" when in fact the
+  // selection was arriving empty. Logging the full shape here disambiguates.
+  let payloadSummary: Record<string, unknown> = { type: selection.type };
+  if (selection.type === 'study-multi') {
+    payloadSummary = {
+      type: 'study-multi',
+      deckCount: selection.decks.length,
+      domainCount: selection.triviaDomains.length,
+    };
+  } else if (selection.type === 'study') {
+    payloadSummary = { type: 'study', deckId: selection.deckId, deckName: selection.deckName };
+  } else if (selection.type === 'custom_deck') {
+    payloadSummary = { type: 'custom_deck', customDeckId: selection.customDeckId, deckName: selection.deckName };
+  }
   rrLog('mp:deck', 'setContentSelection called', {
-    selectionType: selection.type,
+    payload: payloadSummary,
     hasLobby: !!_currentLobby,
     deckSelectionMode: _currentLobby?.deckSelectionMode,
     hostId: _currentLobby?.hostId,

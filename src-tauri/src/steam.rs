@@ -292,7 +292,17 @@ impl SteamState {
 // ── Shared serializable types ──────────────────────────────────────────────────
 
 /// A member of a Steam lobby, as returned by `steam_get_lobby_members`.
+///
+/// **Serialization note**: `rename_all = "camelCase"` so the JS side sees
+/// `{ steamId, displayName }` — matches the `SteamLobbyMember` TS interface in
+/// `src/services/steamNetworkingService.ts`. Without this, TS `m.steamId`
+/// reads `undefined` against every member and any filter that compares
+/// SteamIDs silently degrades (noticed 2026-04-22 when the member-filter
+/// fallback in `resolveSteamPeerId` returned null for every lobby because
+/// the host's lobby_members list looked empty to the TS side even though
+/// Rust was returning two valid members).
 #[derive(serde::Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct SteamLobbyMember {
     /// The 64-bit Steam ID as a decimal string (to avoid JS integer precision loss).
     pub steam_id: String,

@@ -5180,3 +5180,48 @@ C1 (inbound side) was already fixed: messages arriving from the remote peer duri
 **Key lesson:** When you fix one half of an asymmetric I/O race (inbound buffering during connect), always ask "what's the outbound equivalent?" C1 and C4 are mirror images of the same bug.
 
 **Files:** `src/services/multiplayerTransport.ts` (SteamP2PTransport class), `src/services/multiplayerTransport.test.ts` (6 new C4 tests).
+
+### 2026-04-22 — Multiplayer marathon: every Steam/Tauri gotcha found over a 10-hour session
+
+Ten-hour debugging pass that ended up rewriting large chunks of the Steam + LAN multiplayer stack. Captured here so the next session doesn't re-discover any of it. Full commit-level detail in `.claude/skills/multiplayer/SKILL.md` Hardening Log waves 13-21.
+
+**What broke and how we found it:**
+- Players on real Steam couldn't join each other's lobbies. Logs were invisible because macOS Steam-launches drop stdout to /dev/null. Every "check the logs" request through the first half of the session was blind.
+- Once we added the file logger (`main.rs::redirect_stdio_to_log_file` via `libc::dup2` on fd 1 + 2 to `~/Library/Logs/Recall Rogue/debug.log`), the actual symptoms became visible in minutes rather than multi-build cycles.
+
+**Top-level findings (all shipped in commits `3710f3917` → `bfb7c52bd`):**
+
+1. **`steam_join_lobby` returning `Ok(())` serialises to `null` under Tauri v2.** The TS wrapper's `if (kickoff === null) return null` guard treated the successful kickoff as IPC failure, so `pollJoinResult` never ran, so the UI always reported timeout even when the Rust callback had already written the lobby ID to `pending_join_lobby_id`. Fix: use `getLastSteamInvokeError()` delta instead of comparing the unit return to null. (commit `98a9239d3`)
+
+2. **Steam P2P addresses peers by SteamID, not LobbyId.** Every call site in `multiplayerLobbyService.ts` was passing `result.lobbyId` to `transport.connect(peerId, ...)`. LobbyId is a chat-room endpoint with the lobby flag on a 64-bit SteamID shape — not a valid P2P target. Result: `acceptP2PSession(lobbyId)` / `sendP2PMessage(lobbyId)` returned `ConnectFailed` forever on both sides. Fix: new `steam_get_lobby_owner` Rust command (synchronous `ISteamMatchmaking::GetLobbyOwner`), `resolveSteamPeerId` helper in the service, host defers `transport.connect` behind `startSteamHostPeerPoll` until lobby_members reveals a peer. (commits `c8911b9cb`, `b7f1b57c4`)
+
+3. **steamworks-rs 0.12 `join_lobby` callback discards `m_EChatRoomEnterResponse`.** The closure gets `Result<LobbyId, ()>`. The unit error is useless. Real error codes live in the raw `LobbyEnter` callback registered via `client.register_callback`. Mapping: 2 = DoesntExist, 3 = NotAllowed, 4 = Full, 5 = Error, 6 = Banned, 7 = Limited ($5 Store spend unlock), 12 = Rate-limit. (commit `973476c43`)
+
+4. **axum 0.7+ route capture syntax is `{param}`, not `:param`.** LAN server was panicking at startup with "Path segments must not start with :" — invisible without the file logger, so the JS 10 s timer looked like a bind timeout. (commit `3710f3917`)
+
+5. **Tauri `bundle.macOS.infoPlist` is a path string, not an inline dict.** Inline dict produces `cargo check` error "invalid type: map, expected path string". Moved `NSLocalNetworkUsageDescription` (required for macOS 15 LAN binding) into `src-tauri/Info.plist`. (commit `e6b070e10`)
+
+6. **`steam_appid.txt` has to live in `Contents/MacOS/`** next to the binary — steamworks-rs resolves it relative to `argv[0]`'s directory. `bundle.resources[]` puts it in `Contents/Resources/` which steamworks never reads. Explicit `cp` step added to `scripts/steam-build.sh` right after the libsteam copy. (commit `475714b2d`)
+
+7. **`steamworks::sys` is crate-private in 0.12.2.** Wave 12 tried to fall back to the flat C API `SteamAPI_ISteamMatchmaking_RequestLobbyData` through the sys re-export. E0603. Reverted to a no-op; the background `run_callbacks` pump backfills metadata anyway. (commit `e6b070e10`)
+
+8. **Svelte 5 $state doesn't re-derive when assigned the same object reference.** `CardApp.svelte::onLobbyUpdate` was `(lobby) => currentLobby = lobby`. The service layer mutated `_currentLobby` in place; assigning it back handed Svelte the same proxy-wrapped object and no downstream `$derived` re-fired. Deck selection looked frozen — mutation happened, UI didn't update. Fix: shallow-spread on every update. (commit `1223272ec`)
+
+9. **Receiver must accept P2P session before Steam delivers messages** (SteamNetworkingMessages rule). On host side there was a 2-second window between lobby creation and the peer-poll firing where guest-to-host messages dropped on the floor. Fix: raw `LobbyChatUpdate` Rust callback that auto-accepts any peer who enters our lobby via a zero-byte reliable send. Closes the gap to single-digit ms. (commit `bfb7c52bd`)
+
+10. **`SteamP2PTransport.send()` silently dropped messages in `'disconnected'` state.** Host side: transport is never connected until peer-poll fires, so any deck selection the host made while waiting was gone forever — even after the peer arrived. Fix: `_preConnectBuffer` queues sends up to a 64-message cap; flushed on first `connect()` resolve.
+
+11. **Persisted LAN URL from a prior session re-activates `isLanMode()` on launch.** `pickBackend()` sees it, returns webBackend, and routes any "Steam lobby" click through the Fastify code path — silently turning it into a LAN lobby. `handleCreateLobby` / `handleJoinLobby` now `clearLanServerUrl()` + reset `isConnectedToLan` regardless of whether the server is running. (commit `98a9239d3`)
+
+12. **macOS 15 Local Network permission is inbound-facing.** Self-probe (TCP connect to own routable IP:port) after LAN bind tells the host explicitly if the firewall is blocking — replaces "why can't my friend see me" guessing games. (commit `bfb7c52bd`)
+
+13. **Steam desktop client clobbers steamcmd's cached credentials whenever it's open.** Any upload cycle where Steam gets relaunched mid-session hits `Cached credentials not found → Invalid Password` next time. 🚨 RULE: never kill Steam from code; ask the user to Quit from the menu bar. (Already documented 2026-04-20; reinforced here because it re-fired multiple times.)
+
+14. **Dev account with $100 Steamworks submission fee is STILL a Limited User.** Needs $5 in Steam Wallet or equivalent Store purchase to unlock ChatRoomEnterResponse::Limited (code 7). The partner fee is a separate pipeline. (First test account burned ~2 hours of debugging before we spotted it.)
+
+**Meta-lessons:**
+- Never debug a Tauri app without a file logger. Stdout is a black hole on macOS + Windows release. The very first thing a new Tauri project should do is `dup2` fd 1 + 2 to a file.
+- `cargo check` before committing Tauri config changes. The `infoPlist` and `sys::*` failures both cost rebuild cycles that `cargo check` would have caught in 2 seconds.
+- When Ok(()) serialises to null and the JS side treats null as failure, welcome to a class of bug the type system can't catch.
+- Background callback pump (16ms) + raw persistent callbacks (LobbyEnter, LobbyChatUpdate, GameOverlayActivated) together replace the JS-polled run_callbacks pattern. Keep the Tauri command as a safety net but stop depending on it.
+

@@ -8,6 +8,104 @@ user_invocable: true
 
 Build the desktop app via Tauri and upload to Steam via SteamPipe. Manages development, staging, and production branches.
 
+## 🚨 Known-bad patterns the stack has burned us on (2026-04-22)
+
+Read this before touching anything Steam/Tauri-adjacent. The multiplayer
+debugging marathon of 2026-04-21 → 22 uncovered every item below; ignoring
+any of them has cost 20+ rebuild cycles.
+
+1. **macOS silently drops stdout + stderr from Steam-launched apps.** Tauri
+   Windows release builds do the same (`windows_subsystem = "windows"`).
+   Any `println!` / `eprintln!` is invisible unless `main.rs` redirects via
+   `redirect_stdio_to_log_file()` (commit `a18cdb851`). Target file:
+   `~/Library/Logs/Recall Rogue/debug.log` (macOS). DO NOT remove that
+   redirect — it is the only way diagnostics land somewhere a player can
+   read. JS console output also piped in via `rr_log` Tauri command +
+   `rrLog()` TS helper.
+
+2. **`steam_appid.txt` must be in `Contents/MacOS/`**, NOT
+   `Contents/Resources/`. steamworks-rs looks next to the binary. The
+   authoritative fix is the explicit `cp` step in `scripts/steam-build.sh`
+   right after the `libsteam_api.dylib` copy. `bundle.resources[]` in
+   `tauri.conf.json` is belt-and-suspenders only — it puts the file in
+   Resources/, which steamworks doesn't find.
+
+3. **`NSLocalNetworkUsageDescription` is required for macOS 15+.** Missing
+   key → LAN `TcpListener` bind hangs silently → "LAN server start timed
+   out" client-side toast. Delivered via `bundle.macOS.infoPlist` in
+   `tauri.conf.json` pointing at `src-tauri/Info.plist`. That field is a
+   **path string**, NEVER an inline dict — Tauri 2 errors with `invalid
+   type: map, expected path string` if you try the dict shape.
+
+4. **axum 0.7+ route syntax is `{param}`, not `:param`.** `lan.rs`
+   Router::new().route() using `:lobbyId` panics at startup with
+   "Path segments must not start with :". JS client times out waiting
+   for a server that has already crashed.
+
+5. **`steamworks::sys` is crate-private** in steamworks-rs 0.12.2. Don't
+   try to call flat-C APIs through the `sys` re-export — `cargo check`
+   fails with E0603. If the method isn't exposed on `Matchmaking` /
+   `Friends` / `NetworkingMessages` you'd need `steamworks-sys` as a
+   direct dep. Wave 12's `steam_request_lobby_data` hack was reverted —
+   the function is now a no-op and Steam backfills metadata on its own
+   through the background pump.
+
+6. **`steam_run_callbacks` is no longer required.** A background thread
+   spawned in `SteamState::new()` calls `client.run_callbacks()` every
+   ~16 ms so async Steam callbacks (LobbyEnter_t, LobbyCreated_t,
+   LobbyChatUpdate_t, leaderboard, cloud) fire without depending on the
+   JS 100 ms polling cadence. Keep the Tauri command as a harmless safety
+   net; don't rely on it.
+
+7. **Steam auth: never kill the Steam desktop client.** `pkill`,
+   `killall`, `osascript quit`, or any variant. Opening Steam between
+   uploads clobbers steamcmd's cached token → `Cached credentials not
+   found → ERROR (Invalid Password)`. Ask the user to Quit via macOS
+   menu bar and re-login interactively. This rule has caused at least
+   5 failed upload cycles across these two sessions.
+
+8. **`steam_join_lobby` returns `Ok(())` which Tauri serialises to null.**
+   Do NOT guard the kickoff with `if (kickoff === null) return null` —
+   that treats the normal success path as IPC failure and skips
+   `pollJoinResult`. Use `getLastSteamInvokeError()` delta to
+   distinguish a thrown invoke from a normal unit return.
+
+9. **Steam P2P peer IDs are SteamIDs, not LobbyIDs.** Both are 64-bit
+   integers but a LobbyId is a chat-room endpoint, not a networking
+   endpoint. Passing lobby_id to `acceptP2PSession` /
+   `sendP2PMessage` returns `ConnectFailed` forever. The guest resolves
+   the host via `getLobbyOwner(lobbyId)`; the host defers
+   `transport.connect` and polls `lobby_members` every 300 ms via
+   `startSteamHostPeerPoll` + auto-accepts via the raw
+   `LobbyChatUpdate` callback.
+
+10. **Svelte $state and external mutation.** CardApp.svelte gets a lobby
+    object from the service's `onLobbyUpdate`. Assigning the same
+    reference back to a `$state` variable does NOT retrigger `$derived`
+    computations downstream. Always `{ ...lobby, players: [...lobby.players] }`
+    on the update callback to force a fresh reference.
+
+11. **Steam Partner fee ≠ Steam Store purchase.** A dev account that
+    paid the $100 Steamworks submission is STILL a Limited User for
+    matchmaking purposes. Requires $5+ in the Steam Wallet for
+    ChatRoomEnterResponse::Limited (code 7) to clear.
+
+12. **Steam overlay is architecturally incompatible with Tauri.**
+    Tauri issue [#6196](https://github.com/tauri-apps/tauri/issues/6196)
+    closed as "not planned". WebView2/WKWebView render in a separate GPU
+    process that Steam's overlay hook doesn't reach. The diagnostic
+    (`steam_overlay_status` + `GameOverlayActivated` callback) can
+    confirm hook state, but there is no known fix. Document and move on.
+
+## Log path quick reference
+
+- macOS: `~/Library/Logs/Recall Rogue/debug.log`
+- Windows: `%LocalAppData%\Recall Rogue\debug.log` (stub — stdio redirect
+  wired for Unix only; see `main.rs::redirect_stdio_to_log_file`)
+- Linux: `~/.cache/recall-rogue/debug.log`
+- Tags grep cheat sheet: `[Steam]` (Rust), `[LAN]` (Rust), `[js:mp:*]`
+  (TypeScript multiplayer), `[stdio]` (redirect confirmation).
+
 ## 🚨 RULE: Claude NEVER kills the Steam desktop client. The USER does.
 
 steamcmd and the Steam desktop client share `~/Library/Application Support/Steam/config/config.vdf`. When Claude force-quits Steam via `pkill`, `pkill -9`, `killall`, or `kill -9` — especially against the `ipcserver` or `Steam.AppBundle` family — the shared config gets written mid-flush and the cached steamcmd credentials are invalidated. The next steamcmd login then reports `Cached credentials not found` → empty password prompt in non-interactive shell → `ERROR (Invalid Password)` → exit 5. Every upload fails until the USER does a fresh interactive login. This was observed repeatedly on 2026-04-20 (at least four failed upload cycles traced to Claude-initiated `pkill`).
