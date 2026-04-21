@@ -46,6 +46,18 @@ pub struct SteamState {
     /// When this handle is dropped the callback de-registers. We hold it here so it is never
     /// dropped while the app is running. None when Steam failed to initialize.
     _overlay_callback: Option<SendableCallbackHandle>,
+    /// AR-80 follow-up: Shutdown signal for the background callback pump thread.
+    ///
+    /// The pump thread calls `client.run_callbacks()` every ~16 ms so that async Steam
+    /// events (LobbyEnter_t, LobbyCreated_t, leaderboard fetch, cloud sync) are processed
+    /// without waiting for the JS-side `steam_run_callbacks` polling cadence (~100 ms).
+    ///
+    /// Background pump active — `_pump_shutdown` field owns the thread lifecycle:
+    /// when `SteamState` is dropped on app exit the sender is dropped, causing
+    /// `rx.try_recv()` in the thread to return `Err(Disconnected)`, which exits the loop.
+    ///
+    /// `None` when Steam failed to initialize (no thread is spawned in that case).
+    _pump_shutdown: Option<std::sync::mpsc::Sender<()>>,
 }
 
 impl SteamState {
@@ -58,13 +70,10 @@ impl SteamState {
     /// is not reaching our process (see docs/mechanics/multiplayer.md "Steam Overlay
     /// Requirements" for the full troubleshooting guide).
     ///
-    /// Note: `Client::run_callbacks()` should be called periodically (e.g. via a background thread)
-    /// to process async Steam events. This is required for Leaderboard, Cloud Save, and lobby
-    /// creation/join callbacks. The `steam_run_callbacks` Tauri command can be polled from JS
-    /// (e.g., every 100ms) to drive callback completion while awaiting async results.
-    ///
-    /// TODO (AR-80 follow-up): Spawn a background thread that calls `client.run_callbacks()` on a
-    ///       ~16ms timer so async Steam events (leaderboard fetch, cloud sync) are processed.
+    /// AR-80 follow-up: Also spawns a background thread that calls `client.run_callbacks()`
+    /// every ~16 ms. This ensures async Steam callbacks (LobbyEnter_t, LobbyCreated_t,
+    /// leaderboard, cloud sync) fire promptly without depending on the JS polling cadence.
+    /// The `steam_run_callbacks` Tauri command is kept as a harmless safety net.
     pub fn new() -> Self {
         // App ID 4547570 = Recall Rogue (production app ID).
         match Client::init_app(4547570) {
@@ -84,6 +93,36 @@ impl SteamState {
                     },
                 );
 
+                // AR-80 follow-up: Spawn a background thread that pumps Steam callbacks
+                // at ~16 ms intervals.
+                //
+                // Safety notes:
+                // - steamworks-rs `Client` wraps `Arc<Inner>` internally and implements
+                //   `Clone` (confirmed in steamworks-rs 0.12.2 lib.rs:92). Cloning is cheap
+                //   (just an Arc ref-count increment) and safe across threads.
+                // - `run_callbacks()` is idempotent. Concurrent calls from this thread and
+                //   the JS-driven `steam_run_callbacks` command don't conflict — worst case
+                //   is a redundant pump that processes zero events.
+                // - Drop order: when `SteamState` drops, `_pump_shutdown` (the tx end) is
+                //   dropped, causing `rx.try_recv()` below to return `Err(Disconnected)`,
+                //   which exits the loop on the next tick. No explicit join needed.
+                let client_for_pump = client.clone();
+                let (tx, rx) = std::sync::mpsc::channel::<()>();
+                std::thread::spawn(move || {
+                    use std::sync::mpsc::TryRecvError;
+                    loop {
+                        std::thread::sleep(std::time::Duration::from_millis(16));
+                        client_for_pump.run_callbacks();
+                        match rx.try_recv() {
+                            Err(TryRecvError::Empty) => continue,
+                            // Disconnected = SteamState dropped; Normal = explicit shutdown
+                            _ => break,
+                        }
+                    }
+                    println!("[Steam] Callback pump thread exiting");
+                });
+                println!("[Steam] Callback pump thread started (~16ms tick)");
+
                 SteamState {
                     client: Mutex::new(Some(client)),
                     pending_lobby_id: Arc::new(Mutex::new(None)),
@@ -92,6 +131,7 @@ impl SteamState {
                     active_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_error: Arc::new(Mutex::new(None)),
                     _overlay_callback: Some(SendableCallbackHandle(overlay_handle)),
+                    _pump_shutdown: Some(tx),
                 }
             }
             Err(e) => {
@@ -104,6 +144,7 @@ impl SteamState {
                     active_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_error: Arc::new(Mutex::new(None)),
                     _overlay_callback: None,
+                    _pump_shutdown: None,
                 }
             }
         }
@@ -780,12 +821,12 @@ pub fn steam_accept_p2p_session(
 
 /// Pump Steam callbacks to process async operations.
 ///
-/// Must be called regularly (e.g., every 100ms from a JS `setInterval`) so that async operations
-/// like lobby creation, lobby joining, and networking messages session establishment can complete.
+/// The background pump thread (spawned in `SteamState::new()`) now calls `run_callbacks()`
+/// every ~16 ms, so this command is no longer required for callbacks to fire. It is kept as a
+/// harmless safety net — calling it is idempotent (duplicate pumps process zero events).
 ///
-/// This is the bridge between the async Steamworks callback model and the synchronous Tauri
-/// command model. Without calling this, `steam_create_lobby` and `steam_join_lobby` will never
-/// complete their respective callbacks.
+/// JS callers may still poll this if they want an explicit synchronization point, but the
+/// 100 ms JS polling cadence is no longer on the critical path for lobby join/create latency.
 #[tauri::command]
 pub fn steam_run_callbacks(state: State<SteamState>) -> Result<(), String> {
     let lock = state.client.lock().map_err(|e| e.to_string())?;
@@ -832,7 +873,8 @@ fn parse_steam_id(s: &str) -> Result<SteamId, String> {
 //     the user's Steam Cloud storage for this app.
 //   - steam_cloud_load() -> Result<Option<String>, String>
 //     Read the cloud save back. Return None if no cloud save exists yet.
-//   Requires: background thread calling client.run_callbacks() for async completion events.
+//   The background callback pump (see _pump_shutdown field) already handles async
+//   completion events for these operations — no additional polling setup required.
 
 // ── Leaderboards ──────────────────────────────────────────────────────────────
 // TODO (AR-80 follow-up): Implement Steam Leaderboards via steamworks Leaderboard API.
@@ -840,7 +882,8 @@ fn parse_steam_id(s: &str) -> Result<SteamId, String> {
 //     Find or create the named leaderboard, then upload the score (keep-best).
 //   - steam_get_leaderboard_entries(board: String) -> Result<Vec<LeaderboardEntry>, String>
 //     Fetch the top-N global entries for display in the in-game leaderboard screen.
-//   Both require the callbacks pump (client.run_callbacks) running on a background timer thread.
+//   The background callback pump (see _pump_shutdown field) already handles async
+//   completion events for these operations — no additional polling setup required.
 
 // ── Session Reestablishment (H9) ──────────────────────────────────────────────
 

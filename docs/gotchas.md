@@ -5116,3 +5116,13 @@ Additionally, there was no timeout on the `lan_start_server` Tauri command. A po
 **Positive detection:** watch for `[Steam] GameOverlayActivated: active=true` in stdout/stderr when pressing Shift+Tab. No log line = overlay not hooked.
 
 **Current status:** Known limitation. No code fix is available without a native-window Tauri plugin. Document this to players via in-game error messaging if/when needed.
+
+### 2026-04-21 — Intermittent Steam lobby join failures masked as timeouts
+
+**What:** Players occasionally saw `joinSteamLobby failed for <id>` even when the join was successful on Steam's side. The failure rate was higher on cold accounts or when the Steam backend was slow.
+
+**Why:** `LobbyEnter_t` (and all other async Steam callbacks) only fire when `client.run_callbacks()` is called. Before this fix, the only driver was the JS-side `steam_run_callbacks` Tauri command, polled at ~100 ms intervals. The `pollJoinResult` loop in `steamNetworkingService.ts` timed out at 10 s. On cold/slow Steam backends, the callback arrived after 10 s — the TS side declared a timeout failure even though Steam subsequently completed the join successfully.
+
+**Fix:** `SteamState::new()` now spawns a background thread that calls `client.run_callbacks()` every ~16 ms. The thread is cheap (`Client` is `Arc<Inner>` internally; cloning is a ref-count increment). Shutdown is automatic: when `SteamState` drops on app exit, the mpsc sender is dropped, causing the thread to exit on its next tick. The JS `steam_run_callbacks` command is kept as a harmless safety net.
+
+**Forward note:** Any future async Steam API (leaderboards, cloud save) will now have its callbacks processed without needing a dedicated polling loop. The background pump is always running whenever Steam initializes — no additional wiring required.

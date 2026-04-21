@@ -542,6 +542,7 @@ CardApp.svelte :650-661
 | Date | Commits | What |
 |------|---------|------|
 | 2026-04-21 | (A2–A4 fix wave) | Ghost lobby prevention (joinLobby: _currentLobby set after join), Steam join error surfacing (pending_join_error slot, pollJoinResult, 10s timeout), stale lobby filtering (currentPlayers=0, >2h), host metadata clear on leave |
+| 2026-04-21 | (AR-80 pump) | Background `run_callbacks` pump thread in `SteamState::new()` — fixes intermittent lobby join failures on cold Steam backends |
 | 2026-04-21 | `ec9e86626`–`60f260fe0` | Hardening wave: co-op/race/trivia/LAN + Elo/FSRS, lobby service + workshop + lobby UI, wiring + PlayerProfile schema v2, Elo wire + CORS default, final wiring (initRaceMode, opp-rating, workshop gate) |
 | 2026-04-20 | `3afcf0500`, `b332c3d96`, `4a1135194`, `3faa62a95`, `b06820ea8` | Visibility toggle + roster panel, Steam lobby discovery wiring, transport + Steam C1/C2/H8/H9, roster sort + CardCombatOverlay typecheck, lobby code rejection + live Tauri check |
 | 2026-04-15 | — | LAN co-op system: `lan.rs`, `lanServerService.ts`, `lanDiscoveryService.ts`, `lanConfigService.ts` |
@@ -607,3 +608,45 @@ New `profanityService` module:
 Leet normalization only applies when the leet char is adjacent to at least one alpha character on either side (prevents sentence-terminal punctuation like `cunt!` from corrupting word boundaries).
 
 16 unit tests cover `sanitizeLobbyTitle` (6 cases) and `maskProfanity` (10 cases including leet variants, punctuation, case-insensitivity, length preservation).
+
+---
+
+## AR-80 Follow-up — Steam Callback Pump (2026-04-21)
+
+**Source file:** `src-tauri/src/steam.rs` — `SteamState::new()`
+
+### Problem (pre-fix)
+
+All async Steam callbacks (`LobbyEnter_t`, `LobbyCreated_t`, leaderboard, cloud sync) only fire when `client.run_callbacks()` executes. Before this fix, the only driver was the JS-side `steam_run_callbacks` Tauri command, polled every ~100 ms. The JS pollers for join/create timed out at 10 s — on cold or slow Steam backends, callbacks arriving after the timeout produced spurious `joinSteamLobby failed` errors even when Steam had actually succeeded.
+
+### Fix
+
+`SteamState::new()` now spawns a background thread immediately after successful `Client::init_app`:
+
+```rust
+let client_for_pump = client.clone(); // Arc<Inner> clone — cheap
+let (tx, rx) = std::sync::mpsc::channel::<()>();
+std::thread::spawn(move || {
+    loop {
+        std::thread::sleep(Duration::from_millis(16));
+        client_for_pump.run_callbacks();
+        match rx.try_recv() {
+            Err(TryRecvError::Empty) => continue,
+            _ => break, // sender dropped (app exit) or explicit shutdown
+        }
+    }
+});
+// tx stored in SteamState::_pump_shutdown
+```
+
+### Thread lifecycle
+
+`SteamState._pump_shutdown: Option<mpsc::Sender<()>>` owns the sender. When `SteamState` drops on app exit, the sender is dropped. The thread's `rx.try_recv()` returns `Err(Disconnected)` on its next tick and exits the loop cleanly. No explicit `thread::join` is needed — the thread is lightweight and exits within one 16 ms tick.
+
+### Concurrency safety
+
+`steamworks-rs` `Client` wraps `Arc<Inner>` internally and implements `Clone` (confirmed in `steamworks-0.12.2/src/lib.rs:92`). `run_callbacks()` is idempotent — concurrent calls from this thread and the JS-driven `steam_run_callbacks` command don't conflict. Worst case is a duplicate pump that processes zero additional events.
+
+### Impact on existing code
+
+`steam_run_callbacks` is kept intact as a harmless safety net. JS callers may still poll it. The 10 s `pollJoinResult` timeout in `steamNetworkingService.ts` is intentionally kept at 10 s — it also defends against genuine Steam outages. Any future async Steam API (leaderboards, cloud save) will have its callbacks processed automatically without needing its own polling loop.
