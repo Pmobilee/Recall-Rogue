@@ -101,7 +101,7 @@
     if (vis !== 'password') passwordValue = ''
   }
 
-  function handleCreateLobby(): void {
+  async function handleCreateLobby(): Promise<void> {
     if (selectedVisibility === 'password') {
       if (!passwordValue) {
         passwordError = 'Required'
@@ -110,6 +110,17 @@
       if (passwordValue.length < 4) {
         passwordError = 'Min 4 characters'
         return
+      }
+    }
+    // Auto-stop the LAN server before starting a Steam/web lobby. Running the
+    // LAN HTTP server pins pickBackend() to webBackend via isLanMode() — which
+    // would route a "Steam lobby" through the Fastify code path and never
+    // create a real Steam matchmaking lobby.
+    if (lanServerRunning) {
+      try {
+        await handleStopServer()
+      } catch (e) {
+        console.warn('[MultiplayerMenu] auto-stop LAN before Steam lobby failed:', e)
       }
     }
     const sanitizedTitle = titleValue.trim() ? sanitizeLobbyTitle(titleValue.trim()) : undefined
@@ -135,10 +146,17 @@
     }
   }
 
-  function handleJoinLobby(): void {
+  async function handleJoinLobby(): Promise<void> {
     if (!JOIN_CODE_RE.test(joinCode)) {
       joinError = '6 characters. No O, 0, I, or 1.'
       return
+    }
+    if (lanServerRunning) {
+      try {
+        await handleStopServer()
+      } catch (e) {
+        console.warn('[MultiplayerMenu] auto-stop LAN before join failed:', e)
+      }
     }
     onJoinLobby(joinCode)
   }
