@@ -113,6 +113,8 @@ fn main() {
             steam::steam_overlay_status,
             // Local Steam ID — used by MP to filter self from lobby members when finding peer for P2P
             steam::steam_get_local_steam_id,
+            // Lobby owner SteamID — used by guest side to resolve the host's P2P endpoint
+            steam::steam_get_lobby_owner,
             // File system save (filesave.rs)
             filesave::fs_get_save_dir,
             filesave::fs_write_save,

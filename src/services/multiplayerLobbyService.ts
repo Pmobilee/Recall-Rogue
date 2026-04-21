@@ -48,6 +48,7 @@ import {
   requestSteamLobbyData,
   getLobbyMembers,
   getLocalSteamId,
+  getLobbyOwner,
 } from './steamNetworkingService';
 import type { SteamLobbyType } from './steamNetworkingService';
 
@@ -218,24 +219,72 @@ async function hashPassword(plaintext: string): Promise<string> {
 }
 
 /**
- * For the Steam P2P transport, resolve the remote peer's 64-bit Steam ID by
- * reading the lobby's member list and filtering out the local user.
+ * Read a Steam lobby's authoritative metadata (mode, visibility, title,
+ * hostName, lobbyCode, maxPlayers) for populating `_currentLobby` on the guest
+ * side right after join. Replaces the hard-coded `mode: 'race'` placeholder
+ * that used to persist until a `mp:lobby:settings` broadcast arrived — which
+ * in practice rarely happened because P2P was broken.
  *
- * Returns `null` if Steam is unavailable, the members call fails, or no remote
- * peer is present in the lobby yet (e.g., host just created it).
+ * Returns null for any field that Steam hasn't cached yet; callers fall back
+ * to their original placeholder for missing fields.
+ */
+async function readSteamLobbyMetadataForJoin(lobbyId: string): Promise<{
+  mode: MultiplayerMode | null;
+  visibility: LobbyVisibility | null;
+  title: string | null;
+  hostName: string | null;
+  lobbyCode: string | null;
+  maxPlayers: number | null;
+}> {
+  try {
+    const [mode, visibility, title, hostName, lobbyCode, maxPlayersStr] = await Promise.all([
+      getLobbyData(lobbyId, 'mode'),
+      getLobbyData(lobbyId, 'visibility'),
+      getLobbyData(lobbyId, 'title'),
+      getLobbyData(lobbyId, 'host_name'),
+      getLobbyData(lobbyId, 'lobby_code'),
+      getLobbyData(lobbyId, 'max_players'),
+    ]);
+    const parsedMax = maxPlayersStr ? Number(maxPlayersStr) : NaN;
+    return {
+      mode: mode ? (mode as MultiplayerMode) : null,
+      visibility: visibility ? (visibility as LobbyVisibility) : null,
+      title: title || null,
+      hostName: hostName || null,
+      lobbyCode: lobbyCode || null,
+      maxPlayers: Number.isFinite(parsedMax) ? parsedMax : null,
+    };
+  } catch (e) {
+    console.warn('[multiplayerLobbyService] readSteamLobbyMetadataForJoin failed:', e);
+    return { mode: null, visibility: null, title: null, hostName: null, lobbyCode: null, maxPlayers: null };
+  }
+}
+
+/**
+ * Resolve the remote peer's 64-bit Steam ID for the Steam P2P transport.
  *
- * Background: Steam's P2P messaging (SteamNetworkingMessages) addresses peers
- * by their individual SteamID, NOT by lobby ID. Passing the lobby ID to
- * `AcceptSessionWithUser` / `SendMessageToUser` causes ConnectFailed because
- * there's no peer at that ID — the lobby is a chat room, not an endpoint.
+ * For a guest who just joined a lobby: returns the lobby owner (host) via
+ * `getLobbyOwner`, which reads Steam's local cache synchronously. This is
+ * reliable immediately after join. If the local user IS the owner, falls back
+ * to filtering the member list (host side). Returns `null` if no remote peer
+ * is in the lobby yet (e.g., host just created it, no guests).
+ *
+ * Background: Steam P2P (SteamNetworkingMessages) addresses peers by their
+ * individual SteamID, NOT by lobby ID. Passing the lobby ID to
+ * `AcceptSessionWithUser` / `SendMessageToUser` returns ConnectFailed forever
+ * because the lobby is a chat room, not an endpoint.
  */
 async function resolveSteamPeerId(lobbyId: string): Promise<string | null> {
   try {
-    const [localId, members] = await Promise.all([
+    const [localId, owner] = await Promise.all([
       getLocalSteamId(),
-      getLobbyMembers(lobbyId),
+      getLobbyOwner(lobbyId),
     ]);
     if (!localId) return null;
+    // Owner is reliable when the local user is the guest.
+    if (owner && owner !== localId) return owner;
+    // Local user IS the owner — fall back to member filter for the guest.
+    const members = await getLobbyMembers(lobbyId);
     const peer = members.find(m => m.steamId !== localId);
     return peer?.steamId ?? null;
   } catch (e) {
@@ -430,19 +479,27 @@ export async function joinLobby(
   const joinTargetId = resolvedId ?? lobbyCode;
   const result = await backend.joinLobbyById(joinTargetId, playerId, displayName, passwordHash);
 
+  // Read authoritative lobby metadata from Steam — avoids placeholder `race`
+  // mode persisting until a P2P broadcast arrives (which may never succeed).
+  const useSteamMeta = hasSteam && !broadcast && !isLanMode() && !!result.lobbyId;
+  const meta = useSteamMeta
+    ? await readSteamLobbyMetadataForJoin(result.lobbyId)
+    : { mode: null, visibility: null, title: null, hostName: null, lobbyCode: null, maxPlayers: null };
+
   // A2: _currentLobby is assigned AFTER backend join confirmed — never before.
   _currentLobby = {
     lobbyId: result.lobbyId || resolvedId || '',
     hostId: '',
-    mode: 'race',
+    mode: meta.mode ?? 'race',
     deckSelectionMode: 'host_picks',
     houseRules: { ...DEFAULT_HOUSE_RULES },
     players: [{ id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() }],
-    maxPlayers: 4,
+    maxPlayers: meta.maxPlayers ?? 4,
     isRanked: false,
-    lobbyCode: result.lobbyCode || lobbyCode,
+    lobbyCode: meta.lobbyCode ?? result.lobbyCode ?? lobbyCode,
     status: 'waiting',
-    visibility: 'public',
+    visibility: meta.visibility ?? 'public',
+    title: meta.title ?? undefined,
   };
 
   const connectOpts: ConnectOpts | undefined = result.joinToken
@@ -496,34 +553,42 @@ export async function joinLobbyById(
   const backend = pickBackend();
   const result = await backend.joinLobbyById(lobbyId, playerId, displayName, passwordHash);
 
+  const broadcast = isBroadcastMode();
+  // Read authoritative lobby metadata from Steam before setting _currentLobby —
+  // this ensures the guest shows the host's real mode/visibility/title, not
+  // the old `race` placeholder that used to persist when P2P broadcasts failed.
+  const useSteamPeer = hasSteam && !broadcast && !isLanMode();
+  const meta = useSteamPeer
+    ? await readSteamLobbyMetadataForJoin(result.lobbyId)
+    : { mode: null, visibility: null, title: null, hostName: null, lobbyCode: null, maxPlayers: null };
+
   _currentLobby = {
     lobbyId: result.lobbyId,
     hostId: '',
-    mode: 'race',
+    mode: meta.mode ?? 'race',
     deckSelectionMode: 'host_picks',
     houseRules: { ...DEFAULT_HOUSE_RULES },
     players: [{ id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() }],
-    maxPlayers: 4,
+    maxPlayers: meta.maxPlayers ?? 4,
     isRanked: false,
-    lobbyCode: result.lobbyCode,
+    lobbyCode: meta.lobbyCode ?? result.lobbyCode,
     status: 'waiting',
-    visibility: 'public',
+    visibility: meta.visibility ?? 'public',
+    title: meta.title ?? undefined,
   };
 
-  const broadcast = isBroadcastMode();
   const transport = getMultiplayerTransport(broadcast ? 'broadcast' : 'auto');
   const connectOpts: ConnectOpts | undefined = result.joinToken
     ? { lobbyId: result.lobbyId, joinToken: result.joinToken }
     : undefined;
 
-  // Steam P2P needs the HOST's Steam ID as the peer — not the lobby ID. Filter
-  // the local Steam ID out of the lobby's members to find the host.
-  const useSteamPeer = hasSteam && !broadcast && !isLanMode();
+  // Steam P2P needs the HOST's Steam ID as the peer — not the lobby ID.
+  // getLobbyOwner is the reliable path: synchronous local-cache read.
   const steamPeerId = useSteamPeer ? await resolveSteamPeerId(result.lobbyId) : null;
   const transportTarget = steamPeerId
     ?? (broadcast ? (result.lobbyCode ?? result.lobbyId) : result.lobbyId);
   if (useSteamPeer && !steamPeerId) {
-    console.warn('[multiplayerLobbyService] no Steam peer found in lobby members — falling back to lobby ID (may fail P2P)');
+    console.warn('[multiplayerLobbyService] no Steam peer found for lobby — falling back to lobby ID (may fail P2P)');
   }
   transport.connect(transportTarget, playerId, connectOpts);
   transport.send('mp:lobby:join', { playerId, displayName });

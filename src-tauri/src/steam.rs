@@ -360,6 +360,36 @@ pub fn steam_get_local_steam_id(
     }
 }
 
+/// Return the 64-bit Steam ID of the lobby owner (host) as a decimal string.
+///
+/// Unlike `steam_get_lobby_members`, this is a synchronous read against Steam's
+/// local cache — no async Steam callback required. It returns the correct host
+/// SteamID the moment the local user is in the lobby, which makes it the
+/// reliable way to resolve the P2P peer for a guest right after join. Filtering
+/// `lobby_members` can miss the host if Steam hasn't synced the full member
+/// list to the local client yet.
+///
+/// Returns `None` when Steam is unavailable or the lobby isn't known locally.
+#[tauri::command]
+pub fn steam_get_lobby_owner(
+    state: State<SteamState>,
+    lobby_id: String,
+) -> Result<Option<String>, String> {
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(client) = lock.as_ref() {
+        let id = parse_lobby_id(&lobby_id)?;
+        let owner = client.matchmaking().lobby_owner(id);
+        let raw = owner.raw();
+        if raw == 0 {
+            Ok(None)
+        } else {
+            Ok(Some(raw.to_string()))
+        }
+    } else {
+        Ok(None)
+    }
+}
+
 // ── Achievements ──────────────────────────────────────────────────────────────
 
 /// Unlock a Steam achievement by its Steamworks API name (e.g., "ACH_FIRST_WIN").

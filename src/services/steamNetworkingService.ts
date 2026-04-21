@@ -104,6 +104,8 @@ export interface SteamCommandArgs {
   steam_get_persona_name: Record<string, never>;
   /** Get the local user's 64-bit Steam ID as a decimal string. Used to find the remote peer in lobby_members. */
   steam_get_local_steam_id: Record<string, never>;
+  /** Get the 64-bit Steam ID of a lobby's owner (host). Synchronous against Steam's local cache — reliable for P2P peer resolution on guest side. */
+  steam_get_lobby_owner: { lobbyId: string };
   /** Internal polling commands — no args, accessed via pollPendingResult / pollJoinResult. */
   steam_get_pending_lobby_id: Record<string, never>;
   steam_get_pending_join_lobby_id: Record<string, never>;
@@ -141,6 +143,8 @@ export interface SteamCommandReturn {
   steam_get_persona_name: string | null;
   /** Local user's 64-bit Steam ID as decimal string, or null if Steam unavailable. */
   steam_get_local_steam_id: string | null;
+  /** Lobby owner's 64-bit Steam ID as decimal string, or null if the lobby is unknown locally. */
+  steam_get_lobby_owner: string | null;
   steam_get_pending_lobby_id: string | null;
   steam_get_pending_join_lobby_id: string | null;
   /** A3: string when a join error is pending; null when no error (or error already consumed). */
@@ -533,6 +537,20 @@ export async function getLocalPersonaName(): Promise<string | null> {
 export async function getLocalSteamId(): Promise<string | null> {
   if (!isTauriRuntime()) return null;
   const result = await invokeSteam('steam_get_local_steam_id');
+  return result ?? null;
+}
+
+/**
+ * Return the Steam lobby owner's 64-bit SteamID as a decimal string, or `null`
+ * when Steam is unavailable or the lobby isn't cached locally yet.
+ *
+ * Preferred over filtering `getLobbyMembers` for resolving the P2P peer on the
+ * guest side — owner is a synchronous single-field read against Steam's local
+ * cache, not dependent on the member-list sync timing.
+ */
+export async function getLobbyOwner(lobbyId: string): Promise<string | null> {
+  if (!isTauriRuntime()) return null;
+  const result = await invokeSteam('steam_get_lobby_owner', { lobbyId });
   return result ?? null;
 }
 
