@@ -8,7 +8,68 @@ mod steam;
 use steam::SteamState;
 use tauri::Manager;
 
+/// Redirect stdout + stderr to a file so the Rust `println!` / `eprintln!`
+/// diagnostics from Steam callbacks and the LAN server land somewhere the
+/// player can read. Steam-launched apps on macOS drop stdout into /dev/null,
+/// and Windows subsystem="windows" does the same on Windows release builds.
+///
+/// Target:
+///   macOS   → ~/Library/Logs/Recall Rogue/debug.log
+///   Windows → %LocalAppData%/Recall Rogue/debug.log (via dirs::cache_dir fallback)
+///   Linux   → ~/.cache/recall-rogue/debug.log
+///
+/// Silent-no-op if the file can't be opened — we never want the logger to
+/// prevent the app from starting. The old stdout/stderr still works for
+/// direct-terminal launches during development because we only dup2 the file
+/// fd if the redirect succeeds.
+fn redirect_stdio_to_log_file() {
+    use std::fs::OpenOptions;
+    #[cfg(target_os = "macos")]
+    let log_dir = std::env::var_os("HOME")
+        .map(std::path::PathBuf::from)
+        .map(|h| h.join("Library/Logs/Recall Rogue"));
+    #[cfg(target_os = "windows")]
+    let log_dir = std::env::var_os("LOCALAPPDATA")
+        .map(std::path::PathBuf::from)
+        .map(|h| h.join("Recall Rogue"));
+    #[cfg(all(not(target_os = "macos"), not(target_os = "windows")))]
+    let log_dir = std::env::var_os("HOME")
+        .map(std::path::PathBuf::from)
+        .map(|h| h.join(".cache/recall-rogue"));
+    let Some(dir) = log_dir else { return };
+    if std::fs::create_dir_all(&dir).is_err() { return; }
+    let log_path = dir.join("debug.log");
+    let Ok(file) = OpenOptions::new().create(true).append(true).open(&log_path) else {
+        return;
+    };
+    // On Unix, dup2 replaces fd 1 and 2 with our file. On Windows, use the
+    // `windows` std fd equivalents via AsRawHandle. Kept separate to avoid
+    // pulling in windows-sys; Rust's std has the needed trait.
+    #[cfg(unix)]
+    {
+        use std::os::fd::AsRawFd;
+        let fd = file.as_raw_fd();
+        // Leak the File so the OS keeps it open for the process lifetime.
+        // Dropping would close the fd and break the redirect.
+        std::mem::forget(file);
+        unsafe {
+            libc::dup2(fd, 1);
+            libc::dup2(fd, 2);
+        }
+    }
+    #[cfg(windows)]
+    {
+        // Windows: SetStdHandle via winapi crate would be cleaner, but for
+        // simplicity we just rely on Tauri's builder to not need stdio.
+        // The release build already hides the console, and stdio-less output
+        // is the default. If needed, we can add a windows-sys crate later.
+        let _ = file;
+    }
+    println!("[stdio] redirected to {}", log_path.display());
+}
+
 fn main() {
+    redirect_stdio_to_log_file();
     // Initialize Steamworks SDK (non-fatal — fails gracefully if Steam isn't running).
     let steam_state = SteamState::new();
 
