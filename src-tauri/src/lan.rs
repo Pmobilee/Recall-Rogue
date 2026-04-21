@@ -847,6 +847,42 @@ pub async fn lan_start_server(port: Option<u16>) -> Result<LanStartResult, Strin
         warning.as_deref().map(|w| format!(" [WARNING: {}]", w)).unwrap_or_default(),
     );
 
+    // F-self-probe: After the server binds, spawn a quick TCP connect against
+    // our own routable IP:port. If this succeeds we know inbound TCP on that
+    // port actually reaches our Axum router — any peer on the same subnet can
+    // reach us too. If it fails, most likely the macOS/Windows firewall is
+    // blocking inbound on port {actual_port} and the server is effectively
+    // localhost-only. We log the result to debug.log so the player can see
+    // why other machines can't find their game.
+    let probe_ip = reported_ips.first().cloned().unwrap_or_else(|| "127.0.0.1".into());
+    let probe_port = actual_port;
+    tokio::task::spawn(async move {
+        tokio::time::sleep(std::time::Duration::from_millis(200)).await;
+        let target = format!("{}:{}", probe_ip, probe_port);
+        match tokio::time::timeout(
+            std::time::Duration::from_secs(2),
+            tokio::net::TcpStream::connect(&target),
+        ).await {
+            Ok(Ok(_)) => {
+                eprintln!("[LAN] self-probe OK — inbound TCP reachable at {}", target);
+            }
+            Ok(Err(e)) => {
+                eprintln!(
+                    "[LAN] self-probe FAILED — TCP connect to {} refused: {}. \
+                     Firewall is likely blocking inbound on port {} — peers on the same subnet cannot reach this host.",
+                    target, e, probe_port
+                );
+            }
+            Err(_) => {
+                eprintln!(
+                    "[LAN] self-probe TIMEOUT — {} did not accept a TCP connection within 2 s. \
+                     Firewall is likely blocking inbound on port {} — peers on the same subnet cannot reach this host.",
+                    target, probe_port
+                );
+            }
+        }
+    });
+
     Ok(LanStartResult {
         port: actual_port,
         local_ips: reported_ips,

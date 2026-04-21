@@ -35,6 +35,7 @@ import { hasSteam } from './platformService';
 import { sanitizeLobbyTitle } from './profanityService';
 import { getLocalMultiplayerRating } from './multiplayerElo';
 import { getLanServerUrls, isLanMode, clearLanServerUrl } from './lanConfigService';
+import { rrLog } from './rrLog';
 import {
   createSteamLobby,
   setLobbyData,
@@ -280,17 +281,42 @@ async function resolveSteamPeerId(lobbyId: string): Promise<string | null> {
       getLocalSteamId(),
       getLobbyOwner(lobbyId),
     ]);
+    rrLog('mp:peer', 'resolveSteamPeerId try', { lobbyId, localId, owner });
     if (!localId) return null;
     // Owner is reliable when the local user is the guest.
     if (owner && owner !== localId) return owner;
     // Local user IS the owner — fall back to member filter for the guest.
     const members = await getLobbyMembers(lobbyId);
+    rrLog('mp:peer', 'resolveSteamPeerId member filter', { memberCount: members.length, members: members.map(m => m.steamId) });
     const peer = members.find(m => m.steamId !== localId);
     return peer?.steamId ?? null;
   } catch (e) {
-    console.warn('[multiplayerLobbyService] resolveSteamPeerId failed:', e);
+    rrLog('mp:peer', 'resolveSteamPeerId failed', { e: String(e) });
     return null;
   }
+}
+
+/**
+ * Retry `resolveSteamPeerId` until it returns a peer or the attempt budget is
+ * exhausted. Handles Steam's lobby-member-list sync lag — immediately after a
+ * guest joins a lobby, the local cache may not yet include the host for a few
+ * hundred ms. Retrying every 500 ms up to 5× gives Steam time to populate the
+ * list without forcing the caller to wait the full budget when the first try
+ * already succeeds.
+ */
+async function resolveSteamPeerIdWithRetry(lobbyId: string, attempts = 5, intervalMs = 500): Promise<string | null> {
+  for (let i = 0; i < attempts; i++) {
+    const peer = await resolveSteamPeerId(lobbyId);
+    if (peer) {
+      rrLog('mp:peer', 'resolveSteamPeerIdWithRetry succeeded', { attempt: i + 1, peer });
+      return peer;
+    }
+    if (i < attempts - 1) {
+      await new Promise(r => setTimeout(r, intervalMs));
+    }
+  }
+  rrLog('mp:peer', 'resolveSteamPeerIdWithRetry exhausted', { lobbyId, attempts });
+  return null;
 }
 
 /**
@@ -309,21 +335,28 @@ function startSteamHostPeerPoll(
 ): () => void {
   let cancelled = false;
   let timer: ReturnType<typeof setTimeout> | null = null;
+  let tickCount = 0;
   const tick = async (): Promise<void> => {
     if (cancelled) return;
+    tickCount++;
     const peer = await resolveSteamPeerId(lobbyId);
     if (cancelled) return;
     if (peer) {
-      console.log('[multiplayerLobbyService] host detected peer joined:', peer);
+      rrLog('mp:hostpoll', 'peer detected', { tick: tickCount, peer, lobbyId });
       onFound(peer);
       return; // one-shot
     }
+    if (tickCount % 10 === 0) {
+      rrLog('mp:hostpoll', 'still waiting', { tick: tickCount, lobbyId });
+    }
     timer = setTimeout(() => void tick(), 300);
   };
-  timer = setTimeout(() => void tick(), 2000);
+  rrLog('mp:hostpoll', 'started', { lobbyId });
+  timer = setTimeout(() => void tick(), 300);
   return () => {
     cancelled = true;
     if (timer) clearTimeout(timer);
+    rrLog('mp:hostpoll', 'cancelled', { lobbyId, tickCount });
   };
 }
 
@@ -347,6 +380,7 @@ export async function createLobby(
   mode: MultiplayerMode,
   opts?: { visibility?: LobbyVisibility; password?: string; maxPlayers?: number; title?: string },
 ): Promise<LobbyState> {
+  rrLog('mp:createLobby', 'entry', { playerId, displayName, mode, opts: { visibility: opts?.visibility, maxPlayers: opts?.maxPlayers, title: opts?.title } });
   _localPlayerId = playerId;
 
   // M16: Reset password hash before any mutation to prevent cross-session leaks.
@@ -448,6 +482,7 @@ export async function joinLobby(
   displayName: string,
   password?: string,
 ): Promise<LobbyState> {
+  rrLog('mp:joinCode', 'entry', { lobbyCode, playerId, displayName, hasPw: !!password });
   _localPlayerId = playerId;
 
   // M16: Reset password hash before any mutation to prevent cross-session leaks.
@@ -510,7 +545,7 @@ export async function joinLobby(
   // Read the lobby's member list (which now includes us + the host) and filter
   // self out. On non-Steam transports, fall back to lobby ID / code as before.
   const useSteamPeer = hasSteam && !broadcast && !isLanMode() && _currentLobby.lobbyId;
-  const steamPeerId = useSteamPeer ? await resolveSteamPeerId(_currentLobby.lobbyId) : null;
+  const steamPeerId = useSteamPeer ? await resolveSteamPeerIdWithRetry(_currentLobby.lobbyId) : null;
   const transportTarget = steamPeerId
     ?? (broadcast ? lobbyCode : (_currentLobby.lobbyId || lobbyCode));
   if (useSteamPeer && !steamPeerId) {
@@ -544,6 +579,7 @@ export async function joinLobbyById(
   displayName: string,
   password?: string,
 ): Promise<LobbyState> {
+  rrLog('mp:joinById', 'entry', { lobbyId, playerId, displayName, hasPw: !!password });
   _localPlayerId = playerId;
 
   // M16: Reset password hash before any mutation to prevent cross-session leaks.
@@ -584,7 +620,7 @@ export async function joinLobbyById(
 
   // Steam P2P needs the HOST's Steam ID as the peer — not the lobby ID.
   // getLobbyOwner is the reliable path: synchronous local-cache read.
-  const steamPeerId = useSteamPeer ? await resolveSteamPeerId(result.lobbyId) : null;
+  const steamPeerId = useSteamPeer ? await resolveSteamPeerIdWithRetry(result.lobbyId) : null;
   const transportTarget = steamPeerId
     ?? (broadcast ? (result.lobbyCode ?? result.lobbyId) : result.lobbyId);
   if (useSteamPeer && !steamPeerId) {
@@ -727,19 +763,36 @@ export function selectDeck(deckId: string): void {
 
 /** Set the content selection for the lobby (replaces selectDeck for rich content types) */
 export function setContentSelection(selection: LobbyContentSelection): void {
-  if (!_currentLobby) return;
+  rrLog('mp:deck', 'setContentSelection called', {
+    selectionType: selection.type,
+    hasLobby: !!_currentLobby,
+    deckSelectionMode: _currentLobby?.deckSelectionMode,
+    hostId: _currentLobby?.hostId,
+    localPlayerId: _localPlayerId,
+    isHostResult: isHost(),
+  });
+  if (!_currentLobby) {
+    rrLog('mp:deck', 'setContentSelection aborted — no lobby');
+    return;
+  }
   if (_currentLobby.deckSelectionMode === 'host_picks' && isHost()) {
     _currentLobby.contentSelection = selection;
     // Also set legacy selectedDeckId for backwards compat
     _currentLobby.selectedDeckId = selection.type === 'study' ? selection.deckId : selection.type === 'custom_deck' ? selection.customDeckId : undefined;
+    rrLog('mp:deck', 'host_picks path — mutation applied, broadcasting');
     broadcastSettings();
   } else if (_currentLobby.deckSelectionMode === 'each_picks') {
     const player = _currentLobby.players.find(p => p.id === _localPlayerId);
     if (player) {
       player.contentSelection = selection;
       player.selectedDeckId = selection.type === 'study' ? selection.deckId : selection.type === 'custom_deck' ? selection.customDeckId : undefined;
+      rrLog('mp:deck', 'each_picks path — player mutation applied, broadcasting');
       broadcastSettings();
+    } else {
+      rrLog('mp:deck', 'each_picks — no matching player found', { _localPlayerId });
     }
+  } else {
+    rrLog('mp:deck', 'setContentSelection no-op — not host_picks+host, not each_picks');
   }
 }
 
@@ -1120,6 +1173,13 @@ export async function leaveMultiplayerLobbyForSoloStart(): Promise<void> {
  *  detects the update (same-reference assignments are optimized away). */
 function notifyLobbyUpdate(): void {
   if (_currentLobby && _onLobbyUpdate) {
+    rrLog('mp:lobby', 'notifyLobbyUpdate', {
+      lobbyId: _currentLobby.lobbyId,
+      mode: _currentLobby.mode,
+      playerCount: _currentLobby.players.length,
+      hostId: _currentLobby.hostId,
+      contentSelectionType: _currentLobby.contentSelection?.type,
+    });
     _onLobbyUpdate({ ..._currentLobby, players: _currentLobby.players.map(p => ({ ...p })) });
   }
 }
@@ -1231,6 +1291,7 @@ function setupMessageHandlers(): void {
   });
 
   transport.on('mp:lobby:settings', (msg) => {
+    rrLog('mp:recv', 'mp:lobby:settings', { hasLobby: !!_currentLobby, amHost: isHost(), payloadKeys: Object.keys(msg.payload ?? {}) });
     if (!_currentLobby || isHost()) return; // Host already has correct state
     const settings = msg.payload as Partial<LobbyState>;
     // Snapshot the local player ready states AND readyVersions BEFORE Object.assign
@@ -1362,6 +1423,12 @@ function setupMessageHandlers(): void {
 function broadcastSettings(): void {
   if (!_currentLobby) return;
   const transport = getMultiplayerTransport();
+  rrLog('mp:broadcast', 'broadcastSettings', {
+    mode: _currentLobby.mode,
+    deckSelectionMode: _currentLobby.deckSelectionMode,
+    contentSelectionType: _currentLobby.contentSelection?.type,
+    playerCount: _currentLobby.players.length,
+  });
   transport.send('mp:lobby:settings', {
     mode: _currentLobby.mode,
     deckSelectionMode: _currentLobby.deckSelectionMode,

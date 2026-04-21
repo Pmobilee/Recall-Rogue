@@ -1,6 +1,6 @@
 use std::sync::{Arc, Mutex};
 use steamworks::networking_types::{NetworkingIdentity, SendFlags};
-use steamworks::{CallbackHandle, Client, DistanceFilter, LobbyEnter, LobbyId, LobbyType, SteamId};
+use steamworks::{CallbackHandle, ChatMemberStateChange, Client, DistanceFilter, LobbyChatUpdate, LobbyEnter, LobbyId, LobbyType, SteamId};
 use tauri::State;
 
 // D1: Wrap CallbackHandle so it can be stored in SteamState across threads.
@@ -57,6 +57,13 @@ pub struct SteamState {
     /// and provides the real `m_EChatRoomEnterResponse` code that `join_lobby`'s closure discards.
     /// Stored here so it is never dropped while the app is running.
     _lobby_enter_callback: Option<SendableCallbackHandle>,
+    /// Auto-accept: keeps the LobbyChatUpdate callback handle alive. Fires whenever a member
+    /// enters or leaves any lobby we're in. On "entered", we preemptively call
+    /// `AcceptSessionWithUser` (via a zero-byte send) for the new member, so guest-to-host
+    /// messages don't drop during the host's peer-poll interval. Without this, the
+    /// SteamNetworkingMessages rule — "receiver must accept session before messages deliver" —
+    /// means the host loses everything the guest sent in the first ~300 ms of the join.
+    _lobby_chat_update_callback: Option<SendableCallbackHandle>,
     /// AR-80 follow-up: Shutdown signal for the background callback pump thread.
     ///
     /// The pump thread calls `client.run_callbacks()` every ~16 ms so that async Steam
@@ -186,6 +193,40 @@ impl SteamState {
                     }
                 });
 
+                // Auto-accept P2P sessions the moment a peer joins our lobby.
+                //
+                // SteamNetworkingMessages requires the RECEIVER to accept a session before
+                // messages from that peer are delivered. On the host side our peer-poll
+                // only fires every 300 ms, so any message the guest sent in that window was
+                // being dropped. By registering a LobbyChatUpdate callback here, we send a
+                // zero-byte outbound message to every member who enters any of our lobbies —
+                // which implicitly accepts the reverse direction under Steam's session rules
+                // and lets incoming messages start delivering within milliseconds of join.
+                let client_for_chat = client.clone();
+                let lobby_chat_handle = client.register_callback(move |val: LobbyChatUpdate| {
+                    // member_state_change is a flagset; Entered is the bit we care about.
+                    if val.member_state_change == ChatMemberStateChange::Entered {
+                        let peer = val.user_changed;
+                        let me = client_for_chat.user().steam_id();
+                        if peer == me {
+                            // Ourselves — don't ping self. This fires when we create/join a lobby.
+                            println!("[Steam] LobbyChatUpdate: self entered lobby {}", val.lobby.raw());
+                            return;
+                        }
+                        println!(
+                            "[Steam] LobbyChatUpdate: peer {} entered lobby {} — auto-accepting P2P",
+                            peer.raw(),
+                            val.lobby.raw(),
+                        );
+                        let identity = NetworkingIdentity::new_steam_id(peer);
+                        let ok = client_for_chat
+                            .networking_messages()
+                            .send_message_to_user(identity, SendFlags::RELIABLE, &[], 0)
+                            .is_ok();
+                        println!("[Steam] Auto-accept P2P for {}: {}", peer.raw(), ok);
+                    }
+                });
+
                 // AR-80 follow-up: Spawn a background thread that pumps Steam callbacks
                 // at ~16 ms intervals.
                 //
@@ -225,6 +266,7 @@ impl SteamState {
                     pending_join_error: pending_error_for_enter,
                     _overlay_callback: Some(SendableCallbackHandle(overlay_handle)),
                     _lobby_enter_callback: Some(SendableCallbackHandle(lobby_enter_handle)),
+                    _lobby_chat_update_callback: Some(SendableCallbackHandle(lobby_chat_handle)),
                     _pump_shutdown: Some(tx),
                 }
             }
@@ -239,6 +281,7 @@ impl SteamState {
                     pending_join_error: Arc::new(Mutex::new(None)),
                     _overlay_callback: None,
                     _lobby_enter_callback: None,
+                    _lobby_chat_update_callback: None,
                     _pump_shutdown: None,
                 }
             }
@@ -358,6 +401,17 @@ pub fn steam_get_local_steam_id(
     } else {
         Ok(None)
     }
+}
+
+/// Write a diagnostic line to the redirected stdout/stderr (debug.log).
+///
+/// Called from JS via the typed IPC bridge to land multiplayer event logs
+/// alongside the Rust-side `[Steam] …` prints. Lets us reconstruct the full
+/// timeline of a multiplayer session without needing devtools.
+#[tauri::command]
+pub fn rr_log(tag: String, line: String) -> Result<(), String> {
+    eprintln!("[js:{}] {}", tag, line);
+    Ok(())
 }
 
 /// Return the 64-bit Steam ID of the lobby owner (host) as a decimal string.

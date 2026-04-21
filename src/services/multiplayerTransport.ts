@@ -18,6 +18,7 @@
  */
 
 import { getLanServerUrls, isLanMode } from './lanConfigService';
+import { rrLog } from './rrLog';
 import {
   acceptP2PSession,
   getLobbyMembers,
@@ -506,7 +507,19 @@ export class SteamP2PTransport implements MultiplayerTransport {
   private _acceptSettled = false;
   // C4: buffer outbound messages sent while state is 'connecting' (before acceptP2PSession resolves)
   private _preSendBuffer: MultiplayerMessage[] = [];
+  // F-bufferUntilConnect: buffer sends attempted BEFORE connect() is ever called.
+  // Host side defers transport.connect until a peer is detected — any outbound
+  // messages emitted during that window (e.g., host selects a deck seconds
+  // before the guest arrives) were silently dropped before this buffer existed.
+  private _preConnectBuffer: MultiplayerMessage[] = [];
   private static readonly _PRESEND_BUFFER_CAP = 64;
+
+  private _setState(next: TransportState, reason: string): void {
+    if (this.state === next) return;
+    const prev = this.state;
+    this.state = next;
+    rrLog('mp:tx', 'state', { prev, next, reason, peerId: this.peerId });
+  }
 
   /**
    * @param peerId  Remote player's 64-bit Steam ID as a string
@@ -514,10 +527,14 @@ export class SteamP2PTransport implements MultiplayerTransport {
    * @param opts    Accepted for interface compatibility — ignored by Steam P2P
    */
   connect(peerId: string, localId: string, _opts?: ConnectOpts): void {
-    if (this.state === 'connected') return;
+    rrLog('mp:tx', 'connect called', { peerId, localId, currentState: this.state, queuedPreConnect: this._preConnectBuffer.length });
+    if (this.state === 'connected') {
+      rrLog('mp:tx', 'connect skipped — already connected');
+      return;
+    }
     this.peerId = peerId;
     this.localId = localId;
-    this.state = 'connecting';
+    this._setState('connecting', 'connect() called');
     this._preAcceptBuffer = [];
     this._preSendBuffer = [];
     this._acceptSettled = false;
@@ -530,33 +547,52 @@ export class SteamP2PTransport implements MultiplayerTransport {
     // 'connecting' state and flushes when we transition to 'connected'.
     acceptP2PSession(peerId)
       .then(() => {
-        if (this.state !== 'connecting') return; // disconnected before handshake
-        this.state = 'connected';
+        if (this.state !== 'connecting') {
+          rrLog('mp:tx', 'accept resolved but state no longer connecting', { state: this.state });
+          return;
+        }
+        this._setState('connected', 'acceptP2PSession resolved');
         this._acceptSettled = true;
         this.stopPollLoop = startMessagePollLoop((rawMsg) => {
           this._handleRawMessage(rawMsg.data);
         });
         // Replay any messages that arrived during the accept gap
         const buffered = this._preAcceptBuffer.splice(0);
+        if (buffered.length) rrLog('mp:tx', 'flushing preAcceptBuffer', { count: buffered.length });
         for (const msg of buffered) {
           emitToListeners(this.listeners, msg.type, msg);
         }
         // C4: flush outbound messages that were queued while we were connecting
         const pendingSends = this._preSendBuffer.splice(0);
+        if (pendingSends.length) rrLog('mp:tx', 'flushing preSendBuffer', { count: pendingSends.length });
         for (const pendingMsg of pendingSends) {
           sendP2PMessage(this.peerId!, JSON.stringify(pendingMsg)).catch((e) => {
-            console.warn('[SteamP2PTransport] pre-connect send failed:', pendingMsg.type, e);
+            rrLog('mp:tx', 'pre-connect send failed', { type: pendingMsg.type, e: String(e) });
+          });
+        }
+        // F-bufferUntilConnect: flush sends that were queued BEFORE connect() was
+        // ever called (host side, while waiting for peer to join).
+        const preConnect = this._preConnectBuffer.splice(0);
+        if (preConnect.length) rrLog('mp:tx', 'flushing preConnectBuffer', { count: preConnect.length });
+        for (const pendingMsg of preConnect) {
+          // Update senderId now that we know localId.
+          pendingMsg.senderId = this.localId;
+          sendP2PMessage(this.peerId!, JSON.stringify(pendingMsg)).catch((e) => {
+            rrLog('mp:tx', 'pre-connect-queue send failed', { type: pendingMsg.type, e: String(e) });
           });
         }
       })
-      .catch(() => {
-        this.state = 'error';
+      .catch((e) => {
+        this._setState('error', `acceptP2PSession rejected: ${String(e)}`);
         this._acceptSettled = true;
         this._preAcceptBuffer = [];
-        // C4: drop pending outbound sends on connect failure
         if (this._preSendBuffer.length > 0) {
-          console.warn('[SteamP2PTransport] connect failed — dropping', this._preSendBuffer.length, 'pending sends');
+          rrLog('mp:tx', 'connect failed — dropping preSendBuffer', { count: this._preSendBuffer.length });
           this._preSendBuffer = [];
+        }
+        if (this._preConnectBuffer.length > 0) {
+          rrLog('mp:tx', 'connect failed — dropping preConnectBuffer', { count: this._preConnectBuffer.length });
+          this._preConnectBuffer = [];
         }
       });
   }
@@ -579,36 +615,49 @@ export class SteamP2PTransport implements MultiplayerTransport {
     if (!this._acceptSettled) {
       // Accept hasn't resolved yet — buffer to prevent message loss
       this._preAcceptBuffer.push(msg);
+      rrLog('mp:tx', 'recv buffered (accept pending)', { type: msg.type });
       return;
     }
+    rrLog('mp:tx', 'recv dispatched', { type: msg.type });
     emitToListeners(this.listeners, msg.type, msg);
   }
 
   send(type: MultiplayerMessageType, payload: Record<string, unknown>): void {
-    if (!this.peerId) return; // no peer target — truly nothing to do
     const msg: MultiplayerMessage = {
       type,
       payload,
       timestamp: Date.now(),
       senderId: this.localId,
     };
+    // F-bufferUntilConnect: when host has created a lobby but the peer-poll
+    // hasn't fired yet, connect() has not been called so peerId is empty and
+    // state is 'disconnected'. Buffer the message so it can be replayed once
+    // the first peer arrives and connect() resolves.
+    if (!this.peerId || this.state === 'disconnected') {
+      if (this._preConnectBuffer.length >= SteamP2PTransport._PRESEND_BUFFER_CAP) {
+        const dropped = this._preConnectBuffer.shift();
+        rrLog('mp:tx', 'preConnectBuffer overflow, evicted oldest', { droppedType: dropped?.type });
+      }
+      this._preConnectBuffer.push(msg);
+      rrLog('mp:tx', 'send queued in preConnectBuffer', { type, queue: this._preConnectBuffer.length });
+      return;
+    }
     if (this.state === 'connecting') {
-      // C4: buffer the message until acceptP2PSession resolves, then flush
       if (this._preSendBuffer.length >= SteamP2PTransport._PRESEND_BUFFER_CAP) {
-        console.warn('[SteamP2PTransport] _preSendBuffer overflow, dropping oldest');
-        this._preSendBuffer.shift();
+        const dropped = this._preSendBuffer.shift();
+        rrLog('mp:tx', 'preSendBuffer overflow, evicted oldest', { droppedType: dropped?.type });
       }
       this._preSendBuffer.push(msg);
+      rrLog('mp:tx', 'send queued in preSendBuffer', { type, queue: this._preSendBuffer.length });
       return;
     }
     if (this.state !== 'connected') {
-      console.warn('[SteamP2PTransport] send dropped — transport not connected:', type, this.state);
+      rrLog('mp:tx', 'send dropped — transport in non-sendable state', { type, state: this.state });
       return;
     }
-    // sendP2PMessage is fire-and-forget at the transport level.
-    // Callers that need delivery guarantees must implement their own ACK logic.
+    rrLog('mp:tx', 'send dispatched', { type, peerId: this.peerId });
     sendP2PMessage(this.peerId, JSON.stringify(msg)).catch((e) => {
-      console.warn('[SteamP2PTransport] sendP2PMessage failed for', type, e);
+      rrLog('mp:tx', 'sendP2PMessage failed', { type, e: String(e) });
     });
   }
 
@@ -621,10 +670,12 @@ export class SteamP2PTransport implements MultiplayerTransport {
    * `setActiveLobby()`), and reset state.
    */
   disconnect(): void {
+    rrLog('mp:tx', 'disconnect called', { state: this.state, peerId: this.peerId });
     this.stopPollLoop?.();
     this.stopPollLoop = null;
     this._preAcceptBuffer = [];
     this._preSendBuffer = []; // C4: drop any pending outbound sends on disconnect
+    this._preConnectBuffer = []; // drop pre-connect queued sends
     this._acceptSettled = true; // prevent any in-flight connect from buffering further
 
     if (this.currentLobbyId) {

@@ -115,6 +115,8 @@ fn main() {
             steam::steam_get_local_steam_id,
             // Lobby owner SteamID — used by guest side to resolve the host's P2P endpoint
             steam::steam_get_lobby_owner,
+            // JS → file-logger bridge (pipes js-side diagnostics into debug.log)
+            steam::rr_log,
             // File system save (filesave.rs)
             filesave::fs_get_save_dir,
             filesave::fs_write_save,
