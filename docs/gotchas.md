@@ -5139,3 +5139,20 @@ Additionally, there was no timeout on the `lan_start_server` Tauri command. A po
 **Fix:** `SteamState::new()` now spawns a background thread that calls `client.run_callbacks()` every ~16 ms. The thread is cheap (`Client` is `Arc<Inner>` internally; cloning is a ref-count increment). Shutdown is automatic: when `SteamState` drops on app exit, the mpsc sender is dropped, causing the thread to exit on its next tick. The JS `steam_run_callbacks` command is kept as a harmless safety net.
 
 **Forward note:** Any future async Steam API (leaderboards, cloud save) will now have its callbacks processed without needing a dedicated polling loop. The background pump is always running whenever Steam initializes — no additional wiring required.
+
+### 2026-04-21 — macOS 15 Local Network permission + steam_appid.txt not in .app bundle
+
+**What:** Two missing items in the macOS .app bundle caused user-visible Steam multiplayer failures.
+
+1. `steam_appid.txt` was never copied into `Contents/MacOS/`. steamworks-rs looks for this file next to the executable (CWD at launch). Without it, `Client::init_app()` fails to attach to the correct Steam App ID — the overlay, community features, and lobby operations silently misbehave or fail.
+
+2. `NSLocalNetworkUsageDescription` was absent from `Info.plist`. macOS 15 (Sequoia) silently refuses Local Network permission when this key is missing. The result: the Rust `TcpListener` bind in `lan.rs` hangs, and the 10-second `Promise.race` in `lanServerService.ts` fires "LAN server start timed out after 10 seconds."
+
+**Fix:**
+
+- `src-tauri/tauri.conf.json`: added `"resources": ["steam_appid.txt"]` (copies to `Contents/Resources/` — belt-and-suspenders for future Tauri CWD changes) and `bundle.macOS.infoPlist.NSLocalNetworkUsageDescription` (injects the key into `Info.plist` at build time).
+- `scripts/steam-build.sh`: added a step immediately after the `libsteam_api.dylib` copy to also copy `src-tauri/steam_appid.txt` into `Contents/MacOS/` — the directory steamworks-rs actually searches.
+
+**Why `resources[]` alone is not enough:** Tauri places resources in `Contents/Resources/`, but the binary's CWD at Tauri launch is the app bundle root, not `Contents/MacOS/`. steamworks-rs resolves `steam_appid.txt` relative to `argv[0]`'s directory, which is `Contents/MacOS/`. Putting it in `Contents/Resources/` alone means it is never found. The explicit `cp` in the build script is the authoritative fix; `resources[]` is a fallback.
+
+**Why `NSBonjourServices` is not needed:** LAN discovery in `lanDiscoveryService.ts` uses plain HTTP probing across RFC1918 subnets — not mDNS/Bonjour. `NSBonjourServices` is only required for Bonjour service type registration. A TODO in `lanDiscoveryService.ts` notes mDNS as a future option; if that is ever implemented, this key will need to be added.

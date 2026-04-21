@@ -83,7 +83,9 @@ Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared
 | `564111f12` | 6 | M6 hasPassword cleanup + M23 typed IPC + L4 kick scaffold + docs |
 | (A2–A4 fix) | 7 | Ghost lobby prevention, Steam join error surfacing (pending_join_error, pollJoinResult), stale lobby filter, host metadata clear on leave |
 | (B2–B3 + C1–C3) | 8 | Lobby titles end-to-end, profanityService (maskProfanity + sanitizeLobbyTitle), broadcast dir cleanup on host leave, Steam force-leave |
-| (D1) | 9 | Steam overlay diagnostic: `steam_overlay_status` command, `GameOverlayActivated` callback, typed IPC, dev panel in MultiplayerMenu, docs |\n| (AR-80 pump) | 10 | Background `run_callbacks` pump thread — fixes intermittent lobby join failures on cold Steam backends (see AR-80 follow-up section in `docs/architecture/multiplayer.md`) |
+| (D1) | 9 | Steam overlay diagnostic: `steam_overlay_status` command, `GameOverlayActivated` callback, typed IPC, dev panel in MultiplayerMenu, docs |
+| (AR-80 pump) | 10 | Background `run_callbacks` pump thread — fixes intermittent lobby join failures on cold Steam backends (see AR-80 follow-up section in `docs/architecture/multiplayer.md`) |
+| (bundle fixes) | 11 | `steam_appid.txt` copied into `Contents/MacOS/` by `steam-build.sh`; `NSLocalNetworkUsageDescription` added to `Info.plist` via `tauri.conf.json` — fixes Steam init on macOS and LAN server permission on macOS 15 |
 
 See `docs/mechanics/multiplayer.md` and `docs/architecture/multiplayer.md` for per-fix detail. All C1–C5 criticals, H1–H19 highs, M1–M23 mediums, L1–L5 lows closed.
 

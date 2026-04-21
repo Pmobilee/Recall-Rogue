@@ -476,6 +476,14 @@ Both expose the same `/mp/*` endpoints. Port 19738 default.
 
 `lanServerService.ts` uses live `isTauriRuntime()` check (not stale `isDesktop`). `startLanServer()` has a 10s timeout — Rust-side hangs do not block the UI indefinitely.
 
+### macOS 15 Requirements
+
+macOS 15 (Sequoia) requires `NSLocalNetworkUsageDescription` in `Info.plist` for any app that binds a local-network socket. Without it, macOS silently refuses the permission and the `TcpListener` bind in `lan.rs` hangs — `startLanServer()` fires the 10s timeout with "LAN server start timed out after 10 seconds".
+
+This key is now set via `bundle.macOS.infoPlist` in `src-tauri/tauri.conf.json`. It injects the description into the bundle's `Info.plist` at build time. No entitlement file changes are needed — the Info.plist key is sufficient to trigger the system permission prompt on first LAN server start.
+
+LAN discovery uses plain HTTP subnet scanning (not mDNS/Bonjour), so `NSBonjourServices` is not required.
+
 ---
 
 ## Player Roster Panel

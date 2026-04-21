@@ -18,6 +18,10 @@ set -euo pipefail
 #   bundle, but the recall-rogue binary links against it via @loader_path/libsteam_api.dylib.
 #   This script copies the dylib (built by steamworks-sys) into the .app bundle's
 #   MacOS directory after the Tauri build completes.
+#
+#   steam_appid.txt is also copied into Contents/MacOS/ so steamworks-rs finds it
+#   in the CWD relative to the binary. (Tauri bundles it into Contents/Resources/
+#   via the resources[] config, but steamworks-rs looks next to the executable.)
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -168,6 +172,14 @@ if $DO_BUILD; then
     fi
     cp "$DYLIB" "$APP_BUNDLE/Contents/MacOS/libsteam_api.dylib"
     echo "[steam] libsteam_api.dylib bundled."
+
+    # steamworks-rs looks for steam_appid.txt in the CWD (next to the binary).
+    # On macOS the binary lives in Contents/MacOS/, so copy it there.
+    # tauri.conf.json also lists it under resources[] (copies to Contents/Resources/)
+    # as belt-and-suspenders for future Tauri CWD changes.
+    echo "[steam] Bundling steam_appid.txt..."
+    cp "$TAURI_DIR/steam_appid.txt" "$APP_BUNDLE/Contents/MacOS/steam_appid.txt"
+    echo "[steam] steam_appid.txt bundled."
 fi
 
 # ── Verify build exists ──
