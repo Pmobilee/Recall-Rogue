@@ -237,7 +237,7 @@
               </span>
               {#if entry.fairnessRating != null}
                 <span class="fairness" title="Fairness rating {entry.fairnessRating}/100">
-                  &#9733; {entry.fairnessRating}
+                  ★ {entry.fairnessRating}
                 </span>
               {/if}
               <button
@@ -248,7 +248,7 @@
                 aria-label="Join lobby hosted by {entry.hostName}"
                 aria-disabled={full}
               >
-                {entry.visibility === 'password' ? '&#128274; Join' : 'Join'}
+                {entry.visibility === 'password' ? '🔒 Join' : 'Join'}
               </button>
             </div>
           </li>
@@ -259,7 +259,7 @@
     {#if joinError && !passwordModalEntry}
       <div class="join-error-toast" role="alert" aria-live="assertive">
         {joinError}
-        <button class="toast-dismiss" onclick={() => { joinError = null }} aria-label="Dismiss error">&#x2715;</button>
+        <button class="toast-dismiss" onclick={() => { joinError = null }} aria-label="Dismiss error">✕</button>
       </div>
     {/if}
   </div>
@@ -268,7 +268,7 @@
   {#if passwordModalEntry}
     <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Enter lobby password">
       <div class="modal-card">
-        <h2 class="modal-title">&#128274; Password Required</h2>
+        <h2 class="modal-title">🔒 Password Required</h2>
         <p class="modal-host">Lobby hosted by <strong>{passwordModalEntry.hostName}</strong></p>
 
         <!-- svelte-ignore a11y_autofocus -->
