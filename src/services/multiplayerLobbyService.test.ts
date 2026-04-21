@@ -1408,3 +1408,97 @@ describe('L4: mp:lobby:kick message handler', () => {
     expect(getCurrentLobby()).not.toBeNull();
   });
 });
+
+
+// ---------------------------------------------------------------------------
+// Tests — A2: Ghost lobby prevention (joinLobby must not set _currentLobby on failure)
+// ---------------------------------------------------------------------------
+
+describe('joinLobby — A2 ghost lobby prevention', () => {
+  beforeEach(() => {
+    mockTransport = createMockTransport();
+    vi.clearAllMocks();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.restoreAllMocks();
+  });
+
+  it('throws when backend.joinLobbyById rejects and does NOT set _currentLobby', async () => {
+    // Override the global fetch mock so the /join endpoint returns an error
+    vi.stubGlobal('fetch', vi.fn((url: string) => {
+      if (url.includes('/code/')) {
+        // resolveByCode succeeds — returns a lobby ID so we proceed to join
+        return Promise.resolve({
+          ok: true, status: 200,
+          json: () => Promise.resolve({ lobbyId: 'ghost_lobby_id' }),
+        } as Response);
+      }
+      if (url.includes('/join')) {
+        // joinLobbyById fails — lobby no longer exists
+        return Promise.resolve({
+          ok: false, status: 404,
+          json: () => Promise.resolve({ error: 'Lobby not found or has ended.' }),
+        } as Response);
+      }
+      return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve({}) } as Response);
+    }));
+
+    await expect(joinLobby('ABCDEF', 'guest_ghost', 'Ghost')).rejects.toThrow();
+    // _currentLobby must NOT be set — no ghost lobby
+    expect(getCurrentLobby()).toBeNull();
+  });
+
+  it('does NOT connect transport when backend.joinLobbyById rejects', async () => {
+    const { getMultiplayerTransport } = await import('./multiplayerTransport');
+    vi.stubGlobal('fetch', vi.fn((url: string) => {
+      if (url.includes('/code/')) {
+        return Promise.resolve({
+          ok: true, status: 200,
+          json: () => Promise.resolve({ lobbyId: 'fail_lobby_id' }),
+        } as Response);
+      }
+      if (url.includes('/join')) {
+        return Promise.resolve({
+          ok: false, status: 403,
+          json: () => Promise.resolve({ error: 'Lobby is full.' }),
+        } as Response);
+      }
+      return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve({}) } as Response);
+    }));
+
+    try {
+      await joinLobby('XYZABC', 'guest_noconn', 'NoConn');
+    } catch {
+      // expected
+    }
+
+    // transport.connect should NOT have been called since join failed before we reached it
+    const transport = getMultiplayerTransport() as ReturnType<typeof createMockTransport>;
+    expect(transport.connect).not.toHaveBeenCalled();
+  });
+
+  it('succeeds and sets _currentLobby when backend.joinLobbyById resolves', async () => {
+    vi.stubGlobal('fetch', vi.fn((url: string) => {
+      if (url.includes('/code/')) {
+        return Promise.resolve({
+          ok: true, status: 200,
+          json: () => Promise.resolve({ lobbyId: 'real_lobby_id' }),
+        } as Response);
+      }
+      if (url.includes('/join')) {
+        return Promise.resolve({
+          ok: true, status: 200,
+          json: () => Promise.resolve({ lobbyId: 'real_lobby_id', lobbyCode: 'REALCD', joinToken: 'tok_ok' }),
+        } as Response);
+      }
+      return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve({}) } as Response);
+    }));
+
+    const lobby = await joinLobby('REALCD', 'guest_ok', 'OKPlayer');
+    expect(lobby).not.toBeNull();
+    expect(getCurrentLobby()).not.toBeNull();
+    expect(getCurrentLobby()!.lobbyId).toBe('real_lobby_id');
+  });
+});

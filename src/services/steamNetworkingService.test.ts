@@ -164,8 +164,10 @@ describe('M23: public API functions short-circuit on non-Tauri platform', () => 
     expect(await createSteamLobby('public', 4)).toBeNull();
   });
 
-  it('joinSteamLobby returns false', async () => {
-    expect(await joinSteamLobby('lobby_123')).toBe(false);
+  it('joinSteamLobby returns null on non-Tauri platform', async () => {
+    // A3: joinSteamLobby now returns string | null (lobby ID or null) instead of boolean.
+    // On non-Tauri platforms it returns null (short-circuit, same as other Steam functions).
+    expect(await joinSteamLobby('lobby_123')).toBeNull();
   });
 
   it('leaveSteamLobby resolves without error', async () => {

@@ -26,6 +26,12 @@ pub struct SteamState {
     /// cleared when steam_leave_lobby is called or steam_force_leave_active_lobby runs.
     /// Used by the on_exit handler in main.rs to clean up the lobby on app close.
     pub active_lobby_id: Arc<Mutex<Option<u64>>>,
+    /// A3: Stores the error string from the most recent `join_lobby` callback failure.
+    /// Cleared at the start of each `steam_join_lobby` call. One-shot: `steam_get_pending_join_error`
+    /// calls `take()` so the error is consumed after being read.
+    /// Used by the TS-side `pollJoinResult` to surface the real Steam rejection reason (lobby full,
+    /// no access, banned, etc.) instead of a generic timeout.
+    pub pending_join_error: Arc<Mutex<Option<String>>>,
 }
 
 impl SteamState {
@@ -50,6 +56,7 @@ impl SteamState {
                     pending_join_lobby_id: Arc::new(Mutex::new(None)),
                     pending_lobby_list: Arc::new(Mutex::new(None)),
                     active_lobby_id: Arc::new(Mutex::new(None)),
+                    pending_join_error: Arc::new(Mutex::new(None)),
                 }
             }
             Err(e) => {
@@ -60,6 +67,7 @@ impl SteamState {
                     pending_join_lobby_id: Arc::new(Mutex::new(None)),
                     pending_lobby_list: Arc::new(Mutex::new(None)),
                     active_lobby_id: Arc::new(Mutex::new(None)),
+                    pending_join_error: Arc::new(Mutex::new(None)),
                 }
             }
         }
@@ -218,6 +226,10 @@ pub fn steam_get_pending_lobby_id(
 /// is stored in `SteamState::pending_join_lobby_id` AND `SteamState::active_lobby_id` and
 /// can be retrieved via `steam_get_pending_join_lobby_id`.
 ///
+/// A3: On callback failure, the error string is stored in `pending_join_error` and can be
+/// retrieved via `steam_get_pending_join_error`. The error slot is cleared at the start of
+/// each call so it only reflects the current attempt.
+///
 /// # Parameters
 /// - `lobby_id`: The lobby's 64-bit Steam ID as a decimal string
 #[tauri::command]
@@ -225,6 +237,12 @@ pub fn steam_join_lobby(state: State<SteamState>, lobby_id: String) -> Result<()
     // Clone the Arcs before locking the client — same pattern as steam_create_lobby.
     let pending_join = state.pending_join_lobby_id.clone();
     let active = state.active_lobby_id.clone();
+    let pending_error = state.pending_join_error.clone();
+
+    // A3: Clear the error slot before each new join attempt so stale errors don't bleed through.
+    if let Ok(mut slot) = pending_error.lock() {
+        *slot = None;
+    }
 
     let lock = state.client.lock().map_err(|e| e.to_string())?;
     if let Some(client) = lock.as_ref() {
@@ -241,7 +259,14 @@ pub fn steam_join_lobby(state: State<SteamState>, lobby_id: String) -> Result<()
                     *slot = Some(joined_id.raw());
                 }
             }
-            Err(_) => eprintln!("[Steam] Failed to join lobby {}", lobby_id_clone),
+            Err(e) => {
+                let msg = format!("{:?}", e);
+                eprintln!("[Steam] Failed to join lobby {}: {}", lobby_id_clone, msg);
+                // A3: Store the error so pollJoinResult on the TS side can surface it.
+                if let Ok(mut slot) = pending_error.lock() {
+                    *slot = Some(msg);
+                }
+            }
         });
         println!("[Steam] Join lobby initiated: {}", lobby_id);
     }
@@ -258,6 +283,23 @@ pub fn steam_get_pending_join_lobby_id(
 ) -> Result<Option<String>, String> {
     let mut slot = state.pending_join_lobby_id.lock().map_err(|e| e.to_string())?;
     Ok(slot.take().map(|raw| raw.to_string()))
+}
+
+/// A3: Retrieve the error string stored by the most recent failed `steam_join_lobby` callback.
+///
+/// Returns `None` if the last join succeeded (or no join has been attempted yet).
+/// Consuming: `take()` — one-shot read. A second call returns `None` unless another join fails.
+///
+/// The TS-side `pollJoinResult` calls this in parallel with `steam_get_pending_join_lobby_id`.
+/// Whichever returns a non-null value first wins:
+///   - error returned → `joinSteamLobby` throws with the Steam reason.
+///   - id returned    → join succeeded; resolve with the id.
+#[tauri::command]
+pub fn steam_get_pending_join_error(
+    state: State<SteamState>,
+) -> Result<Option<String>, String> {
+    let mut slot = state.pending_join_error.lock().map_err(|e| e.to_string())?;
+    Ok(slot.take())
 }
 
 /// Leave a Steam lobby.

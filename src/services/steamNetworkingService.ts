@@ -23,7 +23,8 @@
  *   steam_accept_p2p_session  → acceptP2PSession
  *   steam_run_callbacks       → runSteamCallbacks
  *   steam_get_pending_lobby_id      → (internal, used by pollPendingResult in createSteamLobby)
- *   steam_get_pending_join_lobby_id → (internal, used by pollPendingResult in joinSteamLobby)
+ *   steam_get_pending_join_lobby_id → (internal, used by pollJoinResult in joinSteamLobby)
+ *   steam_get_pending_join_error    → (internal, used by pollJoinResult — A3 error surfacing)
  *
  * Tauri v2 IPC arg naming convention:
  *   JS callers MUST pass camelCase keys (e.g. `lobbyId`, `lobbyType`, `maxMembers`, `steamId`).
@@ -85,9 +86,11 @@ export interface SteamCommandArgs {
   steam_get_lobby_member_count: { lobbyId: string };
   steam_force_leave_active_lobby: Record<string, never>;
   steam_check_lobby_membership: { lobbyId: string; steamId: string };
-  /** Internal polling commands — no args, accessed via pollPendingResult. */
+  /** Internal polling commands — no args, accessed via pollPendingResult / pollJoinResult. */
   steam_get_pending_lobby_id: Record<string, never>;
   steam_get_pending_join_lobby_id: Record<string, never>;
+  /** A3: One-shot error slot for join failures — parallel-polled by pollJoinResult. */
+  steam_get_pending_join_error: Record<string, never>;
   steam_get_lobby_list_result: Record<string, never>;
   steam_read_p2p_messages: { channel: number };
   steam_run_callbacks: Record<string, never>;
@@ -114,6 +117,8 @@ export interface SteamCommandReturn {
   steam_check_lobby_membership: boolean;
   steam_get_pending_lobby_id: string | null;
   steam_get_pending_join_lobby_id: string | null;
+  /** A3: string when a join error is pending; null when no error (or error already consumed). */
+  steam_get_pending_join_error: string | null;
   steam_get_lobby_list_result: string[] | null;
   steam_read_p2p_messages: SteamP2PMessage[];
   steam_run_callbacks: void;
@@ -238,10 +243,10 @@ async function tauriInvoke<T = unknown>(
 /**
  * Poll a Tauri "pending result" command until it returns a non-null string,
  * pumping Steam callbacks each tick. Used to bridge Steamworks' async callback
- * model into a synchronous-looking Promise for createLobby/joinLobby.
+ * model into a synchronous-looking Promise for createSteamLobby.
  *
- * Steamworks lobby operations (create, join) return immediately at the IPC
- * boundary but deliver their results via a callback that fires later when
+ * Steamworks lobby operations (create) return immediately at the IPC boundary
+ * but deliver their results via a callback that fires later when
  * `steam_run_callbacks` is pumped. This helper spins the pump loop until
  * the pending-result slot is populated, then returns it.
  *
@@ -258,6 +263,46 @@ async function pollPendingResult(
     await tauriInvoke('steam_run_callbacks');
     const value = await tauriInvoke<string | null>(pendingCmd);
     if (value) return value;
+    await new Promise((r) => setTimeout(r, intervalMs));
+  }
+  return null;
+}
+
+/**
+ * A3: Poll for the result of a Steam join lobby operation.
+ *
+ * Runs a parallel poll loop against both `steam_get_pending_join_lobby_id` (success slot)
+ * and `steam_get_pending_join_error` (error slot). Whichever returns a non-null value first wins:
+ *  - Error slot populated  → throws `Error(errorMessage)` so callers see the real Steam reason.
+ *  - ID slot populated     → resolves with the lobby ID string.
+ *  - Neither within timeout → resolves with null (same as pre-A3 timeout behaviour).
+ *
+ * Uses a 10s timeout instead of 5s — Steam join callbacks can be slow on cold lobbies
+ * (host not yet registered, NAT traversal, etc.).
+ *
+ * @returns The joined lobby ID string on success, or null on timeout.
+ * @throws  Error with the Steam error message when the join callback fires with an error.
+ */
+async function pollJoinResult(
+  timeoutMs: number = 10000,
+  intervalMs: number = 100,
+): Promise<string | null> {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    await tauriInvoke('steam_run_callbacks');
+
+    // Check both slots in the same tick — consume whichever fires first.
+    const [idValue, errorValue] = await Promise.all([
+      tauriInvoke<string | null>('steam_get_pending_join_lobby_id'),
+      tauriInvoke<string | null>('steam_get_pending_join_error'),
+    ]);
+
+    if (errorValue) {
+      // Error path: throw so joinSteamLobby propagates the real reason.
+      throw new Error(errorValue);
+    }
+    if (idValue) return idValue;
+
     await new Promise((r) => setTimeout(r, intervalMs));
   }
   return null;
@@ -293,20 +338,24 @@ export async function createSteamLobby(
  * Join an existing Steam lobby by its lobby ID.
  *
  * Steamworks join is asynchronous — the Rust command returns immediately and the
- * LobbyEnter_t callback fires after `steam_run_callbacks` is pumped. This function
- * polls until the callback fires (up to 5 s).
+ * LobbyEnter_t callback fires after `steam_run_callbacks` is pumped.
  *
- * Returns true on success, false if the join timed out or on non-Steam platforms.
+ * A3: Uses `pollJoinResult` which polls both the success slot and the error slot
+ * in parallel (10s timeout). When the callback fires with a failure, the real Steam
+ * error reason is thrown so callers can surface it in the UI instead of showing a
+ * generic "join failed" message.
+ *
+ * @throws Error with the Steam error message if the join callback reports a failure.
+ * @returns The joined lobby ID string on success, or null on timeout (non-Steam or no response).
  */
-export async function joinSteamLobby(lobbyId: string): Promise<boolean> {
-  if (!isTauriRuntime()) return false;
+export async function joinSteamLobby(lobbyId: string): Promise<string | null> {
+  if (!isTauriRuntime()) return null;
   // Kick off join — returns () immediately; result delivered via LobbyEnter_t callback.
   // Args are camelCase — Tauri v2 translates to snake_case for Rust automatically.
   const kickoff = await invokeSteam('steam_join_lobby', { lobbyId });
-  if (kickoff === null) return false; // IPC call itself failed
-  // Poll until the LobbyEnter_t callback fires and stores the joined lobby ID.
-  const result = await pollPendingResult('steam_get_pending_join_lobby_id');
-  return result !== null;
+  if (kickoff === null) return null; // IPC call itself failed
+  // A3: Poll both success and error slots — throws on error, returns id on success.
+  return pollJoinResult();
 }
 
 /**

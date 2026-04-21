@@ -1,3 +1,18 @@
+### 2026-04-21 — Ghost lobby on join failure + silent Steam join errors
+
+**What:** Entering a bad join code (or a lobby whose host had left) created a new race-mode lobby for the player instead of showing an error. Additionally, real Steam join failure reasons ("lobby full", "no access") never reached the UI — only a generic timeout was shown.
+
+**Why (ghost lobby):** `joinLobby` set `_currentLobby = { lobbyId: resolvedId ?? '', mode: 'race', ... }` BEFORE calling `backend.joinLobbyById`, then wrapped the actual join call in a `try/catch` that swallowed errors with just a `console.warn`. Any failure left `_currentLobby` set. The transport then connected to an empty channel. CardApp.svelte's catch never saw the error because it was swallowed.
+
+**Why (silent Steam errors):** `steam_join_lobby` (Rust) returned `Ok(())` immediately. The `LobbyEnter_t` callback's `Err(_)` branch only called `eprintln!`. The TS poll loop would wait 5 s then return `null`/`false` — the error reason from Steam was discarded at the Rust boundary.
+
+**Fix (A2):** Removed the try/catch wrapping `backend.joinLobbyById` in `joinLobby`. Moved `_currentLobby` assignment to AFTER `backend.joinLobbyById` returns successfully, using the real `result.lobbyId`/`result.lobbyCode`. The broadcast path (resolvedId null) still passes the lobbyCode as the join target — no change needed there.
+
+**Fix (A3):** Added `pending_join_error: Arc<Mutex<Option<String>>>` to `SteamState`. `steam_join_lobby` clears it on entry and populates it in the `Err(e)` callback branch. New Tauri command `steam_get_pending_join_error` reads/takes it (one-shot). `pollJoinResult` in `steamNetworkingService.ts` polls both slots in parallel each tick; throws the error string if the error slot fires. `joinSteamLobby` return type changed from `boolean` to `string | null` (the lobby ID on success). Callers need updating — `steamNetworkingService.test.ts` had a test expecting `false` which was updated to `toBeNull()`.
+
+**Rule:** Never pre-assign `_currentLobby` (or any committed state) before an async operation that can fail. The commit-point is the success return of the operation, not the start of the call.
+
+
 ### 2026-04-20 — Hub cursor lag on macOS after brightness/outline filter split — missing will-change layer promotion
 
 **What:** After commit `f97a1297b` ("perf(hub): fix Chrome campsite slowdown"), the hub campsite became laggy on macOS/WebKit while moving the cursor. Chrome was fine (the fix targeted Chrome). The fix had split brightness off the sprite outline filter chain — a correct architectural decision — but the CSS comment in `.camp-sprite-layer` said *"Chromium GPU-caches the outlined image (via will-change below)"* while zero `will-change` or layer-promotion hints were ever actually present in the file.

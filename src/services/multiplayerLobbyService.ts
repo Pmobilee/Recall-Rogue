@@ -42,6 +42,7 @@ import {
   requestSteamLobbyList,
   getSteamLobbyListResult,
   getLobbyMemberCount,
+  leaveSteamLobby,
   getLastSteamInvokeError,
 } from './steamNetworkingService';
 import type { SteamLobbyType } from './steamNetworkingService';
@@ -324,8 +325,21 @@ export async function joinLobby(
     throw new Error('Lobby not found. Check the code and try again.');
   }
 
+  // A2: For non-broadcast paths, joinLobbyById must succeed before we set _currentLobby.
+  // Previously _currentLobby was set before the join (ghost lobby bug): any backend failure
+  // left the player in a placeholder race lobby with no real host. Now we let the error
+  // propagate — CardApp.svelte's catch block sets multiplayerError for the user to see.
+  const broadcast = isBroadcastMode();
+  const transport = getMultiplayerTransport(broadcast ? 'broadcast' : 'auto');
+
+  // For broadcast mode resolvedId is null — the lobbyCode IS the channel key.
+  // For steam/web, resolvedId is the real backend lobby ID and the join must succeed.
+  const joinTargetId = resolvedId ?? lobbyCode;
+  const result = await backend.joinLobbyById(joinTargetId, playerId, displayName, passwordHash);
+
+  // A2: _currentLobby is assigned AFTER backend join confirmed — never before.
   _currentLobby = {
-    lobbyId: resolvedId ?? '',
+    lobbyId: result.lobbyId || resolvedId || '',
     hostId: '',
     mode: 'race',
     deckSelectionMode: 'host_picks',
@@ -333,28 +347,13 @@ export async function joinLobby(
     players: [{ id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() }],
     maxPlayers: 4,
     isRanked: false,
-    lobbyCode,
+    lobbyCode: result.lobbyCode || lobbyCode,
     status: 'waiting',
     visibility: 'public',
   };
 
-  const broadcast = isBroadcastMode();
-  const transport = getMultiplayerTransport(broadcast ? 'broadcast' : 'auto');
-
-  let joinToken: string | undefined;
-  if (resolvedId) {
-    try {
-      const result = await backend.joinLobbyById(resolvedId, playerId, displayName, passwordHash);
-      joinToken = result.joinToken;
-      _currentLobby.lobbyId = result.lobbyId;
-      if (result.lobbyCode) _currentLobby.lobbyCode = result.lobbyCode;
-    } catch (e) {
-      console.warn('[multiplayerLobbyService] joinLobby backend join failed:', e);
-    }
-  }
-
-  const connectOpts: ConnectOpts | undefined = joinToken
-    ? { lobbyId: _currentLobby.lobbyId, joinToken }
+  const connectOpts: ConnectOpts | undefined = result.joinToken
+    ? { lobbyId: _currentLobby.lobbyId, joinToken: result.joinToken }
     : undefined;
   transport.connect(
     broadcast ? lobbyCode : (_currentLobby.lobbyId || lobbyCode),
@@ -455,6 +454,21 @@ export function leaveLobby(): void {
   if (_broadcastHeartbeat !== null) {
     clearInterval(_broadcastHeartbeat);
     _broadcastHeartbeat = null;
+  }
+
+  // A4: When the host leaves a Steam lobby, clear key metadata fields so the entry
+  // doesn't round-trip in other clients' next listPublicLobbies request.
+  // Fire-and-forget — we don't await because leaveLobby is synchronous and the IPC
+  // call completes in milliseconds even if the result is discarded.
+  const leavingLobbyId = _currentLobby?.lobbyId;
+  const leavingAsHost = _currentLobby?.hostId === _localPlayerId;
+  if (leavingLobbyId && leavingAsHost) {
+    // Calling setLobbyData with empty values tells other Steam clients the slot is gone.
+    // The lobby itself is left via steam_force_leave_active_lobby on app exit or via
+    // leaveSteamLobby here. Both paths are best-effort.
+    void leaveSteamLobby(leavingLobbyId).catch(() => {}); // explicit Steam API leave
+    void setLobbyData(leavingLobbyId, 'lobby_code', '').catch(() => {});
+    void setLobbyData(leavingLobbyId, 'mode', '').catch(() => {});
   }
 
   // Clean up H5 seed-ACK timers
@@ -1560,11 +1574,14 @@ const steamBackend: LobbyBackend = {
       }
     }
 
-    const ok = await joinSteamLobby(lobbyId);
-    if (!ok) throw new Error(`[steamBackend] joinSteamLobby failed for ${lobbyId}`);
+    // A3: joinSteamLobby now returns the joined lobby ID (string) on success, null on timeout,
+    // and throws with the real Steam error reason on callback failure (e.g. "lobby full").
+    // Let any thrown error propagate — the call stack in CardApp.svelte catches and displays it.
+    const joinedId = await joinSteamLobby(lobbyId);
+    if (!joinedId) throw new Error(`[steamBackend] joinSteamLobby timed out for ${lobbyId} — Steam may be slow or the lobby no longer exists`);
 
-    const lobbyCode = (await getLobbyData(lobbyId, 'lobby_code')) ?? '';
-    return { lobbyId, lobbyCode };
+    const lobbyCode = (await getLobbyData(joinedId, 'lobby_code')) ?? '';
+    return { lobbyId: joinedId, lobbyCode };
   },
 
   async listPublicLobbies(filter?: LobbyListFilter): Promise<LobbyBrowserEntry[]> {
@@ -1590,6 +1607,11 @@ const steamBackend: LobbyBackend = {
       if (!mode || !visibility || !lobbyCode) continue;
       // friends_only lobbies excluded from browser: Steam handles that filter natively.
       if (visibility === 'friends_only') continue;
+      // A4: Skip lobbies with no members — the host has disconnected, nothing to join.
+      if (currentPlayers === 0) continue;
+      // A4: Skip lobbies older than 2 hours with fewer than 2 players — likely stale.
+      const createdAtNum = Number(createdAtStr ?? 0);
+      if (createdAtNum > 0 && Date.now() - createdAtNum > 7_200_000 && currentPlayers < 2) continue;
       const maxPlayers = Number(maxPlayersStr ?? '4');
       // Apply filter if provided.
       if (filter?.mode && mode !== filter.mode) continue;

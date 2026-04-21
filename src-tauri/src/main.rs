@@ -26,6 +26,8 @@ fn main() {
             steam::steam_get_pending_lobby_id,
             steam::steam_join_lobby,
             steam::steam_get_pending_join_lobby_id,
+            // A3: error slot for join failures — surfaced to TS via pollJoinResult
+            steam::steam_get_pending_join_error,
             steam::steam_leave_lobby,
             steam::steam_get_lobby_members,
             steam::steam_set_lobby_data,

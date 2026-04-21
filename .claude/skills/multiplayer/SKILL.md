@@ -81,6 +81,7 @@ Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared
 | `c80c99e55` | 4 | polish + Elo wire + CORS default |
 | `60f260fe0` | 5 | final wiring (initRaceMode, opp-rating, workshop gate) |
 | `564111f12` | 6 | M6 hasPassword cleanup + M23 typed IPC + L4 kick scaffold + docs |
+| (A2–A4 fix) | 7 | Ghost lobby prevention, Steam join error surfacing (pending_join_error, pollJoinResult), stale lobby filter, host metadata clear on leave |
 
 See `docs/mechanics/multiplayer.md` and `docs/architecture/multiplayer.md` for per-fix detail. All C1–C5 criticals, H1–H19 highs, M1–M23 mediums, L1–L5 lows closed.
 

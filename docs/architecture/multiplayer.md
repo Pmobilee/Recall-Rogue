@@ -496,10 +496,52 @@ For modes with `MODE_MAX_PLAYERS[mode] > 2` (`trivia_night`, `race` 3-4+):
 
 ---
 
+---
+
+## Steam Join Error Surfacing (A3 — 2026-04-21)
+
+**Source file:** `src-tauri/src/steam.rs`, `src/services/steamNetworkingService.ts`
+
+### Problem (pre-A3)
+
+`steam_join_lobby` returned `Ok(())` immediately. The `Err(_)` branch of the async `LobbyEnter_t` callback only wrote to stderr. The TS-side `pollPendingResult` would time out after 5s and return `null`/`false`. The actual Steam error reason (lobby full, no access, etc.) never reached the UI — players saw a generic join failure.
+
+### Fix
+
+1. `SteamState` has a new field `pending_join_error: Arc<Mutex<Option<String>>>`.
+2. `steam_join_lobby` clears the error slot at call-start and fills it in the callback `Err(e)` branch via `format!("{:?}", e)`.
+3. New Tauri command `steam_get_pending_join_error` reads and takes the error slot (one-shot).
+4. `pollJoinResult` in `steamNetworkingService.ts` polls both `steam_get_pending_join_lobby_id` and `steam_get_pending_join_error` in parallel each tick. On error slot populated: throws `Error(message)`. On ID populated: resolves with lobby ID.
+5. Poll timeout bumped from 5s to 10s for the join path (slow callbacks on cold lobbies).
+6. `joinSteamLobby` now returns `string | null` (lobby ID) instead of `boolean` — callers that used the boolean return need updating.
+
+### Error flow: Steam callback → UI
+
+```
+steam_join_lobby (Rust)
+  → LobbyEnter_t callback Err(e)
+  → pending_join_error.lock() = Some(format!("{:?}", e))
+
+pollJoinResult (TS, every 100ms)
+  → tauriInvoke('steam_get_pending_join_error') returns error string
+  → throws Error(errorString)
+
+steamBackend.joinLobbyById
+  → error propagates up (no catch)
+
+joinLobby / joinLobbyById (multiplayerLobbyService.ts)
+  → error propagates up (A2 fix: no swallowing try/catch)
+
+CardApp.svelte :650-661
+  → catch block sets multiplayerError
+  → UI banner shows the error
+```
+
 ## CHANGELOG (abbreviated)
 
 | Date | Commits | What |
 |------|---------|------|
+| 2026-04-21 | (A2–A4 fix wave) | Ghost lobby prevention (joinLobby: _currentLobby set after join), Steam join error surfacing (pending_join_error slot, pollJoinResult, 10s timeout), stale lobby filtering (currentPlayers=0, >2h), host metadata clear on leave |
 | 2026-04-21 | `ec9e86626`–`60f260fe0` | Hardening wave: co-op/race/trivia/LAN + Elo/FSRS, lobby service + workshop + lobby UI, wiring + PlayerProfile schema v2, Elo wire + CORS default, final wiring (initRaceMode, opp-rating, workshop gate) |
 | 2026-04-20 | `3afcf0500`, `b332c3d96`, `4a1135194`, `3faa62a95`, `b06820ea8` | Visibility toggle + roster panel, Steam lobby discovery wiring, transport + Steam C1/C2/H8/H9, roster sort + CardCombatOverlay typecheck, lobby code rejection + live Tauri check |
 | 2026-04-15 | — | LAN co-op system: `lan.rs`, `lanServerService.ts`, `lanDiscoveryService.ts`, `lanConfigService.ts` |
