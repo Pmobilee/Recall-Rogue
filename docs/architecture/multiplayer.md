@@ -474,17 +474,29 @@ During a turn, P1 and P2 may see different enemy HP (each sees only their own da
 ### WebSocket Protocol (`/mp/ws?lobbyId=&playerId=&token=`)
 
 Server validates `joinToken`, sends `mp:lobby:settings` snapshot, then routes:
-- `mp:lobby:ready` — rebroadcast
-- `mp:lobby:leave` — `leaveLobby()` + close
-- `mp:lobby:settings` — host-only; patch + rebroadcast
-- `mp:lobby:start` — host-only; `status=in_game` + broadcast
-- `mp:race:*`, `mp:coop:*`, `mp:duel:*`, `mp:trivia:*` — forwarded verbatim
+- `mp:lobby:ready` — persists `lastKnownReady` on the connection record (issue 069), then rebroadcasts `mp:lobby:ready`.
+- `mp:lobby:leave` — `leaveLobby()` + close. Distinct from a transport-level disconnect.
+- `mp:lobby:settings` — host-only; patch + rebroadcast.
+- `mp:lobby:start` — host-only; `status=in_game` + broadcast.
+- `mp:race:*`, `mp:coop:*`, `mp:duel:*`, `mp:trivia:*` — forwarded verbatim.
+
+`ws.on('close')` (transport-level disconnect, not a deliberate `mp:lobby:leave`) emits **`mp:lobby:peer_left`** to the remaining players (issue L-029) BEFORE `leaveLobby` runs. Payload: `{ playerId, reason: 'transport_close', timestamp }`. The Steam transport emits the same shape from the Rust side via P2PSessionConnectFail_t; clients can treat both paths identically. Sub-second detection latency replaces the prior ~30s JS ping/pong fallback.
 
 ### Server Snapshot Player Shape
 
 ```typescript
-{ id: string; displayName: string; isHost: boolean; isReady: boolean }
+{
+  id: string;
+  displayName: string;
+  isHost: boolean;
+  isReady: boolean;            // issue 069: server tracks lastKnownReady per connection
+  multiplayerRating: number;   // issue 068: defaults to 1500 when the player record is created
+}
 ```
+
+Each `MpLobbyConnection` carries `lastKnownReady` and `multiplayerRating` so late joiners receive an accurate snapshot immediately, without waiting for the next `mp:lobby:settings` broadcast or a re-toggle from the already-ready player. Defaults are `isReady: false` and `multiplayerRating: 1500` (standard ELO baseline; the server is not authoritative for rating, just provides a sane non-undefined slot).
+
+The `mp:lobby:player_joined` payload now includes `isReady` and `multiplayerRating` for the joining player too — previously omitted, which left `players[i].multiplayerRating` undefined on the client until the next settings broadcast.
 
 Early versions used `playerId` instead of `id` — caused all ready-state lookups to return `undefined`. See `docs/gotchas.md` 2026-04-13.
 
@@ -682,10 +694,62 @@ Applied in both `steamBackend.resolveByCode` and `steamBackend.listPublicLobbies
 
 ---
 
+## Settings Merge & Reconciliation (ULTRATHINK wave 2 — 2026-04-22)
+
+**Source files:** `src/services/multiplayerLobbyService.ts`, `src/data/multiplayerTypes.ts`
+
+The host is the authoritative writer of `LobbyState`. Every host-side mutation calls `broadcastSettings()` which sends a full `mp:lobby:settings` snapshot to all guests. Guests merge the snapshot via the `reg('mp:lobby:settings', ...)` handler in `setupMessageHandlers`.
+
+Three rules govern the merge to prevent regressions seen in earlier waves:
+
+### 1. Sequence-number rejection (#037)
+
+Each `broadcastSettings()` call increments `_settingsSeq` (host-only) and stamps the value onto the `mp:lobby:settings` payload. Guests track `_lastSettingsSeqSeen` and **drop any message with `incoming.seq <= _lastSettingsSeqSeen`**. This defends against lossy Steam P2P delivering an older snapshot after a newer one and clobbering fresh state. Both counters reset to 0 in `leaveLobby`. Legacy peers that don't include `seq` are treated as `seq=0` and accepted only on the first broadcast (after that, any future seq>=1 from an upgraded peer takes priority).
+
+### 2. Local-signal preservation (#026)
+
+Before `Object.assign(_currentLobby, settings)` runs, the guest snapshots a per-player `{ isReady, connectionState, multiplayerRating }` map. After the merge, two fields are restored from local truth:
+
+- **`connectionState='reconnecting'`** — driven by the local peer-left poll and the H10 60s grace timer, NOT by the host's snapshot. A host-broadcast `'connected'` value can never overwrite our local `'reconnecting'`.
+- **`multiplayerRating`** — if the host's snapshot has the placeholder `1000` and our cached value is a real Elo, our value wins.
+
+`isReady` for the local player still uses the H13 `readyVersion` comparison (newer local toggle wins).
+
+### 3. Periodic full-roster reconciliation (#036)
+
+The host runs a `startRosterReconciliation()` interval that re-broadcasts the full settings snapshot every **5 s** (`ROSTER_RECONCILE_MS`) until the lobby transitions to `status='in_game'` or `leaveLobby` runs. Each beat advances `_settingsSeq`, so guests atomically replace their roster on the next merge. Cheap insurance against accumulated identity drift from lost messages or partial merges.
+
+### Identity model (#025)
+
+The legacy `steam:<hostSteamId>` placeholder host entry was removed from `joinLobby` and `joinLobbyById`. Guests now start with `hostId=''` and a single self-entry; the first `mp:lobby:settings` broadcast (within ~150ms on Steam P2P after the host receives `mp:lobby:join`) bootstraps the real roster with the host's actual `player_xxx` ID. The placeholder format never matched the real ID format and broke the kick-signature check (`issuedBy === hostId`) and the peer-left poll matcher.
+
+### `local_player` regression guard (#058)
+
+`createLobby`, `joinLobby`, and `joinLobbyById` now throw if `playerId === 'local_player'` or empty. The legacy default would cause both peers to treat each other's `senderId` as self and silently drop every message — the classic "each in own game" symptom. Callers (`CardApp.svelte`) must resolve a real Steam ID or generated `player_xxx` ID before invoking the lobby API.
+
+### Per-transport handler-attach guard (#067)
+
+`_handlersAttached` is now scoped per-transport-instance via `_handlersAttachedTransport`. Calling `setupMessageHandlers` twice on the SAME transport remains the bug we want to prevent (doubled handlers); calling it again after the transport changes (singleton rebuilt by `destroyMultiplayerTransport`, or a separate `addLocalBot` transport becomes active) now correctly re-attaches.
+
+### `startGame` connected-player gate (#070)
+
+The pre-broadcast player-count check now filters out `connectionState==='reconnecting'` players. Without this, a partner who dropped during the ready handshake (still in roster, marked reconnecting) lets the count pass; the host clicks Start; the 3s ACK timeout fires; host enters the run alone.
+
+### `onGameStart` subscriber lifecycle (#034)
+
+Subscribers registered via `onGameStart` are intentionally NOT cleared in `leaveLobby` — they survive lobby cycles by design (`CardApp.svelte` registers once on app mount). The CONSUMER is responsible for storing and calling the returned cleanup function in their teardown path (`$effect` cleanup, `onDestroy`, error boundary recovery, HMR dispose). Without consumer cleanup, HMR / error-recovery re-mounts stack OLD subscriber closures on top of new ones, producing double-fire `onGameStart` that re-triggers the scene transition mid-run. The JSDoc on `onGameStart` documents this contract.
+
+### Deck-selection mode switch (#066)
+
+`setDeckSelectionMode` now clears the abandoned variant when switching modes: `host_picks → each_picks` clears the lobby-level `contentSelection` and `selectedDeckId`; `each_picks → host_picks` clears every player's per-player `contentSelection` and `selectedDeckId`. Stale selections from the prior mode no longer leak into the `mp:lobby:start` payload.
+
+---
+
 ## CHANGELOG (abbreviated)
 
 | Date | Commits | What |
 |------|---------|------|
+| 2026-04-22 | (ULTRATHINK wave 2 — agent A: lobbyService) | #025 dropped `steam:<id>` placeholder host entry from joinLobby/joinLobbyById — hostId stays empty until first `mp:lobby:settings` arrives (placeholder ID never matched real `player_xxx` IDs and broke kick-signature + peer-left matchers). #026 `mp:lobby:settings` merge now preserves non-local players' `connectionState='reconnecting'` and real `multiplayerRating` against host's snapshot. #034 `onGameStart` JSDoc now documents that subscriber dedup is the consumer's responsibility (CardApp `$effect` cleanup must call returned unsubscribe; HMR/error-recovery re-mounts otherwise stack closures). #036 host now broadcasts a full settings snapshot every 5s via `startRosterReconciliation` — guests atomically replace roster on each beat; stopped on leaveLobby + status='in_game'. #037 every `mp:lobby:settings` carries a monotonic `seq`; guests reject `incoming.seq <= _lastSettingsSeqSeen`. #057 already resolved (no `as MultiplayerMessageType` cast remains). #058 `createLobby`/`joinLobby`/`joinLobbyById` now throw if `playerId === 'local_player'` or empty (regression guard against the legacy placeholder reaching the lobby and producing self-routed sends). #066 `setDeckSelectionMode` clears the abandoned variant (host_picks↔each_picks) so stale selections don't carry into the start payload. #067 `_handlersAttached` now scoped per-transport-instance (`_handlersAttachedTransport`) — addLocalBot's separate transport correctly re-attaches handlers in a session that already created the Steam transport. #070 `startGame` connected-count gate now excludes `connectionState==='reconnecting'` players (host can no longer start solo when partner is unreachable but still in roster). H-016 verified already fixed in FIX023 (ACK contentHash handshake at lines 1700/1721). PASS1-BUG-12 deferred — requires `transport.send()` returning `Promise<boolean>` (transport.ts owned by another agent in this wave). |
 | 2026-04-22 | (ULTRATHINK wave 1) | 7 fixes: FIX016 — mp:lobby:start handler already applied mode/deckId/houseRules (confirmed present); FIX018 — replaced module-load-time `hasSteam` constant with live `isTauriPresent()` calls at all 9 call sites; FIX019 — `pickBackend()` ignores LAN-mode localStorage in Steam builds unless `?lan=1` URL flag present; FIX020 — Fastify `mp:lobby:start` broadcast now forwards full host payload (mode/houseRules/deckId/contentSelection); FIX022 — `startNewRun` maps coop→multiplayer_coop, duel→multiplayer_duel, trivia_night→multiplayer_trivia (prevents coop from triggering race-progress broadcast); FIX023 — `mp:lobby:start` handler is idempotent on re-entry (re-sends ACK, returns early); FIX029 — send-retry exhaustion transitions transport to 'error' state instead of silently logging. |
 | 2026-04-22 | (Wave 2 — C-003/C-004/C-005/C-006/C-007/BUG-8/BUG-10) | C-003: race broadcast gated on `multiplayerModeState === 'race'` — coop/duel/same_cards no longer enter race loop. C-004: fork-seed broadcast added for coop — host calls `collectForkSeeds` + `broadcastForkSeeds` after `initRunRng`; guest receives via `mp:sync` handler extended to coop mode in `initGameMessageHandlers`. C-005: `multiplayerPlayerCount` threaded from lobby through `RunState` to `createEnemy` — `getCoopHpMultiplier` now applies 1.6× in 2P coop. C-006: `coopEffects.ts` orphan deleted (zero callers confirmed). C-007: `awaitCoopEnemyReconcile` timeout (5s) + retry via `requestCoopEnemyStateRetry` + 3-attempt auto-retry in `initCoopSync`. BUG-8: host self-fires `onGameStart` immediately on Steam P2P (no loopback); `_hostStartFired` guard prevents double-fire on BroadcastChannel/WS echo. BUG-10: initial `broadcastPartnerState` at encounter start so partner HUD shows correct starting HP. |
 | 2026-04-22 | (BUG-1/2/3/4/14 Wave 1) | Guest now applies `mode`/`deckId`/`houseRules` from `mp:lobby:start` payload (fixes independent-game split). BUG-2: defensive abort if mode still undefined after apply. BUG-3: ACK timeout aborts start + fires `onLobbyError` + evicts ghost guests instead of firing onGameStart with unreachable peers. BUG-4: `mp:lobby:start_ack` was already in `MultiplayerMessageType` union — removed stale `as` cast + TODO comment. 3 new regression tests. |

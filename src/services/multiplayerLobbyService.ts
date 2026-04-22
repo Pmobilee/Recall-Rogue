@@ -148,8 +148,15 @@ let _botTransport: LocalMultiplayerTransport | null = null;
  * joinLobbyById(). If a code path calls it twice on the same transport,
  * every message handler fires twice, doubling side-effects (e.g. ready
  * toggles getting overwritten). Reset in leaveLobby().
+ *
+ * #067: We track the transport reference the guard was set against so a
+ * different transport instance (e.g. addLocalBot's separate transport)
+ * still gets handlers attached. Without this scoping, the bot transport
+ * silently runs without any lobby handlers in a session that already
+ * created the Steam transport.
  */
 let _handlersAttached = false;
+let _handlersAttachedTransport: unknown = null;
 
 /**
  * BUG16: Cleanup functions returned by each transport.on() call inside
@@ -193,6 +200,20 @@ const _recentLobbyCodes = new Set<string>();
  * overwriting a fresh toggle-off.
  */
 let _localReadyVersion = 0;
+
+// ── #037: Settings sequence number ───────────────────────────────────────────
+/**
+ * Monotonic sequence number stamped onto every mp:lobby:settings broadcast by the host.
+ * Guests track the highest seq they have observed in _lastSettingsSeqSeen and reject
+ * any incoming settings with seq <= that value. Defends against out-of-order delivery
+ * on lossy Steam P2P clobbering newer state with older.
+ *
+ * Host increments _settingsSeq before each broadcast.
+ * Guest reads incoming.seq; rejects (no merge, no notifyLobbyUpdate) if stale.
+ * Reset to 0 in leaveLobby so a fresh lobby starts clean.
+ */
+let _settingsSeq = 0;
+let _lastSettingsSeqSeen = 0;
 
 // ── H5: Seed ACK state (host-only) ───────────────────────────────────────────
 /**
@@ -425,6 +446,12 @@ export async function createLobby(
   opts?: { visibility?: LobbyVisibility; password?: string; maxPlayers?: number; title?: string },
 ): Promise<LobbyState> {
   rrLog('mp:createLobby', 'entry', { playerId, displayName, mode, opts: { visibility: opts?.visibility, maxPlayers: opts?.maxPlayers, title: opts?.title } });
+  // BUG-058 regression guard: 'local_player' is the legacy default that must NEVER
+  // reach the lobby. The caller (CardApp) must resolve a real Steam ID or generated
+  // player_xxx ID before calling createLobby.
+  if (playerId === 'local_player' || !playerId) {
+    throw new Error("[createLobby] Refusing to create lobby with placeholder playerId='local_player' — caller must resolve a real player ID first.");
+  }
   _localPlayerId = playerId;
 
   // M16: Reset password hash before any mutation to prevent cross-session leaks.
@@ -518,6 +545,11 @@ export async function createLobby(
     });
   }
 
+  // #036: Start the periodic full-roster reconciliation heartbeat. Host only —
+  // re-broadcasts the full settings snapshot every 5s so guest rosters can recover
+  // from drift caused by lost messages or partial merges.
+  startRosterReconciliation();
+
   // BUG12: Set Rich Presence so friends can click "Join Game" from the Steam friends list.
   // The 'connect' key value must begin with '+connect_lobby ' — Steam maps this to
   // the steam://joinlobby URL handler that triggers a join when a friend clicks the button.
@@ -548,6 +580,13 @@ export async function joinLobby(
   password?: string,
 ): Promise<LobbyState> {
   rrLog('mp:joinCode', 'entry', { lobbyCode, playerId, displayName, hasPw: !!password });
+  // BUG-058 regression guard: 'local_player' is the legacy default that must NEVER
+  // reach the lobby — both peers would treat each other's senderId as self and drop
+  // every message. The caller (CardApp) must resolve a real Steam ID or generated
+  // player_xxx ID before calling joinLobby.
+  if (playerId === 'local_player' || !playerId) {
+    throw new Error("[joinLobby] Refusing to join with placeholder playerId='local_player' — caller must resolve a real player ID first.");
+  }
   _localPlayerId = playerId;
 
   // M16: Reset password hash before any mutation to prevent cross-session leaks.
@@ -587,24 +626,17 @@ export async function joinLobby(
     : { mode: null, visibility: null, title: null, hostName: null, lobbyCode: null, maxPlayers: null };
 
   // A2: _currentLobby is assigned AFTER backend join confirmed — never before.
-  // BUG10: Prepopulate a placeholder host entry so the lobby list isn't guest-only
-  // until mp:lobby:settings arrives. Uses Steam lobby owner + host_name metadata if available.
-  const steamHostIdForJoin = useSteamMeta ? await getLobbyOwner(result.lobbyId).catch(() => null) : null;
-  const hostPlaceholderPlayers: LobbyPlayer[] = steamHostIdForJoin ? [
-    {
-      id: `steam:${steamHostIdForJoin}`,
-      displayName: meta.hostName ?? 'Host',
-      isHost: true,
-      isReady: false,
-      multiplayerRating: 1000,
-    },
-    { id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() },
-  ] : [
+  // #025 (identity model): we no longer prepopulate a 'steam:<id>' placeholder host
+  // entry. The placeholder ID format never matched the host's real player_xxx ID
+  // returned by mp:lobby:settings, breaking the peer-left poll matcher and the kick
+  // signature check. We now leave hostId empty until first mp:lobby:settings arrives,
+  // and rely on that broadcast (within ~150ms on Steam P2P) to bootstrap the roster.
+  const hostPlaceholderPlayers: LobbyPlayer[] = [
     { id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() },
   ];
   _currentLobby = {
     lobbyId: result.lobbyId || resolvedId || '',
-    hostId: steamHostIdForJoin ? `steam:${steamHostIdForJoin}` : '',
+    hostId: '',
     mode: meta.mode ?? 'race',
     deckSelectionMode: 'host_picks',
     houseRules: { ...DEFAULT_HOUSE_RULES },
@@ -680,6 +712,10 @@ export async function joinLobbyById(
   password?: string,
 ): Promise<LobbyState> {
   rrLog('mp:joinById', 'entry', { lobbyId, playerId, displayName, hasPw: !!password });
+  // BUG-058 regression guard — see joinLobby for rationale.
+  if (playerId === 'local_player' || !playerId) {
+    throw new Error("[joinLobbyById] Refusing to join with placeholder playerId='local_player' — caller must resolve a real player ID first.");
+  }
   _localPlayerId = playerId;
 
   // M16: Reset password hash before any mutation to prevent cross-session leaks.
@@ -698,23 +734,14 @@ export async function joinLobbyById(
     ? await readSteamLobbyMetadataForJoin(result.lobbyId)
     : { mode: null, visibility: null, title: null, hostName: null, lobbyCode: null, maxPlayers: null };
 
-  // BUG10: Prepopulate a placeholder host entry using Steam lobby owner data.
-  const steamHostIdForJoinById = useSteamPeer ? await getLobbyOwner(result.lobbyId).catch(() => null) : null;
-  const hostPlaceholderPlayersById: LobbyPlayer[] = steamHostIdForJoinById ? [
-    {
-      id: `steam:${steamHostIdForJoinById}`,
-      displayName: meta.hostName ?? 'Host',
-      isHost: true,
-      isReady: false,
-      multiplayerRating: 1000,
-    },
-    { id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() },
-  ] : [
+  // #025 (identity model): no more 'steam:<id>' placeholder host entry — see
+  // joinLobby for rationale. hostId is empty until first mp:lobby:settings broadcast.
+  const hostPlaceholderPlayersById: LobbyPlayer[] = [
     { id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() },
   ];
   _currentLobby = {
     lobbyId: result.lobbyId,
-    hostId: steamHostIdForJoinById ? `steam:${steamHostIdForJoinById}` : '',
+    hostId: '',
     mode: meta.mode ?? 'race',
     deckSelectionMode: 'host_picks',
     houseRules: { ...DEFAULT_HOUSE_RULES },
@@ -866,7 +893,11 @@ export function leaveLobby(): void {
   for (const fn of _activeHandlerCleanups) fn();
   _activeHandlerCleanups = [];
   _handlersAttached = false;
+  _handlersAttachedTransport = null; // #067: clear per-transport guard
   _localReadyVersion = 0;
+  _settingsSeq = 0;
+  _lastSettingsSeqSeen = 0;
+  _stopRosterReconciliation(); // #036
   // BUG23: do NOT clear subscriber sets here — they are registered by CardApp
   // on mount for the whole app lifetime and must survive leave/rejoin cycles.
 }
@@ -884,7 +915,24 @@ export function setMode(mode: MultiplayerMode): void {
 /** Update deck selection mode (host only) */
 export function setDeckSelectionMode(mode: DeckSelectionMode): void {
   if (!_currentLobby || !isHost()) return;
+  const prevMode = _currentLobby.deckSelectionMode;
   _currentLobby.deckSelectionMode = mode;
+  // #066: Clear the abandoned variant so stale data from the prior mode never
+  // carries into the start payload. Switching host_picks -> each_picks clears
+  // the lobby-level contentSelection; switching the other way clears each
+  // player's per-player contentSelection.
+  if (prevMode !== mode) {
+    if (mode === 'each_picks') {
+      _currentLobby.contentSelection = undefined;
+      _currentLobby.selectedDeckId = undefined;
+    } else if (mode === 'host_picks') {
+      for (const p of _currentLobby.players) {
+        p.contentSelection = undefined;
+        p.selectedDeckId = undefined;
+      }
+    }
+    rrLog('mp:deck', 'setDeckSelectionMode cleared abandoned variant', { from: prevMode, to: mode });
+  }
   broadcastSettings();
 }
 
@@ -1205,10 +1253,16 @@ function _contentSelectionHash(selection: LobbyContentSelection | null | undefin
 export function startGame(): void {
   if (!_currentLobby || !isHost() || !allReady()) return;
 
-  // M22: Re-check player count immediately before broadcast — a player may have
-  // left between allReady() passing and this line executing.
-  if (_currentLobby.players.length < 2) {
-    throw new Error('Cannot start game — not enough players ready.');
+  // M22 + #070: Re-check connected player count immediately before broadcast — a
+  // player may have left between allReady() passing and this line executing, OR a
+  // player may be marked 'reconnecting' (in roster but unreachable). Don't count
+  // reconnecting players toward the start gate; otherwise the 3s ACK timeout fires
+  // and host enters the run alone.
+  const connectedCount = _currentLobby.players.filter(
+    p => (p as LobbyPlayer & { connectionState?: 'connected' | 'reconnecting' }).connectionState !== 'reconnecting',
+  ).length;
+  if (connectedCount < 2) {
+    throw new Error('Cannot start game — not enough connected players ready.');
   }
 
   const seed = Math.floor(Math.random() * 2147483647);
@@ -1233,6 +1287,9 @@ export function startGame(): void {
   _pendingStartAcks = new Set(guestIds);
   _lastStartPayload = payload;
   _hostStartFired = false;
+  // #036: Stop the roster-reconciliation heartbeat — once we transition to in_game,
+  // mid-run sync uses different channels.
+  _stopRosterReconciliation();
 
   const transport = getMultiplayerTransport();
   transport.send('mp:lobby:start', payload);
@@ -1315,7 +1372,24 @@ export function onLobbyUpdate(cb: (lobby: LobbyState) => void): () => void {
   return () => { _lobbyUpdateSubscribers.delete(cb); };
 }
 
-/** Register callback for game start. BUG23: multi-subscriber. */
+/**
+ * Register callback for game start. BUG23: multi-subscriber.
+ *
+ * #034: Subscribers are NOT cleared on leaveLobby — they survive lobby cycles by
+ * design (CardApp registers once on app mount). The CONSUMER is responsible for:
+ *   1. Storing the returned cleanup function.
+ *   2. Calling it in their teardown path ($effect cleanup, onDestroy, error
+ *      boundary recovery, HMR dispose).
+ * If the consumer re-mounts (HMR, error recovery, dev refresh) without calling
+ * cleanup, OLD subscriber closures stay registered and stack on top of new ones,
+ * producing double-fire onGameStart that re-triggers the scene transition mid-run.
+ *
+ * If you need true idempotency on re-registration of the same closure reference,
+ * pass that closure to a memoised wrapper at the call site — Set's identity
+ * semantics handle the dedup automatically. Do NOT rely on this service to
+ * deduplicate functionally-equivalent but distinct closures: closures are
+ * intentionally independent here (e.g. two CardApp panes during HMR).
+ */
 export function onGameStart(cb: (seed: number, lobby: LobbyState) => void): () => void {
   _gameStartSubscribers.add(cb);
   return () => { _gameStartSubscribers.delete(cb); };
@@ -1429,13 +1503,14 @@ function _cancelStartAckHandshake(): void {
 }
 
 function setupMessageHandlers(): void {
-  // Guard: transport.on() accumulates listeners — calling this twice doubles every
-  // handler. Since createLobby(), joinLobby(), and joinLobbyById() all call this
-  // function, a future code path that calls two of them would silently double-fire.
-  if (_handlersAttached) return;
-  _handlersAttached = true;
-
   const transport = getMultiplayerTransport();
+  // #067: Guard is per-transport-instance, not process-wide. Calling this twice
+  // on the SAME transport is the bug we want to prevent (doubled handlers); calling
+  // it again after the transport changes (e.g. destroyMultiplayerTransport rebuilt
+  // the singleton, or a separate bot transport became active) MUST re-attach.
+  if (_handlersAttached && _handlersAttachedTransport === transport) return;
+  _handlersAttached = true;
+  _handlersAttachedTransport = transport;
 
   // BUG16: Helper that registers a handler AND stores the cleanup function so
   // leaveLobby() can remove it before the next join re-attaches on the singleton.
@@ -1564,45 +1639,81 @@ function setupMessageHandlers(): void {
   reg('mp:lobby:settings', (msg) => {
     rrLog('mp:recv', 'mp:lobby:settings', { hasLobby: !!_currentLobby, amHost: isHost(), payloadKeys: Object.keys(msg.payload ?? {}) });
     if (!_currentLobby || isHost()) return; // Host already has correct state
-    const settings = msg.payload as Partial<LobbyState>;
-    // Snapshot the local player ready states AND readyVersions BEFORE Object.assign
-    // merges the host's players array over ours (MP-004 fix).
-    const readyMap = new Map(_currentLobby.players.map(p => [p.id, p.isReady]));
+    const settings = msg.payload as Partial<LobbyState> & { seq?: number };
+
+    // #037: Reject out-of-order settings broadcasts. Guards against lossy Steam P2P
+    // delivering an older snapshot after a newer one and clobbering fresh state.
+    // seq starts at 1 on the first broadcast; missing seq (legacy peer) is treated
+    // as 0 and only accepted if we have not yet seen any seq.
+    const incomingSeq = typeof settings.seq === 'number' ? settings.seq : 0;
+    if (incomingSeq > 0 && incomingSeq <= _lastSettingsSeqSeen) {
+      rrLog('mp:recv', 'mp:lobby:settings rejected (stale seq)', {
+        incomingSeq, lastSeen: _lastSettingsSeqSeen,
+      });
+      return;
+    }
+    if (incomingSeq > 0) _lastSettingsSeqSeen = incomingSeq;
+
+    // #026: Snapshot per-player connectionState + multiplayerRating BEFORE merge so
+    // we can preserve them for non-local players. Object.assign of host's players
+    // array overwrites these fields; the host doesn't track our local view of a
+    // peer's reconnect state (that's a local-only signal driven by mp:lobby:peer_left).
+    type PlayerLocalSnapshot = {
+      isReady: boolean;
+      connectionState?: 'connected' | 'reconnecting';
+      multiplayerRating?: number;
+    };
+    const localStateMap = new Map<string, PlayerLocalSnapshot>(
+      _currentLobby.players.map(p => [p.id, {
+        isReady: p.isReady,
+        connectionState: (p as LobbyPlayer & { connectionState?: 'connected' | 'reconnecting' }).connectionState,
+        multiplayerRating: p.multiplayerRating,
+      }]),
+    );
     // H13: Snapshot local ready version so we can detect stale incoming states.
     const localReadyVersion = _localReadyVersion;
 
-    // Preserve ALL players' ready states in the incoming array — settings broadcasts
-    // can arrive after ready messages due to network latency.
+    // Preserve ALL players' ready states + connectionState + multiplayerRating in
+    // the incoming array — settings broadcasts can arrive after ready/peer_left
+    // messages due to network latency.
     if (settings.players) {
       for (const p of settings.players as LobbyPlayer[]) {
-        const localReady = readyMap.get(p.id);
-        if (localReady !== undefined) p.isReady = p.isReady || localReady;
+        const local = localStateMap.get(p.id);
+        if (!local) continue;
+        // Ready: union — if either side says ready, we're ready (deferred to H13 for local).
+        p.isReady = p.isReady || local.isReady;
+        // #026: connectionState is a LOCAL signal (peer_left poll, transport). Never
+        // let a host-broadcast 'connected' clobber a local 'reconnecting'. This
+        // preserves the 60s grace timer's authority.
+        if (local.connectionState === 'reconnecting') {
+          (p as LobbyPlayer & { connectionState?: 'connected' | 'reconnecting' }).connectionState = 'reconnecting';
+        }
+        // #026: multiplayerRating — if the host's snapshot has the placeholder 1000
+        // and we have a real value cached, keep ours. Symmetric to the post-audit
+        // fix #2 in mp:lobby:join.
+        if ((p.multiplayerRating === undefined || p.multiplayerRating === 1000) && local.multiplayerRating !== undefined && local.multiplayerRating !== 1000) {
+          p.multiplayerRating = local.multiplayerRating;
+        }
       }
     }
     // BUG10: Snapshot own entry BEFORE Object.assign overwrites players array.
-    // The host's players snapshot uses real IDs; our placeholder may use steam:<id>.
-    // After the merge, re-insert self if our ID was dropped (e.g., placeholder vs real ID mismatch).
+    // After the merge, re-insert self if our ID was dropped.
     const selfEntryBeforeMerge = _currentLobby.players.find(p => p.id === _localPlayerId);
     Object.assign(_currentLobby, settings);
     // BUG10: Re-insert self if the incoming players array doesn't include us.
-    // This can happen when host processed mp:lobby:join but used our real playerId in their list
-    // before our own Object.assign had a chance to update _localPlayerId references.
     if (selfEntryBeforeMerge && !_currentLobby.players.find(p => p.id === _localPlayerId)) {
       _currentLobby.players.push(selfEntryBeforeMerge);
       rrLog('mp:recv', 'mp:lobby:settings — reinserted self after merge', { playerId: _localPlayerId });
     }
     // Re-apply the local player's ready state after Object.assign.
-    // H13: If our local readyVersion is greater than what came in (i.e., we toggled
-    // after the host's settings snapshot was captured), keep our local value.
+    // H13: If our local readyVersion is greater than what came in, keep our value.
     const localPlayer = _currentLobby.players.find(p => p.id === _localPlayerId);
-    const localReady = readyMap.get(_localPlayerId);
-    if (localPlayer && localReady !== undefined) {
-      // H13: The incoming payload may carry a readyVersion for this player;
-      // if ours is newer, our local ready state wins.
+    const localSelfState = localStateMap.get(_localPlayerId);
+    if (localPlayer && localSelfState !== undefined) {
       const incomingReadyVersion = (settings.players as Array<LobbyPlayer & { readyVersion?: number }> | undefined)
         ?.find(p => p.id === _localPlayerId)?.readyVersion ?? 0;
       if (localReadyVersion > incomingReadyVersion) {
-        localPlayer.isReady = localReady;
+        localPlayer.isReady = localSelfState.isReady;
       }
     }
     notifyLobbyUpdate();
@@ -1838,13 +1949,18 @@ function setupMessageHandlers(): void {
 function broadcastSettings(): void {
   if (!_currentLobby) return;
   const transport = getMultiplayerTransport();
+  // #037: stamp every host broadcast with a monotonically increasing seq so guests
+  // can reject out-of-order deliveries.
+  _settingsSeq++;
   rrLog('mp:broadcast', 'broadcastSettings', {
+    seq: _settingsSeq,
     mode: _currentLobby.mode,
     deckSelectionMode: _currentLobby.deckSelectionMode,
     contentSelectionType: _currentLobby.contentSelection?.type,
     playerCount: _currentLobby.players.length,
   });
   transport.send('mp:lobby:settings', {
+    seq: _settingsSeq,
     // Post-audit fix #1: include hostId so the guest's lobby state reflects the
     // real host player ID instead of the `steam:<hostSteamId>` placeholder from
     // join. Future host-migration and any code that compares lobby.hostId with
@@ -1863,6 +1979,43 @@ function broadcastSettings(): void {
     title: _currentLobby.title,
   });
   notifyLobbyUpdate();
+}
+
+// ── #036: Periodic full-roster reconciliation (host only) ─────────────────────
+/**
+ * Interval handle for the host's roster-reconciliation heartbeat. Every 5s the
+ * host re-broadcasts the full settings snapshot (with a fresh seq) so any guest
+ * whose state has drifted (lost messages, late join, partial merge) atomically
+ * replaces its roster. Cheap insurance against accumulated identity drift.
+ *
+ * Wired in startRosterReconciliation; stopped in _stopRosterReconciliation
+ * (called from leaveLobby) and when the game starts.
+ */
+let _rosterReconcileTimer: ReturnType<typeof setInterval> | null = null;
+const ROSTER_RECONCILE_MS = 5_000;
+
+function startRosterReconciliation(): void {
+  if (_rosterReconcileTimer !== null) return;
+  _rosterReconcileTimer = setInterval(() => {
+    if (!_currentLobby || !isHost()) {
+      _stopRosterReconciliation();
+      return;
+    }
+    // Skip while in_game — the run uses a different sync channel.
+    if (_currentLobby.status === 'in_game') return;
+    rrLog('mp:reconcile', 'periodic roster snapshot', {
+      seq: _settingsSeq + 1,
+      playerCount: _currentLobby.players.length,
+    });
+    broadcastSettings();
+  }, ROSTER_RECONCILE_MS);
+}
+
+function _stopRosterReconciliation(): void {
+  if (_rosterReconcileTimer !== null) {
+    clearInterval(_rosterReconcileTimer);
+    _rosterReconcileTimer = null;
+  }
 }
 
 function generateLobbyId(): string {

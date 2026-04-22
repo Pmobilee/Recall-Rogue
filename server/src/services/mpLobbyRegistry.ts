@@ -51,6 +51,24 @@ export interface MpLobbyConnection {
   ws: WsHandle | null
   joinToken: string
   lastActivity: number
+  /**
+   * Last known isReady state for this player. The server tracks this so late
+   * joiners receive an accurate snapshot — previously buildLobbySnapshot
+   * hardcoded false, which made player N see player M as not-ready even when
+   * M had already toggled ready before N's connection.
+   * Defaults to false; updated by the mp:lobby:ready handler in mpLobbyWs.ts.
+   * See leaderboard issue MP-STEAM-20260422-069.
+   */
+  lastKnownReady: boolean
+  /**
+   * Multiplayer ELO rating. Defaults to 1500 (standard ELO baseline) when
+   * the player record is created. The server is not the source of truth for
+   * rating — this slot exists so player_joined / settings broadcasts include
+   * a sane default instead of undefined, which broke ELO display until the
+   * client resolved the real rating asynchronously.
+   * See leaderboard issue MP-STEAM-20260422-068.
+   */
+  multiplayerRating: number
 }
 
 /** Full authoritative lobby state (server-only). */
@@ -195,6 +213,8 @@ export function createLobby(opts: CreateLobbyOpts): MpLobby {
     ws: null,
     joinToken,
     lastActivity: now,
+    lastKnownReady: false,
+    multiplayerRating: 1500,
   }
 
   const lobby: MpLobby = {
@@ -248,6 +268,8 @@ export function joinLobby(
     ws: null,
     joinToken,
     lastActivity: now,
+    lastKnownReady: false,
+    multiplayerRating: 1500,
   }
 
   lobby.connections.set(playerId, conn)

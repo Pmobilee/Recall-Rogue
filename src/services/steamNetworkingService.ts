@@ -311,6 +311,29 @@ async function tauriInvoke<T = unknown>(
 // ── Async-callback polling bridge ─────────────────────────────────────────────
 
 /**
+ * Custom error type for IPC-channel failures inside pollPendingResult.
+ * Distinct from "callback hasn't fired yet" (returned as null on timeout) so
+ * callers can react to a broken Tauri bridge without misreading it as a slow
+ * Steam callback.
+ *
+ * See leaderboard issue MP-STEAM-20260422-042 — previously, an IPC failure
+ * inside the poll loop was silently coerced to null, identical to the
+ * "no result yet" path. The 5s timeout would elapse and the caller would
+ * see a generic timeout instead of the real "the bridge is broken" reason.
+ */
+export class SteamIpcPollError extends Error {
+  readonly cmd: string;
+  readonly cause?: unknown;
+  constructor(cmd: string, cause?: unknown) {
+    const causeMsg = cause instanceof Error ? cause.message : String(cause ?? 'unknown');
+    super(`Steam IPC poll for '${cmd}' failed: ${causeMsg}`);
+    this.name = 'SteamIpcPollError';
+    this.cmd = cmd;
+    this.cause = cause;
+  }
+}
+
+/**
  * Poll a Tauri "pending result" command until it returns a non-null string,
  * pumping Steam callbacks each tick. Used to bridge Steamworks' async callback
  * model into a synchronous-looking Promise for createSteamLobby.
@@ -320,7 +343,15 @@ async function tauriInvoke<T = unknown>(
  * `steam_run_callbacks` is pumped. This helper spins the pump loop until
  * the pending-result slot is populated, then returns it.
  *
- * Resolves with the pending value, or null on timeout.
+ * Outcomes (issue MP-STEAM-20260422-042):
+ *   - Returns the pending value string when the callback fires.
+ *   - Returns null on plain timeout (the callback never arrived in time).
+ *   - Throws `SteamIpcPollError` if the underlying IPC call into Tauri
+ *     fails (lastInvokeError populated by tauriInvoke). Previously this case
+ *     was indistinguishable from a slow callback because tauriInvoke swallows
+ *     the throw and returns null. Now we inspect lastInvokeError after each
+ *     invoke and raise a typed error so callers can log "broken bridge" vs
+ *     "Steam slow" distinctly.
  */
 async function pollPendingResult(
   pendingCmd: string,
@@ -330,8 +361,24 @@ async function pollPendingResult(
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
     // Pump the Steamworks callback queue so the lobby callback can fire.
+    // Capture the error slot before/after each invoke so we can tell whether
+    // tauriInvoke's null return means "Rust returned null" vs "IPC threw".
+    const errBeforePump = lastInvokeError;
     await tauriInvoke('steam_run_callbacks');
+    const errAfterPump = lastInvokeError;
+    if (errAfterPump && errAfterPump !== errBeforePump) {
+      // The pump itself failed — the bridge is broken, not Steam being slow.
+      throw new SteamIpcPollError('steam_run_callbacks', errAfterPump.message);
+    }
+
+    const errBeforePoll = lastInvokeError;
     const value = await tauriInvoke<string | null>(pendingCmd);
+    const errAfterPoll = lastInvokeError;
+    if (errAfterPoll && errAfterPoll !== errBeforePoll) {
+      // The pending-slot read itself threw — surface as IPC error, not timeout.
+      throw new SteamIpcPollError(pendingCmd, errAfterPoll.message);
+    }
+
     if (value) return value;
     await new Promise((r) => setTimeout(r, intervalMs));
   }
@@ -401,7 +448,21 @@ export async function createSteamLobby(
   const kickoff = await invokeSteam('steam_create_lobby', { lobbyType, maxMembers });
   if (kickoff === null) return null; // IPC call itself failed (Steamworks not running, etc.)
   // Poll until the LobbyCreated_t callback fires and stores the ID.
-  return pollPendingResult('steam_get_pending_lobby_id');
+  // pollPendingResult now throws SteamIpcPollError when the bridge is broken
+  // (issue MP-STEAM-20260422-042) — log the distinct cause and preserve the
+  // null-return contract so callers can still fall back to the web backend.
+  try {
+    return await pollPendingResult('steam_get_pending_lobby_id');
+  } catch (err) {
+    if (err instanceof SteamIpcPollError) {
+      console.warn('[steamNetworking] createSteamLobby aborted by IPC error:', {
+        cmd: err.cmd,
+        message: err.message,
+      });
+      return null;
+    }
+    throw err;
+  }
 }
 
 /**

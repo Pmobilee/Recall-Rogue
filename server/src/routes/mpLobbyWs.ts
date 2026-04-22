@@ -43,11 +43,19 @@ function isRelayType(type: string): boolean {
  * Omits server-only fields (passwordHash, joinTokens, ws handles).
  *
  * The `players` array uses the client-side LobbyPlayer shape:
- *   { id, displayName, isHost, isReady }
- * — `id` matches LobbyPlayer.id (not `playerId`), and `isReady` is always false
- * because the server does not track ready state (it is client-side only; the
- * client's mp:lobby:settings handler restores ready states from its local readyMap
- * after Object.assign).
+ *   { id, displayName, isHost, isReady, multiplayerRating }
+ * — `id` matches LobbyPlayer.id (not `playerId`).
+ *
+ * `isReady` is now sourced from `conn.lastKnownReady` (issue MP-STEAM-20260422-069).
+ * Previously hardcoded false, which made the third player joining after player 2
+ * had readied see player 2 as not-ready until player 2 toggled again. The server
+ * now remembers the last-known ready state per connection and replays it to late
+ * joiners. The client's local readyMap still wins on Object.assign for its own
+ * row, but other rows are now correct on first paint.
+ *
+ * `multiplayerRating` defaults to 1500 (issue MP-STEAM-20260422-068). Previously
+ * absent from the payload entirely, which left players[i].multiplayerRating
+ * undefined and broke any ELO display reading it before the next broadcast.
  */
 function buildLobbySnapshot(lobbyId: string): object {
   const lobby = getLobby(lobbyId)
@@ -69,7 +77,8 @@ function buildLobbySnapshot(lobbyId: string): object {
       id: c.playerId,           // matches client LobbyPlayer.id (not playerId)
       displayName: c.displayName,
       isHost: c.playerId === lobby.hostId,
-      isReady: false,           // server does not track ready state — client restores from readyMap
+      isReady: c.lastKnownReady,
+      multiplayerRating: c.multiplayerRating,
     })),
   }
 }
@@ -149,12 +158,19 @@ export async function mpLobbyWsRoutes(app: FastifyInstance): Promise<void> {
 
     // Notify all other players in the lobby that someone joined.
     const joinedLobby = getLobby(lobbyId)
+    // Include multiplayerRating + isReady defaults so the client's
+    // mp:lobby:player_joined handler inserts a complete player record.
+    // Previously omitted multiplayerRating, leaving ELO display undefined
+    // until the next broadcastSettings (issue MP-STEAM-20260422-068).
+    const joinedConn = joinedLobby?.connections.get(playerId)
     broadcast(lobbyId, {
       type: 'mp:lobby:player_joined',
       payload: {
         playerId,
-        displayName: joinedLobby?.connections.get(playerId)?.displayName ?? '',
+        displayName: joinedConn?.displayName ?? '',
         currentPlayers: joinedLobby?.currentPlayers ?? 0,
+        isReady: joinedConn?.lastKnownReady ?? false,
+        multiplayerRating: joinedConn?.multiplayerRating ?? 1500,
       },
     }, playerId)
 
@@ -179,8 +195,13 @@ export async function mpLobbyWsRoutes(app: FastifyInstance): Promise<void> {
         switch (msg.type) {
 
           // Player signals ready/unready.
+          // FIX 069: persist last-known ready state on the connection so late
+          // joiners get the correct value in the mp:lobby:settings snapshot.
           case 'mp:lobby:ready': {
             const ready = Boolean(msg.payload?.['ready'] ?? true)
+            const readyLobby = getLobby(lobbyId)
+            const readyConn = readyLobby?.connections.get(playerId)
+            if (readyConn) readyConn.lastKnownReady = ready
             broadcast(lobbyId, {
               type: 'mp:lobby:ready',
               payload: { playerId, ready },
@@ -271,8 +292,28 @@ export async function mpLobbyWsRoutes(app: FastifyInstance): Promise<void> {
 
     ws.on('close', () => {
       app.log.info(`[mpLobbyWs] player ${playerId} disconnected from lobby ${lobbyId}`)
-      // leaveLobby handles broadcasting mp:lobby:leave to remaining players
-      // and cleaning up the connection record. Safe to call even if already removed.
+      // FIX L-029: emit mp:lobby:peer_left BEFORE leaveLobby cleans up the
+      // connection record. The Steam transport's P2PSessionConnectFail_t
+      // callback fires the same payload from the Rust side; the Fastify
+      // path now matches so client-side disconnect detection is sub-second
+      // instead of relying on the ~30s JS ping/pong fallback.
+      // leaveLobby still broadcasts mp:lobby:leave (a separate, explicit
+      // "player chose to leave" signal) and tears down the record.
+      const closingLobby = getLobby(lobbyId)
+      if (closingLobby?.connections.has(playerId)) {
+        try {
+          broadcast(lobbyId, {
+            type: 'mp:lobby:peer_left',
+            payload: {
+              playerId,
+              reason: 'transport_close',
+              timestamp: Date.now(),
+            },
+          }, playerId)
+        } catch (err) {
+          app.log.warn({ err }, `[mpLobbyWs] failed to broadcast peer_left for ${playerId}`)
+        }
+      }
       leaveLobby(lobbyId, playerId)
     })
 

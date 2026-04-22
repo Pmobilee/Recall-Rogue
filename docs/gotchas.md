@@ -5471,3 +5471,58 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 **Why `mem::forget` is essential:** Dropping `file` closes the underlying HANDLE while Windows is still writing through it, corrupting the log. The forget intentionally leaks the `File` — the OS reclaims it on process exit.
 
 **Files changed:** `src-tauri/Cargo.toml`, `src-tauri/src/main.rs`.
+
+### 2026-04-22 — `primeP2PSessions` is fire-and-forget; first send may race the session handshake
+
+**What:** The Tauri command `steam_prime_p2p_sessions(lobbyId)` was documented in the multiplayer CHANGELOG row as if completing the priming meant sessions were ready. In reality the command resolves the moment Steam queues the zero-byte primer to each peer — it does NOT wait for the remote `session_request_callback` to fire. The first `transport.send` after `await primeP2PSessions(...)` can therefore land before the session is open.
+
+**Why it matters:** Future implementers reading the CHANGELOG row alone might write `await primeP2PSessions(...); transport.send(criticalBootstrap)` and assume the send is safe. Without the `_preSendBuffer` (cap 64) and `_sendWithRetry` (5 attempts, ~4.4s) absorbing the race, the bootstrap message is silently dropped. BUG 032 was this exact failure shape.
+
+**Fix:** Added a dedicated `## Steam P2P Session Priming — Fire-and-Forget, NOT Synchronous` section to `docs/architecture/multiplayer.md` that spells out the absorbers (`_preSendBuffer`, `_sendWithRetry`, receiver-side `session_request_callback`) and the implementer warnings.
+
+**Lesson:** When a Tauri command's name implies completion ("prime", "open", "establish", "init"), document explicitly whether it waits for remote-side callback completion or just queues the local-side action. Default reading is "synchronous," so the `fire-and-forget` semantics need an explicit callout.
+
+### 2026-04-22 — `webBackend` / LAN code / `VITE_MP_WS_URL` / production CSP all live in Steam bundle, gated only at runtime
+
+**What:** Three multiplayer surfaces ship inside the Steam binary even though Steam never reaches them in the normal flow:
+1. `webBackend` (Fastify path) — statically imported into `multiplayerLobbyService.ts`, never selected when `isTauriPresent()` returns true. ~5 KB gzipped dead weight.
+2. LAN services (`lanServerService`, `lanDiscoveryService`, `lanConfigService`) and the LAN tab UI — compiled in, hidden in Steam release (commit `f464d3652`), runtime-gated by FIX 019 (`pickBackend()` ignores stale `rr-lan-server` localStorage on Steam unless `?lan=1` URL flag).
+3. `VITE_MP_WS_URL` defaults to `ws://localhost:3000/mp/ws` — `scripts/steam-build.sh` does NOT override it, so any future WebSocket fallback on Steam silently points at the player's own localhost.
+4. Production CSP locked to `https://*.recallrogue.com` — Steam P2P uses Tauri IPC (not `connect-src`), so today this is unused for MP. But adding any non-Tauri-IPC network call (telemetry, error reporter, relay) without updating the CSP will silently fail in the packaged webview.
+
+**Why it matters:** Each is a future-trap. A maintainer might add a "fallback to webBackend on Steam init failure" thinking it's safer — actually pointing every Steam player's MP at their own localhost. Or add an error reporter to `https://errors.example.com` and wonder why no reports arrive (CSP blocks it; console violation is invisible in packaged builds).
+
+**Fix:** Added `## Production Residue — webBackend / LAN / CSP / VITE_MP_WS_URL on Steam Builds` section to `docs/architecture/multiplayer.md` that catalogs each surface, the existing runtime defenses (do not remove), and the required actions before adding any new code that touches these paths.
+
+**Lesson:** "Compiled-in but runtime-gated" is a stable pattern for code we may want to reactivate later. The danger is a future maintainer assuming the gating is incidental and removing it. Document the gating contract in the architecture doc, not just the commit message.
+
+### 2026-04-22 — `.claude/skills/multiplayer/SKILL.md` "all closed" claim drifted past 5 fix waves
+
+**What:** The skill carried the line "All C1–C5 criticals, H1–H19 highs, M1–M23 mediums, L1–L5 lows closed." This was true at the moment Wave 22 shipped, but Waves 22b/22c/22e + BUGs 21-27 + ULTRATHINK Wave 1 added 25+ new critical/high fixes after. The stale claim actively misled agents reading the skill: they would assume coop-on-Steam was rock-solid and skip end-to-end verification.
+
+**Fix:** Replaced the single line with a `### Wave 22 Hardening — STATUS NOTE` section that includes a full hardening log table (Pre-wave-22 through ULTRATHINK Wave 2) and an explicit "End-to-end coop on Steam: VERIFIED via Wave 1 ULTRATHINK fixes; verified-but-not-CI-covered until `steam-p2p-playtest` skill is built (MP-STEAM-20260422-051)" annotation.
+
+**Lesson:** Any "all X closed" claim in a skill or doc is a ticking bomb — the next wave of bugs will land and the claim won't update itself. Prefer date-stamped tables ("Wave 22b: BUGs 1-7 CLOSED, 2026-04-22") that grow append-only rather than rolling-summary claims that need rewriting on every wave.
+
+### 2026-04-22 — Three lobby-identity placeholders that look harmless but kill matchers
+
+**What broke (slow burn):** The lobby service had three different player-ID schemes coexisting: random `player_<base36>_<rand>` from `CardApp.svelte`, `steam:<hostSteamId>` placeholder from `joinLobby`/`joinLobbyById`, and the legacy `'local_player'` constant default. The placeholder string was supposed to be overwritten by the first `mp:lobby:settings` broadcast, but two real bugs made it persist long enough to break:
+
+- The **peer-left poll matcher** in `setupMessageHandlers` filters by `p.id === steamId || p.id === 'steam:'+steamId`. Once settings replaced the placeholder with the real `player_xxx`, neither arm matched and an ungraceful crash left a ghost player in the roster forever; `allReady()` still returned true; the host clicked Start; the 3s ACK timeout fired and the host entered coop alone.
+- The **kick signature check** (`issuedBy === _currentLobby.hostId`) compares the host's real ID against the guest's local `hostId`. Until settings arrived, the guest still had `steam:<hostId>` as `hostId`, so a kick issued in the first ~150ms after join was rejected as spoofed.
+- The **`'local_player'` default** would, if it ever leaked into a real lobby, cause both peers to drop every message — each treats the other's `senderId` as self.
+
+**Fix:** Removed the `steam:<id>` placeholder host entry from both join paths. `hostId=''` is now the explicit "not yet bootstrapped" sentinel; the first `mp:lobby:settings` populates the real ID. Added an explicit throw at the top of `createLobby`/`joinLobby`/`joinLobbyById` if `playerId === 'local_player'` or empty — caller (CardApp) must resolve a real ID first.
+
+**Lesson:** "It's just a placeholder until the real value arrives" is exactly when matchers and signature checks need to be tolerant of BOTH the placeholder AND the real shape — or you remove the placeholder entirely. The latter is almost always cheaper than the matcher gymnastics.
+
+### 2026-04-22 — `Object.assign(_currentLobby, settings)` clobbers local-only state
+
+**What broke:** The `mp:lobby:settings` handler did `Object.assign(_currentLobby, settings)` and only preserved `isReady` for the local player. Two fields were silently overwritten on every broadcast:
+
+- A peer marked `connectionState='reconnecting'` by the local peer-left poll got re-marked `'connected'` on the next host broadcast (host's snapshot doesn't know our local view of a peer's reachability). The H10 60s grace timer's authority evaporated.
+- A guest's real `multiplayerRating` got clobbered back to the host's `1000` placeholder if the host's `mp:lobby:join` handler hadn't yet processed our rating.
+
+**Fix:** Snapshot per-player `{ isReady, connectionState, multiplayerRating }` BEFORE `Object.assign` and restore on non-local players: any local `'reconnecting'` survives; any real `multiplayerRating` survives if the incoming value is the placeholder `1000`.
+
+**Lesson:** A "host is authoritative" merge is only safe when the host actually owns the field. `connectionState` is a local signal driven by the local transport — the host must not be allowed to overwrite it. Audit every field of the merged type and ask "who's the real source of truth for this?" before letting `Object.assign` run.
