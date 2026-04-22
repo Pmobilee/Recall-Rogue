@@ -1,3 +1,11 @@
+### 2026-04-22j — Wave 2 MP lessons: host self-fire, fork-seed coop, platformService mock gap
+
+**BUG-8 (host self-fire on Steam P2P):** Steam P2P has no loopback — hosts do not receive their own `transport.send` messages. The BUG-3 fix changed the 3s timeout from "fire anyway" to "abort", which meant the host would never fire `onGameStart` after that change because it relied on the timeout as its fire path. Fix: the host immediately fires `_gameStartSubscribers` right after `transport.send('mp:lobby:start')` when on Steam P2P (`hasSteam && !isBroadcastMode() && !isLanMode()`). A `_hostStartFired` guard prevents double-fire when BroadcastChannel/WS echo the message back through the received-handler path.
+
+**C-004 (fork-seed sync for coop):** `gameFlowController` was broadcasting fork seeds in the `same_cards` run path but had no equivalent for coop. `initGameMessageHandlers`'s `mp:sync` handler was also only wired for `same_cards`. Both fixed in Wave 2 — coop now broadcasts fork seeds after `initRunRng`, and the `mp:sync` handler is installed for `mode === 'coop' || mode === 'same_cards'`.
+
+**platformService mock gap (test breakage):** `multiplayerLobbyService.test.ts` mocked `platformService` with only `hasSteam` + `isTauriPresent`. Adding `isDesktop` to platformService (prior session) exposed the missing `isDesktop` export in the mock — Vitest throws "No export is defined" not a normal type error, making it hard to correlate cause. Fix: add `isDesktop: false, isWeb: true` to the mock. Lesson: when a module mock uses a static object literal, every export used by the module-under-test must be present — even if not directly referenced in the test itself, because the module imports it at the top of the file.
+
 ### 2026-04-22i — BUG 017: CardApp.svelte onGameStart missing initTriviaGame + initTriviaMessageHandlers for trivia_night mode
 
 **What broke:** `CardApp.svelte` `onGameStart` callback wired `initCoopSync` (coop), `initGameMessageHandlers` (coop+duel), and `initDuel` (coop+duel), but had NO equivalent block for `trivia_night`. Both host and guest started with `_gameState = null` inside `triviaNightService.ts`. Every `hostNextQuestion` and `submitAnswer` call hit the early-return guard (`_gameState` null) and silently no-opped. Players saw a frozen TriviaRoundScreen with no questions ever advancing.

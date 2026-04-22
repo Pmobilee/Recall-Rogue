@@ -31,7 +31,7 @@ import type {
   LobbyVisibility, LobbyBrowserEntry, LobbyListFilter,
 } from '../data/multiplayerTypes';
 import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS, MODE_MIN_PLAYERS } from '../data/multiplayerTypes';
-import { hasSteam, isTauriPresent } from './platformService';
+import { isDesktop, isTauriPresent } from './platformService';
 import { sanitizeLobbyTitle } from './profanityService';
 import { getLocalMultiplayerRating } from './multiplayerElo';
 import { getLanServerUrls, isLanMode, clearLanServerUrl } from './lanConfigService';
@@ -204,6 +204,12 @@ let _startAckRetryTimer: ReturnType<typeof setInterval> | null = null;
 let _startAckTimeoutTimer: ReturnType<typeof setTimeout> | null = null;
 /** Captured start payload for retry broadcasts. */
 let _lastStartPayload: Record<string, unknown> | null = null;
+/**
+ * True once the host's own onGameStart subscribers have been fired for the current
+ * start attempt. Prevents double-fire when both the host self-loopback (BUG-8 fix)
+ * and an ACK-all-arrived path exist.
+ */
+let _hostStartFired = false;
 
 // ── H10: Reconnect grace timers ───────────────────────────────────────────────
 /**
@@ -478,7 +484,7 @@ export async function createLobby(
   // peer at creation time, so defer transport.connect and start a poll that
   // waits for someone to join. Non-Steam transports (broadcast / web) address
   // by lobby ID / code and can connect immediately.
-  const useSteamHostDefer = hasSteam && !broadcast && !isLanMode();
+  const useSteamHostDefer = isTauriPresent() && !broadcast && !isLanMode();
   if (useSteamHostDefer) {
     console.log('[multiplayerLobbyService] host waiting for Steam peer to join lobby', result.lobbyId);
     _steamHostPeerPollCancel = startSteamHostPeerPoll(result.lobbyId, (peerSteamId) => {
@@ -504,7 +510,7 @@ export async function createLobby(
   // Prime P2P sessions with all lobby members. On host creation this is benign
   // (count=0, no peers yet). After a guest joins our lobby, the priming ensures
   // the host's session_request_callback fires for the guest without delay.
-  if (hasSteam && !isBroadcastMode() && !isLanMode() && result.lobbyId) {
+  if (isTauriPresent() && !isBroadcastMode() && !isLanMode() && result.lobbyId) {
     primeP2PSessions(result.lobbyId).then((count) => {
       rrLog('mp:lobby', 'primeP2PSessions (createLobby)', { lobbyId: result.lobbyId, count });
     }).catch((e) => {
@@ -516,7 +522,7 @@ export async function createLobby(
   // The 'connect' key value must begin with '+connect_lobby ' — Steam maps this to
   // the steam://joinlobby URL handler that triggers a join when a friend clicks the button.
   // Fire-and-forget — failure must not block the caller.
-  if (hasSteam && !isBroadcastMode() && !isLanMode() && result.lobbyId) {
+  if (isTauriPresent() && !isBroadcastMode() && !isLanMode() && result.lobbyId) {
     void setRichPresence('connect', `+connect_lobby ${result.lobbyId}`).catch((e) => {
       console.warn('[MP:LobbyService] setRichPresence failed (non-fatal):', e);
     });
@@ -575,7 +581,7 @@ export async function joinLobby(
 
   // Read authoritative lobby metadata from Steam — avoids placeholder `race`
   // mode persisting until a P2P broadcast arrives (which may never succeed).
-  const useSteamMeta = hasSteam && !broadcast && !isLanMode() && !!result.lobbyId;
+  const useSteamMeta = isTauriPresent() && !broadcast && !isLanMode() && !!result.lobbyId;
   const meta = useSteamMeta
     ? await readSteamLobbyMetadataForJoin(result.lobbyId)
     : { mode: null, visibility: null, title: null, hostName: null, lobbyCode: null, maxPlayers: null };
@@ -618,7 +624,7 @@ export async function joinLobby(
   // For Steam P2P, the transport needs the HOST's Steam ID — NOT the lobby ID.
   // Read the lobby's member list (which now includes us + the host) and filter
   // self out. On non-Steam transports, fall back to lobby ID / code as before.
-  const useSteamPeer = hasSteam && !broadcast && !isLanMode() && _currentLobby.lobbyId;
+  const useSteamPeer = isTauriPresent() && !broadcast && !isLanMode() && _currentLobby.lobbyId;
   const steamPeerId = useSteamPeer ? await resolveSteamPeerIdWithRetry(_currentLobby.lobbyId) : null;
   // Post-audit fix #4: when useSteamPeer is true AND resolve exhausts, FAIL the
   // join loudly rather than silently using lobbyId as the P2P peer target (that
@@ -687,7 +693,7 @@ export async function joinLobbyById(
   // Read authoritative lobby metadata from Steam before setting _currentLobby —
   // this ensures the guest shows the host's real mode/visibility/title, not
   // the old `race` placeholder that used to persist when P2P broadcasts failed.
-  const useSteamPeer = hasSteam && !broadcast && !isLanMode();
+  const useSteamPeer = isTauriPresent() && !broadcast && !isLanMode();
   const meta = useSteamPeer
     ? await readSteamLobbyMetadataForJoin(result.lobbyId)
     : { mode: null, visibility: null, title: null, hostName: null, lobbyCode: null, maxPlayers: null };
@@ -819,7 +825,7 @@ export function leaveLobby(): void {
   // removes us immediately — not just on app exit. This ensures mid-session
   // leaves are visible to other players browsing the lobby list.
   // Fire-and-forget (leaveLobby is synchronous); non-fatal if Steam is unavailable.
-  if (hasSteam) {
+  if (isTauriPresent()) {
     import('./steamNetworkingService').then(({ invokeSteam }) => {
       void invokeSteam('steam_force_leave_active_lobby').catch((err: unknown) => {
         console.warn('[MP:LobbyService] steam_force_leave_active_lobby failed:', err);
@@ -829,7 +835,7 @@ export function leaveLobby(): void {
 
   // BUG12: Clear Rich Presence so the Steam friends list no longer shows a
   // "Join Game" button for this lobby. Fire-and-forget.
-  if (hasSteam) {
+  if (isTauriPresent()) {
     void clearRichPresence().catch((e) => {
       console.warn('[MP:LobbyService] clearRichPresence failed (non-fatal):', e);
     });
@@ -1210,6 +1216,7 @@ export function startGame(): void {
 
   _pendingStartAcks = new Set(guestIds);
   _lastStartPayload = payload;
+  _hostStartFired = false;
 
   const transport = getMultiplayerTransport();
   transport.send('mp:lobby:start', payload);
@@ -1217,8 +1224,23 @@ export function startGame(): void {
   if (guestIds.length === 0) {
     // No guests — fire immediately (solo testing / edge case).
     _cancelStartAckHandshake();
-    _fireSubscribers(_gameStartSubscribers, seed, _currentLobby!);
+    if (!_hostStartFired) {
+      _hostStartFired = true;
+      _fireSubscribers(_gameStartSubscribers, seed, _currentLobby!);
+    }
     return;
+  }
+
+  // BUG-8 fix: on Steam P2P the host does not receive its own send (no loopback).
+  // Fire the host's onGameStart subscribers immediately after broadcast so the host
+  // transitions to the game while guests ACK. The ACK-all-arrived path (see mp:lobby:start_ack
+  // handler) is guarded by _hostStartFired to prevent a second fire.
+  // BroadcastChannel and WebSocket backends echo the message back, so they use the
+  // mp:lobby:start received-handler path instead — guard prevents double-fire there too.
+  if (isTauriPresent() && !isBroadcastMode() && !isLanMode()) {
+    // Steam P2P — host never receives its own send; fire immediately.
+    _hostStartFired = true;
+    _fireSubscribers(_gameStartSubscribers, seed, _currentLobby!);
   }
 
   // Retry broadcast every 750ms until all guests ACK or 3s timeout fires.
@@ -1386,6 +1408,8 @@ function _cancelStartAckHandshake(): void {
   }
   _pendingStartAcks = null;
   _lastStartPayload = null;
+  // BUG-8: reset fired-flag so next start attempt is clean.
+  _hostStartFired = false;
 }
 
 function setupMessageHandlers(): void {
@@ -1570,6 +1594,24 @@ function setupMessageHandlers(): void {
 
   reg('mp:lobby:start', (msg) => {
     if (!_currentLobby) return;
+
+    // FIX 023: Idempotency guard — host's 750ms retry storm must not re-fire
+    // _gameStartSubscribers for a guest that already transitioned to in_game.
+    // Re-send ACK so the host's pending set decrements and the retry stops, then bail.
+    if (_currentLobby.status === 'in_game') {
+      if (!isHost()) {
+        const retryPayload = msg.payload as { seed: number };
+        getMultiplayerTransport().send(
+          'mp:lobby:start_ack',
+          { seed: retryPayload.seed, playerId: _localPlayerId },
+        );
+      }
+      return;
+    }
+    // Set status to 'in_game' early — before any field merges or subscriber fires —
+    // so any re-entrant mp:lobby:start (from the retry interval) hits the guard above.
+    _currentLobby.status = 'in_game';
+
     // BUG-1: Widen the payload type to include all fields the host sends at startGame().
     // Previously only seed + contentSelection were extracted; mode/deckId/houseRules were
     // silently discarded, leaving the guest with stale values from mp:lobby:settings
@@ -1584,7 +1626,8 @@ function setupMessageHandlers(): void {
     };
 
     // Apply all lobby-critical fields before firing subscribers.
-    // Order: mode → deckId → houseRules → contentSelection → seed/status.
+    // Order: mode → deckId → houseRules → contentSelection → seed.
+    // status was set to 'in_game' early above for idempotency (FIX 023).
     // This ensures onGameStart always sees the definitive host-committed values.
     if (payload.mode !== undefined) {
       _currentLobby.mode = payload.mode;
@@ -1603,7 +1646,6 @@ function setupMessageHandlers(): void {
       _currentLobby.contentSelection = payload.contentSelection;
     }
     _currentLobby.seed = payload.seed;
-    _currentLobby.status = 'in_game';
 
     rrLog('mp:recv', 'mp:lobby:start applied', {
       mode: _currentLobby.mode,
@@ -1635,7 +1677,12 @@ function setupMessageHandlers(): void {
       );
     }
 
-    _fireSubscribers(_gameStartSubscribers, payload.seed, _currentLobby);
+    // BUG-8: on Steam P2P, host already fired in startGame() — guard prevents double-fire.
+    // On BroadcastChannel/WebSocket, host receives its own echo and fires here (normal path).
+    if (!_hostStartFired) {
+      _hostStartFired = true;
+      _fireSubscribers(_gameStartSubscribers, payload.seed, _currentLobby);
+    }
   });
 
   // H5: Host handles guest ACKs.
@@ -1646,9 +1693,13 @@ function setupMessageHandlers(): void {
     console.log(`[MP:LobbyService] mp:lobby:start_ack from ${playerId}, remaining:`, _pendingStartAcks.size);
 
     if (_pendingStartAcks.size === 0) {
-      // All guests ACKed — fire onGameStart and cancel timers.
+      // All guests ACKed — cancel timers.
+      // BUG-8: on Steam P2P, host already fired in startGame(); guard prevents double-fire.
+      // On BroadcastChannel / WebSocket, host receives its own mp:lobby:start echo and
+      // fires via the mp:lobby:start received-handler, so _hostStartFired is also set there.
       _cancelStartAckHandshake();
-      if (_currentLobby) {
+      if (_currentLobby && !_hostStartFired) {
+        _hostStartFired = true;
         _fireSubscribers(_gameStartSubscribers, _currentLobby.seed!, _currentLobby);
       }
     }
@@ -1703,14 +1754,14 @@ function setupMessageHandlers(): void {
   // flush any stale pending_peer_left SteamID that was recorded for a prior
   // lobby (before the Rust-side filter in BUG24 was active, or for any race).
   // Belt-and-suspenders with the Rust-side lobby-match check.
-  if (hasSteam) {
+  if (isTauriPresent()) {
     void getPendingPeerLeft().catch(() => null);
   }
 
   // BUG17: When on Steam, poll for ungraceful peer exits (app crash, network drop)
   // that never send mp:lobby:leave. The Rust LobbyChatUpdate callback writes the
   // departing peer's SteamID to pending_peer_left; we read and synthesise the event.
-  if (hasSteam) {
+  if (isTauriPresent()) {
     if (_peerLeftPollInterval !== null) {
       clearInterval(_peerLeftPollInterval);
     }
@@ -1883,7 +1934,7 @@ interface LobbyBackend {
  * Select the active LobbyBackend at call time.
  *
  * Priority:
- *  1. Steam (hasSteam — Tauri desktop build with Steamworks)
+ *  1. Steam (isTauriPresent() — Tauri desktop build with Steamworks)
  *  2. BroadcastChannel (?mp URL param — two-tab dev mode, localStorage directory)
  *  3. Web/Fastify (default — mobile, web browser, no Steam)
  */
@@ -1892,17 +1943,27 @@ function pickBackend(): LobbyBackend {
   // This lets devs running a Steam build two-tab test the broadcast path without
   // uninstalling Steam or fighting the factory's auto-selection.
   if (isBroadcastMode()) return broadcastBackend;
-  if (isLanMode()) return webBackend; // LAN uses Fastify-style web backend, even on Steam builds
+  // FIX 019: In a packaged Steam build (isTauriPresent), honour LAN-mode localStorage only
+  // when the ?lan=1 query flag is present — the user cannot easily append URL params in a
+  // packaged build, so the presence of rr-lan-server without ?lan=1 is almost certainly a
+  // leftover dev artifact. The flag is the explicit dev opt-in for Steam-build LAN testing.
+  if (isLanMode()) {
+    const lanFlagPresent = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('lan');
+    if (!isTauriPresent() || lanFlagPresent) {
+      return webBackend;
+    }
+    console.warn('[pickBackend] rr-lan-server localStorage detected in Steam build; ignored. Add ?lan=1 to opt in.');
+  }
   // Live call-time check — avoids the module-load IIFE snapshot in platformService being stale
   // when Tauri's global injection lands after the bundle evaluates (ordering issue in packaged builds).
-  // We still log hasSteam so we can see in DevTools whether the static snapshot was stale.
+  // We still log isDesktop so we can see in DevTools whether the static snapshot was stale.
   // Use the memoized isTauriPresent() from platformService rather than an inline
   // duplicate — single scan per session, correct at call time.
   const tauriPresent = isTauriPresent();
   console.log('[pickBackend]', {
     hasTauriInternals: typeof window !== 'undefined' && !!(window as any).__TAURI_INTERNALS__,
     hasTauriGlobal: typeof window !== 'undefined' && !!(window as any).__TAURI__,
-    hasSteamStatic: hasSteam,
+    isDesktopStatic: isDesktop,
     tauriPresentLive: tauriPresent,
   });
   if (tauriPresent) return steamBackend;

@@ -239,7 +239,10 @@ export async function mpLobbyWsRoutes(app: FastifyInstance): Promise<void> {
             updateLobbySettings(lobbyId, playerId, { status: 'in_game' })
             broadcast(lobbyId, {
               type: 'mp:lobby:start',
-              payload: { lobbyId, seed: msg.payload?.['seed'] ?? null },
+              // FIX 020: Forward full host payload (mode, houseRules, deckId, contentSelection)
+              // so the client-side mp:lobby:start handler receives all fields it expects.
+              // Server-validated lobbyId and seed are set last to win over any client-supplied values.
+              payload: { ...(msg.payload ?? {}), lobbyId, seed: msg.payload?.['seed'] ?? null },
             })
             break
           }

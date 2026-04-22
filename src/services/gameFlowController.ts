@@ -143,8 +143,8 @@ import { preloadNarrativeData } from './narrativeLoader'
 import { showNarrative } from '../ui/stores/narrativeStore'
 import { CHAIN_TYPES } from '../data/chainTypes'
 import { unlockAchievement } from './steamService'
-import { startRaceProgressBroadcast, updateLocalProgress, stopRaceProgressBroadcast, initRaceMode } from './multiplayerGameService'
-import { getCurrentLobby, getLocalMultiplayerPlayerId } from './multiplayerLobbyService'
+import { startRaceProgressBroadcast, updateLocalProgress, stopRaceProgressBroadcast, initRaceMode, collectForkSeeds, broadcastForkSeeds } from './multiplayerGameService'
+import { getCurrentLobby, getLocalMultiplayerPlayerId, isHost } from './multiplayerLobbyService'
 import { computeRaceScore } from './multiplayerScoring'
 import type { MultiplayerMode } from '../data/multiplayerTypes'
 import { ensureCuratedDeckLoaded } from '../data/curatedDeckStore'
@@ -310,7 +310,7 @@ let isProcessingEncounterResult = false;
  */
 let pendingRewardIsEliteOrBoss = false;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
-type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race'
+type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race' | 'multiplayer_coop' | 'multiplayer_duel' | 'multiplayer_trivia'
 let activeRunMode: ActiveRunMode = 'standard'
 let multiplayerSeed: number | null = null
 let multiplayerModeState: MultiplayerMode | null = null
@@ -435,7 +435,17 @@ export function startNewRun(options?: {
   activeDailySeed = null
   pendingIncludeOutsideDueReviews = options?.includeOutsideDueReviews ?? false
   if (options?.multiplayerMode) {
-    activeRunMode = 'multiplayer_race'
+    // FIX 022: Map multiplayerMode → activeRunMode honestly so non-race modes
+    // do not spin up race-progress broadcasts (gated on 'multiplayer_race').
+    if (options.multiplayerMode === 'coop') {
+      activeRunMode = 'multiplayer_coop';
+    } else if (options.multiplayerMode === 'duel') {
+      activeRunMode = 'multiplayer_duel';
+    } else if (options.multiplayerMode === 'trivia_night') {
+      activeRunMode = 'multiplayer_trivia';
+    } else {
+      activeRunMode = 'multiplayer_race'; // 'race', 'coop', 'duel', 'trivia_night', 'same_cards' — all MP modes use this umbrella; branch on multiplayerModeState for mode-specific work
+    }
     multiplayerSeed = options.multiplayerSeed ?? null
     multiplayerModeState = options.multiplayerMode
   }
@@ -758,7 +768,7 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData, prebuiltSum
     }
   }
   // Send race finish update and stop broadcast for multiplayer race
-  if (activeRunMode === 'multiplayer_race') {
+  if (activeRunMode === 'multiplayer_race' && multiplayerModeState === 'race') {
     const lobby = getCurrentLobby();
     const localId = lobby?.players.find(p => p.isHost !== undefined)?.id ?? 'local';
     updateLocalProgress({
@@ -980,6 +990,8 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
     includeOutsideDueReviews: pendingIncludeOutsideDueReviews,
     providedSeed: multiplayerSeed ?? undefined,
     multiplayerMode: multiplayerModeState ?? undefined,
+    // FIX C-005: thread lobby player count so encounterBridge can apply getCoopHpMultiplier()
+    multiplayerPlayerCount: multiplayerModeState !== null ? (getCurrentLobby()?.players.length ?? 1) : undefined,
   });
   pendingDeckMode = null;
   pendingIncludeOutsideDueReviews = false;
@@ -1090,8 +1102,18 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
     activateDeterministicRandom(run.runSeed);
   }
 
+  // FIX C-004: broadcast fork-seed state for coop (and same_cards) so the guest's RNG
+  // forks start at identical positions to the host's. Must run AFTER initRunRng so the
+  // forks are derived. Guest receives and applies via initGameMessageHandlers mp:sync handler.
+  // same_cards already did this; coop now mirrors the pattern.
+  if ((multiplayerModeState === 'coop' || multiplayerModeState === 'same_cards') && isHost()) {
+    const forkSeeds = collectForkSeeds();
+    broadcastForkSeeds(forkSeeds);
+  }
+
   // Start multiplayer race progress broadcast
-  if (activeRunMode === 'multiplayer_race') {
+  // FIX C-003: gate race-progress broadcast on actual race mode — coop/duel must not enter race loop
+  if (activeRunMode === 'multiplayer_race' && multiplayerModeState === 'race') {
     // #79: Reset race-mode accumulators and store localPlayerId BEFORE the broadcast
     // loop starts. Without this, back-to-back races leak fact accumulators from the
     // previous run into the next FSRS batch. Must fire before startRaceProgressBroadcast.
@@ -3396,7 +3418,7 @@ export function playAgain(): void {
   return;
 }
 
-export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race', dailySeed?: number | null, runSeed?: number | null): void {
+export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race' | 'multiplayer_coop' | 'multiplayer_duel' | 'multiplayer_trivia', dailySeed?: number | null, runSeed?: number | null): void {
   if (runMode === 'daily_expedition' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
     activeRunMode = 'daily_expedition'
     activeDailySeed = dailySeed

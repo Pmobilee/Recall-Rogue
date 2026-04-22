@@ -742,7 +742,11 @@ export class SteamP2PTransport implements MultiplayerTransport {
           }, delayMs);
         } else {
           const totalElapsedMs = Date.now() - startMs;
+          console.error('[mp:tx] send exhausted retries', { type: msg.type });
           rrLog('mp:tx', 'send exhausted all retries (resolved-false)', { type: msg.type, peerId: this.peerId, totalElapsedMs, connState, sessionErr });
+          // FIX 029: Surface send exhaustion to higher layers — transition to error state
+          // so any state-monitoring code (overlays, reconnect logic) can react.
+          this._setState('error', 'send_exhausted:' + msg.type);
         }
       }
       // result === true: success, nothing to do.
@@ -760,7 +764,10 @@ export class SteamP2PTransport implements MultiplayerTransport {
         }, delayMs);
       } else {
         const totalElapsedMs = Date.now() - startMs;
+        console.error('[mp:tx] send exhausted retries', { type: msg.type });
         rrLog('mp:tx', 'send exhausted all retries (throw)', { type: msg.type, peerId: this.peerId, totalElapsedMs, connState, sessionErr, err: errStr });
+        // FIX 029: Surface send exhaustion to higher layers — same as resolved-false path.
+        this._setState('error', 'send_exhausted:' + msg.type);
       }
     });
   }
