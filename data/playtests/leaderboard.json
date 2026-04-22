@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-22T21:38:43.340785+09:00",
+  "updatedAt": "2026-04-22T22:06:00.000000+09:00",
   "totalPlaythroughs": 22,
   "totalIssues": 147,
   "batches": [
@@ -494,7 +494,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -512,7 +512,9 @@
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
-      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed"
+      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-010",
@@ -529,7 +531,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -547,7 +549,9 @@
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
-      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed"
+      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-011",
@@ -564,7 +568,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -585,7 +589,9 @@
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
-      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed"
+      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-012",
@@ -602,7 +608,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -620,7 +626,9 @@
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
-      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed"
+      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-013",
@@ -637,7 +645,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -656,7 +664,9 @@
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
-      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed"
+      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-014",
@@ -673,7 +683,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -692,7 +702,9 @@
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
-      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed"
+      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-015",
@@ -740,7 +752,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -759,7 +771,9 @@
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
-      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed"
+      "resolvedBy": "wave 3 \u2014 determinism + mode-bleed",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-20260422-001",
@@ -856,7 +870,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -872,7 +886,9 @@
       "score": 25,
       "rank": 20,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-019",
@@ -889,7 +905,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -905,7 +921,9 @@
       "score": 25,
       "rank": 21,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-020",
@@ -1052,7 +1070,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1066,7 +1084,9 @@
       "score": 25,
       "rank": 26,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-025",
@@ -1538,7 +1558,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1552,7 +1572,9 @@
       "score": 10,
       "rank": 42,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-L-031",
@@ -1569,7 +1591,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1583,7 +1605,9 @@
       "score": 10,
       "rank": 43,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "0d017edee"
     },
     {
       "canonicalId": "alpha-review-risk-001",
@@ -3057,7 +3081,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "fix": "commit eae6415f1",
@@ -3070,7 +3094,9 @@
       "deferredReason": "Narrow regression test \u2014 will add alongside the broader integration harness in MP-006.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "fixedAt": "2026-04-22",
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-20260422-015",
