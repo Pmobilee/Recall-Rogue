@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-22T21:08:47.153104+09:00",
+  "updatedAt": "2026-04-22T12:13:03.797Z",
   "totalPlaythroughs": 22,
   "totalIssues": 147,
   "batches": [
@@ -422,7 +422,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -439,7 +439,9 @@
       "score": 80,
       "rank": 8,
       "inProgressAt": "2026-04-22T21:08:47.153104+09:00",
-      "assignedTo": "game-logic wave 2 (Rust)"
+      "assignedTo": "game-logic wave 2 (Rust)",
+      "fixedAt": "2026-04-22T12:13:03.796Z",
+      "fixedInCommitPending": true
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-C-001",

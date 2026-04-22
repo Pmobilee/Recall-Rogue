@@ -43,8 +43,8 @@ fn redirect_stdio_to_log_file() {
         return;
     };
     // On Unix, dup2 replaces fd 1 and 2 with our file. On Windows, use the
-    // `windows` std fd equivalents via AsRawHandle. Kept separate to avoid
-    // pulling in windows-sys; Rust's std has the needed trait.
+    // `windows-sys` crate's SetStdHandle to redirect stdout/stderr to the file
+    // handle. Kept separate to avoid pulling in windows-sys on non-Windows targets.
     #[cfg(unix)]
     {
         use std::os::fd::AsRawFd;
@@ -59,11 +59,17 @@ fn redirect_stdio_to_log_file() {
     }
     #[cfg(windows)]
     {
-        // Windows: SetStdHandle via winapi crate would be cleaner, but for
-        // simplicity we just rely on Tauri's builder to not need stdio.
-        // The release build already hides the console, and stdio-less output
-        // is the default. If needed, we can add a windows-sys crate later.
-        let _ = file;
+        use std::os::windows::io::AsRawHandle;
+        use windows_sys::Win32::System::Console::{SetStdHandle, STD_ERROR_HANDLE, STD_OUTPUT_HANDLE};
+        let raw = file.as_raw_handle() as windows_sys::Win32::Foundation::HANDLE;
+        unsafe {
+            SetStdHandle(STD_OUTPUT_HANDLE, raw);
+            SetStdHandle(STD_ERROR_HANDLE, raw);
+        }
+        // Leak the handle so it stays open for the app's lifetime.
+        // Dropping `file` would close the underlying HANDLE while Windows is
+        // still writing through it, corrupting the log.
+        std::mem::forget(file);
     }
     println!("[stdio] redirected to {}", log_path.display());
 }

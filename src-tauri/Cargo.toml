@@ -23,6 +23,11 @@ hostname = "0.4"
 # File-redirected diagnostic logger in main.rs — needs libc::dup2 on Unix.
 libc = "0.2"
 
+# Windows stdout/stderr redirect — SetStdHandle for release builds (2026-04-22).
+# Only compiled on Windows targets; zero cost on macOS/Linux.
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.52", features = ["Win32_System_Console", "Win32_Foundation"] }
+
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 
