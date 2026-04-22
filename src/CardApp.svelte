@@ -272,20 +272,25 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     })
   })
 
-  // Auto-trigger combat tutorial on first-ever combat encounter
+  // Auto-trigger combat tutorial on first-ever combat encounter.
+  // Suppressed during multiplayer runs: the tutorial pauses turn flow for the
+  // local player and makes no sense alongside a peer who's also being tutorialed.
   $effect(() => {
     const screen = $currentScreen
     if (isTutorialActive()) return  // Don't restart if already running
+    if (currentLobby !== null) return  // Never tutorial during an MP session
     const state = get(onboardingState)
     if (screen === 'combat' && state.runsCompleted === 0 && !state.hasSeenCombatTutorial && !state.tutorialDismissedEarly) {
       startTutorial('combat')
     }
   })
 
-  // Auto-trigger study tutorial on first-ever study session
+  // Auto-trigger study tutorial on first-ever study session.
+  // Same MP suppression as combat tutorial above.
   $effect(() => {
     const screen = $currentScreen
     if (isTutorialActive()) return  // Don't restart if already running
+    if (currentLobby !== null) return  // Never tutorial during an MP session
     const state = get(onboardingState)
     if (screen === 'restStudy' && !state.hasSeenStudyTutorial && !state.tutorialDismissedEarly) {
       startTutorial('study')
@@ -2354,7 +2359,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       lines={$narrativeDisplay.lines}
       mode={$narrativeDisplay.mode}
       onDismiss={dismissNarrative}
-      showTutorialButton={$currentScreen === 'combat' || $currentScreen === 'dungeonMap'}
+      showTutorialButton={currentLobby === null && ($currentScreen === 'combat' || $currentScreen === 'dungeonMap')}
     />
   {/if}
 
