@@ -846,8 +846,15 @@ export async function sendP2PMessage(
 ): Promise<boolean> {
   if (!isTauriRuntime()) return false;
   // BUG1: Rust returns Result<bool, String>. Ok(true) = sent, Ok(false) = steamworks send failure.
-  // The previous void return erased the bool so the _sendWithRetry loop could never detect resolved-false.
-  return (await invokeSteam('steam_send_p2p_message', { steamId, data, channel })) ?? false;
+  // PASS1-BUG-20: invokeSteam returning null means the IPC call itself failed (exception caught in
+  // tauriInvoke). Log distinctly so callers can distinguish IPC failure from Rust-returned false.
+  const result = await invokeSteam('steam_send_p2p_message', { steamId, data, channel });
+  if (result === null) {
+    const ipcErr = getLastSteamInvokeError();
+    rrLog('mp:steam', 'sendP2PMessage IPC failure (null return)', { steamId, channel, ipcErr });
+    return false;
+  }
+  return result;
 }
 
 /**
@@ -871,7 +878,14 @@ export async function readP2PMessages(channel: number = MP_P2P_CHANNEL): Promise
 export async function acceptP2PSession(steamId: string): Promise<boolean> {
   if (!isTauriRuntime()) return false;
   // BUG3: Rust returns Result<bool, String>. Propagate the bool so callers can log false without failing hard.
-  return (await invokeSteam('steam_accept_p2p_session', { steamId })) ?? false;
+  // PASS1-BUG-20: distinguish IPC failure (null) from Rust-returned false with distinct logging.
+  const result = await invokeSteam('steam_accept_p2p_session', { steamId });
+  if (result === null) {
+    const ipcErr = getLastSteamInvokeError();
+    rrLog('mp:steam', 'acceptP2PSession IPC failure (null return)', { steamId, ipcErr });
+    return false;
+  }
+  return result;
 }
 
 // ── Callback Pump ─────────────────────────────────────────────────────────────
