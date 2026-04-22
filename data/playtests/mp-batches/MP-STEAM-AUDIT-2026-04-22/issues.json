@@ -68,8 +68,10 @@
       "evidence": "src/CardApp.svelte:849 (startNewRun) → synchronous currentScreen.set in gameFlowController :1135/:1156 → :858 (initCoopSync)",
       "impact": "Combat scene can mount and the host can broadcast mp:coop:enemy_state before the guest's listener is registered. First snapshot lost → guest enters combat with no shared enemy reference.",
       "fix": "Move initCoopSync, initMapNodeSync, onPartnerStateUpdate registrations BEFORE startNewRun in the game-start callback.",
-      "status": "in_progress",
-      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+      "status": "fixed",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "fixedAt": "2026-04-22T11:42:57.000Z",
+      "fixedInCommit": "9e0650b53c98f29d255a4df2a41e2fb24e2f52c9"
     },
     {
       "id": "BUG-7",
@@ -78,8 +80,10 @@
       "evidence": "src/CardApp.svelte:873 — registered at the bottom of the $effect, after startNewRun and initCoopSync",
       "impact": "Same timing window as BUG-6 for partner HP state. First mp:coop:partner_state from host can land before guest subscribes.",
       "fix": "Hoist onPartnerStateUpdate registration above startNewRun inside the same $effect.",
-      "status": "in_progress",
-      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+      "status": "fixed",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "fixedAt": "2026-04-22T11:42:57.000Z",
+      "fixedInCommit": "9e0650b53c98f29d255a4df2a41e2fb24e2f52c9"
     },
     {
       "id": "BUG-8",
@@ -118,8 +122,10 @@
       "evidence": "src/CardApp.svelte:896-906 — destroyCoopSync(), unsubPartner(), destroyMapNodeSync() all fire on any $effect re-run",
       "impact": "If anything the $effect tracks reactively changes mid-run (localPlayerId refresh, lobby reference swap), the cleanup fires and kills every transport listener. Re-registration happens in the next $effect tick but any in-flight messages are lost.",
       "fix": "Either split the effect into one-shot 'mount' registrations (plain onMount) and reactive updates, or narrow the $effect's tracked deps so it doesn't re-fire mid-run.",
-      "status": "in_progress",
-      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+      "status": "fixed",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "fixedAt": "2026-04-22T11:42:57.000Z",
+      "fixedInCommit": "9e0650b53c98f29d255a4df2a41e2fb24e2f52c9"
     },
     {
       "id": "BUG-12",
