@@ -421,6 +421,48 @@ Enemy intents are deterministic via a **seeded RNG fork** named `enemy-intent`:
 
 ---
 
+## Seeded RNG Forks — `SAME_CARDS_FORK_LABELS`
+
+`multiplayerGameService.ts` exports `SAME_CARDS_FORK_LABELS` — the fork labels whose internal PRNG state is broadcast from host to guest at run start (and re-broadcast on late-join). Coop and Same-Cards both rely on this list. Adding a new `Math.random()` site in a code path the guest also runs is a **desync vector** unless it goes through `getRunRng(label).next()` AND `label` is included here.
+
+Current labels (2026-04-22, ULTRATHINK wave-2):
+
+| Label | Owner | Purpose |
+|---|---|---|
+| `deck` | `deckManager.ts` | Per-encounter deck shuffles, draw piles |
+| `hand` | `deckManager.ts` | Hand draw order |
+| `factAssignment` | `cardEffectResolver.ts` | Fact assignment at charge-commit |
+| `cardReward` | `rewardGenerator.ts` | Reward room card-pick offers |
+| `shopInventory` | `shopService.ts` | Shop relic + card rolls |
+| `tagMagnetism` | `deckManager.ts:198` | Tag-magnet relic draw bias |
+| `cardEffects` | `turnManager.ts:609` | Transmute mechanic-pool selection |
+| `debuffTarget` | `turnManager.ts:1666/1671/1683/2992` | Enemy debuff target shuffles + scavenge/forge/mimic candidate picks |
+| `catchUpMastery` | `catchUpMasteryService.ts:42` | Starting-mastery roll for newly acquired cards |
+| `shopFloor10Food` | `shopService.ts:239` | Late-floor elixir-vs-feast roll |
+| `quizFraming` | `nonCombatQuizSelector.ts:21` | Flag question-type roll (identify/reverse/continent/not_elimination) |
+
+**Workflow when adding a new fork:**
+1. Replace the `Math.random()` call with `isRunRngActive() ? getRunRng('newLabel').next() : Math.random()` (the `Math.random` fallback keeps tests / dev preview working without a run).
+2. Add `'newLabel'` to `SAME_CARDS_FORK_LABELS` so `collectForkSeeds()` broadcasts it on coop/same-cards game start.
+3. Add a unit test that proves two seeded RNGs at the same state produce the same value.
+
+---
+
+## Coop Scoring (MP-STEAM-AUDIT-2026-04-22-L-030)
+
+`calculateScoreForMode('coop', stats)` in `multiplayerGameService.ts` is now its own branch (no longer falls through the `race` case). Formula:
+
+```
+solo:    floors*100 + damage + chain*50 + correct*10 - wrong*5  + perfect*200
+partner:                                + partnerCorrect*3 - partnerWrong*1 + partnerPerfect*75
+```
+
+Partner-credit weights are smaller than solo weights (3 vs 10, 1 vs 5, 75 vs 200) so the score still primarily reflects this player's own contribution — joining a strong partner does not 2× your number, but a player who carries the deck-knowledge load gets visible recognition on both screens.
+
+`ModeScoreStats` now carries optional `partnerCorrectCount`, `partnerWrongCount`, `partnerPerfectEncounters` populated by the coop endgame summary after both players' final `mp:coop:partner_state` messages have arrived. When omitted (back-compat callers), the formula collapses to the race formula.
+
+---
+
 ## Known Acceptable Drift
 
 During a turn, P1 and P2 may see different enemy HP (each sees only their own damage applied). This resolves at end-of-turn when the host broadcasts the merged state. If one player overkills the enemy locally, the encounter ends on both clients once the host's merged state shows HP ≤ 0.
@@ -691,6 +733,85 @@ await new Promise(r => setTimeout(r, 200));
 ```
 
 Applied in both `steamBackend.resolveByCode` and `steamBackend.listPublicLobbies`. The existing `if (!mode || !visibility || !lobbyCode) continue` guard remains as a backstop for any remaining misses.
+
+## Steam P2P Session Priming — Fire-and-Forget, NOT Synchronous (2026-04-22)
+
+**Source files:** `src/services/steamNetworkingService.ts` (`primeP2PSessions`), `src-tauri/src/steam.rs` (`steam_prime_p2p_sessions`), `src/services/multiplayerLobbyService.ts` (call sites in `createLobby` / `joinLobby` / `joinLobbyById`), `src/services/multiplayerTransport.ts` (`SteamP2PTransport._sendWithRetry`, `_preSendBuffer`).
+
+### What priming actually does
+
+`steam_prime_p2p_sessions(lobbyId)` enumerates the lobby's other members and sends a single zero-byte `ISteamNetworkingMessages` packet to each one with the `AUTO_RESTART_BROKEN_SESSION` flag. The send returns the moment Steam queues the packet — it does NOT wait for the remote `session_request_callback` to fire on the peer side and it does NOT wait for `Connected` state. The Tauri command resolves with the count of peers it attempted to prime, not the count of sessions that opened.
+
+### Race window — first transport.send may arrive before the session is open
+
+Because priming is fire-and-forget, the very first `transport.send(...)` call after `primeP2PSessions` returns can race the session handshake. Three things absorb the race:
+
+1. **`SteamP2PTransport._preSendBuffer` (cap 64)** — when transport state is `'connecting'`, sends are pushed to the buffer and flushed after `acceptP2PSession` resolves. See `## C4 — Outbound Pre-Connect Buffer`.
+2. **`_sendWithRetry` (5 attempts, ~4.4s budget, see `STEAM_P2P_SEND_RETRY_DELAYS_MS`)** — when `steam_send_p2p_message` returns `false` (BUG2 fix made the bool actually visible to TS), retries with backoff. Logs `getSessionError(peerSteamId)` between attempts.
+3. **`session_request_callback` registered in `SteamState::new()`** — auto-accepts incoming sessions on the *receiver* side so the second-direction send arc opens without TS intervention.
+
+### Implementer warnings
+
+- **Do not assume priming is complete before the first send.** The Tauri command resolving means "Steam queued the primer," not "session is ready."
+- **Do not skip `_sendWithRetry` for `mp:lobby:start` or any other host bootstrap message.** A naked `transport.send` will eat the first session window. BUG 032 was this exact failure mode.
+- **Do not call `primeP2PSessions` once and assume both directions are open.** A→B and B→A are two separate session arcs under `ISteamNetworkingMessages`. The receiver-side `session_request_callback` covers the inbound arc; outbound priming covers the local→remote arc. Both are required.
+- **Two-tab dev mode does NOT exercise this path** — `BroadcastTransport` has no session concept. Steam-build smoke tests are the only way to catch a regression here.
+
+---
+
+## Production Residue — webBackend / LAN / CSP / VITE_MP_WS_URL on Steam Builds (2026-04-22)
+
+This section catalogs build-time and runtime "dead but compiled" multiplayer surfaces that ship inside the Steam binary. Knowing where each lives prevents future "lobby works but nothing works after start" failure modes (MP-STEAM-AUDIT-2026-04-22-M-022, M-023; MP-STEAM-20260422-010, 013).
+
+### `webBackend` — compiled, gated, never selected on a healthy Steam build
+
+`webBackend` is the Fastify REST + WebSocket lobby backend. On Steam, `pickBackend()` (priority table in `## Three-Backend Architecture`) selects `steamBackend` when `isTauriPresent()` returns `true`, so `webBackend` is never picked in production. However:
+
+- The `webBackend` module is statically imported in `multiplayerLobbyService.ts` and tree-shaken into the Steam bundle anyway. Build size cost ~5 KB gzipped — acceptable.
+- If Steam init partially fails (e.g., `steam_appid.txt` missing in a dev iteration of the bundle), `isTauriPresent()` still returns `true` but Steamworks calls fail. The lobby code does NOT currently demote to `webBackend` in that case — `steamBackend` calls fail loudly. This is the desired behavior. **Do not "fall back to webBackend on Steam init failure"** — that path points at `VITE_MP_WS_URL` which on Steam is `ws://localhost:3000/mp/ws` (see below) and silently fails.
+- `webBackend` is the legitimate path for web/mobile/CI builds and dev `npm run dev` sessions.
+
+**Operational note:** if a Steam player reports "lobby joins but game never starts," check the browser console for `[multiplayerLobbyService] picked backend = web` — that line means the Steam path was demoted unexpectedly.
+
+### LAN code — compiled-but-hidden in Steam release
+
+`src/services/lanServerService.ts`, `lanDiscoveryService.ts`, `lanConfigService.ts` and the LAN tab UI in `MultiplayerMenu.svelte` are all compiled into the Steam bundle. The LAN tab itself is hidden (commit `f464d3652`), but the underlying code paths still exist and can be reached via:
+
+- Stale `localStorage.rr-lan-server` from a prior dev session — **mitigated by FIX 019**: `pickBackend()` ignores this on Steam builds unless `?lan=1` is in the URL.
+- `MultiplayerMenu.svelte` `handleCreateLobby` / `handleJoinLobby` — defensively call `stopLanServer()` and clear persisted LAN URL before any Steam lobby create/join (commit `7a968aae5`).
+
+**Why not strip it out:** A `VITE_STEAM_BUILD` compile-time gate would shave ~30 KB but introduces two build matrices to verify. Decision deferred until LAN is genuinely abandoned for Steam (see MP-STEAM-AUDIT-2026-04-22-M-023). For now, the runtime defenses are the contract — do NOT remove the `isLanMode()` guards or the LAN-clear calls in `MultiplayerMenu.svelte` without first stripping the imports.
+
+### `VITE_MP_WS_URL` — defaults to localhost on Steam, intentionally unused
+
+`multiplayerTransport.ts` defines `DEFAULT_MP_WS_URL = 'ws://localhost:3000/mp/ws'`. In a Steam production build:
+
+- `import.meta.env.VITE_MP_WS_URL` is whatever was set at `npm run build` time. `scripts/steam-build.sh` does NOT set it (verified 2026-04-22). The default wins.
+- Steam path uses `SteamP2PTransport`, not `WebSocketTransport`, so the URL is never read.
+- If a future change introduces a WebSocket fallback on Steam (NAT-unfriendly recovery, telemetry, live-ops), it will silently point at the player's own `localhost:3000` and fail. **MP-STEAM-20260422-013 logged this trap.**
+
+**Required action before adding any WebSocket code path to Steam builds:**
+1. Decide on a real production URL (`wss://mp.recallrogue.com` is the conventional placeholder).
+2. Set `VITE_MP_WS_URL=wss://...` in `scripts/steam-build.sh` before the `npm run build` invocation.
+3. Update the production CSP `connect-src` to include the URL (see below).
+4. Add a fail-fast assertion in `multiplayerTransport.ts`: if Steam build AND WebSocketTransport selected AND URL still points at `localhost`, throw on construction.
+
+### Production CSP — locked to `https://*.recallrogue.com`
+
+`vite.config.ts:31` injects `connect-src 'self' https://*.recallrogue.com https://localhost:*` into the production HTML meta tag. The Steam P2P path goes through Tauri IPC (not `connect-src`), so today this CSP is effectively unused for multiplayer. Implications:
+
+- Adding any WebSocket relay, telemetry endpoint, error reporter, or LAN HTTP probe that targets a domain outside `*.recallrogue.com` will be silently blocked by the browser engine in the Tauri webview. Console will log a CSP violation; the network call will fail. Players will see "lobby works but game never starts" with no obvious cause.
+- The Tauri webview enforces meta-tag CSP the same way Chromium does. There is no Tauri-side override that loosens it.
+- `tauri.conf.json` does NOT currently set `app.security.csp` (verified 2026-04-22 — the field is absent). Tauri-level CSP enforcement is therefore inactive; only the meta-tag CSP is live. This may change if a future Tauri upgrade enables `app.security.csp` by default — re-verify on every Tauri version bump.
+
+**Required action before adding any non-Tauri-IPC network call:**
+1. Add the target origin to the production CSP `connect-src` in `vite.config.ts:31`.
+2. Test the call inside a packaged Steam build (NOT `npm run dev` — dev CSP is permissive).
+3. Document the new origin in this section.
+
+The dead `src/csp.ts` module that previously held a parallel CSP definition was removed in commit `74fad47` (MP-20260413-003941-MP-012). All CSP lives in `vite.config.ts` and (potentially) `tauri.conf.json`.
+
+---
 
 ---
 

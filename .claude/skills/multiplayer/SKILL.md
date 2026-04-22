@@ -117,7 +117,26 @@ See `docs/mechanics/multiplayer.md` and `docs/architecture/multiplayer.md` for p
 | `getP2PConnectionState(steamId)` | TS | Wraps `steam_get_p2p_connection_state` |
 | `getSessionError(steamId)` | TS | Wraps `steam_get_session_error`; used by `_sendWithRetry` for enriched failure logs |
 | `lanTcpProbe(host, port, timeoutMs)` | TS | Wraps `lan_tcp_probe` |
- All C1–C5 criticals, H1–H19 highs, M1–M23 mediums, L1–L5 lows closed.
+
+### Wave 22 Hardening — STATUS NOTE (revised 2026-04-22)
+
+**Previous claim:** "All C1–C5 criticals, H1–H19 highs, M1–M23 mediums, L1–L5 lows closed."
+
+**Actual status:** That summary covered only the pre-wave-22 audit batches. Subsequent passes (wave 22b BUGs 1-7, 22c BUGs 8-12, 22e BUGs 13-20, plus BUGs 23-27 in commits up to `61a60edd9`, plus the ULTRATHINK fix wave 2026-04-22) discovered and fixed substantial additional issues. See the `Post-wave 22 deep audit` tables below for BUGs 1-20 and `docs/architecture/multiplayer.md` CHANGELOG for BUGs 21-32 and ULTRATHINK fixes.
+
+**Hardening log — BUGs 1-27 + ULTRATHINK summary**
+
+| Wave | Bugs | Status |
+|------|------|--------|
+| Pre-wave-22 (C1-C5, H1-H19, M1-M23, L1-L5) | core multiplayer audit batches | CLOSED |
+| Wave 22b (BUGs 1-7) | bool-erased IPC returns, dead retry path, AUTO_RESTART flag gaps, session error visibility, periodic poll, primer logging | CLOSED |
+| Wave 22c (BUGs 8-12) | mp:lobby:join host handler, MpDebugOverlay reachability, guest host stub, peer-id retry budget, Rich Presence connect key | CLOSED |
+| Wave 22e (BUGs 13-20) | macOS permission hint UI, transport listener leak, LobbyChatUpdate Left/Disconnected, primer-as-malformed noise, LAN debug state, console dump | CLOSED |
+| BUGs 21-27 | various Steam-build hardening including BUG 25 preSendBuffer flush + dead overlay removal (`82bf261ef`), BUG 27 wrong screen names (`61a60edd9`) | CLOSED |
+| ULTRATHINK 2026-04-22 (FIX016/018/019/020/022/023/029) | mp:lobby:start payload, hasSteam->isTauriPresent, LAN-mode gating, broadcast forwarding, mode-mapping, idempotent start, send-retry exhaustion -> error state | CLOSED |
+| ULTRATHINK Wave 2 (in flight) | doc drift, dead `csp.ts` cleanup, webBackend / LAN / VITE_MP_WS_URL Steam-build residue, primeP2P async semantics doc | landing this commit |
+
+**End-to-end coop on Steam:** VERIFIED via Wave 1 ULTRATHINK fixes (FIX016/018/020/022/023 closed the host->guest mode/payload split; BUG 27 closed the wrong screen-names lobby-nuke). Post-Wave-1 status is "verified by source-read + unit tests + per-fix smoke tests"; the next gap is a true two-Steam-account E2E playtest skill (MP-STEAM-20260422-051 — `steam-p2p-playtest` not yet built). Treat coop-on-Steam as verified-but-not-CI-covered until that skill exists.
 
 ### Post-wave 22 deep audit (2026-04-22b)
 

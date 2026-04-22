@@ -1,3 +1,21 @@
+### 2026-04-22k — Any new `Math.random()` in coop-affecting code is a desync vector
+
+**What:** ULTRATHINK wave-2 audit (Agent C) found six unseeded `Math.random()` sites still in service-layer code that runs on both host and guest in coop:
+- `deckManager.ts:198` (tag-magnet bias) — Wave 1 fix
+- `turnManager.ts:609` (transmute mechanic pick) — Wave 1 fix
+- `turnManager.ts:1666/1671/1683/2992` (debuff/scavenge/forge/mimic shuffles) — Wave 1 fix
+- `catchUpMasteryService.ts:40` (starting-mastery roll) — Wave 2 fix
+- `shopService.ts:237` (floor 10+ elixir-vs-feast) — Wave 2 fix
+- `nonCombatQuizSelector.ts:21` (flag question-type framing) — Wave 2 fix
+
+Each one diverged hands / cards / shop offers / quiz framing between coop clients and forced the host-authoritative reconciler to paper over the difference (or quietly let it bleed through, depending on the path).
+
+**Rule:** If a `Math.random()` call lives in `src/services/` AND can be reached from a coop run, it MUST go through `getRunRng('label').next()` with `isRunRngActive()` fallback to `Math.random()`. The label MUST be added to `SAME_CARDS_FORK_LABELS` in `multiplayerGameService.ts` so `collectForkSeeds()` broadcasts the fork state from host to guest at run start.
+
+**Detection cue:** if a coop bug report says "host saw X but guest saw Y" and the difference appears every turn rather than once, look for a service-layer `Math.random()` call that ran on both clients independently. The reconciler can mask divergence in enemy HP but cannot mask divergence in *which choice was made* — that's where this class of bug surfaces.
+
+**Two-sided enforcement opportunity (not yet built):** a `scripts/lint/check-unseeded-random.mjs` that greps `src/services/` for `Math.random` and fails unless the line is inside an `isRunRngActive()` ternary, an audio buffer, or an explicitly allow-listed test file. Adding this would catch the next regression at commit time.
+
 ### 2026-04-22j — Wave 2 MP lessons: host self-fire, fork-seed coop, platformService mock gap
 
 **BUG-8 (host self-fire on Steam P2P):** Steam P2P has no loopback — hosts do not receive their own `transport.send` messages. The BUG-3 fix changed the 3s timeout from "fire anyway" to "abort", which meant the host would never fire `onGameStart` after that change because it relied on the timeout as its fire path. Fix: the host immediately fires `_gameStartSubscribers` right after `transport.send('mp:lobby:start')` when on Steam P2P (`hasSteam && !isBroadcastMode() && !isLanMode()`). A `_hostStartFired` guard prevents double-fire when BroadcastChannel/WS echo the message back through the received-handler path.
@@ -5526,3 +5544,33 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 **Fix:** Snapshot per-player `{ isReady, connectionState, multiplayerRating }` BEFORE `Object.assign` and restore on non-local players: any local `'reconnecting'` survives; any real `multiplayerRating` survives if the incoming value is the placeholder `1000`.
 
 **Lesson:** A "host is authoritative" merge is only safe when the host actually owns the field. `connectionState` is a local signal driven by the local transport — the host must not be allowed to overwrite it. Audit every field of the merged type and ask "who's the real source of truth for this?" before letting `Object.assign` run.
+
+### 2026-04-22 — Lobby-cleanup allowlist polarity inverted (MP-STEAM-20260422-008)
+
+**What happened:** `CardApp.svelte` previously maintained a hand-enumerated `gameScreens` `Set<Screen>` of every in-run screen. The cleanup `$effect` cleared `currentLobby` when the active screen was NOT in that set AND not in `mpScreens` (lobby-side screens). This was the post-BUG-27 design (commit `61a60edd9`). Adding any new in-run screen required the author to remember to extend `gameScreens` — if forgotten, the same mid-run nuke regression would ship silently.
+
+**Why:** Allowlist-on-the-active-state-set is the wrong polarity. The set of "screens that should preserve the lobby" is open-ended and grows over time; the set of "screens that should TEAR DOWN the lobby" (hub-side + multiplayerMenu re-entry) is small, known, and stable. The closed set is the safe one to enumerate explicitly.
+
+**Fix:** Inverted polarity. `lobbyTerminatingScreens` is now the explicit `Set<Screen>` (hub + main + library + settings + profile + journal + leaderboards + relicSanctum + deckSelectionHub + triviaDungeon + studyTemple + multiplayerMenu). Every other screen — including all in-run screens, `multiplayerLobby`, `lobbyBrowser`, `raceResults`, `triviaRound` — implicitly preserves the lobby. New in-run screens are now safe by default. A second `$effect` warns to console (`MP-STEAM-20260422-065`) when `currentLobby` goes null while the active screen is one of the in-run screens — surfaces invariant violations loudly.
+
+**Lesson:** When a Set drives critical state-teardown and one of "preserve" / "tear-down" is small + closed and the other is open + growing, enumerate the small closed one. Allowlists scale poorly when their domain grows by feature work.
+
+### 2026-04-22 — Bool-vs-void IPC contract erasure: same class hit BUGs 1, 2, 25
+
+**What happened:** Three separate critical multiplayer bugs (BUG 1, BUG 2, BUG 25 in the MP-STEAM-AUDIT-2026-04-22 batch) were all instances of the same pattern: a function declared `async fn(...): Promise<boolean>` was invoked as `fn().catch(() => {})` — the `.catch` swallowed only the rejection, and the resolved boolean (which signaled real success/failure) was silently discarded. The Steam IPC layer kept reporting "OK, sent" while messages were dropping on the floor.
+
+**Why:** TypeScript's `Promise<boolean>` return type provides zero protection against a caller that doesn't `await`, doesn't `.then`, doesn't assign — `.catch()` alone keeps the type-checker silent because the return value is "consumed" by the chain. The bool→void contract erasure is invisible at the type system level and at code review.
+
+**Fix (preventative):** `scripts/lint/check-bool-promise-erasure.mjs` scans WATCH_LIST source files for `Promise<boolean>` exports and flags every caller across `src/**` that uses `.catch()` with no value-flow context (no `await`, `void`, `=>`, assignment, `Promise.all`, `.then`, or non-empty catch handler). Wired into `hooks/pre-commit` as non-blocking until contributors are familiar with the override syntax (`// lint-allow: bool-promise-erasure — <reason>`). When ready to harden, swap the warn to `block_or_warn` in the hook.
+
+**Lesson:** A return type that signals success vs failure must NOT be silently discarded by `.catch(() => {})`. Either `await` the call and inspect the result, use `void` to make the intent explicit, or supply a non-empty catch handler that returns a real fallback value. The lint catches new instances; existing erasures need to be audited individually because some are intentional (e.g. fire-and-forget cleanup, where a `void` prefix communicates intent better than the lint can detect from text shape alone).
+
+### 2026-04-22 — Steam Windows build deployed without latest fixes (steam-verify stale-marker scan)
+
+**What happened:** While extending `scripts/steam-verify.sh` with a bundled-JS marker scan, the new "stale marker" check immediately fired against `steam/windows-build/`: the bundle still contained the literal string `'shop','rest','mystery'` from the pre-`61a60edd9` `gameScreens` set, even though that set had been replaced over a day earlier. The Windows build was packaged before the BUG 27 fix landed and was never re-built.
+
+**Why:** Without a content-aware verifier, `bash scripts/steam-verify.sh` happily reported "all checks passed" because file presence + libsteam_api linkage + App ID were all correct. The bundle's actual SOURCE was stale and the script had no way to notice.
+
+**Fix:** `steam-verify.sh` now grep -F's the `*.js` files inside the candidate dist dir (Tauri bundle preferred, then `steam/windows-build`, then `dist/`) for both REQUIRED markers (proves the bundle includes recent fixes) and STALE markers (proves removed code is truly gone). Add a new entry to `MARKERS=()` for every BUG fix that ships, and an entry to `STALE_MARKERS=()` for every removed-string regression. Both arrays live near the bottom of the script.
+
+**Lesson:** "The build artifact exists and links the right libraries" is not the same as "the build artifact contains the latest source." Always include a content-fingerprint check on the bundled JS — a single literal string from a recent commit is enough to prove freshness. Same heuristic applies to any platform where the deploy pipeline can silently reuse a prior build (Steam depots, app stores, CDNs).
