@@ -19,13 +19,8 @@
  * H18 Solo-survivor rule:
  * When one player's HP reaches 0 mid-encounter, the encounter ends immediately
  * for ALL co-op players and BOTH receive a loss. There is no solo-survivor path.
- * Enforcement: call handleCoopPlayerDeath(playerId) from
- * encounterBridge.applyDamageToLocalPlayer when HP <= 0 in coop mode.
- * TODO(H18-wiring): call handleCoopPlayerDeath from
- *   encounterBridge.ts applyDamageToLocalPlayer (or equivalent death-check site)
- *   when run.multiplayerMode === 'coop' && newHp <= 0. The exact hook point is
- *   inside the handleEndTurn beat-2 section where player HP is committed after
- *   the enemy phase.
+ * Wired in encounterBridge.ts beat-2 HP commit: handleCoopPlayerDeath is called
+ * when run.multiplayerMode === 'coop' && newHp <= 0 after the enemy phase resolves.
  */
 
 import { getMultiplayerTransport } from './multiplayerTransport';
@@ -35,11 +30,35 @@ import { rrLog } from './rrLog';
 
 // -- Debug flag ---------------------------------------------------------------
 
-/** Set to true locally to enable verbose coop sync tracing via console. */
-const DEBUG_COOP = false;
+/**
+ * Runtime-toggleable debug flag for coop sync tracing.
+ *
+ * Enable via DevTools:
+ *   window.__rrSetDebugCoop(true)
+ *   // or: localStorage.setItem('rr-debug-coop', '1')
+ *
+ * Disable:
+ *   window.__rrSetDebugCoop(false)
+ */
+function isDebugCoopOn(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    return (window as any).__rrDebugCoop === true
+      || localStorage.getItem('rr-debug-coop') === '1';
+  } catch { return false; }
+}
 
 function coopLog(msg: string, ...args: unknown[]): void {
-  if (DEBUG_COOP) console.log(`[coopSync] ${msg}`, ...args);
+  if (isDebugCoopOn()) console.log(`[coopSync] ${msg}`, ...args);
+}
+
+// Attach the toggle helper to window so it can be used from DevTools.
+if (typeof window !== 'undefined') {
+  (window as any).__rrSetDebugCoop = (on: boolean) => {
+    try { localStorage.setItem('rr-debug-coop', on ? '1' : '0'); } catch {}
+    (window as any).__rrDebugCoop = on;
+    console.log(`[coopSync] debug ${on ? 'ON' : 'OFF'}`);
+  };
 }
 
 // -- Constants ----------------------------------------------------------------
@@ -82,6 +101,13 @@ let _barrierTimeoutHandle: ReturnType<typeof setTimeout> | null = null;
 
 /** Cleanup for transport listener. Null when not active. */
 let _cleanupListener: (() => void) | null = null;
+
+/**
+ * Most recently broadcast SharedEnemySnapshot (host-side only).
+ * Buffered so the mp:coop:request_initial_state handler can re-broadcast on demand.
+ * FIX C-007: enables idempotent re-broadcast when guest times out on reconcile.
+ */
+let _lastBroadcastSnapshot: SharedEnemySnapshot | null = null;
 
 /** Cleanup for the lobby-update listener used for partner-leave detection. */
 let _cleanupLobbyListener: (() => void) | null = null;
@@ -129,6 +155,18 @@ const _partnerUnresponsiveSubs = new Set<(playerId: string) => void>();
 /** Handle for the AFK heartbeat poll interval. */
 let _heartbeatPollHandle: ReturnType<typeof setInterval> | null = null;
 
+/** How long to wait for an mp:coop:enemy_state reply before re-requesting (ms). */
+const INITIAL_STATE_REQUEST_TIMEOUT_MS = 2_000;
+
+/** Maximum number of times the guest re-requests initial enemy state. */
+const INITIAL_STATE_REQUEST_MAX_RETRIES = 3;
+
+/** Handle for the initial-state-request retry timeout. Cleared when any enemy_state arrives. */
+let _initialStateRetryHandle: ReturnType<typeof setTimeout> | null = null;
+
+/** How many times we have sent mp:coop:request_initial_state this encounter. */
+let _initialStateRetryAttempt: number = 0;
+
 export interface PartnerState {
   playerId: string;
   hp: number;
@@ -153,6 +191,8 @@ export function initCoopSync(localPlayerId: string): void {
   _collectedDeltas = new Map();
   _lastPartnerHeartbeat = new Map();
 
+  _lastBroadcastSnapshot = null;
+  _initialStateRetryAttempt = 0;
   rrLog('mp:coop', 'initCoopSync', { localPlayerId });
 
   const transport = getMultiplayerTransport();
@@ -206,7 +246,10 @@ export function initCoopSync(localPlayerId: string): void {
   const offEnemyState = transport.on('mp:coop:enemy_state', (msg) => {
     const snapshot = msg.payload as unknown as SharedEnemySnapshot;
     rrLog('mp:coop', 'recv enemy_state', { hp: snapshot?.currentHP, maxHP: snapshot?.maxHP, subs: _sharedEnemySubs.size });
-    if (!snapshot?.currentHP === undefined || !snapshot?.maxHP === undefined) return;
+    // Fix 003: typeof check (original used bang-precedence dead check that always evaluated false)
+    if (typeof snapshot?.currentHP !== 'number' || typeof snapshot?.maxHP !== 'number') return;
+    // Cancel any pending initial-state retry — we received what we needed.
+    _clearInitialStateRetry();
     for (const cb of _sharedEnemySubs) {
       cb(snapshot);
     }
@@ -222,6 +265,22 @@ export function initCoopSync(localPlayerId: string): void {
     }
   });
 
+  // Host-side handler: guest is requesting the initial enemy state (re-broadcast on demand).
+  // Only the host responds; guards on _lastBroadcastSnapshot being set.
+  // FIX C-007: enables retry path in encounterBridge.ts when awaitCoopEnemyReconcile times out.
+  const offRequestInitialState = transport.on('mp:coop:request_initial_state', (msg) => {
+    const { playerId } = msg.payload as { playerId: string };
+    const lobby = getCurrentLobby();
+    const amHost = lobby?.hostId === _localPlayerId;
+    if (!amHost) return; // only host re-broadcasts
+    if (!_lastBroadcastSnapshot) {
+      rrLog('mp:coop', 'recv request_initial_state but no snapshot buffered yet', { from: playerId });
+      return;
+    }
+    rrLog('mp:coop', 're-broadcasting enemy_state on request', { from: playerId, hp: _lastBroadcastSnapshot.currentHP });
+    broadcastSharedEnemyState(_lastBroadcastSnapshot);
+  });
+
   _cleanupListener = () => {
     offTurnEnd();
     offTurnEndWithDelta();
@@ -229,10 +288,19 @@ export function initCoopSync(localPlayerId: string): void {
     offPartner();
     offEnemyState();
     offEnemyHpUpdate();
+    offRequestInitialState();
   };
 
   // Start AFK heartbeat poll (H19/M5).
   _heartbeatPollHandle = setInterval(_checkPartnerHeartbeats, PARTNER_HEARTBEAT_POLL_MS);
+
+  // Fix 001+004: request-on-subscribe — guest sends a request for initial state
+  // AFTER all listeners are registered so we never miss the re-broadcast.
+  const lobby = getCurrentLobby();
+  const isGuest = lobby?.hostId !== _localPlayerId;
+  if (isGuest && lobby && lobby.players.length >= 2) {
+    _requestInitialEnemyState();
+  }
 }
 
 /** Tear down co-op sync. Safe to call multiple times. */
@@ -246,6 +314,7 @@ export function destroyCoopSync(): void {
     _cleanupLobbyListener = null;
   }
   _clearBarrierTimeout();
+  _clearInitialStateRetry();
   if (_pendingBarrierResolve) {
     // Release any in-flight barrier so callers don't hang on teardown.
     _pendingBarrierResolve('completed');
@@ -261,6 +330,8 @@ export function destroyCoopSync(): void {
   _collectedDeltas = new Map();
   _lastPartnerHeartbeat = new Map();
   _barrierExpectedPlayerCount = 0;
+  _lastBroadcastSnapshot = null;
+  _initialStateRetryAttempt = 0;
   // NOTE: _partnerStateSubs, _sharedEnemySubs, _enemyHpSubs, and
   // _partnerUnresponsiveSubs are NOT cleared here --
   // consumer-owned subscriptions have their own lifetime (callers hold the returned unsub).
@@ -511,6 +582,9 @@ export function broadcastSharedEnemyState(snapshot: SharedEnemySnapshot): void {
     rrLog('mp:coop', 'broadcastSharedEnemyState dropped — coop sync not initialised');
     return;
   }
+  // Buffer BEFORE sending so the request handler can always re-send the latest snapshot.
+  // FIX C-007: idempotent re-broadcast for late or timed-out guests.
+  _lastBroadcastSnapshot = snapshot;
   rrLog('mp:coop', 'send enemy_state', { hp: snapshot.currentHP, maxHP: snapshot.maxHP });
   const transport = getMultiplayerTransport();
   transport.send('mp:coop:enemy_state', snapshot as unknown as Record<string, unknown>);
@@ -569,22 +643,41 @@ export function onSharedEnemyState(
   };
 }
 
+/** Timeout for awaitCoopEnemyReconcile (ms). After this, rejects so the caller can retry/fallback. */
+const COOP_RECONCILE_TIMEOUT_MS = 5_000;
+
 /**
  * Returns a Promise that resolves with the next mp:coop:enemy_state snapshot received.
  * Non-host clients use this to wait for the host's authoritative merged state after barriers.
  *
+ * FIX C-007 + MP-STEAM-20260422-004: 5-second hard timeout. On timeout, rejects with
+ * CoopReconcileTimeoutError so encounterBridge can request a re-broadcast and retry.
+ *
  * The Promise resolves on the NEXT message -- it does NOT use a cached value.
- * If the lobby becomes empty (partner left), the Promise never resolves -- the caller
- * should guard with the barrier cancel path instead.
  */
+export class CoopReconcileTimeoutError extends Error {
+  constructor() { super('[coopSync] awaitCoopEnemyReconcile timed out'); this.name = 'CoopReconcileTimeoutError'; }
+}
+
 export function awaitCoopEnemyReconcile(): Promise<SharedEnemySnapshot> {
-  coopLog('awaitCoopEnemyReconcile: waiting for next mp:coop:enemy_state');
-  return new Promise<SharedEnemySnapshot>((resolve) => {
+  coopLog('awaitCoopEnemyReconcile: waiting for next mp:coop:enemy_state (timeout=%dms)', COOP_RECONCILE_TIMEOUT_MS);
+  return new Promise<SharedEnemySnapshot>((resolve, reject) => {
+    let settled = false;
     const unsub = onSharedEnemyState((snapshot) => {
-      unsub(); // one-shot
+      if (settled) return;
+      settled = true;
+      clearTimeout(timeoutHandle);
+      unsub();
       coopLog('awaitCoopEnemyReconcile: received, hp=%d/%d', snapshot.currentHP, snapshot.maxHP);
       resolve(snapshot);
     });
+    const timeoutHandle = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      unsub();
+      coopLog('awaitCoopEnemyReconcile: timeout after %dms', COOP_RECONCILE_TIMEOUT_MS);
+      reject(new CoopReconcileTimeoutError());
+    }, COOP_RECONCILE_TIMEOUT_MS);
   });
 }
 
@@ -618,10 +711,8 @@ export function onPartnerStateUpdate(
  *       handle the 'cancelled' result from the barrier and route to the loss screen.
  *       Both players receive a loss -- there is no solo-survivor path in co-op.
  *
- * TODO(H18-wiring): call this from encounterBridge.ts at the death-check site
- *   (applyDamageToLocalPlayer or the beat-2 HP commit inside handleEndTurn)
- *   when run.multiplayerMode === 'coop' && newHp <= 0.
  *
+
  * @param playerId  The ID of the player who died.
  */
 export function handleCoopPlayerDeath(playerId: string): void {
@@ -771,4 +862,60 @@ function _checkPartnerHeartbeats(): void {
       _lastPartnerHeartbeat.set(playerId, now);
     }
   }
+}
+
+function _clearInitialStateRetry(): void {
+  if (_initialStateRetryHandle !== null) {
+    clearTimeout(_initialStateRetryHandle);
+    _initialStateRetryHandle = null;
+  }
+}
+
+/**
+ * Guest-side: send mp:coop:request_initial_state and schedule a retry if no
+ * mp:coop:enemy_state arrives within INITIAL_STATE_REQUEST_TIMEOUT_MS.
+ *
+ * Retries up to INITIAL_STATE_REQUEST_MAX_RETRIES times.
+ * The retry is cancelled when any mp:coop:enemy_state arrives (offEnemyState handler).
+ */
+function _requestInitialEnemyState(): void {
+  if (!_localPlayerId) return;
+  const startMs = Date.now();
+
+  const sendRequest = (attempt: number): void => {
+    if (!_localPlayerId) return; // destroyCoopSync was called
+    const transport = getMultiplayerTransport();
+    const elapsed = Date.now() - startMs;
+    rrLog('mp:coop', 'requesting initial enemy state', { attempt, elapsed });
+    transport.send('mp:coop:request_initial_state', { playerId: _localPlayerId });
+
+    if (attempt < INITIAL_STATE_REQUEST_MAX_RETRIES) {
+      _initialStateRetryHandle = setTimeout(() => {
+        _initialStateRetryHandle = null;
+        if (!_localPlayerId) return;
+        rrLog('mp:coop', 'initial state request retry', { attempt: attempt + 1, elapsed: Date.now() - startMs });
+        sendRequest(attempt + 1);
+      }, INITIAL_STATE_REQUEST_TIMEOUT_MS);
+    } else {
+      rrLog('mp:coop', 'initial state request exhausted retries', { attempt, elapsed: Date.now() - startMs });
+    }
+  };
+
+  sendRequest(_initialStateRetryAttempt);
+}
+
+/**
+ * Public: Guest explicitly asks the host to re-broadcast the current enemy snapshot.
+ * Used by encounterBridge.ts when awaitCoopEnemyReconcile times out and needs a retry.
+ * Maps to the existing mp:coop:request_initial_state protocol.
+ * FIX C-007 + MP-STEAM-20260422-004.
+ */
+export function requestCoopEnemyStateRetry(): void {
+  if (!_localPlayerId) {
+    coopLog('requestCoopEnemyStateRetry: not initialised, skipping');
+    return;
+  }
+  coopLog('requestCoopEnemyStateRetry: sending mp:coop:request_initial_state');
+  const transport = getMultiplayerTransport();
+  transport.send('mp:coop:request_initial_state', { playerId: _localPlayerId });
 }

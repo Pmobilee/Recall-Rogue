@@ -1,3 +1,13 @@
+### 2026-04-22i — BUG 017: CardApp.svelte onGameStart missing initTriviaGame + initTriviaMessageHandlers for trivia_night mode
+
+**What broke:** `CardApp.svelte` `onGameStart` callback wired `initCoopSync` (coop), `initGameMessageHandlers` (coop+duel), and `initDuel` (coop+duel), but had NO equivalent block for `trivia_night`. Both host and guest started with `_gameState = null` inside `triviaNightService.ts`. Every `hostNextQuestion` and `submitAnswer` call hit the early-return guard (`_gameState` null) and silently no-opped. Players saw a frozen TriviaRoundScreen with no questions ever advancing.
+
+**Why it wasn't caught earlier:** Coop and duel bugs (C-001/C-002) were found and fixed in the same wave; the audit covered those two modes explicitly. `trivia_night` has a separate service (`triviaNightService.ts`) that didn't exist when the C-001/C-002 wiring was first written, so there was never a "wire trivia" task created alongside it.
+
+**Fix:** Added `initTriviaGame(triviaPlayers, DEFAULT_ROUNDS, isLocalHost)` and `_pendingTriviaCleanup = initTriviaMessageHandlers()` inside a `if (lobby.mode === 'trivia_night')` block in `CardApp.svelte` `onGameStart`, after the existing duel init block. Cleanup is called via `_pendingTriviaCleanup?.()` in the `$effect` return. Imported `initTriviaGame`, `initTriviaMessageHandlers`, `DEFAULT_ROUNDS` from `triviaNightService.ts`.
+
+**Lesson:** Every mode init path must be explicitly wired in `CardApp.svelte` `onGameStart`. When a new mode is added to `multiplayerTypes.ts`, adding `initXxx()` to the callback is a MANDATORY corresponding step — document it in `docs/architecture/multiplayer.md` step list so the next author doesn't miss it.
+
 ### 2026-04-22h — BUG 22: single-slot onLobbyUpdate silently dropped the parent's reactivity callback (this was the "deck selection shows No content" bug)
 
 **What broke:** `src/services/multiplayerLobbyService.ts:94` declared `_onLobbyUpdate: ((lobby) => void) | null` — a SINGLE-SLOT callback. Every caller of `onLobbyUpdate(cb)` reassigned the slot, so **only the last registration ever fired**. Four callers existed:
@@ -5405,3 +5415,41 @@ Missing step 2 or 3 compiles cleanly and causes a silent runtime desync.
 **Also fixed (BUG-3):** The ACK-timeout fallback at 3s was firing `onGameStart` even when all guests were unreachable, meaning the host started an N-player session with 0 reachable peers. Changed to: evict unACKed guests, reset lobby to `'waiting'`, fire `onLobbyError('Could not reach all players. Returning to lobby.')` so the host can retry.
 
 **Lesson:** `as { field: type }` TypeScript casts in message handlers are a hidden maintenance tax. Any time you send a new field from the host, the guest handler's cast silently truncates it. Consider defining a shared `Mp_LobbyStart_Payload` interface in `multiplayerTypes.ts` that both the send site and the receive handler import — then TypeScript will catch the drift at compile time.
+### 2026-04-22 — Subscribe-after-send race in MP transports
+
+**Bug class:** The host fires `mp:coop:enemy_state` at encounter setup. The guest's `initCoopSync()` runs in response to `mp:lobby:start`. On Steam P2P (no message buffering), if the host's first broadcast arrives before the guest has called `initCoopSync()` and registered its `mp:coop:enemy_state` listener, the snapshot is permanently lost. The guest falls back to its local seeded enemy. Every subsequent turn diverges from the host's authoritative state — "each player in their own game."
+
+**Masked by a dead guard:** `multiplayerCoopSync.ts` line 209 contained:
+```ts
+if (!snapshot?.currentHP === undefined || !snapshot?.maxHP === undefined) return;
+```
+Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean negation of a number), then `=== undefined` compares a boolean against undefined — always false. So the guard NEVER returned early. Malformed payloads (missing HP fields) passed through silently.
+
+**Fix — buffer + request-on-subscribe:**
+1. `broadcastSharedEnemyState()` buffers the snapshot in `_lastBroadcastSnapshot` before sending.
+2. `initCoopSync()` ends by sending `mp:coop:request_initial_state` if the local player is a guest.
+3. Host re-broadcasts `_lastBroadcastSnapshot` on receipt.
+4. Guest retries every 2s up to 3 times (6s total) if no `mp:coop:enemy_state` arrives.
+5. Any arriving `enemy_state` cancels the retry immediately.
+6. Guard replaced with: `if (typeof snapshot?.currentHP !== 'number' || typeof snapshot?.maxHP !== 'number') return;`
+
+**Lesson:** Any message a receiver MUST have before it can proceed needs a buffer+request path — never trust transport timing. When adding new "critical first message" patterns, add the buffer and request handler at the same time. Bang-precedence bugs (`!x === undefined`) are particularly insidious because TypeScript 5.x does not warn on them; use `typeof x !== 'number'` guards instead.
+
+### 2026-04-22 — Coop wiring gap (orphan initGameMessageHandlers/initDuel)
+
+**What was broken:** After `mp:lobby:start` fired the `onGameStart` callback in `CardApp.svelte`, each coop player ended up in their own solo game with no shared state. The symptom: "coop lobby works on Steam but each player ends up in their own game after Start."
+
+**Root cause cluster (6 interdependent bugs):**
+
+1. `initGameMessageHandlers()` (C-001): Never called for coop/duel. Transport handlers for `mp:duel:turn_start`, `mp:duel:cards_played`, `mp:duel:turn_resolve`, `mp:duel:enemy_state`, `mp:duel:end`, and `mp:sync` fork-seed exchange were never installed.
+2. `initDuel()` (C-002): Never called. `_duelState` was permanently null — `hostCreateSharedEnemy`, `submitDuelTurnAction`, `hostStartNextTurn` were all orphaned functions.
+3. `activeRunMode` always `'multiplayer_race'` (C-003): `startNewRun` pinned to the single literal for ALL MP modes. Coop/duel/same_cards entered the race broadcast loop — `initRaceMode` and `startRaceProgressBroadcast` fired for every MP game.
+4. Subscription order (MP-STEAM-20260422-002): `startNewRun` was called BEFORE `initCoopSync` and `initGameMessageHandlers`. The host's synchronous `broadcastSharedEnemyState` call (triggered inside `onArchetypeSelected`) fired before the guest's listener was registered.
+5. Coop HP scaling (C-005): `createEnemy` was called without `playerCount` — `getCoopHpMultiplier()` always returned 1×.
+6. `awaitCoopEnemyReconcile` no timeout (C-007): The function could hang forever if the host broadcast never arrived.
+
+**Why one fix without the others produces a broken intermediate state:** Fixing C-003 alone lets coop bypass the race loop, but without C-001 the coop message handlers are still not installed. Fixing C-001 alone still fails because `_duelState` is null (C-002). The subscription order fix (MP-STEAM-20260422-002) is needed because C-001's handlers must be live before the host's first broadcast. All 6 must land together.
+
+**Fix:** All wired in one batch. See `docs/architecture/multiplayer.md` → "Coop Wiring — Game Start Initialization Order."
+
+**Lesson:** Orphan functions (zero production callers) are silent bugs. Any function that's "done" but not wired is not actually done — it's aspirational code. Before marking a multiplayer feature "DONE" in SKILL.md, grep for non-test callers of every exported function in that file.

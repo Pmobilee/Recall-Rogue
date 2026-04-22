@@ -62,9 +62,10 @@ import {
   broadcastEnemyHpUpdate,
   onEnemyHpUpdate,
   getCollectedDeltas,
+  handleCoopPlayerDeath,
 } from './multiplayerCoopSync'
 import { computeRaceScore } from './multiplayerScoring'
-import { recordRaceAnswer } from './multiplayerGameService'
+import { recordRaceAnswer, hostCreateSharedEnemy } from './multiplayerGameService'
 import { isHost as mpIsHost } from './multiplayerLobbyService'
 import { calculateFunnessBoostFactor } from './funnessBoost';
 import { calculateAccuracyGrade } from './accuracyGradeSystem';
@@ -802,7 +803,11 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   const difficultyVariance = (ascensionTemplate.category === 'common' || ascensionTemplate.category === 'elite')
     ? 0.85 + (varianceRng ? varianceRng.next() : Math.random()) * 0.30
     : 1.0;
-  const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier, difficultyVariance });
+  // FIX C-005: pass playerCount to createEnemy so getCoopHpMultiplier() applies 1.6x for 2P coop.
+  // run.multiplayerPlayerCount is populated by gameFlowController from lobby.players.length.
+  // For non-coop runs, playerCount defaults to 1 inside createEnemy (no double-scaling).
+  const coopPlayerCount = isCoopRun ? (run.multiplayerPlayerCount ?? 2) : 1;
+  const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier, difficultyVariance, playerCount: coopPlayerCount });
   // AR-310: Initialise chain color rotation before startEncounter so the first-turn
   // active chain color is set correctly. Use the pre-computed chain distribution's
   // runChainTypes for curated runs; fall back to selectRunChainTypes for trivia runs.
@@ -960,19 +965,29 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   // seed/variance drift). Non-host awaits and overwrites local enemy state.
   if (isCoopRun) {
     if (mpIsHost()) {
-      // Broadcast the enemy we just created as the canonical starting state.
+      // Broadcast the enemy we just created as the canonical starting state (coop).
       broadcastSharedEnemyState(snapshotEnemy(enemy));
+      // FIX C-002: For duel mode, also call hostCreateSharedEnemy to set up the duel state
+      // machine's shared enemy reference and broadcast mp:duel:enemy_state to the opponent.
+      if (run.multiplayerMode === 'duel') {
+        hostCreateSharedEnemy(ascensionTemplate.id, run.floor.currentFloor, coopPlayerCount);
+      }
     } else {
       // Await the host's initial snapshot, then hydrate our local enemy.
+      // The mp:coop:request_initial_state mechanism (initCoopSync) handles retries
+      // automatically — awaitCoopEnemyReconcile just waits for the next enemy_state.
+      let initialSnapshot: import('../data/multiplayerTypes').SharedEnemySnapshot | null = null;
       try {
-        const initialSnapshot = await awaitCoopEnemyReconcile();
+        initialSnapshot = await awaitCoopEnemyReconcile();
+      } catch (err) {
+        console.warn('[encounterBridge] coop: failed to receive initial enemy snapshot, using local', err);
+      }
+      if (initialSnapshot) {
         hydrateEnemyFromSnapshot(enemy, initialSnapshot);
         // Reflect the hydrated state in turnState and the store.
         turnState.enemy = enemy;
         activeTurnState.set(freshTurnState(turnState));
         syncCombatScene(turnState);
-      } catch (err) {
-        console.warn('[encounterBridge] coop: failed to receive initial enemy snapshot, using local', err);
       }
     }
   }
@@ -1635,6 +1650,13 @@ export async function handleEndTurn(): Promise<void> {
   if (runAfterTurn) {
     runAfterTurn.playerHp = result.turnState.playerState.hp;
     activeRunState.set(runAfterTurn);
+  }
+
+  // H18: Co-op solo-survivor rule — if this player's HP just hit 0, signal death
+  // to all co-op partners. This ends the encounter for everyone with a loss.
+  if (isCoop && runAfterTurn && runAfterTurn.playerHp <= 0) {
+    const { getLocalMultiplayerPlayerId } = await import('./multiplayerLobbyService');
+    handleCoopPlayerDeath(getLocalMultiplayerPlayerId());
   }
 
   // Co-op: broadcast updated HP/block/score/accuracy immediately after the HP commit

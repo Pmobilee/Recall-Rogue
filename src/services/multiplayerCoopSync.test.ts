@@ -100,12 +100,15 @@ import {
   isLocalTurnEndPending,
   hasPendingBarrier,
   broadcastPartnerState,
+  broadcastSharedEnemyState,
+  onSharedEnemyState,
   handleCoopPlayerDeath,
   onPartnerUnresponsive,
   markPartnerUnresponsive,
   partnerStateToRaceProgressShape,
 } from './multiplayerCoopSync';
 import type { PartnerState } from './multiplayerCoopSync';
+import type { SharedEnemySnapshot } from '../data/multiplayerTypes';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -732,5 +735,158 @@ describe('multiplayerCoopSync — M17 partnerStateToRaceProgressShape', () => {
     expect('encountersWon' in shape).toBe(false);
     expect('isFinished' in shape).toBe(false);
     expect('result' in shape).toBe(false);
+  });
+});
+// ---------------------------------------------------------------------------
+// Regression test: subscribe-after-send race (MP-STEAM-20260422-001/002/004)
+// ---------------------------------------------------------------------------
+
+describe('multiplayerCoopSync — initial state request-on-subscribe (001/002/004)', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    destroyCoopSync();
+    mockTransport = createMockTransport();
+    mockLobby = null;
+    mockLobbyUpdateCb = null;
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    destroyCoopSync();
+  });
+
+  it('guest sends mp:coop:request_initial_state after initCoopSync when lobby has 2+ players', () => {
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('guest'); // not host
+
+    const req = mockTransport.sent.find(m => m.type === 'mp:coop:request_initial_state');
+    expect(req).toBeDefined();
+    expect(req?.payload.playerId).toBe('guest');
+  });
+
+  it('host does NOT send mp:coop:request_initial_state (only guests request)', () => {
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('host');
+
+    const req = mockTransport.sent.find(m => m.type === 'mp:coop:request_initial_state');
+    expect(req).toBeUndefined();
+  });
+
+  it('guest subscribes AFTER host broadcasts → guest sends request → host replies → guest callback fires', async () => {
+    // Set up host-side state
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('host');
+
+    const snapshot: SharedEnemySnapshot = {
+      currentHP: 42,
+      maxHP: 100,
+      block: 5,
+      phase: 1,
+      nextIntent: { type: 'attack', value: 8, telegraph: 'Attacks for 8' } as any,
+      statusEffects: [],
+    };
+
+    // Host broadcasts initial state (buffers _lastBroadcastSnapshot)
+    broadcastSharedEnemyState(snapshot);
+
+    // Tear down host side and set up guest side with the same transport
+    // (in real usage they are separate processes; here we simulate message flow)
+    destroyCoopSync();
+
+    mockLobby = makeLobby(['host', 'guest']);
+    const receivedSnapshots: SharedEnemySnapshot[] = [];
+    
+    // Subscribe to enemy state BEFORE initCoopSync to simulate the real
+    // caller (encounterBridge) wiring up before game messages arrive.
+    const unsub = onSharedEnemyState(s => receivedSnapshots.push(s));
+
+    // Guest inits — registers all handlers, then sends request_initial_state.
+    initCoopSync('guest');
+
+    // Guest should have sent the request.
+    const req = mockTransport.sent.find(m => m.type === 'mp:coop:request_initial_state');
+    expect(req).toBeDefined();
+
+    // Simulate the host re-broadcasting in response (the host handler fires this).
+    // In production the host's transport.on handler would call broadcastSharedEnemyState;
+    // here we simulate the resulting mp:coop:enemy_state arriving at the guest.
+    mockTransport.simulateReceive('mp:coop:enemy_state', snapshot as unknown as Record<string, unknown>);
+
+    await Promise.resolve(); // flush microtasks
+
+    expect(receivedSnapshots).toHaveLength(1);
+    expect(receivedSnapshots[0].currentHP).toBe(42);
+    expect(receivedSnapshots[0].maxHP).toBe(100);
+
+    unsub();
+  });
+
+  it('guest retries request if no enemy_state arrives within timeout', async () => {
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('guest');
+
+    const requests = mockTransport.sent.filter(m => m.type === 'mp:coop:request_initial_state');
+    expect(requests).toHaveLength(1);
+
+    // Advance past the 2000ms retry timeout without receiving enemy_state
+    vi.advanceTimersByTime(2_100);
+    await Promise.resolve();
+
+    const requestsAfterRetry = mockTransport.sent.filter(m => m.type === 'mp:coop:request_initial_state');
+    expect(requestsAfterRetry.length).toBeGreaterThan(1);
+  });
+
+  it('guest stops retrying after receiving enemy_state', async () => {
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('guest');
+
+    const snapshot: SharedEnemySnapshot = {
+      currentHP: 50,
+      maxHP: 100,
+      block: 0,
+      phase: 1,
+      nextIntent: { type: 'attack', value: 5, telegraph: 'Attacks for 5' } as any,
+      statusEffects: [],
+    };
+
+    // Enemy state arrives — should cancel the retry
+    mockTransport.simulateReceive('mp:coop:enemy_state', snapshot as unknown as Record<string, unknown>);
+
+    const countAfterReceive = mockTransport.sent.filter(m => m.type === 'mp:coop:request_initial_state').length;
+
+    // Advance well past the retry window
+    vi.advanceTimersByTime(10_000);
+    await Promise.resolve();
+
+    const countAfterDelay = mockTransport.sent.filter(m => m.type === 'mp:coop:request_initial_state').length;
+    // No additional requests should have been sent after the state arrived
+    expect(countAfterDelay).toBe(countAfterReceive);
+  });
+
+  it('enemy_state guard rejects malformed snapshot (fix 003)', () => {
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('guest');
+
+    const received: unknown[] = [];
+    const unsub = onSharedEnemyState(s => received.push(s));
+
+    // Malformed — currentHP is missing (null/undefined), should be filtered
+    mockTransport.simulateReceive('mp:coop:enemy_state', { maxHP: 100, block: 0 } as Record<string, unknown>);
+
+    expect(received).toHaveLength(0); // guard rejected the malformed payload
+
+    // Valid snapshot should pass
+    const validSnapshot: SharedEnemySnapshot = {
+      currentHP: 30,
+      maxHP: 100,
+      block: 0,
+      phase: 1,
+      nextIntent: { type: 'defend', value: 0, telegraph: 'Defends' } as any,
+      statusEffects: [],
+    };
+    mockTransport.simulateReceive('mp:coop:enemy_state', validSnapshot as unknown as Record<string, unknown>);
+    expect(received).toHaveLength(1);
+
+    unsub();
   });
 });

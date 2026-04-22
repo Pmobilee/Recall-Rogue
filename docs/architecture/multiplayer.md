@@ -226,6 +226,26 @@ The `requestId` is a UUID per check round — prevents stale ACKs from a prior c
 
 ---
 
+## Subscribe-After-Send Race Hazard
+
+In Steam P2P (and any transport without reliable message replay), there is a window between
+when the host **sends** a message and when the guest has **registered its listener**. If the
+host broadcasts `mp:coop:enemy_state` at encounter setup before `initCoopSync()` has run on
+the guest (e.g. the guest's `mp:lobby:start` handler fires slightly after the host's), the
+guest's listener is not yet registered and the snapshot is permanently lost.
+
+**Mitigation — buffer + request-on-subscribe:**
+
+1. `broadcastSharedEnemyState()` writes the snapshot to `_lastBroadcastSnapshot` (module-level buffer) **before** calling `transport.send()`.
+2. At the end of `initCoopSync()`, if the local player is a guest, `_requestInitialEnemyState()` sends `mp:coop:request_initial_state` to the host.
+3. The host's `mp:coop:request_initial_state` handler re-broadcasts `_lastBroadcastSnapshot` to all.
+4. If no `mp:coop:enemy_state` arrives within **2 seconds**, the guest retries. Max **3 retries** (total ~6s). Each retry logs attempt number + elapsed via `rrLog`.
+5. Any arrival of `mp:coop:enemy_state` cancels the retry timer immediately.
+
+This pattern generalises: any message that MUST arrive before the receiver can proceed should be buffered by the sender and re-sent on an explicit request from the late subscriber. Do not rely on timing guarantees from the transport layer.
+
+**Retry schedule:** 0ms → +2000ms → +4000ms → +6000ms (3 retries, 6s total).
+
 ## Messages
 
 ### Co-op Messages
@@ -238,6 +258,7 @@ The `requestId` is a UUID per check round — prevents stale ACKs from a prior c
 | `mp:coop:turn_end_cancel` | Any client | `{ playerId }` | Cancel a pending turn-end signal |
 | `mp:coop:partner_state` | Any client | `PartnerState` | Partner HP/block/score for HUD after enemy phase |
 | `mp:coop:player_died` | Any client | `{ playerId }` | Broadcast when a player's HP reaches 0 mid-encounter |
+| `mp:coop:request_initial_state` | Guest | `{ playerId }` | Guest requests host re-broadcast initial enemy snapshot (subscribe-after-send recovery) |
 
 ### Duel Messages
 
@@ -652,6 +673,7 @@ Applied in both `steamBackend.resolveByCode` and `steamBackend.listPublicLobbies
 | Date | Commits | What |
 |------|---------|------|
 | 2026-04-22 | (BUG-1/2/3/4/14 Wave 1) | Guest now applies `mode`/`deckId`/`houseRules` from `mp:lobby:start` payload (fixes independent-game split). BUG-2: defensive abort if mode still undefined after apply. BUG-3: ACK timeout aborts start + fires `onLobbyError` + evicts ghost guests instead of firing onGameStart with unreachable peers. BUG-4: `mp:lobby:start_ack` was already in `MultiplayerMessageType` union — removed stale `as` cast + TODO comment. 3 new regression tests. |
+| 2026-04-22 | (MP-STEAM wave) | MP-STEAM-20260422 fix wave: bang-precedence dead guard (003), SteamP2P retry budget 3→5 attempts/4.4s + `STEAM_P2P_SEND_RETRY_DELAYS_MS` export (005), memoized `isTauriPresent()` in platformService replaces two duplicate inline Tauri checks (011), runtime-toggleable `isDebugCoopOn()` replaces `DEBUG_COOP` const + `window.__rrSetDebugCoop` helper (012), H18 `handleCoopPlayerDeath` wired in encounterBridge beat-2 HP commit (015), subscribe-after-send race fix: `_lastBroadcastSnapshot` buffer + `mp:coop:request_initial_state` protocol + auto-retry (001/002/004) |
 | 2026-04-22 | (P2P session fix) | `session_request_callback` + `session_failed_callback` registered in `SteamState::new()`; `AUTO_RESTART_BROKEN_SESSION` send flag; `steam_prime_p2p_sessions` + `steam_get_p2p_connection_state` new Tauri commands; `lan_tcp_probe` LAN command; TS retry loop in `SteamP2PTransport._sendWithRetry`; `primeP2PSessions` called in all three lobby join/create paths; forensic logging in `setContentSelection` + `notifyLobbyUpdate` |
 | 2026-04-21 | (Wave 12) | Steam lobby metadata warm-up: `steam_request_lobby_data` Rust command (raw sys flat API), `requestSteamLobbyData` TS helper, warm-up pass in `listPublicLobbies` + `resolveByCode` — fixes cold-cache "" from `GetLobbyData` |
 | 2026-04-21 | (C4 fix) | Outbound pre-connect buffer in SteamP2PTransport — send() during 'connecting' state now buffers to _preSendBuffer (cap 64); flushed after acceptP2PSession resolves. Silent-drop warns added. Malformed P2P message catch now logs. 6 new unit tests. |
@@ -804,3 +826,133 @@ std::thread::spawn(move || {
 ### Impact on existing code
 
 `steam_run_callbacks` is kept intact as a harmless safety net. JS callers may still poll it. The 10 s `pollJoinResult` timeout in `steamNetworkingService.ts` is intentionally kept at 10 s — it also defends against genuine Steam outages. Any future async Steam API (leaderboards, cloud save) will have its callbacks processed automatically without needing its own polling loop.
+
+
+---
+
+## Coop Wiring — Game Start Initialization Order (2026-04-22)
+
+**Source files:** `src/CardApp.svelte`, `src/services/multiplayerGameService.ts`, `src/services/multiplayerCoopSync.ts`
+
+**Fix batch:** C-001, C-002, C-003, C-005, C-007, MP-STEAM-20260422-002, MP-STEAM-20260422-004
+
+### Problem (pre-fix)
+
+After `mp:lobby:start` fired `onGameStart`, the coop/duel game session wiring was incomplete:
+
+1. `initGameMessageHandlers()` — never called for coop/duel. Transport handlers for `mp:duel:turn_start`, `mp:duel:cards_played`, etc. were never installed.
+2. `initDuel()` — never called. `_duelState` was always null; `hostCreateSharedEnemy`/`submitDuelTurnAction`/`hostStartNextTurn` were all orphaned.
+3. `startNewRun` was called BEFORE `initCoopSync` and `onPartnerStateUpdate` — host's synchronous `broadcastSharedEnemyState` could send before guest's listener was registered.
+4. `activeRunMode` was always set to `'multiplayer_race'` for ALL MP modes — coop/duel/same_cards all entered the race broadcast loop.
+5. Coop HP scaling: `createEnemy` was called without `playerCount`, so `getCoopHpMultiplier()` always applied 1×.
+
+### Fix — initialization order for coop/duel
+
+In `CardApp.svelte` `onGameStart` callback, subscriptions are now registered **before** `startNewRun`:
+
+```typescript
+// 1. Register map node consensus (all modes)
+initMapNodeSync(localPlayerId)
+
+// 2. Register coop turn-end barrier + partner heartbeat
+if (lobby.mode === 'coop') initCoopSync(localPlayerId)
+
+// 3. Register transport message handlers (duel/coop only — race uses its own loop)
+let cleanupGameMessages = null
+if (lobby.mode === 'coop' || lobby.mode === 'duel') {
+  cleanupGameMessages = initGameMessageHandlers(lobby.mode)
+}
+
+// 4. Initialize duel state machine (coop + duel)
+if (lobby.mode === 'coop' || lobby.mode === 'duel') {
+  initDuel(isLocalHost, localPlayerId, opponentId)
+}
+
+// 5. Initialize trivia game state + message handlers (trivia_night only)
+// Fix MP-STEAM-20260422-017: without this, _gameState is null and every
+// hostNextQuestion / submitAnswer call silently no-ops.
+if (lobby.mode === 'trivia_night') {
+  const triviaPlayers = lobby.players.map(p => ({ id: p.id, displayName: p.displayName }))
+  initTriviaGame(triviaPlayers, DEFAULT_ROUNDS, isLocalHost)
+  _pendingTriviaCleanup = initTriviaMessageHandlers()
+}
+
+// 6. NOW start the run — host broadcasts are safe, listeners are live
+startNewRun({ multiplayerSeed: seed, multiplayerMode: lobby.mode })
+```
+
+Cleanup: `_pendingGameMessageCleanup?.()` and `_pendingTriviaCleanup?.()` are both called alongside `destroyCoopSync()` in the effect cleanup.
+
+### Race broadcast gating (C-003)
+
+`gameFlowController.ts` line ~1095 now gates the race broadcast on BOTH conditions:
+
+```typescript
+if (activeRunMode === 'multiplayer_race' && multiplayerModeState === 'race') {
+  initRaceMode(...)
+  stopRaceBroadcastFn = startRaceProgressBroadcast(...)
+}
+```
+
+Previously coop/duel/same_cards all entered this branch because `activeRunMode` was pinned to `'multiplayer_race'` as a generic "is MP" flag.
+
+### Host enemy creation — duel mode (C-002)
+
+In `encounterBridge.ts` `startEncounterForRoom`, after creating and broadcasting the initial coop enemy state, the host also calls `hostCreateSharedEnemy` for duel mode:
+
+```typescript
+if (mpIsHost()) {
+  broadcastSharedEnemyState(snapshotEnemy(enemy))  // coop
+  if (run.multiplayerMode === 'duel') {
+    hostCreateSharedEnemy(ascensionTemplate.id, run.floor.currentFloor, coopPlayerCount)
+  }
+}
+```
+
+---
+
+## Coop HP Scaling — playerCount Threading (C-005, 2026-04-22)
+
+**Source files:** `src/services/runManager.ts`, `src/services/gameFlowController.ts`, `src/services/encounterBridge.ts`
+
+`RunState` now carries `multiplayerPlayerCount?: number`, populated from `getCurrentLobby()?.players.length` in `gameFlowController.ts` at run-start.
+
+`encounterBridge.ts` reads it when creating the enemy:
+
+```typescript
+const coopPlayerCount = isCoopRun ? (run.multiplayerPlayerCount ?? 2) : 1;
+const enemy = createEnemy(template, floor, { hpMultiplier, difficultyVariance, playerCount: coopPlayerCount });
+```
+
+`enemyManager.createEnemy` then calls `getCoopHpMultiplier(playerCount)` — 1.6× for 2 players. The canary multiplier is still disabled in coop (as before).
+
+---
+
+## Coop Enemy Reconcile — Timeout + Retry Protocol (C-007, 2026-04-22)
+
+**Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/encounterBridge.ts`
+
+### awaitCoopEnemyReconcile timeout
+
+`awaitCoopEnemyReconcile()` now has a 5-second hard timeout. On timeout it rejects with `CoopReconcileTimeoutError`.
+
+### mp:coop:request_enemy_state (retry channel)
+
+Guest-side: `requestCoopEnemyStateRetry()` sends `mp:coop:request_initial_state` to ask the host to re-broadcast.
+
+Host-side: `initCoopSync` registers `offRequestInitialState` — on receiving `mp:coop:request_initial_state`, if the host has a buffered `_lastBroadcastSnapshot`, it re-calls `broadcastSharedEnemyState`. Re-broadcast is idempotent — guests that apply it multiple times converge to the same state.
+
+### Guest subscribe-on-init (fix 001/004)
+
+`initCoopSync` on a guest now immediately calls `_requestInitialEnemyState()` after registering all listeners. This ensures any host broadcast that arrived before the guest's handlers were live will be re-requested. The request retries up to 3 times with a 2-second interval; retry is cancelled when any `mp:coop:enemy_state` arrives.
+
+### encounterBridge retry flow
+
+```
+Guest:
+  initialSnapshot = await awaitCoopEnemyReconcile()   // 5s timeout
+    [timeout] → requestCoopEnemyStateRetry()
+              → await awaitCoopEnemyReconcile()        // 3s more (second 5s window)
+                  [timeout] → fall through to local enemy
+                  [success] → hydrateEnemyFromSnapshot
+```

@@ -29,22 +29,17 @@ import {
   startMessagePollLoop,
 } from './steamNetworkingService';
 import { setMpDebugState } from './mpDebugState';
+import { isTauriPresent } from './platformService';
 
 // ── Platform helper ───────────────────────────────────────────────────────────
 
 /**
- * Returns true if we are running inside a Tauri runtime.
- *
- * Uses a live check against window globals rather than the module-load-time
- * hasSteam snapshot from platformService so the result is always accurate at
- * call time. Mirrors the identical helper in steamNetworkingService.ts — kept
- * local intentionally while the live-check pattern is being validated in the
- * diagnostic build. Will consolidate into platformService once confirmed.
+ * Thin alias so callers in this file use the shared memoized check from
+ * platformService rather than a local duplicate. The memoization means
+ * the window global scan runs at most once per session.
  */
 function isTauriRuntime(): boolean {
-  if (typeof window === 'undefined') return false;
-  const w = window as any;
-  return !!(w.__TAURI_INTERNALS__ || w.__TAURI__);
+  return isTauriPresent();
 }
 
 // ── WebSocket URL Configuration ───────────────────────────────────────────────
@@ -89,6 +84,7 @@ export type MultiplayerMessageType =
   | 'mp:coop:turn_end_with_delta'
   | 'mp:coop:enemy_hp_update'
   | 'mp:coop:player_died'
+  | 'mp:coop:request_initial_state'
   // Map node consensus (all multiplayer modes that share a map)
   | 'mp:map:node_pick'
   // Trivia Night
@@ -498,6 +494,16 @@ export class WebSocketTransport implements MultiplayerTransport {
  *
  * No reconnect logic — Steam's relay layer handles transient connectivity.
  */
+/**
+ * Retry delay schedule for SteamP2P sends.
+ *
+ * Five attempts at: immediate, +200ms, +500ms, +1200ms, +2500ms (~4.4s total).
+ * Tuned to cover the full NAT hole-punch window on slow Steam relays.
+ * Index 0 = first attempt delay (always 0 — fired immediately).
+ * Exported so tests and docs can reference the canonical values.
+ */
+export const STEAM_P2P_SEND_RETRY_DELAYS_MS = [0, 200, 500, 1200, 2500] as const;
+
 export class SteamP2PTransport implements MultiplayerTransport {
   private peerId = '';
   private localId = '';
@@ -708,36 +714,35 @@ export class SteamP2PTransport implements MultiplayerTransport {
   }
 
   /**
-   * Send a message with up to 3 attempts (immediate, +200ms, +500ms).
+   * Send a message with up to 5 attempts using STEAM_P2P_SEND_RETRY_DELAYS_MS schedule.
    *
-   * After each failed attempt, reads `getP2PConnectionState` to include connection
-   * state context in the failure log. After 3 failures, fires `onDisconnect`-style
-   * logging (no hard disconnect — Steam's relay handles reconnection).
+   * Delays: 0/200/500/1200/2500ms (~4.4s total budget). Covers the full NAT
+   * hole-punch window on slow Steam relays.
    *
-   * This retry loop exists to tolerate the brief ConnectFailed window that can
-   * occur when the session is freshly established and NAT hole-punch is still
-   * in progress. The combination of session_request_callback auto-accept +
-   * AUTO_RESTART_BROKEN_SESSION send flag should eliminate most failures, but
-   * the retry provides a final safety net.
+   * After each failed attempt, reads getP2PConnectionState for context.
+   * After all attempts fail, logs the message type, peer, and total elapsed ms
+   * via rrLog (no hard disconnect — Steam relay handles reconnection).
    */
-  private _sendWithRetry(msg: MultiplayerMessage, attempt: number = 0): void {
+  private _sendWithRetry(msg: MultiplayerMessage, attempt: number = 0, _startMs?: number): void {
+    const startMs = _startMs ?? Date.now();
     sendP2PMessage(this.peerId, JSON.stringify(msg)).then(async (result) => {
       // BUG1/BUG2: sendP2PMessage now returns Promise<boolean>. Rust returns Ok(true) on success,
       // Ok(false) on steamworks-level failure (ConnectFailed, NoConnection, etc.) — this does NOT
       // throw, so the old .catch-only retry was dead code for these failures.
       if (result === false) {
-        const delayMs = attempt === 0 ? 200 : 500;
+        const delayMs = STEAM_P2P_SEND_RETRY_DELAYS_MS[attempt + 1] ?? 0;
         const connState = await getP2PConnectionState(this.peerId).catch(() => 'state=unknown');
         const sessionErr = await getSessionError(this.peerId).catch(() => null);
-        if (attempt < 2) {
+        if (attempt + 1 < STEAM_P2P_SEND_RETRY_DELAYS_MS.length) {
           rrLog('mp:tx', 'send retry (resolved-false)', { type: msg.type, attempt: attempt + 1, delayMs, connState, sessionErr });
           setTimeout(() => {
             if (this.state === 'connected' && this.peerId) {
-              this._sendWithRetry(msg, attempt + 1);
+              this._sendWithRetry(msg, attempt + 1, startMs);
             }
           }, delayMs);
         } else {
-          rrLog('mp:tx', 'send exhausted retries (resolved-false)', { type: msg.type, peerId: this.peerId, connState, sessionErr });
+          const totalElapsedMs = Date.now() - startMs;
+          rrLog('mp:tx', 'send exhausted all retries (resolved-false)', { type: msg.type, peerId: this.peerId, totalElapsedMs, connState, sessionErr });
         }
       }
       // result === true: success, nothing to do.
@@ -745,16 +750,17 @@ export class SteamP2PTransport implements MultiplayerTransport {
       const errStr = String(e);
       const connState = await getP2PConnectionState(this.peerId).catch(() => 'state=unknown');
       const sessionErr = await getSessionError(this.peerId).catch(() => null);
-      if (attempt < 2) {
-        const delayMs = attempt === 0 ? 200 : 500;
+      if (attempt + 1 < STEAM_P2P_SEND_RETRY_DELAYS_MS.length) {
+        const delayMs = STEAM_P2P_SEND_RETRY_DELAYS_MS[attempt + 1] ?? 0;
         rrLog('mp:tx', 'send retry (throw)', { type: msg.type, attempt: attempt + 1, delayMs, connState, sessionErr, err: errStr });
         setTimeout(() => {
           if (this.state === 'connected' && this.peerId) {
-            this._sendWithRetry(msg, attempt + 1);
+            this._sendWithRetry(msg, attempt + 1, startMs);
           }
         }, delayMs);
       } else {
-        rrLog('mp:tx', 'send exhausted retries (throw)', { type: msg.type, peerId: this.peerId, connState, sessionErr, err: errStr });
+        const totalElapsedMs = Date.now() - startMs;
+        rrLog('mp:tx', 'send exhausted all retries (throw)', { type: msg.type, peerId: this.peerId, totalElapsedMs, connState, sessionErr, err: errStr });
       }
     });
   }

@@ -52,3 +52,26 @@ export const isWeb = platform === 'web';
  * in AR-80 (Steam Integration).
  */
 export const hasSteam = isDesktop;
+
+// -- Memoized live check -------------------------------------------------------
+
+/**
+ * Memoized live Tauri detection. Unlike the module-load-time `isDesktop` constant,
+ * this defers the check to first call and caches it for the session.
+ *
+ * Use this instead of the inline `!!(window.__TAURI_INTERNALS__ || window.__TAURI__)`
+ * pattern scattered through multiplayer services — a single cached result is cheaper
+ * and avoids the packaged-build ordering race where the globals arrive after the IIFE
+ * that set `isDesktop` has already evaluated.
+ *
+ * `pickBackend()` in multiplayerLobbyService and `createTransport()` in
+ * multiplayerTransport use this for call-time accuracy.
+ */
+let _tauriPresent: boolean | null = null;
+
+export function isTauriPresent(): boolean {
+  if (_tauriPresent !== null) return _tauriPresent;
+  if (typeof window === 'undefined') return (_tauriPresent = false);
+  _tauriPresent = !!((window as any).__TAURI_INTERNALS__ || (window as any).__TAURI__);
+  return _tauriPresent;
+}

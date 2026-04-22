@@ -241,6 +241,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   } from './services/multiplayerCoopSync'
   import type { LobbyState, RaceProgress, RaceResults, MultiplayerMode, LobbyContentSelection, LobbyVisibility } from './data/multiplayerTypes'
   import { computeRaceScore } from './services/multiplayerScoring'
+  import { initTriviaGame, initTriviaMessageHandlers, DEFAULT_ROUNDS } from './services/triviaNightService'
 
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
@@ -588,6 +589,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
    */
   let _pendingGameMessageCleanup: (() => void) | null = null
 
+  /**
+   * Cleanup function for initTriviaMessageHandlers (trivia_night mode only).
+   * Module-scoped so the $effect cleanup can reach it alongside _pendingGameMessageCleanup.
+   */
+  let _pendingTriviaCleanup: (() => void) | null = null
+
   /** Live map node picks across all players, refreshed via multiplayerMapSync. */
   let mapNodePicks = $state<Record<string, string | null>>({})
 
@@ -888,6 +895,15 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         initDuel(isLocalHost, localPlayerId, opponentId)
       }
 
+      // FIX MP-STEAM-20260422-017: Initialise trivia game state and message handlers for
+      // trivia_night mode. Without this both host and guest entered undefined _gameState,
+      // causing every hostNextQuestion / submitAnswer call to silently no-op.
+      if (lobby.mode === 'trivia_night') {
+        const triviaPlayers = lobby.players.map(p => ({ id: p.id, displayName: p.displayName }))
+        initTriviaGame(triviaPlayers, DEFAULT_ROUNDS, isLocalHost)
+        _pendingTriviaCleanup = initTriviaMessageHandlers()
+      }
+
       // Store cleanup in a module-level variable so the effect cleanup can call it.
       _pendingGameMessageCleanup = cleanupGameMessages
 
@@ -943,6 +959,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       // FIX C-001: clean up game message handlers registered at game start
       _pendingGameMessageCleanup?.()
       _pendingGameMessageCleanup = null
+      // FIX MP-STEAM-20260422-017: clean up trivia message handlers for trivia_night
+      _pendingTriviaCleanup?.()
+      _pendingTriviaCleanup = null
     }
   })
 
