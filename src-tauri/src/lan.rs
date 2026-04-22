@@ -935,6 +935,53 @@ pub fn lan_server_status() -> LanServerStatus {
     }
 }
 
+/// Probe a remote TCP endpoint to test reachability.
+///
+/// Guest clients can call this before attempting a full LAN lobby join to independently
+/// verify whether the host's IP:port is reachable. Returns `"ok"` on success or a
+/// human-readable reason string on failure.
+///
+/// Failure reasons returned via `Err(_)`:
+///  - `"refused"` — TCP connection was actively refused (host port not listening)
+///  - `"timeout"` — TCP handshake did not complete within `timeout_ms` milliseconds
+///  - `"host_unreachable:<err>"` — OS-level routing failure (no route to host, etc.)
+///
+/// # Parameters
+/// - `host`: IPv4/IPv6 address or hostname to probe
+/// - `port`: TCP port number to connect to
+/// - `timeout_ms`: Maximum milliseconds to wait for the connection (default 2000)
+#[tauri::command]
+pub async fn lan_tcp_probe(
+    host: String,
+    port: u16,
+    timeout_ms: Option<u64>,
+) -> Result<String, String> {
+    let timeout_duration = std::time::Duration::from_millis(timeout_ms.unwrap_or(2000));
+    let target = format!("{}:{}", host, port);
+    match tokio::time::timeout(
+        timeout_duration,
+        tokio::net::TcpStream::connect(&target),
+    ).await {
+        Ok(Ok(_)) => {
+            eprintln!("[LAN] tcp_probe OK: {}", target);
+            Ok("ok".to_string())
+        }
+        Ok(Err(e)) => {
+            let reason = if e.kind() == std::io::ErrorKind::ConnectionRefused {
+                "refused".to_string()
+            } else {
+                format!("host_unreachable:{}", e)
+            };
+            eprintln!("[LAN] tcp_probe FAILED: {} — {}", target, reason);
+            Err(reason)
+        }
+        Err(_) => {
+            eprintln!("[LAN] tcp_probe TIMEOUT: {}", target);
+            Err("timeout".to_string())
+        }
+    }
+}
+
 // ── Network interface helpers ─────────────────────────────────────────────────
 
 /// Enumerate non-loopback, non-link-local IPv4 addresses (routable LAN IPs).

@@ -36,6 +36,7 @@
   import LobbyDeckPicker from './LobbyDeckPicker.svelte'
   import { canStartLobby, startButtonLabel } from '../utils/lobbyStartGate'
   import { describeSelection } from '../utils/lobbyDeckSelection'
+  import { rrLog } from '../../services/rrLog'
 
   interface Props {
     lobby: LobbyState
@@ -119,6 +120,24 @@
     void checkAllPlayersHaveWorkshopDeck(workshopItemId, playerIds, localPlayerId).then(result => {
       workshopMissingPlayerIds = result.missing
       workshopDecksReady = result.missing.length === 0
+    })
+  })
+
+  // ── Forensic: log every time contentSelection changes so we can trace the disconnect
+  // between setContentSelection being called and the UI showing 'No content selected'.
+  // Bug: host's lobby state has contentSelection set after picker, yet UI shows 'No content selected'.
+  // This effect fires whenever lobby.contentSelection (or lobby itself) changes reactively.
+  $effect(() => {
+    rrLog('mp:ui:lobby', 'render content selection', {
+      hasSelection: !!lobby.contentSelection,
+      type: lobby.contentSelection?.type ?? null,
+      deckCount: lobby.contentSelection?.type === 'study-multi'
+        ? (lobby.contentSelection as { decks?: unknown[] }).decks?.length
+        : lobby.contentSelection?.type === 'study'
+          ? 1
+          : undefined,
+      selection: lobby.contentSelection,
+      lobbyId: lobby.lobbyId,
     })
   })
 

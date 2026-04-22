@@ -118,6 +118,15 @@ export interface SteamCommandArgs {
   steam_overlay_status: Record<string, never>;
   /** Lobby metadata warm-up — call before GetLobbyData on lobbies discovered via RequestLobbyList. */
   steam_request_lobby_data: { lobbyId: string };
+  /** Prime P2P sessions with all other lobby members by sending a zero-byte message.
+   * Proactively triggers their session_request_callback so ConnectFailed is avoided.
+   * Returns the count of peers primed. */
+  steam_prime_p2p_sessions: { lobbyId: string };
+  /** Get the SteamNetworkingMessages connection state for a specific peer.
+   * Returns a diagnostic string: "state=Connected rtt=42 end_reason=None" */
+  steam_get_p2p_connection_state: { steamId: string };
+  /** LAN TCP probe — test TCP reachability of a host:port. */
+  lan_tcp_probe: { host: string; port: number; timeoutMs?: number };
 }
 
 /**
@@ -156,6 +165,12 @@ export interface SteamCommandReturn {
   steam_overlay_status: SteamOverlayStatus;
   /** true when the request was submitted; false when data already cached or Steam unavailable. */
   steam_request_lobby_data: boolean;
+  /** Number of peers primed (lobby members excluding self). */
+  steam_prime_p2p_sessions: number;
+  /** Single-line diagnostic string: "state=Connected rtt=42 end_reason=None" */
+  steam_get_p2p_connection_state: string;
+  /** "ok" on success, or a human-readable failure reason. */
+  lan_tcp_probe: string;
 }
 
 /**
@@ -704,4 +719,68 @@ export function startMessagePollLoop(
   }, intervalMs);
 
   return () => clearInterval(id);
+}
+
+// ── P2P Session Priming ───────────────────────────────────────────────────────
+
+/**
+ * Prime P2P sessions with all other members of a lobby.
+ *
+ * Sends a zero-byte reliable message to every other lobby member, which:
+ *   (a) Triggers their session_request_callback to auto-accept the session, AND
+ *   (b) Implicitly accepts the reverse direction under Steam's session rules.
+ *
+ * Call this immediately after create_lobby or join_lobby success to eliminate the
+ * ConnectFailed race where neither side has accepted the other's session yet.
+ *
+ * Returns the number of peers primed (0 on non-Tauri builds or when no peers exist).
+ *
+ * @param lobbyId - 64-bit Steam lobby ID as a decimal string
+ */
+export async function primeP2PSessions(lobbyId: string): Promise<number> {
+  if (!isTauriRuntime()) return 0;
+  const result = await invokeSteam('steam_prime_p2p_sessions', { lobbyId });
+  return result ?? 0;
+}
+
+/**
+ * Get the SteamNetworkingMessages connection state for a specific peer.
+ *
+ * Returns a single-line diagnostic string like:
+ *   "state=Connected rtt=42 end_reason=None"
+ *   "state=Connecting rtt=-1 end_reason=None"
+ *   "state=ProblemDetectedLocally rtt=-1 end_reason=Some(...)"
+ *
+ * Used by the send retry path in SteamP2PTransport to include connection context
+ * in failure log lines.
+ *
+ * Returns "state=None" on non-Tauri builds or when no session exists for this peer.
+ *
+ * @param steamId - 64-bit Steam ID of the peer as a decimal string
+ */
+export async function getP2PConnectionState(steamId: string): Promise<string> {
+  if (!isTauriRuntime()) return 'state=None';
+  const result = await invokeSteam('steam_get_p2p_connection_state', { steamId });
+  return result ?? 'state=None';
+}
+
+/**
+ * Probe a remote TCP endpoint to test LAN reachability.
+ *
+ * Guests can call this before attempting a full LAN lobby join to verify that
+ * the host's IP:port is reachable. Returns "ok" on success or a human-readable
+ * failure reason ("refused", "timeout", "host_unreachable:...") on failure.
+ *
+ * @param host       - IPv4/IPv6 address or hostname
+ * @param port       - TCP port number
+ * @param timeoutMs  - Maximum milliseconds to wait (default 2000)
+ */
+export async function lanTcpProbe(host: string, port: number, timeoutMs = 2000): Promise<string> {
+  if (!isTauriRuntime()) return 'state=None';
+  try {
+    const { invoke } = await import('@tauri-apps/api/core');
+    return await invoke<string>('lan_tcp_probe', { host, port, timeoutMs }) ?? 'ok';
+  } catch (e) {
+    return String((e as Error)?.message ?? e);
+  }
 }

@@ -122,11 +122,15 @@ fn main() {
             filesave::fs_write_save,
             filesave::fs_read_save,
             filesave::fs_delete_save,
+            // P2P session priming + diagnostics (2026-04-22 ConnectFailed fix)
+            steam::steam_prime_p2p_sessions,
+            steam::steam_get_p2p_connection_state,
             // LAN Server (AR-MULTIPLAYER LAN)
             lan::lan_start_server,
             lan::lan_stop_server,
             lan::lan_get_local_ips,
             lan::lan_server_status,
+            lan::lan_tcp_probe,
         ])
         .build(tauri::generate_context!())
         .expect("error while building Recall Rogue")

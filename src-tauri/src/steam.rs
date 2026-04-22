@@ -1,5 +1,5 @@
 use std::sync::{Arc, Mutex};
-use steamworks::networking_types::{NetworkingIdentity, SendFlags};
+use steamworks::networking_types::{NetConnectionInfo, NetworkingConnectionState, NetworkingIdentity, SendFlags};
 use steamworks::{CallbackHandle, ChatMemberStateChange, Client, DistanceFilter, LobbyChatUpdate, LobbyEnter, LobbyId, LobbyType, SteamId};
 use tauri::State;
 
@@ -76,6 +76,17 @@ pub struct SteamState {
     ///
     /// `None` when Steam failed to initialize (no thread is spawned in that case).
     _pump_shutdown: Option<std::sync::mpsc::Sender<()>>,
+    /// Keeps the SteamNetworkingMessages session_request_callback handle alive.
+    /// When the guest opens a new SteamNetworkingMessages session toward us, Steam fires
+    /// SteamNetworkingMessagesSessionRequest_t. Without this callback registered, the
+    /// default behavior is to reject the session — all subsequent sends from the guest
+    /// come back ConnectFailed. This callback auto-accepts every inbound session request
+    /// from any peer (we are in a dedicated lobby so any requester is our guest).
+    _session_request_callback: Option<()>, // handled via networking_messages().session_request_callback()
+    /// Keeps the SteamNetworkingMessages session_failed_callback handle alive.
+    /// Fires when a session fails for any reason, giving us the NetConnectionInfo
+    /// diagnostic (end_reason, state, identity_remote) that explains ConnectFailed.
+    _session_failed_callback: Option<()>, // handled via networking_messages().session_failed_callback()
 }
 
 impl SteamState {
@@ -227,6 +238,39 @@ impl SteamState {
                     }
                 });
 
+                // Fix: Register session_request_callback so inbound SteamNetworkingMessages
+                // sessions are auto-accepted. Without this, any peer who calls
+                // send_message_to_user toward us for the first time triggers a
+                // SteamNetworkingMessagesSessionRequest_t callback — and if the callback
+                // is not registered (or lets the SessionRequest drop), Steam rejects the
+                // session. All subsequent sends from that peer return ConnectFailed.
+                //
+                // The receiver MUST call AcceptSessionWithUser (or equivalently send a
+                // message back, which implicitly accepts). Registering this callback here
+                // in SteamState::new() ensures sessions are accepted the moment Steam fires
+                // the event, regardless of which thread runs the pump. This is the "other
+                // half" of the LobbyChatUpdate auto-accept above: LobbyChatUpdate fires
+                // for existing lobby members; session_request_callback fires for any peer
+                // who opens a fresh SteamNetworkingMessages session (including retries).
+                client.networking_messages().session_request_callback(move |request| {
+                    let peer_id = request.remote().steam_id();
+                    eprintln!("[Steam] SessionRequest: accepting from peer {:?}", peer_id);
+                    let accepted = request.accept();
+                    eprintln!("[Steam] SessionRequest: accept() returned {}", accepted);
+                });
+                eprintln!("[Steam] session_request_callback registered (auto-accept)");
+
+                // Register session_failed_callback for diagnostics.
+                // Fires when a SteamNetworkingMessages session fails (ConnectFailed, etc.).
+                // Logs the full NetConnectionInfo diagnostic — state, end_reason, identity_remote.
+                // Previously these failures were silent: sends returned ConnectFailed with no
+                // further information visible to the Rust layer.
+                client.networking_messages().session_failed_callback(move |info: NetConnectionInfo| {
+                    eprintln!("[Steam] SessionFailed: state={:?} end_reason={:?} identity_remote={:?}",
+                        info.state(), info.end_reason(), info.identity_remote());
+                });
+                eprintln!("[Steam] session_failed_callback registered (diagnostics)");
+
                 // AR-80 follow-up: Spawn a background thread that pumps Steam callbacks
                 // at ~16 ms intervals.
                 //
@@ -268,6 +312,11 @@ impl SteamState {
                     _lobby_enter_callback: Some(SendableCallbackHandle(lobby_enter_handle)),
                     _lobby_chat_update_callback: Some(SendableCallbackHandle(lobby_chat_handle)),
                     _pump_shutdown: Some(tx),
+                    // session_request_callback and session_failed_callback are registered
+                    // directly on networking_messages() above; they are persistent for the
+                    // Arc<Inner> lifetime and do not return a handle we need to store.
+                    _session_request_callback: Some(()),
+                    _session_failed_callback: Some(()),
                 }
             }
             Err(e) => {
@@ -283,6 +332,8 @@ impl SteamState {
                     _lobby_enter_callback: None,
                     _lobby_chat_update_callback: None,
                     _pump_shutdown: None,
+                    _session_request_callback: None,
+                    _session_failed_callback: None,
                 }
             }
         }
@@ -1005,12 +1056,20 @@ pub fn steam_send_p2p_message(
         let peer_id = parse_steam_id(&steam_id)?;
         let identity = NetworkingIdentity::new_steam_id(peer_id);
         let bytes = data.as_bytes();
+        // AUTO_RESTART_BROKEN_SESSION: when the session hits NoConnection after a NAT
+        // hole-punch failure or transient relay drop, Steam automatically closes and
+        // re-opens the underlying connection and requeues the send. Without this flag,
+        // a single NoConnection returns an error and the message is lost permanently.
+        // Combined with RELIABLE this gives us the same "exactly-once, in-order"
+        // guarantee while tolerating brief connectivity interruptions. (Flag added
+        // 2026-04-22 as part of the ConnectFailed diagnostic + session-handshake fix.)
+        let send_flags = SendFlags::RELIABLE | SendFlags::AUTO_RESTART_BROKEN_SESSION;
         match client
             .networking_messages()
-            .send_message_to_user(identity, SendFlags::RELIABLE, bytes, channel)
+            .send_message_to_user(identity, send_flags, bytes, channel)
         {
             Ok(()) => {
-                println!("[Steam] P2P message sent to {} on channel {}", steam_id, channel);
+                println!("[Steam] P2P message sent to {} on channel {} (flags=RELIABLE|AUTO_RESTART_BROKEN_SESSION)", steam_id, channel);
                 Ok(true)
             }
             Err(e) => {
@@ -1080,9 +1139,9 @@ pub fn steam_read_p2p_messages(
 /// # Returns
 /// `true` if the accept was sent, `false` if Steam unavailable.
 ///
-/// TODO (AR-MULTIPLAYER 1.1): Register a persistent `session_request_callback` in SteamState::new()
-///   so all incoming sessions are auto-accepted (or queued for JS approval) without needing
-///   this explicit command for the common case.
+/// Note (2026-04-22): A persistent `session_request_callback` is now registered in SteamState::new()
+/// so all incoming SteamNetworkingMessages sessions are auto-accepted at callback time.
+/// This command remains as an explicit accept signal for the JS-driven handshake path.
 #[tauri::command]
 pub fn steam_accept_p2p_session(
     state: State<SteamState>,
@@ -1150,6 +1209,85 @@ fn parse_steam_id(s: &str) -> Result<SteamId, String> {
     s.parse::<u64>()
         .map(SteamId::from_raw)
         .map_err(|_| format!("Invalid steam_id '{}': must be a 64-bit decimal integer", s))
+}
+
+
+// ── P2P Session Priming ───────────────────────────────────────────────────────
+
+/// Prime P2P sessions with all other members of a lobby by sending them a zero-byte message.
+///
+/// SteamNetworkingMessages requires the receiver to have accepted a session before
+/// messages are delivered. When both sides join a lobby simultaneously, there is a race:
+/// if neither side has called AcceptSessionWithUser yet when the first real message
+/// arrives, that message returns ConnectFailed. This command proactively opens a session
+/// toward every other lobby member, which:
+///   (a) Triggers their `session_request_callback` (if registered) to auto-accept, AND
+///   (b) Implicitly accepts the reverse direction under Steam's session rules.
+///
+/// Call this immediately after create_lobby or join_lobby success on both host and guest.
+/// The zero-byte message is a no-op for the game protocol — it is invisible to the
+/// TS-side message handlers.
+///
+/// # Returns
+/// Number of peers primed (i.e., members in the lobby excluding self), or an error string.
+#[tauri::command]
+pub fn steam_prime_p2p_sessions(
+    state: State<SteamState>,
+    lobby_id: String,
+) -> Result<u32, String> {
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(client) = lock.as_ref() {
+        let lid = parse_lobby_id(&lobby_id)?;
+        let me = client.user().steam_id();
+        let members = client.matchmaking().lobby_members(lid);
+        let peers: Vec<SteamId> = members.into_iter().filter(|m| m.raw() != me.raw()).collect();
+        let mut primed = 0u32;
+        let mut peer_ids: Vec<String> = Vec::new();
+        for peer in &peers {
+            let identity = NetworkingIdentity::new_steam_id(*peer);
+            // AUTO_RESTART_BROKEN_SESSION ensures a stale session won't block the primer.
+            let ok = client.networking_messages()
+                .send_message_to_user(identity, SendFlags::RELIABLE | SendFlags::AUTO_RESTART_BROKEN_SESSION, &[], 0)
+                .is_ok();
+            if ok { primed += 1; }
+            peer_ids.push(peer.raw().to_string());
+            eprintln!("[Steam] Primed P2P session with {}: {}", peer.raw(), ok);
+        }
+        eprintln!("[Steam] Primed P2P sessions: count={} peers={:?}", primed, peer_ids);
+        Ok(primed)
+    } else {
+        Ok(0)
+    }
+}
+
+/// Get the current SteamNetworkingMessages connection state for a specific peer.
+///
+/// Returns a single-line diagnostic string of the form:
+///   `state=Connected rtt=42 end_reason=None`
+///   `state=Connecting rtt=-1 end_reason=None`
+///   `state=ProblemDetectedLocally rtt=-1 end_reason=Some(...)`
+///
+/// Used by the TS-side retry path (`SteamP2PTransport.send`) to include connection
+/// state in send-failure log lines, and by the debug overlay in the multiplayer UI.
+///
+/// Returns `"state=None"` when Steam is unavailable or no session exists yet for this peer.
+#[tauri::command]
+pub fn steam_get_p2p_connection_state(
+    state: State<SteamState>,
+    steam_id: String,
+) -> Result<String, String> {
+    let lock = state.client.lock().map_err(|e| e.to_string())?;
+    if let Some(client) = lock.as_ref() {
+        let peer_id = parse_steam_id(&steam_id)?;
+        let identity = NetworkingIdentity::new_steam_id(peer_id);
+        let (conn_state, info, realtime) = client.networking_messages()
+            .get_session_connection_info(&identity);
+        let rtt = realtime.map(|r| r.ping()).unwrap_or(-1);
+        let end_reason = info.as_ref().and_then(|i| i.end_reason()).map(|e| format!("{:?}", e));
+        Ok(format!("state={:?} rtt={} end_reason={:?}", conn_state, rtt, end_reason))
+    } else {
+        Ok("state=None".to_string())
+    }
 }
 
 // ── Cloud Save ────────────────────────────────────────────────────────────────

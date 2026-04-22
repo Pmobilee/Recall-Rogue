@@ -1698,3 +1698,91 @@ const status = await getSteamOverlayStatus()
 ```
 
 Rust command: `steam_overlay_status` in `src-tauri/src/steam.rs`.
+
+## SteamNetworkingMessages Session Handshake (2026-04-22)
+
+### The ConnectFailed Problem
+
+`ISteamNetworkingMessages` — the API underlying all Steam P2P messaging in Recall Rogue — requires the **receiver** to have accepted a session before messages are delivered. The accept can happen in one of three ways:
+
+1. The receiver calls `AcceptSessionWithUser(identity)` explicitly.
+2. The receiver sends any message to the requester (implicit accept).
+3. The receiver has a registered `session_request_callback` that calls `request.accept()`.
+
+Without one of these, every inbound message returns `EResultNoConnection` (`ConnectFailed`) to the sender.
+
+**On the host side:** the `LobbyChatUpdate` callback (registered since Wave 21) fires when the guest enters the lobby and sends a zero-byte message back, implicitly accepting the guest's future session. This covers the **host accepting the guest's direction**.
+
+**On the guest side:** the guest receives no `LobbyChatUpdate` for the host (the host was already in the lobby). If the guest opens a session toward the host without the host having a `session_request_callback` registered, the host's Steam network layer rejects the guest's first outbound message. The guest then calls `send_message_to_user` which returns `ConnectFailed`.
+
+### Fix
+
+`SteamState::new()` now registers two persistent callbacks on `client.networking_messages()`:
+
+**`session_request_callback`** — fires when any peer opens a fresh `SteamNetworkingMessages` session toward us. The callback calls `request.accept()` immediately. This replaces the manual `steam_accept_p2p_session` round-trip for the common case. Log line: `[Steam] SessionRequest: accepting from peer <id>`.
+
+**`session_failed_callback`** — fires when a session fails to establish or drops. Logs full `NetConnectionInfo` (state, end_reason, identity_remote) to `debug.log`. Previously these failures were silent — sends returned `ConnectFailed` with no further diagnostics.
+
+**`steam_prime_p2p_sessions` Tauri command** — called by `multiplayerLobbyService` immediately after every successful lobby create/join. Sends a zero-byte `RELIABLE | AUTO_RESTART_BROKEN_SESSION` message to every other lobby member, proactively opening sessions in both directions.
+
+### Send Flags
+
+All `send_message_to_user` calls in `steam_send_p2p_message` now use:
+```rust
+SendFlags::RELIABLE | SendFlags::AUTO_RESTART_BROKEN_SESSION
+```
+
+`AUTO_RESTART_BROKEN_SESSION`: when the connection hits `NoConnection` (e.g., after a NAT hole-punch failure or relay drop), Steam automatically closes the stale connection, opens a fresh one, and requeues the message. Without this flag, a single `NoConnection` error is returned and the message is lost permanently.
+
+### Send Retry (TS layer)
+
+`SteamP2PTransport._sendWithRetry()` retries failed sends with backoff (0ms, 200ms, 500ms). Between attempts it calls `getP2PConnectionState(peerId)` to log the connection state. After 3 failures it logs `send exhausted retries` with the connection state diagnostic — surfaced in `debug.log` via the `rrLog` bridge.
+
+### New IPC Commands
+
+| Command | Description |
+|---------|-------------|
+| `steam_prime_p2p_sessions(lobbyId)` | Send zero-byte primer to all other lobby members; returns count primed |
+| `steam_get_p2p_connection_state(steamId)` | Returns diagnostic string: `state=Connected rtt=42 end_reason=None` |
+
+### TS helpers
+
+```typescript
+import { primeP2PSessions, getP2PConnectionState } from 'src/services/steamNetworkingService'
+const count = await primeP2PSessions(lobbyId)  // call after create/join
+const diag = await getP2PConnectionState(peerId)  // call in retry path
+```
+
+---
+
+## LAN on macOS — Permission and Firewall
+
+### Local Network Permission (macOS 15+)
+
+macOS 15 (Sequoia) requires `NSLocalNetworkUsageDescription` in `Info.plist` for any app that binds a local-network socket. This key is injected at build time via `src-tauri/Info.plist` (referenced by `bundle.macOS.infoPlist` in `tauri.conf.json`). On first LAN server start, macOS shows a system permission prompt:
+
+> "Recall Rogue would like to find and connect to devices on your local network."
+
+The player **must click Allow**. If they click Don't Allow (or the prompt is dismissed), macOS silently refuses the `TcpListener` bind and `lan_start_server` fires the 10s timeout with a generic timeout message.
+
+**To re-enable after denying:** System Settings → Privacy & Security → Local Network → find Recall Rogue and flip the toggle.
+
+### Firewall Allow
+
+macOS Firewall (System Settings → Network → Firewall) may block inbound TCP on port 19738. If the self-probe log line shows `self-probe FAILED` or `self-probe TIMEOUT`, the firewall is blocking inbound connections. Options:
+
+1. System Settings → Network → Firewall → Options → Add Recall Rogue → Allow Incoming Connections.
+2. Turn off Firewall (for LAN gaming sessions).
+3. Use the LAN server on the guest's machine (they host instead).
+
+### LAN TCP Probe
+
+The `lan_tcp_probe` Tauri command lets a guest independently verify host reachability:
+
+```typescript
+import { lanTcpProbe } from 'src/services/steamNetworkingService'
+const result = await lanTcpProbe('192.168.1.42', 19738, 2000)
+// "ok" on success; "refused", "timeout", or "host_unreachable:..." on failure
+```
+
+This is a pure TCP connect — it does not send any application data and does not require a running LAN server on the guest side.

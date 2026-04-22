@@ -198,6 +198,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     isTutorialActive,
   } from './services/tutorialService' 
   import { musicService } from './services/musicService'
+  import { rrLog } from './services/rrLog'
   import { ambientAudio } from './services/ambientAudioService'
   import { quizPanelVisible } from './ui/stores/combatUiStore'
   import { getAuraLevel, getAuraState } from './services/knowledgeAuraSystem'
@@ -209,6 +210,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import TriviaRoundScreen from './ui/components/TriviaRoundScreen.svelte'
   import RaceResultsScreen from './ui/components/RaceResultsScreen.svelte'
   import PlayerRosterPanel from './ui/components/PlayerRosterPanel.svelte'
+  import MpDebugOverlay from './ui/components/MpDebugOverlay.svelte'
+  import { setMpDebugState } from './services/mpDebugState'
   import {
     createLobby,
     joinLobby,
@@ -698,7 +701,40 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   // but CardApp saw the same ref and MultiplayerLobby never re-rendered.
   $effect(() => {
     const unsub = onLobbyUpdate((lobby) => {
-      currentLobby = lobby ? { ...lobby, players: [...lobby.players] } : null
+      rrLog('mp:ui:cardapp', 'onLobbyUpdate', {
+        beforeContentType: currentLobby?.contentSelection?.type,
+        afterContentType: lobby?.contentSelection?.type,
+        afterDecks: lobby?.contentSelection && 'decks' in lobby.contentSelection
+          ? (lobby.contentSelection as { decks?: unknown[] }).decks?.length
+          : undefined,
+      })
+      // Explicit spread of contentSelection so Svelte's $state proxy detects
+      // nested changes (shallow spread alone misses mutations inside the object).
+      currentLobby = lobby
+        ? {
+            ...lobby,
+            players: [...lobby.players],
+            contentSelection: lobby.contentSelection ? { ...lobby.contentSelection } : undefined,
+          }
+        : null
+      // Publish to window debug state so MpDebugOverlay can display it.
+      if (lobby) {
+        setMpDebugState({
+          lobby: {
+            id: lobby.lobbyId,
+            code: lobby.lobbyCode,
+            mode: lobby.mode,
+            deckSelectionMode: lobby.deckSelectionMode,
+            playerCount: lobby.players.length,
+            contentSelectionType: lobby.contentSelection?.type ?? null,
+            contentDecksLength: lobby.contentSelection && 'decks' in lobby.contentSelection
+              ? ((lobby.contentSelection as { decks?: unknown[] }).decks?.length ?? null)
+              : null,
+          },
+        })
+      } else {
+        setMpDebugState({ lobby: null })
+      }
     })
     return unsub
   })
@@ -1530,6 +1566,19 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       }
     })
 
+    // Publish local Steam ID and player ID to the MP debug state so MpDebugOverlay
+    // can show them without re-fetching every refresh cycle.
+    void import('./services/steamNetworkingService').then(async ({ getLocalSteamId }) => {
+      const steamId = await getLocalSteamId()
+      setMpDebugState({
+        steam: {
+          localSteamId: steamId,
+          localPlayerId,
+          p2pConnectionState: null,
+        },
+      })
+    })
+
     const onInteraction = (): void => {
       handleUserInteraction()
       window.removeEventListener('pointerdown', onInteraction)
@@ -2308,6 +2357,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       showTutorialButton={$currentScreen === 'combat' || $currentScreen === 'dungeonMap'}
     />
   {/if}
+
+  <!-- Dev-only MP debug overlay: gated on $devMode, safe in prod -->
+  <MpDebugOverlay />
 
   <!-- Screen transition overlay -->
   <div

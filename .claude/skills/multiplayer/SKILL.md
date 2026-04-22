@@ -96,8 +96,26 @@ Hub → Multiplayer button → Lobby (mode/deck/rules) → Start Game → shared
 | `b7f1b57c4` | 19 | `steam_get_lobby_owner` Rust command (`ISteamMatchmaking::GetLobbyOwner`) — synchronous local-cache read, reliable for guest-side peer resolution. `readSteamLobbyMetadataForJoin` reads mode/visibility/title/lobby_code/max_players from Steam lobby data so `_currentLobby` shows the host's real values instead of the `mode: 'race'` placeholder that persisted when the `mp:lobby:settings` broadcast failed |
 | `1223272ec` | 20 | **Svelte $state reactivity**: CardApp.svelte `onLobbyUpdate((lobby) => currentLobby = lobby)` was assigning the same object reference Svelte had already wrapped, so downstream `$derived(amHost ...)` never re-evaluated after lobby mutations. Shallow-spread on every update so Svelte sees a new ref. Host peer-poll interval 2 s → 300 ms |
 | `bfb7c52bd` | 21 | **Failsafe wave + forensic logging.** JS→file log bridge (`rr_log` Rust + `rrLog` TS), instrumented SteamP2PTransport (state/send/recv/buffer), instrumented multiplayerLobbyService (createLobby/joinLobby/setContentSelection/broadcastSettings/notifyLobbyUpdate/`mp:lobby:settings` handler + resolveSteamPeerId path). Failsafes: `LobbyChatUpdate` raw Rust callback auto-accepts P2P for any peer who enters our lobby (closes the receiver-accept gap), `resolveSteamPeerIdWithRetry` (5× 500ms), `SteamP2PTransport._preConnectBuffer` (buffers sends attempted before `connect()` is ever called — host's early deck selections), LAN self-probe (TCP connect to own routable IP:port; fails → firewall warning in debug.log) |
+| (P2P session fix) | 22 | **`session_request_callback` registered in `SteamState::new()` — THE root fix for ConnectFailed.** Without this, Steam rejects incoming sessions by default (SessionRequest Drop impl calls CloseSessionWithUser). Supporting: `session_failed_callback` for diagnostic logging; `AUTO_RESTART_BROKEN_SESSION` send flag; `steam_prime_p2p_sessions` Tauri command (zero-byte primers to all lobby members after create/join); `steam_get_p2p_connection_state` diagnostic command; `lan_tcp_probe` LAN reachability command; TS `_sendWithRetry` (3 attempts, 200ms/500ms delays, logs connection state between attempts); `primeP2PSessions` called in all 3 lobby join/create paths. |
 
-See `docs/mechanics/multiplayer.md` and `docs/architecture/multiplayer.md` for per-fix detail. All C1–C5 criticals, H1–H19 highs, M1–M23 mediums, L1–L5 lows closed.
+See `docs/mechanics/multiplayer.md` and `docs/architecture/multiplayer.md` for per-fix detail.
+
+### Known-bad patterns (additional, 2026-04-22)
+
+- **Assumed `steamworks-rs 0.12` lacked `session_request_callback`.** It has it. `client.networking_messages().session_request_callback(|req| req.accept())` is 2 lines. Read `~/.cargo/registry/src/.../steamworks-0.12.2/src/networking_messages.rs` before concluding any API is absent.
+- **Sending only from one direction does NOT establish bidirectional sessions.** Under `ISteamNetworkingMessages`, A→B and B→A are two separate session arcs. A priming zero-byte in each direction (or `session_request_callback` auto-accept) is required for both sides.
+
+### Command inventory additions (2026-04-22)
+
+| Command | Layer | Description |
+|---------|-------|-------------|
+| `steam_prime_p2p_sessions(lobbyId)` | Rust | Zero-byte primer to all other lobby members; returns count primed |
+| `steam_get_p2p_connection_state(steamId)` | Rust | Diagnostic string: `state=Connected rtt=42 end_reason=None` |
+| `lan_tcp_probe(host, port, timeoutMs)` | Rust (LAN) | Pure TCP connect probe; returns "ok" or failure reason |
+| `primeP2PSessions(lobbyId)` | TS | Wraps `steam_prime_p2p_sessions` |
+| `getP2PConnectionState(steamId)` | TS | Wraps `steam_get_p2p_connection_state` |
+| `lanTcpProbe(host, port, timeoutMs)` | TS | Wraps `lan_tcp_probe` |
+ All C1–C5 criticals, H1–H19 highs, M1–M23 mediums, L1–L5 lows closed.
 
 **Remaining Work (all nice-to-haves; no ship blockers)**
 

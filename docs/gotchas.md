@@ -5225,3 +5225,21 @@ Ten-hour debugging pass that ended up rewriting large chunks of the Steam + LAN 
 - When Ok(()) serialises to null and the JS side treats null as failure, welcome to a class of bug the type system can't catch.
 - Background callback pump (16ms) + raw persistent callbacks (LobbyEnter, LobbyChatUpdate, GameOverlayActivated) together replace the JS-polled run_callbacks pattern. Keep the Tauri command as a safety net but stop depending on it.
 
+
+### 2026-04-22 — Steam P2P ConnectFailed (session_request_callback not registered)
+
+**What broke:** Every `send_message_to_user` from the guest to the host returned `ConnectFailed` after the connection appeared to establish. Host side log showed `LobbyChatUpdate → auto-accept P2P → true`, transport reached `connected`, yet all subsequent sends failed. The guest was sending into a void.
+
+**Why:** Under `ISteamNetworkingMessages`, the *receiver* must explicitly accept a session before messages are delivered. The host's `LobbyChatUpdate` callback sent a zero-byte message back to the guest on entry (which accepts the **guest→host** direction). But when the guest then sends to the host, the host receives a `SteamNetworkingMessagesSessionRequest_t` callback for the **host→guest** session. If no `session_request_callback` is registered, Steam rejects the session by default (the `SessionRequest` struct's `Drop` impl calls `CloseSessionWithUser`). All guest sends from that point forward return `ConnectFailed`.
+
+**Root cause assumption that burned us:** We assumed `steamworks-rs 0.12` did not expose `session_request_callback`. It does — `client.networking_messages().session_request_callback(|req| req.accept())`. A 2-line fix.
+
+**One-line fix:** Register `session_request_callback` in `SteamState::new()` with auto-accept (`request.accept()`). This fires when any peer opens a new session toward us and immediately accepts it.
+
+**Supporting fixes (same commit):**
+- `session_failed_callback` for full diagnostic on any session failure (was silent before).
+- `SendFlags::AUTO_RESTART_BROKEN_SESSION` on all `send_message_to_user` calls — tolerates transient `NoConnection` from NAT hole-punch races.
+- `steam_prime_p2p_sessions` — proactively sends zero-byte primers to all lobby members after create/join, establishing sessions in both directions before real messages fly.
+- TS `_sendWithRetry` — 3-attempt retry with 200ms/500ms delays + `getP2PConnectionState` diagnostic between attempts.
+
+**Future agents: do NOT assume steamworks-rs 0.12 lacks a callback.** Read `~/.cargo/registry/src/.../steamworks-0.12.2/src/networking_messages.rs` before concluding an API is missing.

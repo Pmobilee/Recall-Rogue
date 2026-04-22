@@ -21,6 +21,7 @@ import { getLanServerUrls, isLanMode } from './lanConfigService';
 import { rrLog } from './rrLog';
 import {
   acceptP2PSession,
+  getP2PConnectionState,
   getLobbyMembers,
   leaveSteamLobby,
   sendP2PMessage,
@@ -656,8 +657,42 @@ export class SteamP2PTransport implements MultiplayerTransport {
       return;
     }
     rrLog('mp:tx', 'send dispatched', { type, peerId: this.peerId });
-    sendP2PMessage(this.peerId, JSON.stringify(msg)).catch((e) => {
-      rrLog('mp:tx', 'sendP2PMessage failed', { type, e: String(e) });
+    this._sendWithRetry(msg);
+  }
+
+  /**
+   * Send a message with up to 3 attempts (immediate, +200ms, +500ms).
+   *
+   * After each failed attempt, reads `getP2PConnectionState` to include connection
+   * state context in the failure log. After 3 failures, fires `onDisconnect`-style
+   * logging (no hard disconnect — Steam's relay handles reconnection).
+   *
+   * This retry loop exists to tolerate the brief ConnectFailed window that can
+   * occur when the session is freshly established and NAT hole-punch is still
+   * in progress. The combination of session_request_callback auto-accept +
+   * AUTO_RESTART_BROKEN_SESSION send flag should eliminate most failures, but
+   * the retry provides a final safety net.
+   */
+  private _sendWithRetry(msg: MultiplayerMessage, attempt: number = 0): void {
+    sendP2PMessage(this.peerId, JSON.stringify(msg)).then((result) => {
+      // sendP2PMessage resolves void; success is assumed unless it throws.
+      // If result is somehow falsy (future API change), log and retry.
+      void result;
+    }).catch(async (e) => {
+      const errStr = String(e);
+      if (attempt < 2) {
+        const delayMs = attempt === 0 ? 200 : 500;
+        const connState = await getP2PConnectionState(this.peerId).catch(() => 'state=unknown');
+        rrLog('mp:tx', 'send retry', { type: msg.type, attempt: attempt + 1, delayMs, connState, err: errStr });
+        setTimeout(() => {
+          if (this.state === 'connected' && this.peerId) {
+            this._sendWithRetry(msg, attempt + 1);
+          }
+        }, delayMs);
+      } else {
+        const connState = await getP2PConnectionState(this.peerId).catch(() => 'state=unknown');
+        rrLog('mp:tx', 'send exhausted retries', { type: msg.type, peerId: this.peerId, connState, err: errStr });
+      }
     });
   }
 

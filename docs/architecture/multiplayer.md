@@ -636,6 +636,7 @@ Applied in both `steamBackend.resolveByCode` and `steamBackend.listPublicLobbies
 
 | Date | Commits | What |
 |------|---------|------|
+| 2026-04-22 | (P2P session fix) | `session_request_callback` + `session_failed_callback` registered in `SteamState::new()`; `AUTO_RESTART_BROKEN_SESSION` send flag; `steam_prime_p2p_sessions` + `steam_get_p2p_connection_state` new Tauri commands; `lan_tcp_probe` LAN command; TS retry loop in `SteamP2PTransport._sendWithRetry`; `primeP2PSessions` called in all three lobby join/create paths; forensic logging in `setContentSelection` + `notifyLobbyUpdate` |
 | 2026-04-21 | (Wave 12) | Steam lobby metadata warm-up: `steam_request_lobby_data` Rust command (raw sys flat API), `requestSteamLobbyData` TS helper, warm-up pass in `listPublicLobbies` + `resolveByCode` — fixes cold-cache "" from `GetLobbyData` |
 | 2026-04-21 | (C4 fix) | Outbound pre-connect buffer in SteamP2PTransport — send() during 'connecting' state now buffers to _preSendBuffer (cap 64); flushed after acceptP2PSession resolves. Silent-drop warns added. Malformed P2P message catch now logs. 6 new unit tests. |
 | 2026-04-21 | (A5 hardening) | Raw LobbyEnter callback for real ChatRoomEnterResponse codes (Limited user = code 7 with actionable message), Worldwide distance filter on lobby list, explicit set_lobby_joinable(true), joinSteamLobby diagnostic console.log |

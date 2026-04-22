@@ -50,6 +50,7 @@ import {
   getLobbyMembers,
   getLocalSteamId,
   getLobbyOwner,
+  primeP2PSessions,
 } from './steamNetworkingService';
 import type { SteamLobbyType } from './steamNetworkingService';
 
@@ -463,6 +464,17 @@ export async function createLobby(
   );
   setupMessageHandlers();
 
+  // Prime P2P sessions with all lobby members. On host creation this is benign
+  // (count=0, no peers yet). After a guest joins our lobby, the priming ensures
+  // the host's session_request_callback fires for the guest without delay.
+  if (hasSteam && !isBroadcastMode() && !isLanMode() && result.lobbyId) {
+    primeP2PSessions(result.lobbyId).then((count) => {
+      rrLog('mp:lobby', 'primeP2PSessions (createLobby)', { lobbyId: result.lobbyId, count });
+    }).catch((e) => {
+      rrLog('mp:lobby', 'primeP2PSessions error (createLobby)', { e: String(e) });
+    });
+  }
+
   return _currentLobby;
 }
 
@@ -561,6 +573,16 @@ export async function joinLobby(
   );
   setupMessageHandlers();
 
+  // Prime P2P sessions on guest join — ensures the host's session_request_callback
+  // fires for us and we open an outbound session toward the host simultaneously.
+  if (useSteamPeer && _currentLobby.lobbyId) {
+    primeP2PSessions(_currentLobby.lobbyId).then((count) => {
+      rrLog('mp:lobby', 'primeP2PSessions (joinLobby by code)', { lobbyId: _currentLobby!.lobbyId, count });
+    }).catch((e) => {
+      rrLog('mp:lobby', 'primeP2PSessions error (joinLobby by code)', { e: String(e) });
+    });
+  }
+
   return _currentLobby;
 }
 
@@ -635,6 +657,15 @@ export async function joinLobbyById(
     transport,
   );
   setupMessageHandlers();
+
+  // Prime P2P sessions on guest join (by lobby ID) — symmetric with joinLobby.
+  if (useSteamPeer && result.lobbyId) {
+    primeP2PSessions(result.lobbyId).then((count) => {
+      rrLog('mp:lobby', 'primeP2PSessions (joinLobbyById)', { lobbyId: result.lobbyId, count });
+    }).catch((e) => {
+      rrLog('mp:lobby', 'primeP2PSessions error (joinLobbyById)', { e: String(e) });
+    });
+  }
 
   return _currentLobby;
 }
@@ -792,9 +823,18 @@ export function setContentSelection(selection: LobbyContentSelection): void {
     return;
   }
   if (_currentLobby.deckSelectionMode === 'host_picks' && isHost()) {
+    // Forensic: log pre-state before mutation so we can detect clobbering in debug.log
+    rrLog('mp:deck', 'setContentSelection PRE-state (host_picks)', {
+      prev: _currentLobby.contentSelection ?? null,
+    });
     _currentLobby.contentSelection = selection;
     // Also set legacy selectedDeckId for backwards compat
     _currentLobby.selectedDeckId = selection.type === 'study' ? selection.deckId : selection.type === 'custom_deck' ? selection.customDeckId : undefined;
+    // Forensic: log post-state after mutation and BEFORE broadcast — proves whether
+    // a subsequent event clobbers the value (race condition detection).
+    rrLog('mp:deck', 'setContentSelection POST-state (host_picks)', {
+      current: _currentLobby.contentSelection,
+    });
     rrLog('mp:deck', 'host_picks path — mutation applied, broadcasting');
     broadcastSettings();
   } else if (_currentLobby.deckSelectionMode === 'each_picks') {
@@ -1189,12 +1229,15 @@ export async function leaveMultiplayerLobbyForSoloStart(): Promise<void> {
  *  detects the update (same-reference assignments are optimized away). */
 function notifyLobbyUpdate(): void {
   if (_currentLobby && _onLobbyUpdate) {
-    rrLog('mp:lobby', 'notifyLobbyUpdate', {
+    // Include full contentSelection in the log so we can confirm whether mutations
+    // are reflected here — if contentSelectionType changes but the full object stays
+    // stale, it proves a reference-not-value assignment bug.
+    rrLog('mp:lobby', 'notifyLobbyUpdate full', {
       lobbyId: _currentLobby.lobbyId,
       mode: _currentLobby.mode,
       playerCount: _currentLobby.players.length,
       hostId: _currentLobby.hostId,
-      contentSelectionType: _currentLobby.contentSelection?.type,
+      contentSelection: _currentLobby.contentSelection ?? null,
     });
     _onLobbyUpdate({ ..._currentLobby, players: _currentLobby.players.map(p => ({ ...p })) });
   }
