@@ -328,6 +328,9 @@ vi.mock('./steamNetworkingService', async () => {
     startMessagePollLoop: vi.fn(),
     leaveSteamLobby: vi.fn(),
     getLobbyMembers: vi.fn(),
+    // BUG1/BUG5: New imports — must be present in mock or transport module fails to import.
+    getSessionError: vi.fn().mockResolvedValue(null),
+    getP2PConnectionState: vi.fn().mockResolvedValue('state=None'),
   };
 });
 
@@ -339,6 +342,8 @@ async function getSteamMocks() {
     sendP2PMessage: mod.sendP2PMessage as ReturnType<typeof vi.fn>,
     startMessagePollLoop: mod.startMessagePollLoop as ReturnType<typeof vi.fn>,
     leaveSteamLobby: mod.leaveSteamLobby as ReturnType<typeof vi.fn>,
+    getSessionError: (mod as any).getSessionError as ReturnType<typeof vi.fn>,
+    getP2PConnectionState: (mod as any).getP2PConnectionState as ReturnType<typeof vi.fn>,
   };
 }
 
@@ -349,9 +354,14 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     m.sendP2PMessage.mockReset();
     m.startMessagePollLoop.mockReset();
     m.leaveSteamLobby.mockReset();
-    // Default: accept resolves immediately, sendP2PMessage resolves, poll loop is a no-op
-    m.sendP2PMessage.mockResolvedValue(undefined);
+    if (m.getSessionError) m.getSessionError.mockReset?.();
+    if (m.getP2PConnectionState) m.getP2PConnectionState.mockReset?.();
+    // Default: accept resolves with true (bool), sendP2PMessage resolves with true, poll loop is a no-op
+    // BUG1: sendP2PMessage now returns Promise<boolean>; true = success.
+    m.sendP2PMessage.mockResolvedValue(true);
     m.startMessagePollLoop.mockReturnValue(() => {});
+    if (m.getSessionError) m.getSessionError.mockResolvedValue(null);
+    if (m.getP2PConnectionState) m.getP2PConnectionState.mockResolvedValue('state=None');
   });
 
   it('buffers send() calls while state is connecting, flushes after accept resolves', async () => {
@@ -408,7 +418,8 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     // Make accept fail immediately
     m.acceptP2PSession.mockRejectedValue(new Error('steam reject'));
 
-    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    // rrLog uses console.log, not console.warn — spy on log to capture transport messages
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 
     const transport = new SteamP2PTransport();
     transport.connect('peer_steam_id', 'local_steam_id');
@@ -421,11 +432,11 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
 
     transport.send('mp:ping', {});
     expect(m.sendP2PMessage).not.toHaveBeenCalled();
-    // A warning must have been logged with the message type
-    const warnCalls = warnSpy.mock.calls.flat().join(' ');
-    expect(warnCalls).toContain('mp:ping');
+    // A log must have been emitted with the message type
+    const logCalls = logSpy.mock.calls.flat().join(' ');
+    expect(logCalls).toContain('mp:ping');
 
-    warnSpy.mockRestore();
+    logSpy.mockRestore();
   });
 
   it('buffer cap: 65 sends during connecting keeps 64 messages, oldest dropped, warns', async () => {
@@ -433,7 +444,8 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     let resolveAccept!: () => void;
     m.acceptP2PSession.mockReturnValue(new Promise<void>((res) => { resolveAccept = res; }));
 
-    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    // rrLog uses console.log — spy on log to capture overflow message
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 
     const transport = new SteamP2PTransport();
     transport.connect('peer_steam_id', 'local_steam_id');
@@ -444,9 +456,9 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
       transport.send('mp:pong', { seq: i });
     }
 
-    // Overflow warning must have fired
-    const warnCalls = warnSpy.mock.calls.flat().join(' ');
-    expect(warnCalls).toContain('_preSendBuffer overflow');
+    // Overflow log must have fired
+    const logCalls = logSpy.mock.calls.flat().join(' ');
+    expect(logCalls).toContain('preSendBuffer overflow');
 
     // Flush
     resolveAccept();
@@ -461,7 +473,7 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
       expect(parsed.type).toBe('mp:pong');
     }
 
-    warnSpy.mockRestore();
+    logSpy.mockRestore();
   });
 
   it('disconnect() clears both _preAcceptBuffer and _preSendBuffer', async () => {
@@ -493,7 +505,8 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     const m = await getSteamMocks();
     m.acceptP2PSession.mockRejectedValue(new Error('steam reject'));
 
-    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    // rrLog uses console.log — spy on log to capture the drop-count message
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 
     const transport = new SteamP2PTransport();
     transport.connect('peer_steam_id', 'local_steam_id');
@@ -510,11 +523,11 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     expect(transport.getState()).toBe('error');
     expect(m.sendP2PMessage).not.toHaveBeenCalled();
 
-    // Warning should mention how many pending sends were dropped
-    const warnCalls = warnSpy.mock.calls.flat().join(' ');
-    expect(warnCalls).toContain('3');
-    expect(warnCalls).toContain('pending sends');
+    // Log should mention how many pending sends were dropped
+    const logCalls = logSpy.mock.calls.flat().join(' ');
+    expect(logCalls).toContain('3');
+    expect(logCalls).toContain('preSendBuffer');
 
-    warnSpy.mockRestore();
+    logSpy.mockRestore();
   });
 });

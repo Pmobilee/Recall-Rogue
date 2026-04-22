@@ -127,6 +127,9 @@ export interface SteamCommandArgs {
   steam_get_p2p_connection_state: { steamId: string };
   /** LAN TCP probe — test TCP reachability of a host:port. */
   lan_tcp_probe: { host: string; port: number; timeoutMs?: number };
+  /** BUG5: Read the most recent session failure reason for a peer (keyed by 64-bit decimal SteamID).
+   * Returns the formatted failure string (e.g. "state=ProblemDetectedLocally end_reason=...") or null if none recorded. */
+  steam_get_session_error: { steamId: string };
 }
 
 /**
@@ -142,8 +145,10 @@ export interface SteamCommandReturn {
   steam_set_lobby_data: void;
   steam_get_lobby_data: string;
   steam_get_lobby_members: SteamLobbyMember[];
-  steam_send_p2p_message: void;
-  steam_accept_p2p_session: void;
+  /** true on successful send, false on steamworks-level failure (ConnectFailed, etc.). */
+  steam_send_p2p_message: boolean;
+  /** true if the accept zero-byte was sent, false if Steam is unavailable or send failed. */
+  steam_accept_p2p_session: boolean;
   steam_request_lobby_list: string;
   steam_get_lobby_member_count: number;
   steam_force_leave_active_lobby: void;
@@ -171,6 +176,8 @@ export interface SteamCommandReturn {
   steam_get_p2p_connection_state: string;
   /** "ok" on success, or a human-readable failure reason. */
   lan_tcp_probe: string;
+  /** BUG5: The most recent session-failure diagnostic for a peer, or null if none recorded. */
+  steam_get_session_error: string | null;
 }
 
 /**
@@ -631,9 +638,11 @@ export async function sendP2PMessage(
   steamId: string,
   data: string,
   channel: number = 0,
-): Promise<void> {
-  if (!isTauriRuntime()) return;
-  await invokeSteam('steam_send_p2p_message', { steamId, data, channel });
+): Promise<boolean> {
+  if (!isTauriRuntime()) return false;
+  // BUG1: Rust returns Result<bool, String>. Ok(true) = sent, Ok(false) = steamworks send failure.
+  // The previous void return erased the bool so the _sendWithRetry loop could never detect resolved-false.
+  return (await invokeSteam('steam_send_p2p_message', { steamId, data, channel })) ?? false;
 }
 
 /**
@@ -654,9 +663,10 @@ export async function readP2PMessages(channel: number = 0): Promise<SteamP2PMess
  *
  * @param steamId - The initiating user's Steam ID (64-bit as string)
  */
-export async function acceptP2PSession(steamId: string): Promise<void> {
-  if (!isTauriRuntime()) return;
-  await invokeSteam('steam_accept_p2p_session', { steamId });
+export async function acceptP2PSession(steamId: string): Promise<boolean> {
+  if (!isTauriRuntime()) return false;
+  // BUG3: Rust returns Result<bool, String>. Propagate the bool so callers can log false without failing hard.
+  return (await invokeSteam('steam_accept_p2p_session', { steamId })) ?? false;
 }
 
 // ── Callback Pump ─────────────────────────────────────────────────────────────
@@ -710,11 +720,32 @@ export function startMessagePollLoop(
     return () => {};
   }
 
+  // BUG7: Heartbeat counter — track messages received per 5s window.
+  // Warns in the log when connected but receiving nothing (isolation detection).
+  let heartbeatWindowCount = 0;
+  let heartbeatWindowStart = Date.now();
+  let connectedSince = Date.now();
+  const HEARTBEAT_WINDOW_MS = 5000;
+
   const id = setInterval(async () => {
     await runSteamCallbacks();
     const messages = await readP2PMessages(channel);
+    heartbeatWindowCount += messages.length;
     for (const msg of messages) {
       onMessage(msg);
+    }
+    // Emit heartbeat log every 5 seconds.
+    const now = Date.now();
+    if (now - heartbeatWindowStart >= HEARTBEAT_WINDOW_MS) {
+      const sinceStart = Math.floor((now - connectedSince) / 1000);
+      const windowCount = heartbeatWindowCount;
+      heartbeatWindowCount = 0;
+      heartbeatWindowStart = now;
+      if (windowCount === 0 && sinceStart > 10) {
+        console.warn(`[mp:rx:heartbeat] channel=${channel} messagesLastWindow=0 sinceStart=${sinceStart}s WARN: no messages received in 5s window`);
+      } else {
+        console.log(`[mp:rx:heartbeat] channel=${channel} messagesLastWindow=${windowCount} sinceStart=${sinceStart}s`);
+      }
     }
   }, intervalMs);
 
@@ -762,6 +793,23 @@ export async function getP2PConnectionState(steamId: string): Promise<string> {
   if (!isTauriRuntime()) return 'state=None';
   const result = await invokeSteam('steam_get_p2p_connection_state', { steamId });
   return result ?? 'state=None';
+}
+
+/**
+ * BUG5: Retrieve the most recent session failure diagnostic for a peer.
+ *
+ * When the session_failed_callback fires in Rust, it writes a formatted string
+ * ("state=... end_reason=...") into last_session_errors keyed by peer SteamID.
+ * This helper reads that slot so the TS retry path can include it in failure logs.
+ *
+ * Returns null when no failure has been recorded for this peer or Steam is unavailable.
+ * The error slot is persistent (not one-shot) — multiple reads return the same value.
+ *
+ * @param steamId - 64-bit Steam ID of the peer as a decimal string
+ */
+export async function getSessionError(steamId: string): Promise<string | null> {
+  if (!isTauriRuntime()) return null;
+  return (await invokeSteam('steam_get_session_error', { steamId })) ?? null;
 }
 
 /**

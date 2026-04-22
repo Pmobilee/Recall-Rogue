@@ -186,12 +186,14 @@ describe('M23: public API functions short-circuit on non-Tauri platform', () => 
     expect(await getLobbyMembers('lobby_123')).toEqual([]);
   });
 
-  it('sendP2PMessage resolves without error', async () => {
-    await expect(sendP2PMessage('76561198000000001', '{"type":"mp:ping"}')).resolves.toBeUndefined();
+  it('sendP2PMessage resolves to false on non-Tauri platform', async () => {
+    // BUG1 fix: sendP2PMessage now returns Promise<boolean>; non-Tauri returns false.
+    expect(await sendP2PMessage('76561198000000001', '{"type":"mp:ping"}')).toBe(false);
   });
 
-  it('acceptP2PSession resolves without error', async () => {
-    await expect(acceptP2PSession('76561198000000001')).resolves.toBeUndefined();
+  it('acceptP2PSession resolves to false on non-Tauri platform', async () => {
+    // BUG3 fix: acceptP2PSession now returns Promise<boolean>; non-Tauri returns false.
+    expect(await acceptP2PSession('76561198000000001')).toBe(false);
   });
 
   it('requestSteamLobbyList returns false', async () => {

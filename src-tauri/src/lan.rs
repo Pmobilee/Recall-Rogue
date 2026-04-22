@@ -846,6 +846,12 @@ pub async fn lan_start_server(port: Option<u16>) -> Result<LanStartResult, Strin
         lan_server_url,
         warning.as_deref().map(|w| format!(" [WARNING: {}]", w)).unwrap_or_default(),
     );
+    // Extra — macOS Local Network permission hint.
+    // On macOS, the OS may silently refuse the bind permission if the app was launched
+    // before the system saw the bind attempt. The permission prompt may also not appear
+    // if NSLocalNetworkUsageDescription is absent from Info.plist.
+    #[cfg(target_os = "macos")]
+    eprintln!("[LAN] NOTE: if guests cannot reach this host, verify macOS System Settings         -> Privacy & Security -> Local Network -> Recall Rogue is enabled (the permission         sheet may not appear if the app was launched before macOS saw the bind).");
 
     // F-self-probe: After the server binds, spawn a quick TCP connect against
     // our own routable IP:port. If this succeeds we know inbound TCP on that

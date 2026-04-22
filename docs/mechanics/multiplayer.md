@@ -1744,13 +1744,21 @@ SendFlags::RELIABLE | SendFlags::AUTO_RESTART_BROKEN_SESSION
 |---------|-------------|
 | `steam_prime_p2p_sessions(lobbyId)` | Send zero-byte primer to all other lobby members; returns count primed |
 | `steam_get_p2p_connection_state(steamId)` | Returns diagnostic string: `state=Connected rtt=42 end_reason=None` |
+| `steam_get_session_error(steamId)` | Returns most recent session failure reason from `last_session_errors` map, or `null` if none. Persistent (not one-shot). Written by `session_failed_callback`. |
+
+### Session Failure State Slot
+
+`SteamState.last_session_errors: Arc<Mutex<HashMap<u64, String>>>` — keyed by peer raw SteamID (u64). Written by `session_failed_callback` on every session failure. Read by `steam_get_session_error` Tauri command. The TS `_sendWithRetry` calls `getSessionError(peerId)` on each failure to enrich retry log lines.
+
+**Why not one-shot?** The error is diagnostic. The retry path may call it multiple times on consecutive attempts. It stays in the map until overwritten by a newer failure or the app exits.
 
 ### TS helpers
 
 ```typescript
-import { primeP2PSessions, getP2PConnectionState } from 'src/services/steamNetworkingService'
-const count = await primeP2PSessions(lobbyId)  // call after create/join
-const diag = await getP2PConnectionState(peerId)  // call in retry path
+import { primeP2PSessions, getP2PConnectionState, getSessionError } from 'src/services/steamNetworkingService'
+const count = await primeP2PSessions(lobbyId)    // call after create/join
+const diag = await getP2PConnectionState(peerId) // call in retry path
+const err = await getSessionError(peerId)        // enriched failure reason from session_failed_callback
 ```
 
 ---

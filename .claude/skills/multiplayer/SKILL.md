@@ -111,11 +111,27 @@ See `docs/mechanics/multiplayer.md` and `docs/architecture/multiplayer.md` for p
 |---------|-------|-------------|
 | `steam_prime_p2p_sessions(lobbyId)` | Rust | Zero-byte primer to all other lobby members; returns count primed |
 | `steam_get_p2p_connection_state(steamId)` | Rust | Diagnostic string: `state=Connected rtt=42 end_reason=None` |
+| `steam_get_session_error(steamId)` | Rust | Most recent session failure from `last_session_errors` map; `null` if none. Written by `session_failed_callback`. |
 | `lan_tcp_probe(host, port, timeoutMs)` | Rust (LAN) | Pure TCP connect probe; returns "ok" or failure reason |
 | `primeP2PSessions(lobbyId)` | TS | Wraps `steam_prime_p2p_sessions` |
 | `getP2PConnectionState(steamId)` | TS | Wraps `steam_get_p2p_connection_state` |
+| `getSessionError(steamId)` | TS | Wraps `steam_get_session_error`; used by `_sendWithRetry` for enriched failure logs |
 | `lanTcpProbe(host, port, timeoutMs)` | TS | Wraps `lan_tcp_probe` |
  All C1–C5 criticals, H1–H19 highs, M1–M23 mediums, L1–L5 lows closed.
+
+### Post-wave 22 deep audit (2026-04-22b)
+
+Seven bugs found and fixed after wave 22 shipped:
+
+| Bug | Severity | Root cause | Fix |
+|-----|----------|-----------|-----|
+| BUG1: `steam_send_p2p_message` bool erased | Critical | `SteamCommandReturn.steam_send_p2p_message: void` → Rust `Ok(false)` invisible to TS | Changed to `boolean`; `sendP2PMessage()` → `Promise<boolean>` |
+| BUG2: `_sendWithRetry` dead on resolved-false | Critical | `.then()` did `void result` — only `.catch()` triggered retry | Added `if (result === false)` check with same backoff + `getSessionError` logging |
+| BUG3: `steam_accept_p2p_session` bool erased | Silent | Same pattern as BUG1 | Changed to `boolean`; `acceptP2PSession()` → `Promise<boolean>`; log false but still proceed |
+| BUG4: Two send sites missing `AUTO_RESTART_BROKEN_SESSION` | Consistency | `LobbyChatUpdate` auto-accept + `steam_accept_p2p_session` used `RELIABLE` only | Added the flag to both sites |
+| BUG5: `session_failed_callback` never reached TS | Diagnostic | Callback only `eprintln!`'d — no IPC read path | `last_session_errors` map in `SteamState`; `steam_get_session_error` command; `getSessionError()` TS helper |
+| BUG6: No periodic session-state poll | Telemetry | `_sendWithRetry` only polled state on failure | `setInterval(2000ms)` in `connect().then()` publishes to `window.__rrMpState.steam.sessionState`; `_setState` publishes transport state on every transition |
+| BUG7: Primer log not per-peer | Logging | Single count log obscured which peers failed | Per-peer `ok`/`err` already in Rust via `eprintln!`; added receive heartbeat every 5s in `startMessagePollLoop` |
 
 **Remaining Work (all nice-to-haves; no ship blockers)**
 

@@ -33,6 +33,12 @@ export interface LanStartResult {
    * Absent (undefined) for normal LAN binds.
    */
   warning?: 'local-only' | string;
+  /**
+   * Extra — macOS: Short hint to show when LAN binds on macOS so players know to check
+   * System Settings → Privacy & Security → Local Network if guests cannot connect.
+   * Only populated on macOS builds. Display as a dismissible toast.
+   */
+  macosPermissionHint?: string;
 }
 
 /** Returned by `getLanServerStatus`. */
@@ -148,6 +154,14 @@ export async function startLanServer(port?: number): Promise<LanStartResult | nu
   const result = await Promise.race([invokePromise, timeoutPromise]);
   if (result.warning === 'local-only') {
     console.warn('[LanServer] Server bound to localhost only — remote players cannot connect. lanServerUrl:', result.lanServerUrl);
+  }
+  // Extra: On macOS, inject the Local Network permission hint so the UI can show it.
+  // The Rust side already logs this to debug.log; this makes it actionable in the UI.
+  // Note: we detect macOS via navigator.platform (userAgent fallback). This hint is
+  // informational-only; false positives on non-macOS are harmless.
+  if (typeof navigator !== 'undefined' && /Mac|darwin/i.test(navigator.platform || navigator.userAgent)) {
+    result.macosPermissionHint =
+      "LAN server running. If friends can't connect, check System Settings → Privacy & Security → Local Network and make sure Recall Rogue is allowed.";
   }
   return result;
 }

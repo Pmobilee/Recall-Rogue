@@ -22,11 +22,13 @@ import { rrLog } from './rrLog';
 import {
   acceptP2PSession,
   getP2PConnectionState,
+  getSessionError,
   getLobbyMembers,
   leaveSteamLobby,
   sendP2PMessage,
   startMessagePollLoop,
 } from './steamNetworkingService';
+import { setMpDebugState } from './mpDebugState';
 
 // ── Platform helper ───────────────────────────────────────────────────────────
 
@@ -514,12 +516,24 @@ export class SteamP2PTransport implements MultiplayerTransport {
   // before the guest arrives) were silently dropped before this buffer existed.
   private _preConnectBuffer: MultiplayerMessage[] = [];
   private static readonly _PRESEND_BUFFER_CAP = 64;
+  // BUG6: Periodic 2000ms poll of getP2PConnectionState for the debug overlay while connected.
+  private _sessionStatePollHandle: ReturnType<typeof setInterval> | null = null;
 
   private _setState(next: TransportState, reason: string): void {
     if (this.state === next) return;
     const prev = this.state;
     this.state = next;
     rrLog('mp:tx', 'state', { prev, next, reason, peerId: this.peerId });
+    // BUG6: Publish every state transition to the debug overlay.
+    setMpDebugState({
+      transport: {
+        state: next,
+        peerId: this.peerId,
+        preConnectBufferSize: this._preConnectBuffer.length,
+        lastSendResult: null,
+        lastError: reason !== 'connect() called' && next === 'error' ? reason : null,
+      },
+    });
   }
 
   /**
@@ -547,16 +561,40 @@ export class SteamP2PTransport implements MultiplayerTransport {
     // The poll loop callback routes to _handleRawMessage, which buffers during
     // 'connecting' state and flushes when we transition to 'connected'.
     acceptP2PSession(peerId)
-      .then(() => {
+      .then((ok) => {
         if (this.state !== 'connecting') {
           rrLog('mp:tx', 'accept resolved but state no longer connecting', { state: this.state });
           return;
+        }
+        // BUG3: acceptP2PSession now returns bool (Rust Result<bool,String>). false means the
+        // zero-byte accept-send failed. Log it but still proceed to connected state — the
+        // session_request_callback auto-accept + AUTO_RESTART_BROKEN_SESSION handles transients.
+        if (!ok) {
+          rrLog('mp:tx', 'acceptP2PSession returned false', { peerId });
         }
         this._setState('connected', 'acceptP2PSession resolved');
         this._acceptSettled = true;
         this.stopPollLoop = startMessagePollLoop((rawMsg) => {
           this._handleRawMessage(rawMsg.data);
         });
+        // BUG6: Every 2000ms, poll getP2PConnectionState and publish to debug overlay.
+        // Clear on disconnect(). This gives visibility into session health while connected.
+        if (this._sessionStatePollHandle !== null) {
+          clearInterval(this._sessionStatePollHandle);
+        }
+        const capturedPeerId = this.peerId;
+        this._sessionStatePollHandle = setInterval(async () => {
+          if (this.state !== 'connected') return;
+          const sessionState = await getP2PConnectionState(capturedPeerId).catch(() => 'state=unknown');
+          setMpDebugState({
+            steam: {
+              localSteamId: null,
+              localPlayerId: this.localId,
+              p2pConnectionState: sessionState,
+              sessionState,
+            },
+          });
+        }, 2000);
         // Replay any messages that arrived during the accept gap
         const buffered = this._preAcceptBuffer.splice(0);
         if (buffered.length) rrLog('mp:tx', 'flushing preAcceptBuffer', { count: buffered.length });
@@ -674,24 +712,40 @@ export class SteamP2PTransport implements MultiplayerTransport {
    * the retry provides a final safety net.
    */
   private _sendWithRetry(msg: MultiplayerMessage, attempt: number = 0): void {
-    sendP2PMessage(this.peerId, JSON.stringify(msg)).then((result) => {
-      // sendP2PMessage resolves void; success is assumed unless it throws.
-      // If result is somehow falsy (future API change), log and retry.
-      void result;
-    }).catch(async (e) => {
-      const errStr = String(e);
-      if (attempt < 2) {
+    sendP2PMessage(this.peerId, JSON.stringify(msg)).then(async (result) => {
+      // BUG1/BUG2: sendP2PMessage now returns Promise<boolean>. Rust returns Ok(true) on success,
+      // Ok(false) on steamworks-level failure (ConnectFailed, NoConnection, etc.) — this does NOT
+      // throw, so the old .catch-only retry was dead code for these failures.
+      if (result === false) {
         const delayMs = attempt === 0 ? 200 : 500;
         const connState = await getP2PConnectionState(this.peerId).catch(() => 'state=unknown');
-        rrLog('mp:tx', 'send retry', { type: msg.type, attempt: attempt + 1, delayMs, connState, err: errStr });
+        const sessionErr = await getSessionError(this.peerId).catch(() => null);
+        if (attempt < 2) {
+          rrLog('mp:tx', 'send retry (resolved-false)', { type: msg.type, attempt: attempt + 1, delayMs, connState, sessionErr });
+          setTimeout(() => {
+            if (this.state === 'connected' && this.peerId) {
+              this._sendWithRetry(msg, attempt + 1);
+            }
+          }, delayMs);
+        } else {
+          rrLog('mp:tx', 'send exhausted retries (resolved-false)', { type: msg.type, peerId: this.peerId, connState, sessionErr });
+        }
+      }
+      // result === true: success, nothing to do.
+    }).catch(async (e) => {
+      const errStr = String(e);
+      const connState = await getP2PConnectionState(this.peerId).catch(() => 'state=unknown');
+      const sessionErr = await getSessionError(this.peerId).catch(() => null);
+      if (attempt < 2) {
+        const delayMs = attempt === 0 ? 200 : 500;
+        rrLog('mp:tx', 'send retry (throw)', { type: msg.type, attempt: attempt + 1, delayMs, connState, sessionErr, err: errStr });
         setTimeout(() => {
           if (this.state === 'connected' && this.peerId) {
             this._sendWithRetry(msg, attempt + 1);
           }
         }, delayMs);
       } else {
-        const connState = await getP2PConnectionState(this.peerId).catch(() => 'state=unknown');
-        rrLog('mp:tx', 'send exhausted retries', { type: msg.type, peerId: this.peerId, connState, err: errStr });
+        rrLog('mp:tx', 'send exhausted retries (throw)', { type: msg.type, peerId: this.peerId, connState, sessionErr, err: errStr });
       }
     });
   }
@@ -708,6 +762,11 @@ export class SteamP2PTransport implements MultiplayerTransport {
     rrLog('mp:tx', 'disconnect called', { state: this.state, peerId: this.peerId });
     this.stopPollLoop?.();
     this.stopPollLoop = null;
+    // BUG6: Clear session poll on disconnect so it doesn't fire after we're gone.
+    if (this._sessionStatePollHandle !== null) {
+      clearInterval(this._sessionStatePollHandle);
+      this._sessionStatePollHandle = null;
+    }
     this._preAcceptBuffer = [];
     this._preSendBuffer = []; // C4: drop any pending outbound sends on disconnect
     this._preConnectBuffer = []; // drop pre-connect queued sends

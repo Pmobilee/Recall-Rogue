@@ -125,6 +125,8 @@ fn main() {
             // P2P session priming + diagnostics (2026-04-22 ConnectFailed fix)
             steam::steam_prime_p2p_sessions,
             steam::steam_get_p2p_connection_state,
+            // BUG5: Session failure error slot — readable by _sendWithRetry for diagnostics
+            steam::steam_get_session_error,
             // LAN Server (AR-MULTIPLAYER LAN)
             lan::lan_start_server,
             lan::lan_stop_server,

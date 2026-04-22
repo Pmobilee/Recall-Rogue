@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use steamworks::networking_types::{NetConnectionInfo, NetworkingConnectionState, NetworkingIdentity, SendFlags};
 use steamworks::{CallbackHandle, ChatMemberStateChange, Client, DistanceFilter, LobbyChatUpdate, LobbyEnter, LobbyId, LobbyType, SteamId};
@@ -87,6 +88,11 @@ pub struct SteamState {
     /// Fires when a session fails for any reason, giving us the NetConnectionInfo
     /// diagnostic (end_reason, state, identity_remote) that explains ConnectFailed.
     _session_failed_callback: Option<()>, // handled via networking_messages().session_failed_callback()
+    /// BUG5: Maps peer SteamID (u64) → most recent session failure description.
+    /// Written by session_failed_callback. Read by steam_get_session_error.
+    /// Persistent (not one-shot) — the error is informational and can be read multiple times.
+    /// Keyed by raw u64 so concurrent access via Arc<Mutex<_>> is safe.
+    pub last_session_errors: Arc<Mutex<HashMap<u64, String>>>,
 }
 
 impl SteamState {
@@ -232,7 +238,7 @@ impl SteamState {
                         let identity = NetworkingIdentity::new_steam_id(peer);
                         let ok = client_for_chat
                             .networking_messages()
-                            .send_message_to_user(identity, SendFlags::RELIABLE, &[], 0)
+                            .send_message_to_user(identity, SendFlags::RELIABLE | SendFlags::AUTO_RESTART_BROKEN_SESSION, &[], 0)
                             .is_ok();
                         println!("[Steam] Auto-accept P2P for {}: {}", peer.raw(), ok);
                     }
@@ -260,16 +266,24 @@ impl SteamState {
                 });
                 eprintln!("[Steam] session_request_callback registered (auto-accept)");
 
-                // Register session_failed_callback for diagnostics.
-                // Fires when a SteamNetworkingMessages session fails (ConnectFailed, etc.).
-                // Logs the full NetConnectionInfo diagnostic — state, end_reason, identity_remote.
-                // Previously these failures were silent: sends returned ConnectFailed with no
-                // further information visible to the Rust layer.
+                // BUG5: Register session_failed_callback with write-to-map.
+                // When a session fails, extract the peer SteamID and write the formatted
+                // failure reason to last_session_errors so the TS _sendWithRetry path
+                // can include it in failure log lines via steam_get_session_error.
+                let session_errors_for_cb = Arc::new(Mutex::new(HashMap::<u64, String>::new()));
+                let session_errors_ref = session_errors_for_cb.clone();
                 client.networking_messages().session_failed_callback(move |info: NetConnectionInfo| {
-                    eprintln!("[Steam] SessionFailed: state={:?} end_reason={:?} identity_remote={:?}",
-                        info.state(), info.end_reason(), info.identity_remote());
+                    let peer_raw = info.identity_remote()
+                        .and_then(|id| id.steam_id())
+                        .map(|sid| sid.raw())
+                        .unwrap_or(0);
+                    let reason = format!("state={:?} end_reason={:?}", info.state(), info.end_reason());
+                    eprintln!("[Steam] SessionFailed: peer={} {}", peer_raw, reason);
+                    if let Ok(mut map) = session_errors_ref.lock() {
+                        map.insert(peer_raw, reason);
+                    }
                 });
-                eprintln!("[Steam] session_failed_callback registered (diagnostics)");
+                eprintln!("[Steam] session_failed_callback registered (diagnostics + error-map)");
 
                 // AR-80 follow-up: Spawn a background thread that pumps Steam callbacks
                 // at ~16 ms intervals.
@@ -317,6 +331,7 @@ impl SteamState {
                     // Arc<Inner> lifetime and do not return a handle we need to store.
                     _session_request_callback: Some(()),
                     _session_failed_callback: Some(()),
+                    last_session_errors: session_errors_for_cb,
                 }
             }
             Err(e) => {
@@ -334,6 +349,7 @@ impl SteamState {
                     _pump_shutdown: None,
                     _session_request_callback: None,
                     _session_failed_callback: None,
+                    last_session_errors: Arc::new(Mutex::new(HashMap::new())),
                 }
             }
         }
@@ -1153,9 +1169,11 @@ pub fn steam_accept_p2p_session(
         let identity = NetworkingIdentity::new_steam_id(peer_id);
         // Sending any message implicitly accepts the session under ISteamNetworkingMessages.
         // We send a zero-byte reliable ping as the accept signal.
+        // BUG4: Added AUTO_RESTART_BROKEN_SESSION so the handshake zero-byte won't drop on
+        // transient NAT blips, consistent with the main send path.
         let ok = client
             .networking_messages()
-            .send_message_to_user(identity, SendFlags::RELIABLE, &[], 0)
+            .send_message_to_user(identity, SendFlags::RELIABLE | SendFlags::AUTO_RESTART_BROKEN_SESSION, &[], 0)
             .is_ok();
         println!("[Steam] P2P session accepted for {}: {}", steam_id, ok);
         Ok(ok)
@@ -1288,6 +1306,28 @@ pub fn steam_get_p2p_connection_state(
     } else {
         Ok("state=None".to_string())
     }
+}
+
+/// BUG5: Read the most recent session failure reason for a specific peer.
+///
+/// When a SteamNetworkingMessages session fails, the session_failed_callback fires and
+/// writes a formatted reason string (e.g. "state=ProblemDetectedLocally end_reason=Some(...)")
+/// into , keyed by the peer's raw 64-bit SteamID.
+///
+/// This command reads that slot without consuming it — the error is informational
+/// and can be read multiple times (by _sendWithRetry on each retry attempt).
+///
+/// # Returns
+///  if a failure was recorded for this peer;  if none yet or Steam unavailable.
+#[tauri::command]
+pub fn steam_get_session_error(
+    state: State<SteamState>,
+    steam_id: String,
+) -> Result<Option<String>, String> {
+    let peer_raw = steam_id.parse::<u64>()
+        .map_err(|_| format!("Invalid steam_id '{}': must be a 64-bit decimal integer", steam_id))?;
+    let lock = state.last_session_errors.lock().map_err(|e| e.to_string())?;
+    Ok(lock.get(&peer_raw).cloned())
 }
 
 // ── Cloud Save ────────────────────────────────────────────────────────────────

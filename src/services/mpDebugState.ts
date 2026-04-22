@@ -38,6 +38,8 @@ export interface MpDebugSteamState {
   localSteamId: string | null;
   localPlayerId: string;
   p2pConnectionState: string | null;
+  /** BUG6: Latest session state from periodic poll (same value as p2pConnectionState, exposed separately for overlay queries). */
+  sessionState?: string | null;
 }
 
 export interface MpDebugLanState {

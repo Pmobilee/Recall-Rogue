@@ -5243,3 +5243,17 @@ Ten-hour debugging pass that ended up rewriting large chunks of the Steam + LAN 
 - TS `_sendWithRetry` — 3-attempt retry with 200ms/500ms delays + `getP2PConnectionState` diagnostic between attempts.
 
 **Future agents: do NOT assume steamworks-rs 0.12 lacks a callback.** Read `~/.cargo/registry/src/.../steamworks-0.12.2/src/networking_messages.rs` before concluding an API is missing.
+
+### 2026-04-22b — Dead retry loop: Rust bool erased by TS contract
+
+**What broke:** `_sendWithRetry` in `SteamP2PTransport` had a 3-attempt retry loop. The loop only retried on `.catch()` (i.e., thrown exceptions). Rust's `steam_send_p2p_message` returns `Result<bool, String>` — on steamworks-level failures like `ConnectFailed` or `NoConnection`, it returns `Ok(false)`, NOT `Err(...)`. The TS contract declared `steam_send_p2p_message: void` in `SteamCommandReturn`, which erased the bool entirely. The `.then()` handler did `void result`, so `result === false` was never checked. The retry loop was dead code for the most common P2P failure mode.
+
+**Same bug on `acceptP2PSession`:** `SteamCommandReturn.steam_accept_p2p_session` was also `void`. Rust returns `Ok(bool)`. The bool indicated whether the accept zero-byte was sent successfully, but it was silently discarded.
+
+**Fixes:**
+- `SteamCommandReturn.steam_send_p2p_message: boolean` and `steam_accept_p2p_session: boolean`.
+- `sendP2PMessage()` returns `Promise<boolean>`; `acceptP2PSession()` returns `Promise<boolean>`.
+- `_sendWithRetry` `.then(result => ...)` checks `result === false` and schedules retry with same backoff (200ms/500ms), reading `getSessionError()` on each failure for enriched logs.
+- New `steam_get_session_error` Tauri command + `getSessionError()` TS helper: reads the `last_session_errors` Arc<Mutex<HashMap<u64,String>>> written by `session_failed_callback`.
+
+**Rule:** When adding a new Rust command that returns `bool`, always declare it as `boolean` in `SteamCommandReturn`, not `void`. `void` is only correct for commands that Rust declares `-> Result<(), String>`.
