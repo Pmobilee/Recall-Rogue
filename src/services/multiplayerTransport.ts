@@ -118,6 +118,14 @@ export interface MultiplayerMessage {
   payload: Record<string, unknown>;
   timestamp: number;
   senderId: string;
+  /**
+   * MP-STEAM-20260422-030: Lobby ID stamped at send time so receivers can drop
+   * stray messages from a previous lobby that lingered in the Steam P2P channel
+   * queue across a rapid leave/join. Optional for backward compatibility with
+   * legacy peers that do not stamp the field; receivers only filter when both
+   * sides have a non-empty value AND they disagree.
+   */
+  lobbyId?: string;
 }
 
 // ── L4: Host-moderation payload types ────────────────────────────────────────
@@ -227,6 +235,18 @@ export interface MultiplayerTransport {
 
   /** Returns true when state is 'connected'. */
   isConnected(): boolean;
+
+  /**
+   * MP-STEAM-20260422-030: Bind the transport to a lobby ID so outbound messages
+   * stamp lobbyId in the envelope and inbound messages with a mismatched lobbyId
+   * are dropped. Pass null to clear (e.g. on leaveLobby).
+   *
+   * Lobby services SHOULD call transport.setActiveLobby(lobbyId) immediately
+   * after transport.connect(...) succeeds so the cross-lobby filter is armed
+   * before the first transport.send() runs. Transports without a lobby concept
+   * (LocalMultiplayerTransport) treat this as a no-op record-keeping update.
+   */
+  setActiveLobby(lobbyId: string | null): void;
 }
 
 // ── Listener map helper ───────────────────────────────────────────────────────
@@ -284,6 +304,8 @@ export class WebSocketTransport implements MultiplayerTransport {
   private state: TransportState = 'disconnected';
   private listeners: ListenerMap = new Map();
   private localId = '';
+  /** MP-STEAM-20260422-030: lobbyId stamped on outbound envelopes; null = unstamped (legacy). */
+  private activeLobbyId: string | null = null;
   private reconnectAttempts = 0;
   // H8: raised from 5 → 12 (keeps trying for ~5 minutes with 30s max delay)
   private readonly maxReconnectAttempts = 12;
@@ -335,12 +357,23 @@ export class WebSocketTransport implements MultiplayerTransport {
       payload,
       timestamp: Date.now(),
       senderId: this.localId,
+      ...(this.activeLobbyId ? { lobbyId: this.activeLobbyId } : {}),
     };
     this.ws.send(JSON.stringify(msg));
   }
 
   on(type: string, callback: (msg: MultiplayerMessage) => void): () => void {
     return addListener(this.listeners, type, callback);
+  }
+
+  /**
+   * MP-STEAM-20260422-030: Set / clear the active lobby ID for envelope tagging.
+   * The Fastify WS server already partitions sockets by lobby URL param, so a
+   * cross-lobby leak via this transport is unlikely — but keeping the field set
+   * lets callers reuse the same MultiplayerTransport interface across paths.
+   */
+  setActiveLobby(lobbyId: string | null): void {
+    this.activeLobbyId = lobbyId;
   }
 
   disconnect(): void {
@@ -406,6 +439,12 @@ export class WebSocketTransport implements MultiplayerTransport {
       this.ws.onmessage = (event) => {
         try {
           const msg = JSON.parse(event.data as string) as MultiplayerMessage;
+          // MP-STEAM-20260422-030: cross-lobby envelope guard. Only filter when BOTH
+          // sides set a non-empty lobbyId AND they disagree — preserves backward
+          // compatibility with peers that do not stamp the field yet.
+          if (this.activeLobbyId && msg.lobbyId && msg.lobbyId !== this.activeLobbyId) {
+            return;
+          }
           emitToListeners(this.listeners, msg.type, msg);
         } catch {
           // Ignore malformed messages from server
@@ -504,10 +543,37 @@ export class WebSocketTransport implements MultiplayerTransport {
  */
 export const STEAM_P2P_SEND_RETRY_DELAYS_MS = [0, 200, 500, 1200, 2500] as const;
 
+/**
+ * MP-STEAM-20260422-071 + PASS1-BUG-5 single-peer note:
+ *
+ * `_PRESEND_BUFFER_CAP` raised from 64 to 256. Previously a host who toyed with
+ * lobby settings before the guest arrived could overflow the 64-slot pre-connect
+ * buffer in seconds and FIFO-evict the FIRST `mp:lobby:settings` broadcast, which
+ * is the most critical message for guest bootstrap. Critical message types
+ * (STEAM_PRESEND_PROTECTED_TYPES) are now NEVER evicted — the next non-critical
+ * message is bumped instead. The 256 cap covers the worst observed UI-spam window
+ * during QA without unbounded memory growth.
+ *
+ * SteamP2PTransport remains SINGLE-PEER by design (PASS1-BUG-5). 3-4 player co-op
+ * and Trivia Night cannot use this transport — `connect(peerId, ...)` overwrites
+ * the previous peerId, breaking the prior session. A future multi-peer refactor
+ * needs to replace `peerId: string` with `peers: Map<peerId, SessionState>` and
+ * fan out sends. A `connect()`-time guard now warns when a different peer would
+ * overwrite an active session so the regression is at least visible in logs.
+ */
+const STEAM_PRESEND_PROTECTED_TYPES: ReadonlySet<MultiplayerMessageType> = new Set<MultiplayerMessageType>([
+  'mp:lobby:settings',
+  'mp:lobby:start',
+  'mp:lobby:join',
+  'mp:lobby:start_ack',
+]);
+
 export class SteamP2PTransport implements MultiplayerTransport {
   private peerId = '';
   private localId = '';
   private currentLobbyId: string | null = null;
+  /** MP-STEAM-20260422-030: active lobbyId for envelope stamping + cross-lobby filtering. */
+  private activeLobbyId: string | null = null;
   private state: TransportState = 'disconnected';
   private listeners: ListenerMap = new Map();
   private stopPollLoop: (() => void) | null = null;
@@ -521,7 +587,8 @@ export class SteamP2PTransport implements MultiplayerTransport {
   // messages emitted during that window (e.g., host selects a deck seconds
   // before the guest arrives) were silently dropped before this buffer existed.
   private _preConnectBuffer: MultiplayerMessage[] = [];
-  private static readonly _PRESEND_BUFFER_CAP = 64;
+  // MP-STEAM-20260422-071: cap raised 64 to 256; protected types never evicted.
+  private static readonly _PRESEND_BUFFER_CAP = 256;
   // BUG6: Periodic 2000ms poll of getP2PConnectionState for the debug overlay while connected.
   private _sessionStatePollHandle: ReturnType<typeof setInterval> | null = null;
 
@@ -550,7 +617,26 @@ export class SteamP2PTransport implements MultiplayerTransport {
   connect(peerId: string, localId: string, _opts?: ConnectOpts): void {
     rrLog('mp:tx', 'connect called', { peerId, localId, currentState: this.state, queuedPreConnect: this._preConnectBuffer.length });
     if (this.state === 'connected') {
+      // PASS1-BUG-5 single-peer guard: if a DIFFERENT peer is being connected while
+      // we already have an active session, this is a multi-peer attempt that this
+      // transport cannot honour. Log loudly so the regression is visible — silent
+      // overwrites were how multi-peer co-op modes could "compile and break" without
+      // a clue.
+      if (this.peerId && this.peerId !== peerId) {
+        console.warn(
+          '[SteamP2PTransport] PASS1-BUG-5: rejected connect() to second peer "' + peerId + '" while session with "' + this.peerId + '" is active. SteamP2PTransport is single-peer by design; only 2-player Steam P2P modes are supported.',
+        );
+        rrLog('mp:tx', 'connect rejected — single-peer transport already bound', { existingPeer: this.peerId, attemptedPeer: peerId });
+        return;
+      }
       rrLog('mp:tx', 'connect skipped — already connected');
+      return;
+    }
+    if (this.peerId && this.peerId !== peerId && (this.state === 'connecting' || this.state === 'error')) {
+      console.warn(
+        '[SteamP2PTransport] PASS1-BUG-5: rejected connect() to second peer "' + peerId + '" while session with "' + this.peerId + '" is in state ' + this.state + '. SteamP2PTransport is single-peer by design.',
+      );
+      rrLog('mp:tx', 'connect rejected — single-peer transport mid-handshake', { existingPeer: this.peerId, attemptedPeer: peerId, state: this.state });
       return;
     }
     this.peerId = peerId;
@@ -676,6 +762,18 @@ export class SteamP2PTransport implements MultiplayerTransport {
       console.warn('[SteamP2PTransport] malformed P2P message, dropping:', e, data.slice(0, 200));
       return;
     }
+    // MP-STEAM-20260422-030: cross-lobby envelope guard. Drop stray messages from
+    // a previous lobby that lingered in the Steam channel-0 queue across a rapid
+    // leave/join. Only filter when BOTH sides set a non-empty lobbyId AND they
+    // disagree (preserves backward compat with legacy peers).
+    if (this.activeLobbyId && msg.lobbyId && msg.lobbyId !== this.activeLobbyId) {
+      rrLog('mp:tx', 'recv dropped — cross-lobby envelope mismatch', {
+        type: msg.type,
+        msgLobbyId: msg.lobbyId,
+        activeLobbyId: this.activeLobbyId,
+      });
+      return;
+    }
     if (!this._acceptSettled) {
       // Accept hasn't resolved yet — buffer to prevent message loss
       this._preAcceptBuffer.push(msg);
@@ -692,26 +790,21 @@ export class SteamP2PTransport implements MultiplayerTransport {
       payload,
       timestamp: Date.now(),
       senderId: this.localId,
+      // MP-STEAM-20260422-030: stamp the active lobbyId so receivers can drop
+      // stray messages that crossed lobbies via the channel-0 queue.
+      ...(this.activeLobbyId ? { lobbyId: this.activeLobbyId } : {}),
     };
     // F-bufferUntilConnect: when host has created a lobby but the peer-poll
     // hasn't fired yet, connect() has not been called so peerId is empty and
     // state is 'disconnected'. Buffer the message so it can be replayed once
     // the first peer arrives and connect() resolves.
     if (!this.peerId || this.state === 'disconnected') {
-      if (this._preConnectBuffer.length >= SteamP2PTransport._PRESEND_BUFFER_CAP) {
-        const dropped = this._preConnectBuffer.shift();
-        rrLog('mp:tx', 'preConnectBuffer overflow, evicted oldest', { droppedType: dropped?.type });
-      }
-      this._preConnectBuffer.push(msg);
+      this._enqueueWithProtection(this._preConnectBuffer, msg, 'preConnectBuffer');
       rrLog('mp:tx', 'send queued in preConnectBuffer', { type, queue: this._preConnectBuffer.length });
       return;
     }
     if (this.state === 'connecting') {
-      if (this._preSendBuffer.length >= SteamP2PTransport._PRESEND_BUFFER_CAP) {
-        const dropped = this._preSendBuffer.shift();
-        rrLog('mp:tx', 'preSendBuffer overflow, evicted oldest', { droppedType: dropped?.type });
-      }
-      this._preSendBuffer.push(msg);
+      this._enqueueWithProtection(this._preSendBuffer, msg, 'preSendBuffer');
       rrLog('mp:tx', 'send queued in preSendBuffer', { type, queue: this._preSendBuffer.length });
       return;
     }
@@ -721,6 +814,41 @@ export class SteamP2PTransport implements MultiplayerTransport {
     }
     rrLog('mp:tx', 'send dispatched', { type, peerId: this.peerId });
     this._sendWithRetry(msg);
+  }
+
+  /**
+   * MP-STEAM-20260422-071: enqueue with critical-message protection.
+   *
+   * If the buffer is at cap, evict the OLDEST non-protected message rather than
+   * blindly shifting [0]. Protected types (STEAM_PRESEND_PROTECTED_TYPES —
+   * settings/start/join/start_ack) are bootstrap-critical and would corrupt the
+   * guest's lobby state if dropped. If the buffer is composed entirely of
+   * protected messages (vanishingly unlikely at cap=256), drop the new message
+   * (or the oldest protected message if the new one is also protected) and warn.
+   */
+  private _enqueueWithProtection(
+    buffer: MultiplayerMessage[],
+    msg: MultiplayerMessage,
+    label: string,
+  ): void {
+    if (buffer.length < SteamP2PTransport._PRESEND_BUFFER_CAP) {
+      buffer.push(msg);
+      return;
+    }
+    const evictIdx = buffer.findIndex((m) => !STEAM_PRESEND_PROTECTED_TYPES.has(m.type));
+    if (evictIdx === -1) {
+      if (STEAM_PRESEND_PROTECTED_TYPES.has(msg.type)) {
+        const dropped = buffer.shift();
+        buffer.push(msg);
+        rrLog('mp:tx', label + ' fully protected — evicted oldest protected msg as last resort', { droppedType: dropped?.type, addedType: msg.type });
+      } else {
+        rrLog('mp:tx', label + ' overflow — buffer fully protected, dropping new non-critical msg', { droppedType: msg.type });
+      }
+      return;
+    }
+    const dropped = buffer.splice(evictIdx, 1)[0];
+    buffer.push(msg);
+    rrLog('mp:tx', label + ' overflow — evicted oldest non-critical', { droppedType: dropped?.type, addedType: msg.type });
   }
 
   /**
@@ -811,6 +939,7 @@ export class SteamP2PTransport implements MultiplayerTransport {
 
     this.peerId = '';
     this.localId = '';
+    this.activeLobbyId = null; // MP-STEAM-20260422-030: clear envelope tag on disconnect
     this.state = 'disconnected';
     this.listeners.clear();
   }
@@ -824,12 +953,28 @@ export class SteamP2PTransport implements MultiplayerTransport {
   }
 
   /**
-   * Register the active lobby ID so `disconnect()` can call `leaveSteamLobby`
-   * automatically. Call this after `createSteamLobby` / `joinSteamLobby`
-   * returns a lobby ID.
+   * MP-STEAM-20260422-030 + 064: Register the active lobby ID for two purposes:
+   *
+   *   1. Envelope tagging + cross-lobby filter: outbound messages stamp lobbyId
+   *      and inbound messages with a mismatching lobbyId are dropped — guards
+   *      against channel-0 queue leakage across a rapid lobby leave/join (030).
+   *   2. Steam-side cleanup: disconnect() reads currentLobbyId and calls
+   *      leaveSteamLobby() so callers do not have to remember.
+   *
+   * Accepts string | null — pass null on leaveLobby to clear the envelope tag
+   * without disturbing the cleanup target. Callers SHOULD invoke this immediately
+   * after transport.connect(...) succeeds so the cross-lobby filter is armed
+   * before the first transport.send() runs. reestablishSteamP2PSession() already
+   * does this for the H9 reconnect path.
    */
-  setActiveLobby(lobbyId: string): void {
-    this.currentLobbyId = lobbyId;
+  setActiveLobby(lobbyId: string | null): void {
+    this.activeLobbyId = lobbyId;
+    // Keep currentLobbyId in sync so disconnect() can still leaveSteamLobby.
+    // Only set when non-null — clearing the active lobby should not blow away the
+    // cleanup target if disconnect() is about to run.
+    if (lobbyId) {
+      this.currentLobbyId = lobbyId;
+    }
   }
 }
 

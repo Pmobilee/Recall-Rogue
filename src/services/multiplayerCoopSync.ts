@@ -134,10 +134,72 @@ const _sharedEnemySubs = new Set<(snapshot: SharedEnemySnapshot) => void>();
 const _enemyHpSubs = new Set<(currentHP: number, maxHP: number) => void>();
 
 /**
- * Deltas collected during the current turn-end barrier.
- * Keyed by playerId. Cleared when awaitCoopTurnEndWithDelta is called (new turn).
+ * MP-STEAM-20260422-047: Deltas collected per-turn, bucketed by turn number.
+ *
+ * Outer key = `turnNumber`, inner key = `playerId`. Previously a single-slot
+ * `Map<playerId, EnemyTurnDelta>` was overwritten when the partner's turn N+1
+ * delta arrived before the local side released the turn N barrier — the
+ * resulting host merge applied only the partner's N+1 delta to the N snapshot,
+ * producing an incorrect merged enemy HP. Bucketing by `turnNumber` keeps each
+ * turn's deltas isolated so a fast partner cannot trample a slow local.
+ *
+ * The current barrier reads/writes `_collectedDeltas.get(_currentTurnNumber)`.
+ * `getCollectedDeltas()` returns the deltas for the current turn. Old buckets
+ * older than `_currentTurnNumber - 1` are pruned at every barrier release so
+ * memory stays bounded across long encounters.
  */
-let _collectedDeltas: Map<string, EnemyTurnDelta> = new Map();
+let _collectedDeltas: Map<number, Map<string, EnemyTurnDelta>> = new Map();
+
+/**
+ * MP-STEAM-20260422-047: Local turn counter incremented on each
+ * awaitCoopTurnEndWithDelta call. Used as the bucket key for _collectedDeltas.
+ * Resets to 0 on initCoopSync / destroyCoopSync.
+ */
+let _currentTurnNumber: number = 0;
+
+/**
+ * PASS1-BUG-18: Buffer for broadcastPartnerState / broadcastSharedEnemyState /
+ * broadcastEnemyHpUpdate calls that fire BEFORE initCoopSync runs.
+ *
+ * Previously these calls silently dropped with a coopLog warning that nobody
+ * read — masking PASS1-BUG-6 (race between encounter setup and coop init).
+ * Now we queue the call and replay it the moment initCoopSync runs, so the
+ * partner's first encounter snapshot can never be lost to a sub-millisecond
+ * scheduler race.
+ *
+ * Capped at 32 entries (more than enough for the worst observed init race —
+ * one initial enemy_state plus a few partner_state updates). Older entries
+ * are FIFO-evicted with a warn log if the cap is hit before init runs.
+ */
+type DeferredCoopBroadcast =
+  | { kind: 'partner_state'; state: { hp: number; maxHp: number; block: number; score?: number; accuracy?: number } }
+  | { kind: 'shared_enemy'; snapshot: SharedEnemySnapshot }
+  | { kind: 'enemy_hp_update'; currentHP: number; maxHP: number };
+
+const _PRE_INIT_BROADCAST_CAP = 32;
+let _preInitBroadcastBuffer: DeferredCoopBroadcast[] = [];
+
+function _enqueuePreInitBroadcast(b: DeferredCoopBroadcast): void {
+  if (_preInitBroadcastBuffer.length >= _PRE_INIT_BROADCAST_CAP) {
+    const dropped = _preInitBroadcastBuffer.shift();
+    coopLog('preInitBroadcastBuffer overflow, evicted oldest kind=%s', dropped?.kind);
+  }
+  _preInitBroadcastBuffer.push(b);
+  console.warn(`[coopSync] PASS1-BUG-18: queued ${b.kind} broadcast — initCoopSync has not run yet, will flush on init`);
+}
+
+function _flushPreInitBroadcastBuffer(): void {
+  if (_preInitBroadcastBuffer.length === 0) return;
+  const queued = _preInitBroadcastBuffer.splice(0);
+  coopLog('PASS1-BUG-18: flushing %d deferred broadcasts after initCoopSync', queued.length);
+  for (const b of queued) {
+    switch (b.kind) {
+      case 'partner_state': broadcastPartnerState(b.state); break;
+      case 'shared_enemy': broadcastSharedEnemyState(b.snapshot); break;
+      case 'enemy_hp_update': broadcastEnemyHpUpdate(b.currentHP, b.maxHP); break;
+    }
+  }
+}
 
 /**
  * Timestamp (Date.now()) of the last received mp:coop:partner_state per player.
@@ -189,7 +251,10 @@ export function initCoopSync(localPlayerId: string): void {
   _turnEndSignals = new Set();
   _partnerStates = {};
   _collectedDeltas = new Map();
+  _currentTurnNumber = 0;
   _lastPartnerHeartbeat = new Map();
+  // PASS1-BUG-18: flush any deferred broadcasts that fired before initCoopSync.
+  _flushPreInitBroadcastBuffer();
 
   _lastBroadcastSnapshot = null;
   _initialStateRetryAttempt = 0;
@@ -208,24 +273,42 @@ export function initCoopSync(localPlayerId: string): void {
 
   // New delta-carrying turn_end signal
   const offTurnEndWithDelta = transport.on('mp:coop:turn_end_with_delta', (msg) => {
-    const payload = msg.payload as { playerId: string; delta: EnemyTurnDelta };
+    const payload = msg.payload as { playerId: string; delta: EnemyTurnDelta; turnNumber?: number };
     if (!payload?.playerId) return;
-    coopLog('received turn_end_with_delta from %s, damage=%d', payload.playerId, payload.delta?.damageDealt);
-    _turnEndSignals.add(payload.playerId);
-    if (payload.delta) {
-      _collectedDeltas.set(payload.playerId, { ...payload.delta, playerId: payload.playerId });
+    coopLog('received turn_end_with_delta from %s, damage=%d turn=%d', payload.playerId, payload.delta?.damageDealt, payload.turnNumber ?? -1);
+    // MP-STEAM-20260422-047: bucket by the sender's turnNumber, falling back to
+    // the local current turn for legacy peers that do not stamp it. If a partner
+    // sends a future-turn delta before the local barrier releases, it lands in
+    // its own bucket and the current turn's bucket is left intact.
+    const bucketTurn = typeof payload.turnNumber === 'number' ? payload.turnNumber : _currentTurnNumber;
+    if (bucketTurn !== _currentTurnNumber && bucketTurn > _currentTurnNumber) {
+      coopLog('partner sent future-turn delta (theirs=%d, ours=%d) — buffered for next turn', bucketTurn, _currentTurnNumber);
     }
-    _maybeReleaseBarrier();
+    if (payload.delta) {
+      let bucket = _collectedDeltas.get(bucketTurn);
+      if (!bucket) {
+        bucket = new Map();
+        _collectedDeltas.set(bucketTurn, bucket);
+      }
+      bucket.set(payload.playerId, { ...payload.delta, playerId: payload.playerId });
+    }
+    // Only the CURRENT turn's signal counts toward releasing the barrier.
+    if (bucketTurn === _currentTurnNumber) {
+      _turnEndSignals.add(payload.playerId);
+      _maybeReleaseBarrier();
+    }
   });
 
   const offTurnEndCancel = transport.on('mp:coop:turn_end_cancel', (msg) => {
-    const { playerId } = msg.payload as { playerId: string };
+    const { playerId, turnNumber } = msg.payload as { playerId: string; turnNumber?: number };
     if (!playerId) return;
-    coopLog('received turn_end_cancel from %s', playerId);
+    coopLog('received turn_end_cancel from %s turn=%d', playerId, turnNumber ?? -1);
     // Remote player cancelled their turn-end signal -- remove them from the set.
     // The barrier will not release until they re-signal.
     _turnEndSignals.delete(playerId);
-    _collectedDeltas.delete(playerId);
+    // MP-STEAM-20260422-047: delete only from the cancel-targeted turn bucket.
+    const bucketTurn = typeof turnNumber === 'number' ? turnNumber : _currentTurnNumber;
+    _collectedDeltas.get(bucketTurn)?.delete(playerId);
   });
 
   const offPartner = transport.on('mp:coop:partner_state', (msg) => {
@@ -328,6 +411,7 @@ export function destroyCoopSync(): void {
   _localPlayerId = '';
   _partnerStates = {};
   _collectedDeltas = new Map();
+  _currentTurnNumber = 0;
   _lastPartnerHeartbeat = new Map();
   _barrierExpectedPlayerCount = 0;
   _lastBroadcastSnapshot = null;
@@ -428,25 +512,36 @@ export function awaitCoopTurnEndWithDelta(delta: EnemyTurnDelta): Promise<'compl
   const lobby = getCurrentLobby();
   const players = lobby?.players ?? [];
 
-  // Clear previous turn's deltas for a fresh collection
-  _collectedDeltas = new Map();
+  // MP-STEAM-20260422-047: advance the local turn counter and prune buckets that
+  // are too old to be useful. We keep the previous bucket around briefly in case
+  // a straggler message lands during the barrier transition.
+  _currentTurnNumber++;
+  for (const oldTurn of [..._collectedDeltas.keys()]) {
+    if (oldTurn < _currentTurnNumber - 1) _collectedDeltas.delete(oldTurn);
+  }
+  // Ensure the current turn's bucket exists even before any deltas arrive.
+  if (!_collectedDeltas.has(_currentTurnNumber)) {
+    _collectedDeltas.set(_currentTurnNumber, new Map());
+  }
+  const currentBucket = _collectedDeltas.get(_currentTurnNumber)!;
 
   // Solo or no lobby -> no barrier needed.
   if (players.length <= 1 || !_localPlayerId) {
     // Store own delta even for solo (host merge path reads it)
-    _collectedDeltas.set(_localPlayerId, { ...delta, playerId: _localPlayerId });
+    currentBucket.set(_localPlayerId, { ...delta, playerId: _localPlayerId });
     return Promise.resolve('completed');
   }
 
   // Mark self, store own delta, and broadcast.
   _turnEndSignals.add(_localPlayerId);
-  _collectedDeltas.set(_localPlayerId, { ...delta, playerId: _localPlayerId });
+  currentBucket.set(_localPlayerId, { ...delta, playerId: _localPlayerId });
   _barrierExpectedPlayerCount = players.length;
   const transport = getMultiplayerTransport();
-  coopLog('broadcasting turn_end_with_delta, localId=%s, damage=%d', _localPlayerId, delta.damageDealt);
+  coopLog('broadcasting turn_end_with_delta, localId=%s, damage=%d turn=%d', _localPlayerId, delta.damageDealt, _currentTurnNumber);
   transport.send('mp:coop:turn_end_with_delta', {
     playerId: _localPlayerId,
     delta: delta as unknown as Record<string, unknown>,
+    turnNumber: _currentTurnNumber,
   });
 
   // If we already have everyone (e.g. partner finished first), resolve fast.
@@ -498,7 +593,10 @@ export function awaitCoopTurnEndWithDelta(delta: EnemyTurnDelta): Promise<'compl
  * Host calls this after the barrier completes to merge deltas.
  */
 export function getCollectedDeltas(): EnemyTurnDelta[] {
-  return [..._collectedDeltas.values()].sort((a, b) => a.playerId.localeCompare(b.playerId));
+  // MP-STEAM-20260422-047: read from the current turn bucket.
+  const bucket = _collectedDeltas.get(_currentTurnNumber);
+  if (!bucket) return [];
+  return [...bucket.values()].sort((a, b) => a.playerId.localeCompare(b.playerId));
 }
 
 /**
@@ -511,9 +609,10 @@ export function getCollectedDeltas(): EnemyTurnDelta[] {
 export function cancelCoopTurnEnd(): void {
   if (!_localPlayerId) return;
   _turnEndSignals.delete(_localPlayerId);
-  _collectedDeltas.delete(_localPlayerId);
+  // MP-STEAM-20260422-047: delete only from the current turn bucket.
+  _collectedDeltas.get(_currentTurnNumber)?.delete(_localPlayerId);
   const transport = getMultiplayerTransport();
-  transport.send('mp:coop:turn_end_cancel', { playerId: _localPlayerId });
+  transport.send('mp:coop:turn_end_cancel', { playerId: _localPlayerId, turnNumber: _currentTurnNumber });
   if (_pendingBarrierResolve) {
     const resolve = _pendingBarrierResolve;
     _pendingBarrierResolve = null;
@@ -557,7 +656,9 @@ export function hasPendingBarrier(): boolean {
  */
 export function broadcastPartnerState(state: { hp: number; maxHp: number; block: number; score?: number; accuracy?: number }): void {
   if (!_localPlayerId) {
-    coopLog('broadcastPartnerState called before initCoopSync -- dropped');
+    // PASS1-BUG-18: defer instead of silently dropping. The init-before-broadcast
+    // invariant is violated when the encounter mounts faster than initCoopSync runs.
+    _enqueuePreInitBroadcast({ kind: 'partner_state', state });
     return;
   }
   coopLog('broadcastPartnerState hp=%d maxHp=%d block=%d', state.hp, state.maxHp, state.block);
@@ -579,7 +680,10 @@ export function broadcastPartnerState(state: { hp: number; maxHp: number; block:
  */
 export function broadcastSharedEnemyState(snapshot: SharedEnemySnapshot): void {
   if (!_localPlayerId) {
-    rrLog('mp:coop', 'broadcastSharedEnemyState dropped — coop sync not initialised');
+    // PASS1-BUG-18: defer instead of silently dropping (same rationale as
+    // broadcastPartnerState). This snapshot is the host's authoritative initial
+    // enemy state — losing it strands the guest with no shared enemy reference.
+    _enqueuePreInitBroadcast({ kind: 'shared_enemy', snapshot });
     return;
   }
   // Buffer BEFORE sending so the request handler can always re-send the latest snapshot.
@@ -599,7 +703,8 @@ export function broadcastSharedEnemyState(snapshot: SharedEnemySnapshot): void {
  */
 export function broadcastEnemyHpUpdate(currentHP: number, maxHP: number): void {
   if (!_localPlayerId) {
-    rrLog('mp:coop', 'broadcastEnemyHpUpdate dropped — coop sync not initialised');
+    // PASS1-BUG-18: defer instead of silently dropping.
+    _enqueuePreInitBroadcast({ kind: 'enemy_hp_update', currentHP, maxHP });
     return;
   }
   rrLog('mp:coop', 'send enemy_hp_update', { hp: currentHP, maxHP });

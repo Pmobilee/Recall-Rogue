@@ -50,6 +50,7 @@ function createMockTransport(): MultiplayerTransport & {
       };
     },
     disconnect: vi.fn(),
+    setActiveLobby: vi.fn(),
     getState: vi.fn(() => 'connected' as const),
     isConnected: vi.fn(() => true),
     simulateReceive(type: string, payload: Record<string, unknown>, senderId = 'remote_peer') {
@@ -366,8 +367,10 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
 
   it('buffers send() calls while state is connecting, flushes after accept resolves', async () => {
     const m = await getSteamMocks();
-    let resolveAccept!: () => void;
-    m.acceptP2PSession.mockReturnValue(new Promise<void>((res) => { resolveAccept = res; }));
+    // PASS1-BUG-9 update: accept must resolve to true for transport to reach 'connected'.
+    // resolveAccept now takes a boolean so the test mirrors the Rust Result<bool> contract.
+    let resolveAccept!: (ok: boolean) => void;
+    m.acceptP2PSession.mockReturnValue(new Promise<boolean>((res) => { resolveAccept = res; }));
 
     const transport = new SteamP2PTransport();
     transport.connect('peer_steam_id', 'local_steam_id');
@@ -378,8 +381,8 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
 
     expect(m.sendP2PMessage).not.toHaveBeenCalled();
 
-    // Now resolve the accept — the .then() handler should flush _preSendBuffer
-    resolveAccept();
+    // Now resolve the accept (true → connected) — the .then() handler should flush _preSendBuffer
+    resolveAccept(true);
     // Let the microtask queue drain
     await Promise.resolve();
     await Promise.resolve();
@@ -395,8 +398,9 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
 
   it('a single send() while connecting buffers one message', async () => {
     const m = await getSteamMocks();
-    let resolveAccept!: () => void;
-    m.acceptP2PSession.mockReturnValue(new Promise<void>((res) => { resolveAccept = res; }));
+    // PASS1-BUG-9 update: accept must resolve to true for connected.
+    let resolveAccept!: (ok: boolean) => void;
+    m.acceptP2PSession.mockReturnValue(new Promise<boolean>((res) => { resolveAccept = res; }));
 
     const transport = new SteamP2PTransport();
     transport.connect('peer_steam_id', 'local_steam_id');
@@ -404,7 +408,7 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     transport.send('mp:lobby:ready', { playerId: 'local_steam_id' });
     expect(m.sendP2PMessage).not.toHaveBeenCalled();
 
-    resolveAccept();
+    resolveAccept(true);
     await Promise.resolve();
     await Promise.resolve();
 
@@ -439,10 +443,11 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     logSpy.mockRestore();
   });
 
-  it('buffer cap: 65 sends during connecting keeps 64 messages, oldest dropped, warns', async () => {
+  it('MP-STEAM-20260422-071: buffer cap raised to 256, evicts oldest non-protected on overflow', async () => {
     const m = await getSteamMocks();
-    let resolveAccept!: () => void;
-    m.acceptP2PSession.mockReturnValue(new Promise<void>((res) => { resolveAccept = res; }));
+    // PASS1-BUG-9 update: accept must resolve to true for transport to reach 'connected'.
+    let resolveAccept!: (ok: boolean) => void;
+    m.acceptP2PSession.mockReturnValue(new Promise<boolean>((res) => { resolveAccept = res; }));
 
     // rrLog uses console.log — spy on log to capture overflow message
     const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
@@ -450,24 +455,27 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     const transport = new SteamP2PTransport();
     transport.connect('peer_steam_id', 'local_steam_id');
 
-    // Queue 65 messages — first is 'mp:ping' (the one that should be dropped)
-    transport.send('mp:ping', { seq: 0 }); // oldest — should be dropped at cap
-    for (let i = 1; i <= 64; i++) {
+    // Queue 257 messages — first is 'mp:ping' (the one that should be evicted at cap=256).
+    // None of these are protected (mp:lobby:settings/start/join/start_ack), so the
+    // _enqueueWithProtection helper picks the OLDEST (the mp:ping) for eviction.
+    transport.send('mp:ping', { seq: 0 }); // oldest non-protected — evicted at cap
+    for (let i = 1; i <= 256; i++) {
       transport.send('mp:pong', { seq: i });
     }
 
-    // Overflow log must have fired
+    // Overflow log must have fired with the new label "evicted oldest non-critical"
     const logCalls = logSpy.mock.calls.flat().join(' ');
-    expect(logCalls).toContain('preSendBuffer overflow');
+    expect(logCalls).toContain('overflow');
+    expect(logCalls).toContain('evicted oldest non-critical');
 
     // Flush
-    resolveAccept();
+    resolveAccept(true);
     await Promise.resolve();
     await Promise.resolve();
 
-    // Exactly 64 sends should have been flushed (the 65th buffered, the 1st dropped)
-    expect(m.sendP2PMessage).toHaveBeenCalledTimes(64);
-    // All flushed messages should be 'mp:pong', not 'mp:ping'
+    // Exactly 256 sends should have been flushed (the 257th buffered, the 1st evicted)
+    expect(m.sendP2PMessage).toHaveBeenCalledTimes(256);
+    // All flushed messages should be 'mp:pong', not 'mp:ping' (which was evicted)
     for (const call of m.sendP2PMessage.mock.calls) {
       const parsed = JSON.parse(call[1] as string);
       expect(parsed.type).toBe('mp:pong');
@@ -476,10 +484,38 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     logSpy.mockRestore();
   });
 
+  it('MP-STEAM-20260422-071: protected types (mp:lobby:settings) are NEVER evicted at overflow', async () => {
+    const m = await getSteamMocks();
+    let resolveAccept!: (ok: boolean) => void;
+    m.acceptP2PSession.mockReturnValue(new Promise<boolean>((res) => { resolveAccept = res; }));
+
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+
+    const transport = new SteamP2PTransport();
+    transport.connect('peer_steam_id', 'local_steam_id');
+
+    // Queue mp:lobby:settings as the FIRST message (would have been evicted under
+    // the old FIFO policy). Then fill the buffer past cap with mp:pong.
+    transport.send('mp:lobby:settings', { critical: true, seq: 0 });
+    for (let i = 1; i <= 256; i++) {
+      transport.send('mp:pong', { seq: i });
+    }
+
+    resolveAccept(true);
+    await Promise.resolve();
+    await Promise.resolve();
+
+    // The first mp:lobby:settings must be flushed even after overflow.
+    const flushedTypes = m.sendP2PMessage.mock.calls.map(call => JSON.parse(call[1] as string).type);
+    expect(flushedTypes).toContain('mp:lobby:settings');
+
+    logSpy.mockRestore();
+  });
+
   it('disconnect() clears both _preAcceptBuffer and _preSendBuffer', async () => {
     const m = await getSteamMocks();
-    let resolveAccept!: () => void;
-    m.acceptP2PSession.mockReturnValue(new Promise<void>((res) => { resolveAccept = res; }));
+    let resolveAccept!: (ok: boolean) => void;
+    m.acceptP2PSession.mockReturnValue(new Promise<boolean>((res) => { resolveAccept = res; }));
 
     const transport = new SteamP2PTransport();
     transport.connect('peer_steam_id', 'local_steam_id');
@@ -493,7 +529,7 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     expect(transport.getState()).toBe('disconnected');
 
     // Now resolve the accept — the .then() guard checks state !== 'connecting' so it returns early
-    resolveAccept();
+    resolveAccept(true);
     await Promise.resolve();
     await Promise.resolve();
 
