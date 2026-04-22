@@ -279,12 +279,27 @@ Confusing these two causes the host's player list to never update. See `docs/got
 
 When the host clicks Start, `multiplayerLobbyService.ts` does not fire `onGameStart` immediately. Instead:
 
-1. Host sends `mp:lobby:start` with the shared seed.
+1. Host sends `mp:lobby:start` with the full lobby config payload: `{ seed, mode, deckId, houseRules, contentSelection }`.
+   Guests MUST apply all fields to `_currentLobby` before firing `onGameStart` — this is the authoritative
+   snapshot that covers any `mp:lobby:settings` messages that were lost on Steam P2P.
 2. Each non-host guest ACKs with `mp:lobby:start_ack { playerId }`.
 3. Host retries `mp:lobby:start` every **750ms** for up to **3s** for any guest that hasn't ACKed.
-4. After 3s, `onGameStart` fires regardless (logs a warning for any remaining unACKed guests).
+4. **On 3s timeout (BUG-3 fix):** if any guests still haven't ACKed, the host does NOT fire `onGameStart`.
+   Instead: ghost guests (failed-to-ACK players) are removed from the player list, the lobby status
+   resets to `'waiting'`, and `onLobbyError` fires with `'Could not reach all players. Returning to lobby.'`
+   so the host can retry.
 
-This ensures all clients have received and processed the seed before the host's `onGameStart` callback triggers match initialization.
+### Guest-side payload application order
+
+The `mp:lobby:start` handler on the guest applies fields in this order before firing `onGameStart`:
+
+1. `mode` — overrides stale mode from prior lobby or lost `mp:lobby:settings`
+2. `deckId` → `selectedDeckId` — overrides prior deck selection
+3. `houseRules` — overrides stale house rules
+4. `contentSelection` — authoritative at game-start time
+5. `seed` and `status = 'in_game'`
+
+Each field is guarded with `if (payload.X !== undefined)` so a host that omits a field does not clobber valid local state. If `_currentLobby.mode` is still `undefined` after applying all fields, the handler aborts with a console error (BUG-2 defensive assertion).
 
 ---
 
@@ -636,6 +651,7 @@ Applied in both `steamBackend.resolveByCode` and `steamBackend.listPublicLobbies
 
 | Date | Commits | What |
 |------|---------|------|
+| 2026-04-22 | (BUG-1/2/3/4/14 Wave 1) | Guest now applies `mode`/`deckId`/`houseRules` from `mp:lobby:start` payload (fixes independent-game split). BUG-2: defensive abort if mode still undefined after apply. BUG-3: ACK timeout aborts start + fires `onLobbyError` + evicts ghost guests instead of firing onGameStart with unreachable peers. BUG-4: `mp:lobby:start_ack` was already in `MultiplayerMessageType` union — removed stale `as` cast + TODO comment. 3 new regression tests. |
 | 2026-04-22 | (P2P session fix) | `session_request_callback` + `session_failed_callback` registered in `SteamState::new()`; `AUTO_RESTART_BROKEN_SESSION` send flag; `steam_prime_p2p_sessions` + `steam_get_p2p_connection_state` new Tauri commands; `lan_tcp_probe` LAN command; TS retry loop in `SteamP2PTransport._sendWithRetry`; `primeP2PSessions` called in all three lobby join/create paths; forensic logging in `setContentSelection` + `notifyLobbyUpdate` |
 | 2026-04-21 | (Wave 12) | Steam lobby metadata warm-up: `steam_request_lobby_data` Rust command (raw sys flat API), `requestSteamLobbyData` TS helper, warm-up pass in `listPublicLobbies` + `resolveByCode` — fixes cold-cache "" from `GetLobbyData` |
 | 2026-04-21 | (C4 fix) | Outbound pre-connect buffer in SteamP2PTransport — send() during 'connecting' state now buffers to _preSendBuffer (cap 64); flushed after acceptP2PSession resolves. Silent-drop warns added. Malformed P2P message catch now logs. 6 new unit tests. |

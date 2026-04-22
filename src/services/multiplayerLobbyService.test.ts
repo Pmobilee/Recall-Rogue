@@ -14,7 +14,7 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import type { MultiplayerMessage, MultiplayerMessageType, MultiplayerTransport } from './multiplayerTransport';
-import type { LobbyContentSelection } from '../data/multiplayerTypes';
+import type { LobbyContentSelection, HouseRules, MultiplayerMode } from '../data/multiplayerTypes';
 
 // ---------------------------------------------------------------------------
 // Mock fetch so webBackend doesn't need a real Fastify server
@@ -108,6 +108,7 @@ vi.mock('./multiplayerTransport', () => {
 // Also mock platformService so hasSteam doesn't try to call Tauri
 vi.mock('./platformService', () => ({
   hasSteam: false,
+  isTauriPresent: vi.fn(() => false),
 }));
 
 // Also mock lanConfigService so clearLanServerUrl / isLanMode don't need real config
@@ -300,6 +301,122 @@ describe('mp:lobby:start handler — assigns contentSelection before onGameStart
     mockTransport.simulateReceive('mp:lobby:start', { seed: 7654321 });
 
     expect(receivedSeed).toBe(7654321);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// BUG-14: regression — mp:lobby:start handler applies mode/deckId/houseRules
+// ---------------------------------------------------------------------------
+
+describe('BUG-14: mp:lobby:start applies mode, deckId, houseRules from host payload', () => {
+  beforeEach(() => {
+    mockTransport = createMockTransport();
+    vi.clearAllMocks();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.restoreAllMocks();
+  });
+
+  it('overwrites stale mode, deckId, houseRules with host-committed values', async () => {
+    // Guest has stale 'race' mode from a prior lobby session.
+    await joinLobby('ABCDEF', 'guest_bug14', 'Guest');
+    const lobby = getCurrentLobby()!;
+    // Manually set stale state to simulate prior lobby leftover.
+    (lobby as any).mode = 'race' as MultiplayerMode;
+    (lobby as any).selectedDeckId = 'old_deck';
+
+    const houseRules: HouseRules = {
+      turnTimerSecs: 45,
+      quizDifficulty: 'hard',
+      fairness: {
+        freshFactsOnly: false,
+        masteryEqualized: false,
+        handicapPercent: 0,
+        deckPracticeSecs: 0,
+        chainNormalized: false,
+      },
+      ascensionLevel: 5,
+    };
+
+    const contentSelection: LobbyContentSelection = {
+      type: 'study',
+      deckId: 'fundamentals_of_biology',
+      deckName: 'Fundamentals of Biology',
+    };
+
+    let lobbyAtStart: ReturnType<typeof getCurrentLobby> = null;
+    onGameStart((_seed, l) => { lobbyAtStart = { ...l }; });
+
+    // Host sends start with full payload including mode override.
+    mockTransport.simulateReceive('mp:lobby:start', {
+      seed: 12345,
+      mode: 'coop' as MultiplayerMode,
+      deckId: 'fundamentals_of_biology',
+      houseRules: houseRules as unknown as Record<string, unknown>,
+      contentSelection: contentSelection as unknown as Record<string, unknown>,
+    });
+
+    expect(lobbyAtStart).not.toBeNull();
+    // BUG-1: mode must be updated from stale 'race' to host-committed 'coop'
+    expect(lobbyAtStart!.mode).toBe('coop');
+    // BUG-1: deckId (selectedDeckId) must be updated
+    expect(lobbyAtStart!.selectedDeckId).toBe('fundamentals_of_biology');
+    // BUG-1: houseRules must be updated
+    expect(lobbyAtStart!.houseRules.turnTimerSecs).toBe(45);
+    expect(lobbyAtStart!.houseRules.quizDifficulty).toBe('hard');
+    expect(lobbyAtStart!.houseRules.ascensionLevel).toBe(5);
+    // contentSelection must still work
+    expect(lobbyAtStart!.contentSelection).toBeDefined();
+    expect(
+      (lobbyAtStart!.contentSelection as Extract<LobbyContentSelection, { type: 'study' }>).deckId,
+    ).toBe('fundamentals_of_biology');
+    // seed must be applied
+    expect(lobbyAtStart!.seed).toBe(12345);
+  });
+
+  it('preserves existing mode when host payload omits mode field', async () => {
+    await joinLobby('ABCDEF', 'guest_bug14b', 'Guest');
+    const lobby = getCurrentLobby()!;
+    (lobby as any).mode = 'duel' as MultiplayerMode;
+
+    let lobbyAtStart: ReturnType<typeof getCurrentLobby> = null;
+    onGameStart((_seed, l) => { lobbyAtStart = { ...l }; });
+
+    // Host payload omits mode — local state should be preserved
+    mockTransport.simulateReceive('mp:lobby:start', { seed: 99, mode: 'duel' as MultiplayerMode });
+
+    expect(lobbyAtStart).not.toBeNull();
+    expect(lobbyAtStart!.mode).toBe('duel');
+  });
+
+  it('preserves existing houseRules when payload omits them', async () => {
+    await joinLobby('ABCDEF', 'guest_bug14c', 'Guest');
+    const lobby = getCurrentLobby()!;
+    // Give lobby a non-default turnTimerSecs to verify it is not clobbered
+    lobby.houseRules = {
+      turnTimerSecs: 90,
+      quizDifficulty: 'easy',
+      fairness: {
+        freshFactsOnly: false,
+        masteryEqualized: false,
+        handicapPercent: 0,
+        deckPracticeSecs: 0,
+        chainNormalized: false,
+      },
+      ascensionLevel: 0,
+    };
+
+    let lobbyAtStart: ReturnType<typeof getCurrentLobby> = null;
+    onGameStart((_seed, l) => { lobbyAtStart = { ...l }; });
+
+    // Host omits houseRules — existing value must be preserved
+    mockTransport.simulateReceive('mp:lobby:start', { seed: 1, mode: 'race' as MultiplayerMode });
+
+    expect(lobbyAtStart).not.toBeNull();
+    expect(lobbyAtStart!.houseRules.turnTimerSecs).toBe(90);
+    expect(lobbyAtStart!.houseRules.quizDifficulty).toBe('easy');
   });
 });
 
@@ -1071,13 +1188,17 @@ describe('H5: seed ACK handshake', () => {
     expect(startFired).toBe(true);
   });
 
-  it('ACK timeout fallback: host fires onGameStart after 3s even without ACK', async () => {
+  it('BUG-3: ACK timeout fires onLobbyError and does NOT fire onGameStart', async () => {
+    // BUG-3: The old behavior fired onGameStart anyway after 3s even if no guests ACKed,
+    // meaning each player ran an independent game. New behavior: abort + surface error.
     const lobby = await createLobby('host_h5b', 'Host', 'race');
     lobby.players.push({ id: 'slowguest_h5', displayName: 'Slow', isHost: false, isReady: true });
     lobby.players[0].isReady = true;
 
     let startFired = false;
+    let errorFired: string | null = null;
     onGameStart(() => { startFired = true; });
+    onLobbyError((err) => { errorFired = err; });
 
     startGame();
     expect(startFired).toBe(false);
@@ -1085,7 +1206,14 @@ describe('H5: seed ACK handshake', () => {
     // Advance fake timers past the 3s timeout
     vi.advanceTimersByTime(3100);
 
-    expect(startFired).toBe(true);
+    // onGameStart must NOT fire — the session was aborted
+    expect(startFired).toBe(false);
+    // onLobbyError must fire with the user-visible reason
+    expect(errorFired).toBe('Could not reach all players. Returning to lobby.');
+    // Lobby must return to waiting state so host can retry
+    expect(getCurrentLobby()!.status).toBe('waiting');
+    // Ghost guest (never ACKed) must be evicted
+    expect(getCurrentLobby()!.players.find(p => p.id === 'slowguest_h5')).toBeUndefined();
   });
 
   it('guest sends mp:lobby:start_ack in response to mp:lobby:start', async () => {
@@ -1096,7 +1224,7 @@ describe('H5: seed ACK handshake', () => {
     mockTransport.simulateReceive('mp:lobby:start', { seed: 55555 });
 
     // Guest should have sent an ACK back
-    const ackMsg = mockTransport.sent.find(m => m.type === ('mp:lobby:start_ack' as any));
+    const ackMsg = mockTransport.sent.find(m => m.type === 'mp:lobby:start_ack');
     expect(ackMsg).toBeDefined();
     expect(ackMsg!.payload.playerId).toBe('guest_h5c');
   });

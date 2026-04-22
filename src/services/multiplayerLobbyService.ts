@@ -31,7 +31,7 @@ import type {
   LobbyVisibility, LobbyBrowserEntry, LobbyListFilter,
 } from '../data/multiplayerTypes';
 import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS, MODE_MIN_PLAYERS } from '../data/multiplayerTypes';
-import { hasSteam } from './platformService';
+import { hasSteam, isTauriPresent } from './platformService';
 import { sanitizeLobbyTitle } from './profanityService';
 import { getLocalMultiplayerRating } from './multiplayerElo';
 import { getLanServerUrls, isLanMode, clearLanServerUrl } from './lanConfigService';
@@ -1231,14 +1231,25 @@ export function startGame(): void {
     getMultiplayerTransport().send('mp:lobby:start', _lastStartPayload!);
   }, 750);
 
-  // Timeout fallback — fire onGameStart anyway if not all guests ACK within 3s.
+  // BUG-3: Changed from "fire onGameStart anyway" to "abort and surface error".
+  // Firing game start when guests haven't ACKed means they never received the seed,
+  // so they each run an independent solo game instead of joining the shared session.
+  // Better behavior: cancel the attempt, surface the error, return lobby to waiting
+  // state so the host can retry. Ghost guests (failed to ACK) are evicted.
   _startAckTimeoutTimer = setTimeout(() => {
     if (!_currentLobby || _pendingStartAcks === null) return;
     if (_pendingStartAcks.size > 0) {
-      console.warn('[MP:LobbyService] mp:lobby:start ACK timeout — proceeding with pending ACKs:', [..._pendingStartAcks]);
+      console.error('[MP:LobbyService] mp:lobby:start ACK timeout — could not reach guests:', [..._pendingStartAcks]);
+      // Evict guests that failed to ACK — they demonstrably cannot be reached.
+      const failedIds = [..._pendingStartAcks];
+      _currentLobby.players = _currentLobby.players.filter(p => !failedIds.includes(p.id));
     }
+    // Cancel the handshake and reset lobby status so the UI is usable again.
     _cancelStartAckHandshake();
-    _fireSubscribers(_gameStartSubscribers, seed, _currentLobby);
+    _currentLobby.status = 'waiting';
+    notifyLobbyUpdate();
+    // Surface the failure to the host so they know what happened.
+    _fireSubscribers(_lobbyErrorSubscribers, 'Could not reach all players. Returning to lobby.');
   }, 3000);
 }
 
@@ -1559,10 +1570,31 @@ function setupMessageHandlers(): void {
 
   reg('mp:lobby:start', (msg) => {
     if (!_currentLobby) return;
+    // BUG-1: Widen the payload type to include all fields the host sends at startGame().
+    // Previously only seed + contentSelection were extracted; mode/deckId/houseRules were
+    // silently discarded, leaving the guest with stale values from mp:lobby:settings
+    // (which can arrive late or be lost entirely on Steam P2P). Each field is guarded
+    // so a host that omits it does not clobber valid local state.
     const payload = msg.payload as {
       seed: number;
+      mode?: MultiplayerMode;
+      deckId?: string;
+      houseRules?: HouseRules;
       contentSelection?: LobbyContentSelection;
     };
+
+    // Apply all lobby-critical fields before firing subscribers.
+    // Order: mode → deckId → houseRules → contentSelection → seed/status.
+    // This ensures onGameStart always sees the definitive host-committed values.
+    if (payload.mode !== undefined) {
+      _currentLobby.mode = payload.mode;
+    }
+    if (payload.deckId !== undefined) {
+      _currentLobby.selectedDeckId = payload.deckId;
+    }
+    if (payload.houseRules !== undefined) {
+      _currentLobby.houseRules = payload.houseRules;
+    }
     // Apply contentSelection BEFORE invoking _onGameStart so the callback
     // always sees the definitive value the host committed at game-start time.
     // This is the authoritative source — mp:lobby:settings may have been lost
@@ -1573,15 +1605,32 @@ function setupMessageHandlers(): void {
     _currentLobby.seed = payload.seed;
     _currentLobby.status = 'in_game';
 
+    rrLog('mp:recv', 'mp:lobby:start applied', {
+      mode: _currentLobby.mode,
+      deckId: _currentLobby.selectedDeckId ?? null,
+      hasHouseRules: payload.houseRules !== undefined,
+      hasContentSelection: payload.contentSelection !== undefined,
+      seed: payload.seed,
+    });
+
+    // BUG-2: Abort with a loud error if mode is still undefined after applying all
+    // payload fields. This means neither mp:lobby:settings nor the start payload
+    // carried a mode — the guest would silently skip coop/duel/race wiring.
+    if (_currentLobby.mode === undefined) {
+      console.error(
+        '[MP:LobbyService] mp:lobby:start applied but _currentLobby.mode is undefined — ' +
+        'coop/duel/race wiring will skip. This indicates mp:lobby:settings was never received ' +
+        'AND host omitted mode in start payload. Aborting start.',
+      );
+      return;
+    }
+
     // H5: Guest sends ACK back to host so host knows seed was received.
+    // BUG-4: 'mp:lobby:start_ack' is now in MultiplayerMessageType (multiplayerTransport.ts:106).
+    // Cast and TODO removed.
     if (!isHost()) {
-      // mp:lobby:start_ack is not in the transport union (multiplayerTransport.ts is
-      // owned by another agent). Cast is intentional — on() uses string, send() uses
-      // the union. This cast is safe: all transport impls route unknown message types
-      // without special handling. TODO: add 'mp:lobby:start_ack' to MultiplayerMessageType
-      // when multiplayerTransport.ts is next updated.
       getMultiplayerTransport().send(
-        'mp:lobby:start_ack' as MultiplayerMessageType,
+        'mp:lobby:start_ack',
         { seed: payload.seed, playerId: _localPlayerId },
       );
     }
@@ -1847,8 +1896,9 @@ function pickBackend(): LobbyBackend {
   // Live call-time check — avoids the module-load IIFE snapshot in platformService being stale
   // when Tauri's global injection lands after the bundle evaluates (ordering issue in packaged builds).
   // We still log hasSteam so we can see in DevTools whether the static snapshot was stale.
-  const tauriPresent = typeof window !== 'undefined' &&
-    !!((window as any).__TAURI_INTERNALS__ || (window as any).__TAURI__);
+  // Use the memoized isTauriPresent() from platformService rather than an inline
+  // duplicate — single scan per session, correct at call time.
+  const tauriPresent = isTauriPresent();
   console.log('[pickBackend]', {
     hasTauriInternals: typeof window !== 'undefined' && !!(window as any).__TAURI_INTERNALS__,
     hasTauriGlobal: typeof window !== 'undefined' && !!(window as any).__TAURI__,

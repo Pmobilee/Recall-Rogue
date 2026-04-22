@@ -5388,3 +5388,20 @@ For coop with study-multi decks, the run starts at `runPreview` → instant `lea
 **Fix:** Rewrote `gameScreens` to enumerate every real in-run screen from the `Screen` union. Also gated `forceTutorialEnemy` in `gameFlowController.ts` on `multiplayerModeState !== null` — first-run players entering coop shouldn't trigger Pop Quiz (which diverges across the two clients if only one is first-run, AND the tutorial flow itself isn't coop-safe). Converted the critical `mp:coop:enemy_state` / `mp:coop:enemy_hp_update` / `initCoopSync` trace lines from `coopLog` (`DEBUG_COOP=false`, never logged anything) to `rrLog` so a future coop session actually shows message flow in `debug.log`.
 
 **Lesson:** Any allowlist/Set comparing against a closed string union (`Screen`, enum-like types) must be typed against that union. Writing `new Set<string>([...])` erases the type check entirely. A `new Set<Screen>([...])` would have failed compilation the moment `'shop'` didn't match `'shopRoom'`. Also: a single "is this screen a run-screen" membership check this load-bearing belongs in `gameState.ts` next to the `Screen` type definition, not inline in `CardApp.svelte`, so the source of truth and the consumer don't drift.
+
+### 2026-04-22 — Payload fields added to mp:lobby:* must be applied in BOTH the host send AND the guest handler's destructure type
+
+**What broke:** Hosts were already sending `{ seed, mode, deckId, houseRules, contentSelection }` in `mp:lobby:start` (since 2026-04-09), but the guest handler only declared `{ seed: number; contentSelection? }` in its `as {...}` cast. TypeScript silently drops extra fields at runtime when you cast via `as` — the fields exist in the JS object but the code never reads them because they weren't in the type. Result: guests discarded `mode`, `deckId`, and `houseRules` on every start, keeping stale values from `mp:lobby:settings` (which can arrive late or be dropped entirely on Steam P2P). With stale `mode`, `CardApp.svelte:857` skipped `initCoopSync`, guests never subscribed to `mp:coop:*`, and each player ran a solo game — manifesting as the "co-op players end up in independent games" bug.
+
+**Root cause pattern:** When you add a field to a multiplayer message payload, you must update THREE places:
+1. The host send site (e.g. `startGame()` payload builder).
+2. The guest handler's TypeScript type cast (`msg.payload as { ... }`).
+3. The assignment block that writes received values into `_currentLobby`.
+
+Missing step 2 or 3 compiles cleanly and causes a silent runtime desync.
+
+**Fix:** Widened the `mp:lobby:start` handler's payload type to include `mode?`, `deckId?`, and `houseRules?`. Added guarded assignments (`if (payload.X !== undefined) _currentLobby.X = payload.X`) for each before `_fireSubscribers`. Added `rrLog` after all assignments for playtest visibility. Added a BUG-2 defensive assertion: if `_currentLobby.mode === undefined` after applying all payload fields, abort with `console.error` instead of firing game start with broken state.
+
+**Also fixed (BUG-3):** The ACK-timeout fallback at 3s was firing `onGameStart` even when all guests were unreachable, meaning the host started an N-player session with 0 reachable peers. Changed to: evict unACKed guests, reset lobby to `'waiting'`, fire `onLobbyError('Could not reach all players. Returning to lobby.')` so the host can retry.
+
+**Lesson:** `as { field: type }` TypeScript casts in message handlers are a hidden maintenance tax. Any time you send a new field from the host, the guest handler's cast silently truncates it. Consider defining a shared `Mp_LobbyStart_Payload` interface in `multiplayerTypes.ts` that both the send site and the receive handler import — then TypeScript will catch the drift at compile time.
