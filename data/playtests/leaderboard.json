@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-22T23:50:00.000Z",
+  "updatedAt": "2026-04-22T13:07:31.675Z",
   "totalPlaythroughs": 22,
   "totalIssues": 147,
   "batches": [
@@ -5672,7 +5672,7 @@
       "fixHypothesis": "Pattern-match errors in invokeSteam: distinguish 'Steam client not running' from 'Tauri IPC rejected' from 'command threw Rust-side'. rrLog each distinctly.",
       "score": 20,
       "pass": 1,
-      "fixedInCommit": "next",
+      "fixedInCommit": "97e367ba8",
       "fixedAt": "2026-04-22T23:55:00.000Z",
       "note": "sendP2PMessage and acceptP2PSession now log distinct rrLog entries when invokeSteam returns null (IPC failure) vs Rust returning false (session failure). getLastSteamInvokeError() captures the IPC error detail for callers.",
       "deferredNote": "DEFERRED — invokeSteam null-coalesces errors (low)"
