@@ -190,6 +190,12 @@ export interface RunState {
   perfectEncountersCount?: number;
   /** Multiplayer mode for this run, if any. */
   multiplayerMode?: import('../data/multiplayerTypes').MultiplayerMode;
+  /**
+   * Number of players in the lobby when the run started.
+   * Used to apply coop HP scaling (getCoopHpMultiplier) in createEnemy.
+   * FIX C-005: populated by gameFlowController from lobby.players.length.
+   */
+  multiplayerPlayerCount?: number;
 
   // Journal / Profile tracking (in-memory only — not persisted to run save)
   /**
@@ -276,6 +282,7 @@ export function createRunState(
     includeOutsideDueReviews?: boolean;
     providedSeed?: number;
     multiplayerMode?: import('../data/multiplayerTypes').MultiplayerMode;
+    multiplayerPlayerCount?: number;
   },
 ): RunState {
   const runSeed = options?.providedSeed ?? crypto.getRandomValues(new Uint32Array(1))[0];
@@ -355,6 +362,7 @@ export function createRunState(
     totalDamageDealt: 0,
     perfectEncountersCount: 0,
     multiplayerMode: options?.multiplayerMode,
+    multiplayerPlayerCount: options?.multiplayerPlayerCount,
     reviewStateSnapshot: undefined,
     firstTimeFactIds: new Set<string>(),
     tierAdvancedFactIds: new Set<string>(),

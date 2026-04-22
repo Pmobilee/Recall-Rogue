@@ -108,6 +108,8 @@ vi.mock('./multiplayerTransport', () => {
 // Also mock platformService so hasSteam doesn't try to call Tauri
 vi.mock('./platformService', () => ({
   hasSteam: false,
+  isDesktop: false,
+  isWeb: true,
   isTauriPresent: vi.fn(() => false),
 }));
 

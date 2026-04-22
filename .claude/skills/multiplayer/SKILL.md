@@ -35,7 +35,7 @@ Parse the user's message for a subcommand:
 | **Scoring** | `src/services/multiplayerScoring.ts` (legacy — `calculateScoreForMode` in gameService is the new path) | DONE |
 | **ELO** | `src/services/multiplayerElo.ts` (new — K=32, DEFAULT=1500, persist via PlayerProfile.multiplayerRating); `src/services/eloMatchmakingService.ts` (queue) | DONE |
 | **Co-op Sync** | `src/services/multiplayerCoopSync.ts` — 45s barrier timeout, transport-disconnect detection, `handleCoopPlayerDeath`, 90s AFK detector, `partnerStateToRaceProgressShape` | DONE + hardened |
-| **Co-op Effects** | `src/services/coopEffects.ts` | DONE |
+| **Co-op Effects** | ~~`src/services/coopEffects.ts`~~ | DELETED (C-006: zero callers, aspirational code — removed 2026-04-22) |
 | **Trivia Night** | `src/services/triviaNightService.ts` — empty-pool guard, per-game dedupe set, timing clamp w/ 2s grace, `allIncorrect` flag | DONE + hardened |
 | **Workshop MP** | `src/services/multiplayerWorkshopService.ts` — `checkAllPlayersHaveWorkshopDeck` preflight, `validateWorkshopDeckMetadata` w/ HTML rejection, wired handlers | DONE + hardened |
 | **LAN** | `src/services/lan{Server,Discovery,Config}Service.ts` — RFC1918 whitelist, IPv6 subnet parsing, 254→~60 probe reduction, bound-addr reporting | DONE + hardened |

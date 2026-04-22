@@ -940,9 +940,13 @@ export function initGameMessageHandlers(mode: MultiplayerMode): () => void {
     _tryEmitRaceResults();
   }));
 
-  // ── Same Cards seed exchange ───────────────────────────────────────────────
-
-  if (mode === 'same_cards') {
+  // ── Fork-seed exchange — same_cards and coop ─────────────────────────────
+  // same_cards: guest receives host's pre-derived fork positions so both players see
+  //   identical card pools / enemy intents / shop rolls.
+  // coop: mirrors the same_cards pattern — broadcast after initRunRng in
+  //   gameFlowController, received here by the guest and applied via applyReceivedForkSeeds.
+  //   FIX C-004.
+  if (mode === 'same_cards' || mode === 'coop') {
     cleanups.push(transport.on('mp:sync', (msg) => {
       const payload = msg.payload as { type?: string; seeds?: Record<string, number> };
       if (payload.type === 'fork_seeds' && payload.seeds) {

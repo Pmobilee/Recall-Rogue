@@ -726,7 +726,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "in_progress",
+      "status": "resolved",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "transport": "src/services/multiplayerTransport.ts:1058 (createTransport); isTauriRuntime() → SteamP2PTransport",
@@ -750,8 +750,8 @@
       "suggestedInvestigation": "1. Confirm Steam P2P session bidirectionality BEFORE transitioning to run: add a ping/pong round-trip gate in mp:lobby:start handshake. 2. Make mp:coop:enemy_state ACK-tracked with resend-on-request (guest emits mp:coop:request_initial if no snapshot in 2s). 3. Subscribe-before-start: move initCoopSync(transport.on(...)) registration to fire BEFORE the mp:lobby:start ACK is sent, so the guest is ready for the first enemy_state before host can possibly send it. 4. Add application-layer send-receipt logging that surfaces in __rrMpDebug to tell host whether each message was acknowledged.",
       "score": 30,
       "rank": 18,
-      "inProgressAt": "2026-04-22T19:30:00.000Z",
-      "inProgressBy": "orchestrator-ultrathink-fix-wave-1"
+      "resolvedAt": "2026-04-22T20:58:09.000Z",
+      "resolvedBy": "ee7236892"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-017",
@@ -1253,7 +1253,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "in_progress",
+      "status": "resolved",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "subscriber": "src/services/multiplayerCoopSync.ts:206 offEnemyState = transport.on('mp:coop:enemy_state', ...)",
@@ -1271,9 +1271,9 @@
       "suggestedFix": "Option A: host buffers the most-recent enemy_state snapshot and resends on every new lobby member event. Option B: guest emits mp:coop:request_initial_state on its first run-screen mount; host replies with current snapshot. Option C: move transport.on() registration for mp:coop:* listeners to lobby-join time (before any game-start signal), so they're live as soon as the player is in the lobby.",
       "score": 15,
       "rank": 34,
-      "inProgressAt": "2026-04-22T20:37:44.637566+09:00",
-      "inProgressBy": "orchestrator-ultrathink-fix-wave-1",
-      "assignedTo": "game-logic sub-agent (wave 1)"
+      "assignedTo": "game-logic sub-agent (wave 1)",
+      "resolvedAt": "2026-04-22T20:58:09.000Z",
+      "resolvedBy": "ee7236892"
     },
     {
       "canonicalId": "alpha-launch-blocker-001",
@@ -1771,7 +1771,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "in_progress",
+      "status": "resolved",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "send": "multiplayerCoopSync.ts:516 transport.send('mp:coop:enemy_state', snapshot)",
@@ -1781,9 +1781,9 @@
       "suggestedFix": "Wrap mp:coop:enemy_state in an ACK-tracked envelope. Host buffers latest snapshot keyed by encounterId; guest emits mp:coop:request_initial_state on mount if no snapshot in 2s; host replies with buffered snapshot on demand. Same pattern already used by lobby-start (H5) and lobby-settings (resend on request).",
       "score": 6.25,
       "rank": 52,
-      "inProgressAt": "2026-04-22T20:37:44.637566+09:00",
-      "inProgressBy": "orchestrator-ultrathink-fix-wave-1",
-      "assignedTo": "game-logic sub-agent (wave 1)"
+      "assignedTo": "game-logic sub-agent (wave 1)",
+      "resolvedAt": "2026-04-22T20:58:09.000Z",
+      "resolvedBy": "ee7236892"
     },
     {
       "canonicalId": "CARD-AUDIT-2026-04-11-medium-001",
@@ -2054,7 +2054,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "in_progress",
+      "status": "resolved",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "file": "src/services/multiplayerCoopSync.ts",
@@ -2065,8 +2065,8 @@
       "suggestedFix": "Remove the bang, and also add typeof-number check: `if (typeof snapshot?.currentHP !== 'number' || typeof snapshot?.maxHP !== 'number') return;` — matches the stricter guard pattern already used by the enemy_hp_update handler at line 219.",
       "score": 5,
       "rank": 61,
-      "inProgressAt": "2026-04-22T19:30:00.000Z",
-      "inProgressBy": "orchestrator-ultrathink-fix-wave-1"
+      "resolvedAt": "2026-04-22T20:58:09.000Z",
+      "resolvedBy": "ee7236892"
     },
     {
       "canonicalId": "MP-STEAM-20260422-005",
@@ -2087,7 +2087,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "in_progress",
+      "status": "resolved",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "fix": "commit 82bf261ef (BUG 25) added _sendWithRetry to SteamP2PTransport",
@@ -2098,8 +2098,8 @@
       "suggestedFix": "Exponential backoff to 3-5s total window (e.g., 0/200/500/1500/3000ms, 5 attempts). Surface final failures to application layer via onSendFailed callback. Show toast/overlay to players when a critical message fails to deliver so they can retry rather than suffer silent desync.",
       "score": 5,
       "rank": 62,
-      "inProgressAt": "2026-04-22T19:30:00.000Z",
-      "inProgressBy": "orchestrator-ultrathink-fix-wave-1"
+      "resolvedAt": "2026-04-22T20:58:09.000Z",
+      "resolvedBy": "ee7236892"
     },
     {
       "canonicalId": "MP-STEAM-20260422-006",
@@ -2660,7 +2660,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "in_progress",
+      "status": "resolved",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "files": "src/services/multiplayerTransport.ts:1850, src/services/multiplayerLobbyService.ts:1850",
@@ -2669,8 +2669,8 @@
       "suggestedFix": "Unify on src/services/platformService.ts — it already captures `const isDesktop = platform === 'desktop'` at module-load time. Have both pickBackend implementations import and use that single constant instead of re-sniffing globals. Alternatively memoize the result of the first check and expose as a module-level const.",
       "score": 3,
       "rank": 80,
-      "inProgressAt": "2026-04-22T19:30:00.000Z",
-      "inProgressBy": "orchestrator-ultrathink-fix-wave-1"
+      "resolvedAt": "2026-04-22T20:58:09.000Z",
+      "resolvedBy": "ee7236892"
     },
     {
       "canonicalId": "MP-STEAM-20260422-012",
@@ -2691,7 +2691,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "in_progress",
+      "status": "resolved",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "file": "src/services/multiplayerCoopSync.ts",
@@ -2703,8 +2703,8 @@
       "suggestedFix": "Replace DEBUG_COOP with a runtime-toggleable flag. Either (a) localStorage-based: `window.__rrSetMpDebug(true)` writes a flag that coopLog reads on each call; (b) always-on rrLog with a per-category filter applied by the log reader; (c) tie to URL param `?debug=mp` or keyboard combo. Log-on-demand beats log-at-compile-time for shipped code.",
       "score": 3,
       "rank": 81,
-      "inProgressAt": "2026-04-22T19:30:00.000Z",
-      "inProgressBy": "orchestrator-ultrathink-fix-wave-1"
+      "resolvedAt": "2026-04-22T20:58:09.000Z",
+      "resolvedBy": "ee7236892"
     },
     {
       "canonicalId": "meta-lint-002",
@@ -2992,7 +2992,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "in_progress",
+      "status": "resolved",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "todo": "src/services/multiplayerCoopSync.ts:23-28",
@@ -3002,8 +3002,8 @@
       "suggestedFix": "In encounterBridge.ts wherever player HP commits after enemy phase (grep for `player.hp = ` or `applyDamageToLocalPlayer`), add `if (run.multiplayerMode === 'coop' && newHp <= 0) handleCoopPlayerDeath(localPlayerId);`. Add a test that two-player coop with one player at 1HP ends for both when the enemy lands a hit.",
       "score": 1,
       "rank": 91,
-      "inProgressAt": "2026-04-22T19:30:00.000Z",
-      "inProgressBy": "orchestrator-ultrathink-fix-wave-1"
+      "resolvedAt": "2026-04-22T20:58:09.000Z",
+      "resolvedBy": "ee7236892"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-001",

@@ -47,9 +47,11 @@ describe('#79 — initRaceMode call-site invariant in gameFlowController', () =>
     const broadcastPos = source.indexOf('stopRaceBroadcastFn = startRaceProgressBroadcast(');
     expect(broadcastPos).toBeGreaterThan(-1);
 
-    // Find the if block that contains the broadcast — search backwards for the if
+    // Find the if block that contains the broadcast — search backwards for the if.
+    // C-003 fix: the guard now includes && multiplayerModeState === 'race' so race-specific
+    // work does not run for coop/duel/trivia_night modes that share the multiplayer_race umbrella.
     const searchWindow = source.slice(0, broadcastPos);
-    const blockStart = searchWindow.lastIndexOf("if (activeRunMode === 'multiplayer_race')");
+    const blockStart = searchWindow.lastIndexOf("if (activeRunMode === 'multiplayer_race' && multiplayerModeState === 'race')");
     expect(blockStart).toBeGreaterThan(-1);
 
     // The block from blockStart to broadcastPos must contain initRaceMode

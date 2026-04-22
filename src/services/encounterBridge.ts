@@ -55,6 +55,8 @@ import {
   awaitCoopTurnEnd,
   awaitCoopTurnEndWithDelta,
   awaitCoopEnemyReconcile,
+  CoopReconcileTimeoutError,
+  requestCoopEnemyStateRetry,
   cancelCoopTurnEnd,
   isLocalTurnEndPending,
   broadcastPartnerState,
@@ -980,7 +982,17 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
       try {
         initialSnapshot = await awaitCoopEnemyReconcile();
       } catch (err) {
-        console.warn('[encounterBridge] coop: failed to receive initial enemy snapshot, using local', err);
+        if (err instanceof CoopReconcileTimeoutError) {
+          console.warn('[encounterBridge] coop: initial reconcile timed out — requesting re-broadcast');
+          requestCoopEnemyStateRetry();
+          try {
+            initialSnapshot = await awaitCoopEnemyReconcile();
+          } catch (retryErr) {
+            console.warn('[encounterBridge] coop: retry reconcile also timed out — using local enemy state', retryErr);
+          }
+        } else {
+          console.warn('[encounterBridge] coop: failed to receive initial enemy snapshot, using local', err);
+        }
       }
       if (initialSnapshot) {
         hydrateEnemyFromSnapshot(enemy, initialSnapshot);
@@ -1022,6 +1034,19 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
       if (liveScene) {
         liveScene.updateEnemyHP(currentHP, true);
       }
+    });
+  }
+
+  // BUG-10: broadcast initial partner state at encounter start so the partner's HUD
+  // shows our correct starting HP/block instead of waiting until our first turn end.
+  // broadcastPartnerState is a no-op if initCoopSync has not been called (non-coop runs).
+  if (isCoopRun) {
+    broadcastPartnerState({
+      hp: run.playerHp,
+      maxHp: run.playerMaxHp,
+      block: 0, // no block at encounter start
+      score: 0,
+      accuracy: 1,
     });
   }
 

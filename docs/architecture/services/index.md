@@ -37,7 +37,7 @@
 | combatResumeService | src/services/combatResumeService.ts | [combat.md](combat.md) |
 | confusionMatrix | src/services/confusionMatrix.ts | [learning.md](learning.md) |
 | confusionMatrixStore | src/services/confusionMatrixStore.ts | [learning.md](learning.md) |
-| coopEffects | src/services/coopEffects.ts | [combat.md](../../mechanics/combat.md) |
+| ~~coopEffects~~ | ~~src/services/coopEffects.ts~~ | deleted 2026-04-22 — zero callers, aspirational code (C-006) |
 | coopService | src/services/coopService.ts | [social.md](social.md) |
 | curatedDistractorSelector | src/services/curatedDistractorSelector.ts | [quiz.md](quiz.md) |
 | curatedDeckSchema | src/data/curatedDeckSchema.ts | [deck-system.md](../../content/deck-system.md) |

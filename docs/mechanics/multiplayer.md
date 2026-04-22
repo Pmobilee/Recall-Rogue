@@ -1,8 +1,8 @@
 # Multiplayer Mechanics
 
-> **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopEffects.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
+> **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-20 (#79/#80/#81 wave-5 fixes + M23 typed IPC + L4 kick scaffolding) — Previous: #71/#73/#74/#75/#76 wave-4. Latest: #79 initRaceMode wired into gameFlowController, #80 real opponent Elo rating from lobby, #81 workshop deck gate wired in MultiplayerLobby.svelte. M23: typed invokeSteam IPC wrapper. L4: kickPlayer + vote-kick stubs + onLobbyError callback. See changelog section below.
+> **Last verified:** 2026-04-22 — Coop wiring cluster (C-001/C-002/C-003/C-005/C-007): initGameMessageHandlers+initDuel wired, subscription order fixed before startNewRun, race broadcast gated on mode===race, playerCount threaded into createEnemy, awaitCoopEnemyReconcile timeout+retry, coopEffects.ts deleted.
 
 ## Modes
 
