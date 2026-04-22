@@ -48,6 +48,13 @@
   let selectedMode = $state<MultiplayerMode>('race')
   let joinCode = $state('')
   let activeTab = $state<'create' | 'join' | 'lan'>('create')
+  // LAN path disabled 2026-04-22 — peer-to-peer TCP over LAN is unreliable across
+  // macOS Local Network permission prompts and firewall defaults, and the game
+  // is free so there's no strong "avoid Steam" reason to keep it. Hide the tab
+  // and the connected-banner until we can revisit. The underlying service code
+  // (lanServerService / webBackend LAN branch) stays in place — just not reachable
+  // from the UI. Re-enable by flipping LAN_ENABLED to true.
+  const LAN_ENABLED = false
   let joinError = $state('')
 
   // ── Visibility & password state (Create tab) ──────────────────────────────
@@ -392,16 +399,18 @@
         >
           Join Lobby
         </button>
-        <button
-          class="tab-btn"
-          class:active={activeTab === 'lan'}
-          data-testid="tab-lan"
-          role="tab"
-          aria-selected={activeTab === 'lan'}
-          onclick={() => { activeTab = 'lan' }}
-        >
-          LAN Play
-        </button>
+        {#if LAN_ENABLED}
+          <button
+            class="tab-btn"
+            class:active={activeTab === 'lan'}
+            data-testid="tab-lan"
+            role="tab"
+            aria-selected={activeTab === 'lan'}
+            onclick={() => { activeTab = 'lan' }}
+          >
+            LAN Play
+          </button>
+        {/if}
         <button
           class="tab-btn tab-btn--action"
           data-testid="btn-browse-lobbies"
@@ -554,8 +563,8 @@
         </div>
       {/if}
 
-      <!-- LAN Play tab -->
-      {#if activeTab === 'lan'}
+      <!-- LAN Play tab — disabled 2026-04-22 (see LAN_ENABLED constant) -->
+      {#if LAN_ENABLED && activeTab === 'lan'}
         <div class="tab-panel lan-panel" role="tabpanel" aria-label="LAN Play">
 
           <!-- Connected banner -->

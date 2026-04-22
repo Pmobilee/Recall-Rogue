@@ -103,9 +103,16 @@ let _localPlayerId: string = '';
 // drift (ready toggles, player list, house-rule changes). Fix: a Set; each
 // subscriber independent; `notifyLobbyUpdate` iterates and calls all.
 const _lobbyUpdateSubscribers = new Set<(lobby: LobbyState) => void>();
-let _onGameStart: ((seed: number, lobby: LobbyState) => void) | null = null;
-let _onRaceProgress: ((progress: RaceProgress) => void) | null = null;
-let _onRaceResults: ((results: RaceResults) => void) | null = null;
+// BUG23: same failure mode as BUG22 — single-slot callbacks silently clobbered
+// when multiple components register. `CardApp.svelte` registers the critical
+// scene-transition onGameStart; `MultiplayerLobby.svelte` later registers a
+// no-op placeholder that overwrites it. Result: host click "Start" → guest
+// ACKs → host's _fireSubscribers(_gameStartSubscribers, ) fires the no-op → scene never transitions →
+// _pendingStartAcks retry loop fires every 750ms forever.
+// Fix: multi-subscriber Set (same pattern as _lobbyUpdateSubscribers).
+const _gameStartSubscribers = new Set<(seed: number, lobby: LobbyState) => void>();
+const _raceProgressSubscribers = new Set<(progress: RaceProgress) => void>();
+const _raceResultsSubscribers = new Set<(results: RaceResults) => void>();
 
 /**
  * L4: Callback fired when the local player receives an `mp:lobby:kick` message
@@ -115,7 +122,7 @@ let _onRaceResults: ((results: RaceResults) => void) | null = null;
  * Wiring: register before calling `joinLobby()`. Cleared in `leaveLobby()`.
  * UI is post-MVP — the primitive is shipped so future UI work can light it up.
  */
-let _onLobbyError: ((error: string) => void) | null = null;
+const _lobbyErrorSubscribers = new Set<(error: string) => void>();
 
 /**
  * Host-side password hash (SHA-256 hex of the plaintext).
@@ -854,7 +861,8 @@ export function leaveLobby(): void {
   _activeHandlerCleanups = [];
   _handlersAttached = false;
   _localReadyVersion = 0;
-  _onLobbyError = null;
+  // BUG23: do NOT clear subscriber sets here — they are registered by CardApp
+  // on mount for the whole app lifetime and must survive leave/rejoin cycles.
 }
 
 // ── Lobby Settings (host only) ───────────────────────────────────────────────
@@ -1209,7 +1217,7 @@ export function startGame(): void {
   if (guestIds.length === 0) {
     // No guests — fire immediately (solo testing / edge case).
     _cancelStartAckHandshake();
-    _onGameStart?.(seed, _currentLobby!);
+    _fireSubscribers(_gameStartSubscribers, seed, _currentLobby!);
     return;
   }
 
@@ -1230,7 +1238,7 @@ export function startGame(): void {
       console.warn('[MP:LobbyService] mp:lobby:start ACK timeout — proceeding with pending ACKs:', [..._pendingStartAcks]);
     }
     _cancelStartAckHandshake();
-    _onGameStart?.(seed, _currentLobby);
+    _fireSubscribers(_gameStartSubscribers, seed, _currentLobby);
   }, 3000);
 }
 
@@ -1258,34 +1266,41 @@ export function onLobbyUpdate(cb: (lobby: LobbyState) => void): () => void {
   return () => { _lobbyUpdateSubscribers.delete(cb); };
 }
 
-/** Register callback for game start */
+/** Register callback for game start. BUG23: multi-subscriber. */
 export function onGameStart(cb: (seed: number, lobby: LobbyState) => void): () => void {
-  _onGameStart = cb;
-  return () => { _onGameStart = null; };
+  _gameStartSubscribers.add(cb);
+  return () => { _gameStartSubscribers.delete(cb); };
 }
 
-/** Register callback for opponent race progress */
+/** Register callback for opponent race progress. BUG23: multi-subscriber. */
 export function onRaceProgress(cb: (progress: RaceProgress) => void): () => void {
-  _onRaceProgress = cb;
-  return () => { _onRaceProgress = null; };
+  _raceProgressSubscribers.add(cb);
+  return () => { _raceProgressSubscribers.delete(cb); };
 }
 
-/** Register callback for race results */
+/** Register callback for race results. BUG23: multi-subscriber. */
 export function onRaceResults(cb: (results: RaceResults) => void): () => void {
-  _onRaceResults = cb;
-  return () => { _onRaceResults = null; };
+  _raceResultsSubscribers.add(cb);
+  return () => { _raceResultsSubscribers.delete(cb); };
 }
 
 /**
  * Register callback for lobby errors experienced by the local player
- * (e.g. being kicked by the host). The error string is a machine-readable key —
- * currently only `'kicked_by_host'` is defined.
- *
- * L4 primitive — UI is post-MVP.
+ * (e.g. being kicked by the host). BUG23: multi-subscriber.
  */
 export function onLobbyError(cb: (error: string) => void): () => void {
-  _onLobbyError = cb;
-  return () => { _onLobbyError = null; };
+  _lobbyErrorSubscribers.add(cb);
+  return () => { _lobbyErrorSubscribers.delete(cb); };
+}
+
+/** BUG23: helper to fire all subscribers with one try/catch per subscriber. */
+function _fireSubscribers<Args extends unknown[]>(
+  subscribers: Set<(...args: Args) => void>,
+  ...args: Args
+): void {
+  for (const cb of subscribers) {
+    try { cb(...args); } catch (e) { rrLog('mp:cb', 'subscriber threw', { e: String(e) }); }
+  }
 }
 
 // ── C4: LAN mode clear hook ───────────────────────────────────────────────────
@@ -1571,7 +1586,7 @@ function setupMessageHandlers(): void {
       );
     }
 
-    _onGameStart?.(payload.seed, _currentLobby);
+    _fireSubscribers(_gameStartSubscribers, payload.seed, _currentLobby);
   });
 
   // H5: Host handles guest ACKs.
@@ -1585,7 +1600,7 @@ function setupMessageHandlers(): void {
       // All guests ACKed — fire onGameStart and cancel timers.
       _cancelStartAckHandshake();
       if (_currentLobby) {
-        _onGameStart?.(_currentLobby.seed!, _currentLobby);
+        _fireSubscribers(_gameStartSubscribers, _currentLobby.seed!, _currentLobby);
       }
     }
   });
@@ -1612,7 +1627,7 @@ function setupMessageHandlers(): void {
     if (targetPlayerId === _localPlayerId) {
       // We are the kicked player — fire error callback then leave cleanly.
       console.info(`[MP:LobbyService] Kicked by host.${reason ? ` Reason: ${reason}` : ''}`);
-      _onLobbyError?.('kicked_by_host');
+      _fireSubscribers(_lobbyErrorSubscribers, 'kicked_by_host');
       leaveLobby();
       return;
     }
@@ -1628,11 +1643,11 @@ function setupMessageHandlers(): void {
   });
 
   reg('mp:race:progress', (msg) => {
-    _onRaceProgress?.(msg.payload as unknown as RaceProgress);
+    _fireSubscribers(_raceProgressSubscribers, msg.payload as unknown as RaceProgress);
   });
 
   reg('mp:race:finish', (msg) => {
-    _onRaceProgress?.(msg.payload as unknown as RaceProgress);
+    _fireSubscribers(_raceProgressSubscribers, msg.payload as unknown as RaceProgress);
   });
 
   // BUG17: When on Steam, poll for ungraceful peer exits (app crash, network drop)
