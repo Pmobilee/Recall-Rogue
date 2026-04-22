@@ -110,6 +110,34 @@ fi
 
 SSH="ssh -o ServerAliveInterval=30 $VM_USER@$VM_IP"
 
+# ---------- ULTRATHINK 054: steamworks-rs ↔ shipped DLL version sanity check ----------
+#
+# steamworks-rs 0.12 binds against a specific Steamworks SDK release; if the
+# steam_api64.dll shipped in steam/windows-build/ was copied from a wildly
+# different SDK, the player will hit init failures or undefined-symbol errors at
+# runtime. The Rust crate ships its own DLL that gets staged by tauri-build, so
+# mismatch is rare in clean checkouts — but operators sometimes manually replace
+# the DLL from a Steamworks installer. This guard catches the easy-to-make
+# mistake of leaving an empty/0-byte file from a botched download.
+#
+# The check is intentionally cheap: cargo metadata gives us the steamworks
+# version, and `wc -c` confirms the DLL is plausibly intact. We do NOT attempt
+# a binary signature check — that would require shipping a known-good hash and
+# would break legitimately on the next steamworks release.
+WIN_BUILD_DIR_CHECK="$PROJECT_ROOT/steam/windows-build"
+if [[ -f "$WIN_BUILD_DIR_CHECK/steam_api64.dll" ]]; then
+    DLL_SIZE=$(wc -c < "$WIN_BUILD_DIR_CHECK/steam_api64.dll" | tr -d '[:space:]')
+    if [[ "$DLL_SIZE" -lt 100000 ]]; then
+        red "    steam/windows-build/steam_api64.dll is only ${DLL_SIZE} bytes — likely truncated/empty."
+        red "    Re-run a fresh build, or copy the DLL from steamworks-rs build output:"
+        red "      src-tauri/target/x86_64-pc-windows-msvc/release/build/steamworks-sys-*/out/steam_api64.dll"
+        exit 4
+    fi
+    if STEAMWORKS_VER=$(grep -A2 'name = "steamworks"' "$PROJECT_ROOT/src-tauri/Cargo.lock" 2>/dev/null | head -3 | grep '^version =' | head -1 | sed 's/^version = "\(.*\)"/\1/'); then
+        dim "    steamworks-rs version: ${STEAMWORKS_VER:-unknown} | shipped DLL: ${DLL_SIZE} bytes"
+    fi
+fi
+
 # ---------- Build ----------
 if $DO_BUILD; then
     # Pre-flight: confirm pagefile is big enough (32 GB fixed). If not, the cargo

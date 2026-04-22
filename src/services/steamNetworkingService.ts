@@ -60,6 +60,26 @@ export interface SteamP2PMessage {
   data: string;
 }
 
+/**
+ * ULTRATHINK 056 / H10-transport: Drained from `steam_get_pending_p2p_fail`.
+ * Mirrors the Rust `PendingP2PFail` serde type. `errorCode` is the raw
+ * `EP2PSessionError` value (1–5; see Rust command doc).
+ */
+export interface PendingP2PFail {
+  peerSteamId: string;
+  errorCode: number;
+}
+
+/**
+ * M-020: Drained from `steam_get_pending_session_request_error`. The reason string
+ * is human-readable and surfaced directly in the UI when a session_request callback
+ * could not accept a peer's incoming session.
+ */
+export interface PendingSessionRequestError {
+  peerSteamId: string;
+  reason: string;
+}
+
 /** D1: Overlay + launch-source diagnostic status returned by steam_overlay_status. */
 export interface SteamOverlayStatus {
   /** True when ISteamUtils::BIsOverlayEnabled() reports the overlay is on. */
@@ -138,6 +158,12 @@ export interface SteamCommandArgs {
   steam_clear_rich_presence: Record<string, never>;
   /** BUG17: One-shot read of the peer SteamID that ungracefully left the lobby (Left/Disconnected/Kicked/Banned). */
   steam_get_pending_peer_left: Record<string, never>;
+  /** ULTRATHINK 056 / H10-transport: One-shot drain of the most recent P2PSessionConnectFail event. */
+  steam_get_pending_p2p_fail: Record<string, never>;
+  /** M-020: One-shot drain of the most recent session_request_callback.accept() failure. */
+  steam_get_pending_session_request_error: Record<string, never>;
+  /** PASS1-BUG-21: Returns the absolute path to the Rust-redirected debug.log for the dev panel. */
+  steam_get_debug_log_path: Record<string, never>;
 }
 
 /**
@@ -192,6 +218,12 @@ export interface SteamCommandReturn {
   steam_clear_rich_presence: void;
   /** BUG17: 64-bit decimal SteamID string of the peer who left, or null if no ungraceful exit since last call. */
   steam_get_pending_peer_left: string | null;
+  /** ULTRATHINK 056 / H10-transport: { peerSteamId, errorCode } once per fail; null when none queued. */
+  steam_get_pending_p2p_fail: PendingP2PFail | null;
+  /** M-020: { peerSteamId, reason } once per failure; null when none queued. */
+  steam_get_pending_session_request_error: PendingSessionRequestError | null;
+  /** PASS1-BUG-21: Absolute filesystem path to debug.log; null only if env vars are missing (effectively never). */
+  steam_get_debug_log_path: string | null;
 }
 
 /**
@@ -451,8 +483,9 @@ export async function createSteamLobby(
   // pollPendingResult now throws SteamIpcPollError when the bridge is broken
   // (issue MP-STEAM-20260422-042) — log the distinct cause and preserve the
   // null-return contract so callers can still fall back to the web backend.
+  let lobbyId: string | null;
   try {
-    return await pollPendingResult('steam_get_pending_lobby_id');
+    lobbyId = await pollPendingResult('steam_get_pending_lobby_id');
   } catch (err) {
     if (err instanceof SteamIpcPollError) {
       console.warn('[steamNetworking] createSteamLobby aborted by IPC error:', {
@@ -463,6 +496,15 @@ export async function createSteamLobby(
     }
     throw err;
   }
+  if (lobbyId) {
+    // ULTRATHINK 021: Dedup our own SteamID against the lobby member list.
+    // Two Steam clients on the same machine sharing a single Steam account makes
+    // both clients members with the SAME SteamID — host's peer-finding filter
+    // returns empty and the second client never receives an Entered event.
+    // Surface this BEFORE the player wastes time waiting for a peer that won't appear.
+    await assertLocalSteamIdUniqueInLobby(lobbyId, 'createSteamLobby');
+  }
+  return lobbyId;
 }
 
 /**
@@ -496,6 +538,11 @@ export async function joinSteamLobby(lobbyId: string): Promise<string | null> {
   try {
     const result = await pollJoinResult();
     console.log('[steamNetworking] joinSteamLobby result', { lobbyId, result, error: null });
+    if (result) {
+      // ULTRATHINK 021: same SteamID dedup as createSteamLobby. Throws a player-actionable
+      // error when both clients in the lobby share a SteamID.
+      await assertLocalSteamIdUniqueInLobby(result, 'joinSteamLobby');
+    }
     return result;
   } catch (error) {
     console.log('[steamNetworking] joinSteamLobby result', { lobbyId, result: null, error: String(error) });
@@ -638,6 +685,75 @@ export async function getLocalSteamId(): Promise<string | null> {
 }
 
 /**
+ * ULTRATHINK 021: Verify the local SteamID appears EXACTLY once in the given lobby.
+ *
+ * Two Steam clients on the same machine sharing a single Steam account become
+ * members with the same SteamID. Host's filter returns empty, peer-finding fails,
+ * the host never sees an Entered event for the second client. Throws a
+ * player-actionable error so the lobby UI can surface it. Best-effort exit so the
+ * player isn't stranded as a phantom.
+ *
+ * No-op when Steam is unavailable, when local SteamID can't be resolved, or when
+ * the member list is empty (cold-join false negative is preferable to a spurious failure).
+ */
+async function assertLocalSteamIdUniqueInLobby(lobbyId: string, callsite: string): Promise<void> {
+  const localId = await getLocalSteamId();
+  if (!localId) return;
+  const members = await getLobbyMembers(lobbyId);
+  if (members.length === 0) return; // member list not warm yet — defer the check
+  const dupCount = members.filter((m) => m.steamId === localId).length;
+  if (dupCount <= 1) return;
+  const message = 'This Steam account appears to be in this lobby twice — multiplayer requires two distinct Steam accounts. Please sign in to a different Steam account on the second client.';
+  console.warn('[steamNetworking]', callsite, 'detected duplicate local SteamID in lobby', {
+    lobbyId,
+    localId,
+    dupCount,
+    memberIds: members.map((m) => m.steamId),
+  });
+  setLastSteamInvokeErrorForDedup(callsite, message);
+  try {
+    await leaveSteamLobby(lobbyId);
+  } catch {
+    // ignore — we are about to throw anyway
+  }
+  throw new Error(message);
+}
+
+function setLastSteamInvokeErrorForDedup(callsite: string, message: string): void {
+  lastInvokeError = { cmd: callsite, message };
+}
+
+// ── ULTRATHINK 056 / M-020 / PASS1-BUG-21: New polled diagnostic getters ──────
+
+/**
+ * ULTRATHINK 056 / H10-transport: Drain the most recent P2PSessionConnectFail event.
+ * One-shot poll. Returns null on non-Tauri builds and when the slot is empty.
+ */
+export async function getPendingP2PFail(): Promise<PendingP2PFail | null> {
+  if (!isTauriRuntime()) return null;
+  return (await invokeSteam('steam_get_pending_p2p_fail')) ?? null;
+}
+
+/**
+ * M-020: Drain the most recent session_request_callback.accept() failure.
+ * Returns null on non-Tauri builds. Note: due to the steamworks-rs 0.12 limitation
+ * documented in the Rust command doc, the slot may stay empty in practice.
+ */
+export async function getPendingSessionRequestError(): Promise<PendingSessionRequestError | null> {
+  if (!isTauriRuntime()) return null;
+  return (await invokeSteam('steam_get_pending_session_request_error')) ?? null;
+}
+
+/**
+ * PASS1-BUG-21: Get the absolute path to the Rust-redirected debug.log file for the dev panel.
+ * Returns null on non-Tauri builds. The file may not yet exist on first run.
+ */
+export async function getDebugLogPath(): Promise<string | null> {
+  if (!isTauriRuntime()) return null;
+  return (await invokeSteam('steam_get_debug_log_path')) ?? null;
+}
+
+/**
  * Return the Steam lobby owner's 64-bit SteamID as a decimal string, or `null`
  * when Steam is unavailable or the lobby isn't cached locally yet.
  *
@@ -701,18 +817,32 @@ export async function requestSteamLobbyData(lobbyId: string): Promise<boolean> {
 // ── P2P Messaging ─────────────────────────────────────────────────────────────
 
 /**
+ * MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-15: Shared P2P channel constant.
+ *
+ * All Steam P2P send/recv MUST use this constant rather than the historical
+ * default-arg pattern. The previous `default 0` convention was a silent footgun:
+ * a refactor could add an explicit channel on the send side without the matching
+ * change on the receive side, producing a complete P2P blackout with no runtime
+ * error — both peers would just silently see no traffic on the mismatched channel.
+ *
+ * Channel 0 is reserved for all Recall Rogue gameplay traffic. If a future feature
+ * needs an out-of-band channel, give it its own named constant — never reuse 0.
+ */
+export const MP_P2P_CHANNEL = 0;
+
+/**
  * Send a P2P message to a specific Steam user.
- * Messages are sent on `channel` (default 0).
+ * Messages are sent on `MP_P2P_CHANNEL` (channel 0) by default.
  * No-op on non-Steam platforms.
  *
  * @param steamId - Target user's Steam ID (64-bit as string)
  * @param data    - Serialized message payload (typically JSON)
- * @param channel - P2P channel index (default 0)
+ * @param channel - P2P channel index (defaults to MP_P2P_CHANNEL)
  */
 export async function sendP2PMessage(
   steamId: string,
   data: string,
-  channel: number = 0,
+  channel: number = MP_P2P_CHANNEL,
 ): Promise<boolean> {
   if (!isTauriRuntime()) return false;
   // BUG1: Rust returns Result<bool, String>. Ok(true) = sent, Ok(false) = steamworks send failure.
@@ -724,9 +854,9 @@ export async function sendP2PMessage(
  * Read all pending P2P messages waiting on a channel.
  * Returns an empty array on non-Steam platforms or when no messages are pending.
  *
- * @param channel - P2P channel index to read from (default 0)
+ * @param channel - P2P channel index to read from (defaults to MP_P2P_CHANNEL)
  */
-export async function readP2PMessages(channel: number = 0): Promise<SteamP2PMessage[]> {
+export async function readP2PMessages(channel: number = MP_P2P_CHANNEL): Promise<SteamP2PMessage[]> {
   if (!isTauriRuntime()) return [];
   return (await invokeSteam('steam_read_p2p_messages', { channel })) ?? [];
 }
@@ -787,7 +917,7 @@ export async function runSteamCallbacks(): Promise<void> {
  */
 export function startMessagePollLoop(
   onMessage: (msg: SteamP2PMessage) => void,
-  channel: number = 0,
+  channel: number = MP_P2P_CHANNEL,
   intervalMs: number = 16,
 ): () => void {
   if (!isTauriRuntime()) {

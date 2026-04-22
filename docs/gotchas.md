@@ -5586,3 +5586,20 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 **Detection:** Always verify the commit you just made. After `git commit`, run `git show <SHA> --stat --format=""` and confirm the file list matches what you intended. If it doesn't, re-commit using `--only`. Do NOT amend — the earlier commit may contain another agent's legitimate work that they'll want preserved under their own attribution.
 
 **Why not git worktrees:** Worktrees solve this entirely (each agent has a clean isolated tree), but the orchestrator chose the shared-checkout dispatch mode for this wave. `--only` is the workaround when worktrees aren't in use.
+
+### 2026-04-22 — steamworks-rs 0.12 `session_request_callback` / `session_failed_callback` silently de-register
+
+**What:** `NetworkingMessages::session_request_callback()` and `NetworkingMessages::session_failed_callback()` in steamworks-rs 0.12.2 register a callback against the messages-handle's `inner` Arc but DO NOT return the resulting `CallbackHandle`. The handle is dropped at the end of the registration call, which de-registers the callback immediately (CallbackHandle::Drop removes the entry from the inner callbacks HashMap). The callbacks therefore never fire in production builds.
+
+**Detection:** `grep "SessionRequest: accepting" debug.log` returns 0 occurrences across many sessions on a build that registered the callback. The `[Steam] session_request_callback registered (auto-accept)` log line appears once at startup (from our own eprintln next to the registration call), but the callback body never executes — confirming the auto-accept never happens.
+
+**Why the bug exists:** `session_request_callback` returns `()` instead of `CallbackHandle`. The internal `register_callback(...)` call does return a CallbackHandle (verified in steamworks-rs source `callback.rs:173`), but the public method discards it. This is a real upstream bug — the comment "Calling this function more than once will replace the previous callback" suggests the author intended persistent registration, but the implementation undermines that intent.
+
+**Workaround:** Two-pronged.
+1. Use `LobbyChatUpdate` for session acceptance — `client.register_callback::<LobbyChatUpdate, _>(...)` returns a real CallbackHandle that we store in `SteamState._lobby_chat_update_callback`. When a peer enters our lobby, the callback sends a zero-byte message back, which under SteamNetworkingMessages rules implicitly accepts the reverse direction.
+2. Use `client.register_callback::<P2PSessionConnectFail, _>(...)` for session-fail diagnostics — also returns a real CallbackHandle (stored in `SteamState._p2p_session_fail_callback`).
+
+**Field-level documentation:** `SteamState._session_request_callback` and `_session_failed_callback` markers stay unit-typed (`Option<()>`) until upstream returns a handle. Do NOT change to `Option<SendableCallbackHandle>` without verifying the upstream API has been fixed first.
+
+**Lesson:** A callback registration API that returns `()` instead of a guard handle is suspicious — verify the callback actually fires in production before relying on it. When in doubt, search the dependency source for `register_callback(` to see what the "real" callback API looks like and whether the convenience method discards the handle.
+

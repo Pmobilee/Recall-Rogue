@@ -1792,6 +1792,111 @@ This closes the ghost-player bug: previously a peer who crashed or lost network 
 
 ---
 
+## ULTRATHINK Wave 2 — Tauri Infra Hardening (2026-04-22, agent D)
+
+### LobbyChatUpdate active-lobby guard (issue 060 / PASS1-BUG-17)
+
+The active-lobby filter that originally guarded the LEFT arm (BUG-24) now wraps EVERY arm of the `LobbyChatUpdate` callback (Entered, Left, Disconnected, Kicked, Banned). Steam dispatches LobbyChatUpdate for every lobby the local user has ever been in; without this guard, stale Entered events would leak P2P primer messages to old peers, and stale Left events would synthesise a fake peer-left in the currently active lobby. Implementation in `src-tauri/src/steam.rs` `SteamState::new()`.
+
+### steamworks-rs 0.12 callback drop limitation (issue 059 / PASS1-BUG-16)
+
+`NetworkingMessages::session_request_callback()` and `session_failed_callback()` in steamworks-rs 0.12.2 register a callback against the messages-handle's `inner` Arc but do NOT return the resulting `CallbackHandle`. The handle is dropped at the end of the registration call, which de-registers the callback immediately. Verified empirically: `grep "SessionRequest: accepting" debug.log` returns 0 occurrences across many sessions.
+
+The actual session-acceptance mechanism that works is the `LobbyChatUpdate` callback (which DOES return a CallbackHandle we store in `_lobby_chat_update_callback`). When a peer enters our lobby, that callback sends a zero-byte message back, which under SteamNetworkingMessages rules implicitly accepts the reverse direction. Combined with `steam_prime_p2p_sessions` (called from JS after every join/create), this covers every realistic ConnectFailed pathway.
+
+The `_session_request_callback` and `_session_failed_callback` field markers on `SteamState` are unit-typed (`Option<()>`) because there is no handle to store. Do not change these to `Option<SendableCallbackHandle>` until upstream returns a handle.
+
+### P2PSessionConnectFail bridge (issue 056 / H10-transport)
+
+The legacy ISteamNetworking `P2PSessionConnectFail_t` callback is registered via `client.register_callback::<P2PSessionConnectFail, _>` which DOES return a real `CallbackHandle` (kept alive in `_p2p_session_fail_callback`). The legacy P2P API runs side-by-side with NetworkingMessages — every `send_message_to_user` underneath calls into the same connection layer that fires P2PSessionConnectFail_t for catastrophic failures.
+
+When the callback fires, it writes `Some((peer_steam_id_u64, error_code_u8))` to `SteamState.pending_p2p_fail`. The TS side polls via `steam_get_pending_p2p_fail` (one-shot take()) every ~1s while a Steam P2P session is active and surfaces non-null results as a local `mp:transport:p2p_fail` event so reconnect UI can react.
+
+EP2PSessionError codes:
+
+| Code | Meaning |
+|------|---------|
+| 1 | NotRunningApp — peer is online but the game isn't running |
+| 2 | NoRightsToApp — peer doesn't own the game |
+| 3 | DestinationNotLoggedIn — peer is offline |
+| 4 | Timeout — handshake never completed (NAT/firewall, most common) |
+| 5 | ConnectionLimitExceeded — peer is at max simultaneous P2P sessions |
+
+### session_request_callback.accept() failure surfacing (issue M-020)
+
+`session_request_callback` now writes `(peer_raw, reason)` to `SteamState.pending_session_request_error` when `request.accept()` returns false. The TS side drains via `steam_get_pending_session_request_error` (one-shot take()).
+
+KNOWN LIMITATION: due to the steamworks-rs 0.12 handle-drop bug above, this slot may stay empty in practice. Wiring is in place for the eventual upstream fix; in the meantime, the player-visible signal usually arrives via the `mp:transport:p2p_fail` event from the legacy P2PSessionConnectFail callback.
+
+### Same-account-twice detection (issue 021)
+
+When two Steam clients on the same machine share a single Steam account, both become members of a lobby with the SAME SteamID. The host's peer-finding filter (`members.filter(m => m.steamId !== localId)`) returns an empty list and the host never receives an `Entered` event for the second client.
+
+`assertLocalSteamIdUniqueInLobby()` in `steamNetworkingService.ts` now runs after every successful `createSteamLobby` and `joinSteamLobby`. If the local SteamID appears more than once in the member list, it:
+
+1. Logs a structured warning with `lobbyId`, `localId`, `dupCount`, `memberIds`.
+2. Updates the `lastInvokeError` slot with the player-actionable message ("This Steam account appears to be in this lobby twice — multiplayer requires two distinct Steam accounts").
+3. Best-effort calls `leaveSteamLobby` so the player isn't stranded as a phantom.
+4. Throws an Error so the lobby UI surfaces it in the join/create error banner.
+
+### CSP injection (issue 044)
+
+`tauri.conf.json` now sets `app.security.csp = null`. With `null`, Tauri injects its default permissive CSP (allowing the IPC custom protocol, asset://localhost, and necessary inline scripts for the WebView host). Without this key, Tauri treated the field as "no CSP at all" and the WebView fell back to the strict default-src policy bundled with WebView2/WKWebView, which blocked tauri:// IPC in some recent WebView2 channels.
+
+### Windows stdio redirect (issue 041)
+
+ALREADY FIXED at commit `c9d24721d` (2026-04-22). `redirect_stdio_to_log_file()` in `main.rs` now uses `windows-sys` `SetStdHandle` for `STD_OUTPUT_HANDLE` and `STD_ERROR_HANDLE` on Windows targets. Without this, every Rust println / eprintln on Windows release builds vanished into the void and bug reports came back with empty `%LocalAppData%/Recall Rogue/debug.log`. `windows-sys = { version = "0.52", features = ["Win32_System_Console", "Win32_Foundation"] }` is target-gated to windows in Cargo.toml — zero cost on macOS/Linux.
+
+### `steam_request_lobby_data` no-op (issue M-021)
+
+steamworks-rs 0.12 does NOT expose a `request_lobby_data` method on `Matchmaking`, and the `steamworks::sys` re-export is crate-private. Calling the flat C API would require adding `steamworks-sys` as a direct dependency. Status: documented as a no-op in the Tauri command. The TS-side 200ms warm-up sleep gives the background callback pump time to process any LobbyDataUpdate_t events Steam dispatches on its own when the list response arrives. Verified: this is a steamworks-rs 0.12 library limitation, not a Recall Rogue bug.
+
+### steamworks-rs ↔ shipped DLL integrity check (issue 054)
+
+`scripts/steam-windows.sh` now performs a sanity check on `steam/windows-build/steam_api64.dll` before building: `wc -c` confirms the file is at least 100 KB (catches truncated/empty downloads), and the steamworks-rs version string from `Cargo.lock` is logged alongside the DLL size. This is intentionally cheap — no binary signature check, since that would break legitimately on every steamworks release.
+
+Currently steamworks-rs 0.12.2 ships with a 319,584-byte `steam_api64.dll` (matched in `steam/windows-build/`).
+
+### `steam_check_lobby_membership` registration (issue 040)
+
+`steam_check_lobby_membership` was declared in `steam.rs` but missing from the `main.rs` `invoke_handler` registry — calling it from TS returned an immediate "command not found" rejection. Now registered alongside the other Steam commands. The H9 reconnect path can use it as the lighter-weight alternative to `getLobbyMembers()` (avoids fetching all member personas just to check existence).
+
+### `steam_get_debug_log_path` (issue PASS1-BUG-21)
+
+New Tauri command that returns the absolute path to the redirected debug.log. Mirrors the platform-specific path selection in `main.rs::redirect_stdio_to_log_file`:
+
+| Platform | Path |
+|----------|------|
+| macOS | `~/Library/Logs/Recall Rogue/debug.log` |
+| Windows | `%LocalAppData%/Recall Rogue/debug.log` |
+| Linux | `~/.cache/recall-rogue/debug.log` |
+
+Surfaced in the TS layer via `getDebugLogPath()`. Intended for the dev diagnostic panel so players (and bug-report intake) can copy the path without remembering the per-OS convention.
+
+### `warnIfBroadcastInTauri()` helper (issue 045)
+
+Added to `platformService.ts`. BroadcastChannel is browser-only and works only across same-origin tabs. Two Tauri windows are separate processes with separate webview origins, so BroadcastChannel messages NEVER cross between them. The `?mp` URL flag is a developer convenience for the two-tab browser dev path; when it survives into a packaged Tauri Steam build the lobby silently never connects.
+
+`warnIfBroadcastInTauri(selectedBackend)` returns true (and logs once per session) when `selectedBackend === 'broadcast'` AND `isTauriPresent()` is true. Caller is `pickBackend()` in `multiplayerLobbyService.ts` (Agent A's territory; the helper is exposed for Agent A to wire). The platform-level warn is the "lower-risk option" from the issue brief — does not change routing, just makes the misconfiguration loud.
+
+### TODO(reconnect) status (issue 055)
+
+Rust side: `steam_check_lobby_membership` is now registered (issue 040). TS side wiring (`reestablishSteamP2PSession` in `multiplayerTransport.ts` switching from `getLobbyMembers()` to the new dedicated command) deferred — `multiplayerTransport.ts` is owned by another agent in this wave. The current TODO comment in `multiplayerTransport.ts:1136` accurately states the situation: "Until that command ships, we use getLobbyMembers() which already exists. This is slightly heavier (fetches all member data) but correct for V1 since lobbies are small (2–4 players)." With the command now registered, the change in `multiplayerTransport.ts` is a one-line replacement and can land in a future wave.
+
+### New TS exports (`src/services/steamNetworkingService.ts`)
+
+```typescript
+export interface PendingP2PFail { peerSteamId: string; errorCode: number }
+export interface PendingSessionRequestError { peerSteamId: string; reason: string }
+export async function getPendingP2PFail(): Promise<PendingP2PFail | null>
+export async function getPendingSessionRequestError(): Promise<PendingSessionRequestError | null>
+export async function getDebugLogPath(): Promise<string | null>
+```
+
+`SteamCommandArgs` and `SteamCommandReturn` extended with the four new commands. `assertLocalSteamIdUniqueInLobby()` is module-private — callers exercise it indirectly through `createSteamLobby` and `joinSteamLobby`.
+
+---
+
 ## LAN on macOS — Permission and Firewall
 
 ### Local Network Permission (macOS 15+)

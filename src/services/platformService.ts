@@ -75,3 +75,36 @@ export function isTauriPresent(): boolean {
   _tauriPresent = !!((window as any).__TAURI_INTERNALS__ || (window as any).__TAURI__);
   return _tauriPresent;
 }
+
+
+/**
+ * ULTRATHINK 045: Warn if BroadcastChannel transport is selected while running inside Tauri.
+ *
+ * Background: BroadcastChannel is browser-only and works only across same-origin tabs.
+ * Two Tauri windows are separate processes with separate webview origins (Tauri assigns
+ * `tauri://localhost` per window in dev, custom protocol in prod), so BroadcastChannel
+ * messages NEVER cross between them. The `?mp` URL flag is a developer convenience for
+ * the two-tab browser dev path — when it survives into a packaged Tauri Steam build the
+ * lobby silently never connects.
+ *
+ * The actual `pickBackend()` decision lives in `multiplayerLobbyService.ts` which is
+ * owned by Agent A in this wave. To stay in our lane we expose a runtime-warn helper
+ * that any caller (lobby UI, debug overlay, Agent A's pickBackend) can use to surface
+ * the misconfiguration to the player. Logs once per session via the cached flag so
+ * we don't spam the console at every transport tick.
+ *
+ * Returns true if a warning was logged (i.e. broadcast was selected on Tauri).
+ */
+let _broadcastInTauriWarned = false;
+export function warnIfBroadcastInTauri(selectedBackend: string): boolean {
+  if (selectedBackend !== 'broadcast') return false;
+  if (!isTauriPresent()) return false;
+  if (_broadcastInTauriWarned) return true;
+  _broadcastInTauriWarned = true;
+  console.warn(
+    '[platformService] BroadcastChannel transport selected inside Tauri — messages will NOT cross between Tauri windows. ' +
+      'BroadcastChannel works only between same-origin browser tabs. In a packaged Steam build, remove `?mp` from the launch args ' +
+      'and let pickBackend route to the Steam P2P backend instead.',
+  );
+  return true;
+}
