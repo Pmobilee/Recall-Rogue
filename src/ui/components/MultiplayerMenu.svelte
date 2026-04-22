@@ -448,75 +448,78 @@
             {/each}
           </ul>
 
-          <!-- Visibility picker -->
-          <div class="visibility-section" data-testid="create-visibility">
-            <span class="visibility-label">Who can join</span>
-            <div class="radio-pills" role="radiogroup" aria-label="Lobby visibility">
-              {#each (['public', 'password', 'friends_only'] as LobbyVisibility[]) as vis}
-                {@const visLabels: Record<LobbyVisibility, string> = { public: 'Public', password: 'Password', friends_only: 'Friends Only' }}
-                {@const isFriendsDisabled = vis === 'friends_only' && !hasSteam}
-                <label
-                  class="pill-label"
-                  class:active={selectedVisibility === vis}
-                  class:pill-disabled={isFriendsDisabled}
-                  title={isFriendsDisabled ? 'Steam only — invite friends via code instead.' : undefined}
-                >
-                  <input
-                    type="radio"
-                    name="create-visibility"
-                    value={vis}
-                    checked={selectedVisibility === vis}
-                    disabled={isFriendsDisabled}
-                    onchange={() => handleVisibilitySelect(vis)}
-                  />
-                  {visLabels[vis]}
-                </label>
-              {/each}
-            </div>
-            {#if selectedVisibility === 'password'}
-              <div class="password-row">
-                <div class="password-input-wrap">
-                  <input
-                    class="password-input"
-                    class:password-input--error={!!passwordError}
-                    data-testid="create-password-input"
-                    type={showPasswordText ? 'text' : 'password'}
-                    placeholder="Lobby password"
-                    minlength={4}
-                    maxlength={32}
-                    bind:value={passwordValue}
-                    oninput={() => { if (passwordError) passwordError = '' }}
-                    aria-label="Lobby password"
-                    aria-describedby={passwordError ? 'create-password-error' : undefined}
-                  />
-                  <button
-                    class="eye-btn"
-                    type="button"
-                    onclick={() => { showPasswordText = !showPasswordText }}
-                    aria-label={showPasswordText ? 'Hide password' : 'Show password'}
-                    title={showPasswordText ? 'Hide' : 'Show'}
-                  >{showPasswordText ? '&#128064;' : '&#128065;'}</button>
-                </div>
-                {#if passwordError}
-                  <p id="create-password-error" class="password-error" role="alert">{passwordError}</p>
-                {/if}
+          <!-- Visibility + lobby name — side-by-side row to save vertical space -->
+          <div class="create-row">
+            <!-- Visibility picker -->
+            <div class="visibility-section" data-testid="create-visibility">
+              <span class="visibility-label">Who can join</span>
+              <div class="radio-pills" role="radiogroup" aria-label="Lobby visibility">
+                {#each (['public', 'password', 'friends_only'] as LobbyVisibility[]) as vis}
+                  {@const visLabels: Record<LobbyVisibility, string> = { public: 'Public', password: 'Password', friends_only: 'Friends Only' }}
+                  {@const isFriendsDisabled = vis === 'friends_only' && !hasSteam}
+                  <label
+                    class="pill-label"
+                    class:active={selectedVisibility === vis}
+                    class:pill-disabled={isFriendsDisabled}
+                    title={isFriendsDisabled ? 'Steam only — invite friends via code instead.' : undefined}
+                  >
+                    <input
+                      type="radio"
+                      name="create-visibility"
+                      value={vis}
+                      checked={selectedVisibility === vis}
+                      disabled={isFriendsDisabled}
+                      onchange={() => handleVisibilitySelect(vis)}
+                    />
+                    {visLabels[vis]}
+                  </label>
+                {/each}
               </div>
-            {/if}
-          </div>
+              {#if selectedVisibility === 'password'}
+                <div class="password-row">
+                  <div class="password-input-wrap">
+                    <input
+                      class="password-input"
+                      class:password-input--error={!!passwordError}
+                      data-testid="create-password-input"
+                      type={showPasswordText ? 'text' : 'password'}
+                      placeholder="Lobby password"
+                      minlength={4}
+                      maxlength={32}
+                      bind:value={passwordValue}
+                      oninput={() => { if (passwordError) passwordError = '' }}
+                      aria-label="Lobby password"
+                      aria-describedby={passwordError ? 'create-password-error' : undefined}
+                    />
+                    <button
+                      class="eye-btn"
+                      type="button"
+                      onclick={() => { showPasswordText = !showPasswordText }}
+                      aria-label={showPasswordText ? 'Hide password' : 'Show password'}
+                      title={showPasswordText ? 'Hide' : 'Show'}
+                    >{showPasswordText ? '&#128064;' : '&#128065;'}</button>
+                  </div>
+                  {#if passwordError}
+                    <p id="create-password-error" class="password-error" role="alert">{passwordError}</p>
+                  {/if}
+                </div>
+              {/if}
+            </div>
 
-          <!-- Lobby title (C1) — optional custom name shown in the browser -->
-          <div class="title-section" data-testid="create-title">
-            <label class="visibility-label" for="lobby-title-input">Lobby name</label>
-            <input
-              id="lobby-title-input"
-              data-testid="lobby-title-input"
-              class="title-input"
-              type="text"
-              maxlength="40"
-              placeholder="Name this lobby (optional)"
-              bind:value={titleValue}
-              aria-label="Lobby name, optional"
-            />
+            <!-- Lobby title (C1) — optional custom name shown in the browser -->
+            <div class="title-section" data-testid="create-title">
+              <label class="visibility-label" for="lobby-title-input">Lobby name</label>
+              <input
+                id="lobby-title-input"
+                data-testid="lobby-title-input"
+                class="title-input"
+                type="text"
+                maxlength="40"
+                placeholder="Name this lobby (optional)"
+                bind:value={titleValue}
+                aria-label="Lobby name, optional"
+              />
+            </div>
           </div>
 
           <div class="create-footer">
@@ -854,8 +857,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    overflow-y: auto;
-    padding: calc(32px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    overflow: hidden;
+    padding: calc(20px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
   }
 
   .mp-content-card {
@@ -916,21 +919,21 @@
 
   /* ===== Tab panels ===== */
   .tab-panel {
-    padding: calc(20px * var(--layout-scale, 1));
+    padding: calc(16px * var(--layout-scale, 1));
   }
 
   /* ===== Mode list (Create tab) ===== */
   .mode-list {
     list-style: none;
-    margin: 0 0 calc(16px * var(--layout-scale, 1)) 0;
+    margin: 0 0 calc(12px * var(--layout-scale, 1)) 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: calc(8px * var(--layout-scale, 1));
   }
 
   .mode-card {
-    padding: calc(14px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid #2A2E38;
     border-radius: calc(8px * var(--layout-scale, 1));
@@ -995,14 +998,21 @@
     font-size: calc(12px * var(--text-scale, 1));
     color: #666;
     line-height: 1.45;
+    display: none;
+  }
+
+  .mode-card.selected .mode-desc {
+    display: block;
   }
 
   /* ===== Visibility picker (Create tab) ===== */
   .visibility-section {
-    margin-bottom: calc(16px * var(--layout-scale, 1));
+    margin-bottom: 0;
     display: flex;
     flex-direction: column;
     gap: calc(8px * var(--layout-scale, 1));
+    flex: 1;
+    min-width: 0;
   }
 
   .visibility-label {
@@ -1128,10 +1138,12 @@
 
   /* ===== Lobby title section (C1) ===== */
   .title-section {
-    margin-bottom: calc(16px * var(--layout-scale, 1));
+    margin-bottom: 0;
     display: flex;
     flex-direction: column;
     gap: calc(8px * var(--layout-scale, 1));
+    flex: 1;
+    min-width: 0;
   }
 
   .title-input {
@@ -1158,13 +1170,25 @@
     background: rgba(255, 215, 0, 0.03);
   }
 
+  /* ===== Create row (visibility + lobby name side-by-side) ===== */
+  .create-row {
+    display: flex;
+    gap: calc(16px * var(--layout-scale, 1));
+    align-items: flex-start;
+    margin-bottom: calc(12px * var(--layout-scale, 1));
+  }
+
   /* ===== Create footer ===== */
   .create-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: stretch;
     gap: calc(10px * var(--layout-scale, 1));
     padding-top: calc(4px * var(--layout-scale, 1));
+  }
+
+  .create-footer .primary-btn {
+    width: 100%;
   }
 
   /* ===== Join tab ===== */
