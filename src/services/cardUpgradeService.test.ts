@@ -81,7 +81,7 @@ describe('Foresight AP cost — mastery-gated 0→1 (BATCH-ULTRA Cluster G)', ()
 
   it('draw counts are correct across mastery levels', () => {
     expect(getMasteryStats('foresight', 0)?.drawCount).toBe(1);
-    expect(getMasteryStats('foresight', 1)?.drawCount).toBe(1);
+    expect(getMasteryStats('foresight', 1)?.drawCount).toBe(2); // balance update 16d875b3b: L1 draw raised 1→2
     expect(getMasteryStats('foresight', 2)?.drawCount).toBe(2);
     expect(getMasteryStats('foresight', 3)?.drawCount).toBe(2);
     expect(getMasteryStats('foresight', 4)?.drawCount).toBe(2);
