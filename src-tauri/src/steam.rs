@@ -154,6 +154,10 @@ impl SteamState {
                 // callback and the join_lobby closure are both called from the thread running
                 // `run_callbacks()` (the background pump), so no real concurrency concern.
                 // The raw callback fires before the call-result closure for the same tick.
+                // BUG24: Build the active_lobby_id Arc up-front so the LobbyChatUpdate callback
+                // can consult it to filter stale cross-lobby LEFT events. Shared with the struct
+                // field below.
+                let active_lobby: Arc<Mutex<Option<u64>>> = Arc::new(Mutex::new(None));
                 let pending_error_for_enter = Arc::new(Mutex::new(None::<String>));
                 let pending_error_ref = pending_error_for_enter.clone();
                 let lobby_enter_handle = client.register_callback(move |val: LobbyEnter| {
@@ -228,6 +232,14 @@ impl SteamState {
                 let client_for_chat = client.clone();
                 let pending_peer_left_for_cb = Arc::new(Mutex::new(None::<u64>));
                 let pending_peer_left_ref = pending_peer_left_for_cb.clone();
+                // BUG24 fix: verify the LobbyChatUpdate's lobby matches our currently-active
+                // lobby before recording a peer-left event. Steam fires LobbyChatUpdate for
+                // EVERY lobby we've been in (including stale ones post-leave), so without this
+                // guard the slot gets contaminated across lobbies: e.g. Mac A hosts lobby A,
+                // leaves it, joins lobby B — Steam fires "Mac B left lobby A" events on Mac A
+                // that arrive AFTER lobby B is active, causing the 1s poll to erroneously
+                // strip Mac B from lobby B's player list.
+                let active_lobby_id_for_chat = active_lobby.clone();
                 let lobby_chat_handle = client.register_callback(move |val: LobbyChatUpdate| {
                     // member_state_change is a flagset; Entered is the bit we care about.
                     if val.member_state_change == ChatMemberStateChange::Entered {
@@ -251,14 +263,26 @@ impl SteamState {
                         println!("[Steam] Auto-accept P2P for {}: {}", peer.raw(), ok);
                     } else {
                         // BUG17: Handle ungraceful exits — Left, Disconnected, Kicked, Banned.
-                        // These fire when a peer crashes or loses network without sending
-                        // mp:lobby:leave. We store the peer SteamID in pending_peer_left so
-                        // the TS side can synthesise a local mp:lobby:leave event.
+                        // BUG24: Only record if the event is for our ACTIVE lobby. Stale events
+                        // for lobbies we've already left can still arrive and would otherwise
+                        // clobber players in the new lobby (see comment on the callback above).
                         let peer = val.user_changed;
+                        let lobby_raw = val.lobby.raw();
+                        let active = active_lobby_id_for_chat.lock().ok().and_then(|s| *s);
+                        if active != Some(lobby_raw) {
+                            eprintln!(
+                                "[Steam] LobbyChatUpdate: peer {} LEFT stale lobby {} (active={:?} state={:?}) — ignoring",
+                                peer.raw(),
+                                lobby_raw,
+                                active,
+                                val.member_state_change,
+                            );
+                            return;
+                        }
                         eprintln!(
                             "[Steam] LobbyChatUpdate: peer {} LEFT lobby {} (state={:?}) — emitting local mp:lobby:leave",
                             peer.raw(),
-                            val.lobby.raw(),
+                            lobby_raw,
                             val.member_state_change,
                         );
                         if let Ok(mut slot) = pending_peer_left_ref.lock() {
@@ -343,7 +367,7 @@ impl SteamState {
                     pending_lobby_id: Arc::new(Mutex::new(None)),
                     pending_join_lobby_id: Arc::new(Mutex::new(None)),
                     pending_lobby_list: Arc::new(Mutex::new(None)),
-                    active_lobby_id: Arc::new(Mutex::new(None)),
+                    active_lobby_id: active_lobby,
                     pending_join_error: pending_error_for_enter,
                     _overlay_callback: Some(SendableCallbackHandle(overlay_handle)),
                     _lobby_enter_callback: Some(SendableCallbackHandle(lobby_enter_handle)),

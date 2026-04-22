@@ -1650,6 +1650,14 @@ function setupMessageHandlers(): void {
     _fireSubscribers(_raceProgressSubscribers, msg.payload as unknown as RaceProgress);
   });
 
+  // BUG24 defensive drain: when setupMessageHandlers runs for a new lobby,
+  // flush any stale pending_peer_left SteamID that was recorded for a prior
+  // lobby (before the Rust-side filter in BUG24 was active, or for any race).
+  // Belt-and-suspenders with the Rust-side lobby-match check.
+  if (hasSteam) {
+    void getPendingPeerLeft().catch(() => null);
+  }
+
   // BUG17: When on Steam, poll for ungraceful peer exits (app crash, network drop)
   // that never send mp:lobby:leave. The Rust LobbyChatUpdate callback writes the
   // departing peer's SteamID to pending_peer_left; we read and synthesise the event.
