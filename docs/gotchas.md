@@ -5339,3 +5339,24 @@ Ten-hour debugging pass that ended up rewriting large chunks of the Steam + LAN 
 - `shell:default` — preserves existing `tauri-plugin-shell` grants
 
 **Lesson:** Any new `@tauri-apps/api/*` surface added in TypeScript needs a matching `core:*:allow-*` permission added to `src-tauri/capabilities/default.json` — otherwise the IPC call is silently blocked at runtime. The TypeScript types compile and the frontend code runs; the failure only appears in console warns during a Tauri session. When fullscreen or window-resize IPC starts silently no-oping, check this file first.
+
+### 2026-04-22 — BUG 25: preSendBuffer/preConnectBuffer flush silently lost resolved-false sends
+
+**What broke:** Guest sends `mp:lobby:join` as the first message after `transport.connect()`. State is `'connecting'`, so the message is queued in `_preSendBuffer`. When `acceptP2PSession` resolves, the flush loop in `SteamP2PTransport.connect()` called `sendP2PMessage(...).catch(...)`. But `sendP2PMessage` returns `Promise<boolean>` (BUG 1/2 fix): a Steam-level send failure (ConnectFailed / NoConnection / session-not-yet-ready) resolves to `false`, not throws. The `.catch()` only catches throws, so `false` results were silently dropped with no retry and no log. On a slow join — where the reverse-direction session isn't fully accepted at the instant of flush — the host's `mp:lobby:join` handler never fired and the UI never added the guest to the player list. The exact symptom the user reported: "second player can join but the host does not see them join."
+
+**Fix:** Route both `_preSendBuffer` and `_preConnectBuffer` flushes through `_sendWithRetry` instead of raw `sendP2PMessage().catch()`. `_sendWithRetry` already handles the resolved-false case with 3 attempts at 0/200/500 ms plus `getP2PConnectionState` + `getSessionError` diagnostics on each failure. This was the third instance of the same class of bug (the original BUG 1/2 fixed the live-send path; the two buffer-flush paths were missed).
+
+**Lesson:** Every time a Rust Tauri command's return type is widened from `Result<(), String>` to `Result<bool, String>` (or equivalent), grep for EVERY call site of the TS wrapper and verify none of them use the old `.catch()`-only pattern. The diff is easy to miss because the call compiles clean — `.catch(e => ...)` is still valid on `Promise<boolean>`, it just never fires for resolved-false. Consider a small helper (e.g., `sendP2PMessageOrThrow`) that throws on false so the type system forces handling.
+
+### 2026-04-22 — MP debug overlay removed — log-only diagnostics from here out
+
+**What changed:** `src/ui/components/MpDebugOverlay.svelte` deleted. The overlay had five activation paths (URL param, build flag, localStorage, keyboard chord, auto-on in MP lobby) and still managed to add zero diagnostic value that wasn't already in `~/Library/Logs/Recall Rogue/debug.log`. Every bug it was meant to help catch (BUG 22 onLobbyUpdate clobber, BUG 23 onGameStart clobber, BUG 25 flush-path silent drop) landed past it and was eventually diagnosed from rrLog traces.
+
+**What stayed:** `src/services/mpDebugState.ts` still publishes to `window.__rrMpState` for console/devtools inspection. `setMpDebugState` is still called from `CardApp.svelte`, `multiplayerTransport.ts`, and `lanServerService.ts` — useful as a live state snapshot but no longer has a visual renderer.
+
+**Also in this commit:**
+- `rrLog('mp:rx', 'heartbeat', ...)` replaces `console.log/warn` in `startMessagePollLoop` so heartbeats actually land in debug.log — previously invisible, which left us unable to tell whether the 60 Hz poll loop was running during silent sessions.
+- `steam_read_p2p_messages` in Rust logs `receive_messages_on_channel ch=X drained=N first_sender=... first_bytes=...` when N > 0. Shows receive-side activity without flooding at idle.
+- `initPeerPresenceMonitor` only sends `mp:ping` when `peers.length > 0` — before this, the host accumulated unanchored pings in `_preConnectBuffer` during the peer-wait window, all of which flushed alongside the real handshake messages the instant the guest joined.
+
+**Lesson:** An on-screen debug overlay is a liability when the same information lives in a log file. The overlay hides behind activation gates, competes with gameplay UI, and reads stale state at 1 Hz; the log is always-on, append-only, and timestamp-correlatable. When the signal is diagnostic-only and the audience is the dev (not the player), prefer the log.

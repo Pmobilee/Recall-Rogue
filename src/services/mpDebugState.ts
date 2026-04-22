@@ -1,17 +1,18 @@
 /**
- * mpDebugState — shared window state publisher for MpDebugOverlay.
+ * mpDebugState — shared window state publisher for multiplayer diagnostics.
  *
  * Owns the shape of `window.__rrMpState`. Any service layer that wants to
- * expose multiplayer diagnostics writes here. The Svelte overlay reads it on a
- * 1 s polling interval.
+ * expose multiplayer diagnostics writes here.
  *
  * Usage:
  *   import { setMpDebugState } from './mpDebugState'
  *   setMpDebugState({ lobby: { id: '...', mode: 'race', playerCount: 2 } })
  *
- * The overlay (`MpDebugOverlay.svelte`) reads `window.__rrMpState` directly.
- * This module is the authoritative writer — nothing else should assign
- * `window.__rrMpState` directly.
+ * Consumed via console / devtools inspection of `window.__rrMpState`. The
+ * MpDebugOverlay UI was removed 2026-04-22 — on-screen diagnostic display is
+ * now handled exclusively by rrLog → `~/Library/Logs/Recall Rogue/debug.log`.
+ * This module is retained as the authoritative writer for the window snapshot
+ * so log lines can be cross-referenced with live state.
  */
 
 // ── Types ──────────────────────────────────────────────────────────────────────

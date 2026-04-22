@@ -211,7 +211,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import TriviaRoundScreen from './ui/components/TriviaRoundScreen.svelte'
   import RaceResultsScreen from './ui/components/RaceResultsScreen.svelte'
   import PlayerRosterPanel from './ui/components/PlayerRosterPanel.svelte'
-  import MpDebugOverlay from './ui/components/MpDebugOverlay.svelte'
   import { setMpDebugState } from './services/mpDebugState'
   import {
     createLobby,
@@ -723,7 +722,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
             contentSelection: lobby.contentSelection ? { ...lobby.contentSelection } : undefined,
           }
         : null
-      // Publish to window debug state so MpDebugOverlay can display it.
+      // Publish to window.__rrMpState for console/devtools inspection (MpDebugOverlay removed).
       if (lobby) {
         setMpDebugState({
           lobby: {
@@ -1572,8 +1571,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       }
     })
 
-    // Publish local Steam ID and player ID to the MP debug state so MpDebugOverlay
-    // can show them without re-fetching every refresh cycle.
+    // Publish local Steam ID and player ID to window.__rrMpState for console inspection
+    // (MpDebugOverlay removed 2026-04-22 — logging is the primary diagnostic channel).
     void import('./services/steamNetworkingService').then(async ({ getLocalSteamId }) => {
       const steamId = await getLocalSteamId()
       setMpDebugState({
@@ -2378,9 +2377,6 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       showTutorialButton={currentLobby === null && ($currentScreen === 'combat' || $currentScreen === 'dungeonMap')}
     />
   {/if}
-
-  <!-- Dev-only MP debug overlay: gated on $devMode, safe in prod -->
-  <MpDebugOverlay />
 
   <!-- Screen transition overlay -->
   <div

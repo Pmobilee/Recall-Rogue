@@ -41,6 +41,8 @@
  *   See docs/mechanics/multiplayer.md "Typed IPC contract" for the full rationale.
  */
 
+import { rrLog } from './rrLog';
+
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 /** Visibility level for a Steam lobby. */
@@ -746,18 +748,22 @@ export function startMessagePollLoop(
     for (const msg of messages) {
       onMessage(msg);
     }
-    // Emit heartbeat log every 5 seconds.
+    // Emit heartbeat every 5 seconds via rrLog so it lands in the Rust debug.log.
+    // Previously used console.log/warn which never made it to the file, so when a
+    // session went silent (no messages arriving) we had no way to tell whether the
+    // poll loop was even running.
     const now = Date.now();
     if (now - heartbeatWindowStart >= HEARTBEAT_WINDOW_MS) {
       const sinceStart = Math.floor((now - connectedSince) / 1000);
       const windowCount = heartbeatWindowCount;
       heartbeatWindowCount = 0;
       heartbeatWindowStart = now;
-      if (windowCount === 0 && sinceStart > 10) {
-        console.warn(`[mp:rx:heartbeat] channel=${channel} messagesLastWindow=0 sinceStart=${sinceStart}s WARN: no messages received in 5s window`);
-      } else {
-        console.log(`[mp:rx:heartbeat] channel=${channel} messagesLastWindow=${windowCount} sinceStart=${sinceStart}s`);
-      }
+      rrLog('mp:rx', 'heartbeat', {
+        channel,
+        messagesLastWindow: windowCount,
+        sinceStart,
+        silent: windowCount === 0 && sinceStart > 10,
+      });
     }
   }, intervalMs);
 

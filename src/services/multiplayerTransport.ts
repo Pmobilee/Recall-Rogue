@@ -601,24 +601,25 @@ export class SteamP2PTransport implements MultiplayerTransport {
         for (const msg of buffered) {
           emitToListeners(this.listeners, msg.type, msg);
         }
-        // C4: flush outbound messages that were queued while we were connecting
+        // C4 + BUG25: flush outbound messages that were queued while we were connecting.
+        // Route through _sendWithRetry so resolved-false results retry instead of being
+        // silently lost. The previous .catch()-only path ate any Steam send that returned
+        // Ok(false) — which is exactly what happens when a session is freshly established
+        // and the reverse direction isn't fully accepted yet. That's how mp:lobby:join was
+        // disappearing on a slow join (see 2026-04-22 log lobby 109775242685316628).
         const pendingSends = this._preSendBuffer.splice(0);
         if (pendingSends.length) rrLog('mp:tx', 'flushing preSendBuffer', { count: pendingSends.length });
         for (const pendingMsg of pendingSends) {
-          sendP2PMessage(this.peerId!, JSON.stringify(pendingMsg)).catch((e) => {
-            rrLog('mp:tx', 'pre-connect send failed', { type: pendingMsg.type, e: String(e) });
-          });
+          this._sendWithRetry(pendingMsg);
         }
-        // F-bufferUntilConnect: flush sends that were queued BEFORE connect() was
-        // ever called (host side, while waiting for peer to join).
+        // F-bufferUntilConnect + BUG25: same dead-retry fix as preSendBuffer. These are sends
+        // queued BEFORE connect() was ever called (host side, while waiting for peer to join).
         const preConnect = this._preConnectBuffer.splice(0);
         if (preConnect.length) rrLog('mp:tx', 'flushing preConnectBuffer', { count: preConnect.length });
         for (const pendingMsg of preConnect) {
           // Update senderId now that we know localId.
           pendingMsg.senderId = this.localId;
-          sendP2PMessage(this.peerId!, JSON.stringify(pendingMsg)).catch((e) => {
-            rrLog('mp:tx', 'pre-connect-queue send failed', { type: pendingMsg.type, e: String(e) });
-          });
+          this._sendWithRetry(pendingMsg);
         }
       })
       .catch((e) => {
@@ -1252,8 +1253,13 @@ export function initPeerPresenceMonitor(
     const now = Date.now();
     const peers = getPeerIds();
 
-    // Ping all known peers
-    transport.send('mp:ping', { from: localPlayerId });
+    // BUG26: only ping when at least one peer exists. Otherwise we pile up
+    // unanchored mp:ping messages in the host's preConnectBuffer during the
+    // peer-wait window — they flush once the guest finally joins, compete with
+    // the real handshake messages, and drown the debug log.
+    if (peers.length > 0) {
+      transport.send('mp:ping', { from: localPlayerId });
+    }
 
     // Check for stale peers (no pong within PEER_PONG_TIMEOUT_MS)
     for (const peerId of peers) {

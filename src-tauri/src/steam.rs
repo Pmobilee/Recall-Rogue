@@ -1170,7 +1170,8 @@ pub fn steam_read_p2p_messages(
         let messages = client
             .networking_messages()
             .receive_messages_on_channel(channel, 64);
-        let result = messages
+        let count = messages.len();
+        let result: Vec<SteamP2PMessage> = messages
             .iter()
             .map(|msg| {
                 // identity_peer() returns the sender when receiving via NetworkingMessages
@@ -1183,6 +1184,18 @@ pub fn steam_read_p2p_messages(
                 SteamP2PMessage { sender_id, data }
             })
             .collect();
+        // BUG25 diag: log the drain count (and first sender byte) when non-zero so
+        // we can distinguish "poll loop running but nothing arrived" from "something
+        // earlier in the stack dropped the message". Only logs non-empty drains to
+        // avoid flooding at 60 Hz when idle.
+        if count > 0 {
+            let first_sender = result.first().map(|m| m.sender_id.as_str()).unwrap_or("?");
+            let first_len = result.first().map(|m| m.data.len()).unwrap_or(0);
+            println!(
+                "[Steam] receive_messages_on_channel ch={} drained={} first_sender={} first_bytes={}",
+                channel, count, first_sender, first_len
+            );
+        }
         Ok(result)
     } else {
         Ok(vec![])
