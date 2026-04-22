@@ -1,7 +1,7 @@
 # Architecture Overview
 
 > **Purpose:** Documents the 3-layer architecture stack, boot sequence, and Svelte–Phaser communication pattern.
-> **Last verified:** 2026-03-31
+> **Last verified:** 2026-04-22
 > **Source files:** `src/main.ts`, `src/CardApp.svelte`, `src/game/CardGameManager.ts`, `src/services/encounterBridge.ts`, `src/services/gameFlowController.ts`, `src/services/storageBackend.ts`
 
 ---
@@ -78,6 +78,16 @@ The Svelte UI layer renders above the Phaser canvas using CSS `position: absolut
 3. Creates `new Phaser.Game(...)` with scenes: `BootScene`, `CombatScene`, `RewardRoomScene` (plus `BootAnimScene` when `startAnimation=true`).
 4. Registers `DepthLightingFX` custom pipeline.
 5. Subscribes to `layoutMode` store for future orientation-change handling via `handleLayoutChange()`.
+
+### Service Worker Strategy
+
+The SW registration block at the end of `src/main.ts` is environment-aware:
+
+- **Tauri desktop (Windows/macOS):** SW is never registered. Any previously registered SW is immediately unregistered and all caches cleared. Windows WebView2 processes service workers normally, and the navigation-fetch fallback in `sw.js` would serve a cached `/offline.html` on every cold start — players would see a stale offline screen. macOS WKWebView happened not to hit this path, but the SW still has no purpose in a packaged desktop build.
+- **Dev mode:** Same teardown as Tauri — prevents stale cached modules from breaking HMR.
+- **Web/PWA production:** SW registered normally for offline asset caching. Tauri detection uses `window.__TAURI_INTERNALS__ || window.__TAURI__` (same pattern as `platformService.ts`).
+
+`public/offline.html` remains in the repo for web and Android targets. It is NOT served in Tauri builds (the SW that would serve it is unregistered).
 
 ---
 

@@ -284,12 +284,22 @@ async function bootGame(): Promise<void> {
 bootGame()
 
 // Service Worker management.
-// In dev mode, actively unregister any stale SW and clear caches — the cache-first
-// strategy serves stale modules that break HMR and prevent code changes from reaching
-// the browser. In production, register the SW for offline asset caching.
+// Tauri desktop builds (Windows/macOS) must never register a SW — the asset protocol
+// doesn't match SW fetch interception, and on Windows WebView2 the navigation-fetch
+// fallback serves a cached /offline.html, causing the player to see a stale offline
+// screen on every cold start. (Windows Tauri stale-SW incident, see gotchas.)
+//
+// In dev mode OR inside Tauri, actively unregister any existing SW and clear all
+// caches — this self-heals installs that already cached an old SW. Only in a real
+// web/PWA production deploy (non-Tauri, non-dev) should the SW be registered.
 if ('serviceWorker' in navigator) {
-  if (import.meta.env.DEV) {
-    // Dev mode: tear down any existing SW to prevent stale cache issues
+  const isTauri = !!(
+    (window as { __TAURI_INTERNALS__?: unknown }).__TAURI_INTERNALS__ ||
+    (window as { __TAURI__?: unknown }).__TAURI__
+  )
+  if (import.meta.env.DEV || isTauri) {
+    // Tear down any existing SW and caches — prevents stale cache issues in dev
+    // and heals prior Tauri installs that incorrectly registered a SW.
     navigator.serviceWorker.getRegistrations().then(regs => {
       for (const r of regs) r.unregister()
     }).catch(() => {})

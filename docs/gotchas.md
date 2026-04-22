@@ -5360,3 +5360,15 @@ Ten-hour debugging pass that ended up rewriting large chunks of the Steam + LAN 
 - `initPeerPresenceMonitor` only sends `mp:ping` when `peers.length > 0` — before this, the host accumulated unanchored pings in `_preConnectBuffer` during the peer-wait window, all of which flushed alongside the real handshake messages the instant the guest joined.
 
 **Lesson:** An on-screen debug overlay is a liability when the same information lives in a log file. The overlay hides behind activation gates, competes with gameplay UI, and reads stale state at 1 Hz; the log is always-on, append-only, and timestamp-correlatable. When the signal is diagnostic-only and the audience is the dev (not the player), prefer the log.
+
+### 2026-04-22 — Windows Tauri build started on stale "GAIA offline" screen
+
+**Symptom:** Fresh Windows Tauri build launched straight into a "NO SIGNAL / GAIA can't reach the surface. Retry Connection" screen. The copy was from an old diving-theme project. macOS builds never triggered this.
+
+**Root cause:** `src/main.ts` registered `/sw.js` unconditionally in any production build — including packaged Tauri desktop builds. The Windows WebView2 runtime processes service worker scope normally, so the SW installed and cached assets (including `/offline.html`) from the first launch. On subsequent launches, the SW's navigation-fetch handler detected a failed fetch against the Tauri asset protocol (`tauri://localhost/...`) and fell back to serving the cached `/offline.html`. macOS WKWebView does not hit this code path.
+
+The old `offline.html` still contained copy from a previous project ("GAIA can't reach the surface… your dive progress is safe") because the global-rename pass updated code and configs but didn't revisit the static fallback page.
+
+**Fix:** Detect Tauri via `window.__TAURI_INTERNALS__ || window.__TAURI__` (same pattern as `platformService.ts` and `multiplayerTransport.ts`). In Tauri builds or dev mode, proactively unregister all existing SWs and clear all caches — this self-heals installs that already registered the SW. Only in a true web/PWA production deploy (non-Tauri, non-dev) is `/sw.js` registered. `public/offline.html` was also rewritten with Recall Rogue copy to prevent the old-project text from surfacing on any remaining web/Android targets.
+
+**Lesson:** Service worker registration should check the runtime environment. PWA caching logic that made sense for web deploys has no business running inside a packaged desktop app, and WebView2 doesn't guard against it the way macOS WKWebView does.
