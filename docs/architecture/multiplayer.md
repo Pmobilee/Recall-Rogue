@@ -1157,3 +1157,39 @@ Guest:
                   [timeout] → fall through to local enemy
                   [success] → hydrateEnemyFromSnapshot
 ```
+
+---
+
+## Trivia Night — Screen Wiring (L-028, 2026-04-22)
+
+**Source files:** `src/CardApp.svelte`, `src/ui/components/TriviaRoundScreen.svelte`, `src/services/triviaNightService.ts`
+
+### How TriviaRoundScreen receives live state
+
+`TriviaRoundScreen.svelte` is mounted in `CardApp.svelte` under `{#if $currentScreen === 'triviaRound' && _triviaGameState}`. Three `$state` variables drive it:
+
+| Variable | Type | Source |
+|---|---|---|
+| `_triviaGameState` | `TriviaGameState \| null` | `onTriviaStateChange` subscription |
+| `_triviaCurrentQuestion` | `TriviaQuestion \| null` | `onTriviaStateChange` (re-reads `state.currentQuestion`) |
+| `_triviaLastRoundResult` | `TriviaRoundResult \| null` | `onTriviaRoundResult` subscription |
+
+A `$effect` block registers these subscriptions for the lifetime of the app (cleanup on unmount). On each state change from the trivia service, the variables update reactively and the component re-renders.
+
+`initTriviaGame()` is called in the `onGameStart` callback (inside the main multiplayer effect) for `trivia_night` mode. It seeds `_gameState` in the service. The `$effect` subscription picks up the initial state via `getTriviaState()` at effect mount time, then tracks mutations.
+
+### Answer submission
+
+`onAnswer={(selectedIndex, timingMs) => { submitAnswer(selectedIndex, timingMs) }}` — the component calls `submitAnswer` from `triviaNightService` directly. The service broadcasts the answer to the host, which resolves the round and emits `mp:trivia:scores`.
+
+### Screen lifecycle
+
+1. `initTriviaGame()` fires → service state goes to `phase: 'waiting'` → `_triviaGameState` set.
+2. `initTriviaMessageHandlers()` fires → transport listeners active.
+3. `currentScreen.set('triviaRound')` fires (must be called by the trivia mode game flow).
+4. `TriviaRoundScreen` mounts, shows "waiting" phase.
+5. Host calls `hostNextQuestion()` → broadcasts `mp:trivia:question` → `_triviaCurrentQuestion` updates → screen shows question.
+6. Player answers → `submitAnswer()` → service emits `mp:trivia:scores` → `_triviaLastRoundResult` updates → reveal phase.
+7. Host calls `hostEndGame()` → `mp:trivia:end` → `phase: 'finished'` → final leaderboard.
+
+Note: `currentScreen.set('triviaRound')` is the caller's responsibility — the trivia service does not navigate. The host must trigger this transition after lobby start, typically from the run's dungeon map flow for trivia_night mode.

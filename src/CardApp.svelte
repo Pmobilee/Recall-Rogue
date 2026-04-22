@@ -243,7 +243,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   } from './services/multiplayerCoopSync'
   import type { LobbyState, RaceProgress, RaceResults, MultiplayerMode, LobbyContentSelection, LobbyVisibility } from './data/multiplayerTypes'
   import { computeRaceScore } from './services/multiplayerScoring'
-  import { initTriviaGame, initTriviaMessageHandlers, DEFAULT_ROUNDS } from './services/triviaNightService'
+  import { initTriviaGame, initTriviaMessageHandlers, DEFAULT_ROUNDS, getTriviaState, onTriviaStateChange, onTriviaRoundResult, submitAnswer } from './services/triviaNightService'
+  import type { TriviaGameState, TriviaQuestion, TriviaRoundResult } from './services/triviaNightService'
 
   // Update Steam Rich Presence whenever the active screen changes.
   $effect(() => {
@@ -613,6 +614,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
    * Module-scoped so the $effect cleanup can reach it alongside _pendingGameMessageCleanup.
    */
   let _pendingTriviaCleanup: (() => void) | null = null
+
+  // L-028 / H-015: Live trivia state for TriviaRoundScreen.
+  // Seeded by onTriviaStateChange subscription below; null before trivia_night mode starts.
+  let _triviaGameState = $state<TriviaGameState | null>(null)
+  let _triviaCurrentQuestion = $state<TriviaQuestion | null>(null)
+  let _triviaLastRoundResult = $state<TriviaRoundResult | null>(null)
 
   /** Live map node picks across all players, refreshed via multiplayerMapSync. */
   let mapNodePicks = $state<Record<string, string | null>>({})
@@ -1023,6 +1030,27 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       // FIX MP-STEAM-20260422-017: clean up trivia message handlers for trivia_night
       _pendingTriviaCleanup?.()
       _pendingTriviaCleanup = null
+    }
+  })
+
+  // L-028 / H-015: Subscribe to trivia service state so TriviaRoundScreen receives live data.
+  // This effect runs for the lifetime of the app. The subscription callbacks are no-ops when
+  // _gameState is null (before initTriviaGame fires), so there is no risk of stale reads.
+  $effect(() => {
+    // Seed initial state in case the screen mounts after initTriviaGame has already run.
+    const initial = getTriviaState()
+    if (initial) _triviaGameState = initial
+
+    const unsubState = onTriviaStateChange((state) => {
+      _triviaGameState = state
+      _triviaCurrentQuestion = state.currentQuestion
+    })
+    const unsubResult = onTriviaRoundResult((result) => {
+      _triviaLastRoundResult = result
+    })
+    return () => {
+      unsubState()
+      unsubResult()
     }
   })
 
@@ -2468,16 +2496,19 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   {/if}
 
 
-  {#if $currentScreen === 'triviaRound'}
+  {#if $currentScreen === 'triviaRound' && _triviaGameState}
     <div in:fly={{ y: 8, duration: 350 }}>
-      <!-- Solo Trivia Night screen — wired from multiplayer mode for standalone play.
-           See BATCH-ULTRA T7 issue-1775873221654-07-004. -->
+      <!-- L-028 / H-015: TriviaRoundScreen is now bound to live trivia service state.
+           _triviaGameState is populated by the onTriviaStateChange subscription above,
+           which fires whenever initTriviaGame / phase transitions update the service.
+           The screen is only mounted when _triviaGameState is non-null (i.e. after
+           initTriviaGame has run for trivia_night mode). -->
       <TriviaRoundScreen
-        gameState={{ phase: 'waiting', players: [], standings: [], currentQuestion: null, currentRound: 0, totalRounds: 0, isHost: false }}
-        localPlayerId=""
-        currentQuestion={null}
-        lastRoundResult={null}
-        onAnswer={() => {}}
+        gameState={_triviaGameState}
+        localPlayerId={localPlayerId}
+        currentQuestion={_triviaCurrentQuestion}
+        lastRoundResult={_triviaLastRoundResult}
+        onAnswer={(selectedIndex, timingMs) => { submitAnswer(selectedIndex, timingMs) }}
         onPlayAgain={() => { currentScreen.set('multiplayerMenu'); }}
         onReturnToLobby={() => { currentScreen.set('multiplayerLobby'); }}
         onReturnToHub={() => { currentScreen.set('hub'); }}

@@ -721,7 +721,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -735,7 +735,8 @@
       "score": 50,
       "rank": 16,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolution": "All three components confirmed wired. L-028 stub props replaced with live service state."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-016",
@@ -1437,7 +1438,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1451,7 +1452,8 @@
       "score": 10,
       "rank": 38,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolution": "DuelOpponentPanel already wired at CardApp.svelte line ~2017 under {#if isMultiplayerRun && !isManyPlayerMode && currentLobby?.mode === duel} — confirmed non-orphan."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-L-027",
@@ -1468,7 +1470,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1482,7 +1484,8 @@
       "score": 10,
       "rank": 39,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolution": "RaceResultsScreen already wired at CardApp.svelte under {#if currentScreen === raceResults && activeRaceResults} — confirmed non-orphan."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-L-028",
@@ -1499,7 +1502,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1513,7 +1516,8 @@
       "score": 10,
       "rank": 40,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z"
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolution": "TriviaRoundScreen now receives live TriviaGameState via onTriviaStateChange subscription in CardApp. submitAnswer() wired to onAnswer prop. Screen gate changed from always-visible to _triviaGameState non-null."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-L-029",
