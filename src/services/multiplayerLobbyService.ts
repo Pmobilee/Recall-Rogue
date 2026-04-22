@@ -468,6 +468,7 @@ export async function createLobby(
   const sanitizedTitle = opts?.title ? sanitizeLobbyTitle(opts.title) : undefined;
 
   const backend = pickBackend();
+  rrLog('mp:lobby', 'backend picked', { entrypoint: 'createLobby', backend: _backendName(backend) });
   const result = await backend.createLobby({
     hostId: playerId,
     hostName: displayName,
@@ -594,6 +595,7 @@ export async function joinLobby(
 
   const passwordHash = password ? await hashPassword(password) : undefined;
   const backend = pickBackend();
+  rrLog('mp:lobby', 'backend picked', { entrypoint: 'joinLobby', backend: _backendName(backend) });
 
   // Resolve the code to a backend lobbyId.
   // BroadcastChannel mode returns null intentionally — the code IS the channel key.
@@ -723,6 +725,7 @@ export async function joinLobbyById(
 
   const passwordHash = password ? await hashPassword(password) : undefined;
   const backend = pickBackend();
+  rrLog('mp:lobby', 'backend picked', { entrypoint: 'joinLobbyById', backend: _backendName(backend) });
   const result = await backend.joinLobbyById(lobbyId, playerId, displayName, passwordHash);
 
   const broadcast = isBroadcastMode();
@@ -2125,6 +2128,17 @@ interface LobbyBackend {
 // ── pickBackend ───────────────────────────────────────────────────────────────
 
 /**
+ * M-022: Return a short human-readable name for a LobbyBackend instance.
+ * Used in rrLog calls at createLobby / joinLobby entrypoints to confirm which
+ * backend was selected (steam / broadcast / web / lan-web).
+ */
+function _backendName(b: LobbyBackend): string {
+  if (b === steamBackend) return 'steam';
+  if (b === broadcastBackend) return 'broadcast';
+  return isLanMode() ? 'lan-web' : 'web';
+}
+
+/**
  * Select the active LobbyBackend at call time.
  *
  * Priority:
@@ -2161,6 +2175,17 @@ function pickBackend(): LobbyBackend {
     tauriPresentLive: tauriPresent,
   });
   if (tauriPresent) return steamBackend;
+  // M-022: Hard-fail if we are in a Steam release build context (isDesktop=true means the
+  // module-load Tauri snapshot detected the desktop wrapper, so this is a packaged Steam build)
+  // but the live isTauriPresent() check returned false (Tauri globals not yet injected or stripped).
+  // Silently routing to webBackend in a Steam build would attempt Fastify WebSocket connections
+  // that do not exist in the Steam release, masking the real error. Throw here so the lobby
+  // creation/join surface the real failure instead of a mysterious "lobby not found" timeout.
+  if (isDesktop && !isBroadcastMode() && !isLanMode()) {
+    const msg = '[pickBackend] M-022: Steam build context (isDesktop=true) but isTauriPresent()=false — cannot fall through to webBackend in a Steam release. Tauri globals may not have injected yet.';
+    console.error(msg);
+    throw new Error(msg);
+  }
   return webBackend;
 }
 

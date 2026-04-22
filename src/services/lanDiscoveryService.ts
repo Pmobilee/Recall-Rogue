@@ -28,6 +28,8 @@
  * O(1) zero-config discovery once Tauri plugin support is confirmed.
  */
 
+import { rrLog as _log } from './rrLog';
+
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 /** Default LAN server port. Matches DEFAULT_PORT in lan.rs. */
@@ -48,6 +50,28 @@ const GATEWAY_PROBE_TIMEOUT_MS = 300;
  * router ranges.
  */
 const FALLBACK_SUBNETS = ['192.168.0', '192.168.1', '10.0.0', '10.0.1'];
+
+// ── M-023: Steam build gate ───────────────────────────────────────────────────
+
+/**
+ * Returns true when we are in a Steam release build where LAN scanning is
+ * not a supported path (no explicit ?lan=1 opt-in). Mirrors the logic in
+ * lanServerService._isSteamBuild().
+ */
+function _isSteamBuild(): boolean {
+  if (typeof window === 'undefined') return false;
+  const w = window as any;
+  if (!(w.__TAURI_INTERNALS__ || w.__TAURI__)) return false;
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('mp') || params.has('lan')) return false;
+  return true;
+}
+
+/**
+ * M-023: True when LAN scanning should be suppressed (Steam release without ?lan=1).
+ * Set at module-load time — mirrors LAN_DISABLED_IN_STEAM in lanServerService.
+ */
+const LAN_DISABLED_IN_STEAM = _isSteamBuild();
 
 /**
  * M3: Compact host-octet ranges for the default (non-fullScan) second pass.
@@ -276,6 +300,11 @@ export async function scanLanForServers(opts?: {
   subnets?: string[];
   fullScan?: boolean;
 }): Promise<DiscoveredLanServer[]> {
+  // M-023: Suppress LAN scanning in Steam release builds (no ?lan=1 opt-in).
+  if (LAN_DISABLED_IN_STEAM) {
+    _log('mp:lan', 'LAN disabled in Steam build — scanLanForServers is a no-op');
+    return [];
+  }
   const timeout = opts?.timeout ?? DEFAULT_PROBE_TIMEOUT_MS;
   const port = opts?.port ?? LAN_DEFAULT_PORT;
   const fullScan = opts?.fullScan ?? false;

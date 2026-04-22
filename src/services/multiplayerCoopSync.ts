@@ -64,7 +64,8 @@ if (typeof window !== 'undefined') {
 // -- Constants ----------------------------------------------------------------
 
 /** Hard timeout for turn-end barriers (ms). After this, the barrier resolves 'cancelled'. */
-const BARRIER_TIMEOUT_MS = 45_000;
+/** M-025: 15 s aligns with peer-presence 30 s pong grace; subsequent peer-left event cancels the barrier. */
+const BARRIER_TIMEOUT_MS = 15_000;
 
 /**
  * Interval at which co-op sync checks for a stale partner heartbeat (ms).
@@ -431,7 +432,7 @@ export function destroyCoopSync(): void {
  *   - The local player calls cancelCoopTurnEnd() before consensus.
  *   - A partner leaves the lobby while we are waiting (prevents stranding).
  *   - The transport disconnects while a barrier is in flight.
- *   - The 45-second hard timeout elapses with no consensus.
+ *   - The 15-second hard timeout elapses with no consensus.
  *
  * If no lobby exists or only the local player is connected, resolves immediately.
  */
@@ -457,7 +458,7 @@ export function awaitCoopTurnEnd(): Promise<'completed' | 'cancelled'> {
     return Promise.resolve('completed');
   }
 
-  // Otherwise wait for the barrier with a 45s hard timeout.
+  // Otherwise wait for the barrier with a 15s hard timeout.
   return new Promise<'completed' | 'cancelled'>((resolve) => {
     _pendingBarrierResolve = (result: 'completed' | 'cancelled') => {
       _pendingBarrierResolve = null;
@@ -472,7 +473,7 @@ export function awaitCoopTurnEnd(): Promise<'completed' | 'cancelled'> {
       resolve(result);
     };
 
-    // 45s hard timeout -- partner may be hung, crashed, or the transport silently dropped.
+    // 15s hard timeout -- partner may be hung, crashed, or the transport silently dropped.
     _barrierTimeoutHandle = setTimeout(() => {
       if (_pendingBarrierResolve) {
         coopLog('barrier timeout -- partner unresponsive');
@@ -504,7 +505,7 @@ export function awaitCoopTurnEnd(): Promise<'completed' | 'cancelled'> {
  *
  * Resolves 'completed' when every player has signaled.
  * Resolves 'cancelled' if a partner leaves mid-barrier, the transport disconnects,
- * or the 45-second hard timeout elapses.
+ * or the 15-second hard timeout elapses.
  *
  * The delta accumulator is cleared at the START of this call (fresh per turn).
  */
@@ -550,7 +551,7 @@ export function awaitCoopTurnEndWithDelta(delta: EnemyTurnDelta): Promise<'compl
     return Promise.resolve('completed');
   }
 
-  // Otherwise wait for the barrier with a 45s hard timeout.
+  // Otherwise wait for the barrier with a 15s hard timeout.
   return new Promise<'completed' | 'cancelled'>((resolve) => {
     _pendingBarrierResolve = (result: 'completed' | 'cancelled') => {
       _pendingBarrierResolve = null;
@@ -565,7 +566,7 @@ export function awaitCoopTurnEndWithDelta(delta: EnemyTurnDelta): Promise<'compl
       resolve(result);
     };
 
-    // 45s hard timeout.
+    // 15s hard timeout.
     _barrierTimeoutHandle = setTimeout(() => {
       if (_pendingBarrierResolve) {
         coopLog('barrier timeout -- partner unresponsive');
@@ -934,7 +935,7 @@ function _clearBarrierTimeout(): void {
  * If the transport is not connected while a barrier is in flight, cancel the barrier.
  *
  * We schedule a single check 2s after a barrier starts (fast enough to catch most
- * hard-disconnect cases without thrashing). The 45s timeout is the final backstop.
+ * hard-disconnect cases without thrashing). The 15s timeout is the final backstop.
  */
 function _scheduleDisconnectCheck(): void {
   setTimeout(() => {

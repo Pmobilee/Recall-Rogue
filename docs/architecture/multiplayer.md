@@ -64,7 +64,7 @@ Both clients (simultaneous turns)
 Player ends turn → handleEndTurn()
    Compute delta: { damageDealt, blockDealt, statusEffectsAdded }
    awaitCoopTurnEndWithDelta(delta)  ← BARRIER: waits for ALL players
-                                        45s hard timeout; resolves 'cancelled' on
+                                        15s hard timeout; resolves 'cancelled' on
                                         transport disconnect or peer leaving lobby
 
 [Barrier releases when all players have signaled]
@@ -171,7 +171,7 @@ When `mp:lobby:peer_left` fires, `multiplayerLobbyService.ts` marks the player a
 
 ### Co-op Barrier — Disconnect Handling (C3)
 
-`awaitCoopTurnEndWithDelta(delta)` also watches `_currentLobby.players.length`. If it drops below the expected count mid-barrier, the barrier resolves `'cancelled'` immediately. The **45s hard timeout** is a separate backstop for cases where the disconnect is not signaled via lobby state.
+`awaitCoopTurnEndWithDelta(delta)` also watches `_currentLobby.players.length`. If it drops below the expected count mid-barrier, the barrier resolves `'cancelled'` immediately. The **15s hard timeout** is a separate backstop for cases where the disconnect is not signaled via lobby state (aligns with peer-presence 30s pong grace; subsequent peer-left event cancels the barrier — M-025).
 
 ### Steam P2P Session Recovery (H9)
 
@@ -486,9 +486,12 @@ During a turn, P1 and P2 may see different enemy HP (each sees only their own da
 | 1 | `isBroadcastMode()` — URL has `?mp` | `broadcastBackend` | Explicit opt-in beats auto-detected Steam |
 | 2 | `isLanMode()` — `rr-lan-server` in localStorage (non-Steam build, or Steam with `?lan=1`) | `webBackend` | LAN mode for dev/LAN testing |
 | 3 | `isTauriPresent()` (live check) | `steamBackend` | Tauri + Steam builds |
-| 4 | (default) | `webBackend` | Web / mobile / CI |
+| 4 | `isDesktop && !isTauriPresent()` | **throws** | M-022: Steam build context but live Tauri check failed — hard-fail so the error surfaces instead of silently routing to Fastify WebSocket |
+| 5 | (default) | `webBackend` | Web / mobile / CI |
 
 `pickBackend()` uses a live `isTauriPresent()` check (not the module-load-time `hasSteam` constant) to avoid a packaging-order race on Steam builds. See `docs/gotchas.md` 2026-04-20 "Tauri v2 platform detection."
+
+**M-022:** If `isDesktop=true` (module-load Tauri snapshot detected) but `isTauriPresent()=false` at call time, `pickBackend()` throws rather than falling through to `webBackend`. Logged at `console.error` with context. In each `createLobby`/`joinLobby`/`joinLobbyById` call, the selected backend is logged via `rrLog('mp:lobby', 'backend picked', {entrypoint, backend})`.
 
 **FIX 019:** In a packaged Steam build, stale `rr-lan-server` localStorage is ignored unless `?lan=1` is present in the URL. This prevents a leftover dev artifact from routing Steam multiplayer through the web backend. Console warns when the flag is detected but ignored.
 
@@ -579,6 +582,8 @@ Two API-compatible server implementations:
 Both expose the same `/mp/*` endpoints. Port 19738 default.
 
 `lanServerService.ts` uses live `isTauriRuntime()` check (not stale `isDesktop`). `startLanServer()` has a 10s timeout — Rust-side hangs do not block the UI indefinitely.
+
+**M-023 Steam-build gating:** `startLanServer()`, `stopLanServer()`, `getLanServerStatus()` (lanServerService) and `scanLanForServers()` (lanDiscoveryService) are no-ops when `LAN_DISABLED_IN_STEAM` is true (i.e. `isTauriRuntime() && !?mp && !?lan`). These functions return `null`/empty/false and log `rrLog('mp:lan', 'LAN disabled in Steam build')`. LAN features are only active in Steam builds when the `?lan=1` URL flag is present (explicit developer opt-in).
 
 ### macOS 15 Requirements
 
@@ -871,6 +876,7 @@ Subscribers registered via `onGameStart` are intentionally NOT cleared in `leave
 | Date | Commits | What |
 |------|---------|------|
 | 2026-04-22 | (ULTRATHINK wave 2 — agent A: lobbyService) | #025 dropped `steam:<id>` placeholder host entry from joinLobby/joinLobbyById — hostId stays empty until first `mp:lobby:settings` arrives (placeholder ID never matched real `player_xxx` IDs and broke kick-signature + peer-left matchers). #026 `mp:lobby:settings` merge now preserves non-local players' `connectionState='reconnecting'` and real `multiplayerRating` against host's snapshot. #034 `onGameStart` JSDoc now documents that subscriber dedup is the consumer's responsibility (CardApp `$effect` cleanup must call returned unsubscribe; HMR/error-recovery re-mounts otherwise stack closures). #036 host now broadcasts a full settings snapshot every 5s via `startRosterReconciliation` — guests atomically replace roster on each beat; stopped on leaveLobby + status='in_game'. #037 every `mp:lobby:settings` carries a monotonic `seq`; guests reject `incoming.seq <= _lastSettingsSeqSeen`. #057 already resolved (no `as MultiplayerMessageType` cast remains). #058 `createLobby`/`joinLobby`/`joinLobbyById` now throw if `playerId === 'local_player'` or empty (regression guard against the legacy placeholder reaching the lobby and producing self-routed sends). #066 `setDeckSelectionMode` clears the abandoned variant (host_picks↔each_picks) so stale selections don't carry into the start payload. #067 `_handlersAttached` now scoped per-transport-instance (`_handlersAttachedTransport`) — addLocalBot's separate transport correctly re-attaches handlers in a session that already created the Steam transport. #070 `startGame` connected-count gate now excludes `connectionState==='reconnecting'` players (host can no longer start solo when partner is unreachable but still in roster). H-016 verified already fixed in FIX023 (ACK contentHash handshake at lines 1700/1721). PASS1-BUG-12 deferred — requires `transport.send()` returning `Promise<boolean>` (transport.ts owned by another agent in this wave). |
+| 2026-04-22 | (MP-STEAM-AUDIT Wave 5) | M-017: seeded RNG already present in catchUpMasteryService (verified). M-025: `BARRIER_TIMEOUT_MS` reduced 45→15s in multiplayerCoopSync (aligns with 30s pong grace; peer-left cancels barrier first). M-022: `pickBackend()` now throws with `console.error` when Steam build context (`isDesktop=true`) but `isTauriPresent()=false`; `rrLog('mp:lobby','backend picked')` added to all three lobby entrypoints. M-023: `LAN_DISABLED_IN_STEAM` constant + gate added to `lanServerService` (startLanServer/stopLanServer/getLanServerStatus) and `lanDiscoveryService` (scanLanForServers); no-ops when `isTauriRuntime() && !?mp && !?lan`. L-029: P2PSessionConnectFail_t callback, `pending_p2p_fail` slot, `steam_get_pending_p2p_fail` Tauri command, and `getPendingP2pFail()` TS wrapper all already present (verified). |
 | 2026-04-22 | (ULTRATHINK wave 1) | 7 fixes: FIX016 — mp:lobby:start handler already applied mode/deckId/houseRules (confirmed present); FIX018 — replaced module-load-time `hasSteam` constant with live `isTauriPresent()` calls at all 9 call sites; FIX019 — `pickBackend()` ignores LAN-mode localStorage in Steam builds unless `?lan=1` URL flag present; FIX020 — Fastify `mp:lobby:start` broadcast now forwards full host payload (mode/houseRules/deckId/contentSelection); FIX022 — `startNewRun` maps coop→multiplayer_coop, duel→multiplayer_duel, trivia_night→multiplayer_trivia (prevents coop from triggering race-progress broadcast); FIX023 — `mp:lobby:start` handler is idempotent on re-entry (re-sends ACK, returns early); FIX029 — send-retry exhaustion transitions transport to 'error' state instead of silently logging. |
 | 2026-04-22 | (Wave 2 — C-003/C-004/C-005/C-006/C-007/BUG-8/BUG-10) | C-003: race broadcast gated on `multiplayerModeState === 'race'` — coop/duel/same_cards no longer enter race loop. C-004: fork-seed broadcast added for coop — host calls `collectForkSeeds` + `broadcastForkSeeds` after `initRunRng`; guest receives via `mp:sync` handler extended to coop mode in `initGameMessageHandlers`. C-005: `multiplayerPlayerCount` threaded from lobby through `RunState` to `createEnemy` — `getCoopHpMultiplier` now applies 1.6× in 2P coop. C-006: `coopEffects.ts` orphan deleted (zero callers confirmed). C-007: `awaitCoopEnemyReconcile` timeout (5s) + retry via `requestCoopEnemyStateRetry` + 3-attempt auto-retry in `initCoopSync`. BUG-8: host self-fires `onGameStart` immediately on Steam P2P (no loopback); `_hostStartFired` guard prevents double-fire on BroadcastChannel/WS echo. BUG-10: initial `broadcastPartnerState` at encounter start so partner HUD shows correct starting HP. |
 | 2026-04-22 | (BUG-1/2/3/4/14 Wave 1) | Guest now applies `mode`/`deckId`/`houseRules` from `mp:lobby:start` payload (fixes independent-game split). BUG-2: defensive abort if mode still undefined after apply. BUG-3: ACK timeout aborts start + fires `onLobbyError` + evicts ghost guests instead of firing onGameStart with unreachable peers. BUG-4: `mp:lobby:start_ack` was already in `MultiplayerMessageType` union — removed stale `as` cast + TODO comment. 3 new regression tests. |

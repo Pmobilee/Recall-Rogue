@@ -14,6 +14,7 @@
 
 // ── Imports ──────────────────────────────────────────────────────────────────────
 import { setMpDebugState } from './mpDebugState';
+import { rrLog } from './rrLog';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -70,6 +71,33 @@ function isTauriRuntime(): boolean {
   const w = window as any;
   return !!(w.__TAURI_INTERNALS__ || w.__TAURI__);
 }
+
+/**
+ * M-023: Returns true when we are inside a Steam release build where LAN mode is
+ * NOT explicitly opted in (i.e. no ?lan=1 URL param). In this context, LAN server
+ * start/stop/scan functions are compile-out no-ops — LAN multiplayer is not a
+ * supported path in the Steam release unless the user explicitly forces it via
+ * the ?lan=1 flag.
+ *
+ * Conditions (mirrors pickBackend() logic in multiplayerLobbyService):
+ *   isTauriRuntime() && no ?mp broadcast flag && no ?lan=1 explicit opt-in
+ */
+function _isSteamBuild(): boolean {
+  if (!isTauriRuntime()) return false;
+  if (typeof window === 'undefined') return false;
+  const params = new URLSearchParams(window.location.search);
+  // ?mp = broadcast dev mode — not a Steam release context
+  if (params.has('mp')) return false;
+  // ?lan=1 = explicit LAN opt-in for Steam-build testing — allow LAN in this case
+  if (params.has('lan')) return false;
+  return true;
+}
+
+/**
+ * M-023: True when LAN server features should be gated (Steam release build without
+ * explicit ?lan=1 opt-in). Set once when the module loads.
+ */
+const LAN_DISABLED_IN_STEAM = _isSteamBuild();
 
 // ── Internal Tauri IPC helper ──────────────────────────────────────────────────
 
@@ -143,6 +171,11 @@ async function tauriInvokeOrThrow<T = unknown>(
 
 export async function startLanServer(port?: number): Promise<LanStartResult | null> {
   if (!isTauriRuntime()) return null;
+  // M-023: LAN server is disabled in Steam builds unless explicitly opted in via ?lan=1.
+  if (LAN_DISABLED_IN_STEAM) {
+    rrLog('mp:lan', 'LAN disabled in Steam build', { fn: 'startLanServer' });
+    return null;
+  }
   const args: Record<string, unknown> = {};
   if (port !== undefined) args['port'] = port;
 
@@ -184,6 +217,10 @@ export async function startLanServer(port?: number): Promise<LanStartResult | nu
  * was never started — the Rust backend ignores stop-when-idle.
  */
 export async function stopLanServer(): Promise<void> {
+  if (LAN_DISABLED_IN_STEAM) {
+    rrLog('mp:lan', 'LAN disabled in Steam build', { fn: 'stopLanServer' });
+    return;
+  }
   await tauriInvoke<void>('lan_stop_server');
   // BUG19: Clear LAN state from the debug overlay.
   setMpDebugState({ lan: null });
@@ -195,6 +232,10 @@ export async function stopLanServer(): Promise<void> {
  * Returns `{ running: false, port: null }` on non-Tauri platforms.
  */
 export async function getLanServerStatus(): Promise<LanServerStatus> {
+  if (LAN_DISABLED_IN_STEAM) {
+    rrLog('mp:lan', 'LAN disabled in Steam build', { fn: 'getLanServerStatus' });
+    return { running: false, port: null };
+  }
   const result = await tauriInvoke<LanServerStatus>('lan_server_status');
   return result ?? { running: false, port: null };
 }
