@@ -46,15 +46,20 @@ VM_HOSTNAME_PREFIX="${WIN_VM_HOSTNAME:-WIN-}"
 
 DO_BUILD=true
 DO_DEPLOY=false
+DO_INSTALL=false
 SETLIVE_BRANCH=""
 SKIP_NPM=false
 FRONTEND_ONLY=false
 VM_IP="${WIN_VM_IP:-}"
+# Where the VM has Steam installed. Override via WIN_STEAM_INSTALL env var.
+WIN_STEAM_INSTALL="${WIN_STEAM_INSTALL:-C:\\Program Files (x86)\\Steam\\steamapps\\common\\Recall Rogue}"
 
 for arg in "$@"; do
     case $arg in
         --deploy)           DO_DEPLOY=true ;;
         --deploy-only)      DO_DEPLOY=true; DO_BUILD=false ;;
+        --install)          DO_INSTALL=true ;;
+        --install-only)     DO_INSTALL=true; DO_BUILD=false ;;
         --setlive=*)        SETLIVE_BRANCH="${arg#*=}" ;;
         --skip-npm)         SKIP_NPM=true ;;
         --frontend-only)    FRONTEND_ONLY=true ;;
@@ -238,6 +243,17 @@ if $DO_DEPLOY; then
     fi
     BUILDID=$(grep -oE 'BuildID [0-9]+' "$UPLOAD_LOG" | head -1 | awk '{print $2}')
     green "    Steam BuildID: $BUILDID"
+    step_end
+fi
+
+if $DO_INSTALL; then
+    step_start "Installing to VM Steam folder ($WIN_STEAM_INSTALL)"
+    # Source: the artifacts we just staged on the VM side are still in
+    # /Users/$VM_USER/win-build-artifacts/. Copy from there to the VM's Steam
+    # install via PowerShell Copy-Item (VM-local; no Mac→VM retransfer).
+    ssh -o ConnectTimeout=10 "$VM_USER@$VM_IP" \
+        "powershell.exe -Command \"Copy-Item -Path '/Users/$VM_USER/win-build-artifacts/*' -Destination '$WIN_STEAM_INSTALL\\' -Force -Recurse\""
+    green "    Installed to: $WIN_STEAM_INSTALL"
     step_end
 fi
 
