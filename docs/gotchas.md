@@ -5324,3 +5324,18 @@ Ten-hour debugging pass that ended up rewriting large chunks of the Steam + LAN 
 2. `src/ui/components/MpDebugOverlay.svelte` adds `mpLobbyActive = $state(false)`, polled each second in the refresh `$effect`. Root gate changed from `{#if $devMode}` to `{#if $devMode || mpLobbyActive}`. When in a multiplayer lobby the overlay auto-shows regardless of devMode — provides a debug view during the current rebuild cycle without requiring a keychord.
 
 **Files:** `src/ui/stores/devMode.ts`, `src/ui/components/MpDebugOverlay.svelte`.
+
+### 2026-04-22 — Tauri v2 capabilities file was empty, fullscreen/setSize silently failed
+
+**What broke:** `src-tauri/gen/schemas/capabilities.json` was `{}` and no `src-tauri/capabilities/` directory existed. In Tauri v2, IPC calls to `@tauri-apps/api/window` commands (`setFullscreen`, `isFullscreen`, `setSize`, `innerSize`, `scaleFactor`, `center`, `isMaximized`, `unmaximize`) are gated by capability grants. With no capability file, every call returned a permission-denied error at runtime — silently logged as a console warn while the UI showed a dead toggle (the checkbox appeared to work but the window state never changed).
+
+**Root cause:** Tauri v2 changed from v1's allowlist (in `tauri.conf.json`) to a separate `src-tauri/capabilities/*.json` capability-grant system. The project had the `gen/schemas/desktop-schema.json` generated (130KB) but the `capabilities/` directory never created. The Tauri frontend JS bundle still imports and calls these APIs — it just has no IPC permission to invoke them.
+
+**Fix:** Added `src-tauri/capabilities/default.json` granting:
+- `core:default` + `core:window:default` — baseline
+- `core:window:allow-set-fullscreen` / `allow-is-fullscreen` — existing fullscreen toggle
+- `core:window:allow-set-size` / `allow-inner-size` / `allow-scale-factor` / `allow-center` — resolution dropdown
+- `core:window:allow-is-maximized` / `allow-unmaximize` — un-maximize before resize (required on Windows; `setSize` is silently ignored on a maximized window)
+- `shell:default` — preserves existing `tauri-plugin-shell` grants
+
+**Lesson:** Any new `@tauri-apps/api/*` surface added in TypeScript needs a matching `core:*:allow-*` permission added to `src-tauri/capabilities/default.json` — otherwise the IPC call is silently blocked at runtime. The TypeScript types compile and the frontend code runs; the failure only appears in console warns during a Tauri session. When fullscreen or window-resize IPC starts silently no-oping, check this file first.

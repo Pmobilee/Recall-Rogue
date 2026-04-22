@@ -139,6 +139,7 @@
   import { restoreRunRngState } from './services/seededRng'
   import { getLanguageCodeForDeck } from './services/deckOptionsService'
   import { isTurboMode } from './utils/turboMode'
+  import { setWindowResolution } from './services/fullscreenService'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -1595,6 +1596,21 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
     updateLayoutScale()
     window.addEventListener('resize', updateLayoutScale)
+
+    // Restore saved window resolution on boot (desktop only; no-op on web/mobile)
+    void ((): void => {
+      const saved = localStorage.getItem('rr-window-resolution')
+      if (saved) {
+        try {
+          const { width, height } = JSON.parse(saved) as { width: number; height: number }
+          if (typeof width === 'number' && typeof height === 'number') {
+            void setWindowResolution(width, height)
+          }
+        } catch {
+          // Malformed saved value — ignore silently
+        }
+      }
+    })()
 
     // Load curated decks in parallel — non-blocking, store handles empty state gracefully
     // Register procedural math decks into the shared deck registry

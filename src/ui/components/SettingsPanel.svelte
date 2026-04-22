@@ -35,7 +35,13 @@
   } from '../../services/notificationService'
   import { isLandscape } from '../../stores/layoutStore'
   import { answerDisplaySpeed, autoResumeAfterAnswer } from '../stores/settings'
-  import { toggleFullscreen, isFullscreen } from '../../services/fullscreenService'
+  import {
+    toggleFullscreen,
+    isFullscreen,
+    WINDOWED_RESOLUTIONS,
+    setWindowResolution,
+    getWindowResolution,
+  } from '../../services/fullscreenService'
   import { isMobile } from '../../services/platformService'
 
   interface Props {
@@ -177,6 +183,53 @@
     playCardAudio(newState ? 'toggle-on' : 'toggle-off')
     trackSettingChange('fullscreen', newState)
   }
+
+  // ── Window resolution dropdown (desktop windowed only) ──
+  const WINDOW_RES_KEY = 'rr-window-resolution'
+
+  /**
+   * The currently selected resolution preset label, or 'custom' when the window
+   * size does not match any entry in WINDOWED_RESOLUTIONS.
+   */
+  let selectedResolutionLabel = $state<string>('')
+
+  /**
+   * Non-null when the current window size does not match any preset.
+   * Used to render the disabled "Custom (W × H)" option at the top of the list.
+   */
+  let customResolution = $state<{ width: number; height: number } | null>(null)
+
+  $effect(() => {
+    // Preselect the dropdown to the current window size on mount.
+    // Only runs on desktop; getWindowResolution() returns null on web/mobile.
+    getWindowResolution().then((current) => {
+      if (!current) return
+      const match = WINDOWED_RESOLUTIONS.find(
+        (r) => r.width === current.width && r.height === current.height
+      )
+      if (match) {
+        selectedResolutionLabel = match.label
+        customResolution = null
+      } else {
+        // Non-standard size — show a disabled "Custom" entry
+        customResolution = { width: current.width, height: current.height }
+        selectedResolutionLabel = `custom_${current.width}_${current.height}`
+      }
+    })
+  })
+
+  async function handleResolutionChange(label: string): Promise<void> {
+    const preset = WINDOWED_RESOLUTIONS.find((r) => r.label === label)
+    if (!preset) return
+    selectedResolutionLabel = preset.label
+    customResolution = null
+    const ok = await setWindowResolution(preset.width, preset.height)
+    if (ok) {
+      localStorage.setItem(WINDOW_RES_KEY, JSON.stringify({ width: preset.width, height: preset.height }))
+      playCardAudio('toggle-on')
+      trackSettingChange('windowResolution', `${preset.width}x${preset.height}`)
+    }
+  }
 </script>
 
 {#if $isLandscape}
@@ -303,6 +356,26 @@
                 onclick={() => void handleFullscreenToggle()}
               />
             </label>
+            {#if !fullscreenActive}
+              <div class="setting-group">
+                <span class="setting-label">Resolution</span>
+                <select
+                  class="select-input"
+                  data-testid="select-window-resolution"
+                  value={selectedResolutionLabel}
+                  onchange={(event) => void handleResolutionChange((event.currentTarget as HTMLSelectElement).value)}
+                >
+                  {#if customResolution}
+                    <option value="custom_{customResolution.width}_{customResolution.height}" disabled>
+                      Custom ({customResolution.width} × {customResolution.height})
+                    </option>
+                  {/if}
+                  {#each WINDOWED_RESOLUTIONS as preset}
+                    <option value={preset.label}>{preset.label}</option>
+                  {/each}
+                </select>
+              </div>
+            {/if}
           {/if}
           <label class="toggle-row">
             <span>High Contrast</span>
@@ -502,6 +575,26 @@
             onclick={() => void handleFullscreenToggle()}
           />
         </label>
+        {#if !fullscreenActive}
+          <div class="setting-group">
+            <span class="setting-label">Resolution</span>
+            <select
+              class="select-input"
+              data-testid="select-window-resolution"
+              value={selectedResolutionLabel}
+              onchange={(event) => void handleResolutionChange((event.currentTarget as HTMLSelectElement).value)}
+            >
+              {#if customResolution}
+                <option value="custom_{customResolution.width}_{customResolution.height}" disabled>
+                  Custom ({customResolution.width} × {customResolution.height})
+                </option>
+              {/if}
+              {#each WINDOWED_RESOLUTIONS as preset}
+                <option value={preset.label}>{preset.label}</option>
+              {/each}
+            </select>
+          </div>
+        {/if}
       {/if}
 
       <label class="toggle-row">
@@ -1058,7 +1151,7 @@
     box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.25);
   }
 
-  /* Color-blind mode select dropdown */
+  /* Color-blind mode select dropdown — also used for resolution dropdown */
   .select-input {
     flex: 1;
     background: #1f2c42;
