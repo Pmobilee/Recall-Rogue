@@ -217,6 +217,55 @@ describe('calculateScoreForMode', () => {
       expect(score).toBe(550);
     });
   });
+
+  describe('coop mode (MP-STEAM-AUDIT-2026-04-22-L-030)', () => {
+    it('uses race formula plus partner-assist credit', () => {
+      const score = calculateScoreForMode('coop', {
+        floors: 3,
+        damage: 0,
+        chainMultiplier: 2,
+        correctCount: 10,
+        wrongCount: 2,
+        perfectEncounters: 1,
+        partnerCorrectCount: 12,
+        partnerWrongCount: 1,
+        partnerPerfectEncounters: 1,
+      });
+      // Solo: 300 + 0 + 100 + 100 - 10 + 200 = 690
+      // Partner: + 12*3 - 1*1 + 1*75 = 36 - 1 + 75 = 110
+      // Total: 800
+      expect(score).toBe(800);
+    });
+
+    it('partner credit is smaller than solo credit (3 vs 10, 1 vs 5, 75 vs 200)', () => {
+      const partnerOnly = calculateScoreForMode('coop', {
+        partnerCorrectCount: 10,
+        partnerWrongCount: 5,
+        partnerPerfectEncounters: 1,
+      });
+      const soloOnly = calculateScoreForMode('coop', {
+        correctCount: 10,
+        wrongCount: 5,
+        perfectEncounters: 1,
+      });
+      // Solo: 0 + 0 + 0 + 100 - 25 + 200 = 275
+      // Partner: 0 + 0 + 0 + 30 - 5 + 75 = 100
+      expect(soloOnly).toBe(275);
+      expect(partnerOnly).toBe(100);
+      expect(partnerOnly).toBeLessThan(soloOnly);
+    });
+
+    it('coop matches race formula when no partner stats are passed (back-compat)', () => {
+      const stats = { floors: 2, correctCount: 5, wrongCount: 1, perfectEncounters: 0 };
+      const coop = calculateScoreForMode('coop', stats);
+      const race = calculateScoreForMode('race', stats);
+      expect(coop).toBe(race);
+    });
+
+    it('zeroes when all stats omitted', () => {
+      expect(calculateScoreForMode('coop', {})).toBe(0);
+    });
+  });
 });
 
 // ── H2: both-defeated duel outcome ───────────────────────────────────────────

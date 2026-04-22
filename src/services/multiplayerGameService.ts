@@ -345,6 +345,18 @@ export interface ModeScoreStats {
   damageDealt?: number;
   /** Duel only — total damage taken across all turns. */
   damageTaken?: number;
+  /**
+   * Coop only — partner's correct-answer count this run. Each partner correct grants
+   * the local player a small assist credit (PARTNER_CORRECT_CREDIT). Combined with
+   * solo correctCount this rewards cooperative play without making score a duplicate
+   * of the partner's. Set by the coop endgame summary after both players' final
+   * `mp:coop:partner_state` messages have arrived.
+   */
+  partnerCorrectCount?: number;
+  /** Coop only — partner's wrong-answer count. Light penalty (PARTNER_WRONG_PENALTY). */
+  partnerWrongCount?: number;
+  /** Coop only — partner's perfect-encounter count. Each adds COOP_PARTNER_PERFECT_BONUS. */
+  partnerPerfectEncounters?: number;
 }
 
 /**
@@ -353,7 +365,10 @@ export interface ModeScoreStats {
  * - race / same_cards: floors*100 + damage + chain*50 + correct*10 - wrong*5 + perfectEncounters*200
  * - trivia_night: correctCount*100 + speedBonusTotal - wrongCount*25
  * - duel: (survived ? 1000 : 0) + damageDealt - damageTaken + correctCount*50
- * - coop: uses same formula as race (floor progression is the primary axis)
+ * - coop: race formula PLUS partner-assist credit
+ *         + partnerCorrectCount*3 - partnerWrongCount*1 + partnerPerfectEncounters*75
+ *         Partner terms are smaller than solo terms so score still primarily
+ *         reflects this player's contribution, not the team total.
  *
  * @param mode  - The multiplayer mode.
  * @param stats - Stats to feed into the formula.
@@ -365,8 +380,7 @@ export function calculateScoreForMode(mode: MultiplayerMode, stats: ModeScoreSta
 
   switch (mode) {
     case 'race':
-    case 'same_cards':
-    case 'coop': {
+    case 'same_cards': {
       const floors = stats.floors ?? 0;
       const damage = stats.damage ?? 0;
       const chain = stats.chainMultiplier ?? 0;
@@ -378,6 +392,34 @@ export function calculateScoreForMode(mode: MultiplayerMode, stats: ModeScoreSta
         correct * 10 -
         wrong * 5 +
         perfect * 200
+      );
+    }
+    case 'coop': {
+      // Coop scoring (MP-STEAM-AUDIT-2026-04-22-L-030):
+      //   Solo terms (floors / damage / chain / correct / wrong / perfect) match the race
+      //   formula so the bar feels familiar, then we add a partner-credit term so a player
+      //   who carries the deck-knowledge load on one side still gets recognised on the
+      //   other side's screen. Partner credit is intentionally smaller than solo credit
+      //   (3 vs 10, 1 vs 5, 75 vs 200) so the score still primarily tracks YOUR play —
+      //   you do not get a 2× score boost just by joining a strong partner.
+      const floors = stats.floors ?? 0;
+      const damage = stats.damage ?? 0;
+      const chain = stats.chainMultiplier ?? 0;
+      const perfect = stats.perfectEncounters ?? 0;
+      const partnerCorrect = stats.partnerCorrectCount ?? 0;
+      const partnerWrong = stats.partnerWrongCount ?? 0;
+      const partnerPerfect = stats.partnerPerfectEncounters ?? 0;
+      return (
+        floors * 100 +
+        damage +
+        chain * 50 +
+        correct * 10 -
+        wrong * 5 +
+        perfect * 200 +
+        // Partner-assist credit
+        partnerCorrect * 3 -
+        partnerWrong * 1 +
+        partnerPerfect * 75
       );
     }
     case 'trivia_night': {
@@ -557,6 +599,15 @@ export const SAME_CARDS_FORK_LABELS = [
   'factAssignment',
   'cardReward',
   'shopInventory',
+  // ULTRATHINK wave-2: forks added 2026-04-22 to keep coop deterministic for
+  // tag-magnet bias, transmute target mechanic, debuff target shuffles,
+  // catch-up mastery rolls, late-floor shop food roll, quiz framing roll.
+  'tagMagnetism',
+  'cardEffects',
+  'debuffTarget',
+  'catchUpMastery',
+  'shopFloor10Food',
+  'quizFraming',
 ] as const;
 
 /**

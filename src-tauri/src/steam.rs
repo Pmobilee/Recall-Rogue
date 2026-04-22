@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use steamworks::networking_types::{NetConnectionInfo, NetworkingConnectionState, NetworkingIdentity, SendFlags};
-use steamworks::{CallbackHandle, ChatMemberStateChange, Client, DistanceFilter, LobbyChatUpdate, LobbyEnter, LobbyId, LobbyType, SteamId};
+use steamworks::{CallbackHandle, ChatMemberStateChange, Client, DistanceFilter, LobbyChatUpdate, LobbyEnter, LobbyId, LobbyType, P2PSessionConnectFail, SteamId};
 use tauri::State;
 
 // D1: Wrap CallbackHandle so it can be stored in SteamState across threads.
@@ -77,17 +77,30 @@ pub struct SteamState {
     ///
     /// `None` when Steam failed to initialize (no thread is spawned in that case).
     _pump_shutdown: Option<std::sync::mpsc::Sender<()>>,
-    /// Keeps the SteamNetworkingMessages session_request_callback handle alive.
-    /// When the guest opens a new SteamNetworkingMessages session toward us, Steam fires
-    /// SteamNetworkingMessagesSessionRequest_t. Without this callback registered, the
-    /// default behavior is to reject the session — all subsequent sends from the guest
-    /// come back ConnectFailed. This callback auto-accepts every inbound session request
-    /// from any peer (we are in a dedicated lobby so any requester is our guest).
-    _session_request_callback: Option<()>, // handled via networking_messages().session_request_callback()
-    /// Keeps the SteamNetworkingMessages session_failed_callback handle alive.
-    /// Fires when a session fails for any reason, giving us the NetConnectionInfo
-    /// diagnostic (end_reason, state, identity_remote) that explains ConnectFailed.
-    _session_failed_callback: Option<()>, // handled via networking_messages().session_failed_callback()
+    /// ULTRATHINK 059 / PASS1-BUG-16: steamworks-rs 0.12 limitation marker.
+    ///
+    /// `NetworkingMessages::session_request_callback()` and `session_failed_callback()` in
+    /// steamworks-rs 0.12.2 register a callback against the messages-handle's `inner` Arc but
+    /// **do NOT return** the resulting `CallbackHandle`. The handle is dropped at the end of
+    /// the registration call, which de-registers the callback immediately (CallbackHandle::Drop
+    /// removes the entry from the inner callbacks HashMap). This is a real upstream bug — the
+    /// session_request_callback never fires in production builds (verified 2026-04-22 via
+    /// `grep "SessionRequest: accepting" debug.log` returning 0 occurrences across many sessions).
+    ///
+    /// The actual session-acceptance mechanism that works is the `LobbyChatUpdate` callback below,
+    /// which DOES return a CallbackHandle (we store it in `_lobby_chat_update_callback`). When a
+    /// peer enters our lobby, that callback fires and sends a zero-byte message back, which under
+    /// SteamNetworkingMessages rules implicitly accepts the reverse direction. Combined with the
+    /// `steam_prime_p2p_sessions` Tauri command (called from the JS side after every join/create),
+    /// this covers every realistic ConnectFailed pathway without depending on the broken
+    /// session_request callbacks.
+    ///
+    /// We still call `session_request_callback()` and `session_failed_callback()` in `new()` for
+    /// defensive coverage in case a future steamworks-rs release fixes the handle-dropping bug,
+    /// but the markers below are unit-typed (`Option<()>`) because there's no handle to store.
+    /// Do not change these to `Option<SendableCallbackHandle>` until upstream returns a handle.
+    _session_request_callback: Option<()>,
+    _session_failed_callback: Option<()>,
     /// BUG5: Maps peer SteamID (u64) → most recent session failure description.
     /// Written by session_failed_callback. Read by steam_get_session_error.
     /// Persistent (not one-shot) — the error is informational and can be read multiple times.
@@ -99,6 +112,27 @@ pub struct SteamState {
     /// by steam_get_pending_peer_left which calls take(). The TS side polls this slot
     /// at 1 s intervals while in a lobby and synthesises a local mp:lobby:leave event.
     pub pending_peer_left: Arc<Mutex<Option<u64>>>,
+    /// ULTRATHINK 056 / H10-transport: Stores the most recent P2PSessionConnectFail_t event
+    /// from the legacy ISteamNetworking callback. Written by the P2PSessionConnectFail handler
+    /// registered in `new()`. Mirrors `pending_peer_left` shape.
+    ///
+    /// Format: `Some((peer_steam_id_u64, error_code_u8))`.
+    /// One-shot: consumed by `steam_get_pending_p2p_fail` (take semantics).
+    /// The TS side polls this every 1 s alongside `getPendingPeerLeft` and surfaces the
+    /// failure as a `mp:transport:p2p_fail` local event so reconnect UI can react.
+    pub pending_p2p_fail: Arc<Mutex<Option<(u64, u8)>>>,
+    /// ULTRATHINK 056: Drop-guard for the P2PSessionConnectFail callback. Stored on
+    /// `SteamState` so it lives for the process — dropping it would de-register the callback.
+    _p2p_session_fail_callback: Option<SendableCallbackHandle>,
+    /// M-020: Surface session_request_callback.accept() failures so the TS layer can show
+    /// an actionable error to the player (the failure usually means Steam itself rejected
+    /// the session — most common cause is a Limited account or a region mismatch).
+    ///
+    /// Persistent slot keyed by raw peer SteamID; the TS poller reads-and-clears (take).
+    /// Currently this is best-effort because of the steamworks-rs 0.12 limitation noted on
+    /// `_session_request_callback` — if the callback never fires, this stays empty. Once
+    /// upstream returns a handle, this slot will start filling.
+    pub pending_session_request_error: Arc<Mutex<Option<(u64, String)>>>,
 }
 
 impl SteamState {
@@ -241,19 +275,38 @@ impl SteamState {
                 // strip Mac B from lobby B's player list.
                 let active_lobby_id_for_chat = active_lobby.clone();
                 let lobby_chat_handle = client.register_callback(move |val: LobbyChatUpdate| {
+                    // ULTRATHINK 060 / PASS1-BUG-17: BUG-24 pattern generalised — apply the
+                    // active-lobby guard to EVERY LobbyChatUpdate arm (Entered, Left,
+                    // Disconnected, Kicked, Banned). Steam fires LobbyChatUpdate for every
+                    // lobby we have ever joined this session; a stale Entered event from a
+                    // prior lobby would otherwise leak P2P primer messages to old peers,
+                    // and a stale Left event would synthesise a fake peer-left in the
+                    // currently active lobby (the original BUG-24 symptom).
+                    let peer = val.user_changed;
+                    let lobby_raw = val.lobby.raw();
+                    let active = active_lobby_id_for_chat.lock().ok().and_then(|s| *s);
+                    if active != Some(lobby_raw) {
+                        eprintln!(
+                            "[Steam] LobbyChatUpdate: peer {} state={:?} for stale lobby {} (active={:?}) — ignoring",
+                            peer.raw(),
+                            val.member_state_change,
+                            lobby_raw,
+                            active,
+                        );
+                        return;
+                    }
                     // member_state_change is a flagset; Entered is the bit we care about.
                     if val.member_state_change == ChatMemberStateChange::Entered {
-                        let peer = val.user_changed;
                         let me = client_for_chat.user().steam_id();
                         if peer == me {
                             // Ourselves — don't ping self. This fires when we create/join a lobby.
-                            println!("[Steam] LobbyChatUpdate: self entered lobby {}", val.lobby.raw());
+                            println!("[Steam] LobbyChatUpdate: self entered lobby {}", lobby_raw);
                             return;
                         }
                         println!(
                             "[Steam] LobbyChatUpdate: peer {} entered lobby {} — auto-accepting P2P",
                             peer.raw(),
-                            val.lobby.raw(),
+                            lobby_raw,
                         );
                         let identity = NetworkingIdentity::new_steam_id(peer);
                         let ok = client_for_chat
@@ -263,22 +316,6 @@ impl SteamState {
                         println!("[Steam] Auto-accept P2P for {}: {}", peer.raw(), ok);
                     } else {
                         // BUG17: Handle ungraceful exits — Left, Disconnected, Kicked, Banned.
-                        // BUG24: Only record if the event is for our ACTIVE lobby. Stale events
-                        // for lobbies we've already left can still arrive and would otherwise
-                        // clobber players in the new lobby (see comment on the callback above).
-                        let peer = val.user_changed;
-                        let lobby_raw = val.lobby.raw();
-                        let active = active_lobby_id_for_chat.lock().ok().and_then(|s| *s);
-                        if active != Some(lobby_raw) {
-                            eprintln!(
-                                "[Steam] LobbyChatUpdate: peer {} LEFT stale lobby {} (active={:?} state={:?}) — ignoring",
-                                peer.raw(),
-                                lobby_raw,
-                                active,
-                                val.member_state_change,
-                            );
-                            return;
-                        }
                         eprintln!(
                             "[Steam] LobbyChatUpdate: peer {} LEFT lobby {} (state={:?}) — emitting local mp:lobby:leave",
                             peer.raw(),
@@ -305,13 +342,31 @@ impl SteamState {
                 // half" of the LobbyChatUpdate auto-accept above: LobbyChatUpdate fires
                 // for existing lobby members; session_request_callback fires for any peer
                 // who opens a fresh SteamNetworkingMessages session (including retries).
+                // M-020: Allocate the error slot up-front so the closure can write into it.
+                // Persistent — TS poller reads-and-clears via steam_get_pending_session_request_error.
+                // NOTE: due to the steamworks-rs 0.12 limitation documented on the
+                // _session_request_callback field, this callback may never fire in this version
+                // and the slot will stay None. Wiring is in place for the future fix.
+                let session_request_error_for_cb: Arc<Mutex<Option<(u64, String)>>> = Arc::new(Mutex::new(None));
+                let session_request_error_ref = session_request_error_for_cb.clone();
                 client.networking_messages().session_request_callback(move |request| {
-                    let peer_id = request.remote().steam_id();
-                    eprintln!("[Steam] SessionRequest: accepting from peer {:?}", peer_id);
+                    let peer_id_opt = request.remote().steam_id();
+                    let peer_raw = peer_id_opt.map(|sid| sid.raw()).unwrap_or(0);
+                    eprintln!("[Steam] SessionRequest: accepting from peer {:?}", peer_id_opt);
                     let accepted = request.accept();
                     eprintln!("[Steam] SessionRequest: accept() returned {}", accepted);
+                    if !accepted {
+                        // M-020: surface the failure to TS so the lobby UI can show it.
+                        let reason = format!(
+                            "Steam rejected session_request.accept() for peer {} — most often this means the peer is using a Limited Steam account or there is a region/relay mismatch.",
+                            peer_raw,
+                        );
+                        if let Ok(mut slot) = session_request_error_ref.lock() {
+                            *slot = Some((peer_raw, reason));
+                        }
+                    }
                 });
-                eprintln!("[Steam] session_request_callback registered (auto-accept)");
+                eprintln!("[Steam] session_request_callback registered (auto-accept; see _session_request_callback field doc for the steamworks-rs 0.12 handle-drop limitation)");
 
                 // BUG5: Register session_failed_callback with write-to-map.
                 // When a session fails, extract the peer SteamID and write the formatted
@@ -331,6 +386,32 @@ impl SteamState {
                     }
                 });
                 eprintln!("[Steam] session_failed_callback registered (diagnostics + error-map)");
+
+                // ULTRATHINK 056 / H10-transport: Register the legacy ISteamNetworking
+                // P2PSessionConnectFail_t callback. Unlike the broken networking_messages()
+                // session_failed_callback path (see _session_request_callback field doc),
+                // `client.register_callback::<P2PSessionConnectFail, _>` returns a real
+                // CallbackHandle that we keep alive in `_p2p_session_fail_callback`.
+                //
+                // The legacy P2P API runs side-by-side with NetworkingMessages — every
+                // `send_message_to_user` underneath calls into the same connection layer that
+                // can fire P2PSessionConnectFail_t for catastrophic failures (NAT punch failed,
+                // peer offline, blocked, etc.). When this fires we write to `pending_p2p_fail`
+                // for the TS poller to surface as a `mp:transport:p2p_fail` local event.
+                let pending_p2p_fail_for_cb: Arc<Mutex<Option<(u64, u8)>>> = Arc::new(Mutex::new(None));
+                let pending_p2p_fail_ref = pending_p2p_fail_for_cb.clone();
+                let p2p_fail_handle = client.register_callback(move |fail: P2PSessionConnectFail| {
+                    let peer = fail.remote.raw();
+                    let err = fail.error;
+                    eprintln!(
+                        "[Steam] P2PSessionConnectFail: peer={} error_code={} (1=NotRunningApp, 2=NoRightsToApp, 3=DestinationNotLoggedIn, 4=Timeout, 5=ConnectionLimitExceeded)",
+                        peer, err,
+                    );
+                    if let Ok(mut slot) = pending_p2p_fail_ref.lock() {
+                        *slot = Some((peer, err));
+                    }
+                });
+                eprintln!("[Steam] P2PSessionConnectFail callback registered (handle stored on SteamState)");
 
                 // AR-80 follow-up: Spawn a background thread that pumps Steam callbacks
                 // at ~16 ms intervals.
@@ -374,12 +455,17 @@ impl SteamState {
                     _lobby_chat_update_callback: Some(SendableCallbackHandle(lobby_chat_handle)),
                     _pump_shutdown: Some(tx),
                     // session_request_callback and session_failed_callback are registered
-                    // directly on networking_messages() above; they are persistent for the
-                    // Arc<Inner> lifetime and do not return a handle we need to store.
+                    // directly on networking_messages() above. NOTE: in steamworks-rs 0.12.2
+                    // those public methods discard the CallbackHandle (see field-level doc on
+                    // _session_request_callback above), so the markers here remain unit-typed
+                    // until upstream returns the handle.
                     _session_request_callback: Some(()),
                     _session_failed_callback: Some(()),
                     last_session_errors: session_errors_for_cb,
                     pending_peer_left: pending_peer_left_for_cb,
+                    pending_p2p_fail: pending_p2p_fail_for_cb,
+                    _p2p_session_fail_callback: Some(SendableCallbackHandle(p2p_fail_handle)),
+                    pending_session_request_error: session_request_error_for_cb,
                 }
             }
             Err(e) => {
@@ -399,6 +485,9 @@ impl SteamState {
                     _session_failed_callback: None,
                     last_session_errors: Arc::new(Mutex::new(HashMap::new())),
                     pending_peer_left: Arc::new(Mutex::new(None)),
+                    pending_p2p_fail: Arc::new(Mutex::new(None)),
+                    _p2p_session_fail_callback: None,
+                    pending_session_request_error: Arc::new(Mutex::new(None)),
                 }
             }
         }
@@ -1492,4 +1581,105 @@ pub fn steam_get_persona_name(state: State<SteamState>) -> Result<Option<String>
     } else {
         Ok(None)
     }
+}
+
+// ── ULTRATHINK 056 / H10-transport: P2PSessionConnectFail bridge ─────────────
+
+/// Drain the most recent P2PSessionConnectFail_t event, if any.
+///
+/// Returns `Some({ peerSteamId, errorCode })` once per event — the slot is consumed
+/// (take()) so a second call returns `None` until another fail arrives. The TS poller
+/// (in `multiplayerTransport.ts`) reads this every ~1 s while a Steam session is
+/// active and synthesises a local `mp:transport:p2p_fail` event so reconnect UI
+/// can react.
+///
+/// Steam P2P session error codes (from `EP2PSessionError` in isteamnetworking.h):
+///   1 = NotRunningApp           — peer is online but the game isn't running
+///   2 = NoRightsToApp           — peer doesn't own the game
+///   3 = DestinationNotLoggedIn  — peer is offline
+///   4 = Timeout                 — handshake never completed (NAT/firewall, most common)
+///   5 = ConnectionLimitExceeded — peer is at their max simultaneous P2P session count
+#[derive(serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PendingP2PFail {
+    /// Decimal SteamID of the peer the failed session was directed to.
+    pub peer_steam_id: String,
+    /// Raw EP2PSessionError code (1–5; see command doc).
+    pub error_code: u8,
+}
+
+#[tauri::command]
+pub fn steam_get_pending_p2p_fail(
+    state: State<SteamState>,
+) -> Result<Option<PendingP2PFail>, String> {
+    let mut slot = state.pending_p2p_fail.lock().map_err(|e| e.to_string())?;
+    Ok(slot.take().map(|(peer, err)| PendingP2PFail {
+        peer_steam_id: peer.to_string(),
+        error_code: err,
+    }))
+}
+
+// ── M-020: session_request_callback.accept() failure surfacing ───────────────
+
+/// Drain the most recent session_request_callback `accept()` failure, if any.
+///
+/// Returns `Some({ peerSteamId, reason })` once per event (take semantics).
+///
+/// IMPORTANT — known limitation: due to the steamworks-rs 0.12.2 bug documented
+/// on `SteamState::_session_request_callback`, the underlying callback may never
+/// fire and this slot will stay empty in practice. Wiring is in place so the
+/// failure path becomes observable the moment upstream returns a real
+/// CallbackHandle for `session_request_callback`. In the meantime, players
+/// who hit `request.accept()`-returns-false will see no signal here — they
+/// will still see the downstream `mp:transport:p2p_fail` event from the
+/// legacy P2PSessionConnectFail callback (issue 056) which IS reliable.
+#[derive(serde::Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PendingSessionRequestError {
+    pub peer_steam_id: String,
+    pub reason: String,
+}
+
+#[tauri::command]
+pub fn steam_get_pending_session_request_error(
+    state: State<SteamState>,
+) -> Result<Option<PendingSessionRequestError>, String> {
+    let mut slot = state.pending_session_request_error.lock().map_err(|e| e.to_string())?;
+    Ok(slot.take().map(|(peer, reason)| PendingSessionRequestError {
+        peer_steam_id: peer.to_string(),
+        reason,
+    }))
+}
+
+// ── PASS1-BUG-21: Surface debug.log path in the dev panel ────────────────────
+
+/// Return the absolute path to the redirected stdout/stderr log written by
+/// `redirect_stdio_to_log_file()` in `main.rs`. Used by the dev panel so the
+/// player (and bug-report intake) can see where the log lives without needing
+/// to remember the platform-specific convention.
+///
+/// Mirrors the platform-specific path selection in `main.rs::redirect_stdio_to_log_file`:
+///   macOS   → ~/Library/Logs/Recall Rogue/debug.log
+///   Windows → %LocalAppData%/Recall Rogue/debug.log
+///   Linux   → ~/.cache/recall-rogue/debug.log
+///
+/// Returns `None` only if every platform-specific env var lookup fails (effectively
+/// never on a healthy install). The path is returned even if the file does not yet
+/// exist — the dev panel can decide whether to display "(not yet created)" or
+/// open it directly. Does not actually open the file; that is the caller's choice.
+#[tauri::command]
+pub fn steam_get_debug_log_path() -> Result<Option<String>, String> {
+    #[cfg(target_os = "macos")]
+    let dir = std::env::var_os("HOME")
+        .map(std::path::PathBuf::from)
+        .map(|h| h.join("Library/Logs/Recall Rogue"));
+    #[cfg(target_os = "windows")]
+    let dir = std::env::var_os("LOCALAPPDATA")
+        .map(std::path::PathBuf::from)
+        .map(|h| h.join("Recall Rogue"));
+    #[cfg(all(not(target_os = "macos"), not(target_os = "windows")))]
+    let dir = std::env::var_os("HOME")
+        .map(std::path::PathBuf::from)
+        .map(|h| h.join(".cache/recall-rogue"));
+    Ok(dir.map(|d| d.join("debug.log").to_string_lossy().into_owned()))
 }

@@ -7,6 +7,7 @@
 import type { Card } from '../data/card-types';
 import type { RelicDefinition, RelicRarity } from '../data/relics/types';
 import { shuffled } from './randomUtils';
+import { getRunRng, isRunRngActive } from './seededRng';
 import {
   SHOP_RELIC_COUNT,
   SHOP_CARD_COUNT,
@@ -234,7 +235,9 @@ export function generateShopFood(floor: number): ShopFoodItem[] {
   });
 
   // Second item: feast by default, elixir on floor 10+ (30% chance)
-  if (floor >= 10 && Math.random() < 0.30) {
+  // Determinism: seeded fork so coop clients agree on elixir vs feast (MP-STEAM-AUDIT-2026-04-22-M-018)
+  const foodRoll = isRunRngActive() ? getRunRng('shopFloor10Food').next() : Math.random();
+  if (floor >= 10 && foodRoll < 0.30) {
     items.push({
       type: 'elixir',
       healPct: SHOP_FOOD_ITEMS.elixir.healPct,

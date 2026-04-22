@@ -1700,3 +1700,139 @@ describe('BUG16 — handler deduplication across create → leave → create', (
     expect(updatedLobby?.players.length).toBe(1);
   });
 });
+
+// ---------------------------------------------------------------------------
+// MP-STEAM-20260422-014: parameterized contentSelection sweep across all modes
+//
+// The 2026-04-09 fix (commit eae6415f1) made startGame() include
+// `contentSelection` inline in the mp:lobby:start payload. The CardApp guard
+// `if (!lobby.contentSelection) { transitionScreen('multiplayerLobby'); return; }`
+// is defensive but fires AFTER the click — by then the player has already been
+// bounced back. A regression in startGame() that forgets contentSelection would
+// ship without test failure unless the exact shape is asserted, for every mode.
+//
+// This block iterates ALL 5 MultiplayerMode values × 4 contentSelection shapes
+// (study / custom_deck / trivia / undefined) and asserts the transport payload.
+// ---------------------------------------------------------------------------
+
+describe('MP-STEAM-20260422-014 — startGame() always carries contentSelection across all modes', () => {
+  beforeEach(() => {
+    mockTransport = createMockTransport();
+    vi.clearAllMocks();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.restoreAllMocks();
+  });
+
+  const allModes: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night'];
+
+  type Selection = LobbyContentSelection | undefined;
+
+  const studySel: Selection = {
+    type: 'study',
+    deckId: 'world_war_ii',
+    deckName: 'World War II',
+  };
+  const customSel: Selection = {
+    type: 'custom_deck',
+    customDeckId: 'my_anki_deck',
+    deckName: 'My Anki Deck',
+  };
+  const triviaSel: Selection = {
+    type: 'trivia',
+    domains: ['history', 'science'],
+  };
+  const noSel: Selection = undefined;
+
+  // makeHostLobby above is mode-aware via createLobby; build a parameterized helper.
+  async function makeHostLobbyForMode(mode: MultiplayerMode, contentSelection?: LobbyContentSelection) {
+    const lobby = await createLobby(`host_${mode}`, 'Host', mode);
+    // Push a guest so allReady() can pass — every mode requires 2+ players.
+    lobby.players.push({ id: `guest_${mode}`, displayName: 'Guest', isHost: false, isReady: true });
+    lobby.players[0].isReady = true;
+    if (contentSelection) {
+      setContentSelection(contentSelection);
+    }
+    return lobby;
+  }
+
+  // 5 modes × 3 selection types = 15 cases proving payload shape integrity.
+  for (const mode of allModes) {
+    it(`mode=${mode} sends contentSelection.type='study' on mp:lobby:start`, async () => {
+      await makeHostLobbyForMode(mode, studySel);
+      startGame();
+
+      const startMsg = mockTransport.sent.find(m => m.type === 'mp:lobby:start');
+      expect(startMsg, `mp:lobby:start must be sent for mode=${mode}`).toBeDefined();
+
+      // Required payload contract: seed (number), mode, deckId, houseRules, contentSelection.
+      expect(typeof startMsg!.payload.seed).toBe('number');
+      expect(startMsg!.payload.mode).toBe(mode);
+      expect(startMsg!.payload.houseRules).toBeDefined();
+
+      const cs = startMsg!.payload.contentSelection as Record<string, unknown>;
+      expect(cs, `contentSelection must be present for mode=${mode}`).toBeDefined();
+      expect(cs.type).toBe('study');
+      expect(cs.deckId).toBe('world_war_ii');
+      expect(cs.deckName).toBe('World War II');
+    });
+
+    it(`mode=${mode} sends contentSelection.type='custom_deck' on mp:lobby:start`, async () => {
+      await makeHostLobbyForMode(mode, customSel);
+      startGame();
+
+      const startMsg = mockTransport.sent.find(m => m.type === 'mp:lobby:start');
+      expect(startMsg).toBeDefined();
+      const cs = startMsg!.payload.contentSelection as Record<string, unknown>;
+      expect(cs).toBeDefined();
+      expect(cs.type).toBe('custom_deck');
+      expect(cs.customDeckId).toBe('my_anki_deck');
+    });
+
+    it(`mode=${mode} sends contentSelection.type='trivia' on mp:lobby:start`, async () => {
+      await makeHostLobbyForMode(mode, triviaSel);
+      startGame();
+
+      const startMsg = mockTransport.sent.find(m => m.type === 'mp:lobby:start');
+      expect(startMsg).toBeDefined();
+      const cs = startMsg!.payload.contentSelection as Record<string, unknown>;
+      expect(cs).toBeDefined();
+      expect(cs.type).toBe('trivia');
+      expect(cs.domains).toEqual(['history', 'science']);
+    });
+
+    it(`mode=${mode} sends mp:lobby:start with contentSelection=undefined when none set`, async () => {
+      await makeHostLobbyForMode(mode, noSel);
+      startGame();
+
+      const startMsg = mockTransport.sent.find(m => m.type === 'mp:lobby:start');
+      expect(startMsg).toBeDefined();
+      // The KEY must exist on the payload (host always emits the field) but VALUE
+      // is undefined — guests treat absence as "preserve local". This documents
+      // the precise wire shape the CardApp guard depends on.
+      expect('contentSelection' in startMsg!.payload).toBe(true);
+      expect(startMsg!.payload.contentSelection).toBeUndefined();
+    });
+  }
+
+  // Cross-cutting structural test: payload always carries the four required keys.
+  it('every mp:lobby:start payload carries seed/mode/deckId/houseRules/contentSelection keys', async () => {
+    for (const mode of allModes) {
+      mockTransport = createMockTransport();
+      vi.clearAllMocks();
+      await makeHostLobbyForMode(mode, studySel);
+      startGame();
+      const startMsg = mockTransport.sent.find(m => m.type === 'mp:lobby:start');
+      expect(startMsg, `mode=${mode} must emit start`).toBeDefined();
+      const keys = Object.keys(startMsg!.payload);
+      expect(keys, `mode=${mode} keys`).toContain('seed');
+      expect(keys, `mode=${mode} keys`).toContain('mode');
+      expect(keys, `mode=${mode} keys`).toContain('deckId');
+      expect(keys, `mode=${mode} keys`).toContain('houseRules');
+      expect(keys, `mode=${mode} keys`).toContain('contentSelection');
+      leaveLobby();
+    }
+  });
+});

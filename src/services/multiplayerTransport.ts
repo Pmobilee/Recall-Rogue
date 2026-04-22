@@ -572,11 +572,21 @@ export class SteamP2PTransport implements MultiplayerTransport {
           rrLog('mp:tx', 'accept resolved but state no longer connecting', { state: this.state });
           return;
         }
-        // BUG3: acceptP2PSession now returns bool (Rust Result<bool,String>). false means the
-        // zero-byte accept-send failed. Log it but still proceed to connected state — the
-        // session_request_callback auto-accept + AUTO_RESTART_BROKEN_SESSION handles transients.
+        // PASS1-BUG-9: acceptP2PSession returning false means accept failed.
         if (!ok) {
-          rrLog('mp:tx', 'acceptP2PSession returned false', { peerId });
+          rrLog('mp:tx', 'acceptP2PSession returned false — staying in error state', { peerId });
+          this._setState('error', 'acceptP2PSession returned false');
+          this._acceptSettled = true;
+          this._preAcceptBuffer = [];
+          if (this._preSendBuffer.length > 0) {
+            rrLog('mp:tx', 'accept-false — dropping preSendBuffer', { count: this._preSendBuffer.length });
+            this._preSendBuffer = [];
+          }
+          if (this._preConnectBuffer.length > 0) {
+            rrLog('mp:tx', 'accept-false — dropping preConnectBuffer', { count: this._preConnectBuffer.length });
+            this._preConnectBuffer = [];
+          }
+          return;
         }
         this._setState('connected', 'acceptP2PSession resolved');
         this._acceptSettled = true;
@@ -848,6 +858,8 @@ export class LocalMultiplayerTransport implements MultiplayerTransport {
   private listeners: ListenerMap = new Map();
   private localId: string = '';
   private peer: LocalMultiplayerTransport | null = null;
+  /** MP-STEAM-20260422-030: same-screen has no cross-lobby risk; field exists for interface parity. */
+  private activeLobbyId: string | null = null;
 
   /**
    * Link two local transports together so messages sent on one are delivered
@@ -878,6 +890,7 @@ export class LocalMultiplayerTransport implements MultiplayerTransport {
       payload,
       timestamp: Date.now(),
       senderId: this.localId,
+      ...(this.activeLobbyId ? { lobbyId: this.activeLobbyId } : {}),
     };
     // Deliver to peer asynchronously via microtask to avoid synchronous call
     // stack depth issues when both sides exchange messages in tight loops.
@@ -917,6 +930,11 @@ export class LocalMultiplayerTransport implements MultiplayerTransport {
 
   isConnected(): boolean {
     return this.state === 'connected';
+  }
+
+  /** MP-STEAM-20260422-030: interface parity. Same-screen has no cross-lobby risk. */
+  setActiveLobby(lobbyId: string | null): void {
+    this.activeLobbyId = lobbyId;
   }
 }
 
@@ -980,6 +998,8 @@ export class BroadcastChannelTransport implements MultiplayerTransport {
   private listeners: ListenerMap = new Map();
   private localId: string = '';
   private channel: BroadcastChannel | null = null;
+  /** MP-STEAM-20260422-030: lobbyId stamped on outbound and filtered on inbound. */
+  private activeLobbyId: string | null = null;
 
   /**
    * Open a BroadcastChannel named `rr-mp:<target>`.
@@ -992,15 +1012,20 @@ export class BroadcastChannelTransport implements MultiplayerTransport {
     const channelName = `rr-mp:${target}`;
     this.channel = new BroadcastChannel(channelName);
     this.channel.onmessage = (ev: MessageEvent) => {
-      const raw = ev.data as { type: string; payload: Record<string, unknown>; senderId: string; timestamp: number };
+      const raw = ev.data as { type: string; payload: Record<string, unknown>; senderId: string; timestamp: number; lobbyId?: string };
       // Ignore messages we sent ourselves — BroadcastChannel delivers to all
       // tabs INCLUDING the sender on some browser versions.
       if (raw.senderId === this.localId) return;
+      // MP-STEAM-20260422-030: cross-lobby envelope guard.
+      if (this.activeLobbyId && raw.lobbyId && raw.lobbyId !== this.activeLobbyId) {
+        return;
+      }
       const msg: MultiplayerMessage = {
         type: raw.type as MultiplayerMessageType,
         payload: raw.payload,
         timestamp: raw.timestamp,
         senderId: raw.senderId,
+        ...(raw.lobbyId ? { lobbyId: raw.lobbyId } : {}),
       };
       // Simulate receive-side jitter (5–20 ms) to mimic real network variance.
       const jitter = 5 + Math.random() * 15;
@@ -1021,11 +1046,12 @@ export class BroadcastChannelTransport implements MultiplayerTransport {
    */
   send(type: MultiplayerMessageType, payload: Record<string, unknown>): void {
     if (!this.channel || this.state !== 'connected') return;
-    const msg = {
+    const msg: MultiplayerMessage = {
       type,
       payload,
       senderId: this.localId,
       timestamp: Date.now(),
+      ...(this.activeLobbyId ? { lobbyId: this.activeLobbyId } : {}),
     };
     // Simulate packet loss
     if (Math.random() < BC_PACKET_LOSS_RATE) return;
@@ -1052,6 +1078,11 @@ export class BroadcastChannelTransport implements MultiplayerTransport {
 
   isConnected(): boolean {
     return this.state === 'connected';
+  }
+
+  /** MP-STEAM-20260422-030: bind active lobbyId for envelope stamping + filtering. */
+  setActiveLobby(lobbyId: string | null): void {
+    this.activeLobbyId = lobbyId;
   }
 }
 

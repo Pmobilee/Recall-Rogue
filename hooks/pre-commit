@@ -100,6 +100,20 @@ if [ -f scripts/lint/check-human-prose.mjs ]; then
   fi
 fi
 
+# --- Bool-vs-void IPC contract erasure lint (MP-STEAM-20260422-035) ---
+# Detects `Promise<boolean>` callers that only `.catch()` and never inspect
+# the resolved value (the BUG-1 / BUG-2 / BUG-25 silent-failure cluster).
+# Non-blocking initially — flip to block_or_warn once the codebase is clean
+# and contributors are familiar with the // lint-allow override syntax.
+if [ -f scripts/lint/check-bool-promise-erasure.mjs ]; then
+  if ! node scripts/lint/check-bool-promise-erasure.mjs >&2; then
+    echo "" >&2
+    echo "WARN: bool-promise-erasure lint flagged the above call sites." >&2
+    echo "      This is non-blocking for now — fix or add a // lint-allow comment." >&2
+    echo "" >&2
+  fi
+fi
+
 # --- Commit attribution detector (prototype, non-blocking) ---
 # Warns if staged files span a wide mtime window, suggesting cross-session
 # bundling from concurrent agents. Always exits 0. See gotchas 2026-04-11.

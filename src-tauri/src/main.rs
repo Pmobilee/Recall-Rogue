@@ -135,6 +135,14 @@ fn main() {
             steam::steam_get_session_error,
             // BUG17: Peer ungraceful-leave slot — TS polls to synthesise local mp:lobby:leave
             steam::steam_get_pending_peer_left,
+            // H9 reconnect path — explicit lobby-membership check by SteamID (cheaper than getLobbyMembers).
+            steam::steam_check_lobby_membership,
+            // PASS1-BUG-21: Surface debug.log path so the dev panel can show it in-game.
+            steam::steam_get_debug_log_path,
+            // M-020: Surface session_request_callback.accept failures via a polled error slot.
+            steam::steam_get_pending_session_request_error,
+            // ULTRATHINK 056 (H10-transport): P2PSessionConnectFail bridge — JS polls for fail events.
+            steam::steam_get_pending_p2p_fail,
             // LAN Server (AR-MULTIPLAYER LAN)
             lan::lan_start_server,
             lan::lan_stop_server,

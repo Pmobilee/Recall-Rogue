@@ -12,6 +12,7 @@
 import type { Card } from '../data/card-types';
 import { MASTERY_UPGRADE_DEFS } from './cardUpgradeService';
 import { MASTERY_MAX_LEVEL } from '../data/balance';
+import { getRunRng, isRunRngActive } from './seededRng';
 
 /**
  * Compute starting mastery level for a newly acquired card based on
@@ -28,6 +29,10 @@ import { MASTERY_MAX_LEVEL } from '../data/balance';
  *
  * The random roll (0.5–1.5× avg) means the median new card lands ~0.8× the
  * current average — slightly behind the pack but immediately competitive.
+ *
+ * Determinism: uses the run-scoped seeded RNG fork `catchUpMastery` when active so
+ * coop clients agree on the assigned level. Falls back to `Math.random` outside an
+ * active run (tests, dev preview).
  */
 export function computeCatchUpMastery(card: Card, deckCards: Card[]): number {
   if (deckCards.length === 0) return 0;
@@ -37,7 +42,8 @@ export function computeCatchUpMastery(card: Card, deckCards: Card[]): number {
 
   // Uniform roll 0.5×–1.5× the average; median ≈ 0.8× so new cards are slightly
   // behind the average but never completely outclassed
-  const roll = 0.5 + Math.random(); // 0.5 to 1.5
+  const rng = isRunRngActive() ? getRunRng('catchUpMastery').next() : Math.random();
+  const roll = 0.5 + rng; // 0.5 to 1.5
   const rawLevel = Math.floor(roll * avgMastery);
 
   const def = MASTERY_UPGRADE_DEFS[card.mechanicId ?? ''];

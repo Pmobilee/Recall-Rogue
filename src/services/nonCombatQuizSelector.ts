@@ -9,6 +9,7 @@ import type { ConfusionMatrix } from './confusionMatrix';
 import { isNumericalAnswer, getNumericalDistractors, displayAnswer } from './numericalDistractorService';
 import type { Fact } from '../data/types';
 import { interleaveFacts } from '../utils/interleaveFacts';
+import { getRunRng, isRunRngActive } from './seededRng';
 
 /** Continent names indexed by chainThemeId (0–4) for World Flags deck. */
 export const REGION_NAMES = ['Europe', 'Asia', 'Africa', 'Americas', 'Oceania'] as const;
@@ -18,7 +19,10 @@ export const REGION_NAMES = ['Europe', 'Asia', 'Africa', 'Americas', 'Oceania'] 
  * Returns one of five variety modes with weighted probabilities.
  */
 export function rollFlagQuestionType(): 'identify' | 'reverse' | 'continent' | 'not_elimination' {
-  const r = Math.random();
+  // Determinism: seeded fork so coop clients see the same question framing for the
+  // same fact (MP-STEAM-AUDIT-2026-04-22-M-019). Falls back to Math.random outside
+  // an active run (tests / dev preview).
+  const r = isRunRngActive() ? getRunRng('quizFraming').next() : Math.random();
   if (r < 0.45) return 'identify';        // 45%
   if (r < 0.70) return 'reverse';         // 25%
   if (r < 0.88) return 'continent';       // 18%

@@ -196,7 +196,8 @@ Note: if the import path `../ui/stores/playerData` changes, update `_applyRaceFs
 
 | Mode | Formula |
 |------|---------|
-| `race` / `same_cards` / `coop` | `floors*100 + damage + chain*50 + correct*10 - wrong*5 + perfectEncounters*200` |
+| `race` / `same_cards` | `floors*100 + damage + chain*50 + correct*10 - wrong*5 + perfectEncounters*200` |
+| `coop` | race formula PLUS `partnerCorrect*3 - partnerWrong*1 + partnerPerfect*75` (partner-assist credit, weights smaller than solo so score still primarily reflects this player's own play). When partner stats are omitted (older callers) the formula collapses to the race formula. See `MP-STEAM-AUDIT-2026-04-22-L-030`. |
 | `trivia_night` | `correctCount*100 + speedBonusTotal - wrongCount*25` |
 | `duel` | `(survived ? 1000 : 0) + damageDealt - damageTaken + correctCount*50` |
 

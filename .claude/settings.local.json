@@ -1,19 +1,4 @@
 {
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash(git commit *)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/pre-commit-verify.sh",
-            "timeout": 300
-          }
-        ]
-      }
-    ],
-    "PostToolUse": []
-  },
   "permissions": {
     "allow": [
       "Bash(*)",
@@ -29,7 +14,11 @@
       "mcp__cloudflare__*",
       "mcp__wikidata__*",
       "mcp__claude-in-chrome__*",
-      "mcp__sqlite__*"
+      "mcp__sqlite__*",
+      "Bash(rm -f /Users/damion/CODE/Recall_Rogue/.git/index.lock)",
+      "Bash(git checkout *)",
+      "Bash(mkdir -p /Users/damion/CODE/Recall_Rogue/.claude/skills/steam-p2p-playtest)",
+      "Bash(cat)"
     ]
   },
   "enabledMcpjsonServers": [
@@ -38,5 +27,20 @@
     "cloudflare",
     "wikidata",
     "sqlite"
-  ]
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash(git commit *)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-commit-verify.sh",
+            "timeout": 300
+          }
+        ]
+      }
+    ],
+    "PostToolUse": []
+  }
 }
