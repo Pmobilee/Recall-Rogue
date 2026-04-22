@@ -1794,3 +1794,49 @@ const result = await lanTcpProbe('192.168.1.42', 19738, 2000)
 ```
 
 This is a pure TCP connect — it does not send any application data and does not require a running LAN server on the guest side.
+
+---
+
+## Message Routing: LAN/Fastify Server vs Steam P2P (BUG8 — 2026-04-22)
+
+This is a critical architectural difference that has caused several bugs.
+
+### LAN / Fastify server path
+
+```
+Guest                     Fastify / lan.rs server               Host + other clients
+-----                     ----------------------               --------------------
+send('mp:lobby:join', …)
+                          receives mp:lobby:join
+                          adds player to lobby state
+                          rebroadcast as 'mp:lobby:player_joined'
+                                                               on('mp:lobby:player_joined') fires
+                                                               adds player to local players array
+```
+
+The server acts as a relay and **transforms** `mp:lobby:join` → `mp:lobby:player_joined`. The client's `setupMessageHandlers()` only handles `mp:lobby:player_joined`.
+
+### Steam P2P path
+
+```
+Guest                     Host (no server)
+-----                     ----------------
+send('mp:lobby:join', …)
+                          receives mp:lobby:join directly
+                          NEEDS to handle it here (no server to relay)
+                          → on('mp:lobby:join') handler in setupMessageHandlers()
+                          adds player to _currentLobby.players
+                          calls broadcastSettings() so all peers get updated player list
+```
+
+**Rule:** When Steam P2P is active (`isTauriRuntime() && !isBroadcastMode() && !isLanMode()`), the host must handle every message type that a server would normally intercept and transform. If you add a new server-side intercept, add the corresponding host-side P2P handler.
+
+Both `mp:lobby:join` (host-side P2P handler) and `mp:lobby:player_joined` (all-client LAN/Fastify handler) are registered in `setupMessageHandlers()` and coexist safely.
+
+### Rich Presence: connect key (BUG12 — 2026-04-22)
+
+When the host creates a Steam lobby, `setRichPresence('connect', '+connect_lobby <lobbyId>')` is called. Steam maps this to the `steam://joinlobby/…` URL handler, which shows a "Join Game" button in the Steam friends list overlay. The `+connect_lobby ` prefix is required by Steam's documented format — without it the button appears but the join silently fails.
+
+`clearRichPresence()` is called in `leaveLobby()` so friends no longer see a stale "Join Game" button after the host leaves.
+
+Both helpers (`setRichPresence`, `clearRichPresence`) are in `src/services/steamNetworkingService.ts`. The underlying Rust commands (`steam_set_rich_presence`, `steam_clear_rich_presence`) were already implemented and registered in `src-tauri/src/main.rs`.

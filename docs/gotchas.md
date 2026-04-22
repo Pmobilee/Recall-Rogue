@@ -5257,3 +5257,25 @@ Ten-hour debugging pass that ended up rewriting large chunks of the Steam + LAN 
 - New `steam_get_session_error` Tauri command + `getSessionError()` TS helper: reads the `last_session_errors` Arc<Mutex<HashMap<u64,String>>> written by `session_failed_callback`.
 
 **Rule:** When adding a new Rust command that returns `bool`, always declare it as `boolean` in `SteamCommandReturn`, not `void`. `void` is only correct for commands that Rust declares `-> Result<(), String>`.
+
+### 2026-04-22c — Host silently drops mp:lobby:join on Steam P2P (no server relay)
+
+**What broke:** Guest joins a Steam P2P lobby, sends `mp:lobby:join` to the host, host's player list stays at `[host]` only. The other player appears to connect at the transport layer but never shows up in the lobby player list.
+
+**Why:** On LAN / Fastify, the *server* intercepts `mp:lobby:join` and rebroadcasts it as `mp:lobby:player_joined`. The client's `setupMessageHandlers()` listens for `mp:lobby:player_joined`. On Steam P2P there is no server — messages travel peer-to-peer. The raw `mp:lobby:join` arrives at the host with no handler registered, so it is silently dropped. Host's `_currentLobby.players` stays at `[host]`.
+
+**Fix:** Added `transport.on('mp:lobby:join', ...)` handler in `setupMessageHandlers()` that acts as a server-side relay equivalent when `isHost()` is true. The handler adds the joining player to `_currentLobby.players` and calls `broadcastSettings()` so every connected peer (including the new guest) receives the updated player list. The existing `mp:lobby:player_joined` handler is left intact — LAN / Fastify paths still use it.
+
+**Rule:** Any message type whose semantics include "the server transforms this before clients see it" must have a peer-to-peer equivalent handler when Steam P2P mode is active and there is no server in the path.
+
+**Files:** `src/services/multiplayerLobbyService.ts` — `setupMessageHandlers()`.
+
+### 2026-04-22d — MpDebugOverlay invisible in Steam release builds
+
+**What broke:** The `MpDebugOverlay` shipped in wave 22 was gated solely on `$devMode` (URL `?dev=true` or `VITE_DEV_TOOLS=1` build flag). Tauri release builds load from `tauri://localhost/index.html` — no accessible URL query string. `VITE_DEV_TOOLS` was not set at build time. Result: the overlay is invisible in every production Steam test build.
+
+**Fix (two-part):**
+1. `src/ui/stores/devMode.ts` rewritten from `readable` to `writable`. Adds a third activation source: `localStorage.getItem('rr-dev-mode') === '1'`. Adds `registerDevModeChord()` which listens for `Cmd+Shift+D` / `Ctrl+Shift+D` globally — on activation it toggles the store and persists to localStorage so the setting survives refreshes. The chord is auto-registered on module load.
+2. `src/ui/components/MpDebugOverlay.svelte` adds `mpLobbyActive = $state(false)`, polled each second in the refresh `$effect`. Root gate changed from `{#if $devMode}` to `{#if $devMode || mpLobbyActive}`. When in a multiplayer lobby the overlay auto-shows regardless of devMode — provides a debug view during the current rebuild cycle without requiring a keychord.
+
+**Files:** `src/ui/stores/devMode.ts`, `src/ui/components/MpDebugOverlay.svelte`.

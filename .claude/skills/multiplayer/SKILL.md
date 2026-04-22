@@ -133,6 +133,18 @@ Seven bugs found and fixed after wave 22 shipped:
 | BUG6: No periodic session-state poll | Telemetry | `_sendWithRetry` only polled state on failure | `setInterval(2000ms)` in `connect().then()` publishes to `window.__rrMpState.steam.sessionState`; `_setState` publishes transport state on every transition |
 | BUG7: Primer log not per-peer | Logging | Single count log obscured which peers failed | Per-peer `ok`/`err` already in Rust via `eprintln!`; added receive heartbeat every 5s in `startMessagePollLoop` |
 
+### Post-wave 22 deep audit part 3 (2026-04-22c — BUGs 8-12)
+
+Five bugs found in a third deep audit pass:
+
+| Bug | Severity | Root cause | Fix |
+|-----|----------|-----------|-----|
+| BUG8: `mp:lobby:join` dropped on host (Steam P2P) | Critical | LAN/Fastify server transforms `mp:lobby:join` → `mp:lobby:player_joined`. Steam P2P has no server — raw join message was silently dropped. | Added `transport.on('mp:lobby:join', ...)` host-side handler in `setupMessageHandlers()`; adds player + calls `broadcastSettings()`. Existing `mp:lobby:player_joined` handler unchanged. |
+| BUG9: MpDebugOverlay invisible in Steam release | Critical | Overlay gated on `$devMode` only. Tauri release builds: no URL params accessible, `VITE_DEV_TOOLS` not set at build time. | `devMode.ts` rewritten to `writable`; added `localStorage.rr-dev-mode` persistence and `Cmd+Shift+D`/`Ctrl+Shift+D` runtime chord. Overlay auto-shows when `mpLobbyActive` (polled in `$effect`). |
+| BUG10: Guest `_currentLobby.players` missing host stub | Important | Guest initializes `players: [self]` only. Host entry added when `mp:lobby:settings` arrives — but if host hasn't processed BUG8's join yet, settings may carry stale player list. | `joinLobby` and `joinLobbyById` now call `getLobbyOwner` to prepopulate a placeholder host entry. `mp:lobby:settings` handler saves self-entry before `Object.assign` and reinserts it if missing. |
+| BUG11: `resolveSteamPeerIdWithRetry` budget too short | Polish | 5 attempts × 500ms = 2.5s. Cold Steam backends take 3-4s. | Bumped to `attempts = 10` (5s total). |
+| BUG12: Rich Presence `connect` key not set | Polish | Host never called `setRichPresence('connect', ...)`. Friends couldn't click "Join Game" in Steam overlay. | `steamNetworkingService.ts` gets `setRichPresence`/`clearRichPresence` helpers (backed by already-registered Rust commands `steam_set_rich_presence`/`steam_clear_rich_presence`). `createLobby` sets key; `leaveLobby` clears it. |
+
 **Remaining Work (all nice-to-haves; no ship blockers)**
 
 | Task | Notes |

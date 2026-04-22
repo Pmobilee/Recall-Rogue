@@ -130,6 +130,10 @@ export interface SteamCommandArgs {
   /** BUG5: Read the most recent session failure reason for a peer (keyed by 64-bit decimal SteamID).
    * Returns the formatted failure string (e.g. "state=ProblemDetectedLocally end_reason=...") or null if none recorded. */
   steam_get_session_error: { steamId: string };
+  /** BUG12: Set a Steam Rich Presence key. Host calls with key='connect', value='+connect_lobby <lobbyId>'. */
+  steam_set_rich_presence: { key: string; value: string };
+  /** BUG12: Clear all Steam Rich Presence keys (call on leaveLobby). */
+  steam_clear_rich_presence: Record<string, never>;
 }
 
 /**
@@ -178,6 +182,10 @@ export interface SteamCommandReturn {
   lan_tcp_probe: string;
   /** BUG5: The most recent session-failure diagnostic for a peer, or null if none recorded. */
   steam_get_session_error: string | null;
+  /** BUG12: void on success, or throws on Steam unavailable. */
+  steam_set_rich_presence: void;
+  /** BUG12: void on success, or throws on Steam unavailable. */
+  steam_clear_rich_presence: void;
 }
 
 /**
@@ -832,3 +840,33 @@ export async function lanTcpProbe(host: string, port: number, timeoutMs = 2000):
     return String((e as Error)?.message ?? e);
   }
 }
+
+// ── Steam Rich Presence (BUG12) ───────────────────────────────────────────────
+
+/**
+ * Set a Steam Rich Presence key-value pair.
+ *
+ * Steam displays Rich Presence values in the friends list (e.g., the 'connect' key
+ * activates the "Join Game" button for friends). Setting key='connect' to
+ * '+connect_lobby <lobbyId>' enables friends to click Join Game in the Steam overlay.
+ *
+ * No-op on non-Tauri builds. Fire-and-forget — callers do not need to await.
+ */
+export async function setRichPresence(key: string, value: string): Promise<void> {
+  if (!isTauriRuntime()) return;
+  await invokeSteam('steam_set_rich_presence', { key, value });
+}
+
+/**
+ * Clear all Steam Rich Presence keys.
+ *
+ * Call this when the host leaves a lobby so friends see the player as available
+ * (no active game) rather than showing stale lobby information.
+ *
+ * No-op on non-Tauri builds. Fire-and-forget.
+ */
+export async function clearRichPresence(): Promise<void> {
+  if (!isTauriRuntime()) return;
+  await invokeSteam('steam_clear_rich_presence');
+}
+

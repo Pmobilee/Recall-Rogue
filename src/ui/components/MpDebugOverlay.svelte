@@ -54,6 +54,9 @@
   // ── Component state ──────────────────────────────────────────────────────────
 
   let mpState = $state<MpDebugState>(getMpDebugState())
+  // BUG9: Local state tracking whether we're in an active MP lobby.
+  // window.__rrMpState is not a $state proxy — polled in the refresh $effect below.
+  let mpLobbyActive = $state(false)
   let probeHost = $state('192.168.1.')
   let probePort = $state(19738)
   let probeResult = $state<string | null>(null)
@@ -65,12 +68,15 @@
   // ── Refresh loop ─────────────────────────────────────────────────────────────
 
   $effect(() => {
-    // Only run the interval when in dev mode — saves a tiny bit of overhead on
-    // the very rare case VITE_DEV_TOOLS is accidentally on in prod.
-    if (!$devMode) return
-
+    // BUG9: Run the interval when in dev mode OR when in a multiplayer lobby.
+    // We use a single unified loop so lobby-check and P2P state both update together.
     const interval = setInterval(async () => {
       mpState = getMpDebugState()
+      // BUG9: Update mpLobbyActive on each tick; window.__rrMpState is not a $state
+      // proxy so we poll it here rather than deriving reactively.
+      mpLobbyActive = !!mpState.lobby
+
+      if (!$devMode && !mpLobbyActive) return
 
       // Refresh P2P connection state if we have a steam ID to probe
       const peerId = mpState.transport?.peerId
@@ -116,7 +122,7 @@
   }
 </script>
 
-{#if $devMode}
+{#if $devMode || mpLobbyActive}
   <div
     class="mp-debug-overlay"
     data-dev-only="true"

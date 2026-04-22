@@ -51,6 +51,8 @@ import {
   getLocalSteamId,
   getLobbyOwner,
   primeP2PSessions,
+  setRichPresence,
+  clearRichPresence,
 } from './steamNetworkingService';
 import type { SteamLobbyType } from './steamNetworkingService';
 
@@ -305,7 +307,7 @@ async function resolveSteamPeerId(lobbyId: string): Promise<string | null> {
  * list without forcing the caller to wait the full budget when the first try
  * already succeeds.
  */
-async function resolveSteamPeerIdWithRetry(lobbyId: string, attempts = 5, intervalMs = 500): Promise<string | null> {
+async function resolveSteamPeerIdWithRetry(lobbyId: string, attempts = 10, intervalMs = 500): Promise<string | null> {
   for (let i = 0; i < attempts; i++) {
     const peer = await resolveSteamPeerId(lobbyId);
     if (peer) {
@@ -475,6 +477,16 @@ export async function createLobby(
     });
   }
 
+  // BUG12: Set Rich Presence so friends can click "Join Game" from the Steam friends list.
+  // The 'connect' key value must begin with '+connect_lobby ' — Steam maps this to
+  // the steam://joinlobby URL handler that triggers a join when a friend clicks the button.
+  // Fire-and-forget — failure must not block the caller.
+  if (hasSteam && !isBroadcastMode() && !isLanMode() && result.lobbyId) {
+    void setRichPresence('connect', `+connect_lobby ${result.lobbyId}`).catch((e) => {
+      console.warn('[MP:LobbyService] setRichPresence failed (non-fatal):', e);
+    });
+  }
+
   return _currentLobby;
 }
 
@@ -534,13 +546,28 @@ export async function joinLobby(
     : { mode: null, visibility: null, title: null, hostName: null, lobbyCode: null, maxPlayers: null };
 
   // A2: _currentLobby is assigned AFTER backend join confirmed — never before.
+  // BUG10: Prepopulate a placeholder host entry so the lobby list isn't guest-only
+  // until mp:lobby:settings arrives. Uses Steam lobby owner + host_name metadata if available.
+  const steamHostIdForJoin = useSteamMeta ? await getLobbyOwner(result.lobbyId).catch(() => null) : null;
+  const hostPlaceholderPlayers: LobbyPlayer[] = steamHostIdForJoin ? [
+    {
+      id: `steam:${steamHostIdForJoin}`,
+      displayName: meta.hostName ?? 'Host',
+      isHost: true,
+      isReady: false,
+      multiplayerRating: 1000,
+    },
+    { id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() },
+  ] : [
+    { id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() },
+  ];
   _currentLobby = {
     lobbyId: result.lobbyId || resolvedId || '',
-    hostId: '',
+    hostId: steamHostIdForJoin ? `steam:${steamHostIdForJoin}` : '',
     mode: meta.mode ?? 'race',
     deckSelectionMode: 'host_picks',
     houseRules: { ...DEFAULT_HOUSE_RULES },
-    players: [{ id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() }],
+    players: hostPlaceholderPlayers,
     maxPlayers: meta.maxPlayers ?? 4,
     isRanked: false,
     lobbyCode: meta.lobbyCode ?? result.lobbyCode ?? lobbyCode,
@@ -620,13 +647,27 @@ export async function joinLobbyById(
     ? await readSteamLobbyMetadataForJoin(result.lobbyId)
     : { mode: null, visibility: null, title: null, hostName: null, lobbyCode: null, maxPlayers: null };
 
+  // BUG10: Prepopulate a placeholder host entry using Steam lobby owner data.
+  const steamHostIdForJoinById = useSteamPeer ? await getLobbyOwner(result.lobbyId).catch(() => null) : null;
+  const hostPlaceholderPlayersById: LobbyPlayer[] = steamHostIdForJoinById ? [
+    {
+      id: `steam:${steamHostIdForJoinById}`,
+      displayName: meta.hostName ?? 'Host',
+      isHost: true,
+      isReady: false,
+      multiplayerRating: 1000,
+    },
+    { id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() },
+  ] : [
+    { id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() },
+  ];
   _currentLobby = {
     lobbyId: result.lobbyId,
-    hostId: '',
+    hostId: steamHostIdForJoinById ? `steam:${steamHostIdForJoinById}` : '',
     mode: meta.mode ?? 'race',
     deckSelectionMode: 'host_picks',
     houseRules: { ...DEFAULT_HOUSE_RULES },
-    players: [{ id: playerId, displayName, isHost: false, isReady: false, multiplayerRating: getLocalMultiplayerRating() }],
+    players: hostPlaceholderPlayersById,
     maxPlayers: meta.maxPlayers ?? 4,
     isRanked: false,
     lobbyCode: meta.lobbyCode ?? result.lobbyCode,
@@ -733,6 +774,14 @@ export function leaveLobby(): void {
         console.warn('[MP:LobbyService] steam_force_leave_active_lobby failed:', err);
       });
     }).catch(() => {});
+  }
+
+  // BUG12: Clear Rich Presence so the Steam friends list no longer shows a
+  // "Join Game" button for this lobby. Fire-and-forget.
+  if (hasSteam) {
+    void clearRichPresence().catch((e) => {
+      console.warn('[MP:LobbyService] clearRichPresence failed (non-fatal):', e);
+    });
   }
 
   // Clean up H5 seed-ACK timers
@@ -1282,6 +1331,39 @@ function setupMessageHandlers(): void {
     if (isHost()) broadcastSettings(); // Sync new player
   });
 
+  // BUG8: Steam P2P has no server — the host must handle mp:lobby:join directly.
+  // In LAN / Fastify mode, the server intercepts mp:lobby:join and rebroadcasts it
+  // as mp:lobby:player_joined. On Steam P2P there is no server, so the raw
+  // mp:lobby:join arrives at the host and must be processed here.
+  //
+  // This handler coexists with mp:lobby:player_joined (which still fires on
+  // LAN / Fastify paths). Both are safe to register — each path only uses one.
+  transport.on('mp:lobby:join', (msg) => {
+    // Only the host processes this — it's the server-side relay equivalent for Steam P2P.
+    if (!_currentLobby || !isHost()) return;
+    const { playerId, displayName } = msg.payload as { playerId: string; displayName: string };
+    rrLog('mp:recv', 'mp:lobby:join (as host)', { playerId, displayName, existingCount: _currentLobby.players.length });
+    if (!_currentLobby.players.find(p => p.id === playerId)) {
+      // Remove any placeholder entry for this player (BUG10 host stub uses steam:<id> prefix;
+      // the real join message carries the real playerId).
+      _currentLobby.players = _currentLobby.players.filter(p => !p.isHost);
+      _currentLobby.players.push({
+        id: playerId,
+        displayName,
+        isHost: false,
+        isReady: false,
+        multiplayerRating: 1000,
+      });
+      rrLog('mp:recv', 'mp:lobby:join (as host) — added player', { playerId, totalCount: _currentLobby.players.length });
+    } else {
+      rrLog('mp:recv', 'mp:lobby:join (as host) — player already present', { playerId });
+    }
+    // Broadcast updated settings so the joining guest and any other peers
+    // receive the full players array (including themselves).
+    broadcastSettings();
+    notifyLobbyUpdate();
+  });
+
   transport.on('mp:lobby:leave', (msg) => {
     if (!_currentLobby) return;
     const { playerId } = msg.payload as { playerId: string };
@@ -1367,7 +1449,18 @@ function setupMessageHandlers(): void {
         if (localReady !== undefined) p.isReady = p.isReady || localReady;
       }
     }
+    // BUG10: Snapshot own entry BEFORE Object.assign overwrites players array.
+    // The host's players snapshot uses real IDs; our placeholder may use steam:<id>.
+    // After the merge, re-insert self if our ID was dropped (e.g., placeholder vs real ID mismatch).
+    const selfEntryBeforeMerge = _currentLobby.players.find(p => p.id === _localPlayerId);
     Object.assign(_currentLobby, settings);
+    // BUG10: Re-insert self if the incoming players array doesn't include us.
+    // This can happen when host processed mp:lobby:join but used our real playerId in their list
+    // before our own Object.assign had a chance to update _localPlayerId references.
+    if (selfEntryBeforeMerge && !_currentLobby.players.find(p => p.id === _localPlayerId)) {
+      _currentLobby.players.push(selfEntryBeforeMerge);
+      rrLog('mp:recv', 'mp:lobby:settings — reinserted self after merge', { playerId: _localPlayerId });
+    }
     // Re-apply the local player's ready state after Object.assign.
     // H13: If our local readyVersion is greater than what came in (i.e., we toggled
     // after the host's settings snapshot was captured), keep our local value.
