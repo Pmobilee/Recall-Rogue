@@ -106,3 +106,14 @@ export function getMpDebugState(): MpDebugState {
     updatedAt: '–',
   };
 }
+
+// BUG20: Console dump helper — type window.__rrMpDebug() in devtools for a
+// one-shot snapshot of the full multiplayer debug state.
+if (typeof window !== 'undefined') {
+  (window as any).__rrMpDebug = () => {
+    const state = (window as any).__rrMpState;
+    // eslint-disable-next-line no-console
+    console.log('[rrMpDebug]', JSON.stringify(state, null, 2));
+    return state;
+  };
+}

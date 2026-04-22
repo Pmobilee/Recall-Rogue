@@ -53,6 +53,7 @@ import {
   primeP2PSessions,
   setRichPresence,
   clearRichPresence,
+  getPendingPeerLeft,
 } from './steamNetworkingService';
 import type { SteamLobbyType } from './steamNetworkingService';
 
@@ -132,6 +133,14 @@ let _botTransport: LocalMultiplayerTransport | null = null;
  */
 let _handlersAttached = false;
 
+/**
+ * BUG16: Cleanup functions returned by each transport.on() call inside
+ * setupMessageHandlers. Stored so leaveLobby can remove them before the
+ * next join re-attaches. Without this, each create→leave→join cycle
+ * accumulates an extra copy of every handler on the singleton transport.
+ */
+let _activeHandlerCleanups: Array<() => void> = [];
+
 // ── H10: Peer presence monitor teardown ─────────────────────────────────────────
 /**
  * Cleanup returned by initPeerPresenceMonitor(). Stored so leaveLobby() can
@@ -187,6 +196,14 @@ let _lastStartPayload: Record<string, unknown> | null = null;
 const _reconnectTimers = new Map<string, ReturnType<typeof setTimeout>>();
 /** Grace period before a disconnected player is removed (ms). */
 const RECONNECT_GRACE_MS = 60_000;
+
+/**
+ * BUG17: Interval handle for the Steam peer-left poll.
+ * While in a Steam lobby, polls steam_get_pending_peer_left every 1 s and
+ * synthesises a local mp:lobby:leave event when a peer ungracefully exits.
+ * Cleared in leaveLobby() via _activeHandlerCleanups.
+ */
+let _peerLeftPollInterval: ReturnType<typeof setInterval> | null = null;
 
 /** Get the current lobby state (null if not in a lobby) */
 export function getCurrentLobby(): LobbyState | null { return _currentLobby; }
@@ -804,6 +821,10 @@ export function leaveLobby(): void {
     _steamHostPeerPollCancel = null;
   }
 
+  // BUG16: Tear down all per-lobby transport listeners so the next join doesn't
+  // accumulate duplicate handlers on the singleton transport instance.
+  for (const fn of _activeHandlerCleanups) fn();
+  _activeHandlerCleanups = [];
   _handlersAttached = false;
   _localReadyVersion = 0;
   _onLobbyError = null;
@@ -1318,7 +1339,13 @@ function setupMessageHandlers(): void {
 
   const transport = getMultiplayerTransport();
 
-  transport.on('mp:lobby:player_joined', (msg) => {
+  // BUG16: Helper that registers a handler AND stores the cleanup function so
+  // leaveLobby() can remove it before the next join re-attaches on the singleton.
+  function reg(type: string, handler: (msg: import('./multiplayerTransport').MultiplayerMessage) => void): void {
+    _activeHandlerCleanups.push(transport.on(type, handler));
+  }
+
+  reg('mp:lobby:player_joined', (msg) => {
     if (!_currentLobby) return;
     const { playerId, displayName } = msg.payload as { playerId: string; displayName: string };
     console.log(`[MP:LobbyService] mp:lobby:player_joined received: player=${playerId}, name=${displayName}, existing=${_currentLobby.players.length}`);
@@ -1338,7 +1365,7 @@ function setupMessageHandlers(): void {
   //
   // This handler coexists with mp:lobby:player_joined (which still fires on
   // LAN / Fastify paths). Both are safe to register — each path only uses one.
-  transport.on('mp:lobby:join', (msg) => {
+  reg('mp:lobby:join', (msg) => {
     // Only the host processes this — it's the server-side relay equivalent for Steam P2P.
     if (!_currentLobby || !isHost()) return;
     const { playerId, displayName } = msg.payload as { playerId: string; displayName: string };
@@ -1364,7 +1391,7 @@ function setupMessageHandlers(): void {
     notifyLobbyUpdate();
   });
 
-  transport.on('mp:lobby:leave', (msg) => {
+  reg('mp:lobby:leave', (msg) => {
     if (!_currentLobby) return;
     const { playerId } = msg.payload as { playerId: string };
     _currentLobby.players = _currentLobby.players.filter(p => p.id !== playerId);
@@ -1377,7 +1404,7 @@ function setupMessageHandlers(): void {
     notifyLobbyUpdate();
   });
 
-  transport.on('mp:lobby:ready', (msg) => {
+  reg('mp:lobby:ready', (msg) => {
     if (!_currentLobby) return;
     const { playerId, ready } = msg.payload as { playerId: string; ready: boolean };
     const player = _currentLobby.players.find(p => p.id === playerId);
@@ -1386,7 +1413,7 @@ function setupMessageHandlers(): void {
   });
 
   // H10: Handle peer disconnection — start reconnect grace timer.
-  transport.on('mp:lobby:peer_left', (msg) => {
+  reg('mp:lobby:peer_left', (msg) => {
     if (!_currentLobby) return;
     const { playerId } = msg.payload as { playerId: string };
     const playerIdx = _currentLobby.players.findIndex(p => p.id === playerId);
@@ -1415,7 +1442,7 @@ function setupMessageHandlers(): void {
   });
 
   // H10: Handle peer reconnection within grace window.
-  transport.on('mp:lobby:peer_rejoined', (msg) => {
+  reg('mp:lobby:peer_rejoined', (msg) => {
     if (!_currentLobby) return;
     const { playerId } = msg.payload as { playerId: string };
     const player = _currentLobby.players.find(p => p.id === playerId) as (LobbyPlayer & { connectionState?: string }) | undefined;
@@ -1431,7 +1458,7 @@ function setupMessageHandlers(): void {
     }
   });
 
-  transport.on('mp:lobby:settings', (msg) => {
+  reg('mp:lobby:settings', (msg) => {
     rrLog('mp:recv', 'mp:lobby:settings', { hasLobby: !!_currentLobby, amHost: isHost(), payloadKeys: Object.keys(msg.payload ?? {}) });
     if (!_currentLobby || isHost()) return; // Host already has correct state
     const settings = msg.payload as Partial<LobbyState>;
@@ -1478,7 +1505,7 @@ function setupMessageHandlers(): void {
     notifyLobbyUpdate();
   });
 
-  transport.on('mp:lobby:start', (msg) => {
+  reg('mp:lobby:start', (msg) => {
     if (!_currentLobby) return;
     const payload = msg.payload as {
       seed: number;
@@ -1511,7 +1538,7 @@ function setupMessageHandlers(): void {
   });
 
   // H5: Host handles guest ACKs.
-  transport.on('mp:lobby:start_ack', (msg) => {
+  reg('mp:lobby:start_ack', (msg) => {
     if (!isHost() || !_pendingStartAcks) return;
     const { playerId } = msg.payload as { playerId: string };
     _pendingStartAcks.delete(playerId);
@@ -1528,7 +1555,7 @@ function setupMessageHandlers(): void {
 
   // L4: Handle host kick — either remove the targeted peer from local state,
   // or (if we are the target) fire _onLobbyError and leave the lobby.
-  transport.on('mp:lobby:kick', (msg) => {
+  reg('mp:lobby:kick', (msg) => {
     if (!_currentLobby) return;
     const { targetPlayerId, reason, issuedBy } = msg.payload as {
       targetPlayerId: string;
@@ -1563,13 +1590,46 @@ function setupMessageHandlers(): void {
     notifyLobbyUpdate();
   });
 
-  transport.on('mp:race:progress', (msg) => {
+  reg('mp:race:progress', (msg) => {
     _onRaceProgress?.(msg.payload as unknown as RaceProgress);
   });
 
-  transport.on('mp:race:finish', (msg) => {
+  reg('mp:race:finish', (msg) => {
     _onRaceProgress?.(msg.payload as unknown as RaceProgress);
   });
+
+  // BUG17: When on Steam, poll for ungraceful peer exits (app crash, network drop)
+  // that never send mp:lobby:leave. The Rust LobbyChatUpdate callback writes the
+  // departing peer's SteamID to pending_peer_left; we read and synthesise the event.
+  if (hasSteam) {
+    if (_peerLeftPollInterval !== null) {
+      clearInterval(_peerLeftPollInterval);
+    }
+    _peerLeftPollInterval = setInterval(async () => {
+      if (!_currentLobby) return;
+      const steamId = await getPendingPeerLeft().catch(() => null);
+      if (!steamId) return;
+      rrLog('mp:recv', 'pending_peer_left poll — peer left ungracefully', { steamId });
+      // Find the player by exact id match or steam:<id> placeholder.
+      const player = _currentLobby.players.find(
+        p => p.id === steamId || p.id === `steam:${steamId}` || p.id.endsWith(steamId),
+      );
+      if (player) {
+        rrLog('mp:recv', 'peer_left poll — removing player', { playerId: player.id, steamId });
+        _currentLobby.players = _currentLobby.players.filter(p => p !== player);
+        notifyLobbyUpdate();
+      } else {
+        rrLog('mp:recv', 'peer_left poll — no matching player for steamId', { steamId });
+      }
+    }, 1000);
+    // Register cleanup so leaveLobby() stops the poll via _activeHandlerCleanups.
+    _activeHandlerCleanups.push(() => {
+      if (_peerLeftPollInterval !== null) {
+        clearInterval(_peerLeftPollInterval);
+        _peerLeftPollInterval = null;
+      }
+    });
+  }
 }
 
 function broadcastSettings(): void {

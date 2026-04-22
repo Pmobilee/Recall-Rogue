@@ -1763,6 +1763,32 @@ const err = await getSessionError(peerId)        // enriched failure reason from
 
 ---
 
+## LobbyChatUpdate — Entered and Left handling
+
+The `LobbyChatUpdate` callback in `src-tauri/src/steam.rs` fires for every lobby membership change. As of 2026-04-22e it handles both directions:
+
+### Entered (session auto-accept)
+
+When `member_state_change == ChatMemberStateChange::Entered`, the host sends a zero-byte `RELIABLE | AUTO_RESTART_BROKEN_SESSION` message to the entering peer. This implicitly accepts the reverse P2P session direction under Steam's rules, ensuring messages from the guest start delivering immediately rather than waiting for the host's next peer-poll (previously up to 300ms of drops).
+
+Self-enter events (host creating their own lobby) are filtered by checking `peer == me`.
+
+### Left / Disconnected / Kicked / Banned (ungraceful exit detection)
+
+When `member_state_change` is anything other than `Entered` (i.e., Left, Disconnected, Kicked, Banned), the callback writes the departing peer's 64-bit SteamID to `SteamState.pending_peer_left: Arc<Mutex<Option<u64>>>`.
+
+The TypeScript side polls this slot every 1 second while in a lobby (via `getPendingPeerLeft()` → `steam_get_pending_peer_left` Tauri command). When a non-null SteamID is returned, the lobby service searches `_currentLobby.players` for a matching entry (exact ID, `steam:<id>`, or ID ending with the SteamID) and removes it, then calls `notifyLobbyUpdate()`.
+
+This closes the ghost-player bug: previously a peer who crashed or lost network would stay in `_currentLobby.players` forever because they never sent `mp:lobby:leave`.
+
+### New IPC command
+
+| Command | Semantics |
+|---------|-----------|
+| `steam_get_pending_peer_left()` | One-shot (take()): returns 64-bit decimal SteamID string of ungraceful-exit peer, or null. |
+
+---
+
 ## LAN on macOS — Permission and Firewall
 
 ### Local Network Permission (macOS 15+)

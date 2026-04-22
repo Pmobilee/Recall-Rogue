@@ -12,6 +12,9 @@
  *   lan_get_local_ips  — enumerate non-loopback IPv4 addresses
  */
 
+// ── Imports ──────────────────────────────────────────────────────────────────────
+import { setMpDebugState } from './mpDebugState';
+
 // ── Types ──────────────────────────────────────────────────────────────────────
 
 /** Returned by `startLanServer` on success. */
@@ -152,6 +155,14 @@ export async function startLanServer(port?: number): Promise<LanStartResult | nu
   );
 
   const result = await Promise.race([invokePromise, timeoutPromise]);
+  // BUG19: Publish LAN running state to the debug overlay as soon as the server starts.
+  setMpDebugState({
+    lan: {
+      boundUrl: result.lanServerUrl ?? null,
+      lastProbeResult: null,
+      lastError: result.warning === 'local-only' ? 'local-only: no routable NIC found' : null,
+    },
+  });
   if (result.warning === 'local-only') {
     console.warn('[LanServer] Server bound to localhost only — remote players cannot connect. lanServerUrl:', result.lanServerUrl);
   }
@@ -174,6 +185,8 @@ export async function startLanServer(port?: number): Promise<LanStartResult | nu
  */
 export async function stopLanServer(): Promise<void> {
   await tauriInvoke<void>('lan_stop_server');
+  // BUG19: Clear LAN state from the debug overlay.
+  setMpDebugState({ lan: null });
 }
 
 /**

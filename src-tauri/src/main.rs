@@ -127,6 +127,8 @@ fn main() {
             steam::steam_get_p2p_connection_state,
             // BUG5: Session failure error slot — readable by _sendWithRetry for diagnostics
             steam::steam_get_session_error,
+            // BUG17: Peer ungraceful-leave slot — TS polls to synthesise local mp:lobby:leave
+            steam::steam_get_pending_peer_left,
             // LAN Server (AR-MULTIPLAYER LAN)
             lan::lan_start_server,
             lan::lan_stop_server,

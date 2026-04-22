@@ -644,6 +644,14 @@ export class SteamP2PTransport implements MultiplayerTransport {
    * buffer-vs-dispatch decision is in one place.
    */
   private _handleRawMessage(data: string): void {
+    // BUG18: Zero-byte primers from session_request_callback auto-accept and
+    // steam_prime_p2p_sessions are expected session-handshake messages, not bugs.
+    // JSON.parse('') throws, so guard here before the try/catch to avoid
+    // spurious console.warn noise for normal Steam P2P traffic.
+    if (data.length === 0) {
+      rrLog('mp:tx', 'recv zero-byte primer (ignored)');
+      return;
+    }
     let msg: MultiplayerMessage;
     try {
       msg = JSON.parse(data) as MultiplayerMessage;

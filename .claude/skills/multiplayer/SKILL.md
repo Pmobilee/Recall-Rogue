@@ -145,6 +145,20 @@ Five bugs found in a third deep audit pass:
 | BUG11: `resolveSteamPeerIdWithRetry` budget too short | Polish | 5 attempts × 500ms = 2.5s. Cold Steam backends take 3-4s. | Bumped to `attempts = 10` (5s total). |
 | BUG12: Rich Presence `connect` key not set | Polish | Host never called `setRichPresence('connect', ...)`. Friends couldn't click "Join Game" in Steam overlay. | `steamNetworkingService.ts` gets `setRichPresence`/`clearRichPresence` helpers (backed by already-registered Rust commands `steam_set_rich_presence`/`steam_clear_rich_presence`). `createLobby` sets key; `leaveLobby` clears it. |
 
+### Post-wave 22 deep audit part 4 (2026-04-22e — BUGs 13-20)
+
+Six more bugs found and fixed in hypercritical pass 4:
+
+| Bug | Severity | Root cause | Fix |
+|-----|----------|-----------|-----|
+| BUG13–14 | (prior pass) | — | — |
+| BUG15: `macosPermissionHint` never rendered | UX | `startLanServer()` populates the hint on macOS; no UI consumer existed | `MultiplayerMenu.svelte` captures `result.macosPermissionHint` → `lanServerHint` state; dismissible `<aside class="mp-lan-hint">` rendered; dismiss persisted to `localStorage` |
+| BUG16: transport listener leak on leave + rejoin | Critical | `setupMessageHandlers` deduped via `_handlersAttached` flag but never removed old listeners on leave. Each lobby cycle doubled handler count. | `_activeHandlerCleanups[]` array captures every `transport.on()` cleanup; `leaveLobby` calls all cleanups before resetting flag. `reg()` helper encapsulates pattern. |
+| BUG17: LobbyChatUpdate only handles Entered | Important | Left/Disconnected/Kicked/Banned states ignored. Ghost entries in `_currentLobby.players` after peer crash. | Added `pending_peer_left: Arc<Mutex<Option<u64>>>` to `SteamState`. Else-branch in callback writes departing peer SteamID. New `steam_get_pending_peer_left` Tauri command (take() semantics). `getPendingPeerLeft()` TS helper. 1s poll in `setupMessageHandlers` synthesises local player removal. |
+| BUG18: zero-byte primers logged as malformed | Noise | `JSON.parse('')` throws → `console.warn` "malformed P2P message" for every session handshake primer | Early guard `if (data.length === 0) { rrLog(...); return; }` before try/catch in `_handleRawMessage`. |
+| BUG19: LAN state never published to debug overlay | Observability | `lanServerService.ts` had no `setMpDebugState` calls. Overlay showed "no lan state" forever. | `startLanServer()` publishes `{ lan: { boundUrl, ... } }`; `stopLanServer()` clears it. Added `import { setMpDebugState }` to `lanServerService.ts`. |
+| BUG20: no console dump command | DX | No quick way to snapshot MP debug state for log-sharing. | `window.__rrMpDebug()` global added in `mpDebugState.ts`. Logs + returns `window.__rrMpState`. |
+
 **Remaining Work (all nice-to-haves; no ship blockers)**
 
 | Task | Notes |

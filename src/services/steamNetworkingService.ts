@@ -134,6 +134,8 @@ export interface SteamCommandArgs {
   steam_set_rich_presence: { key: string; value: string };
   /** BUG12: Clear all Steam Rich Presence keys (call on leaveLobby). */
   steam_clear_rich_presence: Record<string, never>;
+  /** BUG17: One-shot read of the peer SteamID that ungracefully left the lobby (Left/Disconnected/Kicked/Banned). */
+  steam_get_pending_peer_left: Record<string, never>;
 }
 
 /**
@@ -186,6 +188,8 @@ export interface SteamCommandReturn {
   steam_set_rich_presence: void;
   /** BUG12: void on success, or throws on Steam unavailable. */
   steam_clear_rich_presence: void;
+  /** BUG17: 64-bit decimal SteamID string of the peer who left, or null if no ungraceful exit since last call. */
+  steam_get_pending_peer_left: string | null;
 }
 
 /**
@@ -868,5 +872,19 @@ export async function setRichPresence(key: string, value: string): Promise<void>
 export async function clearRichPresence(): Promise<void> {
   if (!isTauriRuntime()) return;
   await invokeSteam('steam_clear_rich_presence');
+}
+
+/**
+ * BUG17: Poll for a peer who ungracefully left the lobby (app crash, network drop).
+ *
+ * The Rust LobbyChatUpdate callback stores the peer SteamID when it sees a
+ * Left/Disconnected/Kicked/Banned state change. This function reads and clears
+ * the slot atomically (take() semantics — returns null on second call).
+ *
+ * Returns the 64-bit SteamID as a decimal string, or null when no peer has
+ * ungracefully left since the last call.
+ */
+export async function getPendingPeerLeft(): Promise<string | null> {
+  return invokeSteam('steam_get_pending_peer_left') ?? null;
 }
 

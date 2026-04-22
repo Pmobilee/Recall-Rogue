@@ -93,6 +93,12 @@ pub struct SteamState {
     /// Persistent (not one-shot) — the error is informational and can be read multiple times.
     /// Keyed by raw u64 so concurrent access via Arc<Mutex<_>> is safe.
     pub last_session_errors: Arc<Mutex<HashMap<u64, String>>>,
+    /// BUG17: Stores the Steam ID of a peer that left the lobby ungracefully (app crash,
+    /// network drop — no mp:lobby:leave sent). Written by the LobbyChatUpdate callback
+    /// when member_state_change is Left/Disconnected/Kicked/Banned. One-shot: consumed
+    /// by steam_get_pending_peer_left which calls take(). The TS side polls this slot
+    /// at 1 s intervals while in a lobby and synthesises a local mp:lobby:leave event.
+    pub pending_peer_left: Arc<Mutex<Option<u64>>>,
 }
 
 impl SteamState {
@@ -220,6 +226,8 @@ impl SteamState {
                 // which implicitly accepts the reverse direction under Steam's session rules
                 // and lets incoming messages start delivering within milliseconds of join.
                 let client_for_chat = client.clone();
+                let pending_peer_left_for_cb = Arc::new(Mutex::new(None::<u64>));
+                let pending_peer_left_ref = pending_peer_left_for_cb.clone();
                 let lobby_chat_handle = client.register_callback(move |val: LobbyChatUpdate| {
                     // member_state_change is a flagset; Entered is the bit we care about.
                     if val.member_state_change == ChatMemberStateChange::Entered {
@@ -241,6 +249,21 @@ impl SteamState {
                             .send_message_to_user(identity, SendFlags::RELIABLE | SendFlags::AUTO_RESTART_BROKEN_SESSION, &[], 0)
                             .is_ok();
                         println!("[Steam] Auto-accept P2P for {}: {}", peer.raw(), ok);
+                    } else {
+                        // BUG17: Handle ungraceful exits — Left, Disconnected, Kicked, Banned.
+                        // These fire when a peer crashes or loses network without sending
+                        // mp:lobby:leave. We store the peer SteamID in pending_peer_left so
+                        // the TS side can synthesise a local mp:lobby:leave event.
+                        let peer = val.user_changed;
+                        eprintln!(
+                            "[Steam] LobbyChatUpdate: peer {} LEFT lobby {} (state={:?}) — emitting local mp:lobby:leave",
+                            peer.raw(),
+                            val.lobby.raw(),
+                            val.member_state_change,
+                        );
+                        if let Ok(mut slot) = pending_peer_left_ref.lock() {
+                            *slot = Some(peer.raw());
+                        }
                     }
                 });
 
@@ -332,6 +355,7 @@ impl SteamState {
                     _session_request_callback: Some(()),
                     _session_failed_callback: Some(()),
                     last_session_errors: session_errors_for_cb,
+                    pending_peer_left: pending_peer_left_for_cb,
                 }
             }
             Err(e) => {
@@ -350,6 +374,7 @@ impl SteamState {
                     _session_request_callback: None,
                     _session_failed_callback: None,
                     last_session_errors: Arc::new(Mutex::new(HashMap::new())),
+                    pending_peer_left: Arc::new(Mutex::new(None)),
                 }
             }
         }
@@ -1328,6 +1353,25 @@ pub fn steam_get_session_error(
         .map_err(|_| format!("Invalid steam_id '{}': must be a 64-bit decimal integer", steam_id))?;
     let lock = state.last_session_errors.lock().map_err(|e| e.to_string())?;
     Ok(lock.get(&peer_raw).cloned())
+}
+
+/// BUG17: Retrieve the Steam ID of a peer who ungracefully left the lobby.
+///
+/// Written by the LobbyChatUpdate callback when member_state_change is Left,
+/// Disconnected, Kicked, or Banned. The TS side polls this at 1 s intervals while
+/// in a lobby and synthesises a local mp:lobby:leave event when non-null.
+///
+/// One-shot semantics: the stored ID is consumed (take()) on read. Calling this
+/// twice returns None on the second call unless another peer leaves.
+///
+/// Returns the 64-bit Steam ID as a decimal string, or null if no peer has left
+/// since the last call.
+#[tauri::command]
+pub fn steam_get_pending_peer_left(
+    state: State<SteamState>,
+) -> Result<Option<String>, String> {
+    let mut slot = state.pending_peer_left.lock().map_err(|e| e.to_string())?;
+    Ok(slot.take().map(|raw| raw.to_string()))
 }
 
 // ── Cloud Save ────────────────────────────────────────────────────────────────

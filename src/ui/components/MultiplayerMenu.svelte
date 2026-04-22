@@ -69,6 +69,9 @@
   let lanServerPort = $state<number | null>(null)
   let lanServerStarting = $state(false)
   let lanServerError = $state('')
+  // BUG15: macOS Local Network permission hint — shown once per session unless dismissed.
+  let lanServerHint = $state<string | null>(null)
+  let lanHintDismissed = $state(typeof window !== 'undefined' && !!localStorage.getItem('rr-lan-hint-dismissed'))
 
   let discoveredServers = $state<DiscoveredLanServer[]>([])
   let isScanning = $state(false)
@@ -194,6 +197,10 @@
           isConnectedToLan = true
           connectedLanUrls = getLanServerUrls()
         }
+        // BUG15: Capture macOS Local Network permission hint so the UI can display it.
+        if (result.macosPermissionHint && !lanHintDismissed) {
+          lanServerHint = result.macosPermissionHint
+        }
       } else {
         // Non-Tauri platform — LAN hosting not available here.
         lanServerError = "LAN hosting requires the desktop app."
@@ -213,6 +220,7 @@
     lanServerRunning = false
     lanServerIps = []
     lanServerPort = null
+    lanServerHint = null
     clearLanServerUrl()
     isConnectedToLan = false
     connectedLanUrls = null
@@ -590,6 +598,22 @@
                     Also reachable at: {lanServerIps.slice(1).join(', ')}
                   </p>
                 {/if}
+              {/if}
+
+              <!-- BUG15: macOS Local Network permission hint — shown once, dismissible -->
+              {#if lanServerHint && !lanHintDismissed}
+                <aside class="mp-lan-hint" role="note" aria-label="Local network permission hint">
+                  <span class="mp-lan-hint-text">{lanServerHint}</span>
+                  <button
+                    class="mp-lan-hint-dismiss"
+                    aria-label="Dismiss hint"
+                    onclick={() => {
+                      lanHintDismissed = true
+                      lanServerHint = null
+                      localStorage.setItem('rr-lan-hint-dismissed', '1')
+                    }}
+                  >OK</button>
+                </aside>
               {/if}
 
               {#if lanServerError}
@@ -1337,6 +1361,44 @@
     font-size: calc(13px * var(--text-scale, 1));
     margin: calc(6px * var(--layout-scale, 1)) 0 calc(8px * var(--layout-scale, 1)) 0;
     font-family: var(--font-body, 'Lora', serif);
+  }
+
+  /* ===== BUG15: macOS LAN permission hint ===== */
+  .mp-lan-hint {
+    display: flex;
+    align-items: flex-start;
+    gap: calc(10px * var(--layout-scale, 1));
+    background: rgba(255, 255, 200, 0.08);
+    border: 1px solid rgba(255, 220, 100, 0.25);
+    border-radius: calc(6px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    margin: calc(6px * var(--layout-scale, 1)) 0 calc(8px * var(--layout-scale, 1)) 0;
+  }
+
+  .mp-lan-hint-text {
+    flex: 1;
+    font-size: calc(12px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-body, 'Lora', serif);
+    line-height: 1.5;
+  }
+
+  .mp-lan-hint-dismiss {
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: calc(4px * var(--layout-scale, 1));
+    color: rgba(255, 255, 255, 0.5);
+    font-size: calc(11px * var(--text-scale, 1));
+    padding: calc(2px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1));
+    cursor: pointer;
+    font-family: var(--font-body, 'Lora', serif);
+    line-height: 1.4;
+  }
+
+  .mp-lan-hint-dismiss:hover {
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.4);
   }
 
   /* ===== Host actions ===== */
