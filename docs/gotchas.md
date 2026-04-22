@@ -1,3 +1,13 @@
+### 2026-04-22g — BUG 21 regression: mp:lobby:join handler filtered the HOST out of its own players list
+
+**What broke:** Wave 22 pass 3's new `mp:lobby:join` host handler at `src/services/multiplayerLobbyService.ts:1376` did `_currentLobby.players = _currentLobby.players.filter(p => !p.isHost)` before pushing the incoming guest. The comment said "remove BUG10 placeholder" — but BUG10's `steam:<id>` placeholders only exist on the GUEST's local state, never on the HOST's. On the host, this filter stripped the host's own self-entry. The host's UI showed 1 player (the guest only). The subsequent `broadcastSettings()` propagated `players = [guest-only]` to the guest; guest's defensive reinsert added themselves back, so both clients ended up seeing only one player.
+
+**Why three prior audit passes missed it:** The code looked reasonable — a filter that removed "non-host" entries, inside a handler that adds a non-host guest. The predicate matched the wrong axis. Typecheck passed. Unit tests passed because no test exercised "host receives mp:lobby:join → players array still contains the host". Three audit passes focused on P2P handshake, bool contract erasure, and overlay gating — never on the predicate itself.
+
+**Fix:** Replace `!p.isHost` with `!p.id.startsWith('steam:')`. No-op on host (hosts have no `steam:` entries, only real player IDs). Correctly prunes placeholders on any future path that receives mp:lobby:join client-side.
+
+**Lesson:** Every new handler that mutates `players` needs a regression test for the host-receives-join case. When a predicate says "this cleans up placeholders", verify the placeholder pattern actually exists on the caller's side of the message.
+
 ### 2026-04-22e — Hypercritical pass 4: hint rendering, listener leak, LobbyChatUpdate Left, zero-byte spam
 
 **BUG15 — `macosPermissionHint` populated but never rendered** (`src/services/lanServerService.ts:163-164`, `src/ui/components/MultiplayerMenu.svelte`): `startLanServer()` populates `result.macosPermissionHint` on macOS so users know to grant Local Network in System Settings. The UI never read this field — no consumer existed. Fix: `MultiplayerMenu.svelte` now captures it into `lanServerHint` state and renders a dismissible `<aside class="mp-lan-hint">`. Dismiss stores `localStorage.setItem('rr-lan-hint-dismissed', '1')`.

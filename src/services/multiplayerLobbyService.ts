@@ -1371,9 +1371,12 @@ function setupMessageHandlers(): void {
     const { playerId, displayName } = msg.payload as { playerId: string; displayName: string };
     rrLog('mp:recv', 'mp:lobby:join (as host)', { playerId, displayName, existingCount: _currentLobby.players.length });
     if (!_currentLobby.players.find(p => p.id === playerId)) {
-      // Remove any placeholder entry for this player (BUG10 host stub uses steam:<id> prefix;
-      // the real join message carries the real playerId).
-      _currentLobby.players = _currentLobby.players.filter(p => !p.isHost);
+      // BUG21 fix: strip only steam:<id> placeholder entries (BUG10 host stub, which
+      // exists only in the GUEST's initial state, never the host's). The previous
+      // code used `.filter(p => !p.isHost)` — correct on a guest processing a
+      // hypothetical relayed join, but catastrophically wrong on the actual host,
+      // where it deleted the host's own self-entry before pushing the guest.
+      _currentLobby.players = _currentLobby.players.filter(p => !p.id.startsWith('steam:'));
       _currentLobby.players.push({
         id: playerId,
         displayName,
