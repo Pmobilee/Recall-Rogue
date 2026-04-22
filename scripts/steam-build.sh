@@ -203,9 +203,7 @@ if $DO_TEST; then
     cp -R "$APP_BUNDLE" "$STEAM_INSTALL/"
     echo "[steam] Installed to: $STEAM_INSTALL/"
     du -sh "$STEAM_INSTALL/Recall Rogue.app"
-    echo "[steam] Launching via Steam..."
-    open "steam://rungameid/$APP_ID"
-    echo "[steam] Done! Game should be launching."
+    echo "[steam] Ready — launch from Steam when you're ready to test."
     exit 0
 fi
 
