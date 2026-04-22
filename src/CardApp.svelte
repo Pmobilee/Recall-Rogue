@@ -221,8 +221,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     onLobbyUpdate,
     onGameStart as registerGameStartCb,
     generatePlayerId,
+    isHost as mpIsHost,
   } from './services/multiplayerLobbyService'
-  import { onOpponentProgressUpdate, onRaceComplete } from './services/multiplayerGameService'
+  import { onOpponentProgressUpdate, onRaceComplete, initGameMessageHandlers, initDuel } from './services/multiplayerGameService'
   import {
     initMapNodeSync,
     destroyMapNodeSync,
@@ -581,6 +582,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   /** Race/duel results received from onRaceComplete — shown on raceResults screen. */
   let activeRaceResults = $state<RaceResults | null>(null)
 
+  /**
+   * Cleanup function for initGameMessageHandlers, stored across the game-start callback.
+   * Called on run end (destroyCoopSync path). Module-scoped so the effect cleanup can reach it.
+   */
+  let _pendingGameMessageCleanup: (() => void) | null = null
+
   /** Live map node picks across all players, refreshed via multiplayerMapSync. */
   let mapNodePicks = $state<Record<string, string | null>>({})
 
@@ -806,16 +813,20 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       const opponent = lobby.players.find(p => p.id !== localPlayerId)
       opponentDisplayName = opponent?.displayName ?? 'Opponent'
 
-      // Guard: contentSelection must be present before starting the run.
-      // If it is missing the guest received mp:lobby:start before the settings broadcast —
-      // proceeding would silently diverge host and guest onto different card pools.
-      if (!lobby.contentSelection) {
+      // Guard: mode, selectedDeckId, and contentSelection must all be present before
+      // starting the run. If any are missing the guest received mp:lobby:start before
+      // the host's settings broadcast — proceeding would silently diverge host and
+      // guest onto different card pools or game modes.
+      if (!lobby.mode || !lobby.selectedDeckId || !lobby.contentSelection) {
+        const missing: string[] = []
+        if (!lobby.mode) missing.push('mode')
+        if (!lobby.selectedDeckId) missing.push('deckId')
+        if (!lobby.contentSelection) missing.push('contentSelection')
         console.error(
-          '[Multiplayer] mp:lobby:start received without contentSelection — ' +
-          'aborting run start to prevent host/guest card-pool divergence.',
-          { lobby, seed, localPlayerId }
+          '[Multiplayer] mp:lobby:start arrived with missing fields — aborting to prevent host/guest divergence.',
+          { missing, lobby, seed, localPlayerId }
         )
-        // Return to the lobby screen so the player is not left in a broken state.
+        multiplayerError = `Could not start — missing: ${missing.join(', ')}. Returning to lobby.`
         transitionScreen('multiplayerLobby')
         return
       }
@@ -846,17 +857,44 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       }
       persistPlayer()
 
+      // FIX C-001/C-002/MP-STEAM-20260422-002: Register ALL multiplayer subscriptions
+      // BEFORE startNewRun so no host broadcast can land before listeners are live.
+      // startNewRun -> onArchetypeSelected -> startEncounterForRoom -> broadcastSharedEnemyState
+      // runs synchronously on host. Guest listeners must be installed first.
+
+      // Determine host / opponent for duel/coop init
+      const isLocalHost = mpIsHost()
+      const opponentPlayer = lobby.players.find(p => p.id !== localPlayerId)
+      const opponentId = opponentPlayer?.id ?? 'unknown_opponent'
+
+      // Initialise map node consensus so both players must agree on the next room.
+      initMapNodeSync(localPlayerId)
+
+      // Initialise co-op turn-end barrier and partner HP heartbeat (coop only).
+      if (lobby.mode === 'coop') {
+        initCoopSync(localPlayerId)
+      }
+
+      // FIX C-001: Wire up transport message handlers for duel/coop game messages.
+      // Not for race — race has its own broadcast loop via startRaceProgressBroadcast.
+      let cleanupGameMessages: (() => void) | null = null
+      if (lobby.mode === 'coop' || lobby.mode === 'duel') {
+        cleanupGameMessages = initGameMessageHandlers(lobby.mode)
+      }
+
+      // FIX C-002: Initialise duel state machine for coop and duel modes.
+      // This must run before hostCreateSharedEnemy (called in encounterBridge on host side).
+      if (lobby.mode === 'coop' || lobby.mode === 'duel') {
+        initDuel(isLocalHost, localPlayerId, opponentId)
+      }
+
+      // Store cleanup in a module-level variable so the effect cleanup can call it.
+      _pendingGameMessageCleanup = cleanupGameMessages
+
       startNewRun({
         multiplayerSeed: seed,
         multiplayerMode: lobby.mode,
       })
-
-      // Initialise map node consensus so both players must agree on the next room.
-      initMapNodeSync(localPlayerId)
-      // Initialise co-op turn-end barrier and partner HP heartbeat.
-      if (lobby.mode === 'coop') {
-        initCoopSync(localPlayerId)
-      }
     })
     const unsubProgress = onOpponentProgressUpdate((progress: RaceProgress) => {
       opponentProgress = progress
@@ -902,6 +940,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       unsubRace()
       destroyMapNodeSync()
       destroyCoopSync()
+      // FIX C-001: clean up game message handlers registered at game start
+      _pendingGameMessageCleanup?.()
+      _pendingGameMessageCleanup = null
     }
   })
 
@@ -2310,6 +2351,16 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   {#if $currentScreen === 'multiplayerLobby' && currentLobby}
     <div in:fly={{ y: 8, duration: 350 }}>
+      {#if multiplayerError}
+        <div class="mp-error-banner" role="alert" data-testid="mp-error-banner">
+          <span class="mp-error-text">{multiplayerError}</span>
+          <button
+            class="mp-error-dismiss"
+            aria-label="Dismiss error"
+            onclick={() => { multiplayerError = null }}
+          >✕</button>
+        </div>
+      {/if}
       <MultiplayerLobby
         lobby={currentLobby}
         localPlayerId={localPlayerId}
