@@ -5461,3 +5461,13 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 **Fix:** All wired in one batch. See `docs/architecture/multiplayer.md` → "Coop Wiring — Game Start Initialization Order."
 
 **Lesson:** Orphan functions (zero production callers) are silent bugs. Any function that's "done" but not wired is not actually done — it's aspirational code. Before marking a multiplayer feature "DONE" in SKILL.md, grep for non-test callers of every exported function in that file.
+
+### 2026-04-22 — Windows Steam release stdout was silently discarded
+
+**What broke:** On Windows release builds, `src-tauri/src/main.rs` `redirect_stdio_to_log_file` opened the log file but the `#[cfg(windows)]` block contained only `let _ = file;`, which dropped the handle without redirecting. Combined with `#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]` hiding the console, every `println!`/`eprintln!` in `steam.rs` (session accept, send failure reasons, peer-entered messages, primer counts) landed in the void. Windows players who tried to attach `%LocalAppData%\Recall Rogue\debug.log` for MP diagnostics found it empty.
+
+**Fix:** Added `windows-sys = { version = "0.52", features = ["Win32_System_Console", "Win32_Foundation"] }` under `[target.'cfg(windows)'.dependencies]` in `src-tauri/Cargo.toml`. In the `#[cfg(windows)]` block, replaced `let _ = file;` with `SetStdHandle(STD_OUTPUT_HANDLE, raw)` + `SetStdHandle(STD_ERROR_HANDLE, raw)` using the raw HANDLE from `file.as_raw_handle()`, then `std::mem::forget(file)` to keep the handle alive for the process lifetime.
+
+**Why `mem::forget` is essential:** Dropping `file` closes the underlying HANDLE while Windows is still writing through it, corrupting the log. The forget intentionally leaks the `File` — the OS reclaims it on process exit.
+
+**Files changed:** `src-tauri/Cargo.toml`, `src-tauri/src/main.rs`.
