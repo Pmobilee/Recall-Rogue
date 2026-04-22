@@ -5372,3 +5372,19 @@ The old `offline.html` still contained copy from a previous project ("GAIA can't
 **Fix:** Detect Tauri via `window.__TAURI_INTERNALS__ || window.__TAURI__` (same pattern as `platformService.ts` and `multiplayerTransport.ts`). In Tauri builds or dev mode, proactively unregister all existing SWs and clear all caches — this self-heals installs that already registered the SW. Only in a true web/PWA production deploy (non-Tauri, non-dev) is `/sw.js` registered. `public/offline.html` was also rewritten with Recall Rogue copy to prevent the old-project text from surfacing on any remaining web/Android targets.
 
 **Lesson:** Service worker registration should check the runtime environment. PWA caching logic that made sense for web deploys has no business running inside a packaged desktop app, and WebView2 doesn't guard against it the way macOS WKWebView does.
+
+### 2026-04-22 — BUG 27: gameScreens allowlist used wrong screen names, nuked lobby on first run transition
+
+**What broke:** Every multiplayer symptom the user reported in one sitting (tutorial fires in coop, guest doesn't see narrative, each player fights their own copy of the enemy, no MP HUD showing opponent HP) traced back to ONE typo'd Set in `src/CardApp.svelte`. The cleanup `$effect` that calls `leaveLobby()` when the player navigates away from multiplayer uses an allowlist of "game screens":
+
+```ts
+const gameScreens = new Set(['dungeonMap', 'combat', 'shop', 'rest', 'mystery', 'reward', 'runEnd'])
+```
+
+The real `Screen` union in `src/ui/stores/gameState.ts` uses completely different names: `shopRoom`, `restRoom`/`restStudy`/`restMeditate`, `mysteryEvent`, `rewardRoom`/`cardReward`, plus `runPreview`, `retreatOrDelve`, `specialEvent`, `campfire`, `masteryChallenge`, `cardUpgradeReveal`, `relicSwapOverlay`, `upgradeSelection`, `postMiniBossRest`, `triviaRound`. So of the ~20 screens a run actually visits, only `dungeonMap`, `combat`, and `runEnd` were on the allowlist.
+
+For coop with study-multi decks, the run starts at `runPreview` → instant `leaveLobby()` → `currentLobby = null` → `isMultiplayerRun` (derived) flips to `false` → MultiplayerHUD unmounts, tutorial gate `currentLobby !== null` passes, Coop enemy-HP subscriptions disconnect, each player's gameFlow runs as a solo instance from that point on. The enemies are identical only because of the shared `multiplayerSeed`; damage never synced because the lobby that wired `initCoopSync` was already torn down.
+
+**Fix:** Rewrote `gameScreens` to enumerate every real in-run screen from the `Screen` union. Also gated `forceTutorialEnemy` in `gameFlowController.ts` on `multiplayerModeState !== null` — first-run players entering coop shouldn't trigger Pop Quiz (which diverges across the two clients if only one is first-run, AND the tutorial flow itself isn't coop-safe). Converted the critical `mp:coop:enemy_state` / `mp:coop:enemy_hp_update` / `initCoopSync` trace lines from `coopLog` (`DEBUG_COOP=false`, never logged anything) to `rrLog` so a future coop session actually shows message flow in `debug.log`.
+
+**Lesson:** Any allowlist/Set comparing against a closed string union (`Screen`, enum-like types) must be typed against that union. Writing `new Set<string>([...])` erases the type check entirely. A `new Set<Screen>([...])` would have failed compilation the moment `'shop'` didn't match `'shopRoom'`. Also: a single "is this screen a run-screen" membership check this load-bearing belongs in `gameState.ts` next to the `Screen` type definition, not inline in `CardApp.svelte`, so the source of truth and the consumer don't drift.

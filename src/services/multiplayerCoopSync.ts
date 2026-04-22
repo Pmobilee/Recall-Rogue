@@ -31,10 +31,11 @@
 import { getMultiplayerTransport } from './multiplayerTransport';
 import { getCurrentLobby, onLobbyUpdate } from './multiplayerLobbyService';
 import type { SharedEnemySnapshot, EnemyTurnDelta, RaceProgress } from '../data/multiplayerTypes';
+import { rrLog } from './rrLog';
 
 // -- Debug flag ---------------------------------------------------------------
 
-/** Set to true locally to enable verbose coop sync tracing. */
+/** Set to true locally to enable verbose coop sync tracing via console. */
 const DEBUG_COOP = false;
 
 function coopLog(msg: string, ...args: unknown[]): void {
@@ -152,7 +153,7 @@ export function initCoopSync(localPlayerId: string): void {
   _collectedDeltas = new Map();
   _lastPartnerHeartbeat = new Map();
 
-  coopLog('initCoopSync, localPlayerId=%s', localPlayerId);
+  rrLog('mp:coop', 'initCoopSync', { localPlayerId });
 
   const transport = getMultiplayerTransport();
 
@@ -204,7 +205,7 @@ export function initCoopSync(localPlayerId: string): void {
   // Shared enemy state broadcast from host
   const offEnemyState = transport.on('mp:coop:enemy_state', (msg) => {
     const snapshot = msg.payload as unknown as SharedEnemySnapshot;
-    coopLog('received coop enemy_state, hp=%d/%d', snapshot?.currentHP, snapshot?.maxHP);
+    rrLog('mp:coop', 'recv enemy_state', { hp: snapshot?.currentHP, maxHP: snapshot?.maxHP, subs: _sharedEnemySubs.size });
     if (!snapshot?.currentHP === undefined || !snapshot?.maxHP === undefined) return;
     for (const cb of _sharedEnemySubs) {
       cb(snapshot);
@@ -214,7 +215,7 @@ export function initCoopSync(localPlayerId: string): void {
   // Real-time enemy HP update -- lightweight per-card-play broadcast from the active partner.
   const offEnemyHpUpdate = transport.on('mp:coop:enemy_hp_update', (msg) => {
     const { currentHP, maxHP } = msg.payload as { currentHP: number; maxHP: number };
-    coopLog('received enemy_hp_update, hp=%d/%d', currentHP, maxHP);
+    rrLog('mp:coop', 'recv enemy_hp_update', { hp: currentHP, maxHP, subs: _enemyHpSubs.size });
     if (typeof currentHP !== 'number' || typeof maxHP !== 'number') return;
     for (const cb of _enemyHpSubs) {
       cb(currentHP, maxHP);
@@ -507,10 +508,10 @@ export function broadcastPartnerState(state: { hp: number; maxHp: number; block:
  */
 export function broadcastSharedEnemyState(snapshot: SharedEnemySnapshot): void {
   if (!_localPlayerId) {
-    coopLog('broadcastSharedEnemyState called before initCoopSync -- dropped');
+    rrLog('mp:coop', 'broadcastSharedEnemyState dropped — coop sync not initialised');
     return;
   }
-  coopLog('broadcastSharedEnemyState hp=%d/%d', snapshot.currentHP, snapshot.maxHP);
+  rrLog('mp:coop', 'send enemy_state', { hp: snapshot.currentHP, maxHP: snapshot.maxHP });
   const transport = getMultiplayerTransport();
   transport.send('mp:coop:enemy_state', snapshot as unknown as Record<string, unknown>);
 }
@@ -524,10 +525,10 @@ export function broadcastSharedEnemyState(snapshot: SharedEnemySnapshot): void {
  */
 export function broadcastEnemyHpUpdate(currentHP: number, maxHP: number): void {
   if (!_localPlayerId) {
-    coopLog('broadcastEnemyHpUpdate called before initCoopSync -- dropped');
+    rrLog('mp:coop', 'broadcastEnemyHpUpdate dropped — coop sync not initialised');
     return;
   }
-  coopLog('broadcastEnemyHpUpdate hp=%d/%d', currentHP, maxHP);
+  rrLog('mp:coop', 'send enemy_hp_update', { hp: currentHP, maxHP });
   const transport = getMultiplayerTransport();
   transport.send('mp:coop:enemy_hp_update', { currentHP, maxHP });
 }

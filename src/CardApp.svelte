@@ -746,11 +746,47 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   // Clean up lobby state when navigating away from multiplayer screens.
   // Handles the case where rrPlay API or direct screen transitions bypass handleMultiplayerBack().
+  //
+  // CRITICAL: gameScreens must list EVERY screen a player visits during an active run,
+  // using the exact Screen-type names from src/ui/stores/gameState.ts. A mismatch (e.g.
+  // 'shop' vs the real 'shopRoom') nukes the lobby the moment the run hits that screen:
+  // currentLobby=null → isMultiplayerRun=false → HUD hides, tutorial gate passes,
+  // coop enemy sync stops. The first-encountered offender was 'runPreview' (coop runs
+  // with study-multi go here before dungeonMap), which cleared the lobby before combat
+  // ever started. See 2026-04-22 BUG 27 in docs/gotchas.md.
   $effect(() => {
     const screen = $currentScreen
-    const mpScreens = new Set(['multiplayerMenu', 'multiplayerLobby', 'lobbyBrowser', 'raceResults'])
-    // Game screens are active gameplay — do NOT clean up during a multiplayer run.
-    const gameScreens = new Set(['dungeonMap', 'combat', 'shop', 'rest', 'mystery', 'reward', 'runEnd'])
+    const mpScreens: Set<Screen> = new Set<Screen>([
+      'multiplayerMenu',
+      'multiplayerLobby',
+      'lobbyBrowser',
+      'raceResults',
+    ])
+    // Typed against Screen so a renamed or removed screen fails compilation —
+    // the previous untyped allowlist silently let 'shop' (wrong) pass next to
+    // the real 'shopRoom' (right), and nuked the lobby at every in-run screen.
+    const gameScreens: Set<Screen> = new Set<Screen>([
+      'runPreview',
+      'dungeonMap',
+      'combat',
+      'shopRoom',
+      'restRoom',
+      'restStudy',
+      'restMeditate',
+      'mysteryEvent',
+      'rewardRoom',
+      'cardReward',
+      'cardUpgradeReveal',
+      'retreatOrDelve',
+      'specialEvent',
+      'campfire',
+      'masteryChallenge',
+      'relicSwapOverlay',
+      'upgradeSelection',
+      'postMiniBossRest',
+      'runEnd',
+      'triviaRound',
+    ])
 
     if (!mpScreens.has(screen) && !gameScreens.has(screen) && currentLobby) {
       // Navigated away from MP to a non-game screen (hub, settings, etc.) — clean up.
