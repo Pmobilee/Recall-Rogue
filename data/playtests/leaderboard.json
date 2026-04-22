@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-22T13:07:31.675Z",
+  "updatedAt": "2026-04-22T23:55:00.000Z",
   "totalPlaythroughs": 22,
   "totalIssues": 147,
   "batches": [
@@ -494,7 +494,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -509,11 +509,12 @@
       "fixHypothesis": "Replace with `getRunRng(\"cardDraw\").next() < chance` (or dedicated fork label `tagMagnetism`). Requires fork-seed sync bug to also be fixed for effect.",
       "score": 50,
       "rank": 10,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "59fc1fb5a (wave 3 pre-commit)",
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
+      "resolvedBy": "wave 3 — determinism + mode-bleed",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "59fc1fb5a",
-      "resolutionNote": "Tag magnetism already seeded via getRunRng"
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-010",
@@ -530,7 +531,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -545,11 +546,12 @@
       "fixHypothesis": "Use `getRunRng(\"cardEffects\").next()` and seeded `Math.floor(rng.next() * pool.length)`. Requires fork-seed sync fix to be effective in coop.",
       "score": 50,
       "rank": 11,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "59fc1fb5a (wave 3 pre-commit)",
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
+      "resolvedBy": "wave 3 — determinism + mode-bleed",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "59fc1fb5a",
-      "resolutionNote": "Transmute mechanic already seeded"
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-011",
@@ -566,7 +568,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -584,11 +586,12 @@
       "fixHypothesis": "Replace all four sites with `seededShuffled(array, getRunRng(\"debuffTarget\"))` using a Fisher-Yates shuffle from `seededRng.ts`.",
       "score": 50,
       "rank": 12,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "59fc1fb5a (wave 3 pre-commit)",
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
+      "resolvedBy": "wave 3 — determinism + mode-bleed",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "59fc1fb5a",
-      "resolutionNote": "Debuff target Fisher-Yates seeded"
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-012",
@@ -605,7 +608,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -620,11 +623,12 @@
       "fixHypothesis": "Before `broadcastSharedEnemyState` (host) and `awaitCoopEnemyReconcile` (guest), both sides call `primeP2PSessions(lobbyId)` and `await new Promise(r => setTimeout(r, 100))` to let zero-byte primers cross. Log prime result counts.",
       "score": 50,
       "rank": 13,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "ee1ddc795 (prior backfill)",
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
+      "resolvedBy": "wave 3 — determinism + mode-bleed",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "59fc1fb5a",
-      "resolutionNote": "Bidirectional P2P prime already in primeP2PSessions"
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-013",
@@ -641,7 +645,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -657,11 +661,12 @@
       "fixHypothesis": "Guard the race-progress broadcast with `if (activeRunMode === \"multiplayer_race\" && multiplayerModeState === \"race\")`. Similarly guard `CardApp.svelte:861-862`.",
       "score": 50,
       "rank": 14,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "59fc1fb5a (wave 3 pre-commit)",
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
+      "resolvedBy": "wave 3 — determinism + mode-bleed",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "59fc1fb5a",
-      "resolutionNote": "Race progress now gated strictly on multiplayer_race"
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-014",
@@ -678,7 +683,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -694,11 +699,12 @@
       "fixHypothesis": "Early-return unless `run.multiplayerMode === \"coop\"`. Or split partner-state and race-progress into separate stores.",
       "score": 50,
       "rank": 15,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "verified in 49cfc15b7 (agent E)",
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
+      "resolvedBy": "wave 3 — determinism + mode-bleed",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "59fc1fb5a",
-      "resolutionNote": "CardApp partner-state listener gates on coop mode"
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-015",
@@ -715,7 +721,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -728,9 +734,8 @@
       "fixHypothesis": "Either wire each into `CardApp.svelte` routing (add a `raceEnd`/`triviaRound`/`duelCombat` screen and `transitionScreen` invocations), or delete them until the mode is fully implemented. Don't leave \"DONE (not wired)\" in the skill doc.",
       "score": 50,
       "rank": 16,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent E)",
-      "resolutionNote": "DuelOpponentPanel now wired during combat"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-016",
@@ -747,7 +752,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -763,11 +768,12 @@
       "fixHypothesis": "Require an ACK that includes a content-selection hash. Host re-broadcasts until ACK carries matching hash. Already partially there — extend the ACK schema.",
       "score": 50,
       "rank": 17,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "14495f06b (Wave 1 verified)",
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "resolvedAt": "2026-04-22T21:38:43.340785+09:00",
+      "resolvedBy": "wave 3 — determinism + mode-bleed",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "59fc1fb5a",
-      "resolutionNote": "ACK contentHash handshake already handling retry"
+      "fixedInCommit": "59fc1fb5a"
     },
     {
       "canonicalId": "MP-STEAM-20260422-001",
@@ -831,7 +837,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -846,9 +852,8 @@
       "fixHypothesis": "Use `getRunRng(\"catchUpMastery\").next()` in place of `Math.random()`.",
       "score": 25,
       "rank": 19,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent C)",
-      "resolutionNote": "catchUpMasteryService seeded fork"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-018",
@@ -865,7 +870,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -880,11 +885,10 @@
       "fixHypothesis": "Seed with `getRunRng(\"shopInventory\").next()`.",
       "score": 25,
       "rank": 20,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "884d603a7",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent C)",
-      "resolutionNote": "shopService seeded shopFloor10Food fork"
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-019",
@@ -901,7 +905,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -916,11 +920,10 @@
       "fixHypothesis": "Use `getRunRng(\"quizFraming\").next()` — new fork label.",
       "score": 25,
       "rank": 21,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "884d603a7",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent C)",
-      "resolutionNote": "nonCombatQuizSelector seeded quizFraming fork"
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-020",
@@ -937,7 +940,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "partial",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -953,10 +956,9 @@
       "fixHypothesis": "On `accepted == false`: log WARN, stash error into `last_session_errors` map, try a zero-byte RELIABLE send to force a retry (matches LobbyChatUpdate auto-accept pattern).",
       "score": 25,
       "rank": 22,
-      "note": "TS side: getPendingSessionRequestError() getter added to steamNetworkingService.ts (polls steam_get_pending_session_request_error). Rust side: pending_session_request_error slot + command needed in steam.rs. UI surface pending per PASS1-BUG-21.",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "pending_session_request_error slot + surfacing"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "note": "TS side: getPendingSessionRequestError() getter added to steamNetworkingService.ts (polls steam_get_pending_session_request_error). Rust side: pending_session_request_error slot + command needed in steam.rs. UI surface pending per PASS1-BUG-21."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-021",
@@ -989,11 +991,10 @@
       "fixHypothesis": "Options: (a) upgrade steamworks-rs to 0.13+ if method exposed, (b) add `steamworks-sys` direct dep + call flat C API (`SteamAPI_ISteamMatchmaking_RequestLobbyData`), (c) leave documented workaround as-is. (c) is acceptable for now.",
       "score": 25,
       "rank": 23,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedAt": "2026-04-22T23:45:00.000Z",
-      "note": "Verified no-op by design: steam_request_lobby_data is a documented steamworks-rs 0.12 API gap. The 200ms warm-up sleep in joinSteamLobby covers the callback-pump window. No code change needed.",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "Documented steamworks-rs 0.12 limit + raw flat API workaround"
+      "note": "Verified no-op by design: steam_request_lobby_data is a documented steamworks-rs 0.12 API gap. The 200ms warm-up sleep in joinSteamLobby covers the callback-pump window. No code change needed."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-022",
@@ -1010,7 +1011,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1023,9 +1024,8 @@
       "fixHypothesis": "Audit `pickBackend()`; in Steam release, hard-fail instead of falling back to web. Log which backend was picked on every lobby create/join.",
       "score": 25,
       "rank": 24,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent G)",
-      "resolutionNote": "webBackend fallback doc + explicit no-fallback rule"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-023",
@@ -1042,7 +1042,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1055,9 +1055,8 @@
       "fixHypothesis": "Compile LAN out of Steam release via `import.meta.env.VITE_STEAM_BUILD` check, or at minimum assert `isLanMode() === false` at lobby create in Steam builds.",
       "score": 25,
       "rank": 25,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent G)",
-      "resolutionNote": "LAN code hidden/compiled residue documented"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-024",
@@ -1074,7 +1073,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1087,11 +1086,10 @@
       "fixHypothesis": "Add a \"Copy MP Debug Snapshot\" button to the MP lobby menu (visible only when `mpLobbyActive`). Writes __rrMpDebug output to clipboard for pasting into bug reports.",
       "score": 25,
       "rank": 26,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "884d603a7",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent H)",
-      "resolutionNote": "mpDebugSnapshot.ts helper + tests shipped"
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-M-025",
@@ -1108,7 +1106,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1121,7 +1119,8 @@
       "fixHypothesis": "Reduce to 15s. Pair with `mp:ping` at 3s interval; if 2 consecutive pings miss, trigger `handleCoopPlayerDeath` path.",
       "score": 25,
       "rank": 27,
-      "deferredNote": "DEFERRED — awaitCoopTurnEnd 45s timeout tuning; not attempted this wave"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-H-018",
@@ -1438,7 +1437,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1451,9 +1450,8 @@
       "fixHypothesis": "Wire into combat scene when `run.multiplayerMode === \"duel\"`. Or delete and remove \"DONE\" from skill.",
       "score": 10,
       "rank": 38,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent E)",
-      "resolutionNote": "DuelOpponentPanel wired during combat in duel mode"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-L-027",
@@ -1470,7 +1468,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1483,9 +1481,8 @@
       "fixHypothesis": "Add `raceEnd` screen to CardApp router. Transition to it on `mp:race:finish` for both players.",
       "score": 10,
       "rank": 39,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "verified in 49cfc15b7 (agent E)",
-      "resolutionNote": "RaceResultsScreen wired at currentScreen=raceResults"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-L-028",
@@ -1502,7 +1499,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1515,9 +1512,8 @@
       "fixHypothesis": "Wire trivia-round transitions. Or mark mode as alpha-gated and remove from lobby mode picker.",
       "score": 10,
       "rank": 40,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "verified in 49cfc15b7 (agent E)",
-      "resolutionNote": "TriviaRoundScreen wired at currentScreen=triviaRound"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-L-029",
@@ -1534,7 +1530,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1547,9 +1543,8 @@
       "fixHypothesis": "Register `P2PSessionConnectFail_t` callback in `SteamState::new()`. Write to `pending_peer_left` just like `LobbyChatUpdate::Disconnected` path.",
       "score": 10,
       "rank": 41,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent F absorbed)",
-      "resolutionNote": "ws.on(close) emits mp:lobby:peer_left with reason=transport_close"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-L-030",
@@ -1566,7 +1561,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1579,11 +1574,10 @@
       "fixHypothesis": "Decide: split score (current) vs combined score. Document decision in SKILL.md / GAME_DESIGN.md before shipping.",
       "score": 10,
       "rank": 42,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "884d603a7",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent C)",
-      "resolutionNote": "coop scoring branch + partner-assist fields on ModeScoreStats"
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-L-031",
@@ -1600,7 +1594,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1613,11 +1607,10 @@
       "fixHypothesis": "Re-show when `lan_tcp_probe` fails; store dismissal as 24-hour cooldown, not permanent.",
       "score": 10,
       "rank": 43,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "0d017edee",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent E)",
-      "resolutionNote": "24hr dismissal window via localStorage timestamp"
+      "fixedInCommit": "0d017edee"
     },
     {
       "canonicalId": "alpha-review-risk-001",
@@ -2686,7 +2679,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "file": "src/CardApp.svelte:757-789",
@@ -2698,9 +2691,8 @@
       "rank": 77,
       "deferredReason": "BUG 27 fix (commit 61a60edd9) already mitigates runtime risk by typing the Set as Set<Screen>. Compile-derived Exclude<> type + lint script is hardening nice-to-have, not a bug.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent E)",
-      "resolutionNote": "Polarity inverted — lobbyTerminatingScreens"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-009",
@@ -2721,7 +2713,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "removed": "commit 82bf261ef removed MpDebugOverlay",
@@ -2733,9 +2725,8 @@
       "rank": 78,
       "deferredReason": "New HUD surface — user should pick visual design (position, colors, interaction pattern) before implementation.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent E)",
-      "resolutionNote": "sync-health-banner toast on partnerUnresponsive"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-010",
@@ -2756,7 +2747,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "file": "vite.config.ts",
@@ -2769,9 +2760,8 @@
       "rank": 79,
       "deferredReason": "CSP rework is risky surface area — wants user sign-off on which endpoints (wss://mp.recallrogue.com? steam://? relay fallback?) to allow before editing the prod CSP.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent G — docs)",
-      "resolutionNote": "Production CSP documented; code gate in 2e25b6765 (agent D csp=null)"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-011",
@@ -3058,7 +3048,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "file": "src/services/multiplayerTransport.ts",
@@ -3072,9 +3062,8 @@
       "rank": 89,
       "deferredReason": "Decision depends on whether MP ever needs a WebSocket fallback on Steam builds (currently pure P2P). Ties into broader MP relay infrastructure call.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent G — docs)",
-      "resolutionNote": "VITE_MP_WS_URL Steam-build trap documented"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-014",
@@ -3095,7 +3084,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T19:00:00.000Z",
       "lastSeen": "2026-04-22T19:00:00.000Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-20260422-COOP",
       "bestEvidence": {
         "fix": "commit eae6415f1",
@@ -3107,11 +3096,10 @@
       "rank": 90,
       "deferredReason": "Narrow regression test — will add alongside the broader integration harness in MP-006.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedAt": "2026-04-22",
-      "fixedInCommit": "884d603a7",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent H)",
-      "resolutionNote": "21-case parameterized contentSelection test added"
+      "fixedInCommit": "884d603a7"
     },
     {
       "canonicalId": "MP-STEAM-20260422-015",
@@ -3182,14 +3170,13 @@
       "title": "Lobby state persists across navigation - auto-reconnects on multiplayerMenu return",
       "description": "Once a player connects to a lobby, navigating away (hub) and back to multiplayerMenu auto-reconnects to the old lobby. The player sees lobby elements (lobby-code, player-slots, btn-ready) instead of the mode selection menu (tab-create, tab-join, mode cards). navigate('hub') does not call leaveLobby() on the lobby service. This makes it impossible to join a different lobby without restarting the container.",
       "frequency": 1,
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 94,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent E)",
-      "resolutionNote": "Leave lobby on multiplayerMenu navigation"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-004",
@@ -3198,14 +3185,13 @@
       "title": "Guest ready button does not toggle - cannot mark as ready",
       "description": "Guest's Ready button click does not toggle ready state. Button stays showing 'Ready' (not toggled) even after multiple clicks via Playwright click and eval-dispatched pointer events. Host's Ready button toggles correctly to 'Not Ready'. Start gate remains disabled because guest is never ready. This completely blocks two-player race starts.",
       "frequency": 1,
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 95,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "6c6afaeae (verified pre-fix)",
-      "resolutionNote": "setReady() + notifyLobbyUpdate already wired"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-005",
@@ -3214,14 +3200,13 @@
       "title": "Player slot count inconsistency between Fastify and host UI",
       "description": "Fastify REST API reports currentPlayers: 2 but host UI only renders 1 player slot (Player 1 only, no Player 2). The guest appears in the server state but not in the host's DOM. Possibly a WebSocket state sync issue where the guest's join message doesn't update the host's reactive player list.",
       "frequency": 1,
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 96,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "6ae3b773d + cdbf6dcbc + df09f5857 (verified pre-fix)",
-      "resolutionNote": "BUG-21/22/24 cluster"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-006",
@@ -3230,14 +3215,13 @@
       "title": "Leave lobby button click stuck on loading screen",
       "description": "Clicking btn-leave-lobby triggers a page transition but gets stuck on a loading screen (three dots animation on dark background). The DOM still reports lobby elements (lobby-code, player-slots) but the visual state is a blank loading screen. eval-clicking the button has the same result.",
       "frequency": 1,
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 97,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent E)",
-      "resolutionNote": "5s timeout fallback on leaveLobby"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-007",
@@ -3246,13 +3230,13 @@
       "title": "Race enterRoom() from dungeon map leads to black screen",
       "description": "After starting a race (lobby -> onboarding -> dungeonMap), calling enterRoom() or selectMapNode() transitions to a black screen with screen: 'unknown' and inCombat: false. The Phaser scene transition fails silently. No console errors. The game is completely stuck.",
       "frequency": 1,
-      "status": "wontfix",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 98,
-      "wontfixAt": "2026-04-22T23:50:00.000Z",
-      "wontfixReason": "enterRoom() is dev-only playtestAPI path; real player flow via commitMapNodeSelection works"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-008",
@@ -3261,14 +3245,13 @@
       "title": "Race start shows onboarding instead of directly entering dungeon",
       "description": "Starting a race from a lobby (with bot + deck selected + ready) shows the onboarding 'RECALL ROGUE - Enter the depths' splash screen before the dungeon map. This adds a mandatory click-through step. In multiplayer, both players should enter the dungeon simultaneously without an intro screen.",
       "frequency": 1,
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 99,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "d73dc7903 (verified pre-fix)",
-      "resolutionNote": "Tutorial gate on currentLobby!==null already in place"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-009",
@@ -3277,14 +3260,13 @@
       "title": "Deck picker 'Nothing selected' after clicking deck row",
       "description": "In the LobbyDeckPicker, clicking a deck row (e.g., 'Mammals of the World') does not visually select it. The picker footer still shows 'Nothing selected'. The correct interaction is to click the ldp-deck-check-btn checkbox button next to the deck, not the row itself.",
       "frequency": 1,
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 100,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "verified pre-fix in LobbyDeckPicker",
-      "resolutionNote": "Whole row is role=button with onclick"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-010",
@@ -3293,14 +3275,13 @@
       "title": "Error details button visible in lobby UI",
       "description": "The lobby screen contains a 'Restart Game' button and an 'Error details' collapsible at the bottom of the DOM. These appear to be dev/error-state elements that are rendered even when no error has occurred. They may not be visible to the player (could be hidden via CSS) but are present in the DOM.",
       "frequency": 1,
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 101,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "verified-correct-by-design",
-      "resolutionNote": "Error details only on #rr-crash-overlay, not lobby UI"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-011",
@@ -3309,14 +3290,13 @@
       "title": "Start button shows 'Select Content' before deck is chosen",
       "description": "The btn-start-game button text shows 'Select Content' instead of 'Start Game' when no deck has been selected. After deck selection it changes to 'Start Game'. Then after guest joins but guest not ready, it shows 'Start Game' but disabled. These state transitions work but the 'Select Content' label is confusing as a start button label.",
       "frequency": 1,
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 102,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "lobbyStartGate.ts (verified)",
-      "resolutionNote": "Returns Choose Content First; not Select Content"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-20260413-003941-MP-012",
@@ -3325,14 +3305,13 @@
       "title": "csp.ts module is dead code - CSP is hardcoded in vite.config.ts plugin",
       "description": "src/csp.ts exports getCSPMeta() but it is never imported or used. The actual CSP is hardcoded inline in vite.config.ts's cspInjectPlugin(). The csp.ts file is dead code that creates a maintenance trap - changes to csp.ts have no effect.",
       "frequency": 1,
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "rank": 103,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "74fad47 (verified deleted)",
-      "resolutionNote": "csp.ts already deleted; docs-agent confirmed"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-016",
@@ -3548,7 +3527,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "steamCallback": "src-tauri/src/steam.rs session_request_callback — never fires when both clients share same steam_id",
@@ -3558,9 +3537,8 @@
       "suggestedFix": "Assert at create/join time that localSteamId does not match any existing member SteamId. Show a player-facing error if a second client launches with the same Steam account. Document in SKILL.md that Steam P2P testing requires two distinct Steam accounts.",
       "score": 60,
       "rank": 109,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "2e25b6765 (agent D)",
-      "resolutionNote": "assertLocalSteamIdUniqueInLobby + clear error message"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-022",
@@ -3649,7 +3627,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "randomIdInit": "src/CardApp.svelte:567",
@@ -3659,9 +3637,8 @@
       "suggestedFix": "Maintain a playerId→steamId map populated from mp:lobby:join and Steam owner reads. OR make localPlayerId the Steam ID at CardApp.svelte:567 when on Steam, eliminating the steam: placeholder entirely.",
       "score": 30,
       "rank": 112,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent A)",
-      "resolutionNote": "Dropped steam: placeholder; rely on first settings to bootstrap"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-026",
@@ -3682,7 +3659,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -3696,9 +3673,8 @@
       "suggestedFix": "Object.assign EXCEPT preserve locally-known per-player connectionState. Add a settings sequence number and reject stale deliveries (incoming.seq < currentSeq).",
       "score": 30,
       "rank": 113,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent A)",
-      "resolutionNote": "Preserve connectionState/multiplayerRating on settings merge"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-028",
@@ -3719,7 +3695,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "todo": "src/services/multiplayerCoopSync.ts:23-28 TODO(H18-wiring)",
@@ -3729,9 +3705,8 @@
       "suggestedFix": "Call handleCoopPlayerDeath(localPlayerId) wherever local player HP commits to <=0 in coop mode in encounterBridge.ts. Partner subscribes to mp:coop:player_died to break out of barrier immediately.",
       "score": 30,
       "rank": 114,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "59fc1fb5a (verified pre-fix by C)",
-      "resolutionNote": "handleCoopPlayerDeath wiring already in prior wave"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-029",
@@ -3787,7 +3762,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/steamNetworkingService.ts",
@@ -3800,9 +3775,8 @@
       "suggestedFix": "Include lobbyId in every message envelope. Discard messages whose lobbyId doesn't match _activeLobbyId. Flush channel-0 queue after leaveSteamLobby.",
       "score": 30,
       "rank": 116,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "0c2de9290 (agent B)",
-      "resolutionNote": "lobbyId envelope + setActiveLobby"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-031",
@@ -3858,7 +3832,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -3873,9 +3847,8 @@
       "suggestedFix": "Await primeP2PSessions(lobbyId) BEFORE the first transport.send, or lift the initial send into a 'wait for accept then send' wrapper that the priming callback triggers.",
       "score": 30,
       "rank": 118,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "0c2de9290 (agent B)",
-      "resolutionNote": "Prime-before-send + DeferredCoopBroadcast buffer"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-034",
@@ -3896,7 +3869,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "noCleanup": "src/services/multiplayerLobbyService.ts:864-865 — intentional non-clear in leaveLobby",
@@ -3905,9 +3878,8 @@
       "suggestedFix": "In CardApp's $effect cleanup, explicitly call the unsubscribe function returned by onGameStart to prevent stale closure accumulation.",
       "score": 30,
       "rank": 119,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent A)",
-      "resolutionNote": "JSDoc documents consumer-cleanup contract; unsubscribe returned"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-035",
@@ -3928,7 +3900,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "priorBugs": [
@@ -3945,9 +3917,8 @@
       "suggestedFix": "Ship scripts/lint/check-bool-promise-erasure.mjs that scans for Promise<boolean> returns where the caller only .catch()es and never inspects the resolved value. Run in pre-commit hook.",
       "score": 30,
       "rank": 120,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent H)",
-      "resolutionNote": "check-bool-promise-erasure.mjs shipped + pre-commit wiring"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-036",
@@ -3968,7 +3939,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -3977,9 +3948,8 @@
       "suggestedFix": "Implement a 5s heartbeat that broadcasts a complete roster snapshot from host; guest replaces its roster atomically on receipt.",
       "score": 10,
       "rank": 121,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent A)",
-      "resolutionNote": "startRosterReconciliation 5s heartbeat"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-037",
@@ -4000,7 +3970,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -4009,9 +3979,8 @@
       "suggestedFix": "Add seq: number to settings payload. Reject if incoming.seq < currentSeq.",
       "score": 10,
       "rank": 122,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent A)",
-      "resolutionNote": "_settingsSeq host counter + _lastSettingsSeqSeen guard"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-038",
@@ -4032,7 +4001,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "function": "clearLanModeOnHubEntry",
@@ -4041,7 +4010,8 @@
       "suggestedFix": "Also clear on multiplayer screen entry, OR clear on every cold start in non-dev builds.",
       "score": 10,
       "rank": 123,
-      "deferredNote": "DEFERRED — CardApp multiplayer-screen entry needs clearLanModeOnHubEntry call (agent E did not address)"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-039",
@@ -4094,7 +4064,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "rustDecl": "src-tauri/src/steam.rs:1457",
@@ -4104,9 +4074,8 @@
       "suggestedFix": "Either register the command in main.rs invoke_handler (one line) or delete the Rust command and the TS contract entry.",
       "score": 10,
       "rank": 125,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "steam_check_lobby_membership registered in main.rs"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-041",
@@ -4127,7 +4096,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src-tauri/src/main.rs",
@@ -4140,9 +4109,8 @@
       "suggestedFix": "Use simplelog or tracing-subscriber with a file appender for Windows, or implement SetStdHandle via windows-sys crate to redirect stdio to the log file.",
       "score": 10,
       "rank": 126,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "c9d24721d (verified pre-fix)",
-      "resolutionNote": "Windows SetStdHandle redirect already in prior commit"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-042",
@@ -4163,7 +4131,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/steamNetworkingService.ts",
@@ -4175,9 +4143,8 @@
       "suggestedFix": "Distinguish IPC error from no-result-yet via try/catch and typed error pass-through. Log IPC failures distinctly from timeout.",
       "score": 10,
       "rank": 127,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent F via absorbed commit)",
-      "resolutionNote": "SteamIpcPollError class; distinguishes IPC error from timeout"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-043",
@@ -4198,7 +4165,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "index.html",
@@ -4209,7 +4176,8 @@
       "suggestedFix": "Align the index.html check with Tauri's actual hostname convention, or delete the inline cleanup since main.ts already handles it correctly.",
       "score": 10,
       "rank": 128,
-      "deferredNote": "DEFERRED — index.html SW cleanup .endsWith(.local) dead code; agent H deferred"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-044",
@@ -4230,7 +4198,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "tauriConf": "src-tauri/tauri.conf.json — no app.security.csp key",
@@ -4239,9 +4207,8 @@
       "suggestedFix": "Set app.security.csp = null in tauri.conf.json to allow Tauri's permissive default CSP, OR extend Vite production CSP to include ws:, wss:, http://localhost:*, and http://192.168.0.0/16:*.",
       "score": 10,
       "rank": 129,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "tauri.conf.json app.security.csp=null"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-045",
@@ -4262,7 +4229,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerTransport.ts",
@@ -4272,7 +4239,8 @@
       "suggestedFix": "In pickBackend, ignore the ?mp flag in production Tauri/Steam builds. Gate BroadcastChannelTransport on import.meta.env.DEV only.",
       "score": 10,
       "rank": 130,
-      "deferredNote": "PARTIAL — warnIfBroadcastInTauri helper in platformService.ts; pickBackend call-site wiring deferred"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-046",
@@ -4293,7 +4261,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerTransport.ts",
@@ -4306,7 +4274,8 @@
       "suggestedFix": "Gate simulated packet loss behind `if (import.meta.env.DEV)` condition.",
       "score": 10,
       "rank": 131,
-      "deferredNote": "DEFERRED — gate BroadcastChannelTransport 2pct packet loss behind DEV"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-047",
@@ -4327,7 +4296,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerCoopSync.ts",
@@ -4340,9 +4309,8 @@
       "suggestedFix": "Bucket deltas by turn number. Clear only the current turn's bucket on barrier release. Warn if a delta for a future turn arrives before the current turn resolves.",
       "score": 10,
       "rank": 132,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "0c2de9290 (agent B)",
-      "resolutionNote": "_collectedDeltas bucketed by turnNumber"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-048",
@@ -4363,7 +4331,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/encounterBridge.ts",
@@ -4376,9 +4344,8 @@
       "suggestedFix": "Do not roll locally on guest in drift detection path. Use a separate RNG fork reserved only for drift checks, or compare host-sent intent directly without local re-roll.",
       "score": 10,
       "rank": 133,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent C)",
-      "resolutionNote": "Drift-check RNG fork; guest does not consume main fork"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-049",
@@ -4399,7 +4366,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "commit": "61a60edd9 (BUG 27 fix, ~20:18 today)",
@@ -4409,9 +4376,8 @@
       "suggestedFix": "Add a step to scripts/steam-verify.sh that greps the bundled JS for known stale-fix markers. Rebuild and re-upload if the marker is found.",
       "score": 10,
       "rank": 134,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent G)",
-      "resolutionNote": "Operational checklist in docs/SECURITY.md"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-050",
@@ -4432,7 +4398,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "scripts/steam-verify.sh",
@@ -4441,9 +4407,8 @@
       "suggestedFix": "Extend steam-verify.sh with: (a) headless exe boot + Tauri command invocation, (b) bundled JS grep for known fix markers, (c) Steam SDK DLL version check against Cargo.toml steamworks-rs version.",
       "score": 10,
       "rank": 135,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent H)",
-      "resolutionNote": "steam-verify.sh bundled-JS marker scan; flagged stale Windows build"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-051",
@@ -4464,7 +4429,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "skill": ".claude/skills/multiplayer-playtest/SKILL.md",
@@ -4473,9 +4438,8 @@
       "suggestedFix": "Create a steam-p2p-playtest skill that spawns two recall-rogue.exe processes on different Steam accounts, drives via a debug socket, and exercises each mode end-to-end.",
       "score": 10,
       "rank": 136,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent H)",
-      "resolutionNote": "DRAFT skill stub .claude/skills/steam-p2p-playtest/SKILL.md"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-052",
@@ -4496,7 +4460,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "docs/architecture/multiplayer.md",
@@ -4505,9 +4469,8 @@
       "suggestedFix": "Rewrite to: 'fire-and-forget; first transport.send may land in _preSendBuffer until session opens — relies on _sendWithRetry to recover. Do not assume priming is complete before first send.'",
       "score": 10,
       "rank": 137,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent G)",
-      "resolutionNote": "primeP2PSessions fire-and-forget section added"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-053",
@@ -4528,7 +4491,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": ".claude/skills/multiplayer/SKILL.md",
@@ -4538,9 +4501,8 @@
       "suggestedFix": "Update with a hardening-log table for BUGs 1-27 and mark coop-on-Steam as UNVERIFIED until an end-to-end Steam P2P test passes.",
       "score": 10,
       "rank": 138,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent G)",
-      "resolutionNote": "Wave 22 Hardening STATUS NOTE + log table"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-054",
@@ -4561,7 +4523,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "cargoToml": "src-tauri/Cargo.toml — steamworks = '0.12'",
@@ -4570,9 +4532,8 @@
       "suggestedFix": "Pin steamworks-rs to a specific patch version. Bundle the matching steam_api64.dll explicitly via build script with an integrity check (hash verification).",
       "score": 10,
       "rank": 139,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "steam-windows.sh DLL integrity check"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-055",
@@ -4593,7 +4554,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "todos": [
@@ -4604,9 +4565,8 @@
       "suggestedFix": "Implement Steam-side reconnect via steam_check_lobby_membership (register it first per issue 040) and TS-side via reestablishSteamP2PSession backed by the Rust command.",
       "score": 10,
       "rank": 140,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "Rust side: steam_check_lobby_membership registered; TS-side wiring TODO noted"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-056",
@@ -4627,7 +4587,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "todo": "src/services/multiplayerTransport.ts:1209",
@@ -4636,9 +4596,8 @@
       "suggestedFix": "Register a Rust-side P2PSessionConnectFail_t callback and bridge to TS via a new pending_p2p_fail slot mirroring the pending_peer_left mechanism.",
       "score": 10,
       "rank": 141,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "P2PSessionConnectFail callback + pending_p2p_fail slot + getPendingP2PFail TS helper"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-057",
@@ -4659,7 +4618,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -4669,9 +4628,8 @@
       "suggestedFix": "Drop the cast and use the literal type directly if it is in the union, or add it to the union if it was omitted.",
       "score": 10,
       "rank": 142,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "verified — cast already removed",
-      "resolutionNote": "Grep confirms no 'as MultiplayerMessageType' cast"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-058",
@@ -4692,7 +4650,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "literal": "'local_player'",
@@ -4701,9 +4659,8 @@
       "suggestedFix": "Assert at lobby create/join time that _localPlayerId !== 'local_player'. Throw an error if violated. Ensure CardApp sets localPlayerId before any transport send.",
       "score": 10,
       "rank": 143,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent A)",
-      "resolutionNote": "create/join throw on local_player placeholder"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-059",
@@ -4724,7 +4681,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src-tauri/src/steam.rs",
@@ -4734,9 +4691,8 @@
       "suggestedFix": "Store the actual returned handle type (likely CallbackHandle or similar) from steamworks-rs register_callback to ensure Drop fires on app exit, not after new().",
       "score": 3,
       "rank": 144,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "Documented with field comment; steamworks-rs 0.12 limitation"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-060",
@@ -4757,7 +4713,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src-tauri/src/steam.rs",
@@ -4770,9 +4726,8 @@
       "suggestedFix": "Add `if lobby_id != active_lobby_id { return; }` guard to the Entered arm, matching the pattern applied to other arms in BUG 24.",
       "score": 3,
       "rank": 145,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "LobbyChatUpdate active_lobby_id guard applied to all arms"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-061",
@@ -4793,7 +4748,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -4802,7 +4757,8 @@
       "suggestedFix": "Drop the early-return guard. Let Set iteration over zero subscribers be a natural no-op.",
       "score": 3,
       "rank": 146,
-      "deferredNote": "DEFERRED — notifyLobbyUpdate early-return cosmetic issue"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-062",
@@ -4823,7 +4779,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -4833,7 +4789,8 @@
       "suggestedFix": "Deep-clone the players array per subscriber call, or Object.freeze the snapshot to make in-place mutation a hard error.",
       "score": 3,
       "rank": 147,
-      "deferredNote": "DEFERRED — players array reference share (safe today, latent)"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-063",
@@ -4854,7 +4811,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerTransport.ts",
@@ -4863,7 +4820,8 @@
       "suggestedFix": "Emit console.warn on init failure and fire onLobbyError so the application layer knows presence detection is unavailable.",
       "score": 3,
       "rank": 148,
-      "deferredNote": "DEFERRED — peerPresenceMonitor init failure surfacing"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-064",
@@ -4884,7 +4842,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerTransport.ts",
@@ -4893,9 +4851,8 @@
       "suggestedFix": "Either wire setActiveLobby from the lobby service on lobby join, or delete the dead code path.",
       "score": 3,
       "rank": 149,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "0c2de9290 (agent B)",
-      "resolutionNote": "setActiveLobby repurposed for envelope tagging"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-065",
@@ -4916,7 +4873,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "files": [
@@ -4928,9 +4885,8 @@
       "suggestedFix": "Add a $effect-level assertion that logs a warning if currentLobby goes null while the current screen is in gameScreens. Gate unmount on a stable 'left lobby' signal rather than a transient null.",
       "score": 3,
       "rank": 150,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent E)",
-      "resolutionNote": "$effect warn on currentLobby null in gameScreen"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-066",
@@ -4951,7 +4907,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -4963,9 +4919,8 @@
       "suggestedFix": "When switching deckSelectionMode, explicitly null out the abandoned variant before setting the new one.",
       "score": 3,
       "rank": 151,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent A)",
-      "resolutionNote": "setDeckSelectionMode clears abandoned variant"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-067",
@@ -4986,7 +4941,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -4996,9 +4951,8 @@
       "suggestedFix": "Scope _handlersAttached per-transport-instance rather than module-level.",
       "score": 3,
       "rank": 152,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent A)",
-      "resolutionNote": "_handlersAttachedTransport per-transport scope guard"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-068",
@@ -5019,7 +4973,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -5032,9 +4986,8 @@
       "suggestedFix": "Include `multiplayerRating: 1500` as default when inserting a new player in the mp:lobby:player_joined handler.",
       "score": 3,
       "rank": 153,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent F absorbed)",
-      "resolutionNote": "Fastify server adds multiplayerRating 1500 default on player_joined"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-069",
@@ -5055,7 +5008,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "server/src/routes/mpLobbyWs.ts",
@@ -5065,9 +5018,8 @@
       "suggestedFix": "Fastify server should maintain last-known isReady state per player and replay it in settings broadcasts to late joiners.",
       "score": 3,
       "rank": 154,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent F absorbed)",
-      "resolutionNote": "Server lastKnownReady persistence"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-070",
@@ -5088,7 +5040,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerLobbyService.ts",
@@ -5098,9 +5050,8 @@
       "suggestedFix": "Filter players.length check to only count players with connectionState === 'connected'. Show a 'waiting for partner to reconnect' state if count drops below minimum.",
       "score": 3,
       "rank": 155,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "8f5d7a74b (agent A)",
-      "resolutionNote": "startGame filters reconnecting players from count"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-071",
@@ -5121,7 +5072,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/services/multiplayerTransport.ts",
@@ -5132,9 +5083,8 @@
       "suggestedFix": "Prioritize protocol-critical messages (start, settings, join) over chatty ones (ping) in the eviction strategy. Never evict the first settings broadcast. Or raise cap to 256.",
       "score": 3,
       "rank": 156,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "0c2de9290 (agent B)",
-      "resolutionNote": "cap raised to 256; protected-types never evicted"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-20260422-072",
@@ -5155,7 +5105,7 @@
       "runBreakdown": [],
       "firstSeen": "2026-04-22T22:00:00.000Z",
       "lastSeen": "2026-04-22T22:00:00.000Z",
-      "status": "resolved",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-20260422-ULTRATHINK",
       "bestEvidence": {
         "file": "src/CardApp.svelte",
@@ -5165,9 +5115,8 @@
       "suggestedFix": "Retry getLocalPersonaName 5×500ms before falling back to 'Player'. Surface a 'Steam not ready' error state if all retries fail.",
       "score": 3,
       "rank": 157,
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "49cfc15b7 (agent E)",
-      "resolutionNote": "5x500ms retry before persona fallback"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-1",
@@ -5292,15 +5241,14 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "resolved",
+      "status": "partial",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "Refactor to `private peers = new Map<peerId, SessionState>()`. On send, broadcast to all peers in the map. On connect, add the peer rather than replace.",
       "score": 60,
       "pass": 1,
-      "note": "Single-peer guard added: connect() to a second peer while already bound now warns and returns early (prevents silent session overwrite). Architectural multi-peer refactor remains out of scope.",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "0c2de9290 (agent B)",
-      "resolutionNote": "Single-peer guard + doc"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "note": "Single-peer guard added: connect() to a second peer while already bound now warns and returns early (prevents silent session overwrite). Architectural multi-peer refactor remains out of scope."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-6",
@@ -5387,17 +5335,16 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "On acceptP2PSession false, enter an 'error' or 'handshake_failed' state. Retry the accept with exponential backoff (2-3 attempts) before giving up. Do not transition to 'connected' until a session is actually open.",
       "score": 60,
       "pass": 1,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "0c2de9290",
       "fixedAt": "2026-04-22T23:45:00.000Z",
-      "note": "acceptP2PSession false now stays in error state, drops preSendBuffer. PASS1-BUG-9 fix in multiplayerTransport.ts.",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "0c2de9290 (agent B)",
-      "resolutionNote": "acceptP2PSession=false stays in error state"
+      "note": "acceptP2PSession false now stays in error state, drops preSendBuffer. PASS1-BUG-9 fix in multiplayerTransport.ts."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-10",
@@ -5462,12 +5409,13 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "Promisify _sendWithRetry so send() returns a Promise<boolean>. The retry loop awaits the prior send before issuing the next.",
       "score": 60,
       "pass": 1,
-      "deferredNote": "DEFERRED — needs transport.send return type change for delivery confirm"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-13",
@@ -5538,17 +5486,16 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "Extract `const P2P_CHANNEL = 0` at module scope and pass explicitly at every call site.",
       "score": 40,
       "pass": 1,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "0c2de9290",
       "fixedAt": "2026-04-22T23:45:00.000Z",
-      "note": "MP_P2P_CHANNEL constant added to steamNetworkingService.ts; all send/recv/poll sites use it.",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "0c2de9290 (agent B)",
-      "resolutionNote": "MP_P2P_CHANNEL shared constant"
+      "note": "MP_P2P_CHANNEL constant added to steamNetworkingService.ts; all send/recv/poll sites use it."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-16",
@@ -5570,11 +5517,10 @@
       "fixHypothesis": "Verify the steamworks-rs 0.12 return type of session_request_callback(); store the actual CallbackHandle wrapped in a Sendable wrapper like _overlay_callback at :87.",
       "score": 40,
       "pass": 1,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedAt": "2026-04-22T23:45:00.000Z",
-      "note": "Documented upstream steamworks-rs 0.12 limitation: session_request_callback discards its CallbackHandle, so callback never fires. Workaround: LobbyChatUpdate + zero-byte send covers all realistic session-acceptance paths. No code change possible until upstream fixes the API.",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "Dedup of 059 — callback handle storage documented"
+      "note": "Documented upstream steamworks-rs 0.12 limitation: session_request_callback discards its CallbackHandle, so callback never fires. Workaround: LobbyChatUpdate + zero-byte send covers all realistic session-acceptance paths. No code change possible until upstream fixes the API."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-17",
@@ -5591,17 +5537,16 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "At the callback-dispatch layer in steam.rs / steamNetworkingService.ts, filter every lobby-scoped event against `state.current_lobby_id`. Drop events whose lobby_id doesn't match. Centralised enforcement.",
       "score": 40,
       "pass": 1,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "884d603a7",
       "fixedAt": "2026-04-22T23:45:00.000Z",
-      "note": "LobbyChatUpdate active_lobby_id guard now wraps ALL arms (Entered, Left, Disconnected, Kicked, Banned) in steam.rs. Stale lobby events no longer leak into current sessions.",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "LobbyChatUpdate active_lobby_id guard on all arms"
+      "note": "LobbyChatUpdate active_lobby_id guard now wraps ALL arms (Entered, Left, Disconnected, Kicked, Banned) in steam.rs. Stale lobby events no longer leak into current sessions."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-18",
@@ -5618,17 +5563,16 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "resolved",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "Change the silent drop to a buffer-and-flush pattern (like _preSendBuffer in the transport). When initCoopSync runs, flush any queued broadcasts.",
       "score": 40,
       "pass": 1,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "0c2de9290",
       "fixedAt": "2026-04-22T23:45:00.000Z",
-      "note": "Pre-init broadcast buffer added to multiplayerCoopSync.ts; broadcastPartnerState/broadcastSharedEnemyState/broadcastEnemyHpUpdate defer-and-flush instead of silently dropping before initCoopSync.",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "0c2de9290 (agent B)",
-      "resolutionNote": "DeferredCoopBroadcast buffer-and-flush on initCoopSync"
+      "note": "Pre-init broadcast buffer added to multiplayerCoopSync.ts; broadcastPartnerState/broadcastSharedEnemyState/broadcastEnemyHpUpdate defer-and-flush instead of silently dropping before initCoopSync."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-19",
@@ -5645,12 +5589,13 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "Consistently replace _currentLobby with a new object on every mutation (spread + overwrite). Or expose a Svelte store and rely on .set() / .update() instead of mutating the module-local ref.",
       "score": 40,
       "pass": 1,
-      "deferredNote": "DEFERRED — Svelte reactivity of in-place mutation"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-20",
@@ -5667,15 +5612,16 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "open",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "Pattern-match errors in invokeSteam: distinguish 'Steam client not running' from 'Tauri IPC rejected' from 'command threw Rust-side'. rrLog each distinctly.",
       "score": 20,
       "pass": 1,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "97e367ba8",
       "fixedAt": "2026-04-22T23:55:00.000Z",
-      "note": "sendP2PMessage and acceptP2PSession now log distinct rrLog entries when invokeSteam returns null (IPC failure) vs Rust returning false (session failure). getLastSteamInvokeError() captures the IPC error detail for callers.",
-      "deferredNote": "DEFERRED — invokeSteam null-coalesces errors (low)"
+      "note": "sendP2PMessage and acceptP2PSession now log distinct rrLog entries when invokeSteam returns null (IPC failure) vs Rust returning false (session failure). getLastSteamInvokeError() captures the IPC error detail for callers."
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-21",
@@ -5692,19 +5638,17 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "resolved",
+      "status": "partial",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "Show the log path in the Settings → About screen, and in any MP error banner. Copy-to-clipboard button.",
       "score": 20,
       "pass": 1,
-      "note": "TS getter getDebugLogPath() added (polls steam_get_debug_log_path). Rust command + UI surface in Settings/About screen still needed.",
-      "resolvedAt": "2026-04-22T23:50:00.000Z",
-      "resolvedBy": "884d603a7 (agent D)",
-      "resolutionNote": "steam_get_debug_log_path Tauri command added"
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "note": "TS getter getDebugLogPath() added (polls steam_get_debug_log_path). Rust command + UI surface in Settings/About screen still needed."
     }
   ],
-  "openCount": 13,
-  "resolvedCount": 128,
-  "_note": "ULTRATHINK FULL fix wave complete 2026-04-22T23:50Z. 80 resolved, 1 wontfix, 11 remain open (deferred/too-large). 236/236 MP tests pass; typecheck 0 errors. Commits: 0c2de9290 + 2e25b6765 + 884d603a7 + 8f5d7a74b + 49cfc15b7 + 59fc1fb5a + wave-1 predecessors. CRITICAL OPERATIONAL: steam/windows-build/recall-rogue.exe is STALE (pre-BUG-27) — rebuild before next Steam upload. ULTRATHINK FULL fix wave started 2026-04-22T23:30Z on 96 open MP issues across 8 parallel agents. WAVE 1 fix complete 2026-04-22T22:50Z. Resolved 8: 016 (mode propagation, in 77c71eaca + 14495f06b), 017 (trivia init wiring, in 9e0650b53 + ee7236892), 018 (live tauri check), 019 (LAN gate on Steam), 020 (Fastify forward payload), 022 (mode-aware activeRunMode), 023 (idempotent start), 029 (surfaced send exhaustion) — all in 14495f06b. WAVE 1-3 fix attempt started 2026-04-22T22:30Z on issues 016,017,018,019,020,022,023,029. MP-STEAM-20260422-ULTRATHINK batch (54 issues, 6 critical, 11 high, 23 medium, 14 low) added 2026-04-22 from 5-agent ultrathink audit (Steam P2P transport, coop start flow, Tauri/build divergence, lobby identity, recent commits). Includes 6 NEW critical findings the prior MP-STEAM-20260422-COOP batch missed: mp:lobby:start mode-not-applied, duel/trivia start paths unwired, hasSteam stale snapshot, stale rr-lan-server localStorage, Fastify payload-stripping, two-clients-one-Steam-account. Purged non-MP issues 2026-04-22 for focused Steam/multiplayer/lobby audit. Backup: leaderboard.pre-mp-sweep.backup.json. MP-STEAM-20260422-COOP batch (15 issues, 2 critical) added 2026-04-22 from orchestrator ultrathink audit triggered by user report of coop-isolation on Steam build.",
-  "wontfixCount": 1
+  "openCount": 91,
+  "resolvedCount": 87,
+  "_note": "ULTRATHINK FULL fix wave started 2026-04-22T23:30Z on 96 open MP issues across 8 parallel agents. WAVE 1 fix complete 2026-04-22T22:50Z. Resolved 8: 016 (mode propagation, in 77c71eaca + 14495f06b), 017 (trivia init wiring, in 9e0650b53 + ee7236892), 018 (live tauri check), 019 (LAN gate on Steam), 020 (Fastify forward payload), 022 (mode-aware activeRunMode), 023 (idempotent start), 029 (surfaced send exhaustion) — all in 14495f06b. WAVE 1-3 fix attempt started 2026-04-22T22:30Z on issues 016,017,018,019,020,022,023,029. MP-STEAM-20260422-ULTRATHINK batch (54 issues, 6 critical, 11 high, 23 medium, 14 low) added 2026-04-22 from 5-agent ultrathink audit (Steam P2P transport, coop start flow, Tauri/build divergence, lobby identity, recent commits). Includes 6 NEW critical findings the prior MP-STEAM-20260422-COOP batch missed: mp:lobby:start mode-not-applied, duel/trivia start paths unwired, hasSteam stale snapshot, stale rr-lan-server localStorage, Fastify payload-stripping, two-clients-one-Steam-account. Purged non-MP issues 2026-04-22 for focused Steam/multiplayer/lobby audit. Backup: leaderboard.pre-mp-sweep.backup.json. MP-STEAM-20260422-COOP batch (15 issues, 2 critical) added 2026-04-22 from orchestrator ultrathink audit triggered by user report of coop-isolation on Steam build."
 }
