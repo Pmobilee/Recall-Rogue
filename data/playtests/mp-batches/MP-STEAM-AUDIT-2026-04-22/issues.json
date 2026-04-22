@@ -1,0 +1,229 @@
+{
+  "batchId": "MP-AUDIT-2026-04-22-STEAM-COOP",
+  "date": "2026-04-22",
+  "trigger": "User report: Steam multiplayer co-op — lobby join works, but each player lands in their own independent game. Local two-tab dev mode works perfectly.",
+  "method": "static-audit",
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "id": "BUG-1",
+      "severity": "CRITICAL",
+      "title": "Guest silently discards mode/deckId/houseRules from mp:lobby:start payload",
+      "evidence": "src/services/multiplayerLobbyService.ts:1196-1204 (host sends mode, deckId, houseRules, contentSelection, seed) vs :1562-1565 (guest types payload as { seed; contentSelection? } — mode/deckId/houseRules are never read)",
+      "impact": "Guest retains whatever lobby.mode was set by mp:lobby:settings. If settings was dropped (comment at :1201-1202 acknowledges this happens on Steam P2P), guest has stale mode. CardApp :857 then skips initCoopSync → guest never subscribes to mp:coop:* messages → host broadcasts land on zero listeners → each player plays an independent run.",
+      "fix": "Widen the destructured payload type at :1562-1565 to include mode, deckId, houseRules. Apply each to _currentLobby before _fireSubscribers fires at :1589.",
+      "status": "fixed",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "fixedAt": "2026-04-22T11:50:24.048Z"
+    },
+    {
+      "id": "BUG-2",
+      "severity": "CRITICAL",
+      "title": "initCoopSync gated on lobby.mode — guest never initialises co-op when mode is stale",
+      "evidence": "src/CardApp.svelte:857-859 — `if (lobby.mode === 'coop') initCoopSync(localPlayerId)`",
+      "impact": "When BUG-1 leaves mode stale, this guard evaluates false and the guest never subscribes to mp:coop:enemy_state, mp:coop:partner_state, mp:coop:turn_end_with_delta. Co-op is silently inert on the guest.",
+      "fix": "After fixing BUG-1 this becomes correct by construction, but add a defensive assertion: if lobby.status === 'in_game' && lobby.mode === undefined, console.error and abort before starting the run.",
+      "status": "fixed",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "fixedAt": "2026-04-22T11:50:24.048Z"
+    },
+    {
+      "id": "BUG-3",
+      "severity": "CRITICAL",
+      "title": "Host fires onGameStart after 3s timeout even when no guest ACKed",
+      "evidence": "src/services/multiplayerLobbyService.ts:1234-1242 — setTimeout(…, 3000) calls _fireSubscribers with pending ACKs still outstanding, only logging console.warn",
+      "impact": "On Steam P2P where guest ACK can be lost in transit, host proceeds into a live run while guest is still in lobby (or in a different run). Even when guest does eventually receive mp:lobby:start, both clients have committed to slightly different state and can't resync.",
+      "fix": "Change the 3s fallback from 'fire anyway' to 'abort start, return host and remaining guests to lobby with a user-visible error'. Only fire onGameStart when every tracked ACK arrives (or all outstanding guests have observably left).",
+      "status": "fixed",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "fixedAt": "2026-04-22T11:50:24.048Z"
+    },
+    {
+      "id": "BUG-4",
+      "severity": "HIGH",
+      "title": "mp:lobby:start_ack is not in MultiplayerMessageType union — sent via `as` cast",
+      "evidence": "src/services/multiplayerLobbyService.ts:1578-1586 — the TODO at :1581 admits the cast is a workaround; transport routing of unknown types is untested on Steam",
+      "impact": "If the transport's type-narrowed routing treats unknown types differently across backends, the ACK can be silently dropped on Steam while working on BroadcastChannel — explaining why dev mode works and Steam doesn't.",
+      "fix": "Add 'mp:lobby:start_ack' to MultiplayerMessageType and remove the cast. Regenerate any type guards.",
+      "status": "fixed",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "fixedAt": "2026-04-22T11:50:24.048Z",
+      "fixNote": "Cast + stale TODO removed — type was already in union."
+    },
+    {
+      "id": "BUG-5",
+      "severity": "HIGH",
+      "title": "SteamP2PTransport is single-peer by design",
+      "evidence": "src/services/multiplayerTransport.ts:502 (`private peerId = ''`), :550 (`this.peerId = peerId`), :724 (`sendP2PMessage(this.peerId, …)`)",
+      "impact": "3-4 player co-op and trivia_night modes cannot work on Steam. Connecting to a second guest overwrites the first. Not the cause of the reported 2P bug but guaranteed to break any multi-peer mode.",
+      "fix": "Refactor to `private peers = new Map<peerId, SessionState>()`. On send, broadcast to all peers in the map. On connect, add the peer rather than replace.",
+      "status": "deferred",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "deferReason": "Multi-peer transport refactor is Red-zone scope (week+ of work). 2P co-op fix is sufficient for the reported symptom. Queue as its own feature."
+    },
+    {
+      "id": "BUG-6",
+      "severity": "HIGH",
+      "title": "initCoopSync called AFTER startNewRun synchronously transitions screen",
+      "evidence": "src/CardApp.svelte:849 (startNewRun) → synchronous currentScreen.set in gameFlowController :1135/:1156 → :858 (initCoopSync)",
+      "impact": "Combat scene can mount and the host can broadcast mp:coop:enemy_state before the guest's listener is registered. First snapshot lost → guest enters combat with no shared enemy reference.",
+      "fix": "Move initCoopSync, initMapNodeSync, onPartnerStateUpdate registrations BEFORE startNewRun in the game-start callback.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-7",
+      "severity": "HIGH",
+      "title": "onPartnerStateUpdate subscription registered AFTER startNewRun",
+      "evidence": "src/CardApp.svelte:873 — registered at the bottom of the $effect, after startNewRun and initCoopSync",
+      "impact": "Same timing window as BUG-6 for partner HP state. First mp:coop:partner_state from host can land before guest subscribes.",
+      "fix": "Hoist onPartnerStateUpdate registration above startNewRun inside the same $effect.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-8",
+      "severity": "HIGH",
+      "title": "Host never self-loopbacks its own mp:lobby:start on Steam P2P",
+      "evidence": "src/services/multiplayerTransport.ts — no self-echo in SteamP2PTransport. Contrast with :983-995 BroadcastChannelTransport which does receive its own broadcast (then filters senderId self).",
+      "impact": "On broadcast mode, the host's mp:lobby:start handler fires from its own echo, going through the unified handler path. On Steam, the host's _fireSubscribers only runs via the 3s timeout fallback (BUG-3) or on ACK. Host and guest take different code paths into the run — another source of divergence.",
+      "fix": "Host-side: fire _fireSubscribers(_gameStartSubscribers, seed, _currentLobby) immediately after transport.send('mp:lobby:start', …) rather than relying on echo or timeout.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-9",
+      "severity": "HIGH",
+      "title": "acceptP2PSession returning false logs but state still transitions to connected",
+      "evidence": "src/services/multiplayerTransport.ts:563-575",
+      "impact": "State machine lies: transport reports 'connected' while the P2P session is half-open. Subsequent sends execute the happy path and are dropped at the Rust layer; TS side sees no error.",
+      "fix": "On acceptP2PSession false, enter an 'error' or 'handshake_failed' state. Retry the accept with exponential backoff (2-3 attempts) before giving up. Do not transition to 'connected' until a session is actually open.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-10",
+      "severity": "HIGH",
+      "title": "No initial broadcastPartnerState at encounter start",
+      "evidence": "src/services/encounterBridge.ts — broadcastPartnerState is only called at end-of-turn (~:1640-1654 per sub-agent-5; verify before fix)",
+      "impact": "Guest's initial HP/block never reaches host until the guest completes turn 1. MultiplayerHUD renders empty/stale partner state through the first turn.",
+      "fix": "Call broadcastPartnerState once at encounter-start from encounterBridge init, with the initial player snapshot.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-11",
+      "severity": "HIGH",
+      "title": "$effect cleanup tears down all coop subscriptions unconditionally",
+      "evidence": "src/CardApp.svelte:896-906 — destroyCoopSync(), unsubPartner(), destroyMapNodeSync() all fire on any $effect re-run",
+      "impact": "If anything the $effect tracks reactively changes mid-run (localPlayerId refresh, lobby reference swap), the cleanup fires and kills every transport listener. Re-registration happens in the next $effect tick but any in-flight messages are lost.",
+      "fix": "Either split the effect into one-shot 'mount' registrations (plain onMount) and reactive updates, or narrow the $effect's tracked deps so it doesn't re-fire mid-run.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-12",
+      "severity": "HIGH",
+      "title": "ACK retry loop does not await send-delivery confirmation",
+      "evidence": "src/services/multiplayerLobbyService.ts:1224-1232 — setInterval calls transport.send every 750ms. transport.send in SteamP2PTransport returns before _sendWithRetry completes (:673-707).",
+      "impact": "The 750ms retry can't tell whether the prior send landed. Three retries can fire concurrently while the first is still internally retrying, amplifying Steam network load.",
+      "fix": "Promisify _sendWithRetry so send() returns a Promise<boolean>. The retry loop awaits the prior send before issuing the next.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-13",
+      "severity": "HIGH",
+      "title": "Only contentSelection has a presence guard — other start-payload fields pass silently",
+      "evidence": "src/CardApp.svelte:812-821 — guards only against `!lobby.contentSelection`",
+      "impact": "A run starts with stale or undefined mode/deckId/houseRules and nothing warns. Paired with BUG-1, this is why the coop divergence is silent.",
+      "fix": "Extend the guard to assert lobby.mode, lobby.selectedDeckId, lobby.houseRules are present (appropriate to mode). Log console.error and return to lobby on mismatch.",
+      "status": "fixed",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "fixedAt": "2026-04-22T11:50:24.048Z"
+    },
+    {
+      "id": "BUG-14",
+      "severity": "MEDIUM",
+      "title": "Unit tests for mp:lobby:start use seed-only stubs",
+      "evidence": "src/services/multiplayerLobbyService.test.ts:287, :300 — simulateReceive('mp:lobby:start', { seed: 99999 }) with no mode/deckId/houseRules/contentSelection",
+      "impact": "Regression coverage cannot catch BUG-1 because no test exercises the full payload. A future refactor could silently reintroduce the same class of bug.",
+      "fix": "Add a test that receives a full mp:lobby:start payload and asserts _currentLobby.mode/deckId/houseRules/contentSelection/seed all match the payload afterward.",
+      "status": "fixed",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z",
+      "fixedAt": "2026-04-22T11:50:24.048Z"
+    },
+    {
+      "id": "BUG-15",
+      "severity": "MEDIUM",
+      "title": "P2P send/recv channel is 0 by default-argument convention, not a shared constant",
+      "evidence": "src/services/steamNetworkingService.ts:654 (send) and :731 (poll startMessagePollLoop default channel = 0)",
+      "impact": "Future refactor could add an explicit channel on one call site and not the other — silent mismatch, complete P2P blackout with no error.",
+      "fix": "Extract `const P2P_CHANNEL = 0` at module scope and pass explicitly at every call site.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-16",
+      "severity": "MEDIUM",
+      "title": "session_request_callback handle stored as Some(()) instead of CallbackHandle",
+      "evidence": "src-tauri/src/steam.rs:86 declares `_session_request_callback: Option<()>`; :379 assigns Some(()) after registering via networking_messages().session_request_callback(...)",
+      "impact": "In steamworks-rs, dropping a callback handle de-registers the callback. Storing () instead of the actual handle means the closure may stop firing after the registration call returns — silent session-accept regression.",
+      "fix": "Verify the steamworks-rs 0.12 return type of session_request_callback(); store the actual CallbackHandle wrapped in a Sendable wrapper like _overlay_callback at :87.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-17",
+      "severity": "MEDIUM",
+      "title": "BUG-24 pattern — no general 'ignore events from prior lobby' guard",
+      "evidence": "Commits df09f5857 (BUG-24), d15ed5471 each patched one individual path for stale lobby-chat events",
+      "impact": "Stale events from a prior lobby keep bleeding in through newly exercised code paths. Each fix is one-off; the next MP feature will hit the same bug class.",
+      "fix": "At the callback-dispatch layer in steam.rs / steamNetworkingService.ts, filter every lobby-scoped event against `state.current_lobby_id`. Drop events whose lobby_id doesn't match. Centralised enforcement.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-18",
+      "severity": "MEDIUM",
+      "title": "broadcastPartnerState/broadcastSharedEnemyState silently drop when called before initCoopSync",
+      "evidence": "src/services/multiplayerCoopSync.ts:489, :511, :528, :629 — 'dropped' warnings without caller being notified",
+      "impact": "Race between encounter setup and coop init that's supposed to be impossible-by-construction. In practice BUG-6 makes it possible. These logs are the breadcrumbs.",
+      "fix": "Change the silent drop to a buffer-and-flush pattern (like _preSendBuffer in the transport). When initCoopSync runs, flush any queued broadcasts.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-19",
+      "severity": "MEDIUM",
+      "title": "_currentLobby mutated in-place — Svelte reactivity may not invalidate watchers",
+      "evidence": "src/services/multiplayerLobbyService.ts:1570-1574 — direct assignment of contentSelection/seed/status on the existing object",
+      "impact": "Svelte $derived watchers keyed on the lobby reference won't re-run when the same object is mutated in place. Commit 1223272ec added a spread workaround for one site but in-place mutation is still the default pattern.",
+      "fix": "Consistently replace _currentLobby with a new object on every mutation (spread + overwrite). Or expose a Svelte store and rely on .set() / .update() instead of mutating the module-local ref.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-20",
+      "severity": "LOW",
+      "title": "invokeSteam null-coalesces errors — no distinction between unavailable / IPC denied / command threw",
+      "evidence": "src/services/steamNetworkingService.ts:99, :117",
+      "impact": "Every P2P silent failure logs the same way. No way to tell from logs whether Steam is down, Tauri blocked the command, or the Rust handler errored.",
+      "fix": "Pattern-match errors in invokeSteam: distinguish 'Steam client not running' from 'Tauri IPC rejected' from 'command threw Rust-side'. rrLog each distinctly.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    },
+    {
+      "id": "BUG-21",
+      "severity": "LOW",
+      "title": "Rust debug.log path not surfaced in-game",
+      "evidence": "src-tauri/src/main.rs:15-38 — platform-specific path, never shown to user",
+      "impact": "Bug reports from end users arrive without the one log that contains Steam diagnostics. Support cycle gets longer.",
+      "fix": "Show the log path in the Settings → About screen, and in any MP error banner. Copy-to-clipboard button.",
+      "status": "in_progress",
+      "statusUpdatedAt": "2026-04-22T11:37:21.390Z"
+    }
+  ],
+  "workStartedAt": "2026-04-22T11:37:21.390Z",
+  "lastUpdated": "2026-04-22T11:50:24.048Z"
+}

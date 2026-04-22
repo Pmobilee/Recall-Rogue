@@ -219,3 +219,6 @@ data/audits/quiz-dumps/
 
 # Room intro capture videos
 room-captures/
+
+# MP audit backup files — local only
+data/playtests/*.backup.json
