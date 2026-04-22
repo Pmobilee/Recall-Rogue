@@ -927,6 +927,10 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     const unsubPartner = onPartnerStateUpdate((states) => {
       // Update roster panel data for all partner states.
       partnerStates = { ...states }
+      // FIX H-014: Only pipe partner HP into opponentProgress in coop mode.
+      // In race mode there is no real partner state — unconditionally overwriting
+      // opponentProgress would corrupt the race-progress HUD with stale/zero values.
+      if (currentLobby?.mode !== 'coop') return
       // Pipe the first available partner's HP (and score/accuracy in co-op) into
       // opponentProgress so the existing MultiplayerHUD renders it during co-op combat.
       const ids = Object.keys(states)

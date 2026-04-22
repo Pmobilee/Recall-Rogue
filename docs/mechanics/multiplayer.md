@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-22 — Coop wiring cluster (C-001/C-002/C-003/C-005/C-007): initGameMessageHandlers+initDuel wired, subscription order fixed before startNewRun, race broadcast gated on mode===race, playerCount threaded into createEnemy, awaitCoopEnemyReconcile timeout+retry, coopEffects.ts deleted.
+> **Last verified:** 2026-04-22 — Coop wiring cluster (C-001/C-002/C-003/C-005/C-007): initGameMessageHandlers+initDuel wired, subscription order fixed before startNewRun, race broadcast gated on mode===race, playerCount threaded into createEnemy, awaitCoopEnemyReconcile timeout+retry, coopEffects.ts deleted. Wave-3 determinism: seeded RNG for tagMagnet/transmute/shuffles, primeP2PSessions before coop encounter, onPartnerStateUpdate coop-only guard, ACK contentHash handshake.
 
 ## Modes
 
@@ -1457,9 +1457,11 @@ Removing the denormalized `hasPassword` field from `LobbyState` requires touchin
 3. When all guests ACK via `mp:lobby:start_ack`, host cancels timers and fires `_onGameStart`.
 4. After 3 000 ms, host fires `_onGameStart` anyway with a `console.warn` listing the unresponsive players.
 
-Guest path: on receiving `mp:lobby:start`, guest immediately sends `mp:lobby:start_ack { playerId, seed }`.
+Guest path: on receiving `mp:lobby:start`, guest immediately sends `mp:lobby:start_ack { playerId, seed, contentHash }`.
 
-Note: `mp:lobby:start_ack` is not yet in the `MultiplayerMessageType` union in `multiplayerTransport.ts`. The lobby service casts it as `MultiplayerMessageType` — this is safe because all transport `on()` callbacks accept `string` and `send()` routes unknown types without special handling. The type should be added to the union when `multiplayerTransport.ts` is next edited.
+**H-016 contentHash verification (2026-04-22):** The guest's ACK now also includes a `contentHash` — a `JSON.stringify` of the `contentSelection` received in the start payload. The host compares this against its own hash; if they differ, the host re-broadcasts `mp:lobby:start` once before accepting the ACK. This catches the case where the guest received a stale or missing `contentSelection` (e.g. from a dropped `mp:lobby:settings` message) and the game would have started with mismatched content. The re-broadcast uses the existing `_lastStartPayload` reference so no additional state is needed.
+
+Note: `mp:lobby:start_ack` is registered in the `MultiplayerMessageType` union in `multiplayerTransport.ts` (fixed BUG-4). The lobby service no longer casts.
 
 ### H10 — Reconnect grace timer
 
@@ -1866,3 +1868,34 @@ When the host creates a Steam lobby, `setRichPresence('connect', '+connect_lobby
 `clearRichPresence()` is called in `leaveLobby()` so friends no longer see a stale "Join Game" button after the host leaves.
 
 Both helpers (`setRichPresence`, `clearRichPresence`) are in `src/services/steamNetworkingService.ts`. The underlying Rust commands (`steam_set_rich_presence`, `steam_clear_rich_presence`) were already implemented and registered in `src-tauri/src/main.rs`.
+
+---
+
+## Coop Encounter P2P Session Prime (H-012, 2026-04-22)
+
+Before each coop encounter's initial enemy-state sync (the `broadcastSharedEnemyState` / `awaitCoopEnemyReconcile` exchange), `encounterBridge` now calls `primeP2PSessions(lobbyId)` on both host and guest:
+
+```typescript
+// encounterBridge.ts — before the isCoopRun enemy-sync block
+if (isCoopRun) {
+  const _lobbyId = getCurrentLobby()?.lobbyId;
+  if (_lobbyId) {
+    const { primeP2PSessions } = await import('./steamNetworkingService');
+    const primeCount = await primeP2PSessions(_lobbyId);
+    await new Promise<void>(r => setTimeout(r, 100)); // let primers land
+    console.log(`[encounterBridge] coop: primed ${primeCount} P2P session(s)`);
+  }
+}
+```
+
+This ensures zero-byte primer packets have propagated before the first real game-state message, eliminating a race where the first `mp:coop:enemy_state` could be dropped on a fresh session.
+
+`primeP2PSessions` is a no-op on non-Tauri builds (returns 0), so the call is safe in dev/browser.
+
+---
+
+## Partner State Mode Guard (H-014, 2026-04-22)
+
+`onPartnerStateUpdate` in `CardApp.svelte` now checks `currentLobby?.mode !== 'coop'` before piping partner HP/score/accuracy into `opponentProgress`. Without this guard, the handler fired in race mode (where no real partner state exists), overwriting the race-progress HUD's `playerHp` field with stale zeros from the partner state broadcast system.
+
+Race mode opponent progress continues to be driven exclusively by `onOpponentProgressUpdate` (the `mp:race:progress` channel).

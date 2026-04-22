@@ -74,6 +74,7 @@ import {
   resolveChainBreakEffects,
 } from './relicEffectResolver';
 import { computeIntentDisplayDamageSnapshot, computeIntentDisplayDamageWithPerHitSnapshot } from './intentDisplay';
+import { getRunRng, isRunRngActive, seededShuffled } from './seededRng';
 
 // ─── AR-269: Akashic Record — fact spacing tracker ──────────────────────────
 /**
@@ -605,7 +606,7 @@ function transmuteWeakestHandCard(turnState: TurnState): void {
   const target = hand[targetIndex];
   const newType = randomCardTypeDifferentFrom(target.cardType);
   const mechanicPool = MECHANICS_BY_TYPE[newType];
-  const mechanic = mechanicPool[Math.floor(Math.random() * mechanicPool.length)];
+  const mechanic = mechanicPool[isRunRngActive() ? getRunRng('cardEffects').nextInt(mechanicPool.length) : Math.floor(Math.random() * mechanicPool.length)];
 
   hand[targetIndex] = {
     ...target,
@@ -1662,12 +1663,12 @@ export function playCardAction(
     // Populate candidates from game state for mechanics that need live deck data
     if (effect.pendingCardPick.type === 'scavenge') {
       const available = deck.discardPile.filter(c => c.id !== effect.pendingCardPick!.sourceCardId);
-      const shuffled = [...available].sort(() => Math.random() - 0.5);
+      const shuffled = isRunRngActive() ? seededShuffled(getRunRng('debuffTarget'), available) : [...available].sort(() => Math.random() - 0.5);
       effect.pendingCardPick.candidates = shuffled.slice(0, 3);
     }
     if (effect.pendingCardPick.type === 'forge') {
       const available = deck.hand.filter(c => c.id !== effect.pendingCardPick!.sourceCardId);
-      const shuffled = [...available].sort(() => Math.random() - 0.5);
+      const shuffled = isRunRngActive() ? seededShuffled(getRunRng('debuffTarget'), available) : [...available].sort(() => Math.random() - 0.5);
       effect.pendingCardPick.candidates = shuffled.slice(0, 3);
     }
     if (effect.pendingCardPick.type === 'mimic') {
@@ -1679,7 +1680,7 @@ export function playCardAction(
         selected = [...available].sort((a, b) => (b.baseEffectValue ?? 0) - (a.baseEffectValue ?? 0)).slice(0, 3);
       } else {
         // Random 3
-        selected = [...available].sort(() => Math.random() - 0.5).slice(0, 3);
+        selected = (isRunRngActive() ? seededShuffled(getRunRng('debuffTarget'), available) : [...available].sort(() => Math.random() - 0.5)).slice(0, 3);
       }
       effect.pendingCardPick.candidates = selected;
     }
@@ -2988,7 +2989,7 @@ export function playCardAction(
     const bumpCount = effect.masteryBumpsCount!;
     // Select random cards from hand (excluding the surge card itself)
     const handCandidates = turnState.deck.hand.filter(c => c.id !== cardId);
-    const shuffled = [...handCandidates].sort(() => Math.random() - 0.5);
+    const shuffled = isRunRngActive() ? seededShuffled(getRunRng('debuffTarget'), handCandidates) : [...handCandidates].sort(() => Math.random() - 0.5);
     const toBump = shuffled.slice(0, bumpCount);
     for (const bc of toBump) {
       const maxLv = 5;

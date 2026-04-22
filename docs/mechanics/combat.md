@@ -1,7 +1,7 @@
 # Combat Mechanics
 
 > **Purpose:** Turn-based combat loop, AP system, damage pipeline, and play modes as implemented in code.
-> **Last verified:** 2026-04-18 (reactive-damage victory path fix, handleEndTurn reentrancy guard, intent-source-of-truth + multi_attack per-hit cap, card-preview source-of-truth)
+> **Last verified:** 2026-04-22 (reactive-damage victory path fix, handleEndTurn reentrancy guard, intent-source-of-truth + multi_attack per-hit cap, card-preview source-of-truth, determinism fixes: Transmute mechanic pick, Scavenge/Forge/Mimic/MasterySurge shuffle, tag-magnetism draw roll — all seeded)
 > **Source files:** `src/services/turnManager.ts`, `src/services/cardEffectResolver.ts`, `src/services/playerCombatState.ts`, `src/data/balance.ts`, `src/services/coopEffects.ts`, `src/services/enemyDamageScaling.ts`, `src/services/intentDisplay.ts`, `src/services/multiplayerCoopSync.ts`
 
 ---
@@ -252,6 +252,19 @@ When a player picks a new card as a reward mid-run, `encounterBridge.addRewardCa
 `revertTransmutedCards()` still runs at encounter end but only affects cards with `isTransmuted: true && originalCard` set (conjure, mimic) — not transmuted cards.
 
 See `docs/mechanics/cards.md` — Catch-Up Mastery section for full details.
+
+**Determinism (seeded RNG, 2026-04-22):** All random decisions that affect combat outcomes in a multiplayer run use the seeded RNG via `getRunRng(label)` from `src/services/seededRng.ts`. When no run RNG is active (tests, solo non-run contexts), these fall back to `Math.random()`. The affected systems and their fork labels are:
+
+| System | Fork label | File |
+|--------|-----------|------|
+| Tag Magnetism draw-swap roll (`tag_magnet` relic) | `tagMagnetism` | `deckManager.ts` |
+| Transmute mechanic pick from pool | `cardEffects` | `turnManager.ts` |
+| Scavenge candidate shuffle | `debuffTarget` | `turnManager.ts` |
+| Forge candidate shuffle | `debuffTarget` | `turnManager.ts` |
+| Mimic random-3 shuffle (mastery < 2) | `debuffTarget` | `turnManager.ts` |
+| Mastery Surge hand selection shuffle | `debuffTarget` | `turnManager.ts` |
+
+All shuffles use `seededShuffled(rng, array)` from `seededRng.ts` — a correct Fisher-Yates implementation, replacing the biased `.sort(() => Math.random() - 0.5)` pattern that produced non-uniform permutations.
 
 ---
 

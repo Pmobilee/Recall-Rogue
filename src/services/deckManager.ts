@@ -195,7 +195,7 @@ export function drawHand(
     const { chainType: targetChainType, chance } = options.tagMagnetBias;
     for (let i = 0; i < drawn.length; i++) {
       const card = drawn[i];
-      if (card.chainType !== targetChainType && Math.random() < chance) {
+      if (card.chainType !== targetChainType && (isRunRngActive() ? getRunRng('tagMagnetism').next() : Math.random()) < chance) {
         const matchIdx = deck.drawPile.findIndex(c => c.chainType === targetChainType);
         if (matchIdx >= 0) {
           const [matchCard] = deck.drawPile.splice(matchIdx, 1);

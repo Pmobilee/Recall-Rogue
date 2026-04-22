@@ -444,7 +444,7 @@ export function startNewRun(options?: {
     } else if (options.multiplayerMode === 'trivia_night') {
       activeRunMode = 'multiplayer_trivia';
     } else {
-      activeRunMode = 'multiplayer_race'; // 'race', 'coop', 'duel', 'trivia_night', 'same_cards' — all MP modes use this umbrella; branch on multiplayerModeState for mode-specific work
+      activeRunMode = 'multiplayer_race'; // reached by 'race' and 'same_cards' only — coop/duel/trivia_night are branched above. Race-progress broadcast at line ~1097 gates on this literal value.
     }
     multiplayerSeed = options.multiplayerSeed ?? null
     multiplayerModeState = options.multiplayerMode

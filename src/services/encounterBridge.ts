@@ -68,7 +68,7 @@ import {
 } from './multiplayerCoopSync'
 import { computeRaceScore } from './multiplayerScoring'
 import { recordRaceAnswer, hostCreateSharedEnemy } from './multiplayerGameService'
-import { isHost as mpIsHost } from './multiplayerLobbyService'
+import { isHost as mpIsHost, getCurrentLobby } from './multiplayerLobbyService'
 import { calculateFunnessBoostFactor } from './funnessBoost';
 import { calculateAccuracyGrade } from './accuracyGradeSystem';
 import {
@@ -961,6 +961,19 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
 
   activeTurnState.set(freshTurnState(turnState));
   syncCombatScene(turnState);
+
+  // FIX H-012: Prime bidirectional P2P sessions before coop enemy sync to ensure
+  // zero-byte primers have landed and the channel is open on both sides.
+  if (isCoopRun) {
+    const _lobbyId = getCurrentLobby()?.lobbyId;
+    if (_lobbyId) {
+      const { primeP2PSessions } = await import('./steamNetworkingService');
+      const primeCount = await primeP2PSessions(_lobbyId);
+      // Short pause to let the zero-byte primers propagate before the first real send.
+      await new Promise<void>(r => setTimeout(r, 100));
+      console.log(`[encounterBridge] coop: primed ${primeCount} P2P session(s) for lobby ${_lobbyId}`);
+    }
+  }
 
   // Coop: synchronize initial enemy state before the encounter becomes visible.
   // Host broadcasts the authoritative snapshot as an anchor (guards against any

@@ -1177,6 +1177,20 @@ export function allReady(): boolean {
 }
 
 /**
+ * Derive a stable short hash from a contentSelection to detect divergence.
+ * Used by the H-016 ACK-hash handshake.
+ */
+function _contentSelectionHash(selection: LobbyContentSelection | null | undefined): string {
+  if (!selection) return '';
+  // Stable key subset — covers the fields that must match for a deterministic run.
+  try {
+    return JSON.stringify(selection);
+  } catch {
+    return '';
+  }
+}
+
+/**
  * Start the game (host only, requires allReady).
  *
  * Fix 2026-04-09: contentSelection is now included in the mp:lobby:start payload
@@ -1185,6 +1199,8 @@ export function allReady(): boolean {
  * M22: Re-validates player count immediately before broadcasting start.
  * H5: Initiates a seed ACK handshake — waits up to 3s for all guests to ACK
  * before firing onGameStart. Falls back to firing without full ACK on timeout.
+ * H-016: ACK now carries contentHash so the host can detect and re-broadcast
+ * on a single mismatch before the run starts.
  */
 export function startGame(): void {
   if (!_currentLobby || !isHost() || !allReady()) return;
@@ -1600,10 +1616,14 @@ function setupMessageHandlers(): void {
     // Re-send ACK so the host's pending set decrements and the retry stops, then bail.
     if (_currentLobby.status === 'in_game') {
       if (!isHost()) {
-        const retryPayload = msg.payload as { seed: number };
+        const retryPayload = msg.payload as { seed: number; contentSelection?: LobbyContentSelection };
         getMultiplayerTransport().send(
           'mp:lobby:start_ack',
-          { seed: retryPayload.seed, playerId: _localPlayerId },
+          {
+            seed: retryPayload.seed,
+            playerId: _localPlayerId,
+            contentHash: _contentSelectionHash(retryPayload.contentSelection),
+          },
         );
       }
       return;
@@ -1671,9 +1691,14 @@ function setupMessageHandlers(): void {
     // BUG-4: 'mp:lobby:start_ack' is now in MultiplayerMessageType (multiplayerTransport.ts:106).
     // Cast and TODO removed.
     if (!isHost()) {
+      // H-016: Include contentHash in ACK so host can detect selection mismatch.
       getMultiplayerTransport().send(
         'mp:lobby:start_ack',
-        { seed: payload.seed, playerId: _localPlayerId },
+        {
+          seed: payload.seed,
+          playerId: _localPlayerId,
+          contentHash: _contentSelectionHash(payload.contentSelection),
+        },
       );
     }
 
@@ -1685,10 +1710,26 @@ function setupMessageHandlers(): void {
     }
   });
 
-  // H5: Host handles guest ACKs.
+  // H5 + H-016: Host handles guest ACKs.
+  // If the ACK's contentHash doesn't match what the host sent, re-broadcast mp:lobby:start once.
   reg('mp:lobby:start_ack', (msg) => {
     if (!isHost() || !_pendingStartAcks) return;
-    const { playerId } = msg.payload as { playerId: string };
+    const { playerId, contentHash } = msg.payload as { playerId: string; contentHash?: string };
+
+    // H-016: Verify the guest received the correct contentSelection.
+    const expectedHash = _currentLobby
+      ? _contentSelectionHash(_currentLobby.contentSelection)
+      : '';
+    if (contentHash !== undefined && contentHash !== expectedHash && _lastStartPayload) {
+      console.warn(
+        `[MP:LobbyService] mp:lobby:start_ack from ${playerId} has contentHash mismatch ` +
+        `(expected: ${expectedHash.slice(0, 40)}, got: ${(contentHash ?? '').slice(0, 40)}) — re-broadcasting mp:lobby:start`,
+      );
+      getMultiplayerTransport().send('mp:lobby:start', _lastStartPayload);
+      // Do NOT remove from pending set — wait for the corrected ACK on the retry.
+      return;
+    }
+
     _pendingStartAcks.delete(playerId);
     console.log(`[MP:LobbyService] mp:lobby:start_ack from ${playerId}, remaining:`, _pendingStartAcks.size);
 
