@@ -68,7 +68,9 @@ if [[ "$PLATFORM" == "windows" ]]; then
         echo "[steam] --test is not supported for Windows (no local .app to launch)."
         exit 1
     fi
-    exec "$SCRIPT_DIR/steam-windows.sh" "${WIN_ARGS[@]}"
+    # Empty-array expansion under `set -u` errors without a default. Harmless when
+    # no --deploy / --deploy-only flag was passed (build-only run).
+    exec "$SCRIPT_DIR/steam-windows.sh" ${WIN_ARGS[@]+"${WIN_ARGS[@]}"}
 fi
 
 # ── Linux remote build (via SSH to Linux VM) ──
