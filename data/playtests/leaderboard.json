@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-22T22:50:00.000Z",
+  "updatedAt": "2026-04-22T21:08:47.153104+09:00",
   "totalPlaythroughs": 22,
   "totalIssues": 147,
   "batches": [
@@ -41,10 +41,11 @@
       "rootCauseNote": "Prime suspect for the reported 2P bug is the confluence of BUG-1+BUG-2+BUG-3. Fix BUG-1 alone (~10 line change at multiplayerLobbyService.ts:1562-1565) likely resolves the symptom.",
       "workStatus": "in_progress",
       "fixProgress": {
-        "total": 21,
-        "inProgress": 14,
+        "total": 52,
+        "fixed": 18,
+        "inProgress": 10,
         "deferred": 1,
-        "fixed": 6
+        "open": 23
       },
       "workStartedAt": "2026-04-22T11:37:23.583Z",
       "wave1FixedIds": [
@@ -59,7 +60,18 @@
         "77c71eaca",
         "9e0650b53"
       ],
-      "lastWaveCompleted": "2026-04-22T11:50:27.969Z"
+      "lastWaveCompleted": "2026-04-22T11:50:27.969Z",
+      "wave2FixedIds": [
+        "MP-STEAM-AUDIT-2026-04-22-C-003",
+        "MP-STEAM-AUDIT-2026-04-22-C-004",
+        "MP-STEAM-AUDIT-2026-04-22-C-005",
+        "MP-STEAM-AUDIT-2026-04-22-C-006",
+        "MP-STEAM-AUDIT-2026-04-22-C-007",
+        "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-8",
+        "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-10"
+      ],
+      "wave2CompletedAt": "2026-04-22T12:07:25.000Z",
+      "wave2CommitHash": "542bca695dec8eff3dfd177e8ac39c932244d217"
     },
     {
       "id": "MP-STEAM-20260422-COOP",
@@ -122,18 +134,10 @@
     }
   ],
   "topIssueCounts": {
-    "critical": 20,
-    "high": 27,
+    "critical": 6,
+    "high": 23,
     "medium": 39,
-    "low": 26,
-    "wave1_fixed_pass1": [
-      "BUG-1",
-      "BUG-2",
-      "BUG-3",
-      "BUG-4",
-      "BUG-13",
-      "BUG-14"
-    ]
+    "low": 25
   },
   "issues": [
     {
@@ -226,7 +230,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -245,8 +249,11 @@
       "fixHypothesis": "Preserve the actual mode: `activeRunMode = options.multiplayerMode === \"coop\" ? \"multiplayer_coop\" : options.multiplayerMode === \"duel\" ? \"multiplayer_duel\" : \"multiplayer_race\"`. Add matching branches at line 1093+. Race-progress broadcast should only fire when mode is literal \"race\".",
       "score": 80,
       "rank": 3,
-      "inProgressAt": "2026-04-22T20:37:44.637566+09:00",
-      "assignedTo": "game-logic sub-agent (wave 1)"
+      "resolvedAt": "2026-04-22T21:08:47.153104+09:00",
+      "resolvedBy": "14495f06b",
+      "fixedAt": "2026-04-22T12:07:25.000Z",
+      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
+      "fixedInWave": "Wave 2 - 2026-04-22"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-C-004",
@@ -263,7 +270,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "open",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -281,7 +288,12 @@
       },
       "fixHypothesis": "Either: (a) Broadcast fork seeds at coop encounter start — host calls `collectForkSeeds()` after `initRunRng(seed)`, sends via a new `mp:coop:fork_seeds` message, guest applies before any `getRunRng()` call; (b) Flip coop to full state-replication (host-authoritative, no guest-side RNG). (a) is faster + less bandwidth; (b) is more robust to future regressions. Requires `initGameMessageHandlers` to also be wired.",
       "score": 80,
-      "rank": 4
+      "rank": 4,
+      "resolvedAt": "2026-04-22T21:08:47.153104+09:00",
+      "resolvedBy": "542bca695",
+      "fixedAt": "2026-04-22T12:07:25.000Z",
+      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
+      "fixedInWave": "Wave 2 - 2026-04-22"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-C-005",
@@ -298,7 +310,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -314,8 +326,11 @@
       "fixHypothesis": "Pass `playerCount: isCoopRun ? (run.multiplayerPlayerCount ?? 2) : 1` to `createEnemy`. Thread player count through from the lobby (number of players in `lobby.players`) into `run` state at run-start.",
       "score": 80,
       "rank": 5,
-      "inProgressAt": "2026-04-22T20:37:44.637566+09:00",
-      "assignedTo": "game-logic sub-agent (wave 1)"
+      "resolvedAt": "2026-04-22T21:08:47.153104+09:00",
+      "resolvedBy": "542bca695",
+      "fixedAt": "2026-04-22T12:07:25.000Z",
+      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
+      "fixedInWave": "Wave 2 - 2026-04-22"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-C-006",
@@ -332,7 +347,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -348,8 +363,11 @@
       "fixHypothesis": "Decide intent: (a) if coopEffects.ts is aspirational, delete + remove from SKILL.md \"DONE\" table; (b) if needed, wire `initCoopEffects()` in CardApp onGameStart for coop mode and `processTurnActions()` at turn-resolve.",
       "score": 80,
       "rank": 6,
-      "inProgressAt": "2026-04-22T20:37:44.637566+09:00",
-      "assignedTo": "game-logic sub-agent (wave 1)"
+      "resolvedAt": "2026-04-22T21:08:47.153104+09:00",
+      "resolvedBy": "542bca695",
+      "fixedAt": "2026-04-22T12:07:25.000Z",
+      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
+      "fixedInWave": "Wave 2 - 2026-04-22"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-C-007",
@@ -366,7 +384,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -383,8 +401,11 @@
       "fixHypothesis": "Add a 5-second timeout on `awaitCoopEnemyReconcile()`. On timeout, explicitly throw + log. Guest then sends `mp:coop:request_enemy_state` asking host to re-broadcast. Alternatively, have host re-broadcast snapshot every 500ms for first 3s of encounter; guest picks up whatever arrives last.",
       "score": 80,
       "rank": 7,
-      "inProgressAt": "2026-04-22T20:37:44.637566+09:00",
-      "assignedTo": "game-logic sub-agent (wave 1)"
+      "resolvedAt": "2026-04-22T21:08:47.153104+09:00",
+      "resolvedBy": "542bca695",
+      "fixedAt": "2026-04-22T12:07:25.000Z",
+      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
+      "fixedInWave": "Wave 2 - 2026-04-22"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-C-008",
@@ -401,7 +422,7 @@
       ],
       "firstSeen": "2026-04-22T20:30:00.000Z",
       "lastSeen": "2026-04-22T20:30:00.000Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -416,7 +437,9 @@
       },
       "fixHypothesis": "Add `windows-sys = { version = \"0.52\", features = [\"Win32_System_Console\"] }` and replace the no-op with `SetStdHandle(STD_OUTPUT_HANDLE, file_handle)` + `STD_ERROR_HANDLE`. Alternative: write a Rust-side logger that writes directly to the log file, bypassing stdio entirely (most robust; also fixes any Tauri-level stdio swallowing).",
       "score": 80,
-      "rank": 8
+      "rank": 8,
+      "inProgressAt": "2026-04-22T21:08:47.153104+09:00",
+      "assignedTo": "game-logic wave 2 (Rust)"
     },
     {
       "canonicalId": "BATCH-2026-04-12-001-C-001",
@@ -5064,11 +5087,14 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "Host-side: fire _fireSubscribers(_gameStartSubscribers, seed, _currentLobby) immediately after transport.send('mp:lobby:start', …) rather than relying on echo or timeout.",
       "score": 60,
-      "pass": 1
+      "pass": 1,
+      "fixedAt": "2026-04-22T12:07:25.000Z",
+      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
+      "fixedInWave": "Wave 2 - 2026-04-22"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-9",
@@ -5106,11 +5132,14 @@
       ],
       "firstSeen": "2026-04-22T21:00:00.000Z",
       "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
       "fixHypothesis": "Call broadcastPartnerState once at encounter-start from encounterBridge init, with the initial player snapshot.",
       "score": 60,
-      "pass": 1
+      "pass": 1,
+      "fixedAt": "2026-04-22T12:07:25.000Z",
+      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
+      "fixedInWave": "Wave 2 - 2026-04-22"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-11",
@@ -5356,7 +5385,7 @@
       "pass": 1
     }
   ],
-  "openCount": 104,
-  "resolvedCount": 53,
+  "openCount": 93,
+  "resolvedCount": 85,
   "_note": "WAVE 1 fix complete 2026-04-22T22:50Z. Resolved 8: 016 (mode propagation, in 77c71eaca + 14495f06b), 017 (trivia init wiring, in 9e0650b53 + ee7236892), 018 (live tauri check), 019 (LAN gate on Steam), 020 (Fastify forward payload), 022 (mode-aware activeRunMode), 023 (idempotent start), 029 (surfaced send exhaustion) — all in 14495f06b. WAVE 1-3 fix attempt started 2026-04-22T22:30Z on issues 016,017,018,019,020,022,023,029. MP-STEAM-20260422-ULTRATHINK batch (54 issues, 6 critical, 11 high, 23 medium, 14 low) added 2026-04-22 from 5-agent ultrathink audit (Steam P2P transport, coop start flow, Tauri/build divergence, lobby identity, recent commits). Includes 6 NEW critical findings the prior MP-STEAM-20260422-COOP batch missed: mp:lobby:start mode-not-applied, duel/trivia start paths unwired, hasSteam stale snapshot, stale rr-lan-server localStorage, Fastify payload-stripping, two-clients-one-Steam-account. Purged non-MP issues 2026-04-22 for focused Steam/multiplayer/lobby audit. Backup: leaderboard.pre-mp-sweep.backup.json. MP-STEAM-20260422-COOP batch (15 issues, 2 critical) added 2026-04-22 from orchestrator ultrathink audit triggered by user report of coop-isolation on Steam build."
 }
