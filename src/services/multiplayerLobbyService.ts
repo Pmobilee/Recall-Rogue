@@ -613,13 +613,23 @@ export async function joinLobby(
   // self out. On non-Steam transports, fall back to lobby ID / code as before.
   const useSteamPeer = hasSteam && !broadcast && !isLanMode() && _currentLobby.lobbyId;
   const steamPeerId = useSteamPeer ? await resolveSteamPeerIdWithRetry(_currentLobby.lobbyId) : null;
+  // Post-audit fix #4: when useSteamPeer is true AND resolve exhausts, FAIL the
+  // join loudly rather than silently using lobbyId as the P2P peer target (that
+  // produces a non-existent-peer ConnectFailed loop that's invisible to the
+  // user). Non-Steam modes fall through to the old broadcast/lobby-ID path.
+  if (useSteamPeer && !steamPeerId) {
+    _currentLobby = null;
+    throw new Error(
+      'Could not resolve host Steam ID from the lobby. This usually means your Steam client lost connection to the lobby mid-join. Please try again.',
+    );
+  }
   const transportTarget = steamPeerId
     ?? (broadcast ? lobbyCode : (_currentLobby.lobbyId || lobbyCode));
-  if (useSteamPeer && !steamPeerId) {
-    console.warn('[multiplayerLobbyService] no Steam peer found in lobby members — falling back to lobby ID (may fail P2P)');
-  }
   transport.connect(transportTarget, playerId, connectOpts);
-  transport.send('mp:lobby:join', { playerId, displayName, lobbyCode });
+  // Post-audit fix #2: include multiplayerRating so host's copy of the player
+  // matches guest's real rating (default 1000 placeholder in the host handler
+  // was overwriting guest's real rating on the subsequent broadcast round-trip).
+  transport.send('mp:lobby:join', { playerId, displayName, lobbyCode, multiplayerRating: getLocalMultiplayerRating() });
   // #76: Start peer presence monitor after transport is connected.
   _peerMonitorTeardown = initPeerPresenceMonitor(
     playerId,
@@ -712,13 +722,19 @@ export async function joinLobbyById(
   // Steam P2P needs the HOST's Steam ID as the peer — not the lobby ID.
   // getLobbyOwner is the reliable path: synchronous local-cache read.
   const steamPeerId = useSteamPeer ? await resolveSteamPeerIdWithRetry(result.lobbyId) : null;
+  // Post-audit fix #4: same hard-fail as joinLobby — silent lobby-ID fallback
+  // masks a real failure and produces a confusing ConnectFailed loop.
+  if (useSteamPeer && !steamPeerId) {
+    _currentLobby = null;
+    throw new Error(
+      'Could not resolve host Steam ID from the lobby. This usually means your Steam client lost connection to the lobby mid-join. Please try again.',
+    );
+  }
   const transportTarget = steamPeerId
     ?? (broadcast ? (result.lobbyCode ?? result.lobbyId) : result.lobbyId);
-  if (useSteamPeer && !steamPeerId) {
-    console.warn('[multiplayerLobbyService] no Steam peer found for lobby — falling back to lobby ID (may fail P2P)');
-  }
   transport.connect(transportTarget, playerId, connectOpts);
-  transport.send('mp:lobby:join', { playerId, displayName });
+  // Post-audit fix #2: carry the guest's real multiplayerRating.
+  transport.send('mp:lobby:join', { playerId, displayName, multiplayerRating: getLocalMultiplayerRating() });
   // #76: Start peer presence monitor after transport is connected.
   _peerMonitorTeardown = initPeerPresenceMonitor(
     playerId,
@@ -1384,30 +1400,32 @@ function setupMessageHandlers(): void {
   reg('mp:lobby:join', (msg) => {
     // Only the host processes this — it's the server-side relay equivalent for Steam P2P.
     if (!_currentLobby || !isHost()) return;
-    const { playerId, displayName } = msg.payload as { playerId: string; displayName: string };
+    // Post-audit fix #2: read multiplayerRating from payload so the host's
+    // player entry uses the guest's real rating instead of default 1000.
+    const { playerId, displayName, multiplayerRating } = msg.payload as {
+      playerId: string;
+      displayName: string;
+      multiplayerRating?: number;
+    };
     rrLog('mp:recv', 'mp:lobby:join (as host)', { playerId, displayName, existingCount: _currentLobby.players.length });
     if (!_currentLobby.players.find(p => p.id === playerId)) {
       // BUG21 fix: strip only steam:<id> placeholder entries (BUG10 host stub, which
-      // exists only in the GUEST's initial state, never the host's). The previous
-      // code used `.filter(p => !p.isHost)` — correct on a guest processing a
-      // hypothetical relayed join, but catastrophically wrong on the actual host,
-      // where it deleted the host's own self-entry before pushing the guest.
+      // exists only in the GUEST's initial state, never the host's).
       _currentLobby.players = _currentLobby.players.filter(p => !p.id.startsWith('steam:'));
       _currentLobby.players.push({
         id: playerId,
         displayName,
         isHost: false,
         isReady: false,
-        multiplayerRating: 1000,
+        multiplayerRating: multiplayerRating ?? 1000,
       });
       rrLog('mp:recv', 'mp:lobby:join (as host) — added player', { playerId, totalCount: _currentLobby.players.length });
     } else {
       rrLog('mp:recv', 'mp:lobby:join (as host) — player already present', { playerId });
     }
-    // Broadcast updated settings so the joining guest and any other peers
-    // receive the full players array (including themselves).
+    // Post-audit fix #3: broadcastSettings() already ends with notifyLobbyUpdate(),
+    // so the explicit notify below was double-firing every subscriber per join.
     broadcastSettings();
-    notifyLobbyUpdate();
   });
 
   reg('mp:lobby:leave', (msg) => {
@@ -1629,9 +1647,11 @@ function setupMessageHandlers(): void {
       const steamId = await getPendingPeerLeft().catch(() => null);
       if (!steamId) return;
       rrLog('mp:recv', 'pending_peer_left poll — peer left ungracefully', { steamId });
-      // Find the player by exact id match or steam:<id> placeholder.
+      // Post-audit fix #5: match only exact player id OR steam:<id> placeholder.
+      // The earlier `endsWith(steamId)` clause was defensive but could theoretically
+      // match the local player if their random ID ended with those digits — drop it.
       const player = _currentLobby.players.find(
-        p => p.id === steamId || p.id === `steam:${steamId}` || p.id.endsWith(steamId),
+        p => p.id === steamId || p.id === `steam:${steamId}`,
       );
       if (player) {
         rrLog('mp:recv', 'peer_left poll — removing player', { playerId: player.id, steamId });
@@ -1661,6 +1681,11 @@ function broadcastSettings(): void {
     playerCount: _currentLobby.players.length,
   });
   transport.send('mp:lobby:settings', {
+    // Post-audit fix #1: include hostId so the guest's lobby state reflects the
+    // real host player ID instead of the `steam:<hostSteamId>` placeholder from
+    // join. Future host-migration and any code that compares lobby.hostId with
+    // localPlayerId depends on this being the real ID.
+    hostId: _currentLobby.hostId,
     mode: _currentLobby.mode,
     deckSelectionMode: _currentLobby.deckSelectionMode,
     selectedDeckId: _currentLobby.selectedDeckId,
@@ -1671,6 +1696,7 @@ function broadcastSettings(): void {
     isRanked: _currentLobby.isRanked,
     status: _currentLobby.status,
     visibility: _currentLobby.visibility,
+    title: _currentLobby.title,
   });
   notifyLobbyUpdate();
 }
