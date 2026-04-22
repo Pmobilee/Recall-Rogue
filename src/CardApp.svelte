@@ -211,6 +211,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import TriviaRoundScreen from './ui/components/TriviaRoundScreen.svelte'
   import RaceResultsScreen from './ui/components/RaceResultsScreen.svelte'
   import PlayerRosterPanel from './ui/components/PlayerRosterPanel.svelte'
+  import DuelOpponentPanel from './ui/components/DuelOpponentPanel.svelte'
   import { setMpDebugState } from './services/mpDebugState'
   import {
     createLobby,
@@ -236,6 +237,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     initCoopSync,
     destroyCoopSync,
     onPartnerStateUpdate,
+    onPartnerUnresponsive,
     broadcastPartnerState,
     type PartnerState,
   } from './services/multiplayerCoopSync'
@@ -584,6 +586,23 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   let activeRaceResults = $state<RaceResults | null>(null)
 
   /**
+   * MP-STEAM-20260422-009: Sync-health pill / banner state.
+   * Surfaces a transient banner when a coop partner stops sending heartbeats so
+   * the player has an in-game signal that sync is failing — the previous design
+   * routed everything to debug.log on disk, which a Steam player can't see.
+   */
+  let syncHealthBanner = $state<string | null>(null)
+  let _syncHealthBannerTimer: ReturnType<typeof setTimeout> | null = null
+  function showSyncHealthBanner(message: string, durationMs = 6000): void {
+    syncHealthBanner = message
+    if (_syncHealthBannerTimer) clearTimeout(_syncHealthBannerTimer)
+    _syncHealthBannerTimer = setTimeout(() => {
+      syncHealthBanner = null
+      _syncHealthBannerTimer = null
+    }, durationMs)
+  }
+
+  /**
    * Cleanup function for initGameMessageHandlers, stored across the game-start callback.
    * Called on run end (destroyCoopSync path). Module-scoped so the effect cleanup can reach it.
    */
@@ -758,28 +777,61 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     return unsub
   })
 
-  // Clean up lobby state when navigating away from multiplayer screens.
-  // Handles the case where rrPlay API or direct screen transitions bypass handleMultiplayerBack().
+  // Clean up lobby state when navigating away from multiplayer.
   //
-  // CRITICAL: gameScreens must list EVERY screen a player visits during an active run,
-  // using the exact Screen-type names from src/ui/stores/gameState.ts. A mismatch (e.g.
-  // 'shop' vs the real 'shopRoom') nukes the lobby the moment the run hits that screen:
-  // currentLobby=null → isMultiplayerRun=false → HUD hides, tutorial gate passes,
-  // coop enemy sync stops. The first-encountered offender was 'runPreview' (coop runs
-  // with study-multi go here before dungeonMap), which cleared the lobby before combat
-  // ever started. See 2026-04-22 BUG 27 in docs/gotchas.md.
+  // MP-STEAM-20260422-008 (polarity inversion): the previous design hand-enumerated
+  // every in-run screen (gameScreens). Adding a new in-run screen meant remembering
+  // to extend the allowlist; forgetting silently nuked the lobby mid-run (BUG 27,
+  // commit 61a60edd9). Inverted now: list the screens that should TEAR DOWN the
+  // lobby (hub-side + multiplayerMenu re-entry) and treat every other screen as
+  // "stay in lobby". Adding a new in-run screen no longer requires touching this.
+  //
+  // MP-003 also lives here: multiplayerMenu is treated as "outside the lobby" so
+  // navigating back to the mode-select screen (e.g. via the menu's back button or
+  // an rrPlay scenario) clears the previous lobby instead of silently auto-rejoining.
+  // multiplayerLobby, lobbyBrowser, and raceResults are LOBBY-SCOPED screens — those
+  // preserve currentLobby. Everything else (every in-run screen, every overlay) is
+  // implicitly preserved too.
   $effect(() => {
     const screen = $currentScreen
-    const mpScreens: Set<Screen> = new Set<Screen>([
-      'multiplayerMenu',
-      'multiplayerLobby',
-      'lobbyBrowser',
-      'raceResults',
+    // Screens that explicitly destroy the lobby on entry. Anything outside this
+    // set keeps currentLobby intact. Typed against Screen so a renamed entry
+    // fails to compile.
+    const lobbyTerminatingScreens: Set<Screen> = new Set<Screen>([
+      'hub',
+      'mainMenu',
+      'base',
+      'library',
+      'settings',
+      'profile',
+      'journal',
+      'leaderboards',
+      'relicSanctum',
+      'deckSelectionHub',
+      'triviaDungeon',
+      'studyTemple',
+      'multiplayerMenu', // MP-003: returning to mode select means "I'm done with this lobby"
     ])
-    // Typed against Screen so a renamed or removed screen fails compilation —
-    // the previous untyped allowlist silently let 'shop' (wrong) pass next to
-    // the real 'shopRoom' (right), and nuked the lobby at every in-run screen.
-    const gameScreens: Set<Screen> = new Set<Screen>([
+
+    if (lobbyTerminatingScreens.has(screen) && currentLobby) {
+      try {
+        leaveLobby()
+      } catch (err) {
+        console.warn('[CardApp] leaveLobby failed during screen navigation cleanup:', err)
+      }
+      currentLobby = null
+      activeRaceResults = null
+    }
+  })
+
+  // MP-STEAM-20260422-065: warn if currentLobby goes null while we're sitting in an
+  // in-run screen. That should NEVER happen with the inverted polarity above — only
+  // explicit lobby-terminating screens null the lobby. If we observe a transient null
+  // here, MultiplayerHUD / PlayerRosterPanel will unmount and remount, losing local
+  // state. Surface it loudly so we can find the culprit.
+  $effect(() => {
+    const screen = $currentScreen
+    const inRunScreens: Set<Screen> = new Set<Screen>([
       'runPreview',
       'dungeonMap',
       'combat',
@@ -801,16 +853,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       'runEnd',
       'triviaRound',
     ])
-
-    if (!mpScreens.has(screen) && !gameScreens.has(screen) && currentLobby) {
-      // Navigated away from MP to a non-game screen (hub, settings, etc.) — clean up.
-      try {
-        leaveLobby()
-      } catch (err) {
-        console.warn('[CardApp] leaveLobby failed during screen navigation cleanup:', err)
-      }
-      currentLobby = null
-      activeRaceResults = null
+    if (inRunScreens.has(screen) && currentLobby === null) {
+      // The HUD will have just unmounted. Log loudly so we can attach a culprit.
+      console.warn(
+        '[CardApp] MP-STEAM-20260422-065: currentLobby is null while in an in-run screen',
+        { screen, isMultiplayerRun, hint: 'HUD will remount when lobby returns' }
+      )
     }
   })
 
@@ -951,6 +999,14 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       activeRaceResults = results
       currentScreen.set('raceResults')
     })
+    // MP-STEAM-20260422-009: surface partner-unresponsive events as a player-visible
+    // toast banner. The roster-panel HUD already shows partner HP, but a stalled
+    // sync looked like "all is fine" until the user noticed score divergence.
+    const unsubUnresponsive = onPartnerUnresponsive((playerId) => {
+      const partner = currentLobby?.players.find(p => p.id === playerId)
+      const name = partner?.displayName ?? 'A partner'
+      showSyncHealthBanner(`${name} stopped responding. Sync is falling behind.`, 8000)
+    })
     return () => {
       unsubStart()
       unsubProgress()
@@ -958,6 +1014,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       unsubConsensus()
       unsubPartner()
       unsubRace()
+      unsubUnresponsive()
       destroyMapNodeSync()
       destroyCoopSync()
       // FIX C-001: clean up game message handlers registered at game start
@@ -1957,7 +2014,25 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
           onclick={() => devForceEncounterVictory()}
         >&#x23ED; Skip</button>
       {/if} -->
-      {#if isMultiplayerRun && !isManyPlayerMode}
+      {#if isMultiplayerRun && !isManyPlayerMode && currentLobby?.mode === 'duel'}
+        <!-- L-026 / H-015: Duel mode renders the dedicated opponent panel
+             instead of the race-style MultiplayerHUD. opponentProgress carries
+             the partner HP; opponent name comes from the lobby roster. The
+             remaining fields use safe defaults so the panel renders even before
+             the first turn-end broadcast lands. -->
+        <DuelOpponentPanel
+          opponentName={opponentDisplayName}
+          opponentHp={opponentProgress.playerHp}
+          opponentMaxHp={opponentProgress.playerMaxHp}
+          localDamageTotal={0}
+          opponentDamageTotal={0}
+          opponentChainLength={0}
+          opponentChainColor={'Obsidian'}
+          turnTimerSecs={0}
+          turnTimerMax={0}
+          enemyTargetIsLocal={false}
+        />
+      {:else if isMultiplayerRun && !isManyPlayerMode}
         <MultiplayerHUD
           progress={opponentProgress}
           displayName={opponentDisplayName}
@@ -2454,6 +2529,21 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     <div class="fact-gained-toast" role="status">
       <div class="toast-header">New Fact Acquired</div>
       <div class="toast-text">{gainedFactText}</div>
+    </div>
+  {/if}
+
+  {#if syncHealthBanner}
+    <!-- MP-STEAM-20260422-009: visible diagnostic when coop sync silently fails.
+         Floats top-center, dismissible. -->
+    <div class="sync-health-banner" role="alert" aria-live="polite" data-testid="sync-health-banner">
+      <span class="sync-health-dot" aria-hidden="true"></span>
+      <span class="sync-health-text">{syncHealthBanner}</span>
+      <button
+        class="sync-health-dismiss"
+        type="button"
+        aria-label="Dismiss"
+        onclick={() => { syncHealthBanner = null }}
+      >×</button>
     </div>
   {/if}
 
@@ -2957,6 +3047,59 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     font-size: 13px;
     color: #e2e8f0;
     line-height: 1.4;
+  }
+
+  .sync-health-banner {
+    position: fixed;
+    top: calc(64px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    background: rgba(15, 25, 35, 0.94);
+    border: 1px solid rgba(231, 126, 34, 0.55);
+    border-radius: calc(10px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    color: #f0c674;
+    font-size: calc(13px * var(--text-scale, 1));
+    z-index: 9000;
+    box-shadow: 0 calc(4px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1)) rgba(0,0,0,0.55);
+    animation: sync-health-in 0.25s ease-out;
+  }
+  .sync-health-dot {
+    width: calc(8px * var(--layout-scale, 1));
+    height: calc(8px * var(--layout-scale, 1));
+    border-radius: 50%;
+    background: #e67e22;
+    box-shadow: 0 0 calc(8px * var(--layout-scale, 1)) #e67e22;
+    animation: sync-health-pulse 1.4s ease-in-out infinite;
+  }
+  .sync-health-text {
+    line-height: 1.3;
+  }
+  .sync-health-dismiss {
+    background: none;
+    border: none;
+    color: #f0c674;
+    font-size: calc(18px * var(--text-scale, 1));
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 calc(2px * var(--layout-scale, 1));
+    margin-left: calc(4px * var(--layout-scale, 1));
+    min-width: calc(24px * var(--layout-scale, 1));
+    min-height: calc(24px * var(--layout-scale, 1));
+  }
+  .sync-health-dismiss:hover {
+    color: #fff;
+  }
+  @keyframes sync-health-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(calc(-8px * var(--layout-scale, 1))); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+  @keyframes sync-health-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
   }
 
   @keyframes toast-in {

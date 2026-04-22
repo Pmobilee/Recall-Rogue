@@ -251,6 +251,18 @@ hub → multiplayerMenu → (select mode) → multiplayerLobby → (game start) 
 
 `multiplayerMenu` is a hub screen (in `HUB_SCREENS` set in `screenController.ts`). It navigates to `multiplayerLobby` after the player picks a mode and the host creates or joins a lobby.
 
+#### Lobby lifecycle (CardApp.svelte $effect, MP-STEAM-20260422-008 polarity invert)
+
+The lobby state is preserved across screen transitions EXCEPT when the player navigates to a screen explicitly classified as "lobby-terminating." That set is hand-maintained as a `Set<Screen>` and includes the hub-side screens (`hub`, `mainMenu`, `base`, `library`, `settings`, `profile`, `journal`, `leaderboards`, `relicSanctum`, `deckSelectionHub`, `triviaDungeon`, `studyTemple`) plus `multiplayerMenu` (MP-003 — returning to mode select means "I'm done with this lobby"). Every other screen, including all in-run screens (`combat`, `dungeonMap`, `shopRoom`, etc.) and lobby-scoped screens (`multiplayerLobby`, `lobbyBrowser`, `raceResults`, `triviaRound`), implicitly preserves `currentLobby`.
+
+This is the inverse of the previous design. The old `gameScreens` allowlist was a hand-enumerated 20-entry list of in-run screens, and any new in-run screen would silently nuke the lobby mid-run if the author forgot to add it (BUG 27, commit `61a60edd9`). The inverted design means new in-run screens are safe by default; only the small fixed list of hub/menu screens needs maintenance.
+
+A separate `$effect` (MP-STEAM-20260422-065) warns to console when `currentLobby` goes null while the active screen is one of the in-run screens — an invariant violation that would unmount `MultiplayerHUD`/`PlayerRosterPanel` mid-run.
+
+#### Leave-lobby timeout (MP-006)
+
+`handleMultiplayerBack` in `CardApp.svelte` races `leaveLobby()` against a 5-second timeout (`FORCE_TIMEOUT_MS`). If the network teardown stalls, local cleanup (`currentLobby = null`, `activeRaceResults = null`, `transitionScreen('multiplayerMenu')`) still runs so the UI never sticks on the loading screen. A `leavingLobby` `$state` flag is exposed for downstream UI that wants to render a "Leaving..." pending state.
+
 ---
 
 ## Run Preview Screen

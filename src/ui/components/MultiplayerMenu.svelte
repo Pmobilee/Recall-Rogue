@@ -76,9 +76,20 @@
   let lanServerPort = $state<number | null>(null)
   let lanServerStarting = $state(false)
   let lanServerError = $state('')
-  // BUG15: macOS Local Network permission hint — shown once per session unless dismissed.
+  // BUG15: macOS Local Network permission hint — dismissible with 24-hour cooldown so
+  // a fresh OS-permissions block re-surfaces the explanation. L-031 fix: prior code stored
+  // a permanent dismiss; if permissions changed later the hint never came back.
   let lanServerHint = $state<string | null>(null)
-  let lanHintDismissed = $state(typeof window !== 'undefined' && !!localStorage.getItem('rr-lan-hint-dismissed'))
+  function readLanHintDismissed(): boolean {
+    if (typeof window === 'undefined') return false
+    const raw = localStorage.getItem('rr-lan-hint-dismissed-at')
+    if (!raw) return false
+    const at = parseInt(raw, 10)
+    if (!Number.isFinite(at)) return false
+    const COOLDOWN_MS = 24 * 60 * 60 * 1000
+    return Date.now() - at < COOLDOWN_MS
+  }
+  let lanHintDismissed = $state(readLanHintDismissed())
 
   let discoveredServers = $state<DiscoveredLanServer[]>([])
   let isScanning = $state(false)
@@ -622,7 +633,9 @@
                     onclick={() => {
                       lanHintDismissed = true
                       lanServerHint = null
-                      localStorage.setItem('rr-lan-hint-dismissed', '1')
+                      // L-031: store dismissal timestamp so the hint re-surfaces after
+                      // 24 hours when OS permissions may have changed.
+                      localStorage.setItem('rr-lan-hint-dismissed-at', String(Date.now()))
                     }}
                   >OK</button>
                 </aside>
