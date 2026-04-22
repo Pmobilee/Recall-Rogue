@@ -5574,3 +5574,15 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 **Fix:** `steam-verify.sh` now grep -F's the `*.js` files inside the candidate dist dir (Tauri bundle preferred, then `steam/windows-build`, then `dist/`) for both REQUIRED markers (proves the bundle includes recent fixes) and STALE markers (proves removed code is truly gone). Add a new entry to `MARKERS=()` for every BUG fix that ships, and an entry to `STALE_MARKERS=()` for every removed-string regression. Both arrays live near the bottom of the script.
 
 **Lesson:** "The build artifact exists and links the right libraries" is not the same as "the build artifact contains the latest source." Always include a content-fingerprint check on the bundled JS — a single literal string from a recent commit is enough to prove freshness. Same heuristic applies to any platform where the deploy pipeline can silently reuse a prior build (Steam depots, app stores, CDNs).
+
+### 2026-04-22 — Parallel-agent race: `git commit` without `--only` swallowed another agent's staged files
+
+**What:** During the ULTRATHINK wave-2 8-agent parallel fix wave, docs-agent G ran `git add <four-doc-files>` then `git commit -m "..."`. Another agent had `git add`'d their own files into the index between G's stage step and G's commit step. `git commit` (no `--only`) committed whatever was in the index at commit-time — which included BOTH G's docs and the other agent's source files. The resulting commit `0d017edee` had G's commit message but the other agent's diff. G had to re-commit using `git commit --only <paths>` to land the correct files (commit `49cfc15b7`).
+
+**Why it happened:** `git commit` operates on the index snapshot at the moment the commit object is written. With multiple agents racing on the same checkout, `git add` and `git commit` are NOT atomic — anything else added between them lands in the commit too.
+
+**Fix / lesson:** When running parallel agents on a shared checkout, ALWAYS use `git commit --only <paths>` to scope the commit to a specific path list regardless of what else is in the index. The `--only` flag tells git to ignore other staged files entirely. This is the multi-agent-safe form. `git add <paths> && git commit` is NOT safe under concurrency.
+
+**Detection:** Always verify the commit you just made. After `git commit`, run `git show <SHA> --stat --format=""` and confirm the file list matches what you intended. If it doesn't, re-commit using `--only`. Do NOT amend — the earlier commit may contain another agent's legitimate work that they'll want preserved under their own attribution.
+
+**Why not git worktrees:** Worktrees solve this entirely (each agent has a clean isolated tree), but the orchestrator chose the shared-checkout dispatch mode for this wave. `--only` is the workaround when worktrees aren't in use.
