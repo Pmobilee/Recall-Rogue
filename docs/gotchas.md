@@ -1,3 +1,24 @@
+### 2026-04-22h — BUG 22: single-slot onLobbyUpdate silently dropped the parent's reactivity callback (this was the "deck selection shows No content" bug)
+
+**What broke:** `src/services/multiplayerLobbyService.ts:94` declared `_onLobbyUpdate: ((lobby) => void) | null` — a SINGLE-SLOT callback. Every caller of `onLobbyUpdate(cb)` reassigned the slot, so **only the last registration ever fired**. Four callers existed:
+
+- `CardApp.svelte:703` — critical: reassigns `currentLobby = { ...lobby, ... }` so Svelte's $state proxy detects the change and re-renders children.
+- `MultiplayerLobby.svelte:156` — no-op placeholder, registered on mount.
+- `MultiplayerLobby.svelte:240` — one-shot ready-confirm handler.
+- `multiplayerCoopSync.ts:329,410` — coop sync handlers.
+
+Mount order: CardApp mounts first, registers. MultiplayerLobby mounts when the user enters a lobby — it registers its no-op, **overwriting CardApp's callback**. From that point, `notifyLobbyUpdate()` fires the no-op. CardApp's `currentLobby` is never reassigned.
+
+Svelte 5's $state proxy only tracks writes that go THROUGH the proxy. The service mutates `_currentLobby.contentSelection = selection` — that's a write on the underlying plain object, bypassing the proxy. The proxy's `set` handler never fires. Without the parent's reassignment (which DID go through the proxy), the child's `lobby` prop stayed pointing at the pre-mutation snapshot. `{#if lobby.contentSelection}` evaluated false and rendered "No content selected" — even though `_currentLobby.contentSelection` was set correctly in the service.
+
+This single bug was the load-bearing cause of "I can pick a deck but the UI says No content". It likely also caused other state drift to be invisible (ready toggles, player list changes, rich presence, visibility/maxPlayers changes), since every path through `notifyLobbyUpdate` was firing a no-op after MultiplayerLobby mounted. Players in broadcast/LAN/Steam modes all hit this.
+
+**Why four audit passes missed it:** Each audit looked for P2P / handshake / session / wiring bugs. The reactivity chain LOOKED correct end-to-end (mutate → notify → callback → proxy reassignment → re-render). No audit traced WHICH callback was actually registered — the single-slot overwrite pattern was invisible from any one call site.
+
+**Fix:** `_onLobbyUpdate` replaced with `_lobbyUpdateSubscribers: Set<(lobby) => void>`. `onLobbyUpdate()` adds to the set; cleanup removes. `notifyLobbyUpdate()` builds one snapshot and iterates, try/catching each subscriber so one throw doesn't kill the rest. 112/112 multiplayer tests still pass.
+
+**Lesson:** Any "event bus" style registration that APPEARS to take a cleanup handle but uses single-slot semantics is a latent bug as soon as a second caller registers. Default to Set subscribers; accept the slight per-tick cost over silent callback loss.
+
 ### 2026-04-22g — BUG 21 regression: mp:lobby:join handler filtered the HOST out of its own players list
 
 **What broke:** Wave 22 pass 3's new `mp:lobby:join` host handler at `src/services/multiplayerLobbyService.ts:1376` did `_currentLobby.players = _currentLobby.players.filter(p => !p.isHost)` before pushing the incoming guest. The comment said "remove BUG10 placeholder" — but BUG10's `steam:<id>` placeholders only exist on the GUEST's local state, never on the HOST's. On the host, this filter stripped the host's own self-entry. The host's UI showed 1 player (the guest only). The subsequent `broadcastSettings()` propagated `players = [guest-only]` to the guest; guest's defensive reinsert added themselves back, so both clients ended up seeing only one player.

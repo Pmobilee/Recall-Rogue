@@ -91,7 +91,18 @@ export function generatePlayerId(): string {
 
 let _currentLobby: LobbyState | null = null;
 let _localPlayerId: string = '';
-let _onLobbyUpdate: ((lobby: LobbyState) => void) | null = null;
+// BUG22 fix: multi-subscriber set. Previously a single-slot `_onLobbyUpdate`
+// callback was overwritten every time a new component registered (CardApp mounts
+// → registers its currentLobby-reassignment callback → MultiplayerLobby mounts
+// → registers a no-op → CardApp's callback is silently discarded). Result: the
+// host could select a deck, the service mutated `_currentLobby.contentSelection`
+// and called `notifyLobbyUpdate`, but the no-op fired instead of CardApp's
+// reactive-reassignment, so the parent's `$state` never reassigned and the
+// child's `lobby` prop stayed stale — UI read "No content selected" even though
+// the service-layer state was correct. Same pattern likely masked other state
+// drift (ready toggles, player list, house-rule changes). Fix: a Set; each
+// subscriber independent; `notifyLobbyUpdate` iterates and calls all.
+const _lobbyUpdateSubscribers = new Set<(lobby: LobbyState) => void>();
 let _onGameStart: ((seed: number, lobby: LobbyState) => void) | null = null;
 let _onRaceProgress: ((progress: RaceProgress) => void) | null = null;
 let _onRaceResults: ((results: RaceResults) => void) | null = null;
@@ -1223,10 +1234,12 @@ export function sendRaceFinish(results: RaceProgress): void {
 
 // ── Callbacks ────────────────────────────────────────────────────────────────
 
-/** Register callback for lobby state updates */
+/** Register callback for lobby state updates.
+ *  BUG22: multi-subscriber — each call adds a new subscriber. Cleanup removes
+ *  that specific subscriber (and only that one). */
 export function onLobbyUpdate(cb: (lobby: LobbyState) => void): () => void {
-  _onLobbyUpdate = cb;
-  return () => { _onLobbyUpdate = null; };
+  _lobbyUpdateSubscribers.add(cb);
+  return () => { _lobbyUpdateSubscribers.delete(cb); };
 }
 
 /** Register callback for game start */
@@ -1298,18 +1311,21 @@ export async function leaveMultiplayerLobbyForSoloStart(): Promise<void> {
 /** Notify the UI of a lobby state change. Spreads a new object so Svelte
  *  detects the update (same-reference assignments are optimized away). */
 function notifyLobbyUpdate(): void {
-  if (_currentLobby && _onLobbyUpdate) {
-    // Include full contentSelection in the log so we can confirm whether mutations
-    // are reflected here — if contentSelectionType changes but the full object stays
-    // stale, it proves a reference-not-value assignment bug.
-    rrLog('mp:lobby', 'notifyLobbyUpdate full', {
-      lobbyId: _currentLobby.lobbyId,
-      mode: _currentLobby.mode,
-      playerCount: _currentLobby.players.length,
-      hostId: _currentLobby.hostId,
-      contentSelection: _currentLobby.contentSelection ?? null,
-    });
-    _onLobbyUpdate({ ..._currentLobby, players: _currentLobby.players.map(p => ({ ...p })) });
+  if (!_currentLobby || _lobbyUpdateSubscribers.size === 0) return;
+  rrLog('mp:lobby', 'notifyLobbyUpdate full', {
+    lobbyId: _currentLobby.lobbyId,
+    mode: _currentLobby.mode,
+    playerCount: _currentLobby.players.length,
+    hostId: _currentLobby.hostId,
+    contentSelection: _currentLobby.contentSelection ?? null,
+    subscriberCount: _lobbyUpdateSubscribers.size,
+  });
+  // Build ONE snapshot, deliver to every subscriber. Each subscriber may spread
+  // again internally (e.g. CardApp does for Svelte proxy detection), but we give
+  // them all the same ref — cheaper than N spreads and semantically identical.
+  const snapshot = { ..._currentLobby, players: _currentLobby.players.map(p => ({ ...p })) };
+  for (const cb of _lobbyUpdateSubscribers) {
+    try { cb(snapshot); } catch (e) { rrLog('mp:lobby', 'subscriber threw', { e: String(e) }); }
   }
 }
 
