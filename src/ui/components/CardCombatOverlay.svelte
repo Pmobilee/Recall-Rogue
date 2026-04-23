@@ -874,12 +874,6 @@
     if (result === 'empty_hand') console.warn('[end-turn] cancel attempted with empty hand')
   }
 
-  /** Cancel co-op turn-end from the transformed end-turn button. */
-  async function handleCancelEndTurn(): Promise<void> {
-    const result = cancelEndTurnRequested()
-    if (result === 'empty_hand') console.warn('[end-turn] cancel-from-btn attempted with empty hand')
-  }
-
   let selectedCard = $derived<Card | null>(
     selectedIndex !== null && handCards[selectedIndex] ? handCards[selectedIndex] : null,
   )
@@ -3168,24 +3162,18 @@
     </div>
 
     {#if showEndTurn}
-      {#if $coopWaitingForPartner && handHasCards}
-        <!-- Co-op waiting + hand non-empty: show amber CANCEL END TURN button -->
-        <button
-          class="end-turn-btn cancel-state"
-          data-testid="btn-cancel-end-turn"
-          aria-label="Cancel end turn and return to your turn"
-          onclick={handleCancelEndTurn}
-        >
-          CANCEL END TURN
-        </button>
-      {:else if $coopWaitingForPartner && !handHasCards}
-        <!-- Co-op waiting + empty hand: disabled WAITING… with tooltip -->
+      {#if $coopWaitingForPartner}
+        <!-- Co-op waiting: disabled WAITING… button. Cancel lives in the
+             coop-waiting-banner below — no button-swap on the end-turn
+             slot (2026-04-23: removed the CANCEL END TURN transform; the
+             banner already carries the cancel affordance and doubling it
+             up made the turn-end interaction ambiguous). -->
         <button
           class="end-turn-btn"
           class:disabled={true}
           data-testid="btn-end-turn"
-          aria-label="Waiting for partner — you played all your cards"
-          title="You played all your cards — waiting for your partners"
+          aria-label="Waiting for partner to end their turn"
+          title="Waiting for your partner — use the Cancel button below to return to your turn."
           disabled
         >
           WAITING…
@@ -3985,24 +3973,6 @@
     color: #cbd5e1;
   }
 
-  /* Cancel-state: amber/orange tint when co-op turn-end cancel is available. */
-  .end-turn-btn.cancel-state {
-    background: #92400e;
-    color: #fcd34d;
-    border-color: rgba(252, 211, 77, 0.5);
-    min-width: calc(160px * var(--layout-scale, 1));
-    animation: cancelPulse 2s ease-in-out infinite;
-  }
-
-  .end-turn-btn.cancel-state:hover {
-    background: #b45309;
-    color: #fde68a;
-  }
-
-  @keyframes cancelPulse {
-    0%, 100% { box-shadow: 0 0 4px rgba(251, 191, 36, 0.4); }
-    50% { box-shadow: 0 0 14px rgba(251, 191, 36, 0.65); }
-  }
 
   .end-turn-pulse {
     animation: pulse-glow 1.5s ease-in-out infinite;
