@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T04:44:54.539Z",
+  "updatedAt": "2026-04-23T05:01:40.360Z",
   "totalPlaythroughs": 22,
   "totalIssues": 254,
   "batches": [
@@ -1690,7 +1690,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1707,7 +1707,10 @@
       "score": 50,
       "rank": 44,
       "inProgressAt": "2026-04-23T04:24:19.481Z",
-      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A"
+      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A",
+      "fixedInCommit": "pending",
+      "fixedAt": "2026-04-23T00:00:00.000Z",
+      "fixNote": "[2026-04-23] UI layer wired: onReadyTimeout subscription in MultiplayerLobby.svelte resets readyPending, shows dismissible error banner (\"Host did not start the match. You can ready up again or leave.\") with Leave/Try-again actions. Live countdown (1s poll via getReadyWatchdogStatus) shown while waiting. cancelReadyWatchdog() called on dismiss and on game start."
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-009",
@@ -8103,7 +8106,7 @@
       "note": "[2026-04-23] src/csp.ts deleted in 9700017d9; agent-routing.md:36 still lists it (orchestrator cleanup pending)"
     }
   ],
-  "openCount": 56,
-  "resolvedCount": 144,
+  "openCount": 55,
+  "resolvedCount": 145,
   "_note": "ULTRATHINK FULL fix wave started 2026-04-22T23:30Z on 96 open MP issues across 8 parallel agents. WAVE 1 fix complete 2026-04-22T22:50Z. Resolved 8: 016 (mode propagation, in 77c71eaca + 14495f06b), 017 (trivia init wiring, in 9e0650b53 + ee7236892), 018 (live tauri check), 019 (LAN gate on Steam), 020 (Fastify forward payload), 022 (mode-aware activeRunMode), 023 (idempotent start), 029 (surfaced send exhaustion) — all in 14495f06b. WAVE 1-3 fix attempt started 2026-04-22T22:30Z on issues 016,017,018,019,020,022,023,029. MP-STEAM-20260422-ULTRATHINK batch (54 issues, 6 critical, 11 high, 23 medium, 14 low) added 2026-04-22 from 5-agent ultrathink audit (Steam P2P transport, coop start flow, Tauri/build divergence, lobby identity, recent commits). Includes 6 NEW critical findings the prior MP-STEAM-20260422-COOP batch missed: mp:lobby:start mode-not-applied, duel/trivia start paths unwired, hasSteam stale snapshot, stale rr-lan-server localStorage, Fastify payload-stripping, two-clients-one-Steam-account. Purged non-MP issues 2026-04-22 for focused Steam/multiplayer/lobby audit. Backup: leaderboard.pre-mp-sweep.backup.json. MP-STEAM-20260422-COOP batch (15 issues, 2 critical) added 2026-04-22 from orchestrator ultrathink audit triggered by user report of coop-isolation on Steam build.\n2026-04-23 VERIFY-POST-WAVE sweep: audited 39 issues across 5 fix-commits (5acc55df9,8f5d7a74b,0c2de9290,2e25b6765,49cfc15b7). Result: 20 fixed, 14 partial, 4 reverted to open, 1 credit corrected. See docs/gotchas.md for the two parallel-agent commit races surfaced."
 }

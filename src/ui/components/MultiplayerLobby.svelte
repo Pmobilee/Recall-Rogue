@@ -28,6 +28,10 @@
     onGameStart,
     onRaceProgress,
     onRaceResults,
+    onReadyTimeout,
+    cancelReadyWatchdog,
+    getReadyWatchdogStatus,
+    READY_WATCHDOG_MS,
   } from '../../services/multiplayerLobbyService'
   import { initWorkshopMessageHandlers, checkAllPlayersHaveWorkshopDeck } from '../../services/multiplayerWorkshopService'
   import { hasSteam } from '../../services/platformService'
@@ -66,6 +70,61 @@
   let workshopDecksReady = $state(true)
   /** IDs of players still missing the Workshop deck (populated by the deck-check effect). */
   let workshopMissingPlayerIds = $state<string[]>([])
+
+  // ── H-008: Ready-up watchdog UI state ─────────────────────────────────────
+  /**
+   * True when the 30s ready-up watchdog fired — the host never sent mp:lobby:start
+   * within the timeout window. Shows a dismissible error banner with leave / retry actions.
+   */
+  let readyTimeoutError = $state(false)
+  /** Seconds remaining in the watchdog window; null when not waiting. */
+  let watchdogSecsRemaining = $state<number | null>(null)
+  /** Interval handle for polling getReadyWatchdogStatus() to show a live countdown. */
+  let watchdogCountdownInterval: ReturnType<typeof setInterval> | null = null
+
+  /** Start the 1-second countdown poll when the player readies up as a guest. */
+  function _startWatchdogCountdown(): void {
+    if (watchdogCountdownInterval !== null) return
+    watchdogCountdownInterval = setInterval(() => {
+      const status = getReadyWatchdogStatus()
+      if (!status.active) {
+        _stopWatchdogCountdown()
+        return
+      }
+      watchdogSecsRemaining = Math.ceil((status.msRemaining ?? 0) / 1000)
+    }, 1000)
+  }
+
+  function _stopWatchdogCountdown(): void {
+    if (watchdogCountdownInterval !== null) {
+      clearInterval(watchdogCountdownInterval)
+      watchdogCountdownInterval = null
+    }
+    watchdogSecsRemaining = null
+  }
+
+  /**
+   * Called when the player clicks "Try again" on the timeout banner.
+   * Clears the error state so they can re-click Ready themselves.
+   */
+  function handleReadyTimeoutDismiss(): void {
+    readyTimeoutError = false
+    // Defensively cancel in case the watchdog is somehow still active
+    cancelReadyWatchdog()
+    _stopWatchdogCountdown()
+  }
+
+  /**
+   * Called when the player clicks "Leave lobby" on the timeout banner.
+   * Cancels the watchdog and leaves the lobby.
+   */
+  function handleReadyTimeoutLeave(): void {
+    readyTimeoutError = false
+    cancelReadyWatchdog()
+    _stopWatchdogCountdown()
+    handleLeave()
+  }
+  // ──────────────────────────────────────────────────────────────────────────
 
   const MODES: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night']
 
@@ -154,11 +213,25 @@
     // and ensures this component is ready if wired later.
     cleanups.push(
       onLobbyUpdate(() => { /* parent controls lobby prop; kept for completeness */ }),
-      onGameStart(() => { /* parent navigates on game-start signal */ }),
+      onGameStart(() => {
+        // H-008: game started — stop any watchdog countdown and clear error state
+        readyTimeoutError = false
+        _stopWatchdogCountdown()
+        /* parent navigates on game-start signal */
+      }),
       onRaceProgress(() => { /* race progress not consumed in lobby screen */ }),
       onRaceResults(() => { /* results not consumed in lobby screen */ }),
       // H15: wire workshop message handlers (vote broadcasts, vote results)
       initWorkshopMessageHandlers(),
+      // H-008: wire ready-up watchdog timeout notification
+      onReadyTimeout((info) => {
+        rrLog('mp:ui:lobby', 'H-008 ready watchdog expired', info)
+        // The service already reset player.isReady and called notifyLobbyUpdate().
+        // We only need to reset local pending state and show the error banner.
+        readyPending = false
+        readyTimeoutError = true
+        _stopWatchdogCountdown()
+      }),
     )
   })
 
@@ -168,6 +241,8 @@
     if (copyFeedbackTimeout !== null) clearTimeout(copyFeedbackTimeout)
     copyFeedbackTimeout = null
     copyFeedback = false
+    // H-008: stop countdown interval if still running
+    _stopWatchdogCountdown()
   })
 
   // ──────────────────────────────────────────────────────────────────────────
@@ -229,10 +304,14 @@
    * Disables the button immediately on click and re-enables after the server
    * echoes back a lobby update OR after an 800 ms safety timeout, whichever
    * comes first.
+   *
+   * H-008: When the guest readies up, also starts a 1-second countdown poll
+   * so the watchdog timer is visible in the UI.
    */
   function handleReadyToggle(): void {
     if (readyPending) return
     readyPending = true
+    readyTimeoutError = false
     setReady(!isReady)
     // Safety re-enable: if the server echo never lands, unlock after 800ms.
     const safetyTimer = setTimeout(() => {
@@ -243,6 +322,15 @@
       clearTimeout(safetyTimer)
       readyPending = false
       unsub()
+      // H-008: if we readied up (not unreadied), start the countdown.
+      // isReady is the PREVIOUS value at this point — we toggled, so if
+      // isReady was false we are now ready, start countdown.
+      if (!isReady && !amHost) {
+        _startWatchdogCountdown()
+      } else {
+        // Unreadied or host — stop countdown if running
+        _stopWatchdogCountdown()
+      }
     })
   }
 
@@ -332,6 +420,42 @@
     {/if}
     <div class="header-spacer"></div>
   </header>
+
+  <!-- H-008: Ready timeout error banner — shown when the watchdog fires -->
+  {#if readyTimeoutError}
+    <div
+      class="ready-timeout-banner"
+      role="alert"
+      aria-live="assertive"
+      data-testid="ready-timeout-banner"
+    >
+      <div class="timeout-banner-body">
+        <span class="timeout-banner-icon" aria-hidden="true">&#9888;</span>
+        <div class="timeout-banner-text">
+          <span class="timeout-banner-title">Host didn't start the match.</span>
+          <span class="timeout-banner-sub">You can ready up again or leave.</span>
+        </div>
+      </div>
+      <div class="timeout-banner-actions">
+        <button
+          class="timeout-btn timeout-btn--leave"
+          data-testid="ready-timeout-leave"
+          onclick={handleReadyTimeoutLeave}
+          aria-label="Leave lobby"
+        >
+          Leave lobby
+        </button>
+        <button
+          class="timeout-btn timeout-btn--retry"
+          data-testid="ready-timeout-retry"
+          onclick={handleReadyTimeoutDismiss}
+          aria-label="Dismiss and try again"
+        >
+          Try again
+        </button>
+      </div>
+    </div>
+  {/if}
 
   <!-- Three-column layout -->
   <div class="mp-body">
@@ -442,7 +566,11 @@
           aria-pressed={isReady}
           aria-busy={readyPending}
         >
-          {readyPending ? 'Updating...' : isReady ? 'Not Ready' : 'Ready'}
+          {#if readyPending && watchdogSecsRemaining !== null}
+            Waiting for host... ({watchdogSecsRemaining}s)
+          {:else}
+            {readyPending ? 'Updating...' : isReady ? 'Not Ready' : 'Ready'}
+          {/if}
         </button>
 
         {#if amHost}
@@ -877,6 +1005,90 @@
 
   .header-spacer {
     flex: 1;
+  }
+
+  /* ── H-008: Ready timeout error banner ── */
+  .ready-timeout-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(12px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(20px * var(--layout-scale, 1));
+    background: rgba(231, 76, 60, 0.14);
+    border-bottom: 1px solid rgba(231, 76, 60, 0.4);
+    flex-shrink: 0;
+  }
+
+  .timeout-banner-body {
+    display: flex;
+    align-items: center;
+    gap: calc(10px * var(--layout-scale, 1));
+    flex: 1;
+    min-width: 0;
+  }
+
+  .timeout-banner-icon {
+    font-size: calc(18px * var(--text-scale, 1));
+    color: #e74c3c;
+    flex-shrink: 0;
+  }
+
+  .timeout-banner-text {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2px * var(--layout-scale, 1));
+  }
+
+  .timeout-banner-title {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: #e74c3c;
+    font-weight: 600;
+  }
+
+  .timeout-banner-sub {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #c08080;
+  }
+
+  .timeout-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    flex-shrink: 0;
+  }
+
+  .timeout-btn {
+    border: 1px solid;
+    border-radius: calc(6px * var(--layout-scale, 1));
+    font-size: calc(12px * var(--text-scale, 1));
+    font-family: var(--font-body, 'Lora', serif);
+    cursor: pointer;
+    padding: calc(6px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    min-height: calc(44px * var(--layout-scale, 1));
+    min-width: calc(44px * var(--layout-scale, 1));
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+
+  .timeout-btn--leave {
+    background: rgba(231, 76, 60, 0.18);
+    border-color: rgba(231, 76, 60, 0.5);
+    color: #e74c3c;
+  }
+
+  .timeout-btn--leave:hover {
+    background: rgba(231, 76, 60, 0.30);
+  }
+
+  .timeout-btn--retry {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #c0c0c0;
+  }
+
+  .timeout-btn--retry:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
   }
 
   /* ── Body (3-column) ── */
