@@ -20,6 +20,7 @@ import {
   handleCoopBarrierCancel,
   notifyCardCommitted,
   notifyCardResolved,
+  _debugState,
 } from './failsafeWatchdogs';
 import { rrLog } from './rrLog';
 
@@ -394,5 +395,73 @@ describe('Class A1 empty-hand repair (solo) — calls forceRedraw on live deck',
 
     // Assert: forceRedraw was called (not the old patchTurnState snapshot path).
     expect(vi.mocked(forceRedraw)).toHaveBeenCalledWith(5);
+  });
+});
+
+// ─── Class A2: notifyCardCommitted / notifyCardResolved state sequence ────────────
+
+describe('A2: notifyCardCommitted / notifyCardResolved state sequence', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    destroyFailsafeWatchdogs();
+    vi.useRealTimers();
+  });
+
+  it('A2: notifyCardCommitted sets cardCommittedAt, notifyCardResolved clears it', () => {
+    // Arrange: advance to a known timestamp so Date.now() is deterministic.
+    vi.setSystemTime(10_000);
+
+    // notifyCardCommitted should record the timestamp.
+    notifyCardCommitted('card-123');
+    const stateAfterCommit = _debugState();
+    expect(stateAfterCommit.cardCommittedAt).toBe(10_000);
+
+    // notifyCardResolved should clear the timestamp.
+    notifyCardResolved('card-123', 'correct');
+    const stateAfterResolve = _debugState();
+    expect(stateAfterResolve.cardCommittedAt).toBeNull();
+  });
+
+  it('A2: watchdog does NOT fire after notifyCardResolved clears committed state', async () => {
+    // Arrange: start watchdogs with a stuck TurnState (so the tick runs).
+    const { activeTurnState } = await import('./encounterBridge');
+    const { activeRunState } = await import('./runStateStore');
+    const stuckTs = {
+      result: null,
+      phase: 'player_action',
+      apCurrent: 2,
+      baseDrawCount: 5,
+      deck: { hand: ['c1'], drawPile: [], discardPile: [] },
+    };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    vi.mocked(activeTurnState.subscribe).mockImplementation(((fn: (v: any) => void) => {
+      fn(stuckTs);
+      return () => {};
+    }) as any);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    vi.mocked(activeRunState.subscribe).mockImplementation(((fn: (v: any) => void) => {
+      fn({ multiplayerMode: 'solo' });
+      return () => {};
+    }) as any);
+
+    initFailsafeWatchdogs();
+    notifyCardCommitted('card-456');
+    // Resolve immediately — state should be cleared.
+    notifyCardResolved('card-456', 'correct');
+
+    // Advance past the CARD_PLAY_STAGE_STUCK_MS threshold would be 5 minutes,
+    // but we just verify the committed state is null (cleared) so no watchdog
+    // log fires for watchdog:cardPlay STUCK. We advance 4 s to let the main tick
+    // run and confirm STUCK is NOT emitted.
+    await vi.advanceTimersByTimeAsync(4_000);
+
+    const stuckLogCalls = vi.mocked(rrLog).mock.calls.filter(
+      ([key, msg]) => key === 'watchdog:cardPlay' && msg === 'STUCK — card in committed stage for 5+ minutes'
+    );
+    expect(stuckLogCalls).toHaveLength(0);
   });
 });

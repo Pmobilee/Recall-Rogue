@@ -539,3 +539,18 @@ export function handleCoopBarrierCancel(reason: 'timeout' | 'partner_left' | 'lo
     }
   })();
 }
+
+// ─── Test-only internal state accessor ──────────────────────────────────────────
+
+/**
+ * @internal — for tests only. Returns a snapshot of watchdog state fields
+ * that are not otherwise observable without advancing timers.
+ *
+ * Only exposes the minimum needed by unit tests:
+ *   - cardCommittedAt: the raw timestamp (null if no card is committed)
+ */
+export function _debugState(): { cardCommittedAt: number | null } {
+  return {
+    cardCommittedAt: _cardCommittedAt,
+  };
+}
