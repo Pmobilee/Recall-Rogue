@@ -5689,3 +5689,15 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
 - 8 new unit tests in `server/tests/services/mpLobbyRegistry.test.ts` covering double-join, reconnect-while-connected, already-closed ws (no double-close), capacity bypass, and no-regression path for clean new joins.
 
 **Lesson:** Any `Map.set()` that overwrites an existing value holding a closeable resource (socket, timer, stream) is a potential leak. Always check-and-close before replacing.
+
+### 2026-04-23 — Class E watchdog: getCombatScene() returning null for >5s is detectable from service layer
+
+**What:** The Phaser `CombatScene` can return null from `getCombatScene()` in two cases: (1) brief boot-race at encounter start (~200-600ms, the retry loop in `syncCombatScene()` handles this), and (2) a sustained null >5s indicating a zombie or failed scene. The service layer can detect case (2) without touching Phaser directly by polling `getCombatScene()` from the watchdog tick.
+
+**Fix:** `watchdog:combatScene` watchdog in `failsafeWatchdogs.ts`. Logs after 5s null. No auto-repair — the retry loop already covers the boot-race case; a sustained null requires investigation.
+
+### 2026-04-23 — Class F watchdog: activeRunState null during active combat should be impossible but must be logged
+
+**What:** `encounterBridge.startEncounterForRoom()` guards with `if (!run) return false` — so theoretically you can't start an encounter without a valid run state. However, if `resetEncounterBridge()` is called while an encounter is active (e.g. run-end race with a pending victory timer), `activeTurnState` may still have a value while `activeRunState` is null. The `endPlayerTurn` call in `handleEndTurn` would silently bail.
+
+**Fix:** `watchdog:runState` watchdog logs the condition if detected during the poll tick. No auto-repair — the encounter would need to be abandoned anyway since there's nowhere to route the result.

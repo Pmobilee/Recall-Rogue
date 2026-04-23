@@ -94,6 +94,15 @@ let _emptyHandRepairFired = false;
  */
 let _cardCommittedAt: number | null = null;
 
+/**
+ * Timestamp when getCombatScene() first returned null during active combat.
+ * Used by the Class E scene-null watchdog. Null when scene is healthy.
+ */
+let _combatSceneNullSince: number | null = null;
+
+/** Duration (ms) getCombatScene() must return null before the Class E watchdog warns. */
+const COMBAT_SCENE_NULL_WARN_MS = 5_000;
+
 // ─── Public lifecycle ────────────────────────────────────────────────────────────
 
 /**
@@ -125,6 +134,7 @@ export function destroyFailsafeWatchdogs(): void {
   _emptyHandDetectedAt = null;
   _emptyHandRepairFired = false;
   _cardCommittedAt = null;
+  _combatSceneNullSince = null;
 }
 
 // ─── Class A UI hook: card committed stage ───────────────────────────────────────
@@ -158,7 +168,8 @@ export function notifyCardResolved(cardId: string, outcome: 'correct' | 'wrong' 
 
 /**
  * Called once per WATCHDOG_POLL_MS while an encounter is active.
- * Checks all Class A stuck-state conditions that are visible from TurnState.
+ * Checks Class A (hand/AP/cardPlay), Class E (combat scene null), and
+ * Class F (run state null during active combat) stuck states.
  */
 async function _watchdogTick(): Promise<void> {
   // Lazy-import to avoid circular deps — encounterBridge imports us.
@@ -175,6 +186,42 @@ async function _watchdogTick(): Promise<void> {
 
   _checkEmptyHandStuck(ts);
   _checkCardPlayStageStuck();
+
+  // Class F: run state null during active combat.
+  // If activeRunState is null while a TurnState exists, the next endPlayerTurn
+  // call will bail out silently — log it so it appears in debug.log.
+  const { activeRunState } = await import('./runStateStore');
+  const run = get(activeRunState);
+  if (!run) {
+    rrLog('watchdog:runState', 'WARN — activeRunState is null while TurnState is active', {
+      phase: ts.phase,
+      ap: ts.apCurrent,
+    });
+  }
+
+  // Class E: getCombatScene() returns null during active combat.
+  // This is normal for a few hundred ms at encounter start while Phaser boots.
+  // After 5 s it indicates a zombie scene or failed scene init — log it.
+  void _checkCombatSceneNull();
+}
+
+async function _checkCombatSceneNull(): Promise<void> {
+  const { getCombatScene } = await import('./encounterBridge');
+  const scene = getCombatScene();
+  if (!scene) {
+    if (_combatSceneNullSince === null) {
+      _combatSceneNullSince = Date.now();
+    } else if (Date.now() - _combatSceneNullSince >= COMBAT_SCENE_NULL_WARN_MS) {
+      rrLog('watchdog:combatScene', 'WARN — getCombatScene() null for 5s during active combat', {
+        nullMs: Date.now() - _combatSceneNullSince,
+        note: 'Phaser scene may not have started or may be shutting down',
+      });
+      // Reset timer so we log at most once per window.
+      _combatSceneNullSince = Date.now();
+    }
+  } else {
+    _combatSceneNullSince = null;
+  }
 }
 
 // ─── Class A: Hand / deck / AP stuck states ──────────────────────────────────────

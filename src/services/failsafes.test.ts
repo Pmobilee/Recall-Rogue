@@ -329,3 +329,22 @@ describe('handleCoopBarrierCancel (Class C: barrier watchdog)', () => {
     expect(() => handleCoopBarrierCancel('local_cancel')).not.toThrow();
   });
 });
+
+// ─── Lifecycle: init resets scene-null state ─────────────────────────────────────
+
+describe('initFailsafeWatchdogs resets all state', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    destroyFailsafeWatchdogs();
+    vi.useRealTimers();
+  });
+
+  it('emits init log and does not throw', () => {
+    expect(() => initFailsafeWatchdogs()).not.toThrow();
+    expect(mockRrLog()).toHaveBeenCalledWith('watchdog:hand', 'init — encounter watchdogs started');
+  });
+});

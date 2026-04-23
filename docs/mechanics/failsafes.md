@@ -35,6 +35,8 @@ The watchdog interval polls every 1,000 ms. All watchdogs emit `rrLog('watchdog:
 | `watchdog:coop` | Class C: coop HP clamping + delta bucket | `failsafeWatchdogs.ts` |
 | `watchdog:barrier` | Class C: barrier cancel | `failsafeWatchdogs.ts` |
 | `watchdog:reconcile` | Class C: coop reconcile failure | `failsafeWatchdogs.ts` |
+| `watchdog:combatScene` | Class E: Phaser scene null during combat | `failsafeWatchdogs.ts` |
+| `watchdog:runState` | Class F: run state null during combat | `failsafeWatchdogs.ts` |
 
 Grep for any watchdog in `debug.log`:
 
@@ -142,17 +144,39 @@ All clamping emits `watchdog:enemy / INVALID` or `watchdog:enemy / WARN`.
 
 ---
 
-## Classes D–H — Status / planned
+## Class E — Screen / scene transitions
 
-The following classes are scoped to their respective service boundaries and are NOT yet fully implemented in `failsafeWatchdogs.ts`. Handoff notes for the ui-agent or follow-up:
+### E1: getCombatScene() null for > 5 s during active combat
+
+**Trigger:** `getCombatScene()` returns null while `activeTurnState` is non-null and encounter is active, for ≥ 5 seconds.
+
+**Detection:** `_checkCombatSceneNull()` called from the 1 s poll loop. Logs `watchdog:combatScene / WARN`.
+
+**Repair:** No auto-repair — the existing `syncCombatScene()` retry loop (25 × 200 ms) handles the transient boot-race case. The watchdog detects the sustained case for post-hoc analysis.
+
+---
+
+## Class F — Save / run state
+
+### F1: activeRunState null while TurnState is active
+
+**Trigger:** `get(activeRunState) === null` while `get(activeTurnState) !== null` and encounter not resolved.
+
+**Detection:** Checked in `_watchdogTick()`. Logs `watchdog:runState / WARN`.
+
+**Repair:** No auto-repair — `startEncounterForRoom()` already guards with `if (!run) return false` preventing new encounters from starting without run state. This watchdog catches the rarer case where run state is cleared mid-encounter.
+
+---
+
+## Classes D, G, H — Status / planned
+
+The following classes have existing service-level guards or are UI-layer tasks:
 
 | Class | Area | Status |
 |-------|------|--------|
-| D | Multiplayer lobby / transport | Transport error state surfaces via existing `rrLog('mp:tx', ...)`. No modal. Needs ui-agent to wire a dismissible error banner. |
-| E | Screen / scene transitions | `currentScreen` drift and `getCombatScene()` returning null during combat — logged but no escape hatch modal. Needs ui-agent. |
-| F | Save / run state | `activeRunState` null during combat — `encounterBridge` already guards with `if (!run) return false`. No persist-failure modal. |
+| D | Multiplayer lobby / transport | Transport error state surfaces via existing `rrLog('mp:tx', ...)`. No player-visible modal. Needs ui-agent to wire a dismissible error banner. |
 | G | Quiz / answer-checking | `playCardAction` has null-fact guard in `turnManager.ts`. FSRS lookup failure leaves card in committed state (Class A2 watchdog logs it). |
-| H | Audio / asset loading | `playCardAudio` wraps every call with a try/catch already (see `cardAudioManager.ts`). No watchdog needed unless an await is introduced. |
+| H | Audio / asset loading | `playCardAudio` is synchronous and wraps failures internally (see `cardAudioManager.ts`). No watchdog needed. |
 
 ---
 
@@ -162,7 +186,7 @@ The following classes are scoped to their respective service boundaries and are 
 npx vitest run src/services/failsafes.test.ts
 ```
 
-28 tests covering: lifecycle, Class A card-committed hooks, Class B enemy validation (5 scenarios), Class C HP clamping (5 scenarios), Class C delta monitoring (4 scenarios), Class C reconcile failure, Class C barrier cancel.
+29 tests covering: lifecycle (4 tests), Class A card-committed hooks (3 tests), Class B enemy validation (6 tests), Class C HP clamping (5 tests), Class C delta monitoring (4 tests), Class C reconcile failure (2 tests), Class C barrier cancel (3 tests), additional init reset test (1 test).
 
 ---
 
