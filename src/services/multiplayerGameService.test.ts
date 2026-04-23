@@ -730,3 +730,213 @@ describe('#80: applyEloResult uses lobby player multiplayerRating, not hardcoded
     expect(opp?.multiplayerRating ?? 1500).toBe(1800);
   });
 });
+
+// ── H-004: senderId validation on mp:duel:cards_played ───────────────────────
+
+/**
+ * Helper: set up mockOn to capture handler registrations by message type.
+ * Returns a function to simulate incoming messages.
+ */
+function makeHandlerCapture() {
+  const handlers: Record<string, (msg: { payload: unknown; senderId: string }) => void> = {};
+  // Cast to any: mockOn was hoisted as vi.fn(()=>vi.fn()) (no-arg signature).
+  // mockImplementation here provides the 2-arg form used by real transport.on calls.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (mockOn.mockImplementation as any)((type: string, cb: (msg: unknown) => void) => {
+    handlers[type] = cb as (msg: { payload: unknown; senderId: string }) => void;
+    return vi.fn(); // cleanup noop
+  });
+  return {
+    handlers,
+    simulate(type: string, senderId: string, payload: unknown) {
+      handlers[type]?.({ payload, senderId });
+    },
+  };
+}
+
+describe('H-004: mp:duel:cards_played senderId validation', () => {
+  beforeEach(() => {
+    destroyMultiplayerGame();
+    mockOn.mockClear();
+    mockSend.mockClear();
+  });
+
+  afterEach(() => {
+    destroyMultiplayerGame();
+    // Restore default mockOn behaviour so other tests are unaffected
+    mockOn.mockImplementation(() => vi.fn());
+  });
+
+  it('rejects cards_played when action.playerId does not match msg.senderId', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const { simulate } = makeHandlerCapture();
+
+    initDuel(true, 'host_player', 'attacker');
+    initGameMessageHandlers('duel');
+
+    const action = {
+      playerId: 'victim',          // claimed identity
+      cardsPlayed: [],
+      blockGained: 0,
+      damageDealt: 50,
+      chainLength: 0,
+    };
+
+    // senderId is 'attacker' but payload claims to be 'victim'
+    simulate('mp:duel:cards_played', 'attacker', action);
+
+    expect(warnSpy).toHaveBeenCalledWith(
+      '[mp-duel] cards_played rejected: senderId mismatch',
+      expect.objectContaining({ senderId: 'attacker', claimedPlayerId: 'victim' }),
+    );
+
+    warnSpy.mockRestore();
+  });
+
+  it('accepts cards_played when action.playerId matches msg.senderId', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const { simulate } = makeHandlerCapture();
+
+    initDuel(true, 'host_player', 'guest_player');
+    initGameMessageHandlers('duel');
+
+    const action = {
+      playerId: 'guest_player',    // matches senderId
+      cardsPlayed: [],
+      blockGained: 5,
+      damageDealt: 20,
+      chainLength: 1,
+    };
+
+    simulate('mp:duel:cards_played', 'guest_player', action);
+
+    // senderId mismatch warning must NOT have fired
+    const mismatchWarnings = warnSpy.mock.calls.filter(call =>
+      typeof call[0] === 'string' && call[0].includes('senderId mismatch'),
+    );
+    expect(mismatchWarnings).toHaveLength(0);
+
+    warnSpy.mockRestore();
+  });
+});
+
+// ── H-005: reorder buffer — cards_played before turn_start ────────────────────
+
+describe('H-005: reorder buffer for mp:duel:cards_played before turn_start', () => {
+  beforeEach(() => {
+    destroyMultiplayerGame();
+    mockOn.mockClear();
+    mockSend.mockClear();
+  });
+
+  afterEach(() => {
+    destroyMultiplayerGame();
+    mockOn.mockImplementation(() => vi.fn());
+  });
+
+  it('buffers cards_played when _duelState is null, then replays after turn_start', () => {
+    const infoSpy = vi.spyOn(console, 'info').mockImplementation(() => {});
+    const { simulate } = makeHandlerCapture();
+
+    // Register handlers WITHOUT calling initDuel (no _duelState yet)
+    initGameMessageHandlers('duel');
+
+    const action = {
+      playerId: 'guest_player',
+      cardsPlayed: [],
+      blockGained: 0,
+      damageDealt: 30,
+      chainLength: 0,
+    };
+
+    // cards_played arrives first (no _duelState)
+    simulate('mp:duel:cards_played', 'guest_player', action);
+
+    // Buffered — infoSpy should show "buffered cards_played"
+    const bufferInfos = infoSpy.mock.calls.filter(call =>
+      typeof call[0] === 'string' && call[0].includes('buffered cards_played'),
+    );
+    expect(bufferInfos.length).toBeGreaterThan(0);
+
+    // NOW init the duel state and trigger turn_start
+    initDuel(false, 'host_player', 'guest_player');
+    simulate('mp:duel:turn_start', 'host_player', { turnNumber: 1 });
+
+    // After drain, _duelState.opponentAction should have been set
+    // (We verify indirectly — if it was applied, the replay info log fires)
+    const replayInfos = infoSpy.mock.calls.filter(call =>
+      typeof call[0] === 'string' && call[0].includes('replaying buffered cards_played'),
+    );
+    expect(replayInfos.length).toBeGreaterThan(0);
+
+    infoSpy.mockRestore();
+  });
+
+  it('buffer overflow (5 messages): drops oldest, keeps newest 4', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const infoSpy = vi.spyOn(console, 'info').mockImplementation(() => {});
+    const { simulate } = makeHandlerCapture();
+
+    initGameMessageHandlers('duel');
+    // No initDuel → _duelState is null → all messages go to buffer
+
+    for (let i = 0; i < 5; i++) {
+      simulate('mp:duel:cards_played', `guest_${i}`, {
+        playerId: `guest_${i}`,
+        cardsPlayed: [],
+        blockGained: 0,
+        damageDealt: i,
+        chainLength: 0,
+      });
+    }
+
+    // The 5th insert should trigger an overflow warning
+    const overflowWarnings = warnSpy.mock.calls.filter(call =>
+      typeof call[0] === 'string' && call[0].includes('reorder buffer overflow'),
+    );
+    expect(overflowWarnings.length).toBeGreaterThan(0);
+
+    warnSpy.mockRestore();
+    infoSpy.mockRestore();
+  });
+
+  it('expired entries (>5 s old) are pruned on next insert', async () => {
+    vi.useFakeTimers();
+    const infoSpy = vi.spyOn(console, 'info').mockImplementation(() => {});
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const { simulate } = makeHandlerCapture();
+
+    initGameMessageHandlers('duel');
+
+    // Insert one entry at T=0
+    simulate('mp:duel:cards_played', 'guest_player', {
+      playerId: 'guest_player',
+      cardsPlayed: [],
+      blockGained: 0,
+      damageDealt: 10,
+      chainLength: 0,
+    });
+
+    // Advance time by 6 seconds (past the 5s TTL)
+    vi.advanceTimersByTime(6000);
+
+    // Insert another entry — should prune the expired one first
+    simulate('mp:duel:cards_played', 'guest_player', {
+      playerId: 'guest_player',
+      cardsPlayed: [],
+      blockGained: 0,
+      damageDealt: 20,
+      chainLength: 0,
+    });
+
+    // No overflow warning should have fired (expired entry was pruned, so buffer had 0 before insert)
+    const overflowWarnings = warnSpy.mock.calls.filter(call =>
+      typeof call[0] === 'string' && call[0].includes('reorder buffer overflow'),
+    );
+    expect(overflowWarnings).toHaveLength(0);
+
+    vi.useRealTimers();
+    infoSpy.mockRestore();
+    warnSpy.mockRestore();
+  });
+});

@@ -5729,3 +5729,13 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
 **Fix:** Added `forceRedraw(count: number)` as a named export of `encounterBridge.ts`. It calls `drawHand(activeDeck, count)` on the live deck (including internal reshuffle if draw pile is exhausted), then calls `patchTurnState({ deck: { ...activeDeck } })` to mirror the result back into the Svelte store. `_repairEmptyHand` now calls `forceRedraw(ts.baseDrawCount)` instead of the snapshot-patching code. Coop branch unchanged.
 
 **Watch out for:** Any future repair path that touches `activeTurnState` without also touching `activeDeck` will have the same silent-no-op problem. Always repair through `forceRedraw` or via the normal turn pipeline — never patch the Svelte store in isolation.
+
+### 2026-04-23 — Duel handler: senderId not validated; cards_played drops silently before turn_start
+
+**What:** Two duel message handler bugs fixed together (H-004 + H-005, `src/services/multiplayerGameService.ts`).
+
+**H-004 (identity forgery):** The `mp:duel:cards_played` handler stored `_duelState.opponentAction` using `raw.playerId` from the untrusted payload, never comparing it to the transport-authenticated `msg.senderId`. A peer could claim any playerId and corrupt `_duelState.totalDamage[fakeId]`. Fix: reject early when `raw.playerId !== msg.senderId`.
+
+**H-005 (reorder drop):** When Steam P2P delivered `cards_played` before `turn_start`, the handler hit `if (!_duelState) return` and silently dropped the message. The host then waited forever. Fix: module-scoped `_duelReorderBuffer` (max 4 entries, 5 s TTL) buffers early arrivals; `_drainDuelReorderBuffer()` is called from the `turn_start` handler after `_duelState.turnNumber` is set. Buffer is cleared in `destroyDuel()`.
+
+**Watch out for:** `_duelReorderBuffer` is a `const` array (not resetable by reassignment). Always clear it via `.length = 0` or `splice`. Any new path that cleans up duel state must clear the buffer too.

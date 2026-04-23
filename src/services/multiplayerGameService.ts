@@ -693,6 +693,21 @@ interface DuelSession {
 
 let _duelState: DuelSession | null = null;
 
+/**
+ * Bounded reorder buffer for mp:duel:cards_played messages that arrive before
+ * the matching mp:duel:turn_start (H-005 — Steam P2P message reordering).
+ *
+ * Max 4 entries; entries older than 5 seconds are pruned on every insert.
+ */
+interface DuelBufferedAction {
+  action: DuelTurnAction;
+  senderId: string;
+  receivedAt: number;
+}
+const _DUEL_REORDER_BUFFER_MAX = 4;
+const _DUEL_REORDER_BUFFER_TTL_MS = 5000;
+const _duelReorderBuffer: DuelBufferedAction[] = [];
+
 /** Callbacks registered by game scene consumers. */
 let _onTurnResolved: ((r: DuelTurnResolution) => void) | null = null;
 let _onEnemyStateUpdate: ((e: SharedEnemyState) => void) | null = null;
@@ -964,6 +979,114 @@ export function destroyDuel(): void {
   _onTurnResolved = null;
   _onEnemyStateUpdate = null;
   _onDuelEnd = null;
+  // H-005: clear the reorder buffer so stale entries do not bleed into the next encounter.
+  _duelReorderBuffer.length = 0;
+}
+
+// ── Duel Reorder Buffer Helpers ─────────────────────────────────────────────
+
+/**
+ * Prune expired entries and push a new buffered action (H-005).
+ * Drops the oldest entry when the buffer is already at max capacity.
+ */
+function _pushDuelReorderBuffer(entry: DuelBufferedAction): void {
+  const now = Date.now();
+  // Prune TTL-expired entries first
+  for (let i = _duelReorderBuffer.length - 1; i >= 0; i--) {
+    if (now - _duelReorderBuffer[i].receivedAt > _DUEL_REORDER_BUFFER_TTL_MS) {
+      _duelReorderBuffer.splice(i, 1);
+    }
+  }
+  // Drop oldest when still at capacity
+  if (_duelReorderBuffer.length >= _DUEL_REORDER_BUFFER_MAX) {
+    const dropped = _duelReorderBuffer.shift();
+    console.warn(
+      '[mp-duel] reorder buffer overflow — dropped oldest buffered cards_played',
+      { droppedSenderId: dropped?.senderId, bufferLength: _duelReorderBuffer.length },
+    );
+  }
+  _duelReorderBuffer.push(entry);
+  console.info('[mp-duel] buffered cards_played (arrived before turn_start)', {
+    senderId: entry.senderId, bufferLength: _duelReorderBuffer.length,
+  });
+}
+
+/**
+ * Apply a validated cards_played action to _duelState.
+ * Extracted so the live handler and the buffer-drain path share the same logic.
+ * Caller MUST validate senderId === action.playerId before calling this function.
+ *
+ * Returns true if the action was applied, false if preconditions were not met.
+ */
+function _applyDuelCardsPlayed(action: DuelTurnAction): boolean {
+  if (!_duelState) return false;
+
+  // Clamp incoming values to prevent negatives from corrupting accumulated totals (M10)
+  const sanitized: DuelTurnAction = {
+    ...action,
+    damageDealt: Math.max(0, action.damageDealt),
+    blockGained: Math.max(0, action.blockGained),
+  };
+  if (action.damageDealt < 0) {
+    console.warn(
+      `[multiplayerGameService] mp:duel:cards_played: negative damageDealt ${action.damageDealt} from "${action.playerId}" clamped to 0`,
+    );
+  }
+  if (action.blockGained < 0) {
+    console.warn(
+      `[multiplayerGameService] mp:duel:cards_played: negative blockGained ${action.blockGained} from "${action.playerId}" clamped to 0`,
+    );
+  }
+
+  _duelState.opponentAction = sanitized;
+
+  // Host resolves once both sides have submitted
+  if (_duelState.isHost && _duelState.localAction) {
+    hostResolveTurn();
+  }
+  return true;
+}
+
+/**
+ * Drain buffered cards_played messages that are now actionable after turn_start
+ * updated _duelState.turnNumber (H-005).
+ *
+ * Entries without an embedded turnNumber are always replayed.
+ * Entries whose turnNumber matches the newly-set currentTurn are replayed.
+ * Entries that don't match are kept for future turns.
+ * Expired entries are discarded.
+ */
+function _drainDuelReorderBuffer(): void {
+  if (!_duelState || _duelReorderBuffer.length === 0) return;
+
+  const now = Date.now();
+  const currentTurn = _duelState.turnNumber;
+  const toRemove: number[] = [];
+
+  for (let i = 0; i < _duelReorderBuffer.length; i++) {
+    const entry = _duelReorderBuffer[i];
+    if (now - entry.receivedAt > _DUEL_REORDER_BUFFER_TTL_MS) {
+      toRemove.push(i);
+      console.warn('[mp-duel] dropping expired buffered cards_played', {
+        senderId: entry.senderId, ageMs: now - entry.receivedAt,
+      });
+      continue;
+    }
+    // DuelTurnAction does not define turnNumber — check for optional transport extension.
+    const entryTurn = (entry.action as DuelTurnAction & { turnNumber?: number }).turnNumber;
+    if (entryTurn === undefined || entryTurn === currentTurn) {
+      console.info('[mp-duel] replaying buffered cards_played after turn_start', {
+        senderId: entry.senderId, turnNumber: currentTurn,
+      });
+      _applyDuelCardsPlayed(entry.action);
+      toRemove.push(i);
+    }
+  }
+
+  // Remove replayed/expired entries in reverse index order
+  for (let i = toRemove.length - 1; i >= 0; i--) {
+    _duelReorderBuffer.splice(toRemove[i], 1);
+  }
 }
 
 // ── Message Routing ───────────────────────────────────────────────────────────
@@ -1013,41 +1136,43 @@ export function initGameMessageHandlers(mode: MultiplayerMode): () => void {
     cleanups.push(transport.on('mp:duel:turn_start', (msg) => {
       const payload = msg.payload as { turnNumber: number };
       if (_duelState) {
+        // H-005: set canonical turn number, clear actions, then drain any cards_played
+        // messages that arrived before this turn_start (Steam P2P reordering).
         _duelState.turnNumber = payload.turnNumber - 1; // host sets canonical number
         _duelState.localAction = null;
         _duelState.opponentAction = null;
+        _drainDuelReorderBuffer();
       }
     }));
 
-    // Opponent submitted their cards_played — host stores, clamps, and may resolve
+    // Opponent submitted their cards_played — validate identity, clamp, apply (or buffer)
     cleanups.push(transport.on('mp:duel:cards_played', (msg) => {
-      if (!_duelState) return;
       const raw = msg.payload as unknown as DuelTurnAction;
 
-      // Clamp incoming opponent action to prevent negative values from
-      // bad network payloads corrupting the host's accumulated damage totals (M10)
-      const action: DuelTurnAction = {
-        ...raw,
-        damageDealt: Math.max(0, raw.damageDealt),
-        blockGained: Math.max(0, raw.blockGained),
-      };
-      if (raw.damageDealt < 0) {
-        console.warn(
-          `[multiplayerGameService] mp:duel:cards_played: negative damageDealt ${raw.damageDealt} from "${raw.playerId}" clamped to 0`,
-        );
-      }
-      if (raw.blockGained < 0) {
-        console.warn(
-          `[multiplayerGameService] mp:duel:cards_played: negative blockGained ${raw.blockGained} from "${raw.playerId}" clamped to 0`,
-        );
+      // H-004: Reject messages whose claimed playerId does not match the transport
+      // senderId. The transport layer authenticates the sender; the payload identity
+      // claim is untrusted. A mismatch is either a bug or a deliberate forgery
+      // (e.g. ELO manipulation in ranked duel by crediting damage to a different player).
+      if (raw.playerId !== msg.senderId) {
+        console.warn('[mp-duel] cards_played rejected: senderId mismatch', {
+          senderId: msg.senderId, claimedPlayerId: raw.playerId,
+        });
+        return;
       }
 
-      _duelState.opponentAction = action;
-
-      // Host resolves once both sides have submitted
-      if (_duelState.isHost && _duelState.localAction) {
-        hostResolveTurn();
+      // H-005: If _duelState is not yet initialised (cards_played arrived before the
+      // first turn_start — possible under Steam P2P out-of-order delivery), push to the
+      // bounded reorder buffer. The buffer is drained when the next turn_start fires.
+      if (!_duelState) {
+        _pushDuelReorderBuffer({ action: raw, senderId: msg.senderId, receivedAt: Date.now() });
+        return;
       }
+
+      // Delegate clamping + state mutation to shared helper (also used by buffer drain).
+      // mp:duel:quiz_result: no playerId in payload — no senderId check needed (informational only).
+      // mp:duel:turn_resolve / mp:duel:enemy_state / mp:duel:end: host-originated broadcasts
+      //   with no claimed identity — no senderId check needed.
+      _applyDuelCardsPlayed(raw);
     }));
 
     // quiz_result enriches the action; actual resolution waits for cards_played
