@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T04:17:36.000Z",
+  "updatedAt": "2026-04-23T04:20:47.000Z",
   "totalPlaythroughs": 22,
   "totalIssues": 254,
   "batches": [
@@ -1636,7 +1636,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1651,7 +1651,9 @@
       },
       "fixHypothesis": "Server returns a typed error code `LOBBY_GONE` (mpLobbyRegistry.joinLobby when lobby missing). Client maps to a friendly toast \"This lobby just closed\" and auto-refreshes the list. Add a brief shake animation on the now-missing row before it disappears.",
       "score": 50,
-      "rank": 43
+      "rank": 43,
+      "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-3",
+      "workStartedAt": "2026-04-23T04:20:47.000Z"
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-008",
@@ -5571,7 +5573,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 5,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -5583,7 +5585,9 @@
         "static-analysis / visual inspection."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 166
+      "rank": 166,
+      "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-3",
+      "workStartedAt": "2026-04-23T04:20:47.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CM-002",
@@ -7200,7 +7204,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 3,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -7212,7 +7216,9 @@
         "static-analysis \u2014 search multiplayer.md for 'gold','shop','rest','mystery'."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 220
+      "rank": 220,
+      "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-3",
+      "workStartedAt": "2026-04-23T04:20:47.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-FS-002",
