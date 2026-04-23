@@ -1,0 +1,107 @@
+{
+  "track": "B-non-coop-modes",
+  "issues": [
+    {
+      "id": "TRACK-B-001",
+      "severity": "HIGH",
+      "title": "Race mode 'Play Again' does not clear currentRun — relics/cards/HP leak into next race",
+      "evidence": "src/CardApp.svelte:2532 — onPlayAgain only clears activeRaceResults and transitions screen; no call into gameFlowController to reset currentRun. Contrast :2534 onReturnToHub (also skipped).",
+      "impact": "Next race starts with the previous run's relics, acquired cards, and HP values — invalidating score comparison and deckbuilding integrity.",
+      "fix": "Add resetRaceState() in gameFlowController that clears currentRun, HUD state, opponentProgress, activeRaceResults. Call from onPlayAgain, onReturnToLobby, onReturnToHub.",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-002",
+      "severity": "HIGH",
+      "title": "Duel mode reuses RaceResultsScreen — shows Floor/Accuracy for a turn-based shared-enemy mode",
+      "evidence": "src/CardApp.svelte:2531 — RaceResultsScreen accepts mode='duel' and renders race UI. src/services/multiplayerGameService.ts:429-434 — duel scoring is survivalBonus+damageDealt-damageTaken+correct*50, totally different from race scoring, but rendered through race layout.",
+      "impact": "Duel results show Floor Reached=0 and irrelevant Accuracy; player can't read their own performance. Signals incomplete mode implementation.",
+      "fix": "New DuelResultsScreen.svelte with Damage Dealt/Taken, Turns Taken, Cards Played, Quiz Accuracy. Route at render site by mode. Until built, gate duel from using this screen.",
+      "mode": "duel",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-003",
+      "severity": "HIGH",
+      "title": "Trivia Night never renders its own UI — lobby sets mode='trivia_night' but startNewRun transitions to combat screen",
+      "evidence": "src/CardApp.svelte:963-967 — initTriviaGame gated correctly on lobby.mode === 'trivia_night', but the surrounding flow continues into startNewRun(:972) which transitions to 'combat'. No branch for transitionScreen('triviaRound').",
+      "impact": "Host selects Trivia Night, lobby displays it, but the actual game that starts is a regular dungeon run with combat/relics/cards. The trivia mode is dead on arrival from the UI perspective.",
+      "fix": "After initTriviaGame and before startNewRun, if mode==='trivia_night' transitionScreen('triviaRound') and skip startNewRun. Verify TriviaRoundScreen.svelte is wired into the screen router.",
+      "mode": "trivia_night",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-004",
+      "severity": "MEDIUM",
+      "title": "activeRunMode pinned to 'multiplayer_race' even for coop/duel — extends C-003 beyond the broadcast gate",
+      "evidence": "src/services/gameFlowController.ts:445-449 — activeRunMode is still set to 'multiplayer_race' for coop/duel contexts despite the C-003 broadcast-gate fix at :1115. Comment acknowledges the gate only covers the broadcast loop, not every downstream check keyed on activeRunMode.",
+      "impact": "Any downstream logic that switches on activeRunMode sees 'multiplayer_race' for coop/duel, routing them into race-specific paths. Race-progress broadcast gate is patched but other consumers are not.",
+      "fix": "Switch to per-mode assignment: activeRunMode = mode==='coop'?'multiplayer_coop':mode==='duel'?'multiplayer_duel':'multiplayer_race'. Add exhaustive switch with default error. Extends prior C-003 fix, does not replace it.",
+      "mode": "cross-mode",
+      "status": "open",
+      "note": "Extends existing MP-STEAM-AUDIT-2026-04-22 C-003 rather than duplicating it."
+    },
+    {
+      "id": "TRACK-B-005",
+      "severity": "HIGH",
+      "title": "Study-multi missing activeDeckMode branch — dungeon starts with null pool, quiz returns empty options",
+      "evidence": "src/CardApp.svelte:919-933 — contentSelection ternary handles study/trivia/custom_deck but has no branch for sel.type === 'study-multi'. activeDeckMode stays at prior state (or null), encounterBridge can't populate fact pool.",
+      "impact": "Study-multi lobbies start (post BUG 28 start-guard fix) but combat has no facts. All quizzes show broken/empty options. Mode is unplayable.",
+      "fix": "Add: else if (sel.type==='study-multi') { playerSave.update(s=>s?{...s, activeDeckMode:{type:'study-multi' as const, decks:sel.decks, triviaDomains:sel.triviaDomains}}:s); }. Verify runs before startNewRun at :972.",
+      "mode": "study_multi",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-006",
+      "severity": "HIGH",
+      "title": "Trivia Night host can stall game forever — no auto-advance after reveal delay",
+      "evidence": "src/services/triviaNightService.ts:335-338 — hostNextQuestion sets _roundTimer to hostResolveRound() after DEFAULT_TIME_LIMIT+500ms, but nothing advances AFTER resolve. Host must manually call hostNextQuestion; no recovery if host closes the app mid-reveal.",
+      "impact": "Every round freezes in 'revealing' phase unless host clicks next. Host disconnect leaves guests stranded forever.",
+      "fix": "In hostResolveRound after REVEAL_DELAY_MS: auto-call hostNextQuestion if rounds remain, else hostEndGame. Mirror quiz-show UX with auto-advance + 'Skip to next' button.",
+      "mode": "trivia_night",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-007",
+      "severity": "MEDIUM",
+      "title": "Race duration uses local wall-clock — clock skew between peers distorts tie-breaker",
+      "evidence": "src/services/multiplayerGameService.ts:537-541 — duration = finishedAt - _localStartMs. _localStartMs is local wall-clock on each side.",
+      "impact": "Guest clock 5s slower computes 5s shorter duration; guest wins tiebreak even if game-time was identical.",
+      "fix": "Broadcast sharedStartMs on mp:lobby:start and have both clients compute duration against it, OR use turn-count / frame-count as duration proxy.",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-008",
+      "severity": "LOW",
+      "title": "Trivia Night speedBonus clamping order is fragile — defensive but misleading",
+      "evidence": "src/services/triviaNightService.ts:105-109 — formula (1 - clampedTiming/timeLimitMs) can go negative, only rescued by an outer max(0,…).",
+      "impact": "Grace-period late submission produces 0 bonus instead of a small bonus; players see 0 and wonder why.",
+      "fix": "Make clamping explicit: speedBonus = Math.max(0, SPEED_BONUS_MAX * Math.max(0, 1 - clampedTiming/timeLimitMs)) with comment.",
+      "mode": "trivia_night",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-009",
+      "severity": "LOW",
+      "title": "Race 'Play Again' does not flush pending transport messages — late race-progress broadcast can misroute",
+      "evidence": "src/CardApp.svelte:2532 — onPlayAgain immediately transitions screens; no pause or queue flush. Old race-progress message in flight lands during cleanup.",
+      "impact": "On high-latency Steam P2P, next race start can show stale initial opponent progress.",
+      "fix": "Before transitionScreen('multiplayerMenu'), set _ignoreIncomingMessages=true until new handlers register, or await transport.flush().",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-010",
+      "severity": "MEDIUM",
+      "title": "Duel guest _duelState never initialised — submitDuelTurnAction silently no-ops on guest",
+      "evidence": "src/CardApp.svelte:956-958 calls initDuel for mode='duel', but initDuel in multiplayerGameService.ts only populates _duelState when isLocalHost. Guest's submitDuelTurnAction guards on _duelState non-null and bails.",
+      "impact": "Duel guest cannot take turns — all their actions are silently dropped. Host waits forever for guest turns that never submit.",
+      "fix": "initDuel must populate _duelState on BOTH host and guest (with isHost flag encoded). Verify turn-order resolution uses _duelState.isHost consistently.",
+      "mode": "duel",
+      "status": "open",
+      "note": "Downstream of MP-STEAM-AUDIT-2026-04-22 C-002 (orphan _duelState); this is the specific guest-side manifestation."
+    }
+  ]
+}

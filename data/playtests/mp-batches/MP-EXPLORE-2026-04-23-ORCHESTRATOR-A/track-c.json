@@ -1,0 +1,115 @@
+{
+  "track": "C-disconnect-reconnect",
+  "issues": [
+    {
+      "id": "TRACK-C-001",
+      "severity": "HIGH",
+      "title": "_peerLeftPollInterval timer may persist across coop barrier if setupMessageHandlers fires twice",
+      "evidence": "src/services/multiplayerLobbyService.ts:1923-1948 — timer registered in createLobby; cleanup only pushed to _activeHandlerCleanups if isTauriPresent(). No guard against double-call with Track-A-004 duplicate-handler scenario.",
+      "impact": "Host starts game, guest's onGameStart fires and coop barriers begin. _peerLeftPollInterval still running synthesizes ghost mp:lobby:peer_left events mid-encounter, corrupting state or triggering spurious unresponsive warnings.",
+      "fix": "Clear _peerLeftPollInterval explicitly in leaveLobby() and at top of setupMessageHandlers() — if (_peerLeftPollInterval !== null) clearInterval(_peerLeftPollInterval); _peerLeftPollInterval = null.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-002",
+      "severity": "HIGH",
+      "title": "awaitCoopEnemyReconcile has no retry — single dropped packet desyncs enemy state for rest of encounter",
+      "evidence": "src/services/multiplayerCoopSync.ts:759-790 — 5s timeout (COOP_RECONCILE_TIMEOUT_MS), rejects on timeout. Game loop polls with no retry. If the message lands outside the delivery window, guest resolves 'cancelled' but host's merged state is live.",
+      "impact": "Host and guest diverge on enemy HP mid-combat. Guest kills enemy with wrong state; host still sees full HP enemy. Next-turn barrier fires 'partner unresponsive' — soft lock.",
+      "fix": "Exponential backoff in game loop: on reconcile fail, call cancelCoopTurnEnd(), re-request mp:coop:request_initial_state, wait 1-2s, retry once. Max 2 retries before abort.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-003",
+      "severity": "MEDIUM",
+      "title": "Barrier 'cancelled' loses cause — timeout/peer-left/transport-close all identical to caller",
+      "evidence": "src/services/multiplayerCoopSync.ts:480-492, 572-584 — awaitCoopTurnEnd / awaitCoopTurnEndWithDelta resolve literal 'cancelled' for all reasons.",
+      "impact": "Caller shows 'partner stopped responding' regardless of whether partner left, transport died, or true timeout. Misleads the player.",
+      "fix": "Return union: 'completed' | 'cancelled_timeout' | 'cancelled_peer_left' | 'cancelled_transport'. Game loop renders cause-specific UX.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-004",
+      "severity": "MEDIUM",
+      "title": "onPartnerUnresponsive subscribers not reset on initCoopSync — stacked toasts after hub round-trip",
+      "evidence": "src/CardApp.svelte:1019-1023, 1024-1040 — subscription wired in game-start effect. Track-A-003 already notes subs not cleared; this is the UX-visible sibling: pause → hub → rejoin → same game fires toast twice.",
+      "impact": "Visual spam and ref errors once old component is unmounted.",
+      "fix": "Call resetPartnerUnresponsiveSubscribers() in initCoopSync — same pattern as turn-end signal reset.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-005",
+      "severity": "MEDIUM",
+      "title": "BroadcastChannel transport never emits disconnected when host tab closes — peer_left lags 30s",
+      "evidence": "src/services/multiplayerTransport.ts:1386-1467 — peer_left only emitted after PEER_PONG_TIMEOUT_MS (30s). transport.isConnected() stays true because BroadcastChannel has no onclose.",
+      "impact": "Dev-mode/local coop: host closes tab mid-barrier. Guest sits on spinner for 15s barrier then 'unresponsive' banner, even though the real state (host gone) could have been known immediately.",
+      "fix": "On BroadcastChannel send/port errors emit local mp:lobby:peer_left. Or reduce PEER_PONG_TIMEOUT_MS to 10s for broadcast mode.",
+      "mode": "coop|race|duel",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-006",
+      "severity": "HIGH",
+      "title": "Ghost onGameStart subscribers after HMR / error-boundary re-mount — double scene transition",
+      "evidence": "src/services/multiplayerLobbyService.ts:1380-1394 — comment at :1388 acknowledges subs are NOT cleared on leaveLobby. CardApp registers once on mount; HMR re-mount without cleanup stacks closures.",
+      "impact": "Dev iteration path: HMR recovery fires both old + new onGameStart → scene transitions twice → initCoopSync + initGameMessageHandlers run twice → duplicate message handler subscriptions.",
+      "fix": "Either clear subs in leaveLobby(), or weak-ref identity dedupe, or guard inside CardApp: if (startFired) return; startFired=true.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-007",
+      "severity": "CRITICAL",
+      "title": "awaitCoopTurnEnd has no send-health probe — zombie transport burns full 15s before cancel",
+      "evidence": "src/services/multiplayerCoopSync.ts:440-497 — BARRIER_TIMEOUT_MS=15s hard timer. Disconnect poll at 2s checks transport.isConnected() but not actual send success. Steam P2P zombie session returns isConnected()=true while send silently fails.",
+      "impact": "Both sides wait the full 15s before realizing the link is dead, then each resolves 'cancelled' independently and ends up on different turns. The coop run desyncs on turn number — fatal to any deterministic state merge.",
+      "fix": "Active health check: every 5s during barrier, send mp:coop:turn_end_ping. On send failure resolve 'cancelled_transport' immediately. Prefer bidirectional heartbeat.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-008",
+      "severity": "MEDIUM",
+      "title": "No 'continue alone' path — partner leave during shop/rest/map-choice softlocks the survivor",
+      "evidence": "src/services/multiplayerCoopSync.ts:1-25 solo-survivor rule covers combat HP=0 only. multiplayerMapSync requires consensus. No handler for 'partner left mid room-choice'.",
+      "impact": "Survivor is stuck in shop/map with no way forward except abandoning the whole run via settings.",
+      "fix": "On peer_left during non-combat room, auto-accept remaining player's pending pick OR show 'Partner abandoned — Continue Alone / Retreat to Lobby' modal.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-009",
+      "severity": "MEDIUM",
+      "title": "No pause-state sync — partner opening settings looks identical to partner disconnecting",
+      "evidence": "grep found no pause broadcast in multiplayerCoopSync or multiplayer game handlers.",
+      "impact": "Player 1 opens settings to adjust volume; partner sees nothing. Partner can't tell if P1 dropped or is paused. Barrier may time out mid-adjustment.",
+      "fix": "Broadcast mp:coop:player_paused / mp:coop:player_resumed on settings open/close. Render 'Partner is adjusting settings' banner while paused. Extend barrier timeout while a peer is paused.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-010",
+      "severity": "HIGH",
+      "title": "_pendingGameMessageCleanup may be called twice if two onGameStart closures fire",
+      "evidence": "src/CardApp.svelte:950-970, 1035-1036 — cleanup stored in closure. Track-C-006 scenario (ghost subscribers) produces two onGameStart, both call _pendingGameMessageCleanup?.().",
+      "impact": "Second call unsubscribes from already-unsubscribed listeners; if transport.on cleanup doesn't guard, ref errors appear in console.",
+      "fix": "Null _pendingGameMessageCleanup inside the cleanup function itself; or guard CardApp onGameStart to fire-once per game session.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-011",
+      "severity": "MEDIUM",
+      "title": "PEER_PONG_TIMEOUT_MS (30s) and BARRIER_TIMEOUT_MS (15s) are asymmetric — peer_left fires after barrier already cancelled",
+      "evidence": "src/services/multiplayerTransport.ts:1353-1359 vs src/services/multiplayerCoopSync.ts:68.",
+      "impact": "Partner silent at T=0. Barrier cancels at T=15s. peer_left fires at T=30s after game loop has moved on, corrupting new-turn state with stale lobby update.",
+      "fix": "Align: PEER_PONG_TIMEOUT_MS=10s (one missed ping) so peer_left always precedes barrier timeout. Or make barrier timeout subscribe to peer_left event and resolve immediately when it fires.",
+      "mode": "coop",
+      "status": "open"
+    }
+  ]
+}

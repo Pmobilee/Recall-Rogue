@@ -1,0 +1,95 @@
+{
+  "track": "D-elo-scoring-workshop-mapsync",
+  "issues": [
+    {
+      "id": "TRACK-D-001",
+      "severity": "HIGH",
+      "title": "Race mode ELO double-apply — _tryEmitRaceResults can fire twice if opponent finishes shortly after local",
+      "evidence": "src/services/multiplayerGameService.ts:577-586 — persistLocalMultiplayerRating(newLocal) without idempotency guard. Called at :208, :246, and :991 (opponent finish). Second call has identical condition (_localProgress.isFinished && _opponentProgress.isFinished both true) and re-applies Elo.",
+      "impact": "Player gains/loses 2× ELO delta in a single race when network timing allows both local and opponent finish to trigger, corrupting leaderboard rating over time. This is a second-order regression around the f5faa69ae fix.",
+      "fix": "Add let _raceEloApplied = false; reset in initRaceMode(); set true after persistLocalMultiplayerRating at :583; check !_raceEloApplied before the Elo block.",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-002",
+      "severity": "HIGH",
+      "title": "Duel mode ELO applied by BOTH host and non-host — single match double-counts",
+      "evidence": "src/services/multiplayerGameService.ts:906-917 (host-side at isOver) and :1075-1091 (client-side on mp:duel:end). Host calls persistLocalMultiplayerRating at :916 when isOver=true; non-host calls it again at :1090 on mp:duel:end receipt.",
+      "impact": "In ranked duels, every match corrupts both players' ratings by 2× delta. Competitive integrity destroyed.",
+      "fix": "Remove non-host Elo block (:1079-1091), or gate it on !isHost && !lobby.isRanked to cover only friendly spectator flow. Host-only application is already documented intent.",
+      "mode": "duel",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-003",
+      "severity": "MEDIUM",
+      "title": "Race scoring — negative wrongAnswers exploit turns penalty into bonus",
+      "evidence": "src/services/multiplayerScoring.ts:29-30 — wrongAnswers = factsAnswered - factsCorrect. No clamp. Malicious peer sends factsAnswered=0, factsCorrect=1 → wrongAnswers=-1 → -wrongAnswers*5 = +5 bonus.",
+      "impact": "Peer can inflate race score by sending inconsistent fact counts.",
+      "fix": "wrongAnswers = Math.max(0, factsAnswered - factsCorrect). Validate factsAnswered >= factsCorrect on receipt.",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-004",
+      "severity": "MEDIUM",
+      "title": "Workshop vote tiebreak uses non-seeded Math.random — clients disagree on winner",
+      "evidence": "src/services/multiplayerWorkshopService.ts:408 — const winnerId = winners[Math.floor(Math.random() * winners.length)].",
+      "impact": "4-player lobbies with tied votes show different local winners briefly; if host broadcast fails the divergence persists.",
+      "fix": "Deterministic tiebreak: sort winners lexicographically and pick [0], OR seed RNG from lobby.seed.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-005",
+      "severity": "MEDIUM",
+      "title": "Workshop deck metadata validation does not reject control characters / ANSI escapes",
+      "evidence": "src/services/multiplayerWorkshopService.ts:313-320 — checks length + HTML_TAG_PATTERN only.",
+      "impact": "Malicious peer sends title='My Deck\\x00\\x1B[31m' to corrupt JSON serialization, logs, or UI rendering on recipients.",
+      "fix": "Add /[\\x00-\\x1F\\x7F-\\x9F]/ rejection.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-006",
+      "severity": "MEDIUM",
+      "title": "Map node consensus deadlocks on divergent picks — no timeout, no arbiter",
+      "evidence": "src/services/multiplayerMapSync.ts:94-115 — _checkConsensus only fires when picks are IDENTICAL. A/B picks produce no resolution.",
+      "impact": "Two coop players click different rooms → run hangs forever waiting for consensus.",
+      "fix": "10s consensus timeout defaulting to host's pick (or lexicographically first pick). Show countdown in the UI.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-007",
+      "severity": "MEDIUM",
+      "title": "ELO gates only on lobby.isRanked — non-competitive modes can be flagged ranked and corrupt rating",
+      "evidence": "src/services/multiplayerGameService.ts:577, 908, 1081 — if (lobby?.isRanked) with no mode whitelist.",
+      "impact": "Workshop/trivia_night/friendly accidentally flagged ranked apply ELO, corrupting ladder.",
+      "fix": "Whitelist: if (lobby?.isRanked && ['race','duel','coop','same_cards'].includes(lobby.mode)). Log + no-op otherwise.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-008",
+      "severity": "LOW",
+      "title": "Co-op scoring accepts 0-floor completion — exploitable zero-point edge case",
+      "evidence": "src/services/multiplayerScoring.ts:26 — floorScore = floor * 100. Disconnect-before-floor-1 produces 0 score but is still a valid record.",
+      "impact": "Minor: abandoned pre-run coops can pollute stats as valid 0-score finishes.",
+      "fix": "Require floor >= 1 before emitting finish OR explicitly document 0 as abandoned sentinel.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-009",
+      "severity": "LOW",
+      "title": "Workshop deck pre-flight check — host self-check never sends an ACK; other players time out waiting",
+      "evidence": "src/services/multiplayerWorkshopService.ts:249-254 (host pre-populates confirmed if hostHasDeck) vs :274-284 (still waits DECK_CHECK_ACK_TIMEOUT_MS=2000ms for all).",
+      "impact": "UI: if host is the only one missing the deck, counts display wrong for 2s until timeout; does not block start.",
+      "fix": "Move self-check result to confirmed set BEFORE awaiting others; use separate timeout for non-host acks.",
+      "mode": "all",
+      "status": "open"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "track": "A-simultaneous-runs",
+  "issues": [
+    {
+      "id": "TRACK-A-001",
+      "severity": "CRITICAL",
+      "title": "Cross-lobby envelope guard never armed — setActiveLobby not called from joinLobby/createLobby",
+      "evidence": "src/services/multiplayerTransport.ts:244 documents 'Lobby services SHOULD call transport.setActiveLobby(lobbyId)' but grep reveals no calls from multiplayerLobbyService.ts join/create paths. Only called at :1337 in reestablishSteamP2PSession (app restart path). All three transports (WebSocket :375, SteamP2P :970, BroadcastChannel :1229) implement the guard at lines 445, 769, 1165 respectively, but activeLobbyId remains null for normal joins.",
+      "impact": "Stale messages from a prior lobby pass through the envelope filter unchecked since activeLobbyId is never set. Player A accepts invite to lobby B while still receiving messages from just-abandoned lobby A. Messages with mismatched lobbyId are not dropped as designed.",
+      "fix": "In createLobby() after setupMessageHandlers() at :536, call transport.setActiveLobby(_currentLobby.lobbyId). Same in joinLobby() at :686 and joinLobbyById(). Clear with transport.setActiveLobby(null) in leaveLobby() at :900.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-002",
+      "severity": "HIGH",
+      "title": "destroyCoopSync does not clear _preInitBroadcastBuffer — deferred broadcasts leak to next run",
+      "evidence": "src/services/multiplayerCoopSync.ts:181 (declare buffer), :192-203 (_flushPreInitBroadcastBuffer), :391-423 (destroyCoopSync) — buffer is NOT reset. State vars cleared at lines 411-419 but _preInitBroadcastBuffer is omitted.",
+      "impact": "If a guest's encounter starts before initCoopSync runs in run N, broadcast queued at :184-189 persists. On run N+1, broadcastPartnerState/broadcastSharedEnemyState before initCoopSync re-enqueues. On initCoopSync, _flushPreInitBroadcastBuffer replays the stale broadcast — partner sees ghosted enemy HP from the previous run.",
+      "fix": "Add _preInitBroadcastBuffer = [] after line 419 in destroyCoopSync().",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-003",
+      "severity": "HIGH",
+      "title": "Subscriber sets never cleared on destroyCoopSync — accumulate across runs",
+      "evidence": "src/services/multiplayerCoopSync.ts:123, 129, 135, 216 (four subscriber Sets declared), :420-422 (comment admits they are NOT cleared), destroyCoopSync :391-423 (no cleanup of subscriber sets).",
+      "impact": "Each run, CardApp.svelte registers onPartnerStateUpdate etc. Old listeners from run N fire in parallel with new run N+1. Each closure captures stale _localPlayerId, old partner roster, stale scene references.",
+      "fix": "In destroyCoopSync add: _partnerStateSubs.clear(); _sharedEnemySubs.clear(); _enemyHpSubs.clear(); _partnerUnresponsiveSubs.clear().",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-004",
+      "severity": "HIGH",
+      "title": "setupMessageHandlers accumulates duplicate handlers if join called without leaveLobby",
+      "evidence": "src/services/multiplayerLobbyService.ts:147-150 (docstring admits the bug), :1514 (per-transport guard checks _handlersAttachedTransport === transport). If player calls createLobby → startNewRun → run ends → createLobby again, _activeHandlerCleanups cleared at :896-897 only if leaveLobby cleanup path actually ran.",
+      "impact": "Each mp:lobby:* message fires every registered handler twice. mp:lobby:ready → increments isReady twice → UI flickers. mp:lobby:start → _fireSubscribers called twice → game init race.",
+      "fix": "Before setupMessageHandlers() in createLobby/joinLobby/joinLobbyById, unconditionally: for (const fn of _activeHandlerCleanups) fn(); _activeHandlerCleanups = []; _handlersAttached = false; _handlersAttachedTransport = null.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-005",
+      "severity": "MEDIUM",
+      "title": "SteamP2PTransport.peerId not cleared if leaveLobby skipped — second connect rejects",
+      "evidence": "src/services/multiplayerTransport.ts:572 (peerId=''), :642 (set on connect), :940 (cleared on disconnect). Single-peer guard at :625-630 rejects second connect while first peer is still bound (PASS1-BUG-5 pattern).",
+      "impact": "If player joins lobby A then back-navigates to hub without leaveLobby() firing, transport still holds peerId=X and rejects joining lobby B. BroadcastChannel dev mode unaffected; Steam P2P silently fails.",
+      "fix": "Guarantee leaveLobby → destroyMultiplayerTransport → _transport?.disconnect() on every hub return. Add defensive peerId='' at top of connect().",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-006",
+      "severity": "MEDIUM",
+      "title": "onLobbyUpdate subscriber set accumulates across leaveLobby/joinLobby cycles",
+      "evidence": "src/services/multiplayerLobbyService.ts:105 (_lobbyUpdateSubscribers Set), :1373-1375 (onLobbyUpdate returns unsub). No forced clear on leaveLobby.",
+      "impact": "Component that forgets to call unsub persists across join cycles. Next join fires both new AND orphaned old callback → stale state propagation.",
+      "fix": "In leaveLobby() before _currentLobby = null at :881: _lobbyUpdateSubscribers.clear(); _gameStartSubscribers.clear(); _raceProgressSubscribers.clear(); _raceResultsSubscribers.clear(); _lobbyErrorSubscribers.clear().",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-007",
+      "severity": "MEDIUM",
+      "title": "BroadcastChannelTransport.connect does not close existing channel on rejoin",
+      "evidence": "src/services/multiplayerTransport.ts:1213-1217 (disconnect clears listeners), :1155-1182 (connect re-assigns this.channel = new BroadcastChannel() WITHOUT closing old one).",
+      "impact": "In dev/broadcast mode, join → leave → join same lobby code stacks handlers on the new channel while the OLD channel's message listener stays live. Handlers accumulate per rejoin until tab close.",
+      "fix": "In connect() at :1155 add: if (this.channel) this.channel.close(); before line 1158.",
+      "mode": "race|duel|study_multi|trivia_night",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-008",
+      "severity": "MEDIUM",
+      "title": "CardApp destroyCoopSync cleanup only fires when $effect re-runs — missed on reference mutation",
+      "evidence": "src/CardApp.svelte:1024-1040 (cleanup in $effect), calls destroyCoopSync() at :1033 only when effect re-runs. Effect tracks lobbies at :990-1000 but reactive reassignment without reference change skips cleanup.",
+      "impact": "activeRunState changes quickly mid-effect without lobby reference update → prior run's coopSync handlers/barriers/callbacks persist. Partner state broadcasts from run N fire stale subscribers from run N+1.",
+      "fix": "Move destroyCoopSync into onBeforeUnmount or a reactive effect keyed on primitive values (mode, lobbyId, hostId) not object reference.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-009",
+      "severity": "LOW",
+      "title": "_reconnectTimers map not defensively cleared on join if stale from prior lobby",
+      "evidence": "src/services/multiplayerLobbyService.ts:1596-1623 (_reconnectTimers Map), :878-879 (leaveLobby clears them). No guard for double-join without leave.",
+      "impact": "Join lobby A → call joinLobby without leaveLobby first → _reconnectTimers still holds A's timers. Player from A reconnects, grace timer fires, removes player from _currentLobby (now B). State corruption.",
+      "fix": "At start of createLobby/joinLobby: for (const t of _reconnectTimers.values()) clearTimeout(t); _reconnectTimers.clear().",
+      "mode": "all",
+      "status": "open"
+    }
+  ]
+}

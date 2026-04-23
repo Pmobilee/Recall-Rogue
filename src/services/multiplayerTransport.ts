@@ -27,6 +27,7 @@ import {
   leaveSteamLobby,
   sendP2PMessage,
   startMessagePollLoop,
+  getPendingP2PFail,
 } from './steamNetworkingService';
 import { setMpDebugState } from './mpDebugState';
 import { isTauriPresent } from './platformService';
@@ -111,7 +112,9 @@ export type MultiplayerMessageType =
   | 'mp:ping'
   | 'mp:pong'
   | 'mp:error'
-  | 'mp:sync';
+  | 'mp:sync'
+  // Transport-local synthetic events (never sent over the wire)
+  | 'mp:transport:p2p_fail';
 
 export interface MultiplayerMessage {
   type: MultiplayerMessageType;
@@ -1395,8 +1398,9 @@ let _peerMonitorCleanup: (() => void) | null = null;
  * first so ping/pong listeners do not accumulate across multiple inits. The new
  * cleanup is stored in _peerMonitorCleanup for subsequent re-inits.
  *
- * TODO(H10-transport): Replace with Fastify server-side broadcast on WS onclose and
- * Rust P2PSessionConnectFail_t callback once those plumbing changes ship.
+ * H10-transport: The Rust P2PSessionConnectFail_t polling complement to this
+ * function is initP2PFailPollLoop() — it runs in parallel and emits
+ * mp:transport:p2p_fail locally when Steam signals a session failure.
  *
  * @param localPlayerId  - This player's ID (sender field on outgoing pings).
  * @param getPeerIds     - Callback returning the current list of peer player IDs.
@@ -1495,4 +1499,103 @@ export function initPeerPresenceMonitor(
  */
 export function updatePeerLastSeen(peerId: string): void {
   _peerLastSeen.set(peerId, Date.now());
+}
+
+// ── H10 / Issue 056: Steam P2PSessionConnectFail poll loop ────────────────────
+
+/**
+ * How often to poll steam_get_pending_p2p_fail (ms).
+ * Peer-fail events are low-frequency — once on session failure — so 2000ms
+ * gives near-instant detection without hammering the IPC bridge.
+ */
+const P2P_FAIL_POLL_INTERVAL_MS = 2_000;
+
+/**
+ * Deduplicate emitted fail events: track the last emitted (peerSteamId, errorCode)
+ * so a repeated drain of the same slot doesn't fire multiple times.
+ * Key: `${peerSteamId}:${errorCode}`, cleared on each initP2PFailPollLoop() call.
+ */
+const _emittedP2PFails = new Set<string>();
+
+/**
+ * Module-level registry of callbacks that receive mp:transport:p2p_fail synthetic events.
+ * initP2PFailPollLoop() fires into this set; callers register via onP2PFail().
+ *
+ * Kept module-level rather than per-transport-instance because the transport singleton
+ * is replaced on each createLobby/leaveLobby cycle, but lobby service callbacks
+ * must survive those cycles. Stale registrations from a prior lobby are cleared by
+ * initP2PFailPollLoop() at session start.
+ */
+const _p2pFailListeners = new Set<(msg: MultiplayerMessage) => void>();
+
+/**
+ * Register a callback for mp:transport:p2p_fail synthetic events.
+ * Returns an unsubscribe function. Safe to call before transport is connected.
+ *
+ * Usage (in multiplayerLobbyService, inside setupMessageHandlers):
+ *   const unsub = onP2PFail((msg) => { ... });
+ *   _activeHandlerCleanups.push(unsub);
+ */
+export function onP2PFail(callback: (msg: MultiplayerMessage) => void): () => void {
+  _p2pFailListeners.add(callback);
+  return () => _p2pFailListeners.delete(callback);
+}
+
+/**
+ * Start a poll loop that drains the Rust P2PSessionConnectFail_t slot every
+ * P2P_FAIL_POLL_INTERVAL_MS and fires all onP2PFail() listeners with a synthetic
+ * mp:transport:p2p_fail message when a failure is detected.
+ *
+ * Issue 056: this is the production complement to the JS ping/pong fallback in
+ * initPeerPresenceMonitor(). Where the ping/pong heuristic takes up to 30 s to
+ * declare a peer dead, the Rust P2PSessionConnectFail_t callback fires within
+ * ~2 s of the Steam session failing — this poll loop bridges that event to TS.
+ *
+ * The synthetic message is transport-local — it is NEVER sent over the wire.
+ * Listeners receive: { peerSteamId: string, errorCode: number } in msg.payload.
+ * errorCode is the raw EP2PSessionError value (1=None, 2=NotRunningApp,
+ * 3=NoRightsToApp, 4=DestinationNotLoggedIn, 5=Timeout; see Steamworks SDK docs).
+ *
+ * Deduplication: the same (peerSteamId, errorCode) pair fires at most once per
+ * session. The Rust slot uses take() semantics so each drain returns the event once,
+ * but if the IPC latency causes two polls to see the same queued event, only the
+ * first call to _p2pFailListeners wins.
+ *
+ * No-op on non-Tauri builds: getPendingP2PFail() returns null immediately.
+ *
+ * @param localPlayerId - Used as senderId on the synthetic message envelope.
+ * @returns Cleanup function — call when leaving the lobby to stop the poll and
+ *          clear dedup state so the next session starts clean.
+ */
+export function initP2PFailPollLoop(
+  localPlayerId: string,
+): () => void {
+  // Clear dedup state so a new session detects fails fresh.
+  _emittedP2PFails.clear();
+  // Clear stale listeners from previous lobby so we don't fire ghost callbacks.
+  _p2pFailListeners.clear();
+
+  const handle = setInterval(async () => {
+    const fail = await getPendingP2PFail().catch(() => null);
+    if (!fail) return;
+
+    const key = `${fail.peerSteamId}:${fail.errorCode}`;
+    if (_emittedP2PFails.has(key)) return;
+    _emittedP2PFails.add(key);
+
+    rrLog('mp:tx', 'p2p_fail detected', { peerSteamId: fail.peerSteamId, errorCode: fail.errorCode });
+
+    const syntheticMsg: MultiplayerMessage = {
+      type: 'mp:transport:p2p_fail',
+      payload: { peerSteamId: fail.peerSteamId, errorCode: fail.errorCode },
+      timestamp: Date.now(),
+      senderId: localPlayerId,
+    };
+    _p2pFailListeners.forEach(cb => cb(syntheticMsg));
+  }, P2P_FAIL_POLL_INTERVAL_MS);
+
+  return () => {
+    clearInterval(handle);
+    _emittedP2PFails.clear();
+  };
 }

@@ -1,0 +1,435 @@
+{
+  "batchId": "MP-EXPLORE-2026-04-23-ORCHESTRATOR-A",
+  "date": "2026-04-23",
+  "trigger": "User request: DO a full exploration of any possible thing you can think of to fix multiplayer issues, simultaneous runs, all multiplayer game modes, and each time give a clear description in the issue leaderboard. Other agents running in parallel; avoid overlap.",
+  "method": "static-audit-4-tracks",
+  "verdict": "FAIL",
+  "scope": {
+    "owned": [
+      "simultaneous-runs-singleton-leak",
+      "non-coop-modes",
+      "disconnect-reconnect",
+      "elo-scoring-workshop-mapsync"
+    ],
+    "explicitlyOutOfScope": "Already-audited issues in MP-STEAM-AUDIT-2026-04-22, MP-STEAM-20260422-COOP, MP-STEAM-20260422-ULTRATHINK, MP-20260413-003941, MP-20260421-002450 — see CLAIM.md"
+  },
+  "totals": {
+    "issues": 39,
+    "critical": 2,
+    "high": 14,
+    "medium": 18,
+    "low": 5
+  },
+  "tracks": [
+    {
+      "id": "A-simultaneous-runs",
+      "count": 9
+    },
+    {
+      "id": "B-non-coop-modes",
+      "count": 10
+    },
+    {
+      "id": "C-disconnect-reconnect",
+      "count": 11
+    },
+    {
+      "id": "D-elo-scoring-workshop-mapsync",
+      "count": 9
+    }
+  ],
+  "issues": [
+    {
+      "id": "TRACK-A-001",
+      "severity": "CRITICAL",
+      "title": "Cross-lobby envelope guard never armed — setActiveLobby not called from joinLobby/createLobby",
+      "evidence": "src/services/multiplayerTransport.ts:244 documents 'Lobby services SHOULD call transport.setActiveLobby(lobbyId)' but grep reveals no calls from multiplayerLobbyService.ts join/create paths. Only called at :1337 in reestablishSteamP2PSession (app restart path). All three transports (WebSocket :375, SteamP2P :970, BroadcastChannel :1229) implement the guard at lines 445, 769, 1165 respectively, but activeLobbyId remains null for normal joins.",
+      "impact": "Stale messages from a prior lobby pass through the envelope filter unchecked since activeLobbyId is never set. Player A accepts invite to lobby B while still receiving messages from just-abandoned lobby A. Messages with mismatched lobbyId are not dropped as designed.",
+      "fix": "In createLobby() after setupMessageHandlers() at :536, call transport.setActiveLobby(_currentLobby.lobbyId). Same in joinLobby() at :686 and joinLobbyById(). Clear with transport.setActiveLobby(null) in leaveLobby() at :900.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-002",
+      "severity": "HIGH",
+      "title": "destroyCoopSync does not clear _preInitBroadcastBuffer — deferred broadcasts leak to next run",
+      "evidence": "src/services/multiplayerCoopSync.ts:181 (declare buffer), :192-203 (_flushPreInitBroadcastBuffer), :391-423 (destroyCoopSync) — buffer is NOT reset. State vars cleared at lines 411-419 but _preInitBroadcastBuffer is omitted.",
+      "impact": "If a guest's encounter starts before initCoopSync runs in run N, broadcast queued at :184-189 persists. On run N+1, broadcastPartnerState/broadcastSharedEnemyState before initCoopSync re-enqueues. On initCoopSync, _flushPreInitBroadcastBuffer replays the stale broadcast — partner sees ghosted enemy HP from the previous run.",
+      "fix": "Add _preInitBroadcastBuffer = [] after line 419 in destroyCoopSync().",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-003",
+      "severity": "HIGH",
+      "title": "Subscriber sets never cleared on destroyCoopSync — accumulate across runs",
+      "evidence": "src/services/multiplayerCoopSync.ts:123, 129, 135, 216 (four subscriber Sets declared), :420-422 (comment admits they are NOT cleared), destroyCoopSync :391-423 (no cleanup of subscriber sets).",
+      "impact": "Each run, CardApp.svelte registers onPartnerStateUpdate etc. Old listeners from run N fire in parallel with new run N+1. Each closure captures stale _localPlayerId, old partner roster, stale scene references.",
+      "fix": "In destroyCoopSync add: _partnerStateSubs.clear(); _sharedEnemySubs.clear(); _enemyHpSubs.clear(); _partnerUnresponsiveSubs.clear().",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-004",
+      "severity": "HIGH",
+      "title": "setupMessageHandlers accumulates duplicate handlers if join called without leaveLobby",
+      "evidence": "src/services/multiplayerLobbyService.ts:147-150 (docstring admits the bug), :1514 (per-transport guard checks _handlersAttachedTransport === transport). If player calls createLobby → startNewRun → run ends → createLobby again, _activeHandlerCleanups cleared at :896-897 only if leaveLobby cleanup path actually ran.",
+      "impact": "Each mp:lobby:* message fires every registered handler twice. mp:lobby:ready → increments isReady twice → UI flickers. mp:lobby:start → _fireSubscribers called twice → game init race.",
+      "fix": "Before setupMessageHandlers() in createLobby/joinLobby/joinLobbyById, unconditionally: for (const fn of _activeHandlerCleanups) fn(); _activeHandlerCleanups = []; _handlersAttached = false; _handlersAttachedTransport = null.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-005",
+      "severity": "MEDIUM",
+      "title": "SteamP2PTransport.peerId not cleared if leaveLobby skipped — second connect rejects",
+      "evidence": "src/services/multiplayerTransport.ts:572 (peerId=''), :642 (set on connect), :940 (cleared on disconnect). Single-peer guard at :625-630 rejects second connect while first peer is still bound (PASS1-BUG-5 pattern).",
+      "impact": "If player joins lobby A then back-navigates to hub without leaveLobby() firing, transport still holds peerId=X and rejects joining lobby B. BroadcastChannel dev mode unaffected; Steam P2P silently fails.",
+      "fix": "Guarantee leaveLobby → destroyMultiplayerTransport → _transport?.disconnect() on every hub return. Add defensive peerId='' at top of connect().",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-006",
+      "severity": "MEDIUM",
+      "title": "onLobbyUpdate subscriber set accumulates across leaveLobby/joinLobby cycles",
+      "evidence": "src/services/multiplayerLobbyService.ts:105 (_lobbyUpdateSubscribers Set), :1373-1375 (onLobbyUpdate returns unsub). No forced clear on leaveLobby.",
+      "impact": "Component that forgets to call unsub persists across join cycles. Next join fires both new AND orphaned old callback → stale state propagation.",
+      "fix": "In leaveLobby() before _currentLobby = null at :881: _lobbyUpdateSubscribers.clear(); _gameStartSubscribers.clear(); _raceProgressSubscribers.clear(); _raceResultsSubscribers.clear(); _lobbyErrorSubscribers.clear().",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-007",
+      "severity": "MEDIUM",
+      "title": "BroadcastChannelTransport.connect does not close existing channel on rejoin",
+      "evidence": "src/services/multiplayerTransport.ts:1213-1217 (disconnect clears listeners), :1155-1182 (connect re-assigns this.channel = new BroadcastChannel() WITHOUT closing old one).",
+      "impact": "In dev/broadcast mode, join → leave → join same lobby code stacks handlers on the new channel while the OLD channel's message listener stays live. Handlers accumulate per rejoin until tab close.",
+      "fix": "In connect() at :1155 add: if (this.channel) this.channel.close(); before line 1158.",
+      "mode": "race|duel|study_multi|trivia_night",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-008",
+      "severity": "MEDIUM",
+      "title": "CardApp destroyCoopSync cleanup only fires when $effect re-runs — missed on reference mutation",
+      "evidence": "src/CardApp.svelte:1024-1040 (cleanup in $effect), calls destroyCoopSync() at :1033 only when effect re-runs. Effect tracks lobbies at :990-1000 but reactive reassignment without reference change skips cleanup.",
+      "impact": "activeRunState changes quickly mid-effect without lobby reference update → prior run's coopSync handlers/barriers/callbacks persist. Partner state broadcasts from run N fire stale subscribers from run N+1.",
+      "fix": "Move destroyCoopSync into onBeforeUnmount or a reactive effect keyed on primitive values (mode, lobbyId, hostId) not object reference.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-A-009",
+      "severity": "LOW",
+      "title": "_reconnectTimers map not defensively cleared on join if stale from prior lobby",
+      "evidence": "src/services/multiplayerLobbyService.ts:1596-1623 (_reconnectTimers Map), :878-879 (leaveLobby clears them). No guard for double-join without leave.",
+      "impact": "Join lobby A → call joinLobby without leaveLobby first → _reconnectTimers still holds A's timers. Player from A reconnects, grace timer fires, removes player from _currentLobby (now B). State corruption.",
+      "fix": "At start of createLobby/joinLobby: for (const t of _reconnectTimers.values()) clearTimeout(t); _reconnectTimers.clear().",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-001",
+      "severity": "HIGH",
+      "title": "Race mode 'Play Again' does not clear currentRun — relics/cards/HP leak into next race",
+      "evidence": "src/CardApp.svelte:2532 — onPlayAgain only clears activeRaceResults and transitions screen; no call into gameFlowController to reset currentRun. Contrast :2534 onReturnToHub (also skipped).",
+      "impact": "Next race starts with the previous run's relics, acquired cards, and HP values — invalidating score comparison and deckbuilding integrity.",
+      "fix": "Add resetRaceState() in gameFlowController that clears currentRun, HUD state, opponentProgress, activeRaceResults. Call from onPlayAgain, onReturnToLobby, onReturnToHub.",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-002",
+      "severity": "HIGH",
+      "title": "Duel mode reuses RaceResultsScreen — shows Floor/Accuracy for a turn-based shared-enemy mode",
+      "evidence": "src/CardApp.svelte:2531 — RaceResultsScreen accepts mode='duel' and renders race UI. src/services/multiplayerGameService.ts:429-434 — duel scoring is survivalBonus+damageDealt-damageTaken+correct*50, totally different from race scoring, but rendered through race layout.",
+      "impact": "Duel results show Floor Reached=0 and irrelevant Accuracy; player can't read their own performance. Signals incomplete mode implementation.",
+      "fix": "New DuelResultsScreen.svelte with Damage Dealt/Taken, Turns Taken, Cards Played, Quiz Accuracy. Route at render site by mode. Until built, gate duel from using this screen.",
+      "mode": "duel",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-003",
+      "severity": "HIGH",
+      "title": "Trivia Night never renders its own UI — lobby sets mode='trivia_night' but startNewRun transitions to combat screen",
+      "evidence": "src/CardApp.svelte:963-967 — initTriviaGame gated correctly on lobby.mode === 'trivia_night', but the surrounding flow continues into startNewRun(:972) which transitions to 'combat'. No branch for transitionScreen('triviaRound').",
+      "impact": "Host selects Trivia Night, lobby displays it, but the actual game that starts is a regular dungeon run with combat/relics/cards. The trivia mode is dead on arrival from the UI perspective.",
+      "fix": "After initTriviaGame and before startNewRun, if mode==='trivia_night' transitionScreen('triviaRound') and skip startNewRun. Verify TriviaRoundScreen.svelte is wired into the screen router.",
+      "mode": "trivia_night",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-004",
+      "severity": "MEDIUM",
+      "title": "activeRunMode pinned to 'multiplayer_race' even for coop/duel — extends C-003 beyond the broadcast gate",
+      "evidence": "src/services/gameFlowController.ts:445-449 — activeRunMode is still set to 'multiplayer_race' for coop/duel contexts despite the C-003 broadcast-gate fix at :1115. Comment acknowledges the gate only covers the broadcast loop, not every downstream check keyed on activeRunMode.",
+      "impact": "Any downstream logic that switches on activeRunMode sees 'multiplayer_race' for coop/duel, routing them into race-specific paths. Race-progress broadcast gate is patched but other consumers are not.",
+      "fix": "Switch to per-mode assignment: activeRunMode = mode==='coop'?'multiplayer_coop':mode==='duel'?'multiplayer_duel':'multiplayer_race'. Add exhaustive switch with default error. Extends prior C-003 fix, does not replace it.",
+      "mode": "cross-mode",
+      "status": "open",
+      "note": "Extends existing MP-STEAM-AUDIT-2026-04-22 C-003 rather than duplicating it."
+    },
+    {
+      "id": "TRACK-B-005",
+      "severity": "HIGH",
+      "title": "Study-multi missing activeDeckMode branch — dungeon starts with null pool, quiz returns empty options",
+      "evidence": "src/CardApp.svelte:919-933 — contentSelection ternary handles study/trivia/custom_deck but has no branch for sel.type === 'study-multi'. activeDeckMode stays at prior state (or null), encounterBridge can't populate fact pool.",
+      "impact": "Study-multi lobbies start (post BUG 28 start-guard fix) but combat has no facts. All quizzes show broken/empty options. Mode is unplayable.",
+      "fix": "Add: else if (sel.type==='study-multi') { playerSave.update(s=>s?{...s, activeDeckMode:{type:'study-multi' as const, decks:sel.decks, triviaDomains:sel.triviaDomains}}:s); }. Verify runs before startNewRun at :972.",
+      "mode": "study_multi",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-006",
+      "severity": "HIGH",
+      "title": "Trivia Night host can stall game forever — no auto-advance after reveal delay",
+      "evidence": "src/services/triviaNightService.ts:335-338 — hostNextQuestion sets _roundTimer to hostResolveRound() after DEFAULT_TIME_LIMIT+500ms, but nothing advances AFTER resolve. Host must manually call hostNextQuestion; no recovery if host closes the app mid-reveal.",
+      "impact": "Every round freezes in 'revealing' phase unless host clicks next. Host disconnect leaves guests stranded forever.",
+      "fix": "In hostResolveRound after REVEAL_DELAY_MS: auto-call hostNextQuestion if rounds remain, else hostEndGame. Mirror quiz-show UX with auto-advance + 'Skip to next' button.",
+      "mode": "trivia_night",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-007",
+      "severity": "MEDIUM",
+      "title": "Race duration uses local wall-clock — clock skew between peers distorts tie-breaker",
+      "evidence": "src/services/multiplayerGameService.ts:537-541 — duration = finishedAt - _localStartMs. _localStartMs is local wall-clock on each side.",
+      "impact": "Guest clock 5s slower computes 5s shorter duration; guest wins tiebreak even if game-time was identical.",
+      "fix": "Broadcast sharedStartMs on mp:lobby:start and have both clients compute duration against it, OR use turn-count / frame-count as duration proxy.",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-008",
+      "severity": "LOW",
+      "title": "Trivia Night speedBonus clamping order is fragile — defensive but misleading",
+      "evidence": "src/services/triviaNightService.ts:105-109 — formula (1 - clampedTiming/timeLimitMs) can go negative, only rescued by an outer max(0,…).",
+      "impact": "Grace-period late submission produces 0 bonus instead of a small bonus; players see 0 and wonder why.",
+      "fix": "Make clamping explicit: speedBonus = Math.max(0, SPEED_BONUS_MAX * Math.max(0, 1 - clampedTiming/timeLimitMs)) with comment.",
+      "mode": "trivia_night",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-009",
+      "severity": "LOW",
+      "title": "Race 'Play Again' does not flush pending transport messages — late race-progress broadcast can misroute",
+      "evidence": "src/CardApp.svelte:2532 — onPlayAgain immediately transitions screens; no pause or queue flush. Old race-progress message in flight lands during cleanup.",
+      "impact": "On high-latency Steam P2P, next race start can show stale initial opponent progress.",
+      "fix": "Before transitionScreen('multiplayerMenu'), set _ignoreIncomingMessages=true until new handlers register, or await transport.flush().",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-B-010",
+      "severity": "MEDIUM",
+      "title": "Duel guest _duelState never initialised — submitDuelTurnAction silently no-ops on guest",
+      "evidence": "src/CardApp.svelte:956-958 calls initDuel for mode='duel', but initDuel in multiplayerGameService.ts only populates _duelState when isLocalHost. Guest's submitDuelTurnAction guards on _duelState non-null and bails.",
+      "impact": "Duel guest cannot take turns — all their actions are silently dropped. Host waits forever for guest turns that never submit.",
+      "fix": "initDuel must populate _duelState on BOTH host and guest (with isHost flag encoded). Verify turn-order resolution uses _duelState.isHost consistently.",
+      "mode": "duel",
+      "status": "open",
+      "note": "Downstream of MP-STEAM-AUDIT-2026-04-22 C-002 (orphan _duelState); this is the specific guest-side manifestation."
+    },
+    {
+      "id": "TRACK-C-001",
+      "severity": "HIGH",
+      "title": "_peerLeftPollInterval timer may persist across coop barrier if setupMessageHandlers fires twice",
+      "evidence": "src/services/multiplayerLobbyService.ts:1923-1948 — timer registered in createLobby; cleanup only pushed to _activeHandlerCleanups if isTauriPresent(). No guard against double-call with Track-A-004 duplicate-handler scenario.",
+      "impact": "Host starts game, guest's onGameStart fires and coop barriers begin. _peerLeftPollInterval still running synthesizes ghost mp:lobby:peer_left events mid-encounter, corrupting state or triggering spurious unresponsive warnings.",
+      "fix": "Clear _peerLeftPollInterval explicitly in leaveLobby() and at top of setupMessageHandlers() — if (_peerLeftPollInterval !== null) clearInterval(_peerLeftPollInterval); _peerLeftPollInterval = null.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-002",
+      "severity": "HIGH",
+      "title": "awaitCoopEnemyReconcile has no retry — single dropped packet desyncs enemy state for rest of encounter",
+      "evidence": "src/services/multiplayerCoopSync.ts:759-790 — 5s timeout (COOP_RECONCILE_TIMEOUT_MS), rejects on timeout. Game loop polls with no retry. If the message lands outside the delivery window, guest resolves 'cancelled' but host's merged state is live.",
+      "impact": "Host and guest diverge on enemy HP mid-combat. Guest kills enemy with wrong state; host still sees full HP enemy. Next-turn barrier fires 'partner unresponsive' — soft lock.",
+      "fix": "Exponential backoff in game loop: on reconcile fail, call cancelCoopTurnEnd(), re-request mp:coop:request_initial_state, wait 1-2s, retry once. Max 2 retries before abort.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-003",
+      "severity": "MEDIUM",
+      "title": "Barrier 'cancelled' loses cause — timeout/peer-left/transport-close all identical to caller",
+      "evidence": "src/services/multiplayerCoopSync.ts:480-492, 572-584 — awaitCoopTurnEnd / awaitCoopTurnEndWithDelta resolve literal 'cancelled' for all reasons.",
+      "impact": "Caller shows 'partner stopped responding' regardless of whether partner left, transport died, or true timeout. Misleads the player.",
+      "fix": "Return union: 'completed' | 'cancelled_timeout' | 'cancelled_peer_left' | 'cancelled_transport'. Game loop renders cause-specific UX.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-004",
+      "severity": "MEDIUM",
+      "title": "onPartnerUnresponsive subscribers not reset on initCoopSync — stacked toasts after hub round-trip",
+      "evidence": "src/CardApp.svelte:1019-1023, 1024-1040 — subscription wired in game-start effect. Track-A-003 already notes subs not cleared; this is the UX-visible sibling: pause → hub → rejoin → same game fires toast twice.",
+      "impact": "Visual spam and ref errors once old component is unmounted.",
+      "fix": "Call resetPartnerUnresponsiveSubscribers() in initCoopSync — same pattern as turn-end signal reset.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-005",
+      "severity": "MEDIUM",
+      "title": "BroadcastChannel transport never emits disconnected when host tab closes — peer_left lags 30s",
+      "evidence": "src/services/multiplayerTransport.ts:1386-1467 — peer_left only emitted after PEER_PONG_TIMEOUT_MS (30s). transport.isConnected() stays true because BroadcastChannel has no onclose.",
+      "impact": "Dev-mode/local coop: host closes tab mid-barrier. Guest sits on spinner for 15s barrier then 'unresponsive' banner, even though the real state (host gone) could have been known immediately.",
+      "fix": "On BroadcastChannel send/port errors emit local mp:lobby:peer_left. Or reduce PEER_PONG_TIMEOUT_MS to 10s for broadcast mode.",
+      "mode": "coop|race|duel",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-006",
+      "severity": "HIGH",
+      "title": "Ghost onGameStart subscribers after HMR / error-boundary re-mount — double scene transition",
+      "evidence": "src/services/multiplayerLobbyService.ts:1380-1394 — comment at :1388 acknowledges subs are NOT cleared on leaveLobby. CardApp registers once on mount; HMR re-mount without cleanup stacks closures.",
+      "impact": "Dev iteration path: HMR recovery fires both old + new onGameStart → scene transitions twice → initCoopSync + initGameMessageHandlers run twice → duplicate message handler subscriptions.",
+      "fix": "Either clear subs in leaveLobby(), or weak-ref identity dedupe, or guard inside CardApp: if (startFired) return; startFired=true.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-007",
+      "severity": "CRITICAL",
+      "title": "awaitCoopTurnEnd has no send-health probe — zombie transport burns full 15s before cancel",
+      "evidence": "src/services/multiplayerCoopSync.ts:440-497 — BARRIER_TIMEOUT_MS=15s hard timer. Disconnect poll at 2s checks transport.isConnected() but not actual send success. Steam P2P zombie session returns isConnected()=true while send silently fails.",
+      "impact": "Both sides wait the full 15s before realizing the link is dead, then each resolves 'cancelled' independently and ends up on different turns. The coop run desyncs on turn number — fatal to any deterministic state merge.",
+      "fix": "Active health check: every 5s during barrier, send mp:coop:turn_end_ping. On send failure resolve 'cancelled_transport' immediately. Prefer bidirectional heartbeat.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-008",
+      "severity": "MEDIUM",
+      "title": "No 'continue alone' path — partner leave during shop/rest/map-choice softlocks the survivor",
+      "evidence": "src/services/multiplayerCoopSync.ts:1-25 solo-survivor rule covers combat HP=0 only. multiplayerMapSync requires consensus. No handler for 'partner left mid room-choice'.",
+      "impact": "Survivor is stuck in shop/map with no way forward except abandoning the whole run via settings.",
+      "fix": "On peer_left during non-combat room, auto-accept remaining player's pending pick OR show 'Partner abandoned — Continue Alone / Retreat to Lobby' modal.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-009",
+      "severity": "MEDIUM",
+      "title": "No pause-state sync — partner opening settings looks identical to partner disconnecting",
+      "evidence": "grep found no pause broadcast in multiplayerCoopSync or multiplayer game handlers.",
+      "impact": "Player 1 opens settings to adjust volume; partner sees nothing. Partner can't tell if P1 dropped or is paused. Barrier may time out mid-adjustment.",
+      "fix": "Broadcast mp:coop:player_paused / mp:coop:player_resumed on settings open/close. Render 'Partner is adjusting settings' banner while paused. Extend barrier timeout while a peer is paused.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-010",
+      "severity": "HIGH",
+      "title": "_pendingGameMessageCleanup may be called twice if two onGameStart closures fire",
+      "evidence": "src/CardApp.svelte:950-970, 1035-1036 — cleanup stored in closure. Track-C-006 scenario (ghost subscribers) produces two onGameStart, both call _pendingGameMessageCleanup?.().",
+      "impact": "Second call unsubscribes from already-unsubscribed listeners; if transport.on cleanup doesn't guard, ref errors appear in console.",
+      "fix": "Null _pendingGameMessageCleanup inside the cleanup function itself; or guard CardApp onGameStart to fire-once per game session.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-C-011",
+      "severity": "MEDIUM",
+      "title": "PEER_PONG_TIMEOUT_MS (30s) and BARRIER_TIMEOUT_MS (15s) are asymmetric — peer_left fires after barrier already cancelled",
+      "evidence": "src/services/multiplayerTransport.ts:1353-1359 vs src/services/multiplayerCoopSync.ts:68.",
+      "impact": "Partner silent at T=0. Barrier cancels at T=15s. peer_left fires at T=30s after game loop has moved on, corrupting new-turn state with stale lobby update.",
+      "fix": "Align: PEER_PONG_TIMEOUT_MS=10s (one missed ping) so peer_left always precedes barrier timeout. Or make barrier timeout subscribe to peer_left event and resolve immediately when it fires.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-001",
+      "severity": "HIGH",
+      "title": "Race mode ELO double-apply — _tryEmitRaceResults can fire twice if opponent finishes shortly after local",
+      "evidence": "src/services/multiplayerGameService.ts:577-586 — persistLocalMultiplayerRating(newLocal) without idempotency guard. Called at :208, :246, and :991 (opponent finish). Second call has identical condition (_localProgress.isFinished && _opponentProgress.isFinished both true) and re-applies Elo.",
+      "impact": "Player gains/loses 2× ELO delta in a single race when network timing allows both local and opponent finish to trigger, corrupting leaderboard rating over time. This is a second-order regression around the f5faa69ae fix.",
+      "fix": "Add let _raceEloApplied = false; reset in initRaceMode(); set true after persistLocalMultiplayerRating at :583; check !_raceEloApplied before the Elo block.",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-002",
+      "severity": "HIGH",
+      "title": "Duel mode ELO applied by BOTH host and non-host — single match double-counts",
+      "evidence": "src/services/multiplayerGameService.ts:906-917 (host-side at isOver) and :1075-1091 (client-side on mp:duel:end). Host calls persistLocalMultiplayerRating at :916 when isOver=true; non-host calls it again at :1090 on mp:duel:end receipt.",
+      "impact": "In ranked duels, every match corrupts both players' ratings by 2× delta. Competitive integrity destroyed.",
+      "fix": "Remove non-host Elo block (:1079-1091), or gate it on !isHost && !lobby.isRanked to cover only friendly spectator flow. Host-only application is already documented intent.",
+      "mode": "duel",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-003",
+      "severity": "MEDIUM",
+      "title": "Race scoring — negative wrongAnswers exploit turns penalty into bonus",
+      "evidence": "src/services/multiplayerScoring.ts:29-30 — wrongAnswers = factsAnswered - factsCorrect. No clamp. Malicious peer sends factsAnswered=0, factsCorrect=1 → wrongAnswers=-1 → -wrongAnswers*5 = +5 bonus.",
+      "impact": "Peer can inflate race score by sending inconsistent fact counts.",
+      "fix": "wrongAnswers = Math.max(0, factsAnswered - factsCorrect). Validate factsAnswered >= factsCorrect on receipt.",
+      "mode": "race",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-004",
+      "severity": "MEDIUM",
+      "title": "Workshop vote tiebreak uses non-seeded Math.random — clients disagree on winner",
+      "evidence": "src/services/multiplayerWorkshopService.ts:408 — const winnerId = winners[Math.floor(Math.random() * winners.length)].",
+      "impact": "4-player lobbies with tied votes show different local winners briefly; if host broadcast fails the divergence persists.",
+      "fix": "Deterministic tiebreak: sort winners lexicographically and pick [0], OR seed RNG from lobby.seed.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-005",
+      "severity": "MEDIUM",
+      "title": "Workshop deck metadata validation does not reject control characters / ANSI escapes",
+      "evidence": "src/services/multiplayerWorkshopService.ts:313-320 — checks length + HTML_TAG_PATTERN only.",
+      "impact": "Malicious peer sends title='My Deck\\x00\\x1B[31m' to corrupt JSON serialization, logs, or UI rendering on recipients.",
+      "fix": "Add /[\\x00-\\x1F\\x7F-\\x9F]/ rejection.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-006",
+      "severity": "MEDIUM",
+      "title": "Map node consensus deadlocks on divergent picks — no timeout, no arbiter",
+      "evidence": "src/services/multiplayerMapSync.ts:94-115 — _checkConsensus only fires when picks are IDENTICAL. A/B picks produce no resolution.",
+      "impact": "Two coop players click different rooms → run hangs forever waiting for consensus.",
+      "fix": "10s consensus timeout defaulting to host's pick (or lexicographically first pick). Show countdown in the UI.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-007",
+      "severity": "MEDIUM",
+      "title": "ELO gates only on lobby.isRanked — non-competitive modes can be flagged ranked and corrupt rating",
+      "evidence": "src/services/multiplayerGameService.ts:577, 908, 1081 — if (lobby?.isRanked) with no mode whitelist.",
+      "impact": "Workshop/trivia_night/friendly accidentally flagged ranked apply ELO, corrupting ladder.",
+      "fix": "Whitelist: if (lobby?.isRanked && ['race','duel','coop','same_cards'].includes(lobby.mode)). Log + no-op otherwise.",
+      "mode": "all",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-008",
+      "severity": "LOW",
+      "title": "Co-op scoring accepts 0-floor completion — exploitable zero-point edge case",
+      "evidence": "src/services/multiplayerScoring.ts:26 — floorScore = floor * 100. Disconnect-before-floor-1 produces 0 score but is still a valid record.",
+      "impact": "Minor: abandoned pre-run coops can pollute stats as valid 0-score finishes.",
+      "fix": "Require floor >= 1 before emitting finish OR explicitly document 0 as abandoned sentinel.",
+      "mode": "coop",
+      "status": "open"
+    },
+    {
+      "id": "TRACK-D-009",
+      "severity": "LOW",
+      "title": "Workshop deck pre-flight check — host self-check never sends an ACK; other players time out waiting",
+      "evidence": "src/services/multiplayerWorkshopService.ts:249-254 (host pre-populates confirmed if hostHasDeck) vs :274-284 (still waits DECK_CHECK_ACK_TIMEOUT_MS=2000ms for all).",
+      "impact": "UI: if host is the only one missing the deck, counts display wrong for 2s until timeout; does not block start.",
+      "fix": "Move self-check result to confirmed set BEFORE awaiting others; use separate timeout for non-host acks.",
+      "mode": "all",
+      "status": "open"
+    }
+  ]
+}

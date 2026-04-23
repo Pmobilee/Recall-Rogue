@@ -23,7 +23,7 @@
  *   directory for two-tab dev testing). pickBackend() selects at call time.
  */
 
-import { getMultiplayerTransport, destroyMultiplayerTransport, createLocalTransportPair, LocalMultiplayerTransport, initPeerPresenceMonitor } from "./multiplayerTransport";
+import { getMultiplayerTransport, destroyMultiplayerTransport, createLocalTransportPair, LocalMultiplayerTransport, initPeerPresenceMonitor, onP2PFail, initP2PFailPollLoop } from "./multiplayerTransport";
 import type { ConnectOpts, MultiplayerMessageType } from "./multiplayerTransport";
 import type {
   LobbyState, LobbyPlayer, MultiplayerMode, DeckSelectionMode,
@@ -174,6 +174,14 @@ let _activeHandlerCleanups: Array<() => void> = [];
  * #76: Wired in createLobby(), joinLobby(), joinLobbyById(); torn down in leaveLobby().
  */
 let _peerMonitorTeardown: (() => void) | null = null;
+
+/**
+ * Issue 056: Cleanup returned by initP2PFailPollLoop(). Stored so leaveLobby()
+ * can stop the 2-second Steam P2PSessionConnectFail poll without the caller
+ * holding a reference. Null when no poll is running (non-Tauri builds, or between
+ * leaveLobby and the next createLobby/joinLobby).
+ */
+let _p2pFailPollCleanup: (() => void) | null = null;
 
 /**
  * Host-side Steam peer-detection poll cancellation handle. Set in createLobby()
@@ -518,6 +526,8 @@ export async function createLobby(
     _steamHostPeerPollCancel = startSteamHostPeerPoll(result.lobbyId, (peerSteamId) => {
       console.log('[multiplayerLobbyService] host connecting transport to peer', peerSteamId);
       transport.connect(peerSteamId, playerId, connectOpts);
+      // Issues 030/064: arm the cross-lobby Channel 0 contamination filter.
+      transport.setActiveLobby(result.lobbyId);
       _steamHostPeerPollCancel = null;
     });
   } else {
@@ -526,6 +536,8 @@ export async function createLobby(
       playerId,
       connectOpts,
     );
+    // Issues 030/064: arm the cross-lobby Channel 0 contamination filter.
+    transport.setActiveLobby(result.lobbyId);
   }
   // #76: Start peer presence monitor after transport is connected.
   _peerMonitorTeardown = initPeerPresenceMonitor(
@@ -533,6 +545,11 @@ export async function createLobby(
     () => (_currentLobby?.players ?? []).filter(p => p.id !== playerId).map(p => p.id),
     transport,
   );
+  // Issue 056: start the Rust P2PSessionConnectFail poll loop alongside the JS
+  // ping/pong monitor. The poll fires onP2PFail listeners with a synthetic
+  // mp:transport:p2p_fail message, which setupMessageHandlers routes to the same
+  // peer-left grace-timer path as mp:lobby:peer_left.
+  _p2pFailPollCleanup = initP2PFailPollLoop(playerId);
   setupMessageHandlers();
 
   // Prime P2P sessions with all lobby members. On host creation this is benign
@@ -673,6 +690,8 @@ export async function joinLobby(
   const transportTarget = steamPeerId
     ?? (broadcast ? lobbyCode : (_currentLobby.lobbyId || lobbyCode));
   transport.connect(transportTarget, playerId, connectOpts);
+  // Issues 030/064: arm the cross-lobby Channel 0 contamination filter.
+  transport.setActiveLobby(_currentLobby.lobbyId);
   // Post-audit fix #2: include multiplayerRating so host's copy of the player
   // matches guest's real rating (default 1000 placeholder in the host handler
   // was overwriting guest's real rating on the subsequent broadcast round-trip).
@@ -683,6 +702,11 @@ export async function joinLobby(
     () => (_currentLobby?.players ?? []).filter(p => p.id !== playerId).map(p => p.id),
     transport,
   );
+  // Issue 056: start the Rust P2PSessionConnectFail poll loop alongside the JS
+  // ping/pong monitor. The poll fires onP2PFail listeners with a synthetic
+  // mp:transport:p2p_fail message, which setupMessageHandlers routes to the same
+  // peer-left grace-timer path as mp:lobby:peer_left.
+  _p2pFailPollCleanup = initP2PFailPollLoop(playerId);
   setupMessageHandlers();
 
   // Prime P2P sessions on guest join — ensures the host's session_request_callback
@@ -776,6 +800,8 @@ export async function joinLobbyById(
   const transportTarget = steamPeerId
     ?? (broadcast ? (result.lobbyCode ?? result.lobbyId) : result.lobbyId);
   transport.connect(transportTarget, playerId, connectOpts);
+  // Issues 030/064: arm the cross-lobby Channel 0 contamination filter.
+  transport.setActiveLobby(_currentLobby.lobbyId);
   // Post-audit fix #2: carry the guest's real multiplayerRating.
   transport.send('mp:lobby:join', { playerId, displayName, multiplayerRating: getLocalMultiplayerRating() });
   // #76: Start peer presence monitor after transport is connected.
@@ -784,6 +810,11 @@ export async function joinLobbyById(
     () => (_currentLobby?.players ?? []).filter(p => p.id !== playerId).map(p => p.id),
     transport,
   );
+  // Issue 056: start the Rust P2PSessionConnectFail poll loop alongside the JS
+  // ping/pong monitor. The poll fires onP2PFail listeners with a synthetic
+  // mp:transport:p2p_fail message, which setupMessageHandlers routes to the same
+  // peer-left grace-timer path as mp:lobby:peer_left.
+  _p2pFailPollCleanup = initP2PFailPollLoop(playerId);
   setupMessageHandlers();
 
   // Prime P2P sessions on guest join (by lobby ID) — symmetric with joinLobby.
@@ -809,6 +840,13 @@ export function leaveLobby(): void {
     transport.send('mp:lobby:leave', { playerId: _localPlayerId });
   } catch (err) {
     console.warn('[MP:LobbyService] leaveLobby send failed (transport may be disconnected):', err);
+  }
+  try {
+    // Issues 030/064: clear the active lobby filter before destroying the transport
+    // so any queued messages from the old lobby are not erroneously matched on reconnect.
+    getMultiplayerTransport().setActiveLobby(null);
+  } catch {
+    // transport may already be in error state — non-fatal
   }
   try {
     destroyMultiplayerTransport();
@@ -884,6 +922,11 @@ export function leaveLobby(): void {
   if (_peerMonitorTeardown !== null) {
     _peerMonitorTeardown();
     _peerMonitorTeardown = null;
+  }
+  // Issue 056: Stop the Rust P2PSessionConnectFail poll loop.
+  if (_p2pFailPollCleanup !== null) {
+    _p2pFailPollCleanup();
+    _p2pFailPollCleanup = null;
   }
   // Stop Steam host peer-detection poll if we leave before a peer connects.
   if (_steamHostPeerPollCancel !== null) {
@@ -1621,6 +1664,54 @@ function setupMessageHandlers(): void {
     }, RECONNECT_GRACE_MS);
     _reconnectTimers.set(playerId, timer);
   });
+
+  // Issue 056: Handle Rust-side P2PSessionConnectFail_t events.
+  // The initP2PFailPollLoop() drains the Rust event slot and fires onP2PFail()
+  // listeners with the raw peerSteamId. We map it to a lobby player ID by matching
+  // the peerSteamId against player IDs (Steam builds use SteamIDs as player IDs)
+  // and emit a synthetic mp:lobby:peer_left so the existing grace-timer path runs.
+  //
+  // If no player ID matches the peerSteamId directly (e.g. in broadcast/web modes
+  // where player IDs are player_xxx strings), the event is logged but not acted on
+  // — the ping/pong fallback remains the authoritative peer-drop mechanism in those modes.
+  _activeHandlerCleanups.push(onP2PFail((msg) => {
+    if (!_currentLobby) return;
+    const { peerSteamId, errorCode } = msg.payload as { peerSteamId: string; errorCode: number };
+    rrLog('mp:recv', 'mp:transport:p2p_fail', { peerSteamId, errorCode, playerCount: _currentLobby.players.length });
+    // Match by player ID — on Steam builds the player ID IS the SteamID.
+    const matchedPlayer = _currentLobby.players.find(p => p.id === peerSteamId || p.id.includes(peerSteamId));
+    if (!matchedPlayer) {
+      console.warn('[MP:LobbyService] p2p_fail: no player matched peerSteamId', peerSteamId, '— ping/pong fallback remains active');
+      return;
+    }
+    // Re-use the existing peer-left grace-timer logic by synthesising a local
+    // mp:lobby:peer_left message on the transport. The transport's emitToListeners
+    // is private, so we call transport.send() which routes through the normal send
+    // path. On connected transports this also sends to the remote peer (harmless —
+    // the peer will process it as a self-leave and clean up their own state).
+    // Prefer logging the Rust reason code for post-mortem debugging.
+    console.warn(`[MP:LobbyService] P2P session failed for player ${matchedPlayer.id} (peerSteamId=${peerSteamId}, errorCode=${errorCode}) — triggering peer-left grace timer`);
+    // Directly call the peer_left handler logic rather than going via send() to avoid
+    // broadcasting the synthetic leave to the peer (which no longer has a session).
+    const playerId = matchedPlayer.id;
+    const playerIdx = _currentLobby.players.findIndex(p => p.id === playerId);
+    if (playerIdx === -1) return;
+    (_currentLobby.players[playerIdx] as LobbyPlayer & { connectionState?: string }).connectionState = 'reconnecting';
+    notifyLobbyUpdate();
+    const existingTimer = _reconnectTimers.get(playerId);
+    if (existingTimer !== undefined) clearTimeout(existingTimer);
+    const timer = setTimeout(() => {
+      if (!_currentLobby) return;
+      _reconnectTimers.delete(playerId);
+      const p = _currentLobby.players.find(pl => pl.id === playerId) as (LobbyPlayer & { connectionState?: string }) | undefined;
+      if (p && p.connectionState === 'reconnecting') {
+        _currentLobby.players = _currentLobby.players.filter(pl => pl.id !== playerId);
+        console.info(`[MP:LobbyService] Player ${playerId} removed after P2P-fail reconnect grace expired.`);
+        notifyLobbyUpdate();
+      }
+    }, RECONNECT_GRACE_MS);
+    _reconnectTimers.set(playerId, timer);
+  }));
 
   // H10: Handle peer reconnection within grace window.
   reg('mp:lobby:peer_rejoined', (msg) => {

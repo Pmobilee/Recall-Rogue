@@ -103,6 +103,11 @@ vi.mock('./multiplayerTransport', () => {
     LocalMultiplayerTransport: class {},
     // #76: spy on initPeerPresenceMonitor so lobby tests can verify wiring
     initPeerPresenceMonitor: vi.fn(() => vi.fn()),
+    // Issue 056: initP2PFailPollLoop is started alongside initPeerPresenceMonitor.
+    // Returns a no-op cleanup in tests so leaveLobby teardown doesn't throw.
+    initP2PFailPollLoop: vi.fn(() => vi.fn()),
+    // onP2PFail is called inside setupMessageHandlers; return no-op unsubscribe.
+    onP2PFail: vi.fn(() => vi.fn()),
   };
 });
 

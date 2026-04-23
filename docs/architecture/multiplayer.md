@@ -165,6 +165,28 @@ When both players reach 0 HP in the same turn resolution:
 
 The 30s pong timeout is intentionally > 15s interval to allow one missed pong before firing.
 
+### Steam P2PSessionConnectFail Poll (Issue 056)
+
+`initP2PFailPollLoop(localPlayerId)` — called alongside `initPeerPresenceMonitor` in `createLobby`, `joinLobby`, and `joinLobbyById`. No-op on non-Tauri builds.
+
+- Every **2s**: drains the Rust `steam_get_pending_p2p_fail` slot (one-shot take() semantics).
+- If a `PendingP2PFail { peerSteamId, errorCode }` event is returned: fires all `onP2PFail()` listeners with a synthetic `mp:transport:p2p_fail` message.
+- Deduplication: the same (peerSteamId, errorCode) pair emits at most once per session.
+- The `mp:transport:p2p_fail` handler in `setupMessageHandlers` maps peerSteamId → player ID and starts the same 60s reconnect grace timer as `mp:lobby:peer_left`. Detection latency: **~2s** vs the ping/pong fallback's **~30s**.
+
+`errorCode` maps to Steamworks `EP2PSessionError` (1=None, 2=NotRunningApp, 3=NoRightsToApp, 4=DestinationNotLoggedIn, 5=Timeout).
+
+### Cross-Lobby Filter — `setActiveLobby()` (Issues 030/064)
+
+`transport.setActiveLobby(lobbyId)` is called immediately after every `transport.connect()` in the three entrypoints:
+
+- `createLobby` — non-deferred path: called after `transport.connect()`. Deferred path (Steam host waiting for first peer): called inside the peer-detection callback after `transport.connect()`.
+- `joinLobby` — called after `transport.connect(transportTarget, ...)`.
+- `joinLobbyById` — called after `transport.connect(transportTarget, ...)`.
+- `leaveLobby` — calls `transport.setActiveLobby(null)` before `destroyMultiplayerTransport()` to reset the filter cleanly.
+
+Without this call the `activeLobbyId` on `SteamP2PTransport` stays null and the cross-lobby Channel 0 message filter is inert, allowing stale messages from a prior lobby to contaminate the new session.
+
 ### Lobby-Service Grace Period (H10)
 
 When `mp:lobby:peer_left` fires, `multiplayerLobbyService.ts` marks the player as `connectionState: 'reconnecting'` rather than removing them immediately. A **60-second grace timer** starts. If the player sends `mp:lobby:peer_rejoined` within the window, `connectionState` resets to `'connected'`. If the timer expires and `connectionState` is still `'reconnecting'`, the player is removed from the lobby.

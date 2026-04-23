@@ -1,8 +1,40 @@
 {
-  "updatedAt": "2026-04-23T03:36:12.371Z",
+  "updatedAt": "2026-04-23T20:00:00.000Z",
   "totalPlaythroughs": 22,
-  "totalIssues": 242,
+  "totalIssues": 254,
   "batches": [
+    {
+      "id": "MP-AUDIT-2026-04-23-OPUS-A",
+      "date": "2026-04-23T19:30:00.000Z",
+      "tracks": 5,
+      "issues": 51,
+      "verdict": "FAIL",
+      "summary": "5-agent parallel audit of UNDER-COVERED multiplayer surfaces (Trivia Night/Duel/SameCards modes; Race + Map sync gameplay; Coop room flow shop/rest/mystery/rewards; Post-run persistence ELO/FSRS/Save/Analytics/SeasonLeaderboard; Workshop/LobbyBrowser/LAN/Identity/Profanity/Onboarding). Targeted to avoid overlap with prior MP-STEAM-AUDIT-2026-04-22 batches that focused on P2P transport, coop start handshake, lobby identity, and Tauri config.",
+      "testers": [
+        "opus-a-trivia-duel-samecards",
+        "opus-a-race-mapsync",
+        "opus-a-coop-room-flow",
+        "opus-a-persistence-elo-fsrs",
+        "opus-a-workshop-lobby-lan-identity"
+      ],
+      "severityCounts": {
+        "critical": 6,
+        "high": 22,
+        "medium": 18,
+        "low": 5
+      },
+      "topFindings": [
+        "MP-AUDIT-2026-04-23-OPUS-A-TN-001 CRITICAL: destroyTriviaGame() never called — module-level state leaks across trivia-night sessions",
+        "MP-AUDIT-2026-04-23-OPUS-A-RC-001 CRITICAL: Race mode never registers mp:race:progress / mp:race:finish handlers",
+        "MP-AUDIT-2026-04-23-OPUS-A-CT-001 CRITICAL: Coop rest site actions (heal/study/meditate) are local-only — no barrier or partner notification",
+        "MP-AUDIT-2026-04-23-OPUS-A-CM-001 CRITICAL: Coop mystery events generated independently — players can see different events with incompatible effects",
+        "MP-AUDIT-2026-04-23-OPUS-A-EL-002 CRITICAL: Coop mode never applies ELO at run end",
+        "MP-AUDIT-2026-04-23-OPUS-A-SL-001 CRITICAL: Season leaderboard is read-only UI stub — no writer exists anywhere in codebase"
+      ],
+      "rootCauseNote": "Two recurring root causes dominate: (1) seeded-RNG fork system is wired in name-only — many shop/reward/mystery code paths still call raw Math.random() so coop/same_cards diverge from turn 1; (2) several multiplayer modes (race, same_cards, trivia_night) skip initGameMessageHandlers() so their core message handlers are never registered. Together these explain a large fraction of 'lobbies form correctly but each player sees a different game' user reports.",
+      "workStatus": "open",
+      "designClarification": "User 2026-04-23: coop shops/card-rewards are ALLOWED to differ in current modes (no ranked/leaderboard runs exist yet). Future intent: coop = IDENTICAL, race/vs = VARIETY. Removed 6 findings (CS-001..CS-004, CW-001..CW-002). When ranked coop ships, re-open these against the seeded-fork wiring gap."
+    },
     {
       "id": "MP-EXPLORE-2026-04-23-ORCHESTRATOR-A",
       "date": "2026-04-23T12:40:00.000Z",
@@ -4477,6 +4509,156 @@
       "rank": 129
     },
     {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-TN-001",
+      "category": "multiplayer_audit",
+      "severity": "critical",
+      "title": "destroyTriviaGame() never called — module-level state leaks across trivia-night sessions",
+      "description": "Effect cleanup at CardApp.svelte:1037 calls _pendingTriviaCleanup() (removes transport listeners) but never calls destroyTriviaGame(). The six module-level Maps (_pointTotals, _correctCounts, _timingSums, _answeredCounts, _answers) and all callback refs persist across games. A second trivia night in the same session inherits stale standings, stale answer data, and callbacks pointing at unmounted components.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 10,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:1037-1039 / src/services/triviaNightService.ts:515"
+      },
+      "reproductionSteps": [
+        "Play a full trivia night → return to lobby → start a second trivia night → first round standings show carry-over scores."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 130
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-001",
+      "category": "multiplayer_audit",
+      "severity": "critical",
+      "title": "Race mode never registers mp:race:progress / mp:race:finish handlers",
+      "description": "initGameMessageHandlers only called for coop and duel. Race skips entirely, so neither mp:race:progress nor mp:race:finish transport listeners are ever installed. _opponentProgress stays null for the entire run; opponent HUD blank; _tryEmitRaceResults can never fire because finish message never received.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 10,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:950-951"
+      },
+      "reproductionSteps": [
+        "Start a race match (host or guest) — opponent progress HUD blank; results screen never appears."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 131
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CT-001",
+      "category": "multiplayer_audit",
+      "severity": "critical",
+      "title": "Coop rest site actions (heal/study/meditate) are local-only — no barrier or partner notification",
+      "description": "handleRestHeal() mutates run.playerHp locally and immediately calls onRestResolved() which transitions to dungeonMap. No mp:* sent. Partner never informed of choice, can't see other player's HP change, no barrier — both players can independently choose rest actions and proceed to map at different times.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 10,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/gameFlowController.ts:3342-3351 / src/CardApp.svelte:1257-1271"
+      },
+      "reproductionSteps": [
+        "In coop rest site, player A heals while player B meditates simultaneously; each proceeds to own dungeonMap state independently."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 132
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CM-001",
+      "category": "multiplayer_audit",
+      "severity": "critical",
+      "title": "Coop mystery events generated independently — players can see different events with incompatible effects",
+      "description": "generateMysteryEvent() uses the map RNG fork (in SAME_CARDS_FORK_LABELS), but no coop barrier or consensus when mystery resolves: onMysteryEffectResolved() applies effects and transitions locally with zero sync. If forks diverged for any reason (different numbers of map-consuming calls before mystery), two clients resolve different events — one heals, the other takes damage.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 10,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/gameFlowController.ts:2532 / src/services/floorManager.ts:853-894"
+      },
+      "reproductionSteps": [
+        "static-analysis — verify by logging activeMysteryEvent on both clients at mystery room entry."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 133
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-EL-002",
+      "category": "multiplayer_audit",
+      "severity": "critical",
+      "title": "Coop mode never applies ELO at run end",
+      "description": "ELO writes (applyEloResult + persistLocalMultiplayerRating) gated by lobby?.isRanked and appear only in race and duel completion paths. Coop has no ELO call anywhere. If coop ever becomes ranked, infrastructure simply doesn't exist; ratings stay at pre-game value for both players.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 10,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerGameService.ts:574-583,907-917"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 134
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SL-001",
+      "category": "multiplayer_audit",
+      "severity": "critical",
+      "title": "Season leaderboard is read-only UI stub — no writer exists anywhere in codebase",
+      "description": "SeasonLeaderboard.svelte fetches GET /api/v1/season/current/leaderboard. No code calls a corresponding POST/PUT to write season scores — syncService.submitScore and scoreSubmissionQueue exist but are never invoked from any MP run-end path. Leaderboard endpoint will always return empty data because no client ever submits a score.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 10,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/SeasonLeaderboard.svelte:39-40"
+      },
+      "reproductionSteps": [
+        "Complete a ranked race or duel; open Season Leaderboard; observe 'No leaderboard data available yet.'"
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 135
+    },
+    {
       "canonicalId": "alpha-review-risk-001",
       "category": "accessibility",
       "severity": "high",
@@ -4491,7 +4673,7 @@
       ],
       "firstSeen": "2026-04-11T08:00:00.000Z",
       "suggestedFix": "ui-agent: create src/ui/components/RewardRoomOverlay.svelte with a DOM Continue button (`<button>` with onclick + data-testid=\"reward-continue\"). game-logic: expose a postMessage-style hook from RewardRoomScene that the overlay can trigger. Verify with keyboard-only walkthrough: Tab to button, Enter to continue.",
-      "rank": 130,
+      "rank": 136,
       "resolvedAt": "2026-04-12T05:30:06.991Z",
       "resolvedBy": "already-fixed: RewardRoomOverlay.svelte provides DOM keyboard/a11y overlay for Continue, Relic Accept, Relic Leave"
     },
@@ -4508,7 +4690,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 131,
+      "rank": 137,
       "score": 7.5,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4540,7 +4722,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 132,
+      "rank": 138,
       "score": 7.5,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4572,7 +4754,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 133,
+      "rank": 139,
       "score": 7.5,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4604,7 +4786,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 134,
+      "rank": 140,
       "score": 7.5,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4636,7 +4818,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 135,
+      "rank": 141,
       "score": 7.5,
       "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4673,7 +4855,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 136,
+      "rank": 142,
       "score": 7.5,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4723,7 +4905,7 @@
       },
       "suggestedFix": "After fixing the primary coop bug, run each mode end-to-end on two Steam clients and log findings. Add a mode-parameterized version of the proposed integration test (MP-STEAM-20260422-006) that covers all 5 modes' first-message paths.",
       "score": 7.5,
-      "rank": 137,
+      "rank": 143,
       "deferredReason": "Requires two live Steam clients on different accounts — user-driven validation step. Will verify after primary coop fix lands.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -4758,7 +4940,7 @@
       },
       "suggestedFix": "Wrap mp:coop:enemy_state in an ACK-tracked envelope. Host buffers latest snapshot keyed by encounterId; guest emits mp:coop:request_initial_state on mount if no snapshot in 2s; host replies with buffered snapshot on demand. Same pattern already used by lobby-start (H5) and lobby-settings (resend on request).",
       "score": 6.25,
-      "rank": 138,
+      "rank": 144,
       "assignedTo": "game-logic sub-agent (wave 1)",
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
@@ -4776,7 +4958,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T17:30:00.000Z",
       "lastSeen": "2026-04-11T17:30:00.000Z",
-      "rank": 139,
+      "rank": 145,
       "score": 6,
       "status": "closed",
       "sourceBatch": "CARD-AUDIT-2026-04-11",
@@ -4810,7 +4992,7 @@
       ],
       "firstSeen": "2026-04-11T08:00:00.000Z",
       "suggestedFix": "content-agent: `grep -rn '\\bundefined\\b' data/decks/` — identify affected facts, rewrite each, rebuild curated.db via `npm run build:curated`, verify in-game display via visual-inspect scenario.",
-      "rank": 140,
+      "rank": 146,
       "resolvedAt": "2026-04-12T05:29:35.897Z",
       "resolvedBy": "false-positive: all 3 facts use undefined as legitimate English word"
     },
@@ -4827,7 +5009,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 141,
+      "rank": 147,
       "score": 5,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4859,7 +5041,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 142,
+      "rank": 148,
       "score": 5,
       "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4894,7 +5076,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 143,
+      "rank": 149,
       "score": 5,
       "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4930,7 +5112,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 144,
+      "rank": 150,
       "score": 5,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4962,7 +5144,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 145,
+      "rank": 151,
       "score": 5,
       "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -4994,7 +5176,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 146,
+      "rank": 152,
       "score": 5,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5042,7 +5224,7 @@
       },
       "suggestedFix": "Remove the bang, and also add typeof-number check: `if (typeof snapshot?.currentHP !== 'number' || typeof snapshot?.maxHP !== 'number') return;` — matches the stricter guard pattern already used by the enemy_hp_update handler at line 219.",
       "score": 5,
-      "rank": 147,
+      "rank": 153,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
     },
@@ -5075,7 +5257,7 @@
       },
       "suggestedFix": "Exponential backoff to 3-5s total window (e.g., 0/200/500/1500/3000ms, 5 attempts). Surface final failures to application layer via onSendFailed callback. Show toast/overlay to players when a critical message fails to deliver so they can retry rather than suffer silent desync.",
       "score": 5,
-      "rank": 148,
+      "rank": 154,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
     },
@@ -5107,7 +5289,7 @@
       },
       "suggestedFix": "Write a Vitest integration suite that spins up two MultiplayerLobbyService instances sharing a fake SteamP2PTransport with configurable latency, send-drop rate, and session-priming delay. Assert: both clients reach combat with identical enemy snapshot, damage dealt by player A propagates to player B within 1s, turn-end barrier resolves with both deltas merged.",
       "score": 5,
-      "rank": 149,
+      "rank": 155,
       "deferredReason": "Deferred to separate session — full Vitest integration harness with simulated SteamP2PTransport is multi-hundred-line effort that would dwarf the primary fix in scope. Track as its own feature.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -5132,7 +5314,557 @@
       "firstSeen": "2026-04-11T14:50:00.000Z",
       "closingCommit": "b3164469a",
       "resolvedAt": "2026-04-11T16:40:00.000Z",
-      "rank": 150
+      "rank": 156
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-TN-002",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Host never calls hostNextQuestion or hostEndGame — no question-dispatch driver exists",
+      "description": "initTriviaGame and initTriviaMessageHandlers are both called at game start, but no code in CardApp or any caller subsequently calls hostNextQuestion(...) or hostEndGame(). Host stalls at phase: 'waiting' indefinitely. The service exposes the full flow contract but nothing drives it forward from the caller side.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:963-966"
+      },
+      "reproductionSteps": [
+        "static-analysis only — grep hostNextQuestion returns zero call sites outside the test file."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 157
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-TN-003",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "initTriviaGame called without factPool — H3/H4 dedup guard permanently disabled",
+      "description": "initTriviaGame(triviaPlayers, DEFAULT_ROUNDS, isLocalHost) omits the factPool argument. Per triviaNightService.ts:234 a missing factPool sets _factPool = null, disabling dedup entirely. Questions can repeat within the same game; the pool-exhausted path can never fire.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:965"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 158
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-DU-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Duel turnTimer field declared/cleared but never set — auto-resolve timeout never arms",
+      "description": "DuelSession.turnTimer is initialized to null and cleaned up in destroyDuel, but no assignment _duelState.turnTimer = setTimeout(...) anywhere in the file. If one player disconnects after submitting their action, the host holds localAction/opponentAction indefinitely with no fallback. Duel softlocks until both players quit.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerGameService.ts:689,719,960"
+      },
+      "reproductionSteps": [
+        "Start a real-time duel → player A submits cards → player B drops connection → turn never resolves."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 159
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-DU-002",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "initGameMessageHandlers not called for same_cards mode — fork-seed mp:sync handler never registers",
+      "description": "initGameMessageHandlers(lobby.mode) called only when lobby.mode === 'coop' || 'duel'. For same_cards it is skipped. But initGameMessageHandlers for same_cards is the only place the mp:sync fork-seed handler is registered (multiplayerGameService.ts:1000). Guest never receives host fork seeds → all RNG forks (card pools, enemy intents, shop rolls) diverge from turn 1.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:950-951"
+      },
+      "reproductionSteps": [
+        "Create a same_cards lobby → host broadcasts fork seeds → guest has no mp:sync handler → players see different card rewards/enemies."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 160
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SAMECARDS-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "same_cards winner determination — true ties always award win to local player",
+      "description": "enemy_defeated branch sets winnerId = p1Total >= p2Total ? localPlayerId : opponentId — when totals equal, local player always wins. No multi-axis tie-breaker (floor/accuracy/duration) like determineRaceWinner. Both clients independently evaluate this and each considers themselves winner in true tie.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerGameService.ts:832"
+      },
+      "reproductionSteps": [
+        "static-analysis only — requires equal total damage at enemy defeat."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 161
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-002",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Race progress broadcast closure always sends host's player ID — guest progress mis-attributed",
+      "description": "In startRaceProgressBroadcast's getProgress closure, localId is derived as lobby?.players.find(p => p.isHost)?.id. On the guest client, p.isHost is false, so find returns the host's ID instead of guest's. Every progress/finish packet the guest sends carries the host's playerId — host appears with two entries, guest with none.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/gameFlowController.ts:1136"
+      },
+      "reproductionSteps": [
+        "Join a race as guest; opponent HUD shows two identical player IDs on results screen."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 162
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-003",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Opponent disconnect mid-race causes permanent softlock — results never emit",
+      "description": "_tryEmitRaceResults requires both _localProgress.isFinished AND _opponentProgress.isFinished. If opponent disconnects before finishing, mp:race:finish never sent, _opponentProgress stays isFinished:false, _onRaceComplete never fires. Local player who finished is trapped on final encounter screen with no exit.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerGameService.ts:500"
+      },
+      "reproductionSteps": [
+        "Start a race, finish all floors, opponent closes the game — local player has no way to exit."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 163
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-004",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Map node consensus blocks race progress — race incorrectly waits for both players to pick same node",
+      "description": "initMapNodeSync called unconditionally for all MP modes at line 940; handleMapNodeSelect routes through pickMapNode for any isMultiplayerRun. Race is parallel-run mode where each player navigates independently, but consensus callback at 983-988 blocks room transition until opponent picks same node. A racer who clicks node A is blocked until opponent also clicks node A.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:940,1207-1210"
+      },
+      "reproductionSteps": [
+        "In a race, click a map node — room transition hangs waiting for opponent consensus that won't come."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 164
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-MS-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Late-joining guest sees empty _picks map — single inbound message instantly triggers consensus",
+      "description": "initMapNodeSync seeds _picks from getCurrentLobby() at init time. If a guest joins after host already called initMapNodeSync (after run starts), guest's _picks only contains their own entry. When guest receives mp:map:node_pick from host, a new key is added dynamically (line 61), then consensus check at 157-165 only compares the two entries rather than against expected lobby roster. One inbound message instantly triggers consensus even if a third player hasn't picked.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerMapSync.ts:48-55"
+      },
+      "reproductionSteps": [
+        "static-analysis — 3-player lobby where host picks before guest 2 joins."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 165
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CT-002",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Rest site overlay reads playerHp/playerMaxHp from one prop — doesn't label which player's HP",
+      "description": "healAmount = Math.round(playerMaxHp * REST_SITE_HEAL_PCT) is computed from local player's max HP (correct per-player), but rest overlay reads playerHp/playerMaxHp from single prop without labeling whose HP is shown. Coop has separate HP per player; overlay doesn't indicate which player's HP is displayed and there is no shared state.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:1261 / src/ui/components/RestRoomOverlay.svelte:43-44"
+      },
+      "reproductionSteps": [
+        "static-analysis / visual inspection."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 166
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CM-002",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Coop mystery event 'choice' branch — each player resolves own sub-effect with no consensus",
+      "description": "MysteryEventOverlay receives onresolve(effect); when event type is 'choice', each client independently picks a branch and fires onMysteryEffectResolved with its own sub-effect. No vote, no host-decides, no broadcast. Both players could pick opposing branches (A picks 'gain 30 gold', B picks 'take 15 damage') and both effects apply independently to separate RunStates.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/MysteryEventOverlay.svelte:26 / src/services/gameFlowController.ts:3052"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 167
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CR-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Coop room exits (shop/rest/mystery) go directly to dungeonMap with no coop barrier",
+      "description": "All three non-combat room exits call gameFlowState.set('dungeonMap') and currentScreen.set('dungeonMap') immediately, with no mp:map:node_pick consensus. Map-node consensus only applies when a player clicks a dungeon map node; doesn't gate the room exits. Players can exit rooms at different times and dungeon map states can diverge.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/gameFlowController.ts:2305-2317 (onShopDone),3342-3351 (onRestResolved),3028-3041 (onMysteryResolved)"
+      },
+      "reproductionSteps": [
+        "In coop, player A leaves shop immediately while player B is still browsing."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 168
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-EL-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Two ELO services with different starting ratings — eloMatchmakingService is dead code",
+      "description": "eloMatchmakingService.STARTING_ELO=1000 with variable K-factor (32 first 20 games, then 16). multiplayerGameService exclusively uses multiplayerElo (DEFAULT_RATING=1500, fixed K=32) for all live ELO writes. eloMatchmakingService never called from game code. Matchmaking may queue using one ELO while authoritative update uses another, and variable K-factor logic is entirely dead.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/eloMatchmakingService.ts:70 vs src/services/multiplayerElo.ts:22"
+      },
+      "reproductionSteps": [
+        "static-analysis — grep for eloMatchmakingService callers outside tests yields zero hits."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 169
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-EL-003",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Disconnect/forfeit in duel never applies ELO — loser walks away with no rating change",
+      "description": "DuelTurnResolution.reason field includes 'timeout' variant but no code path sets it or triggers persistLocalMultiplayerRating on it. If a player disconnects mid-duel, mp:duel:end is never sent by the host (host is gone), so client mp:duel:end handler at 1073 never fires. Neither side's rating changes — players can forfeit ranked duels by dropping connection at zero ELO cost.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerGameService.ts:85,902-917"
+      },
+      "reproductionSteps": [
+        "static-analysis; confirm by killing host process mid-duel in a ranked lobby."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 170
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-FS-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Coop falls through to live FSRS writes — both peers write to own DB for SAME shared encounter",
+      "description": "isRaceMode is true only for 'race' and 'same_cards'; coop falls through to else branch that calls updateReviewStateByButton immediately. In coop both players share single encounter and both will independently call updateReviewStateByButton for facts they answer. Guest writes FSRS updates for facts that may not belong to their learning state — and host does same for facts the guest answered. Data-integrity risk where coop play corrupts individual FSRS schedules.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/encounterBridge.ts:1240-1253"
+      },
+      "reproductionSteps": [
+        "Start a coop run, answer a quiz on guest client; verify guest FSRS DB records update for fact belonging to host's deck."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 171
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SV-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Run save schema lacks lobbyId/peer roster/role — coop/race resume orphans the session",
+      "description": "RunSaveState captures runMode: 'multiplayer_coop' | 'multiplayer_race' | ... but no lobbyId, opponentId, isHost, or peer connection metadata. If a save is written mid-coop and loaded later (after lobby is gone), run resumes as MP run with no live peer — game has no way to detect orphan vs reconnect. No guard in loadActiveRun to clear or reject stale MP saves.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/runSaveService.ts:38-54"
+      },
+      "reproductionSteps": [
+        "Save coop run, quit, relaunch — resume path loads runMode === 'multiplayer_coop' with no lobby and no peer."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 172
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-AN-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "All four CoopEvent analytics types declared in analyticsEvents.ts are never emitted",
+      "description": "coop_dive_started, coop_dive_completed, coop_scholar_disconnect, coop_emote_sent declared but full grep -r for these strings (excluding analyticsEvents.ts) returns zero hits. No coop flow emits any. Post-launch telemetry for coop engagement will show empty series for all coop metrics.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/data/analyticsEvents.ts:39-44"
+      },
+      "reproductionSteps": [
+        "grep -r 'coop_dive_started|coop_dive_completed|coop_scholar_disconnect' src/ outside analyticsEvents.ts → zero results."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 173
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-WS-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "All Workshop Steam UGC Tauri commands are stubs — publish/subscribe/browse all no-op",
+      "description": "publishToWorkshop, subscribeToWorkshopDeck, browseWorkshopDecks, getMyPublishedDecks all return immediately with { error: '…not yet implemented' } or []. Tauri commands steam_ugc_create_item, steam_ugc_subscribe etc. not wired. Any player attempting Workshop publish or subscribe sees silent error with no recovery path in UI.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/workshopService.ts:315-325"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 174
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-WS-002",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Workshop deck install check uses 2s ACK; high-latency peers silently counted as missing",
+      "description": "DECK_CHECK_ACK_TIMEOUT_MS = 2000. On congested networks, a guest with the deck installed but slow to ACK is reported in missing[] and lobby start is blocked indefinitely. No retry mechanism, no player-facing message distinguishing 'no deck' from 'slow ACK'. Host sees same 'Waiting for Workshop deck...' label for both cases.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerWorkshopService.ts:116"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 175
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-LN-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "LAN server has no authentication — any device on LAN can join without Steam identity check",
+      "description": "probeLanServer accepts any host responding {game:'recall-rogue'} from local subnet. No Steam ID check, shared secret, or join password enforced at network layer. Anyone on same LAN (hotel Wi-Fi, office network) can discover and join an active LAN session. Existing password-visibility lobbies enforce passwords only at lobby-service layer above, not at Fastify endpoint.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/lanDiscoveryService.ts:239-273 / src/services/lanServerService.ts:172"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 176
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-PF-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Display name never sanitized or profanity-checked before being broadcast to peers",
+      "description": "getLocalDisplayName() returns raw Steam persona name or authStore.displayName with no call to maskProfanity or sanitizeLobbyTitle. Profanity service docs explicitly state server-side only sanitizes lobby titles; display names are out of scope. Player with profane Steam persona broadcasts it verbatim as hostName/displayName in lobby state to all peers; only LobbyBrowserScreen's render side calls maskProfanity, but lobby roster panel and duel HUD do not.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:696-700 / src/services/profanityService.ts:8"
+      },
+      "reproductionSteps": [
+        "Set Steam persona to a banned word; create lobby — guests receive raw string in lobby state."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 177
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-OB-001",
+      "category": "multiplayer_audit",
+      "severity": "high",
+      "title": "Brand-new user with no profile/Steam auth gets displayName='Player' for all MP — non-unique",
+      "description": "localDisplayName initializes to $authStore.displayName ?? $authStore.email ?? 'Player' and getLocalDisplayName() falls back to $authStore.displayName ?? 'Player'. First-time user who skipped onboarding with no account or Steam (web build, dev mode, offline) broadcasts literal 'Player' as display name. Multiple such users in the same lobby all show as 'Player', making roster unreadable.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:569,699"
+      },
+      "reproductionSteps": [
+        "Open game with no profile/Steam, click Multiplayer, create or join a lobby."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 178
     },
     {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-007",
@@ -5147,7 +5879,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 151,
+      "rank": 179,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5179,7 +5911,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 152,
+      "rank": 180,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5211,7 +5943,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 153,
+      "rank": 181,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5243,7 +5975,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 154,
+      "rank": 182,
       "score": 3,
       "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5278,7 +6010,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 155,
+      "rank": 183,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5314,7 +6046,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 156,
+      "rank": 184,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5349,7 +6081,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 157,
+      "rank": 185,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5379,7 +6111,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 158,
+      "rank": 186,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5410,7 +6142,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 159,
+      "rank": 187,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5441,7 +6173,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 160,
+      "rank": 188,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5473,7 +6205,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 161,
+      "rank": 189,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5505,7 +6237,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 162,
+      "rank": 190,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5552,7 +6284,7 @@
       },
       "suggestedFix": "Invert the logic: maintain `mpScreens` (lobby-ish) and `hubScreens` (outside-run) Sets, and treat everything else as implicitly in-run. Or derive gameScreens from a Screen-union exclusion (a `Exclude<Screen, HubScreen | LobbyScreen>` computed at compile time so adding a new Screen can't silently opt out of the game-screen allowlist). Add a lint (scripts/lint/check-gamescreens-allowlist.mjs) that diffs the Screen union against the Set literal and fails if any Screen is missing.",
       "score": 3,
-      "rank": 163,
+      "rank": 191,
       "deferredReason": "BUG 27 fix (commit 61a60edd9) already mitigates runtime risk by typing the Set as Set<Screen>. Compile-derived Exclude<> type + lint script is hardening nice-to-have, not a bug.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -5586,7 +6318,7 @@
       },
       "suggestedFix": "Add a minimal health pill on MultiplayerHUD: green (all partners fresh <15s), yellow (stale partner 15-60s), red (unresponsive >60s or send-retry-budget-exceeded). Click to open debug overlay with full transport state. Reuse the multiplayerCoopSync partner-heartbeat tracker that already exists (lines 55-130).",
       "score": 3,
-      "rank": 164,
+      "rank": 192,
       "deferredReason": "New HUD surface — user should pick visual design (position, colors, interaction pattern) before implementation.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -5621,7 +6353,7 @@
       },
       "suggestedFix": "Either (a) make the production CSP Tauri-aware: detect __TAURI_INTERNALS__ at HTML-injection time and use a permissive desktop CSP that allows tauri://, steam://, and relay/LAN endpoints; or (b) document that any non-Steam-P2P networking requires a CSP exception and add a lint that catches new connect-src-consuming code without a matching CSP update. Delete the dead csp.ts module regardless (lint flagged it already in MP-20260413-003941-MP-012).",
       "score": 3,
-      "rank": 165,
+      "rank": 193,
       "deferredReason": "CSP rework is risky surface area — wants user sign-off on which endpoints (wss://mp.recallrogue.com? steam://? relay fallback?) to allow before editing the prod CSP.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -5658,7 +6390,7 @@
       },
       "suggestedFix": "Unify on src/services/platformService.ts — it already captures `const isDesktop = platform === 'desktop'` at module-load time. Have both pickBackend implementations import and use that single constant instead of re-sniffing globals. Alternatively memoize the result of the first check and expose as a module-level const.",
       "score": 3,
-      "rank": 166,
+      "rank": 194,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
     },
@@ -5692,7 +6424,7 @@
       },
       "suggestedFix": "Replace DEBUG_COOP with a runtime-toggleable flag. Either (a) localStorage-based: `window.__rrSetMpDebug(true)` writes a flag that coopLog reads on each call; (b) always-on rrLog with a per-category filter applied by the log reader; (c) tie to URL param `?debug=mp` or keyboard combo. Log-on-demand beats log-at-compile-time for shipped code.",
       "score": 3,
-      "rank": 167,
+      "rank": 195,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
     },
@@ -5713,7 +6445,7 @@
       ],
       "suggestedFix": "Wire into CardApp.svelte routing with a new {:else if} branch, OR add suppression comment if it is intentionally not yet routed.",
       "firstSeen": "2026-04-11T14:50:00.000Z",
-      "rank": 168,
+      "rank": 196,
       "resolvedAt": "2026-04-12T07:43:07.539Z",
       "resolvedBy": "intentional orphan: future multiplayer feature, wiring-check:skip annotated"
     },
@@ -5732,7 +6464,7 @@
       "firstSeen": "2026-04-11T16:40:00.000Z",
       "closingCommit": "dea268845",
       "resolvedAt": "2026-04-11T17:15:00.000Z",
-      "rank": 169
+      "rank": 197
     },
     {
       "canonicalId": "MP-STEAM-20260422-059",
@@ -5762,7 +6494,7 @@
       },
       "suggestedFix": "Store the actual returned handle type (likely CallbackHandle or similar) from steamworks-rs register_callback to ensure Drop fires on app exit, not after new().",
       "score": 3,
-      "rank": 170,
+      "rank": 198,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "partialInCommit": "2e25b6765",
@@ -5801,7 +6533,7 @@
       },
       "suggestedFix": "Add `if lobby_id != active_lobby_id { return; }` guard to the Entered arm, matching the pattern applied to other arms in BUG 24.",
       "score": 3,
-      "rank": 171,
+      "rank": 199,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "884d603a7",
@@ -5836,7 +6568,7 @@
       },
       "suggestedFix": "Drop the early-return guard. Let Set iteration over zero subscribers be a natural no-op.",
       "score": 3,
-      "rank": 172,
+      "rank": 200,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -5868,7 +6600,7 @@
       },
       "suggestedFix": "Deep-clone the players array per subscriber call, or Object.freeze the snapshot to make in-place mutation a hard error.",
       "score": 3,
-      "rank": 173,
+      "rank": 201,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -5899,7 +6631,7 @@
       },
       "suggestedFix": "Emit console.warn on init failure and fire onLobbyError so the application layer knows presence detection is unavailable.",
       "score": 3,
-      "rank": 174,
+      "rank": 202,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -5930,7 +6662,7 @@
       },
       "suggestedFix": "Either wire setActiveLobby from the lobby service on lobby join, or delete the dead code path.",
       "score": 3,
-      "rank": 175,
+      "rank": 203,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "partialInCommit": "0c2de9290",
@@ -5968,7 +6700,7 @@
       },
       "suggestedFix": "Add a $effect-level assertion that logs a warning if currentLobby goes null while the current screen is in gameScreens. Gate unmount on a stable 'left lobby' signal rather than a transient null.",
       "score": 3,
-      "rank": 176,
+      "rank": 204,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6002,7 +6734,7 @@
       },
       "suggestedFix": "When switching deckSelectionMode, explicitly null out the abandoned variant before setting the new one.",
       "score": 3,
-      "rank": 177,
+      "rank": 205,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "8f5d7a74b",
@@ -6038,7 +6770,7 @@
       },
       "suggestedFix": "Scope _handlersAttached per-transport-instance rather than module-level.",
       "score": 3,
-      "rank": 178,
+      "rank": 206,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "8f5d7a74b",
@@ -6077,7 +6809,7 @@
       },
       "suggestedFix": "Include `multiplayerRating: 1500` as default when inserting a new player in the mp:lobby:player_joined handler.",
       "score": 3,
-      "rank": 179,
+      "rank": 207,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6109,7 +6841,7 @@
       },
       "suggestedFix": "Fastify server should maintain last-known isReady state per player and replay it in settings broadcasts to late joiners.",
       "score": 3,
-      "rank": 180,
+      "rank": 208,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6141,7 +6873,7 @@
       },
       "suggestedFix": "Filter players.length check to only count players with connectionState === 'connected'. Show a 'waiting for partner to reconnect' state if count drops below minimum.",
       "score": 3,
-      "rank": 181,
+      "rank": 209,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "8f5d7a74b",
@@ -6178,7 +6910,7 @@
       },
       "suggestedFix": "Prioritize protocol-critical messages (start, settings, join) over chatty ones (ping) in the eviction strategy. Never evict the first settings broadcast. Or raise cap to 256.",
       "score": 3,
-      "rank": 182,
+      "rank": 210,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "0c2de9290",
@@ -6214,9 +6946,459 @@
       },
       "suggestedFix": "Retry getLocalPersonaName 5×500ms before falling back to 'Player'. Surface a 'Steam not ready' error state if all retries fail.",
       "score": 3,
-      "rank": 183,
+      "rank": 211,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-TN-004",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "TriviaRoundScreen timerInterval not cleared on Svelte component destroy",
+      "description": "timerInterval is a plain let set via setInterval. stopTimer() clears it on phase transitions, but no onDestroy / $effect cleanup. If the component unmounts mid-question (host disconnects), the interval keeps firing handleAnswer(-1) on a torn-down component and submits answers into a service that may have been re-initialized.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/TriviaRoundScreen.svelte:47"
+      },
+      "reproductionSteps": [
+        "Start trivia night → host quits mid-question → guest sees stale interval still firing."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 212
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-TN-005",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "Non-host computeStandings would produce all zeros — local _pointTotals never populated",
+      "description": "Non-host clients apply result.standings from the broadcast directly. _pointTotals/_correctCounts on non-host clients are never updated (only hostResolveRound writes them, which early-returns for non-hosts at line 405). If a non-host reconnects and computeStandings runs locally, it returns zeroed standings.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/triviaNightService.ts:667-670"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 213
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SAMECARDS-002",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "collectForkSeeds captures fork state AFTER any fork accessed — late callers get drifted seeds",
+      "description": "getRunRng(label).getState() returns current internal PRNG counter, not initial value. If any fork has been consumed by the time collectForkSeeds runs (e.g., cardReward fork accessed during deck init), broadcast seed reflects mid-stream state. Guest receives seeds ahead of host's start; subsequent draws diverge.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerGameService.ts:646-653"
+      },
+      "reproductionSteps": [
+        "static-analysis only — depends on fork-consumption order vs broadcastForkSeeds call in gameFlowController.ts:1111."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 214
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-005",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "Race results screen renders blank table when only one player has results",
+      "description": "Comparison table and score breakdown wrapped in {#if p1 && p2}. p2 is derived as results.players.find(p => p.playerId !== localPlayerId). If race completes with only one player entry (opponent disconnected, local won by walkover), p2 is undefined and the entire stat table silently hides — only VICTORY/DEFEAT banner shows. No empty-state message.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/RaceResultsScreen.svelte:187"
+      },
+      "reproductionSteps": [
+        "Trigger a race result with only one player in results.players."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 215
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-006",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "Race results Duration row '▲' arrow points up on the slower player",
+      "description": "Duration stat row swaps numeric values (numericP1: p2.duration, numericP2: p1.duration) so 'higher is better' applies to lower-duration winner. cellClass + p1WinsRow use row.numericP1 > row.numericP2. With swap, faster player gets numericP1 = opponent's higher duration and correctly wins comparison — but the ▲ indicator at 217-220 checks p1WinsRow(row), now true when p1 was slower. Up-arrow appears on the slower player's cell.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/RaceResultsScreen.svelte:131-136,217-220"
+      },
+      "reproductionSteps": [
+        "Finish a race with different durations; Duration row arrow points up on slower player's column."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 216
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-007",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "Opponent race duration computed against local clock _localStartMs — clock skew distorts result",
+      "description": "opponentDurationMs = _opponentProgress.finishedAt - _localStartMs. If two clients start with clock skew (different system clocks, or delayed start ack), opponent's measured duration is wrong. A guest who starts 3s late appears 3s faster than they actually were.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerGameService.ts:539-541"
+      },
+      "reproductionSteps": [
+        "static-analysis — trigger race with two machines whose clocks differ by >1s."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 217
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-MS-002",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "onMapNodeConsensus and onMapNodePicksChanged each allow only one subscriber — silent replacement",
+      "description": "Both registration functions assign directly to a single _onConsensus / _onPicksChanged slot. If any second component (e.g. HUD overlay) calls onMapNodeConsensus, it silently drops the original callback. Unsubscribe closure returned by first caller now nulls second caller's subscription. Latent multi-subscriber hazard one refactor away from silent data loss.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerMapSync.ts:138,146"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 218
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CR-002",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "CoopLootSummary component is dead code — never mounted anywhere",
+      "description": "grep for CoopLootSummary across src/ returns only the component file and its inline comments — no imports, no <CoopLootSummary> usage, no dynamic render path. Dead code. Any loot-sharing summary at run end for coop is never shown.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/CoopLootSummary.svelte:1"
+      },
+      "reproductionSteps": [
+        "static-analysis — grep -r 'CoopLootSummary' src/."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 219
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CR-003",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "Architecture doc gap — shared HP/gold semantics undefined; code silently keeps them per-player",
+      "description": "Architecture doc states 'Both players fight one shared enemy' and describes enemy HP sync but contains no section on whether player HP, gold, or relics are shared or per-player. RunState.playerHp/playerMaxHp/currency are all per-client local fields — no shared gold pool. Spec gap leaves coop gold handling undefined while code silently keeps them independent.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "docs/architecture/multiplayer.md:26-27 vs src/services/runManager.ts:41-42"
+      },
+      "reproductionSteps": [
+        "static-analysis — search multiplayer.md for 'gold','shop','rest','mystery'."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 220
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-FS-002",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "Race FSRS batch silently drops timing/speed-bonus metadata",
+      "description": "_applyRaceFsrsBatch calls updateReviewState(factId, correct) — two-arg form with no responseTimeMs, speedBonus, or variantIndex. Comment at encounterBridge:1237-1238 acknowledges intentional, but every race answer is recorded with neutral timing metadata. FSRS stability estimates for race players are systematically weaker than solo players who provide full timing.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerGameService.ts:281-303"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 221
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SCORE-001",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "computeRaceScore in multiplayerScoring.ts is unused dead code — different formula than live scorer",
+      "description": "multiplayerScoring.ts exports computeRaceScore but no production file imports it. Actual race+same_cards scoring uses calculateScoreForMode in multiplayerGameService with different formula (no bestCombo term; uses chainMultiplier*50). Players' displayed scores come from service function; any code that imports from multiplayerScoring would produce divergent results. Maintenance hazard.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerScoring.ts:18 vs src/services/multiplayerGameService.ts:381-395"
+      },
+      "reproductionSteps": [
+        "grep -r 'from.*multiplayerScoring' outside test files returns zero hits."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 222
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-AN-002",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "duel_completed analytics event declared but never emitted",
+      "description": "SocialEvent union includes duel_completed with outcome/wager/score properties. Searching multiplayerGameService.ts, RunEndScreen.svelte, all other files for 'duel_completed' returns nothing. Duel win/loss outcomes generate no analytics signal — impossible to track duel engagement or outcome distribution.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/data/analyticsEvents.ts:25"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 223
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-WS-003",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "getInstalledWorkshopDecks reads raw localStorage; no schema version — stale shape silently corrupts",
+      "description": "Function parses workshop_installed_decks directly as WorkshopDeck[] with no version check or migration. If earlier version wrote different shape (or workshop deck updated upstream), host's getInstalledWorkshopDecks() silently returns corrupt preview data which is then broadcast to peers as authoritative metadata.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerWorkshopService.ts:151-160"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 224
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-LB-001",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "Lobby browser refresh button not debounced — concurrent listPublicLobbies calls",
+      "description": "refresh() sets loading = true but no guard against second call while first in flight. Manual refresh button + 5s setInterval can fire simultaneously. Concurrent responses resolve in arbitrary order, potentially replacing newer result with stale earlier one.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/LobbyBrowserScreen.svelte:55-76"
+      },
+      "reproductionSteps": [
+        "Click Refresh quickly 3x while auto-refresh interval fires."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 225
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-LB-002",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "Lobby browser filter-change effect fires duplicate refresh on initial mount",
+      "description": "Second $effect tracks modeFilter/fullnessFilter and always calls refresh(); on first mount it also fires (Svelte 5 effects always run once immediately). Combined with the first $effect also calling refresh() on mount, initial load triggers two concurrent fetches. Doubles network requests on every screen open.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/LobbyBrowserScreen.svelte:79-85"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 226
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-LN-002",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "LAN mode persists in localStorage across sessions — stale LAN URL silently hijacks Steam MP",
+      "description": "isLanMode() reads localStorage on every call. If player sets a LAN URL, then quits without clearing (crashes, hard-close), next session silently routes all multiplayer through the dead LAN address instead of Steam. MultiplayerMenu calls clearLanServerUrl() in some paths but not on Back navigation from menu itself.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/lanConfigService.ts:185-219 / src/ui/components/MultiplayerMenu.svelte:149"
+      },
+      "reproductionSteps": [
+        "Set LAN URL, kill app, relaunch, open Multiplayer — transport tries stale LAN URL."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 227
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-PF-002",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "sanitizeLobbyTitle does not mask profanity — title stored unmasked in backend",
+      "description": "sanitizeLobbyTitle only strips control chars, trims, clamps length. Explicitly documents 'Does NOT mask profanity.' Create-lobby path calls sanitizeLobbyTitle on title before storing, so profane titles persist to backend verbatim. Masking happens only at render time in LobbyBrowserScreen — any other consumer of raw lobby data (logs, server-stored entries, future admin tools) sees unmasked slur.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/profanityService.ts:178-179"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 228
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-OB-002",
+      "category": "multiplayer_audit",
+      "severity": "medium",
+      "title": "First-run user without profile gets ephemeral localPlayerId — ELO doesn't persist",
+      "description": "const localPlayerId = generatePlayerId() runs at module init in CardApp.svelte. Without persisted profile, this ID is ephemeral — changes on every reload. Any ELO delta written against this ID in one session can't be retrieved next. New user who plays MP, closes game, reopens starts with fresh localPlayerId and ELO 1500 again, breaking rating persistence for anonymous users.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/CardApp.svelte:572 / src/services/profileService.ts:74-77"
+      },
+      "reproductionSteps": [
+        "Play MP without creating profile, close, reopen — check localPlayerId in console."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 229
     },
     {
       "canonicalId": "04-combat-core-issue-1744339200008-04-009",
@@ -6231,7 +7413,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 184,
+      "rank": 230,
       "score": 1,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6263,7 +7445,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 185,
+      "rank": 231,
       "score": 1,
       "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6296,7 +7478,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 186,
+      "rank": 232,
       "score": 1,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6331,7 +7513,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 187,
+      "rank": 233,
       "score": 1,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6363,7 +7545,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 188,
+      "rank": 234,
       "score": 1,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6411,7 +7593,7 @@
       },
       "suggestedFix": "Either (a) fail-fast: if production build detects Tauri runtime AND WebSocketTransport is selected AND VITE_MP_WS_URL is unset, log an error and disable the fallback rather than silently pointing at localhost; or (b) set VITE_MP_WS_URL=wss://mp.recallrogue.com (or whatever the prod relay is) in scripts/steam-build.sh. Document the intended production URL in docs/architecture/multiplayer.md.",
       "score": 1,
-      "rank": 189,
+      "rank": 235,
       "deferredReason": "Decision depends on whether MP ever needs a WebSocket fallback on Steam builds (currently pure P2P). Ties into broader MP relay infrastructure call.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -6449,7 +7631,7 @@
       },
       "suggestedFix": "Add a parameterized test that calls startGame() under every MultiplayerMode with and without contentSelection and asserts the exact transport.send payload shape. Also add a type-level test (or a .d.ts assertion) that LobbyStartPayload.contentSelection is required, not optional.",
       "score": 1,
-      "rank": 190,
+      "rank": 236,
       "deferredReason": "Narrow regression test — will add alongside the broader integration harness in MP-006.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -6485,9 +7667,134 @@
       },
       "suggestedFix": "In encounterBridge.ts wherever player HP commits after enemy phase (grep for `player.hp = ` or `applyDamageToLocalPlayer`), add `if (run.multiplayerMode === 'coop' && newHp <= 0) handleCoopPlayerDeath(localPlayerId);`. Add a test that two-player coop with one player at 1HP ends for both when the enemy lands a hit.",
       "score": 1,
-      "rank": 191,
+      "rank": 237,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-TN-006",
+      "category": "multiplayer_audit",
+      "severity": "low",
+      "title": "TriviaRoundScreen 'waiting' phase has no UI branch — blank screen with no escape",
+      "description": "The {#if ... question} / {:else if ... revealing} / {:else if ... finished} chain falls through to empty render with no back/return button. Combined with TN-002 (no question dispatch driver), the host is stuck in 'waiting' permanently and the screen is blank.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 1,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/TriviaRoundScreen.svelte:199"
+      },
+      "reproductionSteps": [
+        "Observe screen after initTriviaGame is called before any hostNextQuestion fires."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 238
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-MS-003",
+      "category": "multiplayer_audit",
+      "severity": "low",
+      "title": "resetMapNodePicks not called on lobby leave — defensive cleanup gap",
+      "description": "destroyMapNodeSync clears _picks and nulls _cleanupListener; resetMapNodePicks is never called during lobby teardown. Currently safe because initMapNodeSync calls destroyMapNodeSync first, but any path that calls initMapNodeSync without first destroying would carry stale picks into the new session.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 1,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/multiplayerMapSync.ts:68-82 / src/CardApp.svelte:1032"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 239
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-AN-003",
+      "category": "multiplayer_audit",
+      "severity": "low",
+      "title": "No analytics events for race completion, ELO update, or season score submission",
+      "description": "analyticsEvents.ts defines CoopEvent and partial SocialEvent but contains no race_finished, elo_updated, or season_score_submitted events. ELO changes at race/duel end produce no analytics signal — rating volatility and matchmaking fairness can't be tracked.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 1,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/data/analyticsEvents.ts (entire file)"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 240
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-LB-003",
+      "category": "multiplayer_audit",
+      "severity": "low",
+      "title": "No game-version check when listing/joining lobbies — cross-version joins silently proceed",
+      "description": "LobbyBrowserEntry has no gameVersion field. joinLobbyById never compares client version to lobby's server version. LAN discovery returns version field from /mp/discover but lobby browser never checks. Player on v1.2 can join v1.3 host with no warning, causing desync.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 1,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/ui/components/LobbyBrowserScreen.svelte:99-106 / src/services/lanDiscoveryService.ts:99-100"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 241
+    },
+    {
+      "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-LN-003",
+      "category": "multiplayer_audit",
+      "severity": "low",
+      "title": "LAN discovery uses HTTP subnet scan (no mDNS) — silently fails on isolation networks",
+      "description": "Comment explicitly acknowledges mDNS not implemented (TODO: Consider Tauri mDNS/Bonjour). Current HTTP-sweep polls compact IP set (.1–.32, .100–.110, .200–.210, .254) and misses hosts outside those ranges. Access-point isolation (common on managed/public Wi-Fi) blocks all cross-client unicast probes — LAN discovery silently returns zero results with no user-facing explanation.",
+      "frequency": 1,
+      "affectedProfiles": [],
+      "firstSeen": "2026-04-23T19:30:00.000Z",
+      "lastSeen": "2026-04-23T19:30:00.000Z",
+      "score": 1,
+      "status": "open",
+      "sourceReports": [
+        "MP-AUDIT-2026-04-23-OPUS-A"
+      ],
+      "bestEvidence": {
+        "metric": "static-analysis",
+        "file": "src/services/lanDiscoveryService.ts:27-28"
+      },
+      "reproductionSteps": [
+        "static-analysis only."
+      ],
+      "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
+      "rank": 242
     },
     {
       "canonicalId": "MP-20260413-003941-MP-001",
@@ -6502,7 +7809,7 @@
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "resolvedAt": "2026-04-13T00:39:00.000Z",
       "resolvedBy": "Added http://host.docker.internal:* to dev CSP connect-src in vite.config.ts line 29",
-      "rank": 192
+      "rank": 243
     },
     {
       "canonicalId": "MP-20260413-003941-MP-002",
@@ -6517,7 +7824,7 @@
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "resolvedAt": "2026-04-13T00:39:00.000Z",
       "resolvedBy": "Must start Fastify with CORS_ORIGIN='http://localhost:5173,http://host.docker.internal:5173'. Skill spec should document this.",
-      "rank": 193
+      "rank": 244
     },
     {
       "canonicalId": "MP-20260413-003941-MP-003",
@@ -6530,7 +7837,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 194,
+      "rank": 245,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "0d017edee",
@@ -6549,7 +7856,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 195,
+      "rank": 246,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "cdbf6dcbc",
@@ -6568,7 +7875,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 196,
+      "rank": 247,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "cdbf6dcbc",
@@ -6587,7 +7894,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 197,
+      "rank": 248,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6602,7 +7909,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 198,
+      "rank": 249,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6617,7 +7924,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 199,
+      "rank": 250,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6632,7 +7939,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 200,
+      "rank": 251,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "partialInCommit": "0d017edee",
@@ -6651,7 +7958,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 201,
+      "rank": 252,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6666,7 +7973,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 202,
+      "rank": 253,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6681,7 +7988,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 203,
+      "rank": 254,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "partialInCommit": "9700017d9",
@@ -6690,7 +7997,7 @@
       "note": "[2026-04-23] src/csp.ts deleted in 9700017d9; agent-routing.md:36 still lists it (orchestrator cleanup pending)"
     }
   ],
-  "openCount": 31,
+  "openCount": 125,
   "resolvedCount": 129,
   "_note": "ULTRATHINK FULL fix wave started 2026-04-22T23:30Z on 96 open MP issues across 8 parallel agents. WAVE 1 fix complete 2026-04-22T22:50Z. Resolved 8: 016 (mode propagation, in 77c71eaca + 14495f06b), 017 (trivia init wiring, in 9e0650b53 + ee7236892), 018 (live tauri check), 019 (LAN gate on Steam), 020 (Fastify forward payload), 022 (mode-aware activeRunMode), 023 (idempotent start), 029 (surfaced send exhaustion) — all in 14495f06b. WAVE 1-3 fix attempt started 2026-04-22T22:30Z on issues 016,017,018,019,020,022,023,029. MP-STEAM-20260422-ULTRATHINK batch (54 issues, 6 critical, 11 high, 23 medium, 14 low) added 2026-04-22 from 5-agent ultrathink audit (Steam P2P transport, coop start flow, Tauri/build divergence, lobby identity, recent commits). Includes 6 NEW critical findings the prior MP-STEAM-20260422-COOP batch missed: mp:lobby:start mode-not-applied, duel/trivia start paths unwired, hasSteam stale snapshot, stale rr-lan-server localStorage, Fastify payload-stripping, two-clients-one-Steam-account. Purged non-MP issues 2026-04-22 for focused Steam/multiplayer/lobby audit. Backup: leaderboard.pre-mp-sweep.backup.json. MP-STEAM-20260422-COOP batch (15 issues, 2 critical) added 2026-04-22 from orchestrator ultrathink audit triggered by user report of coop-isolation on Steam build.\n2026-04-23 VERIFY-POST-WAVE sweep: audited 39 issues across 5 fix-commits (5acc55df9,8f5d7a74b,0c2de9290,2e25b6765,49cfc15b7). Result: 20 fixed, 14 partial, 4 reverted to open, 1 credit corrected. See docs/gotchas.md for the two parallel-agent commit races surfaced."
 }

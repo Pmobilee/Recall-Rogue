@@ -135,6 +135,7 @@ See `docs/mechanics/multiplayer.md` and `docs/architecture/multiplayer.md` for p
 | BUGs 21-27 | various Steam-build hardening including BUG 25 preSendBuffer flush + dead overlay removal (`82bf261ef`), BUG 27 wrong screen names (`61a60edd9`) | CLOSED |
 | ULTRATHINK 2026-04-22 (FIX016/018/019/020/022/023/029) | mp:lobby:start payload, hasSteam->isTauriPresent, LAN-mode gating, broadcast forwarding, mode-mapping, idempotent start, send-retry exhaustion -> error state | CLOSED |
 | ULTRATHINK Wave 2 (in flight) | doc drift, dead `csp.ts` cleanup, webBackend / LAN / VITE_MP_WS_URL Steam-build residue, primeP2P async semantics doc | landing this commit |
+| Issues 030/064/056 wiring (2026-04-23) | `setActiveLobby()` called after every `transport.connect()` in createLobby/joinLobby/joinLobbyById (cross-lobby filter armed in production). `initP2PFailPollLoop()` started alongside initPeerPresenceMonitor in all three entrypoints (Rust P2PSessionConnectFail_t now surfaces as `mp:transport:p2p_fail` within ~2s, down from 30s). `onP2PFail` handler in setupMessageHandlers maps peerSteamId → playerId and starts the 60s grace timer. | CLOSED |
 
 **End-to-end coop on Steam:** VERIFIED via Wave 1 ULTRATHINK fixes (FIX016/018/020/022/023 closed the host->guest mode/payload split; BUG 27 closed the wrong screen-names lobby-nuke). Post-Wave-1 status is "verified by source-read + unit tests + per-fix smoke tests"; the next gap is a true two-Steam-account E2E playtest skill (MP-STEAM-20260422-051 — `steam-p2p-playtest` not yet built). Treat coop-on-Steam as verified-but-not-CI-covered until that skill exists.
 
@@ -182,7 +183,7 @@ Six more bugs found and fixed in hypercritical pass 4:
 
 | Task | Notes |
 |------|-------|
-| Transport-side emission of `mp:lobby:peer_left` / `mp:lobby:peer_rejoined` via Fastify ws.on('close') + Rust P2PSessionConnectFail_t callback | JS-side ping/pong fallback active. Upgrading would drop detection latency from 30s to instant. |
+| Transport-side emission of `mp:lobby:peer_left` / `mp:lobby:peer_rejoined` via Fastify ws.on('close') | WS-side onclose broadcast; Rust P2PSessionConnectFail_t path now wired via `initP2PFailPollLoop` (Issue 056 closed 2026-04-23). |
 | RaceResultsScreen wiring into run-end flow | Component exists, not hooked. |
 | Duel mode end-to-end UI wire | `DuelOpponentPanel.svelte` + gameService primitives ready; needs in-game UI integration. |
 | Vote-kick quorum logic | L4 scaffolding ships messages + `kickPlayer` host-only; vote counting not yet implemented. |
