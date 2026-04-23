@@ -5764,3 +5764,21 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
 - See `docs/architecture/multiplayer.md` § "Ready-Up Watchdog (H-008)" for full API contract.
 
 **UI half:** Follow-up `ui-agent` invocation wires the banner/error state in `MultiplayerLobby.svelte`.
+
+### 2026-04-23 — MP-save softlock on hub Continue/Abandon prompt
+- What: After a multiplayer run + exit, clicking Dungeon on hub shows Continue/Abandon
+  prompt. Both buttons silently no-op. Game stuck until reload.
+- Why: RaceResultsScreen / TriviaRoundScreen "Return to Hub" handlers never called
+  clearActiveRun(), leaving a stale save in the multiplayer-race slot. handleStartRun's
+  hasActiveRun() check scans all slots (returns true) but loadActiveRun() defaults to
+  the solo slot (returns null). Same mode-blindness in handleResumeActiveRun and
+  abandonActiveRun — both load solo-slot only, fail to find the MP save, no-op, return.
+- Fix: CardApp.svelte handleStartRun now purges all slots and skips the prompt when
+  the save is MP-mode or unreadable; handleResumeActiveRun wrapped in try/catch with
+  purge fallback; handleGuardAbandon adds belt-and-braces clearActiveRun(); all MP
+  exit handlers (RaceResults × 3, Trivia × 3) now call clearActiveRun() before transitioning.
+- Lesson: Multiplayer runs are not resumable in the solo flow. Every MP exit path
+  MUST clear the active-run save. The mode-blind default of loadActiveRun('solo') is
+  a latent trap — any caller that wants "the current run, whatever mode" must iterate
+  slots or, safer, the service layer should change the no-arg default to "find any".
+  That service cleanup is a follow-up Yellow item, not part of this emergency fix.

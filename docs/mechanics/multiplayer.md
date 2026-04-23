@@ -2009,3 +2009,29 @@ This ensures zero-byte primer packets have propagated before the first real game
 `onPartnerStateUpdate` in `CardApp.svelte` now checks `currentLobby?.mode !== 'coop'` before piping partner HP/score/accuracy into `opponentProgress`. Without this guard, the handler fired in race mode (where no real partner state exists), overwriting the race-progress HUD's `playerHp` field with stale zeros from the partner state broadcast system.
 
 Race mode opponent progress continues to be driven exclusively by `onOpponentProgressUpdate` (the `mp:race:progress` channel).
+
+---
+
+## MP Run Cleanup Invariant
+
+**Every multiplayer exit path must call `clearActiveRun()` before transitioning to any non-run screen.**
+
+### Why this matters
+
+MP runs write to the multiplayer-race save slot, not the solo slot. When a player exits via RaceResultsScreen or TriviaRoundScreen without clearing that save, `hasActiveRun()` returns true on the next hub visit (it scans all slots). However, `loadActiveRun()` defaults to the solo slot and returns null. This causes `handleStartRun` to silently no-op on both Continue and Abandon — a softlock requiring a page reload.
+
+MP saves also carry MP-specific state (lobby config, partner references, transport callbacks) that cannot be meaningfully rehydrated through the solo run resume flow. Attempting to resume them would produce undefined behavior.
+
+### Invariants (must hold on every MP exit)
+
+1. **RaceResultsScreen** — all three exit handlers (`onPlayAgain`, `onReturnToLobby`, `onReturnToHub`) must call `clearActiveRun()` before any screen transition.
+2. **TriviaRoundScreen** — same rule, all three handlers.
+3. **handleStartRun** in `CardApp.svelte` — defensively purges saves whose `runMode` starts with `multiplayer_`, or where `loadActiveRun()` returns null despite `hasActiveRun()` being true (orphaned slot). No Continue/Abandon prompt is shown in this path.
+4. **handleResumeActiveRun** in `CardApp.svelte` — wrapped in try/catch; any save with `runMode.startsWith('multiplayer_')` throws, triggering `clearActiveRun()` + redirect to hub.
+5. **handleGuardAbandon** in `CardApp.svelte` — calls `clearActiveRun()` after `abandonActiveRun()` as a belt-and-braces sweep of all slots.
+
+### Adding new MP exit points
+
+When adding any new screen or flow that ends a multiplayer run (coop victory, mid-run disconnect, rage quit), add `clearActiveRun()` to that exit handler before it navigates away. Do not rely on the hub-level guard in `handleStartRun` — that is a failsafe, not the primary cleanup mechanism.
+
+See `docs/gotchas.md` 2026-04-23 for the softlock postmortem.

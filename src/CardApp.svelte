@@ -68,6 +68,7 @@
     autoSaveRun,
     hasActiveRun,
     loadActiveRun,
+    clearActiveRun,
     restoreRunMode,
     playAgain,
     returnToMenu,
@@ -354,18 +355,26 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   async function handleStartRun(): Promise<void> {
     if (hasActiveRun()) {
       const saved = loadActiveRun()
-      if (saved) {
-        guardRunStats = {
-          floor: saved.runState.floor.currentFloor,
-          gold: saved.runState.currency,
-          encounters: saved.runState.encountersWon,
-          factsCorrect: saved.runState.factsCorrect,
-        }
+      // Failsafe: if hasActiveRun() says yes but loadActiveRun() returns null,
+      // the save lives in a non-solo slot (e.g. a stale multiplayer run whose
+      // host left). MP runs can't resume in the solo flow, so purge all slots
+      // and proceed to dungeon selection without prompting.
+      if (!saved || (saved.runMode && saved.runMode.startsWith('multiplayer_'))) {
+        console.warn('[CardApp] Purging orphaned/multiplayer save to prevent softlock')
+        clearActiveRun()
+        hasRunSave = false
+        handleOpenDungeonSelection()
+        return
+      }
+      guardRunStats = {
+        floor: saved.runState.floor.currentFloor,
+        gold: saved.runState.currency,
+        encounters: saved.runState.encountersWon,
+        factsCorrect: saved.runState.factsCorrect,
       }
       showRunGuardPopup = true
       return
     }
-    // Navigate to dungeon selection instead of directly starting
     handleOpenDungeonSelection()
   }
 
@@ -436,6 +445,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     showRunGuardPopup = false
     guardRunStats = null
     abandonActiveRun()
+    // Failsafe: ensure all slots are cleared even if abandonActiveRun only
+    // touched the solo slot (e.g. a stale multiplayer save in another slot).
+    clearActiveRun()
     hasRunSave = false
   }
 
@@ -1432,49 +1444,62 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   }
 
   async function handleResumeActiveRun(): Promise<void> {
-    const saved = loadActiveRun()
-    if (!saved) return
-    restoreRunMode(saved.runMode, saved.dailySeed, saved.runSeed)
-    if (saved.rngState) {
-      restoreRunRngState(saved.rngState)
+    try {
+      const saved = loadActiveRun()
+      if (!saved) {
+        throw new Error('No save to resume')
+      }
+      // Belt-and-braces: MP saves must never rehydrate through the SP path.
+      if (saved.runMode && saved.runMode.startsWith('multiplayer_')) {
+        throw new Error(`Cannot resume multiplayer run (${saved.runMode}) in solo flow`)
+      }
+      restoreRunMode(saved.runMode, saved.dailySeed, saved.runSeed)
+      if (saved.rngState) {
+        restoreRunRngState(saved.rngState)
+      }
+      activeRunState.set(saved.runState)
+      hydrateEncounterSnapshot(saved.encounterSnapshot ?? null)
+      activeCardRewardOptions.set(saved.cardRewardOptions ?? [])
+      activeRewardBundle.set(saved.activeRewardBundle ?? null)
+      activeRewardRevealStep.set(saved.rewardRevealStep ?? 'gold')
+      if (saved.roomOptions && saved.roomOptions.length > 0) {
+        activeRoomOptions.set(saved.roomOptions)
+      }
+      // Navigate to the saved screen or default to dungeon map
+      const screen = saved.currentScreen as import('./ui/stores/gameState').Screen
+      const mapOrRoom = 'dungeonMap'
+      let targetScreen = screen === 'campfire' ? mapOrRoom : (screen || mapOrRoom)
+      if (targetScreen === 'cardReward' && (saved.cardRewardOptions?.length ?? 0) === 0) {
+        targetScreen = mapOrRoom
+      }
+      if (screen === 'combat') {
+        // Look up enemy from saved map node so resume doesn't pick a random one.
+        const actMap = saved.runState.floor.actMap
+        const resumeNodeId = actMap?.currentNodeId
+        const resumeEnemyId = resumeNodeId ? actMap?.nodes?.[resumeNodeId]?.enemyId : undefined
+        // Make Phaser container visible before combat re-init.
+        currentScreen.set('combat')
+        await tick()
+        targetScreen = await resumeCombatWithFallback({
+          floor: saved.runState.floor.currentFloor,
+          ensurePhaserBooted,
+          startEncounter: () => startEncounterForRoom(resumeEnemyId),
+          hasTurnState: () => get(activeTurnState) !== null,
+          onCombatResumed: () => {
+            autoSaveRun('combat')
+          },
+          onFallbackMap: () => { /* map will show automatically */ },
+          logger: console,
+        })
+      }
+      currentScreen.set(targetScreen)
+      hasRunSave = false
+    } catch (err) {
+      console.error('[CardApp] Resume failed, purging saves and returning to hub:', err)
+      clearActiveRun()
+      hasRunSave = false
+      currentScreen.set('hub')
     }
-    activeRunState.set(saved.runState)
-    hydrateEncounterSnapshot(saved.encounterSnapshot ?? null)
-    activeCardRewardOptions.set(saved.cardRewardOptions ?? [])
-    activeRewardBundle.set(saved.activeRewardBundle ?? null)
-    activeRewardRevealStep.set(saved.rewardRevealStep ?? 'gold')
-    if (saved.roomOptions && saved.roomOptions.length > 0) {
-      activeRoomOptions.set(saved.roomOptions)
-    }
-    // Navigate to the saved screen or default to dungeon map
-    const screen = saved.currentScreen as import('./ui/stores/gameState').Screen
-    const mapOrRoom = 'dungeonMap'
-    let targetScreen = screen === 'campfire' ? mapOrRoom : (screen || mapOrRoom)
-    if (targetScreen === 'cardReward' && (saved.cardRewardOptions?.length ?? 0) === 0) {
-      targetScreen = mapOrRoom
-    }
-    if (screen === 'combat') {
-      // Look up enemy from saved map node so resume doesn't pick a random one.
-      const actMap = saved.runState.floor.actMap
-      const resumeNodeId = actMap?.currentNodeId
-      const resumeEnemyId = resumeNodeId ? actMap?.nodes?.[resumeNodeId]?.enemyId : undefined
-      // Make Phaser container visible before combat re-init.
-      currentScreen.set('combat')
-      await tick()
-      targetScreen = await resumeCombatWithFallback({
-        floor: saved.runState.floor.currentFloor,
-        ensurePhaserBooted,
-        startEncounter: () => startEncounterForRoom(resumeEnemyId),
-        hasTurnState: () => get(activeTurnState) !== null,
-        onCombatResumed: () => {
-          autoSaveRun('combat')
-        },
-        onFallbackMap: () => { /* map will show automatically */ },
-        logger: console,
-      })
-    }
-    currentScreen.set(targetScreen)
-    hasRunSave = false
   }
 
   let showBootAnimation = $state(false)
@@ -2567,9 +2592,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         currentQuestion={_triviaCurrentQuestion}
         lastRoundResult={_triviaLastRoundResult}
         onAnswer={(selectedIndex, timingMs) => { submitAnswer(selectedIndex, timingMs) }}
-        onPlayAgain={() => { currentScreen.set('multiplayerMenu'); }}
-        onReturnToLobby={() => { currentScreen.set('multiplayerLobby'); }}
-        onReturnToHub={() => { currentScreen.set('hub'); }}
+        onPlayAgain={() => { clearActiveRun(); currentScreen.set('multiplayerMenu'); }}
+        onReturnToLobby={() => { clearActiveRun(); currentScreen.set('multiplayerLobby'); }}
+        onReturnToHub={() => { clearActiveRun(); currentScreen.set('hub'); }}
       />
     </div>
   {/if}
@@ -2580,9 +2605,9 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         results={activeRaceResults}
         localPlayerId={localPlayerId}
         mode={currentLobby?.mode === 'same_cards' ? 'same_cards' : currentLobby?.mode === 'duel' ? 'duel' : 'race'}
-        onPlayAgain={() => { activeRaceResults = null; transitionScreen('multiplayerMenu'); }}
-        onReturnToLobby={() => { activeRaceResults = null; transitionScreen('multiplayerLobby'); }}
-        onReturnToHub={() => { activeRaceResults = null; transitionScreen('hub'); }}
+        onPlayAgain={() => { clearActiveRun(); activeRaceResults = null; transitionScreen('multiplayerMenu'); }}
+        onReturnToLobby={() => { clearActiveRun(); activeRaceResults = null; transitionScreen('multiplayerLobby'); }}
+        onReturnToHub={() => { clearActiveRun(); activeRaceResults = null; transitionScreen('hub'); }}
       />
     </div>
   {/if}
