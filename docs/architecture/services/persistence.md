@@ -100,6 +100,14 @@ One-time migration that copies all save data from `localStorage` to the file bac
 | **Key exports** | `saveActiveRun`, `loadActiveRun`, `clearActiveRun`, `hasActiveRun`, `RunSaveState` (interface), `RunSaveMode` (type) |
 | **Key dependencies** | storageBackend (getBackend), runManager, floorManager, seededRng, ascension |
 
+### loadActiveRun() no-arg scan behavior (2026-04-23)
+
+`loadActiveRun()` called with no argument now **scans all slots in priority order** (solo first) and returns the first populated save. Previously it hard-defaulted to the solo slot, so a save in any multiplayer slot was silently ignored.
+
+This makes `loadActiveRun()` symmetrical with `hasActiveRun()` and `clearActiveRun()`, both of which already scan all slots when called with no argument. Generic "resume" callers (`CardApp.handleStartRun`, `handleResumeActiveRun`, `gameFlowController.abandonActiveRun`, `checkAndResumeActiveRun`) now correctly surface stale MP saves instead of returning null.
+
+**Priority order:** `solo → multiplayer-race → multiplayer-coop → multiplayer-duel → multiplayer-trivia`. Solo takes precedence so a player with both a solo and an MP save always resumes the solo run through the standard path. The `abandonActiveRun` function adds an MP-mode early-return guard: if the save has a `multiplayer_` runMode, it purges without grading (the MP session has already terminated server-side).
+
 ## saveMigration
 
 | | |

@@ -361,6 +361,11 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       // and proceed to dungeon selection without prompting.
       if (!saved || (saved.runMode && saved.runMode.startsWith('multiplayer_'))) {
         console.warn('[CardApp] Purging orphaned/multiplayer save to prevent softlock')
+        if (saved?.runMode?.startsWith('multiplayer_')) {
+          showSyncHealthBanner("Your last run was a multiplayer game. It's been cleared.", 4500)
+        } else {
+          showSyncHealthBanner('Save data was unreadable. Starting fresh.', 4500)
+        }
         clearActiveRun()
         hasRunSave = false
         handleOpenDungeonSelection()
@@ -1496,6 +1501,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       hasRunSave = false
     } catch (err) {
       console.error('[CardApp] Resume failed, purging saves and returning to hub:', err)
+      showSyncHealthBanner("Couldn't load that run. Starting over.", 4500)
       clearActiveRun()
       hasRunSave = false
       currentScreen.set('hub')

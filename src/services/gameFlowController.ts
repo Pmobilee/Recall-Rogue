@@ -2687,6 +2687,19 @@ export function abandonActiveRun(returnScreen?: Screen): void {
     return;
   }
 
+  // MP saves are never graded through the solo-abandon path — the MP session
+  // has already terminated server-side and the run state carries MP-specific
+  // fields that finishRunAndReturnToHub's coop/race branches can't safely
+  // re-enter. Purge all slots and navigate to hub silently.
+  if (saved?.runMode?.startsWith('multiplayer_')) {
+    console.warn(`[gameFlowController] abandonActiveRun called on multiplayer save (${saved.runMode}); purging without grading.`);
+    clearActiveRun();
+    activeRunState.set(null);
+    gameFlowState.set('idle');
+    currentScreen.set(returnScreen ?? 'hub');
+    return;
+  }
+
   // ALL abandons where a saved run exists (any encountersWon count) route through
   // RunEndScreen so the player sees their summary and the run is logged in the journal.
   activeRunMode = saved!.runMode ?? 'standard';

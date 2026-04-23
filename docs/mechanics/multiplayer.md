@@ -2026,8 +2026,8 @@ MP saves also carry MP-specific state (lobby config, partner references, transpo
 
 1. **RaceResultsScreen** — all three exit handlers (`onPlayAgain`, `onReturnToLobby`, `onReturnToHub`) must call `clearActiveRun()` before any screen transition.
 2. **TriviaRoundScreen** — same rule, all three handlers.
-3. **handleStartRun** in `CardApp.svelte` — defensively purges saves whose `runMode` starts with `multiplayer_`, or where `loadActiveRun()` returns null despite `hasActiveRun()` being true (orphaned slot). No Continue/Abandon prompt is shown in this path.
-4. **handleResumeActiveRun** in `CardApp.svelte` — wrapped in try/catch; any save with `runMode.startsWith('multiplayer_')` throws, triggering `clearActiveRun()` + redirect to hub.
+3. **handleStartRun** in `CardApp.svelte` — defensively purges saves whose `runMode` starts with `multiplayer_`, or where `loadActiveRun()` returns null despite `hasActiveRun()` being true (orphaned slot). No Continue/Abandon prompt is shown in this path. Orphan purges now surface a player-facing toast (4500 ms). Silent cleanup is no longer silent.
+4. **handleResumeActiveRun** in `CardApp.svelte` — wrapped in try/catch; any save with `runMode.startsWith('multiplayer_')` throws, triggering `clearActiveRun()` + redirect to hub. The catch block now also shows a 4500 ms toast before redirecting.
 5. **handleGuardAbandon** in `CardApp.svelte` — calls `clearActiveRun()` after `abandonActiveRun()` as a belt-and-braces sweep of all slots.
 
 ### Adding new MP exit points

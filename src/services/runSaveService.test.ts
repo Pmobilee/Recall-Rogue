@@ -632,14 +632,36 @@ describe('runSaveService — MP-SWEEP-2026-04-23-C-001 per-mode key namespacing'
     expect(loadedCoop!.runState.playerHp).toBe(50);
   });
 
-  it('loadActiveRun() with no arg defaults to solo slot', () => {
+  it('loadActiveRun() with no arg returns solo save (solo-first scan)', () => {
+    // The no-arg behavior was changed from "default to solo slot" to
+    // "scan ALL_SAVE_MODES in priority order". Solo is first in that list so
+    // a solo-only save is still found — the test outcome is the same, but the
+    // mechanism now scans rather than hard-defaulting.
     clearMockStore();
     const run = makeRunState({ currency: 42 });
     saveActiveRun(makeMinimalSavePayload(run, 'standard'));
 
-    const loaded = loadActiveRun(); // no arg => solo
+    const loaded = loadActiveRun(); // no arg => scans all slots, finds solo
     expect(loaded).not.toBeNull();
     expect(loaded!.runState.currency).toBe(42);
+  });
+
+  it('loadActiveRun() with no arg finds MP save when only an MP slot is populated', () => {
+    // Regression guard for the Task A fix: before the fix, loadActiveRun()
+    // with no arg defaulted to 'solo', so an MP-only save returned null,
+    // silently triggering the null-check in abandonActiveRun as "nothing to
+    // grade" even though a stale MP run existed on disk.
+    clearMockStore();
+    const mpRun = makeRunState({ currency: 77 });
+    saveActiveRun(makeMinimalSavePayload(mpRun, 'multiplayer_race'));
+
+    // Solo slot must be empty so we're testing the scan fallback path.
+    expect(loadActiveRun('solo')).toBeNull();
+
+    const loaded = loadActiveRun(); // no arg => should scan and find the race slot
+    expect(loaded).not.toBeNull();
+    expect(loaded!.runMode).toBe('multiplayer_race');
+    expect(loaded!.runState.currency).toBe(77);
   });
 
   it('multiplayer_race, multiplayer_duel, multiplayer_trivia each get their own slot', () => {

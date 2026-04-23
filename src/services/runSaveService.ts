@@ -473,15 +473,13 @@ export function saveActiveRun(state: {
   }
 }
 
-/**
- * Load the active run save for the given mode from localStorage.
- * Returns null if no save exists for that mode.
- *
- * @param mode - Which save slot to load. Defaults to 'solo' when omitted
- *   (backwards-compatible with callers that don't pass a mode yet, e.g.
- *   generic "resume" UI that doesn't know the mode ahead of time).
- */
-export function loadActiveRun(mode?: RunSaveMode): {
+// ---------------------------------------------------------------------------
+// loadActiveRun return type (shared between the public function and the
+// private loadFromSlot helper so TypeScript treats them as the same shape).
+// ---------------------------------------------------------------------------
+
+/** Return type of loadActiveRun / loadFromSlot. */
+type LoadedRun = {
   runState: RunState;
   currentScreen: string;
   runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race' | 'multiplayer_coop' | 'multiplayer_duel' | 'multiplayer_trivia';
@@ -495,14 +493,16 @@ export function loadActiveRun(mode?: RunSaveMode): {
   rngState?: { seed: number; forks: Record<string, number> } | null;
   /** ISO timestamp of when this save was written. Used by legacy fallback for play time estimation. */
   savedAt?: string | null;
-} | null {
-  // Always run migration before any load so the legacy key is promoted to the
-  // correct per-mode slot before we try to read from it.
-  migrateLegacySaveKeyIfNeeded();
+};
 
-  const slot = mode ?? 'solo';
+/**
+ * Load from a specific save slot. Returns null if the slot is empty, corrupt,
+ * or version-mismatched.
+ *
+ * Private helper — callers should use `loadActiveRun` instead.
+ */
+function loadFromSlot(slot: RunSaveMode): LoadedRun | null {
   const key = saveKeyForSlot(slot);
-
   try {
     const raw = getBackend().readSync(key);
     if (!raw) return null;
@@ -546,6 +546,42 @@ export function loadActiveRun(mode?: RunSaveMode): {
   } catch {
     return null;
   }
+}
+
+/**
+ * Load the active run save for the given mode from localStorage.
+ * Returns null if no save exists for that mode.
+ *
+ * @param mode - Which save slot to load. When omitted, scans all slots and
+ *   returns the first populated one (solo-first priority). Used by generic
+ *   "resume" UI that doesn't know the mode ahead of time — matches the
+ *   no-arg semantics of hasActiveRun() and clearActiveRun() so all three
+ *   functions agree on what "any run" means.
+ *
+ *   Solo takes priority in the scan order so single-player saves are never
+ *   shadowed by stale MP saves when both coexist (e.g. a player who played
+ *   a race, then quit the lobby and started a solo run without MP-exit
+ *   cleanup firing correctly).
+ *
+ *   When mode IS passed, only that specific slot is read (unchanged behavior).
+ */
+export function loadActiveRun(mode?: RunSaveMode): LoadedRun | null {
+  // Always run migration before any load so the legacy key is promoted to the
+  // correct per-mode slot before we try to read from it.
+  migrateLegacySaveKeyIfNeeded();
+
+  if (mode !== undefined) {
+    // Explicit slot: load only that slot (existing behavior).
+    return loadFromSlot(mode);
+  }
+
+  // No-arg: find the first slot with a save, in fixed priority order.
+  // ALL_SAVE_MODES starts with 'solo' so solo saves take precedence.
+  for (const slot of ALL_SAVE_MODES) {
+    const result = loadFromSlot(slot);
+    if (result !== null) return result;
+  }
+  return null;
 }
 
 /**
