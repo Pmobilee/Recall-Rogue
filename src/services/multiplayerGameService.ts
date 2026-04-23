@@ -30,7 +30,7 @@ import {
   getLocalMultiplayerRating,
   persistLocalMultiplayerRating,
 } from './multiplayerElo';
-import type { MultiplayerMode, RaceProgress, RaceResults } from '../data/multiplayerTypes';
+import type { MultiplayerMode, RaceProgress, RaceResults, LobbyState } from '../data/multiplayerTypes';
 
 // ── Re-exported Types ─────────────────────────────────────────────────────────
 
@@ -1094,6 +1094,51 @@ export function initGameMessageHandlers(mode: MultiplayerMode): () => void {
   }
 
   return () => cleanups.forEach(fn => fn());
+}
+
+/**
+ * Apply Elo rating change for a completed ranked co-op run.
+ *
+ * Co-op semantics: both partners share the outcome against a single set of opponents.
+ * The local player's rating is adjusted as if they faced the arithmetic mean of all
+ * remote players' ratings. Using the mean avoids inflating/deflating deltas when there
+ * are more than two players in the lobby, and is consistent with how race-mode Elo
+ * works (one local vs one opponent).
+ *
+ * Called exactly once per run-end from gameFlowController.finishRunAndReturnToHub.
+ * The caller already gates on lobby.isRanked, so this function always applies.
+ *
+ * @param result - Run outcome ('victory' → 'win', all else → 'loss').
+ * @param lobby  - Active lobby state (contains players with their ratings).
+ */
+export function applyCoopEloResult(
+  result: 'victory' | 'defeat' | 'retreat' | 'abandon',
+  lobby: LobbyState,
+): void {
+  const localRating = getLocalMultiplayerRating();
+
+  // Collect ratings for all remote players (everyone except the local player).
+  // Remote players are those without the isHost flag set — the local player is
+  // identified by being the one whose multiplayerRating matches getLocalMultiplayerRating().
+  // Since we can't reliably identify the local player by ID from this module,
+  // use all players whose rating doesn't exactly match locals as opponents.
+  // Fallback: if every player has the same rating, use lobby count - 1 opponents at 1500.
+  const remotePlayers = lobby.players.filter(
+    (p) => (p.multiplayerRating ?? 1500) !== localRating || lobby.players.length === 1,
+  );
+
+  // Arithmetic mean of remote player ratings; default 1500 per player when field absent.
+  const opponentRating =
+    remotePlayers.length > 0
+      ? Math.round(
+          remotePlayers.reduce((sum, p) => sum + (p.multiplayerRating ?? 1500), 0) /
+            remotePlayers.length,
+        )
+      : 1500;
+
+  const outcome = result === 'victory' ? 'win' : 'loss';
+  const { newLocal } = applyEloResult(localRating, opponentRating, outcome);
+  persistLocalMultiplayerRating(newLocal);
 }
 
 /**

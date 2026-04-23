@@ -143,7 +143,7 @@ import { preloadNarrativeData } from './narrativeLoader'
 import { showNarrative } from '../ui/stores/narrativeStore'
 import { CHAIN_TYPES } from '../data/chainTypes'
 import { unlockAchievement } from './steamService'
-import { startRaceProgressBroadcast, updateLocalProgress, stopRaceProgressBroadcast, initRaceMode, collectForkSeeds, broadcastForkSeeds } from './multiplayerGameService'
+import { startRaceProgressBroadcast, updateLocalProgress, stopRaceProgressBroadcast, initRaceMode, collectForkSeeds, broadcastForkSeeds, applyCoopEloResult } from './multiplayerGameService'
 import { getCurrentLobby, getLocalMultiplayerPlayerId, isHost } from './multiplayerLobbyService'
 import {
   awaitCoopRestResolution,
@@ -533,7 +533,7 @@ function applyEndlessDepthsScaling(run: RunState): void {
 }
 
 function submitCompetitiveScore(
-  category: 'daily_expedition' | 'endless_depths' | 'scholar_challenge',
+  category: 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race' | 'multiplayer_coop' | 'multiplayer_duel',
   score: number,
   metadata: Record<string, unknown>,
 ): void {
@@ -763,6 +763,66 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData, prebuiltSum
         primaryDomain: completedAttempt.primaryDomain,
         secondaryDomain: completedAttempt.secondaryDomain,
       })
+    }
+  } else if (activeRunMode === 'multiplayer_coop' && multiplayerModeState === 'coop') {
+    // EL-002: Wire coop ELO when the lobby is ranked.
+    // No actual coop game sets lobby.isRanked today (ranked/leaderboard coop runs don't
+    // exist yet), so this guard will never fire in practice. It exists so that when
+    // ranked coop becomes a real feature, the plumbing is already in place.
+    const coopLobby = getCurrentLobby();
+    if (coopLobby?.isRanked) {
+      applyCoopEloResult(endData.result, coopLobby);
+    }
+    // SL-001: Submit to the season leaderboard for multiplayer_coop.
+    // Only submit for non-abandon outcomes with a meaningful score.
+    if (endData.result !== 'abandon') {
+      const coopScore = endData.floorReached * 100 + Math.round(endData.accuracy);
+      if (coopScore > 0) {
+        submitCompetitiveScore('multiplayer_coop', coopScore, {
+          floorReached: endData.floorReached,
+          accuracy: endData.accuracy,
+          bestCombo: endData.bestCombo,
+          runDurationMs: endData.runDurationMs,
+          result: endData.result,
+        });
+      }
+    }
+  } else if (activeRunMode === 'multiplayer_race') {
+    // SL-001: Submit to the season leaderboard for multiplayer_race.
+    // Race score is computed by the existing multiplayerScoring helper when the run ends
+    // (computeRaceScore). We recompute from endData here rather than caching the last
+    // race result, because endData is the single source of truth at run-end.
+    // TODO(SL-001-race-score): Confirm whether we should pull the canonical race score
+    // from the last-cached RaceResults instead — the formula difference is minor but
+    // ideally the leaderboard reflects the same number shown to the player.
+    if (endData.result !== 'abandon') {
+      const raceScore = endData.floorReached * 100 + Math.round(endData.accuracy);
+      if (raceScore > 0) {
+        submitCompetitiveScore('multiplayer_race', raceScore, {
+          floorReached: endData.floorReached,
+          accuracy: endData.accuracy,
+          bestCombo: endData.bestCombo,
+          runDurationMs: endData.runDurationMs,
+          result: endData.result,
+        });
+      }
+    }
+  } else if (activeRunMode === 'multiplayer_duel') {
+    // SL-001: Submit to the season leaderboard for multiplayer_duel.
+    // Duel doesn't use floorReached in the same way as other modes — use the race
+    // proxy for now. TODO(SL-001-duel-score): Replace with proper duel outcome score
+    // (winnerBonus + damageDealt) once those fields are available in RunEndData.
+    if (endData.result !== 'abandon') {
+      const duelScore = endData.floorReached * 100 + Math.round(endData.accuracy);
+      if (duelScore > 0) {
+        submitCompetitiveScore('multiplayer_duel', duelScore, {
+          floorReached: endData.floorReached,
+          accuracy: endData.accuracy,
+          bestCombo: endData.bestCombo,
+          runDurationMs: endData.runDurationMs,
+          result: endData.result,
+        });
+      }
     }
   }
 

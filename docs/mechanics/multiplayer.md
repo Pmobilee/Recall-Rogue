@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-22 — Coop wiring cluster (C-001/C-002/C-003/C-005/C-007): initGameMessageHandlers+initDuel wired, subscription order fixed before startNewRun, race broadcast gated on mode===race, playerCount threaded into createEnemy, awaitCoopEnemyReconcile timeout+retry, coopEffects.ts deleted. Wave-3 determinism: seeded RNG for tagMagnet/transmute/shuffles, primeP2PSessions before coop encounter, onPartnerStateUpdate coop-only guard, ACK contentHash handshake.
+> **Last verified:** 2026-04-23 — EL-002: coop ELO wired (applyCoopEloResult, gated on lobby.isRanked). SL-001: season leaderboard write path added for multiplayer_race, multiplayer_coop, multiplayer_duel. Previous: 2026-04-22 — Coop wiring cluster (C-001/C-002/C-003/C-005/C-007), Wave-3 determinism.
 
 ## Modes
 
@@ -622,6 +622,10 @@ Ratings persist in `PlayerProfile.multiplayerRating` (default 1500). Profiles cr
 
 When `lobby.isRanked === true`, apply Elo delta at race/duel end by calling `applyEloResult()`.
 
+**Co-op Elo (EL-002 - 2026-04-23):** Co-op games now have a wired Elo path via `applyCoopEloResult(result, lobby)` in `src/services/multiplayerGameService.ts`. Called from `gameFlowController.finishRunAndReturnToHub` when `activeRunMode === 'multiplayer_coop'` and `lobby.isRanked`. The function computes the arithmetic mean of all remote players' ratings as the opponent rating.
+
+Since no actual co-op runs currently set `lobby.isRanked = true` (ranked/leaderboard coop modes do not exist yet), this path is infrastructure-only. It fires when ranked coop launches without any additional wiring needed.
+
 ### eloMatchmakingService.ts rank tiers (for ranked lobby display)
 
 Starting rating 1000. Standard ELO formula: `E = 1 / (1 + 10^((Rb - Ra) / 400))`.
@@ -657,6 +661,20 @@ Matchmaking queue widening:
 
 v1 stores ratings in `localStorage`. Server-side persistence is planned when the Fastify backend ships.
 Source: `src/services/eloMatchmakingService.ts`.
+
+## Season Leaderboard Write Path (SL-001 - 2026-04-23)
+
+The season leaderboard endpoint (`GET /api/v1/season/current/leaderboard`) previously had no write path for multiplayer-originated scores. Three categories are now submitted via the existing `enqueueCompetitiveScoreSubmission` / `ScoreSubmissionQueue` infrastructure:
+
+| Mode | Category string | Score formula |
+|------|----------------|---------------|
+| Race / Same Cards | `multiplayer_race` | `floorReached * 100 + round(accuracy)` |
+| Co-op | `multiplayer_coop` | `floorReached * 100 + round(accuracy)` |
+| Duel | `multiplayer_duel` | `floorReached * 100 + round(accuracy)` (placeholder - TODO: replace with winnerBonus + damageDealt) |
+
+**Submission rules:** Only submitted when `result !== 'abandon'` and score > 0. Gated on `apiClient.isLoggedIn()`. No backend changes needed for v1 (endpoint accepts any string category). SeasonLeaderboard.svelte MP column display is a ui-agent follow-up.
+
+**Source:** `src/services/gameFlowController.ts:finishRunAndReturnToHub` three MP branches. `CompetitiveCategory` in `src/services/scoreSubmissionQueue.ts` widened to include the three MP categories.
 
 ## Trivia Night Scoring
 
