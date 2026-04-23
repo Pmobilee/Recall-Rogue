@@ -81,6 +81,7 @@
   import { quizPanelVisible } from '../stores/combatUiStore'
   import { reducedMotion } from '../stores/settings'
   import { resolveWowFactorText } from '../../services/wowFactorService'
+  import { notifyCardCommitted, notifyCardResolved } from '../../services/failsafeWatchdogs'
   import {
     tutorialActive,
     tutorialEvalTrigger,
@@ -2077,6 +2078,7 @@
 
     playCardAudio('card-cast')
     cardPlayStage = 'committed'
+    notifyCardCommitted(selectedCard.id) // Class A2 watchdog: quiz opened
     committedCardIndex = selectedIndex
     committedCardSnapshot = { ...selectedCard }
     // Mastery-based distractor count (AR-113): level 0 cards get fewer options (easier first quiz)
@@ -2336,6 +2338,9 @@
     const card = committedCard
     const cardId = card.id
     const responseTimeMs = committedAtMs > 0 ? Math.max(50, Date.now() - committedAtMs) : undefined
+    // Class A2 watchdog: signal quiz resolved before resetting card flow
+    const resolveOutcome: 'correct' | 'wrong' | 'endturn' = answerIndex < 0 ? 'endturn' : isCorrect ? 'correct' : 'wrong'
+    notifyCardResolved(cardId, resolveOutcome)
     const stats = getMasteryStats(card.mechanicId ?? '', card.masteryLevel ?? 0)
     const mechanic = getMechanicDefinition(card.mechanicId)
     const masteryBonus = stats && mechanic ? stats.qpValue - mechanic.quickPlayValue : 0
