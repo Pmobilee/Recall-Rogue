@@ -1267,6 +1267,15 @@ export function createTransport(mode?: 'auto' | 'local' | 'broadcast'): Multipla
 let _transport: MultiplayerTransport | null = null;
 
 /**
+ * H-009 mode-switch guard: records the mode string that was used when _transport was created.
+ * Compared on every getMultiplayerTransport() call — mismatch triggers destroy+recreate so a
+ * solo→MP→solo round-trip never routes messages through a stale WebSocket/P2P session.
+ *
+ * Normalised value: undefined and 'auto' are stored as 'auto' for comparison purposes.
+ */
+let _transportMode: 'auto' | 'local' | 'broadcast' | null = null;
+
+/**
  * Get the active multiplayer transport, creating it if this is the first call.
  * The transport type (WebSocket vs Steam P2P vs Local vs BroadcastChannel) is
  * determined by the current platform and the optional mode argument.
@@ -1277,9 +1286,26 @@ let _transport: MultiplayerTransport | null = null;
  *
  * Pass `mode: 'broadcast'` for two-tab testing via BroadcastChannel.
  * Activated automatically by multiplayerLobbyService when `?mp` is in the URL.
+ *
+ * H-009 mode-switch guard: if the existing singleton was created with a different mode,
+ * it is torn down and a fresh transport is created. This covers flows that bypass leaveLobby()
+ * (browser back, hub-ENTER during a lobby, error recovery, fast-rejoin to a different lobby).
  */
 export function getMultiplayerTransport(mode?: 'auto' | 'local' | 'broadcast'): MultiplayerTransport {
-  if (!_transport) _transport = createTransport(mode);
+  const normalisedMode: 'auto' | 'local' | 'broadcast' = mode ?? 'auto';
+
+  if (_transport !== null && _transportMode !== normalisedMode) {
+    console.info(
+      `[multiplayerTransport] H-009: mode switch detected (${_transportMode} → ${normalisedMode}). Destroying stale singleton before recreating.`,
+    );
+    destroyMultiplayerTransport();
+  }
+
+  if (!_transport) {
+    _transport = createTransport(mode);
+    _transportMode = normalisedMode;
+  }
+
   return _transport;
 }
 
@@ -1290,6 +1316,29 @@ export function getMultiplayerTransport(mode?: 'auto' | 'local' | 'broadcast'): 
 export function destroyMultiplayerTransport(): void {
   _transport?.disconnect();
   _transport = null;
+  _transportMode = null;
+}
+
+/**
+ * H-009: Destroy the transport singleton when the player navigates back to the hub.
+ *
+ * This is an opt-in call-site hook for gameFlowController (or any hub-entry path) to call
+ * when the player returns to the hub screen. It ensures that a stale MP transport from a
+ * previous session cannot bleed into a new lobby.
+ *
+ * Wiring: gameFlowController.ts should call `handleHubEnter()` wherever it transitions
+ * the player to the hub scene. If that wiring is absent (parallel-agent scope constraint),
+ * the mode-switch guard in getMultiplayerTransport() still catches the mismatch on next use.
+ *
+ * Safe to call even when no transport is active (no-op).
+ */
+export function handleHubEnter(): void {
+  if (_transport !== null) {
+    console.info(
+      '[multiplayerTransport] H-009: hub:enter — destroying transport singleton to prevent stale session bleed.',
+    );
+    destroyMultiplayerTransport();
+  }
 }
 
 // ── Steam P2P Session Reestablishment (H9) ────────────────────────────────────

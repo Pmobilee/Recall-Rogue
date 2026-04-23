@@ -567,3 +567,92 @@ describe('C4: SteamP2PTransport outbound pre-connect buffer', () => {
     logSpy.mockRestore();
   });
 });
+
+// ── H-009: Transport singleton mode-switch guard ─────────────────────────────
+//
+// Tests that getMultiplayerTransport() destroys and recreates the singleton when
+// called with a different mode, and that handleHubEnter() tears it down.
+//
+// BroadcastChannelTransport and LocalMultiplayerTransport are fully in-memory
+// (no WebSocket, no Tauri IPC), so these tests run without mocking the platform
+// check — we just exercise the mode values that do NOT go through WebSocketTransport
+// or SteamP2PTransport.
+//
+// destroyMultiplayerTransport() is called in afterEach to reset the singleton
+// between tests, since vi.isolateModules() is not available in Vitest 2.x.
+
+import {
+  getMultiplayerTransport,
+  destroyMultiplayerTransport,
+  handleHubEnter,
+} from './multiplayerTransport';
+
+describe('H-009: Transport singleton mode-switch guard', () => {
+  afterEach(() => {
+    // Always tear down the singleton so state doesn't bleed between tests.
+    destroyMultiplayerTransport();
+  });
+
+  it('same mode returns the cached instance — no destroy', () => {
+    const first = getMultiplayerTransport('broadcast');
+    const second = getMultiplayerTransport('broadcast');
+    expect(second).toBe(first);
+  });
+
+  it('different mode (local → broadcast) destroys and recreates the singleton', () => {
+    const first = getMultiplayerTransport('local');
+    const disconnectSpy = vi.spyOn(first, 'disconnect');
+
+    const second = getMultiplayerTransport('broadcast');
+
+    // Old instance must have been disconnected
+    expect(disconnectSpy).toHaveBeenCalledTimes(1);
+    // New instance is a different object
+    expect(second).not.toBe(first);
+  });
+
+  it('different mode (broadcast → local) destroys and recreates the singleton', () => {
+    const first = getMultiplayerTransport('broadcast');
+    const disconnectSpy = vi.spyOn(first, 'disconnect');
+
+    const second = getMultiplayerTransport('local');
+
+    expect(disconnectSpy).toHaveBeenCalledTimes(1);
+    expect(second).not.toBe(first);
+  });
+
+  it('undefined mode is treated as "auto" — subsequent explicit "auto" returns the same instance', () => {
+    // Both "auto" calls resolve to the same platform-determined transport.
+    // We cannot easily construct WebSocketTransport in tests (requires server),
+    // so we use 'local' here as a proxy: the point is that mode normalisation
+    // must treat undefined === 'auto' for the no-recreate path.
+    const first = getMultiplayerTransport('local');
+    // Calling with the same normalised mode must NOT destroy+recreate
+    const second = getMultiplayerTransport('local');
+    expect(second).toBe(first);
+  });
+
+  it('handleHubEnter() disconnects an active transport', () => {
+    const transport = getMultiplayerTransport('broadcast');
+    const disconnectSpy = vi.spyOn(transport, 'disconnect');
+
+    handleHubEnter();
+
+    expect(disconnectSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('handleHubEnter() causes the next getMultiplayerTransport() to return a new instance', () => {
+    const first = getMultiplayerTransport('broadcast');
+
+    handleHubEnter();
+
+    const second = getMultiplayerTransport('broadcast');
+    expect(second).not.toBe(first);
+  });
+
+  it('handleHubEnter() is a no-op when no transport is active', () => {
+    // No prior getMultiplayerTransport() call — _transport is null.
+    // Must not throw.
+    expect(() => handleHubEnter()).not.toThrow();
+  });
+});

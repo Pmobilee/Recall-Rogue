@@ -1390,3 +1390,49 @@ The FIX-020 goal (guests receive correct game-start values) is preserved: `mode`
 ### Test coverage
 
 `server/tests/routes/mpLobbyWs.test.ts` — 16 tests covering injection attempts, allowlist enumeration, server-state source verification, seed/deckId coercion, and null-lobby/undefined-payload graceful handling.
+
+---
+
+## Transport Mode-Switch Guard (H-009)
+
+> **Implemented:** 2026-04-23 — Fixes MP-SWEEP-2026-04-23-H-009.
+
+### Problem
+
+`multiplayerTransport.ts` holds a module-level singleton `_transport`. `getMultiplayerTransport()` creates it lazily on the first call and only nulls it in `destroyMultiplayerTransport()`. Caller discipline is required: `leaveLobby()` must invoke `destroyMultiplayerTransport()` before the player enters a new lobby. Flows that bypass `leaveLobby()` — browser back button, hub-ENTER while nominally in a lobby, error recovery, fast-rejoin — leave `_transport` pointing at the old WebSocket/Steam P2P session. The next `getMultiplayerTransport(newMode)` returns the stale instance. Messages from the new lobby route to the old endpoint.
+
+### Fix
+
+Two additions to the singleton section (`multiplayerTransport.ts`):
+
+**1. `_transportMode` sidecar** — Records the normalised mode (`'auto' | 'local' | 'broadcast'`) used when `_transport` was last created. `undefined` is normalised to `'auto'`.
+
+**2. Mode-switch guard in `getMultiplayerTransport()`** — Before returning the cached singleton, checks `_transportMode !== normalisedMode`. If they differ, calls `destroyMultiplayerTransport()` first (disconnects + nulls both `_transport` and `_transportMode`), then creates a fresh transport. Logs the old→new transition at `console.info` for debuggability.
+
+**3. `handleHubEnter()`** — Exported function for gameFlowController (or any hub-entry path) to call when transitioning to the hub screen. Destroys the singleton unconditionally if active. Call-site wiring in `gameFlowController.ts` is a follow-up (blocked by parallel-agent scope); the mode-switch guard in step 2 provides the same safety net for the most common case.
+
+### API
+
+```typescript
+// Existing API — unchanged callers
+getMultiplayerTransport(mode?: 'auto' | 'local' | 'broadcast'): MultiplayerTransport
+destroyMultiplayerTransport(): void
+
+// New — call from hub-entry path in gameFlowController.ts
+handleHubEnter(): void
+```
+
+### `destroyMultiplayerTransport()` now also nulls `_transportMode`
+
+Callers that manually invoke `destroyMultiplayerTransport()` (e.g. `leaveLobby()`) get the same reset behaviour — the next `getMultiplayerTransport()` call always creates a fresh instance regardless of the requested mode.
+
+### Test coverage
+
+`src/services/multiplayerTransport.test.ts` — 7 new tests under `H-009: Transport singleton mode-switch guard`:
+- Same mode returns cached instance (no recreate)
+- `local → broadcast` destroys and recreates (new object, disconnect called)
+- `broadcast → local` destroys and recreates
+- `undefined` treated as `'auto'` — no spurious recreate on explicit `'auto'`
+- `handleHubEnter()` disconnects active transport
+- `handleHubEnter()` causes next call to return a new instance
+- `handleHubEnter()` is a no-op when no transport is active

@@ -5711,3 +5711,11 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
 **Fix:** Replaced the spread with `buildLobbyStartPayload()` — an explicit allowlist pulling `mode`, `houseRules`, `contentSelection` from `lobby.*` (server state), accepting `seed` and `deckId` from the host payload with type coercion, and silently dropping all other keys. Exported as a pure function for unit testing.
 
 **Pattern to watch:** Any broadcast that uses `...msg.payload` without an explicit allowlist is a potential injection vector. Grep `msg\.payload` in WS route handlers and confirm each spread is intentional (relay messages are intentionally passthrough, but control-plane messages like `lobby:start` must be filtered).
+
+### 2026-04-23 — Transport singleton survives solo→MP→solo without explicit destroy (H-009)
+
+**What:** `multiplayerTransport.ts` held a module-level `_transport` singleton that was only nulled by `destroyMultiplayerTransport()`. Flows bypassing `leaveLobby()` (browser back, hub-ENTER during a lobby, error recovery) left the old WebSocket/P2P session alive. The next `getMultiplayerTransport()` returned the stale instance, routing new-lobby messages to the old endpoint.
+
+**Fix:** Added `_transportMode` sidecar alongside `_transport`. `getMultiplayerTransport()` now checks for mode mismatch and calls `destroyMultiplayerTransport()` first if detected. Added `handleHubEnter()` as an explicit hook for gameFlowController. `destroyMultiplayerTransport()` also nulls `_transportMode` so manual callers reset cleanly.
+
+**Watch out for:** `vi.isolateModules()` is not available in Vitest 2.x. Use `destroyMultiplayerTransport()` in `afterEach()` to reset singleton state between tests instead.
