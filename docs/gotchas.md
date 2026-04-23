@@ -5749,3 +5749,18 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
 **Fix:** Added `isStricteningVisibility()` helper, `findIneligibleGuests()` logic, and eviction loop in `setVisibility()`. Added `enteredWithPassword?: boolean` to `LobbyPlayer` — set by the host at join time when the lobby is currently password-gated (backend already validated the hash). For `friends_only`, no client-side friends graph is available so we evict all non-host guests (safer than leaving strangers in a "private" lobby). New `getPendingVisibilityChange()` / `applyPendingVisibilityChange()` / `cancelPendingVisibilityChange()` exports for UI hookup.
 
 **Lesson:** Privacy-mode toggles in multi-user systems must retroactively enforce the new constraint on existing sessions, not just gate new joins. The lobby-browser filter creating a "looks private" UX while the actual session stayed open was the most dangerous part.
+
+### 2026-04-23 — MP: Guest stuck ready-up if mp:lobby:start is dropped (H-008)
+
+**What:** Steam P2P sends `mp:lobby:start` as a single fire-and-forget broadcast. If the message is dropped or the host crashes between `startGame()` and the guest receiving the message, the guest is stuck — `setReady(true)` disabled the Ready button, but `onGameStart` never fires. No error, no timeout, no recovery.
+
+**Why:** The service had no watchdog on the guest side. The host's ACK retry loop (H5) retried from the host's perspective, but if the host was completely gone, there was no one to retry.
+
+**Fix (service layer — commit `fix(mp-lobby): MP-SWEEP-2026-04-23-H-008`):**
+- Added a 30-second `_readyWatchdogTimer` that arms in `setReady(true)` for guests only.
+- On expiry: resets `player.isReady = false` (re-enables the button); fires `_readyTimeoutSubscribers`.
+- Timer clears on: `mp:lobby:start` received, `setReady(false)`, `leaveLobby()`, `cancelReadyWatchdog()`.
+- Three new exports for the UI layer: `onReadyTimeout`, `getReadyWatchdogStatus`, `cancelReadyWatchdog` + `READY_WATCHDOG_MS` constant.
+- See `docs/architecture/multiplayer.md` § "Ready-Up Watchdog (H-008)" for full API contract.
+
+**UI half:** Follow-up `ui-agent` invocation wires the banner/error state in `MultiplayerLobby.svelte`.

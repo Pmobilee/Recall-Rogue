@@ -444,6 +444,10 @@ const {
   getPendingVisibilityChange,
   applyPendingVisibilityChange,
   cancelPendingVisibilityChange,
+  onReadyTimeout,
+  getReadyWatchdogStatus,
+  cancelReadyWatchdog,
+  READY_WATCHDOG_MS,
 } = await import('./multiplayerLobbyService');
 
 // ---------------------------------------------------------------------------
@@ -2032,5 +2036,219 @@ describe('H-006: setVisibility — evict ineligible guests on strictening', () =
 
     leaveLobby();
     expect(getPendingVisibilityChange()).toBeNull();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// H-008: Guest ready-up watchdog tests
+// ---------------------------------------------------------------------------
+
+describe('H-008: ready-up watchdog — 30-second timeout when mp:lobby:start is lost', () => {
+  beforeEach(() => {
+    mockTransport = createMockTransport();
+    vi.clearAllMocks();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
+
+  /**
+   * Helper: join as a guest (not host) with one extra player so the lobby is valid.
+   * Returns the joined lobby's ID for assertion convenience.
+   */
+  async function makeGuestLobby(): Promise<string> {
+    await joinLobby('WATCHDOG', 'guest_h008', 'GuestH008');
+    const lobby = getCurrentLobby()!;
+    // Add host as a separate player so the lobby has 2 players
+    lobby.players.push({ id: 'host_h008', displayName: 'Host', isHost: true, isReady: false });
+    // Reorder so hostId is host_h008 — guest is not the host
+    lobby.hostId = 'host_h008';
+    return lobby.lobbyId;
+  }
+
+  it('fires subscriber with correct lobbyId after 30s when no onGameStart arrives', async () => {
+    const lobbyId = await makeGuestLobby();
+
+    const received: Array<{ lobbyId: string; expiredAt: number }> = [];
+    onReadyTimeout((info) => { received.push(info); });
+
+    setReady(true);
+    // Watchdog should be armed — check status
+    expect(getReadyWatchdogStatus().active).toBe(true);
+
+    // Advance to just before expiry — no fire
+    vi.advanceTimersByTime(READY_WATCHDOG_MS - 1);
+    expect(received.length).toBe(0);
+
+    // Advance past expiry
+    vi.advanceTimersByTime(2);
+    expect(received.length).toBe(1);
+    expect(received[0].lobbyId).toBe(lobbyId);
+    expect(typeof received[0].expiredAt).toBe('number');
+  });
+
+  it('resets readyPending (player.isReady = false) after watchdog fires', async () => {
+    await makeGuestLobby();
+    onReadyTimeout(() => {});
+
+    setReady(true);
+    const lobby = getCurrentLobby()!;
+    const guestPlayer = lobby.players.find(p => p.id === 'guest_h008')!;
+    expect(guestPlayer.isReady).toBe(true);
+
+    vi.advanceTimersByTime(READY_WATCHDOG_MS + 1);
+    // After watchdog fires, isReady should be reset to false
+    expect(guestPlayer.isReady).toBe(false);
+  });
+
+  it('watchdog is idle after fire (getReadyWatchdogStatus returns inactive)', async () => {
+    await makeGuestLobby();
+    onReadyTimeout(() => {});
+
+    setReady(true);
+    expect(getReadyWatchdogStatus().active).toBe(true);
+
+    vi.advanceTimersByTime(READY_WATCHDOG_MS + 1);
+    expect(getReadyWatchdogStatus().active).toBe(false);
+    expect(getReadyWatchdogStatus().msRemaining).toBeNull();
+  });
+
+  it('clears timer when mp:lobby:start arrives before 30s — subscriber does NOT fire', async () => {
+    await makeGuestLobby();
+
+    const fired: boolean[] = [];
+    onReadyTimeout(() => { fired.push(true); });
+
+    setReady(true);
+    expect(getReadyWatchdogStatus().active).toBe(true);
+
+    // Simulate host sending mp:lobby:start before watchdog expires
+    vi.advanceTimersByTime(5_000);
+    mockTransport.simulateReceive('mp:lobby:start', { seed: 12345, mode: 'race' });
+
+    // Watchdog should now be cleared
+    expect(getReadyWatchdogStatus().active).toBe(false);
+
+    // Advance past the original expiry — subscriber should NOT have fired
+    vi.advanceTimersByTime(READY_WATCHDOG_MS);
+    expect(fired.length).toBe(0);
+  });
+
+  it('clears timer when setReady(false) is called before 30s — subscriber does NOT fire', async () => {
+    await makeGuestLobby();
+
+    const fired: boolean[] = [];
+    onReadyTimeout(() => { fired.push(true); });
+
+    setReady(true);
+    expect(getReadyWatchdogStatus().active).toBe(true);
+
+    vi.advanceTimersByTime(10_000);
+    setReady(false);
+    expect(getReadyWatchdogStatus().active).toBe(false);
+
+    vi.advanceTimersByTime(READY_WATCHDOG_MS);
+    expect(fired.length).toBe(0);
+  });
+
+  it('clears timer when leaveLobby() is called before 30s — subscriber does NOT fire', async () => {
+    await makeGuestLobby();
+
+    const fired: boolean[] = [];
+    onReadyTimeout(() => { fired.push(true); });
+
+    setReady(true);
+    expect(getReadyWatchdogStatus().active).toBe(true);
+
+    vi.advanceTimersByTime(5_000);
+    leaveLobby();
+    expect(getReadyWatchdogStatus().active).toBe(false);
+
+    vi.advanceTimersByTime(READY_WATCHDOG_MS);
+    expect(fired.length).toBe(0);
+  });
+
+  it('cancelReadyWatchdog() aborts the timer — subscriber does NOT fire', async () => {
+    await makeGuestLobby();
+
+    const fired: boolean[] = [];
+    onReadyTimeout(() => { fired.push(true); });
+
+    setReady(true);
+    expect(getReadyWatchdogStatus().active).toBe(true);
+
+    cancelReadyWatchdog();
+    expect(getReadyWatchdogStatus().active).toBe(false);
+
+    vi.advanceTimersByTime(READY_WATCHDOG_MS + 1);
+    expect(fired.length).toBe(0);
+  });
+
+  it('multi-subscriber: both callbacks fire on expiry', async () => {
+    await makeGuestLobby();
+
+    const results1: string[] = [];
+    const results2: string[] = [];
+    onReadyTimeout((info) => { results1.push(info.lobbyId); });
+    onReadyTimeout((info) => { results2.push(info.lobbyId); });
+
+    setReady(true);
+    vi.advanceTimersByTime(READY_WATCHDOG_MS + 1);
+
+    expect(results1.length).toBe(1);
+    expect(results2.length).toBe(1);
+  });
+
+  it('unsubscribe removes only its own callback, other callback still fires', async () => {
+    await makeGuestLobby();
+
+    const results1: string[] = [];
+    const results2: string[] = [];
+    const unsub1 = onReadyTimeout((info) => { results1.push(info.lobbyId); });
+    onReadyTimeout((info) => { results2.push(info.lobbyId); });
+
+    // Remove the first subscriber
+    unsub1();
+
+    setReady(true);
+    vi.advanceTimersByTime(READY_WATCHDOG_MS + 1);
+
+    expect(results1.length).toBe(0); // unsubscribed — must not fire
+    expect(results2.length).toBe(1); // still subscribed — must fire
+  });
+
+  it('getReadyWatchdogStatus returns inactive when idle', async () => {
+    await makeGuestLobby();
+    const status = getReadyWatchdogStatus();
+    expect(status.active).toBe(false);
+    expect(status.msRemaining).toBeNull();
+  });
+
+  it('getReadyWatchdogStatus returns active with ~30000 msRemaining right after setReady(true)', async () => {
+    await makeGuestLobby();
+
+    setReady(true);
+    const status = getReadyWatchdogStatus();
+    expect(status.active).toBe(true);
+    // msRemaining should be close to READY_WATCHDOG_MS (no significant wall clock elapsed in fake timers)
+    expect(status.msRemaining).not.toBeNull();
+    expect(status.msRemaining!).toBeGreaterThan(READY_WATCHDOG_MS - 100);
+    expect(status.msRemaining!).toBeLessThanOrEqual(READY_WATCHDOG_MS);
+  });
+
+  it('getReadyWatchdogStatus msRemaining decreases as fake time advances', async () => {
+    await makeGuestLobby();
+
+    setReady(true);
+    vi.advanceTimersByTime(5_000);
+    const status = getReadyWatchdogStatus();
+    expect(status.active).toBe(true);
+    // msRemaining should be approximately 25000 after 5s elapsed
+    expect(status.msRemaining!).toBeGreaterThan(24_900);
+    expect(status.msRemaining!).toBeLessThanOrEqual(25_000);
   });
 });

@@ -269,6 +269,30 @@ const RECONNECT_GRACE_MS = 60_000;
  */
 let _peerLeftPollInterval: ReturnType<typeof setInterval> | null = null;
 
+// ── H-008: Guest ready-up watchdog ────────────────────────────────────────────
+/**
+ * Duration a guest waits for mp:lobby:start after calling setReady(true) before
+ * the watchdog fires. 30 s is generous for P2P message delivery while still
+ * surfacing genuine lost-start scenarios.
+ */
+export const READY_WATCHDOG_MS = 30_000;
+
+/**
+ * Active setTimeout handle for the ready-up watchdog, or null when idle.
+ * Set when the guest calls setReady(true); cleared on onGameStart, setReady(false),
+ * leaveLobby(), or cancelReadyWatchdog().
+ */
+let _readyWatchdogTimer: ReturnType<typeof setTimeout> | null = null;
+
+/**
+ * Monotonic timestamp (Date.now()) recorded when the watchdog was armed.
+ * Used by getReadyWatchdogStatus() to compute msRemaining without a second timer.
+ */
+let _readyWatchdogArmedAt: number | null = null;
+
+/** Multi-subscriber set for ready-timeout callbacks (H-008). */
+const _readyTimeoutSubscribers = new Set<(info: { lobbyId: string; expiredAt: number }) => void>();
+
 /** Get the current lobby state (null if not in a lobby) */
 export function getCurrentLobby(): LobbyState | null { return _currentLobby; }
 
@@ -927,6 +951,9 @@ export function leaveLobby(): void {
   for (const timer of _reconnectTimers.values()) clearTimeout(timer);
   _reconnectTimers.clear();
 
+  // H-008: Clear the guest ready-up watchdog — leaving voids the need to wait.
+  _clearReadyWatchdog();
+
   _currentLobby = null;
   _passwordHash = null;
   _pendingVisibilityChange = null; // H-006: clear eviction record
@@ -1375,6 +1402,18 @@ export function setReady(ready: boolean): void {
       readyVersion: _localReadyVersion,
     });
     notifyLobbyUpdate();
+
+    // H-008: Arm the 30-second watchdog when a guest successfully readies up.
+    // If mp:lobby:start never arrives (host crash, dropped broadcast), the watchdog
+    // fires a _readyTimeoutSubscribers notification and resets the ready flag so
+    // the UI can re-enable the Ready button without a manual reload.
+    // Hosts do not need a watchdog — they trigger startGame() themselves.
+    if (ready && !isHost()) {
+      _armReadyWatchdog(_currentLobby.lobbyId);
+    } else {
+      // Unreadying or host toggling — always disarm.
+      _clearReadyWatchdog();
+    }
   }
 }
 
@@ -1577,6 +1616,49 @@ export function onLobbyError(cb: (error: string) => void): () => void {
   return () => { _lobbyErrorSubscribers.delete(cb); };
 }
 
+/**
+ * H-008: Register a callback that fires when the guest ready-up watchdog expires.
+ * The watchdog arms when setReady(true) is called by a non-host and no
+ * mp:lobby:start arrives within READY_WATCHDOG_MS (30 s).
+ *
+ * After the callback fires, readyPending is reset — the UI may re-enable the
+ * Ready button or surface an error prompt. Returns an unsubscribe function.
+ *
+ * @param cb  Called with `{ lobbyId, expiredAt }` when the watchdog expires.
+ * @returns   Cleanup function — call it in component teardown.
+ */
+export function onReadyTimeout(
+  cb: (info: { lobbyId: string; expiredAt: number }) => void,
+): () => void {
+  _readyTimeoutSubscribers.add(cb);
+  return () => { _readyTimeoutSubscribers.delete(cb); };
+}
+
+/**
+ * H-008: Read-only snapshot of the ready-up watchdog state.
+ * Returns `{ active: true, msRemaining }` while the timer is running, or
+ * `{ active: false, msRemaining: null }` when idle.
+ *
+ * Safe to call at any time — never throws.
+ */
+export function getReadyWatchdogStatus(): { active: boolean; msRemaining: number | null } {
+  if (_readyWatchdogTimer === null || _readyWatchdogArmedAt === null) {
+    return { active: false, msRemaining: null };
+  }
+  const elapsed = Date.now() - _readyWatchdogArmedAt;
+  const msRemaining = Math.max(0, READY_WATCHDOG_MS - elapsed);
+  return { active: true, msRemaining };
+}
+
+/**
+ * H-008: Explicitly abort the ready-up watchdog without firing subscribers.
+ * The UI calls this when the player clicks "Leave lobby" or dismisses the timeout
+ * error banner — the intent is clear, no need to surface the expiry event.
+ */
+export function cancelReadyWatchdog(): void {
+  _clearReadyWatchdog();
+}
+
 /** BUG23: helper to fire all subscribers with one try/catch per subscriber. */
 function _fireSubscribers<Args extends unknown[]>(
   subscribers: Set<(...args: Args) => void>,
@@ -1642,6 +1724,44 @@ function notifyLobbyUpdate(): void {
   for (const cb of _lobbyUpdateSubscribers) {
     try { cb(snapshot); } catch (e) { rrLog('mp:lobby', 'subscriber threw', { e: String(e) }); }
   }
+}
+
+// ── H-008: Ready-up watchdog helpers ─────────────────────────────────────────
+
+/**
+ * Arm the 30-second watchdog for a guest who just called setReady(true).
+ * If already armed (e.g., setReady called twice), resets to a fresh 30 s.
+ */
+function _armReadyWatchdog(lobbyId: string): void {
+  _clearReadyWatchdog();
+  _readyWatchdogArmedAt = Date.now();
+  _readyWatchdogTimer = setTimeout(() => {
+    _readyWatchdogTimer = null;
+    _readyWatchdogArmedAt = null;
+    // Reset the guest's ready flag so the UI can re-enable the button.
+    if (_currentLobby) {
+      const player = _currentLobby.players.find(p => p.id === _localPlayerId);
+      if (player) {
+        player.isReady = false;
+        notifyLobbyUpdate();
+      }
+    }
+    const expiredAt = Date.now();
+    rrLog('mp:lobby', 'H-008: ready-up watchdog expired', { lobbyId, expiredAt });
+    _fireSubscribers(_readyTimeoutSubscribers, { lobbyId, expiredAt });
+  }, READY_WATCHDOG_MS);
+}
+
+/**
+ * Disarm the watchdog without firing subscribers.
+ * Safe to call when no watchdog is running.
+ */
+function _clearReadyWatchdog(): void {
+  if (_readyWatchdogTimer !== null) {
+    clearTimeout(_readyWatchdogTimer);
+    _readyWatchdogTimer = null;
+  }
+  _readyWatchdogArmedAt = null;
 }
 
 /**
@@ -2036,6 +2156,8 @@ function setupMessageHandlers(): void {
 
     // BUG-8: on Steam P2P, host already fired in startGame() — guard prevents double-fire.
     // On BroadcastChannel/WebSocket, host receives its own echo and fires here (normal path).
+    // H-008: Clear the ready-up watchdog — game start arrived, no timeout needed.
+    _clearReadyWatchdog();
     if (!_hostStartFired) {
       _hostStartFired = true;
       _fireSubscribers(_gameStartSubscribers, payload.seed, _currentLobby);

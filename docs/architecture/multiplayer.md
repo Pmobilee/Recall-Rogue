@@ -1539,3 +1539,46 @@ if (raw.playerId !== msg.senderId) {
 - `cancelPendingVisibilityChange` and `applyPendingVisibilityChange` clear the pending record.
 - No evictions when all guests have `enteredWithPassword=true`.
 - `leaveLobby` clears `pendingVisibilityChange`.
+
+---
+
+## Ready-Up Watchdog (H-008)
+
+**Problem:** A guest who calls `setReady(true)` disables the Ready button and waits for `mp:lobby:start` (sent by the host's `startGame()`). Steam P2P delivers `mp:lobby:start` as a single fire-and-forget broadcast — if the message is dropped or the host crashes mid-broadcast, the guest is stuck indefinitely with no error and no recovery path.
+
+**Fix:** A 30-second client-side watchdog that arms on `setReady(true)` (guests only) and disarms on any of:
+- `mp:lobby:start` received (normal path — game actually starts)
+- `setReady(false)` called (guest unreadies)
+- `leaveLobby()` called
+- `cancelReadyWatchdog()` called explicitly by the UI
+
+On expiry, the watchdog resets `player.isReady = false` (allowing the UI to re-enable the Ready button) and fires all `onReadyTimeout` subscribers.
+
+### Exported API (service layer — consumed by `MultiplayerLobby.svelte`)
+
+| Export | Signature | Purpose |
+|--------|-----------|---------|
+| `READY_WATCHDOG_MS` | `number` (30000) | Duration constant; UI can display countdown |
+| `onReadyTimeout` | `(cb: (info: { lobbyId: string; expiredAt: number }) => void) => () => void` | Register a timeout callback; returns unsubscribe fn |
+| `getReadyWatchdogStatus` | `() => { active: boolean; msRemaining: number \| null }` | Poll-friendly status snapshot |
+| `cancelReadyWatchdog` | `() => void` | Explicit abort without firing subscribers |
+
+**Subscriber payload:** `{ lobbyId: string, expiredAt: number }` — `lobbyId` identifies the stale lobby; `expiredAt` is `Date.now()` at fire time.
+
+**Subscriber lifecycle:** Multi-subscriber (same Set pattern as `onLobbyUpdate`). Subscribers are NOT cleared on `leaveLobby()` — register once, unsubscribe in component teardown. Hosts are never affected — the watchdog only arms when `!isHost()`.
+
+### Test coverage
+
+`src/services/multiplayerLobbyService.test.ts` — H-008 describe block (13 tests):
+- Timer fires after 30s when `setReady(true)` called and no `mp:lobby:start` arrives → subscriber fires with correct `lobbyId`; `player.isReady` is false after fire.
+- Timer clears when `mp:lobby:start` arrives before 30s → subscriber does NOT fire.
+- Timer clears when `setReady(false)` called before 30s → subscriber does NOT fire.
+- Timer clears when `leaveLobby()` called before 30s → subscriber does NOT fire.
+- `cancelReadyWatchdog()` aborts the timer → subscriber does NOT fire.
+- Multi-subscriber: two `onReadyTimeout` registrations both fire on expiry.
+- Unsubscribe removes only its own callback; other callback still fires.
+- `getReadyWatchdogStatus()` returns `{ active: false, msRemaining: null }` when idle.
+- `getReadyWatchdogStatus()` returns `{ active: true, msRemaining: ~30000 }` right after `setReady(true)`.
+- `msRemaining` decreases after `vi.advanceTimersByTime(5000)` — approximately 25000.
+- Watchdog is idle (not active) after it fires naturally.
+- `player.isReady` resets to false after watchdog fires.
