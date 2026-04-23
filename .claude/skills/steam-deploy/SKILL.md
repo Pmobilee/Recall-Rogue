@@ -154,6 +154,13 @@ grep "watchdog:barrier" debug.log      # Class C: turn-end barrier cancellations
 grep "watchdog:combatScene" debug.log  # Class E: Phaser scene null during combat
 grep "watchdog:runState" debug.log     # Class F: run state null during active encounter
 grep "watchdog:cardPlay" debug.log     # Class A: committed-quiz open/resolve events
+
+# Embedded DB load (curated.db + facts.db) — confirms bundling & XOR decode
+grep "db:curated\|db:facts" debug.log
+# Healthy init: ".fetched" (bytes>0) -> ".decode ok (SQLite magic present)" -> ".init complete"
+# Watch for: "fetch failed" (DB not embedded), "decode mismatch" (XOR key drift,
+# usually a stale dist/ vs runtime version), "no decks in curated.db" (build script
+# wrote an empty DB), or "init threw" (sql.js crash on corrupt data).
 ```
 
 ### Tag prefixes

@@ -26,6 +26,7 @@ import type { DeckRegistryEntry } from './deckRegistry';
 import type { CanonicalFactDomain } from './card-types';
 import { getDomainMetadata } from './domainMetadata';
 import { decodeDbBuffer } from '../services/dbDecoder';
+import { rrLog } from '../services/rrLog';
 import {
   loadDatabase as loadChessDatabase,
   getNextPuzzles,
@@ -433,12 +434,26 @@ export async function initializeCuratedDecks(): Promise<void> {
     ]);
 
     if (!bufferResp.ok) {
+      rrLog('db:curated', 'fetch failed', { status: bufferResp.status, msg: '0 curated decks loaded' });
       console.log(`[CuratedDecks] /curated.db not found (${bufferResp.status}) — 0 curated decks loaded`);
       return;
     }
 
     const rawBuffer = await bufferResp.arrayBuffer();
+    rrLog('db:curated', 'fetched', { bytes: rawBuffer.byteLength });
     const decodedBytes = decodeDbBuffer(rawBuffer);
+    // Sanity-check: first 6 bytes of a valid SQLite file are "SQLite". Log a clear
+    // failure if the XOR key didn't match (stale build vs runtime version, corrupt
+    // obfuscation, or missing deobfuscation) so the silent "0 decks loaded" case
+    // below can be distinguished from a healthy-but-empty DB.
+    const magic = String.fromCharCode(...decodedBytes.slice(0, 6));
+    if (magic !== 'SQLite') {
+      rrLog('db:curated', 'decode mismatch — XOR key likely wrong', {
+        firstBytesHex: Array.from(decodedBytes.slice(0, 16)).map(b => b.toString(16).padStart(2, '0')).join(' '),
+      });
+    } else {
+      rrLog('db:curated', 'decode ok (SQLite magic present)');
+    }
 
     const SQL = await initFn({ locateFile: () => '/sql-wasm.wasm' });
     const db = new SQL.Database(decodedBytes);
@@ -463,6 +478,7 @@ export async function initializeCuratedDecks(): Promise<void> {
     // 1. Load all deck shells.
     const deckRows = queryAll('SELECT * FROM decks');
     if (deckRows.length === 0) {
+      rrLog('db:curated', 'no decks in curated.db — 0 curated decks loaded');
       console.log('[CuratedDecks] curated.db has no decks — 0 curated decks loaded');
       db.close();
       return;
@@ -553,6 +569,13 @@ export async function initializeCuratedDecks(): Promise<void> {
 
     // Report skipped malformed rows — zero is expected for healthy data.
     const skippedTotal = skippedFacts + skippedPools + skippedSynonyms;
+    rrLog('db:curated', 'init complete', {
+      loaded,
+      totalFacts,
+      skippedFacts,
+      skippedPools,
+      skippedSynonyms,
+    });
     if (skippedTotal > 0) {
       console.warn(
         `[CuratedDecks] Loaded ${loaded} deck(s) with ${totalFacts} facts. ` +
@@ -570,6 +593,7 @@ export async function initializeCuratedDecks(): Promise<void> {
       );
     }
   } catch (err) {
+    rrLog('db:curated', 'init threw', { err: String(err) });
     console.warn('[CuratedDecks] Failed to initialize:', err);
   }
 }

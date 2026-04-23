@@ -7,6 +7,7 @@ import { factPackService } from './factPackService'
 import { AGE_BRACKET_KEY } from './legalConstants'
 import { shuffled } from './randomUtils'
 import { decodeDbBuffer } from './dbDecoder'
+import { rrLog } from './rrLog'
 
 type SqlJsStatic = typeof import('sql.js')['default']
 let _initSqlJs: SqlJsStatic | null = null
@@ -114,16 +115,28 @@ class FactsDB {
       getSqlWasmUrl(),
       fetch('/facts.db').then(response => {
         if (!response.ok) {
+          rrLog('db:facts', 'fetch failed', { status: response.status, statusText: response.statusText })
           throw new Error(`Failed to fetch /facts.db: ${response.status} ${response.statusText}`)
         }
         return response.arrayBuffer()
       }),
     ])
+    rrLog('db:facts', 'fetched', { bytes: buffer.byteLength })
     const SQL = await initFn({ locateFile: () => wasmUrl })
-    this.db = new SQL.Database(decodeDbBuffer(buffer))
+    const decoded = decodeDbBuffer(buffer)
+    // Same XOR-key sanity check as curated.db — "SQLite" magic in first 6 bytes
+    // catches version drift between the build-time obfuscate and the runtime decode.
+    const magic = String.fromCharCode(...decoded.slice(0, 6))
+    if (magic !== 'SQLite') {
+      rrLog('db:facts', 'decode mismatch — XOR key likely wrong', {
+        firstBytesHex: Array.from(decoded.slice(0, 16)).map(b => b.toString(16).padStart(2, '0')).join(' '),
+      })
+    }
+    this.db = new SQL.Database(decoded)
     this.initialized = true
     this.invalidateIndexes()
     this.ensureIndexes()
+    rrLog('db:facts', 'init complete', { factCount: this.allFactsCache?.length ?? 0 })
     if (import.meta.env.DEV) console.info(`[FactsDB] Initialized: ${this.allFactsCache?.length ?? 0} facts loaded`)
   }
 
