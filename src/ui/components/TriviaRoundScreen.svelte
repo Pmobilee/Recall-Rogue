@@ -373,6 +373,22 @@
         <button class="action-btn ghost" onclick={onReturnToHub}>Return to Hub</button>
       </div>
     </div>
+
+  <!-- ── Waiting / unknown phase (softlock prevention) ─────────────────── -->
+  {:else}
+    <div class="waiting-phase" role="status">
+      <p class="waiting-phase-text" aria-live="polite">{gameState.phase === 'waiting' ? 'Waiting for the next round.' : 'Hang tight while the round resolves.'}</p>
+      <span class="waiting-dots" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+      <button
+        class="action-btn ghost waiting-escape-btn"
+        onclick={onReturnToHub}
+        data-testid="trivia-waiting-escape"
+      >
+        Return to Hub
+      </button>
+    </div>
   {/if}
 </div>
 
@@ -960,5 +976,54 @@
   .action-btn.ghost:hover {
     background: rgba(121, 134, 203, 0.1);
     color: #9fa8da;
+  }
+
+  /* ── Waiting / unknown phase ─────────────────────────────────────────────── */
+  .waiting-phase {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(20px * var(--layout-scale, 1));
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: calc(16px * var(--layout-scale, 1));
+    padding: calc(48px * var(--layout-scale, 1)) calc(40px * var(--layout-scale, 1));
+    width: 100%;
+    max-width: calc(480px * var(--layout-scale, 1));
+  }
+
+  .waiting-phase-text {
+    font-size: calc(16px * var(--text-scale, 1));
+    color: #9fa8da;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+  }
+
+  .waiting-dots {
+    display: flex;
+    gap: calc(8px * var(--layout-scale, 1));
+  }
+
+  .waiting-dots span {
+    width: calc(8px * var(--layout-scale, 1));
+    height: calc(8px * var(--layout-scale, 1));
+    border-radius: 50%;
+    background: #7c4dff;
+    animation: dot-pulse 1.2s ease-in-out infinite;
+  }
+
+  .waiting-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .waiting-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes dot-pulse {
+    0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1); }
+  }
+
+  .waiting-escape-btn {
+    margin-top: calc(8px * var(--layout-scale, 1));
   }
 </style>

@@ -294,6 +294,40 @@
           </div>
         {/if}
       </div>
+
+    {:else if p1}
+      <!-- ── Single-player fallback (opponent disconnected / walkover) ── -->
+      <div class="single-player-wrap" data-testid="race-results-single-player">
+        <p class="single-player-note">
+          Your opponent left before the race ended. Here's how you did on your own.
+        </p>
+        <div class="solo-stat-list" aria-label="Your solo stats">
+          <div class="solo-stat-row">
+            <span class="solo-stat-label">Score</span>
+            <span class="solo-stat-val">{p1.score.toLocaleString()}</span>
+          </div>
+          <div class="solo-stat-row">
+            <span class="solo-stat-label">Floor Reached</span>
+            <span class="solo-stat-val">{p1.floorReached}</span>
+          </div>
+          <div class="solo-stat-row">
+            <span class="solo-stat-label">Accuracy</span>
+            <span class="solo-stat-val">{formatAccuracy(p1.accuracy)}</span>
+          </div>
+          <div class="solo-stat-row">
+            <span class="solo-stat-label">Facts Answered</span>
+            <span class="solo-stat-val">{p1.factsAnswered}</span>
+          </div>
+          <div class="solo-stat-row">
+            <span class="solo-stat-label">Correct</span>
+            <span class="solo-stat-val">{p1.correctAnswers}</span>
+          </div>
+          <div class="solo-stat-row">
+            <span class="solo-stat-label">Duration</span>
+            <span class="solo-stat-val">{formatDuration(p1.duration)}</span>
+          </div>
+        </div>
+      </div>
     {/if}
 
     <!-- ── Action Buttons ──────────────────────────────────────────────── -->
@@ -672,5 +706,57 @@
     background: rgba(30, 35, 55, 0.7);
     color: rgba(255,255,255,0.5);
     border-color: rgba(255,255,255,0.08);
+  }
+
+  /* ── Single-player fallback ── */
+  .single-player-wrap {
+    margin: calc(20px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1)) 0;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: calc(10px * var(--layout-scale, 1));
+    padding: calc(20px * var(--layout-scale, 1)) calc(24px * var(--layout-scale, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(16px * var(--layout-scale, 1));
+  }
+
+  .single-player-note {
+    font-size: calc(13px * var(--text-scale, 1));
+    color: rgba(255, 255, 255, 0.45);
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+  }
+
+  .solo-stat-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(4px * var(--layout-scale, 1));
+  }
+
+  .solo-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(8px * var(--layout-scale, 1)) calc(12px * var(--layout-scale, 1));
+    border-radius: calc(6px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .solo-stat-row:last-child {
+    border-bottom: none;
+  }
+
+  .solo-stat-label {
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 500;
+  }
+
+  .solo-stat-val {
+    color: #f0f0f0;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-size: calc(16px * var(--text-scale, 1));
   }
 </style>
