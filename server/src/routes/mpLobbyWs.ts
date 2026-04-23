@@ -16,6 +16,14 @@
  *   mp:lobby:start is now gated by allPlayersReady(). If any non-host connection
  *   has lastKnownReady === false, the host receives error code NOT_ALL_READY and
  *   the game does not start. Ready bits reset to false when a new player joins.
+ *
+ * Lobby-start allowlist (MP-SWEEP-2026-04-23-H-003):
+ *   The mp:lobby:start broadcast uses an explicit allowlist, NOT a spread of
+ *   msg.payload. mode, houseRules, contentSelection are pulled from authoritative
+ *   server-side lobby state. seed and deckId come from the host's payload but are
+ *   type-checked (seed→number|null, deckId→string|undefined) so arbitrary keys are
+ *   silently dropped. This closes the injection vector introduced by FIX-020
+ *   (commit 14495f06b), which widened the spread to help guests receive all fields.
  */
 
 import type { FastifyInstance } from 'fastify'
@@ -30,6 +38,7 @@ import {
   type WsHandle,
   type MultiplayerMode,
   type LobbyVisibility,
+  type MpLobby,
 } from '../services/mpLobbyRegistry.js'
 
 // ── Message type constants ────────────────────────────────────────────────────
@@ -87,6 +96,62 @@ function buildLobbySnapshot(lobbyId: string): object {
       multiplayerRating: c.multiplayerRating,
     })),
   }
+}
+
+// ── Lobby-start payload allowlist (H-003) ─────────────────────────────────────
+
+/**
+ * Build the allowlisted mp:lobby:start broadcast payload (H-003 fix).
+ *
+ * Fields sourced from SERVER-SIDE lobby state (cannot be spoofed by the host):
+ *   - lobbyId          — handler scope (validated at connect time)
+ *   - mode             — lobby.mode
+ *   - houseRules       — lobby.houseRules
+ *   - contentSelection — lobby.contentSelection
+ *
+ * Fields sourced from the host's payload (but type-checked):
+ *   - seed   — number|null  (host is the seed generator; no server-side storage)
+ *   - deckId — string|undefined (not stored in MpLobby; host-supplied and trusted
+ *              for the same reason: the host is already authenticated as lobby owner
+ *              and the server has no independent deck registry to validate against)
+ *
+ * All other keys in msg.payload are silently dropped.
+ *
+ * Exported for unit testing (pure function, no Fastify/WS dependency).
+ */
+export function buildLobbyStartPayload(
+  lobbyId: string,
+  lobby: MpLobby | undefined,
+  rawPayload: Record<string, unknown> | undefined,
+): Record<string, unknown> {
+  // seed: host-supplied, coerced to number|null. The host generates the seed
+  // client-side and it is not stored server-side. A null seed is a valid signal
+  // (client falls back to a local seed) so we preserve it.
+  const rawSeed = rawPayload?.['seed']
+  const seed: number | null = typeof rawSeed === 'number' ? rawSeed : null
+
+  // deckId: host-supplied, coerced to string|undefined. The server has no deck
+  // registry, so we cannot validate the value — but we do enforce the type so
+  // arbitrary objects cannot be injected via this slot.
+  const rawDeckId = rawPayload?.['deckId']
+  const deckId: string | undefined = typeof rawDeckId === 'string' ? rawDeckId : undefined
+
+  const payload: Record<string, unknown> = {
+    lobbyId,
+    seed,
+    // Pull authoritative fields from server-side lobby state, not from the client.
+    mode: lobby?.mode ?? null,
+    houseRules: lobby?.houseRules ?? null,
+    contentSelection: lobby?.contentSelection ?? null,
+  }
+
+  // Only include deckId when the host actually supplied one (avoids adding an
+  // explicit undefined key that the client would see as a missing field).
+  if (deckId !== undefined) {
+    payload['deckId'] = deckId
+  }
+
+  return payload
 }
 
 // ── Route registration ────────────────────────────────────────────────────────
@@ -257,6 +322,15 @@ export async function mpLobbyWsRoutes(app: FastifyInstance): Promise<void> {
           // has not signaled ready via mp:lobby:ready. Previously the server
           // accepted any host-initiated start unconditionally, making the
           // client-side ready UI purely cosmetic.
+          //
+          // FIX MP-SWEEP-2026-04-23-H-003: broadcast payload uses an explicit
+          // allowlist (buildLobbyStartPayload) instead of spreading msg.payload.
+          // This closes the injection vector where a malicious host could inject
+          // arbitrary mode/houseRules/contentSelection/deckId by including extra
+          // keys in the mp:lobby:start message. The FIX-020 goal (guests receive
+          // mode+deckId+houseRules+contentSelection) is preserved — those values
+          // now come from authoritative server state (lobby.*) rather than the
+          // untrusted client payload.
           case 'mp:lobby:start': {
             const currentLobby = getLobby(lobbyId)
             if (!currentLobby) break
@@ -283,10 +357,8 @@ export async function mpLobbyWsRoutes(app: FastifyInstance): Promise<void> {
             }
             broadcast(lobbyId, {
               type: 'mp:lobby:start',
-              // FIX 020: Forward full host payload (mode, houseRules, deckId, contentSelection)
-              // so the client-side mp:lobby:start handler receives all fields it expects.
-              // Server-validated lobbyId and seed are set last to win over any client-supplied values.
-              payload: { ...(msg.payload ?? {}), lobbyId, seed: msg.payload?.['seed'] ?? null },
+              // H-003: allowlist — no spread of msg.payload. Unknown keys are dropped.
+              payload: buildLobbyStartPayload(lobbyId, currentLobby, msg.payload),
             })
             break
           }

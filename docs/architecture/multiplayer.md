@@ -1351,3 +1351,42 @@ The first reset ensures the host cannot start without the newcomer also readying
 ### Ready-bit interaction
 
 A duplicate join resets all `lastKnownReady` bits via the same loop that runs for genuine new joins. The reconnecting player's ready state defaults to `false` — the host must wait for them to re-ready before starting.
+
+---
+
+## Lobby-Start Payload Allowlist (MP-SWEEP-2026-04-23-H-003)
+
+**Source file:** `server/src/routes/mpLobbyWs.ts` — `buildLobbyStartPayload()`
+
+### Problem (pre-fix, introduced by FIX-020, commit `14495f06b`)
+
+The `mp:lobby:start` broadcast at line ~289 read:
+
+```ts
+payload: { ...(msg.payload ?? {}), lobbyId, seed: msg.payload?.['seed'] ?? null }
+```
+
+The `...msg.payload` spread forwarded every key the host included in their message to all guests. `lobbyId` and `seed` were overwritten after the spread, but every other key — including `mode`, `houseRules`, `contentSelection`, `deckId`, and any arbitrary attacker-chosen key — came directly from the untrusted client.
+
+FIX-020 intentionally widened the spread to fix a real guest-side problem: guests needed `mode`/`deckId`/`houseRules`/`contentSelection` at game-start time because `mp:lobby:settings` can arrive late or be lost on P2P. The spread was the wrong mechanism — it solved the delivery problem by also trusting the values.
+
+### Fix
+
+`buildLobbyStartPayload()` (exported, pure function) builds the broadcast payload from an explicit allowlist:
+
+| Field | Source |
+|-------|--------|
+| `lobbyId` | Handler scope (validated WS query param at connect time) |
+| `mode` | `lobby.mode` — server-side authoritative state |
+| `houseRules` | `lobby.houseRules` — server-side authoritative state |
+| `contentSelection` | `lobby.contentSelection` — server-side authoritative state |
+| `seed` | `msg.payload.seed` — host-supplied, type-coerced to `number\|null` |
+| `deckId` | `msg.payload.deckId` — host-supplied, type-coerced to `string\|undefined` |
+
+`deckId` and `seed` come from the host payload because the server does not store them. However, both are type-checked — a non-number `seed` becomes `null`, a non-string `deckId` is omitted entirely. All other keys in `msg.payload` are silently dropped.
+
+The FIX-020 goal (guests receive correct game-start values) is preserved: `mode`, `houseRules`, and `contentSelection` are included in the broadcast from server state (which reflects what the host set via `mp:lobby:settings` earlier in the lobby flow). Guests that relied on these fields in the `mp:lobby:start` payload continue to work unchanged.
+
+### Test coverage
+
+`server/tests/routes/mpLobbyWs.test.ts` — 16 tests covering injection attempts, allowlist enumeration, server-state source verification, seed/deckId coercion, and null-lobby/undefined-payload graceful handling.
