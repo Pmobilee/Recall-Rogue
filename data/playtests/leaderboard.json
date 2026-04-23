@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T05:01:40.360Z",
+  "updatedAt": "2026-04-23T05:04:09.408Z",
   "totalPlaythroughs": 22,
   "totalIssues": 254,
   "batches": [
@@ -1563,7 +1563,7 @@
       "rank": 40,
       "inProgressAt": "2026-04-23T04:24:19.481Z",
       "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A",
-      "fixedInCommit": "pending",
+      "fixedInCommit": "e7a1b3ee4",
       "fixedAt": "2026-04-23T04:44:54.539Z"
     },
     {
@@ -1599,7 +1599,7 @@
       "rank": 41,
       "inProgressAt": "2026-04-23T04:24:19.481Z",
       "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A",
-      "fixedInCommit": "pending",
+      "fixedInCommit": "e7a1b3ee4",
       "fixedAt": "2026-04-23T04:44:54.539Z"
     },
     {
@@ -1635,7 +1635,7 @@
       "rank": 42,
       "inProgressAt": "2026-04-23T04:24:19.481Z",
       "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A",
-      "fixedInCommit": "pending",
+      "fixedInCommit": "3bc54c593",
       "fixedAt": "2026-04-23T13:47:00.000Z"
     },
     {
@@ -1708,7 +1708,7 @@
       "rank": 44,
       "inProgressAt": "2026-04-23T04:24:19.481Z",
       "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A",
-      "fixedInCommit": "pending",
+      "fixedInCommit": "327e0cbcc+e0cf08b73",
       "fixedAt": "2026-04-23T00:00:00.000Z",
       "fixNote": "[2026-04-23] UI layer wired: onReadyTimeout subscription in MultiplayerLobby.svelte resets readyPending, shows dismissible error banner (\"Host did not start the match. You can ready up again or leave.\") with Leave/Try-again actions. Live countdown (1s poll via getReadyWatchdogStatus) shown while waiting. cancelReadyWatchdog() called on dismiss and on game start."
     },
@@ -1745,7 +1745,7 @@
       "rank": 45,
       "inProgressAt": "2026-04-23T04:24:19.481Z",
       "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A",
-      "fixedInCommit": "pending"
+      "fixedInCommit": "23d249a6a"
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-010",
