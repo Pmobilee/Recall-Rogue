@@ -5642,3 +5642,19 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 **Context:** The 2026-04-22 fix (BUG 28 / commit `06e42b00a`) addressed client-side start-guard for study-multi lobbies only. The server remained permissive throughout; this commit closes the server gap independently.
 
 **Lesson:** Client-side guards are UX only — enforcement must live on the server. When you add a ready-toggle UI, pair it with a server gate that reads the ready state before any state-transition message is honoured.
+
+### 2026-04-23 — runSaveService: single SAVE_KEY for all modes causes MP/solo save collision (MP-SWEEP-2026-04-23-C-001)
+
+**What:** `src/services/runSaveService.ts` hardcoded `const SAVE_KEY = 'recall-rogue-active-run'` as the storage key for ALL run modes. If a player was mid-MP-coop, returned to hub, and started a solo run, `saveActiveRun()` would overwrite the MP snapshot with solo state. On resume, the coop partner would black-screen because their local save was gone.
+
+**Root cause:** Single shared key — no mode namespacing. The `runMode` field was stored inside the serialized payload but never used to select which key to write to.
+
+**Fix (2026-04-23, MP-SWEEP-C-001):** Per-mode storage keys in `runSaveService.ts`:
+- `recall-rogue-active-run-solo` — covers `standard`, `daily_expedition`, `endless_depths`, `scholar_challenge`
+- `recall-rogue-active-run-multiplayer-race/coop/duel/trivia` — one slot per MP mode
+- `saveActiveRun()` derives the slot from `state.runMode` via `runModeToSaveSlot()`
+- `loadActiveRun(mode?)` / `clearActiveRun(mode?)` / `hasActiveRun(mode?)` accept an optional `RunSaveMode` arg; default to `'solo'` or all-slots behavior
+- One-shot legacy migration: reads old `recall-rogue-active-run` once, routes to correct slot, deletes legacy key — guarded by `legacyMigrationAttempted` flag
+- `FileStorageBackend` (`storageBackend.ts`) updated to recognize the `recall-rogue-active-run-*` prefix and map keys to per-slot files (`run_active_solo.json`, etc.) instead of misrouting them to `settings.json`
+
+**Lesson:** Storage keys that could hold state for multiple isolated contexts (modes, players, profiles) MUST be namespaced from day one. When a single key is later split into N keys, a one-shot migration is always needed — and the migration guard must be a module-level boolean that survives the function's lifetime but does not persist across page loads (intentional: the legacy key is checked once per page load until it is gone).

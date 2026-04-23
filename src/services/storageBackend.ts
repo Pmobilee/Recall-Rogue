@@ -93,11 +93,12 @@ class LocalStorageBackend implements StorageBackend {
  *   to avoid unbounded file proliferation.
  *
  * Key-to-filename mapping:
- *   rr_profiles              → profiles.json
- *   recall-rogue-active-run  → run_active.json
- *   rr_save_<id>             → profile_<id>.json
- *   rr_save                  → profile_legacy.json
- *   everything else          → settings.json (merged object)
+ *   rr_profiles                           → profiles.json
+ *   recall-rogue-active-run               → run_active.json  (legacy — migrated on first read)
+ *   recall-rogue-active-run-<mode>        → run_active_<mode>.json  (per-mode slots, 2026-04-23)
+ *   rr_save_<id>                          → profile_<id>.json
+ *   rr_save                               → profile_legacy.json
+ *   everything else                       → settings.json (merged object)
  */
 class FileStorageBackend implements StorageBackend {
   /** Primary key→value cache for all non-settings keys. */
@@ -114,14 +115,40 @@ class FileStorageBackend implements StorageBackend {
 
   private readonly DEBOUNCE_MS = 500;
 
+  /**
+   * Per-mode run-save slot names. Must stay in sync with
+   * `ALL_SAVE_MODES` in `runSaveService.ts`.
+   */
+  private static readonly RUN_SAVE_MODES = [
+    'solo',
+    'multiplayer-race',
+    'multiplayer-coop',
+    'multiplayer-duel',
+    'multiplayer-trivia',
+  ] as const;
+
+  /** Key prefix shared by all per-mode run-save keys. */
+  private static readonly RUN_KEY_PREFIX = 'recall-rogue-active-run-';
+
   async init(): Promise<void> {
-    // Load primary save files into cache
+    // Load primary save files into cache — legacy single-key first so the
+    // runSaveService migration path can find it on first boot after the update.
     const primaryFiles: Array<[filename: string, key: string]> = [
       ['profiles.json', 'rr_profiles'],
       ['run_active.json', 'recall-rogue-active-run'],
     ];
 
     for (const [filename, key] of primaryFiles) {
+      const data = await this.invokeRead(filename);
+      if (data !== null) {
+        this.cache.set(key, data);
+      }
+    }
+
+    // Load per-mode run-save files (MP-SWEEP-2026-04-23-C-001).
+    for (const slot of FileStorageBackend.RUN_SAVE_MODES) {
+      const key = `${FileStorageBackend.RUN_KEY_PREFIX}${slot}`;
+      const filename = `run_active_${slot}.json`;
       const data = await this.invokeRead(filename);
       if (data !== null) {
         this.cache.set(key, data);
@@ -238,6 +265,8 @@ class FileStorageBackend implements StorageBackend {
   private isSettingsKey(key: string): boolean {
     if (key === 'rr_profiles') return false;
     if (key === 'recall-rogue-active-run') return false;
+    // Per-mode run-save keys (MP-SWEEP-2026-04-23-C-001)
+    if (key.startsWith(FileStorageBackend.RUN_KEY_PREFIX)) return false;
     if (key.startsWith('rr_save_')) return false;
     if (key === 'rr_save') return false;
     // All other keys are settings (preferences, audio, accessibility, etc.)
@@ -247,6 +276,12 @@ class FileStorageBackend implements StorageBackend {
   private keyToFilename(key: string): string {
     if (key === 'rr_profiles') return 'profiles.json';
     if (key === 'recall-rogue-active-run') return 'run_active.json';
+    // Per-mode run-save keys → dedicated files (MP-SWEEP-2026-04-23-C-001).
+    // e.g. 'recall-rogue-active-run-solo' → 'run_active_solo.json'
+    if (key.startsWith(FileStorageBackend.RUN_KEY_PREFIX)) {
+      const slot = key.slice(FileStorageBackend.RUN_KEY_PREFIX.length);
+      return `run_active_${slot}.json`;
+    }
     if (key.startsWith('rr_save_')) return `profile_${key.slice(8)}.json`;
     if (key === 'rr_save') return 'profile_legacy.json';
     // Settings keys should never reach here (handled by isSettingsKey)
@@ -365,7 +400,10 @@ export async function migrateLocalStorageToFiles(): Promise<void> {
   const legacySave = localStorage.getItem('rr_save');
   if (legacySave) backend.write('rr_save', legacySave);
 
-  // Migrate active run snapshot
+  // Migrate active run snapshot — legacy single key.
+  // runSaveService.migrateLegacySaveKeyIfNeeded() will route it to the correct
+  // per-mode slot on first access; here we just copy it into the file backend
+  // so it is visible to that migration path.
   const activeRun = localStorage.getItem('recall-rogue-active-run');
   if (activeRun) backend.write('recall-rogue-active-run', activeRun);
 

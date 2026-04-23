@@ -60,6 +60,29 @@ Resolved by `profileService.getSaveKey()` in `src/services/profileService.ts`:
 
 Note: `src/services/saveService.ts` still exports `SAVE_KEY = 'recall-rogue-save'` as a legacy constant, but active save/read path uses `getActiveSaveKey()` -> `profileService.getSaveKey()`.
 
+### Active run checkpoint keys (per-mode, 2026-04-23)
+
+**MP-SWEEP-2026-04-23-C-001 fix.** Previously all modes shared `recall-rogue-active-run`, causing MP snapshots to overwrite solo saves and vice versa. Since 2026-04-23, each run mode has its own storage key:
+
+| Run mode | Storage key | Tauri file |
+| --- | --- | --- |
+| `standard`, `daily_expedition`, `endless_depths`, `scholar_challenge` | `recall-rogue-active-run-solo` | `run_active_solo.json` |
+| `multiplayer_race` | `recall-rogue-active-run-multiplayer-race` | `run_active_multiplayer-race.json` |
+| `multiplayer_coop` | `recall-rogue-active-run-multiplayer-coop` | `run_active_multiplayer-coop.json` |
+| `multiplayer_duel` | `recall-rogue-active-run-multiplayer-duel` | `run_active_multiplayer-duel.json` |
+| `multiplayer_trivia` | `recall-rogue-active-run-multiplayer-trivia` | `run_active_multiplayer-trivia.json` |
+| `recall-rogue-active-run` (legacy, pre-2026-04-23) | migrated → per-mode slot on first access, then deleted |
+
+**API changes in `runSaveService.ts`:**
+
+- `saveActiveRun(state)` — derives the storage slot from `state.runMode` automatically.
+- `loadActiveRun(mode?)` — accepts an explicit `RunSaveMode` arg. Defaults to `'solo'` when omitted (backwards-compatible with callers that don't pass a mode).
+- `clearActiveRun(mode?)` — if `mode` omitted, clears ALL slots. Otherwise clears just one.
+- `hasActiveRun(mode?)` — if `mode` omitted, returns `true` if ANY slot has a save.
+- `RunSaveMode` — exported type union: `'solo' | 'multiplayer-race' | 'multiplayer-coop' | 'multiplayer-duel' | 'multiplayer-trivia'`.
+
+**Migration:** On first call after this update, `migrateLegacySaveKeyIfNeeded()` reads the legacy `recall-rogue-active-run` key once, routes it to the correct per-mode slot based on the stored `runMode` field (defaults to `solo` if absent), then deletes the legacy key. The migration runs at most once per page load (guarded by `legacyMigrationAttempted` flag) and never runs again once the legacy key is gone.
+
 ## Version fields
 
 | Domain | Version field | Current constant |

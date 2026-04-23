@@ -1,7 +1,21 @@
 /**
  * Save/resume system for active runs.
  * Persists run state to localStorage so players can quit mid-run and resume later.
- * Only ONE active run save at a time.
+ *
+ * Each run mode writes to its own storage key so that a multiplayer run
+ * snapshot cannot overwrite a solo run and vice versa (MP-SWEEP-2026-04-23-C-001).
+ *
+ * Key layout:
+ *   recall-rogue-active-run-solo           — standard, daily_expedition, endless_depths, scholar_challenge
+ *   recall-rogue-active-run-multiplayer-race  — multiplayer_race
+ *   recall-rogue-active-run-multiplayer-coop  — multiplayer_coop
+ *   recall-rogue-active-run-multiplayer-duel  — multiplayer_duel
+ *   recall-rogue-active-run-multiplayer-trivia — multiplayer_trivia
+ *
+ * Legacy migration: on first load after this change, the old single key
+ * `recall-rogue-active-run` is read once, routed to the correct per-mode slot
+ * based on the stored `runMode` field (falls back to 'solo' if absent), then
+ * deleted so the migration runs only once.
  */
 
 import type { RunState } from './runManager';
@@ -14,7 +28,40 @@ import { serializeRunRngState } from './seededRng';
 import { getBackend } from './storageBackend';
 import { InRunFactTracker, type InRunFactTrackerSnapshot } from './inRunFactTracker';
 
-const SAVE_KEY = 'recall-rogue-active-run';
+// ---------------------------------------------------------------------------
+// Save key constants
+// ---------------------------------------------------------------------------
+
+/** Legacy single-key used before per-mode namespacing (2026-04-23). */
+const LEGACY_SAVE_KEY = 'recall-rogue-active-run';
+
+/** Prefix shared by all per-mode save keys. */
+const SAVE_KEY_PREFIX = 'recall-rogue-active-run-';
+
+/** All known per-mode save slot identifiers. */
+const ALL_SAVE_MODES = ['solo', 'multiplayer-race', 'multiplayer-coop', 'multiplayer-duel', 'multiplayer-trivia'] as const;
+
+/** A per-mode save slot identifier. */
+export type RunSaveMode = typeof ALL_SAVE_MODES[number];
+
+/**
+ * Maps the `runMode` field on RunSaveState to a per-mode storage slot.
+ * Non-multiplayer modes all share the 'solo' slot.
+ */
+function runModeToSaveSlot(runMode?: RunSaveState['runMode']): RunSaveMode {
+  switch (runMode) {
+    case 'multiplayer_race': return 'multiplayer-race';
+    case 'multiplayer_coop': return 'multiplayer-coop';
+    case 'multiplayer_duel': return 'multiplayer-duel';
+    case 'multiplayer_trivia': return 'multiplayer-trivia';
+    default: return 'solo';
+  }
+}
+
+/** Returns the storage backend key for the given save slot. */
+function saveKeyForSlot(slot: RunSaveMode): string {
+  return `${SAVE_KEY_PREFIX}${slot}`;
+}
 
 /**
  * Current schema version for run saves.
@@ -302,6 +349,70 @@ function deserializeRunState(saved: SerializedRunState): RunState {
   };
 }
 
+// ---------------------------------------------------------------------------
+// One-shot legacy key migration (MP-SWEEP-2026-04-23-C-001)
+// ---------------------------------------------------------------------------
+
+/**
+ * Tracks whether the legacy key migration has already run this session.
+ * This is intentionally in-memory so it runs at most once per page load,
+ * but the actual deletion of the legacy key from storage prevents it from
+ * running again on the next page load.
+ */
+let legacyMigrationAttempted = false;
+
+/**
+ * If the old single-key `recall-rogue-active-run` exists, read it once,
+ * route it to the correct per-mode slot, then delete the legacy key.
+ *
+ * This migration runs automatically the first time any save function is called
+ * after the per-mode namespacing update. After migration the legacy key is
+ * absent, so subsequent calls are no-ops.
+ */
+function migrateLegacySaveKeyIfNeeded(): void {
+  if (legacyMigrationAttempted) return;
+  legacyMigrationAttempted = true;
+
+  try {
+    const backend = getBackend();
+    const raw = backend.readSync(LEGACY_SAVE_KEY);
+    if (!raw) return; // nothing to migrate
+
+    // Parse to determine the target slot.
+    let parsed: RunSaveState | null = null;
+    try {
+      parsed = JSON.parse(raw) as RunSaveState;
+    } catch {
+      // Corrupt legacy save — just delete it.
+      backend.remove(LEGACY_SAVE_KEY);
+      console.warn('[runSaveService] Legacy save key was corrupt; discarded during migration.');
+      return;
+    }
+
+    const targetSlot = runModeToSaveSlot(parsed.runMode);
+    const targetKey = saveKeyForSlot(targetSlot);
+
+    // Only migrate if the target slot is currently empty — don't overwrite a
+    // newer per-mode save with the legacy one.
+    const existingTarget = backend.readSync(targetKey);
+    if (!existingTarget) {
+      backend.write(targetKey, raw);
+      console.log(`[runSaveService] Migrated legacy save key -> ${targetKey} (mode: ${targetSlot})`);
+    }
+
+    // Always remove the legacy key after migration attempt.
+    backend.remove(LEGACY_SAVE_KEY);
+  } catch {
+    // Non-fatal — migration failure just means the old save is lost,
+    // which is acceptable given the key collision bug being fixed.
+    console.warn('[runSaveService] Legacy save key migration failed; old save discarded.');
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Public API
+// ---------------------------------------------------------------------------
+
 /** Save the current active run to localStorage. */
 export function saveActiveRun(state: {
   version: number;
@@ -318,6 +429,10 @@ export function saveActiveRun(state: {
   encounterSnapshot?: EncounterSnapshot | null;
   rngState?: { seed: number; forks: Record<string, number> } | null;
 }): void {
+  // Run migration before first write so a pre-existing legacy key is preserved
+  // under the correct per-mode slot before we potentially overwrite it.
+  migrateLegacySaveKeyIfNeeded();
+
   const encounterSnapshot: SerializedEncounterSnapshot | undefined = state.encounterSnapshot
     ? {
       // CRITICAL-3 (2026-04-12): explicitly serialize CardRunState Set fields
@@ -346,15 +461,27 @@ export function saveActiveRun(state: {
     encounterSnapshot,
     rngState: serializeRunRngState(),
   };
+
+  // Derive the storage key from the run mode so each mode has its own slot.
+  const slot = runModeToSaveSlot(state.runMode);
+  const key = saveKeyForSlot(slot);
+
   try {
-    getBackend().write(SAVE_KEY, JSON.stringify(serialized));
+    getBackend().write(key, JSON.stringify(serialized));
   } catch {
     // Silently fail if localStorage is full or unavailable
   }
 }
 
-/** Load the active run save from localStorage. Returns null if no save exists. */
-export function loadActiveRun(): {
+/**
+ * Load the active run save for the given mode from localStorage.
+ * Returns null if no save exists for that mode.
+ *
+ * @param mode - Which save slot to load. Defaults to 'solo' when omitted
+ *   (backwards-compatible with callers that don't pass a mode yet, e.g.
+ *   generic "resume" UI that doesn't know the mode ahead of time).
+ */
+export function loadActiveRun(mode?: RunSaveMode): {
   runState: RunState;
   currentScreen: string;
   runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race' | 'multiplayer_coop' | 'multiplayer_duel' | 'multiplayer_trivia';
@@ -369,8 +496,15 @@ export function loadActiveRun(): {
   /** ISO timestamp of when this save was written. Used by legacy fallback for play time estimation. */
   savedAt?: string | null;
 } | null {
+  // Always run migration before any load so the legacy key is promoted to the
+  // correct per-mode slot before we try to read from it.
+  migrateLegacySaveKeyIfNeeded();
+
+  const slot = mode ?? 'solo';
+  const key = saveKeyForSlot(slot);
+
   try {
-    const raw = getBackend().readSync(SAVE_KEY);
+    const raw = getBackend().readSync(key);
     if (!raw) return null;
     const parsed: RunSaveState = JSON.parse(raw);
     if (!parsed || typeof parsed.version !== 'number') return null;
@@ -414,19 +548,56 @@ export function loadActiveRun(): {
   }
 }
 
-/** Clear the active run save from localStorage. */
-export function clearActiveRun(): void {
+/**
+ * Clear the active run save from localStorage.
+ *
+ * @param mode - Which save slot to clear. When omitted, clears ALL per-mode
+ *   slots plus the legacy key — used on full hard-reset (e.g. new game after
+ *   save corruption, or test teardown).
+ */
+export function clearActiveRun(mode?: RunSaveMode): void {
+  // Ensure legacy key migration has run so we don't leave the legacy key
+  // behind when doing a full clear.
+  migrateLegacySaveKeyIfNeeded();
+
   try {
-    getBackend().remove(SAVE_KEY);
+    const backend = getBackend();
+    if (mode !== undefined) {
+      // Clear only the requested slot.
+      backend.remove(saveKeyForSlot(mode));
+    } else {
+      // Clear all per-mode slots.
+      for (const slot of ALL_SAVE_MODES) {
+        backend.remove(saveKeyForSlot(slot));
+      }
+      // Also nuke legacy key in case migration hadn't run yet (e.g. during tests).
+      backend.remove(LEGACY_SAVE_KEY);
+    }
   } catch {
     // Silently fail
   }
 }
 
-/** Check if an active run save exists. */
-export function hasActiveRun(): boolean {
+/**
+ * Check if an active run save exists.
+ *
+ * @param mode - Which save slot to check. When omitted, returns true if ANY
+ *   slot has a save (used by the hub to show the "resume" banner).
+ */
+export function hasActiveRun(mode?: RunSaveMode): boolean {
+  // Run migration so any legacy key is promoted before we check.
+  migrateLegacySaveKeyIfNeeded();
+
   try {
-    return getBackend().readSync(SAVE_KEY) !== null;
+    const backend = getBackend();
+    if (mode !== undefined) {
+      return backend.readSync(saveKeyForSlot(mode)) !== null;
+    }
+    // Return true if any per-mode slot has a save.
+    for (const slot of ALL_SAVE_MODES) {
+      if (backend.readSync(saveKeyForSlot(slot)) !== null) return true;
+    }
+    return false;
   } catch {
     return false;
   }

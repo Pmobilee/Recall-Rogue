@@ -50,7 +50,12 @@ Write-through in-memory cache with 500 ms debounced file I/O via Tauri IPC comma
 | Key | File |
 |-----|------|
 | `rr_profiles` | `profiles.json` |
-| `recall-rogue-active-run` | `run_active.json` |
+| `recall-rogue-active-run-solo` | `run_active_solo.json` |
+| `recall-rogue-active-run-multiplayer-race` | `run_active_multiplayer-race.json` |
+| `recall-rogue-active-run-multiplayer-coop` | `run_active_multiplayer-coop.json` |
+| `recall-rogue-active-run-multiplayer-duel` | `run_active_multiplayer-duel.json` |
+| `recall-rogue-active-run-multiplayer-trivia` | `run_active_multiplayer-trivia.json` |
+| `recall-rogue-active-run` (legacy, pre-2026-04-23) | migrated then deleted by `migrateLegacySaveKeyIfNeeded()` |
 | `rr_save_<id>` | `profile_<id>.json` |
 | `rr_save` | `profile_legacy.json` |
 | all others (preferences) | `settings.json` (merged object) |
@@ -91,8 +96,8 @@ One-time migration that copies all save data from `localStorage` to the file bac
 | | |
 |---|---|
 | **File** | src/services/runSaveService.ts |
-| **Purpose** | Save/resume system for active runs — persists full RunState snapshot via `storageBackend`; one slot only |
-| **Key exports** | `saveActiveRun`, `loadActiveRun`, `clearActiveRun`, `hasActiveRun`, `RunSaveState` (interface) |
+| **Purpose** | Save/resume system for active runs — persists full RunState snapshot via `storageBackend`; one per-mode slot (solo, multiplayer-race, multiplayer-coop, multiplayer-duel, multiplayer-trivia). MP-SWEEP-2026-04-23-C-001: keys namespaced to prevent mode collisions. |
+| **Key exports** | `saveActiveRun`, `loadActiveRun`, `clearActiveRun`, `hasActiveRun`, `RunSaveState` (interface), `RunSaveMode` (type) |
 | **Key dependencies** | storageBackend (getBackend), runManager, floorManager, seededRng, ascension |
 
 ## saveMigration
