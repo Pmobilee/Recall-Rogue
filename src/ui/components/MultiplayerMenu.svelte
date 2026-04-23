@@ -113,6 +113,8 @@
   // ── Helpers ───────────────────────────────────────────────────────────────────
 
   function handleModeSelect(mode: MultiplayerMode): void {
+    // Coop disabled in the menu pending turn-wait barrier fix (DL-002).
+    if (mode === 'coop') return
     selectedMode = mode
   }
 
@@ -439,13 +441,16 @@
           <ul class="mode-list" role="listbox" aria-label="Game modes">
             {#each MODES as mode}
               {@const isSelected = selectedMode === mode}
+              {@const isCoopDisabled = mode === 'coop'}
               <li
                 class="mode-card"
                 class:selected={isSelected}
+                class:mode-card--disabled={isCoopDisabled}
                 data-testid="mode-{mode}"
                 role="option"
                 aria-selected={isSelected}
-                tabindex="0"
+                aria-disabled={isCoopDisabled || undefined}
+                tabindex={isCoopDisabled ? -1 : 0}
                 onclick={() => handleModeSelect(mode)}
                 onkeydown={(e) => e.key === 'Enter' && handleModeSelect(mode)}
               >
@@ -453,8 +458,12 @@
                   <span class="mode-name">{MODE_DISPLAY_NAMES[mode]}</span>
                   <span class="mode-badge">{MODE_MAX_PLAYERS[mode]}P</span>
                 </div>
-                <div class="mode-tagline">{MODE_TAGLINES[mode]}</div>
-                <div class="mode-desc">{MODE_DESCRIPTIONS[mode]}</div>
+                {#if isCoopDisabled}
+                  <div class="mode-coming-soon">out for repairs</div>
+                {:else}
+                  <div class="mode-tagline">{MODE_TAGLINES[mode]}</div>
+                  <div class="mode-desc">{MODE_DESCRIPTIONS[mode]}</div>
+                {/if}
               </li>
             {/each}
           </ul>
@@ -673,7 +682,7 @@
                       onchange={(e) => handleModeSelect((e.target as HTMLSelectElement).value as MultiplayerMode)}
                     >
                       {#each MODES as mode}
-                        <option value={mode}>{MODE_DISPLAY_NAMES[mode]}</option>
+                        <option value={mode} disabled={mode === 'coop'}>{MODE_DISPLAY_NAMES[mode]}{mode === 'coop' ? ' (out for repairs)' : ''}</option>
                       {/each}
                     </select>
                     <button
@@ -1016,6 +1025,20 @@
 
   .mode-card.selected .mode-desc {
     display: block;
+  }
+
+  /* ===== Disabled mode card (coop — pending fix) ===== */
+  .mode-card--disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .mode-coming-soon {
+    font-size: calc(11px * var(--text-scale, 1));
+    color: #666;
+    font-style: italic;
+    margin-top: calc(4px * var(--layout-scale, 1));
   }
 
   /* ===== Visibility picker (Create tab) ===== */

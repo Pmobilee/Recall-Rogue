@@ -74,6 +74,8 @@ Pool assembly in `encounterBridge.ts` (`study-multi` branch):
 
 Empty `decks` + empty `triviaDomains` → empty pool, no crash. Trivia-domain facts are resolved via `factsDB` (not `curatedDeckStore`) in narrative lookups and wowFactorService.
 
+**Quiz pipeline (fixed 2026-04-23):** `study-multi` is the canonical MP content type. `CardCombatOverlay.svelte` now correctly routes `deckMode.type === 'study-multi'` through `getStudyModeQuiz` — the same path used by single-player `study` and `custom_deck` modes. Before the fix, MP quiz cards fell through to the factsDB trivia path; if the fact ID had no DB match (all curated-deck-based facts), the placeholder `"Wrong A / Wrong B"` fallback rendered instead of real quiz options. The fix adds a `study-multi` branch in `getStudyModeQuiz` that builds the fact pool by merging `getCuratedDeckFacts` results across all deck entries, handling both `subDeckIds === 'all'` and specific subdeck-ID lists.
+
 Both `LobbyState` and `LobbyPlayer` carry an optional `contentSelection?: LobbyContentSelection` field. The legacy `selectedDeckId?: string` fields are retained on both interfaces but marked `@deprecated` — use `contentSelection` for new code.
 
 ### Setting content in the lobby service
@@ -2035,3 +2037,6 @@ MP saves also carry MP-specific state (lobby config, partner references, transpo
 When adding any new screen or flow that ends a multiplayer run (coop victory, mid-run disconnect, rage quit), add `clearActiveRun()` to that exit handler before it navigates away. Do not rely on the hub-level guard in `handleStartRun` — that is a failsafe, not the primary cleanup mechanism.
 
 See `docs/gotchas.md` 2026-04-23 for the softlock postmortem.
+
+
+**2026-04-23 — Co-op disabled in mode picker:** `MultiplayerMenu.svelte` greys out and blocks the coop mode card pending resolution of the turn-end partner-wait barrier stall (DL-002). All coop service code intact; re-enable by removing the `mode === 'coop'` guard in `handleModeSelect` and the `mode-card--disabled` class binding.
