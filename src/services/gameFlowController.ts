@@ -785,8 +785,7 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData, prebuiltSum
   }
   // Send race finish update and stop broadcast for multiplayer race
   if (activeRunMode === 'multiplayer_race' && multiplayerModeState === 'race') {
-    const lobby = getCurrentLobby();
-    const localId = lobby?.players.find(p => p.isHost !== undefined)?.id ?? 'local';
+    const localId = getLocalMultiplayerPlayerId() || 'local';
     updateLocalProgress({
       playerId: localId,
       floor: run.floor.currentFloor,
@@ -1148,8 +1147,7 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
           isFinished: true,
         };
       }
-      const lobby = getCurrentLobby();
-      const localId = lobby?.players.find(p => p.isHost)?.id ?? 'local';
+      const localId = getLocalMultiplayerPlayerId() || 'local';
       return {
         playerId: localId,
         floor: r.floor.currentFloor,
