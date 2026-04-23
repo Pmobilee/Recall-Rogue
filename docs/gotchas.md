@@ -1,3 +1,22 @@
+### 2026-04-23 — Commit-message issue citations lie ~40% of the time; always verify against diff
+
+**What:** After the 2026-04-22 ULTRATHINK MP hardening waves, the leaderboard had 91 "open" MP issues, of which 36 were referenced by fix commits in the last 70 commits. A verification sweep (5 parallel qa-agents, one per fix-commit) compared each cited issue's `fixHypothesis` against the actual diff and current code. Result across 39 citations: **20 truly fixed, 14 partial (infra built but not fully wired), 5 not_fixed (commit claimed credit without landing the change)**.
+
+The **partial** bucket is the real hazard. Two representative patterns:
+- **Issue 030 cross-lobby filter**: envelope + receive filter shipped, but `setActiveLobby()` never called from normal `createLobby`/`joinLobby`/`joinLobbyById` paths — only from the H9 reconnect. `activeLobbyId` stays null, filter is inert in production.
+- **Issue 056 peer-fail surfacing**: Rust callback registered, `getPendingP2PFail()` exported, but zero callers — `TODO(H10-transport)` at `multiplayerTransport.ts:1398` persists. Ping/pong is still the only active peer-drop detection.
+
+The **credit-grab** cases: commits 8f5d7a74b claimed 057 (cast removal) which actually landed in prior commit 77c71eaca; 2e25b6765 claimed Rust-side changes for 040/044/060 which actually landed in sibling commit 884d603a7 (mis-labeled as "Agent C coop determinism" but contained Agent D's `steam.rs` + `main.rs` + `tauri.conf.json` changes).
+
+**Why it matters:** an "in_progress" or recently-committed entry in the leaderboard is NOT evidence that a bug is fixed. The wiring gap between "infra landed" and "runtime actually benefits" is where multiplayer regressions hide in plain sight. Parallel-agent commit races (this one + the 0d017edee mis-stage logged 2026-04-22 gotcha and 93eb78320 commit) additionally scramble the fixedInCommit attribution.
+
+**Fix / protocol going forward:**
+1. When a commit body says "fixes N,M,O", never auto-close those leaderboard entries. Run the per-issue diff-vs-fixHypothesis check (pattern in `scripts/patch-leaderboard-2026-04-23.mjs`).
+2. When a fix looks like "added an exported getter/callback/interface method," grep for callers in the same PR. If zero, it's `partial`, not `fixed`.
+3. Wave commits that bundle 10+ issue citations are especially prone to this — they tend to include 1-2 credit-grabs for pre-existing fixes.
+
+**Artifacts:** audit JSONs at `/tmp/rr-verdicts-*.json`, patch script at `scripts/patch-leaderboard-2026-04-23.mjs`, pre-patch backup at `data/playtests/leaderboard.pre-clear-2026-04-23.backup.json`. Leaderboard moved from 91 open / 87 resolved → 49 open / 129 resolved post-patch.
+
 ### 2026-04-22k — Any new `Math.random()` in coop-affecting code is a desync vector
 
 **What:** ULTRATHINK wave-2 audit (Agent C) found six unseeded `Math.random()` sites still in service-layer code that runs on both host and guest in coop:
