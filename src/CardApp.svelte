@@ -2685,10 +2685,10 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
             class="transport-error-reconnect"
             onclick={() => {
               // reconnect() resets the backoff counter and retries from the last URL/localId.
-              // It's on WebSocketTransport (not the interface) — cast is safe: only WS transport
-              // has a persistent URL to reconnect to; others (Steam P2P, local) don't error this way.
+              // Now typed on the MultiplayerTransport interface — no cast needed.
+              // Non-WS transports (Steam P2P, local, broadcast) implement reconnect() as a no-op.
               const t = getMultiplayerTransport()
-              ;(t as any).reconnect?.()
+              t.reconnect()
               transportErrorVisible = false
               _transportErrorAt = null
             }}

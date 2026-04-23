@@ -256,6 +256,19 @@ export interface MultiplayerTransport {
    * (LocalMultiplayerTransport) treat this as a no-op record-keeping update.
    */
   setActiveLobby(lobbyId: string | null): void;
+
+  /**
+   * Manually trigger a reconnect attempt.
+   *
+   * For WebSocketTransport: resets the backoff counter and retries the last
+   * connect() URL/localId pair. Intended for UI "Retry" buttons.
+   *
+   * For SteamP2PTransport and BroadcastChannelTransport: no-op — the
+   * underlying relay layer handles transient connectivity automatically.
+   *
+   * For LocalMultiplayerTransport: no-op — same-screen has no network.
+   */
+  reconnect(): void;
 }
 
 // ── Listener map helper ───────────────────────────────────────────────────────
@@ -985,6 +998,16 @@ export class SteamP2PTransport implements MultiplayerTransport {
       this.currentLobbyId = lobbyId;
     }
   }
+
+  /**
+   * No-op for SteamP2PTransport — Steam's relay layer handles transient
+   * connectivity automatically. Implemented to satisfy the MultiplayerTransport
+   * interface contract (added for the WS transport reconnect UI button).
+   */
+  reconnect(): void {
+    // Steam P2P: relay-layer reconnect is handled transparently. No action needed.
+    rrLog('mp:tx', 'SteamP2PTransport.reconnect() called — no-op (Steam relay handles reconnect)');
+  }
 }
 
 // ── Local Multiplayer Transport ───────────────────────────────────────────────
@@ -1089,6 +1112,14 @@ export class LocalMultiplayerTransport implements MultiplayerTransport {
   /** MP-STEAM-20260422-030: interface parity. Same-screen has no cross-lobby risk. */
   setActiveLobby(lobbyId: string | null): void {
     this.activeLobbyId = lobbyId;
+  }
+
+  /**
+   * No-op for LocalMultiplayerTransport — same-screen has no network connection
+   * to re-establish. Implemented to satisfy the MultiplayerTransport interface.
+   */
+  reconnect(): void {
+    // Local transport: no network — reconnect is a no-op.
   }
 }
 
@@ -1237,6 +1268,15 @@ export class BroadcastChannelTransport implements MultiplayerTransport {
   /** MP-STEAM-20260422-030: bind active lobbyId for envelope stamping + filtering. */
   setActiveLobby(lobbyId: string | null): void {
     this.activeLobbyId = lobbyId;
+  }
+
+  /**
+   * No-op for BroadcastChannelTransport — the BroadcastChannel API has no
+   * persistent connection to re-establish. Implemented to satisfy the
+   * MultiplayerTransport interface.
+   */
+  reconnect(): void {
+    // BroadcastChannel: stateless channel — reconnect is a no-op.
   }
 }
 

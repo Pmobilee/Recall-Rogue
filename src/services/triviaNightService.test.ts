@@ -36,6 +36,7 @@ function createMockTransport(): MockTransport {
     sent,
     connect: vi.fn(),
     disconnect: vi.fn(),
+    reconnect: vi.fn(),
     setActiveLobby: vi.fn(),
     getState: vi.fn(() => 'connected' as const),
     isConnected: vi.fn(() => true),

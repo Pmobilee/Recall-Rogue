@@ -50,6 +50,7 @@ function createMockTransport(): MultiplayerTransport & {
       };
     },
     disconnect: vi.fn(),
+    reconnect: vi.fn(),
     setActiveLobby: vi.fn(),
     getState: vi.fn(() => 'connected' as const),
     isConnected: vi.fn(() => true),
