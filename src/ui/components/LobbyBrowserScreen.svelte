@@ -32,6 +32,7 @@
   let passwordInput = $state('')
   let joinError = $state<string | null>(null)
   let loading = $state(true)
+  let refreshInFlight = false
 
   // ── Transport source badge ────────────────────────────────────────────────
 
@@ -53,6 +54,8 @@
   // ── Data fetching ─────────────────────────────────────────────────────────
 
   async function refresh(): Promise<void> {
+    if (refreshInFlight) return
+    refreshInFlight = true
     loading = true
     joinError = null
     try {
@@ -65,6 +68,7 @@
       lobbies = []
     } finally {
       loading = false
+      refreshInFlight = false
     }
   }
 
@@ -76,11 +80,18 @@
     return () => clearInterval(id)
   })
 
-  // Re-fetch when filters change
+  // Re-fetch when filters change, but skip the first (mount-time) invocation.
+  // The auto-refresh effect above handles the initial fetch; firing here too
+  // results in a redundant parallel call on mount (short-circuited by the
+  // in-flight guard but still a noisy extra round-trip).
+  let filtersMounted = false
   $effect(() => {
-    // Track reactive dependencies
     void modeFilter
     void fullnessFilter
+    if (!filtersMounted) {
+      filtersMounted = true
+      return
+    }
     void refresh()
   })
 

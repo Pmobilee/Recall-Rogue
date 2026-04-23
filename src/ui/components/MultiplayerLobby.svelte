@@ -166,6 +166,8 @@
     for (const fn of cleanups) fn()
     // Clear any pending copy-feedback timeout to avoid state updates after unmount.
     if (copyFeedbackTimeout !== null) clearTimeout(copyFeedbackTimeout)
+    copyFeedbackTimeout = null
+    copyFeedback = false
   })
 
   // ──────────────────────────────────────────────────────────────────────────
@@ -260,7 +262,7 @@
       await navigator.clipboard.writeText(lobby.lobbyCode)
       copyFeedback = true
       // Clear any pending reset before scheduling a fresh one.
-      if (copyFeedbackTimeout !== null) clearTimeout(copyFeedbackTimeout)
+      if (copyFeedbackTimeout !== null) { clearTimeout(copyFeedbackTimeout); copyFeedbackTimeout = null }
       copyFeedbackTimeout = setTimeout(() => {
         copyFeedback = false
         copyFeedbackTimeout = null

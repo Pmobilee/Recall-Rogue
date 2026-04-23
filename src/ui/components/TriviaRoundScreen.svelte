@@ -3,6 +3,7 @@
      Handles question display, answer selection, reveal animation, and final standings.
      Props: gameState, localPlayerId, currentQuestion, lastRoundResult, callbacks. -->
 <script lang="ts">
+  import { onDestroy } from 'svelte'
   import type {
     TriviaGameState,
     TriviaQuestion,
@@ -133,6 +134,9 @@
       timerInterval = null
     }
   }
+
+  // Clean up interval on unmount to prevent timer leak.
+  onDestroy(() => { stopTimer() })
 
   // ── Event handlers ─────────────────────────────────────────────────────────
 
