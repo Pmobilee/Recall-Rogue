@@ -990,12 +990,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         initCoopSync(localPlayerId)
       }
 
-      // FIX C-001 / RC-001: Wire up transport message handlers for duel/coop/race game messages.
-      // Race mode needs initGameMessageHandlers too — it registers mp:race:progress and
-      // mp:race:finish listeners inside that function. startRaceProgressBroadcast handles
-      // the local broadcast side; this registers the receive-side handlers.
+      // FIX C-001 / RC-001 / DU-002: Wire up transport message handlers for duel/coop/race/same_cards.
+      // Race mode needs initGameMessageHandlers — registers mp:race:progress and mp:race:finish.
+      // same_cards mode needs it too — registers the mp:sync fork-seed handler so the guest
+      // applies the host's PRNG seeds and both players see identical card pools (DU-002).
       let cleanupGameMessages: (() => void) | null = null
-      if (lobby.mode === 'coop' || lobby.mode === 'duel' || lobby.mode === 'race') {
+      if (lobby.mode === 'coop' || lobby.mode === 'duel' || lobby.mode === 'race' || lobby.mode === 'same_cards') {
         cleanupGameMessages = initGameMessageHandlers(lobby.mode)
       }
 
