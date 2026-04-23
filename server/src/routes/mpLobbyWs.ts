@@ -11,6 +11,11 @@
  *
  * This module is COMPLETELY SEPARATE from coopWs.ts (Phase-43 Miner/Scholar system).
  * Do not import from or mix with coopRoomService.ts.
+ *
+ * Ready-gate (MP-SWEEP-2026-04-23-C-002):
+ *   mp:lobby:start is now gated by allPlayersReady(). If any non-host connection
+ *   has lastKnownReady === false, the host receives error code NOT_ALL_READY and
+ *   the game does not start. Ready bits reset to false when a new player joins.
  */
 
 import type { FastifyInstance } from 'fastify'
@@ -21,6 +26,7 @@ import {
   leaveLobby,
   broadcast,
   updateLobbySettings,
+  allPlayersReady,
   type WsHandle,
   type MultiplayerMode,
   type LobbyVisibility,
@@ -246,7 +252,11 @@ export async function mpLobbyWsRoutes(app: FastifyInstance): Promise<void> {
             break
           }
 
-          // Host starts the game — set status + broadcast.
+          // Host starts the game — enforce ready-gate before transitioning.
+          // FIX MP-SWEEP-2026-04-23-C-002: reject start if any non-host guest
+          // has not signaled ready via mp:lobby:ready. Previously the server
+          // accepted any host-initiated start unconditionally, making the
+          // client-side ready UI purely cosmetic.
           case 'mp:lobby:start': {
             const currentLobby = getLobby(lobbyId)
             if (!currentLobby) break
@@ -257,7 +267,20 @@ export async function mpLobbyWsRoutes(app: FastifyInstance): Promise<void> {
               }))
               break
             }
+            if (!allPlayersReady(currentLobby)) {
+              handle.send(JSON.stringify({
+                type: 'error',
+                payload: { code: 'NOT_ALL_READY', message: 'All players must be ready before starting' },
+              }))
+              break
+            }
             updateLobbySettings(lobbyId, playerId, { status: 'in_game' })
+            // Reset ready bits after the transition so a rematch requires
+            // all players to re-ready. This also prevents stale ready state
+            // from carrying over if the lobby is reused.
+            for (const c of currentLobby.connections.values()) {
+              c.lastKnownReady = false
+            }
             broadcast(lobbyId, {
               type: 'mp:lobby:start',
               // FIX 020: Forward full host payload (mode, houseRules, deckId, contentSelection)

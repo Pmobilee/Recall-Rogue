@@ -19,6 +19,12 @@
  *   We store a lightweight WsHandle object with send/close/readyState instead of
  *   importing 'ws' directly (no @types/ws installed in server/). The WS route
  *   injects the handle via attachWebSocket() after the upgrade.
+ *
+ * Ready-gate (MP-SWEEP-2026-04-23-C-002):
+ *   The host cannot start the game until all non-host connections have set
+ *   lastKnownReady = true via the mp:lobby:ready message. Use allPlayersReady()
+ *   to check before calling updateLobbySettings with status 'in_game'.
+ *   Ready bits reset to false when a new player joins (joinLobby).
  */
 
 import { createHash, randomUUID, timingSafeEqual } from 'node:crypto'
@@ -58,6 +64,10 @@ export interface MpLobbyConnection {
    * M had already toggled ready before N's connection.
    * Defaults to false; updated by the mp:lobby:ready handler in mpLobbyWs.ts.
    * See leaderboard issue MP-STEAM-20260422-069.
+   *
+   * Also used by allPlayersReady() to enforce the server-side start gate
+   * (MP-SWEEP-2026-04-23-C-002). Resets to false when a new player joins
+   * so the host cannot start without the newcomer also readying up.
    */
   lastKnownReady: boolean
   /**
@@ -246,6 +256,9 @@ export function createLobby(opts: CreateLobbyOpts): MpLobby {
  * Join an existing lobby.
  * Validates capacity and password hash.
  * Returns `{ lobby, joinToken }` on success or `{ error }` on failure.
+ *
+ * Side-effect: resets all existing connections' lastKnownReady to false so the
+ * host cannot start without the newly joined player also readying up.
  */
 export function joinLobby(
   lobbyId: string,
@@ -270,6 +283,12 @@ export function joinLobby(
     lastActivity: now,
     lastKnownReady: false,
     multiplayerRating: 1500,
+  }
+
+  // Reset all existing connections' ready state — a new player joining requires
+  // everyone (including previously-readied players) to re-confirm before start.
+  for (const existing of lobby.connections.values()) {
+    existing.lastKnownReady = false
   }
 
   lobby.connections.set(playerId, conn)
@@ -460,6 +479,28 @@ export function attachWebSocket(
   if (!conn) return false
   conn.ws = ws
   conn.lastActivity = Date.now()
+  return true
+}
+
+/**
+ * Returns true when all players in the lobby are ready to start.
+ *
+ * Rules:
+ *   - The lobby must have at least 2 connections (solo starts are blocked).
+ *   - The host is implicitly ready (their lastKnownReady is not required to be true).
+ *   - Every NON-HOST connection must have lastKnownReady === true.
+ *
+ * Called by mpLobbyWs.ts before processing mp:lobby:start so the host cannot
+ * unilaterally start while guests haven't confirmed readiness.
+ * See MP-SWEEP-2026-04-23-C-002.
+ */
+export function allPlayersReady(lobby: MpLobby): boolean {
+  if (lobby.connections.size < 2) return false
+  for (const conn of lobby.connections.values()) {
+    // Host is implicitly ready — skip the ready check for them.
+    if (conn.playerId === lobby.hostId) continue
+    if (!conn.lastKnownReady) return false
+  }
   return true
 }
 

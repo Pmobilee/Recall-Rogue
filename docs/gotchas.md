@@ -5632,3 +5632,13 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 **Fix:** Drop the `selectedDeckId` branch from the guard. Keep only `mode` and `contentSelection` required. Downstream code at `CardApp.svelte:897+` switches on `contentSelection.type` and reads the type-specific fields directly — it never touches `selectedDeckId`.
 
 **Lesson:** When a guard is written to prevent host/guest state divergence, it MUST validate the fields the downstream code actually reads, not the legacy fields a subset of code paths used to set. A correct guard for MP start would be `!lobby.contentSelection` — anything deeper is a per-type concern that belongs inside the type-dispatch branches, not the pre-dispatch validator. A start-guard that rejects valid state is worse than no guard at all because it silently loops on the ACK handshake.
+
+### 2026-04-23 — Server-side ready-check was missing on mp:lobby:start
+
+**What:** The Fastify WebSocket handler for `mp:lobby:start` only checked that the sender was the host (`currentLobby.hostId !== playerId`). It applied no per-player ready-state enforcement — the lobby-screen ready toggle was cosmetic only. Any host could start the game while guests were not ready.
+
+**Fix (MP-SWEEP-2026-04-23-C-002):** Added `allPlayersReady(lobby)` to `mpLobbyRegistry.ts`. Returns `true` iff the lobby has >= 2 connections AND every non-host connection has `lastKnownReady === true`. Host is implicitly ready. The `mp:lobby:start` case in `mpLobbyWs.ts` calls this before transitioning to `in_game`; a failing check sends error code `NOT_ALL_READY` to the host without affecting other players. Ready bits reset to `false` when a new player joins or when the lobby successfully starts (rematch-safe).
+
+**Context:** The 2026-04-22 fix (BUG 28 / commit `06e42b00a`) addressed client-side start-guard for study-multi lobbies only. The server remained permissive throughout; this commit closes the server gap independently.
+
+**Lesson:** Client-side guards are UX only — enforcement must live on the server. When you add a ready-toggle UI, pair it with a server gate that reads the ready state before any state-transition message is honoured.

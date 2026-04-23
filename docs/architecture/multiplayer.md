@@ -1273,3 +1273,35 @@ A `$effect` block registers these subscriptions for the lifetime of the app (cle
 7. Host calls `hostEndGame()` → `mp:trivia:end` → `phase: 'finished'` → final leaderboard.
 
 Note: `currentScreen.set('triviaRound')` is the caller's responsibility — the trivia service does not navigate. The host must trigger this transition after lobby start, typically from the run's dungeon map flow for trivia_night mode.
+
+
+## Server-Side Ready Gate (MP-SWEEP-2026-04-23-C-002)
+
+**Source file:** `server/src/routes/mpLobbyWs.ts`, `server/src/services/mpLobbyRegistry.ts`
+
+Before this fix, the server accepted any `mp:lobby:start` message from the host unconditionally — the ready UI on the lobby screen was purely cosmetic and carried no server enforcement.
+
+### Mechanic
+
+- Each `MpLobbyConnection` carries a `lastKnownReady: boolean` (default `false`).
+- Guests signal readiness by sending `mp:lobby:ready { ready: true/false }`. The server updates `lastKnownReady` and broadcasts the new state to all players.
+- `allPlayersReady(lobby)` in `mpLobbyRegistry.ts` returns `true` iff:
+  - `lobby.connections.size >= 2` (solo starts are blocked), AND
+  - every **non-host** connection has `lastKnownReady === true`.
+  - The host is implicitly ready (their `lastKnownReady` is not checked).
+- When `mp:lobby:start` arrives, the server calls `allPlayersReady()` **before** transitioning to `in_game`. If it returns `false`, the host receives error code `NOT_ALL_READY` and the lobby stays in `waiting`.
+
+### Ready-bit reset rules
+
+| Event | Effect |
+|-------|--------|
+| New player joins (`joinLobby`) | All existing connections reset to `false` |
+| Lobby transitions to `in_game` (`mp:lobby:start` succeeds) | All connections reset to `false` (rematch-safe) |
+
+The first reset ensures the host cannot start without the newcomer also readying up. The second ensures a rematch requires re-ready from everyone.
+
+### Error code
+
+`NOT_ALL_READY` — sent only to the host. Guests are unaffected and their ready states are unchanged.
+
+---

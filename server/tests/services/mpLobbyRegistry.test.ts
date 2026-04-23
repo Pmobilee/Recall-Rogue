@@ -2,7 +2,7 @@
  * Unit tests for mpLobbyRegistry.ts
  *
  * Tests cover: create, join, leave, list, prune, password verify,
- * code generation, token validation, and WebSocket attachment.
+ * code generation, token validation, WebSocket attachment, and ready-gate.
  */
 
 import { describe, it, expect, vi } from 'vitest'
@@ -18,6 +18,7 @@ import {
   pruneStale,
   verifyPassword,
   hashPassword,
+  allPlayersReady,
   type CreateLobbyOpts,
   type MultiplayerMode,
   type LobbyVisibility,
@@ -133,6 +134,24 @@ describe('joinLobby', () => {
     expect('error' in result).toBe(true)
     if (!('error' in result)) return
     expect(result.error).toBe('Lobby not found')
+  })
+
+  it('resets all existing connections ready state when a new player joins', () => {
+    const lobby = createLobby(makeOpts())
+    // Player 2 joins and readies up.
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    const p2conn = lobby.connections.get('player-2')!
+    p2conn.lastKnownReady = true
+    // Host readies up too.
+    const hostConn = lobby.connections.get('host-1')!
+    hostConn.lastKnownReady = true
+
+    // Player 3 joins — this should reset everyone.
+    joinLobby(lobby.lobbyId, 'player-3', 'Carol')
+    expect(lobby.connections.get('host-1')!.lastKnownReady).toBe(false)
+    expect(lobby.connections.get('player-2')!.lastKnownReady).toBe(false)
+    // Player 3 also starts false.
+    expect(lobby.connections.get('player-3')!.lastKnownReady).toBe(false)
   })
 })
 
@@ -303,6 +322,75 @@ describe('generateLobbyCode (via createLobby)', () => {
       const lobby = createLobby(makeOpts())
       expect(lobby.lobbyCode).toHaveLength(6)
     }
+  })
+})
+
+// ── allPlayersReady — ready-gate tests (MP-SWEEP-2026-04-23-C-002) ────────────
+
+describe('allPlayersReady', () => {
+  it('returns false when only the host is in the lobby (< 2 players)', () => {
+    const lobby = createLobby(makeOpts())
+    // Host alone — solo start is forbidden regardless of ready state.
+    expect(allPlayersReady(lobby)).toBe(false)
+  })
+
+  it('returns false when a guest has not readied up', () => {
+    const lobby = createLobby(makeOpts())
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    // Guest's lastKnownReady defaults to false; host is implicitly ready.
+    expect(allPlayersReady(lobby)).toBe(false)
+  })
+
+  it('returns true when all guests are ready (host implicitly ready)', () => {
+    const lobby = createLobby(makeOpts())
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    // Simulate guest readying up.
+    lobby.connections.get('player-2')!.lastKnownReady = true
+    expect(allPlayersReady(lobby)).toBe(true)
+  })
+
+  it('returns false when at least one guest is not ready in a 3-player lobby', () => {
+    const lobby = createLobby(makeOpts())
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    joinLobby(lobby.lobbyId, 'player-3', 'Carol')
+    // Only player-2 is ready; player-3 is not.
+    lobby.connections.get('player-2')!.lastKnownReady = true
+    lobby.connections.get('player-3')!.lastKnownReady = false
+    expect(allPlayersReady(lobby)).toBe(false)
+  })
+
+  it('returns true when all guests in a 3-player lobby are ready', () => {
+    const lobby = createLobby(makeOpts())
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    joinLobby(lobby.lobbyId, 'player-3', 'Carol')
+    lobby.connections.get('player-2')!.lastKnownReady = true
+    lobby.connections.get('player-3')!.lastKnownReady = true
+    expect(allPlayersReady(lobby)).toBe(true)
+  })
+
+  it('host ready-state does not affect the result — host is implicitly ready', () => {
+    const lobby = createLobby(makeOpts())
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    // Set guest ready but leave host lastKnownReady as false (default).
+    lobby.connections.get('player-2')!.lastKnownReady = true
+    // Host's lastKnownReady = false, but should not block start.
+    expect(lobby.connections.get('host-1')!.lastKnownReady).toBe(false)
+    expect(allPlayersReady(lobby)).toBe(true)
+  })
+
+  it('returns false after a new player joins even if previous players were ready', () => {
+    const lobby = createLobby(makeOpts())
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    lobby.connections.get('player-2')!.lastKnownReady = true
+
+    // Confirm all-ready before the join.
+    expect(allPlayersReady(lobby)).toBe(true)
+
+    // Now a third player joins — joinLobby resets all ready bits.
+    joinLobby(lobby.lobbyId, 'player-3', 'Carol')
+    // player-2 should now be unready again.
+    expect(lobby.connections.get('player-2')!.lastKnownReady).toBe(false)
+    expect(allPlayersReady(lobby)).toBe(false)
   })
 })
 
