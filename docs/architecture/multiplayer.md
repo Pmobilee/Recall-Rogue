@@ -1,7 +1,7 @@
 # Multiplayer Architecture
 
 > **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/services/multiplayerElo.ts`, `src/services/multiplayerWorkshopService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
-> **Last verified:** 2026-04-23 — CT-001 + CM-001: rest-site action sync + mystery event host-authoritative selection with barriers
+> **Last verified:** 2026-04-23 — added State Ownership table (shared vs per-player across all 5 modes); CT-001 + CM-001: rest-site action sync + mystery event host-authoritative selection with barriers
 
 ---
 
@@ -18,6 +18,24 @@ All five multiplayer modes tested end-to-end in batch MP-20260413-003941 using t
 | Trivia Night | PASS | Lobby → combat → 1 turn |
 
 **Seed sync verified:** Both players see identical enemy (Eraser Worm 28/28), identical hand (Strike, Block, Transmute, Strike, Block), and identical map (25 nodes).
+
+---
+
+## State Ownership — Shared vs Per-Player
+
+Unless explicitly shared, state is per-player local. Each client owns its own `RunState` and applies effects independently. The only state that crosses client boundaries today is enemy HP/intent in co-op (host-authoritative, merged at end-of-turn via the barrier protocol) and the map node selection in co-op (both clients must reach consensus before advancing).
+
+| Field | Coop | Race | Same Cards | Duel | Trivia Night |
+|---|---|---|---|---|---|
+| `playerHp` / `playerMaxHp` | Per-player | Per-player | Per-player | Per-player | Per-player |
+| `currency` (gold) | Per-player | Per-player | Per-player | Per-player | Per-player |
+| `deck` / relics / status effects | Per-player | Per-player | Seeded-identical at start; diverges as play proceeds | Per-player | Per-player |
+| Enemy HP / intent | **Shared** (host-authoritative, barrier merge) | N/A (each player fights own enemy) | N/A | **Shared** (host-authoritative, round-robin target) | N/A |
+| Map node selection | **Shared** (consensus barrier) | N/A | N/A | N/A | N/A |
+| Trivia points / standings | N/A | N/A | N/A | N/A | **Aggregated by host, broadcast read-only** |
+| Race progress (score / accuracy / floor) | N/A | **Broadcast read-only** to opponents for HUD | N/A | N/A | N/A |
+
+**Why this matters:** players in co-op do not share a gold pool. Each player spends their own currency at the shop and takes their own card rewards. This is the current design for non-ranked sessions. Ranked co-op (identical shops, shared economy) is not yet shipped; when it is, the seeded-fork wiring gap (`designClarification` in `data/playtests/leaderboard.json` MP-AUDIT-2026-04-23-OPUS-A batch) will need to be addressed before enabling it.
 
 ---
 

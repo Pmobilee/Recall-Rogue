@@ -97,6 +97,20 @@
 
   // ── Join logic ─────────────────────────────────────────────────────────────
 
+  /**
+   * Maps raw error strings from the server into player-friendly messages.
+   * If the message indicates the lobby no longer exists, returns a short
+   * human-readable line; otherwise passes the raw message through so transport
+   * diagnostics remain visible.
+   */
+  function classifyJoinError(raw: string): string {
+    if (/not\s*found/i.test(raw) || /no such lobby/i.test(raw) ||
+        /lobby\s*(gone|closed|does\s*not\s*exist)/i.test(raw) || /404/.test(raw)) {
+      return 'That lobby just closed. Refreshing the list.'
+    }
+    return raw
+  }
+
   async function handleJoin(entry: LobbyBrowserEntry): Promise<void> {
     joinError = null
     if (entry.visibility === 'password') {
@@ -112,7 +126,14 @@
       const lobby = await joinLobbyById(entry.lobbyId, localPlayerId, localDisplayName, password)
       onJoined(lobby)
     } catch (e) {
-      joinError = e instanceof Error ? e.message : String(e)
+      const raw = e instanceof Error ? e.message : String(e)
+      joinError = classifyJoinError(raw)
+      // Reconcile the list immediately — the lobby may have disappeared.
+      void refresh()
+      // If this was a ghost lobby and the password modal is open, close it.
+      if (passwordModalEntry && joinError !== raw) {
+        passwordModalEntry = null
+      }
     }
   }
 

@@ -57,7 +57,7 @@
     <p class="rest-choice-caption">Choose one: Rest, Study, or Meditate</p>
 
     <div class="hp-info">
-      HP: {playerHp} / {playerMaxHp}
+      Your HP: {playerHp} / {playerMaxHp}
     </div>
 
     <div class="option-cards" role="radiogroup" aria-label="Rest site options">
