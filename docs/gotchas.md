@@ -5674,3 +5674,18 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 **Fix / watchdog location:** `src/services/failsafeWatchdogs.ts` → `_checkEmptyHandStuck()` + `_repairEmptyHand()`. Wired by `initFailsafeWatchdogs()` called from `encounterBridge.startEncounterForRoom()`.
 
 **Two-sided enforcement opportunity (not yet built):** a pre-encounter draw-count assertion (draw pile + discard pile > 0) that would detect the exhausted-deck-at-encounter-start condition before the player sees an empty hand. Flagged as future work in `docs/mechanics/failsafes.md`.
+
+### 2026-04-23 — Orphaned WebSocket on duplicate join / reconnect-while-connected (H-010)
+
+**What:** `mpLobbyRegistry.ts` called `lobby.connections.set(playerId, conn)` unconditionally in `joinLobby()`, and `conn.ws = ws` unconditionally in `attachWebSocket()`. If a player rejoined before their first WS upgrade completed, the first connection record was silently replaced without closing its `ws` handle. The old socket remained open, leaking an orphaned connection that could still receive (now-misdirected) broadcasts until the remote client timed out.
+
+A secondary problem: the capacity guard in `joinLobby()` ran before the duplicate check. If the lobby was at max capacity and the same player reconnected, they would receive "Lobby is full" even though they already occupied a slot.
+
+**Root cause:** No idempotency check on `connections.set`. The map blindly overwrites any existing value.
+
+**Fix (2026-04-23, H-010):**
+- `joinLobby()`: detect existing connection record before capacity check. If found and `ws.readyState === 1`, call `ws.close(4002, 'player_replaced')`. Broadcast `mp:lobby:player_replaced` to remaining players. Reconnecting player bypasses capacity guard.
+- `attachWebSocket()`: same pattern — close existing open `ws` before assigning new handle.
+- 8 new unit tests in `server/tests/services/mpLobbyRegistry.test.ts` covering double-join, reconnect-while-connected, already-closed ws (no double-close), capacity bypass, and no-regression path for clean new joins.
+
+**Lesson:** Any `Map.set()` that overwrites an existing value holding a closeable resource (socket, timer, stream) is a potential leak. Always check-and-close before replacing.

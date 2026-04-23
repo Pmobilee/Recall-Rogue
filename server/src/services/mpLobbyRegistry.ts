@@ -259,6 +259,11 @@ export function createLobby(opts: CreateLobbyOpts): MpLobby {
  *
  * Side-effect: resets all existing connections' lastKnownReady to false so the
  * host cannot start without the newly joined player also readying up.
+ *
+ * Duplicate-join handling (H-010): if the same playerId is already in the lobby
+ * (fast reconnect / network blip), the old WebSocket is force-closed with code
+ * 4002 before the new connection record replaces it.  A reconnecting player is
+ * NOT subject to the capacity check — they are already counted in currentPlayers.
  */
 export function joinLobby(
   lobbyId: string,
@@ -269,8 +274,30 @@ export function joinLobby(
   const lobby = lobbies.get(lobbyId)
   if (!lobby) return { error: 'Lobby not found' }
   if (lobby.status === 'in_game') return { error: 'Game already in progress' }
-  if (lobby.currentPlayers >= lobby.maxPlayers) return { error: 'Lobby is full' }
   if (!verifyPassword(lobby.passwordHash, passwordHash)) return { error: 'Wrong password' }
+
+  // H-010: Detect duplicate join BEFORE the capacity check so a reconnecting
+  // player who is already counted in currentPlayers is not wrongly rejected.
+  const existing = lobby.connections.get(playerId)
+  if (existing !== undefined) {
+    // Player is already in the lobby — close their old socket and replace the record.
+    if (existing.ws !== null && existing.ws.readyState === 1) {
+      try {
+        existing.ws.close(4002, 'player_replaced')
+      } catch { /* already closing */ }
+    }
+    console.info(
+      `[mpLobbyRegistry] duplicate join: replacing connection for player ${playerId} in lobby ${lobbyId}`
+    )
+    // Notify remaining players of the slot replacement.
+    broadcast(lobbyId, {
+      type: 'mp:lobby:player_replaced',
+      payload: { playerId, reason: 'duplicate_join' },
+    }, playerId)
+  } else if (lobby.currentPlayers >= lobby.maxPlayers) {
+    // Only enforce capacity when this is a genuinely new player (not a reconnect).
+    return { error: 'Lobby is full' }
+  }
 
   const joinToken = generateJoinToken()
   const now = Date.now()
@@ -287,8 +314,8 @@ export function joinLobby(
 
   // Reset all existing connections' ready state — a new player joining requires
   // everyone (including previously-readied players) to re-confirm before start.
-  for (const existing of lobby.connections.values()) {
-    existing.lastKnownReady = false
+  for (const existingConn of lobby.connections.values()) {
+    existingConn.lastKnownReady = false
   }
 
   lobby.connections.set(playerId, conn)
@@ -477,6 +504,16 @@ export function attachWebSocket(
 ): boolean {
   const conn = lobbies.get(lobbyId)?.connections.get(playerId)
   if (!conn) return false
+  // H-010: If a WebSocket is already attached and open, close it before
+  // assigning the new one to prevent orphaned socket leaks on reconnect.
+  if (conn.ws !== null && conn.ws.readyState === 1) {
+    try {
+      conn.ws.close(4002, 'player_replaced')
+    } catch { /* already closing */ }
+    console.info(
+      `[mpLobbyRegistry] attachWebSocket: replacing open ws for player ${playerId} in lobby ${lobbyId}`
+    )
+  }
   conn.ws = ws
   conn.lastActivity = Date.now()
   return true

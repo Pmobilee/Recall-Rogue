@@ -394,6 +394,110 @@ describe('allPlayersReady', () => {
   })
 })
 
+// ── H-010: duplicate-join and reconnect-while-connected ws leak tests ────────
+
+describe('joinLobby — duplicate join (H-010)', () => {
+  it('force-closes the old open ws and replaces the connection record', () => {
+    const lobby = createLobby(makeOpts())
+    const result1 = joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    if ('error' in result1) throw new Error('unexpected error')
+
+    // Attach a fake ws to simulate an open connection.
+    const firstWs = makeFakeWs(1) // readyState 1 = OPEN
+    attachWebSocket(lobby.lobbyId, 'player-2', firstWs)
+    expect(lobby.connections.get('player-2')!.ws).toBe(firstWs)
+
+    // Same player re-joins (fast reconnect / network blip).
+    const result2 = joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    expect('error' in result2).toBe(false)
+
+    // Old ws should have been closed with code 4002.
+    expect(firstWs.close).toHaveBeenCalledOnce()
+    expect(firstWs.close).toHaveBeenCalledWith(4002, 'player_replaced')
+
+    // The new connection record replaces the old one.
+    const newConn = lobby.connections.get('player-2')!
+    expect(newConn.ws).toBeNull() // new conn has no ws yet
+    if ('joinToken' in result2) {
+      expect(newConn.joinToken).toBe(result2.joinToken)
+    }
+  })
+
+  it('does not close the old ws when it is already closed (readyState !== 1)', () => {
+    const lobby = createLobby(makeOpts())
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+
+    const closedWs = makeFakeWs(3) // readyState 3 = CLOSED
+    attachWebSocket(lobby.lobbyId, 'player-2', closedWs)
+
+    // Re-join — old ws is closed so .close() should NOT be called again.
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    expect(closedWs.close).not.toHaveBeenCalled()
+  })
+
+  it('currentPlayers count does not increase on duplicate join', () => {
+    const lobby = createLobby(makeOpts())
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    expect(lobby.currentPlayers).toBe(2)
+
+    // Re-join — count must stay at 2, not grow to 3.
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    expect(lobby.currentPlayers).toBe(2)
+    expect(lobby.connections.size).toBe(2)
+  })
+
+  it('allows reconnect even when lobby is at max capacity', () => {
+    const lobby = createLobby(makeOpts({ maxPlayers: 2 }))
+    joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    expect(lobby.currentPlayers).toBe(2) // lobby is full
+
+    // Same player re-joins — must succeed, not return 'Lobby is full'.
+    const result = joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    expect('error' in result).toBe(false)
+  })
+
+  it('new player join still works unchanged (no regression)', () => {
+    const lobby = createLobby(makeOpts({ maxPlayers: 4 }))
+    const result = joinLobby(lobby.lobbyId, 'player-2', 'Bob')
+    expect('error' in result).toBe(false)
+    if ('error' in result) return
+    expect(result.joinToken).toBeTruthy()
+    expect(lobby.currentPlayers).toBe(2)
+  })
+})
+
+describe('attachWebSocket — reconnect-while-connected (H-010)', () => {
+  it('closes the existing open ws before assigning the new one', () => {
+    const lobby = createLobby(makeOpts())
+    const firstWs = makeFakeWs(1) // OPEN
+    attachWebSocket(lobby.lobbyId, 'host-1', firstWs)
+    expect(lobby.connections.get('host-1')!.ws).toBe(firstWs)
+
+    // Second ws attachment (e.g. fast reconnect on same connection record).
+    const secondWs = makeFakeWs(1)
+    attachWebSocket(lobby.lobbyId, 'host-1', secondWs)
+
+    // First ws must have been closed with code 4002.
+    expect(firstWs.close).toHaveBeenCalledOnce()
+    expect(firstWs.close).toHaveBeenCalledWith(4002, 'player_replaced')
+
+    // Second ws is now live.
+    expect(lobby.connections.get('host-1')!.ws).toBe(secondWs)
+  })
+
+  it('does not call close on already-closed ws during re-attach', () => {
+    const lobby = createLobby(makeOpts())
+    const closedWs = makeFakeWs(3) // CLOSED
+    attachWebSocket(lobby.lobbyId, 'host-1', closedWs)
+
+    const secondWs = makeFakeWs(1)
+    attachWebSocket(lobby.lobbyId, 'host-1', secondWs)
+
+    expect(closedWs.close).not.toHaveBeenCalled()
+    expect(lobby.connections.get('host-1')!.ws).toBe(secondWs)
+  })
+})
+
 // Suppress unused-variable linter complaints on type-only imports.
 const _modes: MultiplayerMode[] = ['race', 'same_cards', 'duel', 'coop', 'trivia_night']
 const _vis: LobbyVisibility[] = ['public', 'password', 'friends_only']

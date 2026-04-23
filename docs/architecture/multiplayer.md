@@ -1323,3 +1323,31 @@ The first reset ensures the host cannot start without the newcomer also readying
 `NOT_ALL_READY` — sent only to the host. Guests are unaffected and their ready states are unchanged.
 
 ---
+
+## Duplicate-Join Connection Replacement (H-010)
+
+**Source file:** `server/src/services/mpLobbyRegistry.ts`
+
+**Problem (pre-fix):** `joinLobby()` called `lobby.connections.set(playerId, conn)` unconditionally. If the same player re-joined before their first WebSocket upgrade completed (fast reconnect, network blip), the first connection record was silently overwritten. If the first upgrade *did* complete before the second join, `conn.ws` was non-null but never explicitly closed — leaking an orphaned socket. `attachWebSocket()` had the same issue: a second WS handle could replace the first without closing it.
+
+**Fix:** Both paths now check for an existing open connection before replacing it.
+
+### `joinLobby()` — duplicate-join path
+
+1. Before replacing the connection record, `lobby.connections.get(playerId)` is checked.
+2. If an existing record is found and its `ws.readyState === 1` (OPEN), `ws.close(4002, 'player_replaced')` is called.
+3. An `mp:lobby:player_replaced { playerId, reason: 'duplicate_join' }` broadcast is sent to all other connected players so their UIs can reflect the slot transition.
+4. A reconnecting player bypasses the capacity check (they already occupy a slot in `currentPlayers`).
+
+### `attachWebSocket()` — reconnect-while-connected path
+
+1. If `conn.ws !== null && conn.ws.readyState === 1`, the old handle is closed with `ws.close(4002, 'player_replaced')` before the new handle is assigned.
+2. The replacement is logged at info level.
+
+### Close code
+
+`4002` — custom application close code used exclusively for connection replacement. Clients should treat this code as a clean replacement (not an error) and suppress any reconnect loop triggered by it.
+
+### Ready-bit interaction
+
+A duplicate join resets all `lastKnownReady` bits via the same loop that runs for genuine new joins. The reconnecting player's ready state defaults to `false` — the host must wait for them to re-ready before starting.
