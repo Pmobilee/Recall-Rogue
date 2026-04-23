@@ -145,6 +145,13 @@ import { CHAIN_TYPES } from '../data/chainTypes'
 import { unlockAchievement } from './steamService'
 import { startRaceProgressBroadcast, updateLocalProgress, stopRaceProgressBroadcast, initRaceMode, collectForkSeeds, broadcastForkSeeds } from './multiplayerGameService'
 import { getCurrentLobby, getLocalMultiplayerPlayerId, isHost } from './multiplayerLobbyService'
+import {
+  awaitCoopRestResolution,
+  broadcastCoopRestAction,
+  awaitCoopMysteryResolution,
+  broadcastCoopMysteryEvent,
+  onCoopMysteryEvent,
+} from './multiplayerCoopSync'
 import { computeRaceScore } from './multiplayerScoring'
 import type { MultiplayerMode } from '../data/multiplayerTypes'
 import { ensureCuratedDeckLoaded } from '../data/curatedDeckStore'
@@ -2529,9 +2536,47 @@ export async function onRoomSelected(room: RoomOption): Promise<void> {
         }
       }
       const isStudy = run?.deckMode?.type === 'study'
-      activeMysteryEvent.set(generateMysteryEvent(run?.floor.currentFloor ?? 1, isStudy));
-      gameFlowState.set('mysteryEvent');
-      currentScreen.set('mysteryEvent');
+      const isCoop = run?.multiplayerMode === 'coop';
+      if (isCoop && isHost()) {
+        // CM-001 (MP-AUDIT-2026-04-23-OPUS-A-CM-001): Host generates the mystery event
+        // and broadcasts it so both players see the same event.
+        const event = generateMysteryEvent(run?.floor.currentFloor ?? 1, isStudy);
+        activeMysteryEvent.set(event);
+        broadcastCoopMysteryEvent(event);
+        gameFlowState.set('mysteryEvent');
+        currentScreen.set('mysteryEvent');
+      } else if (isCoop && !isHost()) {
+        // CM-001: Non-host waits for the host's authoritative event.
+        // 5s timeout: fall back to local generation so a dropped packet doesn't softlock.
+        const MYSTERY_SYNC_TIMEOUT_MS = 5_000;
+        await new Promise<void>((resolve) => {
+          let settled = false;
+          const unsub = onCoopMysteryEvent((payload) => {
+            if (settled) return;
+            settled = true;
+            clearTimeout(timeoutHandle);
+            unsub();
+            activeMysteryEvent.set(payload.event as import('./floorManager').MysteryEvent);
+            resolve();
+          });
+          const timeoutHandle = setTimeout(() => {
+            if (settled) return;
+            settled = true;
+            unsub();
+            console.warn('[gameFlowController] CM-001: mystery_event timed out — falling back to local generation');
+            const event = generateMysteryEvent(run?.floor.currentFloor ?? 1, isStudy);
+            activeMysteryEvent.set(event);
+            resolve();
+          }, MYSTERY_SYNC_TIMEOUT_MS);
+        });
+        gameFlowState.set('mysteryEvent');
+        currentScreen.set('mysteryEvent');
+      } else {
+        // Solo mode — generate locally as before.
+        activeMysteryEvent.set(generateMysteryEvent(run?.floor.currentFloor ?? 1, isStudy));
+        gameFlowState.set('mysteryEvent');
+        currentScreen.set('mysteryEvent');
+      }
       break;
     case 'rest':
       gameFlowState.set('restRoom');
@@ -2743,13 +2788,14 @@ export function onUpgradeSelected(cardId: string): void {
 
   recordRestAction('upgrade');
   activeUpgradeCandidates.set([]);
-  onRestResolved();
+  onRestResolved('upgrade');
 }
 
 /** Called when the player skips upgrade selection. */
 export function onUpgradeSkipped(): void {
   activeUpgradeCandidates.set([]);
-  onRestResolved();
+  // No upgrade action taken — treat as heal for barrier purposes (skipped)
+  onRestResolved('upgrade');
 }
 
 // ---------------------------------------------------------------------------
@@ -2934,7 +2980,7 @@ export function onStudyComplete(correctFactIds: string[]): void {
   }
 
   // No upgrades available — proceed normally
-  onRestResolved();
+  onRestResolved('study');
 }
 
 /**
@@ -2955,7 +3001,7 @@ export function onStudyUpgradeConfirmed(selectedCards: Card[]): void {
 
   activeRunState.set(run);
   pendingStudyUpgrade.set(null);
-  onRestResolved();
+  onRestResolved('study');
 }
 
 // ---------------------------------------------------------------------------
@@ -2974,7 +3020,7 @@ export function getMeditateCandidates(): Card[] {
  */
 export function onMeditateRemove(cardId: string): void {
   sellCardFromActiveDeck(cardId);
-  onRestResolved();
+  onRestResolved('meditate');
 }
 
 /**
@@ -3025,6 +3071,11 @@ export function onPostMiniBossUpgradeSkipped(): void {
   openCardReward();
 }
 
+/**
+ * CM-001 (MP-AUDIT-2026-04-23-OPUS-A-CM-001): Called when the local player finishes
+ * their mystery event. In co-op, awaits a barrier so both players advance to dungeonMap
+ * together. In solo, transitions immediately.
+ */
 export function onMysteryResolved(): void {
   const run = get(activeRunState);
   if (!run) return;
@@ -3034,6 +3085,18 @@ export function onMysteryResolved(): void {
   activeMasteryChallenge.set(null)
   run.floor.lastSlotWasEvent = true;
   activeRunState.set(run);
+
+  const isCoop = run.multiplayerMode === 'coop';
+  if (isCoop) {
+    void awaitCoopMysteryResolution().then(() => {
+      showRoomExitNarrative('mystery', mysteryEventId);
+      activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+      gameFlowState.set('dungeonMap');
+      currentScreen.set('dungeonMap');
+    });
+    return;
+  }
+
   showRoomExitNarrative('mystery', mysteryEventId);
   activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
   gameFlowState.set('dungeonMap');
@@ -3116,15 +3179,11 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
         gameFlowState.set('cardUpgradeReveal');
         currentScreen.set('cardUpgradeReveal');
       } else {
-        // No eligible cards — return to map without a reveal.
+        // No eligible cards — route through onMysteryResolved so the coop barrier fires.
         activeMysteryEvent.set(null);
         activeMasteryChallenge.set(null);
-        run.floor.lastSlotWasEvent = true;
         activeRunState.set(run);
-        showRoomExitNarrative('mystery', mysteryEventId);
-        activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
-        gameFlowState.set('dungeonMap');
-        currentScreen.set('dungeonMap');
+        onMysteryResolved();
       }
       break;
     }
@@ -3155,30 +3214,22 @@ export function onMysteryEffectResolved(effect: MysteryEffect): void {
         gameFlowState.set('cardUpgradeReveal');
         currentScreen.set('cardUpgradeReveal');
       } else {
-        // No eligible cards — applyMysteryEffect already no-op'd; return to map like default.
+        // No eligible cards — route through onMysteryResolved so the coop barrier fires.
         activeMysteryEvent.set(null);
         activeMasteryChallenge.set(null);
-        run.floor.lastSlotWasEvent = true;
         activeRunState.set(run);
-        showRoomExitNarrative('mystery', mysteryEventId);
-        activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
-        gameFlowState.set('dungeonMap');
-        currentScreen.set('dungeonMap');
+        onMysteryResolved();
       }
       break;
     }
     default: {
       // All other effects (heal, damage, currency, maxHpChange,
       // removeRandomCard, healPercent, transformCard, freeCard, nothing, choice)
-      // already applied above — return to map.
+      // already applied above — route through onMysteryResolved so the coop barrier fires.
       activeMysteryEvent.set(null);
       activeMasteryChallenge.set(null);
-      run.floor.lastSlotWasEvent = true;
       activeRunState.set(run);
-      showRoomExitNarrative('mystery', mysteryEventId);
-      activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
-      gameFlowState.set('dungeonMap');
-      currentScreen.set('dungeonMap');
+      onMysteryResolved();
       break;
     }
   }
@@ -3327,21 +3378,57 @@ export function getIsMysteryRoomCombatElite(): boolean {
 /**
  * Called when the player dismisses the card upgrade reveal overlay.
  * Clears the reveal data and returns to the dungeon map.
+ * CM-001: In co-op, routes through onMysteryResolved so the mystery barrier fires.
  */
 export function onCardUpgradeRevealDismissed(): void {
   activeCardUpgradeReveal.set(null);
   const run = get(activeRunState);
-  if (run) {
-    showRoomExitNarrative('mystery');
-    activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+  if (!run) {
+    gameFlowState.set('dungeonMap');
+    currentScreen.set('dungeonMap');
+    return;
   }
+  const isCoop = run.multiplayerMode === 'coop';
+  if (isCoop) {
+    // Both players must dismiss their reveal before advancing — use mystery barrier.
+    onMysteryResolved();
+    return;
+  }
+  showRoomExitNarrative('mystery');
+  activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');
 }
 
-export function onRestResolved(): void {
+/**
+ * CT-001 (MP-AUDIT-2026-04-23-OPUS-A-CT-001): Called when the local player finishes
+ * their rest action. In co-op, broadcasts the action, then awaits a barrier so both
+ * players advance to dungeonMap together. In solo, transitions immediately.
+ *
+ * @param action - Which rest action the local player took. Defaults to 'heal' because
+ *   CardApp.handleRestHeal calls this directly without going through a named GFC function.
+ */
+export function onRestResolved(action: 'heal' | 'study' | 'meditate' | 'upgrade' = 'heal'): void {
   const run = get(activeRunState);
   if (!run) return;
+
+  const isCoop = run.multiplayerMode === 'coop';
+
+  // In co-op, broadcast what we did then wait for both players to finish before advancing.
+  if (isCoop) {
+    broadcastCoopRestAction(action);
+    run.floor.lastSlotWasEvent = true;
+    activeRunState.set(run);
+    void awaitCoopRestResolution().then(() => {
+      showRoomExitNarrative('rest');
+      activeRoomOptions.set(generateCombatRoomOptions(run.floor.currentFloor));
+      gameFlowState.set('dungeonMap');
+      currentScreen.set('dungeonMap');
+    });
+    return;
+  }
+
+  // Solo / non-coop path — immediate transition.
   run.floor.lastSlotWasEvent = true;
   activeRunState.set(run);
   showRoomExitNarrative('rest');
@@ -3418,7 +3505,7 @@ export function playAgain(): void {
   return;
 }
 
-export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race' | 'multiplayer_coop' | 'multiplayer_duel' | 'multiplayer_trivia', dailySeed?: number | null, runSeed?: number | null): void {
+export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race' | 'coop' | 'multiplayer_duel' | 'multiplayer_trivia', dailySeed?: number | null, runSeed?: number | null): void {
   if (runMode === 'daily_expedition' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
     activeRunMode = 'daily_expedition'
     activeDailySeed = dailySeed

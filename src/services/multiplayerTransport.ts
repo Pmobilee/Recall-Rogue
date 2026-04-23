@@ -86,6 +86,12 @@ export type MultiplayerMessageType =
   | 'mp:coop:enemy_hp_update'
   | 'mp:coop:player_died'
   | 'mp:coop:request_initial_state'
+  // CT-001: rest-site action sync (MP-AUDIT-2026-04-23-OPUS-A-CT-001)
+  | 'mp:coop:rest_action'
+  | 'mp:coop:rest_done'
+  // CM-001: mystery event sync (MP-AUDIT-2026-04-23-OPUS-A-CM-001)
+  | 'mp:coop:mystery_event'
+  | 'mp:coop:mystery_done'
   // Map node consensus (all multiplayer modes that share a map)
   | 'mp:map:node_pick'
   // Trivia Night

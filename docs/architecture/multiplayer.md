@@ -1,7 +1,7 @@
 # Multiplayer Architecture
 
 > **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/services/multiplayerElo.ts`, `src/services/multiplayerWorkshopService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
-> **Last verified:** 2026-04-21 — Hardening wave (co-op barrier, duel protocol, reconnect/presence, ranked Elo, workshop gate, seed-ACK)
+> **Last verified:** 2026-04-23 — CT-001 + CM-001: rest-site action sync + mystery event host-authoritative selection with barriers
 
 ---
 
@@ -97,6 +97,58 @@ broadcastSharedEnemyState(snapshot)  →  hydrateEnemyFromSnapshot(enemy, snapsh
 4. Merges `statusEffectsAdded` (sums magnitudes for duplicates)
 5. Checks phase transition
 6. Returns a new `SharedEnemySnapshot` without mutating input
+
+---
+
+## Co-op Room Transition Sync (CT-001 + CM-001)
+
+> **Implemented:** 2026-04-23 — Fixes MP-AUDIT-2026-04-23-OPUS-A-CT-001 and CM-001.
+
+### CT-001: Rest-Site Action Sync
+
+Before this fix, rest actions (heal, study, meditate, upgrade) were applied locally and immediately transitioned each player to `dungeonMap` independently. Players could arrive at different floors or in different states.
+
+**Fixed flow:**
+
+1. Player picks a rest action. Local effect applies immediately (HP gain, study quiz, etc.).
+2. `onRestResolved(action)` broadcasts `mp:coop:rest_action { playerId, action, payload? }` so the partner's UI can display "Partner healed for N" etc.
+3. `awaitCoopRestResolution()` is called. Both players send `mp:coop:rest_done { playerId }`.
+4. Both advance to `dungeonMap` only when all players have signaled.
+
+**Timeout:** 15s (`BARRIER_TIMEOUT_MS`). On timeout, resolves `'cancelled'` and advances immediately to prevent softlock.
+
+**Partner awareness:** Subscribe to `onPartnerRestAction(cb)` in `multiplayerCoopSync.ts` to receive `{ playerId, action, payload }` for UI narration.
+
+**New message types:**
+- `mp:coop:rest_action` — informational; fires `_partnerRestActionSubs`.
+- `mp:coop:rest_done` — barrier signal; handled by `_maybeReleaseRestBarrier()`.
+
+### CM-001: Mystery Event Sync
+
+Before this fix, `generateMysteryEvent()` ran independently on each client. If the RNG forks diverged (different numbers of RNG-consuming calls before mystery), players saw different events.
+
+**Fixed flow:**
+
+1. Host calls `generateMysteryEvent()` and immediately broadcasts `mp:coop:mystery_event { event }`.
+2. Non-host clients subscribe via `onCoopMysteryEvent(cb)` and wait for the event payload. They set `activeMysteryEvent` from the received payload — **not** from local generation.
+3. 5s timeout on non-host: if no `mp:coop:mystery_event` arrives, falls back to local generation with a warning log. Prevents softlock from a dropped packet.
+4. Each player resolves the event locally (HP/deck/relic effects apply to each player's own run state).
+5. On resolution, `onMysteryResolved()` calls `awaitCoopMysteryResolution()`. Both send `mp:coop:mystery_done { playerId }`.
+6. Both advance to `dungeonMap` only when all players have signaled.
+
+**Timeout:** 15s (`BARRIER_TIMEOUT_MS`). On timeout, resolves `'cancelled'`.
+
+**Only event selection is authoritative (host-determined). Effects are per-player.**
+
+**New message types:**
+- `mp:coop:mystery_event` — host broadcasts; fires `_mysteryEventSubs`.
+- `mp:coop:mystery_done` — barrier signal; handled by `_maybeReleaseMysteryBarrier()`.
+
+**New payload types** (in `src/data/multiplayerTypes.ts`):
+- `CoopRestActionPayload`
+- `CoopRestDonePayload`
+- `CoopMysteryEventPayload`
+- `CoopMysteryDonePayload`
 
 ---
 

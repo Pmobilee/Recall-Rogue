@@ -259,6 +259,58 @@ export interface EnemyTurnDelta {
   statusEffectsAdded: StatusEffect[];
 }
 
+/**
+ * CT-001 (MP-AUDIT-2026-04-23-OPUS-A-CT-001): Payload for mp:coop:rest_action.
+ * Broadcast by a player when they choose a rest-site action.
+ * Partner receives this for awareness UI. Both players advance only after the
+ * mp:coop:rest_done barrier resolves (awaitCoopRestResolution).
+ */
+export interface CoopRestActionPayload {
+  /** The player who acted. */
+  playerId: string;
+  /** Which rest action was taken. */
+  action: 'heal' | 'study' | 'meditate' | 'upgrade';
+  /** Optional context for UI narration: HP gained, etc. */
+  payload?: {
+    hpGained?: number;
+  };
+}
+
+/**
+ * CT-001 (MP-AUDIT-2026-04-23-OPUS-A-CT-001): Payload for mp:coop:rest_done.
+ * Sent by each player once their local rest action is complete.
+ * Both players advance to dungeonMap only when all have signaled.
+ */
+export interface CoopRestDonePayload {
+  playerId: string;
+}
+
+/**
+ * CM-001 (MP-AUDIT-2026-04-23-OPUS-A-CM-001): Payload for mp:coop:mystery_event.
+ * Host-only broadcast: the host generates the mystery event and sends it to all players
+ * so both see the same event. Non-host waits for this before setting activeMysteryEvent.
+ */
+export interface CoopMysteryEventPayload {
+  /** Serialised MysteryEvent. Non-host sets activeMysteryEvent from this. */
+  event: {
+    id: string;
+    name: string;
+    description: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    effect: any;
+    requiresStudyMode?: boolean;
+  };
+}
+
+/**
+ * CM-001 (MP-AUDIT-2026-04-23-OPUS-A-CM-001): Payload for mp:coop:mystery_done.
+ * Sent by each player once they have finished their local mystery resolution.
+ * Both players advance to dungeonMap only when all have signaled.
+ */
+export interface CoopMysteryDonePayload {
+  playerId: string;
+}
+
 // Re-export imported types so callers that import from multiplayerTypes get them
 export type { EnemyIntent, EnemyInstance, StatusEffect };
 

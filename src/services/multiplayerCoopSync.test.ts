@@ -107,9 +107,15 @@ import {
   onPartnerUnresponsive,
   markPartnerUnresponsive,
   partnerStateToRaceProgressShape,
+  awaitCoopRestResolution,
+  broadcastCoopRestAction,
+  onPartnerRestAction,
+  awaitCoopMysteryResolution,
+  onCoopMysteryEvent,
+  broadcastCoopMysteryEvent,
 } from './multiplayerCoopSync';
 import type { PartnerState } from './multiplayerCoopSync';
-import type { SharedEnemySnapshot } from '../data/multiplayerTypes';
+import type { SharedEnemySnapshot, CoopRestActionPayload, CoopMysteryEventPayload } from '../data/multiplayerTypes';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -888,6 +894,352 @@ describe('multiplayerCoopSync — initial state request-on-subscribe (001/002/00
     mockTransport.simulateReceive('mp:coop:enemy_state', validSnapshot as unknown as Record<string, unknown>);
     expect(received).toHaveLength(1);
 
+    unsub();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// CT-001: awaitCoopRestResolution barrier
+// ---------------------------------------------------------------------------
+
+describe('multiplayerCoopSync — CT-001 awaitCoopRestResolution', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    destroyCoopSync();
+    mockTransport = createMockTransport();
+    mockLobby = null;
+    mockLobbyUpdateCb = null;
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    destroyCoopSync();
+  });
+
+  it('resolves completed immediately when solo (1 player lobby)', async () => {
+    mockLobby = makeLobby(['alice']);
+    initCoopSync('alice');
+    const result = await awaitCoopRestResolution();
+    expect(result).toBe('completed');
+  });
+
+  it('broadcasts mp:coop:rest_done with local player ID', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const promise = awaitCoopRestResolution();
+    mockTransport.simulateReceive('mp:coop:rest_done', { playerId: 'bob' });
+    await promise;
+
+    const msg = mockTransport.sent.find(m => m.type === 'mp:coop:rest_done');
+    expect(msg?.payload.playerId).toBe('alice');
+  });
+
+  it('resolves completed when partner signals after local calls awaitCoopRestResolution', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const promise = awaitCoopRestResolution();
+    mockTransport.simulateReceive('mp:coop:rest_done', { playerId: 'bob' });
+    const result = await promise;
+    expect(result).toBe('completed');
+  });
+
+  it('resolves completed when partner signals before local calls awaitCoopRestResolution', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    // Partner signals first
+    mockTransport.simulateReceive('mp:coop:rest_done', { playerId: 'bob' });
+    const result = await awaitCoopRestResolution();
+    expect(result).toBe('completed');
+  });
+
+  it('resolves cancelled after 15s hard timeout', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const promise = awaitCoopRestResolution();
+    vi.advanceTimersByTime(15_000);
+    const result = await promise;
+    expect(result).toBe('cancelled');
+  });
+
+  it('resolves cancelled when partner leaves lobby mid-barrier', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const promise = awaitCoopRestResolution();
+    const reducedLobby = makeLobby(['alice']);
+    mockLobbyUpdateCb?.({ ...reducedLobby });
+
+    const result = await promise;
+    expect(result).toBe('cancelled');
+  });
+
+  it('two consecutive rest barriers do not interfere', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    // First barrier
+    const p1 = awaitCoopRestResolution();
+    mockTransport.simulateReceive('mp:coop:rest_done', { playerId: 'bob' });
+    const r1 = await p1;
+    expect(r1).toBe('completed');
+
+    // Second barrier
+    const p2 = awaitCoopRestResolution();
+    mockTransport.simulateReceive('mp:coop:rest_done', { playerId: 'bob' });
+    const r2 = await p2;
+    expect(r2).toBe('completed');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// CT-001: broadcastCoopRestAction + onPartnerRestAction subscriber
+// ---------------------------------------------------------------------------
+
+describe('multiplayerCoopSync — CT-001 rest action subscriber', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    destroyCoopSync();
+    mockTransport = createMockTransport();
+    mockLobby = null;
+    mockLobbyUpdateCb = null;
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    destroyCoopSync();
+  });
+
+  it('broadcastCoopRestAction sends mp:coop:rest_action with correct fields', () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    broadcastCoopRestAction('heal', { hpGained: 12 });
+
+    const msg = mockTransport.sent.find(m => m.type === 'mp:coop:rest_action');
+    expect(msg).toBeDefined();
+    expect(msg?.payload.playerId).toBe('alice');
+    expect(msg?.payload.action).toBe('heal');
+    expect((msg?.payload.payload as any)?.hpGained).toBe(12);
+  });
+
+  it('onPartnerRestAction fires when remote mp:coop:rest_action arrives', () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const received: CoopRestActionPayload[] = [];
+    const unsub = onPartnerRestAction(p => received.push(p));
+
+    mockTransport.simulateReceive('mp:coop:rest_action', {
+      playerId: 'bob',
+      action: 'meditate',
+    });
+
+    expect(received).toHaveLength(1);
+    expect(received[0].playerId).toBe('bob');
+    expect(received[0].action).toBe('meditate');
+    unsub();
+  });
+
+  it('onPartnerRestAction does NOT fire for own messages', () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const received: CoopRestActionPayload[] = [];
+    const unsub = onPartnerRestAction(p => received.push(p));
+
+    // Message from self should be ignored
+    mockTransport.simulateReceive('mp:coop:rest_action', {
+      playerId: 'alice',
+      action: 'heal',
+    });
+
+    expect(received).toHaveLength(0);
+    unsub();
+  });
+
+  it('unsubscribed callback does not fire', () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const received: CoopRestActionPayload[] = [];
+    const unsub = onPartnerRestAction(p => received.push(p));
+    unsub();
+
+    mockTransport.simulateReceive('mp:coop:rest_action', {
+      playerId: 'bob',
+      action: 'study',
+    });
+
+    expect(received).toHaveLength(0);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// CM-001: awaitCoopMysteryResolution barrier
+// ---------------------------------------------------------------------------
+
+describe('multiplayerCoopSync — CM-001 awaitCoopMysteryResolution', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    destroyCoopSync();
+    mockTransport = createMockTransport();
+    mockLobby = null;
+    mockLobbyUpdateCb = null;
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    destroyCoopSync();
+  });
+
+  it('resolves completed immediately when solo (1 player lobby)', async () => {
+    mockLobby = makeLobby(['alice']);
+    initCoopSync('alice');
+    const result = await awaitCoopMysteryResolution();
+    expect(result).toBe('completed');
+  });
+
+  it('broadcasts mp:coop:mystery_done with local player ID', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const promise = awaitCoopMysteryResolution();
+    mockTransport.simulateReceive('mp:coop:mystery_done', { playerId: 'bob' });
+    await promise;
+
+    const msg = mockTransport.sent.find(m => m.type === 'mp:coop:mystery_done');
+    expect(msg?.payload.playerId).toBe('alice');
+  });
+
+  it('resolves completed when partner signals after local calls awaitCoopMysteryResolution', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const promise = awaitCoopMysteryResolution();
+    mockTransport.simulateReceive('mp:coop:mystery_done', { playerId: 'bob' });
+    const result = await promise;
+    expect(result).toBe('completed');
+  });
+
+  it('resolves completed when partner signals before local calls awaitCoopMysteryResolution', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    // Partner signals first
+    mockTransport.simulateReceive('mp:coop:mystery_done', { playerId: 'bob' });
+    const result = await awaitCoopMysteryResolution();
+    expect(result).toBe('completed');
+  });
+
+  it('resolves cancelled after 15s hard timeout', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const promise = awaitCoopMysteryResolution();
+    vi.advanceTimersByTime(15_000);
+    const result = await promise;
+    expect(result).toBe('cancelled');
+  });
+
+  it('resolves cancelled when partner leaves lobby mid-barrier', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const promise = awaitCoopMysteryResolution();
+    const reducedLobby = makeLobby(['alice']);
+    mockLobbyUpdateCb?.({ ...reducedLobby });
+
+    const result = await promise;
+    expect(result).toBe('cancelled');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// CM-001: broadcastCoopMysteryEvent + onCoopMysteryEvent subscriber
+// ---------------------------------------------------------------------------
+
+describe('multiplayerCoopSync — CM-001 mystery event subscriber', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    destroyCoopSync();
+    mockTransport = createMockTransport();
+    mockLobby = null;
+    mockLobbyUpdateCb = null;
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    destroyCoopSync();
+  });
+
+  it('broadcastCoopMysteryEvent sends mp:coop:mystery_event with event payload', () => {
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('host');
+
+    const event = {
+      id: 'mystery_reward',
+      name: 'Hidden Cache',
+      description: 'Cards hidden behind loose bricks.',
+      effect: { type: 'cardReward' },
+    };
+    broadcastCoopMysteryEvent(event);
+
+    const msg = mockTransport.sent.find(m => m.type === 'mp:coop:mystery_event');
+    expect(msg).toBeDefined();
+    expect((msg?.payload.event as any)?.id).toBe('mystery_reward');
+  });
+
+  it('onCoopMysteryEvent fires when mp:coop:mystery_event arrives', () => {
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('guest');
+
+    const received: CoopMysteryEventPayload[] = [];
+    const unsub = onCoopMysteryEvent(p => received.push(p));
+
+    mockTransport.simulateReceive('mp:coop:mystery_event', {
+      event: {
+        id: 'mystery_reward',
+        name: 'Hidden Cache',
+        description: 'Cards.',
+        effect: { type: 'cardReward' },
+      },
+    });
+
+    expect(received).toHaveLength(1);
+    expect(received[0].event.id).toBe('mystery_reward');
+    unsub();
+  });
+
+  it('onCoopMysteryEvent unsubscribed callback does not fire', () => {
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('guest');
+
+    const received: CoopMysteryEventPayload[] = [];
+    const unsub = onCoopMysteryEvent(p => received.push(p));
+    unsub();
+
+    mockTransport.simulateReceive('mp:coop:mystery_event', {
+      event: { id: 'test', name: 'Test', description: 'desc', effect: { type: 'nothing', message: '' } },
+    });
+
+    expect(received).toHaveLength(0);
+  });
+
+  it('malformed mystery_event payload (missing event) does not fire callbacks', () => {
+    mockLobby = makeLobby(['host', 'guest']);
+    initCoopSync('guest');
+
+    const received: CoopMysteryEventPayload[] = [];
+    const unsub = onCoopMysteryEvent(p => received.push(p));
+
+    // Missing event field
+    mockTransport.simulateReceive('mp:coop:mystery_event', {});
+
+    expect(received).toHaveLength(0);
     unsub();
   });
 });

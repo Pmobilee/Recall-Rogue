@@ -25,7 +25,7 @@
 
 import { getMultiplayerTransport } from './multiplayerTransport';
 import { getCurrentLobby, onLobbyUpdate } from './multiplayerLobbyService';
-import type { SharedEnemySnapshot, EnemyTurnDelta, RaceProgress } from '../data/multiplayerTypes';
+import type { SharedEnemySnapshot, EnemyTurnDelta, RaceProgress, CoopRestActionPayload, CoopMysteryEventPayload } from '../data/multiplayerTypes';
 import { rrLog } from './rrLog';
 
 // -- Debug flag ---------------------------------------------------------------
@@ -230,6 +230,54 @@ let _initialStateRetryHandle: ReturnType<typeof setTimeout> | null = null;
 /** How many times we have sent mp:coop:request_initial_state this encounter. */
 let _initialStateRetryAttempt: number = 0;
 
+// -- CT-001: Rest-site action barrier state -----------------------------------
+
+/**
+ * Players who have signaled rest completion for the current rest barrier.
+ * Separate from _turnEndSignals so rest barriers never interfere with in-flight
+ * turn-end barriers (though in practice these happen in non-overlapping phases).
+ */
+let _restSignals: Set<string> = new Set();
+
+/** Resolver for the pending rest barrier. Null when no barrier is in flight. */
+let _pendingRestBarrierResolve: ((result: 'completed' | 'cancelled') => void) | null = null;
+
+/** Timeout handle for the rest barrier hard timeout. */
+let _restBarrierTimeoutHandle: ReturnType<typeof setTimeout> | null = null;
+
+/** Cleanup for the lobby-update listener used in rest barriers. */
+let _cleanupRestLobbyListener: (() => void) | null = null;
+
+/**
+ * Set of callbacks subscribed to partner rest action events.
+ * Fires when a remote mp:coop:rest_action arrives so the UI can narrate the action.
+ * Multi-subscriber pattern mirrors _partnerStateSubs.
+ */
+const _partnerRestActionSubs = new Set<(payload: CoopRestActionPayload) => void>();
+
+// -- CM-001: Mystery event barrier state --------------------------------------
+
+/**
+ * Players who have signaled mystery completion for the current mystery barrier.
+ */
+let _mysterySignals: Set<string> = new Set();
+
+/** Resolver for the pending mystery barrier. Null when no barrier is in flight. */
+let _pendingMysteryBarrierResolve: ((result: 'completed' | 'cancelled') => void) | null = null;
+
+/** Timeout handle for the mystery barrier hard timeout. */
+let _mysteryBarrierTimeoutHandle: ReturnType<typeof setTimeout> | null = null;
+
+/** Cleanup for the lobby-update listener used in mystery barriers. */
+let _cleanupMysteryLobbyListener: (() => void) | null = null;
+
+/**
+ * Set of callbacks subscribed to host-broadcast mystery events.
+ * Non-host waits on this to receive the authoritative event from the host.
+ * Fires once when mp:coop:mystery_event arrives.
+ */
+const _mysteryEventSubs = new Set<(payload: CoopMysteryEventPayload) => void>();
+
 export interface PartnerState {
   playerId: string;
   hp: number;
@@ -365,6 +413,44 @@ export function initCoopSync(localPlayerId: string): void {
     broadcastSharedEnemyState(_lastBroadcastSnapshot);
   });
 
+  // CT-001: rest_action — partner awareness event; notify _partnerRestActionSubs.
+  const offRestAction = transport.on('mp:coop:rest_action', (msg) => {
+    const p = msg.payload as unknown as CoopRestActionPayload;
+    coopLog('recv rest_action from %s action=%s', p?.playerId, p?.action);
+    if (!p?.playerId || p.playerId === _localPlayerId) return;
+    for (const cb of _partnerRestActionSubs) {
+      cb(p);
+    }
+  });
+
+  // CT-001: rest_done — barrier signal: partner finished their rest action.
+  const offRestDone = transport.on('mp:coop:rest_done', (msg) => {
+    const { playerId } = msg.payload as { playerId: string };
+    coopLog('recv rest_done from %s', playerId);
+    if (!playerId) return;
+    _restSignals.add(playerId);
+    _maybeReleaseRestBarrier();
+  });
+
+  // CM-001: mystery_event — non-host receives the authoritative event from the host.
+  const offMysteryEvent = transport.on('mp:coop:mystery_event', (msg) => {
+    const p = msg.payload as unknown as CoopMysteryEventPayload;
+    coopLog('recv mystery_event id=%s', p?.event?.id);
+    if (!p?.event) return;
+    for (const cb of _mysteryEventSubs) {
+      cb(p);
+    }
+  });
+
+  // CM-001: mystery_done — barrier signal: partner finished their mystery resolution.
+  const offMysteryDone = transport.on('mp:coop:mystery_done', (msg) => {
+    const { playerId } = msg.payload as { playerId: string };
+    coopLog('recv mystery_done from %s', playerId);
+    if (!playerId) return;
+    _mysterySignals.add(playerId);
+    _maybeReleaseMysteryBarrier();
+  });
+
   _cleanupListener = () => {
     offTurnEnd();
     offTurnEndWithDelta();
@@ -373,6 +459,10 @@ export function initCoopSync(localPlayerId: string): void {
     offEnemyState();
     offEnemyHpUpdate();
     offRequestInitialState();
+    offRestAction();
+    offRestDone();
+    offMysteryEvent();
+    offMysteryDone();
   };
 
   // Start AFK heartbeat poll (H19/M5).
@@ -417,9 +507,32 @@ export function destroyCoopSync(): void {
   _barrierExpectedPlayerCount = 0;
   _lastBroadcastSnapshot = null;
   _initialStateRetryAttempt = 0;
-  // NOTE: _partnerStateSubs, _sharedEnemySubs, _enemyHpSubs, and
-  // _partnerUnresponsiveSubs are NOT cleared here --
-  // consumer-owned subscriptions have their own lifetime (callers hold the returned unsub).
+  // CT-001: reset rest barrier state
+  _clearRestBarrierTimeout();
+  if (_pendingRestBarrierResolve) {
+    _pendingRestBarrierResolve('completed');
+    _pendingRestBarrierResolve = null;
+  }
+  if (_cleanupRestLobbyListener) {
+    _cleanupRestLobbyListener();
+    _cleanupRestLobbyListener = null;
+  }
+  _restSignals = new Set();
+  // CM-001: reset mystery barrier state
+  _clearMysteryBarrierTimeout();
+  if (_pendingMysteryBarrierResolve) {
+    _pendingMysteryBarrierResolve('completed');
+    _pendingMysteryBarrierResolve = null;
+  }
+  if (_cleanupMysteryLobbyListener) {
+    _cleanupMysteryLobbyListener();
+    _cleanupMysteryLobbyListener = null;
+  }
+  _mysterySignals = new Set();
+  // NOTE: _partnerStateSubs, _sharedEnemySubs, _enemyHpSubs,
+  // _partnerUnresponsiveSubs, _partnerRestActionSubs, and _mysteryEventSubs
+  // are NOT cleared here -- consumer-owned subscriptions have their own lifetime
+  // (callers hold the returned unsub).
 }
 
 // -- Public API ---------------------------------------------------------------
@@ -1024,4 +1137,257 @@ export function requestCoopEnemyStateRetry(): void {
   coopLog('requestCoopEnemyStateRetry: sending mp:coop:request_initial_state');
   const transport = getMultiplayerTransport();
   transport.send('mp:coop:request_initial_state', { playerId: _localPlayerId });
+}
+
+// -- CT-001: Rest-site barrier public API -------------------------------------
+
+function _clearRestBarrierTimeout(): void {
+  if (_restBarrierTimeoutHandle !== null) {
+    clearTimeout(_restBarrierTimeoutHandle);
+    _restBarrierTimeoutHandle = null;
+  }
+}
+
+function _allRestPlayersSignaled(): boolean {
+  const lobby = getCurrentLobby();
+  const players = lobby?.players ?? [];
+  if (players.length === 0) return true;
+  for (const p of players) {
+    if (!_restSignals.has(p.id)) return false;
+  }
+  return true;
+}
+
+function _maybeReleaseRestBarrier(): void {
+  if (!_pendingRestBarrierResolve) return;
+  if (_allRestPlayersSignaled()) {
+    _pendingRestBarrierResolve('completed');
+  }
+}
+
+/**
+ * CT-001 (MP-AUDIT-2026-04-23-OPUS-A-CT-001): Signal "I have finished my rest action"
+ * and await consensus from all players before both advance to dungeonMap.
+ *
+ * Call this from onRestResolved() when run.multiplayerMode === 'multiplayer_coop'.
+ * Broadcasts mp:coop:rest_done and blocks until all players have signaled.
+ *
+ * Timeout: 15s (BARRIER_TIMEOUT_MS). On timeout, resolves 'cancelled' to prevent softlock.
+ * Partner-leave: resolves 'cancelled' immediately.
+ *
+ * The caller MUST broadcast mp:coop:rest_action BEFORE calling this so the partner
+ * knows what action was taken.
+ */
+export function awaitCoopRestResolution(): Promise<'completed' | 'cancelled'> {
+  const lobby = getCurrentLobby();
+  const players = lobby?.players ?? [];
+
+  if (players.length <= 1 || !_localPlayerId) {
+    return Promise.resolve('completed');
+  }
+
+  _restSignals.add(_localPlayerId);
+  const expectedCount = players.length;
+  const transport = getMultiplayerTransport();
+  coopLog('awaitCoopRestResolution: broadcasting rest_done, localId=%s', _localPlayerId);
+  transport.send('mp:coop:rest_done', { playerId: _localPlayerId });
+
+  if (_allRestPlayersSignaled()) {
+    _restSignals = new Set();
+    return Promise.resolve('completed');
+  }
+
+  return new Promise<'completed' | 'cancelled'>((resolve) => {
+    _pendingRestBarrierResolve = (result) => {
+      _pendingRestBarrierResolve = null;
+      _clearRestBarrierTimeout();
+      _restSignals = new Set();
+      if (_cleanupRestLobbyListener) {
+        _cleanupRestLobbyListener();
+        _cleanupRestLobbyListener = null;
+      }
+      coopLog('rest barrier resolved: %s', result);
+      resolve(result);
+    };
+
+    _restBarrierTimeoutHandle = setTimeout(() => {
+      if (_pendingRestBarrierResolve) {
+        coopLog('rest barrier timeout -- partner unresponsive; proceeding anyway');
+        console.warn('[coopSync] rest barrier timeout — resolving to prevent softlock');
+        _pendingRestBarrierResolve('cancelled');
+      }
+    }, BARRIER_TIMEOUT_MS);
+
+    _cleanupRestLobbyListener = onLobbyUpdate((updatedLobby) => {
+      if (!_pendingRestBarrierResolve) return;
+      if (updatedLobby.players.length < expectedCount) {
+        coopLog('partner left lobby mid-rest-barrier (%d->%d), cancelling', expectedCount, updatedLobby.players.length);
+        _pendingRestBarrierResolve('cancelled');
+      }
+    });
+  });
+}
+
+/**
+ * CT-001: Broadcast that this player has chosen a rest action.
+ * Call BEFORE awaitCoopRestResolution() so the partner sees the action type.
+ * This is informational — it fires onPartnerRestAction on the partner side.
+ *
+ * @param action - Which rest action was taken.
+ * @param payload - Optional detail (e.g. hpGained for UI narration).
+ */
+export function broadcastCoopRestAction(
+  action: 'heal' | 'study' | 'meditate' | 'upgrade',
+  payload?: { hpGained?: number },
+): void {
+  if (!_localPlayerId) return;
+  coopLog('broadcastCoopRestAction: action=%s', action);
+  const transport = getMultiplayerTransport();
+  transport.send('mp:coop:rest_action', {
+    playerId: _localPlayerId,
+    action,
+    ...(payload ? { payload } : {}),
+  });
+}
+
+/**
+ * CT-001: Subscribe to partner rest action events.
+ * Fires when the remote player broadcasts mp:coop:rest_action.
+ * Use this to show "Partner healed / studied / meditated" in the rest room UI.
+ *
+ * Returns an unsubscribe function.
+ */
+export function onPartnerRestAction(cb: (payload: CoopRestActionPayload) => void): () => void {
+  _partnerRestActionSubs.add(cb);
+  coopLog('onPartnerRestAction subscribed, total=%d', _partnerRestActionSubs.size);
+  return () => {
+    _partnerRestActionSubs.delete(cb);
+    coopLog('onPartnerRestAction unsubscribed, total=%d', _partnerRestActionSubs.size);
+  };
+}
+
+// -- CM-001: Mystery event barrier public API ---------------------------------
+
+function _clearMysteryBarrierTimeout(): void {
+  if (_mysteryBarrierTimeoutHandle !== null) {
+    clearTimeout(_mysteryBarrierTimeoutHandle);
+    _mysteryBarrierTimeoutHandle = null;
+  }
+}
+
+function _allMysteryPlayersSignaled(): boolean {
+  const lobby = getCurrentLobby();
+  const players = lobby?.players ?? [];
+  if (players.length === 0) return true;
+  for (const p of players) {
+    if (!_mysterySignals.has(p.id)) return false;
+  }
+  return true;
+}
+
+function _maybeReleaseMysteryBarrier(): void {
+  if (!_pendingMysteryBarrierResolve) return;
+  if (_allMysteryPlayersSignaled()) {
+    _pendingMysteryBarrierResolve('completed');
+  }
+}
+
+/**
+ * CM-001 (MP-AUDIT-2026-04-23-OPUS-A-CM-001): Signal "I have finished my mystery resolution"
+ * and await consensus from all players before both advance to dungeonMap.
+ *
+ * Call this from onMysteryResolved() when run.multiplayerMode === 'multiplayer_coop'.
+ * Broadcasts mp:coop:mystery_done and blocks until all players have signaled.
+ *
+ * Timeout: 15s (BARRIER_TIMEOUT_MS). On timeout, resolves 'cancelled' to prevent softlock.
+ */
+export function awaitCoopMysteryResolution(): Promise<'completed' | 'cancelled'> {
+  const lobby = getCurrentLobby();
+  const players = lobby?.players ?? [];
+
+  if (players.length <= 1 || !_localPlayerId) {
+    return Promise.resolve('completed');
+  }
+
+  _mysterySignals.add(_localPlayerId);
+  const expectedCount = players.length;
+  const transport = getMultiplayerTransport();
+  coopLog('awaitCoopMysteryResolution: broadcasting mystery_done, localId=%s', _localPlayerId);
+  transport.send('mp:coop:mystery_done', { playerId: _localPlayerId });
+
+  if (_allMysteryPlayersSignaled()) {
+    _mysterySignals = new Set();
+    return Promise.resolve('completed');
+  }
+
+  return new Promise<'completed' | 'cancelled'>((resolve) => {
+    _pendingMysteryBarrierResolve = (result) => {
+      _pendingMysteryBarrierResolve = null;
+      _clearMysteryBarrierTimeout();
+      _mysterySignals = new Set();
+      if (_cleanupMysteryLobbyListener) {
+        _cleanupMysteryLobbyListener();
+        _cleanupMysteryLobbyListener = null;
+      }
+      coopLog('mystery barrier resolved: %s', result);
+      resolve(result);
+    };
+
+    _mysteryBarrierTimeoutHandle = setTimeout(() => {
+      if (_pendingMysteryBarrierResolve) {
+        coopLog('mystery barrier timeout -- partner unresponsive; proceeding anyway');
+        console.warn('[coopSync] mystery barrier timeout — resolving to prevent softlock');
+        _pendingMysteryBarrierResolve('cancelled');
+      }
+    }, BARRIER_TIMEOUT_MS);
+
+    _cleanupMysteryLobbyListener = onLobbyUpdate((updatedLobby) => {
+      if (!_pendingMysteryBarrierResolve) return;
+      if (updatedLobby.players.length < expectedCount) {
+        coopLog('partner left lobby mid-mystery-barrier, cancelling');
+        _pendingMysteryBarrierResolve('cancelled');
+      }
+    });
+  });
+}
+
+/**
+ * CM-001: Subscribe to host-broadcast mystery events.
+ * Non-host clients call this to receive the authoritative mystery event from the host
+ * before setting activeMysteryEvent locally.
+ *
+ * Fires once per mp:coop:mystery_event received.
+ * Caller should unsubscribe immediately after receiving the first event.
+ *
+ * Timeout handling: the caller is responsible for setting a fallback timer
+ * (5s recommended) — call generateMysteryEvent() locally as a fallback on timeout.
+ *
+ * Returns an unsubscribe function.
+ */
+export function onCoopMysteryEvent(cb: (payload: CoopMysteryEventPayload) => void): () => void {
+  _mysteryEventSubs.add(cb);
+  coopLog('onCoopMysteryEvent subscribed, total=%d', _mysteryEventSubs.size);
+  return () => {
+    _mysteryEventSubs.delete(cb);
+    coopLog('onCoopMysteryEvent unsubscribed, total=%d', _mysteryEventSubs.size);
+  };
+}
+
+/**
+ * CM-001: Host broadcasts the authoritative mystery event to all players.
+ * Call this immediately after generating the event on the host side.
+ * Non-host clients receive it via onCoopMysteryEvent.
+ */
+export function broadcastCoopMysteryEvent(event: {
+  id: string;
+  name: string;
+  description: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  effect: any;
+  requiresStudyMode?: boolean;
+}): void {
+  if (!_localPlayerId) return;
+  coopLog('broadcastCoopMysteryEvent: id=%s', event.id);
+  const transport = getMultiplayerTransport();
+  transport.send('mp:coop:mystery_event', { event: event as unknown as Record<string, unknown> });
 }
