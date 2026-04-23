@@ -1085,7 +1085,21 @@ function _maybeReleaseBarrier(): void {
   if (!_pendingBarrierResolve) return;
   if (_allPlayersSignaled()) {
     _pendingBarrierResolve('completed');
+    return;
   }
+  // DL-002 diag: surface roster vs signals mismatch unconditionally so the
+  // next playtest log captures exactly which ID failed to match. Cheap enough
+  // to ship unguarded — fires at most once per received turn_end signal.
+  const lobby = getCurrentLobby();
+  const rosterIds = (lobby?.players ?? []).map(p => p.id);
+  const signals = [..._turnEndSignals];
+  const missing = rosterIds.filter(id => !_turnEndSignals.has(id));
+  rrLog('mp:coop', 'barrier NOT released', {
+    localPlayerId: _localPlayerId,
+    rosterIds,
+    signals,
+    missing,
+  });
 }
 
 function _allPlayersSignaled(): boolean {
