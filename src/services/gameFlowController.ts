@@ -3565,7 +3565,7 @@ export function playAgain(): void {
   return;
 }
 
-export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race' | 'coop' | 'multiplayer_duel' | 'multiplayer_trivia', dailySeed?: number | null, runSeed?: number | null): void {
+export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge' | 'multiplayer_race' | 'multiplayer_coop' | 'coop' | 'multiplayer_duel' | 'multiplayer_trivia', dailySeed?: number | null, runSeed?: number | null): void {
   if (runMode === 'daily_expedition' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
     activeRunMode = 'daily_expedition'
     activeDailySeed = dailySeed
