@@ -274,6 +274,26 @@ After a network interruption on Steam P2P, use `reestablishSteamP2PSession(trans
 
 ---
 
+## Class D Failsafe — Transport Error Modal (2026-04-23)
+
+**Source:** `src/CardApp.svelte` (`transportErrorVisible` state + `$effect` poll)
+
+When a WebSocket transport enters the `'error'` or `'disconnected'` state for more than **5 seconds** during an active multiplayer run (`isMultiplayerRun === true`), a full-screen modal displays with:
+
+- **Headline:** "Connection broke"
+- **Body:** "The server stopped responding. Your progress is safe."
+- **Reconnect** (primary, blue) — calls `transport.reconnect()` (resets backoff counter, retries from last URL). Hides modal immediately.
+- **Leave lobby** (secondary, dim) — calls `handleMultiplayerBack()` which calls `leaveLobby()` and navigates to `multiplayerMenu`.
+
+**Poll loop:** 1-second `setInterval` started by `$effect` when `isMultiplayerRun` becomes true; cleared when false. The 5-second debounce prevents the modal from flashing during transient reconnect cycles (the auto-reconnect loop already handles brief drops). Modal hides automatically when the transport returns to `'connected'` or `'connecting'` state.
+
+**z-index:** 900 (above all combat overlays, quiz panel, HUD, narrative overlay).
+
+**Data-testid:** `transport-error-modal`
+
+
+---
+
 ## Ranked Mode + Elo
 
 **Source file:** `src/services/multiplayerElo.ts`
@@ -1436,3 +1456,51 @@ Callers that manually invoke `destroyMultiplayerTransport()` (e.g. `leaveLobby()
 - `handleHubEnter()` disconnects active transport
 - `handleHubEnter()` causes next call to return a new instance
 - `handleHubEnter()` is a no-op when no transport is active
+
+---
+
+## Duel Message Validation & Reorder Buffer (H-004 + H-005)
+
+> **Implemented:** 2026-04-23 — Fixes MP-SWEEP-2026-04-23-H-004 and MP-SWEEP-2026-04-23-H-005.
+
+**Source file:** `src/services/multiplayerGameService.ts`
+
+### H-004: senderId validation on `mp:duel:cards_played`
+
+**Problem (pre-fix):** The `mp:duel:cards_played` handler stored `_duelState.opponentAction = action` using the `playerId` from the untrusted payload without comparing it to the transport-authenticated `msg.senderId`. A malicious peer could claim any `playerId`, then `hostResolveTurn()` would write `_duelState.totalDamage[action.playerId] += action.damageDealt` — crediting damage to an arbitrary player, enabling direct ELO manipulation in ranked duels.
+
+**Fix:** At the top of the `mp:duel:cards_played` handler, before any state mutation:
+
+```typescript
+if (raw.playerId !== msg.senderId) {
+  console.warn('[mp-duel] cards_played rejected: senderId mismatch', {
+    senderId: msg.senderId, claimedPlayerId: raw.playerId,
+  });
+  return;
+}
+```
+
+**Other handler audit:** `mp:duel:quiz_result` carries no `playerId` (informational only). `mp:duel:turn_resolve`, `mp:duel:enemy_state`, `mp:duel:end` are host-originated broadcasts with no claimed identity. No additional senderId checks are needed.
+
+### H-005: Reorder buffer for `mp:duel:cards_played` before `mp:duel:turn_start`
+
+**Problem (pre-fix):** Under Steam P2P out-of-order delivery, `mp:duel:cards_played` can arrive before the `mp:duel:turn_start` that initialises `_duelState`. The handler previously returned early (`if (!_duelState) return`), silently dropping the message. The host would then wait indefinitely for the opponent's action, hanging the duel.
+
+**Fix:** A bounded module-level reorder buffer (`_duelReorderBuffer: DuelBufferedAction[]`) with:
+- Max 4 entries — overflow drops the oldest with a `console.warn`.
+- 5-second TTL — expired entries are pruned on every insert and on drain.
+- When `mp:duel:cards_played` arrives and `_duelState` is null, the message is pushed to the buffer.
+- When `mp:duel:turn_start` fires and updates `_duelState.turnNumber`, `_drainDuelReorderBuffer()` is called immediately to replay any buffered actions whose turn number matches.
+
+**Buffer lifecycle:**
+- Cleared in `destroyDuel()` so stale entries do not bleed into the next encounter.
+- `_applyDuelCardsPlayed(action)` is a shared helper used by both the live handler and the drain path — single source of truth for clamping and state mutation.
+
+### Test coverage
+
+`src/services/multiplayerGameService.test.ts` — H-004 and H-005 describe blocks:
+- H-004: senderId mismatch → rejected, warn logged, opponentAction unchanged.
+- H-004: matching senderId → accepted without mismatch warning.
+- H-005: cards_played before turn_start → buffered; subsequent turn_start replays it.
+- H-005: 5-message overflow → oldest dropped, overflow warn logged.
+- H-005: 6-second-old entry → pruned before next insert (no overflow).

@@ -70,7 +70,7 @@ grep 'watchdog:' ~/Library/Logs/Recall\ Rogue/debug.log | tail -50
 
 **Trigger:** `cardPlayStage === 'committed'` in `CardCombatOverlay.svelte` for ≥ 5 minutes.
 
-**Detection:** The UI calls `notifyCardCommitted(cardId)` when entering committed state and `notifyCardResolved(cardId, outcome)` when leaving it. The watchdog polls the stored timestamp.
+**Detection:** The UI calls `notifyCardCommitted(cardId)` when entering committed state and `notifyCardResolved(cardId, outcome)` when leaving it. The watchdog polls the stored timestamp. **Wired 2026-04-23** in `CardCombatOverlay.svelte` — called at the real quiz-opening `cardPlayStage = "committed"` assignment (`handleCast()`); Quick Play and Soul Jar auto-complete paths are intentionally excluded. Resolution outcome: `"endturn"` (End Turn cancel, `answerIndex < 0`), `"wrong"` (wrong answer), `"correct"` (correct answer).
 
 **Repair:** No auto-resolve (forcing quiz resolution would award credit without a real answer). The watchdog logs `watchdog:cardPlay / STUCK` for post-hoc analysis. The End Turn button cancels the committed quiz.
 
@@ -176,7 +176,7 @@ The following classes have existing service-level guards or are UI-layer tasks:
 
 | Class | Area | Status |
 |-------|------|--------|
-| D | Multiplayer lobby / transport | Transport error state surfaces via existing `rrLog('mp:tx', ...)`. No player-visible modal. Needs ui-agent to wire a dismissible error banner. |
+| D | Multiplayer lobby / transport | **Wired 2026-04-23.** `transportErrorVisible` $state + 1s poll in `CardApp.svelte`. Modal shows after 5s in `error`/`disconnected` state — Reconnect (calls `transport.reconnect()`) or Leave lobby (calls `handleMultiplayerBack()`). See `docs/architecture/multiplayer.md` → Class D Failsafe section. |
 | G | Quiz / answer-checking | `playCardAction` has null-fact guard in `turnManager.ts`. FSRS lookup failure leaves card in committed state (Class A2 watchdog logs it). |
 | H | Audio / asset loading | `playCardAudio` is synchronous and wraps failures internally (see `cardAudioManager.ts`). No watchdog needed. |
 

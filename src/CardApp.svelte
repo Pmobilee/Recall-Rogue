@@ -224,6 +224,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     generatePlayerId,
     isHost as mpIsHost,
   } from './services/multiplayerLobbyService'
+  import { getMultiplayerTransport } from './services/multiplayerTransport'
   import { onOpponentProgressUpdate, onRaceComplete, initGameMessageHandlers, initDuel } from './services/multiplayerGameService'
   import {
     initMapNodeSync,
@@ -579,6 +580,51 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
 
   /** Whether the PlayerRosterPanel overlay is open. */
   let rosterPanelOpen = $state(false)
+
+  /** Class D failsafe: true when transport has been in error/disconnected state for > 5s during an active MP run. */
+  let transportErrorVisible = $state(false)
+  let _transportErrorAt: number | null = null
+  let _transportPollInterval: ReturnType<typeof setInterval> | null = null
+
+  $effect(() => {
+    if (!isMultiplayerRun) {
+      // Not in MP — clear modal and stop polling
+      transportErrorVisible = false
+      _transportErrorAt = null
+      if (_transportPollInterval !== null) {
+        clearInterval(_transportPollInterval)
+        _transportPollInterval = null
+      }
+      return
+    }
+
+    // Start polling transport state every 1s while MP is active
+    if (_transportPollInterval !== null) return // already polling
+
+    _transportPollInterval = setInterval(() => {
+      const transport = getMultiplayerTransport()
+      const state = transport.getState()
+      const isUnhealthy = state === 'error' || state === 'disconnected'
+
+      if (isUnhealthy) {
+        if (_transportErrorAt === null) {
+          _transportErrorAt = Date.now()
+        } else if (Date.now() - _transportErrorAt >= 5000) {
+          transportErrorVisible = true
+        }
+      } else {
+        _transportErrorAt = null
+        transportErrorVisible = false
+      }
+    }, 1000)
+
+    return () => {
+      if (_transportPollInterval !== null) {
+        clearInterval(_transportPollInterval)
+        _transportPollInterval = null
+      }
+    }
+  })
 
   /** Live partner states for the roster panel. */
   let partnerStates = $state<Record<string, import('./services/multiplayerCoopSync').PartnerState>>({})
@@ -2621,6 +2667,49 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     />
   {/if}
 
+  {#if transportErrorVisible && isMultiplayerRun}
+    <!-- Class D failsafe: transport error modal — shown when connection stays broken for > 5s -->
+    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+    <div
+      class="transport-error-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Connection error"
+      data-testid="transport-error-modal"
+    >
+      <div class="transport-error-modal">
+        <h2 class="transport-error-headline">Connection broke</h2>
+        <p class="transport-error-body">The server stopped responding. Your progress is safe.</p>
+        <div class="transport-error-actions">
+          <button
+            class="transport-error-reconnect"
+            onclick={() => {
+              // reconnect() resets the backoff counter and retries from the last URL/localId.
+              // It's on WebSocketTransport (not the interface) — cast is safe: only WS transport
+              // has a persistent URL to reconnect to; others (Steam P2P, local) don't error this way.
+              const t = getMultiplayerTransport()
+              ;(t as any).reconnect?.()
+              transportErrorVisible = false
+              _transportErrorAt = null
+            }}
+          >
+            Reconnect
+          </button>
+          <button
+            class="transport-error-leave"
+            onclick={() => {
+              transportErrorVisible = false
+              _transportErrorAt = null
+              handleMultiplayerBack()
+            }}
+          >
+            Leave lobby
+          </button>
+        </div>
+      </div>
+    </div>
+  {/if}
+
   <!-- Screen transition overlay -->
   <div
     class="screen-transition"
@@ -3003,6 +3092,83 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     color: #e74c3c;
     font-size: 14px;
     cursor: pointer;
+  }
+
+  /* Class D failsafe: transport error modal — shown when connection stays broken for > 5s in MP */
+  .transport-error-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 900;
+    background: rgba(0, 0, 0, 0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .transport-error-modal {
+    background: linear-gradient(160deg, #0f1923, #1a2332);
+    border: 1px solid rgba(99, 179, 237, 0.3);
+    border-radius: calc(12px * var(--layout-scale, 1));
+    padding: calc(28px * var(--layout-scale, 1)) calc(32px * var(--layout-scale, 1));
+    max-width: calc(420px * var(--layout-scale, 1));
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(12px * var(--layout-scale, 1));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  }
+
+  .transport-error-headline {
+    margin: 0;
+    font-size: calc(20px * var(--text-scale, 1));
+    font-weight: 700;
+    color: #fecaca;
+    letter-spacing: 0.01em;
+  }
+
+  .transport-error-body {
+    margin: 0;
+    font-size: calc(15px * var(--text-scale, 1));
+    color: rgba(226, 232, 240, 0.85);
+    line-height: 1.5;
+  }
+
+  .transport-error-actions {
+    display: flex;
+    gap: calc(10px * var(--layout-scale, 1));
+    margin-top: calc(8px * var(--layout-scale, 1));
+  }
+
+  .transport-error-reconnect,
+  .transport-error-leave {
+    flex: 1;
+    min-height: calc(44px * var(--layout-scale, 1));
+    padding: calc(10px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1));
+    border-radius: calc(8px * var(--layout-scale, 1));
+    font-size: calc(14px * var(--text-scale, 1));
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 0.15s;
+  }
+
+  .transport-error-reconnect {
+    background: rgba(99, 179, 237, 0.9);
+    color: #0f1923;
+  }
+
+  .transport-error-reconnect:hover {
+    background: rgba(147, 197, 253, 0.95);
+  }
+
+  .transport-error-leave {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(226, 232, 240, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .transport-error-leave:hover {
+    background: rgba(255, 255, 255, 0.14);
   }
 
   /* Multiplayer error banner — shown at top of multiplayerMenu when lobby create/join fails. */
