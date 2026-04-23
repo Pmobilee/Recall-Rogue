@@ -37,6 +37,7 @@ vi.mock('./encounterBridge', () => ({
   getCombatScene: vi.fn().mockReturnValue(null),
   coopWaitingForPartner: { set: vi.fn() },
   getActiveDeckCards: vi.fn().mockReturnValue([]),
+  forceRedraw: vi.fn(),
 }));
 
 vi.mock('./runStateStore', () => ({
@@ -346,5 +347,52 @@ describe('initFailsafeWatchdogs resets all state', () => {
   it('emits init log and does not throw', () => {
     expect(() => initFailsafeWatchdogs()).not.toThrow();
     expect(mockRrLog()).toHaveBeenCalledWith('watchdog:hand', 'init — encounter watchdogs started');
+  });
+});
+
+// ─── Class A1: Solo empty-hand repair uses forceRedraw (not snapshot patching) ───
+
+describe('Class A1 empty-hand repair (solo) — calls forceRedraw on live deck', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    destroyFailsafeWatchdogs();
+    vi.useRealTimers();
+  });
+
+  it('calls forceRedraw with baseDrawCount after 3 s of stuck empty hand', async () => {
+    // Arrange: make activeTurnState.subscribe deliver a stuck TurnState to svelte get().
+    // Svelte get() calls store.subscribe(fn) synchronously and fn receives current value.
+    const stuckTs = {
+      result: null,
+      phase: 'player_action',
+      apCurrent: 2,
+      baseDrawCount: 5,
+      deck: { hand: [], drawPile: [{ id: 'c1' }, { id: 'c2' }], discardPile: [] },
+    };
+    const { activeTurnState, forceRedraw } = await import('./encounterBridge');
+    // Wire subscribe so that svelte get() returns stuckTs.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    vi.mocked(activeTurnState.subscribe).mockImplementation(((fn: (v: any) => void) => {
+      fn(stuckTs);
+      return () => {};
+    }) as any);
+    // activeRunState.subscribe delivers a solo (non-coop) run.
+    const { activeRunState } = await import('./runStateStore');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    vi.mocked(activeRunState.subscribe).mockImplementation(((fn: (v: any) => void) => {
+      fn({ multiplayerMode: 'solo' });
+      return () => {};
+    }) as any);
+
+    // Act: start watchdogs and advance time past 3 ticks (1 s detect + 3 s threshold).
+    initFailsafeWatchdogs();
+    await vi.advanceTimersByTimeAsync(4_000);
+
+    // Assert: forceRedraw was called (not the old patchTurnState snapshot path).
+    expect(vi.mocked(forceRedraw)).toHaveBeenCalledWith(5);
   });
 });

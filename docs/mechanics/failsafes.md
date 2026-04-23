@@ -58,7 +58,9 @@ grep 'watchdog:' ~/Library/Logs/Recall\ Rogue/debug.log | tail -50
 
 **Repair:**
 - **Coop:** calls `requestCoopEnemyStateRetry()` to ask the host for a full state resnapshot. The next turn-end reconcile will also resync.
-- **Solo/race:** synthesises a new hand from `ts.deck.drawPile` (or discard reshuffle) via `patchTurnState`. Triggers a `card-draw` audio cue so the player notices.
+- **Solo/race:** calls `forceRedraw(ts.baseDrawCount)` — an export of `encounterBridge.ts` that mutates the live `activeDeck` directly via `drawHand`, then mirrors the result into `activeTurnState` via `patchTurnState`. This keeps the live deck in sync with what `endPlayerTurn` will read on the next turn-end. Triggers a `card-draw` audio cue so the player notices.
+
+**Why not patch TurnState directly?** The old approach synthesised a hand from `ts.deck` (a TurnState snapshot) and patchTurnState'd it, never touching `activeDeck`. When `endPlayerTurn` fired next it discarded and redrew from the still-empty live deck, silently undoing the repair. See `docs/gotchas.md` 2026-04-23.
 
 **Escape hatch:** The End Turn button always advances the turn even with an empty hand. Players can end the turn and draw a fresh hand next turn.
 

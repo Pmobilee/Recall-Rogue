@@ -5719,3 +5719,13 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
 **Fix:** Added `_transportMode` sidecar alongside `_transport`. `getMultiplayerTransport()` now checks for mode mismatch and calls `destroyMultiplayerTransport()` first if detected. Added `handleHubEnter()` as an explicit hook for gameFlowController. `destroyMultiplayerTransport()` also nulls `_transportMode` so manual callers reset cleanly.
 
 **Watch out for:** `vi.isolateModules()` is not available in Vitest 2.x. Use `destroyMultiplayerTransport()` in `afterEach()` to reset singleton state between tests instead.
+
+### 2026-04-23 — Class A1 watchdog: snapshot-vs-live deck divergence in _repairEmptyHand
+
+**What:** `failsafeWatchdogs._repairEmptyHand()` (solo path) originally synthesised a new hand by reading pile arrays from `ts` (the TurnState snapshot held by the watchdog tick) and writing them back via `patchTurnState`. This updated the Svelte store so the UI showed cards in hand — but it never touched `activeDeck`, the module-level `CardRunState` object in `encounterBridge.ts` that `endPlayerTurn` reads when it discards and redraws.
+
+**Consequence:** As soon as the player ended their turn, `endPlayerTurn` discarded from the patched TurnState hand but drew a fresh hand from the still-empty live `activeDeck` piles. The repair was silently undone on the very next turn, and the player was immediately stuck again.
+
+**Fix:** Added `forceRedraw(count: number)` as a named export of `encounterBridge.ts`. It calls `drawHand(activeDeck, count)` on the live deck (including internal reshuffle if draw pile is exhausted), then calls `patchTurnState({ deck: { ...activeDeck } })` to mirror the result back into the Svelte store. `_repairEmptyHand` now calls `forceRedraw(ts.baseDrawCount)` instead of the snapshot-patching code. Coop branch unchanged.
+
+**Watch out for:** Any future repair path that touches `activeTurnState` without also touching `activeDeck` will have the same silent-no-op problem. Always repair through `forceRedraw` or via the normal turn pipeline — never patch the Svelte store in isolation.

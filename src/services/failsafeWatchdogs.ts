@@ -298,8 +298,10 @@ function _checkCardPlayStageStuck(): void {
  * In coop mode: requests a full state resnapshot from the host so authoritative
  * hand state can correct any host/guest divergence that caused the empty hand.
  *
- * In solo/race mode: synthesises a new hand from drawPile (or discard reshuffle)
- * via patchTurnState so the Svelte store re-renders.
+ * In solo/race mode: calls forceRedraw() which mutates the live activeDeck
+ * directly via drawHand, then mirrors the result into activeTurnState via
+ * patchTurnState so UI reactivity picks it up. This keeps the live deck in sync
+ * so the next endPlayerTurn discard/draw cycle operates on correct state.
  */
 async function _repairEmptyHand(ts: TurnState): Promise<void> {
   const { activeRunState } = await import('./runStateStore');
@@ -319,46 +321,29 @@ async function _repairEmptyHand(ts: TurnState): Promise<void> {
     return;
   }
 
-  // Solo/race: synthesise a new hand from whatever is available.
-  rrLog('watchdog:hand', 'repair:solo — forcing re-draw');
+  // Solo/race: draw into the LIVE activeDeck via forceRedraw, then mirror into
+  // TurnState so UI reactivity picks it up.
+  //
+  // The old snapshot-patching approach was wrong: it synthesised a hand from
+  // ts.deck (a TurnState snapshot) and patchTurnState'd it, but never touched
+  // activeDeck. When endPlayerTurn fired next, it discarded and redrew from the
+  // stale live deck, silently undoing the repair. See docs/gotchas.md 2026-04-23.
+  rrLog('watchdog:hand', 'repair:solo — calling forceRedraw on live activeDeck');
 
   try {
-    const { patchTurnState, getCombatScene } = await import('./encounterBridge');
+    const { forceRedraw, getCombatScene } = await import('./encounterBridge');
+    // Use baseDrawCount from the snapshot (ts) — typically 5, may be higher with
+    // swift_boots or other draw-count relics. forceRedraw handles reshuffle
+    // internally via drawHand, so we don't need to manage piles here.
+    const targetHandSize = ts.baseDrawCount ?? 5;
+    forceRedraw(targetHandSize);
+    rrLog('watchdog:hand', 'repair:solo — forceRedraw dispatched', { targetHandSize });
 
-    // Pull from drawPile first, then discardPile if needed (mimics drawHand reshuffle).
-    const availableInDraw = [...ts.deck.drawPile];
-    const availableInDiscard = [...ts.deck.discardPile];
-    const cardsToGive = availableInDraw.splice(0, 5);
-
-    if (cardsToGive.length < 5 && availableInDiscard.length > 0) {
-      // Reshuffle discard into the draw pool for this recovery.
-      const reshuffled = [...availableInDiscard];
-      availableInDiscard.length = 0;
-      cardsToGive.push(...reshuffled.splice(0, 5 - cardsToGive.length));
-      availableInDraw.push(...reshuffled); // remainder back into draw
-    }
-
-    if (cardsToGive.length > 0) {
-      const patched = patchTurnState({
-        deck: {
-          hand: cardsToGive,
-          drawPile: availableInDraw,
-          discardPile: availableInDiscard,
-        },
-      });
-      rrLog('watchdog:hand', 'repair:solo — patched hand with cards', {
-        handSize: cardsToGive.length,
-        patchSuccess: patched,
-      });
-      // Trigger a card-draw sound so the player notices the recovery.
-      const scene = getCombatScene();
-      if (scene) {
-        const { playCardAudio } = await import('./cardAudioManager');
-        playCardAudio('card-draw');
-      }
-    } else {
-      // Genuinely exhausted — draw pile and discard both empty.
-      rrLog('watchdog:hand', 'repair:solo — deck is genuinely exhausted, no repair possible');
+    // Trigger a card-draw sound so the player notices the recovery.
+    const scene = getCombatScene();
+    if (scene) {
+      const { playCardAudio } = await import('./cardAudioManager');
+      playCardAudio('card-draw');
     }
   } catch (err) {
     rrLog('watchdog:hand', 'repair:solo — repair threw', { err: String(err) });

@@ -81,6 +81,7 @@ import { computeCatchUpMastery } from './catchUpMasteryService';
 import { deepMerge } from '../dev/deepMerge';
 import { getIsMysteryRoomCombat, getIsMysteryRoomCombatElite } from './gameFlowController';
 import { initFailsafeWatchdogs, destroyFailsafeWatchdogs, validateEnemyState, handleCoopReconcileFailure, handleCoopBarrierCancel } from './failsafeWatchdogs';
+import { rrLog } from './rrLog';
 
 export interface EncounterSnapshot {
   activeDeck: CardRunState | null
@@ -2240,4 +2241,42 @@ export function patchTurnState(overrides: Record<string, unknown>): boolean {
   Object.assign(ts, merged);
   activeTurnState.set(freshTurnState(ts));
   return true;
+}
+
+/**
+ * Failsafe watchdog hook — draw `count` cards into the live activeDeck and
+ * mirror the result back into activeTurnState so UI reactivity picks it up.
+ *
+ * This is the repair path for Class A1 (empty hand, AP > 0, player_action phase).
+ * Snapshot-based patching is wrong here because `activeDeck` is the object that
+ * `endPlayerTurn` reads when it discards and redraws — patching only TurnState
+ * leaves the live deck stale, so the very next turn-end undoes the repair.
+ *
+ * Calling drawHand on the live activeDeck then mirroring via patchTurnState
+ * keeps both in sync.
+ *
+ * Only intended for use by failsafeWatchdogs._repairEmptyHand (solo path).
+ * Do NOT call from game-flow code — use the normal turn/draw pipeline.
+ *
+ * @param count  Number of cards to draw (should match ts.baseDrawCount, typically 5).
+ */
+export function forceRedraw(count: number): void {
+  if (!activeDeck) {
+    rrLog('watchdog:hand', 'forceRedraw called with no activeDeck', {});
+    return;
+  }
+  const before = {
+    hand: activeDeck.hand.length,
+    draw: activeDeck.drawPile.length,
+    discard: activeDeck.discardPile.length,
+  };
+  drawHand(activeDeck, count);
+  const after = {
+    hand: activeDeck.hand.length,
+    draw: activeDeck.drawPile.length,
+    discard: activeDeck.discardPile.length,
+  };
+  rrLog('watchdog:hand', 'forceRedraw complete', { before, after });
+  // Mirror into the TurnState so UI reactivity picks it up.
+  patchTurnState({ deck: { ...activeDeck } });
 }
