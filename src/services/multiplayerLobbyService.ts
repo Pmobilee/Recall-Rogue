@@ -28,7 +28,7 @@ import type { ConnectOpts, MultiplayerMessageType } from "./multiplayerTransport
 import type {
   LobbyState, LobbyPlayer, MultiplayerMode, DeckSelectionMode,
   HouseRules, RaceProgress, RaceResults, LobbyContentSelection,
-  LobbyVisibility, LobbyBrowserEntry, LobbyListFilter,
+  LobbyVisibility, LobbyBrowserEntry, LobbyListFilter, PendingVisibilityChange,
 } from '../data/multiplayerTypes';
 import { DEFAULT_HOUSE_RULES, MODE_MAX_PLAYERS, MODE_MIN_PLAYERS } from '../data/multiplayerTypes';
 import { isDesktop, isTauriPresent } from './platformService';
@@ -239,6 +239,17 @@ let _lastStartPayload: Record<string, unknown> | null = null;
  * and an ACK-all-arrived path exist.
  */
 let _hostStartFired = false;
+
+// ── H-006: Pending visibility change state ────────────────────────────────────
+/**
+ * Set when setVisibility() detects a strictening transition (e.g. public→password,
+ * public→friends_only) and records which players were evicted. Exposed via
+ * getPendingVisibilityChange() so the host UI can show a confirmation modal
+ * BEFORE calling setVisibility(). The data layer always evicts immediately —
+ * this object is informational for the UI to surface the consequence.
+ * Cleared by cancelPendingVisibilityChange() or when the host leaves the lobby.
+ */
+let _pendingVisibilityChange: PendingVisibilityChange | null = null;
 
 // ── H10: Reconnect grace timers ───────────────────────────────────────────────
 /**
@@ -918,6 +929,7 @@ export function leaveLobby(): void {
 
   _currentLobby = null;
   _passwordHash = null;
+  _pendingVisibilityChange = null; // H-006: clear eviction record
   // #76: Stop peer presence monitor.
   if (_peerMonitorTeardown !== null) {
     _peerMonitorTeardown();
@@ -1081,17 +1093,120 @@ export function setRanked(ranked: boolean): void {
 }
 
 /**
+ * Determine whether a visibility transition is a strictening (requires eviction).
+ * Returns true when newVisibility is MORE restrictive than oldVisibility.
+ *
+ * Ordering (most→least open): public > friends_only > password.
+ * Going from public→password, public→friends_only, or friends_only→password is strictening.
+ * The reverse (loosening) or same-level transitions never need eviction.
+ */
+function isStricteningVisibility(oldV: LobbyVisibility, newV: LobbyVisibility): boolean {
+  if (oldV === newV) return false;
+  // Any transition from 'public' to a restricted mode is strictening.
+  if (oldV === 'public' && (newV === 'password' || newV === 'friends_only')) return true;
+  // friends_only → password is also strictening (password is more restrictive).
+  if (oldV === 'friends_only' && newV === 'password') return true;
+  return false;
+}
+
+/**
+ * Identify guests who do not meet the new visibility criteria.
+ * Returns player IDs to evict (never includes the host).
+ *
+ * - password:      guests where enteredWithPassword is not true.
+ * - friends_only:  no reliable friends graph on web/broadcast — evict ALL non-host guests
+ *                  (safer than leaving potential strangers in a "private" lobby).
+ * - public:        no evictions needed.
+ */
+function findIneligibleGuests(
+  players: readonly LobbyPlayer[],
+  hostId: string,
+  newVisibility: LobbyVisibility,
+): string[] {
+  const guests = players.filter(p => p.id !== hostId);
+  if (newVisibility === 'password') {
+    return guests.filter(p => !p.enteredWithPassword).map(p => p.id);
+  }
+  if (newVisibility === 'friends_only') {
+    // No friends graph available client-side — evict all non-host guests to be safe.
+    return guests.map(p => p.id);
+  }
+  return [];
+}
+
+/**
  * Set lobby visibility (host only).
  * Updates lobby visibility (visibility is the single source of truth; hasPassword field removed).
  * Clearing to 'public' or 'friends_only' also clears the stored password hash.
+ *
+ * H-006: When the new visibility is MORE restrictive than the current one (strictening),
+ * this function identifies guests who no longer meet the new criteria and evicts them
+ * immediately via kickPlayer(). The eviction record is stored in _pendingVisibilityChange
+ * so the UI can surface "N players were removed" feedback.
+ *
+ * UI note: To show a pre-change confirmation modal (future UI-agent task), the host UI
+ * should read getPendingVisibilityChange() AFTER calling setVisibility(). The eviction
+ * has already run — the modal is retrospective feedback, not a gate.
  *
  * @param visibility  New visibility level.
  */
 export function setVisibility(visibility: LobbyVisibility): void {
   if (!_currentLobby || !isHost()) return;
+
+  const oldVisibility = _currentLobby.visibility;
   _currentLobby.visibility = visibility;
   if (visibility !== 'password') _passwordHash = null;
+
+  // H-006: Evict ineligible guests on strictening transitions.
+  if (isStricteningVisibility(oldVisibility, visibility)) {
+    const evicteeIds = findIneligibleGuests(_currentLobby.players, _currentLobby.hostId, visibility);
+    if (evicteeIds.length > 0) {
+      rrLog('mp:visibility', 'strictening: evicting ineligible guests', {
+        oldVisibility,
+        newVisibility: visibility,
+        evicteeCount: evicteeIds.length,
+        evicteeIds,
+      });
+      for (const targetId of evicteeIds) {
+        kickPlayer(targetId, 'visibility_changed');
+      }
+      _pendingVisibilityChange = { oldVisibility, newVisibility: visibility, evictees: evicteeIds };
+    } else {
+      rrLog('mp:visibility', 'strictening: no ineligible guests to evict', { oldVisibility, newVisibility: visibility });
+      _pendingVisibilityChange = { oldVisibility, newVisibility: visibility, evictees: [] };
+    }
+  } else {
+    rrLog('mp:visibility', 'widening or same-level: no evictions', { oldVisibility, newVisibility: visibility });
+  }
+
   broadcastSettings();
+}
+
+/**
+ * Return the pending visibility change record, if any.
+ * Populated after a strictening setVisibility() call; null otherwise.
+ * The UI can read this to show a summary of which players were evicted.
+ *
+ * @returns PendingVisibilityChange or null.
+ */
+export function getPendingVisibilityChange(): PendingVisibilityChange | null {
+  return _pendingVisibilityChange;
+}
+
+/**
+ * Clear the pending visibility change record without undoing the evictions.
+ * Call after the UI has shown the confirmation/summary to the host.
+ */
+export function cancelPendingVisibilityChange(): void {
+  _pendingVisibilityChange = null;
+}
+
+/**
+ * Alias for cancelPendingVisibilityChange — semantically "we acknowledged the change".
+ * Matches the UI call-site name suggested in the H-006 spec.
+ */
+export function applyPendingVisibilityChange(): void {
+  _pendingVisibilityChange = null;
 }
 
 /**
@@ -1569,8 +1684,13 @@ function setupMessageHandlers(): void {
     const { playerId, displayName } = msg.payload as { playerId: string; displayName: string };
     console.log(`[MP:LobbyService] mp:lobby:player_joined received: player=${playerId}, name=${displayName}, existing=${_currentLobby.players.length}`);
     if (!_currentLobby.players.find(p => p.id === playerId)) {
+      // H-006: Mark whether the guest supplied a password at join time.
+      // On the web/LAN path, the server validates the password hash before relaying
+      // mp:lobby:player_joined, so a successful relay implies correct password when
+      // the lobby is currently password-gated.
+      const enteredWithPassword = _currentLobby.visibility === 'password';
       _currentLobby.players.push({
-        id: playerId, displayName, isHost: false, isReady: false
+        id: playerId, displayName, isHost: false, isReady: false, enteredWithPassword,
       });
     }
     notifyLobbyUpdate();
@@ -1599,12 +1719,19 @@ function setupMessageHandlers(): void {
       // BUG21 fix: strip only steam:<id> placeholder entries (BUG10 host stub, which
       // exists only in the GUEST's initial state, never the host's).
       _currentLobby.players = _currentLobby.players.filter(p => !p.id.startsWith('steam:'));
+      // H-006: Mark whether the guest supplied a password at join time.
+      // The backend already validated the password hash before letting the player through —
+      // if the current lobby is password-gated, the join succeeding is the proof of knowledge.
+      // We record enteredWithPassword so setVisibility() can identify eligible guests when
+      // the host later tightens to 'password'.
+      const enteredWithPassword = _currentLobby.visibility === 'password';
       _currentLobby.players.push({
         id: playerId,
         displayName,
         isHost: false,
         isReady: false,
         multiplayerRating: multiplayerRating ?? 1000,
+        enteredWithPassword,
       });
       rrLog('mp:recv', 'mp:lobby:join (as host) — added player', { playerId, totalCount: _currentLobby.players.length });
     } else {

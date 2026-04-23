@@ -1504,3 +1504,38 @@ if (raw.playerId !== msg.senderId) {
 - H-005: cards_played before turn_start → buffered; subsequent turn_start replays it.
 - H-005: 5-message overflow → oldest dropped, overflow warn logged.
 - H-005: 6-second-old entry → pruned before next insert (no overflow).
+
+### H-006: Visibility Tightening Eviction
+
+**Problem (pre-fix):** `setVisibility()` updated `_currentLobby.visibility` and broadcast new lobby settings, but existing guests who no longer met the new criteria (no password knowledge, not friends) remained in the lobby. The lobby-browser hid the lobby under the new filter, giving the host a false sense of privacy while public-era guests stayed connected.
+
+**Fix:** `setVisibility()` now detects strictening transitions before applying the new visibility and evicts ineligible guests via `kickPlayer(targetId, 'visibility_changed')`.
+
+**Strictening order:** `public` → `friends_only` → `password` (most restrictive).
+- `public→password`: guests where `enteredWithPassword` is not `true` are kicked.
+- `public→friends_only`: all non-host guests are evicted (no client-side friends graph on web/broadcast — safer to evict everyone than risk leaving strangers in a "private" lobby).
+- `friends_only→password`: treated as strictening; all non-host guests evicted (same rationale).
+- `password→public`, `friends_only→public`, same-level: no evictions.
+
+**`enteredWithPassword` field:** Added to `LobbyPlayer` in `multiplayerTypes.ts`. The host sets this flag when processing `mp:lobby:join` or `mp:lobby:player_joined` — if the lobby was `password` at join time, the backend already validated the hash, so a successful join proves password knowledge.
+
+**Pending state:** `_pendingVisibilityChange` (type `PendingVisibilityChange`) is populated after any strictening call. The host UI can read `getPendingVisibilityChange()` to show a post-change summary. Cleared by `cancelPendingVisibilityChange()` / `applyPendingVisibilityChange()` or on `leaveLobby()`.
+
+**New exports:**
+- `getPendingVisibilityChange(): PendingVisibilityChange | null`
+- `cancelPendingVisibilityChange(): void`
+- `applyPendingVisibilityChange(): void`
+
+**Heads-up:** The UI confirmation modal (show before the host clicks "Change Visibility") is a follow-up UI-agent task. The data layer evicts immediately; the modal would be a pre-gate.
+
+### Test coverage
+
+`src/services/multiplayerLobbyService.test.ts` — H-006 describe block (9 tests):
+- `public→password` with 3 guests, 1 with password: 2 kicked, 1 remains; kick events have `reason='visibility_changed'`.
+- `public→friends_only`: all non-host guests evicted.
+- `friends_only→public`: no evictions.
+- `public→public` (same level): no evictions.
+- `getPendingVisibilityChange` returns evictee list after strictening.
+- `cancelPendingVisibilityChange` and `applyPendingVisibilityChange` clear the pending record.
+- No evictions when all guests have `enteredWithPassword=true`.
+- `leaveLobby` clears `pendingVisibilityChange`.

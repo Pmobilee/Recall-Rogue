@@ -5739,3 +5739,13 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
 **H-005 (reorder drop):** When Steam P2P delivered `cards_played` before `turn_start`, the handler hit `if (!_duelState) return` and silently dropped the message. The host then waited forever. Fix: module-scoped `_duelReorderBuffer` (max 4 entries, 5 s TTL) buffers early arrivals; `_drainDuelReorderBuffer()` is called from the `turn_start` handler after `_duelState.turnNumber` is set. Buffer is cleared in `destroyDuel()`.
 
 **Watch out for:** `_duelReorderBuffer` is a `const` array (not resetable by reassignment). Always clear it via `.length = 0` or `splice`. Any new path that cleans up duel state must clear the buffer too.
+
+### 2026-04-23 — MP H-006: setVisibility() did not evict pre-existing ineligible guests
+
+**What:** Changing a lobby from `public` → `password` or `public` → `friends_only` updated the visibility field and broadcast it, but guests who joined while the lobby was public remained. The lobby-browser hid the lobby immediately (under the new filter), giving the host a false sense that it was now private — while old guests were still connected.
+
+**Why:** `setVisibility()` was a 3-line function: set field, clear password hash, call `broadcastSettings()`. No eviction step existed.
+
+**Fix:** Added `isStricteningVisibility()` helper, `findIneligibleGuests()` logic, and eviction loop in `setVisibility()`. Added `enteredWithPassword?: boolean` to `LobbyPlayer` — set by the host at join time when the lobby is currently password-gated (backend already validated the hash). For `friends_only`, no client-side friends graph is available so we evict all non-host guests (safer than leaving strangers in a "private" lobby). New `getPendingVisibilityChange()` / `applyPendingVisibilityChange()` / `cancelPendingVisibilityChange()` exports for UI hookup.
+
+**Lesson:** Privacy-mode toggles in multi-user systems must retroactively enforce the new constraint on existing sessions, not just gate new joins. The lobby-browser filter creating a "looks private" UX while the actual session stayed open was the most dangerous part.

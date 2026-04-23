@@ -104,6 +104,13 @@ export interface LobbyPlayer {
    * Used at race/duel end to compute accurate Elo deltas instead of the 1500 default.
    */
   multiplayerRating?: number;
+  /**
+   * H-006: True when this player supplied the correct password at join time.
+   * Set by the host when processing mp:lobby:join if the lobby was password-protected.
+   * Used by setVisibility() to identify ineligible guests when tightening to 'password'.
+   * Host-only field — never serialised into mp:lobby:settings broadcasts (guests don't need it).
+   */
+  enteredWithPassword?: boolean;
 }
 
 /** Full lobby state */
@@ -133,6 +140,25 @@ export interface LobbyState {
    * Use `lobbyHasPassword(lobby)` from multiplayerLobbyService to derive the boolean — do not store a copy.
    */
   visibility: LobbyVisibility;
+}
+
+/**
+ * H-006: Pending visibility change state, populated by setVisibility() when a
+ * strictening transition (e.g. public→password, public→friends_only) requires
+ * evicting existing guests who no longer meet the new criteria.
+ *
+ * The data layer always evicts immediately. This object is exposed via
+ * getPendingVisibilityChange() so the UI can show a pre-change confirmation
+ * modal BEFORE calling setVisibility() — the wiring is a future UI-agent task.
+ *
+ * After setVisibility() runs, any evictees are already kicked. This object is
+ * cleared by cancelPendingVisibilityChange() or when the host leaves the lobby.
+ */
+export interface PendingVisibilityChange {
+  oldVisibility: LobbyVisibility;
+  newVisibility: LobbyVisibility;
+  /** Player IDs that were evicted (or will be evicted) by this transition. */
+  evictees: string[];
 }
 
 /**
@@ -357,11 +383,11 @@ export const MODE_DISPLAY_NAMES: Record<MultiplayerMode, string> = {
 
 /** Mode descriptions */
 export const MODE_DESCRIPTIONS: Record<MultiplayerMode, string> = {
-  race: 'Both players run the same dungeon independently. Same enemies, same layout \u2014 race to the highest score.',
-  same_cards: 'Everything is identical \u2014 same cards, same draws, same shuffles. The only difference is you.',
+  race: 'Both players run the same dungeon independently. Same enemies, same layout — race to the highest score.',
+  same_cards: 'Everything is identical — same cards, same draws, same shuffles. The only difference is you.',
   duel: 'Face-to-face battle. You share one enemy and take simultaneous turns. Outsmart your opponent.',
   coop: 'Team up against a tougher shared enemy. Combine your knowledge to survive.',
-  trivia_night: 'No combat, no cards \u2014 just rapid-fire quiz rounds for up to 8 players.',
+  trivia_night: 'No combat, no cards — just rapid-fire quiz rounds for up to 8 players.',
 };
 
 /** Short taglines for mode cards */

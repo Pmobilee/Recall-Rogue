@@ -1617,7 +1617,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1634,7 +1634,9 @@
       "score": 50,
       "rank": 42,
       "inProgressAt": "2026-04-23T04:24:19.481Z",
-      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A"
+      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A",
+      "fixedInCommit": "pending",
+      "fixedAt": "2026-04-23T13:47:00.000Z"
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-007",

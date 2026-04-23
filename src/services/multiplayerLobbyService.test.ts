@@ -441,6 +441,9 @@ const {
   isBroadcastMode,
   clearLanModeOnHubEntry,
   leaveMultiplayerLobbyForSoloStart,
+  getPendingVisibilityChange,
+  applyPendingVisibilityChange,
+  cancelPendingVisibilityChange,
 } = await import('./multiplayerLobbyService');
 
 // ---------------------------------------------------------------------------
@@ -1840,5 +1843,194 @@ describe('MP-STEAM-20260422-014 — startGame() always carries contentSelection 
       expect(keys, `mode=${mode} keys`).toContain('contentSelection');
       leaveLobby();
     }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Tests — H-006: setVisibility eviction on strictening transitions
+// ---------------------------------------------------------------------------
+
+describe('H-006: setVisibility — evict ineligible guests on strictening', () => {
+  beforeEach(() => {
+    resetMockTransport();
+  });
+
+  afterEach(() => {
+    leaveLobby();
+  });
+
+  /**
+   * Helper: create a host lobby and inject mock guests into its player list.
+   * Returns the created lobby.
+   */
+  async function makeHostWithGuests(
+    initialVisibility: 'public' | 'password' | 'friends_only',
+    guests: Array<{ id: string; displayName: string; enteredWithPassword?: boolean }>,
+  ) {
+    const lobby = await makeHostLobbyPhase10('race', { visibility: initialVisibility });
+    // Inject guests directly — bypasses transport so we can control enteredWithPassword.
+    for (const g of guests) {
+      lobby.players.push({
+        id: g.id,
+        displayName: g.displayName,
+        isHost: false,
+        isReady: false,
+        enteredWithPassword: g.enteredWithPassword ?? false,
+      });
+    }
+    return lobby;
+  }
+
+  it('public→password: guests without enteredWithPassword are kicked', async () => {
+    await makeHostWithGuests('public', [
+      { id: 'g1', displayName: 'Guest1', enteredWithPassword: true },
+      { id: 'g2', displayName: 'Guest2', enteredWithPassword: false },
+      { id: 'g3', displayName: 'Guest3', enteredWithPassword: false },
+    ]);
+
+    const sentBefore = mockTransport.sent.length;
+    setVisibility('password');
+    const kickMsgs = mockTransport.sent.slice(sentBefore).filter(m => m.type === 'mp:lobby:kick');
+
+    // Two guests (g2, g3) did not enter with password — both kicked
+    expect(kickMsgs.length).toBe(2);
+    const kickedIds = kickMsgs.map(m => m.payload.targetPlayerId as string);
+    expect(kickedIds).toContain('g2');
+    expect(kickedIds).toContain('g3');
+    expect(kickedIds).not.toContain('g1');
+
+    // Reason must be 'visibility_changed'
+    for (const km of kickMsgs) {
+      expect(km.payload.reason).toBe('visibility_changed');
+    }
+
+    // Local players array must have 1 guest remaining (g1)
+    const lobby = getCurrentLobby()!;
+    const guestIds = lobby.players.filter(p => !p.isHost).map(p => p.id);
+    expect(guestIds).toContain('g1');
+    expect(guestIds).not.toContain('g2');
+    expect(guestIds).not.toContain('g3');
+  });
+
+  it('public→friends_only: all non-host guests evicted (no friends graph)', async () => {
+    await makeHostWithGuests('public', [
+      { id: 'gA', displayName: 'Alice' },
+      { id: 'gB', displayName: 'Bob' },
+    ]);
+
+    const sentBefore = mockTransport.sent.length;
+    setVisibility('friends_only');
+    const kickMsgs = mockTransport.sent.slice(sentBefore).filter(m => m.type === 'mp:lobby:kick');
+
+    // All non-host guests are evicted
+    expect(kickMsgs.length).toBe(2);
+    const kickedIds = kickMsgs.map(m => m.payload.targetPlayerId as string);
+    expect(kickedIds).toContain('gA');
+    expect(kickedIds).toContain('gB');
+
+    // Players array should only contain host
+    const lobby = getCurrentLobby()!;
+    const guests = lobby.players.filter(p => !p.isHost);
+    expect(guests.length).toBe(0);
+  });
+
+  it('friends_only→public: no evictions (widening)', async () => {
+    await makeHostWithGuests('friends_only', [
+      { id: 'gX', displayName: 'Xavier' },
+    ]);
+    setVisibility('friends_only'); // start in friends_only, then widen
+
+    const sentBefore = mockTransport.sent.length;
+    setVisibility('public');
+    const kickMsgs = mockTransport.sent.slice(sentBefore).filter(m => m.type === 'mp:lobby:kick');
+
+    expect(kickMsgs.length).toBe(0);
+    // Guest still present
+    const lobby = getCurrentLobby()!;
+    expect(lobby.players.map(p => p.id)).toContain('gX');
+  });
+
+  it('public→public (same visibility): no evictions', async () => {
+    await makeHostWithGuests('public', [
+      { id: 'gY', displayName: 'Yolanda' },
+    ]);
+
+    const sentBefore = mockTransport.sent.length;
+    setVisibility('public');
+    const kickMsgs = mockTransport.sent.slice(sentBefore).filter(m => m.type === 'mp:lobby:kick');
+
+    expect(kickMsgs.length).toBe(0);
+    const lobby = getCurrentLobby()!;
+    expect(lobby.players.map(p => p.id)).toContain('gY');
+  });
+
+  it('getPendingVisibilityChange returns evictee list after strictening', async () => {
+    await makeHostWithGuests('public', [
+      { id: 'ev1', displayName: 'Evictee1' },
+      { id: 'ev2', displayName: 'Evictee2' },
+    ]);
+
+    setVisibility('password');
+
+    const pending = getPendingVisibilityChange();
+    expect(pending).not.toBeNull();
+    expect(pending!.oldVisibility).toBe('public');
+    expect(pending!.newVisibility).toBe('password');
+    expect(pending!.evictees).toContain('ev1');
+    expect(pending!.evictees).toContain('ev2');
+  });
+
+  it('cancelPendingVisibilityChange clears the pending record', async () => {
+    await makeHostWithGuests('public', [
+      { id: 'ev3', displayName: 'Evictee3' },
+    ]);
+
+    setVisibility('password');
+    expect(getPendingVisibilityChange()).not.toBeNull();
+
+    cancelPendingVisibilityChange();
+    expect(getPendingVisibilityChange()).toBeNull();
+  });
+
+  it('applyPendingVisibilityChange clears the pending record', async () => {
+    await makeHostWithGuests('public', [
+      { id: 'ev4', displayName: 'Evictee4' },
+    ]);
+
+    setVisibility('password');
+    expect(getPendingVisibilityChange()).not.toBeNull();
+
+    applyPendingVisibilityChange();
+    expect(getPendingVisibilityChange()).toBeNull();
+  });
+
+  it('no evictions when all guests entered with password (public→password)', async () => {
+    await makeHostWithGuests('public', [
+      { id: 'ok1', displayName: 'OkGuest1', enteredWithPassword: true },
+      { id: 'ok2', displayName: 'OkGuest2', enteredWithPassword: true },
+    ]);
+
+    const sentBefore = mockTransport.sent.length;
+    setVisibility('password');
+    const kickMsgs = mockTransport.sent.slice(sentBefore).filter(m => m.type === 'mp:lobby:kick');
+
+    expect(kickMsgs.length).toBe(0);
+    // Both guests remain
+    const lobby = getCurrentLobby()!;
+    const guestIds = lobby.players.filter(p => !p.isHost).map(p => p.id);
+    expect(guestIds).toContain('ok1');
+    expect(guestIds).toContain('ok2');
+  });
+
+  it('leaveLobby clears pendingVisibilityChange', async () => {
+    await makeHostWithGuests('public', [
+      { id: 'ev5', displayName: 'Evictee5' },
+    ]);
+
+    setVisibility('password');
+    expect(getPendingVisibilityChange()).not.toBeNull();
+
+    leaveLobby();
+    expect(getPendingVisibilityChange()).toBeNull();
   });
 });
