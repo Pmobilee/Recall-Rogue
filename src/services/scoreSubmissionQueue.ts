@@ -2,18 +2,7 @@ import { apiClient } from './apiClient'
 import { generateUUID } from '../utils/uuid'
 import { writable } from 'svelte/store'
 
-// EL-002 / SL-001: Widened to include multiplayer categories so MP run-end scores
-// can be submitted to the season leaderboard via the existing queue infrastructure.
-// The server's /leaderboards/:category endpoint accepts any string key, so no backend
-// changes are needed for this to land. Server-side category validation can be added
-// in a follow-up once the Fastify route layer is ready to enforce the enum.
-type CompetitiveCategory =
-  | 'daily_expedition'
-  | 'endless_depths'
-  | 'scholar_challenge'
-  | 'multiplayer_race'
-  | 'multiplayer_coop'
-  | 'multiplayer_duel'
+type CompetitiveCategory = 'daily_expedition' | 'endless_depths' | 'scholar_challenge'
 
 interface QueuedScoreSubmission {
   id: string

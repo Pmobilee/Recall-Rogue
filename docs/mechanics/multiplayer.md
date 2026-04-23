@@ -2,7 +2,7 @@
 
 > **Source files:** `src/services/multiplayerGameService.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/coopService.ts`, `src/services/eloMatchmakingService.ts`, `src/services/triviaNightService.ts`, `src/services/steamNetworkingService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/multiplayerScoring.ts`, `src/services/multiplayerWorkshopService.ts`
 > **Master tracking doc:** `docs/roadmap/AR-MULTIPLAYER.md`
-> **Last verified:** 2026-04-23 — EL-002: coop ELO wired (applyCoopEloResult, gated on lobby.isRanked). SL-001: season leaderboard write path added for multiplayer_race, multiplayer_coop, multiplayer_duel. Previous: 2026-04-22 — Coop wiring cluster (C-001/C-002/C-003/C-005/C-007), Wave-3 determinism.
+> **Last verified:** 2026-04-23 — EL-002: coop ELO wired (applyCoopEloResult, gated on lobby.isRanked). Previous: 2026-04-22 — Coop wiring cluster (C-001/C-002/C-003/C-005/C-007), Wave-3 determinism.
 
 ## Modes
 
@@ -661,20 +661,6 @@ Matchmaking queue widening:
 
 v1 stores ratings in `localStorage`. Server-side persistence is planned when the Fastify backend ships.
 Source: `src/services/eloMatchmakingService.ts`.
-
-## Season Leaderboard Write Path (SL-001 - 2026-04-23)
-
-The season leaderboard endpoint (`GET /api/v1/season/current/leaderboard`) previously had no write path for multiplayer-originated scores. Three categories are now submitted via the existing `enqueueCompetitiveScoreSubmission` / `ScoreSubmissionQueue` infrastructure:
-
-| Mode | Category string | Score formula |
-|------|----------------|---------------|
-| Race / Same Cards | `multiplayer_race` | `floorReached * 100 + round(accuracy)` |
-| Co-op | `multiplayer_coop` | `floorReached * 100 + round(accuracy)` |
-| Duel | `multiplayer_duel` | `floorReached * 100 + round(accuracy)` (placeholder - TODO: replace with winnerBonus + damageDealt) |
-
-**Submission rules:** Only submitted when `result !== 'abandon'` and score > 0. Gated on `apiClient.isLoggedIn()`. No backend changes needed for v1 (endpoint accepts any string category). SeasonLeaderboard.svelte MP column display is a ui-agent follow-up.
-
-**Source:** `src/services/gameFlowController.ts:finishRunAndReturnToHub` three MP branches. `CompetitiveCategory` in `src/services/scoreSubmissionQueue.ts` widened to include the three MP categories.
 
 ## Trivia Night Scoring
 
