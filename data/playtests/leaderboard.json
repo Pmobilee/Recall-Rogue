@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T05:10:00.000Z",
+  "updatedAt": "2026-04-23T05:20:00.000Z",
   "totalPlaythroughs": 22,
   "totalIssues": 254,
   "batches": [
@@ -5416,7 +5416,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 5,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -5428,7 +5428,9 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 158
+      "rank": 158,
+      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
+      "workStartedAt": "2026-04-23T05:20:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-DU-001",
@@ -5466,7 +5468,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 5,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -5478,7 +5480,9 @@
         "Create a same_cards lobby \u2192 host broadcasts fork seeds \u2192 guest has no mp:sync handler \u2192 players see different card rewards/enemies."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 160
+      "rank": 160,
+      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
+      "workStartedAt": "2026-04-23T05:20:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SAMECARDS-001",
@@ -5516,7 +5520,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 5,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -5528,7 +5532,9 @@
         "Join a race as guest; opponent HUD shows two identical player IDs on results screen."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 162
+      "rank": 162,
+      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
+      "workStartedAt": "2026-04-23T05:20:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-003",
