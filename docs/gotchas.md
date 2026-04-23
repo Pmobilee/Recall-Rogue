@@ -5658,3 +5658,19 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 - `FileStorageBackend` (`storageBackend.ts`) updated to recognize the `recall-rogue-active-run-*` prefix and map keys to per-slot files (`run_active_solo.json`, etc.) instead of misrouting them to `settings.json`
 
 **Lesson:** Storage keys that could hold state for multiple isolated contexts (modes, players, profiles) MUST be namespaced from day one. When a single key is later split into N keys, a one-shot migration is always needed — and the migration guard must be a module-level boolean that survives the function's lifetime but does not persist across page loads (intentional: the legacy key is checked once per page load until it is gone).
+
+### 2026-04-23 — failsafeWatchdogs.ts called but never created — 5 build errors in encounterBridge
+
+**What:** A prior failsafe audit agent spent ~30 min reading code and added stubs for `initFailsafeWatchdogs()`, `destroyFailsafeWatchdogs()`, `validateEnemyState()`, `handleCoopReconcileFailure()`, and `handleCoopBarrierCancel()` at call sites in `encounterBridge.ts` — but never created the `failsafeWatchdogs.ts` implementation file. `multiplayerCoopSync.ts` also called `monitorDeltaBucketSize()` and `validateCoopHpUpdate()` from the same missing file. Result: 5 type errors, 2 undefined-import errors, repo in non-compiling state.
+
+**Fix:** Created `src/services/failsafeWatchdogs.ts` with full implementations: `initFailsafeWatchdogs`, `destroyFailsafeWatchdogs`, `validateEnemyState`, `validateCoopHpUpdate`, `monitorDeltaBucketSize`, `handleCoopReconcileFailure`, `handleCoopBarrierCancel`, `notifyCardCommitted`, `notifyCardResolved`. Added import to `encounterBridge.ts`. 28 unit tests added in `src/services/failsafes.test.ts`. Error count: 8 → 1 (the remaining error is a pre-existing `CardApp.svelte` type mismatch on `'multiplayer_coop'`).
+
+**Lesson:** When a sub-agent adds call sites for a new function, it MUST create the implementation file in the same commit. Stub-and-defer leaves the repo uncompilable. The self-verification step (typecheck) would have caught this instantly — always run it before committing.
+
+### 2026-04-23 — coop empty-hand stuck state: root cause and watchdog
+
+**What:** 2026-04-23 incident — both coop players had empty hands during combat and could only end turn. The `cardPlayStage` in `CardCombatOverlay.svelte` is UI-local state; from the service layer the only observable stuck-state signals are `ts.deck.hand.length === 0` + `ts.apCurrent > 0` + `ts.phase === 'player_action'`. The specific coop root cause was likely host-authoritative state diverging at encounter start (draw effect never fired on one or both clients) — the fix is a watchdog that detects the condition after 3 s and triggers `requestCoopEnemyStateRetry()` (coop) or `patchTurnState` with a synthesised hand (solo).
+
+**Fix / watchdog location:** `src/services/failsafeWatchdogs.ts` → `_checkEmptyHandStuck()` + `_repairEmptyHand()`. Wired by `initFailsafeWatchdogs()` called from `encounterBridge.startEncounterForRoom()`.
+
+**Two-sided enforcement opportunity (not yet built):** a pre-encounter draw-count assertion (draw pile + discard pile > 0) that would detect the exhausted-deck-at-encounter-start condition before the player sees an empty hand. Flagged as future work in `docs/mechanics/failsafes.md`.

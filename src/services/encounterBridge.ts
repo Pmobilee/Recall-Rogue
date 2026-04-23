@@ -80,6 +80,7 @@ import {
 import { computeCatchUpMastery } from './catchUpMasteryService';
 import { deepMerge } from '../dev/deepMerge';
 import { getIsMysteryRoomCombat, getIsMysteryRoomCombatElite } from './gameFlowController';
+import { initFailsafeWatchdogs, destroyFailsafeWatchdogs, validateEnemyState, handleCoopReconcileFailure, handleCoopBarrierCancel } from './failsafeWatchdogs';
 
 export interface EncounterSnapshot {
   activeDeck: CardRunState | null
@@ -344,6 +345,7 @@ export function registerEncounterCompleteHandler(
 }
 
 function notifyEncounterComplete(result: EncounterCompletionResult): void {
+  destroyFailsafeWatchdogs();
   encounterCompleteHandler?.(result);
 }
 
@@ -810,6 +812,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   // For non-coop runs, playerCount defaults to 1 inside createEnemy (no double-scaling).
   const coopPlayerCount = isCoopRun ? (run.multiplayerPlayerCount ?? 2) : 1;
   const enemy = createEnemy(ascensionTemplate, run.floor.currentFloor, { hpMultiplier: enemyHpMultiplier, difficultyVariance, playerCount: coopPlayerCount });
+  validateEnemyState(enemy);
   // AR-310: Initialise chain color rotation before startEncounter so the first-turn
   // active chain color is set correctly. Use the pre-computed chain distribution's
   // runChainTypes for curated runs; fall back to selectRunChainTypes for trivia runs.
@@ -958,6 +961,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
   // Increment generation so any stale 550ms victory/defeat timers from the previous
   // encounter will abort before clearing this new encounter's state.
   encounterGeneration++;
+  initFailsafeWatchdogs();
 
   activeTurnState.set(freshTurnState(turnState));
   syncCombatScene(turnState);
@@ -1002,6 +1006,7 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
             initialSnapshot = await awaitCoopEnemyReconcile();
           } catch (retryErr) {
             console.warn('[encounterBridge] coop: retry reconcile also timed out — using local enemy state', retryErr);
+            handleCoopReconcileFailure(2);
           }
         } else {
           console.warn('[encounterBridge] coop: failed to receive initial enemy snapshot, using local', err);
@@ -1611,6 +1616,7 @@ export async function handleEndTurn(): Promise<void> {
     if (coopResult === 'cancelled') {
       // Partner (or local player) cancelled the turn-end barrier.
       // Restore turn control without running the enemy phase.
+      handleCoopBarrierCancel('timeout');
       return;
     }
 
@@ -2107,6 +2113,7 @@ export function sellCardFromActiveDeck(cardId: string): { soldCard: Card | null;
 }
 
 export function resetEncounterBridge(): void {
+  destroyFailsafeWatchdogs();
   activeTurnState.set(null);
   activeDeck = null;
   activeRunPool = [];

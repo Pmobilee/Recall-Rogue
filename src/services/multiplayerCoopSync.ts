@@ -27,6 +27,7 @@ import { getMultiplayerTransport } from './multiplayerTransport';
 import { getCurrentLobby, onLobbyUpdate } from './multiplayerLobbyService';
 import type { SharedEnemySnapshot, EnemyTurnDelta, RaceProgress, CoopRestActionPayload, CoopMysteryEventPayload } from '../data/multiplayerTypes';
 import { rrLog } from './rrLog';
+import { monitorDeltaBucketSize, validateCoopHpUpdate } from './failsafeWatchdogs';
 
 // -- Debug flag ---------------------------------------------------------------
 
@@ -389,9 +390,12 @@ export function initCoopSync(localPlayerId: string): void {
 
   // Real-time enemy HP update -- lightweight per-card-play broadcast from the active partner.
   const offEnemyHpUpdate = transport.on('mp:coop:enemy_hp_update', (msg) => {
-    const { currentHP, maxHP } = msg.payload as { currentHP: number; maxHP: number };
-    rrLog('mp:coop', 'recv enemy_hp_update', { hp: currentHP, maxHP, subs: _enemyHpSubs.size });
-    if (typeof currentHP !== 'number' || typeof maxHP !== 'number') return;
+    const { currentHP: rawHP, maxHP: rawMax } = msg.payload as { currentHP: number; maxHP: number };
+    rrLog('mp:coop', 'recv enemy_hp_update', { hp: rawHP, maxHP: rawMax, subs: _enemyHpSubs.size });
+    if (typeof rawHP !== 'number' || typeof rawMax !== 'number') return;
+    // C1 watchdog: clamp incoming HP values to guard against desync producing invalid state.
+    // Uses local maxHP (rawMax from wire) as the cap — host is authoritative on maxHP.
+    const { currentHP, maxHP } = validateCoopHpUpdate(rawHP, rawMax, rawMax);
     for (const cb of _enemyHpSubs) {
       cb(currentHP, maxHP);
     }
@@ -657,6 +661,8 @@ export function awaitCoopTurnEndWithDelta(delta: EnemyTurnDelta): Promise<'compl
     delta: delta as unknown as Record<string, unknown>,
     turnNumber: _currentTurnNumber,
   });
+  // C4 watchdog: flag if the delta bucket has grown beyond expected player count (M-047 regression monitor).
+  monitorDeltaBucketSize(_currentTurnNumber, currentBucket.size, players.length);
 
   // If we already have everyone (e.g. partner finished first), resolve fast.
   if (_allPlayersSignaled()) {
