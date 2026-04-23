@@ -243,7 +243,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   } from './services/multiplayerCoopSync'
   import type { LobbyState, RaceProgress, RaceResults, MultiplayerMode, LobbyContentSelection, LobbyVisibility } from './data/multiplayerTypes'
   import { computeRaceScore } from './services/multiplayerScoring'
-  import { initTriviaGame, initTriviaMessageHandlers, DEFAULT_ROUNDS, getTriviaState, onTriviaStateChange, onTriviaRoundResult, submitAnswer } from './services/triviaNightService'
+  import { initTriviaGame, initTriviaMessageHandlers, destroyTriviaGame, DEFAULT_ROUNDS, getTriviaState, onTriviaStateChange, onTriviaRoundResult, submitAnswer } from './services/triviaNightService'
   import type { TriviaGameState, TriviaQuestion, TriviaRoundResult } from './services/triviaNightService'
 
   // Update Steam Rich Presence whenever the active screen changes.
@@ -944,10 +944,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         initCoopSync(localPlayerId)
       }
 
-      // FIX C-001: Wire up transport message handlers for duel/coop game messages.
-      // Not for race — race has its own broadcast loop via startRaceProgressBroadcast.
+      // FIX C-001 / RC-001: Wire up transport message handlers for duel/coop/race game messages.
+      // Race mode needs initGameMessageHandlers too — it registers mp:race:progress and
+      // mp:race:finish listeners inside that function. startRaceProgressBroadcast handles
+      // the local broadcast side; this registers the receive-side handlers.
       let cleanupGameMessages: (() => void) | null = null
-      if (lobby.mode === 'coop' || lobby.mode === 'duel') {
+      if (lobby.mode === 'coop' || lobby.mode === 'duel' || lobby.mode === 'race') {
         cleanupGameMessages = initGameMessageHandlers(lobby.mode)
       }
 
@@ -1034,9 +1036,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       // FIX C-001: clean up game message handlers registered at game start
       _pendingGameMessageCleanup?.()
       _pendingGameMessageCleanup = null
-      // FIX MP-STEAM-20260422-017: clean up trivia message handlers for trivia_night
+      // FIX MP-STEAM-20260422-017 / TN-001: clean up trivia message handlers for trivia_night.
+      // destroyTriviaGame() clears all module-level Maps and callback refs so a second
+      // trivia_night session in the same app lifetime starts from clean state.
       _pendingTriviaCleanup?.()
       _pendingTriviaCleanup = null
+      destroyTriviaGame()
     }
   })
 
