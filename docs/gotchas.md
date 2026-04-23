@@ -5701,3 +5701,13 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
 **What:** `encounterBridge.startEncounterForRoom()` guards with `if (!run) return false` — so theoretically you can't start an encounter without a valid run state. However, if `resetEncounterBridge()` is called while an encounter is active (e.g. run-end race with a pending victory timer), `activeTurnState` may still have a value while `activeRunState` is null. The `endPlayerTurn` call in `handleEndTurn` would silently bail.
 
 **Fix:** `watchdog:runState` watchdog logs the condition if detected during the poll tick. No auto-repair — the encounter would need to be abandoned anyway since there's nowhere to route the result.
+
+### 2026-04-23 — mp:lobby:start payload spread (FIX-020) was an injection vector — use explicit allowlist instead
+
+**What:** `server/src/routes/mpLobbyWs.ts` broadcast `mp:lobby:start` by spreading the host's inbound `msg.payload` into the guest broadcast: `{ ...(msg.payload ?? {}), lobbyId, seed: ... }`. FIX-020 (commit `14495f06b`) added this spread to fix a real problem — guests needed `mode`/`deckId`/`houseRules`/`contentSelection` at game-start because `mp:lobby:settings` can be lost on P2P. But the spread also forwarded every other key the host sent, including arbitrary injected keys (`godMode`, `evilKey`, alternate `mode` values, etc.).
+
+**Why it matters:** Guests apply all fields from `mp:lobby:start` to `_currentLobby` before firing `onGameStart`. An attacker-controlled host could override game mode (switching guests to a different mode than what they agreed to), inject bogus `houseRules` (enable unlimited time, disable penalties), or substitute a fake `contentSelection` (point guests at different content than the host). This is a high-severity trust boundary violation even though the host is authenticated — guests should receive values from server-authoritative state, not relayed from the host's payload verbatim.
+
+**Fix:** Replaced the spread with `buildLobbyStartPayload()` — an explicit allowlist pulling `mode`, `houseRules`, `contentSelection` from `lobby.*` (server state), accepting `seed` and `deckId` from the host payload with type coercion, and silently dropping all other keys. Exported as a pure function for unit testing.
+
+**Pattern to watch:** Any broadcast that uses `...msg.payload` without an explicit allowlist is a potential injection vector. Grep `msg\.payload` in WS route handlers and confirm each spread is intentional (relay messages are intentionally passthrough, but control-plane messages like `lobby:start` must be filtered).

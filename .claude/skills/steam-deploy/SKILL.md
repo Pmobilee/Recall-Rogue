@@ -141,6 +141,19 @@ grep -E "mp:deck|contentSelection|setContentSelection" debug.log
 
 # Receive heartbeat — flags when the 60Hz poll loop is running but silent
 grep "mp:rx" debug.log
+
+# Failsafe watchdogs — all stuck-state detections and repairs
+grep "watchdog:" debug.log
+
+# Specific watchdog areas:
+grep "watchdog:hand" debug.log         # Class A: empty hand / AP stuck states
+grep "watchdog:enemy" debug.log        # Class B: invalid enemy HP at encounter start
+grep "watchdog:coop" debug.log         # Class C: coop HP clamp + delta bucket overflow
+grep "watchdog:reconcile" debug.log    # Class C: coop initial-state reconcile failures
+grep "watchdog:barrier" debug.log      # Class C: turn-end barrier cancellations
+grep "watchdog:combatScene" debug.log  # Class E: Phaser scene null during combat
+grep "watchdog:runState" debug.log     # Class F: run state null during active encounter
+grep "watchdog:cardPlay" debug.log     # Class A: committed-quiz open/resolve events
 ```
 
 ### Tag prefixes
@@ -161,6 +174,14 @@ grep "mp:rx" debug.log
 | `[js:mp:rx]` | `steamNetworkingService.ts` | Poll-loop heartbeat (every 5s, flags silent windows) |
 | `[js:mp:createLobby]` / `[js:mp:joinCode]` / `[js:mp:joinById]` | `multiplayerLobbyService.ts` | Entry-point logs |
 | `[js:mp:ui:lobby]` | `MultiplayerLobby.svelte` | Render-time forensic dumps of content selection |
+| `[js:watchdog:hand]` | `failsafeWatchdogs.ts` | Empty-hand / AP stuck state; repair log on recovery |
+| `[js:watchdog:enemy]` | `failsafeWatchdogs.ts` | Invalid HP / empty intent pool at encounter start |
+| `[js:watchdog:coop]` | `failsafeWatchdogs.ts` | HP clamp on wire + delta bucket overflow |
+| `[js:watchdog:reconcile]` | `failsafeWatchdogs.ts` | Coop initial enemy-state reconcile timeout |
+| `[js:watchdog:barrier]` | `failsafeWatchdogs.ts` | Turn-end barrier cancel (partner drop / timeout) |
+| `[js:watchdog:combatScene]` | `failsafeWatchdogs.ts` | Phaser scene null >5s during active combat |
+| `[js:watchdog:runState]` | `failsafeWatchdogs.ts` | activeRunState null during active encounter |
+| `[js:watchdog:cardPlay]` | `failsafeWatchdogs.ts` | Card committed-quiz open/resolve events |
 
 ### What "silent" looks like
 
