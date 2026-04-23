@@ -23,11 +23,27 @@
  * when run.multiplayerMode === 'coop' && newHp <= 0 after the enemy phase resolves.
  */
 
+import { writable } from 'svelte/store';
 import { getMultiplayerTransport } from './multiplayerTransport';
 import { getCurrentLobby, onLobbyUpdate } from './multiplayerLobbyService';
 import type { SharedEnemySnapshot, EnemyTurnDelta, RaceProgress, CoopRestActionPayload, CoopMysteryEventPayload } from '../data/multiplayerTypes';
 import { rrLog } from './rrLog';
 import { monitorDeltaBucketSize, validateCoopHpUpdate } from './failsafeWatchdogs';
+
+/**
+ * DL-001: Partner end-turn deadline.
+ *
+ * When a partner broadcasts `mp:coop:turn_end_with_delta`, the payload carries a
+ * `deadline` (unix ms) at which the local player's end-turn will auto-fire. This
+ * store exposes that deadline so the UI can render a countdown on the End Turn
+ * button and call `handleEndTurn()` when it hits 0.
+ *
+ * Value is `null` when no partner has ended yet, or when the local player has
+ * already ended this turn.
+ *
+ * See docs/architecture/multiplayer.md → "End-Turn Deadline" for the full protocol.
+ */
+export const coopEndTurnDeadline = writable<number | null>(null);
 
 // -- Debug flag ---------------------------------------------------------------
 
@@ -64,9 +80,24 @@ if (typeof window !== 'undefined') {
 
 // -- Constants ----------------------------------------------------------------
 
-/** Hard timeout for turn-end barriers (ms). After this, the barrier resolves 'cancelled'. */
+/** Hard timeout for rest + mystery coop barriers (ms). After this, the barrier resolves 'cancelled'. */
 /** M-025: 15 s aligns with peer-presence 30 s pong grace; subsequent peer-left event cancels the barrier. */
 const BARRIER_TIMEOUT_MS = 15_000;
+
+/**
+ * DL-001: Hard timeout for the turn-end delta barrier specifically. Longer than
+ * BARRIER_TIMEOUT_MS because the turn-end barrier now advertises a 30 s
+ * partner-deadline to the other side; 45 s = 30 s deadline + 15 s slack for
+ * network round-trip and the auto-fire end-turn animation.
+ */
+const TURN_END_BARRIER_TIMEOUT_MS = 45_000;
+
+/**
+ * DL-001: How long a partner has to end their turn once ANY player broadcasts
+ * a turn_end_with_delta. Embedded in the broadcast payload as an absolute unix-ms
+ * deadline; receivers display a countdown and auto-fire `handleEndTurn` at T=0.
+ */
+const END_TURN_DEADLINE_MS = 30_000;
 
 /**
  * Interval at which co-op sync checks for a stale partner heartbeat (ms).
@@ -303,6 +334,8 @@ export function initCoopSync(localPlayerId: string): void {
   _collectedDeltas = new Map();
   _currentTurnNumber = 0;
   _lastPartnerHeartbeat = new Map();
+  // DL-001: fresh encounter -> no pending end-turn deadline.
+  coopEndTurnDeadline.set(null);
   // PASS1-BUG-18: flush any deferred broadcasts that fired before initCoopSync.
   _flushPreInitBroadcastBuffer();
 
@@ -323,7 +356,7 @@ export function initCoopSync(localPlayerId: string): void {
 
   // New delta-carrying turn_end signal
   const offTurnEndWithDelta = transport.on('mp:coop:turn_end_with_delta', (msg) => {
-    const payload = msg.payload as { playerId: string; delta: EnemyTurnDelta; turnNumber?: number };
+    const payload = msg.payload as { playerId: string; delta: EnemyTurnDelta; turnNumber?: number; deadline?: number };
     if (!payload?.playerId) return;
     coopLog('received turn_end_with_delta from %s, damage=%d turn=%d', payload.playerId, payload.delta?.damageDealt, payload.turnNumber ?? -1);
     // MP-STEAM-20260422-047: bucket by the sender's turnNumber, falling back to
@@ -345,6 +378,17 @@ export function initCoopSync(localPlayerId: string): void {
     // Only the CURRENT turn's signal counts toward releasing the barrier.
     if (bucketTurn === _currentTurnNumber) {
       _turnEndSignals.add(payload.playerId);
+      // DL-001: surface the partner's deadline if local hasn't ended yet. Min-take
+      // so when multiple partners have ended, the earliest deadline wins.
+      if (
+        typeof payload.deadline === 'number' &&
+        payload.playerId !== _localPlayerId &&
+        !_turnEndSignals.has(_localPlayerId!)
+      ) {
+        coopEndTurnDeadline.update((cur) =>
+          cur === null ? payload.deadline! : Math.min(cur, payload.deadline!)
+        );
+      }
       _maybeReleaseBarrier();
     }
   });
@@ -359,6 +403,11 @@ export function initCoopSync(localPlayerId: string): void {
     // MP-STEAM-20260422-047: delete only from the cancel-targeted turn bucket.
     const bucketTurn = typeof turnNumber === 'number' ? turnNumber : _currentTurnNumber;
     _collectedDeltas.get(bucketTurn)?.delete(playerId);
+    // DL-001: if no partner remains ended, the countdown is moot -- clear it.
+    const stillHasPartnerEnded = [..._turnEndSignals].some((id) => id !== _localPlayerId);
+    if (!stillHasPartnerEnded) {
+      coopEndTurnDeadline.set(null);
+    }
   });
 
   const offPartner = transport.on('mp:coop:partner_state', (msg) => {
@@ -590,14 +639,14 @@ export function awaitCoopTurnEnd(): Promise<'completed' | 'cancelled'> {
       resolve(result);
     };
 
-    // 15s hard timeout -- partner may be hung, crashed, or the transport silently dropped.
+    // DL-001: 45s hard timeout -- partner may be hung, crashed, or the transport silently dropped.
     _barrierTimeoutHandle = setTimeout(() => {
       if (_pendingBarrierResolve) {
         coopLog('barrier timeout -- partner unresponsive');
         console.warn('[coopSync] barrier timeout -- partner unresponsive; resolving cancelled');
         _pendingBarrierResolve('cancelled');
       }
-    }, BARRIER_TIMEOUT_MS);
+    }, TURN_END_BARRIER_TIMEOUT_MS);
 
     // Watch for partner leaving the lobby mid-barrier.
     _cleanupLobbyListener = onLobbyUpdate((updatedLobby) => {
@@ -654,12 +703,16 @@ export function awaitCoopTurnEndWithDelta(delta: EnemyTurnDelta): Promise<'compl
   _turnEndSignals.add(_localPlayerId);
   currentBucket.set(_localPlayerId, { ...delta, playerId: _localPlayerId });
   _barrierExpectedPlayerCount = players.length;
+  // DL-001: local player has now ended -- any partner-set countdown is moot for us.
+  coopEndTurnDeadline.set(null);
   const transport = getMultiplayerTransport();
-  coopLog('broadcasting turn_end_with_delta, localId=%s, damage=%d turn=%d', _localPlayerId, delta.damageDealt, _currentTurnNumber);
+  const deadline = Date.now() + END_TURN_DEADLINE_MS;
+  coopLog('broadcasting turn_end_with_delta, localId=%s, damage=%d turn=%d deadline=%d', _localPlayerId, delta.damageDealt, _currentTurnNumber, deadline);
   transport.send('mp:coop:turn_end_with_delta', {
     playerId: _localPlayerId,
     delta: delta as unknown as Record<string, unknown>,
     turnNumber: _currentTurnNumber,
+    deadline,
   });
   // C4 watchdog: flag if the delta bucket has grown beyond expected player count (M-047 regression monitor).
   monitorDeltaBucketSize(_currentTurnNumber, currentBucket.size, players.length);
@@ -670,13 +723,15 @@ export function awaitCoopTurnEndWithDelta(delta: EnemyTurnDelta): Promise<'compl
     return Promise.resolve('completed');
   }
 
-  // Otherwise wait for the barrier with a 15s hard timeout.
+  // Otherwise wait for the barrier with a 45s hard timeout (30s partner-deadline + 15s slack).
   return new Promise<'completed' | 'cancelled'>((resolve) => {
     _pendingBarrierResolve = (result: 'completed' | 'cancelled') => {
       _pendingBarrierResolve = null;
       _clearBarrierTimeout();
       _turnEndSignals = new Set();
       _barrierExpectedPlayerCount = 0;
+      // DL-001: barrier done -- no countdown should be showing.
+      coopEndTurnDeadline.set(null);
       if (_cleanupLobbyListener) {
         _cleanupLobbyListener();
         _cleanupLobbyListener = null;
@@ -685,14 +740,14 @@ export function awaitCoopTurnEndWithDelta(delta: EnemyTurnDelta): Promise<'compl
       resolve(result);
     };
 
-    // 15s hard timeout.
+    // DL-001: 45s hard timeout (30s partner-deadline + 15s slack).
     _barrierTimeoutHandle = setTimeout(() => {
       if (_pendingBarrierResolve) {
         coopLog('barrier timeout -- partner unresponsive');
         console.warn('[coopSync] delta barrier timeout -- partner unresponsive; resolving cancelled');
         _pendingBarrierResolve('cancelled');
       }
-    }, BARRIER_TIMEOUT_MS);
+    }, TURN_END_BARRIER_TIMEOUT_MS);
 
     _cleanupLobbyListener = onLobbyUpdate((updatedLobby) => {
       if (!_pendingBarrierResolve) return;
@@ -728,6 +783,8 @@ export function getCollectedDeltas(): EnemyTurnDelta[] {
  */
 export function cancelCoopTurnEnd(): void {
   if (!_localPlayerId) return;
+  // DL-001: clear any pending countdown defensively.
+  coopEndTurnDeadline.set(null);
   _turnEndSignals.delete(_localPlayerId);
   // MP-STEAM-20260422-047: delete only from the current turn bucket.
   _collectedDeltas.get(_currentTurnNumber)?.delete(_localPlayerId);

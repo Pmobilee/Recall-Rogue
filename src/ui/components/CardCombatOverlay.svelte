@@ -31,6 +31,7 @@
   import { getMaxRelicSlots, resolveChargeButtonState } from '../../services/relicEffectResolver'
   import { juiceManager } from '../../services/juiceManager'
   import { getCombatScene, consumeSoulJarCharge, handlePendingChoice, enemyDamageEvent, coopWaitingForPartner, cancelEndTurnRequested, activeTurnState, endTurnInProgress } from '../../services/encounterBridge'
+  import { coopEndTurnDeadline } from '../../services/multiplayerCoopSync'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId, playerSave } from '../stores/playerData'
   import type { CombatScene } from '../../game/scenes/CombatScene'
@@ -261,6 +262,44 @@
   let damageNumbers = $state<Array<{ id: number; value: string; isCritical: boolean; type?: 'damage' | 'block' | 'heal' | 'poison' | 'burn' | 'bleed' | 'gold' | 'critical' | 'status' | 'buff'; position?: 'enemy' | 'player' }>>([])
   /** AR-222: timer handle for pending auto-end-turn (cleared if player acts first) */
   let autoEndTurnTimer: ReturnType<typeof setTimeout> | null = null
+
+  // DL-001: partner-set end-turn deadline countdown. Drives the "END TURN (Ns)" label
+  // and auto-fires handleEndTurn() when the clock hits 0.
+  let coopRemainingMs = $state<number | null>(null)
+  let coopCountdownInterval: ReturnType<typeof setInterval> | null = null
+  let coopAutoFired = false
+  const coopRemainingSec = $derived(
+    coopRemainingMs === null ? null : Math.max(0, Math.ceil(coopRemainingMs / 1000))
+  )
+
+  $effect(() => {
+    const deadline = $coopEndTurnDeadline
+    coopAutoFired = false
+    if (coopCountdownInterval) {
+      clearInterval(coopCountdownInterval)
+      coopCountdownInterval = null
+    }
+    if (deadline === null) {
+      coopRemainingMs = null
+      return
+    }
+    const tick = () => {
+      const remaining = deadline - Date.now()
+      coopRemainingMs = Math.max(0, remaining)
+      if (remaining <= 0 && !coopAutoFired && !$coopWaitingForPartner && !$endTurnInProgress) {
+        coopAutoFired = true
+        handleEndTurn()
+      }
+    }
+    tick()
+    coopCountdownInterval = setInterval(tick, 250)
+    return () => {
+      if (coopCountdownInterval) {
+        clearInterval(coopCountdownInterval)
+        coopCountdownInterval = null
+      }
+    }
+  })
   let cardAnimations = $state<Record<string, CardAnimPhase>>({})
   let animatingCards = $state<Card[]>([])
   /** AR-113: Active mastery change popups: cardId -> 'upgrade' | 'downgrade' */
@@ -3189,14 +3228,15 @@
           class="end-turn-btn"
           class:disabled={endTurnDisabled}
           class:end-turn-pulse={!endTurnDisabled && cardPlayStage !== 'committed' && (apCurrent === 0 || !hasPlayableCards)}
+          class:end-turn-countdown={coopRemainingSec !== null}
           class:has-ap-remaining={apCurrent > 0 && hasPlayableCards && !endTurnDisabled}
           data-testid="btn-end-turn"
           data-tutorial-anchor="end-turn-btn"
-          aria-label="End turn"
+          aria-label={coopRemainingSec !== null ? `End turn — ${coopRemainingSec}s before auto-end` : 'End turn'}
           onclick={handleEndTurn}
           disabled={endTurnDisabled}
         >
-          END TURN
+          {coopRemainingSec !== null ? `END TURN (${coopRemainingSec}s)` : 'END TURN'}
         </button>
       {/if}
     {/if}
@@ -3987,6 +4027,24 @@
   @keyframes pulse-glow {
     0%, 100% { box-shadow: 0 0 4px rgba(234, 179, 8, 0.5); background: #b8860b; }
     50% { box-shadow: 0 0 16px rgba(234, 179, 8, 0.8); background: #c4960d; }
+  }
+
+  /* DL-001: Co-op partner-deadline countdown — amber pulse so the local
+     player notices the clock without it feeling alarming. Overrides the
+     default pulse when both classes are applied. */
+  .end-turn-btn.end-turn-countdown {
+    animation: end-turn-countdown-pulse 1s ease-in-out infinite;
+    background: #c97a2b;
+    color: #fff4e0;
+  }
+  @keyframes end-turn-countdown-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 6px rgba(233, 140, 50, 0.55); }
+    50% { transform: scale(1.04); box-shadow: 0 0 18px rgba(233, 140, 50, 0.9); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .end-turn-btn.end-turn-countdown {
+      animation: none;
+    }
   }
 
   .end-turn-confirm-overlay {

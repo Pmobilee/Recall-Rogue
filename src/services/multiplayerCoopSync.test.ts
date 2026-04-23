@@ -114,7 +114,9 @@ import {
   awaitCoopMysteryResolution,
   onCoopMysteryEvent,
   broadcastCoopMysteryEvent,
+  coopEndTurnDeadline,
 } from './multiplayerCoopSync';
+import { get } from 'svelte/store';
 import type { PartnerState } from './multiplayerCoopSync';
 import type { SharedEnemySnapshot, CoopRestActionPayload, CoopMysteryEventPayload } from '../data/multiplayerTypes';
 
@@ -1242,5 +1244,145 @@ describe('multiplayerCoopSync — CM-001 mystery event subscriber', () => {
 
     expect(received).toHaveLength(0);
     unsub();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// DL-001: End-Turn Deadline countdown store
+// ---------------------------------------------------------------------------
+
+describe('multiplayerCoopSync — DL-001 end-turn deadline', () => {
+  beforeEach(() => {
+    mockTransport = createMockTransport();
+    mockLobby = null;
+    coopEndTurnDeadline.set(null);
+  });
+
+  afterEach(() => {
+    destroyCoopSync();
+    coopEndTurnDeadline.set(null);
+  });
+
+  it('broadcasts turn_end_with_delta with a deadline ~30s in the future', () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const before = Date.now();
+    awaitCoopTurnEndWithDelta({ playerId: 'alice', damageDealt: 5, blockDealt: 0, statusEffectsAdded: [] });
+    const after = Date.now();
+
+    const sent = mockTransport.sent.find(m => m.type === 'mp:coop:turn_end_with_delta');
+    expect(sent).toBeDefined();
+    const deadline = sent!.payload.deadline as number;
+    expect(typeof deadline).toBe('number');
+    expect(deadline).toBeGreaterThanOrEqual(before + 29_000);
+    expect(deadline).toBeLessThanOrEqual(after + 31_000);
+  });
+
+  it('sets coopEndTurnDeadline when partner ends first and local has not ended', () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const partnerDeadline = Date.now() + 30_000;
+    mockTransport.simulateReceive('mp:coop:turn_end_with_delta', {
+      playerId: 'bob',
+      delta: { playerId: 'bob', damageDealt: 3, blockDealt: 0, statusEffectsAdded: [] },
+      turnNumber: 0,
+      deadline: partnerDeadline,
+    });
+
+    expect(get(coopEndTurnDeadline)).toBe(partnerDeadline);
+  });
+
+  it('does NOT set the store when the delta comes from the local player (self-echo)', () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    const fakeDeadline = Date.now() + 30_000;
+    mockTransport.simulateReceive('mp:coop:turn_end_with_delta', {
+      playerId: 'alice',
+      delta: { playerId: 'alice', damageDealt: 3, blockDealt: 0, statusEffectsAdded: [] },
+      turnNumber: 0,
+      deadline: fakeDeadline,
+    });
+
+    expect(get(coopEndTurnDeadline)).toBe(null);
+  });
+
+  it('clears coopEndTurnDeadline when barrier resolves completed', async () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    // Partner sends delta first, setting the deadline.
+    mockTransport.simulateReceive('mp:coop:turn_end_with_delta', {
+      playerId: 'bob',
+      delta: { playerId: 'bob', damageDealt: 3, blockDealt: 0, statusEffectsAdded: [] },
+      turnNumber: 0,
+      deadline: Date.now() + 30_000,
+    });
+    expect(get(coopEndTurnDeadline)).not.toBe(null);
+
+    // Local ends — barrier should resolve and clear the store.
+    const result = await awaitCoopTurnEndWithDelta({ playerId: 'alice', damageDealt: 5, blockDealt: 0, statusEffectsAdded: [] });
+    expect(result).toBe('completed');
+    expect(get(coopEndTurnDeadline)).toBe(null);
+  });
+
+  it('clears coopEndTurnDeadline when partner cancels their turn-end', () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    mockTransport.simulateReceive('mp:coop:turn_end_with_delta', {
+      playerId: 'bob',
+      delta: { playerId: 'bob', damageDealt: 3, blockDealt: 0, statusEffectsAdded: [] },
+      turnNumber: 0,
+      deadline: Date.now() + 30_000,
+    });
+    expect(get(coopEndTurnDeadline)).not.toBe(null);
+
+    mockTransport.simulateReceive('mp:coop:turn_end_cancel', { playerId: 'bob', turnNumber: 0 });
+    expect(get(coopEndTurnDeadline)).toBe(null);
+  });
+
+  it('min-takes the earliest deadline across multiple partners', () => {
+    mockLobby = makeLobby(['alice', 'bob', 'carol']);
+    initCoopSync('alice');
+
+    const later = Date.now() + 30_000;
+    const earlier = Date.now() + 15_000;
+    mockTransport.simulateReceive('mp:coop:turn_end_with_delta', {
+      playerId: 'bob',
+      delta: { playerId: 'bob', damageDealt: 1, blockDealt: 0, statusEffectsAdded: [] },
+      turnNumber: 0,
+      deadline: later,
+    });
+    mockTransport.simulateReceive('mp:coop:turn_end_with_delta', {
+      playerId: 'carol',
+      delta: { playerId: 'carol', damageDealt: 1, blockDealt: 0, statusEffectsAdded: [] },
+      turnNumber: 0,
+      deadline: earlier,
+    });
+
+    expect(get(coopEndTurnDeadline)).toBe(earlier);
+  });
+
+  it('initCoopSync resets the store to null', () => {
+    coopEndTurnDeadline.set(12345);
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+    expect(get(coopEndTurnDeadline)).toBe(null);
+  });
+
+  it('missing deadline field is backward-compatible (no store update)', () => {
+    mockLobby = makeLobby(['alice', 'bob']);
+    initCoopSync('alice');
+
+    mockTransport.simulateReceive('mp:coop:turn_end_with_delta', {
+      playerId: 'bob',
+      delta: { playerId: 'bob', damageDealt: 3, blockDealt: 0, statusEffectsAdded: [] },
+      turnNumber: 0,
+    });
+
+    expect(get(coopEndTurnDeadline)).toBe(null);
   });
 });

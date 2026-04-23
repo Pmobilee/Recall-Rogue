@@ -81,9 +81,11 @@ Both clients (simultaneous turns)
 
 Player ends turn → handleEndTurn()
    Compute delta: { damageDealt, blockDealt, statusEffectsAdded }
+   Broadcast stamps a 30s deadline into the payload (DL-001).
    awaitCoopTurnEndWithDelta(delta)  ← BARRIER: waits for ALL players
-                                        15s hard timeout; resolves 'cancelled' on
-                                        transport disconnect or peer leaving lobby
+                                        45s hard timeout (30s deadline + 15s slack);
+                                        resolves 'cancelled' on transport disconnect
+                                        or peer leaving lobby
 
 [Barrier releases when all players have signaled]
 
@@ -263,7 +265,17 @@ When `mp:lobby:peer_left` fires, `multiplayerLobbyService.ts` marks the player a
 
 ### Co-op Barrier — Disconnect Handling (C3)
 
-`awaitCoopTurnEndWithDelta(delta)` also watches `_currentLobby.players.length`. If it drops below the expected count mid-barrier, the barrier resolves `'cancelled'` immediately. The **15s hard timeout** is a separate backstop for cases where the disconnect is not signaled via lobby state (aligns with peer-presence 30s pong grace; subsequent peer-left event cancels the barrier — M-025).
+`awaitCoopTurnEndWithDelta(delta)` also watches `_currentLobby.players.length`. If it drops below the expected count mid-barrier, the barrier resolves `'cancelled'` immediately. The **45s hard timeout** (`TURN_END_BARRIER_TIMEOUT_MS`) is a separate backstop for cases where the disconnect is not signaled via lobby state. It is longer than the rest/mystery barrier's 15s (`BARRIER_TIMEOUT_MS`) because the turn-end barrier now advertises a 30s partner-deadline; 15s slack covers network round-trip and the auto-fire animation (DL-001).
+
+### End-Turn Deadline (DL-001)
+
+When any player broadcasts `mp:coop:turn_end_with_delta`, the payload carries an absolute unix-ms `deadline` equal to `Date.now() + 30_000`. The `coopEndTurnDeadline` Svelte store (exported from `multiplayerCoopSync.ts`) surfaces that deadline on the receiving side whenever the local player hasn't yet signalled their own turn-end. The UI subscribes to the store (`CardCombatOverlay.svelte`), renders a countdown label on the End Turn button (`END TURN (Ns)`), and auto-fires `handleEndTurn()` when the clock reaches 0.
+
+- Min-take on multiple partners: the earliest deadline wins.
+- Cleared on: barrier resolve (completed or cancelled), local cancel, remote partner cancel (when no partner remains ended), `initCoopSync()`, and once the local player themselves signals turn-end.
+- Backward-compatible: peers that send `turn_end_with_delta` without a `deadline` field produce no countdown (the receiver falls back to the legacy indefinite wait, capped by the 45s hard timeout).
+
+This replaces the behaviour where a slow partner (thinking on a hard quiz) could silently trip the old 15s hard timeout. The deadline gives the slow partner visible pressure while the host waits patiently.
 
 ### Steam P2P Session Recovery (H9)
 
@@ -365,7 +377,7 @@ This pattern generalises: any message that MUST arrive before the receiver can p
 | Message | Sender | Payload | Purpose |
 |---------|--------|---------|---------|
 | `mp:coop:enemy_state` | Host | `SharedEnemySnapshot` | Initial anchor + authoritative state after each turn merge |
-| `mp:coop:turn_end_with_delta` | Any client | `{ playerId, delta: EnemyTurnDelta }` | Per-player turn-end signal with damage delta |
+| `mp:coop:turn_end_with_delta` | Any client | `{ playerId, delta: EnemyTurnDelta, turnNumber?, deadline? }` | Per-player turn-end signal with damage delta; `deadline` is an absolute unix-ms auto-fire time for partners who haven't yet ended (DL-001) |
 | `mp:coop:turn_end` | Any client | `{ playerId }` | Legacy barrier signal (still active, used internally) |
 | `mp:coop:turn_end_cancel` | Any client | `{ playerId }` | Cancel a pending turn-end signal |
 | `mp:coop:partner_state` | Any client | `PartnerState` | Partner HP/block/score for HUD after enemy phase |

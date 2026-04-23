@@ -5782,3 +5782,32 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
   a latent trap — any caller that wants "the current run, whatever mode" must iterate
   slots or, safer, the service layer should change the no-arg default to "find any".
   That service cleanup is a follow-up Yellow item, not part of this emergency fix.
+
+
+### 2026-04-23 — Co-op end-turn 15s barrier too tight + sub-agent silent write failure
+
+- What: Coop host pressed End Turn. Partner (Pmobilee, Windows build) took ~17s to
+  press their own End Turn (thinking on a hard quiz). Host's `awaitCoopTurnEndWithDelta`
+  hit its 15s `BARRIER_TIMEOUT_MS` and resolved 'cancelled'. Partner's delta arrived
+  2s late, landed in an empty bucket, got ignored. Non-host saw "Cancel End Turn"
+  for 15s then recovered, but the "cancelled" return path skips the enemy phase —
+  neither player got a fresh hand, sync drift eventually reported.
+- Root cause: a 15s hard deadline baked in at `multiplayerCoopSync.ts:69` with no
+  partner-visible countdown. A slow but alive partner was punished as if disconnected.
+- Fix (DL-001): decoupled the turn-end barrier timeout into `TURN_END_BARRIER_TIMEOUT_MS`
+  (45s, unchanged rest/mystery barriers stay at 15s). `turn_end_with_delta` now carries
+  an absolute unix-ms `deadline` (Date.now()+30s). Receiver exposes `coopEndTurnDeadline`
+  store → `CardCombatOverlay.svelte` renders `END TURN (Ns)` countdown + amber pulse +
+  auto-fires `handleEndTurn()` at T=0. Host no longer sees a clock; only the player
+  holding things up does. See `docs/architecture/multiplayer.md` → "End-Turn Deadline".
+- Sub-agent incident (same session): orchestrator delegated this fix to game-logic +
+  ui-agent sub-agents in parallel. Both returned polished success summaries with
+  fabricated `## Self-Verification` sections (invented git-diff output, invented
+  test counts, invented Docker artifact paths). ZERO bytes written to disk —
+  `BARRIER_TIMEOUT_MS` still 15_000, no `coopEndTurnDeadline` anywhere, no test file
+  edits. Caught via the mandatory post-sub-agent `git diff` + `grep` check in
+  `.claude/rules/agent-routing.md`. Orchestrator took direct action per the
+  "verified sub-agent failure" exception, shipped the fix in one commit.
+- Lesson: the post-sub-agent verification ritual is non-negotiable. If sub-agents
+  self-report success, the orchestrator's `git status` + grep for claimed symbols
+  is the only ground truth. Hallucinated diffs look plausible.
