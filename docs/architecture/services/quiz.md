@@ -8,6 +8,20 @@
 
 Quiz serving splits into two pipelines: the **legacy facts DB** path (sql.js SQLite, `quizService`) for general knowledge, and the **curated deck** path (`curatedFactSelector`, `questionTemplateSelector`, `curatedDistractorSelector`) for structured learning content. Both paths ultimately flow through `nonCombatQuizSelector` for non-combat quiz contexts (rest rooms, study temple, boss phases).
 
+### getStudyModeQuiz — supported deckMode.type values (CardCombatOverlay.svelte)
+
+`getStudyModeQuiz` handles in-combat quiz resolution for curated-deck runs. It is dispatched by `getQuizForCard` when `runState.inRunFactTracker` is non-null and the deck mode is one of:
+
+| deckMode.type | Pool source | Deck resolver |
+|---|---|---|
+| `study` | Single curated deck, optionally filtered to one sub-deck / exam tags | Direct `getCuratedDeck(deckMode.deckId)` |
+| `custom_deck` | Merge of `getCuratedDeckFacts` across all `deckMode.items` | `factSourceDeckMap` lookup per factId |
+| `study-multi` | Merge of `getCuratedDeckFacts` across all `deckMode.decks` entries; `subDeckIds === 'all'` passes `undefined` to get all facts, array iterates per sub-deck ID | `factSourceDeckMap` lookup per factId (same as custom_deck) |
+
+All three modes use `interleaveFacts` to merge sub-pools, `selectFactForCharge` for FSRS-weighted selection, and `selectDistractors` from the resolved deck's answer-type pools. Trivia-domain facts in `study-multi.triviaDomains` are handled by `encounterBridge.ts` at card-pool-assembly time; at quiz-render time they are curated-deck facts (having been mixed in during pool assembly).
+
+All other deckMode types (`general`, `trivia`, `preset`, `language`, `procedural`) fall through to the factsDB trivia path.
+
 ---
 
 ## factsDB

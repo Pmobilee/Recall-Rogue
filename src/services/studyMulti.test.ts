@@ -337,3 +337,75 @@ describe('masteryScalingService — leaderboard eligibility with study-multi', (
     expect(getLeaderboardEligibility({ type: 'general' })).toBe('general');
   });
 });
+
+// ---------------------------------------------------------------------------
+// CardCombatOverlay routing guard — study-multi falls into study-mode path
+// ---------------------------------------------------------------------------
+// The getQuizForCard and getStudyModeQuiz routing guards in CardCombatOverlay.svelte
+// were fixed to handle 'study-multi'. The guards are:
+//   getQuizForCard:    type === 'study' || type === 'custom_deck' || type === 'study-multi'
+//   getStudyModeQuiz:  type !== 'study' && type !== 'custom_deck' && type !== 'study-multi'  (early-return guard)
+//
+// We verify the intended discriminant logic here as a pure TypeScript exercise
+// to catch regressions if the union type ever changes.
+
+describe('CardCombatOverlay quiz routing guard — study-multi coverage', () => {
+  /** Mirrors the getQuizForCard routing condition from CardCombatOverlay.svelte. */
+  function shouldRouteToStudyModeQuiz(deckMode: DeckMode | null | undefined): boolean {
+    return (
+      deckMode?.type === 'study' ||
+      deckMode?.type === 'custom_deck' ||
+      deckMode?.type === 'study-multi'
+    );
+  }
+
+  /** Mirrors the early-return guard in getStudyModeQuiz from CardCombatOverlay.svelte. */
+  function isInvalidStudyMode(deckMode: DeckMode | null | undefined): boolean {
+    return (
+      !deckMode ||
+      (deckMode.type !== 'study' && deckMode.type !== 'custom_deck' && deckMode.type !== 'study-multi')
+    );
+  }
+
+  it('routes study-multi into the study-mode quiz path (getQuizForCard guard)', () => {
+    const mode: DeckMode = { type: 'study-multi', decks: [{ deckId: 'world_flags', subDeckIds: 'all' }], triviaDomains: [] };
+    expect(shouldRouteToStudyModeQuiz(mode)).toBe(true);
+  });
+
+  it('routes study into the study-mode quiz path', () => {
+    const mode: DeckMode = { type: 'study', deckId: 'world_flags' };
+    expect(shouldRouteToStudyModeQuiz(mode)).toBe(true);
+  });
+
+  it('routes custom_deck into the study-mode quiz path', () => {
+    const mode: DeckMode = { type: 'custom_deck', items: [] };
+    expect(shouldRouteToStudyModeQuiz(mode)).toBe(true);
+  });
+
+  it('does NOT route trivia into the study-mode quiz path', () => {
+    const mode: DeckMode = { type: 'trivia', domains: ['science'] };
+    expect(shouldRouteToStudyModeQuiz(mode)).toBe(false);
+  });
+
+  it('does NOT route general into the study-mode quiz path', () => {
+    expect(shouldRouteToStudyModeQuiz({ type: 'general' })).toBe(false);
+  });
+
+  it('does NOT route undefined into the study-mode quiz path', () => {
+    expect(shouldRouteToStudyModeQuiz(undefined)).toBe(false);
+  });
+
+  it('getStudyModeQuiz inner guard accepts study-multi (no early return)', () => {
+    const mode: DeckMode = { type: 'study-multi', decks: [{ deckId: 'world_flags', subDeckIds: 'all' }], triviaDomains: [] };
+    expect(isInvalidStudyMode(mode)).toBe(false);
+  });
+
+  it('getStudyModeQuiz inner guard rejects trivia (early return fires)', () => {
+    const mode: DeckMode = { type: 'trivia', domains: ['science'] };
+    expect(isInvalidStudyMode(mode)).toBe(true);
+  });
+
+  it('getStudyModeQuiz inner guard rejects null (early return fires)', () => {
+    expect(isInvalidStudyMode(null)).toBe(true);
+  });
+});

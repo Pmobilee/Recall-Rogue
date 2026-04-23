@@ -1380,7 +1380,7 @@
    */
   function getStudyModeQuiz(card: Card, runState: NonNullable<typeof $activeRunState>, useReverse = false): QuizData {
     const deckMode = runState.deckMode
-    if (!deckMode || (deckMode.type !== 'study' && deckMode.type !== 'custom_deck')) {
+    if (!deckMode || (deckMode.type !== 'study' && deckMode.type !== 'custom_deck' && deckMode.type !== 'study-multi')) {
       return { question: 'Error: not in study mode', answers: ['OK'], correctAnswer: 'OK', variantIndex: 0 }
     }
 
@@ -1395,6 +1395,26 @@
       factPool = interleaveFacts(
         deckMode.items.map(item => getCuratedDeckFacts(item.deckId, item.subDeckId, item.examTags))
       )
+      resolveDeckForFact = (factId: string) => {
+        const sourceDeckId = runState.factSourceDeckMap?.[factId]
+        return sourceDeckId ? getCuratedDeck(sourceDeckId) : undefined
+      }
+    } else if (deckMode.type === 'study-multi') {
+      // Multi-source MP mode: merge curated deck facts across all entries.
+      // subDeckIds === 'all' -> pass undefined (get all facts); array -> iterate per sub-deck.
+      // triviaDomains are handled by encounterBridge; quiz resolution is curated-only here.
+      // Uses factSourceDeckMap (same as custom_deck) for per-fact deck resolution.
+      const subPools: ReturnType<typeof getCuratedDeckFacts>[] = []
+      for (const entry of deckMode.decks) {
+        if (entry.subDeckIds === 'all') {
+          subPools.push(getCuratedDeckFacts(entry.deckId, undefined))
+        } else {
+          for (const subId of entry.subDeckIds) {
+            subPools.push(getCuratedDeckFacts(entry.deckId, subId))
+          }
+        }
+      }
+      factPool = interleaveFacts(subPools)
       resolveDeckForFact = (factId: string) => {
         const sourceDeckId = runState.factSourceDeckMap?.[factId]
         return sourceDeckId ? getCuratedDeck(sourceDeckId) : undefined
@@ -1633,7 +1653,7 @@
   function getQuizForCard(card: Card, optionCount: number, useReverse = false): QuizData {
     // Study mode: dynamic fact assignment from curated deck
     const runState = $activeRunState
-    if ((runState?.deckMode?.type === 'study' || runState?.deckMode?.type === 'custom_deck') && runState.inRunFactTracker) {
+    if ((runState?.deckMode?.type === 'study' || runState?.deckMode?.type === 'custom_deck' || runState?.deckMode?.type === 'study-multi') && runState.inRunFactTracker) {
       return getStudyModeQuiz(card, runState, useReverse)
     }
 

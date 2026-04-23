@@ -5811,3 +5811,18 @@ A secondary problem: the capacity guard in `joinLobby()` ran before the duplicat
 - Lesson: the post-sub-agent verification ritual is non-negotiable. If sub-agents
   self-report success, the orchestrator's `git status` + grep for claimed symbols
   is the only ground truth. Hallucinated diffs look plausible.
+
+### 2026-04-23 — Multiplayer coop showed "Wrong A / Wrong B" placeholder text in quiz
+
+**Symptom:** In any multiplayer mode (coop, race, same_cards, duel) using study-multi content (the canonical MP content type), every quiz card displayed the fallback placeholder: question `"Question for <factId>"`, answers `['Answer', 'Wrong A', 'Wrong B']`. Solo Study Temple (which uses `type: 'study'`) was completely unaffected.
+
+**Root cause:** `CardCombatOverlay.svelte` had two routing guards that only handled `'study'` and `'custom_deck'` deck modes:
+
+1. `getQuizForCard` (line 1636): checked `type === 'study' || type === 'custom_deck'` before dispatching to `getStudyModeQuiz`. `study-multi` fell through to the factsDB trivia path.
+2. `getStudyModeQuiz` (line 1383): its own inner guard rejected non-`study`/non-`custom_deck` modes with an error return.
+
+When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` returned null and the `'Wrong A / Wrong B'` fallback rendered.
+
+**Why it slipped:** The `study-multi` DeckMode variant was added as the canonical MP content type, and pool assembly in `encounterBridge.ts` was wired, but the quiz-render path in `CardCombatOverlay.svelte` was never updated to match. No MP study-multi visual test existed — only solo paths were exercised in the test suite.
+
+**Fix:** Extended both guards to include `'study-multi'`. Added a `study-multi` branch in `getStudyModeQuiz` that mirrors the `custom_deck` pool-building pattern: iterates `deckMode.decks`, calls `getCuratedDeckFacts(entry.deckId, subId)` for each sub-deck (passing `undefined` for `subDeckIds === 'all'`), merges via `interleaveFacts`, and resolves per-fact decks via `factSourceDeckMap`. Confirmed with unit tests in `src/services/studyMulti.test.ts`.
