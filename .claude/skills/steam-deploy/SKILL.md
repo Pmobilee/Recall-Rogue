@@ -99,12 +99,76 @@ any of them has cost 20+ rebuild cycles.
 
 ## Log path quick reference
 
-- macOS: `~/Library/Logs/Recall Rogue/debug.log`
-- Windows: `%LocalAppData%\Recall Rogue\debug.log` (stub — stdio redirect
-  wired for Unix only; see `main.rs::redirect_stdio_to_log_file`)
-- Linux: `~/.cache/recall-rogue/debug.log`
-- Tags grep cheat sheet: `[Steam]` (Rust), `[LAN]` (Rust), `[js:mp:*]`
-  (TypeScript multiplayer), `[stdio]` (redirect confirmation).
+The single debug.log file is where all Rust `println!` / `eprintln!` + JavaScript
+`rrLog()` output lands. Both Steam-launched and direct-exe launches write here;
+in a Steam launch there is NO console, so this file is the only evidence of
+what happened. Check it FIRST for any "game launched but broke" report.
+
+| Platform | Path |
+|---|---|
+| **macOS** | `~/Library/Logs/Recall Rogue/debug.log` |
+| **Windows (Steam install)** | `%LocalAppData%\Recall Rogue\debug.log` (via `SetStdHandle` redirect wired in `main.rs`; commit c9d24721d) |
+| **Windows (VM pre-install artifact)** | Same as above once the exe runs in the VM |
+| **Linux** | `~/.cache/recall-rogue/debug.log` |
+
+JS console output reaches this file via the `rr_log` Tauri command and
+`src/services/rrLog.ts`. The file is append-only across app launches — look
+for `[Steam] Initialized successfully` lines to find launch boundaries.
+
+### Grep cheat sheet (read in order)
+
+```bash
+# Quick health — was the app even alive recently?
+tail -50 "~/Library/Logs/Recall Rogue/debug.log"
+
+# Count app launches captured in the file
+grep -c "Initialized successfully" "~/Library/Logs/Recall Rogue/debug.log"
+
+# Multiplayer lobby lifecycle (host and guest)
+grep -E "mp:createLobby|mp:joinById|mp:joinCode|mp:hostpoll|mp:lobby|mp:broadcast" debug.log
+
+# P2P transport & session handshake
+grep -E "mp:tx|session_request|session_failed|P2P message sent|P2P send failed|receive_messages_on_channel|auto-accepting P2P|LobbyChatUpdate" debug.log
+
+# Coop enemy sync — send/recv events per card play
+grep "mp:coop" debug.log
+
+# Game-start guard failures (the kind that silently loop mp:lobby:start)
+grep -E "mp:lobby:start|missing fields|Couldn't start|aborting to prevent" debug.log
+
+# Deck/content selection flow
+grep -E "mp:deck|contentSelection|setContentSelection" debug.log
+
+# Receive heartbeat — flags when the 60Hz poll loop is running but silent
+grep "mp:rx" debug.log
+```
+
+### Tag prefixes
+
+| Prefix | Source | What it covers |
+|---|---|---|
+| `[Steam]` | Rust `println!` (`steam.rs`) | Steamworks init, lobby callbacks, P2P send/recv drain, session callbacks, LobbyChatUpdate, overlay hook |
+| `[LAN]` | Rust `println!` (`lan.rs`) | LAN server bind/accept, mDNS, macOS local-network permission hint |
+| `[stdio]` | Rust `main.rs` | Stdio redirect confirmation on launch |
+| `[js:mp:lobby]` | `multiplayerLobbyService.ts` | Lobby state changes, notifyLobbyUpdate, broadcastSettings |
+| `[js:mp:tx]` | `multiplayerTransport.ts` | Transport state, preConnect/preSend buffer flushes, send/recv dispatch |
+| `[js:mp:peer]` | `multiplayerLobbyService.ts` | resolveSteamPeerId attempts, retry exhaustion |
+| `[js:mp:hostpoll]` | `multiplayerLobbyService.ts` | Host-side peer-wait loop (ticks every ~300ms) |
+| `[js:mp:deck]` | `multiplayerLobbyService.ts` | setContentSelection PRE/POST state logs |
+| `[js:mp:broadcast]` | `multiplayerLobbyService.ts` | broadcastSettings with seq number |
+| `[js:mp:recv]` | `multiplayerLobbyService.ts` | Message handlers (mp:lobby:join, mp:lobby:ready, etc.) |
+| `[js:mp:coop]` | `multiplayerCoopSync.ts` | initCoopSync, enemy_state / enemy_hp_update send+recv |
+| `[js:mp:rx]` | `steamNetworkingService.ts` | Poll-loop heartbeat (every 5s, flags silent windows) |
+| `[js:mp:createLobby]` / `[js:mp:joinCode]` / `[js:mp:joinById]` | `multiplayerLobbyService.ts` | Entry-point logs |
+| `[js:mp:ui:lobby]` | `MultiplayerLobby.svelte` | Render-time forensic dumps of content selection |
+
+### What "silent" looks like
+
+- No `mp:lobby` lines after `Initialized successfully` → app didn't enter multiplayer.
+- `mp:hostpoll started` with no `peer detected` → no guest joined the Steam lobby.
+- `mp:tx state connected` with no `recv dispatched` → P2P open but nothing arriving — check the other side's log.
+- `mp:rx heartbeat { silent: true, sinceStart: 15s }` → poll loop alive but Steam returning zero messages.
+- Repeated `mp:lobby:start` sends with matching `start_ack` but no `gameStart` firing → host-side start-guard rejected the payload (look for `missing fields` above).
 
 ## 🚨 RULE: Claude NEVER kills the Steam desktop client. The USER does.
 

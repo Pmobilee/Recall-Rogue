@@ -5603,3 +5603,13 @@ Due to operator precedence, `!snapshot?.currentHP` evaluates first (boolean nega
 
 **Lesson:** A callback registration API that returns `()` instead of a guard handle is suspicious — verify the callback actually fires in production before relying on it. When in doubt, search the dependency source for `register_callback(` to see what the "real" callback API looks like and whether the convenience method discards the handle.
 
+
+### 2026-04-23 — BUG 28: game-start guard required selectedDeckId that study-multi never sets
+
+**What broke:** User selected a study-multi coop lobby (e.g. `decks: [{deckId: 'mental_math', ...}]`), both players readied, host pressed Start. Debug.log shows `mp:lobby:start` sent → `mp:lobby:start_ack` received → repeat 9 times, game never actually starts. The guest's side displayed `Could not start — missing: deckId. Returning to lobby.` The UI then looped: start fires → guard rejects → `transitionScreen('multiplayerLobby')` → H5 seed-ACK handshake re-fires start → repeat forever.
+
+**Root cause:** The start guard in `src/CardApp.svelte:882` required `lobby.selectedDeckId` in addition to `lobby.mode` and `lobby.contentSelection`. But `selectedDeckId` is a legacy field that `multiplayerLobbyService.ts:994` only populates for `contentSelection.type === 'study'` or `'custom_deck'`. For `study-multi` and `trivia` selections it is explicitly left undefined — the deck data lives inside `contentSelection.decks[]` / `contentSelection.domains[]`. So every study-multi lobby failed the guard even when the selection was fully populated.
+
+**Fix:** Drop the `selectedDeckId` branch from the guard. Keep only `mode` and `contentSelection` required. Downstream code at `CardApp.svelte:897+` switches on `contentSelection.type` and reads the type-specific fields directly — it never touches `selectedDeckId`.
+
+**Lesson:** When a guard is written to prevent host/guest state divergence, it MUST validate the fields the downstream code actually reads, not the legacy fields a subset of code paths used to set. A correct guard for MP start would be `!lobby.contentSelection` — anything deeper is a per-type concern that belongs inside the type-dispatch branches, not the pre-dispatch validator. A start-guard that rejects valid state is worse than no guard at all because it silently loops on the ACK handshake.

@@ -875,14 +875,21 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       const opponent = lobby.players.find(p => p.id !== localPlayerId)
       opponentDisplayName = opponent?.displayName ?? 'Opponent'
 
-      // Guard: mode, selectedDeckId, and contentSelection must all be present before
-      // starting the run. If any are missing the guest received mp:lobby:start before
-      // the host's settings broadcast — proceeding would silently diverge host and
-      // guest onto different card pools or game modes.
-      if (!lobby.mode || !lobby.selectedDeckId || !lobby.contentSelection) {
+      // Guard: mode and contentSelection must be present before starting the run.
+      // If either is missing the guest received mp:lobby:start before the host's
+      // settings broadcast — proceeding would silently diverge host and guest onto
+      // different card pools or game modes.
+      //
+      // NOTE: lobby.selectedDeckId is NOT required. It's a legacy field only set
+      // for contentSelection.type === 'study' or 'custom_deck' (see
+      // multiplayerLobbyService.ts:994). `study-multi` and `trivia` selections
+      // leave it undefined and carry their data inside contentSelection itself.
+      // Requiring it here blocked every study-multi coop lobby from starting —
+      // the guard fired, redirected to the lobby, the H5 seed-ACK retried,
+      // fired the callback again, looped forever. See 2026-04-23 gotcha.
+      if (!lobby.mode || !lobby.contentSelection) {
         const missing: string[] = []
         if (!lobby.mode) missing.push('mode')
-        if (!lobby.selectedDeckId) missing.push('deckId')
         if (!lobby.contentSelection) missing.push('contentSelection')
         console.error(
           '[Multiplayer] mp:lobby:start arrived with missing fields — aborting to prevent host/guest divergence.',
