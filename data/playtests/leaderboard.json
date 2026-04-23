@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T05:20:00.000Z",
+  "updatedAt": "2026-04-23T05:35:00.000Z",
   "totalPlaythroughs": 22,
   "totalIssues": 254,
   "batches": [
@@ -5416,7 +5416,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 5,
-      "status": "in_progress",
+      "status": "open",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -5429,8 +5429,7 @@
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
       "rank": 158,
-      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
-      "workStartedAt": "2026-04-23T05:20:00.000Z"
+      "notes": "Session-B attempted 2026-04-23, backed out: fact-pool wiring is a 30+ LOC service fix, not a one-liner. Needs dedicated service work to source contentSelection \u2192 fact pool \u2192 initTriviaGame."
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-DU-001",
@@ -5468,7 +5467,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 5,
-      "status": "in_progress",
+      "status": "fixed",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -5481,8 +5480,8 @@
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
       "rank": 160,
-      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
-      "workStartedAt": "2026-04-23T05:20:00.000Z"
+      "fixedInCommit": "53e49f49d",
+      "fixedAt": "2026-04-23T05:35:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SAMECARDS-001",
@@ -5520,7 +5519,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 5,
-      "status": "in_progress",
+      "status": "fixed",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -5533,8 +5532,8 @@
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
       "rank": 162,
-      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
-      "workStartedAt": "2026-04-23T05:20:00.000Z"
+      "fixedInCommit": "09198a717",
+      "fixedAt": "2026-04-23T05:35:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-003",
