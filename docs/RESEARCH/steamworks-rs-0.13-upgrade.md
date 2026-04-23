@@ -1,6 +1,12 @@
 # steamworks-rs 0.12 → 0.13 upgrade — fixes issues 059 + M-020
 
-**Status:** research complete 2026-04-23; **not yet implemented (Red-zone approval needed).**
+**Status: DEFERRED INDEFINITELY (user decision 2026-04-23).**
+
+Both issues it would fix (059 callback handle drop, M-020 accept() return surfacing) are `partial` in the leaderboard but dead-at-runtime in practice — we've been routing around the dead callbacks with zero-byte RELIABLE sends (prime P2P) for session setup and 30s ping/pong for peer-fail detection. Both workarounds are stable. The upgrade is quality-of-life, not a ship blocker, and carries a non-trivial Windows ARM64 cross-build revalidation cost. Revisit post-launch only if Steam callback flakiness surfaces as a real player complaint.
+
+Leaving this doc in place as a bookmark for future sessions — do not delete.
+
+---
 
 ## TL;DR
 
