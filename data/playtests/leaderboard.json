@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T03:50:57.000Z",
+  "updatedAt": "2026-04-23T03:55:00.000Z",
   "totalPlaythroughs": 22,
   "totalIssues": 254,
   "batches": [
@@ -4524,7 +4524,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 10,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -4536,7 +4536,9 @@
         "Play a full trivia night \u2192 return to lobby \u2192 start a second trivia night \u2192 first round standings show carry-over scores."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 130
+      "rank": 130,
+      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
+      "workStartedAt": "2026-04-23T03:55:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-001",
@@ -4549,7 +4551,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 10,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -4561,7 +4563,9 @@
         "Start a race match (host or guest) \u2014 opponent progress HUD blank; results screen never appears."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 131
+      "rank": 131,
+      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
+      "workStartedAt": "2026-04-23T03:55:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CT-001",
@@ -4574,7 +4578,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 10,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -4586,7 +4590,9 @@
         "In coop rest site, player A heals while player B meditates simultaneously; each proceeds to own dungeonMap state independently."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 132
+      "rank": 132,
+      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
+      "workStartedAt": "2026-04-23T03:55:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CM-001",
@@ -4599,7 +4605,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 10,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -4611,7 +4617,9 @@
         "static-analysis \u2014 verify by logging activeMysteryEvent on both clients at mystery room entry."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 133
+      "rank": 133,
+      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
+      "workStartedAt": "2026-04-23T03:55:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-EL-002",
@@ -4624,7 +4632,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 10,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -4636,7 +4644,9 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 134
+      "rank": 134,
+      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
+      "workStartedAt": "2026-04-23T03:55:00.000Z"
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SL-001",
@@ -4649,7 +4659,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 10,
-      "status": "open",
+      "status": "in_progress",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -4661,7 +4671,9 @@
         "Complete a ranked race or duel; open Season Leaderboard; observe 'No leaderboard data available yet.'"
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 135
+      "rank": 135,
+      "assignedAgent": "OPUS-CRITICALS-2026-04-23-SESSION-B",
+      "workStartedAt": "2026-04-23T03:55:00.000Z"
     },
     {
       "canonicalId": "alpha-review-risk-001",
