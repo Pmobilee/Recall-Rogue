@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T04:21:39.589Z",
+  "updatedAt": "2026-04-23T04:24:19.481Z",
   "totalPlaythroughs": 22,
   "totalIssues": 254,
   "batches": [
@@ -1508,7 +1508,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1523,7 +1523,9 @@
       },
       "fixHypothesis": "Replace the spread with explicit field allowlist: `payload: { lobbyId, seed: msg.payload?.seed ?? null, mode: lobby.mode, houseRules: lobby.houseRules, deckId: lobby.deckId, contentSelection: lobby.contentSelection }` — pull from server-side lobby state, not client input. Drop unknown keys. Add unit test for injection attempts.",
       "score": 50,
-      "rank": 39
+      "rank": 39,
+      "inProgressAt": "2026-04-23T04:24:19.481Z",
+      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A"
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-004",
@@ -1540,7 +1542,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1557,7 +1559,9 @@
       },
       "fixHypothesis": "In the `mp:duel:cards_played` handler, add `if (action.playerId !== msg.senderId) { console.warn(...); return; }` before storing. Same pattern for any other duel/coop message that claims an identity. Add a property-based test that fuzzes senderId vs payload-playerId mismatch.",
       "score": 50,
-      "rank": 40
+      "rank": 40,
+      "inProgressAt": "2026-04-23T04:24:19.481Z",
+      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A"
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-005",
@@ -1574,7 +1578,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1589,7 +1593,9 @@
       },
       "fixHypothesis": "Add a sequenced bounded buffer: if message arrives with turnNumber > _duelState.turnNumber+1 OR _duelState is null, queue payload (max 4 entries, 5s TTL) and replay after the next turn_start. Log the reorder for diagnostics. Add an out-of-band `mp:duel:resync_request` host can send if it doesn't see opponent action within 8s.",
       "score": 50,
-      "rank": 41
+      "rank": 41,
+      "inProgressAt": "2026-04-23T04:24:19.481Z",
+      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A"
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-006",
@@ -1606,7 +1612,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1621,7 +1627,9 @@
       },
       "fixHypothesis": "When setVisibility() transitions to a stricter visibility (public→password/friends_only), iterate `_currentLobby.players`, identify any not meeting the new criteria (no friend relationship; no password-knowledge), and call kickPlayer for each with reason 'visibility_changed'. Surface a confirmation modal in the host UI before applying the change.",
       "score": 50,
-      "rank": 42
+      "rank": 42,
+      "inProgressAt": "2026-04-23T04:24:19.481Z",
+      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A"
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-007",
@@ -1638,7 +1646,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "in_progress",
+      "status": "fixed",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1655,7 +1663,10 @@
       "score": 50,
       "rank": 43,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-3",
-      "workStartedAt": "2026-04-23T04:20:47.000Z"
+      "workStartedAt": "2026-04-23T04:20:47.000Z",
+      "verifiedAt": "2026-04-23T04:24:16.000Z",
+      "verifiedBy": "orchestrator-2026-04-23-ui-cleanup-wave-3",
+      "note": "[2026-04-23] [ui-cleanup-wave-3 fix] Added classifyJoinError() helper in LobbyBrowserScreen.svelte that maps lobby-gone error substrings to \"That lobby just closed. Refreshing the list.\" Catch branch now calls void refresh() to reconcile the list, and closes passwordModalEntry when a ghost-lobby is detected. Raw error message preserved for transport-diagnostic cases."
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-008",
@@ -1672,7 +1683,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1687,7 +1698,9 @@
       },
       "fixHypothesis": "After setReady(true) succeeds, start a 30s watchdog. On expiry, surface dismissible error \"Host did not start in time\" + reset readyPending=false + offer \"Leave lobby\" or \"Try again.\" Track watchdog id and clear on real onGameStart. Independent of H-016 retry fix.",
       "score": 50,
-      "rank": 44
+      "rank": 44,
+      "inProgressAt": "2026-04-23T04:24:19.481Z",
+      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A"
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-009",
@@ -1704,7 +1717,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1719,7 +1732,9 @@
       },
       "fixHypothesis": "Idempotent guard at top of getMultiplayerTransport(mode): if _transport exists and its mode/endpoint differs from the requested mode, destroyMultiplayerTransport() first, then re-create. Also auto-destroy on `hub:enter` event from gameFlowController. Add unit test simulating mode switch round-trip.",
       "score": 50,
-      "rank": 45
+      "rank": 45,
+      "inProgressAt": "2026-04-23T04:24:19.481Z",
+      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A"
     },
     {
       "canonicalId": "MP-SWEEP-2026-04-23-H-010",
@@ -1736,7 +1751,7 @@
       ],
       "firstSeen": "2026-04-23T03:34:50.585Z",
       "lastSeen": "2026-04-23T03:34:50.585Z",
-      "status": "open",
+      "status": "in_progress",
       "sourceBatch": "MP-SWEEP-2026-04-23",
       "bestEvidence": {
         "metric": "source-read verification",
@@ -1751,7 +1766,9 @@
       },
       "fixHypothesis": "In joinLobby(): if connections.has(playerId), force-close the previous conn.ws (if any) and emit `mp:lobby:player_replaced` notice. In attachWebSocket(): same — close existing conn.ws before assigning new one. Add tests for double-join + reconnect-while-connected.",
       "score": 50,
-      "rank": 46
+      "rank": 46,
+      "inProgressAt": "2026-04-23T04:24:19.481Z",
+      "assignedAgent": "MP-HARDENING-2026-04-23-SESSION-A"
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-14",
@@ -5575,7 +5592,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 5,
-      "status": "in_progress",
+      "status": "fixed",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -5589,7 +5606,10 @@
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
       "rank": 166,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-3",
-      "workStartedAt": "2026-04-23T04:20:47.000Z"
+      "workStartedAt": "2026-04-23T04:20:47.000Z",
+      "verifiedAt": "2026-04-23T04:24:16.000Z",
+      "verifiedBy": "orchestrator-2026-04-23-ui-cleanup-wave-3",
+      "note": "[2026-04-23] [ui-cleanup-wave-3 fix] Changed RestRoomOverlay.svelte HP label from \"HP: {playerHp} / {playerMaxHp}\" to \"Your HP: ...\" — one-word clarification that it is local-player HP. Structural changes (partner HP row in coop) are future scope."
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CM-002",
@@ -7206,7 +7226,7 @@
       "firstSeen": "2026-04-23T19:30:00.000Z",
       "lastSeen": "2026-04-23T19:30:00.000Z",
       "score": 3,
-      "status": "in_progress",
+      "status": "fixed",
       "sourceReports": [
         "MP-AUDIT-2026-04-23-OPUS-A"
       ],
@@ -7220,7 +7240,10 @@
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
       "rank": 220,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-3",
-      "workStartedAt": "2026-04-23T04:20:47.000Z"
+      "workStartedAt": "2026-04-23T04:20:47.000Z",
+      "verifiedAt": "2026-04-23T04:24:16.000Z",
+      "verifiedBy": "orchestrator-2026-04-23-ui-cleanup-wave-3",
+      "note": "[2026-04-23] [ui-cleanup-wave-3 fix] Added \"State Ownership — Shared vs Per-Player\" section to docs/architecture/multiplayer.md with 7-row mode matrix (coop/race/same_cards/duel/trivia_night) covering playerHp, currency, deck/relics, enemy HP, map nodes, trivia standings, race progress. Plus \"Why this matters\" paragraph noting coop has no shared gold pool in current non-ranked design."
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-FS-002",
@@ -8059,7 +8082,7 @@
       "note": "[2026-04-23] src/csp.ts deleted in 9700017d9; agent-routing.md:36 still lists it (orchestrator cleanup pending)"
     }
   ],
-  "openCount": 63,
-  "resolvedCount": 141,
+  "openCount": 56,
+  "resolvedCount": 144,
   "_note": "ULTRATHINK FULL fix wave started 2026-04-22T23:30Z on 96 open MP issues across 8 parallel agents. WAVE 1 fix complete 2026-04-22T22:50Z. Resolved 8: 016 (mode propagation, in 77c71eaca + 14495f06b), 017 (trivia init wiring, in 9e0650b53 + ee7236892), 018 (live tauri check), 019 (LAN gate on Steam), 020 (Fastify forward payload), 022 (mode-aware activeRunMode), 023 (idempotent start), 029 (surfaced send exhaustion) — all in 14495f06b. WAVE 1-3 fix attempt started 2026-04-22T22:30Z on issues 016,017,018,019,020,022,023,029. MP-STEAM-20260422-ULTRATHINK batch (54 issues, 6 critical, 11 high, 23 medium, 14 low) added 2026-04-22 from 5-agent ultrathink audit (Steam P2P transport, coop start flow, Tauri/build divergence, lobby identity, recent commits). Includes 6 NEW critical findings the prior MP-STEAM-20260422-COOP batch missed: mp:lobby:start mode-not-applied, duel/trivia start paths unwired, hasSteam stale snapshot, stale rr-lan-server localStorage, Fastify payload-stripping, two-clients-one-Steam-account. Purged non-MP issues 2026-04-22 for focused Steam/multiplayer/lobby audit. Backup: leaderboard.pre-mp-sweep.backup.json. MP-STEAM-20260422-COOP batch (15 issues, 2 critical) added 2026-04-22 from orchestrator ultrathink audit triggered by user report of coop-isolation on Steam build.\n2026-04-23 VERIFY-POST-WAVE sweep: audited 39 issues across 5 fix-commits (5acc55df9,8f5d7a74b,0c2de9290,2e25b6765,49cfc15b7). Result: 20 fixed, 14 partial, 4 reverted to open, 1 credit corrected. See docs/gotchas.md for the two parallel-agent commit races surfaced."
 }
