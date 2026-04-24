@@ -2737,6 +2737,7 @@ export class CombatScene extends Phaser.Scene {
 
   /** Cleanup on shutdown/sleep — stop tweens, reset positions. */
   private onShutdown(): void {
+    this.sceneReady = false // Gate syncCombatScene tryPush before display list tears down
     this.screenShake?.stop()
     this.tweens.killAll()
     this.flashTween = null
@@ -2833,5 +2834,6 @@ export class CombatScene extends Phaser.Scene {
       : 1
     this.refreshEnemyHpBar(false)
     this.refreshPlayerHpBar(false)
+    this.sceneReady = true // Restore after sleep/wake cycle; pairs with onShutdown reset
   }
 }

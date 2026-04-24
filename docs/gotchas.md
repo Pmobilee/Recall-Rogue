@@ -5836,3 +5836,19 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Knock-on effects:** First-run players now fight a normally seeded enemy on floor 1. The MP belt-and-suspenders guard that checked `multiplayerModeState !== null` before setting `forceTutorialEnemy` is no longer needed because the forcing itself is gone. Other uses of `multiplayerModeState` in `gameFlowController.ts` are unaffected.
 
 **Cross-reference:** See the 2026-03-?? (line ~5433) "coop leaveLobby + forceTutorialEnemy" gotcha — that entry documents the original rationale for introducing the MP guard when `forceTutorialEnemy` was first added. That rationale is now moot.
+
+### 2026-04-24 — CombatScene setEnemy crash between encounters when sceneReady stale
+
+**Symptom:** After completing encounter 2 on the map, clicking the next combat node caused encounter 2 to skip instantly and encounter 3 to render broken (enemy name text null, Phaser throws `Cannot read properties of null (reading 'drawImage')` in `Frame.updateUVs`). Root error: `CardApp.commitMapNodeSelection` try/catch reverted the combat screen, but `onMapNodeSelected` had already advanced the actMap — encounter 3 appeared with a broken display.
+
+**Stack trace root:** `enemyNameText.setText(name)` called on a destroyed Phaser `Text` object whose underlying canvas frame was already destroyed by `scene.stop()`. The `drawImage` null ref is Phaser's internal texture atlas update triggered by `setText`.
+
+**Regression source:** commit `b24843b5b` (2026-04-15) added `game.scene.stop('CombatScene')` between encounters via `CardGameManager.stopCombat()`. Before that commit, CombatScene stayed active across encounters and the race window didn't exist.
+
+**Root cause:** `onShutdown()` did not reset `this.sceneReady` to `false`. After `scene.stop()` was called, there was a gap before the new `create()` ran where `sceneReady` was still `true` from the previous scene life. `encounterBridge.syncCombatScene → tryPush` saw `sceneReady=true` and called `pushDisplayData → setEnemy()` against a scene whose display list was already torn down.
+
+**Fix (commit that introduced this entry):**
+- `onShutdown()` line 2740: `this.sceneReady = false` added as the FIRST statement. This immediately gates all `if (!this.sceneReady) return` guards so no method can touch the destroyed display list.
+- `onWake()` line 2837: `this.sceneReady = true` added as the LAST statement (after HP bar refresh). Stop/start cycles do not need this — `create()` already sets it in `finally`. Sleep/wake cycles do need it, as `create()` does not run on wake.
+
+**Lesson:** Any Phaser scene with a `sceneReady` guard flag must reset it to `false` as the VERY FIRST statement in its `shutdown`/`sleep` handler — not after cleanup. If cleanup runs first and any async observer fires during cleanup, the race window is still open. The fix must be at the top, not the bottom.

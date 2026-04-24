@@ -1301,17 +1301,42 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
       const node = run.floor.actMap.nodes[nodeId]
       if (!node) return
 
+      // Snapshot map + floor scalar fields BEFORE onMapNodeSelected advances them.
+      // If startEncounterForRoom fails (Phaser crash, empty pool, etc.), we restore
+      // so the map doesn't skip an un-played encounter.
+      // structuredClone is safe here — ActMap is plain JSON (no Set/Map).
+      const mapSnapshot = structuredClone(run.floor.actMap)
+      const floorSnapshot = {
+        currentFloor: run.floor.currentFloor,
+        segment: run.floor.segment,
+        isBossFloor: run.floor.isBossFloor,
+      }
+
       // Update map state (node selection, floor derivation, analytics)
       onMapNodeSelected(nodeId)
 
       // Combat-type nodes: CardApp owns the full combat start sequence
       if (node.type === 'combat' || node.type === 'elite' || node.type === 'boss') {
+        // Restores map + floor to the pre-onMapNodeSelected snapshot so a failed
+        // encounter start doesn't corrupt map progression.
+        const restoreMap = () => {
+          const r = get(activeRunState)
+          if (!r) return
+          r.floor.actMap = mapSnapshot
+          r.floor.currentFloor = floorSnapshot.currentFloor
+          r.floor.segment = floorSnapshot.segment
+          r.floor.isBossFloor = floorSnapshot.isBossFloor
+          activeRunState.set(r)
+        }
+
         void ensurePhaserBooted()
         gameFlowState.set('combat')
         holdScreenTransition()
         currentScreen.set('combat')
         try {
           if (!(await startEncounterForRoom(node.enemyId))) {
+            restoreMap()
+            gameFlowState.set('dungeonMap')
             releaseScreenTransition()
             currentScreen.set('dungeonMap')
           } else {
@@ -1319,10 +1344,14 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
           }
         } catch (err) {
           console.error('[CardApp] Failed to start map node encounter', err)
+          restoreMap()
+          gameFlowState.set('dungeonMap')
           releaseScreenTransition()
           currentScreen.set('dungeonMap')
         }
       }
+      // Non-combat nodes: snapshot is discarded; onMapNodeSelected + onRoomSelected
+      // handle routing internally. No startEncounterForRoom means no restore needed.
     } finally {
       mapNodeSelectionInProgress = false
     }

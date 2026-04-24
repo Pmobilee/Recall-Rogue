@@ -64,6 +64,8 @@ Renders the combat display zone (top ~58% of viewport in portrait, full canvas i
 
 **`create()` error handling:** The entire `create()` body is wrapped in a `try/catch/finally`. On any thrown error, `console.error('[CombatScene] create() failed:', err)` is called. `this.sceneReady = true` is set in the `finally` block regardless of success or failure, so `encounterBridge` does not spin forever waiting for readiness.
 
+**`sceneReady` invariant:** `sceneReady` must be `true` only between the end of `create()` and the start of the next `shutdown` or `sleep` event. It is re-set to `true` in `onWake()` after a sleep/wake cycle. Every method that touches the display list (HP bars, enemy name text, etc.) checks `if (!this.sceneReady) return` at its top — this prevents `syncCombatScene`/`tryPush` from calling `setEnemy()` on a scene whose Phaser display list is being torn down. **Rule:** any Phaser scene with a `sceneReady` flag must set it to `false` as the FIRST statement in `onShutdown()`, not after cleanup. If cleanup runs first and takes non-zero time, the race window persists. See `docs/gotchas.md` 2026-04-24.
+
 **Systems instantiated in `create()`:**
 - `EnemySpriteSystem` — enemy sprite with 3D paper-cutout layers
 - `CombatAtmosphereSystem` — ambient particles, fog, light shafts
