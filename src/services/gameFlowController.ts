@@ -1079,16 +1079,8 @@ export async function onArchetypeSelected(archetype: RewardArchetype): Promise<v
     },
   });
   run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
-  // Generate the initial ActMap for the first segment
-  // Force Pop Quiz as tutorial enemy on first-ever SOLO run. Never in multiplayer —
-  // the two players' runsCompleted counts diverge, which would seed different enemies
-  // from the same multiplayerSeed, AND the tutorial flow itself isn't coop-safe.
-  const onbState = get(onboardingState);
-  const isMultiplayerRun = multiplayerModeState !== null;
-  const forceTutorialEnemy = !isMultiplayerRun
-    && (onbState?.runsCompleted ?? 1) === 0
-    && !onbState?.hasSeenCombatTutorial;
-  run.floor.actMap = generateActMap(run.floor.segment, run.runSeed, { forceTutorialEnemy });
+  // Generate the initial ActMap for the first segment.
+  run.floor.actMap = generateActMap(run.floor.segment, run.runSeed);
 
   // Precompute chain distribution for curated study runs (eager, before pool build).
   // This allows the RunPreviewScreen to show topic-to-chain mapping before combat starts.

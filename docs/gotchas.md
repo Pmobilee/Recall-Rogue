@@ -5826,3 +5826,13 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Why it slipped:** The `study-multi` DeckMode variant was added as the canonical MP content type, and pool assembly in `encounterBridge.ts` was wired, but the quiz-render path in `CardCombatOverlay.svelte` was never updated to match. No MP study-multi visual test existed — only solo paths were exercised in the test suite.
 
 **Fix:** Extended both guards to include `'study-multi'`. Added a `study-multi` branch in `getStudyModeQuiz` that mirrors the `custom_deck` pool-building pattern: iterates `deckMode.decks`, calls `getCuratedDeckFacts(entry.deckId, subId)` for each sub-deck (passing `undefined` for `subDeckIds === 'all'`), merges via `interleaveFacts`, and resolves per-fact decks via `factSourceDeckMap`. Confirmed with unit tests in `src/services/studyMulti.test.ts`.
+
+### 2026-04-24 — Removed forceTutorialEnemy — tutorial is overlay-only now
+
+**What was removed:** Two pieces of code forced `pop_quiz` as the first encounter on a first-ever solo run: (1) three locals in `src/services/gameFlowController.ts` (lines 1082–1091: `onbState`, `isMultiplayerRun`, `forceTutorialEnemy`) plus the comment block explaining the MP safety guard; (2) the `opts?: { forceTutorialEnemy?: boolean }` parameter, its JSDoc `@param opts` line, and the `if (opts?.forceTutorialEnemy)` block (lines 670–677) in `src/services/mapGenerator.ts`. The `generateActMap` signature is now `(segment, seed): ActMap` — two parameters, no overrides.
+
+**Why removed:** User directive — the tutorial must not modify game state or enemy selection. Tutorial functionality is overlay-only: `src/services/tutorialService.ts`, `src/data/tutorialSteps.ts`, `src/ui/components/TutorialCoachMark.svelte`, and the `hasSeenCombatTutorial` / `tutorialDismissedEarly` flags in `cardPreferences.ts` all remain intact. Only the forcing of a specific enemy is gone.
+
+**Knock-on effects:** First-run players now fight a normally seeded enemy on floor 1. The MP belt-and-suspenders guard that checked `multiplayerModeState !== null` before setting `forceTutorialEnemy` is no longer needed because the forcing itself is gone. Other uses of `multiplayerModeState` in `gameFlowController.ts` are unaffected.
+
+**Cross-reference:** See the 2026-03-?? (line ~5433) "coop leaveLobby + forceTutorialEnemy" gotcha — that entry documents the original rationale for introducing the MP guard when `forceTutorialEnemy` was first added. That rationale is now moot.
