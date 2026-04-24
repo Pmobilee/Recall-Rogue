@@ -198,6 +198,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     skipTutorial,
     startTutorial,
     isTutorialActive,
+    softDismissTutorial,
   } from './services/tutorialService' 
   import { musicService } from './services/musicService'
   import { rrLog } from './services/rrLog'
@@ -301,6 +302,15 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     const state = get(onboardingState)
     if (screen === 'restStudy' && !state.hasSeenStudyTutorial && !state.tutorialDismissedEarly) {
       startTutorial('study')
+    }
+  })
+
+  // When the player enters a multiplayer lobby, soft-dismiss any in-progress tutorial.
+  // Auto-start is already MP-gated above, but a tutorial started solo and left unfinished
+  // would otherwise fire solo-centric coach-marks during MP combat.
+  $effect(() => {
+    if (currentLobby !== null && isTutorialActive()) {
+      softDismissTutorial()
     }
   })
 

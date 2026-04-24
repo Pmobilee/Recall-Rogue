@@ -211,6 +211,21 @@ export function skipTutorial(): void {
 }
 
 /**
+ * Soft-dismiss the tutorial without persisting any flags.
+ * Use this when the tutorial must be interrupted for a system reason (e.g. the player
+ * enters a multiplayer lobby mid-tutorial). The tutorial will still auto-trigger on the
+ * next eligible solo session because no seen/dismissed flags are written.
+ */
+export function softDismissTutorial(): void {
+  clearMaxDisplayTimer()
+  tutorialActive.set(false)
+  tutorialMode.set(null)
+  tutorialBlocksInput.set(false)
+  clearDisplayState()
+  currentStep = null
+}
+
+/**
  * Manually advance past the current step (player clicked "Got it").
  * The step is marked complete and the overlay clears immediately, regardless of minDisplayMs.
  */
