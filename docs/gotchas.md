@@ -5882,3 +5882,15 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Lesson:** `sceneReady = false` gates method-level guards against *write operations during teardown*, but it does nothing about *stale read state on the next wake*. Both problems need to be solved at shutdown time. Companion fix to `6c907875e`.
 
 **Regression test:** `tests/unit/combatScene.sceneReady.test.ts` — "display-state reset on shutdown" describe block (8 cases).
+
+### 2026-04-25 — Encounter-2 charge button anchor bleed (NPT-2026-04-25-encounter2-charge-anchor)
+
+**Symptom:** From the second encounter onward, the landscape CHARGE button appeared at the X position of the last-selected card in the *previous* encounter rather than above the newly selected card. The first encounter was always correct because `selectedCardCenterX` is initialized to `window.innerWidth / 2`.
+
+**Root cause:** `selectedCardCenterX` in `CardHand.svelte` is a `$state` that persists across encounters (the component is not destroyed between them). The `$effect` that updates it runs when `selectedIndex` changes. If the DOM query for `.card-landscape[idx]` fires during the deal animation (card not yet in DOM), `cardEls[idx]` is `undefined` and the update is a silent no-op — leaving `selectedCardCenterX` at the previous encounter's last measured X value.
+
+**Fix (two parts):**
+1. Added a new `$effect` that tracks the hand fingerprint (`cards.map(c => c.id).join('|')`). When the fingerprint changes (new hand dealt), it resets `selectedCardCenterX` to `window.innerWidth / 2`. This effect runs BEFORE the `selectedIndex` effect.
+2. The existing `$effect` now schedules a `requestAnimationFrame` retry when `cardEls[idx]` is `undefined`, so measurement lands on the next frame rather than silently keeping the stale value. Also resets to viewport center when `idx === null` (card deselected).
+
+**Lesson:** Component-level `$state` that derives from DOM measurements can bleed between logical sessions if the component is reused without being destroyed. Always provide an explicit reset trigger tied to the logical session boundary (hand fingerprint in this case).

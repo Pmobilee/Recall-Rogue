@@ -332,24 +332,52 @@
   let chargePreviewActive = $state(false)
 
   /** Actual screen center X of the selected card, used to position the landscape charge button accurately.
-   *  Defaults to viewport center (960). Updated by $effect whenever selectedIndex changes or window resizes. */
+   *  Defaults to viewport center (960). Updated by $effect whenever selectedIndex changes or window resizes.
+   *  NPT-2026-04-25-encounter2-charge-anchor: reset to viewport center when a new hand is dealt so the
+   *  previous encounter's last-measured X does not bleed into the next encounter's first card selection. */
   let selectedCardCenterX = $state(typeof window !== 'undefined' ? window.innerWidth / 2 : 960)
+
+  // Reset charge-button anchor when a new hand is dealt — prevents stale position from a previous
+  // encounter bleeding into the first card selection of a new one. Must run BEFORE the selectedIndex
+  // effect so "reset on hand-swap → measure on selection" order is guaranteed.
+  // (NPT-2026-04-25-encounter2-charge-anchor)
+  $effect(() => {
+    // Build a fingerprint from all card IDs — changes whenever the hand is replaced wholesale
+    const _fingerprint = cards.length > 0 ? cards.map(c => c.id).join('|') : ''
+    void _fingerprint // ensure Svelte tracks the reactive read
+    if (typeof window !== 'undefined') {
+      selectedCardCenterX = window.innerWidth / 2
+    }
+  })
 
   $effect(() => {
     // Track selectedIndex reactively so Svelte re-runs on change
     const idx = selectedIndex
+    let raf: number | null = null
     const updateChargeButtonPos = (): void => {
-      if (idx === null) return
+      if (idx === null) {
+        // Deselected — fall back to viewport center so stale X does not persist
+        if (typeof window !== 'undefined') {
+          selectedCardCenterX = window.innerWidth / 2
+        }
+        return
+      }
       const cardEls = document.querySelectorAll<HTMLElement>('.card-landscape')
       const cardEl = cardEls[idx]
       if (cardEl) {
         const rect = cardEl.getBoundingClientRect()
         selectedCardCenterX = rect.left + rect.width / 2
+      } else if (typeof requestAnimationFrame === 'function') {
+        // Card not yet in DOM (mid-deal animation) — retry on next frame
+        raf = requestAnimationFrame(updateChargeButtonPos)
       }
     }
     updateChargeButtonPos()
     window.addEventListener('resize', updateChargeButtonPos, { passive: true })
-    return () => window.removeEventListener('resize', updateChargeButtonPos)
+    return () => {
+      window.removeEventListener('resize', updateChargeButtonPos)
+      if (raf !== null) cancelAnimationFrame(raf)
+    }
   })
 
   /** H-9: Show drag-to-charge hint in portrait on first card selection. */

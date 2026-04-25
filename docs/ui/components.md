@@ -124,6 +124,17 @@ This caused: when AP=1, baseCost=1, NO chain match → QP showed "playable" (1�
 These are exported for unit testing. CardHand uses `chargeAffordableForDrag` (identical computation) directly in the template for efficiency.
 
 
+### CardHand charge button anchor — per-hand reset (2026-04-25)
+
+`selectedCardCenterX` is a `$state` that persists between encounters (CardHand is not destroyed between combat nodes). It must be reset to `window.innerWidth / 2` whenever a new hand is dealt, or the charge button will float at the previous encounter's last-selected-card X position.
+
+**Implementation:** Two `$effect` blocks in order:
+1. **Fingerprint effect** — tracks `cards.map(c => c.id).join('|')` reactively. When the fingerprint changes (new hand), resets `selectedCardCenterX` to `window.innerWidth / 2`.
+2. **Selection effect** — tracks `selectedIndex`. When it is `null` (deselect), resets to viewport center. When a card is selected, queries `.card-landscape[idx]` and measures its `getBoundingClientRect()`. If the DOM element is not yet present (mid-deal animation), schedules a `requestAnimationFrame` retry and cancels it in the effect's cleanup return.
+
+Encounter 1 worked because the init value happened to be viewport center — the same as the fingerprint reset now guarantees for all subsequent encounters.
+
+
 ### CardHand card-play animation phases
 
 Cards animate in place (no centering/floating to screen center). All three phases use `z-index: 60` instead of `z-index: 100`.
