@@ -5852,3 +5852,21 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 - `onWake()` line 2837: `this.sceneReady = true` added as the LAST statement (after HP bar refresh). Stop/start cycles do not need this — `create()` already sets it in `finally`. Sleep/wake cycles do need it, as `create()` does not run on wake.
 
 **Lesson:** Any Phaser scene with a `sceneReady` guard flag must reset it to `false` as the VERY FIRST statement in its `shutdown`/`sleep` handler — not after cleanup. If cleanup runs first and any async observer fires during cleanup, the race window is still open. The fix must be at the top, not the bottom.
+
+### 2026-04-25 — Mystery quiz answer buttons showed raw {N} brace tokens (NPT-001)
+
+**Symptom:** In mystery event quiz screens, answer choice buttons rendered literal `{2018}` or `About {600}` instead of stripped numeric values.
+
+**Root cause:** `EventQuiz.svelte`'s trivia DB fallback path built the `choices` array directly from `fact.correctAnswer` and `fact.distractors` without calling `displayAnswer()`. The study/custom_deck paths (via `selectNonCombatStudyQuestion` / `selectNonCombatPlaylistQuestion`) already applied `displayAnswer` internally. The brace tokens are used internally to tag numeric answers for the FSRS/distractor system and must be stripped before display.
+
+**Fix:** Import `displayAnswer` from `numericalDistractorService` in `EventQuiz.svelte`. Apply it to `fact.correctAnswer` AND every distractor before building the `choices` array. Store `correctAnswer` in the `QuizQuestion` shape in display form — this keeps all downstream equality checks (`handleAnswer`, `isCorrect` derived) consistent without additional changes.
+
+**Pattern to watch:** Any component that reads `fact.correctAnswer` or `fact.distractors` directly (without going through `nonCombatQuizSelector` or `quizService`) needs its own `displayAnswer` call. grep for `\.correctAnswer` and `\.distractors` in UI components to find missing coverage.
+
+### 2026-04-25 — Mystery quiz fallback distractors crossed unrelated domains (NPT-003)
+
+**Symptom:** A numeric "how many seeds?" question received wine-process and food-name distractors that were trivially eliminated, destroying educational value.
+
+**Root cause:** `EventQuiz.svelte`'s fallback distractor path (used when `fact.distractors.length < 2`) drew from the full trivia DB without any domain filter. The curated-deck paths generate domain-appropriate distractors, but the trivia fallback had no such constraint.
+
+**Fix:** Filter the fallback pool to facts sharing the same `categoryL1` first. If that pool has fewer than `QUIZ_DISTRACTORS_SHOWN` candidates, widen to the full pool. The `displayAnswer()` call already present on the fallback path handles brace-stripping for these fallback strings too (NPT-001 and NPT-003 share the same `.map(displayAnswer)` at choices construction time).

@@ -3,12 +3,20 @@
    * EventQuiz — standalone quiz component for mystery events.
    * Shows MCQ questions one at a time, calls onComplete(correct, total) when done.
    * Uses facts from the active run's curated deck (study/playlist mode) or trivia DB as fallback.
+   *
+   * NPT-001 fix: displayAnswer() is applied to correctAnswer + all distractors before storing
+   * them in the QuizQuestion shape, so {N}-format brace tokens never reach the rendered buttons.
+   * correctAnswer is stored in display form — all equality comparisons downstream work correctly.
+   *
+   * NPT-003 fix: fallback distractor pool is filtered by categoryL1 match first, widens to full
+   * pool only when the same-category pool yields fewer than QUIZ_DISTRACTORS_SHOWN candidates.
    */
   import { get } from 'svelte/store'
   import { activeRunState } from '../../services/runStateStore'
   import { selectNonCombatStudyQuestion, selectNonCombatPlaylistQuestion } from '../../services/nonCombatQuizSelector'
   import { getConfusionMatrix } from '../../services/confusionMatrixStore'
   import { factsDB } from '../../services/factsDB'
+  import { displayAnswer } from '../../services/numericalDistractorService'
   import { BALANCE } from '../../data/balance'
 
   interface QuizQuestion {
@@ -56,6 +64,7 @@
           run.deckMode.examTags,
         )
         if (q) {
+          // selectNonCombatStudyQuestion already applies displayAnswer internally
           built.push({
             question: q.question,
             correctAnswer: q.correctAnswer,
@@ -78,6 +87,7 @@
           (run.runSeed ?? 0) + i * 1000,
         )
         if (q) {
+          // selectNonCombatPlaylistQuestion already applies displayAnswer internally
           built.push({
             question: q.question,
             correctAnswer: q.correctAnswer,
@@ -91,28 +101,47 @@
       // Fallback: trivia DB
       const allFacts = factsDB.getTriviaFacts()
       if (allFacts.length >= 4) {
-        // Pick a random fact not already used
+        // Pick a random fact not already used (compare in display form so
+        // "{2018}" and "2018" are treated as the same used answer)
         const usedAnswers = new Set(built.map(b => b.correctAnswer))
-        const candidates = allFacts.filter(f => !usedAnswers.has(f.correctAnswer))
+        const candidates = allFacts.filter(f => !usedAnswers.has(displayAnswer(f.correctAnswer)))
         const pool = candidates.length >= 4 ? candidates : allFacts
         const fact = pool[Math.floor(Math.random() * pool.length)]
+
+        // NPT-001: strip brace tokens from the correct answer before storing
+        const correctDisplay = displayAnswer(fact.correctAnswer)
 
         // Distractors: pick 2 from pre-generated list or other facts
         let distractors: string[]
         if (fact.distractors && fact.distractors.length >= 2) {
-          distractors = shuffleArray(fact.distractors).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
+          // NPT-001: strip brace tokens from pre-generated distractors
+          distractors = shuffleArray(fact.distractors.map(displayAnswer)).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
         } else {
-          // Pull from other facts' correct answers as a last resort
-          const others = allFacts
-            .filter(f => f.id !== fact.id && f.correctAnswer !== fact.correctAnswer)
-            .map(f => f.correctAnswer)
-          distractors = shuffleArray(others).slice(0, BALANCE.QUIZ_DISTRACTORS_SHOWN)
+          // NPT-003: filter fallback pool to same categoryL1 first so that a
+          // numeric question doesn't get food-name or wine-process distractors.
+          // Degrades gracefully: same-category → full pool.
+          const needed = BALANCE.QUIZ_DISTRACTORS_SHOWN
+          const sameCategoryOthers = fact.categoryL1
+            ? allFacts.filter(
+                f => f.id !== fact.id &&
+                  f.categoryL1 === fact.categoryL1 &&
+                  displayAnswer(f.correctAnswer) !== correctDisplay,
+              )
+            : []
+          const fallbackOthers = allFacts.filter(
+            f => f.id !== fact.id && displayAnswer(f.correctAnswer) !== correctDisplay,
+          )
+          // NPT-001: strip brace tokens from fallback distractors too
+          const sourcePool = sameCategoryOthers.length >= needed ? sameCategoryOthers : fallbackOthers
+          distractors = shuffleArray(sourcePool.map(f => displayAnswer(f.correctAnswer))).slice(0, needed)
         }
 
-        const choices = shuffleArray([fact.correctAnswer, ...distractors])
+        const choices = shuffleArray([correctDisplay, ...distractors])
         built.push({
           question: fact.quizQuestion,
-          correctAnswer: fact.correctAnswer,
+          // Store in display form so handleAnswer comparison and result-banner
+          // render the same brace-free string as the choice buttons.
+          correctAnswer: correctDisplay,
           choices,
         })
         continue
