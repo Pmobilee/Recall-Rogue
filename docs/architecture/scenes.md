@@ -66,6 +66,8 @@ Renders the combat display zone (top ~58% of viewport in portrait, full canvas i
 
 **`sceneReady` invariant:** `sceneReady` must be `true` only between the end of `create()` and the start of the next `shutdown` or `sleep` event. It is re-set to `true` in `onWake()` after a sleep/wake cycle. Every method that touches the display list (HP bars, enemy name text, etc.) checks `if (!this.sceneReady) return` at its top — this prevents `syncCombatScene`/`tryPush` from calling `setEnemy()` on a scene whose Phaser display list is being torn down. **Rule:** any Phaser scene with a `sceneReady` flag must set it to `false` as the FIRST statement in `onShutdown()`, not after cleanup. If cleanup runs first and takes non-zero time, the race window persists. See `docs/gotchas.md` 2026-04-24.
 
+**Display-state reset on shutdown:** Setting `sceneReady = false` prevents writes during teardown but does not clear the text/graphics objects' last rendered values. On the next wake, those stale values are visible for one frame before `setEnemy()` overwrites them (encounter-2 HP display bleed, 2026-04-25). To prevent this, `onShutdown()` also explicitly resets `enemyNameText`, `enemyHpText`, `intentText` (via `setText('')`), `enemyHpBarFill` (via `clear()`), and the numeric tracking fields `currentEnemyHP`, `currentEnemyMaxHP`, `currentEnemyBlock` (zeroed). These are display-side fields only — run-state (deck, relics, player HP, currency) is untouched. See `docs/gotchas.md` 2026-04-25.
+
 **Systems instantiated in `create()`:**
 - `EnemySpriteSystem` — enemy sprite with 3D paper-cutout layers
 - `CombatAtmosphereSystem` — ambient particles, fog, light shafts

@@ -5870,3 +5870,15 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Root cause:** `EventQuiz.svelte`'s fallback distractor path (used when `fact.distractors.length < 2`) drew from the full trivia DB without any domain filter. The curated-deck paths generate domain-appropriate distractors, but the trivia fallback had no such constraint.
 
 **Fix:** Filter the fallback pool to facts sharing the same `categoryL1` first. If that pool has fewer than `QUIZ_DISTRACTORS_SHOWN` candidates, widen to the full pool. The `displayAnswer()` call already present on the fallback path handles brace-stripping for these fallback strings too (NPT-001 and NPT-003 share the same `.map(displayAnswer)` at choices construction time).
+
+### 2026-04-25 — Encounter-2 enemy HP display bleed (NPT-2026-04-25-encounter2-display-bleed)
+
+**Symptom:** From the second encounter onward, the enemy HP text and bar showed the final HP value of the *previous* encounter for the first rendered frame, before `setEnemy()` could overwrite them. The first encounter was always correct; the bug only appeared on encounter 2+.
+
+**Root cause:** `CombatScene.onShutdown()` (commit `6c907875e`) was updated to reset `this.sceneReady = false` to prevent the crash introduced by `b24843b5b` (stop/start between encounters). However, `onShutdown()` did not reset the *display-side* state: `this.enemyHpText`, `this.enemyNameText`, `this.intentText`, `this.enemyHpBarFill`, `this.currentEnemyHP`, `this.currentEnemyMaxHP`, and `this.currentEnemyBlock` all retained their last values. When the scene woke for the next encounter, those stale values were visible until `setEnemy()` ran its `refreshEnemyHpBar(false)` call.
+
+**Fix:** Added a display-state reset block to `onShutdown()` immediately after `this.sceneReady = false`, before any system destroy calls. The block clears the three text objects (`setText('')`), clears the HP bar graphics (`clear()`), and zeros the three numeric tracking fields. All accesses use optional-chaining (`?.`) so the block is safe even if objects were already destroyed earlier in the shutdown flow. Run-state (deck, relics, player HP, currency) is completely untouched.
+
+**Lesson:** `sceneReady = false` gates method-level guards against *write operations during teardown*, but it does nothing about *stale read state on the next wake*. Both problems need to be solved at shutdown time. Companion fix to `6c907875e`.
+
+**Regression test:** `tests/unit/combatScene.sceneReady.test.ts` — "display-state reset on shutdown" describe block (8 cases).

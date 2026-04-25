@@ -2738,6 +2738,16 @@ export class CombatScene extends Phaser.Scene {
   /** Cleanup on shutdown/sleep — stop tweens, reset positions. */
   private onShutdown(): void {
     this.sceneReady = false // Gate syncCombatScene tryPush before display list tears down
+    // Display-state reset — prevents stale HP/name/intent from previous encounter
+    // bleeding into the first frame of the next encounter's wake. Run-state (deck,
+    // relics, HP, currency) is untouched. (NPT-2026-04-25-encounter2-display-bleed)
+    this.enemyNameText?.setText('')
+    this.enemyHpText?.setText('')
+    this.intentText?.setText('')
+    this.enemyHpBarFill?.clear()
+    this.currentEnemyHP = 0
+    this.currentEnemyMaxHP = 0
+    this.currentEnemyBlock = 0
     this.screenShake?.stop()
     this.tweens.killAll()
     this.flashTween = null
