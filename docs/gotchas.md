@@ -5894,3 +5894,13 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 2. The existing `$effect` now schedules a `requestAnimationFrame` retry when `cardEls[idx]` is `undefined`, so measurement lands on the next frame rather than silently keeping the stale value. Also resets to viewport center when `idx === null` (card deselected).
 
 **Lesson:** Component-level `$state` that derives from DOM measurements can bleed between logical sessions if the component is reused without being destroyed. Always provide an explicit reset trigger tied to the logical session boundary (hand fingerprint in this case).
+
+### 2026-04-26 — Multiplayer flag-gated for Steam v1.0 launch
+
+**What is hidden:** All player-reachable multiplayer entry points are gated behind `MULTIPLAYER_ENABLED = false` in `src/config/featureFlags.ts`. Specifically: the hub "Multiplayer" tent button (landscape + portrait), five MP screens in `CardApp.svelte` (`multiplayerMenu`, `lobbyBrowser`, `multiplayerLobby`, `triviaRound`, `raceResults`), the `?mp` BroadcastChannel dev mode activation in `isBroadcastMode()`, and the lobby-join tutorial-dismiss `$effect`.
+
+**Flag location:** `src/config/featureFlags.ts` — single file, single export: `export const MULTIPLAYER_ENABLED = false;`
+
+**How to re-enable:** Set `MULTIPLAYER_ENABLED = true`, rebuild, redeploy. No other code changes needed. All MP services, transports, and components remain intact in the codebase — only the UI entry points are gated. Vite tree-shakes the `false` branches in production.
+
+**Defensive guard:** A `$effect` in `CardApp.svelte` detects if `currentScreen` somehow lands on an MP screen while the flag is off (stale save, dev console) and immediately redirects to `hub` with a console warning.

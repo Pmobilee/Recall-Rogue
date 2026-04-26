@@ -245,6 +245,9 @@ combat (boss) → retreatOrDelve
 ```
 
 ### Multiplayer Flow
+
+> **Steam v1.0 launch note:** Multiplayer is flag-gated OFF for the initial release. `MULTIPLAYER_ENABLED = false` in `src/config/featureFlags.ts`. The tent button is hidden, all five MP screens are blocked from rendering, and `?mp` BroadcastChannel mode is a no-op. Flip the flag to `true` and rebuild to re-enable. See `docs/architecture/multiplayer.md` → Steam v1.0 Launch — Flag Gate.
+
 ```
 hub → multiplayerMenu → (select mode) → multiplayerLobby → (game start) → [mode-specific game]
 ```

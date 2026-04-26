@@ -56,6 +56,7 @@ import {
   getPendingPeerLeft,
 } from './steamNetworkingService';
 import type { SteamLobbyType } from './steamNetworkingService';
+import { MULTIPLAYER_ENABLED } from '../config/featureFlags';
 
 // ── Broadcast Mode Detection ──────────────────────────────────────────────────
 
@@ -70,6 +71,10 @@ import type { SteamLobbyType } from './steamNetworkingService';
  * with simulated latency/packet-loss conditions.
  */
 export function isBroadcastMode(): boolean {
+  // When MULTIPLAYER_ENABLED is false (Steam v1.0 launch flag), the ?mp
+  // param is a no-op so devs cannot accidentally activate MP transport
+  // in the locked-down build.
+  if (!MULTIPLAYER_ENABLED) return false;
   if (typeof window === 'undefined') return false;
   return new URLSearchParams(window.location.search).has('mp');
 }

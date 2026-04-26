@@ -140,6 +140,7 @@
   import { restoreRunRngState } from './services/seededRng'
   import { getLanguageCodeForDeck } from './services/deckOptionsService'
   import { isTurboMode } from './utils/turboMode'
+  import { MULTIPLAYER_ENABLED } from './config/featureFlags'
   import { setWindowResolution } from './services/fullscreenService'
 
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
@@ -308,9 +309,24 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   // When the player enters a multiplayer lobby, soft-dismiss any in-progress tutorial.
   // Auto-start is already MP-gated above, but a tutorial started solo and left unfinished
   // would otherwise fire solo-centric coach-marks during MP combat.
+  // Guard: with MULTIPLAYER_ENABLED=false, currentLobby is never set — but defensive early-return is cheap.
   $effect(() => {
+    if (!MULTIPLAYER_ENABLED) return;
     if (currentLobby !== null && isTutorialActive()) {
       softDismissTutorial()
+    }
+  })
+
+  // Defensive guard: if MULTIPLAYER_ENABLED is false and currentScreen somehow
+  // lands on an MP screen (dev console, stale save, etc.), force-redirect to hub.
+  // Belt-and-suspenders — the tent button and screen conditions already prevent this.
+  $effect(() => {
+    if (!MULTIPLAYER_ENABLED) {
+      const mpScreens: string[] = ['multiplayerMenu', 'lobbyBrowser', 'multiplayerLobby', 'triviaRound', 'raceResults'];
+      if (mpScreens.includes($currentScreen)) {
+        console.warn('[CardApp] MULTIPLAYER_ENABLED=false but currentScreen is', $currentScreen, '— routing to hub');
+        currentScreen.set('hub');
+      }
     }
   })
 
@@ -2571,7 +2587,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     </div>
   {/if}
 
-  {#if $currentScreen === 'multiplayerMenu'}
+  {#if MULTIPLAYER_ENABLED && $currentScreen === 'multiplayerMenu'}
     <div in:fly={{ y: 8, duration: 350 }} class="mp-screen-wrapper">
       {#if multiplayerError}
         <div class="mp-error-banner" role="alert" data-testid="mp-error-banner">
@@ -2592,7 +2608,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     </div>
   {/if}
 
-  {#if $currentScreen === 'lobbyBrowser'}
+  {#if MULTIPLAYER_ENABLED && $currentScreen === 'lobbyBrowser'}
     <div in:fly={{ y: 8, duration: 350 }}>
       <LobbyBrowserScreen
         localPlayerId={localPlayerId}
@@ -2603,7 +2619,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     </div>
   {/if}
 
-  {#if $currentScreen === 'multiplayerLobby' && currentLobby}
+  {#if MULTIPLAYER_ENABLED && $currentScreen === 'multiplayerLobby' && currentLobby}
     <div in:fly={{ y: 8, duration: 350 }}>
       {#if multiplayerError}
         <div class="mp-error-banner" role="alert" data-testid="mp-error-banner">
@@ -2624,7 +2640,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   {/if}
 
 
-  {#if $currentScreen === 'triviaRound' && _triviaGameState}
+  {#if MULTIPLAYER_ENABLED && $currentScreen === 'triviaRound' && _triviaGameState}
     <div in:fly={{ y: 8, duration: 350 }}>
       <!-- L-028 / H-015: TriviaRoundScreen is now bound to live trivia service state.
            _triviaGameState is populated by the onTriviaStateChange subscription above,
@@ -2644,7 +2660,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
     </div>
   {/if}
 
-  {#if $currentScreen === 'raceResults' && activeRaceResults}
+  {#if MULTIPLAYER_ENABLED && $currentScreen === 'raceResults' && activeRaceResults}
     <div in:fly={{ y: 8, duration: 350 }}>
       <RaceResultsScreen
         results={activeRaceResults}

@@ -1,10 +1,35 @@
 # Multiplayer Architecture
 
 > **Source files:** `src/services/multiplayerCoopSync.ts`, `src/services/multiplayerLobbyService.ts`, `src/services/multiplayerTransport.ts`, `src/services/multiplayerGameService.ts`, `src/services/multiplayerElo.ts`, `src/services/multiplayerWorkshopService.ts`, `src/data/multiplayerTypes.ts`, `src/services/enemyManager.ts`, `src/services/encounterBridge.ts`
-> **Last verified:** 2026-04-23 — added State Ownership table (shared vs per-player across all 5 modes); CT-001 + CM-001: rest-site action sync + mystery event host-authoritative selection with barriers
+> **Last verified:** 2026-04-26 — MULTIPLAYER_ENABLED=false flag gate added for Steam v1.0 launch
 
 ---
 
+## Steam v1.0 Launch — Flag Gate
+
+Multiplayer is **disabled for the initial Steam release** via a build-time feature flag.
+
+**Flag location:** `src/config/featureFlags.ts`
+
+```ts
+export const MULTIPLAYER_ENABLED = false;  // flip to true post-launch
+```
+
+**What is hidden:**
+- Hub "Multiplayer" tent button (both landscape and portrait) — button is not rendered.
+- Five MP screens in `CardApp.svelte`: `multiplayerMenu`, `lobbyBrowser`, `multiplayerLobby`, `triviaRound`, `raceResults` — all `{#if}` blocks include `MULTIPLAYER_ENABLED &&` guard.
+- `?mp` BroadcastChannel dev mode — `isBroadcastMode()` in `multiplayerLobbyService.ts` returns false when flag is off.
+- The `$effect` in `CardApp.svelte` that soft-dismisses the tutorial on lobby join — early-returns when flag is off.
+- A defensive `$effect` force-routes any stale `currentScreen` that lands on an MP screen back to `hub`.
+
+**What is NOT removed:**
+- All MP services, transports, components, and data types remain in the codebase.
+- All MP-related tests continue to run.
+- The MultiplayerMenu component wraps its template in `{#if MULTIPLAYER_ENABLED}` as belt-and-suspenders.
+
+**To re-enable:** Set `MULTIPLAYER_ENABLED = true` in `src/config/featureFlags.ts`, rebuild, and redeploy. No other code changes required.
+
+---
 ## E2E Verification Status (2026-04-13)
 
 All five multiplayer modes tested end-to-end in batch MP-20260413-003941 using two real Docker containers connected via Fastify `webBackend`. Both containers were full WebSocket clients — no bots.

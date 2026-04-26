@@ -12,6 +12,7 @@
     MODE_MAX_PLAYERS,
   } from '../../data/multiplayerTypes'
   import { isBroadcastMode } from '../../services/multiplayerLobbyService'
+  import { MULTIPLAYER_ENABLED } from '../../config/featureFlags'
   import {
     startLanServer,
     stopLanServer,
@@ -338,6 +339,7 @@
   })
 </script>
 
+{#if MULTIPLAYER_ENABLED}
 <div class="mp-menu" role="main" aria-label="Multiplayer Menu">
 
   <!-- Header -->
@@ -795,6 +797,7 @@
     </div>
   </div>
 </div>
+{/if}
 
 <style>
   /* ===== Layout ===== */
