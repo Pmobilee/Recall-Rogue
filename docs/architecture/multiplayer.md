@@ -15,19 +15,23 @@ Multiplayer is **disabled for the initial Steam release** via a build-time featu
 export const MULTIPLAYER_ENABLED = false;  // flip to true post-launch
 ```
 
-**What is hidden:**
-- Hub "Multiplayer" tent button (both landscape and portrait) — button is not rendered.
-- Five MP screens in `CardApp.svelte`: `multiplayerMenu`, `lobbyBrowser`, `multiplayerLobby`, `triviaRound`, `raceResults` — all `{#if}` blocks include `MULTIPLAYER_ENABLED &&` guard.
+**What is gated:**
+- Five live MP screens in `CardApp.svelte`: `multiplayerMenu`, `lobbyBrowser`, `multiplayerLobby`, `triviaRound`, `raceResults` — all `{#if}` blocks include `MULTIPLAYER_ENABLED &&` guard.
 - `?mp` BroadcastChannel dev mode — `isBroadcastMode()` in `multiplayerLobbyService.ts` returns false when flag is off.
 - The `$effect` in `CardApp.svelte` that soft-dismisses the tutorial on lobby join — early-returns when flag is off.
-- A defensive `$effect` force-routes any stale `currentScreen` that lands on an MP screen back to `hub`.
+- A defensive `$effect` force-routes any stale `currentScreen` that lands on a live MP screen back to `hub`.
+
+**What is visible (tent is always shown — updated 2026-04-26):**
+- Hub "Multiplayer" tent button is rendered unconditionally (both landscape and portrait).
+- Clicking the tent with `MULTIPLAYER_ENABLED=false` routes to `comingSoon` — a placeholder screen that explains MP modes ship post-launch. The `comingSoon` block in `CardApp.svelte` is NOT guarded by the flag; it is the gate.
+- `comingSoon` is not in the defensive MP-screens redirect list — direct console navigation to live MP screens still bounces to `hub`, but `comingSoon` is reachable only via the tent.
 
 **What is NOT removed:**
 - All MP services, transports, components, and data types remain in the codebase.
 - All MP-related tests continue to run.
 - The MultiplayerMenu component wraps its template in `{#if MULTIPLAYER_ENABLED}` as belt-and-suspenders.
 
-**To re-enable:** Set `MULTIPLAYER_ENABLED = true` in `src/config/featureFlags.ts`, rebuild, and redeploy. No other code changes required.
+**To re-enable:** Set `MULTIPLAYER_ENABLED = true` in `src/config/featureFlags.ts`, rebuild, and redeploy. `handleOpenMultiplayer` in `CardApp.svelte` already routes to `multiplayerMenu` when the flag is true — no other code changes required.
 
 ---
 ## E2E Verification Status (2026-04-13)

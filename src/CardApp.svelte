@@ -215,6 +215,7 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   import RaceResultsScreen from './ui/components/RaceResultsScreen.svelte'
   import PlayerRosterPanel from './ui/components/PlayerRosterPanel.svelte'
   import DuelOpponentPanel from './ui/components/DuelOpponentPanel.svelte'
+  import ComingSoonScreen from './ui/components/ComingSoonScreen.svelte'
   import { setMpDebugState } from './services/mpDebugState'
   import {
     createLobby,
@@ -757,8 +758,13 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
   })
 
   function handleOpenMultiplayer(): void {
-    // Navigate to the multiplayer menu for mode selection before creating a lobby.
+    // When multiplayer is not yet enabled, route to the coming-soon placeholder screen.
+    // When the flag is flipped true, routes directly to mode selection as before.
     multiplayerError = null
+    if (!MULTIPLAYER_ENABLED) {
+      transitionScreen('comingSoon')
+      return
+    }
     transitionScreen('multiplayerMenu')
   }
 
@@ -2670,6 +2676,12 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         onReturnToLobby={() => { clearActiveRun(); activeRaceResults = null; transitionScreen('multiplayerLobby'); }}
         onReturnToHub={() => { clearActiveRun(); activeRaceResults = null; transitionScreen('hub'); }}
       />
+    </div>
+  {/if}
+
+  {#if $currentScreen === 'comingSoon'}
+    <div in:fly={{ y: 8, duration: 350 }}>
+      <ComingSoonScreen onBack={() => transitionScreen('hub')} />
     </div>
   {/if}
 

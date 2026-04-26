@@ -1,3 +1,13 @@
+### 2026-04-26 — MP gating: coming-soon screen instead of hidden tent
+
+**What:** For Steam v1.0, multiplayer was initially implemented by hiding the tent button entirely when `MULTIPLAYER_ENABLED=false`. This was superseded: the tent is now **always visible**. Clicking it with the flag off routes to a `comingSoon` screen (title, 2-line body, Back button). The five live MP screens remain guarded by `MULTIPLAYER_ENABLED &&`.
+
+**Why:** A hidden tent looks like a missing feature. A visible tent that explains the situation is honest — the player saw it, was curious, and now knows what to expect. Slay the Spire does the same with locked content: show it, explain it, don't pretend it doesn't exist.
+
+**Design rule:** `comingSoon` is NOT in the defensive MP-screens redirect list (which bounces stale `currentScreen` values back to hub). Direct dev-console navigation to live MP screens still bounces; only the tent click intentionally reaches `comingSoon`.
+
+**How to flip when MP ships:** Set `MULTIPLAYER_ENABLED = true` in `src/config/featureFlags.ts`. `handleOpenMultiplayer` in `CardApp.svelte` already has the branch — it will route to `multiplayerMenu` directly. The `comingSoon` render block can stay in the template indefinitely without cost.
+
 ### 2026-04-23 — Commit-message issue citations lie ~40% of the time; always verify against diff
 
 **What:** After the 2026-04-22 ULTRATHINK MP hardening waves, the leaderboard had 91 "open" MP issues, of which 36 were referenced by fix commits in the last 70 commits. A verification sweep (5 parallel qa-agents, one per fix-commit) compared each cited issue's `fixHypothesis` against the actual diff and current code. Result across 39 citations: **20 truly fixed, 14 partial (infra built but not fully wired), 5 not_fixed (commit claimed credit without landing the change)**.

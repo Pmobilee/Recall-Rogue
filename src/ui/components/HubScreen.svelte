@@ -27,7 +27,6 @@
   import { ambientAudio } from '../../services/ambientAudioService'
   import { LIGHT_SOURCE_MANIFEST } from '../../data/lightSourceManifest'
   import { devMode } from '../stores/devMode'
-  import { MULTIPLAYER_ENABLED } from '../../config/featureFlags'
 
   interface Props {
     streak: number
@@ -615,8 +614,7 @@
         showBorder
       />
 
-      <!-- 8. Tent - Multiplayer (flag-gated: hidden for Steam v1.0 launch) -->
-      {#if MULTIPLAYER_ENABLED}
+      <!-- 8. Tent - Multiplayer (always visible; clicks route to comingSoon when MULTIPLAYER_ENABLED=false) -->
       <CampSpriteButton
         spriteUrl={getCampUpgradeUrl('tent', forms.tent)}
         label="Multiplayer"
@@ -628,7 +626,6 @@
         brightness={tentBright}
         showBorder
       />
-      {/if}
 
       <!-- 9. Campfire - Sparkle burst on click (no fire shadow — dist < 1) -->
       <CampSpriteButton
@@ -875,8 +872,7 @@
       showBorder
     />
 
-    <!-- 8. Tent - Multiplayer — portrait position differs from landscape (flag-gated: hidden for Steam v1.0 launch) -->
-    {#if MULTIPLAYER_ENABLED}
+    <!-- 8. Tent - Multiplayer — portrait position; always visible (click routes to comingSoon when MULTIPLAYER_ENABLED=false) -->
     <CampSpriteButton
       spriteUrl={getCampUpgradeUrl('tent', forms.tent)}
       label="Multiplayer"
@@ -887,7 +883,6 @@
       brightness={tentBrightPortrait}
       showBorder
     />
-    {/if}
 
     <!-- 9. Campfire - Sparkle burst on click (no fire shadow — dist < 1) -->
     <CampSpriteButton

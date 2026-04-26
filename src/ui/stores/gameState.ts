@@ -18,6 +18,7 @@ export type Screen =
   | 'multiplayerLobby' // Multiplayer lobby — mode/deck/house-rules config and player readying
   | 'multiplayerMenu'  // Multiplayer mode selection menu — entry point before lobby creation
   | 'lobbyBrowser'     // Multiplayer lobby browser — lists public lobbies for browsing and joining
+  | 'comingSoon'       // Coming soon placeholder — shown when tent is clicked with MULTIPLAYER_ENABLED=false
   | 'mysteryEvent'
   | 'restRoom'
   | 'runEnd'
@@ -62,6 +63,7 @@ const VALID_SCREENS: Screen[] = [
   'multiplayerLobby',
   'multiplayerMenu',
   'lobbyBrowser',
+  'comingSoon',
   'mysteryEvent',
   'restRoom',
   'runEnd',
