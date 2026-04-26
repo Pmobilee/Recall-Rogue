@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-23T05:35:00.000Z",
+  "updatedAt": "2026-04-25T00:00:00.000Z",
   "totalPlaythroughs": 22,
-  "totalIssues": 254,
+  "totalIssues": 257,
   "batches": [
     {
       "id": "MP-AUDIT-2026-04-23-OPUS-A",
@@ -204,6 +204,13 @@
       "date": "2026-03-14T05:04:44.214Z",
       "tracks": 1,
       "issues": 10
+    },
+    {
+      "batchId": "LLM-PLAYTEST-BATCH-2026-04-24-001",
+      "addedAt": "2026-04-24T12:40:00.000Z",
+      "totalIssues": 3,
+      "reportPath": "data/playtests/llm-batches/BATCH-2026-04-24-001/full-run.md",
+      "summaryPath": "data/playtests/llm-batches/BATCH-2026-04-24-001/SUMMARY.md"
     }
   ],
   "topIssueCounts": {
@@ -705,6 +712,267 @@
       "resolvedBy": "ab4214526 + 775f0d6d5 + 1b35f38e7"
     },
     {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-4",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "mp:lobby:start_ack is not in MultiplayerMessageType union \u2014 sent via `as` cast",
+      "description": "src/services/multiplayerLobbyService.ts:1578-1586 \u2014 the TODO at :1581 admits the cast is a workaround; transport routing of unknown types is untested on Steam \u2014 If the transport's type-narrowed routing treats unknown types differently across backends, the ACK can be silently dropped on Steam while working on BroadcastChannel \u2014 explaining why dev mode works and Steam doesn't.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "fixed",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "Add 'mp:lobby:start_ack' to MultiplayerMessageType and remove the cast. Regenerate any type guards.",
+      "score": 60,
+      "pass": 1,
+      "fixedAt": "2026-04-22T11:52:21.404Z",
+      "fixedInCommits": [
+        "77c71eaca",
+        "9e0650b53"
+      ],
+      "fixedInCommit": "77c71eaca",
+      "rank": 15
+    },
+    {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-5",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "SteamP2PTransport is single-peer by design",
+      "description": "src/services/multiplayerTransport.ts:502 (`private peerId = ''`), :550 (`this.peerId = peerId`), :724 (`sendP2PMessage(this.peerId, \u2026)`) \u2014 3-4 player co-op and trivia_night modes cannot work on Steam. Connecting to a second guest overwrites the first. Not the cause of the reported 2P bug but guaranteed to break any multi-peer mode.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "partial",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "Refactor to `private peers = new Map<peerId, SessionState>()`. On send, broadcast to all peers in the map. On connect, add the peer rather than replace.",
+      "score": 60,
+      "pass": 1,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "note": "Single-peer guard added: connect() to a second peer while already bound now warns and returns early (prevents silent session overwrite). Architectural multi-peer refactor remains out of scope. | [2026-04-23] Observability added; single-peer architecture unchanged; Map<peerId,SessionState> deferred",
+      "partialInCommit": "0c2de9290",
+      "verifiedAt": "2026-04-23T12:30:00.000Z",
+      "verifiedBy": "VERIFY-2026-04-23-POST-WAVE",
+      "rank": 16
+    },
+    {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-6",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "initCoopSync called AFTER startNewRun synchronously transitions screen",
+      "description": "src/CardApp.svelte:849 (startNewRun) \u2192 synchronous currentScreen.set in gameFlowController :1135/:1156 \u2192 :858 (initCoopSync) \u2014 Combat scene can mount and the host can broadcast mp:coop:enemy_state before the guest's listener is registered. First snapshot lost \u2192 guest enters combat with no shared enemy reference.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "fixed",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "Move initCoopSync, initMapNodeSync, onPartnerStateUpdate registrations BEFORE startNewRun in the game-start callback.",
+      "score": 60,
+      "pass": 1,
+      "fixedAt": "2026-04-22T11:42:57.000Z",
+      "fixedInCommit": "9e0650b53c98f29d255a4df2a41e2fb24e2f52c9",
+      "rank": 17
+    },
+    {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-7",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "onPartnerStateUpdate subscription registered AFTER startNewRun",
+      "description": "src/CardApp.svelte:873 \u2014 registered at the bottom of the $effect, after startNewRun and initCoopSync \u2014 Same timing window as BUG-6 for partner HP state. First mp:coop:partner_state from host can land before guest subscribes.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "fixed",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "Hoist onPartnerStateUpdate registration above startNewRun inside the same $effect.",
+      "score": 60,
+      "pass": 1,
+      "fixedAt": "2026-04-22T11:42:57.000Z",
+      "fixedInCommit": "9e0650b53c98f29d255a4df2a41e2fb24e2f52c9",
+      "rank": 18
+    },
+    {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-8",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "Host never self-loopbacks its own mp:lobby:start on Steam P2P",
+      "description": "src/services/multiplayerTransport.ts \u2014 no self-echo in SteamP2PTransport. Contrast with :983-995 BroadcastChannelTransport which does receive its own broadcast (then filters senderId self). \u2014 On broadcast mode, the host's mp:lobby:start handler fires from its own echo, going through the unified handler path. On Steam, the host's _fireSubscribers only runs via the 3s timeout fallback (BUG-3) or on ACK. Host and guest take different code paths into the run \u2014 another source of divergence.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "fixed",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "Host-side: fire _fireSubscribers(_gameStartSubscribers, seed, _currentLobby) immediately after transport.send('mp:lobby:start', \u2026) rather than relying on echo or timeout.",
+      "score": 60,
+      "pass": 1,
+      "fixedAt": "2026-04-22T12:07:25.000Z",
+      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
+      "fixedInWave": "Wave 2 - 2026-04-22",
+      "rank": 19
+    },
+    {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-9",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "acceptP2PSession returning false logs but state still transitions to connected",
+      "description": "src/services/multiplayerTransport.ts:563-575 \u2014 State machine lies: transport reports 'connected' while the P2P session is half-open. Subsequent sends execute the happy path and are dropped at the Rust layer; TS side sees no error.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "fixed",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "On acceptP2PSession false, enter an 'error' or 'handshake_failed' state. Retry the accept with exponential backoff (2-3 attempts) before giving up. Do not transition to 'connected' until a session is actually open.",
+      "score": 60,
+      "pass": 1,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "fixedInCommit": "0c2de9290",
+      "fixedAt": "2026-04-22T23:45:00.000Z",
+      "note": "acceptP2PSession false now stays in error state, drops preSendBuffer. PASS1-BUG-9 fix in multiplayerTransport.ts.",
+      "rank": 20
+    },
+    {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-10",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "No initial broadcastPartnerState at encounter start",
+      "description": "src/services/encounterBridge.ts \u2014 broadcastPartnerState is only called at end-of-turn (~:1640-1654 per sub-agent-5; verify before fix) \u2014 Guest's initial HP/block never reaches host until the guest completes turn 1. MultiplayerHUD renders empty/stale partner state through the first turn.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "fixed",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "Call broadcastPartnerState once at encounter-start from encounterBridge init, with the initial player snapshot.",
+      "score": 60,
+      "pass": 1,
+      "fixedAt": "2026-04-22T12:07:25.000Z",
+      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
+      "fixedInWave": "Wave 2 - 2026-04-22",
+      "rank": 21
+    },
+    {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-11",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "$effect cleanup tears down all coop subscriptions unconditionally",
+      "description": "src/CardApp.svelte:896-906 \u2014 destroyCoopSync(), unsubPartner(), destroyMapNodeSync() all fire on any $effect re-run \u2014 If anything the $effect tracks reactively changes mid-run (localPlayerId refresh, lobby reference swap), the cleanup fires and kills every transport listener. Re-registration happens in the next $effect tick but any in-flight messages are lost.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "partial",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "Either split the effect into one-shot 'mount' registrations (plain onMount) and reactive updates, or narrow the $effect's tracked deps so it doesn't re-fire mid-run.",
+      "score": 60,
+      "pass": 1,
+      "fixedAt": "2026-04-22T11:42:57.000Z",
+      "fixedInCommit": "9e0650b53c98f29d255a4df2a41e2fb24e2f52c9",
+      "qaNote": "Code works today (no reactive reads in $effect) but fix hypothesis (split into onMount) not implemented. Latent fragility \u2014 adding any reactive read to $effect at CardApp.svelte:818 would cause mid-run teardown.",
+      "rank": 22
+    },
+    {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-12",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "ACK retry loop does not await send-delivery confirmation",
+      "description": "src/services/multiplayerLobbyService.ts:1224-1232 \u2014 setInterval calls transport.send every 750ms. transport.send in SteamP2PTransport returns before _sendWithRetry completes (:673-707). \u2014 The 750ms retry can't tell whether the prior send landed. Three retries can fire concurrently while the first is still internally retrying, amplifying Steam network load.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "open",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "Promisify _sendWithRetry so send() returns a Promise<boolean>. The retry loop awaits the prior send before issuing the next.",
+      "score": 60,
+      "pass": 1,
+      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
+      "workStartedAt": "2026-04-22T23:30:00.000Z",
+      "verifiedAt": "2026-04-23T12:30:00.000Z",
+      "verifiedBy": "VERIFY-2026-04-23-POST-WAVE",
+      "note": "[2026-04-23] [2026-04-23 verify] NOT FIXED by 8f5d7a74b \u2014 explicitly deferred; requires transport.send() Promise<boolean> refactor",
+      "rank": 23
+    },
+    {
+      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-13",
+      "category": "mp_wiring_gap",
+      "severity": "high",
+      "title": "Only contentSelection has a presence guard \u2014 other start-payload fields pass silently",
+      "description": "src/CardApp.svelte:812-821 \u2014 guards only against `!lobby.contentSelection` \u2014 A run starts with stale or undefined mode/deckId/houseRules and nothing warns. Paired with BUG-1, this is why the coop divergence is silent.",
+      "frequency": 1,
+      "affectedTracks": [
+        "mp-steam-audit-pass1"
+      ],
+      "affectedProfiles": [
+        "mp-steam-audit-pass1"
+      ],
+      "firstSeen": "2026-04-22T21:00:00.000Z",
+      "lastSeen": "2026-04-22T11:52:17.605Z",
+      "status": "fixed",
+      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
+      "fixHypothesis": "Extend the guard to assert lobby.mode, lobby.selectedDeckId, lobby.houseRules are present (appropriate to mode). Log console.error and return to lobby on mismatch.",
+      "score": 60,
+      "pass": 1,
+      "fixedAt": "2026-04-22T11:52:21.404Z",
+      "fixedInCommits": [
+        "77c71eaca",
+        "9e0650b53"
+      ],
+      "fixedInCommit": "9e0650b53",
+      "rank": 24
+    },
+    {
       "canonicalId": "MP-STEAM-20260422-016",
       "category": "multiplayer_sync",
       "severity": "critical",
@@ -743,7 +1011,7 @@
       },
       "suggestedFix": "In the mp:lobby:start handler (receiver at ~line 1560), apply payload.mode, payload.houseRules, and payload.deckId to _currentLobby BEFORE firing subscribers. Add a console.warn if mode mismatch is detected between payload and current lobby state.",
       "score": 60,
-      "rank": 15,
+      "rank": 25,
       "resolvedAt": "2026-04-22T22:50:00.000Z",
       "resolvedBy": "77c71eaca + 14495f06b"
     },
@@ -785,7 +1053,7 @@
       },
       "suggestedFix": "Extend the onGameStart subscriber switch to cover all 5 modes. Add a regression test that asserts each mode dispatches its specific init function when onGameStart fires.",
       "score": 60,
-      "rank": 16,
+      "rank": 26,
       "resolvedAt": "2026-04-22T22:50:00.000Z",
       "resolvedBy": "9e0650b53 + ee7236892"
     },
@@ -821,7 +1089,7 @@
       },
       "suggestedFix": "Replace every hasSteam reference in multiplayerLobbyService.ts with a live isTauriRuntime() check (already inlined in pickBackend() at line 1850). Export a single live helper from platformService.ts instead of a snapshot constant.",
       "score": 60,
-      "rank": 17,
+      "rank": 27,
       "resolvedAt": "2026-04-22T22:50:00.000Z",
       "resolvedBy": "14495f06b"
     },
@@ -854,7 +1122,7 @@
       },
       "suggestedFix": "In pickBackend, ignore LAN mode unless an explicit ?lan=1 URL flag is also present, OR clear LAN-mode localStorage on every Steam-build cold start in main.ts before lobby service initializes.",
       "score": 60,
-      "rank": 18,
+      "rank": 28,
       "resolvedAt": "2026-04-22T22:50:00.000Z",
       "resolvedBy": "14495f06b"
     },
@@ -895,7 +1163,7 @@
       },
       "suggestedFix": "Have mpLobbyWs.ts:240 forward msg.payload verbatim (it is already gated as trusted-host). The server should relay rather than reconstruct the start payload.",
       "score": 60,
-      "rank": 19,
+      "rank": 29,
       "resolvedAt": "2026-04-22T22:50:00.000Z",
       "resolvedBy": "14495f06b"
     },
@@ -927,274 +1195,13 @@
       },
       "suggestedFix": "Assert at create/join time that localSteamId does not match any existing member SteamId. Show a player-facing error if a second client launches with the same Steam account. Document in SKILL.md that Steam P2P testing requires two distinct Steam accounts.",
       "score": 60,
-      "rank": 20,
+      "rank": 30,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "2e25b6765",
       "verifiedAt": "2026-04-23T12:30:00.000Z",
       "verifiedBy": "VERIFY-2026-04-23-POST-WAVE",
       "note": "[2026-04-23] assertLocalSteamIdUniqueInLobby() surfaces dup SteamID error"
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-4",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "mp:lobby:start_ack is not in MultiplayerMessageType union \u2014 sent via `as` cast",
-      "description": "src/services/multiplayerLobbyService.ts:1578-1586 \u2014 the TODO at :1581 admits the cast is a workaround; transport routing of unknown types is untested on Steam \u2014 If the transport's type-narrowed routing treats unknown types differently across backends, the ACK can be silently dropped on Steam while working on BroadcastChannel \u2014 explaining why dev mode works and Steam doesn't.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "fixed",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "Add 'mp:lobby:start_ack' to MultiplayerMessageType and remove the cast. Regenerate any type guards.",
-      "score": 60,
-      "pass": 1,
-      "fixedAt": "2026-04-22T11:52:21.404Z",
-      "fixedInCommits": [
-        "77c71eaca",
-        "9e0650b53"
-      ],
-      "fixedInCommit": "77c71eaca",
-      "rank": 21
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-5",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "SteamP2PTransport is single-peer by design",
-      "description": "src/services/multiplayerTransport.ts:502 (`private peerId = ''`), :550 (`this.peerId = peerId`), :724 (`sendP2PMessage(this.peerId, \u2026)`) \u2014 3-4 player co-op and trivia_night modes cannot work on Steam. Connecting to a second guest overwrites the first. Not the cause of the reported 2P bug but guaranteed to break any multi-peer mode.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "partial",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "Refactor to `private peers = new Map<peerId, SessionState>()`. On send, broadcast to all peers in the map. On connect, add the peer rather than replace.",
-      "score": 60,
-      "pass": 1,
-      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z",
-      "note": "Single-peer guard added: connect() to a second peer while already bound now warns and returns early (prevents silent session overwrite). Architectural multi-peer refactor remains out of scope. | [2026-04-23] Observability added; single-peer architecture unchanged; Map<peerId,SessionState> deferred",
-      "partialInCommit": "0c2de9290",
-      "verifiedAt": "2026-04-23T12:30:00.000Z",
-      "verifiedBy": "VERIFY-2026-04-23-POST-WAVE",
-      "rank": 22
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-6",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "initCoopSync called AFTER startNewRun synchronously transitions screen",
-      "description": "src/CardApp.svelte:849 (startNewRun) \u2192 synchronous currentScreen.set in gameFlowController :1135/:1156 \u2192 :858 (initCoopSync) \u2014 Combat scene can mount and the host can broadcast mp:coop:enemy_state before the guest's listener is registered. First snapshot lost \u2192 guest enters combat with no shared enemy reference.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "fixed",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "Move initCoopSync, initMapNodeSync, onPartnerStateUpdate registrations BEFORE startNewRun in the game-start callback.",
-      "score": 60,
-      "pass": 1,
-      "fixedAt": "2026-04-22T11:42:57.000Z",
-      "fixedInCommit": "9e0650b53c98f29d255a4df2a41e2fb24e2f52c9",
-      "rank": 23
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-7",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "onPartnerStateUpdate subscription registered AFTER startNewRun",
-      "description": "src/CardApp.svelte:873 \u2014 registered at the bottom of the $effect, after startNewRun and initCoopSync \u2014 Same timing window as BUG-6 for partner HP state. First mp:coop:partner_state from host can land before guest subscribes.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "fixed",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "Hoist onPartnerStateUpdate registration above startNewRun inside the same $effect.",
-      "score": 60,
-      "pass": 1,
-      "fixedAt": "2026-04-22T11:42:57.000Z",
-      "fixedInCommit": "9e0650b53c98f29d255a4df2a41e2fb24e2f52c9",
-      "rank": 24
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-8",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "Host never self-loopbacks its own mp:lobby:start on Steam P2P",
-      "description": "src/services/multiplayerTransport.ts \u2014 no self-echo in SteamP2PTransport. Contrast with :983-995 BroadcastChannelTransport which does receive its own broadcast (then filters senderId self). \u2014 On broadcast mode, the host's mp:lobby:start handler fires from its own echo, going through the unified handler path. On Steam, the host's _fireSubscribers only runs via the 3s timeout fallback (BUG-3) or on ACK. Host and guest take different code paths into the run \u2014 another source of divergence.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "fixed",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "Host-side: fire _fireSubscribers(_gameStartSubscribers, seed, _currentLobby) immediately after transport.send('mp:lobby:start', \u2026) rather than relying on echo or timeout.",
-      "score": 60,
-      "pass": 1,
-      "fixedAt": "2026-04-22T12:07:25.000Z",
-      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
-      "fixedInWave": "Wave 2 - 2026-04-22",
-      "rank": 25
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-9",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "acceptP2PSession returning false logs but state still transitions to connected",
-      "description": "src/services/multiplayerTransport.ts:563-575 \u2014 State machine lies: transport reports 'connected' while the P2P session is half-open. Subsequent sends execute the happy path and are dropped at the Rust layer; TS side sees no error.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "fixed",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "On acceptP2PSession false, enter an 'error' or 'handshake_failed' state. Retry the accept with exponential backoff (2-3 attempts) before giving up. Do not transition to 'connected' until a session is actually open.",
-      "score": 60,
-      "pass": 1,
-      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z",
-      "fixedInCommit": "0c2de9290",
-      "fixedAt": "2026-04-22T23:45:00.000Z",
-      "note": "acceptP2PSession false now stays in error state, drops preSendBuffer. PASS1-BUG-9 fix in multiplayerTransport.ts.",
-      "rank": 26
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-10",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "No initial broadcastPartnerState at encounter start",
-      "description": "src/services/encounterBridge.ts \u2014 broadcastPartnerState is only called at end-of-turn (~:1640-1654 per sub-agent-5; verify before fix) \u2014 Guest's initial HP/block never reaches host until the guest completes turn 1. MultiplayerHUD renders empty/stale partner state through the first turn.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "fixed",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "Call broadcastPartnerState once at encounter-start from encounterBridge init, with the initial player snapshot.",
-      "score": 60,
-      "pass": 1,
-      "fixedAt": "2026-04-22T12:07:25.000Z",
-      "fixedInCommit": "542bca695dec8eff3dfd177e8ac39c932244d217",
-      "fixedInWave": "Wave 2 - 2026-04-22",
-      "rank": 27
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-11",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "$effect cleanup tears down all coop subscriptions unconditionally",
-      "description": "src/CardApp.svelte:896-906 \u2014 destroyCoopSync(), unsubPartner(), destroyMapNodeSync() all fire on any $effect re-run \u2014 If anything the $effect tracks reactively changes mid-run (localPlayerId refresh, lobby reference swap), the cleanup fires and kills every transport listener. Re-registration happens in the next $effect tick but any in-flight messages are lost.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "partial",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "Either split the effect into one-shot 'mount' registrations (plain onMount) and reactive updates, or narrow the $effect's tracked deps so it doesn't re-fire mid-run.",
-      "score": 60,
-      "pass": 1,
-      "fixedAt": "2026-04-22T11:42:57.000Z",
-      "fixedInCommit": "9e0650b53c98f29d255a4df2a41e2fb24e2f52c9",
-      "qaNote": "Code works today (no reactive reads in $effect) but fix hypothesis (split into onMount) not implemented. Latent fragility \u2014 adding any reactive read to $effect at CardApp.svelte:818 would cause mid-run teardown.",
-      "rank": 28
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-12",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "ACK retry loop does not await send-delivery confirmation",
-      "description": "src/services/multiplayerLobbyService.ts:1224-1232 \u2014 setInterval calls transport.send every 750ms. transport.send in SteamP2PTransport returns before _sendWithRetry completes (:673-707). \u2014 The 750ms retry can't tell whether the prior send landed. Three retries can fire concurrently while the first is still internally retrying, amplifying Steam network load.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "open",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "Promisify _sendWithRetry so send() returns a Promise<boolean>. The retry loop awaits the prior send before issuing the next.",
-      "score": 60,
-      "pass": 1,
-      "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
-      "workStartedAt": "2026-04-22T23:30:00.000Z",
-      "verifiedAt": "2026-04-23T12:30:00.000Z",
-      "verifiedBy": "VERIFY-2026-04-23-POST-WAVE",
-      "note": "[2026-04-23] [2026-04-23 verify] NOT FIXED by 8f5d7a74b \u2014 explicitly deferred; requires transport.send() Promise<boolean> refactor",
-      "rank": 29
-    },
-    {
-      "canonicalId": "MP-STEAM-AUDIT-2026-04-22-PASS1-BUG-13",
-      "category": "mp_wiring_gap",
-      "severity": "high",
-      "title": "Only contentSelection has a presence guard \u2014 other start-payload fields pass silently",
-      "description": "src/CardApp.svelte:812-821 \u2014 guards only against `!lobby.contentSelection` \u2014 A run starts with stale or undefined mode/deckId/houseRules and nothing warns. Paired with BUG-1, this is why the coop divergence is silent.",
-      "frequency": 1,
-      "affectedTracks": [
-        "mp-steam-audit-pass1"
-      ],
-      "affectedProfiles": [
-        "mp-steam-audit-pass1"
-      ],
-      "firstSeen": "2026-04-22T21:00:00.000Z",
-      "lastSeen": "2026-04-22T11:52:17.605Z",
-      "status": "fixed",
-      "sourceBatch": "MP-STEAM-AUDIT-2026-04-22",
-      "fixHypothesis": "Extend the guard to assert lobby.mode, lobby.selectedDeckId, lobby.houseRules are present (appropriate to mode). Log console.error and return to lobby on mismatch.",
-      "score": 60,
-      "pass": 1,
-      "fixedAt": "2026-04-22T11:52:21.404Z",
-      "fixedInCommits": [
-        "77c71eaca",
-        "9e0650b53"
-      ],
-      "fixedInCommit": "9e0650b53",
-      "rank": 30
     },
     {
       "canonicalId": "MP-STEAM-AUDIT-2026-04-22-H-009",
@@ -3186,6 +3193,24 @@
       "resolvedBy": "docker-swiftshader-artifact: CPU-emulated WebGL caps at ~22fps per docs/testing/perf-baselines.md; not a real-hardware regression"
     },
     {
+      "canonicalId": "alpha-launch-blocker-001",
+      "category": "build_broken",
+      "severity": "critical",
+      "title": "Build broken: chess.js, zod, @types/geojson imports unresolved",
+      "description": "`npm run build` fails at Rollup resolution for `chess.js` (ChessBoard.svelte + chessGrader.ts), `zod` (curatedDeckSchema.ts), and `geojson` types (MapPinDrop.svelte + geoDataLoader.ts). All three are WIP features shipped by parallel agents without adding their deps to package.json. Blocks EVERY downstream step: Steam build, ship-gate verification, production bundle. Nothing can upload until resolved. Either install the three deps or revert the WIP feature commits that introduced the imports.",
+      "source": "swift-splashing-crown.md alpha plan catchup",
+      "status": "resolved",
+      "score": 15,
+      "affectedTracks": [
+        "alpha-launch-blocker"
+      ],
+      "firstSeen": "2026-04-11T08:00:00.000Z",
+      "suggestedFix": "`npm install chess.js zod @types/geojson` \u2014 OR identify the owning agent of each feature and have them either install the dep or revert their import. Minimum-viable path: install all three (they're small, mainstream libs), then address whether each feature ships in alpha or gets gated.",
+      "rank": 89,
+      "resolvedAt": "2026-04-12T02:40:00.000Z",
+      "resolvedBy": "stale-sweep-2026-04-12 (verified: npm run typecheck=0 errors, npm run build=clean, npx vitest run=6121/6121 pass on main cd63bb9f9)"
+    },
+    {
       "canonicalId": "02-neural-optimal-issue-1775871222977-02-001",
       "category": "mechanic_broken",
       "severity": "critical",
@@ -3198,7 +3223,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 89,
+      "rank": 90,
       "score": 15,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -3245,7 +3270,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 90,
+      "rank": 91,
       "score": 15,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -3276,7 +3301,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 91,
+      "rank": 92,
       "score": 15,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -3311,7 +3336,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 92,
+      "rank": 93,
       "score": 15,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -3357,7 +3382,7 @@
         "reportPath": "data/playtests/llm-batches/BATCH-2026-04-12-001/SUMMARY.md#critical"
       },
       "score": 15,
-      "rank": 93,
+      "rank": 94,
       "resolvedAt": "2026-04-12T05:29:35.897Z",
       "resolvedBy": "683288810"
     },
@@ -3397,28 +3422,10 @@
       ],
       "suggestedFix": "Option A: host buffers the most-recent enemy_state snapshot and resends on every new lobby member event. Option B: guest emits mp:coop:request_initial_state on its first run-screen mount; host replies with current snapshot. Option C: move transport.on() registration for mp:coop:* listeners to lobby-join time (before any game-start signal), so they're live as soon as the player is in the lobby.",
       "score": 15,
-      "rank": 94,
+      "rank": 95,
       "assignedTo": "game-logic sub-agent (wave 1)",
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
-    },
-    {
-      "canonicalId": "alpha-launch-blocker-001",
-      "category": "build_broken",
-      "severity": "critical",
-      "title": "Build broken: chess.js, zod, @types/geojson imports unresolved",
-      "description": "`npm run build` fails at Rollup resolution for `chess.js` (ChessBoard.svelte + chessGrader.ts), `zod` (curatedDeckSchema.ts), and `geojson` types (MapPinDrop.svelte + geoDataLoader.ts). All three are WIP features shipped by parallel agents without adding their deps to package.json. Blocks EVERY downstream step: Steam build, ship-gate verification, production bundle. Nothing can upload until resolved. Either install the three deps or revert the WIP feature commits that introduced the imports.",
-      "source": "swift-splashing-crown.md alpha plan catchup",
-      "status": "resolved",
-      "score": 15,
-      "affectedTracks": [
-        "alpha-launch-blocker"
-      ],
-      "firstSeen": "2026-04-11T08:00:00.000Z",
-      "suggestedFix": "`npm install chess.js zod @types/geojson` \u2014 OR identify the owning agent of each feature and have them either install the dep or revert their import. Minimum-viable path: install all three (they're small, mainstream libs), then address whether each feature ships in alpha or gets gated.",
-      "rank": 95,
-      "resolvedAt": "2026-04-12T02:40:00.000Z",
-      "resolvedBy": "stale-sweep-2026-04-12 (verified: npm run typecheck=0 errors, npm run build=clean, npx vitest run=6121/6121 pass on main cd63bb9f9)"
     },
     {
       "canonicalId": "alpha-launch-blocker-003",
@@ -5010,6 +5017,25 @@
       "resolvedBy": "ee7236892"
     },
     {
+      "canonicalId": "alpha-review-risk-003",
+      "category": "content_bug",
+      "severity": "high",
+      "title": "4 facts contain literal 'undefined' strings in player-visible text",
+      "description": "Four curated deck facts contain the literal string 'undefined' (lowercase) in their question or answer text, visible to players during combat quiz. Indicates a generation-pipeline bug where a template slot failed to substitute and the string 'undefined' was written into the fact body verbatim. 10-minute content-agent fix: grep facts.db / curated.db for `undefined` tokens, identify the 4 facts, rewrite each manually. Not a blocker but a predictable Steam review complaint (\"typos in questions\").",
+      "source": "swift-splashing-crown.md T3.2",
+      "status": "resolved",
+      "score": 6,
+      "affectedTracks": [
+        "alpha-review-risk",
+        "content"
+      ],
+      "firstSeen": "2026-04-11T08:00:00.000Z",
+      "suggestedFix": "content-agent: `grep -rn '\\bundefined\\b' data/decks/` \u2014 identify affected facts, rewrite each, rebuild curated.db via `npm run build:curated`, verify in-game display via visual-inspect scenario.",
+      "rank": 145,
+      "resolvedAt": "2026-04-12T05:29:35.897Z",
+      "resolvedBy": "false-positive: all 3 facts use undefined as legitimate English word"
+    },
+    {
       "canonicalId": "CARD-AUDIT-2026-04-11-medium-001",
       "category": "verification_gap",
       "severity": "medium",
@@ -5022,7 +5048,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T17:30:00.000Z",
       "lastSeen": "2026-04-11T17:30:00.000Z",
-      "rank": 145,
+      "rank": 146,
       "score": 6,
       "status": "closed",
       "sourceBatch": "CARD-AUDIT-2026-04-11",
@@ -5040,25 +5066,6 @@
       "clusterBoost": 0,
       "resolvedAt": "2026-04-12T07:52:04.862Z",
       "resolvedBy": "Docker visual verify deferred \u2014 tracking task, not a bug"
-    },
-    {
-      "canonicalId": "alpha-review-risk-003",
-      "category": "content_bug",
-      "severity": "high",
-      "title": "4 facts contain literal 'undefined' strings in player-visible text",
-      "description": "Four curated deck facts contain the literal string 'undefined' (lowercase) in their question or answer text, visible to players during combat quiz. Indicates a generation-pipeline bug where a template slot failed to substitute and the string 'undefined' was written into the fact body verbatim. 10-minute content-agent fix: grep facts.db / curated.db for `undefined` tokens, identify the 4 facts, rewrite each manually. Not a blocker but a predictable Steam review complaint (\"typos in questions\").",
-      "source": "swift-splashing-crown.md T3.2",
-      "status": "resolved",
-      "score": 6,
-      "affectedTracks": [
-        "alpha-review-risk",
-        "content"
-      ],
-      "firstSeen": "2026-04-11T08:00:00.000Z",
-      "suggestedFix": "content-agent: `grep -rn '\\bundefined\\b' data/decks/` \u2014 identify affected facts, rewrite each, rebuild curated.db via `npm run build:curated`, verify in-game display via visual-inspect scenario.",
-      "rank": 146,
-      "resolvedAt": "2026-04-12T05:29:35.897Z",
-      "resolvedBy": "false-positive: all 3 facts use undefined as legitimate English word"
     },
     {
       "canonicalId": "02-neural-optimal-issue-1775871222977-02-003",
@@ -5260,6 +5267,27 @@
       "resolvedBy": "Docker SwiftShader limitation at 16+ containers \u2014 not a game bug"
     },
     {
+      "canonicalId": "meta-lint-004",
+      "category": "rng_determinism",
+      "severity": "high",
+      "title": "relicAcquisitionService.ts:140 shouldDropRandomRelic uses unseeded Math.random()",
+      "description": "Third unsanctioned Math.random() in relic acquisition pipeline, not covered by BATCH-ULTRA T9 fix (1e7624430). Co-op peers will get different relic drops. Discovered by no-bare-math-random.mjs lint on day-1 run.",
+      "source": "no-bare-math-random.mjs",
+      "status": "closed",
+      "score": 5,
+      "affectedTracks": [
+        "meta-lint"
+      ],
+      "reproductionSteps": [
+        "npm run lint:rng"
+      ],
+      "suggestedFix": "Apply same seeded-RNG guard pattern: isRunRngActive() ? getRunRng('relicDrops').next() : Math.random().",
+      "firstSeen": "2026-04-11T14:50:00.000Z",
+      "closingCommit": "b3164469a",
+      "resolvedAt": "2026-04-11T16:40:00.000Z",
+      "rank": 153
+    },
+    {
       "canonicalId": "MP-STEAM-20260422-003",
       "category": "bug_code_defect",
       "severity": "high",
@@ -5288,7 +5316,7 @@
       },
       "suggestedFix": "Remove the bang, and also add typeof-number check: `if (typeof snapshot?.currentHP !== 'number' || typeof snapshot?.maxHP !== 'number') return;` \u2014 matches the stricter guard pattern already used by the enemy_hp_update handler at line 219.",
       "score": 5,
-      "rank": 153,
+      "rank": 154,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
     },
@@ -5321,7 +5349,7 @@
       },
       "suggestedFix": "Exponential backoff to 3-5s total window (e.g., 0/200/500/1500/3000ms, 5 attempts). Surface final failures to application layer via onSendFailed callback. Show toast/overlay to players when a critical message fails to deliver so they can retry rather than suffer silent desync.",
       "score": 5,
-      "rank": 154,
+      "rank": 155,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
     },
@@ -5353,32 +5381,11 @@
       },
       "suggestedFix": "Write a Vitest integration suite that spins up two MultiplayerLobbyService instances sharing a fake SteamP2PTransport with configurable latency, send-drop rate, and session-priming delay. Assert: both clients reach combat with identical enemy snapshot, damage dealt by player A propagates to player B within 1s, turn-end barrier resolves with both deltas merged.",
       "score": 5,
-      "rank": 155,
+      "rank": 156,
       "deferredReason": "Deferred to separate session \u2014 full Vitest integration harness with simulated SteamP2PTransport is multi-hundred-line effort that would dwarf the primary fix in scope. Track as its own feature.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
-    },
-    {
-      "canonicalId": "meta-lint-004",
-      "category": "rng_determinism",
-      "severity": "high",
-      "title": "relicAcquisitionService.ts:140 shouldDropRandomRelic uses unseeded Math.random()",
-      "description": "Third unsanctioned Math.random() in relic acquisition pipeline, not covered by BATCH-ULTRA T9 fix (1e7624430). Co-op peers will get different relic drops. Discovered by no-bare-math-random.mjs lint on day-1 run.",
-      "source": "no-bare-math-random.mjs",
-      "status": "closed",
-      "score": 5,
-      "affectedTracks": [
-        "meta-lint"
-      ],
-      "reproductionSteps": [
-        "npm run lint:rng"
-      ],
-      "suggestedFix": "Apply same seeded-RNG guard pattern: isRunRngActive() ? getRunRng('relicDrops').next() : Math.random().",
-      "firstSeen": "2026-04-11T14:50:00.000Z",
-      "closingCommit": "b3164469a",
-      "resolvedAt": "2026-04-11T16:40:00.000Z",
-      "rank": 156
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-TN-002",
@@ -5941,6 +5948,74 @@
       "rank": 178
     },
     {
+      "canonicalId": "NPT-2026-04-24-001-mystery-quiz-bracket-leak",
+      "category": "normal_playthrough_content_bug",
+      "severity": "high",
+      "title": "Normal playthrough \u2014 Mystery event quiz displays unresolved `{N}` bracket tokens instead of numbers",
+      "description": "Mystery events that pull facts with `{N}`-format `correctAnswer` (e.g. `{2018}`, `{600}`) render the literal brace tokens in quiz answer buttons. Root cause: `src/ui/components/EventQuiz.svelte` (lines 61-112) builds the `choices` array straight from `fact.correctAnswer` + `fact.distractors` without passing through `displayAnswer()` from `numericalDistractorService`. The combat path in `src/services/quizService.ts` (lines 189-235) correctly strips braces; the mystery path was missed. Ground-truth verified: grep confirms zero `displayAnswer` imports in `EventQuiz.svelte`. Observed live in fullrun LLM playtest on a pomegranate-seed-count mystery event \u2014 buttons rendered `{2018}` and `About {600}`.",
+      "frequency": 1,
+      "affectedTracks": [
+        "normal-playthrough"
+      ],
+      "affectedProfiles": [
+        "fullrun-llm-tester"
+      ],
+      "firstSeen": "2026-04-24T12:40:00.000Z",
+      "lastSeen": "2026-04-24T12:40:00.000Z",
+      "status": "fixed",
+      "sourceBatch": "LLM-PLAYTEST-BATCH-2026-04-24-001",
+      "bestEvidence": {
+        "metric": "source-read + live layout dump verification",
+        "episodes": 1,
+        "bugFile": "src/ui/components/EventQuiz.svelte",
+        "bugLines": [
+          61,
+          112
+        ],
+        "reportPath": "data/playtests/llm-batches/BATCH-2026-04-24-001/full-run.md",
+        "summaryPath": "data/playtests/llm-batches/BATCH-2026-04-24-001/SUMMARY.md"
+      },
+      "fixHypothesis": "Import `displayAnswer` in `EventQuiz.svelte` and apply it when building `choices` (and when rendering `correctAnswer` on line 201 for the reveal state). Mirrors the pattern already used in `quizService.ts` and `nonCombatQuizSelector.ts`.",
+      "score": 5.0,
+      "rank": 179,
+      "fixedInCommit": "584245580e6748bec98b1af7300623271a144092",
+      "fixedAt": "2026-04-25T00:00:00.000Z"
+    },
+    {
+      "canonicalId": "NPT-2026-04-24-002-map-node-advance-on-combat-start-failure",
+      "category": "normal_playthrough_run_state_bug",
+      "severity": "high",
+      "title": "Normal playthrough \u2014 Map node marked visited before combat start resolves; failed combat silently consumes the node",
+      "description": "In `src/CardApp.svelte:1305`, `onMapNodeSelected(nodeId)` is called BEFORE awaiting `startEncounterForRoom(node.enemyId)` on line 1314. If the encounter throws or returns false (caught at lines 1320-1324), the code reverts the current screen to `dungeonMap` but the map-state mutation has already landed \u2014 the selected node becomes locked and the next row unlocks without the encounter having been played. Ground-truth verified by reading CardApp.svelte. Observed live when a Phaser `drawImage` null error in `CombatScene.setEnemy` prevented the second combat from launching; tester confirmed row 1 nodes became locked and row 2 became available despite the encounter never running. The underlying Phaser crash may be SwiftShader-specific (Docker/CI), but the ARCHITECTURAL consequence \u2014 map advancing on failure \u2014 is environment-independent and will strand any real player hit by a transient failure.",
+      "frequency": 1,
+      "affectedTracks": [
+        "normal-playthrough"
+      ],
+      "affectedProfiles": [
+        "fullrun-llm-tester"
+      ],
+      "firstSeen": "2026-04-24T12:40:00.000Z",
+      "lastSeen": "2026-04-24T12:40:00.000Z",
+      "status": "fixed",
+      "sourceBatch": "LLM-PLAYTEST-BATCH-2026-04-24-001",
+      "bestEvidence": {
+        "metric": "source-read verification + live reproduction",
+        "episodes": 1,
+        "bugFile": "src/CardApp.svelte",
+        "bugLines": [
+          1295,
+          1329
+        ],
+        "reportPath": "data/playtests/llm-batches/BATCH-2026-04-24-001/full-run.md",
+        "summaryPath": "data/playtests/llm-batches/BATCH-2026-04-24-001/SUMMARY.md"
+      },
+      "fixHypothesis": "Reorder `commitMapNodeSelection` so `onMapNodeSelected(nodeId)` is called only after `startEncounterForRoom` returns true. Alternatively, snapshot map state before the call and roll back in the catch block + the false-return branch. Safer approach: move the mutation into the success branch only.",
+      "score": 5.0,
+      "rank": 180,
+      "fixedInCommit": "6c907875e30e3c53973c376a4b7ffdc892e4dbbb",
+      "fixedAt": "2026-04-25T00:00:00.000Z"
+    },
+    {
       "canonicalId": "01-stat-baseline-issue-1744334400000-01-007",
       "category": "balance_healing_insufficient",
       "severity": "medium",
@@ -5953,7 +6028,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 179,
+      "rank": 181,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -5985,7 +6060,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 180,
+      "rank": 182,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6017,7 +6092,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 181,
+      "rank": 183,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6049,7 +6124,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 182,
+      "rank": 184,
       "score": 3,
       "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6084,7 +6159,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 183,
+      "rank": 185,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6120,7 +6195,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 184,
+      "rank": 186,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6155,7 +6230,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 185,
+      "rank": 187,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6185,7 +6260,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 186,
+      "rank": 188,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6216,7 +6291,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 187,
+      "rank": 189,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6247,7 +6322,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 188,
+      "rank": 190,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6279,7 +6354,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 189,
+      "rank": 191,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6311,7 +6386,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 190,
+      "rank": 192,
       "score": 3,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -6329,6 +6404,44 @@
       "clusterBoost": false,
       "resolvedAt": "2026-04-12T07:57:14.202Z",
       "resolvedBy": "Steam Deck concern \u2014 post-Steam PC launch scope"
+    },
+    {
+      "canonicalId": "meta-lint-002",
+      "category": "orphan_component",
+      "severity": "medium",
+      "title": "RaceResultsScreen.svelte orphan \u2014 not imported by CardApp router",
+      "description": "Third orphan screen beyond BATCH-ULTRA T7 TriviaRoundScreen. In-progress multiplayer feature that was never wired up. Either route it or add // @wiring-check:skip comment.",
+      "source": "check-wiring.mjs",
+      "status": "closed",
+      "score": 3,
+      "affectedTracks": [
+        "meta-lint"
+      ],
+      "reproductionSteps": [
+        "npm run lint:wiring"
+      ],
+      "suggestedFix": "Wire into CardApp.svelte routing with a new {:else if} branch, OR add suppression comment if it is intentionally not yet routed.",
+      "firstSeen": "2026-04-11T14:50:00.000Z",
+      "rank": 193,
+      "resolvedAt": "2026-04-12T07:43:07.539Z",
+      "resolvedBy": "intentional orphan: future multiplayer feature, wiring-check:skip annotated"
+    },
+    {
+      "canonicalId": "parallel-session-regression-001",
+      "category": "typecheck_regression",
+      "severity": "medium",
+      "title": "wowFactorService.ts DeckFact cast errors introduced by 766223a3a parallel session",
+      "description": "3 TypeScript errors at lines 63/77/85: DeckFact \u2192 Record<string, unknown> cast incompatibility. Not introduced by this session, traced to parallel Claude session commit 766223a3a (Phase 7 multiplayer lobby browser). Soft-warn hook lets it through but real fix still needed.",
+      "source": "typecheck",
+      "status": "closed",
+      "score": 3,
+      "affectedTracks": [
+        "parallel-session-regression"
+      ],
+      "firstSeen": "2026-04-11T16:40:00.000Z",
+      "closingCommit": "dea268845",
+      "resolvedAt": "2026-04-11T17:15:00.000Z",
+      "rank": 194
     },
     {
       "canonicalId": "MP-STEAM-20260422-008",
@@ -6358,7 +6471,7 @@
       },
       "suggestedFix": "Invert the logic: maintain `mpScreens` (lobby-ish) and `hubScreens` (outside-run) Sets, and treat everything else as implicitly in-run. Or derive gameScreens from a Screen-union exclusion (a `Exclude<Screen, HubScreen | LobbyScreen>` computed at compile time so adding a new Screen can't silently opt out of the game-screen allowlist). Add a lint (scripts/lint/check-gamescreens-allowlist.mjs) that diffs the Screen union against the Set literal and fails if any Screen is missing.",
       "score": 3,
-      "rank": 191,
+      "rank": 195,
       "deferredReason": "BUG 27 fix (commit 61a60edd9) already mitigates runtime risk by typing the Set as Set<Screen>. Compile-derived Exclude<> type + lint script is hardening nice-to-have, not a bug.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -6392,7 +6505,7 @@
       },
       "suggestedFix": "Add a minimal health pill on MultiplayerHUD: green (all partners fresh <15s), yellow (stale partner 15-60s), red (unresponsive >60s or send-retry-budget-exceeded). Click to open debug overlay with full transport state. Reuse the multiplayerCoopSync partner-heartbeat tracker that already exists (lines 55-130).",
       "score": 3,
-      "rank": 192,
+      "rank": 196,
       "deferredReason": "New HUD surface \u2014 user should pick visual design (position, colors, interaction pattern) before implementation.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -6427,7 +6540,7 @@
       },
       "suggestedFix": "Either (a) make the production CSP Tauri-aware: detect __TAURI_INTERNALS__ at HTML-injection time and use a permissive desktop CSP that allows tauri://, steam://, and relay/LAN endpoints; or (b) document that any non-Steam-P2P networking requires a CSP exception and add a lint that catches new connect-src-consuming code without a matching CSP update. Delete the dead csp.ts module regardless (lint flagged it already in MP-20260413-003941-MP-012).",
       "score": 3,
-      "rank": 193,
+      "rank": 197,
       "deferredReason": "CSP rework is risky surface area \u2014 wants user sign-off on which endpoints (wss://mp.recallrogue.com? steam://? relay fallback?) to allow before editing the prod CSP.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -6464,7 +6577,7 @@
       },
       "suggestedFix": "Unify on src/services/platformService.ts \u2014 it already captures `const isDesktop = platform === 'desktop'` at module-load time. Have both pickBackend implementations import and use that single constant instead of re-sniffing globals. Alternatively memoize the result of the first check and expose as a module-level const.",
       "score": 3,
-      "rank": 194,
+      "rank": 198,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
     },
@@ -6498,47 +6611,9 @@
       },
       "suggestedFix": "Replace DEBUG_COOP with a runtime-toggleable flag. Either (a) localStorage-based: `window.__rrSetMpDebug(true)` writes a flag that coopLog reads on each call; (b) always-on rrLog with a per-category filter applied by the log reader; (c) tie to URL param `?debug=mp` or keyboard combo. Log-on-demand beats log-at-compile-time for shipped code.",
       "score": 3,
-      "rank": 195,
+      "rank": 199,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
-    },
-    {
-      "canonicalId": "meta-lint-002",
-      "category": "orphan_component",
-      "severity": "medium",
-      "title": "RaceResultsScreen.svelte orphan \u2014 not imported by CardApp router",
-      "description": "Third orphan screen beyond BATCH-ULTRA T7 TriviaRoundScreen. In-progress multiplayer feature that was never wired up. Either route it or add // @wiring-check:skip comment.",
-      "source": "check-wiring.mjs",
-      "status": "closed",
-      "score": 3,
-      "affectedTracks": [
-        "meta-lint"
-      ],
-      "reproductionSteps": [
-        "npm run lint:wiring"
-      ],
-      "suggestedFix": "Wire into CardApp.svelte routing with a new {:else if} branch, OR add suppression comment if it is intentionally not yet routed.",
-      "firstSeen": "2026-04-11T14:50:00.000Z",
-      "rank": 196,
-      "resolvedAt": "2026-04-12T07:43:07.539Z",
-      "resolvedBy": "intentional orphan: future multiplayer feature, wiring-check:skip annotated"
-    },
-    {
-      "canonicalId": "parallel-session-regression-001",
-      "category": "typecheck_regression",
-      "severity": "medium",
-      "title": "wowFactorService.ts DeckFact cast errors introduced by 766223a3a parallel session",
-      "description": "3 TypeScript errors at lines 63/77/85: DeckFact \u2192 Record<string, unknown> cast incompatibility. Not introduced by this session, traced to parallel Claude session commit 766223a3a (Phase 7 multiplayer lobby browser). Soft-warn hook lets it through but real fix still needed.",
-      "source": "typecheck",
-      "status": "closed",
-      "score": 3,
-      "affectedTracks": [
-        "parallel-session-regression"
-      ],
-      "firstSeen": "2026-04-11T16:40:00.000Z",
-      "closingCommit": "dea268845",
-      "resolvedAt": "2026-04-11T17:15:00.000Z",
-      "rank": 197
     },
     {
       "canonicalId": "MP-STEAM-20260422-059",
@@ -6568,7 +6643,7 @@
       },
       "suggestedFix": "Store the actual returned handle type (likely CallbackHandle or similar) from steamworks-rs register_callback to ensure Drop fires on app exit, not after new().",
       "score": 3,
-      "rank": 198,
+      "rank": 200,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "partialInCommit": "2e25b6765",
@@ -6607,7 +6682,7 @@
       },
       "suggestedFix": "Add `if lobby_id != active_lobby_id { return; }` guard to the Entered arm, matching the pattern applied to other arms in BUG 24.",
       "score": 3,
-      "rank": 199,
+      "rank": 201,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "884d603a7",
@@ -6642,7 +6717,7 @@
       },
       "suggestedFix": "Drop the early-return guard. Let Set iteration over zero subscribers be a natural no-op.",
       "score": 3,
-      "rank": 200,
+      "rank": 202,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6674,7 +6749,7 @@
       },
       "suggestedFix": "Deep-clone the players array per subscriber call, or Object.freeze the snapshot to make in-place mutation a hard error.",
       "score": 3,
-      "rank": 201,
+      "rank": 203,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6705,7 +6780,7 @@
       },
       "suggestedFix": "Emit console.warn on init failure and fire onLobbyError so the application layer knows presence detection is unavailable.",
       "score": 3,
-      "rank": 202,
+      "rank": 204,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6736,7 +6811,7 @@
       },
       "suggestedFix": "Either wire setActiveLobby from the lobby service on lobby join, or delete the dead code path.",
       "score": 3,
-      "rank": 203,
+      "rank": 205,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "verifiedAt": "2026-04-23T12:45:00.000Z",
@@ -6774,7 +6849,7 @@
       },
       "suggestedFix": "Add a $effect-level assertion that logs a warning if currentLobby goes null while the current screen is in gameScreens. Gate unmount on a stable 'left lobby' signal rather than a transient null.",
       "score": 3,
-      "rank": 204,
+      "rank": 206,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6808,7 +6883,7 @@
       },
       "suggestedFix": "When switching deckSelectionMode, explicitly null out the abandoned variant before setting the new one.",
       "score": 3,
-      "rank": 205,
+      "rank": 207,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "8f5d7a74b",
@@ -6844,7 +6919,7 @@
       },
       "suggestedFix": "Scope _handlersAttached per-transport-instance rather than module-level.",
       "score": 3,
-      "rank": 206,
+      "rank": 208,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "8f5d7a74b",
@@ -6883,7 +6958,7 @@
       },
       "suggestedFix": "Include `multiplayerRating: 1500` as default when inserting a new player in the mp:lobby:player_joined handler.",
       "score": 3,
-      "rank": 207,
+      "rank": 209,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6915,7 +6990,7 @@
       },
       "suggestedFix": "Fastify server should maintain last-known isReady state per player and replay it in settings broadcasts to late joiners.",
       "score": 3,
-      "rank": 208,
+      "rank": 210,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -6947,7 +7022,7 @@
       },
       "suggestedFix": "Filter players.length check to only count players with connectionState === 'connected'. Show a 'waiting for partner to reconnect' state if count drops below minimum.",
       "score": 3,
-      "rank": 209,
+      "rank": 211,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "8f5d7a74b",
@@ -6984,7 +7059,7 @@
       },
       "suggestedFix": "Prioritize protocol-critical messages (start, settings, join) over chatty ones (ping) in the eviction strategy. Never evict the first settings broadcast. Or raise cap to 256.",
       "score": 3,
-      "rank": 210,
+      "rank": 212,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "0c2de9290",
@@ -7020,7 +7095,7 @@
       },
       "suggestedFix": "Retry getLocalPersonaName 5\u00d7500ms before falling back to 'Player'. Surface a 'Steam not ready' error state if all retries fail.",
       "score": 3,
-      "rank": 211,
+      "rank": 213,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -7047,7 +7122,7 @@
         "Start trivia night \u2192 host quits mid-question \u2192 guest sees stale interval still firing."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 212,
+      "rank": 214,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave",
       "workStartedAt": "2026-04-23T03:44:51.000Z",
       "verifiedAt": "2026-04-23T03:50:57.000Z",
@@ -7077,7 +7152,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 213
+      "rank": 215
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SAMECARDS-002",
@@ -7102,7 +7177,7 @@
         "static-analysis only \u2014 depends on fork-consumption order vs broadcastForkSeeds call in gameFlowController.ts:1111."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 214
+      "rank": 216
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-RC-005",
@@ -7127,7 +7202,7 @@
         "Trigger a race result with only one player in results.players."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 215,
+      "rank": 217,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-2",
       "workStartedAt": "2026-04-23T04:04:45.000Z",
       "verifiedAt": "2026-04-23T04:17:36.000Z",
@@ -7157,7 +7232,7 @@
         "Finish a race with different durations; Duration row arrow points up on slower player's column."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 216,
+      "rank": 218,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave",
       "workStartedAt": "2026-04-23T03:44:51.000Z",
       "verifiedAt": "2026-04-23T03:50:57.000Z",
@@ -7187,7 +7262,7 @@
         "static-analysis \u2014 trigger race with two machines whose clocks differ by >1s."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 217
+      "rank": 219
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-MS-002",
@@ -7212,7 +7287,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 218
+      "rank": 220
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-CR-002",
@@ -7237,7 +7312,7 @@
         "static-analysis \u2014 grep -r 'CoopLootSummary' src/."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 219,
+      "rank": 221,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-2",
       "workStartedAt": "2026-04-23T04:04:45.000Z",
       "verifiedAt": "2026-04-23T04:17:36.000Z",
@@ -7267,7 +7342,7 @@
         "static-analysis \u2014 search multiplayer.md for 'gold','shop','rest','mystery'."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 220,
+      "rank": 222,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-3",
       "workStartedAt": "2026-04-23T04:20:47.000Z",
       "verifiedAt": "2026-04-23T04:24:16.000Z",
@@ -7297,7 +7372,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 221
+      "rank": 223
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-SCORE-001",
@@ -7322,7 +7397,7 @@
         "grep -r 'from.*multiplayerScoring' outside test files returns zero hits."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 222
+      "rank": 224
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-AN-002",
@@ -7347,7 +7422,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 223
+      "rank": 225
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-WS-003",
@@ -7372,7 +7447,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 224
+      "rank": 226
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-LB-001",
@@ -7397,7 +7472,7 @@
         "Click Refresh quickly 3x while auto-refresh interval fires."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 225,
+      "rank": 227,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave",
       "workStartedAt": "2026-04-23T03:44:51.000Z",
       "verifiedAt": "2026-04-23T03:50:57.000Z",
@@ -7427,7 +7502,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 226,
+      "rank": 228,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave",
       "workStartedAt": "2026-04-23T03:44:51.000Z",
       "verifiedAt": "2026-04-23T03:50:57.000Z",
@@ -7457,7 +7532,7 @@
         "Set LAN URL, kill app, relaunch, open Multiplayer \u2014 transport tries stale LAN URL."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 227
+      "rank": 229
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-PF-002",
@@ -7482,7 +7557,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 228
+      "rank": 230
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-OB-002",
@@ -7507,7 +7582,41 @@
         "Play MP without creating profile, close, reopen \u2014 check localPlayerId in console."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 229
+      "rank": 231
+    },
+    {
+      "canonicalId": "NPT-2026-04-24-003-mystery-quiz-cross-domain-distractors",
+      "category": "normal_playthrough_content_quality",
+      "severity": "medium",
+      "title": "Normal playthrough \u2014 Mystery event quiz fallback picks distractors across unrelated answer domains",
+      "description": "When a mystery fact ships with <2 distractors, `EventQuiz.svelte` (lines 101-109) falls back to `allFacts.map(f => f.correctAnswer)` shuffled \u2014 with no answer-type or domain filter. Observed live: a pomegranate-seed-count question (numeric answer) displayed distractors 'Second fermentation in bottle' (wine process) and 'Veal' (food) alongside the numeric options. Trivially eliminable wrong answers \u2014 player can pick the correct numeric answer without knowing the fact. Both the correct answer and one distractor also leaked `{N}` braces (see NPT-001), so this issue is visible jointly with NPT-001 on the same screen.",
+      "frequency": 1,
+      "affectedTracks": [
+        "normal-playthrough"
+      ],
+      "affectedProfiles": [
+        "fullrun-llm-tester"
+      ],
+      "firstSeen": "2026-04-24T12:40:00.000Z",
+      "lastSeen": "2026-04-24T12:40:00.000Z",
+      "status": "fixed",
+      "sourceBatch": "LLM-PLAYTEST-BATCH-2026-04-24-001",
+      "bestEvidence": {
+        "metric": "live layout dump \u2014 4 buttons across 3 unrelated domains",
+        "episodes": 1,
+        "bugFile": "src/ui/components/EventQuiz.svelte",
+        "bugLines": [
+          101,
+          112
+        ],
+        "reportPath": "data/playtests/llm-batches/BATCH-2026-04-24-001/full-run.md",
+        "summaryPath": "data/playtests/llm-batches/BATCH-2026-04-24-001/SUMMARY.md"
+      },
+      "fixHypothesis": "Option A: require every mystery-event fact to ship \u22653 domain-appropriate distractors (content-side enforcement). Option B: filter the fallback pool by matching `answerTypePoolId` so random distractors share the same answer shape (numbers with numbers, names with names). Option B is lower-effort and fixes the full fact corpus at once.",
+      "score": 3.0,
+      "rank": 232,
+      "fixedInCommit": "584245580e6748bec98b1af7300623271a144092",
+      "fixedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "canonicalId": "04-combat-core-issue-1744339200008-04-009",
@@ -7522,7 +7631,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 230,
+      "rank": 233,
       "score": 1,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -7554,7 +7663,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 231,
+      "rank": 234,
       "score": 1,
       "status": "resolved",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -7587,7 +7696,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 232,
+      "rank": 235,
       "score": 1,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -7622,7 +7731,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 233,
+      "rank": 236,
       "score": 1,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -7654,7 +7763,7 @@
       "affectedProfiles": [],
       "firstSeen": "2026-04-11T11:30:00.000Z",
       "lastSeen": "2026-04-11T11:30:00.000Z",
-      "rank": 234,
+      "rank": 237,
       "score": 1,
       "status": "closed",
       "sourceBatch": "BATCH-2026-04-11-ULTRA",
@@ -7702,7 +7811,7 @@
       },
       "suggestedFix": "Either (a) fail-fast: if production build detects Tauri runtime AND WebSocketTransport is selected AND VITE_MP_WS_URL is unset, log an error and disable the fallback rather than silently pointing at localhost; or (b) set VITE_MP_WS_URL=wss://mp.recallrogue.com (or whatever the prod relay is) in scripts/steam-build.sh. Document the intended production URL in docs/architecture/multiplayer.md.",
       "score": 1,
-      "rank": 235,
+      "rank": 238,
       "deferredReason": "Decision depends on whether MP ever needs a WebSocket fallback on Steam builds (currently pure P2P). Ties into broader MP relay infrastructure call.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -7740,7 +7849,7 @@
       },
       "suggestedFix": "Add a parameterized test that calls startGame() under every MultiplayerMode with and without contentSelection and asserts the exact transport.send payload shape. Also add a type-level test (or a .d.ts assertion) that LobbyStartPayload.contentSelection is required, not optional.",
       "score": 1,
-      "rank": 236,
+      "rank": 239,
       "deferredReason": "Narrow regression test \u2014 will add alongside the broader integration harness in MP-006.",
       "deferredAt": "2026-04-22T19:30:00.000Z",
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
@@ -7776,7 +7885,7 @@
       },
       "suggestedFix": "In encounterBridge.ts wherever player HP commits after enemy phase (grep for `player.hp = ` or `applyDamageToLocalPlayer`), add `if (run.multiplayerMode === 'coop' && newHp <= 0) handleCoopPlayerDeath(localPlayerId);`. Add a test that two-player coop with one player at 1HP ends for both when the enemy lands a hit.",
       "score": 1,
-      "rank": 237,
+      "rank": 240,
       "resolvedAt": "2026-04-22T20:58:09.000Z",
       "resolvedBy": "ee7236892"
     },
@@ -7803,7 +7912,7 @@
         "Observe screen after initTriviaGame is called before any hostNextQuestion fires."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 238,
+      "rank": 241,
       "assignedAgent": "orchestrator-2026-04-23-ui-cleanup-wave-2",
       "workStartedAt": "2026-04-23T04:04:45.000Z",
       "verifiedAt": "2026-04-23T04:17:36.000Z",
@@ -7833,7 +7942,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 239
+      "rank": 242
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-AN-003",
@@ -7858,7 +7967,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 240
+      "rank": 243
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-LB-003",
@@ -7883,7 +7992,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 241
+      "rank": 244
     },
     {
       "canonicalId": "MP-AUDIT-2026-04-23-OPUS-A-LN-003",
@@ -7908,7 +8017,7 @@
         "static-analysis only."
       ],
       "batchId": "MP-AUDIT-2026-04-23-OPUS-A",
-      "rank": 242
+      "rank": 245
     },
     {
       "canonicalId": "MP-20260413-003941-MP-001",
@@ -7923,7 +8032,7 @@
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "resolvedAt": "2026-04-13T00:39:00.000Z",
       "resolvedBy": "Added http://host.docker.internal:* to dev CSP connect-src in vite.config.ts line 29",
-      "rank": 243
+      "rank": 246
     },
     {
       "canonicalId": "MP-20260413-003941-MP-002",
@@ -7938,7 +8047,7 @@
       "lastSeen": "2026-04-13T00:39:00.000Z",
       "resolvedAt": "2026-04-13T00:39:00.000Z",
       "resolvedBy": "Must start Fastify with CORS_ORIGIN='http://localhost:5173,http://host.docker.internal:5173'. Skill spec should document this.",
-      "rank": 244
+      "rank": 247
     },
     {
       "canonicalId": "MP-20260413-003941-MP-003",
@@ -7951,7 +8060,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 245,
+      "rank": 248,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "0d017edee",
@@ -7970,7 +8079,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 246,
+      "rank": 249,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "cdbf6dcbc",
@@ -7989,7 +8098,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 247,
+      "rank": 250,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "fixedInCommit": "cdbf6dcbc",
@@ -8008,7 +8117,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 248,
+      "rank": 251,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -8023,7 +8132,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 249,
+      "rank": 252,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -8038,7 +8147,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 250,
+      "rank": 253,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -8053,7 +8162,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 251,
+      "rank": 254,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "partialInCommit": "0d017edee",
@@ -8072,7 +8181,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 252,
+      "rank": 255,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -8087,7 +8196,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 253,
+      "rank": 256,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z"
     },
@@ -8102,7 +8211,7 @@
       "sourceBatch": "MP-20260413-003941",
       "firstSeen": "2026-04-13T00:39:00.000Z",
       "lastSeen": "2026-04-13T00:39:00.000Z",
-      "rank": 254,
+      "rank": 257,
       "assignedAgent": "ULTRATHINK-fixwave-FULL-2026-04-22",
       "workStartedAt": "2026-04-22T23:30:00.000Z",
       "partialInCommit": "9700017d9",
@@ -8111,7 +8220,7 @@
       "note": "[2026-04-23] src/csp.ts deleted in 9700017d9; agent-routing.md:36 still lists it (orchestrator cleanup pending)"
     }
   ],
-  "openCount": 55,
-  "resolvedCount": 145,
+  "openCount": 54,
+  "resolvedCount": 130,
   "_note": "ULTRATHINK FULL fix wave started 2026-04-22T23:30Z on 96 open MP issues across 8 parallel agents. WAVE 1 fix complete 2026-04-22T22:50Z. Resolved 8: 016 (mode propagation, in 77c71eaca + 14495f06b), 017 (trivia init wiring, in 9e0650b53 + ee7236892), 018 (live tauri check), 019 (LAN gate on Steam), 020 (Fastify forward payload), 022 (mode-aware activeRunMode), 023 (idempotent start), 029 (surfaced send exhaustion) \u2014 all in 14495f06b. WAVE 1-3 fix attempt started 2026-04-22T22:30Z on issues 016,017,018,019,020,022,023,029. MP-STEAM-20260422-ULTRATHINK batch (54 issues, 6 critical, 11 high, 23 medium, 14 low) added 2026-04-22 from 5-agent ultrathink audit (Steam P2P transport, coop start flow, Tauri/build divergence, lobby identity, recent commits). Includes 6 NEW critical findings the prior MP-STEAM-20260422-COOP batch missed: mp:lobby:start mode-not-applied, duel/trivia start paths unwired, hasSteam stale snapshot, stale rr-lan-server localStorage, Fastify payload-stripping, two-clients-one-Steam-account. Purged non-MP issues 2026-04-22 for focused Steam/multiplayer/lobby audit. Backup: leaderboard.pre-mp-sweep.backup.json. MP-STEAM-20260422-COOP batch (15 issues, 2 critical) added 2026-04-22 from orchestrator ultrathink audit triggered by user report of coop-isolation on Steam build.\n2026-04-23 VERIFY-POST-WAVE sweep: audited 39 issues across 5 fix-commits (5acc55df9,8f5d7a74b,0c2de9290,2e25b6765,49cfc15b7). Result: 20 fixed, 14 partial, 4 reverted to open, 1 credit corrected. See docs/gotchas.md for the two parallel-agent commit races surfaced."
 }

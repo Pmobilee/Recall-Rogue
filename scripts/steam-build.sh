@@ -86,7 +86,7 @@ if [[ "$PLATFORM" == "linux" ]]; then
     LINUX_VM_USER="${LINUX_VM_USER:-damion}"
     LINUX_IP=""
     for ip in $(arp -a | grep "$LINUX_VM_SUBNET" | grep -oE "${LINUX_VM_SUBNET//./\.}\.[0-9]+" | grep -v '\.255$' | grep -v '\.1$'); do
-        result=$(ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no -o BatchMode=yes "$LINUX_VM_USER@$ip" "hostname" 2>/dev/null)
+        result=$(ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no -o BatchMode=yes "$LINUX_VM_USER@$ip" "hostname" 2>/dev/null || true)
         if [ "$result" = "$LINUX_VM_HOSTNAME" ]; then LINUX_IP="$ip"; break; fi
     done
     if [[ -z "$LINUX_IP" ]]; then
@@ -99,7 +99,7 @@ if [[ "$PLATFORM" == "linux" ]]; then
         echo "[steam] Syncing source to Linux VM..."
         rsync -avz --progress \
           --exclude='src-tauri/target' --exclude='node_modules' --exclude='.git' \
-          --exclude='data' --exclude='dist' --exclude='.video-tmp' \
+          --exclude='/data' --exclude='dist' --exclude='.video-tmp' \
           --exclude='.openclaude' --exclude='store-assets' --exclude='*.db' \
           --exclude='_archived_assets' --exclude='steam/output' \
           --exclude='steam/store-images' --exclude='steam/windows-build' \
