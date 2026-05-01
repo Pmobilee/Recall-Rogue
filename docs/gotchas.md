@@ -1,3 +1,22 @@
+### 2026-05-01 — DungeonMap row-0 nodes off-screen on mount (Steam progression blocker)
+
+**What:** On a fresh `dungeonMap` load, map nodes were rendered below the viewport fold and never scrolled into view. Steam reviewer repro: after defeating a monster and returning to the map, a black screen with no clickable nodes. The scroll container had `scrollTop=108, scrollHeight=1398, clientHeight=1006`; row-0 entry nodes were positioned at `y=1233` inside the canvas.
+
+**Why:** The old auto-scroll used `scrollIntoView({ behavior: 'smooth', block: 'center' })` inside a single `requestAnimationFrame`. Three problems:
+1. `behavior:'smooth'` does not reliably complete in headless Chromium / SwiftShader — it fires asynchronously and may not settle by the time the first frame paints.
+2. A single RAF may fire before the map nodes have laid out — `querySelector('.state-available')` returned null, the effect no-oped, no retry.
+3. The `$effect` only refires when `availableNodes.length` changes. If the length was unchanged after returning from combat (same number of available nodes), no rescroll happened.
+
+**Fix:** Replaced with `scrollToAvailableNodes()` — a function that:
+- Sets `scrollContainer.scrollTop` directly (instant, synchronous).
+- Uses double `requestAnimationFrame` deferral to let layout settle.
+- Retries up to 5 times at 0/50/150/300/500ms if `.state-available` is not in DOM yet.
+- Is called both in `onMount` (initial load) and in the `$effect` (floor transitions).
+
+**File:** `src/ui/components/DungeonMap.svelte` lines ~270–295 (`scrollToAvailableNodes`) and lines ~320–360 (onMount + $effect).
+
+**Lesson:** Never use `scrollIntoView` with `behavior:'smooth'` for the initial reveal of a critical UI element. Smooth scroll is a hint, not a guarantee, and has zero completion callback. Use direct `scrollTop` for anything that must reliably land before user interaction.
+
 ### 2026-04-26 — MP gating: coming-soon screen instead of hidden tent
 
 **What:** For Steam v1.0, multiplayer was initially implemented by hiding the tent button entirely when `MULTIPLAYER_ENABLED=false`. This was superseded: the tent is now **always visible**. Clicking it with the flag off routes to a `comingSoon` screen (title, 2-line body, Back button). The five live MP screens remain guarded by `MULTIPLAYER_ENABLED &&`.

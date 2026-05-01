@@ -344,7 +344,7 @@ All three use the same compact layout: a `-` button, a level number (or "OFF" at
 ## Dungeon Map — Fog of War System
 
 **Source file:** `src/ui/components/DungeonMap.svelte`
-**Last updated:** 2026-04-01
+**Last updated:** 2026-05-01
 
 ### Overview
 
@@ -413,6 +413,19 @@ Fog extends full screen width via `left: -50vw; right: -50vw` inside `.dungeon-m
 - **Web Animations API** — each wisp uses JS-driven animation (CSS `@keyframes` with `var()` doesn't work in Chrome)
 - **Landscape support** — fog overlay respects `top: var(--topbar-height)` offset so top bar remains visible
 - **Reduced motion** — all wisp animations and edge opacity transitions disabled under `prefers-reduced-motion: reduce`
+
+### Auto-Scroll — Initial Row-0 Reveal (2026-05-01)
+
+On mount and whenever `availableNodes` changes, the map scrolls so the lowest available node is centered in the viewport.
+
+**Implementation (`scrollToAvailableNodes`):**
+- Uses direct `scrollTop` assignment (never `scrollIntoView` with `behavior:'smooth'`) — smooth scroll is unreliable in headless Chromium / SwiftShader and does not complete reliably before the user can interact.
+- Measures node center via `offsetTop` walk (not `getBoundingClientRect`) to avoid mid-animation transform artifacts.
+- Double `requestAnimationFrame` deferral in `onMount` and `$effect` ensures layout has fully settled before measuring.
+- Retry loop: if the `.state-available` element is not in the DOM on the first pass, retries up to 5 times at 0 / 50 / 150 / 300 / 500ms. Covers Phaser scene start tearing layout during initial load.
+- The `$effect` depends on `availableNodes.length` so floor-to-floor transitions still trigger rescroll when the available set changes.
+
+**Why this matters:** The scroll canvas is taller than the viewport (e.g. `scrollHeight=1398` vs `clientHeight=1006`). Row-0 (entry) nodes are positioned at `y~1233` inside the canvas — well below the fold. Without the scroll, the player sees a black map with no clickable nodes. This was a Steam rejection blocker (2026-05-01 submission).
 
 ---
 

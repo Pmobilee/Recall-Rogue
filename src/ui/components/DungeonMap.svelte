@@ -299,6 +299,58 @@
   }
 
   // =========================================================
+  // Scroll helper — instant, retry-with-backoff
+  // =========================================================
+
+  /**
+   * Synchronously scroll the map container so the lowest available node
+   * is centered in the viewport.
+   *
+   * Why not scrollIntoView with behavior:'smooth'?
+   * - smooth scroll is unreliable in headless Chromium / SwiftShader
+   * - it races with layout; nodes may not yet have their final offsetTop
+   * - it produces no feedback on completion, so we cannot retry on miss
+   *
+   * Strategy:
+   * 1. Find the first `.state-available` element.
+   * 2. Compute its center relative to the scroll container.
+   * 3. Set scrollTop directly (instant), clamped to valid range.
+   * 4. If the element is not found yet, retry up to 5 times at
+   *    progressive delays: 0, 50, 150, 300, 500 ms.
+   *    This covers Phaser scene start tearing the layout during initial load.
+   */
+  function scrollToAvailableNodes(container: HTMLDivElement, attempt = 0): void {
+    const RETRY_DELAYS = [0, 50, 150, 300, 500]
+
+    const availableEl = container.querySelector<HTMLElement>('.state-available')
+
+    if (!availableEl) {
+      // Node not in DOM yet — retry if we have attempts left
+      if (attempt < RETRY_DELAYS.length - 1) {
+        const delay = RETRY_DELAYS[attempt + 1]
+        setTimeout(() => scrollToAvailableNodes(container, attempt + 1), delay)
+      }
+      return
+    }
+
+    // offsetTop is relative to offsetParent; we need position relative to
+    // the scroll container. Walk up to find accumulated offset.
+    let offsetTop = 0
+    let el: HTMLElement | null = availableEl
+    while (el && el !== container) {
+      offsetTop += el.offsetTop
+      el = el.offsetParent as HTMLElement | null
+    }
+
+    const nodeHeight = availableEl.offsetHeight
+    const centerTarget = offsetTop + nodeHeight / 2 - container.clientHeight / 2
+    const maxScroll = container.scrollHeight - container.clientHeight
+    const targetScroll = Math.max(0, Math.min(centerTarget, maxScroll))
+
+    container.scrollTop = targetScroll
+  }
+
+  // =========================================================
   // Mount + resize tracking
   // =========================================================
 
@@ -342,18 +394,35 @@
       })
     }
 
+    // Initial scroll on mount: double-RAF ensures layout has settled before we
+    // measure offsetTop. The retry loop inside scrollToAvailableNodes covers
+    // Phaser scene start tearing the layout (nodes not yet in DOM).
+    if (scrollContainer) {
+      const container = scrollContainer
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          scrollToAvailableNodes(container)
+        })
+      })
+    }
+
     return () => observer.disconnect()
   })
 
-  // Auto-scroll to show current available nodes whenever they change
+  // Auto-scroll to show current available nodes whenever they change.
+  // Also fires on initial render (Svelte $effect runs after first mount paint).
+  // Uses instant scrollTop assignment — never smooth — for reliability in
+  // headless Chromium / SwiftShader and after returning from combat.
   $effect(() => {
     void availableNodes.length
-    if (!scrollContainer) return
+    const container = scrollContainer
+    if (!container) return
+    // Double-RAF: first RAF queues after Svelte's DOM patch; second RAF fires
+    // after the browser has laid out the new node positions.
     requestAnimationFrame(() => {
-      const availableEl = scrollContainer?.querySelector('.state-available')
-      if (availableEl) {
-        availableEl.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }
+      requestAnimationFrame(() => {
+        scrollToAvailableNodes(container)
+      })
     })
   })
 </script>
