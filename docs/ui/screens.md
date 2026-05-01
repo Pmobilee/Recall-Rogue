@@ -414,18 +414,21 @@ Fog extends full screen width via `left: -50vw; right: -50vw` inside `.dungeon-m
 - **Landscape support** — fog overlay respects `top: var(--topbar-height)` offset so top bar remains visible
 - **Reduced motion** — all wisp animations and edge opacity transitions disabled under `prefers-reduced-motion: reduce`
 
-### Auto-Scroll — Initial Row-0 Reveal (2026-05-01)
+### Auto-Scroll — Initial Row-0 Reveal (2026-05-01, hardened 2026-05-01)
 
 On mount and whenever `availableNodes` changes, the map scrolls so the lowest available node is centered in the viewport.
 
-**Implementation (`scrollToAvailableNodes`):**
+**Implementation (`scheduleScrollRetry` / `scrollToAvailableNodes`):**
 - Uses direct `scrollTop` assignment (never `scrollIntoView` with `behavior:'smooth'`) — smooth scroll is unreliable in headless Chromium / SwiftShader and does not complete reliably before the user can interact.
-- Measures node center via `offsetTop` walk (not `getBoundingClientRect`) to avoid mid-animation transform artifacts.
-- Double `requestAnimationFrame` deferral in `onMount` and `$effect` ensures layout has fully settled before measuring.
-- Retry loop: if the `.state-available` element is not in the DOM on the first pass, retries up to 5 times at 0 / 50 / 150 / 300 / 500ms. Covers Phaser scene start tearing layout during initial load.
+- Measures node position via `getBoundingClientRect()` relative to the scroll container — avoids the `offsetParent` walk pitfall where nested transforms during Phaser scene transitions produce wrong offsets.
+- Verifies the node is in-viewport after each scroll attempt via `getBoundingClientRect()`. If the scroll was clamped by in-progress layout, retries.
+- Retry schedule covers ~5 seconds: `[0, 50, 100, 200, 350, 500, 750, 1000, 1500, 2000]` (10 attempts). A generation counter prevents stale retry chains from interfering with newer invocations.
+- `MutationObserver` on `scrollContainer` watches for `childList`/`subtree` mutations and fires a scroll attempt whenever `.state-available` elements are added. Disconnects after a successful scroll or after 10 seconds.
+- `ResizeObserver` fires a one-shot scroll on the first resize event after mount, catching cases where `--layout-scale` resolves late and changes the container height.
 - The `$effect` depends on `availableNodes.length` so floor-to-floor transitions still trigger rescroll when the available set changes.
+- All observers are disconnected in the `onMount` cleanup function to prevent leaks.
 
-**Why this matters:** The scroll canvas is taller than the viewport (e.g. `scrollHeight=1398` vs `clientHeight=1006`). Row-0 (entry) nodes are positioned at `y~1233` inside the canvas — well below the fold. Without the scroll, the player sees a black map with no clickable nodes. This was a Steam rejection blocker (2026-05-01 submission).
+**Why this matters:** The scroll canvas is taller than the viewport (e.g. `scrollHeight=1398` vs `clientHeight=1006`). Row-0 (entry) nodes are positioned at `y~1233` inside the canvas — well below the fold. Without the scroll, the player sees a black map with no clickable nodes. This was a Steam rejection blocker (2026-05-01 submission). The 5-attempt / 500ms schedule was insufficient on fresh cold loads — hardened to 10 attempts / 2000ms + MutationObserver + ResizeObserver safety net.
 
 ---
 

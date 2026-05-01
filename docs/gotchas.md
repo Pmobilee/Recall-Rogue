@@ -5949,3 +5949,21 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 - **Part B (earlier listener attach):** `openRewardRoom()` now polls for the scene INSTANCE (not `isActive`) within a 500ms window immediately after `startRewardRoom()`. The Phaser EventEmitter exists on the instance before `create()` runs. Listeners attach as soon as the instance is available, eliminating the gap where `sceneComplete` could fire into a void.
 
 **Files changed:** `src/services/rewardRoomBridge.ts`, `src/services/gameFlowController.ts` (added `forceProceedAfterReward` export), `src/services/rewardRoomBridge.test.ts` (4 new unit tests).
+
+### 2026-05-01 — DungeonMap auto-scroll second-pass hardening
+
+**What:** The first auto-scroll fix (`scrollToAvailableNodes` with 5-attempt / 500ms retry, double-RAF, offsetTop walk) was insufficient on the very first cold load after `location.reload()`. `scrollTop` stayed at 108px instead of the required 392px, leaving row-0 entrance nodes (DOM y≈1233) below the 1080px viewport. Subsequent map visits happened to work only because higher-row available nodes (y≈963) were coincidentally in-viewport at `scrollTop=108`.
+
+**Root causes (compounding):**
+1. The `offsetParent` walk accumulated incorrect offsets when the scroll container had a `translateY` transform mid-Phaser-scene-transition, causing the computed center target to be wrong.
+2. The 5-attempt / 500ms retry window expired before Phaser scene start finished tearing the layout on cold loads.
+3. No verification that the node was actually in-viewport after setting `scrollTop` — if the scroll was clamped by in-progress layout, the miss was silent.
+
+**Fix (three layers):**
+- **Layer 1:** Replace `offsetParent` walk with `getBoundingClientRect()` math: `nodeTopInScrollSpace = (nodeRect.top - containerRect.top) + container.scrollTop`. Verify in-viewport after every attempt; bail only on success or retry schedule exhaustion. Extended retry schedule to 10 attempts over ~5s: `[0, 50, 100, 200, 350, 500, 750, 1000, 1500, 2000]`. Generation counter prevents stale retry chains.
+- **Layer 2:** `MutationObserver` on `scrollContainer` (childList + subtree) fires a scroll attempt whenever `.state-available` nodes are added. Disconnects after success or 10s.
+- **Layer 3:** `ResizeObserver` one-shot on first resize after mount, catching `--layout-scale` resolving late.
+
+**Verified:** Three separate Docker runs with `dungeon-map` scenario — `scrollTop:392` and all three `r0` nodes `visible:true` in every run. Screenshot confirmed nodes visible without manual scroll.
+
+**File:** `src/ui/components/DungeonMap.svelte`

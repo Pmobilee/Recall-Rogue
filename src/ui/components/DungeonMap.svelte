@@ -299,59 +299,94 @@
   }
 
   // =========================================================
-  // Scroll helper — instant, retry-with-backoff
+  // Scroll helper — instant, retry-with-backoff + in-viewport verification
   // =========================================================
 
   /**
    * Synchronously scroll the map container so the lowest available node
-   * is centered in the viewport.
+   * is centered in the viewport. Returns true when the node is confirmed
+   * in-viewport after scrolling; returns false if not yet achievable.
+   *
+   * Why getBoundingClientRect instead of offsetTop walk?
+   * - The offsetParent walk misses accumulated scroll/transform offsets
+   *   on Phaser-scene-transition entry (container has translateY mid-animation).
+   * - getBoundingClientRect gives the actual rendered position regardless of
+   *   nested transforms, at the cost of forcing a layout reflow — acceptable
+   *   here because we're already deciding to scroll.
    *
    * Why not scrollIntoView with behavior:'smooth'?
    * - smooth scroll is unreliable in headless Chromium / SwiftShader
-   * - it races with layout; nodes may not yet have their final offsetTop
-   * - it produces no feedback on completion, so we cannot retry on miss
+   * - it races with layout; the retry loop verifies the result and retries on miss
+   * - it produces no feedback on completion
    *
    * Strategy:
    * 1. Find the first `.state-available` element.
-   * 2. Compute its center relative to the scroll container.
+   * 2. Compute its center using getBoundingClientRect relative to scroll container.
    * 3. Set scrollTop directly (instant), clamped to valid range.
-   * 4. If the element is not found yet, retry up to 5 times at
-   *    progressive delays: 0, 50, 150, 300, 500 ms.
-   *    This covers Phaser scene start tearing the layout during initial load.
+   * 4. Verify the node is now within [0, window.innerHeight] via getBoundingClientRect.
+   *    If NOT in viewport (scroll was clamped by in-progress layout), return false.
+   * 5. If element not found OR not in viewport, caller retries from the schedule.
+   *
+   * The retry schedule [0,50,100,200,350,500,750,1000,1500,2000] covers ~5s total.
+   * This handles Phaser scene transitions tearing layout during initial load.
    */
-  function scrollToAvailableNodes(container: HTMLDivElement, attempt = 0): void {
-    const RETRY_DELAYS = [0, 50, 150, 300, 500]
-
+  function scrollToAvailableNodes(container: HTMLDivElement): boolean {
     const availableEl = container.querySelector<HTMLElement>('.state-available')
 
     if (!availableEl) {
-      // Node not in DOM yet — retry if we have attempts left
-      if (attempt < RETRY_DELAYS.length - 1) {
-        const delay = RETRY_DELAYS[attempt + 1]
-        setTimeout(() => scrollToAvailableNodes(container, attempt + 1), delay)
-      }
-      return
+      // Node not in DOM yet — signal to caller that retry is needed
+      return false
     }
 
-    // offsetTop is relative to offsetParent; we need position relative to
-    // the scroll container. Walk up to find accumulated offset.
-    let offsetTop = 0
-    let el: HTMLElement | null = availableEl
-    while (el && el !== container) {
-      offsetTop += el.offsetTop
-      el = el.offsetParent as HTMLElement | null
-    }
+    // Use getBoundingClientRect for reliable position regardless of nested transforms.
+    // This avoids the offsetParent walk pitfall on Phaser scene entry transitions.
+    const containerRect = container.getBoundingClientRect()
+    const nodeRect = availableEl.getBoundingClientRect()
 
-    const nodeHeight = availableEl.offsetHeight
-    const centerTarget = offsetTop + nodeHeight / 2 - container.clientHeight / 2
+    // Convert node top to scroll-space coordinates
+    const nodeTopInScrollSpace = (nodeRect.top - containerRect.top) + container.scrollTop
+    const centerTarget = nodeTopInScrollSpace + nodeRect.height / 2 - container.clientHeight / 2
     const maxScroll = container.scrollHeight - container.clientHeight
     const targetScroll = Math.max(0, Math.min(centerTarget, maxScroll))
 
     container.scrollTop = targetScroll
+
+    // Verify the node is actually in viewport after scrolling.
+    // If layout was still settling, the scroll may have been clamped — return false to retry.
+    const verifyRect = availableEl.getBoundingClientRect()
+    const inViewport = verifyRect.top >= 0 && verifyRect.bottom <= window.innerHeight
+
+    return inViewport
+  }
+
+  /**
+   * Fire scrollToAvailableNodes on a retry schedule.
+   * Bails early on success; exhausts the full schedule (~5s) before giving up.
+   * Prevents concurrent retry chains with a generation counter.
+   */
+  let _scrollGeneration = 0
+
+  function scheduleScrollRetry(container: HTMLDivElement): void {
+    const RETRY_DELAYS = [0, 50, 100, 200, 350, 500, 750, 1000, 1500, 2000]
+    const generation = ++_scrollGeneration
+
+    function attempt(idx: number): void {
+      // A newer scheduleScrollRetry call supersedes this chain
+      if (generation !== _scrollGeneration) return
+
+      const success = scrollToAvailableNodes(container)
+      if (success) return
+
+      if (idx < RETRY_DELAYS.length - 1) {
+        setTimeout(() => attempt(idx + 1), RETRY_DELAYS[idx + 1])
+      }
+    }
+
+    attempt(0)
   }
 
   // =========================================================
-  // Mount + resize tracking
+  // Mount + resize tracking + MutationObserver + ResizeObserver scroll trigger
   // =========================================================
 
   onMount(() => {
@@ -359,15 +394,59 @@
     void ambientAudio.setContext('dungeon_map')
     layoutScale = getLayoutScale()
 
-    const observer = new ResizeObserver(entries => {
+    // ResizeObserver — tracks container size changes for containerWidth/layoutScale.
+    // Also fires scrollToAvailableNodes once on the first resize event after mount.
+    // This catches the case where fonts load and --layout-scale resolves after paint,
+    // changing the container clientHeight / scrollHeight before the player interacts.
+    let resizeScrollFired = false
+    const resizeObserver = new ResizeObserver(entries => {
       for (const entry of entries) {
         containerWidth = $isLandscape
           ? Math.min(entry.contentRect.width * 0.7, MAX_WIDTH)
           : Math.min(entry.contentRect.width, MAX_WIDTH)
         layoutScale = getLayoutScale()
       }
+      // One-shot scroll trigger on first layout-settle resize
+      if (!resizeScrollFired && scrollContainer) {
+        resizeScrollFired = true
+        scheduleScrollRetry(scrollContainer)
+      }
     })
-    if (scrollContainer) observer.observe(scrollContainer)
+    if (scrollContainer) resizeObserver.observe(scrollContainer)
+
+    // MutationObserver — watches for .state-available nodes being added or changed.
+    // Fires scheduleScrollRetry whenever the available set appears or shifts.
+    // This catches late Phaser scene transitions that inject available nodes after
+    // the initial $effect has already fired. Disconnects after successful scroll
+    // or after 10 seconds to avoid leaking.
+    let mutationObserver: MutationObserver | null = null
+    let mutationTimeout: ReturnType<typeof setTimeout> | null = null
+
+    if (scrollContainer) {
+      const container = scrollContainer
+      mutationObserver = new MutationObserver(() => {
+        const hasAvailable = container.querySelector('.state-available') !== null
+        if (hasAvailable) {
+          const success = scrollToAvailableNodes(container)
+          if (success && mutationObserver) {
+            mutationObserver.disconnect()
+            mutationObserver = null
+            if (mutationTimeout !== null) {
+              clearTimeout(mutationTimeout)
+              mutationTimeout = null
+            }
+          }
+        }
+      })
+      mutationObserver.observe(container, { childList: true, subtree: true })
+
+      // Safety disconnect after 10 seconds — prevents leak if node never arrives
+      mutationTimeout = setTimeout(() => {
+        mutationObserver?.disconnect()
+        mutationObserver = null
+        mutationTimeout = null
+      }, 10000)
+    }
 
     // Animate fog wisps via Web Animations API (CSS var() in @keyframes doesn't work in Chrome)
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -395,18 +474,22 @@
     }
 
     // Initial scroll on mount: double-RAF ensures layout has settled before we
-    // measure offsetTop. The retry loop inside scrollToAvailableNodes covers
-    // Phaser scene start tearing the layout (nodes not yet in DOM).
+    // measure getBoundingClientRect. The retry schedule inside scheduleScrollRetry
+    // covers Phaser scene start tearing the layout (nodes not yet in DOM).
     if (scrollContainer) {
       const container = scrollContainer
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          scrollToAvailableNodes(container)
+          scheduleScrollRetry(container)
         })
       })
     }
 
-    return () => observer.disconnect()
+    return () => {
+      resizeObserver.disconnect()
+      mutationObserver?.disconnect()
+      if (mutationTimeout !== null) clearTimeout(mutationTimeout)
+    }
   })
 
   // Auto-scroll to show current available nodes whenever they change.
@@ -421,7 +504,7 @@
     // after the browser has laid out the new node positions.
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        scrollToAvailableNodes(container)
+        scheduleScrollRetry(container)
       })
     })
   })
