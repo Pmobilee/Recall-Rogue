@@ -31,26 +31,30 @@ function getManager(): any {
 /**
  * Trigger the Continue button from the DOM accessibility overlay.
  *
- * Emits 'sceneComplete' directly on the active RewardRoomScene, bypassing the
- * "Leave items behind?" confirmation. This is intentional for keyboard/a11y:
- * keyboard users who Tab to the DOM overlay have already made the decision to
- * proceed; the confirmation dialog is a mouse-path UX guard, not a gate.
+ * Emits 'sceneComplete' directly on the active RewardRoomScene when available.
+ * If the scene is inactive (race: scene stopped before button was clicked, or
+ * listener-attachment timing gap), falls back to forceProceedAfterReward() via
+ * a lazy import to avoid circular dependency. This ensures the Continue button
+ * NEVER softlocks the player regardless of scene state. See bug 2026-05-01.
  *
  * Called by the DOM `<button>` overlay in CardApp.svelte when the user presses
  * Enter/Space or clicks the a11y overlay. See BATCH-ULTRA T11 issue-1744337400013-11-014.
  */
 export function triggerRewardRoomContinue(): void {
   const mgr = getManager();
-  if (!mgr) {
-    console.warn('[RewardRoomBridge] triggerRewardRoomContinue: no CardGameManager found');
+  const scene = mgr?.getRewardRoomScene?.();
+  if (scene && scene.scene.isActive()) {
+    scene.events.emit('sceneComplete');
     return;
   }
-  const scene = mgr.getRewardRoomScene();
-  if (!scene || !scene.scene.isActive()) {
-    console.warn('[RewardRoomBridge] triggerRewardRoomContinue: no active RewardRoomScene');
-    return;
-  }
-  scene.events.emit('sceneComplete');
+  // Softlock escape: scene is inactive but Continue was clicked — force progression.
+  // This covers the listener-race path where sceneComplete fired before listeners
+  // attached, causing handleComplete to never run and stopRewardRoom to be skipped,
+  // leaving currentScreen stuck on 'rewardRoom'. Bug 2026-05-01.
+  console.warn('[RewardRoomBridge] Continue clicked with no active scene — forcing proceedAfterReward (softlock escape)');
+  void import('./gameFlowController').then(({ forceProceedAfterReward }) => {
+    forceProceedAfterReward();
+  });
 }
 
 /**
@@ -112,6 +116,29 @@ export function triggerRelicDetailLeave(): void {
   // Requires RewardRoomScene to listen for this event inside showRelicDetail().
   // See triggerRelicDetailAccept() JSDoc — game-logic wiring pending.
   scene.events.emit('relicDetailLeave');
+}
+
+/**
+ * Poll for a RewardRoomScene instance (not necessarily active yet), giving up
+ * after maxWaitMs. Used to grab the instance early enough to attach listeners
+ * before the scene's create() has finished — prevents the race where
+ * sceneComplete fires before our handlers are registered.
+ *
+ * Returns null if no instance appears within the timeout.
+ */
+async function waitForRewardRoomSceneInstance(mgr: any, maxWaitMs = 500): Promise<any | null> {
+  const pollIntervalMs = turboDelay(50);
+  const maxAttempts = Math.ceil(maxWaitMs / pollIntervalMs);
+
+  for (let i = 0; i < maxAttempts; i++) {
+    const scene = mgr.getRewardRoomScene();
+    if (scene) {
+      if (import.meta.env.DEV) console.log(`[RewardRoomBridge] Scene instance available after ${(i + 1) * pollIntervalMs}ms (not yet active)`);
+      return scene;
+    }
+    await new Promise(resolve => setTimeout(resolve, pollIntervalMs));
+  }
+  return null;
 }
 
 /**
@@ -183,16 +210,28 @@ export async function openRewardRoom(
   mgr.startRewardRoom(data);
   if (import.meta.env.DEV) console.log('[RewardRoomBridge] startRewardRoom called');
 
-  // Wait for the scene to become fully active before attaching listeners.
-  // Phaser queues scene.start() asynchronously; the scene isn't active until
-  // create() has run, which requires at least one game loop iteration.
-  const scene = await waitForRewardRoomScene(mgr, 3000);
+  // --- Listener-race fix (bug 2026-05-01) ---
+  // Attach listeners as early as possible — get the scene INSTANCE (not
+  // necessarily active yet) within a short 500ms window. The Phaser scene
+  // EventEmitter exists on the instance as soon as scene.start() queues it,
+  // before create() has run. Attaching here guarantees 'sceneComplete' cannot
+  // fire into a void between scene instantiation and activation.
+  //
+  // After attaching early, we still call waitForRewardRoomScene() (3s) as a
+  // sanity check that the scene actually became fully active.
+  const earlyScene = await waitForRewardRoomSceneInstance(mgr, 500);
+
+  const scene = earlyScene ?? await waitForRewardRoomScene(mgr, 3000);
   if (!scene) {
     console.error('[RewardRoomBridge] RewardRoomScene not found or never became active');
     onComplete();
     return;
   }
-  if (import.meta.env.DEV) console.log('[RewardRoomBridge] Scene is active, attaching listeners');
+
+  if (import.meta.env.DEV) {
+    const activeNow = scene.scene.isActive();
+    console.log(`[RewardRoomBridge] Attaching listeners (scene active: ${activeNow}) — early attachment: ${!!earlyScene}`);
+  }
 
   const cleanup = (): void => {
     if (safetyTimeout) clearTimeout(safetyTimeout);

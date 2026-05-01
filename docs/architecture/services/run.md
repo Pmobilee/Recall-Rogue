@@ -72,7 +72,7 @@ Added in v3 to enable per-run knowledge delta tracking. All in-memory only — n
 |---|---|
 | **File** | src/services/gameFlowController.ts |
 | **Purpose** | Screen routing state machine — drives all transitions between hub, combat, reward, shop, rest, mystery, and run-end screens |
-| **Key exports** | `startNewRun`, `handleCombatVictory`, `handlePlayerDeath`, `handleRoomChoice`, `handleCardRewardChoice`, `handleRelicChoice`, `handleShopAction`, `handleMysteryChoice`, `handleRestAction` |
+| **Key exports** | `startNewRun`, `handleCombatVictory`, `handlePlayerDeath`, `handleRoomChoice`, `handleCardRewardChoice`, `handleRelicChoice`, `handleShopAction`, `handleMysteryChoice`, `handleRestAction`, `forceProceedAfterReward` (softlock escape — see bug 2026-05-01) |
 | **Key dependencies** | runManager, floorManager, encounterBridge, rewardGenerator, relicAcquisitionService, shopService, deckManager, gameState store |
 
 ### Run termination contract (MEDIUM-10, 2026-04-10)
@@ -141,9 +141,10 @@ See `docs/mechanics/combat.md` §"Run Termination State Machine" for the full fl
 |---|---|
 | **File** | src/services/rewardRoomBridge.ts |
 | **Purpose** | Bridges gameFlowController to the Phaser RewardRoomScene — handles scene lifecycle, card detail overlay, and turbo-aware delays |
-| **Key exports** | `openRewardRoom`, `openTestRewardRoom`, `rewardCardDetail` (store), `getCardDetailCallbacks` |
+| **Key exports** | `openRewardRoom`, `openTestRewardRoom`, `rewardCardDetail` (store), `getCardDetailCallbacks`, `triggerRewardRoomContinue` |
 | **Key dependencies** | rewardSpawnService, gameState store, turboMode |
 | **Turbo awareness** | All internal delays use `turboDelay()` — poll interval (50ms→5ms), Phaser boot wait (500ms→5ms), container visibility wait (100ms→5ms). `maxWaitMs = 3000` is kept constant so Phaser still gets enough game loop ticks regardless of turbo mode. |
+| **Softlock escape** | `triggerRewardRoomContinue()` falls back to `gameFlowController.forceProceedAfterReward()` (lazy import) when the scene is inactive. Listeners now attach to the scene instance as soon as it exists (~50ms after `startRewardRoom()`), before `create()` finishes, eliminating the listener-race path. See bug 2026-05-01. |
 
 ## rewardSpawnService
 

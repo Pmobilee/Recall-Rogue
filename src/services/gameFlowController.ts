@@ -3615,3 +3615,16 @@ export async function confirmChainDistribution(): Promise<void> {
   gameFlowState.set('dungeonMap');
   currentScreen.set('dungeonMap');
 }
+
+/**
+ * Forced progression escape for the rewardRoom softlock recovery path.
+ *
+ * Called by rewardRoomBridge.triggerRewardRoomContinue() when the Continue
+ * button is clicked but the Phaser RewardRoomScene is already inactive (race
+ * condition: scene stops between sceneComplete emission and the listener that
+ * drives cleanup). Calls proceedAfterReward() unconditionally so the player
+ * is always routed back to the dungeon map. See bug 2026-05-01.
+ */
+export function forceProceedAfterReward(): void {
+  void proceedAfterReward();
+}

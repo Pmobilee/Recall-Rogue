@@ -5933,3 +5933,19 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **How to re-enable:** Set `MULTIPLAYER_ENABLED = true`, rebuild, redeploy. No other code changes needed. All MP services, transports, and components remain intact in the codebase — only the UI entry points are gated. Vite tree-shakes the `false` branches in production.
 
 **Defensive guard:** A `$effect` in `CardApp.svelte` detects if `currentScreen` somehow lands on an MP screen while the flag is off (stale save, dev console) and immediately redirects to `hub` with a console warning.
+
+### 2026-05-01 — rewardRoom Continue softlock (Steam progression blocker)
+
+**Symptom:** After winning combat and entering the reward room, clicking Continue did nothing. Screen went black with only the HUD visible. `currentScreen` stayed on `'rewardRoom'`. `mgr.getRewardRoomScene().scene.isActive()` returned `false`.
+
+**Root cause — two compounding issues:**
+
+1. **Listener-race:** `openRewardRoom()` called `mgr.startRewardRoom(data)` then `await waitForRewardRoomScene(mgr, 3000)` (polling until `isActive() = true`) before attaching listeners. If `sceneComplete` fired between scene activation and listener attachment, `handleComplete` never ran — `stopRewardRoom()` was never called, `onComplete()` never called, `currentScreen` never advanced.
+
+2. **Silent no-op in Continue handler:** `triggerRewardRoomContinue()` had an early-return guard when the scene was inactive. So if the race landed, any subsequent click on Continue found an inactive scene → returned silently → player permanently stuck.
+
+**Fix:**
+- **Part A (softlock escape):** `triggerRewardRoomContinue()` now falls back to a lazy `import('./gameFlowController').then(({ forceProceedAfterReward }) => forceProceedAfterReward())` when the scene is inactive. `forceProceedAfterReward` is a new thin export that calls the private `proceedAfterReward()` unconditionally. Continue can never be a no-op again.
+- **Part B (earlier listener attach):** `openRewardRoom()` now polls for the scene INSTANCE (not `isActive`) within a 500ms window immediately after `startRewardRoom()`. The Phaser EventEmitter exists on the instance before `create()` runs. Listeners attach as soon as the instance is available, eliminating the gap where `sceneComplete` could fire into a void.
+
+**Files changed:** `src/services/rewardRoomBridge.ts`, `src/services/gameFlowController.ts` (added `forceProceedAfterReward` export), `src/services/rewardRoomBridge.test.ts` (4 new unit tests).
