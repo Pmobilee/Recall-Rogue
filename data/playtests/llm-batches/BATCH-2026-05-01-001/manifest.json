@@ -1,0 +1,19 @@
+{
+  "batchId": "BATCH-2026-05-01-001",
+  "createdAt": "2026-05-01T00:00:00Z",
+  "completedAt": "2026-05-01T01:00:00Z",
+  "testers": ["full-run", "reverify"],
+  "args": { "runs": 5, "domain": "general_knowledge", "floors": 2 },
+  "focus": "Steam reviewer complaint: after defeating a monster, player cannot return to dungeon. Reproduce and identify all bugs blocking dungeon progression.",
+  "status": "complete",
+  "smokeTestPassed": true,
+  "verdict": "PASS_AFTER_FIX",
+  "bugsFound": [
+    { "id": "BUG-1", "severity": "CRITICAL", "title": "DungeonMap row-0 nodes off-screen on initial render — black map, no clickable nodes", "fix": "064758d65" },
+    { "id": "BUG-2", "severity": "CRITICAL", "title": "RewardRoomBridge softlock + listener race — Continue button no-ops, screen stays on rewardRoom", "fix": "21a308ab1" }
+  ],
+  "reports": {
+    "full-run": { "status": "complete", "verdict": "CRITICAL", "criticalCount": 2, "highCount": 0 },
+    "reverify": { "status": "complete", "verdict": "PASS", "criticalCount": 0 }
+  }
+}
