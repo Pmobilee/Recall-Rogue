@@ -234,6 +234,25 @@
   let chargeTutorialTimer = $state<ReturnType<typeof setTimeout> | null>(null)
   let comparisonBannerTimer = $state<ReturnType<typeof setTimeout> | null>(null)
 
+  /**
+   * ISSUE-1-4: Persistent corner hint banner explaining Charge Play mechanic.
+   * Shown in every combat until the player either dismisses it manually or
+   * successfully completes their first Charge. Persisted via localStorage so it
+   * doesn't re-appear after dismiss across sessions.
+   */
+  let showChargeHintBanner = $state(
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('hint:chargePlayDismissed') !== '1'
+      : true
+  )
+
+  function dismissChargeHintBanner(): void {
+    showChargeHintBanner = false
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('hint:chargePlayDismissed', '1')
+    }
+  }
+
   /** Refs to the draw/discard pile indicator elements — used to set CSS vars for card animations. */
   let drawPileEl = $state<HTMLDivElement | undefined>(undefined)
   let discardPileEl = $state<HTMLDivElement | undefined>(undefined)
@@ -1880,9 +1899,11 @@
       _lastTurnNumber = nextTurn
       resetCardFlow()
       answeredThisTurn = 0
-      // Reset wowFactor counter at the start of each encounter (turn 1)
+      // Reset wowFactor counter and end-turn warning at the start of each encounter (turn 1)
       if (nextTurn === 1) {
         wowFactorCount = 0
+        // ISSUE-1-5: new encounter — allow the warning once again
+        endTurnWarnedThisCombat = false
       }
 
     }
@@ -1895,6 +1916,12 @@
   // which triggered resetCardFlow() mid-quiz and slid the enemy back prematurely.
 
   let showEndTurnConfirm = $state(false)
+  /**
+   * ISSUE-1-5: Track whether the player has already seen the "still have AP" warning
+   * this combat encounter. Reset when encounterTurnNumber resets to 1 (new fight).
+   * Also suppressed entirely when player HP is at or below 25% of max.
+   */
+  let endTurnWarnedThisCombat = $state(false)
 
   let hasPlayableCards = $derived.by(() => {
     if (!turnState || turnState.phase !== 'player_action') return false
@@ -2486,6 +2513,9 @@
       const answeredFactId = quizDataSnapshot?.factId ?? card.factId
       showWowFactor(answeredFactId, card)
 
+      // ISSUE-1-4: First successful Charge — auto-dismiss the corner hint banner.
+      dismissChargeHintBanner()
+
       // Correct answer: new 5-phase animation sequence
       // Call onplaycard first — for Phase Shift QP/CW and Unstable Flux CC the resolver
       // returns pendingChoice (no effect applied yet). We then show the popup and apply
@@ -2681,8 +2711,12 @@
       markOnboardingTooltipSeen('hasSeenEndTurnTooltip')
     }
 
-    if (apCurrent >= 2 && hasPlayableCards && !showEndTurnConfirm) {
+    // ISSUE-1-5: Only ask once per encounter; skip entirely when HP is dangerously low.
+    const playerHpPct = (turnState?.playerState?.hp ?? 0) / Math.max(1, turnState?.playerState?.maxHP ?? 1)
+    const isLowHp = playerHpPct <= 0.25
+    if (apCurrent >= 2 && hasPlayableCards && !showEndTurnConfirm && !endTurnWarnedThisCombat && !isLowHp) {
       showEndTurnConfirm = true
+      endTurnWarnedThisCombat = true
       return
     }
 
@@ -3299,6 +3333,21 @@
       {#each Array(reshuffleCardCount) as _, i}
         <div class="reshuffle-fly-card" style="animation-delay: {i * 40}ms"></div>
       {/each}
+    </div>
+  {/if}
+
+  <!-- ISSUE-1-4: Charge hint banner — corner prompt for players who haven't discovered Charge.
+       Persists until player manually dismisses or successfully completes a Charge quiz.
+       Hidden in committed/quiz state to avoid obscuring the quiz panel. -->
+  {#if showChargeHintBanner && cardPlayStage !== 'committed' && turnState && turnState.phase === 'player_action'}
+    <div class="charge-hint-banner" role="note" aria-label="Tip: drag cards up to Charge">
+      <span class="charge-hint-text">Drag a card UP for Charge — quiz for 1.5× damage</span>
+      <button
+        class="charge-hint-close"
+        onclick={dismissChargeHintBanner}
+        aria-label="Dismiss tip"
+        type="button"
+      >×</button>
     </div>
   {/if}
 
@@ -4962,6 +5011,67 @@
     30% { transform: translateX(-50%) translateY(0) scale(1); }
     70% { opacity: 1; }
     100% { opacity: 0; transform: translateX(-50%) translateY(-20px) scale(0.95); }
+  }
+
+  /* =========================================================
+     ISSUE-1-4: Charge hint banner — persistent corner prompt
+     ========================================================= */
+  .charge-hint-banner {
+    position: fixed;
+    bottom: calc(120px * var(--layout-scale, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 120;
+    display: flex;
+    align-items: center;
+    gap: calc(8px * var(--layout-scale, 1));
+    background: rgba(20, 20, 35, 0.88);
+    border: 1px solid rgba(130, 160, 255, 0.35);
+    border-radius: calc(20px * var(--layout-scale, 1));
+    padding: calc(8px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
+    backdrop-filter: blur(8px);
+    animation: chargeHintFadeIn 0.4s ease forwards;
+    pointer-events: auto;
+    max-width: calc(380px * var(--layout-scale, 1));
+  }
+
+  .charge-hint-text {
+    font-size: calc(12px * var(--text-scale, 1));
+    color: rgba(200, 210, 255, 0.92);
+    letter-spacing: calc(0.2px * var(--layout-scale, 1));
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .charge-hint-close {
+    background: none;
+    border: none;
+    color: rgba(200, 210, 255, 0.55);
+    font-size: calc(16px * var(--text-scale, 1));
+    cursor: pointer;
+    padding: 0 calc(2px * var(--layout-scale, 1));
+    line-height: 1;
+    min-width: calc(24px * var(--layout-scale, 1));
+    min-height: calc(24px * var(--layout-scale, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
+  }
+
+  .charge-hint-close:hover {
+    color: rgba(200, 210, 255, 0.85);
+  }
+
+  @keyframes chargeHintFadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(calc(6px * var(--layout-scale, 1))); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  /* In portrait, push banner up above the card hand area */
+  :global([data-layout="portrait"]) .charge-hint-banner {
+    bottom: calc(180px * var(--layout-scale, 1));
   }
 
 </style>
