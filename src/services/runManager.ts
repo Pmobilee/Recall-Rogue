@@ -142,6 +142,11 @@ export interface RunState {
   novelQuestionsAnswered: number;
   /** Novel (Tier 1) questions answered correctly this run. */
   novelQuestionsCorrect: number;
+  /**
+   * Number of Charge Play attempts this run (Quick Play excluded).
+   * Used by isPracticeRun to avoid mislabeling runs where the player never answered a quiz.
+   */
+  chargesAttempted: number;
   /** Deterministic seed for this run (used in all modes for fair multiplayer/daily comparisons). */
   runSeed: number;
   /** In-run fact tracker for study mode (curated deck runs). Undefined for trivia runs. */
@@ -348,6 +353,7 @@ export function createRunState(
     questionsCorrect: 0,
     novelQuestionsAnswered: 0,
     novelQuestionsCorrect: 0,
+    chargesAttempted: 0,
     runSeed,
     globalTurnCounter: 1,
     soulJarCharges: 0,

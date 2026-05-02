@@ -1196,6 +1196,11 @@ export function handlePlayCard(
       console.warn(`[encounterBridge] handlePlayCard: card ${cardId} has no factId! playedCard exists: ${!!playedCard}`);
     }
     recordCardPlay(run, correct, 0, playedCard.factId, playedCard.domain, playedCard.tier === '1');
+    // Track Charge Play attempts separately from Quick Play.
+    // Quick Play passes correct=true unconditionally and is not a quiz attempt.
+    if (playMode !== 'quick' && playMode !== 'quick_play') {
+      run.chargesAttempted = (run.chargesAttempted ?? 0) + 1;
+    }
     analyticsService.track({
       name: 'card_play',
       properties: {

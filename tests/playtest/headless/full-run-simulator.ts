@@ -1604,6 +1604,7 @@ export function simulateFullRun(opts: FullRunOptions = {}): FullRunResult {
     questionsCorrect: 0,
     novelQuestionsAnswered: 0,
     novelQuestionsCorrect: 0,
+    chargesAttempted: 0,
     runSeed: options.seed,
     globalTurnCounter: 1,
     soulJarCharges: 0,

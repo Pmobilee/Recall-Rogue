@@ -178,25 +178,36 @@ export function getLeaderboardEligibility(deckMode: DeckMode): string | null {
  * Determines if a run qualifies as a "practice run" where the player
  * already knew the material, disabling camp rewards.
  */
+/** Minimum Charge Play attempts required before Practice Run detection fires. */
+export const MIN_CHARGE_ATTEMPTS_FOR_PRACTICE_RUN = 5;
+
 export function isPracticeRun(runState: {
   questionsAnswered?: number;
   questionsCorrect?: number;
   novelQuestionsAnswered?: number;
   novelQuestionsCorrect?: number;
   practiceRunDetected?: boolean;
+  chargesAttempted?: number;
 }): boolean {
-  // Already flagged from pre-run mastery check
-  if (runState.practiceRunDetected) return true;
+  // Already flagged from pre-run mastery check (deck > 75% mastered at run start).
+  // Still gate on chargesAttempted: a new player who never answered a quiz should not
+  // see "you already know this material" just because mastery check flagged their deck.
+  const charges = runState.chargesAttempted ?? 0;
+  if (runState.practiceRunDetected && charges >= MIN_CHARGE_ATTEMPTS_FOR_PRACTICE_RUN) return true;
 
   const answered = runState.questionsAnswered ?? 0;
   const correct = runState.questionsCorrect ?? 0;
   const novelAnswered = runState.novelQuestionsAnswered ?? 0;
   const novelCorrect = runState.novelQuestionsCorrect ?? 0;
 
-  // Need minimum 5 questions to evaluate
-  if (answered < 5) return false;
+  // Player never charged a card — Quick Play has no quiz component.
+  // Treating it as 100% accuracy on zero quizzes is a false signal.
+  if (charges < MIN_CHARGE_ATTEMPTS_FOR_PRACTICE_RUN) return false;
 
-  // Perfect run (zero wrong answers)
+  // Need minimum 5 charged attempts to evaluate
+  if (answered < MIN_CHARGE_ATTEMPTS_FOR_PRACTICE_RUN) return false;
+
+  // Perfect run (zero wrong answers on charge attempts)
   if (correct === answered) return true;
 
   // Overall accuracy > 85%

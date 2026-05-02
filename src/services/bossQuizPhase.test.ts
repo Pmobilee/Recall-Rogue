@@ -175,6 +175,7 @@ function makeRunState(categoryL2Accuracy?: Map<string, { correct: number; total:
     questionsCorrect: 7,
     novelQuestionsAnswered: 3,
     novelQuestionsCorrect: 2,
+    chargesAttempted: 0,
     runSeed: 12345,
     globalTurnCounter: 1,
     soulJarCharges: 0,

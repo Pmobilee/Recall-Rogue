@@ -173,6 +173,7 @@ function makeRunState(overrides?: Partial<RunState>): RunState {
     questionsCorrect: 8,
     novelQuestionsAnswered: 5,
     novelQuestionsCorrect: 4,
+    chargesAttempted: 5,
     runSeed: 99999,
     globalTurnCounter: 5,
     soulJarCharges: 0,
