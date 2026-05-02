@@ -1,0 +1,234 @@
+{
+  "batchId": "STEAM-LAUNCH-2026-05-02",
+  "purpose": "Fresh DOM-only LLM playthroughs to catch every issue Steam reviewers would hit",
+  "createdAt": "2026-05-02T00:00:00Z",
+  "session": "STEAM-LAUNCH-2026-05-02",
+  "date": "2026-05-02",
+  "tester": "LLM (claude-sonnet-4-6)",
+  "runsCompleted": 3,
+  "summary": {
+    "outcomes": [
+      "DRIVEN BACK — died Floor 1 vs Staple Bug (0 damage dealt, Quick Play blocked)",
+      "DRIVEN BACK — died Floor 1 vs Bookmark Vine (16→0 HP)",
+      "DRIVEN BACK — died Floor 1 vs Thesis Construct (9→0 HP, enemy at 12 HP)"
+    ],
+    "totalIssuesFound": 13,
+    "criticalCount": 2,
+    "highCount": 3,
+    "mediumCount": 6,
+    "lowCount": 2
+  },
+  "runs": [
+    {
+      "runId": "run-1",
+      "file": "run-1.md",
+      "enemy": "Staple Bug",
+      "outcome": "DRIVEN BACK",
+      "playerHpAtDeath": 4,
+      "enemyHpAtDeath": 40,
+      "issuesFound": ["ISSUE-1-1", "ISSUE-1-2", "ISSUE-1-3", "ISSUE-1-4", "ISSUE-1-5", "ISSUE-1-6"]
+    },
+    {
+      "runId": "run-2",
+      "file": "run-2.md",
+      "enemy": "Bookmark Vine",
+      "outcome": "DRIVEN BACK",
+      "playerHpAtDeath": 16,
+      "enemyHpAtDeath": "~28",
+      "issuesFound": ["ISSUE-1-2", "ISSUE-1-6", "ISSUE-2-1", "ISSUE-2-2", "ISSUE-2-3"]
+    },
+    {
+      "runId": "run-3",
+      "file": "run-3.md",
+      "enemy": "Thesis Construct",
+      "outcome": "DRIVEN BACK",
+      "playerHpAtDeath": 9,
+      "enemyHpAtDeath": 12,
+      "issuesFound": ["ISSUE-1-2", "ISSUE-1-6", "ISSUE-2-3", "ISSUE-3-1", "ISSUE-3-2", "ISSUE-3-3", "ISSUE-3-4"]
+    }
+  ],
+  "issues": [
+    {
+      "id": "ISSUE-3-1",
+      "title": "Charge Play key (C) does not trigger quiz — silently executes as Quick Play",
+      "severity": "CRITICAL",
+      "screen": "combat",
+      "firstSeen": "run-3",
+      "confirmedIn": ["run-3"],
+      "description": "After selecting a card with key '1', pressing 'C' decremented AP and registered a card play (cardsPlayedThisTurn: 0→1) but no quiz overlay appeared. The core learning mechanic — answering a question for bonus damage — is non-functional via the keyboard interface.",
+      "steamReviewerQuote": "Charge Play is supposed to let me answer questions for bonus damage, but pressing C just plays the card normally.",
+      "workaround": "None found — Phaser canvas hover may still work but couldn't be verified via DOM"
+    },
+    {
+      "id": "ISSUE-2-2",
+      "title": "DOM .click() on card-hand-N buttons does not register card plays in game engine",
+      "severity": "CRITICAL",
+      "screen": "combat",
+      "firstSeen": "run-2",
+      "confirmedIn": ["run-2"],
+      "description": "Clicking card-hand-N DOM buttons triggers CSS animation (card-playing class) but cardsPlayedThisTurn stays 0 and AP doesn't change. Mouse players must click in the Phaser canvas area, not the DOM button overlay. Keyboard 1-5 keys DO register correctly.",
+      "steamReviewerQuote": "Clicking the cards does nothing. I had to figure out there's a keyboard shortcut just to play cards.",
+      "workaround": "Use keyboard keys 1-5 to play cards"
+    },
+    {
+      "id": "ISSUE-1-2",
+      "title": "Dungeon map initial scroll shows boss area — starting nodes below viewport",
+      "severity": "HIGH",
+      "screen": "dungeonMap",
+      "firstSeen": "run-1",
+      "confirmedIn": ["run-1", "run-2", "run-3"],
+      "description": "Map container (scrollHeight 1398, clientHeight 1006) loads at scrollTop=108, showing near the top/boss. First available nodes (row 0) sit at y≈1233 — below the 1080px viewport. Player sees a near-black screen with zero clickable elements.",
+      "steamReviewerQuote": "I can't click anything after starting a run. The map is empty.",
+      "workaround": "Manually set scrollTop = scrollHeight"
+    },
+    {
+      "id": "ISSUE-1-4",
+      "title": "Charge Play mechanic completely undiscoverable via normal click interaction",
+      "severity": "HIGH",
+      "screen": "combat",
+      "firstSeen": "run-1",
+      "confirmedIn": ["run-1", "run-2"],
+      "description": "Clicking a card immediately Quick-Plays it with no quiz. Charge Play requires hovering in the Phaser canvas to see a card popover showing Quick/Charge options. No persistent DOM UI affordance exists. Against block-heavy enemies, Quick Play deals 0 net damage.",
+      "steamReviewerQuote": "I can't damage the enemy. Cards don't work.",
+      "workaround": "Use '?' help button to discover keyboard shortcuts, then use Q/C keys"
+    },
+    {
+      "id": "ISSUE-2-1",
+      "title": "Charge Play discovery requires finding ? button or hovering Phaser canvas — no persistent hint",
+      "severity": "HIGH",
+      "screen": "combat",
+      "firstSeen": "run-2",
+      "confirmedIn": ["run-2", "run-3"],
+      "description": "The only ways to discover Quick vs Charge Play: (a) find and click the non-obvious '?' button to show keyboard help overlay, or (b) hover over a card to see Phaser canvas popover. No persistent UI element shows this mechanic.",
+      "steamReviewerQuote": "I went 5 turns without knowing I could answer questions for full damage.",
+      "workaround": "Click ? button in bottom-right corner of combat screen"
+    },
+    {
+      "id": "ISSUE-1-3",
+      "title": "First combat tutorial requires 5 sequential dismiss clicks",
+      "severity": "MEDIUM",
+      "screen": "combat",
+      "firstSeen": "run-1",
+      "confirmedIn": ["run-1"],
+      "description": "5 sequential 'Got it' tutorial popups appeared on first combat encounter before being able to play any card. Each requires a separate click.",
+      "steamReviewerQuote": "Too many tutorial popups before I can start playing.",
+      "workaround": "Click through all 5"
+    },
+    {
+      "id": "ISSUE-1-5",
+      "title": "'You still have AP' end-turn confirmation dialog fires every turn",
+      "severity": "MEDIUM",
+      "screen": "combat",
+      "firstSeen": "run-1",
+      "confirmedIn": ["run-1"],
+      "description": "Every turn where AP remains, pressing End Turn triggers a confirmation dialog that requires a second click. This doubles the required interaction for every turn and fires even when the player is at critically low HP.",
+      "steamReviewerQuote": "Annoying popup every single turn asking me to confirm.",
+      "workaround": "Click the confirmation button"
+    },
+    {
+      "id": "ISSUE-1-6",
+      "title": "ENCOUNTERS counter shows 0 on runEnd despite completing a combat encounter",
+      "severity": "MEDIUM",
+      "screen": "runEnd",
+      "firstSeen": "run-1",
+      "confirmedIn": ["run-1", "run-2", "run-3"],
+      "description": "The ENCOUNTERS stat on the runEnd screen shows 0 across all 3 runs, despite each run completing 1 combat encounter (entering combat, playing cards, dying).",
+      "steamReviewerQuote": "It says 0 encounters but I just fought a monster.",
+      "workaround": "None"
+    },
+    {
+      "id": "ISSUE-2-3",
+      "title": "'Practice Run' penalty fires for new players who never answered a knowledge question",
+      "severity": "MEDIUM",
+      "screen": "runEnd",
+      "firstSeen": "run-2",
+      "confirmedIn": ["run-2", "run-3"],
+      "description": "100% accuracy (from using only Quick Play with no wrong answers possible) triggers 'Practice Run — No camp rewards — you already know this material.' A new player who hasn't answered a single quiz question sees this banner, which is contextually wrong and confusing.",
+      "steamReviewerQuote": "The game told me I already know everything but I haven't answered any questions yet.",
+      "workaround": "None"
+    },
+    {
+      "id": "ISSUE-3-2",
+      "title": "'0% of dungeon explored' shown after dying deep in Floor 1 combat",
+      "severity": "MEDIUM",
+      "screen": "runEnd",
+      "firstSeen": "run-3",
+      "confirmedIn": ["run-1", "run-2", "run-3"],
+      "description": "After fighting 6+ minutes and 10+ turns of combat on Floor 1, runEnd shows 'you only explored 0% of the dungeon.' The exploration percentage never increases from 0%.",
+      "steamReviewerQuote": "I fought for 6 minutes and it says I explored 0% of the dungeon.",
+      "workaround": "None"
+    },
+    {
+      "id": "ISSUE-3-3",
+      "title": "No shop, mystery, or rest room types visible on any map across all 3 runs",
+      "severity": "MEDIUM",
+      "screen": "dungeonMap",
+      "firstSeen": "run-3",
+      "confirmedIn": ["run-1", "run-2", "run-3"],
+      "description": "All 3 dungeon maps showed 100% combat nodes (16 combat + 1 elite + 1 boss). No shop, mystery event, or rest rooms appeared in any run. This limits roguelite variety and makes the game feel like a linear combat gauntlet.",
+      "steamReviewerQuote": "There's no shop or rest areas, just constant combat. The map feels shallow.",
+      "workaround": "None — may require progressing further into the dungeon"
+    },
+    {
+      "id": "ISSUE-1-1",
+      "title": "Narration dismiss button not clickable by text content — requires overlay click or auto-dismiss",
+      "severity": "LOW",
+      "screen": "dungeonMap narration overlay",
+      "firstSeen": "run-1",
+      "confirmedIn": ["run-1"],
+      "description": "The narration dismiss button has no textContent (text rendered via CSS :before or child elements), so DOM text-based queries fail. Clicking the overlay div itself works. Real players with a mouse would click the overlay naturally.",
+      "steamReviewerQuote": "Non-issue for real player with mouse.",
+      "workaround": "Click the overlay element directly"
+    },
+    {
+      "id": "ISSUE-3-4",
+      "title": "rrScreenshot during runEnd captures Phaser canvas background, not Svelte overlay",
+      "severity": "LOW",
+      "screen": "runEnd",
+      "firstSeen": "run-3",
+      "confirmedIn": ["run-1", "run-2", "run-3"],
+      "description": "When screen=runEnd, rrScreenshot shows the Phaser combat background (enemy sprite visible) rather than the runEnd Svelte component overlay. The overlay is DOM-only and sits above the canvas. Functional on real hardware, but the visual bleed should be verified — runEnd overlay must fully cover the combat canvas.",
+      "steamReviewerQuote": "Possible visual layering issue — combat background visible under runEnd screen.",
+      "workaround": "DOM inspection confirms runEnd data is correct; visual is a screenshot capture issue"
+    }
+  ],
+  "prioritizedFixes": [
+    {
+      "priority": 1,
+      "issueId": "ISSUE-1-2",
+      "reason": "Blocks the entire game on first launch. Every new player hits this on every run."
+    },
+    {
+      "priority": 2,
+      "issueId": "ISSUE-2-2",
+      "reason": "Card clicks don't register — the most fundamental game interaction is broken for mouse-only players."
+    },
+    {
+      "priority": 3,
+      "issueId": "ISSUE-3-1",
+      "reason": "Charge Play is the core learning mechanic and it silently fails. Players can't access the primary feedback loop."
+    },
+    {
+      "priority": 4,
+      "issueId": "ISSUE-1-4",
+      "reason": "No discoverability for Charge Play. Combined with ISSUE-3-1, the knowledge quiz may never be reached."
+    },
+    {
+      "priority": 5,
+      "issueId": "ISSUE-1-6",
+      "reason": "ENCOUNTERS: 0 is a visible data bug on the summary screen that directly undermines player confidence in the stats."
+    }
+  ],
+  "positives": [
+    "Hub screen is beautiful and immediately intuitive — 'click the door to start' is clear.",
+    "Deck selection (Trivia Dungeon vs Study Temple) is well-labeled and clean.",
+    "Enemy visual variety is excellent across 3 runs: Staple Bug, Bookmark Vine, Thesis Construct.",
+    "Combat backgrounds are atmospheric and high quality (industrial pipes, vine library, crystal cave).",
+    "Thesis Construct's escalating Crystal Slam creates genuine tactical pressure — good design.",
+    "Knowledge Harvest breakdown (SEEN/REVIEWING/MASTERED) is genuinely compelling end-screen data.",
+    "Death flavor text is excellent: 'Remind yourself that overconfidence is a slow and insidious killer.'",
+    "Keyboard shortcut system (1-5, Enter) works reliably once discovered.",
+    "Total XP reward (+28 for 10 knowledge items) feels generous and motivating.",
+    "All 3 runs completed full loop: hub → combat → runEnd → hub with no softlocks or crashes."
+  ]
+}
