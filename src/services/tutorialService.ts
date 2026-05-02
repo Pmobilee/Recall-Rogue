@@ -109,7 +109,8 @@ function getStepsForMode(mode: TutorialMode): TutorialStep[] {
 function markRelatedTooltips(stepId: string): void {
   switch (stepId) {
     case 'tap_card_prompt':
-    case 'hand_intro':
+    case 'hand_intro':         // legacy — kept for old saves
+    case 'cards_ap_intro':     // merged replacement for hand_intro + ap_intro (ISSUE-1-3)
       markOnboardingTooltipSeen('hasSeenCardTapTooltip')
       break
     case 'card_selected':
@@ -119,8 +120,9 @@ function markRelatedTooltips(stepId: string): void {
     case 'end_turn_prompt':
       markOnboardingTooltipSeen('hasSeenEndTurnTooltip')
       break
-    case 'ap_intro':
+    case 'ap_intro':           // legacy — kept for old saves
     case 'ap_status_reminder':
+    case 'combat_intro':       // merged replacement for enemy_intro+intent+passive (marks AP seen too)
       markOnboardingTooltipSeen('hasSeenAPTooltip')
       break
   }

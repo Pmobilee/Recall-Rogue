@@ -147,12 +147,23 @@ describe('COMBAT_TUTORIAL_STEPS — structure', () => {
     expect(qpIdx).toBeLessThan(postQpIdx)
   })
 
-  it('hand_intro comes before ap_intro in step order', () => {
-    const handIdx = COMBAT_TUTORIAL_STEPS.findIndex((s) => s.id === 'hand_intro')
-    const apIdx = COMBAT_TUTORIAL_STEPS.findIndex((s) => s.id === 'ap_intro')
-    expect(handIdx).toBeGreaterThanOrEqual(0)
-    expect(apIdx).toBeGreaterThanOrEqual(0)
-    expect(handIdx).toBeLessThan(apIdx)
+  it('combat_intro comes before cards_ap_intro in step order (ISSUE-1-3 merged steps)', () => {
+    // combat_intro replaced enemy_intro+passive_intro+intent_intro
+    // cards_ap_intro replaced hand_intro+ap_intro
+    const combatIdx = COMBAT_TUTORIAL_STEPS.findIndex((s) => s.id === 'combat_intro')
+    const cardsIdx = COMBAT_TUTORIAL_STEPS.findIndex((s) => s.id === 'cards_ap_intro')
+    expect(combatIdx).toBeGreaterThanOrEqual(0)
+    expect(cardsIdx).toBeGreaterThanOrEqual(0)
+    expect(combatIdx).toBeLessThan(cardsIdx)
+  })
+
+  it('old phase-1 step IDs are removed (merged into combat_intro + cards_ap_intro)', () => {
+    const ids = COMBAT_TUTORIAL_STEPS.map((s) => s.id)
+    expect(ids).not.toContain('enemy_intro')
+    expect(ids).not.toContain('enemy_passive_intro')
+    expect(ids).not.toContain('enemy_intent_intro')
+    expect(ids).not.toContain('hand_intro')
+    expect(ids).not.toContain('ap_intro')
   })
 
   it('no step with id card_selected exists (replaced by card_selected_qp + charge flow)', () => {
@@ -176,8 +187,8 @@ describe('COMBAT_TUTORIAL_STEPS — structure', () => {
   })
 })
 
-describe('enemy_intro step', () => {
-  const step = combatStep('enemy_intro')
+describe('combat_intro step (merged: enemy_intro + enemy_passive_intro + enemy_intent_intro)', () => {
+  const step = combatStep('combat_intro')
 
   it('shows on turn 1, player_action', () => {
     expect(step.showWhen(makeCombatCtx())).toBe(true)
@@ -189,11 +200,6 @@ describe('enemy_intro step', () => {
 
   it('does NOT show during enemy turn', () => {
     expect(step.showWhen(makeCombatCtx({ phase: 'enemy_turn' }))).toBe(false)
-  })
-
-  it('showWhen does not depend on cardsPlayedThisTurn', () => {
-    // proactive step — cardsPlayedThisTurn has no effect on showWhen
-    expect(step.showWhen(makeCombatCtx({ cardsPlayedThisTurn: 5 }))).toBe(true)
   })
 
   it('getMessage includes enemy name', () => {
@@ -210,10 +216,38 @@ describe('enemy_intro step', () => {
     expect(step.getMessage(makeCombatCtx({ enemyName: null }))).toBeNull()
   })
 
+  it('getMessage includes passive when enemyPassives populated', () => {
+    const msg = step.getMessage(
+      makeCombatCtx({ enemyName: 'Page Flutter', enemyPassives: ['Enrage'] })
+    )
+    expect(msg).not.toBeNull()
+    expect(msg).toContain('Enrage')
+  })
+
+  it('getMessage still works when enemyPassives is empty (no passive text)', () => {
+    const msg = step.getMessage(makeCombatCtx({ enemyPassives: [] }))
+    expect(msg).not.toBeNull()
+  })
+
+  it('getMessage includes intent damage value for attack intent', () => {
+    const msg = step.getMessage(
+      makeCombatCtx({ enemyIntentType: 'attack', enemyIntentValue: 12 })
+    )
+    expect(msg).not.toBeNull()
+    expect(msg).toContain('12')
+  })
+
+  it('getMessage includes Shield guidance for attack intent', () => {
+    const msg = step.getMessage(
+      makeCombatCtx({ enemyIntentType: 'attack', enemyIntentValue: 8 })
+    )
+    expect(msg).not.toBeNull()
+    expect(msg).toContain('Shield')
+  })
+
   it('doneWhen always returns true (proactive step)', () => {
     expect(step.doneWhen(makeCombatCtx())).toBe(true)
     expect(step.doneWhen(makeCombatCtx({ encounterTurnNumber: 2 }))).toBe(true)
-    expect(step.doneWhen(makeCombatCtx({ cardsPlayedThisTurn: 3 }))).toBe(true)
   })
 
   it('autoDismiss is false (requires manual Got it)', () => {
@@ -224,168 +258,13 @@ describe('enemy_intro step', () => {
     expect(step.proactive).toBe(true)
   })
 
-  it('spotlight is false (enemy is in Phaser canvas, not DOM)', () => {
-    expect(step.spotlight).toBe(false)
-  })
-
-  it('anchor targets enemy-sprite with position below', () => {
-    expect(step.anchor.target).toBe('enemy-sprite')
-    expect(step.anchor.position).toBe('below')
-  })
-})
-
-describe('enemy_passive_intro step', () => {
-  const step = combatStep('enemy_passive_intro')
-
-  it('shows on turn 1, player_action', () => {
-    expect(step.showWhen(makeCombatCtx())).toBe(true)
-  })
-
-  it('does NOT show on turn 2+', () => {
-    expect(step.showWhen(makeCombatCtx({ encounterTurnNumber: 2 }))).toBe(false)
-  })
-
-  it('getMessage returns null when enemyPassives is empty (step skip)', () => {
-    expect(step.getMessage(makeCombatCtx({ enemyPassives: [] }))).toBeNull()
-  })
-
-  it('getMessage returns null when enemyPassives is undefined (step skip)', () => {
-    const ctx = makeCombatCtx()
-    delete (ctx as Partial<TutorialContext>).enemyPassives
-    expect(step.getMessage(ctx as TutorialContext)).toBeNull()
-  })
-
-  it('getMessage includes passive name when enemyPassives populated', () => {
-    const msg = step.getMessage(
-      makeCombatCtx({ enemyName: 'Page Flutter', enemyPassives: ['Enrage'] })
-    )
-    expect(msg).not.toBeNull()
-    expect(msg).toContain('Enrage')
-    expect(msg).toContain('Page Flutter')
-  })
-
-  it('doneWhen always returns true (proactive step)', () => {
-    expect(step.doneWhen(makeCombatCtx())).toBe(true)
-  })
-
-  it('autoDismiss is false', () => {
-    expect(step.autoDismiss).toBe(false)
-  })
-
-  it('blockInput is true', () => {
-    expect(step.blockInput).toBe(true)
-  })
-
-  it('proactive is true', () => {
-    expect(step.proactive).toBe(true)
-  })
-})
-
-describe('enemy_intent_intro step', () => {
-  const step = combatStep('enemy_intent_intro')
-
-  it('shows on turn 1, player_action, with intent type set', () => {
-    expect(step.showWhen(makeCombatCtx({ enemyIntentType: 'attack' }))).toBe(true)
-  })
-
-  it('does NOT show when enemyIntentType is null', () => {
-    expect(step.showWhen(makeCombatCtx({ enemyIntentType: null }))).toBe(false)
-  })
-
-  it('does NOT show on turn 2+', () => {
-    expect(step.showWhen(makeCombatCtx({ encounterTurnNumber: 2 }))).toBe(false)
-  })
-
-  it('getMessage includes intent description and damage value for attack', () => {
-    const msg = step.getMessage(
-      makeCombatCtx({ enemyIntentType: 'attack', enemyIntentValue: 12 })
-    )
-    expect(msg).not.toBeNull()
-    expect(msg).toContain('12')
-  })
-
-  it('getMessage includes card-type guidance for attack intent', () => {
-    const msg = step.getMessage(
-      makeCombatCtx({ enemyIntentType: 'attack', enemyIntentValue: 8 })
-    )
-    expect(msg).not.toBeNull()
-    expect(msg).toContain('Shield')
-  })
-
-  it('getMessage includes card-type guidance for buff intent', () => {
-    const msg = step.getMessage(
-      makeCombatCtx({ enemyIntentType: 'buff' })
-    )
-    expect(msg).not.toBeNull()
-    expect(msg).toContain('Attack')
-  })
-
-  it('getMessage always returns a non-null string (never skips)', () => {
-    // even with null intentType, falls back to "take an action"
-    const msg = step.getMessage(makeCombatCtx({ enemyIntentType: null }))
-    expect(msg).not.toBeNull()
-    expect(msg).toContain('take an action')
-  })
-
-  it('doneWhen always returns true (proactive step)', () => {
-    expect(step.doneWhen(makeCombatCtx())).toBe(true)
-  })
-
-  it('autoDismiss is false', () => {
-    expect(step.autoDismiss).toBe(false)
-  })
-
-  it('proactive is true', () => {
-    expect(step.proactive).toBe(true)
-  })
-})
-
-describe('ap_intro step', () => {
-  const step = combatStep('ap_intro')
-
-  it('shows on turn 1, player_action', () => {
-    expect(step.showWhen(makeCombatCtx())).toBe(true)
-  })
-
-  it('does NOT show on turn 2+', () => {
-    expect(step.showWhen(makeCombatCtx({ encounterTurnNumber: 2 }))).toBe(false)
-  })
-
-  it('getMessage includes apCurrent value (not apMax)', () => {
-    const msg = step.getMessage(makeCombatCtx({ apCurrent: 4, apMax: 3 }))
-    expect(msg).not.toBeNull()
-    expect(msg).toContain('4')
-    expect(msg).toContain('Action Points')
-  })
-
-  it('getMessage uses apCurrent not apMax when they differ', () => {
-    // apCurrent=2, apMax=4 — message should contain "2", not "4"
-    const msg = step.getMessage(makeCombatCtx({ apCurrent: 2, apMax: 4 })) ?? ''
-    expect(msg).toContain('2')
-    // "4" should NOT appear as the AP count (apMax not referenced)
-    // Note: "4" might appear in other contexts, so we check the specific phrase
-    expect(msg).toContain('2 Action Points')
-  })
-
-  it('doneWhen always returns true (proactive step)', () => {
-    expect(step.doneWhen(makeCombatCtx())).toBe(true)
-  })
-
-  it('autoDismiss is false', () => {
-    expect(step.autoDismiss).toBe(false)
-  })
-
-  it('proactive is true', () => {
-    expect(step.proactive).toBe(true)
-  })
-
   it('blockInput is true', () => {
     expect(step.blockInput).toBe(true)
   })
 })
 
-describe('hand_intro step', () => {
-  const step = combatStep('hand_intro')
+describe('cards_ap_intro step (merged: hand_intro + ap_intro)', () => {
+  const step = combatStep('cards_ap_intro')
 
   it('shows on turn 1, player_action', () => {
     expect(step.showWhen(makeCombatCtx())).toBe(true)
@@ -393,10 +272,6 @@ describe('hand_intro step', () => {
 
   it('does NOT show on turn 2+', () => {
     expect(step.showWhen(makeCombatCtx({ encounterTurnNumber: 2 }))).toBe(false)
-  })
-
-  it('showWhen does not depend on cardPlayStage (proactive step)', () => {
-    expect(step.showWhen(makeCombatCtx({ cardPlayStage: 'selected' }))).toBe(true)
   })
 
   it('getMessage returns non-null string about Quick Play and Charge', () => {
@@ -406,10 +281,14 @@ describe('hand_intro step', () => {
     expect(msg).toContain('Charge')
   })
 
+  it('getMessage includes AP count', () => {
+    const msg = step.getMessage(makeCombatCtx({ apCurrent: 4 }))
+    expect(msg).not.toBeNull()
+    expect(msg).toContain('4')
+  })
+
   it('doneWhen always returns true (proactive step)', () => {
     expect(step.doneWhen(makeCombatCtx())).toBe(true)
-    expect(step.doneWhen(makeCombatCtx({ cardPlayStage: 'selected' }))).toBe(true)
-    expect(step.doneWhen(makeCombatCtx({ cardsPlayedThisTurn: 1 }))).toBe(true)
   })
 
   it('autoDismiss is false (requires manual Got it)', () => {

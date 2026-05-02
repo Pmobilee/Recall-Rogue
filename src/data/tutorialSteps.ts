@@ -5,6 +5,11 @@
  * these predicates against live TutorialContext objects to determine what to show
  * and when to advance. The UI layer renders the active step's message anchored
  * to the element identified by anchor.target (matched via data-tutorial-anchor="xxx").
+ *
+ * ISSUE-1-3 fix (2026-05-02): Collapsed the original 5 proactive Phase 1 popups
+ * (enemy_intro + enemy_passive_intro + enemy_intent_intro + hand_intro + ap_intro)
+ * down to 2 merged popups (combat_intro + cards_ap_intro). First combat now fires
+ * at most 2 blocking "Got it" popups before the player can act.
  */
 
 export type TutorialMode = 'combat' | 'study'
@@ -109,86 +114,43 @@ export interface TutorialStep {
  */
 export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
   // ═══════════════════════════════════════════════════════════
-  // PHASE 1 — Combat Start (proactive, fires immediately)
+  // PHASE 1 — Combat Start (2 merged popups, down from 5)
+  //
+  // ISSUE-1-3 (2026-05-02): Original five proactive steps collapsed to two.
+  // combat_intro: enemy name + intent + any passive in one pop.
+  // cards_ap_intro: cards mechanic + AP explanation in one pop.
   // ═══════════════════════════════════════════════════════════
 
   {
-    id: 'enemy_intro',
-    mode: 'combat',
-    anchor: { target: 'enemy-sprite', position: 'below' },
-    proactive: true,
-    getMessage: (ctx) =>
-      ctx.enemyName
-        ? `You are facing ${ctx.enemyName}. Defeat them to advance deeper into the dungeon.`
-        : null,
-    showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
-    doneWhen: () => true,
-    autoDismiss: false,
-    minDisplayMs: 0,
-    maxDisplayMs: 30000,
-    // enemy-sprite is a Phaser canvas element — no DOM node to spotlight
-    spotlight: false,
-  },
-
-  {
-    id: 'enemy_passive_intro',
-    mode: 'combat',
-    anchor: { target: 'enemy-power-badges', position: 'above' },
-    proactive: true,
-    blockInput: true,
-    getMessage: (ctx) => {
-      if (!ctx.enemyPassives || ctx.enemyPassives.length === 0) return null
-      const passive = ctx.enemyPassives[0]
-      return `${ctx.enemyName ?? 'This enemy'} has a special ability: ${passive}. Keep this in mind as you play your cards.`
-    },
-    showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
-    doneWhen: () => true,
-    autoDismiss: false,
-    minDisplayMs: 0,
-    maxDisplayMs: 30000,
-    spotlight: true,
-  },
-
-  {
-    id: 'enemy_intent_intro',
+    // Merged: enemy_intro + enemy_intent_intro + enemy_passive_intro
+    id: 'combat_intro',
     mode: 'combat',
     anchor: { target: 'enemy-intent', position: 'above' },
     proactive: true,
     blockInput: true,
     getMessage: (ctx) => {
-      const intentMap: Record<string, string> = {
-        attack: `deal ${ctx.enemyIntentValue ?? '?'} damage to you. Play Shield cards to block it`,
-        defend: `gain ${ctx.enemyIntentValue ?? '?'} block. Use Attack cards to deal damage while they turtle`,
-        buff: 'gain a stat boost. Hit hard with Attack cards before they power up',
-        debuff: 'weaken you with a status effect. Play Shield cards and strike back',
-        heal: 'recover HP. Push damage with Attack cards now',
-        charge: 'charge up a powerful attack. Play Shield cards to survive it',
-        multi_attack: `hit you multiple times for ${ctx.enemyIntentValue ?? '?'} each. Shield cards are critical here`,
-      }
-      const intentDesc = ctx.enemyIntentType
-        ? (intentMap[ctx.enemyIntentType] ?? 'take an action')
-        : 'take an action'
-      return `That icon shows the enemy's next move. They intend to ${intentDesc}.`
-    },
-    showWhen: (ctx) =>
-      ctx.encounterTurnNumber === 1 &&
-      ctx.phase === 'player_action' &&
-      ctx.enemyIntentType != null,
-    doneWhen: () => true,
-    autoDismiss: false,
-    minDisplayMs: 0,
-    maxDisplayMs: 30000,
-    spotlight: true,
-  },
+      if (!ctx.enemyName) return null
 
-  {
-    id: 'hand_intro',
-    mode: 'combat',
-    anchor: { target: 'card-hand', position: 'above' },
-    proactive: true,
-    blockInput: true,
-    getMessage: () =>
-      'These are your cards. There are two ways to play them: Quick Play (tap again for base damage, no quiz) or Charge (drag upward to answer a question for 1.5x power).',
+      const intentMap: Record<string, string> = {
+        attack: `plans to deal ${ctx.enemyIntentValue ?? '?'} damage — play Shield cards to block it`,
+        defend: `will gain ${ctx.enemyIntentValue ?? '?'} block — hit hard while they turtle`,
+        buff: 'is buffing — push damage before they get stronger',
+        debuff: 'will weaken you — Shield up and hit back',
+        heal: 'is healing — deal damage now to counter it',
+        charge: 'is charging a big attack — Shield cards are key',
+        multi_attack: `hits ${ctx.enemyIntentValue ?? '?'} times — Shields are critical`,
+      }
+      const intentPart = ctx.enemyIntentType
+        ? `The icon to the right shows their next move — ${ctx.enemyName} ${intentMap[ctx.enemyIntentType] ?? 'is planning something'}.`
+        : ''
+
+      const passivePart =
+        ctx.enemyPassives && ctx.enemyPassives.length > 0
+          ? ` Passive: ${ctx.enemyPassives[0]}.`
+          : ''
+
+      return `You are facing ${ctx.enemyName}. Defeat them to advance.${intentPart ? ' ' + intentPart : ''}${passivePart}`
+    },
     showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
     doneWhen: () => true,
     autoDismiss: false,
@@ -198,13 +160,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
   },
 
   {
-    id: 'ap_intro',
+    // Merged: hand_intro + ap_intro
+    id: 'cards_ap_intro',
     mode: 'combat',
-    anchor: { target: 'ap-indicator', position: 'left' },
+    anchor: { target: 'card-hand', position: 'above' },
     proactive: true,
     blockInput: true,
     getMessage: (ctx) =>
-      `This is your AP. You have ${ctx.apCurrent} Action Points to spend this turn. Each card costs AP to play. When you run out, end your turn.`,
+      `Your hand is below. Two ways to play: Quick Play (tap a card twice — base damage, no quiz) or Charge (drag a card upward — answer a question for 1.5x power, costs +1 AP). You have ${ctx.apCurrent} AP this turn.`,
     showWhen: (ctx) => ctx.encounterTurnNumber === 1 && ctx.phase === 'player_action',
     doneWhen: () => true,
     autoDismiss: false,
