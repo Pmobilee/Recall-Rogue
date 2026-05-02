@@ -211,14 +211,13 @@
 
   let gradeExplanation = $derived.by(() => {
     if (result === 'victory' || result === 'retreat' || result === 'abandon') return ''
-    const explorationPct = encountersTotal > 0 ? Math.round((encountersWon / encountersTotal) * 100) : 0
     if (accuracy >= 80 && floorReached < 7) {
-      return `You aced what you faced — but only explored ${explorationPct}% of the dungeon.`
+      return `All correct — the dungeon stopped you on Floor ${floorReached}, not the questions.`
     }
     if (accuracy < 50 && encountersWon >= encountersTotal * 0.75) {
       return 'You braved every corridor but stumbled often.'
     }
-    return 'Grade = accuracy \u00d7 exploration \u00d7 chain bonus'
+    return 'Grade = accuracy \u00d7 floors \u00d7 chain bonus'
   })
 
   // ── Animation state ────────────────────────────────────────────────────────
@@ -517,7 +516,10 @@
         </div>
         <div class="stat-pill">
           <span class="pill-label">Encounters</span>
-          <span class="pill-value">{encountersWon}</span>
+          <span class="pill-value">{encountersTotal}</span>
+          {#if encountersTotal > 0}
+            <span class="pill-context">{encountersWon} won</span>
+          {/if}
         </div>
         <div class="stat-pill">
           <span class="pill-label">Time</span>

@@ -1,3 +1,13 @@
+### 2026-05-02 — Quick Play pollutes questionsAnswered / Practice Run false positives
+
+**What:** `isPracticeRun()` checks `questionsAnswered >= 5 && correct === answered` as a "100% accuracy" signal for the Practice Run banner. But `recordCardPlay()` is called for both Charge Play and Quick Play — and Quick Play always passes `correct=true`. A new player who Quick-Played 5 cards would trigger "Practice Run: you already know this material" despite never answering a quiz.
+
+**Why:** `questionsAnswered` was designed for the accuracy-based check but `encounterBridge.handlePlayCard` called `recordCardPlay(run, correct, ...)` unconditionally. Quick Play doesn't have a quiz component; its `correct=true` argument is a no-op for damage purposes but silently incremented the practice-run accuracy counter.
+
+**Fix:** Added `chargesAttempted: number` to `RunState` (init=0). `encounterBridge.handlePlayCard` increments it only when `playMode !== 'quick' && playMode !== 'quick_play'`. `isPracticeRun()` now gates all checks behind `chargesAttempted >= MIN_CHARGE_ATTEMPTS_FOR_PRACTICE_RUN (5)`, including the `practiceRunDetected` (deck-mastery) flag. See `src/services/masteryScalingService.ts` and `src/services/encounterBridge.ts`.
+
+**Also:** The Encounters pill in RunEndScreen showed `encountersWon` (0 for a first-run defeat) labeled as "ENCOUNTERS", which reads as "you didn't fight anyone." Changed to show `encountersTotal` (encounters entered) with a "N won" sub-line.
+
 ### 2026-05-01 — DungeonMap row-0 nodes off-screen on mount (Steam progression blocker)
 
 **What:** On a fresh `dungeonMap` load, map nodes were rendered below the viewport fold and never scrolled into view. Steam reviewer repro: after defeating a monster and returning to the map, a black screen with no clickable nodes. The scroll container had `scrollTop=108, scrollHeight=1398, clientHeight=1006`; row-0 entry nodes were positioned at `y=1233` inside the canvas.
