@@ -1,3 +1,27 @@
+### 2026-05-02 — DungeonMap cold-start scroll: narration overlay exhausts the retry chain
+
+**What:** After the first run starts, DungeonMap mounts while NarrativeOverlay (z-index 950) is covering the entire screen. The old retry chain ran for ~5s and exhausted completely during narration display (auto-dismiss at 10s). Once the player dismissed narration, the map had a fully laid-out DOM but no further scroll attempt fired — row-0 entry nodes stayed at y≈1233, below the fold.
+
+**Why:** The retry chain was designed to wait for layout to settle after mount. It never anticipated another full-screen overlay delaying the first visible frame by 5–10s. The chain finished before the player even saw the map.
+
+**Fix:** (1) Extended RETRY_DELAYS tail from 10 entries (~2s) to 15 entries (~12s) so the chain outlasts narration auto-dismiss. (2) Added a `` watching `.active` — when it transitions `true → false`, a double-RAF + `scheduleScrollRetry` fires immediately. Both paths together mean: early manual dismiss (player clicks through fast) fires the immediate trigger; late auto-dismiss (10s) is covered by the extended tail.
+
+**File:** `src/ui/components/DungeonMap.svelte` — `scheduleScrollRetry` RETRY_DELAYS array and the new narrative-dismiss ``.
+
+**Lesson:** If a UI element mounts under a full-screen overlay, its on-mount layout-wait loop will exhaust before the element is ever visible. Any critical scroll/focus/measure must also fire on overlay-dismiss, not just on mount.
+
+### 2026-05-02 — Tutorial popup chain: 5 blocking popups before first player action
+
+**What:** First combat fired enemy_intro → enemy_passive_intro → enemy_intent_intro → hand_intro → ap_intro as 5 sequential `blockInput: true` proactive steps. The player had to click "Got it" 4–5 times before touching their first card. Steam playtest: reviewers felt patronised and some tried to close the game before seeing cards.
+
+**Fix:** Merged into 2 steps: `combat_intro` (enemy + intent + passive) and `cards_ap_intro` (hand + AP). Old IDs kept in `markRelatedTooltips()` as legacy cases for saves that stored partial tutorial progress against the old IDs.
+
+### 2026-05-02 — End-turn AP warning fired every turn, even at near-death HP
+
+**What:** The "You still have AP" confirmation dialog showed every single turn when AP ≥ 2 and playable cards existed. At low HP a player needs to end turn immediately to accept a healing outcome or forfeit — the extra confirmation click costs them the run.
+
+**Fix:** Added `endTurnWarnedThisCombat` boolean that resets per encounter. Warning fires at most once per combat encounter, and is skipped entirely when `playerState.hp / playerState.maxHP ≤ 0.25`.
+
 ### 2026-05-02 — Quick Play pollutes questionsAnswered / Practice Run false positives
 
 **What:** `isPracticeRun()` checks `questionsAnswered >= 5 && correct === answered` as a "100% accuracy" signal for the Practice Run banner. But `recordCardPlay()` is called for both Charge Play and Quick Play — and Quick Play always passes `correct=true`. A new player who Quick-Played 5 cards would trigger "Practice Run: you already know this material" despite never answering a quiz.

@@ -414,7 +414,7 @@ Fog extends full screen width via `left: -50vw; right: -50vw` inside `.dungeon-m
 - **Landscape support** — fog overlay respects `top: var(--topbar-height)` offset so top bar remains visible
 - **Reduced motion** — all wisp animations and edge opacity transitions disabled under `prefers-reduced-motion: reduce`
 
-### Auto-Scroll — Initial Row-0 Reveal (2026-05-01, hardened 2026-05-01)
+### Auto-Scroll — Initial Row-0 Reveal (2026-05-01, hardened 2026-05-02)
 
 On mount and whenever `availableNodes` changes, the map scrolls so the lowest available node is centered in the viewport.
 
@@ -422,13 +422,14 @@ On mount and whenever `availableNodes` changes, the map scrolls so the lowest av
 - Uses direct `scrollTop` assignment (never `scrollIntoView` with `behavior:'smooth'`) — smooth scroll is unreliable in headless Chromium / SwiftShader and does not complete reliably before the user can interact.
 - Measures node position via `getBoundingClientRect()` relative to the scroll container — avoids the `offsetParent` walk pitfall where nested transforms during Phaser scene transitions produce wrong offsets.
 - Verifies the node is in-viewport after each scroll attempt via `getBoundingClientRect()`. If the scroll was clamped by in-progress layout, retries.
-- Retry schedule covers ~5 seconds: `[0, 50, 100, 200, 350, 500, 750, 1000, 1500, 2000]` (10 attempts). A generation counter prevents stale retry chains from interfering with newer invocations.
+- Retry schedule covers ~12 seconds: `[0, 50, 100, 200, 350, 500, 750, 1000, 1500, 2000, 3000, 4500, 6500, 9000, 12000]` (15 attempts). Extended from 10 attempts / 2s to outlast the narration overlay auto-dismiss (10s). A generation counter prevents stale retry chains from interfering with newer invocations.
+- **Narrative-dismiss trigger (ISSUE-1-2, 2026-05-02):** A `$effect` watches `$narrativeDisplay.active`. When the narration overlay transitions from `true` → `false` (player clicked through or 10s auto-dismiss), a double-RAF + `scheduleScrollRetry` fires immediately. This covers the case where the mount-time retry chain has already exhausted while narration was covering the map.
 - `MutationObserver` on `scrollContainer` watches for `childList`/`subtree` mutations and fires a scroll attempt whenever `.state-available` elements are added. Disconnects after a successful scroll or after 10 seconds.
 - `ResizeObserver` fires a one-shot scroll on the first resize event after mount, catching cases where `--layout-scale` resolves late and changes the container height.
 - The `$effect` depends on `availableNodes.length` so floor-to-floor transitions still trigger rescroll when the available set changes.
 - All observers are disconnected in the `onMount` cleanup function to prevent leaks.
 
-**Why this matters:** The scroll canvas is taller than the viewport (e.g. `scrollHeight=1398` vs `clientHeight=1006`). Row-0 (entry) nodes are positioned at `y~1233` inside the canvas — well below the fold. Without the scroll, the player sees a black map with no clickable nodes. This was a Steam rejection blocker (2026-05-01 submission). The 5-attempt / 500ms schedule was insufficient on fresh cold loads — hardened to 10 attempts / 2000ms + MutationObserver + ResizeObserver safety net.
+**Why this matters:** The scroll canvas is taller than the viewport (e.g. `scrollHeight=1398` vs `clientHeight=1006`). Row-0 (entry) nodes are positioned at `y~1233` inside the canvas — well below the fold. Without the scroll, the player sees a black map with no clickable nodes. This was a Steam rejection blocker (2026-05-01 submission). The root cause of the cold-start regression: DungeonMap mounts while the NarrativeOverlay (z-index 950) is covering it; the retry chain exhausted before narration dismissed; no retry fired after. Fixed by (1) extending the retry tail to 12s and (2) re-firing on narrative dismiss.
 
 ---
 
@@ -625,6 +626,41 @@ The hint pill is a frosted glass pill with:
 - After **3 consecutive manual dismissals** (tracked via `setting_narrativeConsecutiveDismisses`), an "always skip?" toast appears.
 - Toast offers "Yes, always skip" (sets preference) or "No" (dismisses toast, resets counter).
 - `CONSECUTIVE_THRESHOLD = 3` — the threshold constant is at top of script.
+
+---
+
+## CardCombatOverlay — Steam-Launch UX Fixes (2026-05-02)
+
+**Source file:** `src/ui/components/CardCombatOverlay.svelte`
+
+### Phase 1 Tutorial — Merged to 2 Popups (ISSUE-1-3)
+
+The first combat used to fire 5 sequential blocking "Got it" popups before the player could act: `enemy_intro`, `enemy_passive_intro`, `enemy_intent_intro`, `hand_intro`, `ap_intro`. These are now consolidated to 2 merged steps in `src/data/tutorialSteps.ts`:
+
+| New Step ID | Replaces | Content |
+|---|---|---|
+| `combat_intro` | `enemy_intro` + `enemy_intent_intro` + `enemy_passive_intro` | Enemy name, intent icon explanation, passive ability (if any) — one popup |
+| `cards_ap_intro` | `hand_intro` + `ap_intro` | Card hand overview, Quick Play vs Charge Play distinction, AP count — one popup |
+
+Old IDs (`enemy_intro`, `enemy_passive_intro`, `enemy_intent_intro`, `hand_intro`, `ap_intro`) are removed from the step array. `markRelatedTooltips()` in `tutorialService.ts` handles both old IDs (for saves mid-tutorial) and new IDs.
+
+### Charge Hint Banner (ISSUE-1-4)
+
+A persistent hint banner appears bottom-center of the combat screen for players who have never used Charge Play:
+
+- **Content:** "Drag a card UP for Charge — quiz for 1.5× damage"
+- **Visibility:** shown while `turnState.phase === 'player_action'` and card is not yet committed. Hidden during quiz/commit phases.
+- **Dismiss:** × button (top-right of banner). Writes `localStorage.setItem('hint:chargePlayDismissed', '1')`. Auto-dismissed on the player's first correct Charge answer.
+- **Persistence:** once dismissed (manually or via first correct Charge), it never reappears across sessions. Initial state reads `localStorage.getItem('hint:chargePlayDismissed') !== '1'`.
+- **Layout:** `position: fixed; bottom: calc(120px * var(--layout-scale, 1)); left: 50%; transform: translateX(-50%)`. Portrait: repositioned to `bottom: calc(160px * var(--layout-scale, 1))`.
+
+### End-Turn Warning — Once Per Combat + Low-HP Suppression (ISSUE-1-5)
+
+The "You still have AP" end-turn confirmation was previously shown every turn when AP ≥ 2 and cards remain playable. Changed to:
+
+- **Once per encounter:** `endTurnWarnedThisCombat: boolean` state resets to `false` when encounter turn number resets (new combat). Warning fires at most once per encounter.
+- **Suppressed at ≤25% HP:** `playerHpPct = turnState.playerState.hp / turnState.playerState.maxHP`. When `isLowHp` (≤25%), the warning is skipped entirely — the player is in survival mode and does not need a second-guess prompt.
+- State path: `turnState.playerState.hp` and `turnState.playerState.maxHP` (NOT deprecated `turnState.playerHp`).
 
 ---
 

@@ -10,6 +10,7 @@
   import { ambientAudio } from '../../services/ambientAudioService'
   import { ENEMY_TEMPLATES } from '../../data/enemies'
   import { MAP_CONFIG } from '../../data/balance'
+  import { narrativeDisplay } from '../stores/narrativeStore'
 
   // =========================================================
   // Props
@@ -367,7 +368,10 @@
   let _scrollGeneration = 0
 
   function scheduleScrollRetry(container: HTMLDivElement): void {
-    const RETRY_DELAYS = [0, 50, 100, 200, 350, 500, 750, 1000, 1500, 2000]
+    // ISSUE-1-2 fix (2026-05-02): Extended tail to 12s so the retry chain outlasts
+  // narration overlays (which auto-dismiss after 10s). The narration-dismiss $effect
+  // below also fires a fresh retry chain so a player who clicks through early is covered.
+  const RETRY_DELAYS = [0, 50, 100, 200, 350, 500, 750, 1000, 1500, 2000, 3000, 4500, 6500, 9000, 12000]
     const generation = ++_scrollGeneration
 
     function attempt(idx: number): void {
@@ -507,6 +511,35 @@
         scheduleScrollRetry(container)
       })
     })
+  })
+
+  /**
+   * ISSUE-1-2: Re-trigger scroll when the narrative overlay dismisses.
+   *
+   * Root cause: DungeonMap mounts under the narration overlay. The retry chain that
+   * starts in onMount exhausts (~5s previously, now ~12s) before the player dismisses
+   * narration (or the 10s auto-dismiss fires). Once narration is gone the map has
+   * full layout but no further retry fires — the map stays scrolled to row-0 (y≈1233).
+   *
+   * Fix: watch the `narrativeDisplay.active` flag. The moment it transitions from
+   * true → false, schedule a fresh retry chain. The double-RAF allows the browser to
+   * repaint the now-visible map before getBoundingClientRect is called.
+   */
+  let _wasNarrativeActive = false
+  $effect(() => {
+    const isActive = $narrativeDisplay.active
+    if (_wasNarrativeActive && !isActive) {
+      // Narration just dismissed — map is now visible. Re-fire scroll.
+      const container = scrollContainer
+      if (container) {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            scheduleScrollRetry(container)
+          })
+        })
+      }
+    }
+    _wasNarrativeActive = isActive
   })
 </script>
 
