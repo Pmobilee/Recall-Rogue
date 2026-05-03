@@ -5,18 +5,20 @@
   "session": "STEAM-LAUNCH-2026-05-02",
   "date": "2026-05-02",
   "tester": "LLM (claude-sonnet-4-6)",
-  "runsCompleted": 3,
+  "runsCompleted": 4,
   "summary": {
     "outcomes": [
       "DRIVEN BACK — died Floor 1 vs Staple Bug (0 damage dealt, Quick Play blocked)",
       "DRIVEN BACK — died Floor 1 vs Bookmark Vine (16→0 HP)",
-      "DRIVEN BACK — died Floor 1 vs Thesis Construct (9→0 HP, enemy at 12 HP)"
+      "DRIVEN BACK — died Floor 1 vs Thesis Construct (9→0 HP, enemy at 12 HP)",
+      "LOST IN THE DARK — died Floor 3 vs Overdue Golem (7 HP, enemy at 31/61 HP) — 2 encounters won"
     ],
-    "totalIssuesFound": 13,
+    "totalIssuesFound": 17,
     "criticalCount": 2,
     "highCount": 3,
-    "mediumCount": 6,
-    "lowCount": 2
+    "mediumCount": 8,
+    "lowCount": 4,
+    "confirmedFixes": ["ISSUE-2-2", "ISSUE-1-6", "ISSUE-1-2"]
   },
   "runs": [
     {
@@ -45,6 +47,23 @@
       "playerHpAtDeath": 9,
       "enemyHpAtDeath": 12,
       "issuesFound": ["ISSUE-1-2", "ISSUE-1-6", "ISSUE-2-3", "ISSUE-3-1", "ISSUE-3-2", "ISSUE-3-3", "ISSUE-3-4"]
+    },
+    {
+      "runId": "beat-game-2026-05-03",
+      "file": "beat-the-game.md",
+      "enemy": "Overdue Golem",
+      "floor": 3,
+      "encountersWon": 2,
+      "outcome": "LOST IN THE DARK",
+      "playerHpAtDeath": 7,
+      "enemyHpAtDeath": "31/61",
+      "goldAtDeath": 70,
+      "relicsFound": ["Overflow Gem"],
+      "cardsAdded": ["Quicken"],
+      "xpEarned": 193,
+      "durationMin": 28,
+      "confirmedFixes": ["ISSUE-2-2", "ISSUE-1-6", "ISSUE-1-2"],
+      "issuesFound": ["BGRUN-1", "BGRUN-2", "BGRUN-3", "BGRUN-4"]
     }
   ],
   "issues": [
@@ -190,6 +209,50 @@
       "description": "When screen=runEnd, rrScreenshot shows the Phaser combat background (enemy sprite visible) rather than the runEnd Svelte component overlay. The overlay is DOM-only and sits above the canvas. Functional on real hardware, but the visual bleed should be verified — runEnd overlay must fully cover the combat canvas.",
       "steamReviewerQuote": "Possible visual layering issue — combat background visible under runEnd screen.",
       "workaround": "DOM inspection confirms runEnd data is correct; visual is a screenshot capture issue"
+    },
+    {
+      "id": "BGRUN-1",
+      "title": "Overdue Golem 'Bog Absorption' heals enemy HP with no telegraph",
+      "severity": "MEDIUM",
+      "screen": "combat",
+      "firstSeen": "beat-game-2026-05-03",
+      "confirmedIn": ["beat-game-2026-05-03"],
+      "description": "Overdue Golem's Bog Absorption move (non-attack intent) increased enemy HP from ~40 to ~43 (+3 HP) with no 'heals' text in the intent display. Players see 'non-attacking move' and block instead of attacking, then discover the enemy healed. If intentional, the intent display should show 'Heals 3 HP' alongside any block-absorb text.",
+      "steamReviewerQuote": "The rock monster healed itself on a non-attack turn and I had no warning.",
+      "workaround": "Play Strikes on Bog Absorption turns instead of Blocks"
+    },
+    {
+      "id": "BGRUN-2",
+      "title": "100% accuracy 'Practice Run' penalty fires even for engaged players who win fights",
+      "severity": "MEDIUM",
+      "screen": "runEnd",
+      "firstSeen": "run-2",
+      "confirmedIn": ["run-2", "run-3", "beat-game-2026-05-03"],
+      "description": "Previously ISSUE-2-3. Confirmed still present in beat-game run: player won 2 encounters actively playing cards but triggered Practice Run penalty because no quiz attempts were made (Quick Play only). The penalty fires on accuracy=100% without checking quiz attempt count. A player who wins fights without discovering Charge Play shouldn't be penalized.",
+      "steamReviewerQuote": "I won two fights and it says it was a practice run.",
+      "workaround": "None — Charge Play (quiz) must be triggered to avoid penalty"
+    },
+    {
+      "id": "BGRUN-3",
+      "title": "Shop 'Leave' always requires two-click confirmation",
+      "severity": "LOW",
+      "screen": "shop",
+      "firstSeen": "beat-game-2026-05-03",
+      "confirmedIn": ["beat-game-2026-05-03"],
+      "description": "Every shop exit via shopLeave() shows 'Leave the shop?' modal requiring a second confirmation click. No 'don't ask again' option. Mild friction for casual browsers.",
+      "steamReviewerQuote": "Why does it ask me to confirm every time I leave the shop?",
+      "workaround": "Click 'Leave anyway' to confirm"
+    },
+    {
+      "id": "BGRUN-4",
+      "title": "getHUDText() returns all nulls during active combat",
+      "severity": "LOW",
+      "screen": "combat",
+      "firstSeen": "beat-game-2026-05-03",
+      "confirmedIn": ["beat-game-2026-05-03"],
+      "description": "window.__rrPlay.getHUDText() returns {hp: null, currency: null, floor: null, streak: null, combo: null} during combat. Real player HUD is visible, but the API doesn't read it. Testing agents must use getCombatState().playerHp instead. Not player-visible but breaks automated health monitoring.",
+      "steamReviewerQuote": "N/A — testing infrastructure issue only",
+      "workaround": "Use getCombatState().playerHp for health checks"
     }
   ],
   "prioritizedFixes": [
