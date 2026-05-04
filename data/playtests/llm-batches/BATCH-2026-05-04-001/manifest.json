@@ -1,0 +1,22 @@
+{
+  "batchId": "BATCH-2026-05-04-001",
+  "createdAt": "2026-05-04T13:00:00Z",
+  "testers": ["full-run"],
+  "args": {
+    "floors": 3,
+    "domain": "general_knowledge",
+    "style": "human-style Act 1"
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "reports": {
+    "full-run": {
+      "status": "complete",
+      "verdict": "ISSUES",
+      "criticalCount": 0,
+      "highCount": 3,
+      "mediumCount": 4,
+      "lowCount": 4
+    }
+  }
+}
