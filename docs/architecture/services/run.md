@@ -75,6 +75,11 @@ Added in v3 to enable per-run knowledge delta tracking. All in-memory only — n
 | **Key exports** | `startNewRun`, `handleCombatVictory`, `handlePlayerDeath`, `handleRoomChoice`, `handleCardRewardChoice`, `handleRelicChoice`, `handleShopAction`, `handleMysteryChoice`, `handleRestAction`, `forceProceedAfterReward` (softlock escape — see bug 2026-05-01) |
 | **Key dependencies** | runManager, floorManager, encounterBridge, rewardGenerator, relicAcquisitionService, shopService, deckManager, gameState store |
 
+`startNewRun()` is async and must be awaited by automation or callers that need
+to know the run actually left hub. It awaits the archetype/run initialization
+path, then routes to `dungeonMap` for general/trivia runs or `runPreview` for
+study runs with precomputed chain distribution.
+
 ### Run termination contract (MEDIUM-10, 2026-04-10)
 
 `finishRunAndReturnToHub()` is the single convergence point for all run-ending events. It MUST:

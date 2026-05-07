@@ -433,41 +433,45 @@ let activeDailySeed: number | null = null
 let pendingDeckMode: DeckMode | null = null
 let pendingIncludeOutsideDueReviews = false
 
-export function startNewRun(options?: {
+export async function startNewRun(options?: {
   includeOutsideDueReviews?: boolean;
   multiplayerSeed?: number;
   multiplayerMode?: MultiplayerMode;
-}): void {
-  activeRunMode = 'standard'
-  activeDailySeed = null
-  pendingIncludeOutsideDueReviews = options?.includeOutsideDueReviews ?? false
-  if (options?.multiplayerMode) {
-    // FIX 022: Map multiplayerMode → activeRunMode honestly so non-race modes
-    // do not spin up race-progress broadcasts (gated on 'multiplayer_race').
-    if (options.multiplayerMode === 'coop') {
-      activeRunMode = 'multiplayer_coop';
-    } else if (options.multiplayerMode === 'duel') {
-      activeRunMode = 'multiplayer_duel';
-    } else if (options.multiplayerMode === 'trivia_night') {
-      activeRunMode = 'multiplayer_trivia';
-    } else {
-      activeRunMode = 'multiplayer_race'; // reached by 'race' and 'same_cards' only — coop/duel/trivia_night are branched above. Race-progress broadcast at line ~1097 gates on this literal value.
+}): Promise<void> {
+  try {
+    activeRunMode = 'standard'
+    activeDailySeed = null
+    pendingIncludeOutsideDueReviews = options?.includeOutsideDueReviews ?? false
+    if (options?.multiplayerMode) {
+      // FIX 022: Map multiplayerMode → activeRunMode honestly so non-race modes
+      // do not spin up race-progress broadcasts (gated on 'multiplayer_race').
+      if (options.multiplayerMode === 'coop') {
+        activeRunMode = 'multiplayer_coop';
+      } else if (options.multiplayerMode === 'duel') {
+        activeRunMode = 'multiplayer_duel';
+      } else if (options.multiplayerMode === 'trivia_night') {
+        activeRunMode = 'multiplayer_trivia';
+      } else {
+        activeRunMode = 'multiplayer_race'; // reached by 'race' and 'same_cards' only — coop/duel/trivia_night are branched above. Race-progress broadcast at line ~1097 gates on this literal value.
+      }
+      multiplayerSeed = options.multiplayerSeed ?? null
+      multiplayerModeState = options.multiplayerMode
     }
-    multiplayerSeed = options.multiplayerSeed ?? null
-    multiplayerModeState = options.multiplayerMode
-  }
-  deactivateDeterministicRandom()
-  destroyRunRng()
-  resetEncounterBridge()  // clear stale encounter state from previous run
-  // Always set deck mode from hub selector, even for onboarding flow
-  const save = get(playerSave);
-  pendingDeckMode = save?.activeDeckMode ?? { type: 'general' as const };
-  // Placeholder domains (pool builder uses deckMode, not these)
-  pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
+    deactivateDeterministicRandom()
+    destroyRunRng()
+    resetEncounterBridge()  // clear stale encounter state from previous run
+    // Always set deck mode from hub selector, even for onboarding flow
+    const save = get(playerSave);
+    pendingDeckMode = save?.activeDeckMode ?? { type: 'general' as const };
+    // Placeholder domains (pool builder uses deckMode, not these)
+    pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
 
-  // Archetype selection disabled — always use balanced (see GAME_DESIGN.md)
-  onArchetypeSelected('balanced');
-  return;
+    // Archetype selection disabled — always use balanced (see GAME_DESIGN.md)
+    await onArchetypeSelected('balanced');
+  } catch (err) {
+    console.error('[gameFlowController] startNewRun failed', err);
+    throw new Error(`startNewRun failed: ${err instanceof Error ? err.message : String(err)}`);
+  }
 }
 
 function getTier3MasteredCount(): number {

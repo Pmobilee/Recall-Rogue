@@ -117,11 +117,24 @@ function getAvailableScreens(): string[] {
 /** Start a new run by clicking the Start Run button. */
 async function startRun(): Promise<PlayResult> {
   return safeAction(async () => {
-    const btn = document.querySelector('[data-testid="btn-start-run"]') as HTMLButtonElement | null;
-    if (!btn) return { ok: false, message: 'Start Run button not found' };
-    btn.click();
-    await wait(turboDelay(1500));
-    return { ok: true, message: `Run started. Screen: ${getScreen()}` };
+    const { startNewRun } = await import('../services/gameFlowController');
+    await startNewRun({ includeOutsideDueReviews: false });
+
+    const expectedScreens = new Set(['dungeonMap', 'runPreview', 'onboarding']);
+    let screen = getScreen();
+    for (let i = 0; i < 100; i++) {
+      if (expectedScreens.has(screen)) break;
+      await wait(50);
+      screen = getScreen();
+    }
+
+    if (screen === 'runPreview') {
+      return { ok: true, message: 'On runPreview screen, awaiting Begin' };
+    }
+    if (!expectedScreens.has(screen)) {
+      return { ok: false, message: `startRun: screen did not transition (final=${screen})` };
+    }
+    return { ok: true, message: `Run started. Screen: ${screen}` };
   });
 }
 

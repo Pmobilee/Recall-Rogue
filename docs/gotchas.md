@@ -6033,3 +6033,13 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Fix:** `setEnemy()` now calls `assertSubsystemsLive()` for persistent systems, then `initEncounterSubsystems()` before resetting knowledge streaks or mood. The helper destroys/stops any stale encounter-owned systems and recreates them for the new enemy. `resetKnowledgeStreak()` and saturation updates now call `atmosphereSystem` directly again, so missing lifecycle setup is loud instead of silently skipped.
 
 **Lesson:** In Phaser scenes that sleep/wake between gameplay rooms, `create()` is not an encounter boundary. Anything destroyed in `onShutdown()` but needed by `setEnemy()` must be recreated at the logical encounter boundary.
+
+### 2026-05-07 — `__rrPlay.startRun()` must await the controller path (issue #16)
+
+**Symptom:** `window.__rrPlay.startRun()` returned `{ ok: true }` while the screen still reported `hub`, causing external playtests to continue from the wrong state.
+
+**Root cause:** `gameFlowController.startNewRun()` returned `void` and called async `onArchetypeSelected('balanced')` without awaiting it. The playtest API clicked the hub button and then slept for a fixed delay, so it could report success before the controller finished or before a failure surfaced.
+
+**Fix:** `startNewRun()` is now async, awaits the archetype/run initialization path, logs and rethrows contextual failures, and `__rrPlay.startRun()` calls it directly. The API then polls up to 5s for `dungeonMap`, `runPreview`, or `onboarding`, returning `ok:false` if the screen stays on hub or any other unexpected state.
+
+**Lesson:** Fixed sleeps are not a state-transition contract. Dev automation should await the owning controller and then verify the target screen.
