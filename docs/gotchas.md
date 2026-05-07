@@ -6043,3 +6043,13 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Fix:** `startNewRun()` is now async, awaits the archetype/run initialization path, logs and rethrows contextual failures, and `__rrPlay.startRun()` calls it directly. The API then polls up to 5s for `dungeonMap`, `runPreview`, or `onboarding`, returning `ok:false` if the screen stays on hub or any other unexpected state.
 
 **Lesson:** Fixed sleeps are not a state-transition contract. Dev automation should await the owning controller and then verify the target screen.
+
+### 2026-05-07 — Shop playtest inventory must mirror the live overlay store (issue #19)
+
+**Symptom:** `window.__rrPlay.getShopInventory()` could return an empty or incomplete result while `look()` showed visible shop cards, relics, and services.
+
+**Root cause:** The shop UI renders from `gameFlowController.activeShopInventory`, but the playtest API returned an older, partial shape and omitted service actions like card removal and transform.
+
+**Fix:** `getShopInventory()` now reads the same live `activeShopInventory` store as `ShopRoomOverlay` and returns an explicit `{ cards, relics, services }` contract. The DOM fallback also reports visible buy buttons and services when the store is not ready yet.
+
+**Lesson:** For automation APIs, the authoritative data source should be the same one the player-facing component uses. Parallel API-only shapes drift quickly.

@@ -942,15 +942,20 @@ async function mysteryContinue(): Promise<PlayResult> {
   });
 }
 
-/** Get the current shop inventory (relics, cards, prices).
- *
- * Fix 3: When the shop screen opens, activeShopInventory is populated by
- * gameFlowController.openShopRoom(). If this is called before the store
- * populates (e.g. race condition on screen transition), the store returns null.
- * We fall back to reading the DOM directly from shop-buy-relic-* buttons to
- * build a minimal inventory descriptor, so callers always get something useful.
- */
-async function getShopInventory(): Promise<Record<string, unknown> | null> {
+type PlaytestShopInventory = {
+  cards: Array<Record<string, unknown>>;
+  relics: Array<Record<string, unknown>>;
+  services: Array<{ type: 'card_removal' | 'card_transform'; price: number | null; available: boolean }>;
+};
+
+function readPriceFromButton(btn: HTMLButtonElement | null): number | null {
+  if (!btn) return null;
+  const match = btn.textContent?.match(/(\d+)\s*g/i);
+  return match ? Number(match[1]) : null;
+}
+
+/** Get the current shop inventory using the same live store as ShopRoomOverlay. */
+async function getShopInventory(): Promise<PlaytestShopInventory> {
   const { activeShopInventory } = await import('../services/gameFlowController');
   const { get } = await import('svelte/store');
   const inventory = get(activeShopInventory);
@@ -961,6 +966,7 @@ async function getShopInventory(): Promise<Record<string, unknown> | null> {
         const def = RELIC_BY_ID[item.relic?.id];
         return {
           index: i,
+          relicId: item.relic?.id ?? '',
           id: item.relic?.id ?? '',
           name: def?.name ?? item.relic?.id ?? '',
           description: def?.description ?? '',
@@ -973,6 +979,7 @@ async function getShopInventory(): Promise<Record<string, unknown> | null> {
         const fact = item.card?.factId && factsDB.isReady() ? factsDB.getById(item.card.factId) : null;
         return {
           index: i,
+          cardId: item.card?.id ?? null,
           type: item.card?.cardType ?? '',
           mechanic: item.card?.mechanicId ?? null,
           mechanicName: item.card?.mechanicName ?? null,
@@ -982,11 +989,18 @@ async function getShopInventory(): Promise<Record<string, unknown> | null> {
           sold: item.sold ?? false,
         };
       }),
-      removalCost: inventory.removalCost ?? null,
+      services: [
+        ...(inventory.removalCost != null
+          ? [{ type: 'card_removal' as const, price: inventory.removalCost, available: true }]
+          : []),
+        ...(inventory.transformCost != null
+          ? [{ type: 'card_transform' as const, price: inventory.transformCost, available: true }]
+          : []),
+      ],
     };
   }
 
-  // DOM fallback: read available relic buy buttons directly from the shop overlay.
+  // DOM fallback: read available buy buttons directly from the shop overlay.
   // These are present when ShopRoomOverlay is mounted even if the store hasn't updated.
   const relicBtns = Array.from(
     document.querySelectorAll<HTMLButtonElement>('[data-testid^="shop-buy-relic-"]')
@@ -994,7 +1008,8 @@ async function getShopInventory(): Promise<Record<string, unknown> | null> {
   const cardBtns = Array.from(
     document.querySelectorAll<HTMLButtonElement>('[data-testid^="shop-buy-card-"]')
   );
-  if (relicBtns.length === 0 && cardBtns.length === 0) return null;
+  const removalBtn = document.querySelector<HTMLButtonElement>('[data-testid="shop-buy-removal"]');
+  const transformBtn = document.querySelector<HTMLButtonElement>('[data-testid="shop-buy-transform"]');
 
   return {
     relics: relicBtns.map((btn, i) => {
@@ -1006,21 +1021,29 @@ async function getShopInventory(): Promise<Record<string, unknown> | null> {
         name: def?.name ?? relicId,
         description: def?.description ?? '',
         rarity: def?.rarity ?? 'common',
-        price: null, // price not readable from DOM alone
+        price: readPriceFromButton(btn),
         sold: btn.disabled,
       };
     }),
-    cards: cardBtns.map((_btn, i) => ({
+    cards: cardBtns.map((btn, i) => ({
       index: i,
+      cardId: null,
       type: '',
       mechanic: null,
       mechanicName: null,
       domain: null,
       factQuestion: null,
-      price: null,
-      sold: _btn.disabled,
+      price: readPriceFromButton(btn),
+      sold: btn.disabled,
     })),
-    removalCost: null,
+    services: [
+      ...(removalBtn
+        ? [{ type: 'card_removal' as const, price: readPriceFromButton(removalBtn), available: !removalBtn.disabled }]
+        : []),
+      ...(transformBtn
+        ? [{ type: 'card_transform' as const, price: readPriceFromButton(transformBtn), available: !transformBtn.disabled }]
+        : []),
+    ],
   };
 }
 
