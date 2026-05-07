@@ -6073,3 +6073,13 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Fix:** Reward-room overlay buttons now keep `pointer-events: auto` and sit at a z-index above the Phaser container, while remaining visually transparent until keyboard focus. Neighboring overlays were audited: mystery, retreat/delve, and shop already render full-screen overlay roots above the canvas with interactive descendants.
 
 **Lesson:** Transparent DOM overlays above Phaser still need to own pointer input when playtests or Steam users click them. Accessibility shims and pointer shims are the same surface once they are visible button targets.
+
+### 2026-05-07 — Playtest quiz answering must wait for the overlay store
+
+**Symptom:** `window.__rrPlay.playCard(2)` followed immediately by `window.__rrPlay.answerQuizCorrectly()` could return `{ ok: false, message: 'No active quiz' }` even though the card click was about to open the quiz overlay.
+
+**Root cause:** `playCard()` waits only for the card-click path to settle. The quiz overlay and `rr:activeQuiz` store can lag behind that path, so `answerQuizCorrectly()` and `answerQuizIncorrectly()` read `getQuiz()` too early and treated a transient null as final failure.
+
+**Fix:** Both answer helpers now poll `getQuiz()` for up to 2 seconds at 50 ms intervals before reporting `No active quiz`. Once the quiz appears, they keep the existing `answerQuiz(index)` DOM-click path.
+
+**Lesson:** LLM playtest APIs should distinguish "not mounted yet" from "not present." For overlay-driven flows, wait on the store that backs perception before clicking the next action.

@@ -165,6 +165,77 @@ describe('startStudy() precondition check (HIGH-8)', () => {
 })
 
 // ---------------------------------------------------------------------------
+// playCard() -> answerQuiz* race
+// ---------------------------------------------------------------------------
+
+describe('playCard() -> answerQuizCorrectly() race', () => {
+  it('waits for a delayed quiz overlay before answering correctly', async () => {
+    vi.useFakeTimers()
+
+    try {
+      setStore('rr:currentScreen', 'combat')
+      setStore('rr:activeQuiz', null)
+
+      const activeQuizStore = (globalThis as Record<symbol, unknown>)[Symbol.for('rr:activeQuiz')] as {
+        set: (v: unknown) => void
+      }
+      const cardClick = vi.fn()
+      const answerClick = vi.fn()
+      document.body.innerHTML = `
+        <button data-testid="card-hand-0">Card</button>
+        <button data-testid="quiz-answer-1">Correct</button>
+      `
+      document.querySelector<HTMLButtonElement>('[data-testid="card-hand-0"]')!.addEventListener('click', cardClick)
+      document.querySelector<HTMLButtonElement>('[data-testid="quiz-answer-1"]')!.addEventListener('click', answerClick)
+
+      const api = await getAPI()
+      setTimeout(() => {
+        activeQuizStore.set({
+          question: 'Delayed quiz?',
+          choices: ['No', 'Yes'],
+          correctIndex: 1,
+          mode: 'charge',
+        })
+      }, 1100)
+
+      const playResultPromise = (api.playCard as (index: number) => Promise<{ ok: boolean; message: string }>)(0)
+      await vi.advanceTimersByTimeAsync(800)
+      const playResult = await playResultPromise
+      expect(playResult.ok).toBe(true)
+      expect(cardClick).toHaveBeenCalledTimes(1)
+
+      const answerResultPromise = (api.answerQuizCorrectly as () => Promise<{ ok: boolean; message: string }>)()
+      await vi.advanceTimersByTimeAsync(300)
+      await vi.advanceTimersByTimeAsync(1200)
+      const answerResult = await answerResultPromise
+
+      expect(answerResult).toEqual({ ok: true, message: 'Answered choice 1' })
+      expect(answerClick).toHaveBeenCalledTimes(1)
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('returns No active quiz if the quiz overlay never appears', async () => {
+    vi.useFakeTimers()
+
+    try {
+      setStore('rr:currentScreen', 'combat')
+      setStore('rr:activeQuiz', null)
+
+      const api = await getAPI()
+      const answerResultPromise = (api.answerQuizCorrectly as () => Promise<{ ok: boolean; message: string }>)()
+      await vi.advanceTimersByTimeAsync(2000)
+      const answerResult = await answerResultPromise
+
+      expect(answerResult).toEqual({ ok: false, message: 'No active quiz' })
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+})
+
+// ---------------------------------------------------------------------------
 // Phase 5: getRelicDetails()
 // ---------------------------------------------------------------------------
 

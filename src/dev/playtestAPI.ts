@@ -1249,6 +1249,15 @@ function getQuiz(): { question: string; choices: string[]; correctIndex: number;
   };
 }
 
+async function waitForQuiz(): Promise<{ question: string; choices: string[]; correctIndex: number; mode: string } | null> {
+  let quiz = getQuiz();
+  for (let i = 0; i < 40 && !quiz; i++) {
+    await wait(50);
+    quiz = getQuiz();
+  }
+  return quiz;
+}
+
 /** Answer a quiz by clicking the DOM button at the given choice index. */
 async function answerQuiz(choiceIndex: number): Promise<PlayResult> {
   return safeAction(async () => {
@@ -1262,7 +1271,7 @@ async function answerQuiz(choiceIndex: number): Promise<PlayResult> {
 
 /** Answer the quiz correctly using the stored correct index. */
 async function answerQuizCorrectly(): Promise<PlayResult> {
-  const quiz = getQuiz();
+  const quiz = await waitForQuiz();
   if (!quiz) return { ok: false, message: 'No active quiz' };
   if (quiz.correctIndex < 0) return { ok: false, message: 'Correct index unknown' };
   return answerQuiz(quiz.correctIndex);
@@ -1270,7 +1279,7 @@ async function answerQuizCorrectly(): Promise<PlayResult> {
 
 /** Answer the quiz incorrectly by picking a wrong choice. */
 async function answerQuizIncorrectly(): Promise<PlayResult> {
-  const quiz = getQuiz();
+  const quiz = await waitForQuiz();
   if (!quiz) return { ok: false, message: 'No active quiz' };
   if (quiz.correctIndex < 0) return { ok: false, message: 'Correct index unknown' };
 
