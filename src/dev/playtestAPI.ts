@@ -1168,15 +1168,35 @@ async function rerollReward(): Promise<PlayResult> {
   });
 }
 
-/** Get mystery event choices.
- *
- * MysteryEventOverlay renders choices as `.choice-btn` elements (no data-testid).
- * This function reads from the activeMysteryEvent store for 'choice'-type events
- * to return labeled options, then falls back to querying visible .choice-btn DOM
- * elements for other event types (doubleOrNothing, speedRound, etc.).
- */
+function isVisibleElement(el: HTMLElement): boolean {
+  const style = getComputedStyle(el);
+  return style.display !== 'none' && style.visibility !== 'hidden';
+}
+
+function isPureNarrativeContinue(btn: HTMLButtonElement): boolean {
+  return btn.textContent?.trim().toLowerCase() === 'continue'
+    && (btn.matches('.continue-btn') || btn.dataset.testid === 'mystery-continue');
+}
+
+function getMysteryActionButtons(): HTMLButtonElement[] {
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>(
+    '.mystery-overlay button, .choice-btn, .continue-btn, [data-testid^="quiz-answer-"], .next-btn'
+  ))
+    .filter((btn, i, arr) => arr.indexOf(btn) === i)
+    .filter(isVisibleElement);
+
+  const decisionButtons = buttons.filter(btn => !isPureNarrativeContinue(btn));
+  return decisionButtons.length > 0 ? decisionButtons : buttons;
+}
+
+/** Get mystery event choices from the same visible buttons the player can press. */
 function getMysteryEventChoices(): Array<{ index: number; text: string }> {
-  // Primary: read from store for 'choice'-type events (struct has .options[].label)
+  const actionButtons = getMysteryActionButtons();
+  if (actionButtons.length > 0) {
+    return actionButtons.map((btn, i) => ({ index: i, text: btn.textContent?.trim() ?? '' }));
+  }
+
+  // Headless fallback: read from store for 'choice'-type events (struct has .options[].label).
   const event = readStore<any>('rr:activeMysteryEvent');
   if (event?.effect?.type === 'choice' && Array.isArray(event.effect.options)) {
     return (event.effect.options as Array<{ label: string }>).map((opt, i) => ({
@@ -1184,34 +1204,7 @@ function getMysteryEventChoices(): Array<{ index: number; text: string }> {
       text: opt.label,
     }));
   }
-  // Fallback 1: query visible .choice-btn elements from DOM (speedRound, doubleOrNothing, etc.)
-  const choiceBtns = Array.from(document.querySelectorAll<HTMLElement>('.choice-btn'))
-    .filter(btn => {
-      const style = getComputedStyle(btn);
-      return style.display !== 'none' && style.visibility !== 'hidden';
-    });
-  if (choiceBtns.length > 0) {
-    return choiceBtns.map((btn, i) => ({ index: i, text: btn.textContent?.trim() ?? '' }));
-  }
-
-  // Fallback 2: quiz-type events (e.g. knowledge_gamble) show a quiz overlay
-  // with [data-testid^="quiz-answer-"] buttons instead of .choice-btn elements.
-  // Also surface .continue-btn for events that resolve immediately with a prompt.
-  const quizBtns = Array.from(document.querySelectorAll<HTMLElement>('[data-testid^="quiz-answer-"]'))
-    .filter(btn => {
-      const style = getComputedStyle(btn);
-      return style.display !== 'none' && style.visibility !== 'hidden';
-    });
-  if (quizBtns.length > 0) {
-    return quizBtns.map((btn, i) => ({ index: i, text: btn.textContent?.trim() ?? '' }));
-  }
-
-  const continueBtns = Array.from(document.querySelectorAll<HTMLElement>('.continue-btn'))
-    .filter(btn => {
-      const style = getComputedStyle(btn);
-      return style.display !== 'none' && style.visibility !== 'hidden';
-    });
-  return continueBtns.map((btn, i) => ({ index: i, text: btn.textContent?.trim() ?? '' }));
+  return [];
 }
 
 /** Select a mystery event choice by index.
@@ -1220,14 +1213,10 @@ function getMysteryEventChoices(): Array<{ index: number; text: string }> {
  */
 async function selectMysteryChoice(index: number): Promise<PlayResult> {
   return safeAction(async () => {
-    const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.choice-btn'))
-      .filter(btn => {
-        const style = getComputedStyle(btn);
-        return style.display !== 'none' && style.visibility !== 'hidden';
-      });
+    const buttons = getMysteryActionButtons().filter(btn => !btn.disabled);
     const btn = buttons[index] ?? null;
     if (!btn) {
-      // No .choice-btn elements found — this may be a Continue-type mystery event.
+      // No action buttons found — this may be a Continue-type mystery event.
       // Fall back to the mystery-continue button if present.
       const continueBtn = document.querySelector('[data-testid="mystery-continue"]') as HTMLElement | null;
       if (continueBtn) {
@@ -1235,7 +1224,7 @@ async function selectMysteryChoice(index: number): Promise<PlayResult> {
         await wait(turboDelay(1000));
         return { ok: true, message: `Mystery continue clicked (no choice buttons found). Screen: ${getScreen()}` };
       }
-      return { ok: false, message: `Mystery choice ${index} not found (only ${buttons.length} visible .choice-btn elements)` };
+      return { ok: false, message: `Mystery choice ${index} not found (only ${buttons.length} visible action buttons)` };
     }
     btn.click();
     await wait(turboDelay(1000));

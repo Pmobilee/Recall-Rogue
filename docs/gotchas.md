@@ -6053,3 +6053,13 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Fix:** `getShopInventory()` now reads the same live `activeShopInventory` store as `ShopRoomOverlay` and returns an explicit `{ cards, relics, services }` contract. The DOM fallback also reports visible buy buttons and services when the store is not ready yet.
 
 **Lesson:** For automation APIs, the authoritative data source should be the same one the player-facing component uses. Parallel API-only shapes drift quickly.
+
+### 2026-05-07 — Mystery choice APIs must use visible button order (issue #17)
+
+**Symptom:** `window.__rrPlay.getMysteryEventChoices()` reported only `Leave` for the Flashcard Merchant even though the player-facing overlay also offered `Pay 25 Gold`.
+
+**Root cause:** The API queried `.choice-btn` before any other action surface. The merchant's Pay action is a `.continue-btn` while Leave is a `.choice-btn`, so the API stopped after finding Leave.
+
+**Fix:** Mystery choice listing and selection now share one visible-button collector that reads the overlay's buttons in DOM order, filters out pure narrative `Continue` buttons unless they are the only action, and includes mixed button styles like Pay plus Leave.
+
+**Lesson:** Automation should not infer semantics from CSS class names when a room mixes button styles. Use the actual visible interactive elements and keep selection indexed against the same list returned by perception.
