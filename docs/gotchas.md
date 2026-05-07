@@ -6013,3 +6013,13 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Real fix (deferred):** Re-create `atmosphereSystem` per encounter entry, or move its lifecycle into an explicit `startEncounter()` / `stopEncounter()` pair so it is guaranteed initialized whenever `setEnemy()` runs. This is a Yellow-zone refactor of the encounter lifecycle that warrants a dedicated ticket.
 
 **Files:** `src/game/scenes/CombatScene.ts` (lines 2311, 2341), `src/game/systems/EnemySpriteSystem.ts` (playDeath texture block).
+
+### 2026-05-07 — Card-hand frame overlays can steal sibling clicks (issue #20)
+
+**Symptom:** In a five-card fan, real browser clicks on a middle card sometimes targeted a decorative `.card-v2-frame` from a neighboring card instead of the intended `.card-in-hand` button. Playwright surfaced this as a sibling frame intercepting pointer events.
+
+**Root cause:** `CardVisual.svelte` is display-only, but its root frame still participated in hit-testing. Because fanned cards overlap, that decorative root could sit above another card's button target even though all gameplay interaction belongs to the parent card button. The five-card landscape fan also packed buttons tightly enough that a neighboring button rectangle could cover the next card's center.
+
+**Fix:** The shared `.card-v2-frame` root now uses `pointer-events: none`, and the `CardHand.svelte` flip/front/back wrappers and badges also pass pointer events through to the parent button. The landscape fan uses wider spacing for five-card hands so centers are not covered by neighboring buttons. `CardCombatOverlay.svelte` keeps non-interactive status banners pass-through while restoring `pointer-events: auto` on the actual co-op cancel button.
+
+**Lesson:** For fanned or overlapping hands, every decorative child inside the card button must opt out of hit-testing; only the card button and genuine nested controls should opt back in.

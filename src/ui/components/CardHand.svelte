@@ -179,8 +179,8 @@
   /** Landscape X offset — cards overlap, tighter with more cards, based on card-count-derived overlap fraction */
   function getLandscapeXOffset(index: number, total: number, cardW: number): number {
     if (total <= 1) return 0
-    // Spacing as fraction of card width — more cards = tighter packing
-    const overlapFraction = total <= 4 ? 0.72 : total <= 7 ? 0.56 : 0.44
+    // Spacing as fraction of card width — keep five-card centers clear of neighboring hit boxes.
+    const overlapFraction = total <= 5 ? 0.72 : total <= 7 ? 0.60 : 0.44
     const spacing = cardW * overlapFraction
     const totalWidth = spacing * (total - 1)
     return -totalWidth / 2 + spacing * index
@@ -1466,8 +1466,8 @@
     /* bottom is set via inline style using resolved JS values (riseAmount + resolvedCardH + 12*layoutScale)
        to avoid the CSS var(--card-h) mismatch where root --card-h is empty and resolves to 200px
        while the hand container's --card-h is ~332px. */
-    /* z-index 30: must sit above selected cards (z-index 25) so the button is always tappable */
-    z-index: 30;
+    /* Selected cards use inline z-index 2000; keep Charge above them so edge cards stay tappable. */
+    z-index: 2100;
     white-space: nowrap;
     /* §7 spec: charge button appear = 100ms fade-in */
     animation: chargeBtnAppear 100ms ease-out both, chargeBtnPulse 1.2s ease-in-out 100ms infinite;
@@ -1905,6 +1905,7 @@
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 400ms ease-in-out;
+    pointer-events: none;
   }
 
   .card-inner.flipped {
@@ -1918,6 +1919,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    pointer-events: none;
   }
 
   .card-front {
@@ -1965,6 +1967,7 @@
     color: #1a1a1a;
     border-radius: 3px;
     padding: calc(1px * var(--layout-scale, 1)) calc(3px * var(--layout-scale, 1));
+    pointer-events: none;
   }
 
   /* H-9: Drag-to-charge hint — portrait, first selection */
@@ -2264,7 +2267,7 @@
   /* === CHARGE! button (AR-59.2) === */
   .charge-play-btn {
     position: absolute;
-    z-index: 40;
+    z-index: 2100;
     background: linear-gradient(135deg, #f59e0b, #d97706);
     color: #fff;
     border: none;

@@ -3999,7 +3999,7 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
     box-shadow: 0 0 12px rgba(125, 211, 252, 0.3);
-    pointer-events: auto;
+    pointer-events: none;
     display: flex;
     align-items: center;
     gap: calc(8px * var(--layout-scale, 1));
@@ -4025,6 +4025,7 @@
     font-family: inherit;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    pointer-events: auto;
   }
 
   .coop-cancel-btn:hover {
@@ -5031,7 +5032,7 @@
     padding: calc(8px * var(--layout-scale, 1)) calc(14px * var(--layout-scale, 1)) calc(8px * var(--layout-scale, 1)) calc(16px * var(--layout-scale, 1));
     backdrop-filter: blur(8px);
     animation: chargeHintFadeIn 0.4s ease forwards;
-    pointer-events: auto;
+    pointer-events: none;
     max-width: calc(380px * var(--layout-scale, 1));
   }
 
@@ -5049,6 +5050,7 @@
     color: rgba(200, 210, 255, 0.55);
     font-size: calc(16px * var(--text-scale, 1));
     cursor: pointer;
+    pointer-events: auto;
     padding: 0 calc(2px * var(--layout-scale, 1));
     line-height: 1;
     min-width: calc(24px * var(--layout-scale, 1));

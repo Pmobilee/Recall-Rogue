@@ -199,6 +199,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden; /* clips art to frame boundaries */
+    pointer-events: none;
   }
 
   /* frame-layer: object-fit MUST be contain (not fill) — fill distorts the frame images */
