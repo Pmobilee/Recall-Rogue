@@ -6063,3 +6063,13 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Fix:** Mystery choice listing and selection now share one visible-button collector that reads the overlay's buttons in DOM order, filters out pure narrative `Continue` buttons unless they are the only action, and includes mixed button styles like Pay plus Leave.
 
 **Lesson:** Automation should not infer semantics from CSS class names when a room mixes button styles. Use the actual visible interactive elements and keep selection indexed against the same list returned by perception.
+
+### 2026-05-07 — Reward-room DOM overlay must own pointer input
+
+**Symptom:** After clearing combat, the visible reward-room Continue button could time out under a native click because the visible Phaser canvas remained hit-testable above the Svelte accessibility overlay.
+
+**Root cause:** `RewardRoomOverlay.svelte` renders transparent fixed-position DOM buttons over the Phaser scene, but those buttons had been treated as keyboard-only shims. With `pointer-events: none`, mouse and Playwright pointer input fell through to `#phaser-container.visible canvas`.
+
+**Fix:** Reward-room overlay buttons now keep `pointer-events: auto` and sit at a z-index above the Phaser container, while remaining visually transparent until keyboard focus. Neighboring overlays were audited: mystery, retreat/delve, and shop already render full-screen overlay roots above the canvas with interactive descendants.
+
+**Lesson:** Transparent DOM overlays above Phaser still need to own pointer input when playtests or Steam users click them. Accessibility shims and pointer shims are the same surface once they are visible button targets.

@@ -50,8 +50,7 @@
 
 <!-- Continue button overlay — always visible on rewardRoom screen.
      Covers Phaser canvas button at ~50% / 88% (landscape) or 92% (portrait).
-     Transparent to mouse users; keyboard-focusable via Tab; Enter/Space fires.
-     The Phaser button is visible beneath — this DOM layer only serves a11y. -->
+     Transparent visually; receives pointer and keyboard input above Phaser. -->
 <button
   type="button"
   class="overlay-btn continue-overlay"
@@ -91,8 +90,8 @@
 <style>
   /* =========================================================
      Shared overlay button base
-     All buttons: transparent to mouse users, visible only on keyboard focus.
-     The Phaser canvas button renders beneath — we sit above it for a11y.
+     All buttons: transparent visually, visible only on keyboard focus.
+     The Phaser canvas button renders beneath; this layer owns input.
      ========================================================= */
   .overlay-btn {
     position: fixed;
@@ -100,7 +99,7 @@
     border: none;
     color: transparent;
     cursor: pointer;
-    z-index: 10;
+    z-index: 230;
     pointer-events: auto;
     outline: none;
     /* Minimum 44×44px tap target per iOS HIG */
