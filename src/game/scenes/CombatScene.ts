@@ -1107,6 +1107,46 @@ export class CombatScene extends Phaser.Scene {
     return floorY - size / 2 + size * ENEMY_Y_OFFSET_RATIO
   }
 
+  /**
+   * Persistent systems should still be present whenever setEnemy() runs.
+   * If these are missing, the scene lifecycle is corrupt and callers should get
+   * a loud failure instead of a map-node no-op.
+   */
+  private assertSubsystemsLive(): void {
+    const missing: string[] = []
+    if (!this.screenShake) missing.push('screenShake')
+    if (!this.particles) missing.push('particles')
+    if (!this.weaponAnimations) missing.push('weaponAnimations')
+    if (missing.length > 0) {
+      throw new Error(`CombatScene subsystem missing — scene was torn down without re-create: ${missing.join(', ')}`)
+    }
+  }
+
+  /**
+   * Recreate encounter-owned visual systems before any per-encounter state reset.
+   * CombatScene is slept/woken between rooms; onShutdown tears these down, but
+   * Phaser may reuse the scene instance for the next encounter.
+   */
+  private initEncounterSubsystems(): void {
+    this.enemySpriteSystem?.destroy()
+    this.atmosphereSystem?.stop()
+    this.foregroundParallax?.destroy()
+    this.depthLightingSystem?.stop()
+    this.statusEffectVisuals?.destroy()
+    this.moodSystem?.stop()
+    this.moodVignetteOverlay?.destroy()
+
+    this.enemySpriteSystem = new EnemySpriteSystem(this)
+    this.atmosphereSystem = new CombatAtmosphereSystem(this)
+    this.foregroundParallax = new ForegroundParallaxSystem(this)
+    this.depthLightingSystem = new DepthLightingSystem(this)
+    this.statusEffectVisuals = new StatusEffectVisualSystem(this)
+    this.moodSystem = new DungeonMoodSystem(this)
+    this.moodVignetteOverlay = this.add
+      .rectangle(this.scale.width / 2, this.scale.height / 2, this.scale.width, this.scale.height, 0x000000, 0)
+      .setDepth(2)
+  }
+
   /** Set the enemy display data. */
   setEnemy(
     name: string,
@@ -1117,6 +1157,8 @@ export class CombatScene extends Phaser.Scene {
     animArchetype?: AnimArchetype,
   ): void {
     if (!this.sceneReady) return
+    this.assertSubsystemsLive()
+    this.initEncounterSubsystems()
     // Reset knowledge streak for new encounter (Spec 05)
     this.resetKnowledgeStreak()
     // Reset mood for new encounter (Spec 09)
@@ -2308,7 +2350,7 @@ export class CombatScene extends Phaser.Scene {
     this.knowledgeStreakWrong = 0
     this.knowledgeSaturationOffset = 0
     // Clear any warm/cold streak in the atmosphere system and reset color matrix
-    this.atmosphereSystem?.resetStreak((offset) => this.applyStreakSaturation(offset))
+    this.atmosphereSystem.resetStreak((offset) => this.applyStreakSaturation(offset))
     juiceManager.resetStreak()
   }
 
@@ -2327,18 +2369,18 @@ export class CombatScene extends Phaser.Scene {
       targetOffset = Math.min(SAT_MAX, (this.knowledgeStreakCorrect - 2) * SAT_PER_LEVEL)
       // Activate warm streak in atmosphere system when threshold first crossed
       if (this.knowledgeStreakCorrect === STREAK_THRESHOLD) {
-        this.atmosphereSystem?.setStreakWarm(true, (offset) => this.applyStreakSaturation(offset))
+        this.atmosphereSystem.setStreakWarm(true, (offset) => this.applyStreakSaturation(offset))
       }
     } else if (this.knowledgeStreakWrong >= STREAK_THRESHOLD) {
       targetOffset = Math.max(-SAT_MAX, -(this.knowledgeStreakWrong - 2) * SAT_PER_LEVEL)
       // Activate cold streak in atmosphere system when threshold first crossed
       if (this.knowledgeStreakWrong === STREAK_THRESHOLD) {
-        this.atmosphereSystem?.setStreakCold(true, (offset) => this.applyStreakSaturation(offset))
+        this.atmosphereSystem.setStreakCold(true, (offset) => this.applyStreakSaturation(offset))
       }
     } else if (this.knowledgeStreakCorrect < STREAK_THRESHOLD && this.knowledgeStreakWrong < STREAK_THRESHOLD) {
       // Streak broken before threshold — clear any active streak
       if (this.knowledgeSaturationOffset !== 0) {
-        this.atmosphereSystem?.resetStreak((offset) => this.applyStreakSaturation(offset))
+        this.atmosphereSystem.resetStreak((offset) => this.applyStreakSaturation(offset))
         return
       }
     }

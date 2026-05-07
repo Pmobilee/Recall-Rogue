@@ -819,6 +819,11 @@ export class EnemySpriteSystem {
    * @returns Promise that resolves when death animation completes
    */
   public playDeath(): Promise<void> {
+    if (!this.scene.sys.isActive()) {
+      this.container.setAlpha(0)
+      return Promise.resolve()
+    }
+
     if (this.reduceMotion) {
       this.container.setAlpha(0)
       return Promise.resolve()
@@ -830,7 +835,7 @@ export class EnemySpriteSystem {
 
     // Ensure ash particle texture exists. Guard against torn-down scene contexts
     // (issue #15: half-mounted scene can run playDeath after canvas renderer is null).
-    if (this.scene?.sys?.isActive() && !this.scene.textures.exists('ash_particle')) {
+    if (!this.scene.textures.exists('ash_particle')) {
       try {
         const gfx = this.scene.make.graphics({ x: 0, y: 0 })
         gfx.fillStyle(0xffffff)

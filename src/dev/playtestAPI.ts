@@ -574,18 +574,39 @@ async function selectMapNode(nodeId: string | number): Promise<PlayResult> {
       if (btn.disabled) return { ok: false, message: `Map node ${nodeIdStr} is disabled (state: ${btn.className})` };
     }
 
+    const resolvedId = btn.dataset.testid ?? nodeIdStr;
     btn.click();
 
-    // Poll until screen changes from dungeonMap (max 5s)
-    // Needed because ensurePhaserBooted + startEncounterForRoom can take 500ms+ in turbo mode
+    let finalScreen = getScreen();
     for (let i = 0; i < 100; i++) {
       await wait(50);
-      const screen = getScreen();
-      if (screen !== 'dungeonMap') break;
+      finalScreen = getScreen();
+      if (finalScreen !== 'dungeonMap') break;
     }
 
-    const resolvedId = btn.dataset.testid ?? nodeIdStr;
-    return { ok: true, message: `Selected map node ${resolvedId}. Screen: ${getScreen()}` };
+    if (finalScreen === 'dungeonMap') {
+      return {
+        ok: false,
+        message: `Encounter failed to start: selected ${resolvedId}, but screen stayed dungeonMap`,
+      };
+    }
+
+    if (finalScreen === 'combat') {
+      const { activeTurnState } = await import('../services/encounterBridge');
+      const { get } = await import('svelte/store');
+      for (let i = 0; i < 100; i++) {
+        if (get(activeTurnState)) {
+          return { ok: true, message: `Selected map node ${resolvedId}. Screen: combat` };
+        }
+        await wait(50);
+      }
+      return {
+        ok: false,
+        message: `Encounter failed to start: selected ${resolvedId}, reached combat but turn state did not initialize`,
+      };
+    }
+
+    return { ok: true, message: `Selected map node ${resolvedId}. Screen: ${finalScreen}` };
   });
 }
 

@@ -69,12 +69,16 @@ Renders the combat display zone (top ~58% of viewport in portrait, full canvas i
 **Display-state reset on shutdown:** Setting `sceneReady = false` prevents writes during teardown but does not clear the text/graphics objects' last rendered values. On the next wake, those stale values are visible for one frame before `setEnemy()` overwrites them (encounter-2 HP display bleed, 2026-04-25). To prevent this, `onShutdown()` also explicitly resets `enemyNameText`, `enemyHpText`, `intentText` (via `setText('')`), `enemyHpBarFill` (via `clear()`), and the numeric tracking fields `currentEnemyHP`, `currentEnemyMaxHP`, `currentEnemyBlock` (zeroed). These are display-side fields only — run-state (deck, relics, player HP, currency) is untouched. See `docs/gotchas.md` 2026-04-25.
 
 **Systems instantiated in `create()`:**
+- `WeaponAnimationSystem` — sword/tome/shield animations
+- `ScreenShakeSystem` — perlin-noise camera shake (public: `scene.screenShake`)
+
+**Systems recreated per encounter by `setEnemy()`:**
 - `EnemySpriteSystem` — enemy sprite with 3D paper-cutout layers
 - `CombatAtmosphereSystem` — ambient particles, fog, light shafts
 - `DepthLightingSystem` — depth-map PostFX pipeline on background
+- `ForegroundParallaxSystem` — foreground dust/foliage layer
+- `DungeonMoodSystem` + mood vignette overlay — per-encounter mood modifiers
 - `StatusEffectVisualSystem` — persistent particle overlays for poison/burn/freeze/bleed/buff/debuff
-- `WeaponAnimationSystem` — sword/tome/shield animations
-- `ScreenShakeSystem` — perlin-noise camera shake (public: `scene.screenShake`)
 
 **Key public methods:**
 

@@ -6023,3 +6023,13 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Fix:** The shared `.card-v2-frame` root now uses `pointer-events: none`, and the `CardHand.svelte` flip/front/back wrappers and badges also pass pointer events through to the parent button. The landscape fan uses wider spacing for five-card hands so centers are not covered by neighboring buttons. `CardCombatOverlay.svelte` keeps non-interactive status banners pass-through while restoring `pointer-events: auto` on the actual co-op cancel button.
 
 **Lesson:** For fanned or overlapping hands, every decorative child inside the card button must opt out of hit-testing; only the card button and genuine nested controls should opt back in.
+
+### 2026-05-07 — CombatScene encounter-owned systems must be recreated in `setEnemy()` (issue #15 real fix)
+
+**Symptom:** The defensive optional-chaining patch stopped the immediate `atmosphereSystem.resetStreak` throw, but second encounters could still fail to mount because `onShutdown()` had torn down encounter-owned systems while the Phaser scene instance was reused.
+
+**Root cause:** `CombatScene.create()` was the only place that assigned systems such as `EnemySpriteSystem`, `CombatAtmosphereSystem`, `DepthLightingSystem`, `ForegroundParallaxSystem`, `DungeonMoodSystem`, and `StatusEffectVisualSystem`. `onShutdown()` destroys/stops those objects between rooms, while the next encounter calls `setEnemy()` on the same scene instance.
+
+**Fix:** `setEnemy()` now calls `assertSubsystemsLive()` for persistent systems, then `initEncounterSubsystems()` before resetting knowledge streaks or mood. The helper destroys/stops any stale encounter-owned systems and recreates them for the new enemy. `resetKnowledgeStreak()` and saturation updates now call `atmosphereSystem` directly again, so missing lifecycle setup is loud instead of silently skipped.
+
+**Lesson:** In Phaser scenes that sleep/wake between gameplay rooms, `create()` is not an encounter boundary. Anything destroyed in `onShutdown()` but needed by `setEnemy()` must be recreated at the logical encounter boundary.
