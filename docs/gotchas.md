@@ -6001,3 +6001,15 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Verified:** Three separate Docker runs with `dungeon-map` scenario — `scrollTop:392` and all three `r0` nodes `visible:true` in every run. Screenshot confirmed nodes visible without manual scroll.
 
 **File:** `src/ui/components/DungeonMap.svelte`
+
+### 2026-05-07 — atmosphereSystem undefined on 2nd encounter (issue #15)
+
+**What:** Entering a second combat in a run caused `CombatScene.setEnemy()` → `resetKnowledgeStreak()` → `this.atmosphereSystem.resetStreak(...)` to throw `Cannot read properties of undefined (reading 'resetStreak')`. The throw aborted encounter setup, leaving the screen on the dungeon map. Downstream, `EnemySpriteSystem.playDeath()` ran against the half-mounted scene and hit `gfx.generateTexture('ash_particle', 4, 4)` with a null Phaser canvas context, producing a `Cannot read properties of null (reading 'blendModes')` error every frame until the tab crashed.
+
+**Why:** `atmosphereSystem` is instantiated in `CombatScene.create()` which runs once per scene lifecycle. On re-entry, `setEnemy()` is called before a new `create()` cycle completes (or if the scene is reused without a full restart), so `atmosphereSystem` is still undefined from the perspective of the re-used scene.
+
+**Fix (defensive, issue #15):** Added optional chaining at the two `resetStreak` callsites in `CombatScene.ts` (lines 2311 and 2341) so the undefined system is a silent no-op rather than a thrown exception. Added `this.scene?.sys?.isActive()` guard plus try/catch around the `ash_particle` texture-creation block in `EnemySpriteSystem.playDeath()` to stop the per-frame crash cascade.
+
+**Real fix (deferred):** Re-create `atmosphereSystem` per encounter entry, or move its lifecycle into an explicit `startEncounter()` / `stopEncounter()` pair so it is guaranteed initialized whenever `setEnemy()` runs. This is a Yellow-zone refactor of the encounter lifecycle that warrants a dedicated ticket.
+
+**Files:** `src/game/scenes/CombatScene.ts` (lines 2311, 2341), `src/game/systems/EnemySpriteSystem.ts` (playDeath texture block).

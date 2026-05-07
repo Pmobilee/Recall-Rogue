@@ -828,13 +828,18 @@ export class EnemySpriteSystem {
     this.stopIdle()
     this.killIdleTweens()
 
-    // Ensure ash particle texture exists
-    if (!this.scene.textures.exists('ash_particle')) {
-      const gfx = this.scene.make.graphics({ x: 0, y: 0 })
-      gfx.fillStyle(0xffffff)
-      gfx.fillRect(0, 0, 4, 4)
-      gfx.generateTexture('ash_particle', 4, 4)
-      gfx.destroy()
+    // Ensure ash particle texture exists. Guard against torn-down scene contexts
+    // (issue #15: half-mounted scene can run playDeath after canvas renderer is null).
+    if (this.scene?.sys?.isActive() && !this.scene.textures.exists('ash_particle')) {
+      try {
+        const gfx = this.scene.make.graphics({ x: 0, y: 0 })
+        gfx.fillStyle(0xffffff)
+        gfx.fillRect(0, 0, 4, 4)
+        gfx.generateTexture('ash_particle', 4, 4)
+        gfx.destroy()
+      } catch (e) {
+        console.warn('[EnemySpriteSystem] ash_particle texture creation failed (scene torn down):', e)
+      }
     }
 
     return new Promise<void>((resolve) => {

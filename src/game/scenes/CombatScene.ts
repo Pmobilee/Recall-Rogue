@@ -2308,7 +2308,7 @@ export class CombatScene extends Phaser.Scene {
     this.knowledgeStreakWrong = 0
     this.knowledgeSaturationOffset = 0
     // Clear any warm/cold streak in the atmosphere system and reset color matrix
-    this.atmosphereSystem.resetStreak((offset) => this.applyStreakSaturation(offset))
+    this.atmosphereSystem?.resetStreak((offset) => this.applyStreakSaturation(offset))
     juiceManager.resetStreak()
   }
 
@@ -2327,18 +2327,18 @@ export class CombatScene extends Phaser.Scene {
       targetOffset = Math.min(SAT_MAX, (this.knowledgeStreakCorrect - 2) * SAT_PER_LEVEL)
       // Activate warm streak in atmosphere system when threshold first crossed
       if (this.knowledgeStreakCorrect === STREAK_THRESHOLD) {
-        this.atmosphereSystem.setStreakWarm(true, (offset) => this.applyStreakSaturation(offset))
+        this.atmosphereSystem?.setStreakWarm(true, (offset) => this.applyStreakSaturation(offset))
       }
     } else if (this.knowledgeStreakWrong >= STREAK_THRESHOLD) {
       targetOffset = Math.max(-SAT_MAX, -(this.knowledgeStreakWrong - 2) * SAT_PER_LEVEL)
       // Activate cold streak in atmosphere system when threshold first crossed
       if (this.knowledgeStreakWrong === STREAK_THRESHOLD) {
-        this.atmosphereSystem.setStreakCold(true, (offset) => this.applyStreakSaturation(offset))
+        this.atmosphereSystem?.setStreakCold(true, (offset) => this.applyStreakSaturation(offset))
       }
     } else if (this.knowledgeStreakCorrect < STREAK_THRESHOLD && this.knowledgeStreakWrong < STREAK_THRESHOLD) {
       // Streak broken before threshold — clear any active streak
       if (this.knowledgeSaturationOffset !== 0) {
-        this.atmosphereSystem.resetStreak((offset) => this.applyStreakSaturation(offset))
+        this.atmosphereSystem?.resetStreak((offset) => this.applyStreakSaturation(offset))
         return
       }
     }
