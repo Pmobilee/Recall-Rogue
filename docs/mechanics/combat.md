@@ -278,9 +278,9 @@ Enemy attack damage passes through two layers before `takeDamage()` is called:
 3. Brain Fog aura (+20% if aura state is 'brain_fog')
 4. Segment damage cap — **single hit**: `min(damage, ENEMY_TURN_DAMAGE_CAP[segment])`; **multi_attack**: per-hit cap `min(perHit, floor(cap / hits))` then `total = perHit × hits`. Bypassed if `intent.bypassDamageCap`.
 
-**Current tuned values (pass 2, 2026-04-09):**
-- `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.60` (tuned 2.0→1.5→1.60: raised back in Pass 4d — 1.40 was too easy base; run-level Canary provides asymmetric adjustment)
-- `ENEMY_TURN_DAMAGE_CAP = { 1: 16, 2: 22, 3: 32, 4: 56, endless: null }` (Act 2 capped 28→22, Act 3 capped 40→32)
+**Current tuned values (2026-05-11, user-directed 33% global reduction):**
+- `GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.07` (history: 2.0→1.5→1.60→1.07; reduced 2026-05-11: manual Docker playtest showed ~100% pre-Act-1-boss death rate on optimal play; 33% global reduction, user-directed)
+- `ENEMY_TURN_DAMAGE_CAP = { 1: 11, 2: 15, 3: 21, 4: 38, endless: null }` (scaled ×0.67 on 2026-05-11 to stay proportional to multiplier reduction; prior: 1: 16, 2: 22, 3: 32, 4: 56)
 
 **Layer 2 — `turnManager.ts` (applied to `intentResult.damage`):**
 5. Enrage bonus (runtime: added after layer 1, re-capped — **excluded from intent display**)

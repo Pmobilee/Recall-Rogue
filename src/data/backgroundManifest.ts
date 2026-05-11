@@ -11,6 +11,13 @@
 /** Fallback combat background — used only if a per-enemy background is missing. */
 const FALLBACK_COMBAT_BG = '/assets/backgrounds/combat/enemies/page_flutter/portrait.webp'
 
+/**
+ * Synthetic mystery-event IDs that represent "a combat was rolled from the mystery
+ * distribution table". These have no per-event artwork — fall back to the generic
+ * mystery room background so ParallaxTransition never tries to load non-existent files.
+ */
+const MYSTERY_COMBAT_IDS = new Set(['mystery_combat', 'mystery_elite_combat'])
+
 // ============================================================
 // Exported functions
 // ============================================================
@@ -119,11 +126,20 @@ export function getMenuDepthMap(): string {
  * Returns a per-event background at `/assets/backgrounds/mystery/<eventId>/landscape.webp`
  * if one exists, falling back to the generic mystery room background.
  *
+ * `mystery_combat` and `mystery_elite_combat` are synthetic IDs produced by floorManager
+ * when the mystery distribution table rolls a combat encounter. They have no per-event
+ * artwork, so this function returns the generic mystery room background for them.
+ *
  * @param eventId The mystery event's id string (e.g. 'burning_library')
  * @returns A WebP background path sized for the current orientation
  */
 export function getMysteryEventBg(eventId: string): string {
   const orientation = getOrientation()
+  // mystery_combat / mystery_elite_combat are not real events — no artwork directory exists.
+  // Use the generic mystery room background so ParallaxTransition loads cleanly.
+  if (MYSTERY_COMBAT_IDS.has(eventId)) {
+    return `/assets/backgrounds/rooms/mystery/${orientation}.webp`
+  }
   // Per-event backgrounds live under mystery/<eventId>/<orientation>.webp.
   // The caller should handle 404s by falling back to getRandomRoomBg('mystery').
   return `/assets/backgrounds/mystery/${eventId}/${orientation}.webp`
@@ -131,10 +147,18 @@ export function getMysteryEventBg(eventId: string): string {
 
 /**
  * Get a depth map for a specific mystery event's background.
+ *
+ * `mystery_combat` and `mystery_elite_combat` are synthetic IDs with no artwork.
+ * Returns the generic mystery room depth map for these IDs.
+ *
  * @param eventId The mystery event's id string (e.g. 'burning_library')
  * @returns A WebP depth map path for the current orientation
  */
 export function getMysteryEventDepthMap(eventId: string): string {
   const orientation = getOrientation()
+  // mystery_combat / mystery_elite_combat have no per-event depth map.
+  if (MYSTERY_COMBAT_IDS.has(eventId)) {
+    return `/assets/backgrounds/rooms/mystery/${orientation}_depth.webp`
+  }
   return `/assets/backgrounds/mystery/${eventId}/${orientation}_depth.webp`
 }

@@ -6083,3 +6083,35 @@ When the factId was curated-deck-based (no factsDB record), `factsDB.getById()` 
 **Fix:** Both answer helpers now poll `getQuiz()` for up to 2 seconds at 50 ms intervals before reporting `No active quiz`. Once the quiz appears, they keep the existing `answerQuiz(index)` DOM-click path.
 
 **Lesson:** LLM playtest APIs should distinguish "not mounted yet" from "not present." For overlay-driven flows, wait on the store that backs perception before clicking the next action.
+
+### 2026-05-11 — Enemy damage was too steep: ~100% pre-Act-1-boss death rate on optimal play
+
+**What:** Manual Docker playtest (two consecutive runs, optimal play strategy) both ended before reaching the Act 1 boss. The damage curve was too steep to survive with any reasonable build.
+
+**Why:** `GLOBAL_ENEMY_DAMAGE_MULTIPLIER` was sitting at 1.60 (raised back in pass 4d as a counter to 1.40 feeling easy). The problem is this multiplier compounds with `FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09` — by floor 5 or 6 the combined scaling is punishing regardless of play quality.
+
+**Fix:** User-directed 33% global reduction: `GLOBAL_ENEMY_DAMAGE_MULTIPLIER` 1.60 → 1.07 (1.60 × 0.67 = 1.072, rounded). `ENEMY_TURN_DAMAGE_CAP` scaled by the same 0.67 factor (1: 16→11, 2: 22→15, 3: 32→21, 4: 56→38) to keep the safety net proportional to the headline multiplier. Single parameter in `src/data/balance.ts` line 540.
+
+**Note:** Caps should always track the headline multiplier directionally. When you raise or lower `GLOBAL_ENEMY_DAMAGE_MULTIPLIER` significantly, recalculate the caps at the same ratio.
+
+### 2026-05-11 — Phaser `createCanvas` leaks across scene restart; guard with `textures.exists()`
+
+**What:** Console emitted `Texture key already in use: weapon-fade-tome` / `weapon-fade-shield` on every encounter after the first. Phaser silently no-ops the duplicate `createCanvas` call, leaving a stale texture from the previous encounter sizing.
+
+**Why:** `WeaponAnimationSystem.applyBottomFadeMask()` calls `this.scene.textures.createCanvas(textureKey, ...)` unconditionally. The system's `destroy()` method correctly removes those textures, but `destroy()` only fires on full scene shutdown (e.g., boot to menu). During a combat → reward → map cycle the scene _restarts_ rather than fully shuts down, so the textures survive while `destroy()` is never called.
+
+**Fix:** Added an exists/remove guard immediately before `createCanvas` in `applyBottomFadeMask` — matches the pattern already used in `destroy()`. Two unguarded `createCanvas` calls exist in `CombatAtmosphereSystem.ts` (lines 609, 698) using dynamically-keyed textures; they may need the same treatment if similar errors surface during atmosphere rebuilds.
+
+**File:** `src/game/systems/WeaponAnimationSystem.ts` — `applyBottomFadeMask()` ~line 249.
+
+### 2026-05-11 — mystery_combat and mystery_elite_combat have no background artwork
+
+**What:** When the mystery distribution table rolls a combat encounter, `floorManager` creates a `MysteryEvent` with `id: 'mystery_combat'` (or `'mystery_elite_combat'` for elites). The `MysteryEventOverlay` calls `getMysteryEventBg(event.id)` and `getMysteryEventDepthMap(event.id)`, which returned paths like `/assets/backgrounds/mystery/mystery_combat/landscape.webp` and `landscape_depth.webp`. Those files do not exist — no `mystery_combat/` artwork directory was ever created because these IDs are synthetic placeholders, not real events.
+
+**Why:** `getMysteryEventBg` and `getMysteryEventDepthMap` assumed every event ID maps to a real artwork directory. The `mystery_combat` ID is produced by `floorManager.ts:865` purely to signal "this was a mystery-rolled combat" — it was never designed to have unique artwork.
+
+**Symptoms:** `ParallaxTransition` logged `Failed to load image: .../mystery_combat/landscape_depth.webp` on the mystery event enter transition. The catch block called `onComplete()` so the overlay displayed fine, but the console error was noise and the player occasionally got stuck on "Waiting for encounter..." after killing the enemy (the precise softlock mechanism involved the hold/dismiss screen transition state being disturbed by the failed texture load race).
+
+**Fix:** Added `MYSTERY_COMBAT_IDS` constant (`Set['mystery_combat', 'mystery_elite_combat']`) in `backgroundManifest.ts`. Both `getMysteryEventBg` and `getMysteryEventDepthMap` short-circuit to the generic mystery room background (`/assets/backgrounds/rooms/mystery/`) when they receive these synthetic IDs. Unit tests in `backgroundManifest.test.ts` assert the fallback AND verify the returned paths exist on disk.
+
+**Files:** `src/data/backgroundManifest.ts`, `src/data/backgroundManifest.test.ts`.

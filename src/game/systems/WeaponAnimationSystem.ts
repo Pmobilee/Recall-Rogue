@@ -246,6 +246,11 @@ export class WeaponAnimationSystem {
     maskW: number,
     maskH: number,
   ): void {
+    // Remove stale texture before re-creating — guards against console "Texture key already in use"
+    // errors on scene restart between encounters (destroy() only fires on full scene shutdown)
+    if (this.scene.textures.exists(textureKey)) {
+      this.scene.textures.remove(textureKey)
+    }
     // Create a canvas texture for the gradient mask
     const canvasTexture = this.scene.textures.createCanvas(textureKey, Math.ceil(maskW), Math.ceil(maskH))
     if (!canvasTexture) return

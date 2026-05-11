@@ -537,14 +537,14 @@ export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Global enemy damage multiplier. Applied to ALL enemy attacks across all acts. Added 2026-04-08 playtest Ch12.1. */
-export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.60; // tuned back to 1.60 (pass 4d): 1.40 was too easy base, run-level Canary provides asymmetric adjustment
+export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.07; // 1.60 (pass 4d) → 1.07 (2026-05-11): manual Docker playtest found ~100% pre-Act-1-boss death rate on optimal play; user-directed 33% global reduction (1.60 × 0.67 = 1.072, rounded 1.07)
 
-/** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. Doubled 2026-04-08 to match GLOBAL_ENEMY_DAMAGE_MULTIPLIER x2. */
+/** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. Doubled 2026-04-08 to match GLOBAL_ENEMY_DAMAGE_MULTIPLIER x2. Scaled ×0.67 on 2026-05-11 to track multiplier reduction (caps are a safety net and should stay proportional to the headline multiplier). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 16,   // was 22, reduced 2026-04-09: act 1 tuning
-  2: 22,   // was 14, tuned 28→22 (pass 2): Act 2 cap reduction
-  3: 32,   // was 20, tuned 40→32 (pass 2): Act 3 cap reduction
-  4: 56,   // was 28
+  1: 11,   // was 16 (2026-04-09), scaled ×0.67 → 11 (2026-05-11)
+  2: 15,   // was 22 (pass 2), scaled ×0.67 → 15 (2026-05-11)
+  3: 21,   // was 32 (pass 2), scaled ×0.67 → 21 (2026-05-11)
+  4: 38,   // was 56, scaled ×0.67 → 38 (2026-05-11)
   endless: null,
 };
 
