@@ -1,3 +1,13 @@
+### 2026-05-12 — Card AP cost display: quick cost vs charge cost are dual-state
+
+**What:** Cards display the quick-play AP cost (typically 1) at rest. The charged AP cost (typically 2, reduced by surcharge waivers) only appears when the player drags the card above the charge line OR hovers the Charge button. This is intentional — not a bug.
+
+**Why:** The LLM playtest bot reported `apCost: 1` always in `__rrPlay.getCombatState()` and then got "Not enough AP" errors trying to charge with 1 AP. The data API returns the base quick-play cost; the visual display swaps to charge cost only on `isChargePreview = true` (drag into charge zone or charge button hover). Both are correct and independent.
+
+**How the swap works:** In `CardHand.svelte`, `isChargePreview = (chargeProgress >= 1.0 || (chargePreviewActive && isSelected)) && !isMastered`. When true, `displayedApCost` switches to `getDisplayedChargeApCost()` and `apGemColor` switches to `getChargeApGemColor()`. CardVisual receives these as props.
+
+**Animation (added 2026-05-12):** `.v2-ap-cost` gains a `charge-intent` CSS class when `isChargePreview` is true. This triggers a 180ms `apChargeIntentPop` scale keyframe. Base rule also has `transition: color 150ms ease`. Files: `src/ui/components/CardVisual.svelte`.
+
 ### 2026-05-02 — DungeonMap cold-start scroll: narration overlay exhausts the retry chain
 
 **What:** After the first run starts, DungeonMap mounts while NarrativeOverlay (z-index 950) is covering the entire screen. The old retry chain ran for ~5s and exhausted completely during narration display (auto-dismiss at 10s). Once the player dismissed narration, the map had a fully laid-out DOM but no further scroll attempt fired — row-0 entry nodes stayed at y≈1233, below the fold.

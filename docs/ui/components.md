@@ -77,7 +77,9 @@ Components updated:
 
 `getEffectiveApCost(card)` checks `getMasteryStats(card.mechanicId, card.masteryLevel)?.apCost` first, falling back to `card.apCost ?? 1`. Card-building paths (object spreads assigning `apCost`) are intentionally left unchanged.
 
-### CardHand AP badge — live charge cost preview (2026-04-09)
+### CardHand AP badge — live charge cost preview (2026-04-09, updated 2026-05-12)
+
+**Rule (2026-05-12):** Cards show the **quick-play AP cost** by default. The **charge AP cost** only appears when the card is dragged above the charge line OR when the player hovers the Charge button. This is intentional UX — the player commits to charge mode visually before seeing the higher cost.
 
 When a card enters **charge-preview state** (dragged into the charge zone or hovering the Charge button), the AP cost badge on the card face updates live to reflect the **real charge cost** (base − focus discount + surcharge, minus any waivers).
 
@@ -86,6 +88,7 @@ When a card enters **charge-preview state** (dragged into the charge zone or hov
 - When NOT in charge-preview: the badge shows Quick Play cost (base − focus discount), same as before.
 - `getChargeApGemColor(chargeApCost, baseApCost)` — gem color: green if charge cost < base, red if greater, amber otherwise.
 - Both landscape and portrait `{#each}` blocks wire `displayedApCost` and `apGemColor` using the charge versions when `isChargePreview` is true.
+- **Animation (2026-05-12):** When `isChargePreview` flips to `true`, the `.v2-ap-cost` element gets the `charge-intent` CSS class which runs a 180ms `apChargeIntentPop` keyframe (scale 1→1.35→1). The base `.v2-ap-cost` rule also has `transition: color 150ms ease` so the color change from the `apGemColor` prop does not snap. Both effects are in `CardVisual.svelte`.
 
 ### CardHand glow rule — chain-match only (2026-04-09)
 

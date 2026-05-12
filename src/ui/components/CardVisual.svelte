@@ -186,6 +186,7 @@
   class="frame-text v2-ap-cost"
   class:mastery-flash-up={masteryFlash === 'up'}
   class:mastery-flash-down={masteryFlash === 'down'}
+  class:charge-intent={isChargePreview}
   style={GUIDE_STYLES.apCost}
   style:color={apGemColor ?? undefined}
 >{apDisplay}</div>
@@ -274,6 +275,7 @@
     line-height: 1;
     overflow: visible;
     transform: translateY(-15%);
+    transition: color 150ms ease;
   }
 
   /* Mechanic name in the banner region */
@@ -407,6 +409,18 @@
   }
   .v2-ap-cost.mastery-flash-down {
     animation: masteryFlashDown 800ms ease-out;
+  }
+
+  /* Charge intent — scale-pulse when AP cost swaps to charge cost (dragged above charge line or hover charge btn).
+   * The animation runs once on class-add; color transition on the base rule handles the colour swap smoothly. */
+  @keyframes apChargeIntentPop {
+    0%   { transform: translateY(-15%) scale(1.0); }
+    40%  { transform: translateY(-15%) scale(1.35); }
+    100% { transform: translateY(-15%) scale(1.0); }
+  }
+
+  .v2-ap-cost.charge-intent {
+    animation: apChargeIntentPop 180ms ease-out;
   }
 
   /* Damage modifier coloring — buffed (relics/buffs raise effective value above base) */
