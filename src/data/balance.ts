@@ -537,14 +537,14 @@ export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.09; // Raised from 0.06 (2026-04
 export const FLOOR_DAMAGE_SCALE_MID = 1.0;
 
 /** Global enemy damage multiplier. Applied to ALL enemy attacks across all acts. Added 2026-04-08 playtest Ch12.1. */
-export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.07; // 1.60 (pass 4d) → 1.07 (2026-05-11): manual Docker playtest found ~100% pre-Act-1-boss death rate on optimal play; user-directed 33% global reduction (1.60 × 0.67 = 1.072, rounded 1.07)
+export const GLOBAL_ENEMY_DAMAGE_MULTIPLIER = 1.30; // (2026-05-12): 1.07 → 1.30. 1.07 was too easy (81-98% win rates across all profiles); 1.30 hits target curve at 1000-run sim: new_player 52%, competent 57%, novice 64%, master 81%. LLM playtest verified "just right" feel — meaningful HP management, quiz correctness load-bearing.
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent() + re-applied after enrage in turnManager. Doubled 2026-04-08 to match GLOBAL_ENEMY_DAMAGE_MULTIPLIER x2. Scaled ×0.67 on 2026-05-11 to track multiplier reduction (caps are a safety net and should stay proportional to the headline multiplier). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
-  1: 11,   // was 16 (2026-04-09), scaled ×0.67 → 11 (2026-05-11)
-  2: 15,   // was 22 (pass 2), scaled ×0.67 → 15 (2026-05-11)
-  3: 21,   // was 32 (pass 2), scaled ×0.67 → 21 (2026-05-11)
-  4: 38,   // was 56, scaled ×0.67 → 38 (2026-05-11)
+  1: 13,   // 16 → 11 (2026-05-11) → 13 (2026-05-12): proportional to 1.30 multiplier
+  2: 18,   // 22 → 15 → 18
+  3: 26,   // 32 → 21 → 26
+  4: 46,   // 56 → 38 → 46
   endless: null,
 };
 
