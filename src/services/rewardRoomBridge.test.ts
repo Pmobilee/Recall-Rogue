@@ -69,11 +69,13 @@ describe('triggerRewardRoomContinue', () => {
     delete reg[Symbol.for('rr:cardGameManager')];
   });
 
-  it('emits sceneComplete when the scene is active', async () => {
+  it('uses the scene continue handler when the scene is active', async () => {
     const emitSpy = vi.fn();
+    const continueSpy = vi.fn();
     const fakeScene = {
       scene: { isActive: () => true },
       events: { emit: emitSpy },
+      continueFromOverlay: continueSpy,
     };
     const reg = globalThis as Record<symbol, unknown>;
     reg[Symbol.for('rr:cardGameManager')] = {
@@ -83,8 +85,30 @@ describe('triggerRewardRoomContinue', () => {
     const { triggerRewardRoomContinue } = await import('./rewardRoomBridge');
     triggerRewardRoomContinue();
 
-    expect(emitSpy).toHaveBeenCalledWith('sceneComplete');
+    expect(continueSpy).toHaveBeenCalledTimes(1);
+    expect(emitSpy).not.toHaveBeenCalled();
     expect(mockForceProceedAfterReward).not.toHaveBeenCalled();
+  });
+
+  it('forces progression if the active scene continue handler throws', async () => {
+    const fakeScene = {
+      scene: { isActive: () => true },
+      events: { emit: vi.fn() },
+      continueFromOverlay: vi.fn(() => {
+        throw new Error('drawImage');
+      }),
+    };
+    const reg = globalThis as Record<symbol, unknown>;
+    reg[Symbol.for('rr:cardGameManager')] = {
+      getRewardRoomScene: () => fakeScene,
+    };
+
+    const { triggerRewardRoomContinue } = await import('./rewardRoomBridge');
+    triggerRewardRoomContinue();
+
+    await flushPromises();
+
+    expect(mockForceProceedAfterReward).toHaveBeenCalledTimes(1);
   });
 
   it('calls forceProceedAfterReward when the scene is inactive (softlock escape)', async () => {

@@ -1003,6 +1003,10 @@ export class RewardRoomScene extends Phaser.Scene {
     }
   }
 
+  public continueFromOverlay(): void {
+    this.onContinueTapped()
+  }
+
   private showLeaveConfirmation(): void {
     const W = this.scale.width
     const H = this.scale.height

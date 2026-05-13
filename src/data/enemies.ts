@@ -471,7 +471,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Drill charge' },
       { type: 'multi_attack', value: 6, weight: 1, telegraph: 'Grinding gears', hitCount: 4 },
       { type: 'defend', value: 8, weight: 1, telegraph: 'Reinforcing plating' },
-      { type: 'debuff', value: 3, weight: 1, telegraph: 'Oil slick', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'Oil-slick ram' },
     ],
     description: 'An old mining rig, still running. Nobody told it to stop.',
     phaseTransitionAt: 0.4,
@@ -502,7 +502,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Lava splash' },
       { type: 'attack', value: 6, weight: 2, telegraph: 'Eruption' },
-      { type: 'debuff', value: 3, weight: 1, telegraph: 'Searing heat', statusEffect: { type: 'poison', value: 3, turns: 3 } },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Searing burst' },
       { type: 'buff', value: 3, weight: 1, telegraph: 'Magma surge', statusEffect: { type: 'strength', value: 2, turns: 3 } },
     ],
     description: 'Molten rock, given shape. The heat alone is a threat.',
@@ -511,6 +511,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 8, weight: 2, telegraph: 'Volcanic blast' },
       { type: 'multi_attack', value: 6, weight: 1, telegraph: 'Magma rain', hitCount: 4 },
       { type: 'debuff', value: 4, weight: 1, telegraph: 'Meltdown', statusEffect: { type: 'poison', value: 4, turns: 3 } },
+      { type: 'attack', value: 7, weight: 1, telegraph: 'Lava wave' },
     ],
     animArchetype: 'trembler',
     quizPhases: [
@@ -533,8 +534,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     baseHP: 15, // rebalanced — HP raised 12→18 (pass #1), 18→14 (pass #4), 14→12 (pass #5, 2026-04-03), raised 12→15 (pass #8, 2026-04-09, Act 2 +25%)
     intentPool: [
       { type: 'attack', value: 5, weight: 2, telegraph: 'Data beam' },
-      { type: 'defend', value: 6, weight: 1, telegraph: 'Firewall' },
-      { type: 'debuff', value: 2, weight: 1, telegraph: 'System scan', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Firewall pulse' },
+      { type: 'attack', value: 4, weight: 1, telegraph: 'System scan spike' },
       { type: 'heal', value: 5, weight: 1, telegraph: 'Self-repair' },
     ],
     description: 'Old archive AI. Still running, still territorial. Triggers a quiz phase at half health.',
@@ -543,7 +544,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
       { type: 'attack', value: 6, weight: 2, telegraph: 'Archive purge' },
       { type: 'multi_attack', value: 4, weight: 1, telegraph: 'Rapid queries', hitCount: 4 },
       { type: 'debuff', value: 3, weight: 1, telegraph: 'Memory wipe', statusEffect: { type: 'weakness', value: 2, turns: 2 } },
-      { type: 'heal', value: 6, weight: 1, telegraph: 'Backup restore' },
+      { type: 'attack', value: 6, weight: 1, telegraph: 'Backup restore burst' },
     ],
     animArchetype: 'caster',
     quizPhases: [
@@ -559,17 +560,17 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     baseHP: 17, // rebalanced — HP raised 14→22 (pass #1), 22→16 (pass #4), 16→14 (pass #5, 2026-04-03), raised 14→17 (pass #8, 2026-04-09, Act 2 +21%)
     intentPool: [
       { type: 'attack', value: 5, weight: 4, telegraph: 'Prismatic slash' },
-      { type: 'defend', value: 6, weight: 3, telegraph: 'Crystal barrier' },
+      { type: 'defend', value: 6, weight: 2, telegraph: 'Crystal barrier' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Shard storm', hitCount: 3 },
-      { type: 'heal', value: 5, weight: 1, telegraph: 'Crystalline mend' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Crystalline backlash' },
     ],
     // AR-263: Phase 2 at 50% HP. Quick Play attacks deal 0 damage in phase 2 — only Charge works.
     phaseTransitionAt: 0.5,
     phase2IntentPool: [
       { type: 'attack', value: 6, weight: 4, telegraph: 'Final Exam: Prismatic barrage' },
-      { type: 'defend', value: 6, weight: 3, telegraph: 'Crystal fortress' },
+      { type: 'defend', value: 6, weight: 2, telegraph: 'Crystal fortress' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Final Exam: Shard storm', hitCount: 4 },
-      { type: 'heal', value: 4, weight: 1, telegraph: 'Crystalline mend' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Crystalline backlash' },
     ],
     description: 'Phase 2: Quick Play deals 0 damage. Only Charged knowledge can penetrate Final Exam mode.',
     animArchetype: 'slammer',
@@ -612,9 +613,9 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     intentPool: [
       { type: 'attack', value: 5, weight: 4, telegraph: 'Void bolt' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Void storm', hitCount: 3 },
-      { type: 'debuff', value: 3, weight: 15, telegraph: 'Reality tear', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
-      { type: 'debuff', value: 2, weight: 15, telegraph: 'Hand disruption', statusEffect: { type: 'weakness', value: 1, turns: 2 } },
-      { type: 'defend', value: 6, weight: 1, telegraph: 'Phase shift' },
+      { type: 'debuff', value: 3, weight: 5, telegraph: 'Reality tear', statusEffect: { type: 'vulnerable', value: 1, turns: 2 } },
+      { type: 'attack', value: 5, weight: 15, telegraph: 'Hand disruption' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Phase strike' },
     ],
     description: 'Something from between spaces. Its attacks hit your hand as much as your health.',
     animArchetype: 'caster',
@@ -629,7 +630,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     intentPool: [
       { type: 'attack', value: 4, weight: 35, telegraph: 'Tome slam' },
       { type: 'attack', value: 5, weight: 25, telegraph: 'Crushing knowledge' },
-      { type: 'defend', value: 5, weight: 20, telegraph: 'Page shield' },
+      { type: 'attack', value: 4, weight: 20, telegraph: 'Page lash' },
       { type: 'buff', value: 2, weight: 20, telegraph: 'Absorb text', statusEffect: { type: 'strength', value: 1, turns: 3 } }, // T1.2-retry 2026-04-11: strength 2→1 (-40%) to reduce damage-per-turn
       { type: 'charge', value: 7, weight: 1, telegraph: 'Charging: Tome Avalanche!' },
     ],
@@ -654,7 +655,7 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     intentPool: [
       { type: 'attack', value: 5, weight: 3, telegraph: 'Cataloguing strike' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Archive barrage', hitCount: 4 },
-      { type: 'debuff', value: 3, weight: 2, telegraph: 'Forgotten lore', statusEffect: { type: 'weakness', value: 1, turns: 2 } }, // T1.2-retry 2026-04-11: weakness 2→1 (-40%) to reduce damage-per-turn
+      { type: 'attack', value: 5, weight: 2, telegraph: 'Forgotten lore' },
       { type: 'buff', value: 3, weight: 2, telegraph: 'Ancient wisdom', statusEffect: { type: 'strength', value: 1, turns: 3 } }, // T1.2-retry 2026-04-11: strength 2→1 (-40%) to reduce damage-per-turn
     ],
     description: 'Final guardian. Quiz phases at 66% and 33% HP. Wrong Charge answers make it stronger. The second quiz phase is Rapid Fire.',
@@ -662,8 +663,8 @@ export const ENEMY_TEMPLATES: EnemyTemplate[] = [
     phase2IntentPool: [
       { type: 'attack', value: 6, weight: 3, telegraph: 'Judgement' },
       { type: 'multi_attack', value: 4, weight: 2, telegraph: 'Knowledge storm', hitCount: 4 },
-      { type: 'debuff', value: 4, weight: 2, telegraph: 'Mind shatter', statusEffect: { type: 'vulnerable', value: 1, turns: 3 } }, // T1.2-retry 2026-04-11: vulnerable 2→1 (-40%) to reduce damage-per-turn
-      { type: 'heal', value: 6, weight: 1, telegraph: 'Archive restoration' },
+      { type: 'attack', value: 6, weight: 2, telegraph: 'Mind shatter' },
+      { type: 'attack', value: 5, weight: 1, telegraph: 'Archive restoration' },
       { type: 'buff', value: 3, weight: 1, telegraph: 'Final form', statusEffect: { type: 'strength', value: 2, turns: 5 } }, // T1.2-retry 2026-04-11: strength 3→2 (-40%) to reduce damage-per-turn
     ],
     animArchetype: 'caster',

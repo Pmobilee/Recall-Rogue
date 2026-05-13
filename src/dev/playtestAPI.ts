@@ -352,6 +352,25 @@ async function quickPlayCard(index: number): Promise<PlayResult> {
   });
 }
 
+async function findHandIndexByCardId(cardId: string): Promise<number | null> {
+  const { activeTurnState } = await import('../services/encounterBridge');
+  const { get } = await import('svelte/store');
+  const turnState = get(activeTurnState);
+  const hand = turnState?.deck?.hand;
+  if (!Array.isArray(hand)) return null;
+  const index = hand.findIndex(c => c?.id === cardId);
+  return index >= 0 ? index : null;
+}
+
+/** Quick Play a card by stable runtime card ID. */
+async function quickPlayCardById(cardId: string): Promise<PlayResult> {
+  const index = await findHandIndexByCardId(cardId);
+  if (index === null) {
+    return { ok: false, message: `Card ${cardId} not in hand` };
+  }
+  return quickPlayCard(index);
+}
+
 /** Charge a card and auto-answer the quiz (correct or incorrect based on parameter).
  *  Calls handlePlayCard with playMode='charge' — the same code path as a real charge play. */
 async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<PlayResult> {
@@ -414,6 +433,15 @@ async function chargePlayCard(index: number, answerCorrectly: boolean): Promise<
   });
 }
 
+/** Charge Play a card by stable runtime card ID. */
+async function chargePlayCardById(cardId: string, answerCorrectly: boolean): Promise<PlayResult> {
+  const index = await findHandIndexByCardId(cardId);
+  if (index === null) {
+    return { ok: false, message: `Card ${cardId} not in hand` };
+  }
+  return chargePlayCard(index, answerCorrectly);
+}
+
 /** Preview the quiz that would appear if a card is charge-played. Does NOT play the card or consume AP. */
 async function previewCardQuiz(index: number): Promise<PlayResult> {
   return safeAction(async () => {
@@ -440,6 +468,9 @@ async function previewCardQuiz(index: number): Promise<PlayResult> {
     const { getQuizChoices } = await import('../services/quizService');
     const { displayAnswer } = await import('../services/numericalDistractorService');
     const choices = getQuizChoices(fact);
+    if (choices.length < 3) {
+      return { ok: false, message: `Quiz preview for card ${index} returned ${choices.length} choices (minimum 3)` };
+    }
     const correctAnswer = displayAnswer(fact.correctAnswer ?? '');
     const correctIndex = choices.indexOf(correctAnswer);
 
@@ -636,7 +667,7 @@ async function selectMapNode(nodeId: string | number): Promise<PlayResult> {
  *      found in the scene overlayObjects array (index 1 among interactive objects).
  * 3. Waits for the scene to auto-advance (checkAutoAdvance fires when all collected).
  */
-async function acceptReward(): Promise<PlayResult> {
+async function acceptReward(preferredCardIndex = 0): Promise<PlayResult> {
   return safeAction(async () => {
     // Try DOM button first (Svelte fallback screen)
     const btn = document.querySelector('[data-testid="reward-accept"]') as HTMLButtonElement | null;
@@ -661,73 +692,73 @@ async function acceptReward(): Promise<PlayResult> {
       await wait(50);
     }
     if (!scene) {
-      return { ok: false, message: 'RewardRoomScene not active after 3s wait' };
-    }
-
-    // Auto-collect all non-card, non-relic items first (gold, vials).
-    // Each item's sprite has a pointerdown listener that calls handleItemTap.
-    const items = scene.items as Array<{ collected: boolean; reward: { type: string }; sprite: any }>;
-    for (const item of items) {
-      if (item.collected) continue;
-      if (item.reward.type === 'gold' || item.reward.type === 'health_vial') {
-        (item.sprite as any)?.emit('pointerdown');
-        await wait(turboDelay(200));
-      }
-    }
-
-    // Handle first uncollected card item.
-    // Tapping opens the card detail overlay; accept via bridge callbacks.
-    const cardItem = items.find(i => !i.collected && i.reward.type === 'card');
-    if (cardItem) {
-      (cardItem.sprite as any)?.emit('pointerdown');
-      await wait(turboDelay(300));
-
-      const { getCardDetailCallbacks } = await import('../services/rewardRoomBridge');
-      const callbacks = getCardDetailCallbacks();
-      if (callbacks) {
-        callbacks.onAccept();
-        await wait(turboDelay(500));
-      }
-    }
-
-    // Handle first uncollected relic item.
-    // Relics use a Phaser Graphics accept button inside an overlay — NOT the Svelte card
-    // detail overlay. The overlay objects are stored in scene.overlayObjects in order:
-    //   [0] dim rectangle (interactive)
-    //   [1] panel (not interactive)
-    //   ... text objects (not interactive)
-    //   [N] acceptBtn (interactive, index 1 among interactives)
-    //   [N+1] acceptLabel (not interactive)
-    //   [N+2] leaveBtn (interactive, index 2 among interactives)
-    // We emit 'pointerdown' on the second interactive object (acceptBtn).
-    const relicItem = items.find(i => !i.collected && i.reward.type === 'relic');
-    if (relicItem) {
-      (relicItem.sprite as any)?.emit('pointerdown');
-      await wait(turboDelay(300));
-
-      const overlayObjects = (scene as any).overlayObjects as any[] | undefined;
-      if (overlayObjects) {
-        // Filter to objects that have input enabled (interactive)
-        const interactives = overlayObjects.filter((obj: any) => obj.input?.enabled);
-        // interactives[0] = dim overlay, interactives[1] = accept button
-        const acceptBtn = interactives[1];
-        if (acceptBtn) {
-          acceptBtn.emit('pointerdown');
-          await wait(turboDelay(500));
-        }
-      }
-    }
-
-    // Wait for checkAutoAdvance to fire (triggers sceneComplete when all items collected).
-    await wait(turboDelay(1000));
-
-    // If the screen is still on rewardRoom, some items were not collected (e.g. extra card
-    // choices the bot skipped). Force the transition by emitting sceneComplete directly —
-    // this mirrors what clicking the Continue button does.
-    if (getScreen() === 'rewardRoom') {
       const { triggerRewardRoomContinue } = await import('../services/rewardRoomBridge');
       triggerRewardRoomContinue();
       await wait(turboDelay(1000));
+      return { ok: true, message: `RewardRoomScene inactive; forced reward transition. Screen: ${getScreen()}` };
+    }
+
+    const items = (scene.getItems?.() ?? scene.items ?? []) as Array<{
+      collected: boolean;
+      reward: { type: string; amount?: number; healAmount?: number; card?: any; relic?: any };
+      sprite?: any;
+      shadow?: any;
+    }>;
+
+    const markVisualCollected = (item: any): void => {
+      item.collected = true;
+      item.sprite?.removeAllListeners?.('pointerdown');
+      item.sprite?.setAlpha?.(0);
+      item.sprite?.setVisible?.(false);
+      item.shadow?.setAlpha?.(0);
+      item.shadow?.setVisible?.(false);
+    };
+
+    const collectCurrencyRewards = (): void => {
+      for (const item of items) {
+        if (item.collected) continue;
+        if (item.reward.type === 'gold') {
+          markVisualCollected(item);
+          scene.events.emit('goldCollected', item.reward.amount ?? 0);
+        } else if (item.reward.type === 'health_vial') {
+          markVisualCollected(item);
+          scene.events.emit('vialCollected', item.reward.healAmount ?? 0);
+        }
+      }
+    };
+
+    try {
+      collectCurrencyRewards();
+
+      const cardItems = items.filter(i => !i.collected && i.reward.type === 'card');
+      const cardItem = cardItems[Math.max(0, Math.min(preferredCardIndex, cardItems.length - 1))];
+      if (cardItem?.reward.card) {
+        const card = cardItem.reward.card;
+        scene.events.emit('cardAccepted', card);
+        if (typeof scene.acceptCard === 'function') {
+          scene.acceptCard(cardItem);
+        } else {
+          markVisualCollected(cardItem);
+        }
+      } else {
+        const relicItem = items.find(i => !i.collected && i.reward.type === 'relic');
+        if (relicItem?.reward.relic) {
+          const relic = relicItem.reward.relic;
+          scene.events.emit('relicAccepted', relic);
+          markVisualCollected(relicItem);
+          if (typeof scene.disintegrateRemainingItems === 'function') {
+            scene.disintegrateRemainingItems(relicItem);
+          }
+        }
+      }
+    } catch (err) {
+      console.warn('[__rrPlay.acceptReward] Direct reward collection failed; forcing reward-room continue', err);
+    }
+
+    const { triggerRewardRoomContinue } = await import('../services/rewardRoomBridge');
+    triggerRewardRoomContinue();
+    for (let i = 0; i < 60 && getScreen() === 'rewardRoom'; i++) {
+      await wait(50);
     }
 
     return { ok: true, message: `Reward accepted via Phaser scene. Screen: ${getScreen()}` };
@@ -933,6 +964,8 @@ async function mysteryContinue(): Promise<PlayResult> {
     let btn = document.querySelector('[data-testid="mystery-continue"]') as HTMLButtonElement | null;
     // Fallback: cardUpgradeReveal continue button (mystery events that trigger card upgrades)
     if (!btn) btn = document.querySelector('[data-testid="btn-upgrade-reveal-continue"]') as HTMLButtonElement | null;
+    // EventQuiz uses a next button after each answer/result beat.
+    if (!btn) btn = document.querySelector('.next-btn:not([disabled])') as HTMLButtonElement | null;
     // Last resort: any visible continue button on the page
     if (!btn) btn = document.querySelector('.continue-btn:not([disabled])') as HTMLButtonElement | null;
     if (!btn) return { ok: false, message: 'Mystery continue button not found' };
@@ -1118,6 +1151,18 @@ async function restMeditate(): Promise<PlayResult> {
 /** Leave the shop room and return to dungeon map. */
 async function shopLeave(): Promise<PlayResult> {
   return safeAction(async () => {
+    const confirmIfPresent = async (): Promise<boolean> => {
+      const confirm = document.querySelector('[data-testid="btn-leave-confirm"]') as HTMLButtonElement | null;
+      if (!confirm) return false;
+      confirm.click();
+      await wait(turboDelay(1000));
+      return true;
+    };
+
+    if (await confirmIfPresent()) {
+      return { ok: true, message: `Confirmed shop leave. Screen: ${getScreen()}` };
+    }
+
     // Try the shop leave/back button
     let btn = document.querySelector('[data-testid="shop-leave"]') as HTMLButtonElement | null;
     if (!btn) btn = document.querySelector('[data-testid="shop-back"]') as HTMLButtonElement | null;
@@ -1132,6 +1177,9 @@ async function shopLeave(): Promise<PlayResult> {
     }
     btn.click();
     await wait(turboDelay(1000));
+    if (getScreen() === 'shopRoom' && await confirmIfPresent()) {
+      return { ok: true, message: `Left shop after confirmation. Screen: ${getScreen()}` };
+    }
     return { ok: true, message: `Left shop. Screen: ${getScreen()}` };
   });
 }
@@ -1216,7 +1264,26 @@ async function selectMysteryChoice(index: number): Promise<PlayResult> {
     const buttons = getMysteryActionButtons().filter(btn => !btn.disabled);
     const btn = buttons[index] ?? null;
     if (!btn) {
-      // No action buttons found — this may be a Continue-type mystery event.
+      const quizBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-testid^="quiz-answer-"]'))
+        .filter(el => {
+          const style = getComputedStyle(el);
+          return style.display !== 'none' && style.visibility !== 'hidden';
+        });
+      const quizBtn = quizBtns[index] ?? null;
+      if (quizBtn && !quizBtn.disabled) {
+        quizBtn.click();
+        await wait(turboDelay(1000));
+        return { ok: true, message: `Selected mystery quiz answer ${index}. Screen: ${getScreen()}` };
+      }
+
+      const nextBtn = document.querySelector('.next-btn:not([disabled])') as HTMLButtonElement | null;
+      if (nextBtn) {
+        nextBtn.click();
+        await wait(turboDelay(1000));
+        return { ok: true, message: `Advanced mystery quiz result. Screen: ${getScreen()}` };
+      }
+
+      // No .choice-btn elements found — this may be a Continue-type mystery event.
       // Fall back to the mystery-continue button if present.
       const continueBtn = document.querySelector('[data-testid="mystery-continue"]') as HTMLElement | null;
       if (continueBtn) {
@@ -1224,7 +1291,7 @@ async function selectMysteryChoice(index: number): Promise<PlayResult> {
         await wait(turboDelay(1000));
         return { ok: true, message: `Mystery continue clicked (no choice buttons found). Screen: ${getScreen()}` };
       }
-      return { ok: false, message: `Mystery choice ${index} not found (only ${buttons.length} visible action buttons)` };
+      return { ok: false, message: `Mystery choice ${index} not found (only ${buttons.length} visible .choice-btn elements)` };
     }
     btn.click();
     await wait(turboDelay(1000));
@@ -1777,7 +1844,9 @@ export function initPlaytestAPI(): void {
     getCombatState,
     playCard,
     quickPlayCard,
+    quickPlayCardById,
     chargePlayCard,
+    chargePlayCardById,
     previewCardQuiz,
     endTurn,
     // Card Roguelite — Room & Reward

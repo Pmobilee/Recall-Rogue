@@ -68,7 +68,7 @@ export const MASTERY_STAT_TABLES: Record<string, MasteryStatTable> = {
   strike: {
     levels: [
       { qpValue: 4 },                                                         // L0 — Weak but reliable
-      { qpValue: 4 },                                                         // L1
+      { qpValue: 5 },                                                         // L1 — first upgrade reads visibly stronger
       { qpValue: 5 },                                                         // L2
       { qpValue: 6 },                                                         // L3
       { qpValue: 7 },                                                         // L4

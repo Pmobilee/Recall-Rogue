@@ -1192,7 +1192,12 @@
     "statement": "Stroke has an incidence rate of 213 cases per 100,000 person-years.",
     "quizQuestion": "How many stroke cases occur per 100,000 person-years worldwide?",
     "correctAnswer": "{213} cases",
-    "distractors": [],
+    "distractors": [
+      "{113} cases",
+      "{313} cases",
+      "{513} cases",
+      "{813} cases"
+    ],
     "acceptableAnswers": [
       "213",
       "213 per 100,000",
@@ -1205,7 +1210,12 @@
         "type": "forward",
         "question": "How many stroke cases occur per 100,000 person-years worldwide?",
         "correctAnswer": "{213} cases",
-        "distractors": []
+        "distractors": [
+          "{113} cases",
+          "{313} cases",
+          "{513} cases",
+          "{813} cases"
+        ]
       },
       {
         "type": "true_false",

@@ -1,7 +1,7 @@
 # Enemy System
 
 > **Purpose:** Complete reference for the enemy roster, categories, scaling formulas, special behaviors, and encounter selection.
-> **Last verified:** 2026-04-12 (T1.2-retry: Omnibus + Final Lesson status stacks cut 40% to reduce damage-per-turn. Phase 8: Elite unique mechanics — Librarian Silence, Tutor Pop Quiz, Headmistress Detention, Study Group phase sim. Phase 9: strip_block intents on page_flutter/bookmark_vine/staple_bug. Same-floor enemy dedup added 2026-04-12.)
+> **Last verified:** 2026-05-13 (boss intent pass: every boss phase now has at most 25% non-damaging intents by count and weight, preserving one signature defend/buff/debuff/heal turn where useful.)
 > **Source files:** `src/data/enemies.ts`, `src/services/enemyManager.ts`, `src/data/balance.ts`, `src/services/ascension.ts`
 
 ## Enemy Categories
@@ -12,6 +12,24 @@
 | `elite` | Elite nodes. More HP, phase transitions. | 16 (Act 1); 12–17 overall |
 | `mini_boss` | Gate encounters mid-act. | 11–13 (Act 1); 10–15 overall |
 | `boss` | Act-ending encounters. Two phases, high HP. | 27–28 (Act 1); 15–28 overall |
+
+## Boss Intent Ratios
+
+Boss phases are capped at roughly 25% non-damaging turns. Non-damaging means
+`defend`, `buff`, `debuff`, or `heal`; `attack`, `multi_attack`, and charged
+windups count as pressure turns. This keeps bosses from becoming passive reward
+sponges while preserving one identity turn per phase where it matters.
+
+| Boss | Phase 1 non-damaging | Phase 2 non-damaging |
+|---|---:|---:|
+| The Final Exam | 1/4 intents, 20.0% weight | 1/4 intents, 16.7% weight |
+| The Burning Deadline | 1/4 intents, 16.7% weight | 1/4 intents, 20.0% weight |
+| The Algorithm | 1/4 intents, 20.0% weight | 1/4 intents, 20.0% weight |
+| The Curriculum | 1/4 intents, 22.2% weight | 1/4 intents, 22.2% weight |
+| The Group Project | 1/4 intents, 20.0% weight | 1/4 intents, 25.0% weight |
+| The Rabbit Hole | 1/5 intents, 18.5% weight | n/a |
+| The Omnibus | 1/5 intents, 19.8% weight | 1/4 intents, 14.3% weight |
+| The Final Lesson | 1/4 intents, 22.2% weight | 1/5 intents, 11.1% weight |
 
 ## HP and Damage Scaling
 

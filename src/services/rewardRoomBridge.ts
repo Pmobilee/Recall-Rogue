@@ -44,7 +44,18 @@ export function triggerRewardRoomContinue(): void {
   const mgr = getManager();
   const scene = mgr?.getRewardRoomScene?.();
   if (scene && scene.scene.isActive()) {
-    scene.events.emit('sceneComplete');
+    try {
+      if (typeof scene.continueFromOverlay === 'function') {
+        scene.continueFromOverlay();
+      } else {
+        scene.events.emit('sceneComplete');
+      }
+    } catch (err) {
+      console.warn('[RewardRoomBridge] Continue handler failed; forcing reward progression', err);
+      void import('./gameFlowController').then(({ forceProceedAfterReward }) => {
+        forceProceedAfterReward();
+      });
+    }
     return;
   }
   // Softlock escape: scene is inactive but Continue was clicked — force progression.
@@ -250,8 +261,13 @@ export async function openRewardRoom(
   const handleComplete = (): void => {
     if (import.meta.env.DEV) console.log('[RewardRoomBridge] Reward room complete, calling onComplete');
     cleanup();
-    mgr.stopRewardRoom();
-    onComplete();
+    try {
+      mgr.stopRewardRoom();
+    } catch (err) {
+      console.warn('[RewardRoomBridge] stopRewardRoom failed during completion; continuing game flow', err);
+    } finally {
+      onComplete();
+    }
   };
 
   // AR-225/AR-240: Safety timeout removed per user request — player can take as long as they want.

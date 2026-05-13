@@ -20,10 +20,6 @@ vi.mock('../../src/utils/turboMode', () => ({
   isTurboMode: () => false,
 }))
 
-vi.mock('../../src/services/factsDB', () => ({
-  factsDB: { isReady: () => false, getById: () => null },
-}))
-
 vi.mock('../../src/data/relics', () => ({
   RELIC_BY_ID: {
     lucky_coin:   { name: 'Lucky Coin',    description: '+1 gold on combat win',                rarity: 'common',   trigger: 'on_combat_win'   },
@@ -38,6 +34,26 @@ let mockGetActiveDeckCards = vi.fn(() => [] as unknown[])
 let mockGetRunPoolCards = vi.fn(() => [] as unknown[])
 let mockCanMasteryUpgrade = vi.fn(() => false)
 let mockActiveCardRewardOptions = { subscribe: (cb: (v: unknown) => void) => { cb([]); return () => {} } }
+let mockTurnState: any = null
+let mockHandlePlayCard = vi.fn()
+let mockFactsReady = false
+let mockFactById: any = null
+let mockQuizChoices: string[] = []
+
+vi.mock('../../src/services/factsDB', () => ({
+  factsDB: {
+    isReady: () => mockFactsReady,
+    getById: () => mockFactById,
+  },
+}))
+
+vi.mock('../../src/services/quizService', () => ({
+  getQuizChoices: () => mockQuizChoices,
+}))
+
+vi.mock('../../src/services/numericalDistractorService', () => ({
+  displayAnswer: (answer: string) => answer,
+}))
 
 vi.mock('../../src/services/gameFlowController', () => ({
   get hasRestUpgradeCandidates() { return mockHasRestUpgradeCandidates },
@@ -45,6 +61,10 @@ vi.mock('../../src/services/gameFlowController', () => ({
 }))
 
 vi.mock('../../src/services/encounterBridge', () => ({
+  get activeTurnState() {
+    return { subscribe: (cb: (v: unknown) => void) => { cb(mockTurnState); return () => {} } }
+  },
+  get handlePlayCard() { return mockHandlePlayCard },
   get getActiveDeckCards() { return mockGetActiveDeckCards },
   get getRunPoolCards() { return mockGetRunPoolCards },
 }))
@@ -97,15 +117,177 @@ async function getAPI() {
 // ---------------------------------------------------------------------------
 
 beforeEach(() => {
+  document.body.innerHTML = ''
   mockHasRestUpgradeCandidates = vi.fn(() => true)
   mockGetActiveDeckCards = vi.fn(() => [] as unknown[])
   mockGetRunPoolCards = vi.fn(() => [] as unknown[])
   mockCanMasteryUpgrade = vi.fn(() => false)
+  mockTurnState = null
+  mockHandlePlayCard = vi.fn()
+  mockFactsReady = false
+  mockFactById = null
+  mockQuizChoices = []
   mockActiveCardRewardOptions = { subscribe: (cb: (v: unknown) => void) => { cb([]); return () => {} } }
   clearStore('rr:activeRunState')
   clearStore('rr:activeTurnState')
   clearStore('rr:currentScreen')
   setStore('rr:currentScreen', 'hub')
+})
+
+// ---------------------------------------------------------------------------
+// Bridge helpers used by LLM playtests
+// ---------------------------------------------------------------------------
+
+describe('LLM room bridge helpers', () => {
+  it('shopLeave confirms the two-step leave modal', async () => {
+    setStore('rr:currentScreen', 'shopRoom')
+    document.body.innerHTML = '<button data-testid="btn-leave-shop">Leave Shop</button>'
+
+    document.querySelector<HTMLButtonElement>('[data-testid="btn-leave-shop"]')!.onclick = () => {
+      const confirm = document.createElement('button')
+      confirm.dataset.testid = 'btn-leave-confirm'
+      confirm.textContent = 'Leave anyway'
+      confirm.onclick = () => {
+        const store = (globalThis as Record<symbol, unknown>)[Symbol.for('rr:currentScreen')] as { set: (v: unknown) => void }
+        store.set('dungeonMap')
+      }
+      document.body.append(confirm)
+    }
+
+    const api = await getAPI()
+    const result = await (api.shopLeave as () => Promise<{ ok: boolean; message: string }>)()
+
+    expect(result.ok).toBe(true)
+    expect(result.message).toContain('confirmation')
+  })
+
+  it('selectMysteryChoice can click EventQuiz answer buttons', async () => {
+    setStore('rr:currentScreen', 'mysteryEvent')
+    let clicked = false
+    document.body.innerHTML = '<button class="choice-btn" data-testid="quiz-answer-0">Answer</button>'
+    document.querySelector<HTMLButtonElement>('[data-testid="quiz-answer-0"]')!.onclick = () => {
+      clicked = true
+    }
+
+    const api = await getAPI()
+    const result = await (api.selectMysteryChoice as (i: number) => Promise<{ ok: boolean; message: string }>)(0)
+
+    expect(result.ok).toBe(true)
+    expect(result.message).toContain('mystery')
+    expect(clicked).toBe(true)
+  })
+
+  it('mysteryContinue advances EventQuiz result next buttons', async () => {
+    setStore('rr:currentScreen', 'mysteryEvent')
+    let advanced = false
+    document.body.innerHTML = '<button class="next-btn">Next Question</button>'
+    document.querySelector<HTMLButtonElement>('.next-btn')!.onclick = () => {
+      advanced = true
+    }
+
+    const api = await getAPI()
+    const result = await (api.mysteryContinue as () => Promise<{ ok: boolean; message: string }>)()
+
+    expect(result.ok).toBe(true)
+    expect(advanced).toBe(true)
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Stable card-id play helpers
+// ---------------------------------------------------------------------------
+
+describe('card-id play helpers', () => {
+  function setCombatHand() {
+    mockTurnState = {
+      result: null,
+      apCurrent: 3,
+      apMax: 3,
+      turnNumber: 1,
+      chainLength: 0,
+      chainMultiplier: 1,
+      playerState: { hp: 40, maxHP: 40, shield: 0 },
+      enemy: { currentHP: 20, maxHP: 20 },
+      deck: {
+        hand: [
+          { id: 'card_1', cardType: 'block', mechanicId: 'block' },
+          { id: 'card_42', cardType: 'strike', mechanicId: 'strike' },
+        ],
+      },
+    }
+  }
+
+  it('quickPlayCardById resolves the current hand index and delegates to quick play', async () => {
+    setStore('rr:currentScreen', 'combat')
+    setCombatHand()
+    mockHandlePlayCard = vi.fn((cardId: string) => {
+      mockTurnState = {
+        ...mockTurnState,
+        apCurrent: 2,
+        deck: { ...mockTurnState.deck, hand: mockTurnState.deck.hand.filter((c: any) => c.id !== cardId) },
+      }
+    })
+
+    const api = await getAPI()
+    const result = await (api.quickPlayCardById as (id: string) => Promise<{ ok: boolean; state: Record<string, unknown> }>)('card_42')
+
+    expect(result.ok).toBe(true)
+    expect(result.state.cardId).toBe('card_42')
+    expect(mockHandlePlayCard).toHaveBeenCalledWith('card_42', true, false, undefined, undefined, 'quick')
+  })
+
+  it('chargePlayCardById resolves the current hand index and delegates to charge play', async () => {
+    setStore('rr:currentScreen', 'combat')
+    setCombatHand()
+    mockHandlePlayCard = vi.fn((cardId: string) => {
+      mockTurnState = {
+        ...mockTurnState,
+        apCurrent: 1,
+        deck: { ...mockTurnState.deck, hand: mockTurnState.deck.hand.filter((c: any) => c.id !== cardId) },
+      }
+    })
+
+    const api = await getAPI()
+    const result = await (api.chargePlayCardById as (id: string, correct: boolean) => Promise<{ ok: boolean; state: Record<string, unknown> }>)('card_42', true)
+
+    expect(result.ok).toBe(true)
+    expect(result.state.cardId).toBe('card_42')
+    expect(mockHandlePlayCard).toHaveBeenCalledWith('card_42', true, false, 1500, undefined, 'charge')
+  })
+
+  it('returns a clear error when the card id is not in hand', async () => {
+    setCombatHand()
+
+    const api = await getAPI()
+    const result = await (api.quickPlayCardById as (id: string) => Promise<{ ok: boolean; message: string }>)('card_missing')
+
+    expect(result).toEqual({ ok: false, message: 'Card card_missing not in hand' })
+  })
+})
+
+// ---------------------------------------------------------------------------
+// previewCardQuiz malformed-choice guard
+// ---------------------------------------------------------------------------
+
+describe('previewCardQuiz choice count guard', () => {
+  it('returns ok=false when the generated quiz has fewer than 3 choices', async () => {
+    mockFactsReady = true
+    mockFactById = {
+      id: 'stroke_fact',
+      quizQuestion: 'What is the incidence of stroke cases per 100K?',
+      correctAnswer: '213 cases',
+    }
+    mockQuizChoices = ['213 cases']
+    mockTurnState = {
+      deck: { hand: [{ id: 'card_1', cardType: 'strike', mechanicId: 'strike', factId: 'stroke_fact' }] },
+    }
+
+    const api = await getAPI()
+    const result = await (api.previewCardQuiz as (index: number) => Promise<{ ok: boolean; message: string }>)(0)
+
+    expect(result.ok).toBe(false)
+    expect(result.message).toContain('returned 1 choices')
+  })
 })
 
 // ---------------------------------------------------------------------------
