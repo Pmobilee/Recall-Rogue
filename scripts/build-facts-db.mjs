@@ -104,6 +104,34 @@ CREATE INDEX IF NOT EXISTS idx_facts_db_version   ON facts(db_version);
 // ---------------------------------------------------------------------------
 
 /**
+ * Numeric deck pools use `{123}` notation internally to mark number answers for
+ * template matching. Player-facing exports must show the number, not the marker.
+ *
+ * @param {unknown} value
+ * @returns {unknown}
+ */
+function stripNumericTemplateMarkers(value) {
+  if (typeof value !== 'string') return value;
+  return value.replace(/\{([0-9][0-9,]*(?:\.[0-9]+)?)\}/g, '$1');
+}
+
+/**
+ * Sanitizes distractors while preserving object-shaped distractors.
+ *
+ * @param {unknown} value
+ * @returns {unknown}
+ */
+function sanitizeDistractor(value) {
+  if (typeof value === 'string') return stripNumericTemplateMarkers(value);
+  if (value && typeof value === 'object' && !Array.isArray(value)) {
+    const copy = { ...value };
+    if (typeof copy.text === 'string') copy.text = stripNumericTemplateMarkers(copy.text);
+    return copy;
+  }
+  return value;
+}
+
+/**
  * Maps a camelCase Fact object to the snake_case column values expected by
  * the INSERT statement.  Arrays are JSON-stringified; missing optional fields
  * become null.
@@ -120,14 +148,14 @@ function factToRow(fact) {
     fact.explanation      ?? null,
     fact.gaiaComment      ?? null,
     fact.quizQuestion     ?? null,
-    fact.correctAnswer    ?? null,
+    stripNumericTemplateMarkers(fact.correctAnswer) ?? null,
     (() => {
       const raw = fact.distractors ?? [];
       const cleaned = raw.filter(d => {
         const text = typeof d === 'string' ? d : String(d?.text ?? d ?? '');
         return text && !isPlaceholderDistractor(text);
       });
-      return JSON.stringify(cleaned);
+      return JSON.stringify(cleaned.map(sanitizeDistractor));
     })(),
     JSON.stringify(fact.category    ?? []),
     fact.rarity           ?? null,
@@ -165,13 +193,18 @@ function factToRow(fact) {
     fact.hasPixelArt           ? 1 : 0,
     fact.pixelArtStatus        ?? 'none',
     fact.variants ? JSON.stringify(fact.variants.map(v => {
-      if (!Array.isArray(v.distractors)) return v;
-      return {
+      if (!v || typeof v !== 'object' || Array.isArray(v)) return v;
+      const sanitizedVariant = {
         ...v,
+        correctAnswer: stripNumericTemplateMarkers(v.correctAnswer),
+      };
+      if (!Array.isArray(v.distractors)) return sanitizedVariant;
+      return {
+        ...sanitizedVariant,
         distractors: v.distractors.filter(d => {
           const text = typeof d === 'string' ? d : String(d?.text ?? d ?? '');
           return text && !isPlaceholderDistractor(text);
-        }),
+        }).map(sanitizeDistractor),
       };
     })) : null,
     fact.dbVersion             ?? 0,

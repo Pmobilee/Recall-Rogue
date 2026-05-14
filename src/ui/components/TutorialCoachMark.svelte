@@ -65,9 +65,10 @@
   function computePosition(): void {
     const vw = window.innerWidth
     const vh = window.innerHeight
+    const currentAnchor = anchor ?? { target: 'screen-center', position: 'center' }
 
     // Special case: Phaser canvas / no DOM element → fixed position near top-center
-    if (anchor.target === 'enemy-sprite' || anchor.position === 'center') {
+    if (currentAnchor.target === 'enemy-sprite' || currentAnchor.position === 'center') {
       const ttW = tooltipEl?.offsetWidth ?? 500
       const ttH = tooltipEl?.offsetHeight ?? 160
       tooltipPos = {
@@ -79,7 +80,7 @@
       return
     }
 
-    const targetEl = document.querySelector<HTMLElement>(`[data-tutorial-anchor="${anchor.target}"]`)
+    const targetEl = document.querySelector<HTMLElement>(`[data-tutorial-anchor="${currentAnchor.target}"]`)
 
     if (!targetEl) {
       // No anchor found → center on screen
@@ -97,7 +98,7 @@
     const rect = targetEl.getBoundingClientRect()
     const ttW = tooltipEl?.offsetWidth ?? 500
     const ttH = tooltipEl?.offsetHeight ?? 160
-    const pos = anchor.position
+    const pos = currentAnchor.position
 
     // Build spotlight cutout
     if (spotlight) {
@@ -169,8 +170,8 @@
   // Recompute position whenever anchor prop changes
   $effect(() => {
     // Access anchor to establish reactivity
-    void anchor.target
-    void anchor.position
+    void anchor?.target
+    void anchor?.position
     // Wait a tick for the DOM to reflect any new anchor elements
     requestAnimationFrame(() => {
       computePosition()

@@ -6,10 +6,10 @@
  * and when to advance. The UI layer renders the active step's message anchored
  * to the element identified by anchor.target (matched via data-tutorial-anchor="xxx").
  *
- * ISSUE-1-3 fix (2026-05-02): Collapsed the original 5 proactive Phase 1 popups
- * (enemy_intro + enemy_passive_intro + enemy_intent_intro + hand_intro + ap_intro)
- * down to 2 merged popups (combat_intro + cards_ap_intro). First combat now fires
- * at most 2 blocking "Got it" popups before the player can act.
+ * ISSUE-1-3 fix (2026-05-02, tightened 2026-05-04): Collapsed the original
+ * 5 proactive Phase 1 popups down to 2 merged popups. Only combat_intro and
+ * cards_ap_intro block input; follow-up hints auto-dismiss so first combat does
+ * not become a turn-by-turn modal queue.
  */
 
 export type TutorialMode = 'combat' | 'study'
@@ -112,7 +112,7 @@ export interface TutorialStep {
  * wait for showWhen to become true. Steps that return null from getMessage are
  * skipped entirely (e.g. no enemy passives present).
  */
-export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
+const COMBAT_TUTORIAL_STEP_BACKLOG: TutorialStep[] = [
   // ═══════════════════════════════════════════════════════════
   // PHASE 1 — Combat Start (2 merged popups, down from 5)
   //
@@ -224,7 +224,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'card-hand', position: 'above' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: (ctx) => {
       if (ctx.hasPlayedCharge) {
         // Player charged instead of QP — that's fine, adapt
@@ -236,9 +236,9 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     },
     showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 8000,
     spotlight: true,
   },
 
@@ -310,7 +310,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'card-hand', position: 'above' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: (ctx) => {
       if (ctx.hasAnsweredWrong) {
         return 'Wrong answer — but the card still played at reduced power. You are never stuck. Now you know both Quick Play and Charge. Use whichever fits the situation.'
@@ -319,9 +319,9 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     },
     showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 2 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 8000,
     spotlight: true,
   },
 
@@ -334,14 +334,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'draw-pile', position: 'right' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: () =>
       'Draw Pile — cards you have not drawn yet. You draw a fresh hand each turn. When it empties, your discard pile shuffles back in.',
     showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 6000,
     spotlight: true,
   },
 
@@ -350,14 +350,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'discard-pile', position: 'left' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: () =>
       'Discard Pile — played cards land here. When your draw pile empties, the discard pile reshuffles automatically. Your deck cycles indefinitely.',
     showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 6000,
     spotlight: true,
   },
 
@@ -366,7 +366,7 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'fog-wing-wrapper', position: 'below' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: (ctx) => {
       if (ctx.fogLevel === null) return null
       return 'The Focus Meter. Answer questions correctly to stay in Flow State and draw extra cards. Too many wrong answers trigger Brain Fog — enemies hit harder. Stay sharp.'
@@ -376,9 +376,9 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
       ctx.phase === 'player_action' &&
       ctx.fogLevel !== null,
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 6000,
     spotlight: true,
   },
 
@@ -391,14 +391,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'ap-indicator', position: 'left' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: (ctx) =>
       `You have ${ctx.apCurrent} AP left. Play more cards or end your turn whenever you like — you do not have to spend every AP.`,
     showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 20000,
+    maxDisplayMs: 6000,
     spotlight: true,
   },
 
@@ -407,14 +407,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'end-turn-btn', position: 'above' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: () =>
       'When you are done playing cards, tap End Turn. The enemy takes their action, then you draw a fresh hand.',
     showWhen: (ctx) => ctx.cardsPlayedThisTurn >= 1 && ctx.phase === 'player_action',
     doneWhen: (ctx) => ctx.phase !== 'player_action',
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 1500,
-    maxDisplayMs: 60000,
+    maxDisplayMs: 9000,
     spotlight: true,
   },
 
@@ -500,14 +500,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'deck-btn', position: 'below' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: () =>
       'Tap the deck icon to view all cards in your current deck. Know what is coming and plan around your strongest cards.',
     showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 6000,
     spotlight: true,
   },
 
@@ -516,14 +516,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'gold-counter', position: 'below' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: () =>
       'Your gold. Earn it by defeating enemies. Spend it at shops between fights to buy new cards and relics.',
     showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 6000,
     spotlight: true,
   },
 
@@ -532,16 +532,16 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'relics-row', position: 'below' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: (ctx) =>
       (ctx.relicCount ?? 0) > 0
         ? `Your Relics — powerful permanent bonuses for the entire run. You have ${ctx.relicCount}. Collect more from shops and events.`
         : 'Relic slots — currently empty. Relics grant permanent bonuses for the entire run. Find them at shops, events, and boss rewards.',
     showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 6000,
     spotlight: true,
   },
 
@@ -550,14 +550,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'music-widget', position: 'below' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: () =>
       'Music controls. Tap to expand — switch between Epic battle music and Lo-Fi study vibes, or toggle ambient sounds.',
     showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 6000,
     spotlight: true,
   },
 
@@ -566,14 +566,14 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     mode: 'combat',
     anchor: { target: 'pause-btn', position: 'below' },
     proactive: true,
-    blockInput: true,
+    blockInput: false,
     getMessage: () =>
       'The gear icon pauses the game and opens settings. Adjust volume, text size, and more. You can also abandon the run from here.',
     showWhen: (ctx) => ctx.encounterTurnNumber >= 2 && ctx.phase === 'player_action',
     doneWhen: () => true,
-    autoDismiss: false,
+    autoDismiss: true,
     minDisplayMs: 0,
-    maxDisplayMs: 30000,
+    maxDisplayMs: 6000,
     spotlight: true,
   },
 
@@ -646,6 +646,16 @@ export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = [
     spotlight: false,
   },
 ]
+
+const LAUNCH_COMBAT_TUTORIAL_STEP_IDS = new Set([
+  'combat_intro',
+  'cards_ap_intro',
+])
+
+/** Launch-safe combat tutorial: two blocking orientation popups, then hands off. */
+export const COMBAT_TUTORIAL_STEPS: TutorialStep[] = COMBAT_TUTORIAL_STEP_BACKLOG.filter((step) =>
+  LAUNCH_COMBAT_TUTORIAL_STEP_IDS.has(step.id),
+)
 
 /**
  * Study Temple tutorial steps, shown in priority order.

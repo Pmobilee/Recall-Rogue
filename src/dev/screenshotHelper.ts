@@ -45,7 +45,11 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
   const full = document.createElement('canvas');
   full.width = vw;
   full.height = vh;
-  const ctx = full.getContext('2d')!;
+  const ctx = full.getContext('2d');
+  if (!ctx) {
+    console.warn('[screenshotHelper] 2D canvas context unavailable; returning a blank capture');
+    return full.toDataURL(format === 'jpeg' ? 'image/jpeg' : 'image/png', quality);
+  }
 
   // Fill background
   ctx.fillStyle = '#0D1117';
@@ -56,11 +60,17 @@ export async function captureScreenshot(options: ScreenshotOptions = {}): Promis
   const phaserCanvas = document.querySelector('#phaser-container canvas') as HTMLCanvasElement | null;
   if (phaserCanvas) {
     const container = document.getElementById('phaser-container');
-    if (container) {
-      const rect = container.getBoundingClientRect();
-      ctx.drawImage(phaserCanvas, rect.left, rect.top, rect.width, rect.height);
-    } else {
-      ctx.drawImage(phaserCanvas, 0, 0, vw, vh);
+    try {
+      if (container) {
+        const rect = container.getBoundingClientRect();
+        if (rect.width > 0 && rect.height > 0) {
+          ctx.drawImage(phaserCanvas, rect.left, rect.top, rect.width, rect.height);
+        }
+      } else {
+        ctx.drawImage(phaserCanvas, 0, 0, vw, vh);
+      }
+    } catch (err) {
+      console.warn('[screenshotHelper] Phaser canvas capture failed. Continuing with DOM-only capture:', err);
     }
   }
 

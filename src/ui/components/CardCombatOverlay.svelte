@@ -1892,12 +1892,21 @@
     }
   }
 
+  let showEndTurnConfirm = $state(false)
+  /**
+   * ISSUE-1-5: Track whether the player has already seen the "still have AP" warning
+   * this combat encounter. Reset when encounterTurnNumber resets to 1 (new fight).
+   * Also suppressed entirely when player HP is at or below 25% of max.
+   */
+  let endTurnWarnedThisCombat = $state(false)
+
   let _lastTurnNumber = 0
   $effect(() => {
     const nextTurn = turnState?.turnNumber ?? 0
     if (nextTurn !== _lastTurnNumber) {
       _lastTurnNumber = nextTurn
       resetCardFlow()
+      showEndTurnConfirm = false
       answeredThisTurn = 0
       // Reset wowFactor counter and end-turn warning at the start of each encounter (turn 1)
       if (nextTurn === 1) {
@@ -1915,13 +1924,11 @@
   // due to Svelte 5 reactive timing — derived values briefly go null during state transitions,
   // which triggered resetCardFlow() mid-quiz and slid the enemy back prematurely.
 
-  let showEndTurnConfirm = $state(false)
-  /**
-   * ISSUE-1-5: Track whether the player has already seen the "still have AP" warning
-   * this combat encounter. Reset when encounterTurnNumber resets to 1 (new fight).
-   * Also suppressed entirely when player HP is at or below 25% of max.
-   */
-  let endTurnWarnedThisCombat = $state(false)
+  $effect(() => {
+    if (turnState?.phase !== 'player_action') {
+      showEndTurnConfirm = false
+    }
+  })
 
   let hasPlayableCards = $derived.by(() => {
     if (!turnState || turnState.phase !== 'player_action') return false

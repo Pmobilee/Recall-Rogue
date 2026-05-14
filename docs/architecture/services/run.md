@@ -1,7 +1,7 @@
 # Run Lifecycle Services
 
 > **Purpose:** Run creation/management, floor/map generation, enemy spawning, reward generation, shop, ascension, and run-scoped utilities.
-> **Last verified:** 2026-04-12
+> **Last verified:** 2026-05-04
 > **Source files:** runManager.ts, floorManager.ts, mapGenerator.ts, enemyManager.ts (see also combat.md), shopService.ts, ascension.ts, relicAcquisitionService.ts, rewardGenerator.ts, encounterRewards.ts, rewardRoomBridge.ts, rewardSpawnService.ts, gameFlowController.ts, screenController.ts, runStateStore.ts, hubState.ts, runSaveService.ts (see persistence.md), runEarlyBoostController.ts, deterministicRandom.ts, seededRng.ts, randomUtils.ts
 
 > See also: [run-competitive.md](run-competitive.md) for bountyManager, canaryService, masteryChallengeService, dailyExpeditionService, endlessDepthsService, scholarChallengeService, characterLevel, loreService, cardPreferences, funnessBoost
@@ -89,6 +89,24 @@ study runs with precomputed chain distribution.
 
 The `returnToMenu()` and `playAgain()` exports handle the `runEnd → hub` transition when the player clicks a button in `RunEndScreen`.
 
+`onEncounterComplete('defeat')` is allowed to recover through a stale
+`isProcessingEncounterResult` guard when the active run already has `playerHp <=
+0` and the screen is not `runEnd`. This preserves the duplicate-victory guard
+that protects reward/map transitions while preventing a zero-HP run from being
+stranded on `combat` with `activeTurnState = null`.
+
+Phaser animation calls in `encounterBridge.handlePlayCard()` and
+`encounterBridge.handleEndTurn()` are best-effort only. If a scene method throws
+after combat state has already resolved a card, chain, enemy turn, or kill
+confirmation, the bridge logs the visual failure and continues to the
+victory/defeat completion logic. Gameplay routing must not depend on a sprite
+system being present.
+
+In turbo/bot mode, the combat exit doorway/parallax gate is bypassed after
+`combatExitRequested` is raised. `CardApp` calls `onCombatExitComplete()`
+directly so LLM playtests and other fast automation cannot strand a resolved
+encounter on `combat` while waiting for a visual transition callback.
+
 Functions that legitimately bypass `finishRunAndReturnToHub` (and jump direct to hub):
 - `abandonActiveRun(returnScreen?: Screen)` — emergency dev abandon, no run summary; navigates to `returnScreen` (defaults to `hub`)
 - `returnToHubFromCampfire()` — campfire exit preserves the run state for resume
@@ -150,6 +168,19 @@ See `docs/mechanics/combat.md` §"Run Termination State Machine" for the full fl
 | **Key dependencies** | rewardSpawnService, gameState store, turboMode |
 | **Turbo awareness** | All internal delays use `turboDelay()` — poll interval (50ms→5ms), Phaser boot wait (500ms→5ms), container visibility wait (100ms→5ms). `maxWaitMs = 3000` is kept constant so Phaser still gets enough game loop ticks regardless of turbo mode. |
 | **Softlock escape** | `triggerRewardRoomContinue()` falls back to `gameFlowController.forceProceedAfterReward()` (lazy import) when the scene is inactive. Listeners now attach to the scene instance as soon as it exists (~50ms after `startRewardRoom()`), before `create()` finishes, eliminating the listener-race path. See bug 2026-05-01. |
+
+`window.__rrPlay.acceptReward()` is intentionally a dev/test bridge path, not a
+player interaction contract. As of 2026-05-04 it collects reward-room items by
+emitting the same bridge events used by `rewardRoomBridge` and then calls
+`triggerRewardRoomContinue()`. This avoids brittle pointer/canvas simulation in
+automated playtests while keeping the player-facing Continue fallback intact.
+
+`window.__rrPlay.quickPlayCardById(cardId)` and
+`window.__rrPlay.chargePlayCardById(cardId, correct)` are stable-card variants
+of the index-based combat helpers. They resolve `cardId` against the current
+`activeTurnState.deck.hand` and then delegate to the existing index helpers.
+Use them for automation that plans multiple plays from one hand snapshot,
+because index-based calls reindex after every played card.
 
 ## rewardSpawnService
 

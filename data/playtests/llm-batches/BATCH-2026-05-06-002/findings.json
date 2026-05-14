@@ -1,0 +1,114 @@
+{
+  "batchId": "BATCH-2026-05-06-002",
+  "tester": "real-chromium-5-rooms",
+  "completedAt": "2026-05-06T18:10:00.000+09:00",
+  "environment": {
+    "browser": "real Chromium via Playwright MCP against npm run dev",
+    "url": "http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true",
+    "rationale": "Re-run of BATCH-2026-05-06-002 (Docker SwiftShader) after that environment caused 1 FPS Phaser rendering and a false acceptReward blocker. Real Chromium confirmed acceptReward works instantly; surfaced new genuine bugs."
+  },
+  "issuesObserved": [
+    {
+      "canonicalId": "bug_startrun_returns_ok_screen_stays_hub",
+      "severity": "p1",
+      "status": "open",
+      "playerImpact": "Calling startRun() reports success ({ok:true, message:'Run started. Screen: hub'}) but the screen does not transition off Hub. A fresh agent or any external automation following the documented flow is stuck. Manual workaround in this session was __rrScenario.spawn({screen:'dungeonMap'}) — not available to a real player.",
+      "repro": [
+        "Load http://localhost:5173?skipOnboarding=true&turbo=true&botMode=true on a real browser",
+        "Wait for hub to mount, confirm window.__rrPlay.getScreen() === 'hub'",
+        "Call await window.__rrPlay.startRun()",
+        "Observe return: {ok:true, message:'Run started. Screen: hub'}",
+        "Wait 5 seconds, re-call getScreen() — still 'hub'"
+      ],
+      "evidence": [
+        "playtest transcript in this session — startRun() returned ok:true, screen never left hub",
+        "Required __rrScenario.spawn({screen:'dungeonMap'}) bypass to actually enter a run"
+      ],
+      "rootCauseHypothesis": "Either startRun() resolves before the screen transition completes (race), or the run starts in a deck-selection / runPreview screen that the test API mis-classifies as 'hub'. Recent commits suggest deckSelectionHub may be in flow — the prior Docker tester saw deckSelectionHub after startRun. Worth tracing gameFlowController.startNewRun() and what __rrPlay.startRun() awaits.",
+      "suspectFiles": [
+        "src/services/gameFlowController.ts",
+        "src/dev/playtestAPI.ts",
+        "src/CardApp.svelte (screen routing)"
+      ]
+    },
+    {
+      "canonicalId": "bug_selectmapnode_returns_ok_no_transition",
+      "severity": "p0",
+      "status": "open",
+      "consolidatedWith": ["bug_combatscene_teardown_atmosphere_undefined"],
+      "playerImpact": "Entering a SECOND combat encounter on the same run can silently fail to start: selectMapNode() returns {ok:true, message:'Selected map node ... Screen: dungeonMap'} but the screen stays on dungeonMap and combat does not start. The error fires inside the click handler and is swallowed before reaching the user. There is NO recovery path for a real player — clicking the same node again does not retry. P0 because it can permanently brick a run mid-floor.",
+      "repro": [
+        "On floor 1, complete r0-n0 combat → acceptReward → return to dungeonMap",
+        "Query DOM: document.querySelectorAll('[data-testid^=\"map-node-\"]') — observe r1-n0 and r1-n1 both have class 'state-available'",
+        "Call await window.__rrPlay.selectMapNode('r1-n0')",
+        "Observe return: {ok:true, message:'Selected map node map-node-r1-n0. Screen: dungeonMap'}",
+        "Wait 5 seconds, re-check getScreen() — still 'dungeonMap'",
+        "Now call selectMapNode('r1-n1') — succeeds, transitions to combat"
+      ],
+      "evidence": [
+        "Live transcript: r1-n0 reported ok:true with message ending 'Screen: dungeonMap', screen never changed",
+        "r1-n1 attempted immediately after — succeeded, transitioned to combat with Index Weaver"
+      ],
+      "rootCauseConfirmed": "CONFIRMED via console log .playwright-mcp/console-2026-05-06T10-32-29-103Z.log line at 84251ms. Stack: HTMLButtonElement.onclick (DungeonMap.svelte:838) → handleMapNodeSelect (CardApp.svelte:1907) → commitMapNodeSelection (CardApp.svelte:1963) → startEncounterForRoom (encounterBridge.ts:696) → syncCombatScene (encounterBridge.ts:331) → tryPush (encounterBridge.ts:324) → pushDisplayData (encounterBridge.ts:282) → CombatScene.setEnemy (CombatScene.ts:894:10) → CombatScene.resetKnowledgeStreak (CombatScene.ts:1855:27) → throws TypeError 'Cannot read properties of undefined (reading resetStreak)' because this.atmosphereSystem is undefined on the SECOND encounter. CombatScene.atmosphereSystem is assigned ONCE in create() at line 912; on subsequent encounters the scene is reused but atmosphereSystem has been destroyed/cleared without being recreated. The throw aborts encounter setup but the playtestAPI's selectMapNode wrapper has already returned {ok:true} synchronously. Same root cause as bug_combatscene_teardown_atmosphere_undefined.",
+      "suggestedFix": "Either (a) re-create atmosphereSystem at the start of each encounter inside setEnemy(), or (b) null-guard the call inside resetKnowledgeStreak(): `this.atmosphereSystem?.resetStreak(...)`. The defensive guard is a one-line patch; the real fix is making the scene's per-encounter lifecycle explicit so subsystems are guaranteed live when setEnemy runs.",
+      "suspectFiles": [
+        "src/game/scenes/CombatScene.ts (setEnemy 1111, resetKnowledgeStreak 2306, create 912)",
+        "src/services/encounterBridge.ts (startEncounterForRoom 696, syncCombatScene 331)",
+        "src/dev/playtestAPI.ts (selectMapNode wrapper that returns ok:true before awaiting handler completion)"
+      ]
+    },
+    {
+      "canonicalId": "bug_combatscene_teardown_atmosphere_undefined",
+      "severity": "p2",
+      "status": "open",
+      "playerImpact": "After combat ends and the scene tears down, two uncaught errors fire: 'Cannot read properties of undefined (reading resetStreak)' at CombatScene.ts:2311 and 'Cannot read properties of null (reading blendModes)'. Game does not visibly break, but console pollution masks real errors during diagnostics and indicates the teardown order is wrong.",
+      "repro": [
+        "Win any combat encounter",
+        "Wait for transition to rewardRoom",
+        "Open DevTools console — observe both errors logged"
+      ],
+      "evidence": [
+        "window.__rrDebug() recentErrors after combat 1 in this session: 'Uncaught TypeError: Cannot read properties of undefined (reading resetStreak) (http://localhost:5173/src/game/scenes/CombatScene.ts:1855)' and 'Unhandled rejection: Cannot read properties of null (reading blendModes)'",
+        "src/game/scenes/CombatScene.ts:2311 calls this.atmosphereSystem.resetStreak(...) — atmosphereSystem is presumably destroyed before this call lands"
+      ],
+      "rootCauseHypothesis": "resetKnowledgeStreak() (line 2306) is invoked during or after scene shutdown, by which time atmosphereSystem has been destroyed. Likely a missing destroy guard or a tween/timer that fires post-shutdown. The blendModes error suggests a Phaser GameObject draw call after the renderer context is gone — same teardown-ordering family.",
+      "suspectFiles": [
+        "src/game/scenes/CombatScene.ts (resetKnowledgeStreak, shutdown)",
+        "src/game/systems/CombatAtmosphereSystem.ts"
+      ]
+    },
+    {
+      "canonicalId": "balance_floor1_room2_hp_burn_steep",
+      "severity": "p3",
+      "status": "open",
+      "playerImpact": "Floor 1 room 2 (Index Weaver) dealt ~39 damage in 4 turns to a 70% accuracy charge-spamming player. Player went 86 → 47 HP (39% of max). Two more floor-1 rooms at this rate would land the player below 30% before the boss, with no rest reachable. Anecdotal — n=1 — but the magnitude is large enough to flag.",
+      "repro": [
+        "Start a run, win r0-n0 combat (Margin Gremlin, 40 HP)",
+        "Take r1-n1 (Index Weaver, ~51 HP)",
+        "Charge attacks correctly each turn, kill in 4 turns",
+        "Observe player HP 86 → 47"
+      ],
+      "evidence": [
+        "Live transcript turns: t0 hp:86 ehp:51, t1 hp:84 ehp:38, t2 hp:67 ehp:28, t3 hp:47 ehp:11"
+      ],
+      "rootCauseHypothesis": "Index Weaver's intent damage may be high relative to floor 1 expectations, or block cards in starter hand were under-prioritized by the bot. Worth /balance-sim run scoped to floor 1 enemy roster to see if Index Weaver outlier-scales above siblings.",
+      "suspectFiles": [
+        "src/data/enemies.ts (Index Weaver definition)",
+        "src/game/scenes/CombatScene.ts (damage pipeline)"
+      ]
+    }
+  ],
+  "environmentArtifactsConfirmedNotBugs": [
+    {
+      "canonicalId": "env_docker_swiftshader_1fps_combat",
+      "playerImpact": "None in production — Docker-only.",
+      "note": "Prior BATCH-2026-05-06-002 reported acceptReward as a HIGH blocker; in real Chromium acceptReward returned {ok:true, message:'Reward accepted via Phaser scene. Screen: dungeonMap'} instantly and transitioned correctly. The 1 FPS CombatScene FPS alerts in the Docker run are SwiftShader software-renderer behavior, already documented as expected by .claude/rules/performance.md (~22 fps cap). The whole prior 'blocker' was a test-environment artifact and is removed."
+    }
+  ],
+  "activePublishingBlockersAfterFix": 0,
+  "notes": [
+    "Tester reached 2/5 rooms before the user redirected the session to leaderboard updates and a fresh playtest. Both completed combats were wins (Margin Gremlin r0-n0, Index Weaver r1-n1). r1-n0 was the silent-no-op blocker.",
+    "Prior tester Solzhenitsyn-domain-mismatch claim NOT reproduced in this session — domain field on every card observed read 'general_knowledge'. Treating as unverified from prior batch.",
+    "Browser tab (Chromium via Playwright MCP) crashed with 'Target crashed' twice during this session. Root cause is downstream of the same atmosphereSystem-undefined bug: after the throw in setEnemy, the scene continues in a half-mounted state. Subsequent rendering hits a null Phaser canvas context at EnemySpriteSystem.playDeath (line 688) calling Graphics.generateTexture → GraphicsCanvasRenderer → SetTransform reading null.blendModes (logged in the same console). Repeated invalid WebGL/canvas operations exhaust the renderer process; Chromium kills the tab. So the same bug that causes the silent map-node no-op also explains the browser crashes. Adds urgency: this bug doesn't just brick runs, it can OOM the tab on a real player's machine after a few failed encounter starts."
+  ]
+}

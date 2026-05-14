@@ -1014,7 +1014,7 @@ export function getCardDescriptionParts(card: Card, gameState?: CardGameState, p
     case 'mirror':
       return [txt('Copy last card')];
     case 'adapt':
-      return [txt('Auto-picks best:\nAttack, Block, or Cleanse')];
+      return [txt('Becomes Attack,\nBlock, or Cleanse')];
     case 'overclock':
       return [txt('Next card ×2')];
     case 'phase_shift':

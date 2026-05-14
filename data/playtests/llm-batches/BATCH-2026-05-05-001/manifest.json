@@ -1,0 +1,20 @@
+{
+  "batchId": "BATCH-2026-05-05-001",
+  "createdAt": "2026-05-05T00:00:00.000+09:00",
+  "testers": [
+    "five-room-human-style-click-play"
+  ],
+  "args": {
+    "orchestrator": "codex-self-playtest",
+    "skill": "claude/llm-playtest",
+    "scope": "5 consecutive map rooms with manual LLM decisions and real UI clicks"
+  },
+  "status": "completed_with_blockers",
+  "completedAt": "2026-05-05T10:36:00.000+09:00",
+  "smokeTestPassed": true,
+  "roomsRequested": 5,
+  "roomsCompleted": 0,
+  "reports": {
+    "five-room-human-style-click-play": "REPORT.md"
+  }
+}

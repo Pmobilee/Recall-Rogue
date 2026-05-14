@@ -40,6 +40,7 @@ function seedFromId(id: string): number {
  * Only digits, commas, and a single decimal point are allowed inside the braces.
  */
 const BRACE_NUMBER_RE = /\{(\d[\d,]*\.?\d*)\}/
+const PLAIN_NUMBER_RE = /^(\d[\d,]*\.?\d*)$/
 
 /**
  * Returns true when the answer contains a brace-marked numerical variable,
@@ -48,7 +49,7 @@ const BRACE_NUMBER_RE = /\{(\d[\d,]*\.?\d*)\}/
  * @param answer - The fact's correctAnswer string.
  */
 export function isNumericalAnswer(answer: string): boolean {
-  return BRACE_NUMBER_RE.test(answer)
+  return BRACE_NUMBER_RE.test(answer) || PLAIN_NUMBER_RE.test(answer.trim())
 }
 
 /**
@@ -237,6 +238,28 @@ function generateVariations(
     return clamped
   }
 
+  // --- Zero-valued facts: percentage spreads collapse to zero, so step upward.
+  if (base === 0) {
+    const pool = isDecimal
+      ? [0.1, 0.2, 0.5, 1, 2, 5, 10, 25]
+      : [1, 2, 5, 10, 25, 50, 100, 250, 500, 1000]
+
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1))
+      ;[pool[i], pool[j]] = [pool[j], pool[i]]
+    }
+
+    const results: string[] = []
+    for (const candidate of pool) {
+      if (results.length >= count) break
+      const clamped = applyClamp(candidate)
+      if (clamped !== null && clamped !== base) {
+        results.push(formatLike(clamped, origStr))
+      }
+    }
+    return results
+  }
+
   // --- Decimal numbers: match precision, ±20-50% ---
   if (isDecimal) {
     const results: string[] = []
@@ -353,12 +376,13 @@ export function getNumericalDistractors(
   questionText?: string,
 ): string[] {
   const answer = fact.correctAnswer
-  const match = answer.match(BRACE_NUMBER_RE)
+  const braceMatch = answer.match(BRACE_NUMBER_RE)
+  const plainMatch = answer.trim().match(PLAIN_NUMBER_RE)
+  const match = braceMatch ?? plainMatch
   if (!match) return []
 
   const numStr = match[1]
   const base = parseNum(numStr)
-  if (base === 0) return []
 
   // Resolve question text for domain detection.
   // Prefer explicitly passed questionText; fall back to fact.quizQuestion if present
@@ -372,8 +396,10 @@ export function getNumericalDistractors(
 
   const rand = makePrng(seedFromId(fact.id))
 
-  // Build template: "{107} days" → "{{PLACEHOLDER}} days"
-  const template = answer.replace(BRACE_NUMBER_RE, '{{PLACEHOLDER}}')
+  // Build template: "{107} days" → "{{PLACEHOLDER}} days"; "0" → "{{PLACEHOLDER}}"
+  const template = braceMatch
+    ? answer.replace(BRACE_NUMBER_RE, '{{PLACEHOLDER}}')
+    : answer.trim().replace(PLAIN_NUMBER_RE, '{{PLACEHOLDER}}')
 
   // Generate candidate number strings with domain clamping applied
   const candidates = generateVariations(base, numStr, rand, count * 3, domain)

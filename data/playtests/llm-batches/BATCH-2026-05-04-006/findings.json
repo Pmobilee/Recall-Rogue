@@ -1,0 +1,60 @@
+{
+  "batchId": "BATCH-2026-05-04-006",
+  "tester": "human-style-click-play",
+  "completedAt": "2026-05-04T23:20:28.000+09:00",
+  "issuesObserved": [
+    {
+      "canonicalId": "bug_reward_continue_drawimage_blackfield",
+      "severity": "p0",
+      "status": "fixed",
+      "playerImpact": "After encounter victory, clicking reward Continue could leave the player on rewardRoom with a black/star field and no visible way forward.",
+      "evidence": [
+        "/tmp/rr-docker-visual/llm-human-BATCH-2026-05-04-006_none_1777904005357/result.json",
+        "/tmp/rr-docker-visual/llm-human-BATCH-2026-05-04-006_none_1777904005357/after-reward-continue.rr.jpg"
+      ],
+      "fix": [
+        "src/game/scenes/RewardRoomScene.ts",
+        "src/services/rewardRoomBridge.ts",
+        "src/ui/components/RewardRoomOverlay.svelte"
+      ]
+    },
+    {
+      "canonicalId": "bug_charge_hint_intercepts_quickplay",
+      "severity": "p1",
+      "status": "fixed",
+      "playerImpact": "The Charge hint banner could intercept the second tap on a selected card, preventing Quick Play.",
+      "evidence": [
+        "/tmp/rr-docker-visual/llm-human-BATCH-2026-05-04-006_none_1777903456909/result.json",
+        "/tmp/rr-docker-visual/llm-human-BATCH-2026-05-04-006_none_1777903516340/result.json"
+      ],
+      "fix": [
+        "src/ui/components/CardCombatOverlay.svelte"
+      ]
+    },
+    {
+      "canonicalId": "ux_tutorial_popup_overload_first_combat",
+      "severity": "p1",
+      "status": "fixed",
+      "playerImpact": "The combat tutorial kept opening modal coach marks after the initial intro, repeatedly interrupting card play.",
+      "evidence": [
+        "/tmp/rr-docker-visual/llm-human-BATCH-2026-05-04-006_none_1777903715944/result.json"
+      ],
+      "fix": [
+        "src/data/tutorialSteps.ts"
+      ]
+    },
+    {
+      "canonicalId": "playtest_domain_strip_missing_testids",
+      "severity": "p3",
+      "status": "fixed_non_blocking",
+      "playerImpact": "No direct player impact; the missing test IDs made the project's playtest API fail to select domains by its documented selectors.",
+      "evidence": [
+        "/tmp/rr-docker-visual/llm-human-BATCH-2026-05-04-006_none_1777903234949/result.json"
+      ],
+      "fix": [
+        "src/ui/components/DomainStripCard.svelte"
+      ]
+    }
+  ],
+  "activePublishingBlockersAfterFix": 0
+}

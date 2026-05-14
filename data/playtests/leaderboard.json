@@ -1,293 +1,182 @@
 {
-  "updatedAt": "2026-05-04T13:55:00.000Z",
-  "totalPlaythroughs": 23,
-  "totalIssues": 11,
+  "updatedAt": "2026-05-06T18:10:00.000+09:00",
+  "totalPlaythroughs": 30,
+  "totalIssues": 4,
   "batches": [
     {
       "batchId": "BATCH-2026-05-04-001",
       "type": "llm-playtest",
       "tester": "full-run-human-style",
-      "addedAt": "2026-05-04T13:55:00.000Z",
-      "issuesAdded": 11
+      "addedAt": "2026-05-04T13:55:00.000+09:00",
+      "issuesObserved": 11,
+      "activeIssuesAfterTriage": 0
+    },
+    {
+      "batchId": "BATCH-2026-05-04-002",
+      "type": "llm-playtest",
+      "tester": "full-run-codex-self-playtest",
+      "addedAt": "2026-05-04T18:19:23.591+09:00",
+      "issuesObserved": 1,
+      "activeIssuesAfterTriage": 1
+    },
+    {
+      "batchId": "BATCH-2026-05-04-003",
+      "type": "llm-playtest",
+      "tester": "targeted-death-transition-and-full-run-codex-self-playtest",
+      "addedAt": "2026-05-04T19:08:00.000+09:00",
+      "issuesObserved": 0,
+      "activeIssuesAfterTriage": 0
+    },
+    {
+      "batchId": "BATCH-2026-05-04-004",
+      "type": "llm-playtest",
+      "tester": "broad-gameplay-audit-codex-self-playtest",
+      "addedAt": "2026-05-04T19:32:00.000+09:00",
+      "issuesObserved": 2,
+      "activeIssuesAfterTriage": 0
+    },
+    {
+      "batchId": "BATCH-2026-05-04-005",
+      "type": "llm-playtest",
+      "tester": "follow-up-gameplay-audit-codex-self-playtest",
+      "addedAt": "2026-05-04T22:38:00.000+09:00",
+      "issuesObserved": 1,
+      "activeIssuesAfterTriage": 0
+    },
+    {
+      "batchId": "BATCH-2026-05-04-006",
+      "type": "llm-playtest",
+      "tester": "human-style-click-play",
+      "addedAt": "2026-05-04T23:20:28.000+09:00",
+      "issuesObserved": 4,
+      "activeIssuesAfterTriage": 0
+    },
+    {
+      "batchId": "BATCH-2026-05-06-002",
+      "type": "llm-playtest",
+      "tester": "real-chromium-5-rooms",
+      "addedAt": "2026-05-06T18:10:00.000+09:00",
+      "issuesObserved": 4,
+      "activeIssuesAfterTriage": 4,
+      "topFindings": [
+        "bug_startrun_returns_ok_screen_stays_hub (p1) — startRun() reports success but Hub never transitions; required __rrScenario.spawn workaround",
+        "bug_selectmapnode_returns_ok_no_transition (p1) — selectMapNode silently no-ops with ok:true on a node the DOM marks state-available but the run-state cannot enter",
+        "bug_combatscene_teardown_atmosphere_undefined (p2) — atmosphereSystem.resetStreak called after destroy; CombatScene.ts:2311; pollutes console after every combat",
+        "balance_floor1_room2_hp_burn_steep (p3) — Index Weaver took player 86→47 HP in 4 turns on floor 1 room 2"
+      ]
     }
   ],
   "filter": {
-    "scope": "act1_human_style_playtest_findings",
-    "appliedAt": "2026-05-04T13:55:00.000Z",
-    "sourceBatch": "BATCH-2026-05-04-001",
+    "scope": "active_steam_v1_game_breaking_blockers",
+    "appliedAt": "2026-05-04T23:20:28.000+09:00",
+    "sourceBatch": "BATCH-2026-05-04-006",
     "criteria": [
-      "All 11 issues observed during a single human-style Act 1 LLM playtest, source-verified by the orchestrator.",
-      "HIGH severity items are Steam-launch blockers (acceptReward crash + {N} placeholder leak + tutorial overload).",
-      "MEDIUM/LOW items kept on the board for triage but not gating launch."
+      "Only active issues that can break room, encounter, reward-room, floor, or run progression remain on this board.",
+      "Resolved findings are removed from the active list after a fixing change and targeted verification.",
+      "Non-blocking polish, local Docker/browser noise, copy clarity, and future balance discussion are not counted as publishing blockers."
+    ],
+    "triage": [
+      {
+        "canonicalId": "bug_acceptreward_drawimage_null",
+        "result": "fixed",
+        "notes": "__rrPlay.acceptReward() no longer drives reward collection through brittle pointer/canvas simulation; canvas screenshot failures are contained."
+      },
+      {
+        "canonicalId": "content_template_placeholder_leak",
+        "result": "fixed",
+        "notes": "scripts/build-facts-db.mjs strips numeric {N} answer markers from public/facts.db and ignored data/seed-pack.json output."
+      },
+      {
+        "canonicalId": "ux_tutorial_popup_overload_first_combat",
+        "result": "fixed",
+        "notes": "Only the two launch-critical combat tutorial steps are active; the queued combat/HUD tour is kept out of the launch tutorial path."
+      },
+      {
+        "canonicalId": "balance_enemy_displaydamage_chain_scaling",
+        "result": "removed_non_blocking",
+        "notes": "Balance/readability concern, not a progression blocker."
+      },
+      {
+        "canonicalId": "balance_shop_unaffordable_first_visit",
+        "result": "removed_non_blocking",
+        "notes": "Economy tuning concern, not a progression blocker."
+      },
+      {
+        "canonicalId": "ux_retreat_delve_copy_ambiguous",
+        "result": "fixed_non_blocking",
+        "notes": "Retreat/Delve copy now includes the delve upside and clearer death-retention wording."
+      },
+      {
+        "canonicalId": "ux_delve_no_upside_explained",
+        "result": "fixed_non_blocking",
+        "notes": "Merged into the Retreat/Delve copy fix."
+      },
+      {
+        "canonicalId": "perf_low_fps_extended_combat_docker",
+        "result": "removed_non_blocking",
+        "notes": "Docker/SwiftShader local performance observation, not launch progression breakage."
+      },
+      {
+        "canonicalId": "bug_backend_connection_refused",
+        "result": "removed_non_blocking",
+        "notes": "Offline/local backend console noise; game remains locally playable."
+      },
+      {
+        "canonicalId": "ux_grey_matter_unexplained",
+        "result": "removed_non_blocking",
+        "notes": "Run-end explanation polish, not a publishing blocker."
+      },
+      {
+        "canonicalId": "content_adapt_card_description_vague",
+        "result": "fixed_non_blocking",
+        "notes": "Adapt text now reads as a concrete Attack/Block/Cleanse transform."
+      },
+      {
+        "canonicalId": "bug_player_death_combat_limbo_no_runend",
+        "result": "fixed",
+        "notes": "BATCH-2026-05-04-003 targeted lethal-damage repro routed to runEnd, and the follow-up full-run bug hunt ended on runEnd with no active blockers."
+      },
+      {
+        "canonicalId": "playtest_bridge_mystery_shop_false_positive",
+        "result": "fixed_non_blocking",
+        "notes": "selectMysteryChoice now handles EventQuiz controls and shopLeave confirms the leave modal; these were bridge gaps, not confirmed player-facing blockers."
+      },
+      {
+        "canonicalId": "bug_card_play_phaser_setfillstyle_visual_exception",
+        "result": "fixed",
+        "notes": "BATCH-2026-05-04-004 saw a shield quick-play fail on a Phaser setFillStyle visual path; card, chain, and victory visuals are now best-effort and the post-fix Docker run completed to runEnd."
+      },
+      {
+        "canonicalId": "content_zero_numeric_single_choice_quiz",
+        "result": "fixed_non_blocking",
+        "notes": "The bell pepper Scoville fact had answer 0 and no distractors, yielding a one-choice quiz; plain numeric zero answers now receive generated distractors."
+      },
+      {
+        "canonicalId": "bug_turbo_combat_exit_visual_gate_limbo",
+        "result": "fixed",
+        "notes": "BATCH-2026-05-04-005 reproduced combat victory leaving screen=combat with activeTurnState=null; turbo/bot mode now bypasses the parallax exit gate and calls onCombatExitComplete() directly."
+      },
+      {
+        "canonicalId": "bug_tutorial_coach_mark_null_anchor_exception",
+        "result": "fixed_non_blocking",
+        "notes": "TutorialCoachMark now tolerates a missing anchor object; post-fix BATCH-2026-05-04-005 debug errors no longer showed the null target exception."
+      },
+      {
+        "canonicalId": "bug_reward_continue_drawimage_blackfield",
+        "result": "fixed",
+        "notes": "BATCH-2026-05-04-006 reproduced the Steam-style reward Continue drawImage/black-field break using real clicks. Reward mouse clicks now go through the Phaser flow, bridge completion is guarded, and targeted verification advanced out of rewardRoom with no recent runtime errors."
+      },
+      {
+        "canonicalId": "bug_charge_hint_intercepts_quickplay",
+        "result": "fixed",
+        "notes": "The Charge hint banner no longer intercepts the second tap on selected cards; its close button remains clickable."
+      },
+      {
+        "canonicalId": "playtest_domain_strip_missing_testids",
+        "result": "fixed_non_blocking",
+        "notes": "DomainStripCard now provides domain-card-* test IDs expected by the playtest API and e2e tests."
+      }
     ]
   },
-  "issues": [
-    {
-      "canonicalId": "bug_acceptreward_drawimage_null",
-      "category": "bug_combat_reward_crash",
-      "severity": "high",
-      "title": "acceptReward Phaser canvas crash — drawImage on null context",
-      "description": "On the first reward room of a fresh run, __rrPlay.acceptReward() returned ok:false with message 'Cannot read properties of null (reading drawImage)'. Phaser canvas went black; layout dump showed (no active scenes). Recovery only by direct DOM click on Continue.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 1,
-      "score": 5.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "result.json error: Cannot read properties of null (reading 'drawImage')",
-        "screen": "rewardRoom",
-        "floor": 1,
-        "batchId": "llm-playtest-act1-001_none_1777870469788"
-      },
-      "reproductionSteps": [
-        "Start a fresh run from the hub",
-        "Win the first Floor 1 combat (Index Weaver)",
-        "Call __rrPlay.acceptReward() in the reward room"
-      ],
-      "suggestedFix": "Null-check canvas/texture context before drawImage in the reward render path; add try/catch + recovery overlay."
-    },
-    {
-      "canonicalId": "content_template_placeholder_leak",
-      "category": "content_unresolved_template_token",
-      "severity": "high",
-      "title": "1994 facts ship with unresolved {N} placeholders in the answer field",
-      "description": "data/seed-pack.json contains 1994 facts whose answer field still has {N} template tokens (e.g. 'About {4} grams', '{4000} km'). Verified: grep -E '\"(answer|correctAnswer|factAnswer)\":\\s*\"[^\"]*\\{[0-9]' data/seed-pack.json | wc -l → 1994.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 2,
-      "score": 5.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "1994 facts in seed-pack.json have {N} tokens in answer/correctAnswer/factAnswer",
-        "exampleFacts": ["natural_sciences-iron-body-hemoglobin", "natural_sciences-mars-valles-marineris-length"]
-      },
-      "reproductionSteps": [
-        "Run: grep -E '\"(answer|correctAnswer|factAnswer)\":\\s*\"[^\"]*\\{[0-9]' data/seed-pack.json | wc -l",
-        "Or play any combat where these facts appear and inspect getCombatState().hand[i].factAnswer"
-      ],
-      "suggestedFix": "Sweep all deck/seed JSON for /\\{[0-9]+\\}/ pattern in answer fields. Either bake the substitution at build, or strip placeholders from the source."
-    },
-    {
-      "canonicalId": "ux_tutorial_popup_overload_first_combat",
-      "category": "ux_tutorial_overload",
-      "severity": "high",
-      "title": "8 sequential blocking tutorial popups across 6 turns of first combat",
-      "description": "First combat fires 8 blocking 'Got it' overlays — enemy intro, Quick Play, Charge, charge feedback, Draw Pile, Discard Pile, AP, Focus Meter. Recent commit cb5e4db18 reduced first-combat popups; the rest leak across the next several turns.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 3,
-      "score": 5.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "8 popups across 6 turns",
-        "tutorialStepsTotalDefined": 32,
-        "sourceFile": "src/data/tutorialSteps.ts"
-      },
-      "reproductionSteps": [
-        "Start a fresh run with no prior tutorial flags set",
-        "Enter the first Floor 1 combat",
-        "Play 6 turns and count popups"
-      ],
-      "suggestedFix": "Cap proactive in-combat popups to ~2-3 in first combat; defer the rest to context-triggered hints."
-    },
-    {
-      "canonicalId": "balance_enemy_displaydamage_chain_scaling",
-      "category": "balance_enemy_damage_display",
-      "severity": "medium",
-      "title": "Enemy displayDamage scales upward as player chain multiplier rises",
-      "description": "Index Weaver's Fang Barrage displayDamage moved 15 → 18 → 21 across turns 3-5 while value field stayed at 6. Either intentional and undocumented, or chain multiplier is leaking into enemy display.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 4,
-      "score": 3.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "displayDamage 15 → 18 → 21 with value=6 constant; chain multiplier rising",
-        "enemy": "Index Weaver",
-        "attack": "Fang Barrage"
-      },
-      "reproductionSteps": [
-        "Start a Floor 1 combat against Index Weaver",
-        "Build chain multiplier across turns; record getCombatState().enemyIntent"
-      ],
-      "suggestedFix": "Audit enemyIntent.displayDamage calc. If multiplier inclusion is intentional, document; otherwise unbind."
-    },
-    {
-      "canonicalId": "balance_shop_unaffordable_first_visit",
-      "category": "balance_shop_pricing",
-      "severity": "medium",
-      "title": "Shop prices exceed starting gold (50g) on first visit",
-      "description": "Cards priced 57-73g, relics 150g, vs starting gold 50g. Floor 1 shop is functionally a no-op room.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 5,
-      "score": 3.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "Min card price 57g vs starting gold 50g",
-        "screen": "shopRoom"
-      },
-      "reproductionSteps": [
-        "Spawn shopRoom or reach a Floor 1 shop without combat gold",
-        "Inspect getShopInventory + getRunState"
-      ],
-      "suggestedFix": "Guarantee one ≤50g item per Floor 1 shop, or raise starting gold to 60-75g."
-    },
-    {
-      "canonicalId": "ux_retreat_delve_copy_ambiguous",
-      "category": "ux_copy_clarity",
-      "severity": "medium",
-      "title": "'Death keeps 80% (40)' copy on Retreat/Delve screen is grammatically ambiguous",
-      "description": "RetreatOrDelve.svelte:87 reads 'Death keeps {pct}% ({gold})' — parses as 'the entity Death keeps your money'. Should be 'If you die, you keep 80% (40g)'.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 6,
-      "score": 3.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "Source: src/ui/components/RetreatOrDelve.svelte:87",
-        "literalText": "Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})"
-      },
-      "reproductionSteps": [
-        "Reach the retreatOrDelve screen after any boss",
-        "Read the Delve button label"
-      ],
-      "suggestedFix": "Rephrase to 'If you die, you keep 80% (40g)'."
-    },
-    {
-      "canonicalId": "ux_delve_no_upside_explained",
-      "category": "ux_decision_clarity",
-      "severity": "medium",
-      "title": "Retreat/Delve screen lists penalty for delving but no upside",
-      "description": "Player sees 'Retreat — Keep all 50' vs 'Delve Deeper — Death keeps 80% (40)'. No benefit copy for delving.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 7,
-      "score": 3.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "getAllText shows only penalty side"
-      },
-      "reproductionSteps": [
-        "Reach retreatOrDelve",
-        "Read both buttons"
-      ],
-      "suggestedFix": "Add a one-line benefit on the Delve button: 'Deeper floors, better rewards, more XP.'"
-    },
-    {
-      "canonicalId": "perf_low_fps_extended_combat_docker",
-      "category": "perf_fps_drop",
-      "severity": "low",
-      "title": "FPS drops to 7-14 in extended CombatScene sessions (Docker/SwiftShader)",
-      "description": "look() reported 'Low FPS alert: 7 fps in CombatScene for 365s' after extended play. Likely software-rendering artifact; verify on real GPU.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 8,
-      "score": 1.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "7 fps in CombatScene for 365s; 14 fps for 123s"
-      },
-      "reproductionSteps": [
-        "Run extended CombatScene (>5 min) in Docker SwiftShader",
-        "Read look() FPS alerts"
-      ],
-      "suggestedFix": "Profile texture re-registration (Texture key already in use warnings) and overlay particle counts. Verify on real GPU."
-    },
-    {
-      "canonicalId": "bug_backend_connection_refused",
-      "category": "bug_console_error",
-      "severity": "low",
-      "title": "net::ERR_CONNECTION_REFUSED on every session",
-      "description": "Console error 'Failed to load resource: net::ERR_CONNECTION_REFUSED' fires on game boot and map navigation. Non-fatal but indicates a missing graceful fallback for a backend resource.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 9,
-      "score": 1.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "consoleErrors[] contains ERR_CONNECTION_REFUSED across 5+ batches"
-      },
-      "reproductionSteps": [
-        "Boot the game in any context where the backend fastify isn't running",
-        "Watch DevTools console"
-      ],
-      "suggestedFix": "Identify the failing fetch URL; wrap with optional-fallback guard so console stays clean offline."
-    },
-    {
-      "canonicalId": "ux_grey_matter_unexplained",
-      "category": "ux_resource_explanation",
-      "severity": "low",
-      "title": "'Grey Matter 0' on run-end screen has no tooltip or explanation",
-      "description": "Run end shows 'GREY MATTER 0' with a brain icon but no inline explanation. Source: src/ui/stores/playerData.ts.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 10,
-      "score": 1.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "Screenshot combat2-result.rr.jpg shows GREY MATTER 0 with no helper copy",
-        "sourceUsage": "src/ui/stores/playerData.ts (greyMatter currency)"
-      },
-      "reproductionSteps": [
-        "Lose any run on Floor 1-2",
-        "View the runEnd screen"
-      ],
-      "suggestedFix": "Add a tooltip or hover description on the Grey Matter row explaining purpose and earn condition."
-    },
-    {
-      "canonicalId": "content_adapt_card_description_vague",
-      "category": "content_card_description_clarity",
-      "severity": "low",
-      "title": "'Adapt' card description is mechanically vague: 'Auto-picks best: Attack, Block, or Cleanse'",
-      "description": "cardDescriptionService.ts:1017 returns 'Auto-picks best:\\nAttack, Block, or Cleanse'. Player can't tell when it picks or how.",
-      "frequency": 1,
-      "affectedProfiles": ["llm-human-style"],
-      "firstSeen": "2026-05-04T04:54:29.000Z",
-      "lastSeen": "2026-05-04T04:54:29.000Z",
-      "rank": 11,
-      "score": 1.0,
-      "status": "open",
-      "sourceReports": ["data/playtests/llm-batches/BATCH-2026-05-04-001/full-run.md"],
-      "bestEvidence": {
-        "metric": "Source: src/services/cardDescriptionService.ts:1017",
-        "literalText": "Auto-picks best:\\nAttack, Block, or Cleanse"
-      },
-      "reproductionSteps": [
-        "Acquire an Adapt card from a mystery event",
-        "Read its tooltip in hand"
-      ],
-      "suggestedFix": "Rephrase to 'Becomes Attack, Block, or Cleanse based on combat state when played'."
-    }
-  ]
+  "issues": []
 }

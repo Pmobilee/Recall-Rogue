@@ -538,17 +538,8 @@ async function handleShop(page) {
   logStep('shop', { gold: runState?.currency, inventory: JSON.stringify(inventory)?.substring(0, 200) });
 
   // Leave shop — we want to test base difficulty without purchases
-  await page.evaluate(async () => {
-    const btns = document.querySelectorAll('button');
-    for (const b of btns) {
-      const txt = b.textContent?.toLowerCase() || '';
-      if (txt.includes('leave') || txt.includes('back') || txt.includes('exit') || txt.includes('map')) {
-        b.click(); return;
-      }
-    }
-    // Try __rrPlay navigation
-    window.__rrPlay.navigate?.('dungeonMap');
-  });
+  const leaveResult = await page.evaluate(async () => window.__rrPlay.shopLeave?.());
+  logStep('shop_leave', { result: leaveResult });
   await page.waitForTimeout(3000);
 }
 
@@ -607,27 +598,43 @@ async function handleRest(page) {
   logStep('rest_result', { result: result?.message?.substring(0, 100) });
   await page.waitForTimeout(3000);
 
+  let screen = await page.evaluate(() => window.__rrPlay.getScreen());
+  if (screen === 'restRoom' || screen === 'rest') {
+    const continueResult = await page.evaluate(async () => window.__rrPlay.restContinue?.());
+    logStep('rest_continue', { result: continueResult });
+    await page.waitForTimeout(1500);
+  }
+
   // Wait for screen to change back to map
   for (let i = 0; i < 5; i++) {
-    const screen = await page.evaluate(() => window.__rrPlay.getScreen());
+    screen = await page.evaluate(() => window.__rrPlay.getScreen());
     if (screen === 'dungeonMap') break;
     await page.waitForTimeout(2000);
   }
 }
 
 async function handleMystery(page) {
-  logStep('mystery', { screen: 'mystery' });
+  const before = await page.evaluate(() => window.__rrPlay.getScreen());
+  const choices = await page.evaluate(() => window.__rrPlay.getMysteryEventChoices?.() ?? []);
+  logStep('mystery', { screen: before, choices });
 
-  // Pick first choice
-  await page.evaluate(() => {
-    const btns = document.querySelectorAll('button');
-    for (const b of btns) {
-      const txt = b.textContent?.toLowerCase() || '';
-      if (!txt.includes('back') && !txt.includes('leave') && txt.length > 0) {
-        b.click(); return;
-      }
+  const result = await page.evaluate(async () => {
+    const api = window.__rrPlay;
+    const choices = api.getMysteryEventChoices?.() ?? [];
+    if (choices.length > 0) {
+      return await api.selectMysteryChoice(0);
     }
+    return await api.mysteryContinue();
   });
+  logStep('mystery_result', { result });
+
+  await page.waitForTimeout(1500);
+  const afterChoice = await page.evaluate(() => window.__rrPlay.getScreen());
+  if (afterChoice === 'mysteryEvent' || afterChoice === 'cardUpgradeReveal') {
+    const continueResult = await page.evaluate(() => window.__rrPlay.mysteryContinue());
+    logStep('mystery_continue', { result: continueResult });
+  }
+
   await page.waitForTimeout(3000);
 }
 

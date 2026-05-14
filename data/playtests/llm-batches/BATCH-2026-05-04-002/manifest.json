@@ -1,0 +1,26 @@
+{
+  "batchId": "BATCH-2026-05-04-002",
+  "createdAt": "2026-05-04T09:09:16.132Z",
+  "testers": [
+    "full-run"
+  ],
+  "args": {
+    "domain": "general_knowledge",
+    "floors": 3,
+    "orchestrator": "codex-self-playtest",
+    "skill": "claude/llm-playtest"
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "reports": {
+    "full-run": {
+      "status": "complete",
+      "verdict": "FAIL",
+      "criticalCount": 1,
+      "highCount": 0,
+      "mediumCount": 0,
+      "lowCount": 2
+    }
+  },
+  "smokeOutput": "/tmp/rr-docker-visual/llm-playtest-BATCH-2026-05-04-002_none_1777885820895/"
+}

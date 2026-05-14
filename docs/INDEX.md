@@ -36,6 +36,7 @@
 | [relics](mechanics/relics.md) | Relic catalog, rarities, trigger system, slot rules, and acquisition mechanics |
 | [status-effects](mechanics/status-effects.md) | All status effects, stacking rules, tick timing, and application behavior |
 | [quiz](mechanics/quiz.md) | Quiz question lifecycle, fact selection, FSRS spaced repetition scheduling, answer grading, typing mode, chess move response mode (`chess_tactic`/`chess_move`), and chess Elo system |
+| [mystery-events](mechanics/mystery-events.md) | Mystery-room event pool, single-action event count, and placeholder-risk tracking |
 | [progression](mechanics/progression.md) | Run lifecycle, floor/room generation, map layout, room types, ascension system, and shop mechanics |
 | [narrative](mechanics/narrative.md) | Woven Narrative Architecture: 4 concurrent threads (Descent/Echo/Seeker/Inhabitants), archetypes, domain lenses, fact-reactive echo system, NPC dialogue, gravity scoring |
 | [procedural-math](mechanics/procedural-math.md) | Runtime math problem generation: skill nodes, 6 generators, algorithmic distractors, FSRS skill tracking, Anki-model selection, tier-based difficulty scaling |

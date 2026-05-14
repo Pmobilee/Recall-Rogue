@@ -1,0 +1,26 @@
+{
+  "batchId": "BATCH-2026-05-11-001",
+  "createdAt": "2026-05-11T10:21:51Z",
+  "testers": [
+    "normal-player-fullrun"
+  ],
+  "args": {
+    "runs": 1,
+    "domain": "general_knowledge",
+    "floors": 2,
+    "playStyle": "normal-player (70% quiz acc, mixed quick/charge, no domain knowledge bias)",
+    "context": "Validating balance change 8337003dd (GLOBAL_ENEMY_DAMAGE_MULTIPLIER 1.60\u21921.07). Headless sim shows 81-98% win rate across profiles which suggests overcorrection."
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "reports": {
+    "normal-player-fullrun": {
+      "status": "complete",
+      "verdict": "ISSUES",
+      "criticalCount": 1,
+      "highCount": 3,
+      "mediumCount": 2,
+      "lowCount": 3
+    }
+  }
+}

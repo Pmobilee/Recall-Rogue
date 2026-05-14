@@ -983,6 +983,7 @@ QA Validation (automated scripts)
 Promotion to Database
   - promote-approved-to-db.mjs (enforce-qa-gate: true)
   - build-facts-db.mjs → public/facts.db + data/seed-pack.json
+    - Strips numeric `{N}` answer markers from player-facing DB and seed-pack output.
 ```
 
 ### Key Files

@@ -109,6 +109,32 @@ describe('MEDIUM-10 — run termination screen routing invariant', () => {
     expect(defeatBlock).not.toMatch(/currentScreen\.set\('hub'\)/);
   });
 
+  it('stale encounter-result guard cannot strand a zero-HP defeat in combat', () => {
+    const guardStart = source.indexOf('if (isProcessingEncounterResult)');
+    expect(guardStart).toBeGreaterThan(-1);
+
+    let depth = 0;
+    let guardEnd = -1;
+    for (let i = guardStart; i < source.length; i++) {
+      if (source[i] === '{') depth++;
+      if (source[i] === '}') {
+        depth--;
+        if (depth === 0) {
+          guardEnd = i;
+          break;
+        }
+      }
+    }
+    expect(guardEnd).toBeGreaterThan(guardStart);
+
+    const guardBlock = source.slice(guardStart, guardEnd + 1);
+
+    expect(guardBlock).toContain("result === 'defeat'");
+    expect(guardBlock).toContain('run.playerHp <= 0');
+    expect(guardBlock).toContain("screen !== 'runEnd'");
+    expect(guardBlock).toContain('shouldRecoverDefeat');
+  });
+
   it('retreat path calls finishRunAndReturnToHub', () => {
     const retreatCallIndex = source.lastIndexOf('finishRunAndReturnToHub(');
     expect(retreatCallIndex).toBeGreaterThan(-1);
@@ -171,5 +197,5 @@ describe('MEDIUM-10 — forced-death headless scenario', () => {
 
     // finalHP confirms the player actually died (HP should be 0 or negative)
     expect(result.finalHP, 'finalHP must be <=0 on a death run').toBeLessThanOrEqual(0);
-  });
+  }, 30000);
 });

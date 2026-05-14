@@ -1297,40 +1297,52 @@ export function handlePlayCard(
   {
     const chainScene = getCombatScene();
     if (chainScene) {
-      chainScene.onChainUpdated(
-        result.turnState.chainLength,
-        result.turnState.chainType ?? undefined,
-      );
+      try {
+        chainScene.onChainUpdated(
+          result.turnState.chainLength,
+          result.turnState.chainType ?? undefined,
+        );
+      } catch (error) {
+        if (import.meta.env.DEV) {
+          console.warn('[encounterBridge] Chain visual update failed; continuing card resolution', error);
+        }
+      }
     }
   }
 
   const scene = getCombatScene();
   if (scene) {
-    // For attack and cast cards: enemy hit reaction is deferred to the weapon's
-    // onImpact callback so it fires at the visual contact frame (T+250ms sword,
-    // T+330ms tome) rather than at T+0 when the card resolves.
-    // For shield cards and wrong answers with no weapon animation: fire immediately.
-    const hasWeaponAnimation = correct && playedCard?.cardType !== 'shield';
-    const shouldDeferHit = hasWeaponAnimation && result.effect.damageDealt > 0 && !result.enemyDefeated;
+    try {
+      // For attack and cast cards: enemy hit reaction is deferred to the weapon's
+      // onImpact callback so it fires at the visual contact frame (T+250ms sword,
+      // T+330ms tome) rather than at T+0 when the card resolves.
+      // For shield cards and wrong answers with no weapon animation: fire immediately.
+      const hasWeaponAnimation = correct && playedCard?.cardType !== 'shield';
+      const shouldDeferHit = hasWeaponAnimation && result.effect.damageDealt > 0 && !result.enemyDefeated;
 
-    if (result.effect.damageDealt > 0 && !result.enemyDefeated && !shouldDeferHit) {
-      // Immediate hit reaction — shield block or non-weapon damage path
-      scene.playEnemyHitAnimation();
+      if (result.effect.damageDealt > 0 && !result.enemyDefeated && !shouldDeferHit) {
+        // Immediate hit reaction — shield block or non-weapon damage path
+        scene.playEnemyHitAnimation();
+      }
+
+      if (correct) {
+        // Build the deferred hit callback for weapon animations (or undefined for shield)
+        const hitCallback = shouldDeferHit ? () => scene.playEnemyHitAnimation() : undefined;
+
+        if (playedCard?.cardType === 'attack') scene.playPlayerAttackAnimation(hitCallback);
+        else if (playedCard?.cardType === 'shield') scene.playPlayerBlockAnimation();
+        else scene.playPlayerCastAnimation(playedCard?.cardType, hitCallback);
+      }
+
+      scene.updateEnemyHP(result.turnState.enemy?.currentHP ?? 0, true);
+      scene.updateEnemyBlock(result.turnState.enemy?.block ?? 0, true);
+      scene.updatePlayerHP(result.turnState.playerState?.hp ?? 0, result.turnState.playerState?.maxHP ?? 0, true);
+      scene.updatePlayerBlock(result.turnState.playerState?.shield ?? 0, true);
+    } catch (error) {
+      if (import.meta.env.DEV) {
+        console.warn('[encounterBridge] Card-play visual update failed; continuing card resolution', error);
+      }
     }
-
-    if (correct) {
-      // Build the deferred hit callback for weapon animations (or undefined for shield)
-      const hitCallback = shouldDeferHit ? () => scene.playEnemyHitAnimation() : undefined;
-
-      if (playedCard?.cardType === 'attack') scene.playPlayerAttackAnimation(hitCallback);
-      else if (playedCard?.cardType === 'shield') scene.playPlayerBlockAnimation();
-      else scene.playPlayerCastAnimation(playedCard?.cardType, hitCallback);
-    }
-
-    scene.updateEnemyHP(result.turnState.enemy?.currentHP ?? 0, true);
-    scene.updateEnemyBlock(result.turnState.enemy?.block ?? 0, true);
-    scene.updatePlayerHP(result.turnState.playerState?.hp ?? 0, result.turnState.playerState?.maxHP ?? 0, true);
-    scene.updatePlayerBlock(result.turnState.playerState?.shield ?? 0, true);
 
     // Co-op: broadcast the updated enemy HP to the partner so their scene reflects
     // damage dealt mid-turn without waiting for the turn-end reconcile.
@@ -1339,20 +1351,26 @@ export function handlePlayCard(
     }
 
     if (result.enemyDefeated) {
-      const runForVictory = get(activeRunState);
-      const isBossVictory = runForVictory && isBossFloor(runForVictory.floor.currentFloor) && runForVictory.floor.currentEncounter === runForVictory.floor.encountersPerFloor;
-      if (isBossVictory) {
-        playCardAudio('boss-defeated');
-      } else {
-        playCardAudio('encounter-victory');
+      try {
+        const runForVictory = get(activeRunState);
+        const isBossVictory = runForVictory && isBossFloor(runForVictory.floor.currentFloor) && runForVictory.floor.currentEncounter === runForVictory.floor.encountersPerFloor;
+        if (isBossVictory) {
+          playCardAudio('boss-defeated');
+        } else {
+          playCardAudio('encounter-victory');
+        }
+        playCardAudio('enemy-death');
+        juiceManager.fireKillConfirmation();
+        // Kill confirmation punch FIRST, then death animation
+        scene.playKillConfirmation().then(() => {
+          scene.playEnemyDeathAnimation();
+          scene.playPlayerVictoryAnimation();
+        });
+      } catch (error) {
+        if (import.meta.env.DEV) {
+          console.warn('[encounterBridge] Victory visual update failed; continuing encounter completion', error);
+        }
       }
-      playCardAudio('enemy-death');
-      juiceManager.fireKillConfirmation();
-      // Kill confirmation punch FIRST, then death animation
-      scene.playKillConfirmation().then(() => {
-        scene.playEnemyDeathAnimation();
-        scene.playPlayerVictoryAnimation();
-      });
     }
   }
 
@@ -1739,59 +1757,63 @@ export async function handleEndTurn(): Promise<void> {
 
   const scene = getCombatScene();
   if (scene) {
-    // Animate based on executed enemy intent type — fires NOW (mid-beat-2) so the
-    // attack animation and the HP commit land at the same visible moment.
-    switch (result.executedIntentType) {
-      case 'attack':
-        playCardAudio('enemy-attack');
-        scene.playEnemyAttackAnimation()
-        if (result.blockAbsorbedAll) {
-          playCardAudio('shield-absorb');
-          scene.playBlockAbsorbFlash()
-        } else if (result.damageDealt > 0) {
-          playCardAudio('player-damage');
-          scene.playPlayerDamageFlash()
-        }
-        break
-      case 'multi_attack':
-        playCardAudio('enemy-charge-release');
-        scene.playEnemyMultiAttackAnimation()
-        if (result.blockAbsorbedAll) {
-          playCardAudio('shield-absorb');
-          scene.playBlockAbsorbFlash()
-        } else if (result.damageDealt > 0) {
-          playCardAudio('player-damage');
-          scene.playPlayerDamageFlash()
-        }
-        break
-      case 'defend':
-        playCardAudio('enemy-defend');
-        scene.playEnemyDefendAnimation()
-        break
-      case 'buff':
-        playCardAudio('enemy-buff');
-        scene.playEnemyBuffAnimation()
-        break
-      case 'debuff':
-        playCardAudio('enemy-debuff');
-        scene.playEnemyDebuffAnimation()
-        break
-      case 'heal':
-        playCardAudio('enemy-heal');
-        scene.playEnemyHealAnimation()
-        break
-    }
-    scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
-    scene.updatePlayerBlock(result.turnState.playerState.shield, true);
-    scene.updateEnemyHP(result.turnState.enemy.currentHP, true);
-    scene.updateEnemyBlock(result.turnState.enemy.block, true);
-    scene.setEnemyIntent(
-      result.turnState.enemy.nextIntent.telegraph,
-      result.turnState.enemy.nextIntent.value > 0 ? result.turnState.enemy.nextIntent.value : undefined,
-    );
-    if (result.playerDefeated) {
-      playCardAudio('player-defeated');
-      scene.playPlayerDefeatAnimation();
+    try {
+      // Visual failures must never abort the combat state machine; death/reward
+      // routing is handled below this block.
+      switch (result.executedIntentType) {
+        case 'attack':
+          playCardAudio('enemy-attack');
+          scene.playEnemyAttackAnimation()
+          if (result.blockAbsorbedAll) {
+            playCardAudio('shield-absorb');
+            scene.playBlockAbsorbFlash()
+          } else if (result.damageDealt > 0) {
+            playCardAudio('player-damage');
+            scene.playPlayerDamageFlash()
+          }
+          break
+        case 'multi_attack':
+          playCardAudio('enemy-charge-release');
+          scene.playEnemyMultiAttackAnimation()
+          if (result.blockAbsorbedAll) {
+            playCardAudio('shield-absorb');
+            scene.playBlockAbsorbFlash()
+          } else if (result.damageDealt > 0) {
+            playCardAudio('player-damage');
+            scene.playPlayerDamageFlash()
+          }
+          break
+        case 'defend':
+          playCardAudio('enemy-defend');
+          scene.playEnemyDefendAnimation()
+          break
+        case 'buff':
+          playCardAudio('enemy-buff');
+          scene.playEnemyBuffAnimation()
+          break
+        case 'debuff':
+          playCardAudio('enemy-debuff');
+          scene.playEnemyDebuffAnimation()
+          break
+        case 'heal':
+          playCardAudio('enemy-heal');
+          scene.playEnemyHealAnimation()
+          break
+      }
+      scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
+      scene.updatePlayerBlock(result.turnState.playerState.shield, true);
+      scene.updateEnemyHP(result.turnState.enemy.currentHP, true);
+      scene.updateEnemyBlock(result.turnState.enemy.block, true);
+      scene.setEnemyIntent(
+        result.turnState.enemy.nextIntent.telegraph,
+        result.turnState.enemy.nextIntent.value > 0 ? result.turnState.enemy.nextIntent.value : undefined,
+      );
+      if (result.playerDefeated) {
+        playCardAudio('player-defeated');
+        scene.playPlayerDefeatAnimation();
+      }
+    } catch (err) {
+      if (import.meta.env.DEV) console.warn('[encounterBridge] Enemy-turn visual update failed; continuing combat resolution', err);
     }
   }
 

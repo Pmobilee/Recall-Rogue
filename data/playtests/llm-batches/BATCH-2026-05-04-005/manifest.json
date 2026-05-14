@@ -1,0 +1,39 @@
+{
+  "batchId": "BATCH-2026-05-04-005",
+  "createdAt": "2026-05-04T10:36:00.000Z",
+  "testers": [
+    "full-run",
+    "gameplay-audit"
+  ],
+  "args": {
+    "domain": "general_knowledge",
+    "floors": 3,
+    "orchestrator": "codex-self-playtest",
+    "skill": "claude/llm-playtest",
+    "scope": "follow-up gameplay bug hunt after BATCH-004 fixes"
+  },
+  "status": "complete",
+  "smokeTestPassed": true,
+  "reports": {
+    "summary": "SUMMARY.md",
+    "gameplayAudit": "gameplay-audit.md"
+  },
+  "smokeOutput": "/tmp/rr-docker-visual/llm-playtest-BATCH-2026-05-04-005_none_1777898447717/",
+  "startFlowOutput": "/tmp/rr-docker-visual/llm-playtest-BATCH-2026-05-04-005-b_none_1777901310530/",
+  "initialFailureOutput": "/tmp/rr-docker-visual/llm-playtest-BATCH-2026-05-04-005-b_none_1777900546114/",
+  "postFixOutput": "/tmp/rr-docker-visual/llm-playtest-BATCH-2026-05-04-005-b_none_1777901416317/",
+  "result": {
+    "initialIssuesObserved": 1,
+    "activeProgressionBlockers": 0,
+    "postFixFinalScreen": "combat",
+    "postFixScreens": {
+      "dungeonMap": 14,
+      "combat": 40,
+      "rewardRoom": 8,
+      "mysteryEvent": 5,
+      "restRoom": 1,
+      "retreatOrDelve": 1,
+      "shopRoom": 1
+    }
+  }
+}

@@ -178,6 +178,17 @@ describe('getNumericalDistractors — count domain', () => {
       expect(num).toBeGreaterThanOrEqual(0)
     }
   })
+
+  it('generates distractors for zero-valued plain numeric answers', () => {
+    const fact = makeFact(
+      'food_cuisine-bell-pepper-zero-scoville',
+      '0',
+      'What is the Scoville heat rating of a bell pepper?',
+    )
+    const distractors = getNumericalDistractors(fact, 3, fact.quizQuestion as string)
+    expect(distractors).toHaveLength(3)
+    expect(distractors).not.toContain('0')
+  })
 })
 
 describe('getNumericalDistractors — measurement domain', () => {
@@ -217,6 +228,7 @@ describe('isNumericalAnswer', () => {
     expect(isNumericalAnswer('At least {93}%')).toBe(true)
     expect(isNumericalAnswer('{21,196} km')).toBe(true)
     expect(isNumericalAnswer('{5.5}')).toBe(true)
+    expect(isNumericalAnswer('0')).toBe(true)
   })
 
   it('returns false for plain text', () => {

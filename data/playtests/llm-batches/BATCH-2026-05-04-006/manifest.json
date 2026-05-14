@@ -1,0 +1,20 @@
+{
+  "batchId": "BATCH-2026-05-04-006",
+  "createdAt": "2026-05-04T13:45:00.000Z",
+  "testers": [
+    "human-style-click-play"
+  ],
+  "args": {
+    "domain": "general_knowledge",
+    "orchestrator": "codex-self-playtest",
+    "skill": "claude/llm-playtest",
+    "scope": "manual LLM decisions with real UI clicks"
+  },
+  "status": "complete",
+  "completedAt": "2026-05-04T23:20:28.000+09:00",
+  "smokeTestPassed": true,
+  "reports": {
+    "summary": "summary.md",
+    "findings": "findings.json"
+  }
+}

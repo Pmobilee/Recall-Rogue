@@ -1,0 +1,16 @@
+{
+  "batchId": "BATCH-2026-05-06-002",
+  "createdAt": "2026-05-06T17:05:00.000+09:00",
+  "testers": [
+    "five-room-human-style-click-play"
+  ],
+  "args": {
+    "orchestrator": "codex-self-playtest",
+    "skill": "claude/llm-playtest",
+    "scope": "repeat until 5 consecutive rooms pass using real UI pointer clicks"
+  },
+  "status": "running",
+  "smokeTestPassed": false,
+  "roomsRequested": 5,
+  "reports": {}
+}

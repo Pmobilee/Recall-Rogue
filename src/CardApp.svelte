@@ -1812,7 +1812,8 @@ import ProceduralStudyScreen from './ui/components/ProceduralStudyScreen.svelte'
         // In turbo/bot mode, skip the doorway click gate — proceed immediately.
         if (isTurboMode()) {
           combatExitWaiting = false
-          combatTransitionActive = true
+          exitEnemyId = null
+          onCombatExitComplete()
           return
         }
         // Normal mode: show doorway zone instead of auto-triggering the transition.

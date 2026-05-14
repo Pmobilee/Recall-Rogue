@@ -25,6 +25,7 @@
   class:selected={isSelected}
   class:locked={isLocked}
   onclick={handleClick}
+  data-testid={`domain-card-${domainId}`}
   style="--color-tint: {colorTint};"
   aria-pressed={isSelected}
   aria-disabled={isLocked}

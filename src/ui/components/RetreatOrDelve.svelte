@@ -84,7 +84,7 @@
 
       <button class="delve" onclick={() => { playCardAudio('delve-deeper'); ondelve() }} data-testid="btn-delve">
         Delve Deeper
-        <span>Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
+        <span>Better rewards; death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
       </button>
     </div>
   </div>

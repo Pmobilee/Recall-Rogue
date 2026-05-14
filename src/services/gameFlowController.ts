@@ -1621,8 +1621,20 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   // has already completed and a new encounter has started. This is the root cause of Bug 9
   // (second encounter immediately skips to reward) and Bug 10 (broken third encounter state).
   if (isProcessingEncounterResult) {
-    if (import.meta.env.DEV) console.warn('[GameFlow] onEncounterComplete called while already processing — ignoring duplicate call');
-    return;
+    const screen = get(currentScreen);
+    const shouldRecoverDefeat =
+      result === 'defeat'
+      && run.playerHp <= 0
+      && screen !== 'runEnd';
+
+    if (!shouldRecoverDefeat) {
+      if (import.meta.env.DEV) console.warn('[GameFlow] onEncounterComplete called while already processing — ignoring duplicate call');
+      return;
+    }
+
+    if (import.meta.env.DEV) {
+      console.warn('[GameFlow] Recovering guarded defeat completion; routing zero-HP run to runEnd');
+    }
   }
   isProcessingEncounterResult = true;
 
